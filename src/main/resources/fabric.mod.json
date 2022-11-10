@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "netherexp",
+  "version": "${version}",
+
+  "name": "Jaden's Nether Expansion",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "JadenXgamer"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "All rights reserved",
+  "icon": "assets/netherexp/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.jadenxgamer.netherexp.NetherExp"
+    ],
+    "client": [
+      "net.jadenxgamer.netherexp.NetherExpClient"
+    ]
+  },
+  "mixins": [
+    "netherexp.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
