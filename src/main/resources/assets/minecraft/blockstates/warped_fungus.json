@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minecraft:block/warped_fungus",
+        "weight": 75
+      },
+      {
+        "model": "minecraft:netherexp/block/tall_warped_fungus",
+        "weight": 25
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minecraft:block/crimson_fungus",
+        "weight": 90
+      },
+      {
+        "model": "minecraft:netherexp/block/tall_crimson_fungus",
+        "weight": 10
+      }
+    ]
+  }
+}

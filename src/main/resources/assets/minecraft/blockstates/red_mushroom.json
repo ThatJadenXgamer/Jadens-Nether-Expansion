@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minecraft:block/red_mushroom",
+        "weight": 70
+      },
+      {
+        "model": "minecraft:netherexp/block/tall_red_mushroom",
+        "weight": 30
+      }
+    ]
+  }
+}

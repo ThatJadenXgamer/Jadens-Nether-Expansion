@@ -1,0 +1,42 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minecraft:block/warped_wart_block/0",
+        "weight": 180
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/1",
+        "weight": 35
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/2",
+        "weight": 35
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/3",
+        "weight": 35
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/4",
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/5",
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/6",
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/7",
+        "weight": 35
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/8",
+        "weight": 35
+      }
+    ]
+  }
+}

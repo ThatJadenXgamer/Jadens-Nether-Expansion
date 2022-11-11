@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "age=25": {
+      "model": "minecraft:block/twisting_vines/glow/mature"
+    }
+  }
+}
