@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp;
 
 import net.fabricmc.api.ModInitializer;
+import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.jadenxgamer.netherexp.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ public class NetherExp implements ModInitializer {
 	public void onInitialize() {
 
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 
 	}
 }
