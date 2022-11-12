@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:soul_slate",
+    "netherexp:soul_slate_bricks",
+    "netherexp:soul_slate_brick_slab",
+    "netherexp:cracked_soul_slate_bricks",
+    "netherexp:chiseled_soul_slate_bricks"
+  ]
+}
