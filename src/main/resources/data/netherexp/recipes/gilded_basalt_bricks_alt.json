@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GS",
+    "SG"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:polished_basalt"
+    },
+    "G": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "netherexp:gilded_basalt_bricks",
+    "count": 4
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "netherexp:block/gilded_basalt_brick_slab"
+    },
+    "type=double": {
+      "model": "netherexp:block/gilded_basalt_bricks"
+    },
+    "type=top": {
+      "model": "netherexp:block/gilded_basalt_brick_slab_top"
+    }
+  }
+}
