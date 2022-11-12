@@ -30,7 +30,7 @@ public class ModBlocks {
             new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_WALL = registerBlock("soul_slate_brick_wall",
-            new WallBlock(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new WallBlock(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.DECORATIONS);
 
     public static final Block CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks",
             new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
