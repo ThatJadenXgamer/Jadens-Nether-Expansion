@@ -3,8 +3,11 @@
   "values": [
     "netherexp:soul_slate",
     "netherexp:soul_slate_slab",
+    "netherexp:soul_slate_stairs",
+    "netherexp:soul_slate_wall",
     "netherexp:soul_slate_bricks",
     "netherexp:soul_slate_brick_slab",
+    "netherexp:soul_slate_brick_stairs",
     "netherexp:soul_slate_brick_wall",
     "netherexp:cracked_soul_slate_bricks",
     "netherexp:soul_slate_brick_pillar",
