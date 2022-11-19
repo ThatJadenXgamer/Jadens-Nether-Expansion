@@ -6,7 +6,7 @@
         "weight": 75
       },
       {
-        "model": "minecraft:netherexp/block/tall_warped_fungus",
+        "model": "netherexp:block/tall_warped_fungus",
         "weight": 25
       }
     ]

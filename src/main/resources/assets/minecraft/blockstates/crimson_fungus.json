@@ -6,7 +6,7 @@
         "weight": 90
       },
       {
-        "model": "minecraft:netherexp/block/tall_crimson_fungus",
+        "model": "netherexp:block/tall_crimson_fungus",
         "weight": 10
       }
     ]
