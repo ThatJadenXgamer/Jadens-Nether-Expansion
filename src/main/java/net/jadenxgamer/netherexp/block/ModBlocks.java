@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.block.custom.LightAbleBlock;
 import net.jadenxgamer.netherexp.block.custom.ModStairsBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -43,6 +44,9 @@ public class ModBlocks {
 
     public static final Block SOUL_SLATE_BRICK_WALL = registerBlock("soul_slate_brick_wall",
             new WallBlock(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.DECORATIONS);
+
+    public static final Block INDENTED_SOUL_SLATE_BRICKS = registerBlock("indented_soul_slate_bricks",
+            new LightAbleBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).luminance(state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
 
     public static final Block CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks",
             new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
