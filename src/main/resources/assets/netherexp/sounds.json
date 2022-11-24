@@ -1,0 +1,101 @@
+{
+  "block.soul_slate.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/soul_slate/break1",
+      "netherexp:block/soul_slate/break2",
+      "netherexp:block/soul_slate/break3",
+      "netherexp:block/soul_slate/break4"
+    ]
+  },
+  "block.soul_slate.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "block/deepslate/step1",
+      "block/deepslate/step2",
+      "block/deepslate/step3",
+      "block/deepslate/step4",
+      "block/deepslate/step5",
+      "block/deepslate/step6"
+    ]
+  },
+  "block.soul_slate.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/soul_slate/break1",
+      "netherexp:block/soul_slate/break2",
+      "netherexp:block/soul_slate/break3",
+      "netherexp:block/soul_slate/break4"
+    ]
+  },
+  "block.soul_slate.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "block/deepslate/step1",
+      "block/deepslate/step2",
+      "block/deepslate/step3",
+      "block/deepslate/step4",
+      "block/deepslate/step5",
+      "block/deepslate/step6"
+    ]
+  },
+  "block.soul_slate.fall": {
+    "sounds": [
+      "block/deepslate/step1",
+      "block/deepslate/step2",
+      "block/deepslate/step3",
+      "block/deepslate/step4",
+      "block/deepslate/step5",
+      "block/deepslate/step6"
+    ]
+  },
+  "block.basalt_bricks.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/basalt_bricks/break1",
+      "netherexp:block/basalt_bricks/break2",
+      "netherexp:block/basalt_bricks/break3",
+      "netherexp:block/basalt_bricks/break4",
+      "netherexp:block/basalt_bricks/break5"
+    ]
+  },
+  "block.basalt_bricks.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  },
+  "block.basalt_bricks.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/basalt_bricks/break1",
+      "netherexp:block/basalt_bricks/break2",
+      "netherexp:block/basalt_bricks/break3",
+      "netherexp:block/basalt_bricks/break4",
+      "netherexp:block/basalt_bricks/break5"
+    ]
+  },
+  "block.basalt_bricks.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  },
+  "block.basalt_bricks.fall": {
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  }
+}
