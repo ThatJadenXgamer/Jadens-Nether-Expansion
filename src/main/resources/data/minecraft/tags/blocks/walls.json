@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "netherexp:soul_slate_wall",
-    "netherexp:soul_slate_brick_wall"
+    "netherexp:soul_slate_brick_wall",
+    "netherexp:blue_nether_brick_wall"
   ]
 }

@@ -21,5 +21,13 @@
   "block.netherexp.polished_basalt_bricks": "Polished Basalt Bricks",
   "block.netherexp.polished_basalt_brick_slab": "Polished Basalt Brick Slab",
   "block.netherexp.gilded_basalt_bricks": "Gilded Basalt Bricks",
-  "block.netherexp.gilded_basalt_brick_slab": "Gilded Basalt Brick Slab"
+  "block.netherexp.gilded_basalt_brick_slab": "Gilded Basalt Brick Slab",
+
+  "block.netherexp.nether_brick_pillar": "Nether Brick Pillar",
+  "block.netherexp.red_mixed_nether_bricks": "Red Mixed Nether Bricks",
+  "block.netherexp.blue_mixed_nether_bricks": "Blue Mixed Nether Bricks",
+  "block.netherexp.blue_nether_bricks": "Blue Nether Bricks",
+  "block.netherexp.blue_nether_brick_slab": "Blue Nether Brick Slab",
+  "block.netherexp.blue_nether_brick_stairs": "Blue Nether Brick Stairs",
+  "block.netherexp.blue_nether_brick_wall": "Blue Nether Brick Wall"
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "S"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:nether_bricks"
+    }
+  },
+  "result": {
+    "item": "netherexp:nether_brick_pillar",
+    "count": 2
+  }
+}
