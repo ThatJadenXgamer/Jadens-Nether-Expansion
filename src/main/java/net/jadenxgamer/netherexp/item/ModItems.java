@@ -11,9 +11,14 @@ public class ModItems {
 
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+
     public static final Item RAW_HOGHAM = registerItem("raw_hogham",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
+            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+
+    public static final Item BLAZIUM_INGOT = registerItem("blazium_ingot",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
 
 
