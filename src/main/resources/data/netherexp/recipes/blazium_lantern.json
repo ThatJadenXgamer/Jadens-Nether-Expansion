@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:blazium_ingot"
+    },
+    "X": {
+      "item": "minecraft:lantern"
+    }
+  },
+  "result": {
+    "item": "netherexp:blazium_lantern",
+    "count": 1
+  }
+}

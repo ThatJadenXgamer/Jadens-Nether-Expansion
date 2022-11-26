@@ -29,5 +29,13 @@
   "block.netherexp.blue_nether_bricks": "Blue Nether Bricks",
   "block.netherexp.blue_nether_brick_slab": "Blue Nether Brick Slab",
   "block.netherexp.blue_nether_brick_stairs": "Blue Nether Brick Stairs",
-  "block.netherexp.blue_nether_brick_wall": "Blue Nether Brick Wall"
+  "block.netherexp.blue_nether_brick_wall": "Blue Nether Brick Wall",
+
+  "block.netherexp.blazium_block": "Blazium Block",
+  "block.netherexp.blazium_lantern": "Blazium Lantern",
+  "block.netherexp.soul_blazium_lantern": "Soul Blazium Lantern",
+  "block.netherexp.blazium_nether_bricks": "Blazium Nether Bricks",
+
+  "itemGroup.netherexp.netherexp_blocks": "Nether Expansion Blocks Tab",
+  "itemGroup.netherexp.netherexp_items": "Nether Expansion Items Tab"
 }

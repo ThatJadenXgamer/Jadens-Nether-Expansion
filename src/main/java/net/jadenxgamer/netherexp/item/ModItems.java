@@ -10,16 +10,16 @@ import net.minecraft.util.registry.Registry;
 public class ModItems {
 
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
     public static final Item RAW_HOGHAM = registerItem("raw_hogham",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
     public static final Item BLAZIUM_INGOT = registerItem("blazium_ingot",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
 
     private static Item registerItem(String name, Item item) {

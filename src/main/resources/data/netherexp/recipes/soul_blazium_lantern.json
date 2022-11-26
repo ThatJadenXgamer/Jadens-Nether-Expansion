@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:blazium_ingot"
+    },
+    "X": {
+      "item": "minecraft:soul_lantern"
+    }
+  },
+  "result": {
+    "item": "netherexp:soul_blazium_lantern",
+    "count": 1
+  }
+}

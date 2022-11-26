@@ -7,14 +7,14 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:nether_brick"
+      "item": "minecraft:nether_bricks"
     },
     "X": {
       "item": "minecraft:warped_wart_block"
     }
   },
   "result": {
-    "item": "minecraft:blue_nether_bricks",
+    "item": "netherexp:blue_nether_bricks",
     "count": 8
   }
 }

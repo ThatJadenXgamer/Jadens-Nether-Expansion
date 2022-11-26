@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:blazium_ingot"
+    }
+  },
+  "result": {
+    "item": "netherexp:blazium_block",
+    "count": 1
+  }
+}

@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.block.custom.LightAbleBlock;
 import net.jadenxgamer.netherexp.block.custom.ModStairsBlock;
+import net.jadenxgamer.netherexp.block.custom.RotatingBlock;
+import net.jadenxgamer.netherexp.item.ModItemGroup;
 import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -19,81 +21,91 @@ public class ModBlocks {
     // LIST OF BLOCKS:
 
     public static final Block SOUL_SLATE = registerBlock("soul_slate",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_SLAB = registerBlock("soul_slate_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ItemGroup.BUILDING_BLOCKS);
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_STAIRS = registerBlock("soul_slate_stairs",
             new ModStairsBlock(ModBlocks.SOUL_SLATE.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ItemGroup.BUILDING_BLOCKS);
+                    FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_WALL = registerBlock("soul_slate_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ItemGroup.DECORATIONS);
-
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICKS = registerBlock("soul_slate_bricks",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_SLAB = registerBlock("soul_slate_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_STAIRS = registerBlock("soul_slate_brick_stairs",
             new ModStairsBlock(ModBlocks.SOUL_SLATE_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_WALL = registerBlock("soul_slate_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.DECORATIONS);
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block INDENTED_SOUL_SLATE_BRICKS = registerBlock("indented_soul_slate_bricks",
-            new LightAbleBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).luminance(state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new LightAbleBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).luminance(
+            state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_PILLAR = registerBlock("soul_slate_brick_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ItemGroup.BUILDING_BLOCKS);
-
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block BASALT_SLAB = registerBlock("basalt_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)), ItemGroup.BUILDING_BLOCKS);
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block POLISHED_BASALT_BRICKS = registerBlock("polished_basalt_bricks",
-            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block POLISHED_BASALT_BRICK_SLAB = registerBlock("polished_basalt_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block GILDED_BASALT_BRICKS = registerBlock("gilded_basalt_bricks",
-            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block GILDED_BASALT_BRICK_SLAB = registerBlock("gilded_basalt_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ItemGroup.BUILDING_BLOCKS);
-
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block NETHER_BRICK_PILLAR = registerBlock("nether_brick_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block RED_MIXED_NETHER_BRICKS = registerBlock("red_mixed_nether_bricks",
-            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block BLUE_MIXED_NETHER_BRICKS = registerBlock("blue_mixed_nether_bricks",
-            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
     public static final Block BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks",
-            new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block BLUE_NETHER_BRICK_SLAB = registerBlock("blue_nether_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block BLUE_NETHER_BRICK_STAIRS = registerBlock("blue_nether_brick_stairs",
             new ModStairsBlock(ModBlocks.BLUE_NETHER_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ItemGroup.BUILDING_BLOCKS);
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block BLAZIUM_BLOCK = registerBlock("blazium_block",
+            new Block(FabricBlockSettings.of(Material.METAL).strength(2.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block BLAZIUM_LANTERN = registerBlock("blazium_lantern",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BLAZIUM_BLOCK).strength(0.4f).luminance(15).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SOUL_BLAZIUM_LANTERN = registerBlock("soul_blazium_lantern",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BLAZIUM_BLOCK).strength(0.4f).luminance(10).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block BLAZIUM_NETHER_BRICKS = registerBlock("blazium_nether_bricks",
+            new RotatingBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     // Methods
 
