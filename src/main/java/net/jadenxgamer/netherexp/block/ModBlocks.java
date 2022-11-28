@@ -6,6 +6,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.block.custom.LightAbleBlock;
 import net.jadenxgamer.netherexp.block.custom.ModStairsBlock;
 import net.jadenxgamer.netherexp.block.custom.RotatingBlock;
+import net.jadenxgamer.netherexp.block.custom.WitherBoneBlock;
 import net.jadenxgamer.netherexp.item.ModItemGroup;
 import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.*;
@@ -95,17 +96,47 @@ public class ModBlocks {
     public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall",
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
-    public static final Block BLAZIUM_BLOCK = registerBlock("blazium_block",
-            new Block(FabricBlockSettings.of(Material.METAL).strength(2.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+    public static final Block PYRITE_BLOCK = registerBlock("pyrite_block",
+            new Block(FabricBlockSettings.of(Material.METAL).strength(3.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
 
-    public static final Block BLAZIUM_LANTERN = registerBlock("blazium_lantern",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BLAZIUM_BLOCK).strength(0.4f).luminance(15).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
+    public static final Block PYRITE_SLAB = registerBlock("pyrite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
 
-    public static final Block SOUL_BLAZIUM_LANTERN = registerBlock("soul_blazium_lantern",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BLAZIUM_BLOCK).strength(0.4f).luminance(10).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
+    public static final Block PYRITE_STAIRS = registerBlock("pyrite_stairs",
+            new ModStairsBlock(ModBlocks.PYRITE_BLOCK.getDefaultState(),
+                    FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
 
-    public static final Block BLAZIUM_NETHER_BRICKS = registerBlock("blazium_nether_bricks",
+    public static final Block PYRITE_WALL = registerBlock("pyrite_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block PYRITE_BUTTON = registerBlock("pyrite_button",
+            new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(1f).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+    public static final Block PYRITE_LANTERN = registerBlock("pyrite_lantern",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).strength(0.4f).luminance(15).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SOUL_PYRITE_LANTERN = registerBlock("soul_pyrite_lantern",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_LANTERN).luminance(10).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block PYRITE_NETHER_BRICKS = registerBlock("pyrite_nether_bricks",
             new RotatingBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SHROOMNIGHT = registerBlock("shroomnight",
+            new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).luminance(8).sounds(BlockSoundGroup.SHROOMLIGHT)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CRIMSON_SPROUTS = registerBlock("crimson_sprouts",
+            new SproutsBlock(FabricBlockSettings.copyOf(Blocks.NETHER_SPROUTS).sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CHAINWIRE_FENCE = registerBlock("chainwire_fence",
+            new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block STACKED_BONES = registerBlock("stacked_bones",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block WITHER_BONE_BLOCK = registerBlock("wither_bone_block",
+            new WitherBoneBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(4.5f,9.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block STACKED_WITHER_BONES = registerBlock("stacked_wither_bones",
+            new WitherBoneBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).strength(2.0f,9.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     // Methods
 

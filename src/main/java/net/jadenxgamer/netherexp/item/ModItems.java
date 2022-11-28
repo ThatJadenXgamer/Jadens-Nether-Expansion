@@ -18,7 +18,7 @@ public class ModItems {
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
-    public static final Item BLAZIUM_INGOT = registerItem("blazium_ingot",
+    public static final Item PYRITE_INGOT = registerItem("pyrite_ingot",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
 

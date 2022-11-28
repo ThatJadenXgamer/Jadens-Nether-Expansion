@@ -2,7 +2,7 @@
   "item.netherexp.warphopper_fur": "Warphopper Fur",
   "item.netherexp.raw_hogham": "Raw Hogham",
   "item.netherexp.cooked_hogham": "Cooked Hogham",
-  "item.netherexp.blazium_ingot": "Blazium Ingot",
+  "item.netherexp.pyrite_ingot": "Pyrite Ingot",
 
   "block.netherexp.soul_slate": "Soul Slate",
   "block.netherexp.soul_slate_slab": "Soul Slate Slab",
@@ -31,10 +31,18 @@
   "block.netherexp.blue_nether_brick_stairs": "Blue Nether Brick Stairs",
   "block.netherexp.blue_nether_brick_wall": "Blue Nether Brick Wall",
 
-  "block.netherexp.blazium_block": "Blazium Block",
-  "block.netherexp.blazium_lantern": "Blazium Lantern",
-  "block.netherexp.soul_blazium_lantern": "Soul Blazium Lantern",
-  "block.netherexp.blazium_nether_bricks": "Blazium Nether Bricks",
+  "block.netherexp.pyrite_block": "Block of Pyrite",
+  "block.netherexp.pyrite_slab": "Pyrite Slab",
+  "block.netherexp.pyrite_stairs": "Pyrite Stairs",
+  "block.netherexp.pyrite_wall": "Pyrite Wall",
+  "block.netherexp.pyrite_button": "Pyrite Button",
+  "block.netherexp.pyrite_lantern": "Pyrite Lantern",
+  "block.netherexp.soul_pyrite_lantern": "Soul Pyrite Lantern",
+  "block.netherexp.pyrite_nether_bricks": "Pyrite Nether Bricks",
+
+  "block.netherexp.shroomnight": "Shroomnight",
+  "block.netherexp.crimson_sprouts": "Crimson Sprouts",
+  "block.netherexp.chainwire_fence": "Chainwire Fence",
 
   "itemGroup.netherexp.netherexp_blocks": "Nether Expansion Blocks Tab",
   "itemGroup.netherexp.netherexp_items": "Nether Expansion Items Tab"

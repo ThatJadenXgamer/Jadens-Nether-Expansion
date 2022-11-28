@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "netherexp:block/pyrite_nether_bricks_right"
+    },
+    "facing=north": {
+      "model": "netherexp:block/pyrite_nether_bricks_left"
+    },
+    "facing=south": {
+      "model": "netherexp:block/pyrite_nether_bricks_left"
+    },
+    "facing=west": {
+      "model": "netherexp:block/pyrite_nether_bricks_right"
+    }
+  }
+}

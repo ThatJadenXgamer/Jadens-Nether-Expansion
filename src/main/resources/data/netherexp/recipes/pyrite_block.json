@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:pyrite_ingot"
+    }
+  },
+  "result": {
+    "item": "netherexp:pyrite_block",
+    "count": 1
+  }
+}

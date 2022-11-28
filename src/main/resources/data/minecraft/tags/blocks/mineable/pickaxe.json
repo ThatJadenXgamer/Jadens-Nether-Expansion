@@ -26,6 +26,15 @@
     "netherexp:blue_nether_brick_stairs",
     "netherexp:blue_nether_brick_wall",
     "netherexp:blue_mixed_nether_bricks",
-    "netherexp:red_mixed_nether_bricks"
+    "netherexp:red_mixed_nether_bricks",
+
+    "netherexp:pyrite_block",
+    "netherexp:pyrite_slab",
+    "netherexp:pyrite_stairs",
+    "netherexp:pyrite_wall",
+    "netherexp:pyrite_button",
+    "netherexp:pyrite_lantern",
+    "netherexp:soul_pyrite_lantern",
+    "netherexp:pyrite_nether_bricks"
   ]
 }

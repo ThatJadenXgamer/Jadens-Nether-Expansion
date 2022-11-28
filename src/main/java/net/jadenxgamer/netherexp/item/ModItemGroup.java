@@ -11,5 +11,5 @@ public class ModItemGroup {
     public static final ItemGroup NETHEREXP_BLOCKS = FabricItemGroupBuilder.build(
             new Identifier(NetherExp.MOD_ID, "netherexp_blocks"), () -> new ItemStack(ModBlocks.BLUE_NETHER_BRICKS));
     public static final ItemGroup NETHEREXP_ITEMS = FabricItemGroupBuilder.build(
-            new Identifier(NetherExp.MOD_ID, "netherexp_items"), () -> new ItemStack(ModItems.BLAZIUM_INGOT));
+            new Identifier(NetherExp.MOD_ID, "netherexp_items"), () -> new ItemStack(ModItems.PYRITE_INGOT));
 }
