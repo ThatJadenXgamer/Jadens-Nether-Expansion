@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "netherexp:block/stacked_wither_bones_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "netherexp:block/stacked_wither_bones"
+    },
+    "axis=z": {
+      "model": "netherexp:block/stacked_wither_bones_horizontal",
+      "x": 90
+    }
+  }
+}

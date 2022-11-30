@@ -35,6 +35,10 @@
     "netherexp:pyrite_button",
     "netherexp:pyrite_lantern",
     "netherexp:soul_pyrite_lantern",
-    "netherexp:pyrite_nether_bricks"
+    "netherexp:pyrite_nether_bricks",
+
+    "netherexp:stacked_bones",
+    "netherexp:wither_bone_block",
+    "netherexp:stacked_wither_bones"
   ]
 }

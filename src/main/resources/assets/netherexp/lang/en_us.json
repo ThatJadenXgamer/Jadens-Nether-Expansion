@@ -44,6 +44,10 @@
   "block.netherexp.crimson_sprouts": "Crimson Sprouts",
   "block.netherexp.chainwire_fence": "Chainwire Fence",
 
+  "block.netherexp.stacked_bones": "Stacked Bones",
+  "block.netherexp.wither_bone_block": "Wither Bone Block",
+  "block.netherexp.stacked_wither_bones": "Stacked Wither Bones",
+
   "itemGroup.netherexp.netherexp_blocks": "Nether Expansion Blocks Tab",
   "itemGroup.netherexp.netherexp_items": "Nether Expansion Items Tab"
 }

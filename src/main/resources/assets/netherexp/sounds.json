@@ -22,10 +22,10 @@
   "block.soul_slate.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
-      "netherexp:block/soul_slate/break1",
-      "netherexp:block/soul_slate/break2",
-      "netherexp:block/soul_slate/break3",
-      "netherexp:block/soul_slate/break4"
+      "netherexp:block/soul_slate/place1",
+      "netherexp:block/soul_slate/place2",
+      "netherexp:block/soul_slate/place3",
+      "netherexp:block/soul_slate/place4"
     ]
   },
   "block.soul_slate.hit": {
@@ -90,6 +90,77 @@
     ]
   },
   "block.basalt_bricks.fall": {
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  },
+  "block.soul_slate_bricks.break": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      {
+        "name": "netherexp:block/soul_slate_bricks/place1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/soul_slate_bricks/place2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/soul_slate_bricks/place3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/soul_slate_bricks/place4",
+        "volume": 0.85
+      }
+    ]
+  },
+  "block.soul_slate_bricks.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  },
+  "block.soul_slate_bricks.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      {
+        "name": "netherexp:block/soul_slate_bricks/place1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/soul_slate_bricks/place2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/soul_slate_bricks/place3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/soul_slate_bricks/place4",
+        "volume": 0.85
+      }
+    ]
+  },
+  "block.soul_slate_bricks.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  },
+  "block.soul_slate_bricks.fall": {
     "sounds": [
       "block/deepslate_bricks/step1",
       "block/deepslate_bricks/step2",

@@ -17,9 +17,8 @@ public class WitherBoneBlock extends PillarBlock {
 
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        if(entity instanceof LivingEntity livingEntity) {
+        if(!entity.bypassesSteppingEffects() && entity instanceof LivingEntity livingEntity) {
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 2));
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,2,2));
         }
 
         super.onSteppedOn(world, pos, state, entity);

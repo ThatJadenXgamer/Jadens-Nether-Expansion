@@ -35,30 +35,30 @@ public class ModBlocks {
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICKS = registerBlock("soul_slate_bricks",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_SLAB = registerBlock("soul_slate_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_STAIRS = registerBlock("soul_slate_brick_stairs",
             new ModStairsBlock(ModBlocks.SOUL_SLATE_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_WALL = registerBlock("soul_slate_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block INDENTED_SOUL_SLATE_BRICKS = registerBlock("indented_soul_slate_bricks",
             new LightAbleBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).luminance(
-            state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SLATE_BRICK_PILLAR = registerBlock("soul_slate_brick_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(BlockSoundGroup.DEEPSLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block BASALT_SLAB = registerBlock("basalt_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -136,7 +136,7 @@ public class ModBlocks {
             new WitherBoneBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(4.5f,9.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block STACKED_WITHER_BONES = registerBlock("stacked_wither_bones",
-            new WitherBoneBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).strength(2.0f,9.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).strength(2.0f,9.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     // Methods
 

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "netherexp:block/stacked_wither_bones",
+    "side": "netherexp:block/stacked_wither_bones"
+  }
+}
