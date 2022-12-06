@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:pyrite_block"
+    }
+  },
+  "result": {
+    "item": "netherexp:pyrite_wall",
+    "count": 6
+  }
+}

@@ -38,7 +38,11 @@
     "netherexp:pyrite_nether_bricks",
 
     "netherexp:stacked_bones",
+    "netherexp:stacked_bone_slab",
+    "netherexp:stacked_bone_stairs",
     "netherexp:wither_bone_block",
-    "netherexp:stacked_wither_bones"
+    "netherexp:stacked_wither_bones",
+    "netherexp:stacked_wither_bone_slab",
+    "netherexp:stacked_wither_bone_stairs"
   ]
 }

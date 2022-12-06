@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "netherexp:hogham"
+  },
+  "result": "netherexp:cooked_hogham",
+  "experience": 0.35,
+  "cookingtime": 200
+}

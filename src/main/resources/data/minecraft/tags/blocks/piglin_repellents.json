@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:soul_pyrite_lantern"
+    "netherexp:soul_pyrite_lantern",
+    "netherexp:wither_bone_block"
   ]
 }

@@ -12,11 +12,11 @@ public class ModItems {
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
-    public static final Item RAW_HOGHAM = registerItem("raw_hogham",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
+    public static final Item HOGHAM = registerItem("hogham",
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.HOGHAM)));
 
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.COOKED_HOGHAM)));
 
     public static final Item PYRITE_INGOT = registerItem("pyrite_ingot",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));

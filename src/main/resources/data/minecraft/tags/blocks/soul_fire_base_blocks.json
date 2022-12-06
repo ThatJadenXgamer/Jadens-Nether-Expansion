@@ -12,6 +12,10 @@
     "netherexp:indented_soul_slate_bricks",
     "netherexp:cracked_soul_slate_bricks",
     "netherexp:soul_slate_brick_pillar",
-    "netherexp:chiseled_soul_slate_bricks"
+    "netherexp:chiseled_soul_slate_bricks",
+    "netherexp:wither_bone_block",
+    "netherexp:stacked_wither_bones",
+    "netherexp:stacked_wither_bone_slab",
+    "netherexp:stacked_wither_bone_stairs"
   ]
 }

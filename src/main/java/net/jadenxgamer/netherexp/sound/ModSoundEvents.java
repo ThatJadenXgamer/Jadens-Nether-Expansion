@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.sound;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
