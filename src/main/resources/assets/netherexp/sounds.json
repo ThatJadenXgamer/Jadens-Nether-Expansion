@@ -168,5 +168,185 @@
       "block/deepslate_bricks/step4",
       "block/deepslate_bricks/step5"
     ]
+  },
+  "block.white_ash.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/white_ash/break1",
+      "netherexp:block/white_ash/break2",
+      "netherexp:block/white_ash/break3"
+    ]
+  },
+  "block.white_ash.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      {
+        "name": "block/powder_snow/step1",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step2",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step3",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step4",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step5",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step6",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step7",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step8",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step9",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step10",
+        "pitch": 1.3,
+        "volume": 0.83
+      }
+    ]
+  },
+  "block.white_ash.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/white_ash/break1",
+      "netherexp:block/white_ash/break2",
+      "netherexp:block/white_ash/break3"
+    ]
+  },
+  "block.white_ash.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      {
+        "name": "block/powder_snow/step1",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step2",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step3",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step4",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step5",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step6",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step7",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step8",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step9",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step10",
+        "pitch": 1.3,
+        "volume": 0.83
+      }
+    ]
+  },
+  "block.white_ash.fall": {
+    "sounds": [
+      {
+        "name": "block/powder_snow/step1",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step2",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step3",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step4",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step5",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step6",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step7",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step8",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step9",
+        "pitch": 1.3,
+        "volume": 0.83
+      },
+      {
+        "name": "block/powder_snow/step10",
+        "pitch": 1.3,
+        "volume": 0.83
+      }
+    ]
   }
 }

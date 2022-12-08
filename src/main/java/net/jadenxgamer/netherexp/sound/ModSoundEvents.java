@@ -36,6 +36,14 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_BASALT_BRICKS_HIT = registerSoundEvent("block.basalt_bricks.hit");
     public static SoundEvent BLOCK_BASALT_BRICKS_FALL = registerSoundEvent("block.basalt_bricks.fall");
 
+    // White Ash
+
+    public static SoundEvent BLOCK_WHITE_ASH_BREAK = registerSoundEvent("block.white_ash.break");
+    public static SoundEvent BLOCK_WHITE_ASH_STEP = registerSoundEvent("block.white_ash.step");
+    public static SoundEvent BLOCK_WHITE_ASH_PLACE = registerSoundEvent("block.white_ash.place");
+    public static SoundEvent BLOCK_WHITE_ASH_HIT = registerSoundEvent("block.white_ash.hit");
+    public static SoundEvent BLOCK_WHITE_ASH_FALL = registerSoundEvent("block.white_ash.fall");
+
     // LIST OF SOUND GROUPS:
 
     public static final BlockSoundGroup SOUL_SLATE = new BlockSoundGroup(1f, 1f,
@@ -49,6 +57,10 @@ public class ModSoundEvents {
     public static final BlockSoundGroup BASALT_BRICKS = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_BASALT_BRICKS_BREAK, ModSoundEvents.BLOCK_BASALT_BRICKS_STEP, ModSoundEvents.BLOCK_BASALT_BRICKS_PLACE,
             ModSoundEvents.BLOCK_BASALT_BRICKS_HIT, ModSoundEvents.BLOCK_BASALT_BRICKS_FALL);
+
+    public static final BlockSoundGroup WHITE_ASH = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_WHITE_ASH_BREAK, ModSoundEvents.BLOCK_WHITE_ASH_STEP, ModSoundEvents.BLOCK_WHITE_ASH_PLACE,
+            ModSoundEvents.BLOCK_WHITE_ASH_HIT, ModSoundEvents.BLOCK_WHITE_ASH_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

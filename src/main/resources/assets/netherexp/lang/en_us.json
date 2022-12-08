@@ -45,8 +45,19 @@
   "block.netherexp.chainwire_fence": "Chainwire Fence",
 
   "block.netherexp.stacked_bones": "Stacked Bones",
+  "block.netherexp.stacked_bone_slab": "Stacked Bone Slab",
+  "block.netherexp.stacked_bone_stairs": "Stacked Bone Stairs",
   "block.netherexp.wither_bone_block": "Wither Bone Block",
+  "block.netherexp.stacked_wither_bone_slab": "Stacked Wither Bone Slab",
+  "block.netherexp.stacked_wither_bone_stairs": "Stacked Wither Bone Stairs",
   "block.netherexp.stacked_wither_bones": "Stacked Wither Bones",
+
+  "block.netherexp.weeping_polished_blackstone_bricks": "Weeping Polished Blackstone Bricks",
+  "block.netherexp.twisting_polished_blackstone_bricks": "Twisting Polished Blackstone Bricks",
+  "block.netherexp.polished_blackstone_pillar": "Polished Blackstone Pillar",
+
+  "block.netherexp.white_ash": "White Ash",
+  "block.netherexp.white_ash_block": "White Ash Block",
 
   "itemGroup.netherexp.netherexp_blocks": "Nether Expansion Blocks Tab",
   "itemGroup.netherexp.netherexp_items": "Nether Expansion Items Tab"

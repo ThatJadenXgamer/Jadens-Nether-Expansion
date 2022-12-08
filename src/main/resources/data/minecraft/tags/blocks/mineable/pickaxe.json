@@ -43,6 +43,10 @@
     "netherexp:wither_bone_block",
     "netherexp:stacked_wither_bones",
     "netherexp:stacked_wither_bone_slab",
-    "netherexp:stacked_wither_bone_stairs"
+    "netherexp:stacked_wither_bone_stairs",
+
+    "netherexp:weeping_polished_blackstone_bricks",
+    "netherexp:twisting_polished_blackstone_bricks",
+    "netherexp:polished_blackstone_pillar"
   ]
 }

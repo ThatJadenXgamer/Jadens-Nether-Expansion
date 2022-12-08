@@ -3,10 +3,7 @@ package net.jadenxgamer.netherexp.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.block.custom.LightAbleBlock;
-import net.jadenxgamer.netherexp.block.custom.ModStairsBlock;
-import net.jadenxgamer.netherexp.block.custom.RotatingBlock;
-import net.jadenxgamer.netherexp.block.custom.WitherBoneBlock;
+import net.jadenxgamer.netherexp.block.custom.*;
 import net.jadenxgamer.netherexp.item.ModItemGroup;
 import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.*;
@@ -125,6 +122,13 @@ public class ModBlocks {
 
     public static final Block CRIMSON_SPROUTS = registerBlock("crimson_sprouts",
             new SproutsBlock(FabricBlockSettings.copyOf(Blocks.NETHER_SPROUTS).sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block WHITE_ASH = registerBlock("white_ash",
+            new LayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.1f).requiresTool()
+                    .sounds(ModSoundEvents.WHITE_ASH).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block WHITE_ASH_BLOCK = registerBlock("white_ash_block",
+            new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.2f).requiresTool().sounds(ModSoundEvents.WHITE_ASH)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CHAINWIRE_FENCE = registerBlock("chainwire_fence",
             new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)), ModItemGroup.NETHEREXP_BLOCKS);
