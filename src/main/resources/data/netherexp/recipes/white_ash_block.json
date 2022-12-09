@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:white_ash"
+    }
+  },
+  "result": {
+    "item": "netherexp:white_ash_block"
+  }
+}

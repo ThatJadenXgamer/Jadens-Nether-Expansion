@@ -57,6 +57,10 @@ public class ModBlocks {
     public static final Block CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks",
             new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    public static final Block SOUL_SOIL_LAYER = registerBlock("soul_soil_layer",
+            new SoulSoilLayer(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
+            .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
+
     public static final Block BASALT_SLAB = registerBlock("basalt_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -108,6 +112,10 @@ public class ModBlocks {
 
     public static final Block PYRITE_BUTTON = registerBlock("pyrite_button",
             new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(1f).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block MEDIUM_WEIGHTED_PRESSURE_PLATE = registerBlock("medium_weighted_pressure_plate",
+            new WeightedPressurePlateBlock(75, FabricBlockSettings.of(Material.METAL).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
     public static final Block PYRITE_LANTERN = registerBlock("pyrite_lantern",
             new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).strength(0.4f).luminance(15).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -124,11 +132,11 @@ public class ModBlocks {
             new SproutsBlock(FabricBlockSettings.copyOf(Blocks.NETHER_SPROUTS).sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block WHITE_ASH = registerBlock("white_ash",
-            new LayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.1f).requiresTool()
-                    .sounds(ModSoundEvents.WHITE_ASH).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
+            new WhiteAshBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
+            .sounds(ModSoundEvents.WHITE_ASH).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block WHITE_ASH_BLOCK = registerBlock("white_ash_block",
-            new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.2f).requiresTool().sounds(ModSoundEvents.WHITE_ASH)), ModItemGroup.NETHEREXP_BLOCKS);
+            new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.7f).requiresTool().sounds(ModSoundEvents.WHITE_ASH)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CHAINWIRE_FENCE = registerBlock("chainwire_fence",
             new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)), ModItemGroup.NETHEREXP_BLOCKS);
