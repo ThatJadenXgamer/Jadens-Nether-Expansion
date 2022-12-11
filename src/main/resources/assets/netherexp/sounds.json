@@ -99,7 +99,7 @@
     ]
   },
   "block.soul_slate_bricks.break": {
-    "subtitle": "subtitles.block.generic.footsteps",
+    "subtitle": "subtitles.block.generic.break",
     "sounds": [
       {
         "name": "netherexp:block/soul_slate_bricks/place1",
@@ -347,6 +347,95 @@
         "pitch": 1.3,
         "volume": 0.83
       }
+    ]
+  },
+  "block.netherrack_bricks.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      {
+        "name": "netherexp:block/netherrack_bricks/break1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break4",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break5",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break6",
+        "volume": 0.85
+      }
+    ]
+  },
+  "block.netherrack_bricks.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "block/deepslate_bricks/step1",
+      "block/deepslate_bricks/step2",
+      "block/deepslate_bricks/step3",
+      "block/deepslate_bricks/step4",
+      "block/deepslate_bricks/step5"
+    ]
+  },
+  "block.netherrack_bricks.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      {
+        "name": "netherexp:block/netherrack_bricks/break1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break4",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break5",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/netherrack_bricks/break6",
+        "volume": 0.85
+      }
+    ]
+  },
+  "block.netherrack_bricks.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "block/netherrack/step1",
+      "block/netherrack/step2",
+      "block/netherrack/step3",
+      "block/netherrack/step4",
+      "block/netherrack/step5",
+      "block/netherrack/step6"
+    ]
+  },
+  "block.netherrack_bricks.fall": {
+    "sounds": [
+      "block/netherrack/step1",
+      "block/netherrack/step2",
+      "block/netherrack/step3",
+      "block/netherrack/step4",
+      "block/netherrack/step5",
+      "block/netherrack/step6"
     ]
   }
 }

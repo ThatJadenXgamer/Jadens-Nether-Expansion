@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:warped_fungus"
+  },
+  "result": "minecraft:cyan_dye",
+  "experience": 0.35,
+  "cookingtime": 200
+}

@@ -61,6 +61,38 @@ public class ModBlocks {
             new SoulSoilLayer(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
             .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
 
+    public static final Block SMOOTH_NETHERRACK = registerBlock("smooth_netherrack",
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.4f).requiresTool().sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SMOOTH_NETHERRACK_SLAB = registerBlock("smooth_netherrack_slab",
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SMOOTH_NETHERRACK_STAIRS = registerBlock("smooth_netherrack_stairs",
+            new ModStairsBlock(ModBlocks.SMOOTH_NETHERRACK.getDefaultState(),
+                    FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SMOOTH_NETHERRACK_WALL = registerBlock("smooth_netherrack_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHERRACK_BRICKS = registerBlock("netherrack_bricks",
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).requiresTool().sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHERRACK_BRICK_SLAB = registerBlock("netherrack_brick_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHERRACK_BRICK_STAIRS = registerBlock("netherrack_brick_stairs",
+            new ModStairsBlock(ModBlocks.NETHERRACK_BRICKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHERRACK_BRICK_WALL = registerBlock("netherrack_brick_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHERRACK_TILES = registerBlock("netherrack_tiles",
+            new Block(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHERRACK_PILLAR = registerBlock("netherrack_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
     public static final Block BASALT_SLAB = registerBlock("basalt_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -98,7 +130,7 @@ public class ModBlocks {
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block PYRITE_BLOCK = registerBlock("pyrite_block",
-            new Block(FabricBlockSettings.of(Material.METAL).strength(3.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+            new Block(FabricBlockSettings.of(Material.METAL).strength(3.5f,6.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block PYRITE_SLAB = registerBlock("pyrite_slab",
             new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -122,6 +154,9 @@ public class ModBlocks {
     public static final Block SOUL_PYRITE_LANTERN = registerBlock("soul_pyrite_lantern",
             new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_LANTERN).luminance(10).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    public static final Block PYRITE_CHAIN = registerBlock("pyrite_chain",
+            new ChainBlock(FabricBlockSettings.of(Material.METAL, MapColor.CLEAR).strength(3.5f,6.5f).requiresTool().nonOpaque().sounds(BlockSoundGroup.CHAIN)), ModItemGroup.NETHEREXP_BLOCKS);
+
     public static final Block PYRITE_NETHER_BRICKS = registerBlock("pyrite_nether_bricks",
             new RotatingBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -141,6 +176,8 @@ public class ModBlocks {
     public static final Block CHAINWIRE_FENCE = registerBlock("chainwire_fence",
             new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    public static final Block BONE_FENCE = registerBlock("bone_fence",
+            new BoneFenceBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(1.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
     public static final Block STACKED_BONES = registerBlock("stacked_bones",
             new Block(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
 

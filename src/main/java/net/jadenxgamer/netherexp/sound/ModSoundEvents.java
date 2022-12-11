@@ -27,6 +27,13 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_SOUL_SLATE_BRICKS_HIT = registerSoundEvent("block.soul_slate_bricks.hit");
     public static SoundEvent BLOCK_SOUL_SLATE_BRICKS_FALL = registerSoundEvent("block.soul_slate_bricks.fall");
 
+    // Netherrack Bricks
+
+    public static SoundEvent BLOCK_NETHERRACK_BRICKS_BREAK = registerSoundEvent("block.netherrack_bricks.break");
+    public static SoundEvent BLOCK_NETHERRACK_BRICKS_STEP = registerSoundEvent("block.netherrack_bricks.step");
+    public static SoundEvent BLOCK_NETHERRACK_BRICKS_PLACE = registerSoundEvent("block.netherrack_bricks.place");
+    public static SoundEvent BLOCK_NETHERRACK_BRICKS_HIT = registerSoundEvent("block.netherrack_bricks.hit");
+    public static SoundEvent BLOCK_NETHERRACK_BRICKS_FALL = registerSoundEvent("block.netherrack_bricks.fall");
 
     // Basalt Bricks
 
@@ -53,6 +60,10 @@ public class ModSoundEvents {
     public static final BlockSoundGroup SOUL_SLATE_BRICKS = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_BREAK, ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_STEP, ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_PLACE,
             ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_HIT, ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_FALL);
+
+    public static final BlockSoundGroup NETHERRACK_BRICKS = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_NETHERRACK_BRICKS_BREAK, ModSoundEvents.BLOCK_NETHERRACK_BRICKS_STEP, ModSoundEvents.BLOCK_NETHERRACK_BRICKS_PLACE,
+            ModSoundEvents.BLOCK_NETHERRACK_BRICKS_HIT, ModSoundEvents.BLOCK_NETHERRACK_BRICKS_FALL);
 
     public static final BlockSoundGroup BASALT_BRICKS = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_BASALT_BRICKS_BREAK, ModSoundEvents.BLOCK_BASALT_BRICKS_STEP, ModSoundEvents.BLOCK_BASALT_BRICKS_PLACE,

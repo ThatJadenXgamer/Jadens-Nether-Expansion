@@ -33,8 +33,10 @@
     "netherexp:pyrite_stairs",
     "netherexp:pyrite_wall",
     "netherexp:pyrite_button",
+    "netherexp:medium_weighted_pressure_plate",
     "netherexp:pyrite_lantern",
     "netherexp:soul_pyrite_lantern",
+    "netherexp:pyrite_chain",
     "netherexp:pyrite_nether_bricks",
 
     "netherexp:stacked_bones",

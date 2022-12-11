@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "netherexp:block/pyrite_chain",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "netherexp:block/pyrite_chain"
+    },
+    "axis=z": {
+      "model": "netherexp:block/pyrite_chain",
+      "x": 90
+    }
+  }
+}

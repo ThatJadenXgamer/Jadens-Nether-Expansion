@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:pyrite_ingot"
+    }
+  },
+  "result": {
+    "item": "netherexp:pyrite_chain",
+    "count": 4
+  }
+}

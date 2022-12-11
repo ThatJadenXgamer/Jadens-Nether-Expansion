@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "netherexp:block/smooth_netherrack_slab"
+    },
+    "type=double": {
+      "model": "netherexp:block/smooth_netherrack"
+    },
+    "type=top": {
+      "model": "netherexp:block/smooth_netherrack_slab_top"
+    }
+  }
+}
