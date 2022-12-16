@@ -2,7 +2,7 @@
 	"credit": "Made by @ThatJadenXgamer",
 	"texture_size": [32, 32],
 	"textures": {
-		"particle": "block/crimson_fence",
+		"particle": "block/crimson_planks",
 		"texture": "block/crimson_fence"
 	},
 	"elements": [

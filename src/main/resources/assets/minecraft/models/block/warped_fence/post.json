@@ -2,7 +2,7 @@
 	"credit": "Made by @ThatJadenXgamer",
 	"texture_size": [32, 32],
 	"textures": {
-		"particle": "block/warped_fence",
+		"particle": "block/warped_planks",
 		"texture": "block/warped_fence"
 	},
 	"elements": [

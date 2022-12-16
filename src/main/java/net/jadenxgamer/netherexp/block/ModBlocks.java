@@ -65,7 +65,7 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.4f).requiresTool().sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SMOOTH_NETHERRACK_SLAB = registerBlock("smooth_netherrack_slab",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SMOOTH_NETHERRACK_STAIRS = registerBlock("smooth_netherrack_stairs",
             new ModStairsBlock(ModBlocks.SMOOTH_NETHERRACK.getDefaultState(),
@@ -128,6 +128,9 @@ public class ModBlocks {
 
     public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall",
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHER_PYRITE_ORE = registerBlock("nether_pyrite_ore",
+            new Block(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).strength(3.0f,0.1f).requiresTool().sounds(BlockSoundGroup.NETHER_ORE)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block PYRITE_BLOCK = registerBlock("pyrite_block",
             new Block(FabricBlockSettings.of(Material.METAL).strength(3.5f,6.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
