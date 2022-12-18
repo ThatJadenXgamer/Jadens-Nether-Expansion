@@ -108,6 +108,45 @@ public class ModBlocks {
     public static final Block GILDED_BASALT_BRICK_SLAB = registerBlock("gilded_basalt_brick_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    public static final Block CLARET_STEM = registerBlock("claret_stem",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_HYPHAE = registerBlock("claret_hyphae",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HYPHAE).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block STRIPPED_CLARET_STEM = registerBlock("stripped_claret_stem",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_STEM).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block STRIPPED_CLARET_HYPHAE = registerBlock("stripped_claret_hyphae",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_HYPHAE).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP_BLOCKS);
+    public static final Block CLARET_PLANKS = registerBlock("claret_planks",
+            new Block(FabricBlockSettings.of(Material.WOOD, MapColor.DARK_CRIMSON).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_SLAB = registerBlock("claret_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_STAIRS = registerBlock("claret_stairs",
+            new ModStairsBlock(ModBlocks.CLARET_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_FENCE = registerBlock("claret_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_FENCE_GATE = registerBlock("claret_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_DOOR = registerBlock("claret_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_TRAPDOOR = registerBlock("claret_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_BUTTON = registerBlock("claret_button",
+            new WoodenButtonBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+
     public static final Block NETHER_BRICK_PILLAR = registerBlock("nether_brick_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 

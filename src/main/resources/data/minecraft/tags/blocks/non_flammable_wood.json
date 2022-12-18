@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:claret_stems",
+    "netherexp:claret_hyphae",
+    "netherexp:stripped_claret_stems",
+    "netherexp:claret_planks",
+    "netherexp:claret_slab",
+    "netherexp:claret_stairs",
+    "netherexp:claret_fence",
+    "netherexp:claret_fence_gate",
+    "netherexp:claret_door",
+    "netherexp:claret_trapdoor",
+    "netherexp:claret_sign",
+    "netherexp:claret_button",
+    "netherexp:claret_pressure_plate"
+  ]
+}
