@@ -57,10 +57,6 @@ public class ModBlocks {
     public static final Block CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks",
             new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
-    public static final Block SOUL_SOIL_LAYER = registerBlock("soul_soil_layer",
-            new SoulSoilLayer(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
-            .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
-
     public static final Block SMOOTH_NETHERRACK = registerBlock("smooth_netherrack",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.4f).requiresTool().sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -120,7 +116,7 @@ public class ModBlocks {
     public static final Block STRIPPED_CLARET_HYPHAE = registerBlock("stripped_claret_hyphae",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_HYPHAE).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP_BLOCKS);
     public static final Block CLARET_PLANKS = registerBlock("claret_planks",
-            new Block(FabricBlockSettings.of(Material.WOOD, MapColor.DARK_CRIMSON).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+            new Block(FabricBlockSettings.of(Material.NETHER_WOOD, MapColor.DARK_CRIMSON).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CLARET_SLAB = registerBlock("claret_slab",
             new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -136,16 +132,16 @@ public class ModBlocks {
             new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CLARET_DOOR = registerBlock("claret_door",
-            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CLARET_TRAPDOOR = registerBlock("claret_trapdoor",
-            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CLARET_BUTTON = registerBlock("claret_button",
-            new WoodenButtonBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+            new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
-            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block NETHER_BRICK_PILLAR = registerBlock("nether_brick_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -203,10 +199,14 @@ public class ModBlocks {
             new RotatingBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SHROOMNIGHT = registerBlock("shroomnight",
-            new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).luminance(8).sounds(BlockSoundGroup.SHROOMLIGHT)), ModItemGroup.NETHEREXP_BLOCKS);
+            new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).luminance(9).sounds(BlockSoundGroup.SHROOMLIGHT)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CRIMSON_SPROUTS = registerBlock("crimson_sprouts",
             new SproutsBlock(FabricBlockSettings.copyOf(Blocks.NETHER_SPROUTS).sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SOUL_SOIL_LAYER = registerBlock("soul_soil_layer",
+            new SoulSoilLayer(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
+                    .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block WHITE_ASH = registerBlock("white_ash",
             new WhiteAshBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
@@ -243,14 +243,17 @@ public class ModBlocks {
             new ModStairsBlock(ModBlocks.STACKED_WITHER_BONES.getDefaultState(),
                     FabricBlockSettings.copyOf(ModBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    public static final Block POLISHED_BLACKSTONE_PILLAR = registerBlock("polished_blackstone_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block POLISHED_BLACKSTONE_FENCE = registerBlock("polished_blackstone_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
     public static final Block WEEPING_POLISHED_BLACKSTONE_BRICKS = registerBlock("weeping_polished_blackstone_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block TWISTING_POLISHED_BLACKSTONE_BRICKS = registerBlock("twisting_polished_blackstone_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
-
-    public static final Block POLISHED_BLACKSTONE_PILLAR = registerBlock("polished_blackstone_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     // Methods
 

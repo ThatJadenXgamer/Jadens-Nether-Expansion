@@ -34,6 +34,20 @@
   "block.netherexp.gilded_basalt_bricks": "Gilded Basalt Bricks",
   "block.netherexp.gilded_basalt_brick_slab": "Gilded Basalt Brick Slab",
 
+  "block.netherexp.claret_stem": "Claret Stem",
+  "block.netherexp.claret_hyphae": "Claret Hyphae",
+  "block.netherexp.stripped_claret_stem": "Stripped Claret Stem",
+  "block.netherexp.stripped_claret_hyphae": "Stripped Claret Hyphae",
+  "block.netherexp.claret_planks": "Claret Planks",
+  "block.netherexp.claret_slab": "Claret Slab",
+  "block.netherexp.claret_stairs": "Claret Stairs",
+  "block.netherexp.claret_fence": "Claret Fence",
+  "block.netherexp.claret_fence_gate": "Claret Fence Gate",
+  "block.netherexp.claret_door": "Claret Door",
+  "block.netherexp.claret_trapdoor": "Claret Trapdoor",
+  "block.netherexp.claret_button": "Claret Button",
+  "block.netherexp.claret_pressure_plate": "Claret Pressure Plate",
+
   "block.netherexp.nether_brick_pillar": "Nether Brick Pillar",
   "block.netherexp.red_mixed_nether_bricks": "Red Mixed Nether Bricks",
   "block.netherexp.blue_mixed_nether_bricks": "Blue Mixed Nether Bricks",
@@ -42,6 +56,7 @@
   "block.netherexp.blue_nether_brick_stairs": "Blue Nether Brick Stairs",
   "block.netherexp.blue_nether_brick_wall": "Blue Nether Brick Wall",
 
+  "block.netherexp.nether_pyrite_ore": "Nether Pyrite Ore",
   "block.netherexp.pyrite_block": "Block of Pyrite",
   "block.netherexp.pyrite_slab": "Pyrite Slab",
   "block.netherexp.pyrite_stairs": "Pyrite Stairs",
@@ -54,7 +69,14 @@
   "block.netherexp.pyrite_nether_bricks": "Pyrite Nether Bricks",
 
   "block.netherexp.shroomnight": "Shroomnight",
+
   "block.netherexp.crimson_sprouts": "Crimson Sprouts",
+
+  "block.netherexp.soul_soil_layer": "Soul Soil Layer",
+
+  "block.netherexp.white_ash": "White Ash",
+  "block.netherexp.white_ash_block": "White Ash Block",
+
   "block.netherexp.chainwire_fence": "Chainwire Fence",
 
   "block.netherexp.bone_fence": "Bone Fence",
@@ -69,9 +91,7 @@
   "block.netherexp.weeping_polished_blackstone_bricks": "Weeping Polished Blackstone Bricks",
   "block.netherexp.twisting_polished_blackstone_bricks": "Twisting Polished Blackstone Bricks",
   "block.netherexp.polished_blackstone_pillar": "Polished Blackstone Pillar",
-
-  "block.netherexp.white_ash": "White Ash",
-  "block.netherexp.white_ash_block": "White Ash Block",
+  "block.netherexp.polished_blackstone_fence": "Polished Blackstone Fence",
 
   "itemGroup.netherexp.netherexp_blocks": "Nether Expansion Blocks Tab",
   "itemGroup.netherexp.netherexp_items": "Nether Expansion Items Tab"

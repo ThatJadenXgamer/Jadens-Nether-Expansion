@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#=#",
+    "#=#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:polished_blackstone_bricks"
+    },
+    "=": {
+      "item": "minecraft:blackstone"
+    }
+  },
+  "result": {
+    "item": "netherexp:polished_blackstone_fence",
+    "count": 6
+  }
+}

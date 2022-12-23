@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "netherexp:claret_planks"
+    }
+  ],
+  "result": {
+    "item": "netherexp:claret_button"
+  }
+}

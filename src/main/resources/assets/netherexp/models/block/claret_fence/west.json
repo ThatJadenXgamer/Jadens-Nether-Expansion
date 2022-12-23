@@ -1,0 +1,36 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"texture_size": [32, 32],
+	"textures": {
+		"particle": "netherexp:block/claret_planks",
+		"texture": "netherexp:block/claret_fence"
+	},
+	"elements": [
+		{
+			"name": "top bar",
+			"from": [0, 12, 7],
+			"to": [9, 15, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [3.5, 0.5, 8, 2], "texture": "#texture"},
+				"south": {"uv": [8, 0.5, 3.5, 2], "texture": "#texture"},
+				"west": {"uv": [0, 0.5, 1, 2], "texture": "#texture"},
+				"up": {"uv": [9, 2, 8, 6.5], "rotation": 270, "texture": "#texture"},
+				"down": {"uv": [9, 2, 8, 6.5], "rotation": 90, "texture": "#texture"}
+			}
+		},
+		{
+			"name": "lower bar",
+			"from": [0, 6, 7],
+			"to": [9, 9, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [3.5, 0.5, 8, 2], "texture": "#texture"},
+				"south": {"uv": [8, 0.5, 3.5, 2], "texture": "#texture"},
+				"west": {"uv": [0, 0.5, 1, 2], "texture": "#texture"},
+				"up": {"uv": [9, 2, 8, 6.5], "rotation": 270, "texture": "#texture"},
+				"down": {"uv": [9, 2, 8, 6.5], "rotation": 90, "texture": "#texture"}
+			}
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SVS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:polished_blackstone_bricks"
+    },
+    "V": {
+      "item": "minecraft:weeping_vines"
+    }
+  },
+  "result": {
+    "item": "netherexp:weeping_polished_blackstone_bricks",
+    "count": 8
+  }
+}

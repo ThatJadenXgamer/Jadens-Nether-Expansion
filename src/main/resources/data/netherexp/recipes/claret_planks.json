@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "netherexp:claret_stem"
+    }
+  ],
+  "result": {
+    "item": "netherexp:claret_planks"
+  }
+}

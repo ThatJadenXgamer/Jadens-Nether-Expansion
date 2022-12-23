@@ -3,6 +3,8 @@
   "values": [
     "netherexp:soul_slate_slab",
     "netherexp:soul_slate_brick_slab",
+    "netherexp:smooth_netherrack_slab",
+    "netherexp:netherrack_brick_slab",
     "netherexp:basalt_slab",
     "netherexp:polished_basalt_brick_slab",
     "netherexp:gilded_basalt_brick_slab",
