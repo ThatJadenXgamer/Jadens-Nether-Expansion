@@ -198,14 +198,26 @@ public class ModBlocks {
     public static final Block PYRITE_NETHER_BRICKS = registerBlock("pyrite_nether_bricks",
             new RotatingBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    public static final Block FLAMETHROWER = registerBlock("flamethrower",
+            new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).strength(2.5f).requiresTool().sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SPIKETRAP = registerBlock("spiketrap",
+            new Block(FabricBlockSettings.of(Material.METAL, MapColor.DARK_RED).strength(3.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+
     public static final Block SHROOMNIGHT = registerBlock("shroomnight",
             new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).luminance(9).sounds(BlockSoundGroup.SHROOMLIGHT)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block NETHER_WART_BEARD = registerBlock("nether_wart_beard",
+            new BeardBlock(FabricBlockSettings.of(Material.PLANT, MapColor.RED).breakInstantly().noCollision().sounds(BlockSoundGroup.WART_BLOCK)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block WARPED_WART_BEARD = registerBlock("warped_wart_beard",
+            new BeardBlock(FabricBlockSettings.of(Material.PLANT, MapColor.BRIGHT_TEAL).breakInstantly().noCollision().sounds(BlockSoundGroup.WART_BLOCK)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block CRIMSON_SPROUTS = registerBlock("crimson_sprouts",
             new SproutsBlock(FabricBlockSettings.copyOf(Blocks.NETHER_SPROUTS).sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SOUL_SOIL_LAYER = registerBlock("soul_soil_layer",
-            new SoulSoilLayer(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
+            new SoulSoilLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
                     .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block WHITE_ASH = registerBlock("white_ash",

@@ -1,5 +1,15 @@
 {
   "variants": {
+    "age=0": [
+      {
+        "model": "minecraft:block/twisting_vines/top",
+        "weight": 50
+      },
+      {
+        "model": "minecraft:block/twisting_vines/glow/top",
+        "weight": 30
+      }
+    ],
     "age=25": {
       "model": "minecraft:block/twisting_vines/glow/mature"
     }

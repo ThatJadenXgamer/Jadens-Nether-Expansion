@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "netherexp:block/polished_blackstone_pillar_top",
-    "side": "netherexp:block/polished_blackstone_pillar_side"
+    "side": "netherexp:block/polished_blackstone_pillar"
   }
 }

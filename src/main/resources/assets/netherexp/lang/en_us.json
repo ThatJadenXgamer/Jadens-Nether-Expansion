@@ -2,6 +2,7 @@
   "item.netherexp.warphopper_fur": "Warphopper Fur",
   "item.netherexp.hogham": "Raw Hogham",
   "item.netherexp.cooked_hogham": "Cooked Hogham",
+  "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
 
   "block.netherexp.soul_slate": "Soul Slate",
@@ -67,8 +68,13 @@
   "block.netherexp.soul_pyrite_lantern": "Soul Pyrite Lantern",
   "block.netherexp.pyrite_chain": "Pyrite Chain",
   "block.netherexp.pyrite_nether_bricks": "Pyrite Nether Bricks",
+  "block.netherexp.flamethrower": "Flamethrower",
+  "block.netherexp.spiketrap": "Spiketrap",
 
   "block.netherexp.shroomnight": "Shroomnight",
+
+  "block.netherexp.nether_wart_beard": "Nether Wart Beard",
+  "block.netherexp.warped_wart_beard": "Warped Wart Beard",
 
   "block.netherexp.crimson_sprouts": "Crimson Sprouts",
 

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "netherexp:block/flamethrower_front_lit",
+    "side": "netherexp:block/flamethrower_side",
+    "back": "netherexp:block/flamethrower_back_lit"
+  }
+}
