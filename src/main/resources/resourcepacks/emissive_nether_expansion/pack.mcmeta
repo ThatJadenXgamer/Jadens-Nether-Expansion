@@ -1,0 +1,8 @@
+{
+   "pack":{
+      "pack_format": 9,
+      "description": [
+		{"text":"Removes the new remastered Nether Textures","color":"gray"}
+	  ]
+   }
+}
