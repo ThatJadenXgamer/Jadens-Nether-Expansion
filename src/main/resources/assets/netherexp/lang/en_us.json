@@ -2,6 +2,7 @@
   "item.netherexp.warphopper_fur": "Warphopper Fur",
   "item.netherexp.hogham": "Raw Hogham",
   "item.netherexp.cooked_hogham": "Cooked Hogham",
+  "item.netherexp.warpspores": "Warpspores",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
 
@@ -98,6 +99,8 @@
   "block.netherexp.twisting_polished_blackstone_bricks": "Twisting Polished Blackstone Bricks",
   "block.netherexp.polished_blackstone_pillar": "Polished Blackstone Pillar",
   "block.netherexp.polished_blackstone_fence": "Polished Blackstone Fence",
+
+  "effect.netherexp.hallucination": "Hallucination",
 
   "itemGroup.netherexp.netherexp_blocks": "Nether Expansion Blocks Tab",
   "itemGroup.netherexp.netherexp_items": "Nether Expansion Items Tab"

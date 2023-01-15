@@ -12,8 +12,8 @@ public class ModItems {
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
 
-    public static final Item SHROOMNIGHT_SPORES = registerItem("shroomnight_spores",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.SPORES)));
+    public static final Item WARPSPORES = registerItem("warpspores",
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.WARPSPORES)));
 
     public static final Item HOGHAM = registerItem("hogham",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.HOGHAM)));
