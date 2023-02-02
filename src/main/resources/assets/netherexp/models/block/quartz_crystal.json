@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "netherexp:block/quartz_crystal"
+  }
+}

@@ -11,6 +11,9 @@
     "netherexp:blue_nether_brick_slab",
     "netherexp:pyrite_slab",
     "netherexp:stacked_bone_slab",
-    "netherexp:stacked_wither_bone_slab"
+    "netherexp:stacked_wither_bone_slab",
+    "netherexp:silica_sandstone_slab",
+    "netherexp:smooth_silica_sandstone_slab",
+    "netherexp:cut_silica_sandstone_slab"
   ]
 }

@@ -3,17 +3,14 @@ package net.jadenxgamer.netherexp.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+@SuppressWarnings("unused")
 public class ModItems {
 
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
-
-    public static final Item WARPSPORES = registerItem("warpspores",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.WARPSPORES)));
 
     public static final Item HOGHAM = registerItem("hogham",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.HOGHAM)));

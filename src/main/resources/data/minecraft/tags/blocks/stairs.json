@@ -8,6 +8,9 @@
     "netherexp:blue_nether_brick_stairs",
     "netherexp:pyrite_stairs",
     "netherexp:stacked_bone_stairs",
-    "netherexp:stacked_wither_bone_stairs"
+    "netherexp:stacked_wither_bone_stairs",
+    "netherexp:silica_sandstone_stairs",
+    "netherexp:smooth_silica_sandstone_stairs",
+    "netherexp:cut_silica_sandstone_stairs"
   ]
 }

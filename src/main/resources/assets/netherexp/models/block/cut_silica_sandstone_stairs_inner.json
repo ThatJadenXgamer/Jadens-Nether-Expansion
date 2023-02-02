@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "netherexp:block/silica_sandstone_top",
+    "side": "netherexp:block/cut_silica_sandstone",
+    "top": "netherexp:block/silica_sandstone_top"
+  }
+}

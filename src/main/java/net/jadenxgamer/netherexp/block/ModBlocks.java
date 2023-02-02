@@ -19,6 +19,8 @@ public class ModBlocks {
 
     // LIST OF BLOCKS:
 
+    // Soul SLate
+
     public static final Block SOUL_SLATE = registerBlock("soul_slate",
             new Block(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -31,6 +33,8 @@ public class ModBlocks {
 
     public static final Block SOUL_SLATE_WALL = registerBlock("soul_slate_wall",
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Soul Slate Bricks
 
     public static final Block SOUL_SLATE_BRICKS = registerBlock("soul_slate_bricks",
             new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -58,6 +62,8 @@ public class ModBlocks {
     public static final Block CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks",
             new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    // Smooth Netherrack
+
     public static final Block SMOOTH_NETHERRACK = registerBlock("smooth_netherrack",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.4f).requiresTool().sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -70,6 +76,8 @@ public class ModBlocks {
 
     public static final Block SMOOTH_NETHERRACK_WALL = registerBlock("smooth_netherrack_wall",
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Netherrack Bricks
 
     public static final Block NETHERRACK_BRICKS = registerBlock("netherrack_bricks",
             new Block(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).requiresTool().sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -90,6 +98,8 @@ public class ModBlocks {
     public static final Block NETHERRACK_PILLAR = registerBlock("netherrack_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    // Basalt
+
     public static final Block BASALT_SLAB = registerBlock("basalt_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -104,6 +114,22 @@ public class ModBlocks {
 
     public static final Block GILDED_BASALT_BRICK_SLAB = registerBlock("gilded_basalt_brick_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Enigma Block
+
+    public static final Block ENIGMA_FLESH = registerBlock("enigma_flesh",
+            new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_PURPLE).strength(2.8f).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block STRANGE_ENIGMA_FLESH = registerBlock("strange_enigma_flesh",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.ENIGMA_FLESH).luminance(12).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block ENIGMA_CROWN = registerBlock("enigma_crown",
+            new EnigmaCrownBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.8f).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block ENIGMA_SHELF = registerBlock("enigma_shelf",
+            new EnigmaCrownBlock(FabricBlockSettings.of(Material.DECORATION).breakInstantly().sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Claret Woodset
 
     public static final Block CLARET_STEM = registerBlock("claret_stem",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -144,6 +170,79 @@ public class ModBlocks {
     public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
             new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    // Quartz Block
+
+    public static final Block QUARTZ_CRYSTAL_BLOCK = registerBlock("quartz_crystal_block",
+            new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).strength(2.5f).requiresTool().sounds(BlockSoundGroup.NETHER_ORE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block QUARTZ_CRYSTAL = registerBlock("quartz_crystal",
+            new AmethystClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.OFF_WHITE).nonOpaque().strength(1.5f).sounds(BlockSoundGroup.NETHER_ORE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
+            new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+    
+    public static final Block QUARTZ_BRICK_WALL = registerBlock("quartz_brick_wall",
+            new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CRACKED_QUARTZ_BRICKS = registerBlock("cracked_quartz_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CHISELED_QUARTZ_PILLAR = registerBlock("chiseled_quartz_pillar",
+            new ModFacingBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_PILLAR)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Silica Sandstone
+
+    public static final Block SILICA_SAND = registerBlock("silica_sand",
+            new SandBlock(8812140, FabricBlockSettings.of(Material.AGGREGATE, MapColor.GRAY).strength(0.4f).sounds(BlockSoundGroup.SAND)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SILICA_SANDSTONE = registerBlock("silica_sandstone",
+            new Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).strength(1.0f).requiresTool()), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SILICA_SANDSTONE_SLAB = registerBlock("silica_sandstone_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SILICA_SANDSTONE_STAIRS = registerBlock("silica_sandstone_stairs",
+            new ModStairsBlock(ModBlocks.SILICA_SANDSTONE.getDefaultState(),
+            FabricBlockSettings.copyOf(ModBlocks.SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SILICA_SANDSTONE_WALL = registerBlock("silica_sandstone_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Cut Silica Sandstone
+
+    public static final Block CUT_SILICA_SANDSTONE = registerBlock("cut_silica_sandstone",
+            new Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).strength(1.0f, 6.0f).requiresTool()), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CUT_SILICA_SANDSTONE_SLAB = registerBlock("cut_silica_sandstone_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CUT_SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CUT_SILICA_SANDSTONE_STAIRS = registerBlock("cut_silica_sandstone_stairs",
+            new ModStairsBlock(ModBlocks.CUT_SILICA_SANDSTONE.getDefaultState(),
+                    FabricBlockSettings.copyOf(ModBlocks.CUT_SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CUT_SILICA_SANDSTONE_WALL = registerBlock("cut_silica_sandstone_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.CUT_SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block CHISELED_SILICA_SANDSTONE = registerBlock("chiseled_silica_sandstone",
+            new Block(FabricBlockSettings.copyOf(ModBlocks.CUT_SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Smooth Silica Sandstone
+
+    public static final Block SMOOTH_SILICA_SANDSTONE = registerBlock("smooth_silica_sandstone",
+            new Block(FabricBlockSettings.of(Material.STONE, MapColor.GRAY).strength(2.2f, 6.0f)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SMOOTH_SILICA_SANDSTONE_SLAB = registerBlock("smooth_silica_sandstone_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SMOOTH_SILICA_SANDSTONE_STAIRS = registerBlock("smooth_silica_sandstone_stairs",
+            new ModStairsBlock(ModBlocks.SMOOTH_SILICA_SANDSTONE.getDefaultState(),
+                    FabricBlockSettings.copyOf(ModBlocks.SMOOTH_SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    public static final Block SMOOTH_SILICA_SANDSTONE_WALL = registerBlock("smooth_silica_sandstone_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_SILICA_SANDSTONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Nether Bricks
+
     public static final Block NETHER_BRICK_PILLAR = registerBlock("nether_brick_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -164,6 +263,8 @@ public class ModBlocks {
 
     public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall",
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Pyrite
 
     public static final Block NETHER_PYRITE_ORE = registerBlock("nether_pyrite_ore",
             new Block(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).strength(3.0f,0.1f).requiresTool().sounds(BlockSoundGroup.NETHER_ORE)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -199,11 +300,15 @@ public class ModBlocks {
     public static final Block PYRITE_NETHER_BRICKS = registerBlock("pyrite_nether_bricks",
             new RotatingBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    // Fortress Traps
+
     public static final Block FLAMETHROWER = registerBlock("flamethrower",
             new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).strength(2.5f).requiresTool().sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
     public static final Block SPIKETRAP = registerBlock("spiketrap",
             new Block(FabricBlockSettings.of(Material.METAL, MapColor.DARK_RED).strength(3.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Decorations
 
     public static final Block SHROOMNIGHT = registerBlock("shroomnight",
             new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).luminance(9).sounds(BlockSoundGroup.SHROOMLIGHT)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -231,6 +336,8 @@ public class ModBlocks {
     public static final Block CHAINWIRE_FENCE = registerBlock("chainwire_fence",
             new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    // Bones
+
     public static final Block BONE_FENCE = registerBlock("bone_fence",
             new BoneFenceBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(1.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
     public static final Block STACKED_BONES = registerBlock("stacked_bones",
@@ -242,6 +349,8 @@ public class ModBlocks {
     public static final Block STACKED_BONE_STAIRS = registerBlock("stacked_bone_stairs",
             new ModStairsBlock(ModBlocks.STACKED_BONES.getDefaultState(),
                     FabricBlockSettings.copyOf(ModBlocks.STACKED_BONES).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
+
+    // Wither Bones
 
     public static final Block WITHER_BONE_BLOCK = registerBlock("wither_bone_block",
             new WitherBoneBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(4.5f,9.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
@@ -256,6 +365,8 @@ public class ModBlocks {
             new ModStairsBlock(ModBlocks.STACKED_WITHER_BONES.getDefaultState(),
                     FabricBlockSettings.copyOf(ModBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP_BLOCKS);
 
+    // Blackstone
+
     public static final Block POLISHED_BLACKSTONE_PILLAR = registerBlock("polished_blackstone_pillar",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
@@ -268,7 +379,7 @@ public class ModBlocks {
     public static final Block TWISTING_POLISHED_BLACKSTONE_BRICKS = registerBlock("twisting_polished_blackstone_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP_BLOCKS);
 
-    // Methods
+    // METHODS:
 
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, tab);

@@ -2,7 +2,6 @@ package net.jadenxgamer.netherexp;
 
 import net.fabricmc.api.ModInitializer;
 import net.jadenxgamer.netherexp.block.ModBlocks;
-import net.jadenxgamer.netherexp.effect.ModEffects;
 import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.misc_registry.ModRegistries;
 import net.jadenxgamer.netherexp.misc_registry.ModResourcePacks;
@@ -21,7 +20,5 @@ public class NetherExp implements ModInitializer {
 
 		ModRegistries.registerModStuffs();
 		ModResourcePacks.init();
-
-		ModEffects.registerEffects();
 	}
 }

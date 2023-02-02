@@ -36,6 +36,11 @@
   "block.netherexp.gilded_basalt_bricks": "Gilded Basalt Bricks",
   "block.netherexp.gilded_basalt_brick_slab": "Gilded Basalt Brick Slab",
 
+  "block.netherexp.enigma_flesh": "Enigma Flesh",
+  "block.netherexp.strange_enigma_flesh": "Strange Enigma Flesh",
+  "block.netherexp.enigma_crown": "Enigma Crown",
+  "block.netherexp.enigma_shelf": "Enigma Shelves",
+
   "block.netherexp.claret_stem": "Claret Stem",
   "block.netherexp.claret_hyphae": "Claret Hyphae",
   "block.netherexp.stripped_claret_stem": "Stripped Claret Stem",
@@ -49,6 +54,30 @@
   "block.netherexp.claret_trapdoor": "Claret Trapdoor",
   "block.netherexp.claret_button": "Claret Button",
   "block.netherexp.claret_pressure_plate": "Claret Pressure Plate",
+
+  "block.netherexp.quartz_crystal_block": "Quartz Crystal Block",
+  "block.netherexp.quartz_crystal": "Quartz Crystal",
+  "block.netherexp.smooth_quartz_wall": "Smooth Quartz Wall",
+  "block.netherexp.quartz_brick_wall": "Quartz Brick Wall",
+  "block.netherexp.cracked_quartz_bricks": "Cracked Quartz Bricks",
+  "block.netherexp.chiseled_quartz_pillar": "Chiseled Quartz Pillar",
+
+  "block.netherexp.silica_sand": "Silica Sand",
+  "block.netherexp.silica_sandstone": "Silica Sandstone",
+  "block.netherexp.silica_sandstone_slab": "Silica Sandstone Slab",
+  "block.netherexp.silica_sandstone_stairs": "Silica Sandstone Stairs",
+  "block.netherexp.silica_sandstone_wall": "Silica Sandstone Wall",
+
+  "block.netherexp.cut_silica_sandstone": "Cut Silica Sandstone",
+  "block.netherexp.cut_silica_sandstone_slab": "Cut Silica Sandstone Slab",
+  "block.netherexp.cut_silica_sandstone_stairs": "Cut Silica Sandstone Stairs",
+  "block.netherexp.cut_silica_sandstone_wall": "Cut Silica Sandstone Wall",
+  "block.netherexp.chiseled_silica_sandstone": "Chiseled Silica Sandstone",
+
+  "block.netherexp.smooth_silica_sandstone": "Smooth Silica Sandstone",
+  "block.netherexp.smooth_silica_sandstone_slab": "Smooth Silica Sandstone Slab",
+  "block.netherexp.smooth_silica_sandstone_stairs": "Smooth Silica Sandstone Stairs",
+  "block.netherexp.smooth_silica_sandstone_wall": "Smooth Silica Sandstone Wall",
 
   "block.netherexp.nether_brick_pillar": "Nether Brick Pillar",
   "block.netherexp.red_mixed_nether_bricks": "Red Mixed Nether Bricks",
