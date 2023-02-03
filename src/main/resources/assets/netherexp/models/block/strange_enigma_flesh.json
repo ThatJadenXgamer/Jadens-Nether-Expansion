@@ -1,22 +1,23 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"textures": {
-		"0": "netherexp:block/chiseled_quartz_pillar",
-		"1": "netherexp:block/chiseled_quartz_pillar_top",
-		"2": "block/quartz_pillar_top",
-		"particle": "netherexp:block/chiseled_quartz_pillar"
+		"2": "netherexp:block/strange_enigma_flesh_top",
+		"3": "netherexp:block/strange_enigma_flesh",
+		"4": "netherexp:block/enigma_flesh_top",
+		"particle": "netherexp:block/strange_enigma_flesh_top"
 	},
 	"elements": [
 		{
 			"from": [0, 0, 0],
 			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
-				"east": {"uv": [0, 0, 16, 16], "rotation": 90, "texture": "#0"},
-				"south": {"uv": [16, 0, 0, 16], "texture": "#2"},
-				"west": {"uv": [0, 0, 16, 16], "rotation": 270, "texture": "#0"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"down": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#0"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"east": {"uv": [0, 0, 16, 16], "rotation": 90, "texture": "#3"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#4"},
+				"west": {"uv": [0, 0, 16, 16], "rotation": 270, "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#3"}
 			}
 		}
 	],

@@ -10,19 +10,22 @@ import net.minecraft.util.registry.Registry;
 public class ModItems {
 
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
     public static final Item HOGHAM = registerItem("hogham",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.HOGHAM)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP).food(ModFoodComponents.HOGHAM)));
 
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS).food(ModFoodComponents.COOKED_HOGHAM)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP).food(ModFoodComponents.COOKED_HOGHAM)));
 
     public static final Item RAW_PYRITE = registerItem("raw_pyrite",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
     public static final Item PYRITE_INGOT = registerItem("pyrite_ingot",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP_ITEMS)));
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
+
+    public static final Item RAW_NETHER_QUARTZ = registerItem("raw_nether_quartz",
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(NetherExp.MOD_ID, name), item);

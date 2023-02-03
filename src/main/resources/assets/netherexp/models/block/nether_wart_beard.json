@@ -1,8 +1,8 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"textures": {
-		"0": "netherexp:block/warped_wart_beard",
-		"particle": "netherexp:block/warped_wart_beard"
+		"0": "netherexp:block/nether_wart_beard",
+		"particle": "netherexp:block/nether_wart_beard"
 	},
 	"elements": [
 		{

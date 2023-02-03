@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "netherexp:block/weeping_polished_basalt_bricks"
+      "model": "netherexp:block/weeping_polished_blackstone_bricks"
     }
   }
 }

@@ -1,0 +1,49 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "netherexp:block/enigma_shelf",
+		"particle": "netherexp:block/enigma_shelf"
+	},
+	"elements": [
+		{
+			"from": [0, 2.5, 3],
+			"to": [16, 2.5, 16],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 2.5, 16]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"up": {"uv": [0, 3, 16, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 3, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 12, 3],
+			"to": [16, 12, 16],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 12, 16]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"up": {"uv": [0, 3, 16, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 3, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 6, 0],
+			"to": [16, 6, 16],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 6, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	]
+}
