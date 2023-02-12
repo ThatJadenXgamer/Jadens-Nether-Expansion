@@ -6,7 +6,7 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:bone_block"
+      "item": "minecraft:bone"
     },
     "S": {
       "item": "minecraft:string"
@@ -14,6 +14,6 @@
   },
   "result": {
     "item": "netherexp:bone_fence",
-    "count": 6
+    "count": 4
   }
 }

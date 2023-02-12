@@ -45,11 +45,8 @@
     "netherexp:smooth_silica_sandstone",
     "netherexp:smooth_silica_sandstone_slab",
     "netherexp:smooth_silica_sandstone_stairs",
-    "netherexp:smooth_silica_sandstone_wall",
     "netherexp:cut_silica_sandstone",
     "netherexp:cut_silica_sandstone_slab",
-    "netherexp:cut_silica_sandstone_stairs",
-    "netherexp:cut_silica_sandstone_wall",
     "netherexp:chiseled_silica_sandstone",
 
     "netherexp:enigma_flesh",
@@ -78,6 +75,7 @@
     "netherexp:flamethrower",
     "netherexp:spiketrap",
 
+    "netherexp:bone_fence",
     "netherexp:stacked_bones",
     "netherexp:stacked_bone_slab",
     "netherexp:stacked_bone_stairs",

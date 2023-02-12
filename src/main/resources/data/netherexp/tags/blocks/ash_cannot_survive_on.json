@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "netherexp:white_ash_block",
+    "netherexp:white_ash",
     "minecraft:magma_block",
     "minecraft:barrier"
   ]

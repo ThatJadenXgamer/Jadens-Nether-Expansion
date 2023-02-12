@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "netherexp:block/quartz_crystal_block",
+    "end": "netherexp:block/quartz_crystal_block_top",
     "side": "netherexp:block/quartz_crystal_block"
   }
 }

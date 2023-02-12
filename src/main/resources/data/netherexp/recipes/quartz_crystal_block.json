@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:quartz_crystal"
+    }
+  },
+  "result": {
+    "item": "netherexp:quartz_crystal_block",
+    "count": 1
+  }
+}

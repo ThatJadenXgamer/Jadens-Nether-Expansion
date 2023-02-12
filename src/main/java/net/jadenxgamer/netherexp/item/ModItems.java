@@ -2,6 +2,8 @@ package net.jadenxgamer.netherexp.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.block.ModBlocks;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -24,8 +26,11 @@ public class ModItems {
     public static final Item PYRITE_INGOT = registerItem("pyrite_ingot",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
-    public static final Item RAW_NETHER_QUARTZ = registerItem("raw_nether_quartz",
-            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
+    public static final Item WEEPING_IVY = registerItem("weeping_ivy",
+            new AliasedBlockItem(ModBlocks.WEEPING_IVY, new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
+
+    public static final Item TWISTING_IVY = registerItem("twisting_ivy",
+            new AliasedBlockItem(ModBlocks.TWISTING_IVY, new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(NetherExp.MOD_ID, name), item);

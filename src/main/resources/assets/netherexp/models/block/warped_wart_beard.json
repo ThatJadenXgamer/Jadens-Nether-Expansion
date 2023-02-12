@@ -1,19 +1,7 @@
 {
-	"credit": "Made by @ThatJadenXgamer",
-	"textures": {
-		"0": "netherexp:block/warped_wart_beard",
-		"particle": "netherexp:block/warped_wart_beard"
-	},
-	"elements": [
-		{
-			"from": [0, 0, 0],
-			"to": [16, 16, 16],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "north"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "south"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "west"}
-			}
-		}
-	]
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "netherexp:block/transparent",
+    "side": "netherexp:block/warped_wart_beard"
+  }
 }

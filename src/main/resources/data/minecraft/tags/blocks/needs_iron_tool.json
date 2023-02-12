@@ -11,8 +11,6 @@
     "netherexp:pyrite_button",
     "netherexp:medium_weighted_pressure_plate",
     "netherexp:pyrite_lantern",
-    "netherexp:soul_pyrite_lantern",
-    "netherexp:pyrite_nether_bricks",
     "netherexp:wither_bone_block"
   ]
 }

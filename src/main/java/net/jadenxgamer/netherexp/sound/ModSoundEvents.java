@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.sound;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -51,6 +52,10 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_WHITE_ASH_HIT = registerSoundEvent("block.white_ash.hit");
     public static SoundEvent BLOCK_WHITE_ASH_FALL = registerSoundEvent("block.white_ash.fall");
 
+    // Quartz Crystal
+    //TODO make this sound less shit
+    public static SoundEvent BLOCK_QUARTZ_CRYSTAL_BREAK = registerSoundEvent("block.quartz_crystal.break");
+
     // LIST OF SOUND GROUPS:
 
     public static final BlockSoundGroup SOUL_SLATE = new BlockSoundGroup(1f, 1f,
@@ -72,6 +77,10 @@ public class ModSoundEvents {
     public static final BlockSoundGroup WHITE_ASH = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_WHITE_ASH_BREAK, ModSoundEvents.BLOCK_WHITE_ASH_STEP, ModSoundEvents.BLOCK_WHITE_ASH_PLACE,
             ModSoundEvents.BLOCK_WHITE_ASH_HIT, ModSoundEvents.BLOCK_WHITE_ASH_FALL);
+
+    public static final BlockSoundGroup QUARTZ_CRYSTAL = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_QUARTZ_CRYSTAL_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, SoundEvents.BLOCK_NETHER_ORE_PLACE,
+            SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

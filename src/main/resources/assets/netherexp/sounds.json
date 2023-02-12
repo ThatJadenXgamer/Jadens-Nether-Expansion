@@ -437,5 +437,11 @@
       "block/netherrack/step5",
       "block/netherrack/step6"
     ]
+  },
+  "block.quartz_crystal.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/quartz_crystal/break1"
+    ]
   }
 }

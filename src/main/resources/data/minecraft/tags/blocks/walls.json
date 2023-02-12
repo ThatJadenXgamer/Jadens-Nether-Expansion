@@ -9,8 +9,6 @@
     "netherexp:netherrack_brick_wall",
     "netherexp:smooth_quartz_wall",
     "netherexp:quartz_brick_wall",
-    "netherexp:silica_sandstone_wall",
-    "netherexp:smooth_silica_sandstone_wall",
-    "netherexp:cut_silica_sandstone_wall"
+    "netherexp:silica_sandstone_wall"
   ]
 }

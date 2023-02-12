@@ -5,7 +5,6 @@
   "item.netherexp.warpspores": "Warpspores",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
-  "item.netherexp.raw_nether_quartz": "Raw Nether Quartz",
 
   "block.netherexp.soul_slate": "Soul Slate",
   "block.netherexp.soul_slate_slab": "Soul Slate Slab",
@@ -71,14 +70,11 @@
 
   "block.netherexp.cut_silica_sandstone": "Cut Silica Sandstone",
   "block.netherexp.cut_silica_sandstone_slab": "Cut Silica Sandstone Slab",
-  "block.netherexp.cut_silica_sandstone_stairs": "Cut Silica Sandstone Stairs",
-  "block.netherexp.cut_silica_sandstone_wall": "Cut Silica Sandstone Wall",
   "block.netherexp.chiseled_silica_sandstone": "Chiseled Silica Sandstone",
 
   "block.netherexp.smooth_silica_sandstone": "Smooth Silica Sandstone",
   "block.netherexp.smooth_silica_sandstone_slab": "Smooth Silica Sandstone Slab",
   "block.netherexp.smooth_silica_sandstone_stairs": "Smooth Silica Sandstone Stairs",
-  "block.netherexp.smooth_silica_sandstone_wall": "Smooth Silica Sandstone Wall",
 
   "block.netherexp.nether_brick_pillar": "Nether Brick Pillar",
   "block.netherexp.red_mixed_nether_bricks": "Red Mixed Nether Bricks",
@@ -106,10 +102,18 @@
 
   "block.netherexp.nether_wart_beard": "Nether Wart Beard",
   "block.netherexp.warped_wart_beard": "Warped Wart Beard",
+  "block.netherexp.weeping_ivy": "Weeping Ivy",
+  "block.netherexp.twisting_ivy": "Twisting Ivy",
+  "item.netherexp.weeping_ivy": "Weeping Ivy",
+  "item.netherexp.twisting_ivy": "Twisting Ivy",
 
   "block.netherexp.crimson_sprouts": "Crimson Sprouts",
 
   "block.netherexp.soul_soil_layer": "Soul Soil Layer",
+
+  "block.netherexp.soul_path": "Soul Path",
+  "block.netherexp.crimson_nylium_path": "Crimson Nylium Path",
+  "block.netherexp.warped_nylium_path": "Warped Nylium Path",
 
   "block.netherexp.white_ash": "White Ash",
   "block.netherexp.white_ash_block": "White Ash Block",

@@ -49,7 +49,7 @@ extends HorizontalConnectingBlock {
     public boolean canConnect(BlockState state, boolean neighborIsFullSquare, Direction dir) {
         Block block = state.getBlock();
         boolean bl = this.canConnectToFence(state);
-        return !BoneFenceBlock.cannotConnect(state) && neighborIsFullSquare || bl;
+        return bl;
     }
 
     private boolean canConnectToFence(BlockState state) {

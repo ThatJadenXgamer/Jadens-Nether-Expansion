@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB",
+    "BA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:netherrack"
+    },
+    "B": {
+      "item": "minecraft:gravel"
+    }
+  },
+  "result": {
+    "item": "netherexp:smooth_netherrack",
+    "count": 4
+  }
+}
