@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "netherexp:block/enigma_flesh_top",
+    "side": "netherexp:block/strange_enigma_flesh",
+    "top": "netherexp:block/strange_enigma_flesh_top"
+  }
+}

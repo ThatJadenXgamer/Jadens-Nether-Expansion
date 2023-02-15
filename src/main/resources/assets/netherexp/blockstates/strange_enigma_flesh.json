@@ -16,8 +16,7 @@
       "y": 180
     },
     "facing=up": {
-      "model": "netherexp:block/strange_enigma_flesh",
-      "x": 90
+      "model": "netherexp:block/strange_enigma_flesh_vertical"
     },
     "facing=west": {
       "model": "netherexp:block/strange_enigma_flesh",
