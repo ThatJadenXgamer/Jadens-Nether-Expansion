@@ -17,6 +17,7 @@ public class EnigmaCrownBlock extends PlantBlock {
         return floor.isIn(BlockTags.NYLIUM) || floor.isOf(Blocks.NETHERRACK) || floor.isOf(Blocks.SOUL_SOIL);
     }
 
+    @SuppressWarnings("all")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;

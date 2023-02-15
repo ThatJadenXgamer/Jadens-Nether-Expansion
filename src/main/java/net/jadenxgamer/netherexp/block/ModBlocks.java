@@ -120,7 +120,6 @@ public class ModBlocks {
     public static final Block ENIGMA_FLESH = registerBlock("enigma_flesh",
             new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_PURPLE).strength(2.8f).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
-    //Todo fix Some of the block states for STRANGE_ENIGMA_FLESH
     public static final Block STRANGE_ENIGMA_FLESH = registerBlock("strange_enigma_flesh",
             new ModFacingBlock(FabricBlockSettings.copyOf(ModBlocks.ENIGMA_FLESH).luminance(12).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
@@ -317,6 +316,15 @@ public class ModBlocks {
 
     public static final Block TWISTING_IVY = registerBlockWithoutItem("twisting_ivy",
             new TwistingIvyBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.BRIGHT_TEAL).breakInstantly().noCollision().ticksRandomly().sounds(BlockSoundGroup.WEEPING_VINES)));
+
+    public static final Block NIGHTSPORES = registerBlock("nightspores",
+            new SporesBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.CYAN).breakInstantly().noCollision().luminance(4).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+
+    public static final Block BOOMSHROOM = registerBlock("boomshroom",
+            new BoomshroomBlock(FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).breakInstantly().luminance(4).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+
+    public static final Block BOOMSHROOM_BUNDLE = registerBlock("boomshroom_bundle",
+            new Block(FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).strength(1.5f).luminance(7).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
     public static final Block CRIMSON_SPROUTS = registerBlock("crimson_sprouts",
             new SproutsBlock(FabricBlockSettings.copyOf(Blocks.NETHER_SPROUTS).sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP);

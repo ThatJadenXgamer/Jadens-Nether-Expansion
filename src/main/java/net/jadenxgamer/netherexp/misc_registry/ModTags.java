@@ -13,6 +13,7 @@ public class ModTags {
         public static final TagKey<Block> ASH_CANNOT_SURVIVE_ON = createTag("ash_cannot_survive_on");
         public static final TagKey<Block> SOUL_LAYER_CAN_SURVIVE_ON = createTag("soul_layer_can_survive_on");
         public static final TagKey<Block> SOUL_LAYER_CANNOT_SURVIVE_ON = createTag("soul_layer_cannot_survive_on");
+        public static final TagKey<Block> SPORES_CAN_GROW_ON = createTag("spores_can_grow_on");
 
         public static final TagKey<Block> BONE_FENCES = createTag("bone_fences");
 
