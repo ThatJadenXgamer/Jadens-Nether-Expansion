@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "netherexp:block/enigma_shelf"
+    "layer0": "netherexp:item/enigma_shelf"
   }
 }

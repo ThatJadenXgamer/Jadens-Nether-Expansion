@@ -118,13 +118,13 @@ public class ModBlocks {
     // Enigma Block
 
     public static final Block ENIGMA_FLESH = registerBlock("enigma_flesh",
-            new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_PURPLE).strength(2.8f).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+            new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_PURPLE).strength(1.8f).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
     public static final Block STRANGE_ENIGMA_FLESH = registerBlock("strange_enigma_flesh",
-            new ModFacingBlock(FabricBlockSettings.copyOf(ModBlocks.ENIGMA_FLESH).luminance(12).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+            new StrangeEnigmaFleshBlock(FabricBlockSettings.copyOf(ModBlocks.ENIGMA_FLESH).luminance(12).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
     public static final Block ENIGMA_CROWN = registerBlock("enigma_crown",
-            new EnigmaCrownBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.8f).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+            new EnigmaCrownBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.2f).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
     public static final Block ENIGMA_SHELF = registerBlock("enigma_shelf",
             new DeadCoralWallFanBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().breakInstantly().sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
@@ -172,11 +172,11 @@ public class ModBlocks {
 
     // Quartz Block
 
-    public static final Block QUARTZ_CRYSTAL_BLOCK = registerBlock("quartz_crystal_block",
-            new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).strength(2.5f).requiresTool().sounds(ModSoundEvents.QUARTZ_CRYSTAL)), ModItemGroup.NETHEREXP);
-
     public static final Block QUARTZ_CRYSTAL = registerBlock("quartz_crystal",
             new AmethystClusterBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.OFF_WHITE).nonOpaque().strength(1.5f).sounds(ModSoundEvents.QUARTZ_CRYSTAL)), ModItemGroup.NETHEREXP);
+
+    public static final Block QUARTZ_CRYSTAL_BLOCK = registerBlock("quartz_crystal_block",
+            new PillarBlock(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).strength(2.5f).requiresTool().sounds(ModSoundEvents.QUARTZ_CRYSTAL)), ModItemGroup.NETHEREXP);
 
     public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
             new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)), ModItemGroup.NETHEREXP);
@@ -242,6 +242,8 @@ public class ModBlocks {
 
     public static final Block BLUE_MIXED_NETHER_BRICKS = registerBlock("blue_mixed_nether_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP);
+
+    // Blue Nether Bricks
 
     public static final Block BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).sounds(BlockSoundGroup.NETHER_BRICKS)), ModItemGroup.NETHEREXP);
@@ -318,10 +320,13 @@ public class ModBlocks {
             new TwistingIvyBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.BRIGHT_TEAL).breakInstantly().noCollision().ticksRandomly().sounds(BlockSoundGroup.WEEPING_VINES)));
 
     public static final Block NIGHTSPORES = registerBlock("nightspores",
-            new SporesBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.CYAN).breakInstantly().noCollision().luminance(4).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+            new SporesBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.CYAN).breakInstantly().noCollision().luminance(6).sounds(BlockSoundGroup.HONEY)), ModItemGroup.NETHEREXP);
+
+    public static final Block RED_SCALE_FUNGUS = registerBlock("red_scale_fungus",
+            new ScaleFungusBlock(FabricBlockSettings.of(Material.PLANT, MapColor.CLEAR).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
     public static final Block BOOMSHROOM = registerBlock("boomshroom",
-            new BoomshroomBlock(FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).breakInstantly().luminance(4).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+            new BoomshroomBlock(FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).breakInstantly().luminance(5).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
     public static final Block BOOMSHROOM_BUNDLE = registerBlock("boomshroom_bundle",
             new Block(FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).strength(1.5f).luminance(7).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);

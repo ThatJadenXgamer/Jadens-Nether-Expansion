@@ -441,7 +441,17 @@
   "block.quartz_crystal.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "netherexp:block/quartz_crystal/break1"
+      "netherexp:block/quartz_crystal/break1",
+      "netherexp:block/quartz_crystal/break2",
+      "netherexp:block/quartz_crystal/break3"
+    ]
+  },
+  "music_disc.cricket": {
+    "sounds": [
+      {
+        "name": "netherexp:records/cricket",
+        "stream": true
+      }
     ]
   }
 }

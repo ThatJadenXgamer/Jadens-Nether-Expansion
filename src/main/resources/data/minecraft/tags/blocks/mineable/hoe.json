@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:shroomnight"
+    "netherexp:shroomnight",
+    "netherexp:boomshroom_bundle"
   ]
 }

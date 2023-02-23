@@ -60,6 +60,6 @@ public class PyriteOreBlock extends Block {
             }
         };
         //TODO add a custom damage source
-        world.createExplosion(null, DamageSource.badRespawnPoint(), explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 0.2f, false, Explosion.DestructionType.DESTROY);
+        world.createExplosion(null, DamageSource.badRespawnPoint(), explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 0.9f, false, Explosion.DestructionType.NONE);
     }
 }

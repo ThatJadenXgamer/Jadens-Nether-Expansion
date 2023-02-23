@@ -53,8 +53,10 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_WHITE_ASH_FALL = registerSoundEvent("block.white_ash.fall");
 
     // Quartz Crystal
-    //TODO make this sound less shit
     public static SoundEvent BLOCK_QUARTZ_CRYSTAL_BREAK = registerSoundEvent("block.quartz_crystal.break");
+
+    //Music
+    public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
 
     // LIST OF SOUND GROUPS:
 

@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.misc_registry.ModRegistries;
 import net.jadenxgamer.netherexp.misc_registry.ModResourcePacks;
+import net.jadenxgamer.netherexp.particle.ModParticles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,7 @@ public class NetherExp implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModParticles.registerParticles();
 
 		ModRegistries.registerModStuffs();
 		ModResourcePacks.init();

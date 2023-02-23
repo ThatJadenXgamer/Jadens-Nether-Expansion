@@ -1,7 +1,7 @@
 {
   "variants": {
     "facing=down": {
-      "model": "netherexp:block/strange_enigma_flesh",
+      "model": "netherexp:block/strange_enigma_flesh_vertical",
       "x": 180
     },
     "facing=east": {

@@ -22,4 +22,5 @@ public class WitherBoneBlock extends PillarBlock {
 
         super.onSteppedOn(world, pos, state, entity);
     }
+
 }

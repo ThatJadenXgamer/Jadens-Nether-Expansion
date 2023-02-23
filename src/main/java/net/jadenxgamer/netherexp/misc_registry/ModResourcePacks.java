@@ -10,14 +10,14 @@ public class ModResourcePacks {
 
     public static void init() {
 
-        Identifier packId = new Identifier(NetherExp.MOD_ID, "vanilla_nether");
-        Identifier packId2 = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
+        Identifier classicPackId = new Identifier(NetherExp.MOD_ID, "vanilla_nether");
+        Identifier EmissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
-        -> ResourceManagerHelper.registerBuiltinResourcePack(packId, container, "Vanilla Nether", ResourcePackActivationType.NORMAL));
+        -> ResourceManagerHelper.registerBuiltinResourcePack(classicPackId, container, "Classic Nether", ResourcePackActivationType.NORMAL));
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
-        -> ResourceManagerHelper.registerBuiltinResourcePack(packId2, container, "Emissive Nether Expansion", ResourcePackActivationType.NORMAL));
+        -> ResourceManagerHelper.registerBuiltinResourcePack(EmissivePackId, container, "Emissive Nether Expansion", ResourcePackActivationType.NORMAL));
 
     }
 

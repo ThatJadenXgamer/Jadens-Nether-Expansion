@@ -10,6 +10,7 @@
 		{
 			"from": [3, 0, 3],
 			"to": [13, 6, 13],
+			"shade": false,
 			"faces": {
 				"north": {"uv": [3, 10, 13, 16], "texture": "#0"},
 				"east": {"uv": [3, 6, 13, 12], "rotation": 180, "texture": "#0"},
@@ -22,6 +23,7 @@
 		{
 			"from": [0, 0.5, 0],
 			"to": [16, 0.5, 16],
+			"shade": false,
 			"faces": {
 				"north": {"uv": [0, 0, 16, 0], "texture": "#1"},
 				"east": {"uv": [0, 0, 16, 0], "texture": "#1"},

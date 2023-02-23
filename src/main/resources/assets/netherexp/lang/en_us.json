@@ -5,6 +5,8 @@
   "item.netherexp.warpspores": "Warpspores",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
+  "item.netherexp.music_disc_cricket": "Music Disc",
+  "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
   "block.netherexp.soul_slate": "Soul Slate",
   "block.netherexp.soul_slate_slab": "Soul Slate Slab",
@@ -39,7 +41,7 @@
   "block.netherexp.enigma_flesh": "Enigma Flesh",
   "block.netherexp.strange_enigma_flesh": "Strange Enigma Flesh",
   "block.netherexp.enigma_crown": "Enigma Crown",
-  "block.netherexp.enigma_shelf": "Enigma Shelves",
+  "block.netherexp.enigma_shelf": "Enigma Shelf",
 
   "block.netherexp.claret_stem": "Claret Stem",
   "block.netherexp.claret_hyphae": "Claret Hyphae",
@@ -106,9 +108,9 @@
   "block.netherexp.twisting_ivy": "Twisting Ivy",
   "item.netherexp.weeping_ivy": "Weeping Ivy",
   "item.netherexp.twisting_ivy": "Twisting Ivy",
-  "item.netherexp.nightspores": "Nightspores",
-  "item.netherexp.boomshroom": "Boomshroom",
-  "item.netherexp.boomshroom_bundle": "Bundle of Boomshroom",
+  "block.netherexp.nightspores": "Nightspores",
+  "block.netherexp.boomshroom": "Boomshroom",
+  "block.netherexp.boomshroom_bundle": "Bundle of Boomshroom",
 
   "block.netherexp.crimson_sprouts": "Crimson Sprouts",
 

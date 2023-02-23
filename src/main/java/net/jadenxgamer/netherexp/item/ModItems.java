@@ -3,9 +3,12 @@ package net.jadenxgamer.netherexp.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.block.ModBlocks;
+import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
 @SuppressWarnings("unused")
@@ -31,6 +34,9 @@ public class ModItems {
 
     public static final Item TWISTING_IVY = registerItem("twisting_ivy",
             new AliasedBlockItem(ModBlocks.TWISTING_IVY, new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
+
+    public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
+            new MusicDiscItem(8, ModSoundEvents.MUSIC_DISC_CRICKET,new FabricItemSettings().group(ModItemGroup.NETHEREXP).maxCount(1).rarity(Rarity.RARE), 164));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(NetherExp.MOD_ID, name), item);
