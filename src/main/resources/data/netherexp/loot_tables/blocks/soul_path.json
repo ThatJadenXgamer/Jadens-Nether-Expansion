@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:soul_soil"
+          "name": "minecraft:soul_soil"
         }
       ],
       "conditions": [

@@ -13,6 +13,17 @@
     "netherexp:claret_door",
     "netherexp:claret_trapdoor",
     "netherexp:claret_button",
-    "netherexp:claret_pressure_plate"
+    "netherexp:claret_pressure_plate",
+    "netherexp:smokestalk_block",
+    "netherexp:charred_smokestalk_block",
+    "netherexp:smokestalk_planks",
+    "netherexp:smokestalk_slab",
+    "netherexp:smokestalk_stairs",
+    "netherexp:smokestalk_fence",
+    "netherexp:smokestalk_fence_gate",
+    "netherexp:smokestalk_door",
+    "netherexp:smokestalk_trapdoor",
+    "netherexp:smokestalk_button",
+    "netherexp:smokestalk_pressure_plate"
   ]
 }

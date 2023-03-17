@@ -3,6 +3,7 @@
   "item.netherexp.hogham": "Raw Hogham",
   "item.netherexp.cooked_hogham": "Cooked Hogham",
   "item.netherexp.warpspores": "Warpspores",
+  "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
   "item.netherexp.music_disc_cricket": "Music Disc",
@@ -57,6 +58,25 @@
   "block.netherexp.claret_button": "Claret Button",
   "block.netherexp.claret_pressure_plate": "Claret Pressure Plate",
 
+  "block.netherexp.explosive_scoria": "Explosive Scoria",
+  "block.netherexp.igneous_reeds": "Igneous Reeds",
+  "block.netherexp.igneous_vines": "Igneous Vines",
+  "block.netherexp.igneous_vines_plant": "Igneous Vines Plant",
+  "block.netherexp.smokestalk": "Smokestalk",
+  "block.netherexp.smokestalk_plant": "Smokestalk Plant",
+
+  "block.netherexp.smokestalk_block": "Block of Smokestalk",
+  "block.netherexp.charred_smokestalk_block": "Charred Block of Smokestalk",
+  "block.netherexp.smokestalk_planks": "Smokestalk Planks",
+  "block.netherexp.smokestalk_slab": "Smokestalk Slab",
+  "block.netherexp.smokestalk_stairs": "Smokestalk Stairs",
+  "block.netherexp.smokestalk_fence": "Smokestalk Fence",
+  "block.netherexp.smokestalk_fence_gate": "Smokestalk Fence Gate",
+  "block.netherexp.smokestalk_button": "Smokestalk Button",
+  "block.netherexp.smokestalk_pressure_plate": "Smokestalk Pressure Plate",
+  "block.netherexp.smokestalk_door": "Smokestalk Door",
+  "block.netherexp.smokestalk_trapdoor": "Smokestalk Trapdoor",
+
   "block.netherexp.quartz_crystal_block": "Quartz Crystal Block",
   "block.netherexp.quartz_crystal": "Quartz Crystal",
   "block.netherexp.smooth_quartz_wall": "Smooth Quartz Wall",
@@ -86,7 +106,6 @@
   "block.netherexp.blue_nether_brick_stairs": "Blue Nether Brick Stairs",
   "block.netherexp.blue_nether_brick_wall": "Blue Nether Brick Wall",
 
-  "block.netherexp.nether_pyrite_ore": "Nether Pyrite Ore",
   "block.netherexp.pyrite_block": "Block of Pyrite",
   "block.netherexp.pyrite_slab": "Pyrite Slab",
   "block.netherexp.pyrite_stairs": "Pyrite Stairs",
@@ -104,10 +123,15 @@
 
   "block.netherexp.nether_wart_beard": "Nether Wart Beard",
   "block.netherexp.warped_wart_beard": "Warped Wart Beard",
+
   "block.netherexp.weeping_ivy": "Weeping Ivy",
   "block.netherexp.twisting_ivy": "Twisting Ivy",
   "item.netherexp.weeping_ivy": "Weeping Ivy",
   "item.netherexp.twisting_ivy": "Twisting Ivy",
+
+  "block.netherexp.red_scale_fungus": "Red Scale Fungus",
+  "block.netherexp.blue_scale_fungus": "Blue Scale Fungus",
+
   "block.netherexp.nightspores": "Nightspores",
   "block.netherexp.boomshroom": "Boomshroom",
   "block.netherexp.boomshroom_bundle": "Bundle of Boomshroom",
@@ -126,6 +150,8 @@
   "block.netherexp.chainwire_fence": "Chainwire Fence",
 
   "block.netherexp.bone_fence": "Bone Fence",
+  "block.netherexp.skeleton_skull_candle": "Skeleton Skull Candle",
+  "block.netherexp.soul_skeleton_skull_candle": "Soul Skeleton Skull Candle",
   "block.netherexp.stacked_bones": "Stacked Bones",
   "block.netherexp.stacked_bone_slab": "Stacked Bone Slab",
   "block.netherexp.stacked_bone_stairs": "Stacked Bone Stairs",

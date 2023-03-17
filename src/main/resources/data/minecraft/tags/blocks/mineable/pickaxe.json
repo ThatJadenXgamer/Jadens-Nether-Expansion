@@ -28,8 +28,10 @@
     "netherexp:basalt_slab",
     "netherexp:polished_basalt_bricks",
     "netherexp:polished_basalt_brick_slab",
+    "netherexp:polished_basalt_brick_stairs",
     "netherexp:gilded_basalt_bricks",
-    "netherexp:gilded_basalt_brick_slab",
+
+    "netherexp:explosive_scoria",
 
     "netherexp:quartz_crystal_block",
     "netherexp:quartz_crystal",
@@ -61,7 +63,6 @@
     "netherexp:blue_mixed_nether_bricks",
     "netherexp:red_mixed_nether_bricks",
 
-    "netherexp:nether_pyrite_ore",
     "netherexp:pyrite_block",
     "netherexp:pyrite_slab",
     "netherexp:pyrite_stairs",
@@ -90,6 +91,8 @@
     "netherexp:polished_blackstone_pillar",
     "netherexp:polished_blackstone_fence",
     "netherexp:weeping_polished_blackstone_bricks",
-    "netherexp:twisting_polished_blackstone_bricks"
+    "netherexp:twisting_polished_blackstone_bricks",
+
+    "#netherexp:mob_heads"
   ]
 }

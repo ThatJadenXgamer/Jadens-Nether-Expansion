@@ -87,7 +87,7 @@ public class ModBlocks {
 
     public static final Block NETHERRACK_BRICK_STAIRS = registerBlock("netherrack_brick_stairs",
             new ModStairsBlock(ModBlocks.NETHERRACK_BRICKS.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP);
+            FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP);
 
     public static final Block NETHERRACK_BRICK_WALL = registerBlock("netherrack_brick_wall",
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)), ModItemGroup.NETHEREXP);
@@ -109,11 +109,13 @@ public class ModBlocks {
     public static final Block POLISHED_BASALT_BRICK_SLAB = registerBlock("polished_basalt_brick_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP);
 
-    public static final Block GILDED_BASALT_BRICKS = registerBlock("gilded_basalt_bricks",
-            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP);
+    public static final Block POLISHED_BASALT_BRICK_STAIRS = registerBlock("polished_basalt_brick_stairs",
+            new StairsBlock(ModBlocks.POLISHED_BASALT_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP);
 
-    public static final Block GILDED_BASALT_BRICK_SLAB = registerBlock("gilded_basalt_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP);
+    public static final Block GILDED_BASALT_BRICKS = registerBlock("gilded_basalt_bricks",
+            new Block(FabricBlockSettings.copyOf(ModBlocks.POLISHED_BASALT_BRICKS).sounds(ModSoundEvents.BASALT_BRICKS)), ModItemGroup.NETHEREXP);
+
 
     // Enigma Block
 
@@ -170,6 +172,63 @@ public class ModBlocks {
     public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
             new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
 
+    // Smokestalk
+
+    public static final Block EXPLOSIVE_SCORIA = registerBlock("explosive_scoria",
+            new ExplosiveScoriaBlock(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).strength(3.0f,0.2f).requiresTool().sounds(BlockSoundGroup.NETHER_ORE)), ModItemGroup.NETHEREXP);
+
+    public static final Block IGNEOUS_REEDS = registerBlock("igneous_reeds",
+            new IgneousReeds(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.CLEAR).noCollision().breakInstantly().requiresTool().offsetType(AbstractBlock.OffsetType.XZ).sounds(ModSoundEvents.SMOKESTALK)), ModItemGroup.NETHEREXP);
+
+    public static final Block IGNEOUS_VINES = registerBlock("igneous_vines",
+            new IgneousVinesBlock(FabricBlockSettings.of(Material.PLANT, MapColor.TERRACOTTA_CYAN).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)), ModItemGroup.NETHEREXP);
+
+    public static final Block IGNEOUS_VINES_PLANT = registerBlockWithoutItem("igneous_vines_plant",
+            new IgneousVinesPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.TERRACOTTA_CYAN).noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
+
+    public static final Block SMOKESTALK = registerBlock("smokestalk",
+            new SmokestalkBlock(FabricBlockSettings.of(Material.PLANT, MapColor.TERRACOTTA_CYAN).ticksRandomly().breakInstantly().sounds(ModSoundEvents.SMOKESTALK)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_PLANT = registerBlockWithoutItem("smokestalk_plant",
+            new SmokestalkPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.TERRACOTTA_CYAN).breakInstantly().sounds(ModSoundEvents.SMOKESTALK)));
+
+    // Smokestalk Woodset
+
+    public static final Block SMOKESTALK_BLOCK = registerBlock("smokestalk_block",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block CHARRED_SMOKESTALK_BLOCK = registerBlock("charred_smokestalk_block",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_STEM).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_PLANKS = registerBlock("smokestalk_planks",
+            new Block(FabricBlockSettings.of(Material.NETHER_WOOD, MapColor.GRAY).strength(2.0f, 3.0f).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_SLAB = registerBlock("smokestalk_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_STAIRS = registerBlock("smokestalk_stairs",
+            new ModStairsBlock(ModBlocks.CLARET_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_FENCE = registerBlock("smokestalk_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_FENCE_GATE = registerBlock("smokestalk_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_DOOR = registerBlock("smokestalk_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_TRAPDOOR = registerBlock("smokestalk_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_BUTTON = registerBlock("smokestalk_button",
+            new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SMOKESTALK_PRESSURE_PLATE = registerBlock("smokestalk_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).strength(0.5f).noCollision().sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+
+
     // Quartz Block
 
     public static final Block QUARTZ_CRYSTAL = registerBlock("quartz_crystal",
@@ -180,7 +239,7 @@ public class ModBlocks {
 
     public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
             new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)), ModItemGroup.NETHEREXP);
-    
+
     public static final Block QUARTZ_BRICK_WALL = registerBlock("quartz_brick_wall",
             new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS)), ModItemGroup.NETHEREXP);
 
@@ -260,9 +319,6 @@ public class ModBlocks {
 
     // Pyrite
 
-    public static final Block NETHER_PYRITE_ORE = registerBlock("nether_pyrite_ore",
-            new PyriteOreBlock(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).strength(3.0f,-5.0f).requiresTool().sounds(BlockSoundGroup.NETHER_ORE)), ModItemGroup.NETHEREXP);
-
     public static final Block PYRITE_BLOCK = registerBlock("pyrite_block",
             new Block(FabricBlockSettings.of(Material.METAL).strength(3.5f,6.5f).requiresTool().sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP);
 
@@ -325,6 +381,9 @@ public class ModBlocks {
     public static final Block RED_SCALE_FUNGUS = registerBlock("red_scale_fungus",
             new ScaleFungusBlock(FabricBlockSettings.of(Material.PLANT, MapColor.CLEAR).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
+    public static final Block BLUE_SCALE_FUNGUS = registerBlock("blue_scale_fungus",
+            new ScaleFungusBlock(FabricBlockSettings.of(Material.PLANT, MapColor.CLEAR).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
+
     public static final Block BOOMSHROOM = registerBlock("boomshroom",
             new BoomshroomBlock(FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).breakInstantly().luminance(5).sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
@@ -359,6 +418,12 @@ public class ModBlocks {
 
     // Bones
 
+    public static final Block SKELETON_SKULL_CANDLE = registerBlock("skeleton_skull_candle",
+            new SkullCandleBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).luminance(8)), ModItemGroup.NETHEREXP);
+
+    public static final Block SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle",
+            new SkullCandleBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).luminance(6)), ModItemGroup.NETHEREXP);
+
     public static final Block BONE_FENCE = registerBlock("bone_fence",
             new BoneFenceBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(1.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
@@ -368,6 +433,9 @@ public class ModBlocks {
     public static final Block BURNING_SKULL_BLOCK = registerBlock("burning_skull_block",
             new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
+    public static final Block SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
+
     public static final Block STACKED_BONES = registerBlock("stacked_bones",
             new Block(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
@@ -376,7 +444,7 @@ public class ModBlocks {
 
     public static final Block STACKED_BONE_STAIRS = registerBlock("stacked_bone_stairs",
             new ModStairsBlock(ModBlocks.STACKED_BONES.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.STACKED_BONES).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
+            FabricBlockSettings.copyOf(ModBlocks.STACKED_BONES).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
     // Wither Bones
 
@@ -387,7 +455,10 @@ public class ModBlocks {
             new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
     public static final Block BURNING_WITHER_SKULL_BLOCK = registerBlock("burning_wither_skull_block",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
+
+    public static final Block SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block",
+            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_WITHER_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
     public static final Block STACKED_WITHER_BONES = registerBlock("stacked_wither_bones",
             new Block(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).strength(2.0f,9.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
@@ -397,7 +468,7 @@ public class ModBlocks {
 
     public static final Block STACKED_WITHER_BONE_STAIRS = registerBlock("stacked_wither_bone_stairs",
             new ModStairsBlock(ModBlocks.STACKED_WITHER_BONES.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
+            FabricBlockSettings.copyOf(ModBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
     // Blackstone
 
@@ -416,7 +487,7 @@ public class ModBlocks {
     // METHODS:
 
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
-        registerBlockItem(name, block, tab);
+        registerBlockItem(name, block, ModItemGroup.NETHEREXP);
         return Registry.register(Registry.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
     }
 

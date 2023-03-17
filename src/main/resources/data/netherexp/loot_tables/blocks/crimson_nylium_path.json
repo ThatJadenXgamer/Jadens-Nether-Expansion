@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:netherrack"
+          "name": "minecraft:netherrack"
         }
       ],
       "conditions": [

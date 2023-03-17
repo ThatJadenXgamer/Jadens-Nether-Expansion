@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "netherexp:block/smokestalk_planks",
+    "side": "netherexp:block/smokestalk_planks",
+    "top": "netherexp:block/smokestalk_planks"
+  }
+}

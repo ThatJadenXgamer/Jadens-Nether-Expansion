@@ -446,6 +446,78 @@
       "netherexp:block/quartz_crystal/break3"
     ]
   },
+  "block.smokestalk.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/smokestalk/place1",
+      "netherexp:block/smokestalk/place2",
+      "netherexp:block/smokestalk/place3",
+      "netherexp:block/smokestalk/place4",
+      "netherexp:block/smokestalk/place5"
+    ]
+  },
+  "block.smokestalk.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/smokestalk/place1",
+      "netherexp:block/smokestalk/place2",
+      "netherexp:block/smokestalk/place3",
+      "netherexp:block/smokestalk/place4",
+      "netherexp:block/smokestalk/place5"
+    ]
+  },
+  "block.smokestalk_wood.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/smokestalk_wood/break1",
+      "netherexp:block/smokestalk_wood/break2",
+      "netherexp:block/smokestalk_wood/break3",
+      "netherexp:block/smokestalk_wood/break4",
+      "netherexp:block/smokestalk_wood/break5"
+    ]
+  },
+  "block.smokestalk_wood.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "netherexp:block/smokestalk_wood/step1",
+      "netherexp:block/smokestalk_wood/step2",
+      "netherexp:block/smokestalk_wood/step3",
+      "netherexp:block/smokestalk_wood/step4",
+      "netherexp:block/smokestalk_wood/step5",
+      "netherexp:block/smokestalk_wood/step6"
+    ]
+  },
+  "block.smokestalk_wood.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/smokestalk_wood/break1",
+      "netherexp:block/smokestalk_wood/break2",
+      "netherexp:block/smokestalk_wood/break3",
+      "netherexp:block/smokestalk_wood/break4",
+      "netherexp:block/smokestalk_wood/break5"
+    ]
+  },
+  "block.smokestalk_wood.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "netherexp:block/smokestalk_wood/step1",
+      "netherexp:block/smokestalk_wood/step2",
+      "netherexp:block/smokestalk_wood/step3",
+      "netherexp:block/smokestalk_wood/step4",
+      "netherexp:block/smokestalk_wood/step5",
+      "netherexp:block/smokestalk_wood/step6"
+    ]
+  },
+  "block.smokestalk_wood.fall": {
+    "sounds": [
+      "netherexp:block/smokestalk_wood/step1",
+      "netherexp:block/smokestalk_wood/step2",
+      "netherexp:block/smokestalk_wood/step3",
+      "netherexp:block/smokestalk_wood/step4",
+      "netherexp:block/smokestalk_wood/step5",
+      "netherexp:block/smokestalk_wood/step6"
+    ]
+  },
   "music_disc.cricket": {
     "sounds": [
       {

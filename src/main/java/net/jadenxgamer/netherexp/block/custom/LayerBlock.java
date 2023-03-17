@@ -26,6 +26,7 @@ extends Block {
         this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(LAYERS, 1));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         switch (type) {
@@ -39,36 +40,43 @@ extends Block {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return LAYERS_TO_SHAPE[state.get(LAYERS)];
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return LAYERS_TO_SHAPE[state.get(LAYERS) - 1];
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getSidesShape(BlockState state, BlockView world, BlockPos pos) {
         return LAYERS_TO_SHAPE[state.get(LAYERS)];
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return LAYERS_TO_SHAPE[state.get(LAYERS)];
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean hasSidedTransparency(BlockState state) {
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
         return state.get(LAYERS) == 8 ? 0.2f : 1.0f;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (!state.canPlaceAt(world, pos)) {
@@ -77,6 +85,7 @@ extends Block {
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
         int i = state.get(LAYERS);

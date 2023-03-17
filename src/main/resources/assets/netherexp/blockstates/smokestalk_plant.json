@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "leaves=true": {
+      "model": "netherexp:block/smokestalk_plant_leaves"
+    },
+    "leaves=false": {
+      "model": "netherexp:block/smokestalk_plant"
+    }
+  }
+}

@@ -55,6 +55,18 @@ public class ModSoundEvents {
     // Quartz Crystal
     public static SoundEvent BLOCK_QUARTZ_CRYSTAL_BREAK = registerSoundEvent("block.quartz_crystal.break");
 
+    // Smokestalk
+    public static SoundEvent BLOCK_SMOKESTALK_BREAK = registerSoundEvent("block.smokestalk.break");
+    public static SoundEvent BLOCK_SMOKESTALK_PLACE = registerSoundEvent("block.smokestalk.place");
+
+    // Smokestalk Wood
+
+    public static SoundEvent BLOCK_SMOKESTALK_WOOD_BREAK = registerSoundEvent("block.smokestalk_wood.break");
+    public static SoundEvent BLOCK_SMOKESTALK_WOOD_STEP = registerSoundEvent("block.smokestalk_wood.step");
+    public static SoundEvent BLOCK_SMOKESTALK_WOOD_PLACE = registerSoundEvent("block.smokestalk_wood.place");
+    public static SoundEvent BLOCK_SMOKESTALK_WOOD_HIT = registerSoundEvent("block.smokestalk_wood.hit");
+    public static SoundEvent BLOCK_SMOKESTALK_WOOD_FALL = registerSoundEvent("block.smokestalk_wood.fall");
+
     //Music
     public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
 
@@ -83,6 +95,14 @@ public class ModSoundEvents {
     public static final BlockSoundGroup QUARTZ_CRYSTAL = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_QUARTZ_CRYSTAL_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, SoundEvents.BLOCK_NETHER_ORE_PLACE,
             SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
+
+    public static final BlockSoundGroup SMOKESTALK = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_SMOKESTALK_BREAK, SoundEvents.BLOCK_BAMBOO_STEP, ModSoundEvents.BLOCK_SMOKESTALK_PLACE,
+            SoundEvents.BLOCK_BAMBOO_HIT, SoundEvents.BLOCK_BAMBOO_FALL);
+
+    public static final BlockSoundGroup SMOKESTALK_WOOD = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_SMOKESTALK_WOOD_BREAK, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_STEP, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_PLACE,
+            ModSoundEvents.BLOCK_SMOKESTALK_WOOD_HIT, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

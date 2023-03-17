@@ -69,7 +69,7 @@ implements Fertilizable {
         return this.upShape;
     }
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         Direction direction = state.get(FACING);
@@ -77,7 +77,7 @@ implements Fertilizable {
         return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction);
     }
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("deprecation")
     @Override
     public PistonBehavior getPistonBehavior(BlockState state) {
         return PistonBehavior.NORMAL;

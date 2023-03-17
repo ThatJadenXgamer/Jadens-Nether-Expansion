@@ -4,13 +4,13 @@
   "version": "${version}",
 
   "name": "Jaden's Nether Expansion",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "This Mod Enhances the Nether with various New and Reimagined Content",
   "authors": [
     "JadenXgamer"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/jadens-nether-expansions",
+    "sources": "https://github.com/ThatJadenXgamer/Jadens-Nether-Expansion"
   },
 
   "license": "ARR",

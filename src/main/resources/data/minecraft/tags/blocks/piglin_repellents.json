@@ -2,6 +2,11 @@
   "replace": false,
   "values": [
     "netherexp:soul_pyrite_lantern",
-    "netherexp:wither_bone_block"
+    "netherexp:wither_bone_block",
+    "netherexp:stacked_wither_bones",
+    "netherexp:stacked_wither_bone_slab",
+    "netherexp:stacked_wither_bone_stairs",
+    "netherexp:soul_burning_skull_block",
+    "netherexp:soul_burning_wither_skull_block"
   ]
 }

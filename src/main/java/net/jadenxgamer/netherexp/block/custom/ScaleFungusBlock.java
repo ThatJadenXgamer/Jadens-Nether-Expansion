@@ -1,14 +1,13 @@
 package net.jadenxgamer.netherexp.block.custom;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Fertilizable;
-import net.minecraft.block.ShapeContext;
+import net.jadenxgamer.netherexp.misc_registry.ModTags;
+import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +18,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class ScaleFungusBlock
-extends Block
+extends PlantBlock
 implements Fertilizable {
 
     public static final IntProperty ROTATION = Properties.ROTATION;
@@ -28,6 +27,7 @@ implements Fertilizable {
 
     public ScaleFungusBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0));
     }
 
     @SuppressWarnings("all")
@@ -62,6 +62,21 @@ implements Fertilizable {
     @Override
     public boolean hasRandomTicks(BlockState state) {
         return state.get(AGE) < 2;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        int i = state.get(AGE);
+        if (i < 2 && random.nextInt(10) == 0) {
+            state = state.with(AGE, i + 1);
+            world.setBlockState(pos, state, Block.NOTIFY_LISTENERS);
+        }
+    }
+
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return floor.isIn(ModTags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || super.canPlantOnTop(floor, world, pos);
     }
 
     @Override

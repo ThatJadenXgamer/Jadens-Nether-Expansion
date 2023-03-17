@@ -3,10 +3,11 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "netherexp:claret_stem"
+      "tag": "netherexp:claret_stems"
     }
   ],
   "result": {
-    "item": "netherexp:claret_planks"
+    "item": "netherexp:claret_planks",
+    "count": 4
   }
 }

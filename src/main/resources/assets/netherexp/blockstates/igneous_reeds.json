@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "netherexp:block/igneous_reeds_bottom"
+    },
+    "half=upper": {
+      "model": "netherexp:block/igneous_reeds_top"
+    }
+  }
+}

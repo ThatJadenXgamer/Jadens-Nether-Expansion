@@ -10,6 +10,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -24,21 +25,10 @@ public class LightAbleBlock extends Block {
         this.setDefaultState(this.stateManager.getDefaultState().with(LIT, false));
     }
 
-    //todo: Use MIXINS to light the block instead
-    @SuppressWarnings("all")
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos,
-    PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
-        if(!world.isClient() && itemStack.isOf(Items.FLINT_AND_STEEL)) {
-            world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.NEUTRAL, 1.0f, 1.0f);
-            itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
-            world.setBlockState(pos, state.with(LIT, true));
-        }
-        return super.onUse(state, world, pos, player, hand, hit);
+    public static boolean canBeLit(BlockState state2) {
+        return !state2.get(LIT);
     }
 
-    @SuppressWarnings("all")
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(LIT);

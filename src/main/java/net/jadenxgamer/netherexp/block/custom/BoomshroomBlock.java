@@ -12,7 +12,7 @@ public class BoomshroomBlock extends PlantBlock {
     }
     protected static final VoxelShape Shape = Block.createCuboidShape(2, 0, 2, 14, 10, 14);
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return Shape;

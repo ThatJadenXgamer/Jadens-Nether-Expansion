@@ -23,6 +23,9 @@ public class ModItems {
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP).food(ModFoodComponents.COOKED_HOGHAM)));
 
+    public static final Item IRON_SCRAP = registerItem("iron_scrap",
+            new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
+
     public static final Item RAW_PYRITE = registerItem("raw_pyrite",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 

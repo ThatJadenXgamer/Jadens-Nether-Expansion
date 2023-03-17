@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:claret_planks"
+    "netherexp:claret_planks",
+    "netherexp:smokestalk_planks"
   ]
 }

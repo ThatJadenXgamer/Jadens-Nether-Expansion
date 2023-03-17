@@ -21,10 +21,12 @@ extends FacingBlock {
         builder.add(FACING);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
         return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
     }
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));

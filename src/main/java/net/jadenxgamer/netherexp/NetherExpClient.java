@@ -28,6 +28,13 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TWISTING_IVY, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.NIGHTSPORES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BOOMSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RED_SCALE_FUNGUS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUE_SCALE_FUNGUS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IGNEOUS_REEDS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IGNEOUS_VINES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IGNEOUS_VINES_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMOKESTALK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMOKESTALK_PLANT, RenderLayer.getCutout());
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);
     }

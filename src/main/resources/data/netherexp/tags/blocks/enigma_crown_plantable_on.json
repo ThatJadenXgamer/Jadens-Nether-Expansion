@@ -2,12 +2,12 @@
   "replace": false,
   "values": [
     "netherexp:enigma_flesh",
-    "netherexp:netherrack",
-    "netherexp:silica_sand",
-    "netherexp:silica_sandstone",
-    "netherexp:crimson_nylium",
-    "netherexp:warped_nylium",
-    "netherexp:soul_sand",
-    "netherexp:soul_soil"
+    "netherexp:strange_enigma_flesh",
+    "minecraft:netherrack",
+    "minecraft:crimson_nylium",
+    "minecraft:warped_nylium",
+    "minecraft:mycelium",
+    "minecraft:soul_sand",
+    "minecraft:soul_soil"
   ]
 }

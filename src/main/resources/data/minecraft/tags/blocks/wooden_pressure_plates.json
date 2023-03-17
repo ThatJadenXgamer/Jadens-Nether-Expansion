@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:claret_pressure_plate"
+    "netherexp:claret_pressure_plate",
+    "netherexp:smokestalk_pressure_plate"
   ]
 }
