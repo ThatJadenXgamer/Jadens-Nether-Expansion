@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "netherexp:block/gilded_basalt_bricks",
+    "side": "netherexp:block/gilded_basalt_bricks",
+    "top": "netherexp:block/gilded_basalt_bricks"
+  }
+}

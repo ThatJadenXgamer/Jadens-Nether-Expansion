@@ -3,8 +3,7 @@
 	"parent": "block/thin_block",
 	"ambientocclusion": false,
 	"textures": {
-		"1": "netherexp:block/white_ash",
-		"particle": "netherexp:block/white_ash",
+		"particle": "netherexp:block/white_ash_top",
 		"texture": "netherexp:block/white_ash_top"
 	},
 	"elements": [
@@ -18,27 +17,6 @@
 				"west": {"uv": [0, 10, 16, 16], "texture": "#texture", "cullface": "west"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#texture"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#texture", "cullface": "down"}
-			}
-		},
-		{
-			"from": [0, -16, 0],
-			"to": [16, 0, 16],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "north"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "south"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "west"}
-			}
-		},
-		{
-			"name": "cube inverted",
-			"from": [16, 0, 16],
-			"to": [0, -16, 0],
-			"faces": {
-				"north": {"uv": [0, 16, 16, 0], "texture": "#1", "cullface": "south"},
-				"east": {"uv": [0, 16, 16, 0], "texture": "#1", "cullface": "west"},
-				"south": {"uv": [0, 16, 16, 0], "texture": "#1", "cullface": "north"},
-				"west": {"uv": [0, 16, 16, 0], "texture": "#1", "cullface": "east"}
 			}
 		}
 	]

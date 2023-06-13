@@ -10,7 +10,7 @@ public class BoomshroomBlock extends PlantBlock {
     public BoomshroomBlock(Settings settings) {
         super(settings);
     }
-    protected static final VoxelShape Shape = Block.createCuboidShape(2, 0, 2, 14, 10, 14);
+    protected static final VoxelShape Shape = Block.createCuboidShape(2, 0, 2, 14, 8, 14);
 
     @SuppressWarnings("deprecation")
     @Override

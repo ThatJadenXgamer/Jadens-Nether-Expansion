@@ -36,8 +36,7 @@
   "block.netherexp.basalt_slab": "Basalt Slab",
   "block.netherexp.polished_basalt_bricks": "Polished Basalt Bricks",
   "block.netherexp.polished_basalt_brick_slab": "Polished Basalt Brick Slab",
-  "block.netherexp.gilded_basalt_bricks": "Gilded Basalt Bricks",
-  "block.netherexp.gilded_basalt_brick_slab": "Gilded Basalt Brick Slab",
+  "block.netherexp.polished_basalt_brick_stairs": "Polished Basalt Brick Stairs",
 
   "block.netherexp.enigma_flesh": "Enigma Flesh",
   "block.netherexp.strange_enigma_flesh": "Strange Enigma Flesh",
@@ -144,6 +143,11 @@
   "block.netherexp.crimson_nylium_path": "Crimson Nylium Path",
   "block.netherexp.warped_nylium_path": "Warped Nylium Path",
 
+  "block.netherexp.crimson_sporeshroom": "Crimson Sporeshroom",
+  "block.netherexp.warped_sporeshroom": "Warped Sporeshroom",
+  "block.netherexp.basaltic_geyser": "Basaltic Geyser",
+
+  "block.netherexp.ashy_basalt": "Ashy Basalt",
   "block.netherexp.white_ash": "White Ash",
   "block.netherexp.white_ash_block": "White Ash Block",
 
@@ -164,6 +168,14 @@
   "block.netherexp.twisting_polished_blackstone_bricks": "Twisting Polished Blackstone Bricks",
   "block.netherexp.polished_blackstone_pillar": "Polished Blackstone Pillar",
   "block.netherexp.polished_blackstone_fence": "Polished Blackstone Fence",
+
+  "subtitles.item.gold_ingot.gilding": "Block gilded",
+  "subtitles.block.explosive_scoria.ambient": "Unstable electrical sparks",
+  "subtitles.block.sporeshroom.trampolined": "Sporeshroom trampolined",
+
+  "death.attack.igneousVines": "%1$s was pricked to death while climbing igneous vines",
+  "death.attack.igneousVines.player": "%1$s was pricked to death while climbing igneous vines whilst trying to escape %2$s",
+  "death.attack.explosiveScoria": "%1$s figured out what the 'Explosive' in Explosive Scoria meant",
 
   "effect.netherexp.hallucination": "Hallucination",
 

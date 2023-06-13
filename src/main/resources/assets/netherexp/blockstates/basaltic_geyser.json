@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "netherexp:block/basaltic_geyser"
+    },
+    "active=true": {
+      "model": "netherexp:block/basaltic_geyser_active"
+    }
+  }
+}

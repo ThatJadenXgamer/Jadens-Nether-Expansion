@@ -1,0 +1,54 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "netherexp:block/boomshroom",
+		"2": "netherexp:block/boomshroom_top",
+		"3": "netherexp:block/boomshroom_hair",
+		"particle": "netherexp:block/boomshroom_top"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 7, 14],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"east": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"south": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"west": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"up": {"uv": [0, 0, 12, 12], "texture": "#2"},
+				"down": {"uv": [0, 0, 12, 12], "texture": "#2"}
+			}
+		},
+		{
+			"from": [8, 7, 0],
+			"to": [8, 15, 16],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [8, 11, 8]},
+			"faces": {
+				"north": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"east": {"uv": [0, 8, 16, 16], "texture": "#3"},
+				"south": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"west": {"uv": [0, 8, 16, 16], "texture": "#3"},
+				"up": {"uv": [0, 0, 12, 12], "rotation": 90, "texture": "#3"},
+				"down": {"uv": [0, 0, 12, 12], "rotation": 270, "texture": "#2"}
+			}
+		},
+		{
+			"from": [0, 5, 8],
+			"to": [16, 13, 8],
+			"shade": false,
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 11, 8]},
+			"faces": {
+				"north": {"uv": [0, 8, 16, 16], "texture": "#3"},
+				"east": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"south": {"uv": [0, 8, 16, 16], "texture": "#3"},
+				"west": {"uv": [2, 5, 14, 12], "texture": "#1"},
+				"up": {"uv": [0, 0, 12, 12], "rotation": 180, "texture": "#3"},
+				"down": {"uv": [0, 0, 12, 12], "rotation": 180, "texture": "#2"}
+			}
+		}
+	]
+}

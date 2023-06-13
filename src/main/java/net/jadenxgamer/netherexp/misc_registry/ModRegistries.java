@@ -33,6 +33,7 @@ public class ModRegistries {
 
     private static void registerStrippables() {
         StrippableBlockRegistry.register(ModBlocks.CLARET_STEM, ModBlocks.STRIPPED_CLARET_STEM);
+        StrippableBlockRegistry.register(ModBlocks.SMOKESTALK_BLOCK, ModBlocks.STRIPPED_SMOKESTALK_BLOCK);
         StrippableBlockRegistry.register(ModBlocks.CLARET_HYPHAE, ModBlocks.STRIPPED_CLARET_HYPHAE);
     }
 

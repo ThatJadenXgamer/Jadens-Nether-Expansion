@@ -67,8 +67,15 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_SMOKESTALK_WOOD_HIT = registerSoundEvent("block.smokestalk_wood.hit");
     public static SoundEvent BLOCK_SMOKESTALK_WOOD_FALL = registerSoundEvent("block.smokestalk_wood.fall");
 
-    //Music
+    // Music
     public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
+
+    // ITEM
+
+    public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
+    public static SoundEvent EXPLOSIVE_SCORIA_AMBIENT = registerSoundEvent("block.explosive_scoria.ambient");
+
+    public static SoundEvent SPORESHROOM_TRAMPOLINED = registerSoundEvent("block.sporeshroom.trampolined");
 
     // LIST OF SOUND GROUPS:
 

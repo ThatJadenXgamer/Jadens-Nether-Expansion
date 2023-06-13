@@ -14,15 +14,17 @@ public class StrangeEnigmaFleshBlock extends ModFacingBlock{
         super(settings);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         VoxelShape voxelShape = this.getOutlineShape(state, world, pos, ShapeContext.absent());
         Vec3d vec3d = voxelShape.getBoundingBox().getCenter();
         double d = (double)pos.getX() + vec3d.x;
+        double f = (double)pos.getY() + 1.1;
         double e = (double)pos.getZ() + vec3d.z;
         for (int i = 0; i < 3; ++i) {
             if (!random.nextBoolean()) continue;
-            world.addParticle(ModParticles.ENIGMA_PARTICLE, d + random.nextDouble() / 5.0, (double)pos.getY() + (0.5 - random.nextDouble()), e + random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
+            world.addParticle(ModParticles.ENIGMA_PARTICLE, d + random.nextDouble() / 5.0, f, e + random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
         }
     }
 }

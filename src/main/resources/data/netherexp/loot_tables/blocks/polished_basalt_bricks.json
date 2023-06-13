@@ -9,10 +9,23 @@
           "type": "minecraft:item",
           "name": "netherexp:polished_basalt_bricks"
         }
-      ],
-      "conditions": [
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         {
-          "condition": "minecraft:survives_explosion"
+          "type": "minecraft:item",
+          "name": "minecraft:gold_nugget",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "netherexp:polished_basalt_bricks",
+              "properties": {
+                "gilded": "true"
+              }
+            }
+          ]
         }
       ]
     }

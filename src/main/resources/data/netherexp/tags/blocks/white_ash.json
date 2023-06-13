@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:white_ash",
+    "netherexp:white_ash_block"
+  ]
+}

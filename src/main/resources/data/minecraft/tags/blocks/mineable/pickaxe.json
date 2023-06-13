@@ -29,7 +29,6 @@
     "netherexp:polished_basalt_bricks",
     "netherexp:polished_basalt_brick_slab",
     "netherexp:polished_basalt_brick_stairs",
-    "netherexp:gilded_basalt_bricks",
 
     "netherexp:explosive_scoria",
 
@@ -87,6 +86,8 @@
 
     "netherexp:crimson_nylium_path",
     "netherexp:warped_nylium_path",
+
+    "netherexp:basaltic_geyser",
 
     "netherexp:polished_blackstone_pillar",
     "netherexp:polished_blackstone_fence",

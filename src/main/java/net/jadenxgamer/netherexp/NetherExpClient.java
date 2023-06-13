@@ -6,6 +6,9 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.jadenxgamer.netherexp.particle.ModParticles;
 import net.jadenxgamer.netherexp.particle.custom.EnigmaSporeParticle;
+import net.jadenxgamer.netherexp.particle.custom.GlimmerParticle;
+import net.jadenxgamer.netherexp.particle.custom.SmogParticle;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
 
 public class NetherExpClient implements ClientModInitializer {
@@ -35,7 +38,17 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IGNEOUS_VINES_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMOKESTALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMOKESTALK_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMOKESTALK_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SMOKESTALK_TRAPDOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SKELETON_SKULL_CANDLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_SKELETON_SKULL_CANDLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_SPORESHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_SPORESHROOM, RenderLayer.getCutout());
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SOUL_FLAME, FlameParticle.SmallFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.GOLD_GLIMMER, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_SPARK, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.CRIMSON_SMOG, SmogParticle.Factory::new);
     }
 }

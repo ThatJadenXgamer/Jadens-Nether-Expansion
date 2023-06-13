@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "netherexp:shroomnight",
-    "netherexp:boomshroom_bundle"
+    "netherexp:boomshroom_bundle",
+    "netherexp:crimson_sporeshroom",
+    "netherexp:warped_sporeshroom"
   ]
 }

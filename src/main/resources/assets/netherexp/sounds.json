@@ -518,6 +518,32 @@
       "netherexp:block/smokestalk_wood/step6"
     ]
   },
+  "item.gold_ingot.gilding": {
+    "subtitle": "subtitles.item.gold_ingot.gilding",
+    "sounds": [
+      "netherexp:block/gilding/gilding1",
+      "netherexp:block/gilding/gilding2"
+    ]
+  },
+  "block.explosive_scoria.ambient": {
+    "subtitle": "subtitles.block.explosive_scoria.ambient",
+    "sounds": [
+      "netherexp:block/explosive_scoria/ambient1",
+      "netherexp:block/explosive_scoria/ambient2",
+      "netherexp:block/explosive_scoria/ambient3",
+      "netherexp:block/explosive_scoria/ambient4",
+      "netherexp:block/explosive_scoria/ambient5",
+      "netherexp:block/explosive_scoria/ambient6"
+    ]
+  },
+  "block.sporeshroom.trampolined": {
+    "subtitle": "subtitles.block.sporeshroom.trampolined",
+    "sounds": [
+      "netherexp:block/sporeshroom/boing1",
+      "netherexp:block/sporeshroom/boing2",
+      "netherexp:block/sporeshroom/boing3"
+    ]
+  },
   "music_disc.cricket": {
     "sounds": [
       {

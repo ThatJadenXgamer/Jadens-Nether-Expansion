@@ -79,6 +79,7 @@ extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+
         if (!state.canPlaceAt(world, pos)) {
             return Blocks.AIR.getDefaultState();
         }

@@ -22,7 +22,7 @@
       "model": "netherexp:block/white_ash_height14"
     },
     "layers=8": {
-      "model": "netherexp:block/white_ash_height16"
+      "model": "netherexp:block/white_ash_block"
     }
   }
 }

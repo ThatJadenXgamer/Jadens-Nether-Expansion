@@ -3,7 +3,7 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "netherexp:charred_smokestalk_block"
+      "tag": "netherexp:smokestalk_blocks"
     }
   ],
   "result": {
