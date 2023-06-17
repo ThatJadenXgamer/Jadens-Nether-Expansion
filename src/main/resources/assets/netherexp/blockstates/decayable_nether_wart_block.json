@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "distance=1": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=2": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=3": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=4": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=5": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=6": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=7": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=8": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=9": {
+      "model": "minecraft:block/nether_wart_block"
+    },
+    "distance=10": {
+      "model": "minecraft:block/nether_wart_block"
+    }
+  }
+}

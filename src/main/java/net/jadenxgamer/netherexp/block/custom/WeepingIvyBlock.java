@@ -25,7 +25,7 @@ public class WeepingIvyBlock
 
     public WeepingIvyBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)this.getDefaultState().with(WATERLOGGED, false));
+        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
     }
 
     @Override
@@ -59,9 +59,10 @@ public class WeepingIvyBlock
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        this.grower.grow(state, (WorldAccess)world, pos, random);
+        this.grower.grow(state, world, pos, random);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
         if (state.get(WATERLOGGED)) {

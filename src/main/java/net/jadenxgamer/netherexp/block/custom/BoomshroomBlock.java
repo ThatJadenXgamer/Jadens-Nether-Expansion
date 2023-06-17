@@ -7,6 +7,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 public class BoomshroomBlock extends PlantBlock {
+
+    //TODO: Needs functionality
     public BoomshroomBlock(Settings settings) {
         super(settings);
     }

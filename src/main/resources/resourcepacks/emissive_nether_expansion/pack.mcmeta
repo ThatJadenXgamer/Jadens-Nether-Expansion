@@ -2,7 +2,7 @@
    "pack":{
       "pack_format": 9,
       "description": [
-		{"text":"Makes certain textures Glow","color":"gray"}
+		{"text":"Enables Glowing Textures","color":"gray"}
 	  ]
    }
 }

@@ -21,6 +21,7 @@ extends Block {
         super(settings);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean hasSidedTransparency(BlockState state) {
         return true;
@@ -34,6 +35,7 @@ extends Block {
         return super.getPlacementState(ctx);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (direction == Direction.UP && !state.canPlaceAt(world, pos)) {
@@ -46,22 +48,26 @@ extends Block {
         world.setBlockState(pos, NyliumPathBlock.pushEntitiesUpBeforeBlockChange(state, Blocks.NETHERRACK.getDefaultState(), world, pos));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         NyliumPathBlock.revertToBase(state, world, pos);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockState blockState = world.getBlockState(pos.up());
         return !blockState.getMaterial().isSolid() || blockState.getBlock() instanceof FenceGateBlock;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;

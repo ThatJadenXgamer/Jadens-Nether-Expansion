@@ -39,7 +39,7 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.TWISTING_IVY, new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
     public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
-            new MusicDiscItem(8, ModSoundEvents.MUSIC_DISC_CRICKET,new FabricItemSettings().group(ModItemGroup.NETHEREXP).maxCount(1).rarity(Rarity.RARE), 164));
+            new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET,new FabricItemSettings().group(ModItemGroup.NETHEREXP).maxCount(1).rarity(Rarity.RARE), 164));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(NetherExp.MOD_ID, name), item);

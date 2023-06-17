@@ -10,6 +10,7 @@ import net.minecraft.world.BlockView;
 
 public class BeardBlock extends HangingRootsBlock {
 
+    //TODO: There is some cullface issues with the block
     protected static final VoxelShape Shape = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
 
     public BeardBlock(Settings settings) {

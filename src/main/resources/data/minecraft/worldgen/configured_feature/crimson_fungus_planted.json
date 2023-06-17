@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:huge_fungus",
+  "config": {
+    "hat_state": {
+      "Name": "netherexp:decayable_nether_wart_block",
+      "Properties": {
+        "distance": "1"
+      }
+    },
+    "decor_state": {
+      "Name": "netherexp:decayable_shroomlight",
+      "Properties": {
+        "distance": "1"
+      }
+    },
+    "stem_state": {
+      "Name": "minecraft:crimson_stem",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "valid_base_block": {
+      "Name": "minecraft:crimson_nylium"
+    },
+    "planted": true
+  }
+}
+

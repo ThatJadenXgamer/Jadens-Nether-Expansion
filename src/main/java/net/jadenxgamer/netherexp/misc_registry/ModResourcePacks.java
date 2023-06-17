@@ -9,7 +9,6 @@ import net.minecraft.util.Identifier;
 public class ModResourcePacks {
 
     public static void init() {
-
         Identifier classicPackId = new Identifier(NetherExp.MOD_ID, "vanilla_nether");
         Identifier EmissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
 
@@ -19,6 +18,8 @@ public class ModResourcePacks {
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
         -> ResourceManagerHelper.registerBuiltinResourcePack(EmissivePackId, container, "Emissive Nether Expansion", ResourcePackActivationType.NORMAL));
 
+
+        NetherExp.LOGGER.info("Registering Built-in ResourcePacks for " + NetherExp.MOD_ID);
     }
 
 }

@@ -18,6 +18,8 @@ public class SporesBlock
 extends RodBlock
 implements Fertilizable {
 
+    //TODO: uh-hhh, what the fuck was I thinking when making this block lmfao
+
     protected final VoxelShape northShape;
     protected final VoxelShape southShape;
     protected final VoxelShape eastShape;

@@ -17,15 +17,15 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class TwistingIvyBlock
-        extends MultifaceGrowthBlock
-        implements Fertilizable,
-        Waterloggable {
+extends MultifaceGrowthBlock
+implements Fertilizable,
+Waterloggable {
     private static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     private final LichenGrower grower = new LichenGrower(this);
 
     public TwistingIvyBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)this.getDefaultState().with(WATERLOGGED, false));
+        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
     }
 
     @Override
@@ -59,9 +59,10 @@ public class TwistingIvyBlock
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        this.grower.grow(state, (WorldAccess)world, pos, random);
+        this.grower.grow(state, world, pos, random);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
         if (state.get(WATERLOGGED)) {

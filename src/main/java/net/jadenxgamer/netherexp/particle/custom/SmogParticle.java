@@ -11,7 +11,7 @@ public class SmogParticle
 extends SpriteBillboardParticle {
     SmogParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, boolean signal) {
         super(world, x, y, z);
-        this.scale(1.5f);
+        this.scale(1.7f);
         this.setBoundingBoxSpacing(0.25f, 0.25f);
         this.maxAge = signal ? this.random.nextInt(50) + 280 : this.random.nextInt(50) + 80;
         this.gravityStrength = 3.0E-6f;

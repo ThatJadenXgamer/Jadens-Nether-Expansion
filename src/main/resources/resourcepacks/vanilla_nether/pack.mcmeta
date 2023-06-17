@@ -1,6 +1,8 @@
 ﻿{
-  "pack": {
-    "pack_format": 9,
-    "description": "Replaces the Remastered Nether Art with the default"
-  }
+   "pack":{
+      "pack_format": 9,
+      "description": [
+		{"text":"Brings back the default textures","color":"gray"}
+	  ]
+   }
 }

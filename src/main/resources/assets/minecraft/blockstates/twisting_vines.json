@@ -250,15 +250,8 @@
         "weight": 30
       }
     ],
-    "age=25": [
-      {
-        "model": "minecraft:block/twisting_vines/mature",
-        "weight": 50
-      },
-      {
-        "model": "minecraft:block/twisting_vines/glow/mature",
-        "weight": 10
-      }
-    ]
+    "age=25": {
+      "model": "minecraft:block/twisting_vines/glow/mature"
+    }
   }
 }

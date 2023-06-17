@@ -11,6 +11,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class EnigmaCrownBlock extends PlantBlock {
+
+    //TODO: Needs some Functionality
     protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
     public EnigmaCrownBlock(Settings settings) {
         super(settings);

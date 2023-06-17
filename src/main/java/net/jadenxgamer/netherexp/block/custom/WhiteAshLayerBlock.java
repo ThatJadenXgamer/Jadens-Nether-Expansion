@@ -29,6 +29,10 @@ public class WhiteAshLayerBlock extends LayerBlock{
         return Block.isFaceFullSquare(blockState.getCollisionShape(world, pos.down()), Direction.UP) || blockState.isOf(this) && blockState.get(LAYERS) == 8;
     }
 
+    /*
+    While also doing LayerBlock stuff it checks for blocks underneath
+    If it happens to be Basalt then it changes it to Ashy Basalt
+    */
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 
@@ -41,10 +45,16 @@ public class WhiteAshLayerBlock extends LayerBlock{
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
+    // This does the changing magic!
     public static void ashyBasalt(WorldAccess world, BlockPos pos) {
         world.setBlockState(pos.down(), ModBlocks.ASHY_BASALT.getDefaultState(), NOTIFY_LISTENERS);
     }
 
+    /*
+    While also doing LayerBlock stuff it checks for blocks underneath
+    If it happens to be Basalt then it changes it to Ashy Basalt
+    but this time as a placement state!
+    */
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {

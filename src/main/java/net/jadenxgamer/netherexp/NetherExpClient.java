@@ -5,15 +5,14 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.jadenxgamer.netherexp.particle.ModParticles;
-import net.jadenxgamer.netherexp.particle.custom.EnigmaSporeParticle;
-import net.jadenxgamer.netherexp.particle.custom.GlimmerParticle;
-import net.jadenxgamer.netherexp.particle.custom.SmogParticle;
+import net.jadenxgamer.netherexp.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
 
 public class NetherExpClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        // BLOCK OPACITY
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CHAINWIRE_FENCE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_SPROUTS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WHITE_ASH, RenderLayer.getCutout());
@@ -44,11 +43,19 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_SKELETON_SKULL_CANDLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_SPORESHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_SPORESHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DECAYABLE_NETHER_WART_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DECAYABLE_WARPED_WART_BLOCK, RenderLayer.getCutout());
 
+        // PARTICLES
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SOUL_FLAME, FlameParticle.SmallFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GOLD_GLIMMER, GlimmerParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_SPARK, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_NETHER_WART, FallingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_WARPED_WART, FallingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_SHROOMLIGHT, FallingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_SHROOMNIGHT, FallingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.RISING_SHROOMNIGHT, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.CRIMSON_SMOG, SmogParticle.Factory::new);
     }
 }

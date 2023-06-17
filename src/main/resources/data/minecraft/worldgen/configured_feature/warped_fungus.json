@@ -2,10 +2,16 @@
   "type": "minecraft:huge_fungus",
   "config": {
     "hat_state": {
-      "Name": "minecraft:warped_wart_block"
+      "Name": "netherexp:decayable_warped_wart_block",
+      "Properties": {
+        "distance": "1"
+      }
     },
     "decor_state": {
-      "Name": "netherexp:shroomnight"
+      "Name": "netherexp:decayable_shroomnight",
+      "Properties": {
+        "distance": "1"
+      }
     },
     "stem_state": {
       "Name": "minecraft:warped_stem",

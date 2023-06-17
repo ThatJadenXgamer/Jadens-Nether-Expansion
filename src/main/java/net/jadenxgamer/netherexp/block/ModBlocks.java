@@ -404,6 +404,18 @@ public class ModBlocks {
     public static final Block WARPED_NYLIUM_PATH = registerBlock("warped_nylium_path",
             new NyliumPathBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).requiresTool().strength(0.4f).sounds(BlockSoundGroup.NYLIUM)), ModItemGroup.NETHEREXP);
 
+    public static final Block DECAYABLE_NETHER_WART_BLOCK = registerBlockWithoutItem("decayable_nether_wart_block",
+            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_NETHER_WART, Blocks.NETHER_WART_BLOCK));
+
+    public static final Block DECAYABLE_WARPED_WART_BLOCK = registerBlockWithoutItem("decayable_warped_wart_block",
+            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_WARPED_WART, Blocks.WARPED_WART_BLOCK));
+
+    public static final Block DECAYABLE_SHROOMLIGHT = registerBlockWithoutItem("decayable_shroomlight",
+            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMLIGHT, Blocks.SHROOMLIGHT));
+
+    public static final Block DECAYABLE_SHROOMNIGHT = registerBlockWithoutItem("decayable_shroomnight",
+            new DecayableWartBlock(FabricBlockSettings.copyOf(ModBlocks.SHROOMNIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMNIGHT, ModBlocks.SHROOMNIGHT));
+
     public static final Block CRIMSON_SPORESHROOM = registerBlock("crimson_sporeshroom",
             new SporeshroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.RED).strength(0.5f).sounds(BlockSoundGroup.FUNGUS),ModParticles.CRIMSON_SMOG, ParticleTypes.CRIMSON_SPORE), ModItemGroup.NETHEREXP);
 

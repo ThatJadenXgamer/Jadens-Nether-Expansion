@@ -27,6 +27,7 @@ import java.util.Optional;
 public class ExplosiveScoriaBlock
 extends OreBlock {
 
+    //TODO: Needs a way for the unstable property to be disabled in normal gameplay
     public static final BooleanProperty UNSTABLE = Properties.UNSTABLE;
 
     public ExplosiveScoriaBlock(Settings settings) {

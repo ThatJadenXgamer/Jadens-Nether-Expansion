@@ -22,15 +22,16 @@ import org.jetbrains.annotations.Nullable;
 
 public class GeyserBlock extends Block {
 
+    //TODO: Pressure mechanic requires some changes
     public static final IntProperty PRESSURE = IntProperty.of("pressure", 0, 6);
     public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
-    public static final int MAX_PRESSURE = 6;
 
     public GeyserBlock(Settings settings) {
         super(settings);
         setDefaultState(this.getStateManager().getDefaultState().with(PRESSURE, 0).with(ACTIVE, false));
     }
 
+    //TODO: Some VFXs would be great here
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         int p = state.get(PRESSURE);
@@ -51,9 +52,8 @@ public class GeyserBlock extends Block {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int p = state.get(PRESSURE);
-        float f = random.nextFloat();
         if (p < 6) {
-            world.setBlockState(pos, (state.with(PRESSURE, p  + 1)), Block.NOTIFY_LISTENERS);
+            world.setBlockState(pos,(state.with(PRESSURE, p  + 1)), Block.NOTIFY_LISTENERS);
         }
     }
 
@@ -98,6 +98,11 @@ public class GeyserBlock extends Block {
                 world.addParticle(ParticleTypes.WHITE_ASH, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
+    }
+
+    @Override
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        entity.handleFallDamage(fallDistance, 0.8f, DamageSource.FALL);
     }
 
     @Override

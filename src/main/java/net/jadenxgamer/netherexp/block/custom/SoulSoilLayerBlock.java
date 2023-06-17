@@ -12,6 +12,7 @@ public class SoulSoilLayerBlock extends LayerBlock{
         super(settings);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockState blockState = world.getBlockState(pos.down());

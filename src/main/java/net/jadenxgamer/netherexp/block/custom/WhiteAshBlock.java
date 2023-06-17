@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.block.custom;
 
 import net.jadenxgamer.netherexp.block.ModBlocks;
-import net.jadenxgamer.netherexp.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -9,10 +8,9 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-public class WhiteAshBlock extends LayerBlock{
+public class WhiteAshBlock extends Block{
     public WhiteAshBlock(Settings settings) {
         super(settings);
     }

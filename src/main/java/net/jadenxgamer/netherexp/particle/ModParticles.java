@@ -11,6 +11,12 @@ public class ModParticles {
     public static final DefaultParticleType SMALL_SOUL_FLAME = FabricParticleTypes.simple();
     public static final DefaultParticleType GOLD_GLIMMER = FabricParticleTypes.simple();
     public static final DefaultParticleType REDSTONE_SPARK = FabricParticleTypes.simple();
+    public static final DefaultParticleType FALLING_NETHER_WART = FabricParticleTypes.simple();
+    public static final DefaultParticleType FALLING_WARPED_WART = FabricParticleTypes.simple();
+    public static final DefaultParticleType FALLING_SHROOMLIGHT = FabricParticleTypes.simple();
+    public static final DefaultParticleType FALLING_SHROOMNIGHT = FabricParticleTypes.simple();
+
+    public static final DefaultParticleType RISING_SHROOMNIGHT = FabricParticleTypes.simple();
     public static final DefaultParticleType CRIMSON_SMOG = FabricParticleTypes.simple();
 
     public static void registerParticles() {
@@ -22,7 +28,19 @@ public class ModParticles {
                 GOLD_GLIMMER);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "redstone_spark"),
                 REDSTONE_SPARK);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_nether_wart"),
+                FALLING_NETHER_WART);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_warped_wart"),
+                FALLING_WARPED_WART);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_shroomlight"),
+                FALLING_SHROOMLIGHT);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_shroomnight"),
+                FALLING_SHROOMNIGHT);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "rising_shroomnight"),
+                RISING_SHROOMNIGHT);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "crimson_smog"),
                 CRIMSON_SMOG);
+
+        NetherExp.LOGGER.debug("Registering Mod Particles for " + NetherExp.MOD_ID);
     }
 }

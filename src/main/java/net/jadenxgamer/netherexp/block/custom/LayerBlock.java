@@ -16,14 +16,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class LayerBlock
 extends Block {
-    public static final int MAX_LAYERS = 8;
     public static final IntProperty LAYERS = Properties.LAYERS;
     protected static final VoxelShape[] LAYERS_TO_SHAPE = new VoxelShape[]{VoxelShapes.empty(), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 4.0, 16.0), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 6.0, 16.0), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 10.0, 16.0), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 12.0, 16.0), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 14.0, 16.0), Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)};
-    public static final int field_31248 = 5;
 
     public LayerBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(LAYERS, 1));
+        this.setDefaultState(this.stateManager.getDefaultState().with(LAYERS, 1));
     }
 
     @SuppressWarnings("deprecation")
@@ -105,7 +103,7 @@ extends Block {
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (blockState.isOf(this)) {
             int i = blockState.get(LAYERS);
-            return (BlockState)blockState.with(LAYERS, Math.min(8, i + 1));
+            return blockState.with(LAYERS, Math.min(8, i + 1));
         }
         return super.getPlacementState(ctx);
     }

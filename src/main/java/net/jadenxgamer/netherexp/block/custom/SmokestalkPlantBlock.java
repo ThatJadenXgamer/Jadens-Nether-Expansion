@@ -13,6 +13,7 @@ import net.minecraft.world.WorldAccess;
 public class SmokestalkPlantBlock
 extends AbstractStalkBlock {
 
+    //TODO: The Leaves blockstate doesn't get activated unless the block is updated
     public static final BooleanProperty LEAVES = BooleanProperty.of("leaves");
 
     public static final VoxelShape SHAPE = Block.createCuboidShape(5, 0, 5, 11, 16, 11);
