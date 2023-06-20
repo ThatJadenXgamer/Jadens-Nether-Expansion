@@ -27,12 +27,15 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class SporeshroomBlock
 extends Block
 implements Waterloggable {
 
     // BlockStates
     public static final BooleanProperty HANGING = Properties.HANGING;
+    public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     // VoxelShapes
@@ -40,14 +43,19 @@ implements Waterloggable {
     private static final VoxelShape HANGING_SHAPE = VoxelShapes.combineAndSimplify(Block.createCuboidShape(0, 0, 0, 16, 9, 16), Block.createCuboidShape(5, 9, 5, 11, 17, 11), BooleanBiFunction.OR);
 
     // Particles
-    protected final ParticleEffect particle;
+    /*
+    Spore is the actual spore particle
+    which is generated from the block
+    Smog the type of smog it emits
+    */
+    protected final ParticleEffect smog;
     protected final ParticleEffect spore;
 
-    public SporeshroomBlock(Settings settings, ParticleEffect particle, ParticleEffect spore) {
+    public SporeshroomBlock(Settings settings, ParticleEffect smog, ParticleEffect spore) {
         super(settings);
-        this.particle = particle;
+        this.smog = smog;
         this.spore = spore;
-        this.setDefaultState(this.getStateManager().getDefaultState().with(HANGING, false).with(WATERLOGGED, false));
+        this.setDefaultState(this.getStateManager().getDefaultState().with(HANGING, false).with(WATERLOGGED, false).with(ACTIVE, true));
     }
 
     @Override
@@ -64,10 +72,11 @@ implements Waterloggable {
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        boolean player = Objects.requireNonNull(ctx.getPlayer()).isSneaking();
         for (Direction direction : ctx.getPlacementDirections()) {
             BlockState blockState;
             if (direction.getAxis() != Direction.Axis.Y || !(blockState = this.getDefaultState().with(HANGING, direction == Direction.UP)).canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) continue;
-            return blockState.with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+            return blockState.with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER).with(ACTIVE, player);
         }
         return null;
     }
@@ -122,18 +131,21 @@ implements Waterloggable {
         int j = pos.getY();
         int k = pos.getZ();
         boolean h = state.get(HANGING);
+        boolean a = state.get(ACTIVE);
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (int l = 0; l < 14; ++l) {
-            mutable.set(i + MathHelper.nextInt(random, -10, 10), j + random.nextInt(10), k + MathHelper.nextInt(random, -10, 10));
+            mutable.set(i + MathHelper.nextInt(random, -20, 20), j + random.nextInt(20), k + MathHelper.nextInt(random, -20, 20));
             BlockState blockState = world.getBlockState(mutable);
             if (blockState.isFullCube(world, mutable)) continue;
-            world.addParticle(spore, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+            if (a) {
+                world.addParticle(spore, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+            }
         }
-        if (!h) {
-            world.addParticle(particle, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.008, 0.0);
+        if (!h && a) {
+            world.addParticle(smog, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.008, 0.0);
         }
-        else {
-            world.addParticle(particle, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() - 0.05, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, -0.008, 0.0);
+        else if (h && a) {
+            world.addParticle(smog, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() - 0.05, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, -0.008, 0.0);
         }
     }
 
@@ -144,6 +156,6 @@ implements Waterloggable {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(HANGING, WATERLOGGED);
+        builder.add(HANGING, WATERLOGGED, ACTIVE);
     }
 }

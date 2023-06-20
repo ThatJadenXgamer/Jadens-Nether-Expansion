@@ -420,10 +420,13 @@ public class ModBlocks {
             new SporeshroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.RED).strength(0.5f).sounds(BlockSoundGroup.FUNGUS),ModParticles.CRIMSON_SMOG, ParticleTypes.CRIMSON_SPORE), ModItemGroup.NETHEREXP);
 
     public static final Block WARPED_SPORESHROOM = registerBlock("warped_sporeshroom",
-            new SporeshroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.BRIGHT_TEAL).strength(0.5f).sounds(BlockSoundGroup.FUNGUS),ParticleTypes.CAMPFIRE_COSY_SMOKE, ParticleTypes.WARPED_SPORE), ModItemGroup.NETHEREXP);
+            new SporeshroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.BRIGHT_TEAL).strength(0.5f).sounds(BlockSoundGroup.FUNGUS),ModParticles.WARPED_SMOG, ParticleTypes.WARPED_SPORE), ModItemGroup.NETHEREXP);
 
     public static final Block BASALTIC_GEYSER = registerBlock("basaltic_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).ticksRandomly().sounds(BlockSoundGroup.BASALT)), ModItemGroup.NETHEREXP);
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).ticksRandomly().sounds(BlockSoundGroup.BASALT),ParticleTypes.CAMPFIRE_COSY_SMOKE, ParticleTypes.WHITE_ASH), ModItemGroup.NETHEREXP);
+
+    public static final Block SOULED_GEYSER = registerBlock("souled_geyser",
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).ticksRandomly().sounds(BlockSoundGroup.BASALT),ParticleTypes.CAMPFIRE_COSY_SMOKE, ParticleTypes.ASH), ModItemGroup.NETHEREXP);
 
     public static final Block ASHY_BASALT = registerBlockWithoutItem("ashy_basalt",
             new AshyBasaltBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));

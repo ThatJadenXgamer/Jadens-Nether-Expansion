@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -26,8 +27,19 @@ public class GeyserBlock extends Block {
     public static final IntProperty PRESSURE = IntProperty.of("pressure", 0, 6);
     public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
 
-    public GeyserBlock(Settings settings) {
+    // Particles
+    /*
+    Ash is the actual ash particle
+    which is generated from the block
+    Smoke the type of smoke it emits
+    */
+    protected final ParticleEffect smoke;
+    protected final ParticleEffect ash;
+
+    public GeyserBlock(Settings settings, ParticleEffect smoke, ParticleEffect ash) {
         super(settings);
+        this.smoke = smoke;
+        this.ash = ash;
         setDefaultState(this.getStateManager().getDefaultState().with(PRESSURE, 0).with(ACTIVE, false));
     }
 
@@ -49,6 +61,7 @@ public class GeyserBlock extends Block {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int p = state.get(PRESSURE);
@@ -57,6 +70,7 @@ public class GeyserBlock extends Block {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (direction == Direction.DOWN) {
@@ -91,11 +105,11 @@ public class GeyserBlock extends Block {
             world.addParticle(ParticleTypes.SMOKE, (double)pos.getX() + 0.5, (double)pos.getY() + 1, (double)pos.getZ() + 0.5, 0.0, 0.0, 0.0);
         }
         for (int l = 0; l < 14; ++l) {
-            mutable.set(i + MathHelper.nextInt(random, -10, 10), j + random.nextInt(10), k + MathHelper.nextInt(random, -10, 10));
+            mutable.set(i + MathHelper.nextInt(random, -20, 20), j + random.nextInt(20), k + MathHelper.nextInt(random, -20, 20));
             BlockState blockState = world.getBlockState(mutable);
             if (blockState.isFullCube(world, mutable)) continue;
             if (a) {
-                world.addParticle(ParticleTypes.WHITE_ASH, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                world.addParticle(this.ash, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
     }

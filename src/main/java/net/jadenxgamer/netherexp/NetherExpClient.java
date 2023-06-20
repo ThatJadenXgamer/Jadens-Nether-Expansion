@@ -57,5 +57,6 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_SHROOMNIGHT, FallingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.RISING_SHROOMNIGHT, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.CRIMSON_SMOG, SmogParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.WARPED_SMOG, SmogParticle.Factory::new);
     }
 }

@@ -15,6 +15,7 @@ public class EnigmaSporeParticle extends FireSmokeParticle {
         this.green = 1.0f;
         this.maxAge = 32;
     }
+
     @Environment(value= EnvType.CLIENT)
     public static class Factory
             implements ParticleFactory<DefaultParticleType> {

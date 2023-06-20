@@ -10,7 +10,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -36,6 +35,7 @@ public class DecayableWartBlock extends Block {
         return state.get(DISTANCE) == 10;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (this.shouldDecay(state)) {
@@ -47,11 +47,13 @@ public class DecayableWartBlock extends Block {
         return state.get(DISTANCE) == 10;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         world.setBlockState(pos, DecayableWartBlock.updateDistanceFromStem(state, world, pos), Block.NOTIFY_ALL);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         int i;
@@ -65,11 +67,11 @@ public class DecayableWartBlock extends Block {
         int i = 10;
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (Direction direction : Direction.values()) {
-            mutable.set((Vec3i)pos, direction);
+            mutable.set(pos, direction);
             i = Math.min(i, DecayableWartBlock.getDistanceFromStem(world.getBlockState(mutable)) + 1);
             if (i == 1) break;
         }
-        return (BlockState)state.with(DISTANCE, i);
+        return state.with(DISTANCE, i);
     }
 
     private static int getDistanceFromStem(BlockState state) {
