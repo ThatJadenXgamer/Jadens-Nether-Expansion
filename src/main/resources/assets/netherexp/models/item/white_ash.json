@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "netherexp:item/white_ash"
-  }
+  "parent": "netherexp:block/white_ash_height2"
 }

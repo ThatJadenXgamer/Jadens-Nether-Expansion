@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "candles=1,lit=false": {
+      "model": "netherexp:block/soul_candle/one"
+    },
+    "candles=2,lit=false": {
+      "model": "netherexp:block/soul_candle/two"
+    },
+    "candles=3,lit=false": {
+      "model": "netherexp:block/soul_candle/three"
+    },
+    "candles=1,lit=true": {
+      "model": "netherexp:block/soul_candle/one_lit"
+    },
+    "candles=2,lit=true": {
+      "model": "netherexp:block/soul_candle/two_lit"
+    },
+    "candles=3,lit=true": {
+      "model": "netherexp:block/soul_candle/three_lit"
+    }
+  }
+}

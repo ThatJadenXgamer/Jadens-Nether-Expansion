@@ -29,6 +29,8 @@ public class ModRegistries {
         CompostingChanceRegistry registry = CompostingChanceRegistry.INSTANCE;
 
         registry.add(ModBlocks.WHITE_ASH_BLOCK, 0.5f);
+        registry.add(ModBlocks.WHITE_ASH, 0.2f);
+        registry.add(ModItems.WHITE_ASH_POWDER, 0.1f);
     }
 
     private static void registerStrippables() {

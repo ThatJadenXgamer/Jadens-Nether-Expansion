@@ -7,6 +7,7 @@ import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.MusicDiscItem;
+import net.minecraft.item.SnowballItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
@@ -25,6 +26,9 @@ public class ModItems {
 
     public static final Item IRON_SCRAP = registerItem("iron_scrap",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
+
+    public static final Item WHITE_ASH_POWDER = registerItem("white_ash_powder",
+            new SnowballItem(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
     public static final Item RAW_PYRITE = registerItem("raw_pyrite",
             new Item(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));

@@ -35,10 +35,11 @@ extends AbstractPlantStemBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         int age = state.get(AGE);
+        float f = random.nextFloat();
         double x = (double)pos.getX() + random.nextDouble();
         double y = (double)pos.getY() + 0.8;
         double z = (double)pos.getZ() + random.nextDouble();
-        if (age >= 25) {
+        if (age >= 25 && f < 0.3) {
             world.addParticle(ModParticles.RISING_SHROOMNIGHT, x, y, z, MathHelper.nextDouble(random, -0.02, 0.02), 0.08, MathHelper.nextDouble(random, -0.02, 0.02));
         }
     }

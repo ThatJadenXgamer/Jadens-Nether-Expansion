@@ -4,6 +4,7 @@ import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
@@ -25,7 +26,7 @@ extends Block {
     protected final ParticleEffect particle;
     protected final ParticleEffect smoke;
 
-    public SkullCandleBlock(Settings settings, ParticleEffect particle, ParticleEffect smoke) {
+    public SkullCandleBlock(Settings settings, ParticleEffect particle, ParticleEffect smoke){
         super(settings);
         this.particle = particle;
         this.smoke = smoke;

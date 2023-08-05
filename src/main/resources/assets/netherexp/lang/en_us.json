@@ -3,6 +3,7 @@
   "item.netherexp.hogham": "Raw Hogham",
   "item.netherexp.cooked_hogham": "Cooked Hogham",
   "item.netherexp.warpspores": "Warpspores",
+  "item.netherexp.white_ash_powder": "White Ash Powder",
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
@@ -21,6 +22,8 @@
   "block.netherexp.cracked_soul_slate_bricks": "Cracked Soul Slate Bricks",
   "block.netherexp.soul_slate_brick_pillar": "Soul Slate Brick Pillar",
   "block.netherexp.chiseled_soul_slate_bricks": "Chiseled Soul Slate Bricks",
+
+  "block.netherexp.soul_candle": "Soul Candle",
 
   "block.netherexp.smooth_netherrack": "Smooth Netherrack",
   "block.netherexp.smooth_netherrack_slab": "Smooth Netherrack Slab",
@@ -182,6 +185,7 @@
   "death.attack.igneousVines": "%1$s was pricked to death while climbing igneous vines",
   "death.attack.igneousVines.player": "%1$s was pricked to death while climbing igneous vines whilst trying to escape %2$s",
   "death.attack.explosiveScoria": "%1$s figured out what the 'Explosive' in Explosive Scoria meant",
+  "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
 
   "effect.netherexp.hallucination": "Hallucination",
 

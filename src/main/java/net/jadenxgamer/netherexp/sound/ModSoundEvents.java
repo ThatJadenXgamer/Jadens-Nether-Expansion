@@ -67,6 +67,15 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_SMOKESTALK_WOOD_HIT = registerSoundEvent("block.smokestalk_wood.hit");
     public static SoundEvent BLOCK_SMOKESTALK_WOOD_FALL = registerSoundEvent("block.smokestalk_wood.fall");
 
+    // SOUL CANDLE
+
+    public static SoundEvent BLOCK_SOUL_CANDLE_BREAK = registerSoundEvent("block.soul_candle.break");
+    public static SoundEvent BLOCK_SOUL_CANDLE_STEP = registerSoundEvent("block.soul_candle.step");
+    public static SoundEvent BLOCK_SOUL_CANDLE_PLACE = registerSoundEvent("block.soul_candle.place");
+    public static SoundEvent BLOCK_SOUL_CANDLE_HIT = registerSoundEvent("block.soul_candle.hit");
+    public static SoundEvent BLOCK_SOUL_CANDLE_FALL = registerSoundEvent("block.soul_candle.fall");
+    public static SoundEvent BLOCK_SOUL_CANDLE_AMBIENT = registerSoundEvent("block.soul_candle.ambient");
+
     // Music
     public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
 
@@ -110,6 +119,10 @@ public class ModSoundEvents {
     public static final BlockSoundGroup SMOKESTALK_WOOD = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_SMOKESTALK_WOOD_BREAK, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_STEP, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_PLACE,
             ModSoundEvents.BLOCK_SMOKESTALK_WOOD_HIT, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_FALL);
+
+    public static final BlockSoundGroup SOUL_CANDLE = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_SOUL_CANDLE_BREAK, ModSoundEvents.BLOCK_SOUL_CANDLE_STEP, ModSoundEvents.BLOCK_SOUL_CANDLE_PLACE,
+            ModSoundEvents.BLOCK_SOUL_CANDLE_HIT, ModSoundEvents.BLOCK_SOUL_CANDLE_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

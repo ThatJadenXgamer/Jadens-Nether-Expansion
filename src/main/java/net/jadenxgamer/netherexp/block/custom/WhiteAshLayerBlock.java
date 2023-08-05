@@ -45,7 +45,7 @@ public class WhiteAshLayerBlock extends LayerBlock{
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
-    // This does the changing magic!
+    // This does the changing magic
     public static void ashyBasalt(WorldAccess world, BlockPos pos) {
         world.setBlockState(pos.down(), ModBlocks.ASHY_BASALT.getDefaultState(), NOTIFY_LISTENERS);
     }

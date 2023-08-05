@@ -3,15 +3,18 @@ package net.jadenxgamer.netherexp.block.custom;
 import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import org.jetbrains.annotations.Nullable;
 
 public class SmokestalkPlantBlock
-extends AbstractStalkBlock {
+extends AbstractPlantBlock {
 
     //TODO: The Leaves blockstate doesn't get activated unless the block is updated
     public static final BooleanProperty LEAVES = BooleanProperty.of("leaves");
@@ -25,21 +28,36 @@ extends AbstractStalkBlock {
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        BlockState blockState = world.getBlockState(pos.down());
         if (direction == this.growthDirection.getOpposite() && !state.canPlaceAt(world, pos)) {
             world.createAndScheduleBlockTick(pos, this, 1);
         }
-        AbstractStalkStemBlock abstractStalkStemBlock = this.getStem();
-        if (direction == this.growthDirection && !neighborState.isOf(this) && !neighborState.isOf(abstractStalkStemBlock)) {
-            return this.copyState(state, abstractStalkStemBlock.getRandomGrowthState(world));
+        AbstractPlantStemBlock abstractPlantStemBlock = this.getStem();
+        if (direction == this.growthDirection && !neighborState.isOf(this) && !neighborState.isOf(abstractPlantStemBlock)) {
+            return this.copyState(state, abstractPlantStemBlock.getRandomGrowthState(world));
         }
         if (this.tickWater) {
             world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-        if (blockState.isOf(Blocks.GRAY_CONCRETE)) {
-            return state.with(LEAVES, true);
+        if (direction == Direction.DOWN) {
+            return state.with(LEAVES, this.isGrayConcrete(neighborState));
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
+
+    @Override
+    @Nullable
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos().offset(this.growthDirection));
+        BlockPos blockPos = ctx.getBlockPos();
+        World worldAccess = ctx.getWorld();
+        if (blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant())) {
+            return this.getPlant().getDefaultState().with(LEAVES, this.isGrayConcrete(worldAccess.getBlockState(blockPos.down())));
+        }
+        return this.getRandomGrowthState(ctx.getWorld());
+    }
+
+    private boolean isGrayConcrete(BlockState state) {
+        return state.isOf(Blocks.GRAY_CONCRETE);
     }
 
     @Override
@@ -48,7 +66,7 @@ extends AbstractStalkBlock {
     }
 
     @Override
-    protected AbstractStalkStemBlock getStem() {
-        return (AbstractStalkStemBlock) ModBlocks.SMOKESTALK;
+    protected AbstractPlantStemBlock getStem() {
+        return (AbstractPlantStemBlock) ModBlocks.SMOKESTALK;
     }
 }

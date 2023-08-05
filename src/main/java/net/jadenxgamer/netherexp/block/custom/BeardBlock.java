@@ -6,15 +6,20 @@ import net.minecraft.block.HangingRootsBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class BeardBlock extends HangingRootsBlock {
-
-    //TODO: There is some cullface issues with the block
     protected static final VoxelShape Shape = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
 
     public BeardBlock(Settings settings) {
         super(settings);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public VoxelShape getSidesShape(BlockState state, BlockView world, BlockPos pos) {
+        return VoxelShapes.empty();
     }
 
     @Override

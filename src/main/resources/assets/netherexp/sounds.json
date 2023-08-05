@@ -518,6 +518,69 @@
       "netherexp:block/smokestalk_wood/step6"
     ]
   },
+  "block.soul_candle.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/soul_candle/break1",
+      "netherexp:block/soul_candle/break2",
+      "netherexp:block/soul_candle/break3",
+      "netherexp:block/soul_candle/break4",
+      "netherexp:block/soul_candle/break5"
+    ]
+  },
+  "block.soul_candle.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "minecraft:block/candle/step1",
+      "minecraft:block/candle/step2",
+      "minecraft:block/candle/step3",
+      "minecraft:block/candle/step4",
+      "minecraft:block/candle/step5"
+    ]
+  },
+  "block.soul_candle.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/soul_candle/break1",
+      "netherexp:block/soul_candle/break2",
+      "netherexp:block/soul_candle/break3",
+      "netherexp:block/soul_candle/break4",
+      "netherexp:block/soul_candle/break5"
+    ]
+  },
+  "block.soul_candle.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "minecraft:block/candle/step1",
+      "netherexp:block/candle/step2",
+      "minecraft:block/candle/step3",
+      "minecraft:block/candle/step4",
+      "minecraft:block/candle/step5"
+    ]
+  },
+  "block.soul_candle.fall": {
+    "sounds": [
+      "minecraft:block/candle/step1",
+      "minecraft:block/candle/step2",
+      "minecraft:block/candle/step3",
+      "minecraft:block/candle/step4",
+      "minecraft:block/candle/step5"
+    ]
+  },
+  "block.soul_candle.ambient": {
+    "subtitle": "subtitles.block.soul_candle.ambient",
+    "sounds": [
+      "netherexp:block/soul_candle/ambient1",
+      "netherexp:block/soul_candle/ambient2",
+      "netherexp:block/soul_candle/ambient3",
+      "netherexp:block/soul_candle/ambient4",
+      "netherexp:block/soul_candle/ambient5",
+      "netherexp:block/soul_candle/ambient6",
+      "netherexp:block/soul_candle/ambient7",
+      "netherexp:block/soul_candle/ambient8",
+      "netherexp:block/soul_candle/ambient9"
+    ]
+  },
   "item.gold_ingot.gilding": {
     "subtitle": "subtitles.item.gold_ingot.gilding",
     "sounds": [

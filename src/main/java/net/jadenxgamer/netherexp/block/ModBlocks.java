@@ -24,7 +24,7 @@ public class ModBlocks {
     // Soul SLate
 
     public static final Block SOUL_SLATE = registerBlock("soul_slate",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP);
+            new Block(FabricBlockSettings.of(Material.STONE, MapColor.BROWN).strength(4f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP);
 
     public static final Block SOUL_SLATE_SLAB = registerBlock("soul_slate_slab",
             new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP);
@@ -39,7 +39,7 @@ public class ModBlocks {
     // Soul Slate Bricks
 
     public static final Block SOUL_SLATE_BRICKS = registerBlock("soul_slate_bricks",
-            new Block(FabricBlockSettings.of(Material.STONE).strength(2f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP);
+            new Block(FabricBlockSettings.of(Material.STONE, MapColor.BROWN).strength(2f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP);
 
     public static final Block SOUL_SLATE_BRICK_SLAB = registerBlock("soul_slate_brick_slab",
             new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP);
@@ -63,6 +63,12 @@ public class ModBlocks {
 
     public static final Block CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks",
             new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)), ModItemGroup.NETHEREXP);
+
+    // Soul Candle
+
+    //TODO: Add a Soul Candle Cake
+    public static final Block SOUL_CANDLE = registerBlock("soul_candle",
+            new SoulCandleBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.BROWN).nonOpaque().strength(0.1f).sounds(ModSoundEvents.SOUL_CANDLE).luminance(SoulCandleBlock.STATE_TO_LUMINANCE)), ModItemGroup.NETHEREXP);
 
     // Smooth Netherrack
 
@@ -395,6 +401,9 @@ public class ModBlocks {
             new SoulSoilLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
                     .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP);
 
+
+    // Path Blocks
+
     public static final Block SOUL_PATH = registerBlock("soul_path",
             new SoulPathBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).strength(0.5f).sounds(BlockSoundGroup.SOUL_SOIL)), ModItemGroup.NETHEREXP);
 
@@ -403,6 +412,9 @@ public class ModBlocks {
 
     public static final Block WARPED_NYLIUM_PATH = registerBlock("warped_nylium_path",
             new NyliumPathBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).requiresTool().strength(0.4f).sounds(BlockSoundGroup.NYLIUM)), ModItemGroup.NETHEREXP);
+
+
+    // Decayable Blocks
 
     public static final Block DECAYABLE_NETHER_WART_BLOCK = registerBlockWithoutItem("decayable_nether_wart_block",
             new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_NETHER_WART, Blocks.NETHER_WART_BLOCK));
@@ -416,27 +428,31 @@ public class ModBlocks {
     public static final Block DECAYABLE_SHROOMNIGHT = registerBlockWithoutItem("decayable_shroomnight",
             new DecayableWartBlock(FabricBlockSettings.copyOf(ModBlocks.SHROOMNIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMNIGHT, ModBlocks.SHROOMNIGHT));
 
+    // Particle Emitters
+
     public static final Block CRIMSON_SPORESHROOM = registerBlock("crimson_sporeshroom",
             new SporeshroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.RED).strength(0.5f).sounds(BlockSoundGroup.FUNGUS),ModParticles.CRIMSON_SMOG, ParticleTypes.CRIMSON_SPORE), ModItemGroup.NETHEREXP);
 
     public static final Block WARPED_SPORESHROOM = registerBlock("warped_sporeshroom",
             new SporeshroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.BRIGHT_TEAL).strength(0.5f).sounds(BlockSoundGroup.FUNGUS),ModParticles.WARPED_SMOG, ParticleTypes.WARPED_SPORE), ModItemGroup.NETHEREXP);
 
-    public static final Block BASALTIC_GEYSER = registerBlock("basaltic_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).ticksRandomly().sounds(BlockSoundGroup.BASALT),ParticleTypes.CAMPFIRE_COSY_SMOKE, ParticleTypes.WHITE_ASH), ModItemGroup.NETHEREXP);
-
     public static final Block SOULED_GEYSER = registerBlock("souled_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).ticksRandomly().sounds(BlockSoundGroup.BASALT),ParticleTypes.CAMPFIRE_COSY_SMOKE, ParticleTypes.ASH), ModItemGroup.NETHEREXP);
+            new GeyserBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE),ModParticles.BLACK_SMOKE, ParticleTypes.ASH), ModItemGroup.NETHEREXP);
+
+    public static final Block BASALTIC_GEYSER = registerBlock("basaltic_geyser",
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT),ModParticles.WHITE_SMOKE, ParticleTypes.WHITE_ASH), ModItemGroup.NETHEREXP);
+
+    // White Ash
 
     public static final Block ASHY_BASALT = registerBlockWithoutItem("ashy_basalt",
             new AshyBasaltBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
 
     public static final Block WHITE_ASH = registerBlock("white_ash",
-            new WhiteAshLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
+            new WhiteAshLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.1f).requiresTool()
             .sounds(ModSoundEvents.WHITE_ASH).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP);
 
     public static final Block WHITE_ASH_BLOCK = registerBlock("white_ash_block",
-            new WhiteAshBlock(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.7f).requiresTool().sounds(ModSoundEvents.WHITE_ASH)), ModItemGroup.NETHEREXP);
+            new WhiteAshBlock(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.2f).requiresTool().sounds(ModSoundEvents.WHITE_ASH)), ModItemGroup.NETHEREXP);
 
     public static final Block CHAINWIRE_FENCE = registerBlock("chainwire_fence",
             new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)), ModItemGroup.NETHEREXP);
@@ -509,8 +525,9 @@ public class ModBlocks {
     public static final Block TWISTING_POLISHED_BLACKSTONE_BRICKS = registerBlock("twisting_polished_blackstone_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)), ModItemGroup.NETHEREXP);
 
-    // METHODS:
+    // REGISTRIES:
 
+    @SuppressWarnings("all")
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, ModItemGroup.NETHEREXP);
         return Registry.register(Registry.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
@@ -520,6 +537,7 @@ public class ModBlocks {
         return Registry.register(Registry.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
     }
 
+    @SuppressWarnings("all")
     private static Item registerBlockItem(String name, Block block, ItemGroup tab) {
         return Registry.register(Registry.ITEM, new Identifier(NetherExp.MOD_ID, name),
                 new BlockItem(block, new FabricItemSettings().group(tab)));

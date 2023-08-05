@@ -16,8 +16,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class DecayableWartBlock extends Block {
-
-    //TODO: There are some cullface issues here, ideally make it behave like Leaves
     public static final IntProperty DISTANCE = IntProperty.of("distance", 1, 10);
 
     protected final ParticleEffect particle;

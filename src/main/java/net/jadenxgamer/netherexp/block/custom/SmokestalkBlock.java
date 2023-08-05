@@ -9,7 +9,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
 public class SmokestalkBlock
-extends AbstractStalkStemBlock {
+extends AbstractPlantStemBlock {
 
     public static final VoxelShape SHAPE = VoxelShapes.combineAndSimplify(Block.createCuboidShape(5, 0, 5, 11, 8, 11), Block.createCuboidShape(4, 8, 4, 12, 12, 12), BooleanBiFunction.OR);
 

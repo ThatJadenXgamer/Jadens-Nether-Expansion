@@ -2,8 +2,14 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1,
-      "bonus_rolls": 0,
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {}
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -13,169 +19,337 @@
               "children": [
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 1,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "1"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 1.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 2,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "2"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 2.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 3,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "3"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 3.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 4,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "4"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 4.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 5,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "5"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 5.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 6,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "6"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 6.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 7,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "7"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 7.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
                 },
                 {
                   "type": "minecraft:item",
-                  "name": "netherexp:white_ash",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 8,
-                      "add": false
-                    }
-                  ],
                   "conditions": [
                     {
-                      "condition": "minecraft:block_state_property",
                       "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
                       "properties": {
                         "layers": "8"
                       }
                     }
-                  ]
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 8.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash_powder"
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:inverted",
+                  "term": {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                      "enchantments": [
+                        {
+                          "enchantment": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "layers": "1"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 1.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "layers": "2"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 2.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "layers": "3"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 3.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "layers": "4"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 4.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "layers": "5"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 5.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "layers": "6"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 6.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "block": "netherexp:white_ash",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "layers": "7"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 7.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "netherexp:white_ash"
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "netherexp:white_ash_block"
                 }
               ]
             }
           ]
         }
-      ]
+      ],
+      "rolls": 1.0
     }
   ]
 }

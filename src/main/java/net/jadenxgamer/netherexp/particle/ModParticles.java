@@ -20,6 +20,9 @@ public class ModParticles {
     public static final DefaultParticleType RISING_SHROOMNIGHT = FabricParticleTypes.simple();
     public static final DefaultParticleType CRIMSON_SMOG = FabricParticleTypes.simple();
     public static final DefaultParticleType WARPED_SMOG = FabricParticleTypes.simple();
+    public static final DefaultParticleType BLACK_SMOKE = FabricParticleTypes.simple();
+    public static final DefaultParticleType WHITE_SMOKE = FabricParticleTypes.simple();
+    public static final DefaultParticleType RED_SMOKE = FabricParticleTypes.simple();
 
     // Registering Particles
     public static void registerParticles() {
@@ -45,6 +48,12 @@ public class ModParticles {
                 CRIMSON_SMOG);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "warped_smog"),
                 WARPED_SMOG);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "black_smoke"),
+                BLACK_SMOKE);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "white_smoke"),
+                WHITE_SMOKE);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "red_smoke"),
+                RED_SMOKE);
 
         NetherExp.LOGGER.debug("Registering Mod Particles for " + NetherExp.MOD_ID);
     }
