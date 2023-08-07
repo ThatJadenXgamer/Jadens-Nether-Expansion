@@ -607,6 +607,35 @@
       "netherexp:block/sporeshroom/boing3"
     ]
   },
+  "entity.warphopper.ambient": {
+    "subtitle": "subtitles.entity.warphopper.ambient",
+    "sounds": [
+      "netherexp:mob/warphopper/idle1",
+      "netherexp:mob/warphopper/idle2",
+      "netherexp:mob/warphopper/idle3",
+      "netherexp:mob/warphopper/idle4"
+    ]
+  },
+  "entity.warphopper.hurt": {
+    "subtitle": "subtitles.entity.warphopper.hurt",
+    "sounds": [
+      "netherexp:mob/warphopper/hurt1",
+      "netherexp:mob/warphopper/hurt2",
+      "netherexp:mob/warphopper/hurt3"
+    ]
+  },
+  "block.warphopper.death": {
+    "subtitle": "subtitles.block.warphopper.death",
+    "sounds": [
+      "netherexp:mob/warphopper/death"
+    ]
+  },
+  "block.warphopper.cloak": {
+    "subtitle": "subtitles.block.warphopper.cloak",
+    "sounds": [
+      "netherexp:mob/warphopper/cloak"
+    ]
+  },
   "music_disc.cricket": {
     "sounds": [
       {

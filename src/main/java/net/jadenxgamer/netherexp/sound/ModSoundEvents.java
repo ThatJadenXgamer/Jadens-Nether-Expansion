@@ -10,8 +10,7 @@ import net.minecraft.util.registry.Registry;
 
 public class ModSoundEvents {
 
-    // LIST OF SOUNDS EVENTS:
-
+    //// BLOCKS:
     // Soul Slate
 
     public static SoundEvent BLOCK_SOUL_SLATE_BREAK = registerSoundEvent("block.soul_slate.break");
@@ -67,7 +66,7 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_SMOKESTALK_WOOD_HIT = registerSoundEvent("block.smokestalk_wood.hit");
     public static SoundEvent BLOCK_SMOKESTALK_WOOD_FALL = registerSoundEvent("block.smokestalk_wood.fall");
 
-    // SOUL CANDLE
+    // Soul Candle
 
     public static SoundEvent BLOCK_SOUL_CANDLE_BREAK = registerSoundEvent("block.soul_candle.break");
     public static SoundEvent BLOCK_SOUL_CANDLE_STEP = registerSoundEvent("block.soul_candle.step");
@@ -76,15 +75,22 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_SOUL_CANDLE_FALL = registerSoundEvent("block.soul_candle.fall");
     public static SoundEvent BLOCK_SOUL_CANDLE_AMBIENT = registerSoundEvent("block.soul_candle.ambient");
 
-    // Music
-    public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
-
-    // ITEM
+    // ITEMS:
 
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
     public static SoundEvent EXPLOSIVE_SCORIA_AMBIENT = registerSoundEvent("block.explosive_scoria.ambient");
-
     public static SoundEvent SPORESHROOM_TRAMPOLINED = registerSoundEvent("block.sporeshroom.trampolined");
+
+    // ENTITIES:
+
+    public static SoundEvent ENTITY_WARPHOPPER_AMBIENT = registerSoundEvent("entity.warphopper.ambient");
+    public static SoundEvent ENTITY_WARPHOPPER_HURT = registerSoundEvent("entity.warphopper.hurt");
+    public static SoundEvent ENTITY_WARPHOPPER_DEATH = registerSoundEvent("entity.warphopper.death");
+    public static SoundEvent ENTITY_WARPHOPPER_CLOAK = registerSoundEvent("entity.warphopper.cloak");
+
+
+    // MUSIC:
+    public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
 
     // LIST OF SOUND GROUPS:
 

@@ -3,7 +3,10 @@ package net.jadenxgamer.netherexp;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.block.ModBlocks;
+import net.jadenxgamer.netherexp.entity.ModEntities;
+import net.jadenxgamer.netherexp.entity.client.WarphopperRenderer;
 import net.jadenxgamer.netherexp.particle.ModParticles;
 import net.jadenxgamer.netherexp.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
@@ -59,5 +62,8 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.BLACK_SMOKE, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.WHITE_SMOKE, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.RED_SMOKE, SmogParticle.Factory::new);
+
+        // ENTITY
+        EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);
     }
 }

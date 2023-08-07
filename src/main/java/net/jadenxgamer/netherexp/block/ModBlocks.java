@@ -68,7 +68,7 @@ public class ModBlocks {
 
     //TODO: Add a Soul Candle Cake
     public static final Block SOUL_CANDLE = registerBlock("soul_candle",
-            new SoulCandleBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.BROWN).nonOpaque().strength(0.1f).sounds(ModSoundEvents.SOUL_CANDLE).luminance(SoulCandleBlock.STATE_TO_LUMINANCE)), ModItemGroup.NETHEREXP);
+            new SoulCandleBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.BROWN).noCollision().nonOpaque().strength(0.1f).sounds(ModSoundEvents.SOUL_CANDLE).luminance(SoulCandleBlock.STATE_TO_LUMINANCE)), ModItemGroup.NETHEREXP);
 
     // Smooth Netherrack
 

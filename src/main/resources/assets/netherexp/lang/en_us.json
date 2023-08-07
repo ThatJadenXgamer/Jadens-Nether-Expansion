@@ -7,6 +7,7 @@
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
+  "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
@@ -186,6 +187,12 @@
   "death.attack.igneousVines.player": "%1$s was pricked to death while climbing igneous vines whilst trying to escape %2$s",
   "death.attack.explosiveScoria": "%1$s figured out what the 'Explosive' in Explosive Scoria meant",
   "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
+
+  "subtitles.mob.warphopper.ambient": "Warphopper chirps",
+  "subtitles.mob.warphopper.hurt": "Warphopper hurts",
+  "subtitles.mob.warphopper.death": "Warphopper dies",
+  "subtitles.mob.warphopper.cloak": "Warphopper cloaks",
+  "subtitles.mob.warphopper.loop": "Warphopper sings",
 
   "effect.netherexp.hallucination": "Hallucination",
 
