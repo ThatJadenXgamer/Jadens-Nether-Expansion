@@ -12,6 +12,8 @@
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
   "block.netherexp.soul_slate": "Soul Slate",
+  "block.netherexp.pale_soul_slate": "Pale Soul Slate",
+  "block.netherexp.jagged_soul_slate": "Jagged Soul Slate",
   "block.netherexp.soul_slate_slab": "Soul Slate Slab",
   "block.netherexp.soul_slate_stairs": "Soul Slate Stairs",
   "block.netherexp.soul_slate_wall": "Soul Slate Wall",
@@ -25,6 +27,10 @@
   "block.netherexp.chiseled_soul_slate_bricks": "Chiseled Soul Slate Bricks",
 
   "block.netherexp.soul_candle": "Soul Candle",
+
+  "block.netherexp.soul_swirls": "Soul Swirls",
+  "block.netherexp.ecto_soul_sand": "Ecto Soul Sand",
+  "block.netherexp.soul_magma_block": "Soul Magma Block",
 
   "block.netherexp.smooth_netherrack": "Smooth Netherrack",
   "block.netherexp.smooth_netherrack_slab": "Smooth Netherrack Slab",
@@ -163,6 +169,7 @@
 
   "block.netherexp.chainwire_fence": "Chainwire Fence",
 
+  "block.netherexp.bone_rod": "Bone Rod",
   "block.netherexp.bone_fence": "Bone Fence",
   "block.netherexp.skeleton_skull_candle": "Skeleton Skull Candle",
   "block.netherexp.soul_skeleton_skull_candle": "Soul Skeleton Skull Candle",
@@ -188,11 +195,11 @@
   "death.attack.explosiveScoria": "%1$s figured out what the 'Explosive' in Explosive Scoria meant",
   "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
 
-  "subtitles.mob.warphopper.ambient": "Warphopper chirps",
-  "subtitles.mob.warphopper.hurt": "Warphopper hurts",
-  "subtitles.mob.warphopper.death": "Warphopper dies",
-  "subtitles.mob.warphopper.cloak": "Warphopper cloaks",
-  "subtitles.mob.warphopper.loop": "Warphopper sings",
+  "subtitles.entity.warphopper.ambient": "Warphopper chirps",
+  "subtitles.entity.warphopper.hurt": "Warphopper hurts",
+  "subtitles.entity.warphopper.death": "Warphopper dies",
+  "subtitles.entity.warphopper.cloak": "Warphopper cloaks",
+  "subtitles.entity.warphopper.loop": "Warphopper sings",
 
   "effect.netherexp.hallucination": "Hallucination",
 

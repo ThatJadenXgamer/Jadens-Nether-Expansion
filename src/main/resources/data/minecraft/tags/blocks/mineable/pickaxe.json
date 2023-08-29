@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "netherexp:soul_slate",
+    "netherexp:pale_soul_slate",
+    "netherexp:jagged_soul_slate",
     "netherexp:soul_slate_slab",
     "netherexp:soul_slate_stairs",
     "netherexp:soul_slate_wall",
@@ -75,6 +77,7 @@
     "netherexp:flamethrower",
     "netherexp:spiketrap",
 
+    "netherexp:bone_rod",
     "netherexp:bone_fence",
     "netherexp:stacked_bones",
     "netherexp:stacked_bone_slab",

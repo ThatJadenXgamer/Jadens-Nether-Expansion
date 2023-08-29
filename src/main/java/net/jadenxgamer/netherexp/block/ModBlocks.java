@@ -26,6 +26,12 @@ public class ModBlocks {
     public static final Block SOUL_SLATE = registerBlock("soul_slate",
             new Block(FabricBlockSettings.of(Material.STONE, MapColor.BROWN).strength(4f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP);
 
+    public static final Block PALE_SOUL_SLATE = registerBlock("pale_soul_slate",
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP);
+
+    public static final Block JAGGED_SOUL_SLATE = registerBlock("jagged_soul_slate",
+            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP);
+
     public static final Block SOUL_SLATE_SLAB = registerBlock("soul_slate_slab",
             new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)), ModItemGroup.NETHEREXP);
 
@@ -69,6 +75,17 @@ public class ModBlocks {
     //TODO: Add a Soul Candle Cake
     public static final Block SOUL_CANDLE = registerBlock("soul_candle",
             new SoulCandleBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.BROWN).noCollision().nonOpaque().strength(0.1f).sounds(ModSoundEvents.SOUL_CANDLE).luminance(SoulCandleBlock.STATE_TO_LUMINANCE)), ModItemGroup.NETHEREXP);
+
+    // Soul Decorations
+
+    public static final Block SOUL_SWIRLS = registerBlock("soul_swirls",
+            new SoulSwirlsBlock(7,3,FabricBlockSettings.of(Material.PLANT, MapColor.BROWN).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP);
+
+    public static final Block ECTO_SOUL_SAND = registerBlock("ecto_soul_sand",
+            new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).luminance(3).sounds(BlockSoundGroup.SOUL_SAND)), ModItemGroup.NETHEREXP);
+
+    public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
+            new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).luminance(3).sounds(BlockSoundGroup.SOUL_SOIL)), ModItemGroup.NETHEREXP);
 
     // Smooth Netherrack
 
@@ -465,8 +482,11 @@ public class ModBlocks {
     public static final Block SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle",
             new SkullCandleBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).luminance(10), ModParticles.SMALL_SOUL_FLAME, ParticleTypes.SMOKE), ModItemGroup.NETHEREXP);
 
+    public static final Block BONE_ROD = registerBlock("bone_rod",
+            new BoneRodBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.PALE_YELLOW).noCollision().strength(0.5f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
+
     public static final Block BONE_FENCE = registerBlock("bone_fence",
-            new BoneFenceBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(1.0f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
+            new BoneFenceBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.PALE_YELLOW).strength(0.5f).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);
 
     public static final Block SKULL_BLOCK = registerBlock("skull_block",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)), ModItemGroup.NETHEREXP);

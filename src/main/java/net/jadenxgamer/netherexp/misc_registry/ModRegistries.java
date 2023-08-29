@@ -43,6 +43,8 @@ public class ModRegistries {
     private static void registerFlattenable() {
         NetherExp.LOGGER.info("Registering Flattenable Blocks for " + NetherExp.MOD_ID);
         FlattenableBlockRegistry.register(Blocks.SOUL_SOIL, ModBlocks.SOUL_PATH.getDefaultState());
+        FlattenableBlockRegistry.register(Blocks.SOUL_SAND, ModBlocks.SOUL_PATH.getDefaultState());
+        FlattenableBlockRegistry.register(ModBlocks.ECTO_SOUL_SAND, Blocks.SOUL_SAND.getDefaultState());
         FlattenableBlockRegistry.register(Blocks.CRIMSON_NYLIUM, ModBlocks.CRIMSON_NYLIUM_PATH.getDefaultState());
         FlattenableBlockRegistry.register(Blocks.WARPED_NYLIUM, ModBlocks.WARPED_NYLIUM_PATH.getDefaultState());
     }

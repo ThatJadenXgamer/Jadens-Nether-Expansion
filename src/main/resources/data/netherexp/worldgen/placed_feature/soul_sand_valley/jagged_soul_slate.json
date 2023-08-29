@@ -1,0 +1,27 @@
+{
+  "feature": "netherexp:soul_sand_valley/jagged_soul_slate",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "above_bottom": 4
+        },
+        "max_inclusive": {
+          "below_top": 4
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

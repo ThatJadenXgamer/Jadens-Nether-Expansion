@@ -624,14 +624,14 @@
       "netherexp:mob/warphopper/hurt3"
     ]
   },
-  "block.warphopper.death": {
-    "subtitle": "subtitles.block.warphopper.death",
+  "entity.warphopper.death": {
+    "subtitle": "subtitles.entity.warphopper.death",
     "sounds": [
       "netherexp:mob/warphopper/death"
     ]
   },
-  "block.warphopper.cloak": {
-    "subtitle": "subtitles.block.warphopper.cloak",
+  "entity.warphopper.cloak": {
+    "subtitle": "subtitles.entity.warphopper.cloak",
     "sounds": [
       "netherexp:mob/warphopper/cloak"
     ]

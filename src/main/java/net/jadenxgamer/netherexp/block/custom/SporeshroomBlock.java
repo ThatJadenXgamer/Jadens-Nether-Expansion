@@ -44,8 +44,7 @@ implements Waterloggable {
 
     // Particles
     /*
-    Spore is the actual spore particle
-    which is generated from the block
+    Spore is the particle emitted by this block
     Smog the type of smog it emits
     */
     protected final ParticleEffect smog;

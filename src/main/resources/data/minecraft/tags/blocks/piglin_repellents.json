@@ -1,13 +1,10 @@
 {
   "replace": false,
   "values": [
+    "netherexp:soul_candle",
+    "netherexp:soul_skeleton_skull_candle",
     "netherexp:soul_pyrite_lantern",
-    "netherexp:wither_bone_block",
-    "netherexp:stacked_wither_bones",
-    "netherexp:stacked_wither_bone_slab",
-    "netherexp:stacked_wither_bone_stairs",
-    "netherexp:soul_burning_skull_block",
-    "netherexp:soul_burning_wither_skull_block",
-    "netherexp:soul_skeleton_skull"
+    "netherexp:ecto_soul_sand",
+    "netherexp:soul_magma_block"
   ]
 }

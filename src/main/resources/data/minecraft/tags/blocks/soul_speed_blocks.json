@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "netherexp:soul_slate",
+    "netherexp:pale_soul_slate",
+    "netherexp:jagged_soul_slate",
     "netherexp:soul_slate_slab",
     "netherexp:soul_slate_stairs",
     "netherexp:soul_slate_wall",
@@ -14,6 +16,8 @@
     "netherexp:soul_slate_brick_pillar",
     "netherexp:chiseled_soul_slate_bricks",
     "netherexp:soul_path",
-    "netherexp:soul_soil_layer"
+    "netherexp:soul_soil_layer",
+    "netherexp:ecto_soul_sand",
+    "netherexp:soul_magma_block"
   ]
 }

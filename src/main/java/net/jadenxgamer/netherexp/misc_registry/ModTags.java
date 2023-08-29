@@ -23,6 +23,8 @@ public class ModTags {
         public static final TagKey<Block> SMOKESTALK_CONNECTS_TO = createTag("smokestalk_connects_to");
         public static final TagKey<Block> IGNEOUS_REEDS_PLANTABLE_ON = createTag("igneous_reeds_plantable_on");
 
+        public static final TagKey<Block> MAGMA_BLOCKS = createTag("magma_blocks");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(Registry.BLOCK_KEY, new Identifier(NetherExp.MOD_ID, name));
         }

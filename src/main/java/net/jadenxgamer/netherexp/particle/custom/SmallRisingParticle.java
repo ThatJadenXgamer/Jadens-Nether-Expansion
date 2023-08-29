@@ -6,17 +6,12 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-@Environment(value=EnvType.CLIENT)
-public class AnimatedSmogParticle
+@Environment(value= EnvType.CLIENT)
+public class SmallRisingParticle
 extends SpriteBillboardParticle {
-
-    private final SpriteProvider spriteProvider;
-
-    AnimatedSmogParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, boolean signal, SpriteProvider spriteProvider) {
+    SmallRisingParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, boolean signal) {
         super(world, x, y, z);
-        this.spriteProvider = spriteProvider;
-        this.setSpriteForAge(spriteProvider);
-        this.scale(1.8f);
+        this.scale *= 0.75f;
         this.setBoundingBoxSpacing(0.25f, 0.25f);
         this.maxAge = signal ? this.random.nextInt(50) + 280 : this.random.nextInt(50) + 80;
         this.gravityStrength = 3.0E-6f;
@@ -28,7 +23,6 @@ extends SpriteBillboardParticle {
 
     @Override
     public void tick() {
-        this.setSpriteForAge(this.spriteProvider);
         this.prevPosX = this.x;
         this.prevPosY = this.y;
         this.prevPosZ = this.z;
@@ -61,10 +55,10 @@ extends SpriteBillboardParticle {
 
         @Override
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            AnimatedSmogParticle animatedSmogParticle = new AnimatedSmogParticle(clientWorld, d, e, f, g, h, i, false, this.spriteProvider);
-            animatedSmogParticle.setAlpha(0.9f);
-            animatedSmogParticle.setSprite(this.spriteProvider);
-            return animatedSmogParticle;
+            SmallRisingParticle SmallRisingParticle = new SmallRisingParticle(clientWorld, d, e, f, g, h, i, false);
+            SmallRisingParticle.setAlpha(0.9f);
+            SmallRisingParticle.setSprite(this.spriteProvider);
+            return SmallRisingParticle;
         }
     }
 }

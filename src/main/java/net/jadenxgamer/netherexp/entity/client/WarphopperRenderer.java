@@ -13,7 +13,12 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class WarphopperRenderer extends GeoEntityRenderer<WarphopperEntity> {
     public WarphopperRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new WarphopperModel());
-        this.shadowRadius = 0.4f;
+        this.shadowRadius = 1.2f;
+    }
+
+    @Override
+    protected float getSwingMotionAnimThreshold() {
+        return 0.05f;
     }
 
     @Override

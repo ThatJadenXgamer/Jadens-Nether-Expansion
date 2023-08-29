@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "netherexp:block/soul_swirls_hanging"
+  }
+}

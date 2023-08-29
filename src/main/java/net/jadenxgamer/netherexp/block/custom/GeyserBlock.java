@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.block.custom;
 
+import net.jadenxgamer.netherexp.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,8 +27,7 @@ public class GeyserBlock extends Block {
 
     // Particles
     /*
-    Ash is the actual ash particle
-    which is generated from the block
+    Ash is the particle emitted by this block
     Smoke the type of smoke it emits
     */
     protected final ParticleEffect smoke;
@@ -68,7 +68,7 @@ public class GeyserBlock extends Block {
     }
 
     private boolean isMagmaBlock(BlockState state) {
-        return state.isOf(Blocks.MAGMA_BLOCK);
+        return state.isIn(ModTags.Blocks.MAGMA_BLOCKS);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class GeyserBlock extends Block {
             BlockState blockState = world.getBlockState(mutable);
             if (blockState.isFullCube(world, mutable)) continue;
             if (a) {
-                world.addParticle(this.smoke, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.3, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.008, 0.0);
+                world.addParticle(this.smoke, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.008, 0.0);
                 world.addParticle(this.ash, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }

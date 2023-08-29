@@ -10,7 +10,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class BeardBlock extends HangingRootsBlock {
-    protected static final VoxelShape Shape = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
 
     public BeardBlock(Settings settings) {
         super(settings);
@@ -24,6 +24,6 @@ public class BeardBlock extends HangingRootsBlock {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return Shape;
+        return SHAPE;
     }
 }

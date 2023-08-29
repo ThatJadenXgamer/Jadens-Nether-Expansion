@@ -13,5 +13,5 @@ public class ModEntities {
     public static final EntityType<WarphopperEntity> WARPHOPPER = Registry.register(
             Registry.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "warphopper"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, WarphopperEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.4f,1.4f)).build());
+                    .dimensions(EntityDimensions.fixed(1.4f,4.5f)).build());
 }

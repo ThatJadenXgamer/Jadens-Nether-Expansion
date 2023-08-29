@@ -23,6 +23,7 @@ public class ModParticles {
     public static final DefaultParticleType BLACK_SMOKE = FabricParticleTypes.simple();
     public static final DefaultParticleType WHITE_SMOKE = FabricParticleTypes.simple();
     public static final DefaultParticleType RED_SMOKE = FabricParticleTypes.simple();
+    public static final DefaultParticleType SOUL_EMBER = FabricParticleTypes.simple();
 
     // Registering Particles
     public static void registerParticles() {
@@ -54,6 +55,8 @@ public class ModParticles {
                 WHITE_SMOKE);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "red_smoke"),
                 RED_SMOKE);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "soul_ember"),
+                SOUL_EMBER);
 
         NetherExp.LOGGER.debug("Registering Mod Particles for " + NetherExp.MOD_ID);
     }
