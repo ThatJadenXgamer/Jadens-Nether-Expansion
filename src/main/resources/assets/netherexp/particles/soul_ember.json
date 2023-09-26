@@ -1,5 +1,7 @@
 {
   "textures": [
-    "netherexp:soul_ember"
+    "netherexp:soul_ember1",
+    "netherexp:soul_ember2",
+    "netherexp:soul_ember3"
   ]
 }

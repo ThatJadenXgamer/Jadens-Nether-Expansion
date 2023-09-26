@@ -11,6 +11,6 @@ public class ModDamageSource extends DamageSource {
     public ModDamageSource(String name) {
         super(name);
     }
-    public static final DamageSource IGNEOUS_VINES = new DamageSource("igneousVines");
+    public static final DamageSource IGNEOUS_THORNS = new DamageSource("igneousThorns");
     public static final DamageSource EXPLOSIVE_SCORIA = new DamageSource("explosiveScoria");
 }

@@ -40,7 +40,7 @@ extends AbstractPlantStemBlock {
         }
         entity.slowMovement(state, new Vec3d(0.8f, 0.75, 0.8f));
         if (!(world.isClient || entity.lastRenderX == entity.getX() && entity.lastRenderZ == entity.getZ())) {
-           entity.damage(ModDamageSource.IGNEOUS_VINES, 1.0f);
+           entity.damage(ModDamageSource.IGNEOUS_THORNS, 1.0f);
         }
     }
 

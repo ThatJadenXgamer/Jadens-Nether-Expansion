@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:sorrowsquash_stem",
+    "netherexp:sorrowsquash_stem_plant",
+    "netherexp:sorrowsquash",
+    "netherexp:carved_sorrowsquash",
+    "netherexp:ghoul_o_lantern",
+    "netherexp:soul_ghoul_o_lantern",
+    "netherexp:soul_jack_o_lantern"
+  ]
+}

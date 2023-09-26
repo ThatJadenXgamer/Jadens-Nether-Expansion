@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "netherexp:igneous_vines",
-    "netherexp:igneous_vines_plant"
+    "netherexp:igneous_vines_plant",
+    "minecraft:chain",
+    "netherexp:pyrite_chain",
+    "netherexp:sorrowsquash_stem",
+    "netherexp:sorrowsquash_stem_plant"
   ]
 }

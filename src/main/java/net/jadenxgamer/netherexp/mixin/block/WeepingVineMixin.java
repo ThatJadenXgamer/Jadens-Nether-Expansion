@@ -10,24 +10,9 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(WeepingVinesBlock.class)
-public class WeepingVineMixin extends AbstractPlantStemBlock {
+public abstract class WeepingVineMixin extends AbstractPlantStemBlock {
     public WeepingVineMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater, double growthChance) {
         super(settings, growthDirection, outlineShape, tickWater, growthChance);
-    }
-
-    @Override
-    public int getGrowthLength(Random random) {
-        return VineLogic.getGrowthLength(random);
-    }
-
-    @Override
-    public boolean chooseStemState(BlockState state) {
-        return VineLogic.isValidForWeepingStem(state);
-    }
-
-    @Override
-    public Block getPlant() {
-        return Blocks.WEEPING_VINES_PLANT;
     }
 
     @Override

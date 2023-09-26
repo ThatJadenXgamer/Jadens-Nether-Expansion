@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
 import net.jadenxgamer.netherexp.particle.ModParticles;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoulFireBlock;
@@ -11,15 +10,11 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(SoulFireBlock.class)
-public class SoulFireMixin
+public abstract class SoulFireMixin
 extends AbstractFireBlock {
-    public SoulFireMixin(AbstractBlock.Settings settings) {
-        super(settings, 2.0f);
-    }
 
-    @Override
-    protected boolean isFlammable(BlockState state) {
-        return true;
+    public SoulFireMixin(Settings settings, float damage) {
+        super(settings, damage);
     }
 
     @Override

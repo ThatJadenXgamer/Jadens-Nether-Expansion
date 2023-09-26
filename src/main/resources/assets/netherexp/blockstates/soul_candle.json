@@ -1,22 +1,79 @@
 {
   "variants": {
-    "candles=1,lit=false": {
-      "model": "netherexp:block/soul_candle/one"
+    "candles=1,lit=false,facing=north": {
+      "model": "netherexp:block/soul_candle/north/one"
     },
-    "candles=2,lit=false": {
-      "model": "netherexp:block/soul_candle/two"
+    "candles=2,lit=false,facing=north": {
+      "model": "netherexp:block/soul_candle/north/two"
     },
-    "candles=3,lit=false": {
-      "model": "netherexp:block/soul_candle/three"
+    "candles=3,lit=false,facing=north": {
+      "model": "netherexp:block/soul_candle/north/three"
     },
-    "candles=1,lit=true": {
-      "model": "netherexp:block/soul_candle/one_lit"
+    "candles=1,lit=true,facing=north": {
+      "model": "netherexp:block/soul_candle/north/one_lit"
     },
-    "candles=2,lit=true": {
-      "model": "netherexp:block/soul_candle/two_lit"
+    "candles=2,lit=true,facing=north": {
+      "model": "netherexp:block/soul_candle/north/two_lit"
     },
-    "candles=3,lit=true": {
-      "model": "netherexp:block/soul_candle/three_lit"
+    "candles=3,lit=true,facing=north": {
+      "model": "netherexp:block/soul_candle/north/three_lit"
+    },
+
+    "candles=1,lit=false,facing=east": {
+      "model": "netherexp:block/soul_candle/east/one"
+    },
+    "candles=2,lit=false,facing=east": {
+      "model": "netherexp:block/soul_candle/east/two"
+    },
+    "candles=3,lit=false,facing=east": {
+      "model": "netherexp:block/soul_candle/east/three"
+    },
+    "candles=1,lit=true,facing=east": {
+      "model": "netherexp:block/soul_candle/east/one_lit"
+    },
+    "candles=2,lit=true,facing=east": {
+      "model": "netherexp:block/soul_candle/east/two_lit"
+    },
+    "candles=3,lit=true,facing=east": {
+      "model": "netherexp:block/soul_candle/east/three_lit"
+    },
+
+    "candles=1,lit=false,facing=south": {
+      "model": "netherexp:block/soul_candle/south/one"
+    },
+    "candles=2,lit=false,facing=south": {
+      "model": "netherexp:block/soul_candle/south/two"
+    },
+    "candles=3,lit=false,facing=south": {
+      "model": "netherexp:block/soul_candle/south/three"
+    },
+    "candles=1,lit=true,facing=south": {
+      "model": "netherexp:block/soul_candle/south/one_lit"
+    },
+    "candles=2,lit=true,facing=south": {
+      "model": "netherexp:block/soul_candle/south/two_lit"
+    },
+    "candles=3,lit=true,facing=south": {
+      "model": "netherexp:block/soul_candle/south/three_lit"
+    },
+
+    "candles=1,lit=false,facing=west": {
+      "model": "netherexp:block/soul_candle/west/one"
+    },
+    "candles=2,lit=false,facing=west": {
+      "model": "netherexp:block/soul_candle/west/two"
+    },
+    "candles=3,lit=false,facing=west": {
+      "model": "netherexp:block/soul_candle/west/three"
+    },
+    "candles=1,lit=true,facing=west": {
+      "model": "netherexp:block/soul_candle/west/one_lit"
+    },
+    "candles=2,lit=true,facing=west": {
+      "model": "netherexp:block/soul_candle/west/two_lit"
+    },
+    "candles=3,lit=true,facing=west": {
+      "model": "netherexp:block/soul_candle/west/three_lit"
     }
   }
 }

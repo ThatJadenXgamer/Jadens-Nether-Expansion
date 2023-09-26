@@ -24,6 +24,11 @@
     "netherexp:smokestalk_door",
     "netherexp:smokestalk_trapdoor",
     "netherexp:smokestalk_button",
-    "netherexp:smokestalk_pressure_plate"
+    "netherexp:smokestalk_pressure_plate",
+    "netherexp:sorrowsquash",
+    "netherexp:carved_sorrowsquash",
+    "netherexp:ghoul_o_lantern",
+    "netherexp:soul_ghoul_o_lantern",
+    "netherexp:soul_jack_o_lantern"
   ]
 }

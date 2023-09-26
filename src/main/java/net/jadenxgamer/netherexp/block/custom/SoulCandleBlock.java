@@ -15,12 +15,11 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Util;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -40,6 +39,8 @@ extends AbstractSoulCandleBlock
 implements Waterloggable {
     public static final IntProperty CANDLES = IntProperty.of("candles", 1, 3);
     public static final BooleanProperty LIT = AbstractSoulCandleBlock.LIT;
+
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final ToIntFunction<BlockState> STATE_TO_LUMINANCE = state -> state.get(LIT) ? 3 * state.get(CANDLES) : 0;
 
@@ -56,9 +57,12 @@ implements Waterloggable {
     private static final VoxelShape TWO_CANDLES_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 10, 14);
     private static final VoxelShape THREE_CANDLES_SHAPE = Block.createCuboidShape(1.5, 0, 2.5, 14.5, 10, 14.5);
 
+    private static final VoxelShape ONE_CANDLE_COLLISION = Block.createCuboidShape(5, 0, 5, 11, 8, 11);
+    private static final VoxelShape TWO_CANDLES_COLLISION = Block.createCuboidShape(2, 0, 2, 14, 8, 14);
+    private static final VoxelShape THREE_CANDLES_COLLISION = Block.createCuboidShape(1.5, 0, 2.5, 14.5, 8, 14.5);
     public SoulCandleBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(CANDLES, 1).with(LIT, false).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(CANDLES, 1).with(LIT, false).with(WATERLOGGED, false).with(FACING, Direction.NORTH));
     }
 
     @SuppressWarnings("deprecation")
@@ -109,7 +113,19 @@ implements Waterloggable {
         }
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
-        return Objects.requireNonNull(super.getPlacementState(ctx)).with(WATERLOGGED, bl);
+        return Objects.requireNonNull(super.getPlacementState(ctx)).with(WATERLOGGED, bl).with(FACING, ctx.getPlayerFacing().getOpposite());
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 
     @SuppressWarnings("deprecation")
@@ -145,9 +161,24 @@ implements Waterloggable {
         return THREE_CANDLES_SHAPE;
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        switch (state.get(CANDLES)) {
+            default: {
+                return ONE_CANDLE_COLLISION;
+            }
+            case 2: {
+                return TWO_CANDLES_COLLISION;
+            }
+            case 3:
+        }
+        return THREE_CANDLES_COLLISION;
+    }
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(CANDLES, LIT, WATERLOGGED);
+        builder.add(CANDLES, LIT, FACING, WATERLOGGED);
     }
 
     @Override

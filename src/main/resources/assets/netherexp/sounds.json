@@ -11,12 +11,11 @@
   "block.soul_slate.step": {
     "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "block/deepslate/step1",
-      "block/deepslate/step2",
-      "block/deepslate/step3",
-      "block/deepslate/step4",
-      "block/deepslate/step5",
-      "block/deepslate/step6"
+      "netherexp:block/soul_slate/step1",
+      "netherexp:block/soul_slate/step2",
+      "netherexp:block/soul_slate/step3",
+      "netherexp:block/soul_slate/step4",
+      "netherexp:block/soul_slate/step5"
     ]
   },
   "block.soul_slate.place": {
@@ -31,22 +30,20 @@
   "block.soul_slate.hit": {
     "subtitle": "subtitles.block.generic.hit",
     "sounds": [
-      "block/deepslate/step1",
-      "block/deepslate/step2",
-      "block/deepslate/step3",
-      "block/deepslate/step4",
-      "block/deepslate/step5",
-      "block/deepslate/step6"
+      "netherexp:block/soul_slate/step1",
+      "netherexp:block/soul_slate/step2",
+      "netherexp:block/soul_slate/step3",
+      "netherexp:block/soul_slate/step4",
+      "netherexp:block/soul_slate/step5"
     ]
   },
   "block.soul_slate.fall": {
     "sounds": [
-      "block/deepslate/step1",
-      "block/deepslate/step2",
-      "block/deepslate/step3",
-      "block/deepslate/step4",
-      "block/deepslate/step5",
-      "block/deepslate/step6"
+      "netherexp:block/soul_slate/step1",
+      "netherexp:block/soul_slate/step2",
+      "netherexp:block/soul_slate/step3",
+      "netherexp:block/soul_slate/step4",
+      "netherexp:block/soul_slate/step5"
     ]
   },
   "block.basalt_bricks.break": {
@@ -122,11 +119,11 @@
   "block.soul_slate_bricks.step": {
     "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
+      "netherexp:block/soul_slate_bricks/step1",
+      "netherexp:block/soul_slate_bricks/step2",
+      "netherexp:block/soul_slate_bricks/step3",
+      "netherexp:block/soul_slate_bricks/step4",
+      "netherexp:block/soul_slate_bricks/step5"
     ]
   },
   "block.soul_slate_bricks.place": {
@@ -153,20 +150,20 @@
   "block.soul_slate_bricks.hit": {
     "subtitle": "subtitles.block.generic.hit",
     "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
+      "netherexp:block/soul_slate_bricks/step1",
+      "netherexp:block/soul_slate_bricks/step2",
+      "netherexp:block/soul_slate_bricks/step3",
+      "netherexp:block/soul_slate_bricks/step4",
+      "netherexp:block/soul_slate_bricks/step5"
     ]
   },
   "block.soul_slate_bricks.fall": {
     "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
+      "netherexp:block/soul_slate_bricks/step1",
+      "netherexp:block/soul_slate_bricks/step2",
+      "netherexp:block/soul_slate_bricks/step3",
+      "netherexp:block/soul_slate_bricks/step4",
+      "netherexp:block/soul_slate_bricks/step5"
     ]
   },
   "block.white_ash.break": {
@@ -634,6 +631,13 @@
     "subtitle": "subtitles.entity.warphopper.cloak",
     "sounds": [
       "netherexp:mob/warphopper/cloak"
+    ]
+  },
+  "entity.player.hurt_igneous_thorns": {
+    "subtitle": "subtitles.entity.player.hurt",
+    "sounds": [
+      "netherexp:mob/player/hurt/igneous_thorns_hurt1",
+      "netherexp:mob/player/hurt/igneous_thorns_hurt2"
     ]
   },
   "music_disc.cricket": {

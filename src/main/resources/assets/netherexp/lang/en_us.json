@@ -4,6 +4,7 @@
   "item.netherexp.cooked_hogham": "Cooked Hogham",
   "item.netherexp.warpspores": "Warpspores",
   "item.netherexp.white_ash_powder": "White Ash Powder",
+  "item.netherexp.nightspores": "Nightspores",
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
@@ -28,9 +29,18 @@
 
   "block.netherexp.soul_candle": "Soul Candle",
 
+  "block.netherexp.soul_glass": "Soul Glass",
   "block.netherexp.soul_swirls": "Soul Swirls",
   "block.netherexp.ecto_soul_sand": "Ecto Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
+
+  "block.netherexp.sorrowsquash": "Sorrowsquash",
+  "block.netherexp.carved_sorrowsquash": "Carved Sorrowsquash",
+  "block.netherexp.ghoul_o_lantern": "Ghoul o'Lantern",
+  "block.netherexp.soul_ghoul_o_lantern": "Soul Ghoul o'Lantern",
+  "block.netherexp.soul_jack_o_lantern": "Soul Jack o'Lantern",
+  "block.netherexp.sorrowsquash_stem": "Sorrowsquash Stem",
+  "block.netherexp.sorrowsquash_stem_plant": "Sorrowsquash Stem Plant",
 
   "block.netherexp.smooth_netherrack": "Smooth Netherrack",
   "block.netherexp.smooth_netherrack_slab": "Smooth Netherrack Slab",
@@ -75,7 +85,7 @@
   "block.netherexp.smokestalk_plant": "Smokestalk Plant",
 
   "block.netherexp.smokestalk_block": "Block of Smokestalk",
-  "block.netherexp.charred_smokestalk_block": "Charred Block of Smokestalk",
+  "block.netherexp.stripped_smokestalk_block": "Stripped Block of Smokestalk",
   "block.netherexp.smokestalk_planks": "Smokestalk Planks",
   "block.netherexp.smokestalk_slab": "Smokestalk Slab",
   "block.netherexp.smokestalk_stairs": "Smokestalk Stairs",
@@ -141,7 +151,6 @@
   "block.netherexp.red_scale_fungus": "Red Scale Fungus",
   "block.netherexp.blue_scale_fungus": "Blue Scale Fungus",
 
-  "block.netherexp.nightspores": "Nightspores",
   "block.netherexp.boomshroom": "Boomshroom",
   "block.netherexp.boomshroom_bundle": "Bundle of Boomshroom",
 
@@ -152,6 +161,8 @@
   "block.netherexp.soul_path": "Soul Path",
   "block.netherexp.crimson_nylium_path": "Crimson Nylium Path",
   "block.netherexp.warped_nylium_path": "Warped Nylium Path",
+
+  "block.netherexp.spotted_warped_wart_block": "Spotted Warped Wart Block",
 
   "block.netherexp.decayable_nether_wart_block": "Decayable Nether Wart Block",
   "block.netherexp.decayable_warped_wart_block": "Decayable Warped Wart Block",
@@ -190,9 +201,9 @@
   "subtitles.block.explosive_scoria.ambient": "Unstable electrical sparks",
   "subtitles.block.sporeshroom.trampolined": "Sporeshroom trampolined",
 
-  "death.attack.igneousVines": "%1$s was pricked to death while climbing igneous vines",
-  "death.attack.igneousVines.player": "%1$s was pricked to death while climbing igneous vines whilst trying to escape %2$s",
-  "death.attack.explosiveScoria": "%1$s figured out what the 'Explosive' in Explosive Scoria meant",
+  "death.attack.igneousThorns": "%1$s was pricked to death inside igneous thorns",
+  "death.attack.igneousThorns.player": "%1$s was pricked to death inside igneous thorns whilst trying to escape %2$s",
+  "death.attack.explosiveScoria": "%1$s figured out what the Volatile Scoria meant",
   "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
 
   "subtitles.entity.warphopper.ambient": "Warphopper chirps",

@@ -1,0 +1,29 @@
+{
+  "variants": {
+    "facing=north,attached=true": {
+      "model": "netherexp:block/sorrowsquash_stem/attached_north"
+    },
+    "facing=east,attached=true": {
+      "model": "netherexp:block/sorrowsquash_stem/attached_east"
+    },
+    "facing=south,attached=true": {
+      "model": "netherexp:block/sorrowsquash_stem/attached_south"
+    },
+    "facing=west,attached=true": {
+      "model": "netherexp:block/sorrowsquash_stem/attached_west"
+    },
+
+    "facing=north,attached=false": {
+      "model": "netherexp:block/sorrowsquash_stem/base"
+    },
+    "facing=east,attached=false": {
+      "model": "netherexp:block/sorrowsquash_stem/base"
+    },
+    "facing=south,attached=false": {
+      "model": "netherexp:block/sorrowsquash_stem/base"
+    },
+    "facing=west,attached=false": {
+      "model": "netherexp:block/sorrowsquash_stem/base"
+    }
+  }
+}

@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.jadenxgamer.netherexp.entity.ModEntities;
+import net.jadenxgamer.netherexp.item.custom.NightSporesItem;
 import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
@@ -39,6 +40,9 @@ public class ModItems {
 
     public static final Item TWISTING_IVY = registerItem("twisting_ivy",
             new AliasedBlockItem(ModBlocks.TWISTING_IVY, new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
+
+    public static final Item NIGHTSPORES = registerItem("nightspores",
+            new NightSporesItem(new FabricItemSettings().group(ModItemGroup.NETHEREXP)));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,

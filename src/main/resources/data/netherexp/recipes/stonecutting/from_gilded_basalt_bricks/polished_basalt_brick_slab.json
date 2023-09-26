@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "netherexp:gilded_basalt_brick_slab"
-  },
-  "result": "netherexp:polished_basalt_brick_slab",
-  "count": 2
-}

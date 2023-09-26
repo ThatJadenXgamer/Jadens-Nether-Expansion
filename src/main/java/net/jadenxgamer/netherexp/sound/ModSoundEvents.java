@@ -87,7 +87,7 @@ public class ModSoundEvents {
     public static SoundEvent ENTITY_WARPHOPPER_HURT = registerSoundEvent("entity.warphopper.hurt");
     public static SoundEvent ENTITY_WARPHOPPER_DEATH = registerSoundEvent("entity.warphopper.death");
     public static SoundEvent ENTITY_WARPHOPPER_CLOAK = registerSoundEvent("entity.warphopper.cloak");
-
+    public static SoundEvent ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvent("entity.player.hurt_igneous_thorns");
 
     // MUSIC:
     public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");

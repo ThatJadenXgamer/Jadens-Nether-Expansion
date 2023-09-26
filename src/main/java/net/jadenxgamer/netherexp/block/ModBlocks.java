@@ -11,6 +11,7 @@ import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -78,6 +79,9 @@ public class ModBlocks {
 
     // Soul Decorations
 
+    public static final Block SOUL_GLASS = registerBlock("soul_glass",
+            new SoulGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).strength(0.3f, 1200.0f).sounds(BlockSoundGroup.GLASS)), ModItemGroup.NETHEREXP);
+
     public static final Block SOUL_SWIRLS = registerBlock("soul_swirls",
             new SoulSwirlsBlock(7,3,FabricBlockSettings.of(Material.PLANT, MapColor.BROWN).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP);
 
@@ -86,6 +90,29 @@ public class ModBlocks {
 
     public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
             new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).luminance(3).sounds(BlockSoundGroup.SOUL_SOIL)), ModItemGroup.NETHEREXP);
+
+    // Sorrowsquash
+
+    public static final Block SORROWSQUASH = registerBlock("sorrowsquash",
+            new SorrowsquashBlock(FabricBlockSettings.of(Material.GOURD, MapColor.TERRACOTTA_WHITE).strength(1.0f).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP);
+
+    public static final Block CARVED_SORROWSQUASH = registerBlock("carved_sorrowsquash",
+            new CarvedSorrowsquashBlock(FabricBlockSettings.of(Material.GOURD, MapColor.TERRACOTTA_WHITE).strength(1.0f).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP);
+
+    public static final Block GHOUL_O_LANTERN = registerBlock("ghoul_o_lantern",
+            new CarvedSorrowsquashBlock(FabricBlockSettings.of(Material.GOURD, MapColor.TERRACOTTA_WHITE).strength(1.0f).luminance(15).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP);
+
+    public static final Block SOUL_GHOUL_O_LANTERN = registerBlock("soul_ghoul_o_lantern",
+            new CarvedSorrowsquashBlock(FabricBlockSettings.of(Material.GOURD, MapColor.TERRACOTTA_WHITE).strength(1.0f).luminance(10).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP);
+
+    public static final Block SOUL_JACK_O_LANTERN = registerBlock("soul_jack_o_lantern",
+            new CarvedPumpkinBlock(FabricBlockSettings.copyOf(Blocks.JACK_O_LANTERN).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+
+    public static final Block SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem",
+            new VineStemBlock((GourdBlock)SORROWSQUASH, () -> Items.PUMPKIN_SEEDS,FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.NETHER_STEM)));
+
+    public static final Block SORROWSQUASH_STEM_PLANT = registerBlockWithoutItem("sorrowsquash_stem_plant",
+            new VineStemPlantBlock((GourdBlock)SORROWSQUASH, () -> Items.PUMPKIN_SEEDS,FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_STEM)));
 
     // Smooth Netherrack
 
@@ -396,9 +423,6 @@ public class ModBlocks {
     public static final Block TWISTING_IVY = registerBlockWithoutItem("twisting_ivy",
             new TwistingIvyBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.BRIGHT_TEAL).breakInstantly().noCollision().ticksRandomly().sounds(BlockSoundGroup.WEEPING_VINES)));
 
-    public static final Block NIGHTSPORES = registerBlock("nightspores",
-            new SporesBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.CYAN).breakInstantly().noCollision().luminance(6).sounds(BlockSoundGroup.HONEY)), ModItemGroup.NETHEREXP);
-
     public static final Block RED_SCALE_FUNGUS = registerBlock("red_scale_fungus",
             new ScaleFungusBlock(FabricBlockSettings.of(Material.PLANT, MapColor.CLEAR).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)), ModItemGroup.NETHEREXP);
 
@@ -430,6 +454,11 @@ public class ModBlocks {
     public static final Block WARPED_NYLIUM_PATH = registerBlock("warped_nylium_path",
             new NyliumPathBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).requiresTool().strength(0.4f).sounds(BlockSoundGroup.NYLIUM)), ModItemGroup.NETHEREXP);
 
+    // Spotted Wart Blocks
+
+    public static final Block SPOTTED_WARPED_WART_BLOCK = registerBlockWithoutItem("spotted_warped_wart_block",
+            new SpottedWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).sounds(BlockSoundGroup.WART_BLOCK), Blocks.WARPED_WART_BLOCK, 2));
+
 
     // Decayable Blocks
 
@@ -440,10 +469,10 @@ public class ModBlocks {
             new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_WARPED_WART, Blocks.WARPED_WART_BLOCK));
 
     public static final Block DECAYABLE_SHROOMLIGHT = registerBlockWithoutItem("decayable_shroomlight",
-            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMLIGHT, Blocks.SHROOMLIGHT));
+            new DecayableShroomBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMLIGHT, Blocks.SHROOMLIGHT));
 
     public static final Block DECAYABLE_SHROOMNIGHT = registerBlockWithoutItem("decayable_shroomnight",
-            new DecayableWartBlock(FabricBlockSettings.copyOf(ModBlocks.SHROOMNIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMNIGHT, ModBlocks.SHROOMNIGHT));
+            new DecayableShroomBlock(FabricBlockSettings.copyOf(ModBlocks.SHROOMNIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMNIGHT, ModBlocks.SHROOMNIGHT));
 
     // Particle Emitters
 

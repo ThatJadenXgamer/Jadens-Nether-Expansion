@@ -4,9 +4,10 @@
   "package": "net.jadenxgamer.netherexp.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "block.SoulFireMixin",
     "block.TwistingVineMixin",
     "block.WeepingVineMixin",
-    "block.SoulFireMixin"
+    "entity.PlayerEntityMixin"
   ],
   "client": [
     "ExampleMixin"
