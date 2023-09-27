@@ -4,9 +4,9 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class ModTags {
     public static class Blocks {
@@ -27,7 +27,7 @@ public class ModTags {
         public static final TagKey<Block> MAGMA_BLOCKS = createTag("magma_blocks");
 
         private static TagKey<Block> createTag(String name) {
-            return TagKey.of(Registry.BLOCK_KEY, new Identifier(NetherExp.MOD_ID, name));
+            return TagKey.of(RegistryKeys.BLOCK, new Identifier(NetherExp.MOD_ID, name));
         }
     }
     public static class EntityTypes {
@@ -35,7 +35,7 @@ public class ModTags {
         public static final TagKey<EntityType<?>> SOUL_GLASS_PASSABLE = createTag2("soul_glass_passable");
 
         private static TagKey<EntityType<?>> createTag2(String name) {
-            return TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(NetherExp.MOD_ID, name));
+            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, name));
         }
     }
     public static class Items {
@@ -43,7 +43,7 @@ public class ModTags {
         public static final TagKey<Item> SWINGS_THROUGH_SOUL_GLASS = createTag3("swings_through_soul_glass");
 
         private static TagKey<Item> createTag3(String name) {
-            return TagKey.of(Registry.ITEM_KEY, new Identifier(NetherExp.MOD_ID, name));
+            return TagKey.of(RegistryKeys.ITEM, new Identifier(NetherExp.MOD_ID, name));
         }
     }
 }

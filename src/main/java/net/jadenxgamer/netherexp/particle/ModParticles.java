@@ -3,8 +3,9 @@ package net.jadenxgamer.netherexp.particle;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class ModParticles {
 
@@ -27,35 +28,35 @@ public class ModParticles {
 
     // Registering Particles
     public static void registerParticles() {
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "enigma_spore"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "enigma_spore"),
                 ENIGMA_PARTICLE);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "small_soul_flame"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "small_soul_flame"),
                 SMALL_SOUL_FLAME);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "gold_glimmer"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "gold_glimmer"),
                 GOLD_GLIMMER);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "redstone_spark"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "redstone_spark"),
                 REDSTONE_SPARK);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_nether_wart"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_nether_wart"),
                 FALLING_NETHER_WART);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_warped_wart"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_warped_wart"),
                 FALLING_WARPED_WART);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_shroomlight"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_shroomlight"),
                 FALLING_SHROOMLIGHT);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_shroomnight"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_shroomnight"),
                 FALLING_SHROOMNIGHT);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "rising_shroomnight"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "rising_shroomnight"),
                 RISING_SHROOMNIGHT);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "crimson_smog"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "crimson_smog"),
                 CRIMSON_SMOG);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "warped_smog"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "warped_smog"),
                 WARPED_SMOG);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "black_smoke"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "black_smoke"),
                 BLACK_SMOKE);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "white_smoke"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "white_smoke"),
                 WHITE_SMOKE);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "red_smoke"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "red_smoke"),
                 RED_SMOKE);
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "soul_ember"),
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "soul_ember"),
                 SOUL_EMBER);
 
         NetherExp.LOGGER.debug("Registering Mod Particles for " + NetherExp.MOD_ID);

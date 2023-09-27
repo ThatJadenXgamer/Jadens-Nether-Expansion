@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.block;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.block.custom.*;
@@ -13,9 +14,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 @SuppressWarnings("unused")
 public class ModBlocks {
@@ -196,29 +199,29 @@ public class ModBlocks {
             new Block(FabricBlockSettings.of(Material.NETHER_WOOD, MapColor.DARK_CRIMSON).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_SLAB = registerBlock("claret_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.NETHER_WOOD)), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_STAIRS = registerBlock("claret_stairs",
             new ModStairsBlock(ModBlocks.CLARET_PLANKS.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+                    FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.NETHER_WOOD)), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_FENCE = registerBlock("claret_fence",
-            new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.NETHER_WOOD)), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_FENCE_GATE = registerBlock("claret_fence_gate",
-            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.NETHER_WOOD), SoundEvents.BLOCK_NETHER_WOOD_FENCE_GATE_CLOSE, SoundEvents.BLOCK_NETHER_WOOD_FENCE_GATE_OPEN), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_DOOR = registerBlock("claret_door",
-            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).sounds(BlockSoundGroup.NETHER_WOOD), SoundEvents.BLOCK_NETHER_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_NETHER_WOOD_DOOR_OPEN), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_TRAPDOOR = registerBlock("claret_trapdoor",
-            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).sounds(BlockSoundGroup.NETHER_WOOD), SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_NETHER_WOOD_TRAPDOOR_OPEN), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_BUTTON = registerBlock("claret_button",
-            new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new ButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.NETHER_WOOD), 30, true, SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_NETHER_WOOD_BUTTON_CLICK_ON), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
-            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).strength(0.5f).noCollision().sounds(BlockSoundGroup.NETHER_WOOD), SoundEvents.BLOCK_STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_STONE_PRESSURE_PLATE_CLICK_ON), ModItemGroup.NETHEREXP);
 
     // Smokestalk
 
@@ -262,19 +265,19 @@ public class ModBlocks {
             new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
 
     public static final Block SMOKESTALK_FENCE_GATE = registerBlock("smokestalk_fence_gate",
-            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).sounds(ModSoundEvents.SMOKESTALK_WOOD), SoundEvents.BLOCK_BAMBOO_WOOD_FENCE_GATE_CLOSE, SoundEvents.BLOCK_BAMBOO_WOOD_FENCE_GATE_OPEN), ModItemGroup.NETHEREXP);
 
     public static final Block SMOKESTALK_DOOR = registerBlock("smokestalk_door",
-            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).sounds(ModSoundEvents.SMOKESTALK_WOOD), SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_CLOSE, SoundEvents.BLOCK_BAMBOO_WOOD_DOOR_OPEN), ModItemGroup.NETHEREXP);
 
     public static final Block SMOKESTALK_TRAPDOOR = registerBlock("smokestalk_trapdoor",
-            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).sounds(ModSoundEvents.SMOKESTALK_WOOD), SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_CLOSE, SoundEvents.BLOCK_BAMBOO_WOOD_TRAPDOOR_OPEN), ModItemGroup.NETHEREXP);
 
     public static final Block SMOKESTALK_BUTTON = registerBlock("smokestalk_button",
-            new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+            new ButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.NETHER_WOOD), 30, true, SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_OFF, SoundEvents.BLOCK_BAMBOO_WOOD_BUTTON_CLICK_ON), ModItemGroup.NETHEREXP);
 
     public static final Block SMOKESTALK_PRESSURE_PLATE = registerBlock("smokestalk_pressure_plate",
-            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).strength(0.5f).noCollision().sounds(ModSoundEvents.SMOKESTALK_WOOD)), ModItemGroup.NETHEREXP);
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).strength(0.5f).noCollision().sounds(ModSoundEvents.SMOKESTALK_WOOD), SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_BAMBOO_WOOD_PRESSURE_PLATE_CLICK_ON), ModItemGroup.NETHEREXP);
 
 
     // Quartz Block
@@ -381,10 +384,10 @@ public class ModBlocks {
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP);
 
     public static final Block PYRITE_BUTTON = registerBlock("pyrite_button",
-            new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(1f).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP);
+            new ButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(1f).sounds(BlockSoundGroup.COPPER), 20, false, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON), ModItemGroup.NETHEREXP);
 
     public static final Block MEDIUM_WEIGHTED_PRESSURE_PLATE = registerBlock("medium_weighted_pressure_plate",
-            new WeightedPressurePlateBlock(75, FabricBlockSettings.of(Material.METAL).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new WeightedPressurePlateBlock(75, FabricBlockSettings.of(Material.METAL).noCollision().strength(1f).sounds(BlockSoundGroup.METAL), SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON), ModItemGroup.NETHEREXP);
 
     public static final Block PYRITE_LANTERN = registerBlock("pyrite_lantern",
             new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).strength(0.4f).luminance(15).sounds(BlockSoundGroup.LANTERN)), ModItemGroup.NETHEREXP);
@@ -579,17 +582,19 @@ public class ModBlocks {
     @SuppressWarnings("all")
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, ModItemGroup.NETHEREXP);
-        return Registry.register(Registry.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
     }
 
     private static Block registerBlockWithoutItem(String name, Block block) {
-        return Registry.register(Registry.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
     }
 
     @SuppressWarnings("all")
     private static Item registerBlockItem(String name, Block block, ItemGroup tab) {
-        return Registry.register(Registry.ITEM, new Identifier(NetherExp.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings().group(tab)));
+        Item item = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name),
+        new BlockItem(block, new FabricItemSettings()));
+        ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> entries.add(item));
+        return item;
     }
 
     public static void registerModBlocks() {

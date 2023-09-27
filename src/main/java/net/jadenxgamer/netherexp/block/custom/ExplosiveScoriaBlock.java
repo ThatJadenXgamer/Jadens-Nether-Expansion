@@ -6,14 +6,13 @@ import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.OreBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -25,7 +24,7 @@ import net.minecraft.world.explosion.ExplosionBehavior;
 import java.util.Optional;
 
 public class ExplosiveScoriaBlock
-extends OreBlock {
+extends Block {
 
     //TODO: Needs a way for the unstable property to be disabled in normal gameplay
     public static final BooleanProperty UNSTABLE = Properties.UNSTABLE;
@@ -73,7 +72,7 @@ extends OreBlock {
                 return super.getBlastResistance(explosion, world, pos, blockState, fluidState);
             }
         };
-        world.createExplosion(null, ModDamageSource.EXPLOSIVE_SCORIA, explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 2.0f, false, Explosion.DestructionType.DESTROY);
+        world.createExplosion(null, ModDamageSource.EXPLOSIVE_SCORIA, explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 2.0f, false, World.ExplosionSourceType.BLOCK);
     }
 
     private void lesserExplode(World world, final BlockPos explodedPos) {
@@ -91,7 +90,7 @@ extends OreBlock {
             }
         };
 
-        world.createExplosion(null, ModDamageSource.EXPLOSIVE_SCORIA, explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 1.4f, false, Explosion.DestructionType.DESTROY);
+        world.createExplosion(null, ModDamageSource.EXPLOSIVE_SCORIA, explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 1.4f, false, World.ExplosionSourceType.BLOCK);
     }
 
     @Override

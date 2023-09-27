@@ -17,19 +17,17 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
 
 public class WarphopperEntity
 extends AnimalEntity
-implements IAnimatable {
+implements GeoEntity {
     @SuppressWarnings("all")
-    private AnimationFactory factory = new AnimationFactory(this);
+    private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     public WarphopperEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
@@ -50,7 +48,7 @@ implements IAnimatable {
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new EscapeDangerGoal(this, 1.25));
-        this.goalSelector.add(3, new FleeGoal<PlayerEntity>(this, PlayerEntity.class, 8.0f, 1.5, 2.5));
+        this.goalSelector.add(3, new FleeGoal<>(this, PlayerEntity.class, 8.0f, 1.5, 2.5));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -72,27 +70,25 @@ implements IAnimatable {
         return null;
     }
 
-    @SuppressWarnings("all")
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.warphopper.walk", true));
+    private PlayState predicate(AnimationState animationState) {
+        if(animationState.isMoving()) {
+            animationState.getController().setAnimation(RawAnimation.begin().then("animation.warphopper.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
         else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.warphopper.idle", true));
+            animationState.getController().setAnimation(RawAnimation.begin().then("animation.warphopper.idle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
     }
 
-    @SuppressWarnings("all")
     @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller",
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController(this, "controller",
                 0, this::predicate));
     }
 
     @Override
-    public AnimationFactory getFactory() {
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
         return factory;
     }
 
