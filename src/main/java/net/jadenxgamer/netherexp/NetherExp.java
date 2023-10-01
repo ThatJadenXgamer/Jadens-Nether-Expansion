@@ -20,11 +20,11 @@ public class NetherExp implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItemGroup.registerItemGroup();
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModParticles.registerParticles();
-		ModItemGroup.registerItemGroup();
 
 		ModRegistries.registerModStuffs();
 		ModResourcePacks.init();

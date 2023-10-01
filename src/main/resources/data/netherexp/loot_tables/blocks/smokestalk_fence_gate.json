@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:claret_fence_gate"
+          "name": "netherexp:smokestalk_fence_gate"
         }
       ],
       "conditions": [

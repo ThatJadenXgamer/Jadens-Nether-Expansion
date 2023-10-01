@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:claret_button"
+          "name": "netherexp:smokestalk_button"
         }
       ],
       "conditions": [

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:claret_pressure_plate"
+          "name": "netherexp:smokestalk_pressure_plate"
         }
       ],
       "conditions": [

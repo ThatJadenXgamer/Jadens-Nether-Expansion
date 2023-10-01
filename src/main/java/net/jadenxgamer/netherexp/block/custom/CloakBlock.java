@@ -23,7 +23,7 @@ public class CloakBlock extends Block {
         boolean r = state.get(REVEALED);
         if (!r) {
             state.with(REVEALED, true);
-            world.createAndScheduleBlockTick(pos, this, 4);
+            world.scheduleBlockTick(pos, this, 4);
         }
     }
 

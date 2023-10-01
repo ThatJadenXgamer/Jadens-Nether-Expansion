@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:claret_stairs"
+          "name": "netherexp:smokestalk_stairs"
         }
       ],
       "conditions": [

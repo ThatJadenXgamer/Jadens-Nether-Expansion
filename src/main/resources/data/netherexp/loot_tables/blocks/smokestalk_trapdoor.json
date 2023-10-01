@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:claret_trapdoor"
+          "name": "netherexp:smokestalk_trapdoor"
         }
       ],
       "conditions": [

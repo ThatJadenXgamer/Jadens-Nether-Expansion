@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.block.custom;
 import net.jadenxgamer.netherexp.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
@@ -57,7 +56,7 @@ public class DecayableWartBlock extends Block {
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         int i;
         if ((i = DecayableWartBlock.getDistanceFromStem(neighborState) + 1) != 1 || state.get(DISTANCE) != i) {
-            world.createAndScheduleBlockTick(pos, this, 1);
+            world.scheduleBlockTick(pos, this, 1);
         }
         return state;
     }

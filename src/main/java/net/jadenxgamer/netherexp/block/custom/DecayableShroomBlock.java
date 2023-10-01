@@ -56,7 +56,7 @@ public class DecayableShroomBlock extends Block {
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         int i;
         if ((i = DecayableShroomBlock.getDistanceFromStem(neighborState) + 1) != 1 || state.get(DISTANCE) != i) {
-            world.createAndScheduleBlockTick(pos, this, 1);
+            world.scheduleBlockTick(pos, this, 1);
         }
         return state;
     }

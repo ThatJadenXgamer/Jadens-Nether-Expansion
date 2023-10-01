@@ -13,14 +13,14 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "block": "netherexp:claret_door",
+              "block": "netherexp:smokestalk_door",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "half": "lower"
               }
             }
           ],
-          "name": "netherexp:claret_door"
+          "name": "netherexp:smokestalk_door"
         }
       ],
       "rolls": 1

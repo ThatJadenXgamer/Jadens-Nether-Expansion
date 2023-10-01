@@ -57,10 +57,6 @@ public class ModItems {
         return Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name), item);
     }
 
-    public static void addToItemGroup(ItemGroup group, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
-    }
-
     public static void addItemsToItemGroups() {
         addToItemGroup(ItemGroups.INGREDIENTS, WARPHOPPER_FUR);
         addToItemGroup(ItemGroups.INGREDIENTS, IRON_SCRAP);
@@ -86,6 +82,10 @@ public class ModItems {
         addToItemGroup(ModItemGroup.NETHEREXP, WARPHOPPER_SPAWN_EGG);
         addToItemGroup(ModItemGroup.NETHEREXP, WARPHOPPER_FUR);
         addToItemGroup(ModItemGroup.NETHEREXP, MUSIC_DISC_CRICKET);
+    }
+
+    public static void addToItemGroup(ItemGroup group, Item item) {
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
     }
 
     public static void registerModItems() {

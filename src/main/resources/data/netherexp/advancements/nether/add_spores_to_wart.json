@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:nightspores"
+    },
+    "title": {
+      "translate": "advancements.nether.add_spores_to_block.title"
+    },
+    "description": {
+      "translate": "advancements.nether.add_spores_to_block.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "nightspores_used": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "netherexp:nightspores"
+          ]
+        },
+        "location": {
+          "block": {
+            "tag": "netherexp:nightspores_applicable"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "nightspores_used"
+    ]
+  ]
+}

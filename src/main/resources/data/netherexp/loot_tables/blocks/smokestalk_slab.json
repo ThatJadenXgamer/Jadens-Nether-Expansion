@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:claret_slab",
+          "name": "netherexp:smokestalk_slab",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -16,7 +16,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:claret_slab",
+                  "block": "netherexp:smokestalk_slab",
                   "properties": {
                     "type": "double"
                   }

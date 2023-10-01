@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.block.custom;
 
 import net.minecraft.block.*;
-import net.minecraft.tag.BlockTags;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;

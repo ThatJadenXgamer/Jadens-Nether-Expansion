@@ -48,7 +48,7 @@ implements GeoEntity {
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new EscapeDangerGoal(this, 1.25));
-        this.goalSelector.add(3, new FleeGoal<>(this, PlayerEntity.class, 8.0f, 1.5, 2.5));
+        this.goalSelector.add(3, new FleeGoal<>(this, PlayerEntity.class, 10.0f, 1.5, 2.5));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
         this.goalSelector.add(6, new LookAroundGoal(this));
