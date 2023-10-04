@@ -2,12 +2,15 @@ package net.jadenxgamer.netherexp.entity.custom;
 
 import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,6 +34,7 @@ implements GeoEntity {
 
     public WarphopperEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
+        this.setPathfindingPenalty(PathNodeType.LAVA, 8.0F);
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
@@ -48,19 +52,22 @@ implements GeoEntity {
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new EscapeDangerGoal(this, 1.25));
-        this.goalSelector.add(3, new FleeGoal<>(this, PlayerEntity.class, 10.0f, 1.5, 2.5));
+        this.goalSelector.add(3, new FleeGoal<>(this, PlayerEntity.class, 16.0f, 1.8, 2.8));
+        this.goalSelector.add(3, new FleeGoal<>(this, PiglinEntity.class, 10.0f, 1.8, 2.8));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
         this.goalSelector.add(6, new LookAroundGoal(this));
     }
 
+    public EntityGroup getGroup() {
+        return EntityGroup.ARTHROPOD;
+    }
+
     static class FleeGoal<T extends LivingEntity>
-            extends FleeEntityGoal<T> {
-        private final WarphopperEntity warphopper;
+    extends FleeEntityGoal<T> {
 
         public FleeGoal(WarphopperEntity warphopper, Class<T> fleeFromType, float distance, double slowSpeed, double fastSpeed) {
             super(warphopper, fleeFromType, distance, slowSpeed, fastSpeed);
-            this.warphopper = warphopper;
         }
     }
 
@@ -70,6 +77,7 @@ implements GeoEntity {
         return null;
     }
 
+    @SuppressWarnings("all")
     private PlayState predicate(AnimationState animationState) {
         if(animationState.isMoving()) {
             animationState.getController().setAnimation(RawAnimation.begin().then("animation.warphopper.walk", Animation.LoopType.LOOP));
@@ -83,7 +91,7 @@ implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController(this, "controller",
+        controllers.add(new AnimationController<>(this, "controller",
                 0, this::predicate));
     }
 

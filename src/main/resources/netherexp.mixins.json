@@ -9,9 +9,7 @@
     "block.WeepingVineMixin",
     "entity.PlayerEntityMixin"
   ],
-  "client": [
-    "ExampleMixin"
-  ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }

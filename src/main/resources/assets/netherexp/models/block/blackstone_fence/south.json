@@ -1,0 +1,37 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"texture_size": [32, 32],
+	"textures": {
+		"texture": "netherexp:block/blackstone_fence",
+		"particle": "block/polished_blackstone"
+	},
+	"elements": [
+		{
+			"name": "top bar",
+			"from": [7, 12, 7],
+			"to": [9, 15, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 0], "texture": "#texture"},
+				"east": {"uv": [8, 0.5, 3.5, 2], "texture": "#texture"},
+				"south": {"uv": [0, 0.5, 1, 2], "texture": "#texture"},
+				"west": {"uv": [3.5, 0.5, 8, 2], "texture": "#texture"},
+				"up": {"uv": [9, 2, 8, 6.5], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [10, 2, 9, 6.5], "rotation": 180, "texture": "#texture"}
+			}
+		},
+		{
+			"name": "lower bar",
+			"from": [7, 6, 7],
+			"to": [9, 9, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [8, 0.5, 3.5, 2], "texture": "#texture"},
+				"south": {"uv": [0, 0.5, 1, 2], "texture": "#texture"},
+				"west": {"uv": [3.5, 0.5, 8, 2], "texture": "#texture"},
+				"up": {"uv": [9, 2, 8, 6.5], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [10, 2, 9, 6.5], "rotation": 180, "texture": "#texture"}
+			}
+		}
+	]
+}
