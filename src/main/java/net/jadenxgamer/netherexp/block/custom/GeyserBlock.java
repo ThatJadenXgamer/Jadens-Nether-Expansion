@@ -3,11 +3,11 @@ package net.jadenxgamer.netherexp.block.custom;
 import net.jadenxgamer.netherexp.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
@@ -17,6 +17,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
@@ -32,11 +33,13 @@ public class GeyserBlock extends Block {
     */
     protected final ParticleEffect smoke;
     protected final ParticleEffect ash;
+    protected final TagKey<Biome> biome;
 
-    public GeyserBlock(Settings settings, ParticleEffect smoke, ParticleEffect ash) {
+    public GeyserBlock(Settings settings, ParticleEffect smoke, ParticleEffect ash, TagKey<Biome> biome) {
         super(settings);
         this.smoke = smoke;
         this.ash = ash;
+        this.biome = biome;
         setDefaultState(this.getStateManager().getDefaultState().with(CREATES_ASH, false).with(ACTIVE, false));
     }
 
@@ -77,12 +80,13 @@ public class GeyserBlock extends Block {
         int j = pos.getY();
         int k = pos.getZ();
         boolean a = state.get(ACTIVE);
+        boolean b = world.getBiome(pos).isIn(this.biome);
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (int l = 0; l < 14; ++l) {
             mutable.set(i + MathHelper.nextInt(random, -20, 20), j + random.nextInt(20), k + MathHelper.nextInt(random, -20, 20));
             BlockState blockState = world.getBlockState(mutable);
             if (blockState.isFullCube(world, mutable)) continue;
-            if (a) {
+            if (a && !b) {
                 world.addParticle(this.smoke, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.008, 0.0);
                 world.addParticle(this.ash, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }

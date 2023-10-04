@@ -9,6 +9,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -25,6 +26,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -49,11 +51,13 @@ implements Waterloggable {
     */
     protected final ParticleEffect smog;
     protected final ParticleEffect spore;
+    protected final TagKey<Biome> biome;
 
-    public SporeshroomBlock(Settings settings, ParticleEffect smog, ParticleEffect spore) {
+    public SporeshroomBlock(Settings settings, ParticleEffect smog, ParticleEffect spore, TagKey<Biome> biome) {
         super(settings);
         this.smog = smog;
         this.spore = spore;
+        this.biome = biome;
         this.setDefaultState(this.getStateManager().getDefaultState().with(HANGING, false).with(WATERLOGGED, false).with(ACTIVE, false));
     }
 
@@ -131,19 +135,20 @@ implements Waterloggable {
         int k = pos.getZ();
         boolean h = state.get(HANGING);
         boolean a = state.get(ACTIVE);
+        boolean b = world.getBiome(pos).isIn(this.biome);
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (int l = 0; l < 14; ++l) {
             mutable.set(i + MathHelper.nextInt(random, -20, 20), j + random.nextInt(20), k + MathHelper.nextInt(random, -20, 20));
             BlockState blockState = world.getBlockState(mutable);
             if (blockState.isFullCube(world, mutable)) continue;
-            if (a) {
+            if (a && !b) {
                 world.addParticle(this.spore, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
-        if (!h && a) {
+        if (!h && a && !b) {
             world.addParticle(this.smog, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.008, 0.0);
         }
-        else if (h && a) {
+        else if (h && a && !b) {
             world.addParticle(this.smog, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() - 0.05, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, -0.008, 0.0);
         }
     }
