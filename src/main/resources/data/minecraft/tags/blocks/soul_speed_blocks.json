@@ -19,6 +19,7 @@
     "netherexp:soul_path",
     "netherexp:soul_soil_layer",
     "netherexp:ecto_soul_sand",
-    "netherexp:soul_magma_block"
+    "netherexp:soul_magma_block",
+    "netherexp:souled_geyser"
   ]
 }

@@ -4,8 +4,8 @@
 	"ambientocclusion": false,
 	"texture_size": [32, 32],
 	"textures": {
-		"particle": "netherexp:block/blackstone_fence",
-		"texture": "netherexp:block/blackstone_fence"
+		"particle": "netherexp:block/polished_blackstone_fence",
+		"texture": "netherexp:block/polished_blackstone_fence"
 	},
 	"elements": [
 		{

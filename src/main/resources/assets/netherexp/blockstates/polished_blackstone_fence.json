@@ -2,12 +2,12 @@
   "multipart": [
     {
       "apply": {
-        "model": "netherexp:block/blackstone_fence/post"
+        "model": "netherexp:block/polished_blackstone_fence/post"
       }
     },
     {
       "apply": {
-        "model": "netherexp:block/blackstone_fence/north",
+        "model": "netherexp:block/polished_blackstone_fence/north",
         "uvlock": false
       },
       "when": {
@@ -16,7 +16,7 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/blackstone_fence/east",
+        "model": "netherexp:block/polished_blackstone_fence/east",
         "uvlock": false
       },
       "when": {
@@ -25,7 +25,7 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/blackstone_fence/south",
+        "model": "netherexp:block/polished_blackstone_fence/south",
         "uvlock": false
       },
       "when": {
@@ -34,7 +34,7 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/blackstone_fence/west",
+        "model": "netherexp:block/polished_blackstone_fence/west",
         "uvlock": false
       },
       "when": {

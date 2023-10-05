@@ -27,7 +27,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             at = @At("HEAD"),
             cancellable = true
     )
-    private void getHurtSound(DamageSource source, CallbackInfoReturnable<SoundEvent> call) {
+    private void getCustomHurtSound(DamageSource source, CallbackInfoReturnable<SoundEvent> call) {
         if (source == ModDamageSource.IGNEOUS_THORNS) {
             call.setReturnValue(ModSoundEvents.ENTITY_PLAYER_HURT_IGNEOUS_THORNS);
         }

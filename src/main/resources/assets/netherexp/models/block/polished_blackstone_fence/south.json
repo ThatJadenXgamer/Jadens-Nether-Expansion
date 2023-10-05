@@ -2,7 +2,7 @@
 	"credit": "Made by @ThatJadenXgamer",
 	"texture_size": [32, 32],
 	"textures": {
-		"texture": "netherexp:block/blackstone_fence",
+		"texture": "netherexp:block/polished_blackstone_fence",
 		"particle": "block/polished_blackstone"
 	},
 	"elements": [

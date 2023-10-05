@@ -7,6 +7,8 @@
     "block.SoulFireMixin",
     "block.TwistingVineMixin",
     "block.WeepingVineMixin",
+    "entity.HoglinEntityMixin",
+    "entity.PiglinEntityMixin",
     "entity.PlayerEntityMixin"
   ],
   "client": [],

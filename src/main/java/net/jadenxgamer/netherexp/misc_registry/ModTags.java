@@ -44,6 +44,12 @@ public class ModTags {
         // Tag to define all kinds of Magma Blocks
         public static final TagKey<Block> MAGMA_BLOCKS = createTag("magma_blocks");
 
+        // Piglins cannot spawn on these Blocks
+        public static final TagKey<Block> PIGLIN_CANNOT_SPAWN_ON = createTag("piglin_cannot_spawn_on");
+
+        // Hoglins cannot spawn on these Blocks
+        public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createTag("hoglin_cannot_spawn_on");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(NetherExp.MOD_ID, name));
         }
