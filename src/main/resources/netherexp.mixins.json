@@ -11,7 +11,9 @@
     "entity.PiglinEntityMixin",
     "entity.PlayerEntityMixin"
   ],
-  "client": [],
+  "client": [
+    "renderer.BackgroundRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

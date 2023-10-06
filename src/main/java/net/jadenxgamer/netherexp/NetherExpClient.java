@@ -49,6 +49,8 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_SKELETON_SKULL_CANDLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_SPORESHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_SPORESHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BASALTIC_GEYSER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOULED_GEYSER, RenderLayer.getCutout());
 
         // PARTICLES
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);

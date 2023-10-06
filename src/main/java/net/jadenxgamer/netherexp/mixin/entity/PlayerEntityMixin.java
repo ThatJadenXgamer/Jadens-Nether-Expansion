@@ -24,7 +24,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     // Adds New Hurt Sounds
     @Inject(
             method = "getHurtSound",
-            at = @At("HEAD"),
+            at = @At(value = "HEAD"),
             cancellable = true
     )
     private void getCustomHurtSound(DamageSource source, CallbackInfoReturnable<SoundEvent> call) {

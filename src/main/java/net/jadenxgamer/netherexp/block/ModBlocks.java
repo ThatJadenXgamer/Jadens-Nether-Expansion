@@ -488,10 +488,10 @@ public class ModBlocks {
             new SporeshroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.BRIGHT_TEAL).strength(0.5f).sounds(BlockSoundGroup.FUNGUS),ModParticles.WARPED_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES), ModItemGroup.NETHEREXP);
 
     public static final Block SOULED_GEYSER = registerBlock("souled_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE),ModParticles.BLACK_SMOKE, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH), ModItemGroup.NETHEREXP);
+            new GeyserBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).nonOpaque().sounds(ModSoundEvents.SOUL_SLATE),ModParticles.BLACK_SMOKE, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH), ModItemGroup.NETHEREXP);
 
     public static final Block BASALTIC_GEYSER = registerBlock("basaltic_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT),ModParticles.WHITE_SMOKE, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH), ModItemGroup.NETHEREXP);
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).nonOpaque().sounds(BlockSoundGroup.BASALT),ModParticles.WHITE_SMOKE, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH), ModItemGroup.NETHEREXP);
 
     // White Ash
 
