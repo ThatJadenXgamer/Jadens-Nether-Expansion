@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "minecraft:block/warped_wart_block/6"
+    "all": "minecraft:block/warped_wart_block/small/1"
   }
 }

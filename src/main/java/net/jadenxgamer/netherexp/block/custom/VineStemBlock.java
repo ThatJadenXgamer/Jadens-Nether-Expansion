@@ -68,7 +68,7 @@ extends AbstractPlantStemBlock {
         int i = state.get(AGE);
         boolean a = state.get(ATTACHED);
         BlockPos blockPos;
-        if (!a && i < 25 && random.nextDouble() < 0.1 && this.chooseStemState(world.getBlockState(blockPos = pos.offset(this.growthDirection)))) {
+        if (!a && i < 25 && random.nextDouble() < 0.5 && this.chooseStemState(world.getBlockState(blockPos = pos.offset(this.growthDirection)))) {
             world.setBlockState(blockPos, this.age(state, world.random));
         }
         else if (!a && i == 25) {

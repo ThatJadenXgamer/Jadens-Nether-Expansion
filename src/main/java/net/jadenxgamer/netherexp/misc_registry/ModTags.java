@@ -80,14 +80,6 @@ public class ModTags {
     }
     public static class Biomes {
 
-        /*
-        * Any Biomes in this tag will have Further Nether Fog
-        *
-        * This is usually reserved for vast open biomes such as nether wastes or soul sand valley
-        * Forests and other Densely packed biomes still use the default fog but this is up to preference
-        */
-        public static final TagKey<Biome> HAS_FURTHER_NETHER_FOG = createBiomeTag("has_further_nether_fog");
-
         // Prevents Crimson Sporeshroom from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_CRIMSON_SPORES = createBiomeTag("particles/has_crimson_spores");
 

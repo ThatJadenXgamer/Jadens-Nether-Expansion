@@ -44,6 +44,7 @@ implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final ToIntFunction<BlockState> STATE_TO_LUMINANCE = state -> state.get(LIT) ? 3 * state.get(CANDLES) : 0;
 
+    @SuppressWarnings("all")
     private static final Int2ObjectMap<List<Vec3d>> CANDLES_TO_PARTICLE_OFFSETS = Util.make(() -> {
         Int2ObjectOpenHashMap int2ObjectMap = new Int2ObjectOpenHashMap();
         int2ObjectMap.defaultReturnValue(ImmutableList.of());

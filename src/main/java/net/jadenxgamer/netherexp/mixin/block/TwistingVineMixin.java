@@ -1,17 +1,30 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
+import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.particle.ModParticles;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractPlantStemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.TwistingVinesBlock;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(TwistingVinesBlock.class)
 public abstract class TwistingVineMixin
@@ -21,7 +34,7 @@ extends AbstractPlantStemBlock {
 
     public TwistingVineMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater, double growthChance) {
         super(settings, growthDirection, outlineShape, tickWater, growthChance);
-        setDefaultState(this.stateManager.getDefaultState().with(DRIPPING, false).with(AGE, 0));
+        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0).with(DRIPPING, false));
     }
 
     @Override
@@ -33,6 +46,59 @@ extends AbstractPlantStemBlock {
         double z = (double)pos.getZ() + random.nextDouble();
         if (d && f < 0.3) {
             world.addParticle(ModParticles.RISING_SHROOMNIGHT, x, y, z, MathHelper.nextDouble(random, -0.02, 0.02), 0.08, MathHelper.nextDouble(random, -0.02, 0.02));
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        boolean dripping = state.get(DRIPPING);
+        boolean bl = false;
+        if (!dripping) {
+            if (itemStack.isOf(ModItems.NIGHTSPORES)) {
+                world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                world.setBlockState(pos,state.cycle(DRIPPING), Block.NOTIFY_LISTENERS);
+                if (!player.isCreative()) {
+                    itemStack.decrement(1);
+                }
+                sporeParticles(world, pos);
+                bl = true;
+            }
+        }
+        else {
+           if (itemStack.isOf(Items.SHEARS)) {
+               dropNight(world, pos);
+               world.playSound(player, pos, SoundEvents.BLOCK_GROWING_PLANT_CROP, SoundCategory.BLOCKS, 1.0f, 1.0f);
+               world.setBlockState(pos, state.cycle(DRIPPING), Block.NOTIFY_LISTENERS);
+               world.emitGameEvent(player, GameEvent.SHEAR, pos);
+               itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
+               bl = true;
+            }
+        }
+        if (!world.isClient() && bl) {
+            player.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
+        }
+        if (bl) {
+            return ActionResult.success(world.isClient);
+        }
+        return ActionResult.PASS;
+    }
+
+    private static void dropNight(World world, BlockPos pos) {
+        dropStack(world, pos, new ItemStack(ModItems.NIGHTSPORES, 1));
+    }
+
+    private static void sporeParticles(World world, BlockPos pos) {
+        Random random = world.random;
+        for (Direction direction : Direction.values()) {
+            BlockPos blockPos = pos.offset(direction);
+            if (world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) continue;
+            Direction.Axis axis = direction.getAxis();
+            double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getOffsetX() : (double) random.nextFloat();
+            double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getOffsetY() : (double) random.nextFloat();
+            double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getOffsetZ() : (double) random.nextFloat();
+            world.addParticle(ModParticles.FALLING_SHROOMNIGHT, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
         }
     }
 
