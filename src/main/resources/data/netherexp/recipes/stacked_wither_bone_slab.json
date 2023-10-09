@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:stacked_wither_bones"
+    }
+  },
+  "result": {
+    "item": "netherexp:stacked_wither_bone_slab",
+    "count": 6
+  }
+}

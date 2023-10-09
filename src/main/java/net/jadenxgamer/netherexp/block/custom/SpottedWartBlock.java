@@ -22,7 +22,14 @@ import net.minecraft.world.event.GameEvent;
 public class SpottedWartBlock extends Block {
     public static final IntProperty SPOTS = IntProperty.of("spots", 1, 3);
 
+    // Base is the vanilla block the Spotted Wart is related to
     protected final Block base;
+
+    /*
+     * Spore value dictates what kind of spore to drop when sheared
+     * 1 = Lightspores
+     * 2 = Nightspores
+    */
     protected final int spore;
 
     public SpottedWartBlock(Settings settings, Block base, int spore) {
@@ -32,20 +39,26 @@ public class SpottedWartBlock extends Block {
         this.setDefaultState(this.stateManager.getDefaultState().with(SPOTS, 1));
     }
 
-    public static void dropNight(World world, BlockPos pos, BlockState state) {
+    private static void dropLight(World world, BlockPos pos, BlockState state) {
         int s = state.get(SPOTS);
         SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.NIGHTSPORES, s));
+    }
+    private static void dropNight(World world, BlockPos pos, BlockState state) {
+        int s = state.get(SPOTS);
+        SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.LIGHTSPORES, s));
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
-        int s = state.get(SPOTS);
         boolean bl = false;
         if (itemStack.isOf(Items.SHEARS)) {
-            if (this.spore == 2) {
-                SpottedWartBlock.dropNight(world, pos, state);
+            if (this.spore == 1) {
+                dropLight(world, pos, state);
+            }
+            else if (this.spore == 2) {
+                dropNight(world, pos, state);
             }
             world.playSound(player, pos, SoundEvents.BLOCK_GROWING_PLANT_CROP, SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.setBlockState(pos, this.base.getDefaultState(), Block.NOTIFY_LISTENERS);
@@ -68,10 +81,7 @@ public class SpottedWartBlock extends Block {
 
     public BlockState setSpots(BlockState state) {
         int s = state.get(SPOTS);
-        if (s == 1) {
-            return state.with(SPOTS, 2);
-        }
-        return state.with(SPOTS, 3);
+        return state.with(SPOTS, s + 1);
     }
 
     @Override

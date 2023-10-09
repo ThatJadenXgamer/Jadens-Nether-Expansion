@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.block.custom.*;
 import net.jadenxgamer.netherexp.item.ModItemGroup;
+import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.misc_registry.ModTags;
 import net.jadenxgamer.netherexp.particle.ModParticles;
 import net.jadenxgamer.netherexp.sound.ModSoundEvents;
@@ -114,10 +115,10 @@ public class ModBlocks {
             new CarvedPumpkinBlock(FabricBlockSettings.copyOf(Blocks.JACK_O_LANTERN).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
 
     public static final Block SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem",
-            new VineStemBlock((GourdBlock)SORROWSQUASH, () -> Items.PUMPKIN_SEEDS,FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.NETHER_STEM)));
+            new VineStemBlock((GourdBlock)SORROWSQUASH, () -> ModItems.SORROWSQUASH_SEEDS,FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.NETHER_STEM)));
 
     public static final Block SORROWSQUASH_STEM_PLANT = registerBlockWithoutItem("sorrowsquash_stem_plant",
-            new VineStemPlantBlock((GourdBlock)SORROWSQUASH, () -> Items.PUMPKIN_SEEDS,FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_STEM)));
+            new VineStemPlantBlock((GourdBlock)SORROWSQUASH, () -> ModItems.SORROWSQUASH_SEEDS,FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_STEM)));
 
     // Smooth Netherrack
 
@@ -233,6 +234,7 @@ public class ModBlocks {
     public static final Block IGNEOUS_REEDS = registerBlock("igneous_reeds",
             new IgneousReeds(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.CLEAR).noCollision().breakInstantly().requiresTool().offsetType(AbstractBlock.OffsetType.XZ).sounds(ModSoundEvents.SMOKESTALK)), ModItemGroup.NETHEREXP);
 
+    //TODO: Add Lootables
     public static final Block IGNEOUS_VINES = registerBlock("igneous_vines",
             new IgneousVinesBlock(FabricBlockSettings.of(Material.PLANT, MapColor.TERRACOTTA_CYAN).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)), ModItemGroup.NETHEREXP);
 
@@ -386,7 +388,7 @@ public class ModBlocks {
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).sounds(BlockSoundGroup.COPPER)), ModItemGroup.NETHEREXP);
 
     public static final Block PYRITE_BUTTON = registerBlock("pyrite_button",
-            new ButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(1f).sounds(BlockSoundGroup.COPPER), 20, false, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON), ModItemGroup.NETHEREXP);
+            new ButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(1f).sounds(BlockSoundGroup.COPPER), 10, false, SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF, SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON), ModItemGroup.NETHEREXP);
 
     public static final Block MEDIUM_WEIGHTED_PRESSURE_PLATE = registerBlock("medium_weighted_pressure_plate",
             new WeightedPressurePlateBlock(75, FabricBlockSettings.of(Material.METAL).noCollision().strength(1f).sounds(BlockSoundGroup.METAL), SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON), ModItemGroup.NETHEREXP);
@@ -461,17 +463,19 @@ public class ModBlocks {
 
     // Spotted Wart Blocks
 
+    public static final Block SPOTTED_NETHER_WART_BLOCK = registerBlockWithoutItem("spotted_nether_wart_block",
+            new SpottedWartBlock(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).sounds(BlockSoundGroup.WART_BLOCK), Blocks.NETHER_WART_BLOCK, 1));
+
     public static final Block SPOTTED_WARPED_WART_BLOCK = registerBlockWithoutItem("spotted_warped_wart_block",
             new SpottedWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).sounds(BlockSoundGroup.WART_BLOCK), Blocks.WARPED_WART_BLOCK, 2));
-
 
     // Decayable Blocks
 
     public static final Block DECAYABLE_NETHER_WART_BLOCK = registerBlockWithoutItem("decayable_nether_wart_block",
-            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_NETHER_WART, Blocks.NETHER_WART_BLOCK));
+            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_NETHER_WART, Blocks.NETHER_WART_BLOCK, 1));
 
     public static final Block DECAYABLE_WARPED_WART_BLOCK = registerBlockWithoutItem("decayable_warped_wart_block",
-            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_WARPED_WART, Blocks.WARPED_WART_BLOCK));
+            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_WARPED_WART, Blocks.WARPED_WART_BLOCK, 2));
 
     public static final Block DECAYABLE_SHROOMLIGHT = registerBlockWithoutItem("decayable_shroomlight",
             new DecayableShroomBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMLIGHT, Blocks.SHROOMLIGHT));

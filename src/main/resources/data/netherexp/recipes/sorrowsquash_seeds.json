@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:sorrowsquash"
+    }
+  ],
+  "result": {
+    "item": "netherexp:sorrowsquash_seeds",
+    "count": 4
+  }
+}

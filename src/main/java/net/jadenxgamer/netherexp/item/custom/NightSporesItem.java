@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.item.custom;
 
 import net.jadenxgamer.netherexp.block.ModBlocks;
+import net.jadenxgamer.netherexp.block.custom.DecayableWartBlock;
 import net.jadenxgamer.netherexp.block.custom.SpottedWartBlock;
 import net.jadenxgamer.netherexp.particle.ModParticles;
 import net.minecraft.block.Block;
@@ -34,6 +35,7 @@ public class NightSporesItem extends Item {
         BlockState state = world.getBlockState(pos = context.getBlockPos());
         Block block = state.getBlock();
         SpottedWartBlock spottedWartBlock;
+        DecayableWartBlock decayableWartBlock;
         /*
           Changes Wart Block to Spotted Wart Block
         */
@@ -53,6 +55,19 @@ public class NightSporesItem extends Item {
         */
         else if (state.isOf(ModBlocks.SPOTTED_WARPED_WART_BLOCK) && !(spottedWartBlock = (SpottedWartBlock) block).maxSpots(state)) {
             world.setBlockState(pos, spottedWartBlock.setSpots(state));
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            sporeParticles(world, pos);
+
+            if (player != null) {
+                itemStack.decrement(1);
+            }
+            return ActionResult.success(world.isClient);
+        }
+        /*
+          Increases Decayable Wart Block's Spots
+        */
+        else if (state.isOf(ModBlocks.DECAYABLE_WARPED_WART_BLOCK) && !(decayableWartBlock = (DecayableWartBlock) block).maxSpots(state)) {
+            world.setBlockState(pos, decayableWartBlock.setSpots(state));
             world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 

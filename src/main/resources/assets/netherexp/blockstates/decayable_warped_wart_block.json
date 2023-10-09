@@ -1,383 +1,50 @@
 {
   "variants": {
-    "distance=1": [
+    "spots=0": [
       {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
+        "model": "minecraft:block/warped_wart_block"
       }
     ],
-    "distance=2": [
+    "spots=1": [
       {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
+        "model": "minecraft:block/warped_wart_block/small/1",
+        "weight": 50
       },
       {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
+        "model": "minecraft:block/warped_wart_block/small/2",
+        "weight": 45
       },
       {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
+        "model": "minecraft:block/warped_wart_block/small/3",
+        "weight": 40
       }
     ],
-    "distance=3": [
+    "spots=2": [
       {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
+        "model": "minecraft:block/warped_wart_block/medium/1",
+        "weight": 50
       },
       {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
+        "model": "minecraft:block/warped_wart_block/medium/2",
+        "weight": 45
       },
       {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
+        "model": "minecraft:block/warped_wart_block/medium/3",
+        "weight": 40
       }
     ],
-    "distance=4": [
+    "spots=3": [
       {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
+        "model": "minecraft:block/warped_wart_block/big/1",
+        "weight": 50
       },
       {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
+        "model": "minecraft:block/warped_wart_block/big/2",
+        "weight": 405
       },
       {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
-      }
-    ],
-    "distance=5": [
-      {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
-      }
-    ],
-    "distance=6": [
-      {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
-      }
-    ],
-    "distance=7": [
-      {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
-      }
-    ],
-    "distance=8": [
-      {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
-      }
-    ],
-    "distance=9": [
-      {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
-      }
-    ],
-    "distance=10": [
-      {
-        "model": "minecraft:block/warped_wart_block/0",
-        "weight": 280
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/1",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/2",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/3",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/4",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/5",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/6",
-        "weight": 30
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/7",
-        "weight": 35
-      },
-      {
-        "model": "minecraft:block/warped_wart_block/8",
-        "weight": 35
+        "model": "minecraft:block/warped_wart_block/big/3",
+        "weight": 40
       }
     ]
   }

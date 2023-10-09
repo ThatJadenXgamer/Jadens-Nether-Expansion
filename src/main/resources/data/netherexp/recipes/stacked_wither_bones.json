@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#C#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:stacked_bones"
+    },
+    "C": {
+      "tag": "netherexp:coal_items"
+    }
+  },
+  "result": {
+    "item": "netherexp:stacked_wither_bones",
+    "count": 4
+  }
+}

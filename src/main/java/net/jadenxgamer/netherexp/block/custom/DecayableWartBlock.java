@@ -1,31 +1,53 @@
 package net.jadenxgamer.netherexp.block.custom;
 
+import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.event.GameEvent;
 
 public class DecayableWartBlock extends Block {
     public static final IntProperty DISTANCE = IntProperty.of("distance", 1, 10);
+    public static final IntProperty SPOTS = IntProperty.of("spots", 0, 3);
 
+    // Particle is used to get the falling warts when decaying
     protected final ParticleEffect particle;
+
+    // Persistent is the default block obtained when middle-clicked
     protected final Block persistent;
 
-    public DecayableWartBlock(Settings settings, ParticleEffect particle, Block persistent) {
+    /*
+     * Spore value dictates what kind of spore to drop when sheared
+     * 1 = Lightspores
+     * 2 = Nightspores
+     */
+    protected final int spore;
+
+    public DecayableWartBlock(Settings settings, ParticleEffect particle, Block persistent, int spore) {
         super(settings);
         this.particle = particle;
         this.persistent = persistent;
-        this.setDefaultState(this.stateManager.getDefaultState().with(DISTANCE, 10));
+        this.spore = spore;
+        this.setDefaultState(this.stateManager.getDefaultState().with(DISTANCE, 10).with(SPOTS, 0));
     }
 
     @Override
@@ -59,6 +81,52 @@ public class DecayableWartBlock extends Block {
             world.scheduleBlockTick(pos, this, 1);
         }
         return state;
+    }
+
+    private static void dropLight(World world, BlockPos pos, BlockState state) {
+        int s = state.get(SPOTS);
+        SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.LIGHTSPORES, s));
+    }
+
+    private static void dropNight(World world, BlockPos pos, BlockState state) {
+        int s = state.get(SPOTS);
+        SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.NIGHTSPORES, s));
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        boolean bl = false;
+        if (itemStack.isOf(Items.SHEARS)) {
+            if (this.spore == 1) {
+                dropLight(world, pos, state);
+            }
+            else if (this.spore == 2) {
+                dropNight(world, pos, state);
+            }
+            world.playSound(player, pos, SoundEvents.BLOCK_GROWING_PLANT_CROP, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.setBlockState(pos, this.getDefaultState(), Block.NOTIFY_LISTENERS);
+            world.emitGameEvent(player, GameEvent.SHEAR, pos);
+            itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
+            bl = true;
+        }
+        if (!world.isClient() && bl) {
+            player.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
+        }
+        if (bl) {
+            return ActionResult.success(world.isClient);
+        }
+        return ActionResult.PASS;
+    }
+
+    public boolean maxSpots(BlockState state) {
+        return state.get(SPOTS) == 3;
+    }
+
+    public BlockState setSpots(BlockState state) {
+        int s = state.get(SPOTS);
+        return state.with(SPOTS, s + 1);
     }
 
     private static BlockState updateDistanceFromStem(BlockState state, WorldAccess world, BlockPos pos) {
@@ -96,7 +164,7 @@ public class DecayableWartBlock extends Block {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(DISTANCE);
+        builder.add(DISTANCE, SPOTS);
     }
 
     @Override

@@ -1,9 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " # ",
-    " # ",
-    " # "
+    "###"
   ],
   "key": {
     "#": {
@@ -12,6 +10,6 @@
   },
   "result": {
     "item": "minecraft:paper",
-    "count": 3
+    "count": 9
   }
 }

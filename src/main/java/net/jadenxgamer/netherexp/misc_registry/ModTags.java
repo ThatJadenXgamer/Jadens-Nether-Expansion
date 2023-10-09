@@ -26,10 +26,10 @@ public class ModTags {
         public static final TagKey<Block> SOUL_LAYER_CAN_SURVIVE_ON = createBlockTag("soul_layer_can_survive_on");
         public static final TagKey<Block> SOUL_LAYER_CANNOT_SURVIVE_ON = createBlockTag("soul_layer_cannot_survive_on");
 
-        // Makes Enigma Crown Plantable on these Blocks
+        // Makes Enigma Crown are Plantable on these Blocks
         public static final TagKey<Block> ENIGMA_CROWN_PLANTABLE_ON = createBlockTag("enigma_crown_plantable_on");
 
-        // Makes Scale Fungus Plantable on these Blocks
+        // Makes Scale Fungus are Plantable on these Blocks
         public static final TagKey<Block> SCALE_FUNGUS_PLANTABLE_ON = createBlockTag("scale_fungus_plantable_on");
 
         /*
@@ -38,7 +38,7 @@ public class ModTags {
         */
         public static final TagKey<Block> BONE_FENCES = createBlockTag("bone_fences");
 
-        // Igneous Reeds Plantable on these Blocks
+        // Igneous Reeds are Plantable on these Blocks
         public static final TagKey<Block> IGNEOUS_REEDS_PLANTABLE_ON = createBlockTag("igneous_reeds_plantable_on");
 
         // Tag to define all kinds of Magma Blocks
@@ -48,7 +48,10 @@ public class ModTags {
         public static final TagKey<Block> PIGLIN_CANNOT_SPAWN_ON = createBlockTag("piglin_cannot_spawn_on");
 
         // Hoglins cannot spawn on these Blocks
-        public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createBlockTag("hoglin_cannot_spawn_on");
+        public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createBlockTag("hoglin_cannot_spawn_on");        // Hoglins cannot spawn on these Blocks
+
+        // Sorrow Squash Vines are Plantable on these Blocks
+        public static final TagKey<Block> SORROWSQUASH_VINE_PLANTABLE_ON = createBlockTag("sorrowsquash_vine_plantable_on");
 
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(NetherExp.MOD_ID, name));

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.jadenxgamer.netherexp.entity.ModEntities;
+import net.jadenxgamer.netherexp.item.custom.LightSporesItem;
 import net.jadenxgamer.netherexp.item.custom.NightSporesItem;
 import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.item.*;
@@ -24,6 +25,9 @@ public class ModItems {
 
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
             new Item(new FabricItemSettings().food(ModFoodComponents.COOKED_HOGHAM)));
+
+    public static final Item SORROWSQUASH_SEEDS = registerItem("sorrowsquash_seeds",
+            new AliasedBlockItem(ModBlocks.SORROWSQUASH_STEM_PLANT, new FabricItemSettings()));
 
     public static final Item IRON_SCRAP = registerItem("iron_scrap",
             new Item(new FabricItemSettings()));
@@ -45,6 +49,9 @@ public class ModItems {
 
     public static final Item NIGHTSPORES = registerItem("nightspores",
             new NightSporesItem(new FabricItemSettings()));
+
+    public static final Item LIGHTSPORES = registerItem("lightspores",
+            new LightSporesItem(new FabricItemSettings()));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,
@@ -74,6 +81,7 @@ public class ModItems {
 
         addToItemGroup(ModItemGroup.NETHEREXP, WEEPING_IVY);
         addToItemGroup(ModItemGroup.NETHEREXP, TWISTING_IVY);
+        addToItemGroup(ModItemGroup.NETHEREXP, LIGHTSPORES);
         addToItemGroup(ModItemGroup.NETHEREXP, NIGHTSPORES);
         addToItemGroup(ModItemGroup.NETHEREXP, WHITE_ASH_POWDER);
         addToItemGroup(ModItemGroup.NETHEREXP, HOGHAM);

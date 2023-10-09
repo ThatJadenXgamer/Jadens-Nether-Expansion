@@ -4,6 +4,7 @@
   "item.netherexp.cooked_hogham": "Cooked Hogham",
   "item.netherexp.warpspores": "Warpspores",
   "item.netherexp.white_ash_powder": "White Ash Powder",
+  "item.netherexp.lightspores": "Lightspores",
   "item.netherexp.nightspores": "Nightspores",
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
@@ -34,6 +35,7 @@
   "block.netherexp.ecto_soul_sand": "Ecto Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
 
+  "block.netherexp.sorrowsquash_seeds": "Sorrowsquash Seeds",
   "block.netherexp.sorrowsquash": "Sorrowsquash",
   "block.netherexp.carved_sorrowsquash": "Carved Sorrowsquash",
   "block.netherexp.ghoul_o_lantern": "Ghoul o'Lantern",
@@ -162,6 +164,7 @@
   "block.netherexp.crimson_nylium_path": "Crimson Nylium Path",
   "block.netherexp.warped_nylium_path": "Warped Nylium Path",
 
+  "block.netherexp.spotted_nether_wart_block": "Spotted Nether Wart Block",
   "block.netherexp.spotted_warped_wart_block": "Spotted Warped Wart Block",
 
   "block.netherexp.decayable_nether_wart_block": "Decayable Nether Wart Block",
