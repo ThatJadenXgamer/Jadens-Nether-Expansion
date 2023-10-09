@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.block.custom;
 
 import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +11,6 @@ import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
@@ -98,15 +98,16 @@ public class DecayableWartBlock extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
         boolean bl = false;
-        if (itemStack.isOf(Items.SHEARS)) {
+        int s = state.get(SPOTS);
+        if (itemStack.isOf(Items.SHEARS) && s >= 1) {
             if (this.spore == 1) {
                 dropLight(world, pos, state);
             }
             else if (this.spore == 2) {
                 dropNight(world, pos, state);
             }
-            world.playSound(player, pos, SoundEvents.BLOCK_GROWING_PLANT_CROP, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            world.setBlockState(pos, this.getDefaultState(), Block.NOTIFY_LISTENERS);
+            world.playSound(player, pos, ModSoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.setBlockState(pos, state.with(SPOTS, 0), Block.NOTIFY_LISTENERS);
             world.emitGameEvent(player, GameEvent.SHEAR, pos);
             itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
             bl = true;
@@ -120,6 +121,7 @@ public class DecayableWartBlock extends Block {
         return ActionResult.PASS;
     }
 
+    @SuppressWarnings("all")
     public boolean maxSpots(BlockState state) {
         return state.get(SPOTS) == 3;
     }

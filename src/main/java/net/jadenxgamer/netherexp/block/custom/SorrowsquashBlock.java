@@ -28,6 +28,7 @@ import net.minecraft.world.event.GameEvent;
 public class SorrowsquashBlock
 extends GourdBlock implements LandingBlock {
 
+    // If Natural is true this block will obey Gravity
     public static final BooleanProperty NATURAL = BooleanProperty.of("natural");
 
     public SorrowsquashBlock(Settings settings) {
@@ -45,7 +46,10 @@ extends GourdBlock implements LandingBlock {
 
     @SuppressWarnings("deprecation")
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        world.scheduleBlockTick(pos, this, this.getFallDelay());
+        boolean n = state.get(NATURAL);
+        if (n) {
+            world.scheduleBlockTick(pos, this, this.getFallDelay());
+        }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
@@ -84,6 +88,7 @@ extends GourdBlock implements LandingBlock {
         return super.onUse(state, world, pos, player2, hand, hit);
     }
 
+    // This is Unused but Required for GourdBlock if anyone's wondering
     @Override
     public StemBlock getStem() {
         return (StemBlock)Blocks.PUMPKIN_STEM;
@@ -94,6 +99,7 @@ extends GourdBlock implements LandingBlock {
         builder.add(NATURAL);
     }
 
+    // This is Unused but Required as well
     @Override
     public AttachedStemBlock getAttachedStem() {
         return (AttachedStemBlock)Blocks.ATTACHED_PUMPKIN_STEM;

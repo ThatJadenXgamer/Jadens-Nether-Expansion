@@ -4,6 +4,7 @@ import net.jadenxgamer.netherexp.block.ModBlocks;
 import net.jadenxgamer.netherexp.block.custom.DecayableWartBlock;
 import net.jadenxgamer.netherexp.block.custom.SpottedWartBlock;
 import net.jadenxgamer.netherexp.particle.ModParticles;
+import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -12,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -42,7 +42,7 @@ public class NightSporesItem extends Item {
         if (state.isOf(Blocks.WARPED_WART_BLOCK)) {
             world.setBlockState(pos, ModBlocks.SPOTTED_WARPED_WART_BLOCK.getDefaultState());
             //TODO: Make a custom sound effect for this
-            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 
             if (player != null) {
@@ -55,7 +55,7 @@ public class NightSporesItem extends Item {
         */
         else if (state.isOf(ModBlocks.SPOTTED_WARPED_WART_BLOCK) && !(spottedWartBlock = (SpottedWartBlock) block).maxSpots(state)) {
             world.setBlockState(pos, spottedWartBlock.setSpots(state));
-            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 
             if (player != null) {
@@ -68,7 +68,7 @@ public class NightSporesItem extends Item {
         */
         else if (state.isOf(ModBlocks.DECAYABLE_WARPED_WART_BLOCK) && !(decayableWartBlock = (DecayableWartBlock) block).maxSpots(state)) {
             world.setBlockState(pos, decayableWartBlock.setSpots(state));
-            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 
             if (player != null) {

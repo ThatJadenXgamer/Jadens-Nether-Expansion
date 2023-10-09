@@ -604,6 +604,21 @@
       "netherexp:block/sporeshroom/boing3"
     ]
   },
+  "block.lightspores.apply": {
+    "subtitle": "subtitles.block.lightspores.apply",
+    "sounds": [
+      "netherexp:block/lightspores/apply1",
+      "netherexp:block/lightspores/apply2",
+      "netherexp:block/lightspores/apply3",
+      "netherexp:block/lightspores/apply4"
+    ]
+  },
+  "block.lightspores.shear": {
+    "subtitle": "subtitles.block.lightspores.shear",
+    "sounds": [
+      "netherexp:block/lightspores/shear"
+    ]
+  },
   "entity.warphopper.ambient": {
     "subtitle": "subtitles.entity.warphopper.ambient",
     "sounds": [

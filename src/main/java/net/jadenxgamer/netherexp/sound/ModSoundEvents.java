@@ -81,6 +81,8 @@ public class ModSoundEvents {
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
     public static SoundEvent EXPLOSIVE_SCORIA_AMBIENT = registerSoundEvent("block.explosive_scoria.ambient");
     public static SoundEvent SPORESHROOM_TRAMPOLINED = registerSoundEvent("block.sporeshroom.trampolined");
+    public static SoundEvent LIGHTSPORES_APPLY = registerSoundEvent("block.lightspores.apply");
+    public static SoundEvent LIGHTSPORES_SHEAR = registerSoundEvent("block.lightspores.shear");
 
     // ENTITIES:
 

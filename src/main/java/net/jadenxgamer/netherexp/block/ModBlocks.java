@@ -199,7 +199,7 @@ public class ModBlocks {
     public static final Block STRIPPED_CLARET_HYPHAE = registerBlock("stripped_claret_hyphae",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_HYPHAE).sounds(BlockSoundGroup.NETHER_STEM)), ModItemGroup.NETHEREXP);
     public static final Block CLARET_PLANKS = registerBlock("claret_planks",
-            new Block(FabricBlockSettings.of(Material.NETHER_WOOD, MapColor.DARK_CRIMSON).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.NETHEREXP);
+            new Block(FabricBlockSettings.of(Material.NETHER_WOOD, MapColor.DARK_CRIMSON).strength(2.0f, 3.0f).sounds(BlockSoundGroup.NETHER_WOOD)), ModItemGroup.NETHEREXP);
 
     public static final Block CLARET_SLAB = registerBlock("claret_slab",
             new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).sounds(BlockSoundGroup.NETHER_WOOD)), ModItemGroup.NETHEREXP);
@@ -446,8 +446,8 @@ public class ModBlocks {
             new SproutsBlock(FabricBlockSettings.copyOf(Blocks.NETHER_SPROUTS).sounds(BlockSoundGroup.NETHER_SPROUTS)), ModItemGroup.NETHEREXP);
 
     public static final Block SOUL_SOIL_LAYER = registerBlock("soul_soil_layer",
-            new SoulSoilLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f).requiresTool()
-                    .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP);
+            new SoulSoilLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.5f)
+            .sounds(BlockSoundGroup.SOUL_SOIL).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))), ModItemGroup.NETHEREXP);
 
 
     // Path Blocks

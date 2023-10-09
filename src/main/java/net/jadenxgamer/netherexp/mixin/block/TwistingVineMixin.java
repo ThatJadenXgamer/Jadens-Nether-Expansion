@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.block;
 
 import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.particle.ModParticles;
+import net.jadenxgamer.netherexp.sound.ModSoundEvents;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,7 +11,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -57,7 +57,7 @@ extends AbstractPlantStemBlock {
         boolean bl = false;
         if (!dripping) {
             if (itemStack.isOf(ModItems.NIGHTSPORES)) {
-                world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 world.setBlockState(pos,state.cycle(DRIPPING), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
@@ -69,7 +69,7 @@ extends AbstractPlantStemBlock {
         else {
            if (itemStack.isOf(Items.SHEARS)) {
                dropNight(world, pos);
-               world.playSound(player, pos, SoundEvents.BLOCK_GROWING_PLANT_CROP, SoundCategory.BLOCKS, 1.0f, 1.0f);
+               world.playSound(player, pos, ModSoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
                world.setBlockState(pos, state.cycle(DRIPPING), Block.NOTIFY_LISTENERS);
                world.emitGameEvent(player, GameEvent.SHEAR, pos);
                itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));

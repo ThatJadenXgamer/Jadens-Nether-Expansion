@@ -73,12 +73,15 @@ public class ModItems {
         addToItemGroup(ItemGroups.FOOD_AND_DRINK, HOGHAM);
         addToItemGroup(ItemGroups.FOOD_AND_DRINK, COOKED_HOGHAM);
 
+        addToItemGroup(ItemGroups.BUILDING_BLOCKS, SORROWSQUASH_SEEDS);
         addToItemGroup(ItemGroups.BUILDING_BLOCKS, WEEPING_IVY);
         addToItemGroup(ItemGroups.BUILDING_BLOCKS, TWISTING_IVY);
+        addToItemGroup(ItemGroups.BUILDING_BLOCKS, LIGHTSPORES);
         addToItemGroup(ItemGroups.BUILDING_BLOCKS, NIGHTSPORES);
 
         addToItemGroup(ItemGroups.SPAWN_EGGS, WARPHOPPER_SPAWN_EGG);
 
+        addToItemGroup(ModItemGroup.NETHEREXP, SORROWSQUASH_SEEDS);
         addToItemGroup(ModItemGroup.NETHEREXP, WEEPING_IVY);
         addToItemGroup(ModItemGroup.NETHEREXP, TWISTING_IVY);
         addToItemGroup(ModItemGroup.NETHEREXP, LIGHTSPORES);

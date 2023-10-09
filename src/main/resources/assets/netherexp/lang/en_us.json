@@ -35,7 +35,7 @@
   "block.netherexp.ecto_soul_sand": "Ecto Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
 
-  "block.netherexp.sorrowsquash_seeds": "Sorrowsquash Seeds",
+  "item.netherexp.sorrowsquash_seeds": "Sorrowsquash Seeds",
   "block.netherexp.sorrowsquash": "Sorrowsquash",
   "block.netherexp.carved_sorrowsquash": "Carved Sorrowsquash",
   "block.netherexp.ghoul_o_lantern": "Ghoul o'Lantern",
@@ -203,6 +203,8 @@
   "subtitles.item.gold_ingot.gilding": "Block gilded",
   "subtitles.block.explosive_scoria.ambient": "Unstable electrical sparks",
   "subtitles.block.sporeshroom.trampolined": "Sporeshroom trampolined",
+  "subtitles.block.lightspores.apply": "Spores applied to Block",
+  "subtitles.block.lightspores.shear": "Spores scraped from Block",
 
   "death.attack.igneousThorns": "%1$s was pricked to death inside igneous thorns",
   "death.attack.igneousThorns.player": "%1$s was pricked to death inside igneous thorns whilst trying to escape %2$s",

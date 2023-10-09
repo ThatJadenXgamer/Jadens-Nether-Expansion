@@ -48,7 +48,7 @@ public class ModTags {
         public static final TagKey<Block> PIGLIN_CANNOT_SPAWN_ON = createBlockTag("piglin_cannot_spawn_on");
 
         // Hoglins cannot spawn on these Blocks
-        public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createBlockTag("hoglin_cannot_spawn_on");        // Hoglins cannot spawn on these Blocks
+        public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createBlockTag("hoglin_cannot_spawn_on");
 
         // Sorrow Squash Vines are Plantable on these Blocks
         public static final TagKey<Block> SORROWSQUASH_VINE_PLANTABLE_ON = createBlockTag("sorrowsquash_vine_plantable_on");
