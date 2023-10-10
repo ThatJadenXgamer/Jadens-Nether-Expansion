@@ -46,8 +46,8 @@ extends GourdBlock implements LandingBlock {
 
     @SuppressWarnings("deprecation")
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        boolean n = state.get(NATURAL);
-        if (n) {
+        boolean b = state.get(NATURAL);
+        if (b) {
             world.scheduleBlockTick(pos, this, this.getFallDelay());
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);

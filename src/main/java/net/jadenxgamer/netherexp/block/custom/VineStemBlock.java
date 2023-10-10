@@ -77,7 +77,7 @@ extends AbstractPlantStemBlock {
             Direction direction = Direction.Type.HORIZONTAL.random(random);
             BlockPos blockPos2 = pos.offset(direction);
             if (world.getBlockState(blockPos2).isAir()) {
-                world.setBlockState(blockPos2, this.gourdBlock.getDefaultState().with(SorrowsquashBlock.NATURAL, true));
+                world.setBlockState(blockPos2, this.gourdBlock.getDefaultState().with(SorrowsquashBlock.NATURAL, false));
                 world.setBlockState(pos, state.with(ATTACHED, true).with(HorizontalFacingBlock.FACING, direction));
             }
         }
@@ -105,17 +105,6 @@ extends AbstractPlantStemBlock {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
         return state;
-    }
-
-    @Override
-    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
-        BlockState blockState = world.getBlockState(blockPos);
-        if (!this.canAttachTo(blockState)) {
-            return false;
-        } else {
-            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isIn(ModTags.Blocks.SORROWSQUASH_VINE_PLANTABLE_ON);
-        }
     }
 
     @Override

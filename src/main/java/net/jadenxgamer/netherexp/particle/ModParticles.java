@@ -59,6 +59,6 @@ public class ModParticles {
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "soul_ember"),
                 SOUL_EMBER);
 
-        NetherExp.LOGGER.debug("Registering Mod Particles for " + NetherExp.MOD_ID);
+        NetherExp.LOGGER.debug("Registering Particles for " + NetherExp.MOD_ID);
     }
 }

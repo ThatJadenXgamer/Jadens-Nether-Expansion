@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:nether_wart_blocks",
-    "#minecraft:warped_wart_blocks"
+    "#netherexp:nether_wart_blocks",
+    "#netherexp:warped_wart_blocks"
   ]
 }

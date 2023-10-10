@@ -100,7 +100,7 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        NetherExp.LOGGER.debug("Registering Mod Items for " + NetherExp.MOD_ID);
+        NetherExp.LOGGER.debug("Registering Items for " + NetherExp.MOD_ID);
         addItemsToItemGroups();
     }
 }

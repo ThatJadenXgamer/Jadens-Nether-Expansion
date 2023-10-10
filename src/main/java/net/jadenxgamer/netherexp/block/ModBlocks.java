@@ -14,7 +14,6 @@ import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -604,6 +603,6 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        NetherExp.LOGGER.debug("Registering ModBlocks for " + NetherExp.MOD_ID);
+        NetherExp.LOGGER.debug("Registering Blocks for " + NetherExp.MOD_ID);
     }
 }
