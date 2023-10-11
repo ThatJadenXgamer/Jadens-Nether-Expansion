@@ -1,4 +1,13 @@
 {
+  "ambient.vent_mire.loop": {
+    "sounds": [
+      {
+        "name": "netherexp:ambient/nether/vent_mire/ambience1",
+        "stream": true,
+        "volume": 0.84
+      }
+    ]
+  },
   "block.soul_slate.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [

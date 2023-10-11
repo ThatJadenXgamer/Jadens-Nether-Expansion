@@ -95,6 +95,9 @@ public class ModSoundEvents {
     // MUSIC:
     public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
 
+    // AMBIENT:
+    public static SoundEvent AMBIENT_VENTMIRE_LOOP = registerSoundEvent("ambient.ventmire.loop");
+
     // LIST OF SOUND GROUPS:
 
     public static final BlockSoundGroup SOUL_SLATE = new BlockSoundGroup(1f, 1f,

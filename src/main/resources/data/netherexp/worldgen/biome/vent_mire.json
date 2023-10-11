@@ -4,10 +4,10 @@
   "precipitation": "none",
   "effects": {
     "sky_color": 7254527,
-    "fog_color": 3478045,
+    "fog_color": 4396067,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "ambient_sound": "minecraft:ambient.nether_wastes.loop",
+    "ambient_sound": "netherexp:ambient.vent_mire.loop",
     "mood_sound": {
       "sound": "minecraft:ambient.nether_wastes.mood",
       "tick_delay": 6000,
