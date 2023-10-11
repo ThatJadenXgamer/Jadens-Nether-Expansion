@@ -2,9 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
-import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -84,11 +82,6 @@ implements Waterloggable {
         return null;
     }
 
-    @SuppressWarnings("deprecation")
-    @Override
-    public PistonBehavior getPistonBehavior(BlockState state) {
-        return PistonBehavior.DESTROY;
-    }
 
     @SuppressWarnings("deprecation")
     @Override
@@ -155,7 +148,7 @@ implements Waterloggable {
 
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        entity.handleFallDamage(fallDistance, 0.0f, DamageSource.FALL);
+        entity.handleFallDamage(fallDistance, 0.0f, world.getDamageSources().fall());
     }
 
     @Override

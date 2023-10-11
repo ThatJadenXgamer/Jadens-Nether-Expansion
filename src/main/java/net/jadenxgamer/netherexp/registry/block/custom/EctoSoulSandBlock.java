@@ -16,26 +16,31 @@ extends Block
         super(settings);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return COLLISION_SHAPE;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getSidesShape(BlockState state, BlockView world, BlockPos pos) {
         return VoxelShapes.fullCube();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.fullCube();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
         return 0.2f;

@@ -26,22 +26,19 @@ extends HorizontalConnectingBlock {
         this.cullingShapes = this.createShapes(2.0f, 1.0f, 16.0f, 6.0f, 15.0f);
     }
 
-    public BoneFenceBlock(float radius1, float radius2, float boundingHeight1, float boundingHeight2, float collisionHeight, Settings settings, VoxelShape[] cullingShapes) {
-        super(radius1, radius2, boundingHeight1, boundingHeight2, collisionHeight, settings);
-        this.cullingShapes = cullingShapes;
-    }
-
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
         return this.cullingShapes[this.getShapeIndex(state)];
     }
 
+    @SuppressWarnings("all")
     public boolean canConnect(BlockState state, boolean neighborIsFullSquare, Direction dir) {
         Block block = state.getBlock();
-        boolean bl = this.canConnectToFence(state);
-        return bl;
+        return this.canConnectToFence(state);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return this.getOutlineShape(state, world, pos, context);
@@ -72,6 +69,7 @@ extends HorizontalConnectingBlock {
         return Objects.requireNonNull(super.getPlacementState(ctx)).with(NORTH, this.canConnect(blockState, blockState.isSideSolidFullSquare(blockView, blockPos2, Direction.SOUTH), Direction.SOUTH)).with(EAST, this.canConnect(blockState2, blockState2.isSideSolidFullSquare(blockView, blockPos3, Direction.WEST), Direction.WEST)).with(SOUTH, this.canConnect(blockState3, blockState3.isSideSolidFullSquare(blockView, blockPos4, Direction.NORTH), Direction.NORTH)).with(WEST, this.canConnect(blockState4, blockState4.isSideSolidFullSquare(blockView, blockPos5, Direction.EAST), Direction.EAST)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED)) {

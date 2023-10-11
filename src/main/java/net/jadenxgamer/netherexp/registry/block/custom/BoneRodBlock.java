@@ -52,7 +52,7 @@ implements Waterloggable {
         }
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
-        return Objects.requireNonNull(super.getPlacementState(ctx)).with(WATERLOGGED, bl).with(FACING, ctx.getPlayerFacing().getOpposite());
+        return Objects.requireNonNull(super.getPlacementState(ctx)).with(WATERLOGGED, bl).with(FACING, ctx.getPlayerLookDirection().getOpposite());
     }
 
     @SuppressWarnings("deprecation")

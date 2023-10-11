@@ -4,7 +4,6 @@ import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.tag.TagKey;
@@ -19,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 
 public class GeyserBlock extends Block {
@@ -48,7 +48,7 @@ public class GeyserBlock extends Block {
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         Vec3d vec3d = entity.getVelocity();
         entity.addVelocity(vec3d.x,1.2, vec3d.z);
-        entity.damage(DamageSource.HOT_FLOOR, 1.0f);
+        entity.damage(world.getDamageSources().hotFloor(), 1.0f);
     }
 
     @SuppressWarnings("deprecation")
@@ -97,7 +97,7 @@ public class GeyserBlock extends Block {
 
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        entity.handleFallDamage(fallDistance, 0.8f, DamageSource.FALL);
+        entity.handleFallDamage(fallDistance, 0.8f, world.getDamageSources().fall());
     }
 
     @Override

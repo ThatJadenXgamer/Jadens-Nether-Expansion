@@ -48,9 +48,8 @@ Waterloggable {
         return !context.getStack().isOf(ModItems.TWISTING_IVY) || super.canReplace(state, context);
     }
 
-
     @Override
-    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
         return Direction.stream().anyMatch(direction -> this.grower.canGrow(state, world, pos, direction.getOpposite()));
     }
 
@@ -73,8 +72,7 @@ Waterloggable {
         return super.getFluidState(state);
     }
 
-    @Override
-    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
+    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
         return state.getFluidState().isEmpty();
     }
 

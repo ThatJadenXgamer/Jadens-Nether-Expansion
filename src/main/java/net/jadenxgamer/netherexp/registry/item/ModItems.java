@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.registry.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
@@ -67,45 +66,7 @@ public class ModItems {
         return Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name), item);
     }
 
-    public static void addItemsToItemGroups() {
-        addToItemGroup(ItemGroups.INGREDIENTS, WARPHOPPER_FUR);
-        addToItemGroup(ItemGroups.INGREDIENTS, IRON_SCRAP);
-        addToItemGroup(ItemGroups.INGREDIENTS, RAW_PYRITE);
-        addToItemGroup(ItemGroups.INGREDIENTS, PYRITE_INGOT);
-        addToItemGroup(ItemGroups.INGREDIENTS, FOGGY_ESSENCE);
-
-        addToItemGroup(ItemGroups.FOOD_AND_DRINK, HOGHAM);
-        addToItemGroup(ItemGroups.FOOD_AND_DRINK, COOKED_HOGHAM);
-
-        addToItemGroup(ItemGroups.BUILDING_BLOCKS, SORROWSQUASH_SEEDS);
-        addToItemGroup(ItemGroups.BUILDING_BLOCKS, WEEPING_IVY);
-        addToItemGroup(ItemGroups.BUILDING_BLOCKS, TWISTING_IVY);
-        addToItemGroup(ItemGroups.BUILDING_BLOCKS, LIGHTSPORES);
-        addToItemGroup(ItemGroups.BUILDING_BLOCKS, NIGHTSPORES);
-
-        addToItemGroup(ItemGroups.SPAWN_EGGS, WARPHOPPER_SPAWN_EGG);
-
-        addToItemGroup(ModItemGroup.NETHEREXP, SORROWSQUASH_SEEDS);
-        addToItemGroup(ModItemGroup.NETHEREXP, WEEPING_IVY);
-        addToItemGroup(ModItemGroup.NETHEREXP, TWISTING_IVY);
-        addToItemGroup(ModItemGroup.NETHEREXP, LIGHTSPORES);
-        addToItemGroup(ModItemGroup.NETHEREXP, NIGHTSPORES);
-        addToItemGroup(ModItemGroup.NETHEREXP, WHITE_ASH_POWDER);
-        addToItemGroup(ModItemGroup.NETHEREXP, HOGHAM);
-        addToItemGroup(ModItemGroup.NETHEREXP, COOKED_HOGHAM);
-        addToItemGroup(ModItemGroup.NETHEREXP, IRON_SCRAP);
-        addToItemGroup(ModItemGroup.NETHEREXP, WARPHOPPER_SPAWN_EGG);
-        addToItemGroup(ModItemGroup.NETHEREXP, WARPHOPPER_FUR);
-        addToItemGroup(ModItemGroup.NETHEREXP, FOGGY_ESSENCE);
-        addToItemGroup(ModItemGroup.NETHEREXP, MUSIC_DISC_CRICKET);
-    }
-
-    public static void addToItemGroup(ItemGroup group, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
-    }
-
     public static void registerModItems() {
         NetherExp.LOGGER.debug("Registering Items for " + NetherExp.MOD_ID);
-        addItemsToItemGroups();
     }
 }
