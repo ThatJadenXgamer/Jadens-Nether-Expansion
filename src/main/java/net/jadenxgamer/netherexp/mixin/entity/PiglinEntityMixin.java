@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
-import net.jadenxgamer.netherexp.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.InventoryOwner;

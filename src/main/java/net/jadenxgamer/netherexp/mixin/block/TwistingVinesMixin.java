@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
-import net.jadenxgamer.netherexp.item.ModItems;
-import net.jadenxgamer.netherexp.particle.ModParticles;
-import net.jadenxgamer.netherexp.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.item.ModItems;
+import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

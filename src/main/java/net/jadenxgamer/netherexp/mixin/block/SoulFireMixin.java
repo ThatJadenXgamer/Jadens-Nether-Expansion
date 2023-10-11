@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
-import net.jadenxgamer.netherexp.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoulFireBlock;

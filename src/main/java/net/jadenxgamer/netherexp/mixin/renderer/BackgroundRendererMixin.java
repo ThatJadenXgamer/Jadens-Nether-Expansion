@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.renderer;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.jadenxgamer.netherexp.effect.ModStatusEffects;
+import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.CameraSubmersionType;

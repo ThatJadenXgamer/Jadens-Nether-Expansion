@@ -4,11 +4,11 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.jadenxgamer.netherexp.block.ModBlocks;
-import net.jadenxgamer.netherexp.entity.ModEntities;
-import net.jadenxgamer.netherexp.entity.client.WarphopperRenderer;
-import net.jadenxgamer.netherexp.particle.ModParticles;
-import net.jadenxgamer.netherexp.particle.custom.*;
+import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.entity.ModEntities;
+import net.jadenxgamer.netherexp.registry.entity.client.WarphopperRenderer;
+import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
 

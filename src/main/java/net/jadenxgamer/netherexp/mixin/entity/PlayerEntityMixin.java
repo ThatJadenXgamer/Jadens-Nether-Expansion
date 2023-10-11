@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
-import net.jadenxgamer.netherexp.misc_registry.ModDamageSource;
-import net.jadenxgamer.netherexp.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.ModDamageSource;
+import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
