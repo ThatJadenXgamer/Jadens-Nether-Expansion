@@ -27,24 +27,23 @@ import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(TwistingVinesBlock.class)
-public abstract class TwistingVineMixin
+public abstract class TwistingVinesMixin
 extends AbstractPlantStemBlock {
 
-    private static final BooleanProperty DRIPPING = BooleanProperty.of("dripping");
+    private static final BooleanProperty BUDDING = BooleanProperty.of("budding");
 
-    public TwistingVineMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater, double growthChance) {
+    public TwistingVinesMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater, double growthChance) {
         super(settings, growthDirection, outlineShape, tickWater, growthChance);
-        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0).with(DRIPPING, false));
     }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        boolean d = state.get(DRIPPING);
+        boolean budding = state.get(BUDDING);
         float f = random.nextFloat();
         double x = (double)pos.getX() + random.nextDouble();
         double y = (double)pos.getY() + 0.8;
         double z = (double)pos.getZ() + random.nextDouble();
-        if (d && f < 0.3) {
+        if (!budding && f < 0.3) {
             world.addParticle(ModParticles.RISING_SHROOMNIGHT, x, y, z, MathHelper.nextDouble(random, -0.02, 0.02), 0.08, MathHelper.nextDouble(random, -0.02, 0.02));
         }
     }
@@ -53,12 +52,12 @@ extends AbstractPlantStemBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
-        boolean dripping = state.get(DRIPPING);
+        boolean budding = state.get(BUDDING);
         boolean bl = false;
-        if (!dripping) {
+        if (budding) {
             if (itemStack.isOf(ModItems.NIGHTSPORES)) {
                 world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(pos,state.cycle(DRIPPING), Block.NOTIFY_LISTENERS);
+                world.setBlockState(pos,state.cycle(BUDDING), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
                 }
@@ -70,7 +69,7 @@ extends AbstractPlantStemBlock {
            if (itemStack.isOf(Items.SHEARS)) {
                dropNight(world, pos);
                world.playSound(player, pos, ModSoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
-               world.setBlockState(pos, state.cycle(DRIPPING), Block.NOTIFY_LISTENERS);
+               world.setBlockState(pos, state.cycle(BUDDING), Block.NOTIFY_LISTENERS);
                world.emitGameEvent(player, GameEvent.SHEAR, pos);
                itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
                bl = true;
@@ -104,6 +103,6 @@ extends AbstractPlantStemBlock {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(DRIPPING, AGE);
+        builder.add(BUDDING, AGE);
     }
 }

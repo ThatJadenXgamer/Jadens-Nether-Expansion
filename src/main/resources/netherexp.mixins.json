@@ -5,11 +5,12 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "block.SoulFireMixin",
-    "block.TwistingVineMixin",
-    "block.WeepingVineMixin",
+    "block.TwistingVinesMixin",
+    "block.WeepingVinesMixin",
     "entity.HoglinEntityMixin",
     "entity.PiglinEntityMixin",
-    "entity.PlayerEntityMixin"
+    "entity.PlayerEntityMixin",
+    "item.BrewingRecipeRegistryMixin"
   ],
   "client": [
     "renderer.BackgroundRendererMixin"

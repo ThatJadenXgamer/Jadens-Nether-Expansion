@@ -1,6 +1,6 @@
 {
   "variants": {
-    "dripping=false": [
+    "budding=true": [
       {
         "model": "minecraft:block/twisting_vines/top",
         "weight": 50
@@ -10,7 +10,7 @@
         "weight": 30
       }
     ],
-    "dripping=true": {
+    "budding=false": {
       "model": "minecraft:block/twisting_vines/glow/drippy"
     }
   }

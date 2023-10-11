@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"particle": "block/twisting_vines/glow/mature",
-		"cross": "block/twisting_vines/glow/mature"
+		"particle": "block/twisting_vines/glow/drippy",
+		"cross": "block/twisting_vines/glow/drippy"
 	},
 	"elements": [
 		{

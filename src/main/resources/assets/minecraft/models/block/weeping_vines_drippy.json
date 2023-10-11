@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"particle": "block/weeping_vines_age_25",
-		"cross": "block/weeping_vines_age_25"
+		"particle": "block/weeping_vines_drippy",
+		"cross": "block/weeping_vines_drippy"
 	},
 	"elements": [
 		{

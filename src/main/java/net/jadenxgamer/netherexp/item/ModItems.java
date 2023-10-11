@@ -27,7 +27,10 @@ public class ModItems {
             new Item(new FabricItemSettings().food(ModFoodComponents.COOKED_HOGHAM)));
 
     public static final Item SORROWSQUASH_SEEDS = registerItem("sorrowsquash_seeds",
-            new AliasedBlockItem(ModBlocks.SORROWSQUASH_STEM_PLANT, new FabricItemSettings()));
+            new AliasedBlockItem(ModBlocks.SORROWSQUASH_STEM, new FabricItemSettings()));
+
+    public static final Item FOGGY_ESSENCE = registerItem("foggy_essence",
+            new Item(new FabricItemSettings()));
 
     public static final Item IRON_SCRAP = registerItem("iron_scrap",
             new Item(new FabricItemSettings()));
@@ -69,6 +72,7 @@ public class ModItems {
         addToItemGroup(ItemGroups.INGREDIENTS, IRON_SCRAP);
         addToItemGroup(ItemGroups.INGREDIENTS, RAW_PYRITE);
         addToItemGroup(ItemGroups.INGREDIENTS, PYRITE_INGOT);
+        addToItemGroup(ItemGroups.INGREDIENTS, FOGGY_ESSENCE);
 
         addToItemGroup(ItemGroups.FOOD_AND_DRINK, HOGHAM);
         addToItemGroup(ItemGroups.FOOD_AND_DRINK, COOKED_HOGHAM);
@@ -92,6 +96,7 @@ public class ModItems {
         addToItemGroup(ModItemGroup.NETHEREXP, IRON_SCRAP);
         addToItemGroup(ModItemGroup.NETHEREXP, WARPHOPPER_SPAWN_EGG);
         addToItemGroup(ModItemGroup.NETHEREXP, WARPHOPPER_FUR);
+        addToItemGroup(ModItemGroup.NETHEREXP, FOGGY_ESSENCE);
         addToItemGroup(ModItemGroup.NETHEREXP, MUSIC_DISC_CRICKET);
     }
 

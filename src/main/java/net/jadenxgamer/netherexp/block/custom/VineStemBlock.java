@@ -108,6 +108,17 @@ extends AbstractPlantStemBlock {
     }
 
     @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        BlockPos blockPos = pos.offset(this.growthDirection.getOpposite());
+        BlockState blockState = world.getBlockState(blockPos);
+        if (!this.canAttachTo(blockState)) {
+            return false;
+        } else {
+            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isIn(ModTags.Blocks.SORROWSQUASH_VINE_PLANTABLE_ON);
+        }
+    }
+
+    @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         return new ItemStack(this.pickBlockItem.get());
     }

@@ -2,8 +2,10 @@ package net.jadenxgamer.netherexp.potion;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.effect.ModStatusEffects;
+import net.jadenxgamer.netherexp.item.ModItems;
 import net.jadenxgamer.netherexp.mixin.item.BrewingRecipeRegistryMixin;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
@@ -22,7 +24,13 @@ public class ModPotions{
         return Registry.register(Registries.POTION, new Identifier(NetherExp.MOD_ID, name), potion);
     }
 
+    private static void registerPotionRecipe() {
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.FOGGY_ESSENCE, FOGSIGHT_POTION);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(FOGSIGHT_POTION, Items.REDSTONE, LONG_FOGSIGHT_POTION);
+    }
+
     public static void registerModPotions() {
         NetherExp.LOGGER.debug("Registering Potions for " + NetherExp.MOD_ID);
+        registerPotionRecipe();
     }
 }
