@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModDamageSource;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -28,7 +27,7 @@ extends AbstractPlantBlock {
         }
         entity.slowMovement(state, new Vec3d(0.8f, 0.75, 0.8f));
         if (!(world.isClient || entity.lastRenderX == entity.getX() && entity.lastRenderZ == entity.getZ())) {
-            entity.damage(ModDamageSource.IGNEOUS_THORNS, 1.0f);
+            entity.damage(world.getDamageSources().cactus(), 1.0f);
         }
     }
 

@@ -1,13 +1,14 @@
 {
   "temperature": 2,
   "downfall": 0,
-  "precipitation": "none",
   "effects": {
     "sky_color": 7254527,
     "fog_color": 4396067,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "ambient_sound": "netherexp:ambient.vent_mire.loop",
+    "ambient_sound": {
+      "sound_id": "netherexp:ambient.vent_mire.loop"
+    },
     "mood_sound": {
       "sound": "minecraft:ambient.nether_wastes.mood",
       "tick_delay": 6000,
@@ -102,5 +103,6 @@
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal"
     ]
-  ]
+  ],
+  "has_precipitation": false
 }

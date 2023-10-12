@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModDamageSource;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.Block;
@@ -72,7 +71,7 @@ extends Block {
                 return super.getBlastResistance(explosion, world, pos, blockState, fluidState);
             }
         };
-        world.createExplosion(null, ModDamageSource.EXPLOSIVE_SCORIA, explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 2.0f, false, World.ExplosionSourceType.BLOCK);
+        world.createExplosion(null, world.getDamageSources().hotFloor(), explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 2.0f, false, World.ExplosionSourceType.BLOCK);
     }
 
     private void lesserExplode(World world, final BlockPos explodedPos) {
@@ -90,7 +89,7 @@ extends Block {
             }
         };
 
-        world.createExplosion(null, ModDamageSource.EXPLOSIVE_SCORIA, explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 1.4f, false, World.ExplosionSourceType.BLOCK);
+        world.createExplosion(null, world.getDamageSources().hotFloor(), explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 1.4f, false, World.ExplosionSourceType.BLOCK);
     }
 
     @Override
