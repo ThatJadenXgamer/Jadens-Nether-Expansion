@@ -13,6 +13,8 @@ public class ModLootTableModifier {
 
     private static final Identifier PIGLIN_BARTERING = new Identifier("minecraft", "gameplay/piglin_bartering");
 
+    // TODO: Fix Lightspore Barter, it gets added on top of the existing barter drop
+    /*
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
             if (PIGLIN_BARTERING.equals(id)) {
@@ -25,4 +27,5 @@ public class ModLootTableModifier {
             }
         });
     }
+    */
 }

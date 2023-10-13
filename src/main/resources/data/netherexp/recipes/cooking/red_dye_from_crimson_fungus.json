@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "minecraft:crimson_fungus"
-  },
-  "result": "minecraft:red_dye",
-  "experience": 0.35,
-  "cookingtime": 200
-}

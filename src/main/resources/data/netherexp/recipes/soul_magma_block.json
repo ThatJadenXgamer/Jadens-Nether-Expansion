@@ -1,16 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " M ",
-    "MSM",
-    " M "
+    "X#",
+    "#X"
   ],
   "key": {
-    "M": {
-      "item": "minecraft:magma_block"
-    },
-    "S": {
+    "#": {
       "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "X": {
+      "item": "minecraft:magma_cream"
     }
   },
   "result": {

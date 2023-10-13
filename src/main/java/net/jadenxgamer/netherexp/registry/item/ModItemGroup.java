@@ -112,12 +112,22 @@ public class ModItemGroup {
                         entries.add(ModBlocks.EXPLOSIVE_SCORIA);
                         entries.add(ModItems.IRON_SCRAP);
 
+                        entries.add(Items.QUARTZ);
                         entries.add(ModBlocks.QUARTZ_CRYSTAL);
                         entries.add(ModBlocks.QUARTZ_CRYSTAL_BLOCK);
-                        entries.add(ModBlocks.CHISELED_QUARTZ_PILLAR);
+                        entries.add(Blocks.QUARTZ_BLOCK);
+                        entries.add(Blocks.QUARTZ_STAIRS);
+                        entries.add(Blocks.QUARTZ_SLAB);
+                        entries.add(Blocks.CHISELED_QUARTZ_BLOCK);
+                        entries.add(Blocks.QUARTZ_BRICKS);
                         entries.add(ModBlocks.CRACKED_QUARTZ_BRICKS);
-                        entries.add(ModBlocks.SMOOTH_QUARTZ_WALL);
                         entries.add(ModBlocks.QUARTZ_BRICK_WALL);
+                        entries.add(ModBlocks.CHISELED_QUARTZ_PILLAR);
+                        entries.add(Blocks.QUARTZ_PILLAR);
+                        entries.add(Blocks.SMOOTH_QUARTZ);
+                        entries.add(Blocks.SMOOTH_QUARTZ_STAIRS);
+                        entries.add(Blocks.SMOOTH_QUARTZ_SLAB);
+                        entries.add(ModBlocks.SMOOTH_QUARTZ_WALL);
 
                         entries.add(ModBlocks.SILICA_SAND);
                         entries.add(ModBlocks.SILICA_SANDSTONE);
@@ -154,6 +164,7 @@ public class ModItemGroup {
 
                         entries.add(ModItems.RAW_PYRITE);
                         entries.add(ModItems.PYRITE_INGOT);
+                        entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
                         entries.add(ModBlocks.PYRITE_BLOCK);
                         entries.add(ModBlocks.PYRITE_STAIRS);
                         entries.add(ModBlocks.PYRITE_SLAB);
@@ -163,7 +174,6 @@ public class ModItemGroup {
                         entries.add(ModBlocks.PYRITE_CHAIN);
                         entries.add(ModBlocks.MEDIUM_WEIGHTED_PRESSURE_PLATE);
                         entries.add(ModBlocks.PYRITE_BUTTON);
-                        entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
 
                         entries.add(ModItems.LIGHTSPORES);
                         entries.add(Blocks.SHROOMLIGHT);
@@ -191,6 +201,8 @@ public class ModItemGroup {
                         entries.add(ModBlocks.CRIMSON_NYLIUM_PATH);
                         entries.add(Blocks.WARPED_NYLIUM);
                         entries.add(ModBlocks.WARPED_NYLIUM_PATH);
+
+                        entries.add(ModItems.FOGGY_ESSENCE);
 
                         entries.add(ModItems.HOGHAM);
                         entries.add(ModItems.COOKED_HOGHAM);
