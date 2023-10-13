@@ -22,5 +22,4 @@ public class ModResourcePacks {
 
         NetherExp.LOGGER.info("Registering Built-in ResourcePacks for " + NetherExp.MOD_ID);
     }
-
 }

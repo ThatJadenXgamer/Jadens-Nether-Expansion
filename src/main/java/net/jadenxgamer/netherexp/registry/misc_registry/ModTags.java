@@ -50,8 +50,11 @@ public class ModTags {
         // Hoglins cannot spawn on these Blocks
         public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createBlockTag("hoglin_cannot_spawn_on");
 
-        // Sorrow Squash Vines are Plantable on these Blocks
+        // Sorrowsquash Vines are Plantable on these Blocks
         public static final TagKey<Block> SORROWSQUASH_VINE_PLANTABLE_ON = createBlockTag("sorrowsquash_vine_plantable_on");
+
+        // Weeping Vines can generate on these blocks
+        public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createBlockTag("weeping_vines_feature_valid");
 
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(NetherExp.MOD_ID, name));

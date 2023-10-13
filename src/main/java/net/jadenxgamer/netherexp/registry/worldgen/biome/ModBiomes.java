@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.world.biome;
+package net.jadenxgamer.netherexp.registry.worldgen.biome;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.registry.RegistryKey;

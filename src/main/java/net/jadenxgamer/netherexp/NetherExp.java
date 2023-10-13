@@ -12,6 +12,7 @@ import net.jadenxgamer.netherexp.registry.misc_registry.ModRegistries;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModResourcePacks;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.item.potion.ModPotions;
+import net.jadenxgamer.netherexp.registry.worldgen.configured_feature.ModFeature;
 import net.jadenxgamer.netherexp.util.ModLootTableModifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,7 @@ public class NetherExp implements ModInitializer {
 		ModRegistries.registerModStuffs();
 		ModStatusEffects.registerModStatusEffects();
 		ModPotions.registerModPotions();
+		ModFeature.registerModFeature();
 		ModLootTableModifier.modifyLootTables();
 		ModResourcePacks.init();
 

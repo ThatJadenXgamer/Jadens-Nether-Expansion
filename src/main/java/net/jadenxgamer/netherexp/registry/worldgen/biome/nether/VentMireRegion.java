@@ -1,7 +1,7 @@
-package net.jadenxgamer.netherexp.registry.world.biome.nether;
+package net.jadenxgamer.netherexp.registry.worldgen.biome.nether;
 
 import com.mojang.datafixers.util.Pair;
-import net.jadenxgamer.netherexp.registry.world.biome.ModBiomes;
+import net.jadenxgamer.netherexp.registry.worldgen.biome.ModBiomes;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;

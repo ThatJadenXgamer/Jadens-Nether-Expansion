@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItemGroup {
 
+    @SuppressWarnings("unused")
     public static ItemGroup NETHEREXP = Registry.register(Registries.ITEM_GROUP, new Identifier(NetherExp.MOD_ID, "netherexp"),
             FabricItemGroup.builder().displayName(Text.literal("Nether Expansion Tab"))
                     .icon(() -> new ItemStack(ModBlocks.PYRITE_NETHER_BRICKS)).entries((displayContext, entries) -> {
@@ -37,6 +38,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SOUL_SWIRLS);
                         entries.add(ModBlocks.SOUL_SOIL_LAYER);
                         entries.add(Blocks.SOUL_SOIL);
+                        entries.add(ModBlocks.SOUL_PATH);
                         entries.add(Blocks.SOUL_SAND);
                         entries.add(ModBlocks.ECTO_SOUL_SAND);
                         entries.add(ModBlocks.SOUL_MAGMA_BLOCK);
@@ -65,7 +67,9 @@ public class ModItemGroup {
                         entries.add(ModBlocks.NETHERRACK_TILES);
                         entries.add(ModBlocks.NETHERRACK_PILLAR);
 
-                        entries.add(Blocks.BASALT);
+                        entries.add(ModItems.WHITE_ASH_POWDER);
+                        entries.add(ModBlocks.WHITE_ASH_BLOCK);
+                        entries.add(ModBlocks.WHITE_ASH);
                         entries.add(ModBlocks.BASALT_SLAB);
                         entries.add(Blocks.POLISHED_BASALT);
                         entries.add(ModBlocks.POLISHED_BASALT_BRICKS);
@@ -106,6 +110,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.IGNEOUS_REEDS);
                         entries.add(ModBlocks.IGNEOUS_VINES);
                         entries.add(ModBlocks.EXPLOSIVE_SCORIA);
+                        entries.add(ModItems.IRON_SCRAP);
 
                         entries.add(ModBlocks.QUARTZ_CRYSTAL);
                         entries.add(ModBlocks.QUARTZ_CRYSTAL_BLOCK);
@@ -121,6 +126,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SILICA_SANDSTONE_WALL);
                         entries.add(ModBlocks.CUT_SILICA_SANDSTONE);
                         entries.add(ModBlocks.CUT_SILICA_SANDSTONE_SLAB);
+                        entries.add(ModBlocks.CHISELED_SILICA_SANDSTONE);
                         entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE);
                         entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE_STAIRS);
                         entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE_SLAB);
@@ -130,6 +136,7 @@ public class ModItemGroup {
                         entries.add(Blocks.NETHER_BRICK_SLAB);
                         entries.add(Blocks.NETHER_BRICK_WALL);
                         entries.add(Blocks.NETHER_BRICK_FENCE);
+                        entries.add(ModBlocks.NETHER_BRICK_PILLAR);
                         entries.add(Blocks.CRACKED_NETHER_BRICKS);
                         entries.add(Blocks.CHISELED_NETHER_BRICKS);
 
@@ -158,9 +165,6 @@ public class ModItemGroup {
                         entries.add(ModBlocks.PYRITE_BUTTON);
                         entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
 
-                        entries.add(ModBlocks.FLAMETHROWER);
-                        entries.add(ModBlocks.SPIKETRAP);
-
                         entries.add(ModItems.LIGHTSPORES);
                         entries.add(Blocks.SHROOMLIGHT);
                         entries.add(ModItems.NIGHTSPORES);
@@ -169,14 +173,80 @@ public class ModItemGroup {
                         entries.add(Items.NETHER_WART);
                         entries.add(Blocks.NETHER_WART_BLOCK);
                         entries.add(ModBlocks.NETHER_WART_BEARD);
+                        entries.add(ModBlocks.RED_SCALE_FUNGUS);
 
                         entries.add(Blocks.WARPED_WART_BLOCK);
                         entries.add(ModBlocks.WARPED_WART_BEARD);
+                        entries.add(ModBlocks.BLUE_SCALE_FUNGUS);
 
                         entries.add(Blocks.WEEPING_VINES);
                         entries.add(ModBlocks.WEEPING_IVY);
                         entries.add(Blocks.TWISTING_VINES);
                         entries.add(ModBlocks.TWISTING_IVY);
+
+                        entries.add(Blocks.NETHER_SPROUTS);
+                        entries.add(ModBlocks.CRIMSON_SPROUTS);
+
+                        entries.add(Blocks.CRIMSON_NYLIUM);
+                        entries.add(ModBlocks.CRIMSON_NYLIUM_PATH);
+                        entries.add(Blocks.WARPED_NYLIUM);
+                        entries.add(ModBlocks.WARPED_NYLIUM_PATH);
+
+                        entries.add(ModItems.HOGHAM);
+                        entries.add(ModItems.COOKED_HOGHAM);
+                        entries.add(ModItems.WARPHOPPER_FUR);
+                        entries.add(ModItems.MUSIC_DISC_CRICKET);
+                        entries.add(ModItems.WARPHOPPER_SPAWN_EGG);
+
+                        entries.add(ModBlocks.CRIMSON_SPORESHROOM);
+                        entries.add(ModBlocks.WARPED_SPORESHROOM);
+                        entries.add(ModBlocks.SOULED_GEYSER);
+                        entries.add(ModBlocks.BASALTIC_GEYSER);
+
+                        entries.add(Items.SKELETON_SKULL);
+                        entries.add(ModBlocks.SKELETON_SKULL_CANDLE);
+                        entries.add(ModBlocks.SOUL_SKELETON_SKULL_CANDLE);
+
+                        entries.add(Items.BONE);
+                        entries.add(ModBlocks.BONE_ROD);
+                        entries.add(ModBlocks.BONE_FENCE);
+                        entries.add(Blocks.BONE_BLOCK);
+                        entries.add(ModBlocks.STACKED_BONES);
+                        entries.add(ModBlocks.STACKED_BONE_STAIRS);
+                        entries.add(ModBlocks.STACKED_BONE_SLAB);
+                        entries.add(ModBlocks.SKULL_BLOCK);
+                        entries.add(ModBlocks.BURNING_SKULL_BLOCK);
+                        entries.add(ModBlocks.SOUL_BURNING_SKULL_BLOCK);
+
+                        entries.add(ModBlocks.WITHER_BONE_BLOCK);
+                        entries.add(ModBlocks.STACKED_WITHER_BONES);
+                        entries.add(ModBlocks.STACKED_WITHER_BONE_STAIRS);
+                        entries.add(ModBlocks.STACKED_WITHER_BONE_SLAB);
+                        entries.add(ModBlocks.WITHER_SKULL_BLOCK);
+                        entries.add(ModBlocks.BURNING_WITHER_SKULL_BLOCK);
+                        entries.add(ModBlocks.SOUL_BURNING_WITHER_SKULL_BLOCK);
+
+                        entries.add(Blocks.BLACKSTONE);
+                        entries.add(Blocks.BLACKSTONE_STAIRS);
+                        entries.add(Blocks.BLACKSTONE_SLAB);
+                        entries.add(Blocks.BLACKSTONE_WALL);
+                        entries.add(Blocks.GILDED_BLACKSTONE);
+                        entries.add(Blocks.POLISHED_BLACKSTONE);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_STAIRS);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_SLAB);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_WALL);
+                        entries.add(ModBlocks.POLISHED_BLACKSTONE_FENCE);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_PRESSURE_PLATE);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_BUTTON);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_BRICKS);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
+                        entries.add(Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
+                        entries.add(ModBlocks.POLISHED_BLACKSTONE_PILLAR);
+                        entries.add(Blocks.CHISELED_POLISHED_BLACKSTONE);
+                        entries.add(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+                        entries.add(ModBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS);
+                        entries.add(ModBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS);
                     }).build());
 
     public static void registerItemGroup() {

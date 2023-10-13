@@ -229,7 +229,7 @@ public class ModBlocks {
     public static final Block IGNEOUS_REEDS = registerBlock("igneous_reeds",
             new IgneousReeds(FabricBlockSettings.of().noCollision().breakInstantly().requiresTool().offset(AbstractBlock.OffsetType.XZ).sounds(ModSoundEvents.SMOKESTALK)));
 
-    //TODO: Add Lootables
+    //TODO: Add LootTables
     public static final Block IGNEOUS_VINES = registerBlock("igneous_vines",
             new IgneousVinesBlock(FabricBlockSettings.of().ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
 
@@ -402,9 +402,15 @@ public class ModBlocks {
 
     // Fortress Traps
 
+    /*
+     * UNOBTAINABLE BLOCK
+    */
     public static final Block FLAMETHROWER = registerBlock("flamethrower",
             new Block(FabricBlockSettings.of().strength(2.5f).requiresTool().sounds(BlockSoundGroup.NETHER_BRICKS)));
 
+    /*
+     * UNOBTAINABLE BLOCK
+     */
     public static final Block SPIKETRAP = registerBlock("spiketrap",
             new Block(FabricBlockSettings.of().strength(3.5f).requiresTool().sounds(BlockSoundGroup.COPPER)));
 
@@ -431,9 +437,15 @@ public class ModBlocks {
     public static final Block BLUE_SCALE_FUNGUS = registerBlock("blue_scale_fungus",
             new ScaleFungusBlock(FabricBlockSettings.of().ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)));
 
+    /*
+     * UNOBTAINABLE BLOCK
+     */
     public static final Block BOOMSHROOM = registerBlock("boomshroom",
             new BoomshroomBlock(FabricBlockSettings.of().breakInstantly().luminance(5).sounds(BlockSoundGroup.FUNGUS)));
 
+    /*
+     * UNOBTAINABLE BLOCK
+     */
     public static final Block BOOMSHROOM_BUNDLE = registerBlock("boomshroom_bundle",
             new Block(FabricBlockSettings.of().strength(1.5f).luminance(7).sounds(BlockSoundGroup.FUNGUS)));
 
