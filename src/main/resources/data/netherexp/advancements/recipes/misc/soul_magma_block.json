@@ -1,12 +1,14 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_planks": {
+    "has_item": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:soul_fire_base_blocks"
+            "items": [
+              "minecraft:magma_cream"
+            ]
           }
         ]
       }
@@ -14,19 +16,30 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "netherexp:soul_candle"
+        "recipe": "netherexp:soul_magma_block"
       }
+    },
+    "has_items2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:magma_cream"
+          }
+        ]
+      }
+    },
+    "requirements": [
+      [
+        "has_item",
+        "has_the_recipe",
+        "has_items2"
+      ]
+    ],
+    "rewards": {
+      "recipes": [
+        "netherexp:soul_magma_block"
+      ]
     }
-  },
-  "requirements": [
-    [
-      "has_planks",
-      "has_the_recipe"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "netherexp:soul_magma_block"
-    ]
   }
 }

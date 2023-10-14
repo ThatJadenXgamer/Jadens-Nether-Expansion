@@ -2,9 +2,47 @@
   "ambient.vent_mire.loop": {
     "sounds": [
       {
-        "name": "netherexp:ambient/nether/vent_mire/ambience1",
+        "name": "netherexp:ambient/nether/vent_mire/ambience",
         "stream": true,
-        "volume": 0.84
+        "volume": 0.86
+      }
+    ]
+  },
+  "ambient.vent_mire.mood": {
+    "sounds": [
+      {
+        "name": "netherexp:ambient/nether/vent_mire/mood1",
+        "volume": 0.45
+      },
+      {
+        "name": "netherexp:ambient/nether/vent_mire/mood2",
+        "volume": 0.5
+      },
+      {
+        "name": "netherexp:ambient/nether/vent_mire/mood3",
+        "volume": 0.4
+      }
+    ]
+  },
+  "music.nether.vent_mire": {
+    "sounds": [
+      {
+        "name": "music/game/nether/nether1",
+        "stream": true
+      },
+      {
+        "name": "music/game/nether/nether2",
+        "stream": true
+      },
+      {
+        "name": "music/game/nether/nether3",
+        "stream": true,
+        "weight": 7
+      },
+      {
+        "name": "music/game/nether/nether4",
+        "stream": true,
+        "weight": 4
       }
     ]
   },

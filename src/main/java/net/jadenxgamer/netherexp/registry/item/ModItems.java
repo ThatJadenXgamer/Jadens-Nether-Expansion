@@ -13,6 +13,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
+@SuppressWarnings("unused")
 public class ModItems {
 
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",

@@ -17,7 +17,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
-@SuppressWarnings({"deprecation"})
+@SuppressWarnings({"deprecation", "unused"})
 public class ModBlocks {
 
     // LIST OF BLOCKS:
@@ -403,13 +403,13 @@ public class ModBlocks {
     // Fortress Traps
 
     /*
-     * UNOBTAINABLE BLOCK
+     * TODO: ADD UNOBTAINABLE BLOCK
     */
     public static final Block FLAMETHROWER = registerBlock("flamethrower",
             new Block(FabricBlockSettings.of().strength(2.5f).requiresTool().sounds(BlockSoundGroup.NETHER_BRICKS)));
 
     /*
-     * UNOBTAINABLE BLOCK
+     * TODO: ADD UNOBTAINABLE BLOCK
      */
     public static final Block SPIKETRAP = registerBlock("spiketrap",
             new Block(FabricBlockSettings.of().strength(3.5f).requiresTool().sounds(BlockSoundGroup.COPPER)));
@@ -438,13 +438,13 @@ public class ModBlocks {
             new ScaleFungusBlock(FabricBlockSettings.of().ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)));
 
     /*
-     * UNOBTAINABLE BLOCK
+     * TODO: ADD UNOBTAINABLE BLOCK
      */
     public static final Block BOOMSHROOM = registerBlock("boomshroom",
             new BoomshroomBlock(FabricBlockSettings.of().breakInstantly().luminance(5).sounds(BlockSoundGroup.FUNGUS)));
 
     /*
-     * UNOBTAINABLE BLOCK
+     * TODO: ADD UNOBTAINABLE BLOCK
      */
     public static final Block BOOMSHROOM_BUNDLE = registerBlock("boomshroom_bundle",
             new Block(FabricBlockSettings.of().strength(1.5f).luminance(7).sounds(BlockSoundGroup.FUNGUS)));
@@ -534,13 +534,13 @@ public class ModBlocks {
             new BoneFenceBlock(FabricBlockSettings.of().strength(0.5f).sounds(BlockSoundGroup.BONE)));
 
     public static final Block SKULL_BLOCK = registerBlock("skull_block",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
 
     public static final Block BURNING_SKULL_BLOCK = registerBlock("burning_skull_block",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
 
     public static final Block SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_BONES = registerBlock("stacked_bones",
             new Block(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
@@ -558,13 +558,13 @@ public class ModBlocks {
             new WitherBoneBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(4.5f,9.0f).sounds(BlockSoundGroup.BONE)));
 
     public static final Block WITHER_SKULL_BLOCK = registerBlock("wither_skull_block",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
 
     public static final Block BURNING_WITHER_SKULL_BLOCK = registerBlock("burning_wither_skull_block",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
 
     public static final Block SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_WITHER_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_WITHER_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_WITHER_BONES = registerBlock("stacked_wither_bones",
             new Block(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).strength(2.0f,9.0f).sounds(BlockSoundGroup.BONE)));

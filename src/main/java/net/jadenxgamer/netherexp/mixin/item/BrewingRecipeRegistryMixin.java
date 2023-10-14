@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-@Debug(export = true)
 @Mixin(BrewingRecipeRegistry.class)
 public interface BrewingRecipeRegistryMixin {
 

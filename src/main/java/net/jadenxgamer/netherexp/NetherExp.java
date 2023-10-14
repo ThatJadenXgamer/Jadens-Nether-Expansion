@@ -34,7 +34,6 @@ public class NetherExp implements ModInitializer {
 		ModStatusEffects.registerModStatusEffects();
 		ModPotions.registerModPotions();
 		ModFeature.registerModFeature();
-		ModLootTableModifier.modifyLootTables();
 		ModResourcePacks.init();
 
 		GeckoLib.initialize();
