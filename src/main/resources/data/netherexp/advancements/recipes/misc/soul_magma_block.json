@@ -28,18 +28,18 @@
           }
         ]
       }
-    },
-    "requirements": [
-      [
-        "has_item",
-        "has_the_recipe",
-        "has_items2"
-      ]
-    ],
-    "rewards": {
-      "recipes": [
-        "netherexp:soul_magma_block"
-      ]
     }
+  },
+  "requirements": [
+    [
+      "has_item",
+      "has_the_recipe",
+      "has_item2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "netherexp:soul_magma_block"
+    ]
   }
 }

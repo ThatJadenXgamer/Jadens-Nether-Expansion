@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:netherrack",
-    "minecraft:nether_wart_block",
-    "netherexp:decayable_nether_wart_block"
+    "#netherexp:nether_wart_blocks"
   ]
 }

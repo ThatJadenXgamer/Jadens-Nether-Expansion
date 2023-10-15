@@ -12,27 +12,32 @@
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": true
+    "hidden": false
   },
   "parent": "minecraft:nether/root",
   "criteria": {
-    "sleep_in_the_nether": {
+    "sleep_in_nether": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "item": {},
-        "location": {
-          "dimension": "minecraft:the_nether",
-          "block": {
-            "tag": "minecraft:beds"
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "dimension": "minecraft:the_nether",
+              "block": {
+                "tag": "minecraft:beds"
+              }
+            }
           }
-        }
+        ]
       }
     }
   },
   "requirements": [
     [
-      "sleep_in_the_nether"
+      "sleep_in_nether"
     ]
   ]
 }
+
 

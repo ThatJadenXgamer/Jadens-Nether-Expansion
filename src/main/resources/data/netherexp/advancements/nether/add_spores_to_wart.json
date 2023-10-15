@@ -19,16 +19,24 @@
     "nightspores_used": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "item": {
-          "items": [
-            "netherexp:nightspores"
-          ]
-        },
-        "location": {
-          "block": {
-            "tag": "netherexp:nightspores_applicable"
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "tag": "netherexp:nightspores_applicable"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "netherexp:nightspores"
+              ]
+            }
           }
-        }
+        ]
       }
     }
   },
@@ -38,3 +46,4 @@
     ]
   ]
 }
+

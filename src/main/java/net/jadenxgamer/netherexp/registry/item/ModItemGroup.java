@@ -238,11 +238,13 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BURNING_WITHER_SKULL_BLOCK);
                         entries.add(ModBlocks.SOUL_BURNING_WITHER_SKULL_BLOCK);
 
+                        entries.add(Blocks.GILDED_BLACKSTONE);
                         entries.add(Blocks.BLACKSTONE);
                         entries.add(Blocks.BLACKSTONE_STAIRS);
                         entries.add(Blocks.BLACKSTONE_SLAB);
                         entries.add(Blocks.BLACKSTONE_WALL);
-                        entries.add(Blocks.GILDED_BLACKSTONE);
+                        entries.add(Blocks.CHISELED_POLISHED_BLACKSTONE);
+                        entries.add(ModBlocks.POLISHED_BLACKSTONE_PILLAR);
                         entries.add(Blocks.POLISHED_BLACKSTONE);
                         entries.add(Blocks.POLISHED_BLACKSTONE_STAIRS);
                         entries.add(Blocks.POLISHED_BLACKSTONE_SLAB);
@@ -254,8 +256,6 @@ public class ModItemGroup {
                         entries.add(Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS);
                         entries.add(Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
                         entries.add(Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
-                        entries.add(ModBlocks.POLISHED_BLACKSTONE_PILLAR);
-                        entries.add(Blocks.CHISELED_POLISHED_BLACKSTONE);
                         entries.add(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS);
                         entries.add(ModBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS);
                         entries.add(ModBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS);

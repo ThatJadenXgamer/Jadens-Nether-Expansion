@@ -56,6 +56,18 @@ public class ModTags {
         // Weeping Vines can generate on these blocks
         public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createBlockTag("weeping_vines_feature_valid");
 
+        // Nether Roots are Plantable on these blocks
+        public static final TagKey<Block> ROOTS_PLANTABLE_ON = createBlockTag("roots_plantable_on");
+
+        // Blocks in this tag produce Blackstone Sounds
+        public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
+
+        // Blocks in this tag produce Blackstone Sounds
+        public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE = createBlockTag("sounds/polished_blackstone");
+
+        // Blocks in this tag produce Blackstone Sounds
+        public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createBlockTag("sounds/polished_blackstone_bricks");
+
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(NetherExp.MOD_ID, name));
         }

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:stripped_smokestalk_stem"
+          "name": "netherexp:stripped_smokestalk_block"
         }
       ],
       "conditions": [

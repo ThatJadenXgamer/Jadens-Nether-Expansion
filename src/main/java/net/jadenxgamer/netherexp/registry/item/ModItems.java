@@ -55,6 +55,9 @@ public class ModItems {
     public static final Item LIGHTSPORES = registerItem("lightspores",
             new LightSporesItem(new FabricItemSettings()));
 
+    public static final Item GLOW_CHEESE = registerItem("glow_cheese",
+            new Item(new FabricItemSettings().food(ModFoodComponents.GLOW_CHEESE)));
+
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,
                     new FabricItemSettings()));

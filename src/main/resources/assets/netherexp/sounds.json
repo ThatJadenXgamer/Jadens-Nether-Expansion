@@ -625,6 +625,100 @@
       "netherexp:block/soul_candle/ambient9"
     ]
   },
+  "block.blackstone.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/blackstone/break1",
+      "netherexp:block/blackstone/break2",
+      "netherexp:block/blackstone/break3",
+      "netherexp:block/blackstone/break4"
+    ]
+  },
+  "block.blackstone.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "netherexp:block/blackstone/step1",
+      "netherexp:block/blackstone/step2",
+      "netherexp:block/blackstone/step3",
+      "netherexp:block/blackstone/step4",
+      "netherexp:block/blackstone/step5"
+    ]
+  },
+  "block.blackstone.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/blackstone/break1",
+      "netherexp:block/blackstone/break2",
+      "netherexp:block/blackstone/break3",
+      "netherexp:block/blackstone/break4"
+    ]
+  },
+  "block.blackstone.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "netherexp:block/blackstone/step1",
+      "netherexp:block/blackstone/step2",
+      "netherexp:block/blackstone/step3",
+      "netherexp:block/blackstone/step4",
+      "netherexp:block/blackstone/step5"
+    ]
+  },
+  "block.blackstone.fall": {
+    "sounds": [
+      "netherexp:block/blackstone/step1",
+      "netherexp:block/blackstone/step2",
+      "netherexp:block/blackstone/step3",
+      "netherexp:block/blackstone/step4",
+      "netherexp:block/blackstone/step5"
+    ]
+  },
+  "block.polished_blackstone_bricks.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/polished_blackstone_bricks/place1",
+      "netherexp:block/polished_blackstone_bricks/place2",
+      "netherexp:block/polished_blackstone_bricks/place3",
+      "netherexp:block/polished_blackstone_bricks/place4"
+    ]
+  },
+  "block.polished_blackstone_bricks.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "netherexp:block/polished_blackstone_bricks/step1",
+      "netherexp:block/polished_blackstone_bricks/step2",
+      "netherexp:block/polished_blackstone_bricks/step3",
+      "netherexp:block/polished_blackstone_bricks/step4",
+      "netherexp:block/polished_blackstone_bricks/step5"
+    ]
+  },
+  "block.polished_blackstone_bricks.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/polished_blackstone_bricks/place1",
+      "netherexp:block/polished_blackstone_bricks/place2",
+      "netherexp:block/polished_blackstone_bricks/place3",
+      "netherexp:block/polished_blackstone_bricks/place4"
+    ]
+  },
+  "block.polished_blackstone_bricks.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "netherexp:block/polished_blackstone_bricks/step1",
+      "netherexp:block/polished_blackstone_bricks/step2",
+      "netherexp:block/polished_blackstone_bricks/step3",
+      "netherexp:block/polished_blackstone_bricks/step4",
+      "netherexp:block/polished_blackstone_bricks/step5"
+    ]
+  },
+  "block.polished_blackstone_bricks.fall": {
+    "sounds": [
+      "netherexp:block/polished_blackstone_bricks/step1",
+      "netherexp:block/polished_blackstone_bricks/step2",
+      "netherexp:block/polished_blackstone_bricks/step3",
+      "netherexp:block/polished_blackstone_bricks/step4",
+      "netherexp:block/polished_blackstone_bricks/step5"
+    ]
+  },
   "item.gold_ingot.gilding": {
     "subtitle": "subtitles.item.gold_ingot.gilding",
     "sounds": [

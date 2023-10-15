@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "netherexp:stripped_claret_log"
+              "netherexp:stripped_claret_stem"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "netherexp:stripped_claret_wood"
+        "recipe": "netherexp:stripped_claret_hyphae"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "netherexp:stripped_claret_wood"
+      "netherexp:stripped_claret_hyphae"
     ]
   }
 }

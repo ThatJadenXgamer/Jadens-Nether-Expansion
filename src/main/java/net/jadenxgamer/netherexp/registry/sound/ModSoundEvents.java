@@ -76,6 +76,22 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_SOUL_CANDLE_FALL = registerSoundEvent("block.soul_candle.fall");
     public static SoundEvent BLOCK_SOUL_CANDLE_AMBIENT = registerSoundEvent("block.soul_candle.ambient");
 
+    // Blackstone
+
+    public static SoundEvent BLOCK_BLACKSTONE_BREAK = registerSoundEvent("block.blackstone.break");
+    public static SoundEvent BLOCK_BLACKSTONE_STEP = registerSoundEvent("block.blackstone.step");
+    public static SoundEvent BLOCK_BLACKSTONE_PLACE = registerSoundEvent("block.blackstone.place");
+    public static SoundEvent BLOCK_BLACKSTONE_HIT = registerSoundEvent("block.blackstone.hit");
+    public static SoundEvent BLOCK_BLACKSTONE_FALL = registerSoundEvent("block.blackstone.fall");
+
+    // Polished Blackstone Bricks
+
+    public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_BREAK = registerSoundEvent("block.polished_blackstone_bricks.break");
+    public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_STEP = registerSoundEvent("block.polished_blackstone_bricks.step");
+    public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_PLACE = registerSoundEvent("block.polished_blackstone_bricks.place");
+    public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT = registerSoundEvent("block.polished_blackstone_bricks.hit");
+    public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_FALL = registerSoundEvent("block.polished_blackstone_bricks.fall");
+
     // ITEMS:
 
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
@@ -95,8 +111,6 @@ public class ModSoundEvents {
     // MUSIC:
     public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");
 
-    // AMBIENT:
-    public static SoundEvent AMBIENT_VENTMIRE_LOOP = registerSoundEvent("ambient.ventmire.loop");
 
     // LIST OF SOUND GROUPS:
 
@@ -135,6 +149,14 @@ public class ModSoundEvents {
     public static final BlockSoundGroup SOUL_CANDLE = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_SOUL_CANDLE_BREAK, ModSoundEvents.BLOCK_SOUL_CANDLE_STEP, ModSoundEvents.BLOCK_SOUL_CANDLE_PLACE,
             ModSoundEvents.BLOCK_SOUL_CANDLE_HIT, ModSoundEvents.BLOCK_SOUL_CANDLE_FALL);
+
+    public static final BlockSoundGroup BLACKSTONE = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_BLACKSTONE_BREAK, ModSoundEvents.BLOCK_BLACKSTONE_STEP, ModSoundEvents.BLOCK_BLACKSTONE_PLACE,
+            ModSoundEvents.BLOCK_BLACKSTONE_HIT, ModSoundEvents.BLOCK_BLACKSTONE_FALL);
+
+    public static final BlockSoundGroup POLISHED_BLACKSTONE_BRICKS = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_BREAK, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_STEP, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_PLACE,
+            ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

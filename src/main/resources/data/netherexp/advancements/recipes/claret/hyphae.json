@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "netherexp:stripped_smokestalk_log"
+              "netherexp:claret_stem"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "netherexp:stripped_smokestalk_wood"
+        "recipe": "netherexp:claret_hyphae"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "netherexp:stripped_smokestalk_wood"
+      "netherexp:claret_hyphae"
     ]
   }
 }
