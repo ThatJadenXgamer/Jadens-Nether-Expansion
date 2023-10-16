@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "block.BlockSoundsMixin",
+    "block.PumpkinStemMixin",
     "block.RootsBlockMixin",
     "block.SoulFireMixin",
     "block.TwistingVinesMixin",

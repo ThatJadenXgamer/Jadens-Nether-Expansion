@@ -628,10 +628,22 @@
   "block.blackstone.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "netherexp:block/blackstone/break1",
-      "netherexp:block/blackstone/break2",
-      "netherexp:block/blackstone/break3",
-      "netherexp:block/blackstone/break4"
+      {
+        "name": "netherexp:block/blackstone/break1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/blackstone/break2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/blackstone/break3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/blackstone/break4",
+        "volume": 0.85
+      }
     ]
   },
   "block.blackstone.step": {
@@ -647,10 +659,22 @@
   "block.blackstone.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
-      "netherexp:block/blackstone/break1",
-      "netherexp:block/blackstone/break2",
-      "netherexp:block/blackstone/break3",
-      "netherexp:block/blackstone/break4"
+      {
+        "name": "netherexp:block/blackstone/break1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/blackstone/break2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/blackstone/break3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/blackstone/break4",
+        "volume": 0.85
+      }
     ]
   },
   "block.blackstone.hit": {
@@ -675,10 +699,22 @@
   "block.polished_blackstone_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "netherexp:block/polished_blackstone_bricks/place1",
-      "netherexp:block/polished_blackstone_bricks/place2",
-      "netherexp:block/polished_blackstone_bricks/place3",
-      "netherexp:block/polished_blackstone_bricks/place4"
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place4",
+        "volume": 0.85
+      }
     ]
   },
   "block.polished_blackstone_bricks.step": {
@@ -694,10 +730,22 @@
   "block.polished_blackstone_bricks.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
-      "netherexp:block/polished_blackstone_bricks/place1",
-      "netherexp:block/polished_blackstone_bricks/place2",
-      "netherexp:block/polished_blackstone_bricks/place3",
-      "netherexp:block/polished_blackstone_bricks/place4"
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherexp:block/polished_blackstone_bricks/place4",
+        "volume": 0.85
+      }
     ]
   },
   "block.polished_blackstone_bricks.hit": {
@@ -717,6 +765,46 @@
       "netherexp:block/polished_blackstone_bricks/step3",
       "netherexp:block/polished_blackstone_bricks/step4",
       "netherexp:block/polished_blackstone_bricks/step5"
+    ]
+  },
+  "block.magma_block.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/magma_block/break1",
+      "netherexp:block/magma_block/break2",
+      "netherexp:block/magma_block/break3",
+      "netherexp:block/magma_block/break4",
+      "netherexp:block/magma_block/break5"
+    ]
+  },
+  "block.magma_block.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/magma_block/break1",
+      "netherexp:block/magma_block/break2",
+      "netherexp:block/magma_block/break3",
+      "netherexp:block/magma_block/break4",
+      "netherexp:block/magma_block/break5"
+    ]
+  },
+  "block.soul_magma_block.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/soul_magma_block/break1",
+      "netherexp:block/soul_magma_block/break2",
+      "netherexp:block/soul_magma_block/break3",
+      "netherexp:block/soul_magma_block/break4",
+      "netherexp:block/soul_magma_block/break5"
+    ]
+  },
+  "block.soul_magma_block.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/soul_magma_block/break1",
+      "netherexp:block/soul_magma_block/break2",
+      "netherexp:block/soul_magma_block/break3",
+      "netherexp:block/soul_magma_block/break4",
+      "netherexp:block/soul_magma_block/break5"
     ]
   },
   "item.gold_ingot.gilding": {

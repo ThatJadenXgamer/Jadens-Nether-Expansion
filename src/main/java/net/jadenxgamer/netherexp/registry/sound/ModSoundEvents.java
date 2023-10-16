@@ -92,6 +92,16 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT = registerSoundEvent("block.polished_blackstone_bricks.hit");
     public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_FALL = registerSoundEvent("block.polished_blackstone_bricks.fall");
 
+    // Magma Block
+
+    public static SoundEvent BLOCK_MAGMA_BLOCK_BREAK = registerSoundEvent("block.magma_block.break");
+    public static SoundEvent BLOCK_MAGMA_BLOCK_PLACE = registerSoundEvent("block.magma_block.place");
+
+    // Soul Magma Block
+
+    public static SoundEvent BLOCK_SOUL_MAGMA_BLOCK_BREAK = registerSoundEvent("block.soul_magma_block.break");
+    public static SoundEvent BLOCK_SOUL_MAGMA_BLOCK_PLACE = registerSoundEvent("block.soul_magma_block.place");
+
     // ITEMS:
 
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
@@ -157,6 +167,14 @@ public class ModSoundEvents {
     public static final BlockSoundGroup POLISHED_BLACKSTONE_BRICKS = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_BREAK, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_STEP, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_PLACE,
             ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_FALL);
+
+    public static final BlockSoundGroup MAGMA_BLOCK = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_MAGMA_BLOCK_BREAK, SoundEvents.BLOCK_NETHERRACK_STEP, ModSoundEvents.BLOCK_MAGMA_BLOCK_PLACE,
+            SoundEvents.BLOCK_NETHERRACK_HIT, SoundEvents.BLOCK_NETHERRACK_FALL);
+
+    public static final BlockSoundGroup SOUL_MAGMA_BLOCK = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_SOUL_MAGMA_BLOCK_BREAK, SoundEvents.BLOCK_SOUL_SOIL_STEP, ModSoundEvents.BLOCK_SOUL_MAGMA_BLOCK_PLACE,
+            SoundEvents.BLOCK_SOUL_SOIL_HIT, SoundEvents.BLOCK_SOUL_SOIL_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

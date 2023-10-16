@@ -10,6 +10,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,6 +20,19 @@ public class AshyBasaltBlock extends PillarBlock {
     }
 
     //Checks if the above block is not White Ash it will revert to Basalt
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        BlockState up = world.getBlockState(pos.up());
+        if (up.isIn(ModTags.Blocks.WHITE_ASH)) {
+            AshyBasaltBlock.revertToBasalt(world, pos);
+        }
+    }
+
+    /*
+    Checks if the above block is not White Ash it will revert to Basalt
+    but this time as a Neighbour Update
+    */
     @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
@@ -35,7 +49,7 @@ public class AshyBasaltBlock extends PillarBlock {
 
     /*
     Checks if the above block is not White Ash it will revert to Basalt
-    but this time as a placement state!
+    but this time as a Placement State
     */
 
     @Override

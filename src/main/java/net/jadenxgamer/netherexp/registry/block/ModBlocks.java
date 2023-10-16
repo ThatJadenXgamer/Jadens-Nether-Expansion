@@ -90,7 +90,7 @@ public class ModBlocks {
             new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).luminance(3).sounds(BlockSoundGroup.SOUL_SAND)));
 
     public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
-            new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).luminance(3).sounds(BlockSoundGroup.SOUL_SOIL)));
+            new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).luminance(3).sounds(ModSoundEvents.SOUL_MAGMA_BLOCK)));
 
     // Sorrowsquash
 
