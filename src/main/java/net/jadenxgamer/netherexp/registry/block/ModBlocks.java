@@ -221,6 +221,11 @@ public class ModBlocks {
     public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
             new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).strength(0.5f).noCollision().sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.CRIMSON));
 
+    // Magma Cream
+
+    public static final Block MAGMA_CREAM_BLOCK = registerBlock("magma_cream_block",
+            new MagmaCreamBlock(FabricBlockSettings.of().breakInstantly().nonOpaque().sounds(BlockSoundGroup.SLIME)));
+
     // Smokestalk
 
     public static final Block EXPLOSIVE_SCORIA = registerBlock("explosive_scoria",

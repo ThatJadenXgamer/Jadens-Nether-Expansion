@@ -17,6 +17,7 @@ public class NetherExpClient implements ClientModInitializer {
     public void onInitializeClient() {
         // BLOCK OPACITY
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_GLASS, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAGMA_CREAM_BLOCK, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_SWIRLS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SORROWSQUASH_STEM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SORROWSQUASH_STEM_PLANT, RenderLayer.getCutout());

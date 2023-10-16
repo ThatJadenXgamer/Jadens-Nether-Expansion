@@ -95,6 +95,9 @@ public class ModItemGroup {
                         entries.add(ModBlocks.CLARET_PRESSURE_PLATE);
                         entries.add(ModBlocks.CLARET_BUTTON);
 
+                        entries.add(Items.MAGMA_CREAM);
+                        entries.add(ModBlocks.MAGMA_CREAM_BLOCK);
+
                         entries.add(ModBlocks.SMOKESTALK);
                         entries.add(ModBlocks.SMOKESTALK_BLOCK);
                         entries.add(ModBlocks.STRIPPED_SMOKESTALK_BLOCK);

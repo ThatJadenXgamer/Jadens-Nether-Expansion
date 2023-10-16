@@ -13,6 +13,7 @@
     "entity.HoglinEntityMixin",
     "entity.PiglinEntityMixin",
     "entity.PlayerEntityMixin",
+    "entity.SlimeEntityMixin",
     "item.BrewingRecipeRegistryMixin"
   ],
   "client": [
