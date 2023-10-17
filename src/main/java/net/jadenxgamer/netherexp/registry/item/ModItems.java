@@ -25,9 +25,6 @@ public class ModItems {
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
             new Item(new FabricItemSettings().food(ModFoodComponents.COOKED_HOGHAM)));
 
-    public static final Item SORROWSQUASH_SEEDS = registerItem("sorrowsquash_seeds",
-            new AliasedBlockItem(ModBlocks.SORROWSQUASH_STEM, new FabricItemSettings()));
-
     public static final Item FOGGY_ESSENCE = registerItem("foggy_essence",
             new Item(new FabricItemSettings()));
 

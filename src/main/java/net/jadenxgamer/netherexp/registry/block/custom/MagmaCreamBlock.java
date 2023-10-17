@@ -19,13 +19,11 @@ public class MagmaCreamBlock extends Block {
         super(settings);
     }
 
-    private static final VoxelShape SHAPE = Block.createCuboidShape(5, 5, 5, 11, 11, 11);
-
     @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            entity.slowMovement(state, new Vec3d(0.8999999761581421, 1.5, 0.8999999761581421));
+            entity.slowMovement(state, new Vec3d(0.8999999761581421, entity.getY() - 0.5, 0.8999999761581421));
 
             if (!world.isClient) {
                 if (entity.isOnFire() && entity.canModifyAt(world, pos)) {
@@ -39,7 +37,7 @@ public class MagmaCreamBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        return VoxelShapes.empty();
     }
 
     @SuppressWarnings("deprecation")

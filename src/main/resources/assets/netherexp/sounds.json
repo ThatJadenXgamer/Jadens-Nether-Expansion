@@ -807,6 +807,23 @@
       "netherexp:block/soul_magma_block/break5"
     ]
   },
+  "block.glowstone.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/glowstone/place1",
+      "netherexp:block/glowstone/place2",
+      "netherexp:block/glowstone/place3",
+      "netherexp:block/glowstone/place4"
+    ]
+  },
+  "block.glowstone.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/glowstone/break1",
+      "netherexp:block/glowstone/break2",
+      "netherexp:block/glowstone/break3"
+    ]
+  },
   "item.gold_ingot.gilding": {
     "subtitle": "subtitles.item.gold_ingot.gilding",
     "sounds": [

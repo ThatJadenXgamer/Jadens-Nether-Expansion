@@ -35,5 +35,8 @@ public abstract class BlockSoundsMixin extends AbstractBlock {
         if (state.isIn(ModTags.Blocks.SOUNDS_MAGMA_BLOCK)) {
             cir.setReturnValue(ModSoundEvents.MAGMA_BLOCK);
         }
+        if (state.isIn(ModTags.Blocks.SOUNDS_GLOWSTONE)) {
+            cir.setReturnValue(ModSoundEvents.GLOWSTONE);
+        }
     }
 }

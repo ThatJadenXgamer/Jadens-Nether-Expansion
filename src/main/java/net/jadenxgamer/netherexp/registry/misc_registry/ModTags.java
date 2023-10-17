@@ -71,6 +71,9 @@ public class ModTags {
         // Blocks in this tag produce Magma Block Sounds
         public static final TagKey<Block> SOUNDS_MAGMA_BLOCK = createBlockTag("sounds/magma_block");
 
+        // Blocks in this tag produce Glowstone Sounds
+        public static final TagKey<Block> SOUNDS_GLOWSTONE = createBlockTag("sounds/glowstone");
+
 
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(NetherExp.MOD_ID, name));

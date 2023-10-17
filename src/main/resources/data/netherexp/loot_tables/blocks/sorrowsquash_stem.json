@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "netherexp:sorrowsquash_seeds",
+              "name": "minecraft:pumpkin_seeds",
               "conditions": [
                 {
                   "condition": "minecraft:table_bonus",

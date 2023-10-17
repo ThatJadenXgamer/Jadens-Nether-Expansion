@@ -102,6 +102,11 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_SOUL_MAGMA_BLOCK_BREAK = registerSoundEvent("block.soul_magma_block.break");
     public static SoundEvent BLOCK_SOUL_MAGMA_BLOCK_PLACE = registerSoundEvent("block.soul_magma_block.place");
 
+    // Soul Magma Block
+
+    public static SoundEvent BLOCK_GLOWSTONE_BREAK = registerSoundEvent("block.glowstone.break");
+    public static SoundEvent BLOCK_GLOWSTONE_PLACE = registerSoundEvent("block.glowstone.place");
+
     // ITEMS:
 
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
@@ -175,6 +180,10 @@ public class ModSoundEvents {
     public static final BlockSoundGroup SOUL_MAGMA_BLOCK = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_SOUL_MAGMA_BLOCK_BREAK, SoundEvents.BLOCK_SOUL_SOIL_STEP, ModSoundEvents.BLOCK_SOUL_MAGMA_BLOCK_PLACE,
             SoundEvents.BLOCK_SOUL_SOIL_HIT, SoundEvents.BLOCK_SOUL_SOIL_FALL);
+
+    public static final BlockSoundGroup GLOWSTONE = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_GLOWSTONE_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, ModSoundEvents.BLOCK_GLOWSTONE_PLACE,
+            SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

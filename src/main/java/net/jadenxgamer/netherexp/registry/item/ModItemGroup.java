@@ -48,7 +48,7 @@ public class ModItemGroup {
                         entries.add(Blocks.SOUL_CAMPFIRE);
                         entries.add(ModBlocks.SOUL_JACK_O_LANTERN);
 
-                        entries.add(ModItems.SORROWSQUASH_SEEDS);
+                        entries.add(Items.PUMPKIN_SEEDS);
                         entries.add(ModBlocks.SORROWSQUASH);
                         entries.add(ModBlocks.CARVED_SORROWSQUASH);
                         entries.add(ModBlocks.GHOUL_O_LANTERN);

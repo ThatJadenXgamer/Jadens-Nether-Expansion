@@ -11,6 +11,7 @@ import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -110,10 +111,10 @@ public class ModBlocks {
             new CarvedPumpkinBlock(FabricBlockSettings.copyOf(Blocks.JACK_O_LANTERN).sounds(BlockSoundGroup.WOOD)));
 
     public static final Block SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem",
-            new VineStemBlock((GourdBlock)SORROWSQUASH, () -> ModItems.SORROWSQUASH_SEEDS,FabricBlockSettings.of().noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.NETHER_STEM)));
+            new VineStemBlock((GourdBlock)SORROWSQUASH, () -> Items.PUMPKIN_SEEDS,FabricBlockSettings.of().noCollision().breakInstantly().ticksRandomly().sounds(BlockSoundGroup.NETHER_STEM)));
 
     public static final Block SORROWSQUASH_STEM_PLANT = registerBlockWithoutItem("sorrowsquash_stem_plant",
-            new VineStemPlantBlock((GourdBlock)SORROWSQUASH, () -> ModItems.SORROWSQUASH_SEEDS,FabricBlockSettings.of().noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_STEM)));
+            new VineStemPlantBlock((GourdBlock)SORROWSQUASH, () -> Items.PUMPKIN_SEEDS,FabricBlockSettings.of().noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_STEM)));
 
     // Smooth Netherrack
 
