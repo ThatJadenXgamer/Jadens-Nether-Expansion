@@ -24,7 +24,7 @@ public abstract class BackgroundRendererMixin {
             method = "applyFog",
             at = @At(value = "TAIL")
     )
-    private static void applyFog(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
+    private static void netherexp$applyCustomFog(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
         Entity entity = camera.getFocusedEntity();
         CameraSubmersionType cameraSubmersionType = camera.getSubmersionType();
         if (((LivingEntity) entity).hasStatusEffect(ModStatusEffects.FOGSIGHT) && !((LivingEntity) entity).hasStatusEffect(StatusEffects.BLINDNESS) && !((LivingEntity) entity).hasStatusEffect(StatusEffects.DARKNESS)) {

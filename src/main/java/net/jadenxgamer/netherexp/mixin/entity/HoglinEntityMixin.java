@@ -31,7 +31,7 @@ implements Monster, Hoglin {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private static void canSpawn(EntityType<PiglinEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {
+    private static void netherexp$changeCanSpawn(EntityType<PiglinEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {
         if (world.getBlockState(pos.down()).isIn(ModTags.Blocks.HOGLIN_CANNOT_SPAWN_ON)) {
             cir.setReturnValue(false);
         }

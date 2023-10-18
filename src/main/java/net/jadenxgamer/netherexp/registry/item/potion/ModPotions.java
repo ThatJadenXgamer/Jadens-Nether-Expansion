@@ -25,8 +25,8 @@ public class ModPotions{
     }
 
     private static void registerPotionRecipe() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.FOGGY_ESSENCE, FOGSIGHT_POTION);
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(FOGSIGHT_POTION, Items.REDSTONE, LONG_FOGSIGHT_POTION);
+        BrewingRecipeRegistryMixin.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.FOGGY_ESSENCE, FOGSIGHT_POTION);
+        BrewingRecipeRegistryMixin.netherexp$invokeRegisterPotionRecipe(FOGSIGHT_POTION, Items.REDSTONE, LONG_FOGSIGHT_POTION);
     }
 
     public static void registerModPotions() {

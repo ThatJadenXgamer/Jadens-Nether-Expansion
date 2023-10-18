@@ -59,6 +59,12 @@ public class ModItems {
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,
                     new FabricItemSettings()));
 
+    public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CLARET_SIGN, ModBlocks.CLARET_WALL_SIGN));
+
+    public static final Item SMOKESTALK_SIGN_ITEM = registerItem("smokestalk_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.SMOKESTALK_SIGN, ModBlocks.SMOKESTALK_WALL_SIGN));
+
     public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
             new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET,new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));
 

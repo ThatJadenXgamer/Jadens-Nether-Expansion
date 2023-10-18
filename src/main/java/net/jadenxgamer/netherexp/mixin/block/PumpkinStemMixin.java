@@ -25,7 +25,7 @@ public abstract class PumpkinStemMixin extends PlantBlock {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private void canPlantOnSoul(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+    private void netherexp$canPlantOnSoul(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         if (floor.isIn(ModTags.Blocks.SORROWSQUASH_VINE_PLANTABLE_ON)) {
             cir.setReturnValue(true);
         }

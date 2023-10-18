@@ -94,6 +94,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.CLARET_TRAPDOOR);
                         entries.add(ModBlocks.CLARET_PRESSURE_PLATE);
                         entries.add(ModBlocks.CLARET_BUTTON);
+                        entries.add(ModItems.CLARET_SIGN_ITEM);
 
                         entries.add(Items.MAGMA_CREAM);
                         entries.add(ModBlocks.MAGMA_CREAM_BLOCK);
@@ -110,6 +111,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SMOKESTALK_TRAPDOOR);
                         entries.add(ModBlocks.SMOKESTALK_PRESSURE_PLATE);
                         entries.add(ModBlocks.SMOKESTALK_BUTTON);
+                        entries.add(ModItems.SMOKESTALK_SIGN_ITEM);
                         entries.add(ModBlocks.IGNEOUS_REEDS);
                         entries.add(ModBlocks.IGNEOUS_VINES);
                         entries.add(ModBlocks.EXPLOSIVE_SCORIA);

@@ -4,6 +4,7 @@
   "package": "net.jadenxgamer.netherexp.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "block.BlockEntityTypeMixin",
     "block.BlockSoundsMixin",
     "block.PumpkinStemMixin",
     "block.RootsBlockMixin",
@@ -12,8 +13,6 @@
     "block.WeepingVinesMixin",
     "entity.HoglinEntityMixin",
     "entity.PiglinEntityMixin",
-    "entity.PlayerEntityMixin",
-    "entity.SlimeEntityMixin",
     "item.BrewingRecipeRegistryMixin"
   ],
   "client": [

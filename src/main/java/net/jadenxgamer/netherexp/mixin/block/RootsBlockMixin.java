@@ -18,7 +18,7 @@ public class RootsBlockMixin {
             at = @At(value = "TAIL"),
             cancellable = true
     )
-    private void changeCanPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+    private void netherexp$changeCanPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         if (floor.isIn(ModTags.Blocks.ROOTS_PLANTABLE_ON)) {
             cir.setReturnValue(true);
         }

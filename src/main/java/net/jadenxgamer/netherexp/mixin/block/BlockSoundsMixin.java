@@ -22,20 +22,20 @@ public abstract class BlockSoundsMixin extends AbstractBlock {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private void changeSoundGroup(BlockState state, CallbackInfoReturnable<BlockSoundGroup> cir) {
+    private void netherexp$changeSoundGroup(BlockState state, CallbackInfoReturnable<BlockSoundGroup> cir) {
         if (state.isIn(ModTags.Blocks.SOUNDS_BLACKSTONE)) {
             cir.setReturnValue(ModSoundEvents.BLACKSTONE);
         }
-        if (state.isIn(ModTags.Blocks.SOUNDS_POLISHED_BLACKSTONE)) {
+        else if (state.isIn(ModTags.Blocks.SOUNDS_POLISHED_BLACKSTONE)) {
             cir.setReturnValue(ModSoundEvents.POLISHED_BLACKSTONE_BRICKS);
         }
-        if (state.isIn(ModTags.Blocks.SOUNDS_POLISHED_BLACKSTONE_BRICKS)) {
+        else if (state.isIn(ModTags.Blocks.SOUNDS_POLISHED_BLACKSTONE_BRICKS)) {
             cir.setReturnValue(ModSoundEvents.POLISHED_BLACKSTONE_BRICKS);
         }
-        if (state.isIn(ModTags.Blocks.SOUNDS_MAGMA_BLOCK)) {
+        else if (state.isIn(ModTags.Blocks.SOUNDS_MAGMA_BLOCK)) {
             cir.setReturnValue(ModSoundEvents.MAGMA_BLOCK);
         }
-        if (state.isIn(ModTags.Blocks.SOUNDS_GLOWSTONE)) {
+        else if (state.isIn(ModTags.Blocks.SOUNDS_GLOWSTONE)) {
             cir.setReturnValue(ModSoundEvents.GLOWSTONE);
         }
     }

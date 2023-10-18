@@ -4,8 +4,8 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.custom.*;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.ModWoodType;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
@@ -222,6 +222,12 @@ public class ModBlocks {
     public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
             new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).strength(0.5f).noCollision().sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.CRIMSON));
 
+    public static final Block CLARET_SIGN = registerBlockWithoutItem("claret_sign",
+            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).strength(1.0f).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.CLARET));
+
+    public static final Block CLARET_WALL_SIGN = registerBlockWithoutItem("claret_wall_sign",
+            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).strength(1.0f).dropsLike(CLARET_SIGN).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.CLARET));
+
     // Magma Cream
 
     public static final Block MAGMA_CREAM_BLOCK = registerBlock("magma_cream_block",
@@ -283,6 +289,12 @@ public class ModBlocks {
 
     public static final Block SMOKESTALK_PRESSURE_PLATE = registerBlock("smokestalk_pressure_plate",
             new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).strength(0.5f).noCollision().sounds(ModSoundEvents.SMOKESTALK_WOOD), BlockSetType.BAMBOO));
+
+    public static final Block SMOKESTALK_SIGN = registerBlockWithoutItem("smokestalk_sign",
+            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).strength(1.0f).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
+
+    public static final Block SMOKESTALK_WALL_SIGN = registerBlockWithoutItem("smokestalk_wall_sign",
+            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).strength(1.0f).dropsLike(SMOKESTALK_SIGN).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
 
 
     // Quartz Block
@@ -607,6 +619,7 @@ public class ModBlocks {
     private static Block registerBlockWithoutItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
     }
+
 
     @SuppressWarnings("all")
     private static Item registerBlockItem(String name, Block block) {
