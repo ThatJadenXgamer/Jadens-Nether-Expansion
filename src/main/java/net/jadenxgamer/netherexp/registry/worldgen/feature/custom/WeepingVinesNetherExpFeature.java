@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.worldgen.configured_feature.custom;
+package net.jadenxgamer.netherexp.registry.worldgen.feature.custom;
 
 import com.mojang.serialization.Codec;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;

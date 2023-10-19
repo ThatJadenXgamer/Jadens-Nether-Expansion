@@ -14,7 +14,8 @@ import net.jadenxgamer.netherexp.registry.misc_registry.ModRegistries;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModResourcePacks;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModWoodType;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.worldgen.configured_feature.ModFeature;
+import net.jadenxgamer.netherexp.registry.worldgen.feature.ModFeature;
+import net.jadenxgamer.netherexp.registry.worldgen.generate.ModWorldGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib.GeckoLib;
@@ -32,6 +33,8 @@ public class NetherExp implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModParticles.registerParticles();
+
+		ModWorldGenerator.generateModWorldGen();
 
 		ModRegistries.registerModStuffs();
 		ModStatusEffects.registerModStatusEffects();

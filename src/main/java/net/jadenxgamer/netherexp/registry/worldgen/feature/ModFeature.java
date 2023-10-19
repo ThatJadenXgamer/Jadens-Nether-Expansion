@@ -1,7 +1,7 @@
-package net.jadenxgamer.netherexp.registry.worldgen.configured_feature;
+package net.jadenxgamer.netherexp.registry.worldgen.feature;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.worldgen.configured_feature.custom.WeepingVinesNetherExpFeature;
+import net.jadenxgamer.netherexp.registry.worldgen.feature.custom.WeepingVinesNetherExpFeature;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
