@@ -7,7 +7,9 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -31,7 +33,7 @@ import java.util.Objects;
 
 public class SporeshroomBlock
 extends Block
-implements Waterloggable {
+implements Waterloggable, Fertilizable {
 
     // BlockStates
     public static final BooleanProperty HANGING = Properties.HANGING;
@@ -146,6 +148,7 @@ implements Waterloggable {
         }
     }
 
+
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         entity.handleFallDamage(fallDistance, 0.0f, world.getDamageSources().fall());
@@ -154,5 +157,26 @@ implements Waterloggable {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(HANGING, WATERLOGGED, ACTIVE);
+    }
+
+    @Override
+    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
+        return true;
+    }
+
+    @Override
+    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+        Direction direction = Direction.Type.HORIZONTAL.random(random);
+        BlockPos blockPos2 = pos.offset(direction);
+        BlockState blockState2 = world.getBlockState(blockPos2.down());
+        boolean h = state.get(HANGING);
+        if (world.getBlockState(blockPos2).isAir() && (blockState2.isIn(BlockTags.NYLIUM)) && !h) {
+            world.setBlockState(blockPos2, this.getDefaultState().with(HANGING, false).with(ACTIVE, true));
+        }
     }
 }

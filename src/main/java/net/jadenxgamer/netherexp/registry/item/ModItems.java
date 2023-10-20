@@ -32,7 +32,7 @@ public class ModItems {
             new Item(new FabricItemSettings()));
 
     public static final Item WHITE_ASH_POWDER = registerItem("white_ash_powder",
-            new SnowballItem(new FabricItemSettings()));
+            new SnowballItem(new FabricItemSettings().maxCount(16)));
 
     public static final Item RAW_PYRITE = registerItem("raw_pyrite",
             new Item(new FabricItemSettings()));

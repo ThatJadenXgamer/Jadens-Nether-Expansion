@@ -22,6 +22,13 @@ public class ModPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> WEEPING_VINES_NETHEREXP = registerKey("crimson_forest/weeping_vines_netherexp");
 
+    // WARPED FOREST
+
+    public static final RegistryKey<PlacedFeature> WARPED_WART_BLOCK_SPOTTER_SMALL = registerKey("warped_forest/warped_wart_block_spotter_small");
+    public static final RegistryKey<PlacedFeature> WARPED_WART_BLOCK_SPOTTER_MEDIUM = registerKey("warped_forest/warped_wart_block_spotter_medium");
+    public static final RegistryKey<PlacedFeature> WARPED_WART_BLOCK_SPOTTER_BIG = registerKey("warped_forest/warped_wart_block_spotter_big");
+    public static final RegistryKey<PlacedFeature> WARPED_WART_BEARD = registerKey("warped_forest/warped_wart_beard");
+
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(NetherExp.MOD_ID, name));
     }

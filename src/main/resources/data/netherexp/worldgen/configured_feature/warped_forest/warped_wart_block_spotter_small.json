@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 7,
+    "discard_chance_on_air_exposure": 0,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "netherexp:decayable_warped_wart_block"
+        },
+        "state": {
+          "Name": "netherexp:decayable_warped_wart_block",
+          "Properties": {
+            "spots": "1"
+          }
+        }
+      }
+    ]
+  }
+}
+

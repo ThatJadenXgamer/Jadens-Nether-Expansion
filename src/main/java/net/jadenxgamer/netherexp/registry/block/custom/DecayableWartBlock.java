@@ -1,10 +1,12 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -77,7 +79,7 @@ public class DecayableWartBlock extends Block {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         int i;
-        if ((i = DecayableWartBlock.getDistanceFromStem(neighborState) + 1) != 1 || state.get(DISTANCE) != i) {
+        if ((i = DecayableWartBlock.getDistanceFromStem(neighborState) + 1) != 1 || state.get(DISTANCE) != i && !neighborState.isOf(ModBlocks.WARPED_WART_BEARD)) {
             world.scheduleBlockTick(pos, this, 1);
         }
         return state;

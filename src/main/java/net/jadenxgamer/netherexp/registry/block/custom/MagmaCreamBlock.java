@@ -23,7 +23,7 @@ public class MagmaCreamBlock extends Block {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            entity.slowMovement(state, new Vec3d(0.8999999761581421, entity.getY(), 0.8999999761581421));
+            entity.slowMovement(state, new Vec3d(0.8999999761581421, 0.5, 0.8999999761581421));
 
             if (!world.isClient) {
                 if (entity.isOnFire() && entity.canModifyAt(world, pos)) {
