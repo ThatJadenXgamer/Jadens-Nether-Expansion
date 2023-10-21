@@ -1,19 +1,27 @@
 {
-  "type": "minecraft:ore",
+  "type": "minecraft:disk",
   "config": {
-    "size": 33,
-    "discard_chance_on_air_exposure": 0,
-    "targets": [
-      {
-        "target": {
-          "predicate_type": "minecraft:tag_match",
-          "tag": "netherexp:soul_slate_replaceable"
-        },
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
         "state": {
           "Name": "netherexp:jagged_soul_slate"
         }
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:matching_block_tag",
+      "tag": "netherexp:soul_slate_replaceable"
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 6
       }
-    ]
+    },
+    "half_height": 1
   }
 }
 

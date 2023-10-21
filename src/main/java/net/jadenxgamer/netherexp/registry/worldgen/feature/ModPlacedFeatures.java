@@ -8,6 +8,11 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class ModPlacedFeatures {
 
+    // NETHER WASTES
+
+    public static final RegistryKey<PlacedFeature> QUARTZ_CRYSTAL = registerKey("crimson_forest/quartz_crystal");
+    public static final RegistryKey<PlacedFeature> QUARTZ_CRYSTAL_EXTRA = registerKey("crimson_forest/quartz_crystal_extra");
+
     // SOUL SAND VALLEY
 
     public static final RegistryKey<PlacedFeature> ECTO_SOUL_SAND = registerKey("soul_sand_valley/ecto_soul_sand");
@@ -21,6 +26,8 @@ public class ModPlacedFeatures {
     // CRIMSON FOREST
 
     public static final RegistryKey<PlacedFeature> WEEPING_VINES_NETHEREXP = registerKey("crimson_forest/weeping_vines_netherexp");
+    public static final RegistryKey<PlacedFeature> CRIMSON_SPORESHROOM = registerKey("crimson_forest/crimson_sporeshroom");
+    public static final RegistryKey<PlacedFeature> WEEPING_IVY = registerKey("crimson_forest/weeping_ivy");
 
     // WARPED FOREST
 

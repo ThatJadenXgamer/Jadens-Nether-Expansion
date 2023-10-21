@@ -10,6 +10,9 @@ import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -31,6 +34,7 @@ extends AnimalEntity
 implements GeoEntity {
     @SuppressWarnings("all")
     private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
+    private static final TrackedData<Boolean> CLOAKED;
 
     public WarphopperEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
@@ -41,6 +45,20 @@ implements GeoEntity {
         return AnimalEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2);
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.set(CLOAKED, false);
+    }
+
+    public boolean isCloaked() {
+        return this.dataTracker.get(CLOAKED);
+    }
+
+    static {
+        CLOAKED = DataTracker.registerData(WarphopperEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
     @Override

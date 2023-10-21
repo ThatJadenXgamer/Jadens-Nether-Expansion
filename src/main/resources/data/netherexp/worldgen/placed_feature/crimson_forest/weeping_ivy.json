@@ -1,9 +1,9 @@
 {
-  "feature": "netherexp:warped_forest/warped_wart_beard",
+  "feature": "netherexp:crimson_forest/weeping_ivy",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 188
+      "count": 50
     },
     {
       "type": "minecraft:in_square"

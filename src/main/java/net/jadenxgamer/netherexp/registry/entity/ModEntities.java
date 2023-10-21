@@ -13,6 +13,6 @@ import net.minecraft.util.Identifier;
 public class ModEntities {
     public static final EntityType<WarphopperEntity> WARPHOPPER = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "warphopper"),
-            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, WarphopperEntity::new)
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, WarphopperEntity::new).fireImmune()
                     .dimensions(EntityDimensions.fixed(0.6F,2.2f)).build());
 }
