@@ -9,13 +9,24 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "netherexp:quartz_crystal",
-              "Properties": {
-                "facing": "up"
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:quartz_crystal",
+                  "Properties": {
+                    "facing": "up"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "minecraft:air"
+                }
               }
-            }
+            ]
           }
         }
       },
@@ -36,7 +47,10 @@
                   -1,
                   0
                 ],
-                "blocks": "minecraft:netherrack"
+                "blocks": [
+                  "minecraft:netherrack",
+                  "minecraft:nether_quartz_ore"
+                ]
               }
             ]
           }

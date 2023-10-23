@@ -3,7 +3,7 @@ package net.jadenxgamer.netherexp.registry.item.potion;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.mixin.item.BrewingRecipeRegistryMixin;
+import net.jadenxgamer.netherexp.mixin.item.BrewingRecipeRegistryAccessor;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
@@ -25,8 +25,9 @@ public class ModPotions{
     }
 
     private static void registerPotionRecipe() {
-        BrewingRecipeRegistryMixin.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.FOGGY_ESSENCE, FOGSIGHT_POTION);
-        BrewingRecipeRegistryMixin.netherexp$invokeRegisterPotionRecipe(FOGSIGHT_POTION, Items.REDSTONE, LONG_FOGSIGHT_POTION);
+        BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.FOGGY_ESSENCE, FOGSIGHT_POTION);
+        BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(FOGSIGHT_POTION, Items.REDSTONE, LONG_FOGSIGHT_POTION);
+        BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.WARPHOPPER_FUR, Potions.INVISIBILITY);
     }
 
     public static void registerModPotions() {

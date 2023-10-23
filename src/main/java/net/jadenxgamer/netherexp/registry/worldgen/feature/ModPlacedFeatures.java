@@ -10,8 +10,8 @@ public class ModPlacedFeatures {
 
     // NETHER WASTES
 
-    public static final RegistryKey<PlacedFeature> QUARTZ_CRYSTAL = registerKey("crimson_forest/quartz_crystal");
-    public static final RegistryKey<PlacedFeature> QUARTZ_CRYSTAL_EXTRA = registerKey("crimson_forest/quartz_crystal_extra");
+    public static final RegistryKey<PlacedFeature> QUARTZ_CRYSTAL = registerKey("nether_wastes/quartz_crystal");
+    public static final RegistryKey<PlacedFeature> QUARTZ_CRYSTAL_EXTRA = registerKey("nether_wastes/quartz_crystal_extra");
 
     // SOUL SAND VALLEY
 
