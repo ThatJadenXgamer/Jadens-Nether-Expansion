@@ -24,7 +24,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:magma_cream"
+            "tag": "minecraft:soul_fire_base_blocks"
           }
         ]
       }
@@ -43,3 +43,4 @@
     ]
   }
 }
+

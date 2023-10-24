@@ -33,6 +33,7 @@ public class NetherWastesFeatures {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.NETHER_WASTES),
                 GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.QUARTZ_CRYSTAL);
+
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.NETHER_WASTES),
                 GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.QUARTZ_CRYSTAL_EXTRA);
     }

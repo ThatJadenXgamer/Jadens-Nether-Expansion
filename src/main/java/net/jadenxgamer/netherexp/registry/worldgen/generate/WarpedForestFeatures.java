@@ -29,6 +29,9 @@ public class WarpedForestFeatures {
 
         // STEP 9 - VEGETAL_DECORATION
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.WARPED_FOREST),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.WARPED_SPORESHROOM);
+
         // STEP 10 - TOP_LAYER_MODIFICATION
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.WARPED_FOREST),
@@ -42,5 +45,8 @@ public class WarpedForestFeatures {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.WARPED_FOREST),
                 GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.WARPED_WART_BLOCK_SPOTTER_BIG);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.WARPED_FOREST),
+                GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.TWISTING_IVY);
     }
 }

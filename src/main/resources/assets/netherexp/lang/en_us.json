@@ -81,6 +81,9 @@
   "item.netherexp.claret_sign": "Claret Sign",
   "block.netherexp.claret_sign": "Claret Sign",
   "block.netherexp.claret_wall_sign": "Claret Sign",
+  "item.netherexp.claret_hanging_sign": "Claret Hanging Sign",
+  "block.netherexp.claret_hanging_sign": "Claret Hanging Sign",
+  "block.netherexp.claret_wall_hanging_sign": "Claret Hanging Sign",
 
   "block.netherexp.magma_cream_block": "Magma Cream Block",
 
@@ -105,6 +108,9 @@
   "item.netherexp.smokestalk_sign": "Smokestalk Sign",
   "block.netherexp.smokestalk_sign": "Smokestalk Sign",
   "block.netherexp.smokestalk_wall_sign": "Smokestalk Sign",
+  "item.netherexp.smokestalk_hanging_sign": "Smokestalk Hanging Sign",
+  "block.netherexp.smokestalk_hanging_sign": "Smokestalk Hanging Sign",
+  "block.netherexp.smokestalk_wall_hanging_sign": "Smokestalk Hanging Sign",
 
   "block.netherexp.quartz_crystal_block": "Quartz Crystal Block",
   "block.netherexp.quartz_crystal": "Quartz Crystal",

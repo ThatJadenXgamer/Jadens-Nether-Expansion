@@ -1,10 +1,10 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"textures": {
-		"2": "netherexp:block/smokestalk_plain",
+		"2": "netherexp:block/smokestalk",
 		"3": "netherexp:block/smokestalk_top",
-		"4": "netherexp:block/smokestalk",
-		"particle": "netherexp:block/smokestalk_plain"
+		"4": "netherexp:block/smokestalk_spots",
+		"particle": "netherexp:block/smokestalk"
 	},
 	"elements": [
 		{

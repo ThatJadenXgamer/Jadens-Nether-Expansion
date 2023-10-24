@@ -224,10 +224,16 @@ public class ModBlocks {
             new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).strength(0.5f).noCollision().sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.CRIMSON));
 
     public static final Block CLARET_SIGN = registerBlockWithoutItem("claret_sign",
-            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.CLARET));
+            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
 
     public static final Block CLARET_WALL_SIGN = registerBlockWithoutItem("claret_wall_sign",
-            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).dropsLike(CLARET_SIGN).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.CLARET));
+            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).dropsLike(CLARET_SIGN).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
+
+    public static final Block CLARET_HANGING_SIGN = registerBlockWithoutItem("claret_hanging_sign",
+            new HangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HANGING_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
+
+    public static final Block CLARET_WALL_HANGING_SIGN = registerBlockWithoutItem("claret_wall_hanging_sign",
+            new WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_HANGING_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).dropsLike(CLARET_HANGING_SIGN).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
 
     // Magma Cream
 
@@ -297,6 +303,11 @@ public class ModBlocks {
     public static final Block SMOKESTALK_WALL_SIGN = registerBlockWithoutItem("smokestalk_wall_sign",
             new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.GRAY).strength(1.0f).dropsLike(SMOKESTALK_SIGN).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
 
+    public static final Block SMOKESTALK_HANGING_SIGN = registerBlockWithoutItem("smokestalk_hanging_sign",
+            new HangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HANGING_SIGN).mapColor(MapColor.GRAY).strength(1.0f).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
+
+    public static final Block SMOKESTALK_WALL_HANGING_SIGN = registerBlockWithoutItem("smokestalk_wall_hanging_sign",
+            new WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_HANGING_SIGN).mapColor(MapColor.GRAY).strength(1.0f).dropsLike(SMOKESTALK_HANGING_SIGN).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
 
     // Quartz Block
 

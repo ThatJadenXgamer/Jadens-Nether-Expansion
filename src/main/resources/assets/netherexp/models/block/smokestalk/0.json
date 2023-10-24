@@ -1,19 +1,18 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"textures": {
-		"1": "netherexp:block/smokestalk_plain_tip",
-		"2": "netherexp:block/smokestalk_tip",
+		"1": "netherexp:block/smokestalk_tip",
 		"3": "netherexp:block/smokestalk_top",
-		"particle": "netherexp:block/smokestalk_plain_tip"
+		"particle": "netherexp:block/smokestalk_tip"
 	},
 	"elements": [
 		{
 			"from": [5, 0, 5],
 			"to": [11, 8, 11],
 			"faces": {
-				"north": {"uv": [5, 8, 11, 16], "texture": "#2"},
+				"north": {"uv": [5, 8, 11, 16], "texture": "#1"},
 				"east": {"uv": [5, 8, 11, 16], "texture": "#1"},
-				"south": {"uv": [5, 8, 11, 16], "texture": "#2"},
+				"south": {"uv": [5, 8, 11, 16], "texture": "#1"},
 				"west": {"uv": [5, 8, 11, 16], "texture": "#1"},
 				"down": {"uv": [5, 5, 11, 11], "texture": "#3"}
 			}

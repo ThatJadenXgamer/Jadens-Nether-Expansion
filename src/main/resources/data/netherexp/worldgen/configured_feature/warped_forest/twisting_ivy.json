@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "netherexp:twisting_ivy",
+          "Properties": {
+            "down": "true"
+          }
+        }
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:all_of",
+      "predicates": [
+        {
+          "type": "minecraft:matching_blocks",
+          "blocks": "minecraft:air"
+        },
+        {
+          "type": "minecraft:matching_blocks",
+          "offset": [
+            0,
+            -1,
+            0
+          ],
+          "blocks": [
+            "minecraft:netherrack"
+          ]
+        }
+      ]
+    },
+    "radius": 3,
+    "half_height": 1
+  }
+}

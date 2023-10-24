@@ -1,7 +1,18 @@
 {
   "variants": {
-    "": {
-      "model": "netherexp:block/smokestalk"
-    }
+    "": [
+      {
+        "model": "netherexp:block/smokestalk/0",
+        "weight": 6
+      },
+      {
+        "model": "netherexp:block/smokestalk/1",
+        "weight": 2
+      },
+      {
+        "model": "netherexp:block/smokestalk/2",
+        "weight": 2
+      }
+    ]
   }
 }

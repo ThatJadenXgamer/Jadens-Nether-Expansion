@@ -12,7 +12,16 @@
             "type": "minecraft:weighted_state_provider",
             "entries": [
               {
-                "weight": 2,
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:warped_sporeshroom",
+                  "Properties": {
+                    "active": "true"
+                  }
+                }
+              },
+              {
+                "weight": 40,
                 "data": {
                   "Name": "netherexp:crimson_sporeshroom",
                   "Properties": {
@@ -21,7 +30,7 @@
                 }
               },
               {
-                "weight": 5,
+                "weight": 70,
                 "data": {
                   "Name": "minecraft:air"
                 }
@@ -56,4 +65,3 @@
     }
   }
 }
-

@@ -99,6 +99,9 @@ public class ModTags {
          */
         public static final TagKey<Item> SWINGS_THROUGH_SOUL_GLASS = createItemTag("swings_through_soul_glass");
 
+        // Smokestalk accepts these as fuel items
+        public static final TagKey<Item> SMOKESTALK_FUEL = createItemTag("smokestalk_fuel");
+
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(NetherExp.MOD_ID, name));
         }

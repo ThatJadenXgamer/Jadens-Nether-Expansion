@@ -7,6 +7,7 @@ import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.item.custom.LightSporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightSporesItem;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -62,8 +63,14 @@ public class ModItems {
     public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",
             new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CLARET_SIGN, ModBlocks.CLARET_WALL_SIGN));
 
+    public static final Item CLARET_HANGING_SIGN_ITEM = registerItem("claret_hanging_sign",
+            new HangingSignItem(ModBlocks.CLARET_HANGING_SIGN, ModBlocks.CLARET_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+
     public static final Item SMOKESTALK_SIGN_ITEM = registerItem("smokestalk_sign",
             new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.SMOKESTALK_SIGN, ModBlocks.SMOKESTALK_WALL_SIGN));
+
+    public static final Item SMOKESTALK_HANGING_SIGN_ITEM = registerItem("smokestalk_hanging_sign",
+            new HangingSignItem(ModBlocks.SMOKESTALK_HANGING_SIGN, ModBlocks.SMOKESTALK_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
 
     public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
             new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET,new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));

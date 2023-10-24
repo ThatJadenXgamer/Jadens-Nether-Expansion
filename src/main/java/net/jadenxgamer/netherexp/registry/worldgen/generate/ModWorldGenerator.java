@@ -6,5 +6,7 @@ public class ModWorldGenerator {
         SoulSandValleyFeatures.generateFeatures();
         CrimsonForestFeatures.generateFeatures();
         WarpedForestFeatures.generateFeatures();
+        BasaltDeltasFeatures.generateFeatures();
+        VentMireFeatures.generateFeatures();
     }
 }
