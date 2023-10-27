@@ -19,7 +19,7 @@
         "recipe": "netherexp:soul_magma_block"
       }
     },
-    "has_items2": {
+    "has_item2": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [

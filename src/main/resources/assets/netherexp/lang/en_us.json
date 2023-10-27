@@ -221,6 +221,14 @@
   "block.netherexp.polished_blackstone_pillar": "Polished Blackstone Pillar",
   "block.netherexp.polished_blackstone_fence": "Polished Blackstone Fence",
 
+  "block.netherexp.potted_soul_swirls": "Potted Soul Swirls",
+  "block.netherexp.potted_enigma_crown": "Potted Enigma Crown",
+  "block.netherexp.potted_smokestalk": "Potted Smokestalk",
+  "block.netherexp.potted_red_scale_fungus": "Potted Red Scale Fungus",
+  "block.netherexp.potted_blue_scale_fungus": "Potted Blue Scale Fungus",
+  "block.netherexp.potted_crimson_sporeshroom": "Potted Crimson Sporeshroom",
+  "block.netherexp.potted_warped_sporeshroom": "Potted Warped Sporeshroom",
+
   "subtitles.item.gold_ingot.gilding": "Block gilded",
   "subtitles.block.explosive_scoria.ambient": "Unstable electrical sparks",
   "subtitles.block.sporeshroom.trampolined": "Sporeshroom trampolined",

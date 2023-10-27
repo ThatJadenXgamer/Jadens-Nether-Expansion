@@ -18,6 +18,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.structure.StructureKeys;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class ModBlocks {
@@ -618,6 +619,29 @@ public class ModBlocks {
 
     public static final Block TWISTING_POLISHED_BLACKSTONE_BRICKS = registerBlock("twisting_polished_blackstone_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    // Potted Plants
+
+    public static final Block POTTED_SOUL_SWIRLS = registerBlockWithoutItem("potted_soul_swirls",
+            new FlowerPotBlock(SOUL_SWIRLS, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block POTTED_ENIGMA_CROWN = registerBlockWithoutItem("potted_enigma_crown",
+            new EnigmaCrownPotBlock(ENIGMA_CROWN, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block POTTED_SMOKESTALK = registerBlockWithoutItem("potted_smokestalk",
+            new FlowerPotBlock(SMOKESTALK, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block POTTED_RED_SCALE_FUNGUS = registerBlockWithoutItem("potted_red_scale_fungus",
+            new FlowerPotBlock(RED_SCALE_FUNGUS, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block POTTED_BLUE_SCALE_FUNGUS = registerBlockWithoutItem("potted_blue_scale_fungus",
+            new FlowerPotBlock(BLUE_SCALE_FUNGUS, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block POTTED_CRIMSON_SPORESHROOM = registerBlockWithoutItem("potted_crimson_sporeshroom",
+            new FlowerPotBlock(CRIMSON_SPORESHROOM, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block POTTED_WARPED_SPORESHROOM = registerBlockWithoutItem("potted_warped_sporeshroom",
+            new FlowerPotBlock(WARPED_SPORESHROOM, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
 
     // REGISTRIES:
 

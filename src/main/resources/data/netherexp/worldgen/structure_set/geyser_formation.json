@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "netherexp:geyser_formation",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1509733029,
+    "spacing": 5,
+    "separation": 1
+  }
+}

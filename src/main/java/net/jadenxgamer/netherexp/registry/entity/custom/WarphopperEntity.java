@@ -37,6 +37,7 @@ implements GeoEntity {
         this.setPathfindingPenalty(PathNodeType.LAVA, 8.0F);
     }
 
+
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AnimalEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0)
