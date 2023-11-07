@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
+import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
 import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
@@ -45,5 +46,6 @@ public class NetherExp implements ModInitializer {
 		GeckoLib.initialize();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.WARPHOPPER, WarphopperEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.APPARITION, ApparitionEntity.setAttributes());
 	}
 }

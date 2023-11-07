@@ -14,6 +14,8 @@ public class ModParticles {
     public static final DefaultParticleType SMALL_SOUL_FLAME = FabricParticleTypes.simple();
     public static final DefaultParticleType GOLD_GLIMMER = FabricParticleTypes.simple();
     public static final DefaultParticleType REDSTONE_SPARK = FabricParticleTypes.simple();
+    public static final DefaultParticleType REDSTONE_EXPLOSION = FabricParticleTypes.simple();
+    public static final DefaultParticleType REDSTONE_EXPLOSION_EMITTER = FabricParticleTypes.simple();
     public static final DefaultParticleType FALLING_NETHER_WART = FabricParticleTypes.simple();
     public static final DefaultParticleType FALLING_WARPED_WART = FabricParticleTypes.simple();
     public static final DefaultParticleType FALLING_SHROOMLIGHT = FabricParticleTypes.simple();
@@ -36,6 +38,10 @@ public class ModParticles {
                 GOLD_GLIMMER);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "redstone_spark"),
                 REDSTONE_SPARK);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "redstone_explosion"),
+                REDSTONE_EXPLOSION);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "redstone_explosion_emitter"),
+                REDSTONE_EXPLOSION_EMITTER);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_nether_wart"),
                 FALLING_NETHER_WART);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_warped_wart"),

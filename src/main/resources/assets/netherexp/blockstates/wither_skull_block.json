@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "netherexp:block/wither_skull_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "netherexp:block/wither_skull_block"
+    },
+    "facing=south": {
+      "model": "netherexp:block/wither_skull_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "netherexp:block/wither_skull_block",
+      "y": 270
+    }
+  }
+}

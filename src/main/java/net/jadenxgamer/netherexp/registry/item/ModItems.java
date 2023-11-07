@@ -7,7 +7,6 @@ import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.item.custom.LightSporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightSporesItem;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -58,6 +57,10 @@ public class ModItems {
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,
+                    new FabricItemSettings()));
+
+    public static final Item APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg",
+            new SpawnEggItem(ModEntities.APPARITION,4864303,699311,
                     new FabricItemSettings()));
 
     public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",

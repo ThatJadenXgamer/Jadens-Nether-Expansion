@@ -107,6 +107,11 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_GLOWSTONE_BREAK = registerSoundEvent("block.glowstone.break");
     public static SoundEvent BLOCK_GLOWSTONE_PLACE = registerSoundEvent("block.glowstone.place");
 
+    // Quartz Block
+
+    public static SoundEvent BLOCK_QUARTZ_BLOCK_BREAK = registerSoundEvent("block.quartz_block.break");
+    public static SoundEvent BLOCK_QUARTZ_BLOCK_PLACE = registerSoundEvent("block.quartz_block.place");
+
     // ITEMS:
 
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
@@ -183,6 +188,10 @@ public class ModSoundEvents {
 
     public static final BlockSoundGroup GLOWSTONE = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_GLOWSTONE_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, ModSoundEvents.BLOCK_GLOWSTONE_PLACE,
+            SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
+
+    public static final BlockSoundGroup QUARTZ_BLOCK = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_QUARTZ_BLOCK_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, ModSoundEvents.BLOCK_QUARTZ_BLOCK_PLACE,
             SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {

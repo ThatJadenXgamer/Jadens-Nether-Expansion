@@ -6,9 +6,11 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
+import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.WarphopperRenderer;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
+import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
 
@@ -66,6 +68,8 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SOUL_FLAME, FlameParticle.SmallFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GOLD_GLIMMER, GlimmerParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_SPARK, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_EXPLOSION, ExplosionLargeParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_EXPLOSION_EMITTER, (new RedstoneExplosionEmitterParticle.Factory()));
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_NETHER_WART, FallingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_WARPED_WART, FallingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_SHROOMLIGHT, FallingParticle.Factory::new);
@@ -80,5 +84,6 @@ public class NetherExpClient implements ClientModInitializer {
 
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);
+        EntityRendererRegistry.register(ModEntities.APPARITION, ApparitionRenderer::new);
     }
 }

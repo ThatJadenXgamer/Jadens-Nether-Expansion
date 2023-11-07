@@ -2,13 +2,23 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
@@ -21,13 +31,40 @@ public class ScaleFungusBlock
 extends PlantBlock
 implements Fertilizable {
 
+    public static final BooleanProperty SHEARED = BooleanProperty.of("sheared");
+
     public static final IntProperty ROTATION = Properties.ROTATION;
     public static final IntProperty AGE = Properties.AGE_2;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 4.0, 15.0);
 
     public ScaleFungusBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0));
+        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0).with(SHEARED, false));
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        boolean s = state.get(SHEARED);
+        boolean bl = false;
+        if (!s) {
+            if (itemStack.isOf(Items.SHEARS)) {
+                world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                world.setBlockState(pos,state.cycle(SHEARED), Block.NOTIFY_LISTENERS);
+                if (!player.isCreative()) {
+                    itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
+                }
+                bl = true;
+            }
+            if (!world.isClient() && bl) {
+                player.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
+            }
+        }
+        if (bl) {
+            return ActionResult.success(world.isClient);
+        }
+        return ActionResult.PASS;
     }
 
     @SuppressWarnings("all")
@@ -56,19 +93,22 @@ implements Fertilizable {
     @SuppressWarnings("all")
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION, AGE);
+        builder.add(ROTATION, AGE, SHEARED);
     }
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return state.get(AGE) < 2;
+        int a = state.get(AGE);
+        boolean s = state.get(SHEARED);
+        return a < 2 || !s;
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int i = state.get(AGE);
-        if (i < 2 && random.nextInt(10) == 0) {
+        boolean s = state.get(SHEARED);
+        if (i < 2 && !s && random.nextInt(10) == 0) {
             state = state.with(AGE, i + 1);
             world.setBlockState(pos, state, Block.NOTIFY_LISTENERS);
         }

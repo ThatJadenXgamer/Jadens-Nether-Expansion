@@ -1,4 +1,8 @@
 {
+  "biome.netherexp.vent_mire": "Vent Mire",
+  "biome.netherexp.quartz_chasm": "Quartz Chasm",
+  "biome.netherexp.grieving_spires": "Grieving Spires",
+
   "item.netherexp.warphopper_fur": "Warphopper Fur",
   "item.netherexp.hogham": "Raw Hogham",
   "item.netherexp.cooked_hogham": "Cooked Hogham",
@@ -10,6 +14,7 @@
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
+  "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
@@ -246,6 +251,8 @@
   "item.minecraft.potion.effect.fogsight": "Potion of FogSight",
   "item.minecraft.splash_potion.effect.fogsight": "Splash Potion of FogSight",
   "item.minecraft.lingering_potion.effect.fogsight": "Lingering Potion of FogSight",
+
+  "entity.netherexp.apparition": "Apparition",
 
   "entity.netherexp.warphopper": "Warphopper",
   "subtitles.entity.warphopper.ambient": "Warphopper chirps",

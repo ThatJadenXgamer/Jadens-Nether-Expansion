@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -35,6 +36,13 @@ extends Block {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        double x = pos.getX() + 0.5;
+        double y = pos.getY() + 0.5;
+        double z = pos.getZ() + 0.5;
+        if (state.get(UNSTABLE)) {
+            world.addParticle(ModParticles.REDSTONE_EXPLOSION_EMITTER, x, y, z, 0.0, 0.0, 0.0);
+            world.playSound(x, y, z, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
+        }
         if (!world.isClient() && !player.isCreative() && state.get(UNSTABLE)) {
             this.explode(world, pos);
         }
@@ -57,12 +65,11 @@ extends Block {
         return !fluidState2.isIn(FluidTags.WATER);
     }
 
-    private void explode(World world, final BlockPos explodedPos) {
+    private void explode(World world, BlockPos explodedPos) {
         world.removeBlock(explodedPos, false);
         boolean bl = Direction.Type.HORIZONTAL.stream().map(explodedPos::offset).anyMatch(pos -> ExplosiveScoriaBlock.hasStillWater(pos, world));
         final boolean bl2 = bl || world.getFluidState(explodedPos.up()).isIn(FluidTags.WATER);
         ExplosionBehavior explosionBehavior = new ExplosionBehavior() {
-
             @Override
             public Optional<Float> getBlastResistance(Explosion explosion, BlockView world, BlockPos pos, BlockState blockState, FluidState fluidState) {
                 if (pos.equals(explodedPos) && bl2) {
@@ -71,25 +78,7 @@ extends Block {
                 return super.getBlastResistance(explosion, world, pos, blockState, fluidState);
             }
         };
-        world.createExplosion(null, world.getDamageSources().hotFloor(), explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 2.0f, false, World.ExplosionSourceType.BLOCK);
-    }
-
-    private void lesserExplode(World world, final BlockPos explodedPos) {
-        world.removeBlock(explodedPos, false);
-        boolean bl = Direction.Type.HORIZONTAL.stream().map(explodedPos::offset).anyMatch(pos -> ExplosiveScoriaBlock.hasStillWater(pos, world));
-        final boolean bl2 = bl || world.getFluidState(explodedPos.up()).isIn(FluidTags.WATER);
-        ExplosionBehavior explosionBehavior = new ExplosionBehavior() {
-
-            @Override
-            public Optional<Float> getBlastResistance(Explosion explosion, BlockView world, BlockPos pos, BlockState blockState, FluidState fluidState) {
-                if (pos.equals(explodedPos) && bl2) {
-                    return Optional.of(Blocks.WATER.getBlastResistance());
-                }
-                return super.getBlastResistance(explosion, world, pos, blockState, fluidState);
-            }
-        };
-
-        world.createExplosion(null, world.getDamageSources().hotFloor(), explosionBehavior, (double) explodedPos.getX() + 0.5, (double) explodedPos.getY() + 0.5, (double) explodedPos.getZ() + 0.5, 1.4f, false, World.ExplosionSourceType.BLOCK);
+        world.createExplosion(null, world.getDamageSources().explosion(null), explosionBehavior, explodedPos.getX() + 0.5, explodedPos.getY() + 0.5, explodedPos.getZ() + 0.5, 2.0f, false, World.ExplosionSourceType.TNT, false);
     }
 
     @Override
@@ -119,7 +108,6 @@ extends Block {
     @Override
     public void onDestroyedByExplosion(World world, BlockPos pos, Explosion explosion) {
         world.setBlockState(pos, Blocks.AIR.getDefaultState());
-        this.lesserExplode(world, pos);
     }
 
     @Override

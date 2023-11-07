@@ -11,7 +11,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class WarphopperRenderer extends GeoEntityRenderer<WarphopperEntity> {
     public WarphopperRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new WarphopperModel());
-        this.shadowRadius = 0.7f;
+        this.shadowRadius = 0.6f;
     }
 
     @Override

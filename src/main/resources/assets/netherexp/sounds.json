@@ -824,6 +824,24 @@
       "netherexp:block/glowstone/break3"
     ]
   },
+  "block.quartz_block.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/quartz_block/place1",
+      "netherexp:block/quartz_block/place2",
+      "netherexp:block/quartz_block/place3",
+      "netherexp:block/quartz_block/place4"
+    ]
+  },
+  "block.quartz_block.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/quartz_block/place1",
+      "netherexp:block/quartz_block/place2",
+      "netherexp:block/quartz_block/place3",
+      "netherexp:block/quartz_block/place4"
+    ]
+  },
   "item.gold_ingot.gilding": {
     "subtitle": "subtitles.item.gold_ingot.gilding",
     "sounds": [

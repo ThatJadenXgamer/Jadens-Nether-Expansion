@@ -209,10 +209,13 @@ public class ModItemGroup {
                         entries.add(Blocks.WARPED_NYLIUM);
                         entries.add(ModBlocks.WARPED_NYLIUM_PATH);
 
+                        entries.add(ModItems.APPARITION_SPAWN_EGG);
+
                         entries.add(ModItems.FOGGY_ESSENCE);
 
                         entries.add(ModItems.HOGHAM);
                         entries.add(ModItems.COOKED_HOGHAM);
+
                         entries.add(ModItems.WARPHOPPER_FUR);
                         entries.add(ModItems.MUSIC_DISC_CRICKET);
                         entries.add(ModItems.WARPHOPPER_SPAWN_EGG);
@@ -269,6 +272,5 @@ public class ModItemGroup {
                     }).build());
 
     public static void registerItemGroup() {
-
     }
 }

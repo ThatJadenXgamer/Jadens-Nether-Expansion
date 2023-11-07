@@ -6,9 +6,6 @@ import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 
 public class WarphopperModel extends GeoModel<WarphopperEntity> {
-
-
-    //TODO: Warphopper Antennae is a bit buggy and has z-fighting
     @Override
     public Identifier getModelResource(WarphopperEntity object) {
         return new Identifier(NetherExp.MOD_ID, "geo/warphopper.geo.json");

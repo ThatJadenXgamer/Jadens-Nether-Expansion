@@ -82,18 +82,17 @@ implements GeoEntity {
     private PlayState predicate(AnimationState animationState) {
         if(animationState.isMoving()) {
             animationState.getController().setAnimation(RawAnimation.begin().then("animation.warphopper.walk", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
         }
         else {
             animationState.getController().setAnimation(RawAnimation.begin().then("animation.warphopper.idle", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
         }
+        return PlayState.CONTINUE;
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller",
-                0, this::predicate));
+                10, this::predicate));
     }
 
     @Override
@@ -116,7 +115,6 @@ implements GeoEntity {
         return ModSoundEvents.ENTITY_WARPHOPPER_DEATH;
     }
 
-    //TODO: Make a Custom Step Sound
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
         this.playSound(SoundEvents.ENTITY_HOGLIN_STEP, 0.15f, 1.0f);

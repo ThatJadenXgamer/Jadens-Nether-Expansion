@@ -44,6 +44,9 @@ public class ModTags {
         // Tag to define all kinds of Magma Blocks
         public static final TagKey<Block> MAGMA_BLOCKS = createBlockTag("magma_blocks");
 
+        // Zombified Piglins cannot spawn on these Blocks
+        public static final TagKey<Block> ZOMBIFIED_PIGLIN_CANNOT_SPAWN_ON = createBlockTag("zombified_piglin_cannot_spawn_on");
+
         // Piglins cannot spawn on these Blocks
         public static final TagKey<Block> PIGLIN_CANNOT_SPAWN_ON = createBlockTag("piglin_cannot_spawn_on");
 
@@ -53,11 +56,14 @@ public class ModTags {
         // Sorrowsquash Vines are Plantable on these Blocks
         public static final TagKey<Block> SORROWSQUASH_VINE_PLANTABLE_ON = createBlockTag("sorrowsquash_vine_plantable_on");
 
-        // Weeping Vines can generate on these blocks
+        // Weeping Vines can generate on these Blocks
         public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createBlockTag("weeping_vines_feature_valid");
 
-        // Nether Roots are Plantable on these blocks
+        // Nether Roots are Plantable on these Blocks
         public static final TagKey<Block> ROOTS_PLANTABLE_ON = createBlockTag("roots_plantable_on");
+
+        // Huge Fungus Will Generate Weeping Vines below these Blocks
+        public static final TagKey<Block> HUGE_FUNGUS_GENERATES_VINES = createBlockTag("huge_fungus_generates_vines");
 
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
@@ -73,6 +79,9 @@ public class ModTags {
 
         // Blocks in this tag produce Glowstone Sounds
         public static final TagKey<Block> SOUNDS_GLOWSTONE = createBlockTag("sounds/glowstone");
+
+        // Blocks in this tag produce Quartz Block Sounds
+        public static final TagKey<Block> SOUNDS_QUARTZ_BLOCK = createBlockTag("sounds/quartz_block");
 
 
         private static TagKey<Block> createBlockTag(String name) {

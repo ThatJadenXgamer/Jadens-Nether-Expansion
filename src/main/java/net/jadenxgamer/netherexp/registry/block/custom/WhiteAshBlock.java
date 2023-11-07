@@ -7,6 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,11 +29,20 @@ public class WhiteAshBlock extends Block{
         world.setBlockState(pos.down(), ModBlocks.ASHY_BASALT.getDefaultState(), NOTIFY_LISTENERS);
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        BlockState floor = world.getBlockState(pos.down());
+        if (floor.isOf(Blocks.BASALT)) {
+            WhiteAshLayerBlock.ashyBasalt(world, pos);
+        }
+    }
+
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos().down());
-        if (blockState.isOf(Blocks.BASALT)) {
+        BlockState floor = ctx.getWorld().getBlockState(ctx.getBlockPos().down());
+        if (floor.isOf(Blocks.BASALT)) {
             WhiteAshBlock.ashyBasalt(ctx.getWorld(), ctx.getBlockPos());
         }
         return super.getPlacementState(ctx);

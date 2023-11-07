@@ -9,6 +9,7 @@ import net.jadenxgamer.netherexp.registry.misc_registry.ModWoodType;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -18,7 +19,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.structure.StructureKeys;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class ModBlocks {
@@ -433,13 +433,13 @@ public class ModBlocks {
     // Fortress Traps
 
     /*
-     * TODO: ADD UNOBTAINABLE BLOCK
+     * TODO: THIS BLOCK IS UNOBTAINABLE
     */
     public static final Block FLAMETHROWER = registerBlock("flamethrower",
             new Block(FabricBlockSettings.of().strength(2.5f).mapColor(MapColor.DARK_RED).requiresTool().sounds(BlockSoundGroup.NETHER_BRICKS)));
 
     /*
-     * TODO: ADD UNOBTAINABLE BLOCK
+     * TODO: THIS BLOCK IS UNOBTAINABLE
      */
     public static final Block SPIKETRAP = registerBlock("spiketrap",
             new Block(FabricBlockSettings.of().strength(3.5f).mapColor(MapColor.DARK_RED).requiresTool().sounds(BlockSoundGroup.COPPER)));
@@ -468,13 +468,13 @@ public class ModBlocks {
             new ScaleFungusBlock(FabricBlockSettings.of().mapColor(MapColor.BRIGHT_TEAL).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)));
 
     /*
-     * TODO: ADD UNOBTAINABLE BLOCK
+     * TODO: THIS BLOCK IS UNOBTAINABLE
      */
     public static final Block BOOMSHROOM = registerBlock("boomshroom",
             new BoomshroomBlock(FabricBlockSettings.of().mapColor(MapColor.LIGHT_BLUE).breakInstantly().luminance(5).sounds(BlockSoundGroup.FUNGUS)));
 
     /*
-     * TODO: ADD UNOBTAINABLE BLOCK
+     * TODO: THIS BLOCK IS UNOBTAINABLE
      */
     public static final Block BOOMSHROOM_BUNDLE = registerBlock("boomshroom_bundle",
             new Block(FabricBlockSettings.of().mapColor(MapColor.LIGHT_BLUE).strength(1.5f).luminance(7).sounds(BlockSoundGroup.FUNGUS)));

@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
@@ -30,9 +31,18 @@ public class WhiteAshLayerBlock extends LayerBlock{
         return Block.isFaceFullSquare(blockState.getCollisionShape(world, pos.down()), Direction.UP) || blockState.isOf(this) && blockState.get(LAYERS) == 8;
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        BlockState floor = world.getBlockState(pos.down());
+        if (floor.isOf(Blocks.BASALT)) {
+            WhiteAshLayerBlock.ashyBasalt(world, pos);
+        }
+    }
+
     /*
-    While also doing LayerBlock stuff it checks for blocks underneath
-    If it happens to be Basalt then it changes it to Ashy Basalt
+        While also doing LayerBlock stuff it checks for blocks underneath
+        If it happens to be Basalt then it changes it to Ashy Basalt
     */
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
@@ -54,7 +64,7 @@ public class WhiteAshLayerBlock extends LayerBlock{
     /*
     While also doing LayerBlock stuff it checks for blocks underneath
     If it happens to be Basalt then it changes it to Ashy Basalt
-    but this time as a placement state!
+    but this time as a placement state
     */
     @Override
     @Nullable
