@@ -52,9 +52,6 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_WHITE_ASH_HIT = registerSoundEvent("block.white_ash.hit");
     public static SoundEvent BLOCK_WHITE_ASH_FALL = registerSoundEvent("block.white_ash.fall");
 
-    // Quartz Crystal
-    public static SoundEvent BLOCK_QUARTZ_CRYSTAL_BREAK = registerSoundEvent("block.quartz_crystal.break");
-
     // Smokestalk
     public static SoundEvent BLOCK_SMOKESTALK_BREAK = registerSoundEvent("block.smokestalk.break");
     public static SoundEvent BLOCK_SMOKESTALK_PLACE = registerSoundEvent("block.smokestalk.place");
@@ -153,10 +150,6 @@ public class ModSoundEvents {
     public static final BlockSoundGroup WHITE_ASH = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_WHITE_ASH_BREAK, ModSoundEvents.BLOCK_WHITE_ASH_STEP, ModSoundEvents.BLOCK_WHITE_ASH_PLACE,
             ModSoundEvents.BLOCK_WHITE_ASH_HIT, ModSoundEvents.BLOCK_WHITE_ASH_FALL);
-
-    public static final BlockSoundGroup QUARTZ_CRYSTAL = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_QUARTZ_CRYSTAL_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, SoundEvents.BLOCK_NETHER_ORE_PLACE,
-            SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
 
     public static final BlockSoundGroup SMOKESTALK = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_SMOKESTALK_BREAK, SoundEvents.BLOCK_BAMBOO_STEP, ModSoundEvents.BLOCK_SMOKESTALK_PLACE,

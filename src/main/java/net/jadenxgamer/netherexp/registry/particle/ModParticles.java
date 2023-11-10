@@ -11,6 +11,8 @@ public class ModParticles {
 
     // Particles
     public static final DefaultParticleType ENIGMA_PARTICLE = FabricParticleTypes.simple();
+
+    public static final DefaultParticleType FIRE_SPARK = FabricParticleTypes.simple();
     public static final DefaultParticleType SMALL_SOUL_FLAME = FabricParticleTypes.simple();
     public static final DefaultParticleType GOLD_GLIMMER = FabricParticleTypes.simple();
     public static final DefaultParticleType REDSTONE_SPARK = FabricParticleTypes.simple();
@@ -32,6 +34,8 @@ public class ModParticles {
     public static void registerParticles() {
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "enigma_spore"),
                 ENIGMA_PARTICLE);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "fire_spark"),
+                FIRE_SPARK);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "small_soul_flame"),
                 SMALL_SOUL_FLAME);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "gold_glimmer"),

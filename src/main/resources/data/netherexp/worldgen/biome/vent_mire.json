@@ -25,9 +25,9 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:smoke"
+        "type": "netherexp:fire_spark"
       },
-      "probability": 0.01428
+      "probability": 0.0190
     }
   },
   "spawners": {

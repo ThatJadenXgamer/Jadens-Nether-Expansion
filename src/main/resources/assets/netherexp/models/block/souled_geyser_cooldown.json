@@ -2,23 +2,23 @@
 	"credit": "Made by @ThatJadenXgamer",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "netherexp:block/basaltic_geyser_side",
-		"1": "netherexp:block/basaltic_geyser_end",
-		"2": "netherexp:block/basaltic_geyser_top",
-		"3": "block/basalt_top",
-		"particle": "netherexp:block/basaltic_geyser_side"
+		"0": "netherexp:block/souled_geyser_side",
+		"1": "netherexp:block/souled_geyser_end_cooldown",
+		"2": "netherexp:block/souled_geyser_top",
+		"3": "netherexp:block/soul_slate",
+		"particle": "netherexp:block/souled_geyser_side"
 	},
 	"elements": [
 		{
 			"from": [0, 0, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "north"},
 				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#3"}
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#3", "cullface": "down"}
 			}
 		},
 		{

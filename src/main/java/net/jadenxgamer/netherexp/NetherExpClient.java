@@ -65,6 +65,7 @@ public class NetherExpClient implements ClientModInitializer {
 
         // PARTICLES
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.FIRE_SPARK, FireSparkParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SOUL_FLAME, FlameParticle.SmallFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GOLD_GLIMMER, GlimmerParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_SPARK, GlimmerParticle.Factory::new);

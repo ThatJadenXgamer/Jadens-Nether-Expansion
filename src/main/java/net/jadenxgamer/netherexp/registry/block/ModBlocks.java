@@ -9,7 +9,6 @@ import net.jadenxgamer.netherexp.registry.misc_registry.ModWoodType;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -313,10 +312,10 @@ public class ModBlocks {
     // Quartz Block
 
     public static final Block QUARTZ_CRYSTAL = registerBlock("quartz_crystal",
-            new AmethystClusterBlock(7, 3, FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).nonOpaque().strength(1.5f).sounds(ModSoundEvents.QUARTZ_CRYSTAL)));
+            new AmethystClusterBlock(7, 3, FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).nonOpaque().strength(1.5f).sounds(ModSoundEvents.QUARTZ_BLOCK)));
 
     public static final Block QUARTZ_CRYSTAL_BLOCK = registerBlock("quartz_crystal_block",
-            new PillarBlock(FabricBlockSettings.of().strength(2.5f).mapColor(MapColor.OFF_WHITE).requiresTool().sounds(ModSoundEvents.QUARTZ_CRYSTAL)));
+            new PillarBlock(FabricBlockSettings.of().strength(2.5f).mapColor(MapColor.OFF_WHITE).requiresTool().sounds(ModSoundEvents.QUARTZ_BLOCK)));
 
     public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
             new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.OFF_WHITE)));
@@ -529,10 +528,10 @@ public class ModBlocks {
             new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.WARPED_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES));
 
     public static final Block SOULED_GEYSER = registerBlock("souled_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).nonOpaque().sounds(ModSoundEvents.SOUL_SLATE),ModParticles.BLACK_SMOKE, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH));
+            new GeyserBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).nonOpaque().sounds(ModSoundEvents.SOUL_SLATE),ModParticles.BLACK_SMOKE, ModParticles.SOUL_EMBER, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH));
 
     public static final Block BASALTIC_GEYSER = registerBlock("basaltic_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).nonOpaque().sounds(BlockSoundGroup.BASALT),ModParticles.WHITE_SMOKE, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH));
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).nonOpaque().sounds(BlockSoundGroup.BASALT),ModParticles.WHITE_SMOKE, ParticleTypes.LAVA, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH));
 
     // White Ash
 

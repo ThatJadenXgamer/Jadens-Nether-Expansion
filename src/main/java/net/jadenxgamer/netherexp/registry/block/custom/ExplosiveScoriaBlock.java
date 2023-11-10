@@ -39,7 +39,7 @@ extends Block {
         double x = pos.getX() + 0.5;
         double y = pos.getY() + 0.5;
         double z = pos.getZ() + 0.5;
-        if (state.get(UNSTABLE)) {
+        if (!player.isCreative() && state.get(UNSTABLE)) {
             world.addParticle(ModParticles.REDSTONE_EXPLOSION_EMITTER, x, y, z, 0.0, 0.0, 0.0);
             world.playSound(x, y, z, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
         }

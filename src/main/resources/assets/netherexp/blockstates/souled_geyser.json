@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "cooldown=false": {
       "model": "netherexp:block/souled_geyser"
+    },
+    "cooldown=true": {
+      "model": "netherexp:block/souled_geyser_cooldown"
     }
   }
 }

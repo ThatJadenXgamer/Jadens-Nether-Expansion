@@ -1,12 +1,14 @@
 package net.jadenxgamer.netherexp;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
+import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
 import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.item.potion.ModPotions;
@@ -47,5 +49,7 @@ public class NetherExp implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(ModEntities.WARPHOPPER, WarphopperEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.APPARITION, ApparitionEntity.setAttributes());
+
+		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
 	}
 }

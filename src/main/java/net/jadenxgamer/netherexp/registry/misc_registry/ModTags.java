@@ -65,6 +65,12 @@ public class ModTags {
         // Huge Fungus Will Generate Weeping Vines below these Blocks
         public static final TagKey<Block> HUGE_FUNGUS_GENERATES_VINES = createBlockTag("huge_fungus_generates_vines");
 
+        // List of every Nether Wart Blocks
+        public static final TagKey<Block> NETHER_WART_BLOCKS = createBlockTag("nether_wart_blocks");
+
+        // List of every Warped Wart Blocks
+        public static final TagKey<Block> WARPED_WART_BLOCKS = createBlockTag("warped_wart_blocks");
+
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
 

@@ -1,21 +1,21 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public class GeyserBlock extends Block {
 
-    public static final BooleanProperty CREATES_ASH = BooleanProperty.of("creates_ash");
+    public static final BooleanProperty COOLDOWN = BooleanProperty.of("cooldown");
     public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
 
     // Particles
@@ -32,46 +32,46 @@ public class GeyserBlock extends Block {
     Smoke the type of smoke it emits
     */
     protected final ParticleEffect smoke;
+    protected final ParticleEffect spark;
     protected final ParticleEffect ash;
     protected final TagKey<Biome> biome;
 
-    public GeyserBlock(Settings settings, ParticleEffect smoke, ParticleEffect ash, TagKey<Biome> biome) {
+    public GeyserBlock(Settings settings, ParticleEffect smoke, ParticleEffect spark, ParticleEffect ash, TagKey<Biome> biome) {
         super(settings);
         this.smoke = smoke;
+        this.spark = spark;
         this.ash = ash;
         this.biome = biome;
-        setDefaultState(this.getStateManager().getDefaultState().with(CREATES_ASH, false).with(ACTIVE, false));
+        setDefaultState(this.getStateManager().getDefaultState().with(COOLDOWN, false).with(ACTIVE, false));
     }
 
     //TODO: Some VFXs would be great here
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        Vec3d vec3d = entity.getVelocity();
-        entity.addVelocity(vec3d.x,1.2, vec3d.z);
-        entity.damage(world.getDamageSources().hotFloor(), 1.0f);
+        boolean cd = state.get(COOLDOWN);
+        if (!cd) {
+            Vec3d vec3d = entity.getVelocity();
+            entity.addVelocity(vec3d.x,1.2, vec3d.z);
+            entity.damage(world.getDamageSources().hotFloor(), 1.0f);
+            state.cycle(COOLDOWN);
+            world.playSound(pos.getX(),pos.getY(),pos.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
+            world.scheduleBlockTick(pos, this, 100);
+        }
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (direction == Direction.DOWN) {
-            return state.with(CREATES_ASH, this.isMagmaBlock(neighborState));
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (state.get(COOLDOWN)) {
+            state.cycle(COOLDOWN);
         }
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         boolean player = Objects.requireNonNull(ctx.getPlayer()).isSneaking();
-        BlockPos blockPos;
-        blockPos = ctx.getBlockPos();
-        World worldAccess = ctx.getWorld();
-        return this.getDefaultState().with(CREATES_ASH, this.isMagmaBlock(worldAccess.getBlockState(blockPos.down()))).with(ACTIVE, !player);
-    }
-
-    private boolean isMagmaBlock(BlockState state) {
-        return state.isIn(ModTags.Blocks.MAGMA_BLOCKS);
+        return this.getDefaultState().with(ACTIVE, !player);
     }
 
     @Override
@@ -80,6 +80,7 @@ public class GeyserBlock extends Block {
         int j = pos.getY();
         int k = pos.getZ();
         boolean a = state.get(ACTIVE);
+        boolean cd = state.get(COOLDOWN);
         boolean b = world.getBiome(pos).isIn(this.biome);
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (int l = 0; l < 14; ++l) {
@@ -90,8 +91,11 @@ public class GeyserBlock extends Block {
                 world.addParticle(this.ash, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
-        if (a) {
+        if (!cd && a) {
             world.addParticle(this.smoke, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
+        }
+        if (cd) {
+            world.addParticle(this.spark, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
         }
     }
 
@@ -102,6 +106,6 @@ public class GeyserBlock extends Block {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(CREATES_ASH, ACTIVE);
+        builder.add(COOLDOWN, ACTIVE);
     }
 }
