@@ -44,7 +44,7 @@ extends RotatingBlock {
         if (!gilded) {
             if (itemStack.isOf(Items.GOLD_NUGGET)) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), ModSoundEvents.GILDING, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(pos,state.cycle(GILDED), Block.NOTIFY_LISTENERS);
+                world.setBlockState(pos, state.cycle(GILDED), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
                 }

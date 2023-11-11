@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -32,11 +33,11 @@ public class GeyserBlock extends Block {
     Smoke the type of smoke it emits
     */
     protected final ParticleEffect smoke;
-    protected final ParticleEffect spark;
+    protected final boolean spark;
     protected final ParticleEffect ash;
     protected final TagKey<Biome> biome;
 
-    public GeyserBlock(Settings settings, ParticleEffect smoke, ParticleEffect spark, ParticleEffect ash, TagKey<Biome> biome) {
+    public GeyserBlock(Settings settings, ParticleEffect smoke, boolean spark, ParticleEffect ash, TagKey<Biome> biome) {
         super(settings);
         this.smoke = smoke;
         this.spark = spark;
@@ -45,15 +46,13 @@ public class GeyserBlock extends Block {
         setDefaultState(this.getStateManager().getDefaultState().with(COOLDOWN, false).with(ACTIVE, false));
     }
 
-    //TODO: Some VFXs would be great here
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        boolean cd = state.get(COOLDOWN);
-        if (!cd) {
+        if (!state.get(COOLDOWN)) {
             Vec3d vec3d = entity.getVelocity();
             entity.addVelocity(vec3d.x,1.2, vec3d.z);
             entity.damage(world.getDamageSources().hotFloor(), 1.0f);
-            state.cycle(COOLDOWN);
+            world.setBlockState(pos, state.cycle(COOLDOWN), NOTIFY_LISTENERS);
             world.playSound(pos.getX(),pos.getY(),pos.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
             world.scheduleBlockTick(pos, this, 100);
         }
@@ -63,7 +62,7 @@ public class GeyserBlock extends Block {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(COOLDOWN)) {
-            state.cycle(COOLDOWN);
+            world.setBlockState(pos, state.cycle(COOLDOWN), NOTIFY_LISTENERS);
         }
     }
 
@@ -82,6 +81,7 @@ public class GeyserBlock extends Block {
         boolean a = state.get(ACTIVE);
         boolean cd = state.get(COOLDOWN);
         boolean b = world.getBiome(pos).isIn(this.biome);
+        float f = random.nextFloat();
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (int l = 0; l < 14; ++l) {
             mutable.set(i + MathHelper.nextInt(random, -20, 20), j + random.nextInt(20), k + MathHelper.nextInt(random, -20, 20));
@@ -91,11 +91,11 @@ public class GeyserBlock extends Block {
                 world.addParticle(this.ash, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
-        if (!cd && a) {
+        if (a) {
             world.addParticle(this.smoke, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
         }
-        if (cd) {
-            world.addParticle(this.spark, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
+        if (!cd && this.spark && f < 0.3f) {
+            world.addParticle(ParticleTypes.LAVA, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
         }
     }
 
