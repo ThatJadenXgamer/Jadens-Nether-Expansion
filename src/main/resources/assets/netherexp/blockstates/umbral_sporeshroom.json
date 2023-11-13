@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "netherexp:block/mod_compat/cinderscapes/umbral_sporeshroom"
+    },
+    "hanging=true": {
+      "model": "netherexp:block/mod_compat/cinderscapes/umbral_sporeshroom_hanging"
+    }
+  }
+}

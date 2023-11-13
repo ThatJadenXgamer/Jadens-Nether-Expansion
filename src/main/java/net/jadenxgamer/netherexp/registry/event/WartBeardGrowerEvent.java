@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.event;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.block.Block;
@@ -39,6 +40,15 @@ public class WartBeardGrowerEvent implements UseBlockCallback {
             else if (state.isIn(ModTags.Blocks.WARPED_WART_BLOCKS) && bottomState.isAir()) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 world.setBlockState(hitResult.getBlockPos().down(), ModBlocks.WARPED_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
+                if (!player.isCreative()) {
+                    itemStack.decrement(1);
+                }
+                boneMealParticles(world, hitResult.getBlockPos().down());
+                bl = true;
+            }
+            else if (NetherExp.checkModCompatCinderscapes() && state.isIn(ModTags.Blocks.UMBRAL_WART_BLOCKS) && bottomState.isAir()) {
+                world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                world.setBlockState(hitResult.getBlockPos().down(), ModBlocks.UMBRAL_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
                 }

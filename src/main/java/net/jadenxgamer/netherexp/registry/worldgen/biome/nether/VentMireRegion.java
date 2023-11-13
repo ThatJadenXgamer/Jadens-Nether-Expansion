@@ -21,7 +21,7 @@ public class VentMireRegion extends Region {
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
         this.addBiome(mapper,
                 //Temperature
-                MultiNoiseUtil.ParameterRange.of(-0.4F),
+                MultiNoiseUtil.ParameterRange.of(-0.3F),
                 //Humidity
                 MultiNoiseUtil.ParameterRange.of(0.3F),
                 //Continentalness

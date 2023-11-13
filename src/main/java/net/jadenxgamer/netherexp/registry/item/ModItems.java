@@ -1,13 +1,16 @@
 package net.jadenxgamer.netherexp.registry.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.item.custom.LightSporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightSporesItem;
+import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.item.*;
+import net.minecraft.item.trim.ArmorTrimPatterns;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -40,6 +43,9 @@ public class ModItems {
     public static final Item PYRITE_INGOT = registerItem("pyrite_ingot",
             new Item(new FabricItemSettings()));
 
+    public static final Item RIFT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("rift_armor_trim_smithing_template",
+            SmithingTemplateItem.of(ModArmorTrimPatterns.RIFT));
+
     public static final Item WEEPING_IVY = registerItem("weeping_ivy",
             new AliasedBlockItem(ModBlocks.WEEPING_IVY, new FabricItemSettings()));
 
@@ -51,6 +57,9 @@ public class ModItems {
 
     public static final Item LIGHTSPORES = registerItem("lightspores",
             new LightSporesItem(new FabricItemSettings()));
+
+    public static final Item BLIGHTSPORES = registerItem("blightspores",
+            new Item(new FabricItemSettings()));
 
     public static final Item GLOW_CHEESE = registerItem("glow_cheese",
             new Item(new FabricItemSettings().food(ModFoodComponents.GLOW_CHEESE)));

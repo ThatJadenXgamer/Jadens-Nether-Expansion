@@ -65,11 +65,26 @@ public class ModTags {
         // Huge Fungus Will Generate Weeping Vines below these Blocks
         public static final TagKey<Block> HUGE_FUNGUS_GENERATES_VINES = createBlockTag("huge_fungus_generates_vines");
 
-        // List of every Nether Wart Blocks
+        /*
+        *  Blocks in this tag will be considered as Nether Wart Block
+        *  Bone Mealing it causes Nether Wart Beards to grow
+        *  Hoglins, Piglins and Zombified Piglins cannot spawn on these blocks
+        */
         public static final TagKey<Block> NETHER_WART_BLOCKS = createBlockTag("nether_wart_blocks");
 
-        // List of every Warped Wart Blocks
+        /*
+         *  Blocks in this tag will be considered as Warped Wart Block
+         *  Bone Mealing it causes Warped Wart Beards to grow
+         *  Hoglins, Piglins and Zombified Piglins cannot spawn on these blocks
+         */
         public static final TagKey<Block> WARPED_WART_BLOCKS = createBlockTag("warped_wart_blocks");
+
+        /*
+         *  Blocks in this tag will be considered as Umbral Wart Block
+         *  Bone Mealing it causes Umbral Wart Beards to grow (only if Cinderscapes is installed)
+         *  This tag is intended for Cinderscapes Compatibility
+         */
+        public static final TagKey<Block> UMBRAL_WART_BLOCKS = createBlockTag("umbral_wart_blocks");
 
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
@@ -129,11 +144,18 @@ public class ModTags {
         // Prevents Warped Sporeshroom from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WARPED_SPORES = createBiomeTag("particles/has_warped_spores");
 
+        // Prevents Umbral Sporeshroom from creating Particles inside this Biome
+        public static final TagKey<Biome> HAS_WARPED_SPORES_UMBRAL = createBiomeTag("particles/has_warped_spores_umbral");
+
         // Prevents Souled Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash");
 
         // Prevents Basaltic Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash");
+
+
+        // used to check if the biome is Luminous Grove from Cinderscapes
+        public static final TagKey<Biome> LUMINOUS_GROVE = createBiomeTag("luminous_grove");
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.of(RegistryKeys.BIOME, new Identifier(NetherExp.MOD_ID, name));

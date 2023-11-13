@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:netherrack_replace_blobs",
+  "config": {
+    "state": {
+      "Name": "netherexp:shroomblight"
+    },
+    "target": {
+      "Name": "minecraft:shroomlight"
+    },
+    "radius": 12
+  }
+}

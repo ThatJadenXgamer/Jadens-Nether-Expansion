@@ -16,7 +16,7 @@ public class ModItemGroup {
 
     @SuppressWarnings("unused")
     public static ItemGroup NETHEREXP = Registry.register(Registries.ITEM_GROUP, new Identifier(NetherExp.MOD_ID, "netherexp"),
-            FabricItemGroup.builder().displayName(Text.literal("Nether Expansion Tab"))
+            FabricItemGroup.builder().displayName(Text.literal("Jaden's Nether Expansion"))
                     .icon(() -> new ItemStack(ModBlocks.PYRITE_NETHER_BRICKS)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.SOUL_SLATE);
                         entries.add(ModBlocks.PALE_SOUL_SLATE);
@@ -186,6 +186,10 @@ public class ModItemGroup {
                         entries.add(Blocks.SHROOMLIGHT);
                         entries.add(ModItems.NIGHTSPORES);
                         entries.add(ModBlocks.SHROOMNIGHT);
+                        if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(ModItems.BLIGHTSPORES);
+                            entries.add(ModBlocks.SHROOMBLIGHT);
+                        }
 
                         entries.add(Items.NETHER_WART);
                         entries.add(Blocks.NETHER_WART_BLOCK);
@@ -195,6 +199,10 @@ public class ModItemGroup {
                         entries.add(Blocks.WARPED_WART_BLOCK);
                         entries.add(ModBlocks.WARPED_WART_BEARD);
                         entries.add(ModBlocks.BLUE_SCALE_FUNGUS);
+
+                        if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(ModBlocks.UMBRAL_WART_BEARD);
+                        }
 
                         entries.add(Blocks.WEEPING_VINES);
                         entries.add(ModBlocks.WEEPING_IVY);
@@ -222,6 +230,9 @@ public class ModItemGroup {
 
                         entries.add(ModBlocks.CRIMSON_SPORESHROOM);
                         entries.add(ModBlocks.WARPED_SPORESHROOM);
+                        if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(ModBlocks.UMBRAL_SPORESHROOM);
+                        }
                         entries.add(ModBlocks.SOULED_GEYSER);
                         entries.add(ModBlocks.BASALTIC_GEYSER);
 
@@ -269,6 +280,8 @@ public class ModItemGroup {
                         entries.add(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS);
                         entries.add(ModBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS);
                         entries.add(ModBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS);
+
+                        entries.add(ModItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE);
                     }).build());
 
     public static void registerItemGroup() {

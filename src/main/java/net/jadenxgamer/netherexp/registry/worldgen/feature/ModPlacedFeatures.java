@@ -49,6 +49,14 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> BLACKSTONE_PATCH = registerKey("vent_mire/blackstone_patch");
     public static final RegistryKey<PlacedFeature> VENT_DELTA = registerKey("vent_mire/vent_delta");
 
+    // MOD COMPATIBILITY
+
+    // LUMINOUS GROVE
+
+    public static final RegistryKey<PlacedFeature> SHROOMBLIGHT = registerKey("luminous_grove/shroomblight");
+
+    public static final RegistryKey<PlacedFeature> UMBRAL_SPORESHROOM = registerKey("luminous_grove/umbral_sporeshroom");
+
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(NetherExp.MOD_ID, name));
     }

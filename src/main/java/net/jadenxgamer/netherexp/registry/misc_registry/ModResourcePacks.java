@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 public class ModResourcePacks {
 
     @SuppressWarnings("deprecation")
-    public static void init() {
+    public static void registerModResourcePacks() {
         Identifier classicPackId = new Identifier(NetherExp.MOD_ID, "vanilla_nether");
         Identifier EmissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
 

@@ -10,10 +10,13 @@
   "item.netherexp.white_ash_powder": "White Ash Powder",
   "item.netherexp.lightspores": "Lightspores",
   "item.netherexp.nightspores": "Nightspores",
+  "item.netherexp.blightspores": "Blightspores",
   "item.netherexp.foggy_essence": "Foggy Essence",
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
+  "item.netherexp.rift_armor_trim_smithing_template": "Rift Armor Trim Smithing Template",
+  "trim_pattern.netherexp.rift": "Rift Armor Trim",
   "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
   "item.netherexp.music_disc_cricket": "Music Disc",
@@ -160,9 +163,11 @@
   "block.netherexp.spiketrap": "Spiketrap",
 
   "block.netherexp.shroomnight": "Shroomnight",
+  "block.netherexp.shroomblight": "Shroomblight",
 
   "block.netherexp.nether_wart_beard": "Nether Wart Beard",
   "block.netherexp.warped_wart_beard": "Warped Wart Beard",
+  "block.netherexp.umbral_wart_beard": "Umbral Wart Beard",
 
   "block.netherexp.weeping_ivy": "Weeping Ivy",
   "block.netherexp.twisting_ivy": "Twisting Ivy",
@@ -195,6 +200,8 @@
   "block.netherexp.warped_sporeshroom": "Warped Sporeshroom",
   "block.netherexp.basaltic_geyser": "Basaltic Geyser",
   "block.netherexp.souled_geyser": "Souled Geyser",
+
+  "block.netherexp.umbral_sporeshroom": "Umbral Sporeshroom",
 
   "block.netherexp.ashy_basalt": "Ashy Basalt",
   "block.netherexp.white_ash": "White Ash",
@@ -233,6 +240,7 @@
   "block.netherexp.potted_blue_scale_fungus": "Potted Blue Scale Fungus",
   "block.netherexp.potted_crimson_sporeshroom": "Potted Crimson Sporeshroom",
   "block.netherexp.potted_warped_sporeshroom": "Potted Warped Sporeshroom",
+  "block.netherexp.potted_umbral_sporeshroom": "Potted Umbral Sporeshroom",
 
   "subtitles.item.gold_ingot.gilding": "Block gilded",
   "subtitles.block.explosive_scoria.ambient": "Unstable electrical sparks",

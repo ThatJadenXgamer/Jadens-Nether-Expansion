@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
@@ -448,11 +449,19 @@ public class ModBlocks {
     public static final Block SHROOMNIGHT = registerBlock("shroomnight",
             new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).mapColor(MapColor.PINK).luminance(9).sounds(BlockSoundGroup.SHROOMLIGHT)));
 
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block SHROOMBLIGHT = registerCompatBlock("shroomblight",
+            new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).mapColor(MapColor.WHITE).luminance(15).sounds(BlockSoundGroup.SHROOMLIGHT)), "cinderscapes");
+
     public static final Block NETHER_WART_BEARD = registerBlock("nether_wart_beard",
             new BeardBlock(FabricBlockSettings.of().mapColor(MapColor.RED).breakInstantly().noCollision().sounds(BlockSoundGroup.WART_BLOCK)));
 
     public static final Block WARPED_WART_BEARD = registerBlock("warped_wart_beard",
             new BeardBlock(FabricBlockSettings.of().mapColor(MapColor.BRIGHT_TEAL).breakInstantly().noCollision().sounds(BlockSoundGroup.WART_BLOCK)));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block UMBRAL_WART_BEARD = registerCompatBlock("umbral_wart_beard",
+            new BeardBlock(FabricBlockSettings.of().mapColor(MapColor.PURPLE).breakInstantly().noCollision().sounds(BlockSoundGroup.WART_BLOCK)), "cinderscapes");
 
     public static final Block WEEPING_IVY = registerBlockWithoutItem("weeping_ivy",
             new WeepingIvyBlock(FabricBlockSettings.of().mapColor(MapColor.RED).breakInstantly().noCollision().ticksRandomly().sounds(BlockSoundGroup.WEEPING_VINES)));
@@ -532,6 +541,10 @@ public class ModBlocks {
 
     public static final Block BASALTIC_GEYSER = registerBlock("basaltic_geyser",
             new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).nonOpaque().sounds(BlockSoundGroup.BASALT),ModParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom",
+            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.UMBRAL_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES_UMBRAL), "cinderscapes");
 
     // White Ash
 
@@ -642,6 +655,10 @@ public class ModBlocks {
     public static final Block POTTED_WARPED_SPORESHROOM = registerBlockWithoutItem("potted_warped_sporeshroom",
             new FlowerPotBlock(WARPED_SPORESHROOM, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
 
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block POTTED_UMBRAL_SPORESHROOM = registerBlockWithoutItem("potted_umbral_sporeshroom",
+            new FlowerPotBlock(UMBRAL_SPORESHROOM, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
     // REGISTRIES:
 
     @SuppressWarnings("all")
@@ -660,6 +677,16 @@ public class ModBlocks {
         Item item = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name),
         new BlockItem(block, new FabricItemSettings()));
         return item;
+    }
+    @SuppressWarnings("all")
+    private static Block registerCompatBlock(String name, Block block, String modID) {
+        if (FabricLoader.getInstance().isModLoaded(modID)) {
+            registerBlockItem(name, block);
+            return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
+        }
+        else {
+            return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
+        }
     }
 
     public static void registerModBlocks() {

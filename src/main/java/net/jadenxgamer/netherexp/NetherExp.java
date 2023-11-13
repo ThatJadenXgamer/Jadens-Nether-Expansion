@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
@@ -12,13 +13,11 @@ import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
 import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.item.potion.ModPotions;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModBlockSetType;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModRegistries;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModResourcePacks;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModWoodType;
+import net.jadenxgamer.netherexp.registry.misc_registry.*;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.ModFeature;
 import net.jadenxgamer.netherexp.registry.worldgen.generate.ModWorldGenerator;
+import net.jadenxgamer.netherexp.util.ModLootTableModifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib.GeckoLib;
@@ -36,6 +35,7 @@ public class NetherExp implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModParticles.registerParticles();
+		ModArmorTrimPatterns.registerArmorTrimPatterns();
 
 		ModWorldGenerator.generateModWorldGen();
 
@@ -43,7 +43,8 @@ public class NetherExp implements ModInitializer {
 		ModStatusEffects.registerModStatusEffects();
 		ModPotions.registerModPotions();
 		ModFeature.registerModFeature();
-		ModResourcePacks.init();
+		ModResourcePacks.registerModResourcePacks();
+		ModLootTableModifier.modifyLootTables();
 
 		GeckoLib.initialize();
 
@@ -51,5 +52,11 @@ public class NetherExp implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.APPARITION, ApparitionEntity.setAttributes());
 
 		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
+	}
+
+	// MOD COMPATIBILITY
+
+	public static boolean checkModCompatCinderscapes() {
+		return FabricLoader.getInstance().isModLoaded("cinderscapes");
 	}
 }

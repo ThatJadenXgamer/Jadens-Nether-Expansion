@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "netherexp:block/transparent",
+		"side": "netherexp:block/mod_compat/cinderscapes/umbral_wart_beard"
+	}
+}

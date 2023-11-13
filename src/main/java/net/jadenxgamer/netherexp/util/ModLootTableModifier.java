@@ -11,21 +11,18 @@ import net.minecraft.util.Identifier;
 
 public class ModLootTableModifier {
 
-    private static final Identifier PIGLIN_BARTERING = new Identifier("minecraft", "gameplay/piglin_bartering");
+    private static final Identifier RUINED_PORTAL = new Identifier("minecraft", "chests/ruined_portal");
 
-    // TODO: Fix Lightspore Barter, it gets added on top of the existing barter drop
-    /*
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            if (PIGLIN_BARTERING.equals(id)) {
+            if (RUINED_PORTAL.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                 .conditionally(RandomChanceLootCondition.builder(0.5f))
-                .with(ItemEntry.builder(ModItems.LIGHTSPORES))
-                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 5.0f)).build());
+                .with(ItemEntry.builder(ModItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE))
+                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 3.0f)).build());
 
                 tableBuilder.pool(poolBuilder.build());
             }
         });
     }
-    */
 }
