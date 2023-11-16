@@ -169,13 +169,15 @@
   "block.netherexp.warped_wart_beard": "Warped Wart Beard",
   "block.netherexp.umbral_wart_beard": "Umbral Wart Beard",
 
+  "block.netherexp.twilight_vines": "Twilight Vines",
+  "block.netherexp.twilight_vines_plant": "Twilight Vines Plant",
   "block.netherexp.weeping_ivy": "Weeping Ivy",
   "block.netherexp.twisting_ivy": "Twisting Ivy",
-  "item.netherexp.weeping_ivy": "Weeping Ivy",
-  "item.netherexp.twisting_ivy": "Twisting Ivy",
+  "block.netherexp.twilight_ivy": "Twilight Ivy",
 
   "block.netherexp.red_scale_fungus": "Red Scale Fungus",
   "block.netherexp.blue_scale_fungus": "Blue Scale Fungus",
+  "block.netherexp.violet_scale_fungus": "Violet Scale Fungus",
 
   "block.netherexp.boomshroom": "Boomshroom",
   "block.netherexp.boomshroom_bundle": "Bundle of Boomshroom",
@@ -187,6 +189,7 @@
   "block.netherexp.soul_path": "Soul Path",
   "block.netherexp.crimson_nylium_path": "Crimson Nylium Path",
   "block.netherexp.warped_nylium_path": "Warped Nylium Path",
+  "block.netherexp.umbral_nylium_path": "Umbral Nylium Path",
 
   "block.netherexp.spotted_nether_wart_block": "Spotted Nether Wart Block",
   "block.netherexp.spotted_warped_wart_block": "Spotted Warped Wart Block",
@@ -202,6 +205,8 @@
   "block.netherexp.souled_geyser": "Souled Geyser",
 
   "block.netherexp.umbral_sporeshroom": "Umbral Sporeshroom",
+  "block.netherexp.ashen_geyser": "Ashen Geyser",
+  "block.netherexp.blackstonic_geyser": "Blackstonic Geyser",
 
   "block.netherexp.ashy_basalt": "Ashy Basalt",
   "block.netherexp.white_ash": "White Ash",
@@ -238,6 +243,7 @@
   "block.netherexp.potted_smokestalk": "Potted Smokestalk",
   "block.netherexp.potted_red_scale_fungus": "Potted Red Scale Fungus",
   "block.netherexp.potted_blue_scale_fungus": "Potted Blue Scale Fungus",
+  "block.netherexp.potted_violet_scale_fungus": "Potted Violet Scale Fungus",
   "block.netherexp.potted_crimson_sporeshroom": "Potted Crimson Sporeshroom",
   "block.netherexp.potted_warped_sporeshroom": "Potted Warped Sporeshroom",
   "block.netherexp.potted_umbral_sporeshroom": "Potted Umbral Sporeshroom",

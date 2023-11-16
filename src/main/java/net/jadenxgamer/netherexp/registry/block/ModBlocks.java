@@ -77,7 +77,6 @@ public class ModBlocks {
 
     // Soul Candle
 
-    //TODO: Add a Soul Candle Cake
     public static final Block SOUL_CANDLE = registerBlock("soul_candle",
             new SoulCandleBlock(FabricBlockSettings.of().mapColor(MapColor.BROWN).noCollision().nonOpaque().strength(0.1f).sounds(ModSoundEvents.SOUL_CANDLE).luminance(SoulCandleBlock.STATE_TO_LUMINANCE)));
 
@@ -463,17 +462,37 @@ public class ModBlocks {
     public static final Block UMBRAL_WART_BEARD = registerCompatBlock("umbral_wart_beard",
             new BeardBlock(FabricBlockSettings.of().mapColor(MapColor.PURPLE).breakInstantly().noCollision().sounds(BlockSoundGroup.WART_BLOCK)), "cinderscapes");
 
-    public static final Block WEEPING_IVY = registerBlockWithoutItem("weeping_ivy",
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block TWILIGHT_VINES = registerCompatBlock("twilight_vines",
+            new TwilightVinesBlock(FabricBlockSettings.of().mapColor(MapColor.LAPIS_BLUE).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)), "cinderscapes");
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block TWILIGHT_VINES_PLANT = registerBlockWithoutItem("twilight_vines_plant",
+            new TwilightVinesPlantBlock(FabricBlockSettings.of().mapColor(MapColor.LAPIS_BLUE).noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
+
+    public static final Block WEEPING_IVY = registerBlock("weeping_ivy",
             new WeepingIvyBlock(FabricBlockSettings.of().mapColor(MapColor.RED).breakInstantly().noCollision().ticksRandomly().sounds(BlockSoundGroup.WEEPING_VINES)));
 
-    public static final Block TWISTING_IVY = registerBlockWithoutItem("twisting_ivy",
+    public static final Block TWISTING_IVY = registerBlock("twisting_ivy",
             new TwistingIvyBlock(FabricBlockSettings.of().mapColor(MapColor.BRIGHT_TEAL).breakInstantly().noCollision().ticksRandomly().sounds(BlockSoundGroup.WEEPING_VINES)));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block TWILIGHT_IVY = registerCompatBlock("twilight_ivy",
+            new TwilightIvyBlock(FabricBlockSettings.of().mapColor(MapColor.LAPIS_BLUE).breakInstantly().noCollision().ticksRandomly().sounds(BlockSoundGroup.WEEPING_VINES)), "cinderscapes");
+
+    /*
+     * TODO: Scale Fungus don't naturally generate yet
+     */
 
     public static final Block RED_SCALE_FUNGUS = registerBlock("red_scale_fungus",
             new ScaleFungusBlock(FabricBlockSettings.of().mapColor(MapColor.RED).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)));
 
     public static final Block BLUE_SCALE_FUNGUS = registerBlock("blue_scale_fungus",
             new ScaleFungusBlock(FabricBlockSettings.of().mapColor(MapColor.BRIGHT_TEAL).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block VIOLET_SCALE_FUNGUS = registerCompatBlock("violet_scale_fungus",
+            new ScaleFungusBlock(FabricBlockSettings.of().mapColor(MapColor.PURPLE).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)), "cinderscapes");
 
     /*
      * TODO: THIS BLOCK IS UNOBTAINABLE
@@ -505,6 +524,10 @@ public class ModBlocks {
 
     public static final Block WARPED_NYLIUM_PATH = registerBlock("warped_nylium_path",
             new NyliumPathBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).mapColor(MapColor.LIGHT_BLUE).requiresTool().strength(0.4f).sounds(BlockSoundGroup.NYLIUM)));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block UMBRAL_NYLIUM_PATH = registerCompatBlock("umbral_nylium_path",
+            new NyliumPathBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).mapColor(MapColor.PURPLE).requiresTool().strength(0.4f).sounds(BlockSoundGroup.NYLIUM)), "cinderscapes");
 
     // Spotted Wart Blocks
 
@@ -546,6 +569,14 @@ public class ModBlocks {
     public static final Block UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom",
             new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.UMBRAL_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES_UMBRAL), "cinderscapes");
 
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block BLACKSTONIC_GEYSER = registerCompatBlock("blackstonic_geyser",
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).nonOpaque(),ModParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH_BLACKSTONIC), "cinderscapes");
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block ASHEN_GEYSER = registerCompatBlock("ashen_geyser",
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).nonOpaque().sounds(BlockSoundGroup.NETHERRACK),ModParticles.BLACK_SMOKE, true, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH_ASHEN), "cinderscapes");
+    
     // White Ash
 
     public static final Block ASHY_BASALT = registerBlockWithoutItem("ashy_basalt",
@@ -648,6 +679,10 @@ public class ModBlocks {
 
     public static final Block POTTED_BLUE_SCALE_FUNGUS = registerBlockWithoutItem("potted_blue_scale_fungus",
             new FlowerPotBlock(BLUE_SCALE_FUNGUS, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block POTTED_VIOLET_SCALE_FUNGUS = registerBlockWithoutItem("potted_violet_scale_fungus",
+            new FlowerPotBlock(VIOLET_SCALE_FUNGUS, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
 
     public static final Block POTTED_CRIMSON_SPORESHROOM = registerBlockWithoutItem("potted_crimson_sporeshroom",
             new FlowerPotBlock(CRIMSON_SPORESHROOM, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "ivy_blocks",
+  "ingredients": [
+    {
+      "item": "netherexp:twilight_vines"
+    }
+  ],
+  "result": {
+    "item": "netherexp:twilight_ivy"
+  }
+}

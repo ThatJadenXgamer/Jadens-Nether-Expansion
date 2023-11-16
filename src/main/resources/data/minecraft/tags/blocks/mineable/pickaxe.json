@@ -95,9 +95,12 @@
 
     "netherexp:crimson_nylium_path",
     "netherexp:warped_nylium_path",
+    "netherexp:umbral_nylium_path",
 
     "netherexp:souled_geyser",
     "netherexp:basaltic_geyser",
+    "netherexp:blackstonic_geyser",
+    "netherexp:ashen_geyser",
     "netherexp:ashy_basalt",
 
     "netherexp:polished_blackstone_pillar",

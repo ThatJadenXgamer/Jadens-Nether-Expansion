@@ -10,6 +10,7 @@ import net.minecraft.block.WeepingVinesBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
@@ -32,6 +33,16 @@ public abstract class WeepingVinesMixin extends AbstractPlantStemBlock {
 
     public WeepingVinesMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater, double growthChance) {
         super(settings, growthDirection, outlineShape, tickWater, growthChance);
+    }
+
+    @Override
+    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+        float f = random.nextFloat();
+        int age = state.get(AGE);
+        if (f <= 0.3 && age < 25) {
+            world.setBlockState(pos, state.cycle(BUDDING), NOTIFY_LISTENERS);
+        }
+        super.grow(world, random, pos, state);
     }
 
     @Override

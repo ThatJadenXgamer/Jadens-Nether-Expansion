@@ -9,6 +9,7 @@ import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
+import net.jadenxgamer.netherexp.registry.event.CompatPathEvent;
 import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
 import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
@@ -52,6 +53,7 @@ public class NetherExp implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.APPARITION, ApparitionEntity.setAttributes());
 
 		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
+		UseBlockCallback.EVENT.register(new CompatPathEvent());
 	}
 
 	// MOD COMPATIBILITY

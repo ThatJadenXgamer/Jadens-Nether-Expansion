@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -116,7 +117,7 @@ implements Fertilizable {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(ModTags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || super.canPlantOnTop(floor, world, pos);
+        return floor.isIn(ModTags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || floor.isIn(BlockTags.NYLIUM) || super.canPlantOnTop(floor, world, pos);
     }
 
     @Override

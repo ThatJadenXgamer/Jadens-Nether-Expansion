@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.registry.worldgen.generate;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.worldgen.biome.ModBiomes;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.ModPlacedFeatures;
 import net.minecraft.world.gen.GenerationStep;
 
@@ -30,6 +29,9 @@ public class LuminousGroveFeatures {
 
         // STEP 9 - VEGETAL_DECORATION
 
+        BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
+                GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.TWILIGHT_VINES);
+
         // STEP 10 - TOP_LAYER_MODIFICATION
 
         BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
@@ -37,5 +39,8 @@ public class LuminousGroveFeatures {
 
         BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
                 GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.UMBRAL_SPORESHROOM);
+
+        BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
+                GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.TWILIGHT_IVY);
     }
 }

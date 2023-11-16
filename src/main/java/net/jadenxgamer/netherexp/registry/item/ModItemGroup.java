@@ -202,12 +202,17 @@ public class ModItemGroup {
 
                         if (NetherExp.checkModCompatCinderscapes()) {
                             entries.add(ModBlocks.UMBRAL_WART_BEARD);
+                            entries.add(ModBlocks.VIOLET_SCALE_FUNGUS);
                         }
 
                         entries.add(Blocks.WEEPING_VINES);
                         entries.add(ModBlocks.WEEPING_IVY);
                         entries.add(Blocks.TWISTING_VINES);
                         entries.add(ModBlocks.TWISTING_IVY);
+                        if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(ModBlocks.TWILIGHT_VINES);
+                            entries.add(ModBlocks.TWILIGHT_IVY);
+                        }
 
                         entries.add(Blocks.NETHER_SPROUTS);
                         entries.add(ModBlocks.CRIMSON_SPROUTS);
@@ -216,6 +221,9 @@ public class ModItemGroup {
                         entries.add(ModBlocks.CRIMSON_NYLIUM_PATH);
                         entries.add(Blocks.WARPED_NYLIUM);
                         entries.add(ModBlocks.WARPED_NYLIUM_PATH);
+                        if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(ModBlocks.UMBRAL_NYLIUM_PATH);
+                        }
 
                         entries.add(ModItems.APPARITION_SPAWN_EGG);
 
@@ -235,6 +243,10 @@ public class ModItemGroup {
                         }
                         entries.add(ModBlocks.SOULED_GEYSER);
                         entries.add(ModBlocks.BASALTIC_GEYSER);
+                        if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(ModBlocks.BLACKSTONIC_GEYSER);
+                            entries.add(ModBlocks.ASHEN_GEYSER);
+                        }
 
                         entries.add(Items.SKELETON_SKULL);
                         entries.add(ModBlocks.SKELETON_SKULL_CANDLE);

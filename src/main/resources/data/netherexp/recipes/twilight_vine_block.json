@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TT",
+    "TT"
+  ],
+  "key": {
+    "T": {
+      "item": "netherexp:twilight_vines"
+    }
+  },
+  "result": {
+    "item": "cinderscapes:twilight_vine_block",
+    "count": 1
+  }
+}

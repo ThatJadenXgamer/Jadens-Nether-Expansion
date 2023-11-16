@@ -13,6 +13,8 @@ public class ModWorldGenerator {
 
         if (NetherExp.checkModCompatCinderscapes()) {
             LuminousGroveFeatures.generateFeatures();
+            AshyShoalsFeatures.generateFeatures();
+            BlackstoneShalesFeatures.generateFeatures();
         }
     }
 }

@@ -10,6 +10,7 @@ import net.minecraft.block.TwistingVinesBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
@@ -25,15 +26,27 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(TwistingVinesBlock.class)
 public abstract class TwistingVinesMixin
 extends AbstractPlantStemBlock {
 
+    @Unique
     private static final BooleanProperty BUDDING = BooleanProperty.of("budding");
 
     public TwistingVinesMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater, double growthChance) {
         super(settings, growthDirection, outlineShape, tickWater, growthChance);
+    }
+
+    @Override
+    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+        float f = random.nextFloat();
+        int age = state.get(AGE);
+        if (f <= 0.3 && age < 25) {
+            world.setBlockState(pos, state.cycle(BUDDING), NOTIFY_LISTENERS);
+        }
+        super.grow(world, random, pos, state);
     }
 
     @Override

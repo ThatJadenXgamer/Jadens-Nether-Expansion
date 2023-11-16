@@ -11,7 +11,6 @@ public class ModParticles {
 
     // Particles
     public static final DefaultParticleType ENIGMA_PARTICLE = FabricParticleTypes.simple();
-
     public static final DefaultParticleType FIRE_SPARK = FabricParticleTypes.simple();
     public static final DefaultParticleType SMALL_SOUL_FLAME = FabricParticleTypes.simple();
     public static final DefaultParticleType GOLD_GLIMMER = FabricParticleTypes.simple();
@@ -23,6 +22,7 @@ public class ModParticles {
     public static final DefaultParticleType FALLING_SHROOMLIGHT = FabricParticleTypes.simple();
     public static final DefaultParticleType FALLING_SHROOMNIGHT = FabricParticleTypes.simple();
     public static final DefaultParticleType RISING_SHROOMNIGHT = FabricParticleTypes.simple();
+    public static final DefaultParticleType FALLING_SHROOMBLIGHT = FabricParticleTypes.simple();
     public static final DefaultParticleType CRIMSON_SMOG = FabricParticleTypes.simple();
     public static final DefaultParticleType WARPED_SMOG = FabricParticleTypes.simple();
     public static final DefaultParticleType UMBRAL_SMOG = FabricParticleTypes.simple();
@@ -57,6 +57,8 @@ public class ModParticles {
                 FALLING_SHROOMNIGHT);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "rising_shroomnight"),
                 RISING_SHROOMNIGHT);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "falling_shroomblight"),
+                FALLING_SHROOMBLIGHT);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "crimson_smog"),
                 CRIMSON_SMOG);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "warped_smog"),

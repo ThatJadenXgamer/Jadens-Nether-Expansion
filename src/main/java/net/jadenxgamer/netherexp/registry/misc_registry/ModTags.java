@@ -86,6 +86,13 @@ public class ModTags {
          */
         public static final TagKey<Block> UMBRAL_WART_BLOCKS = createBlockTag("umbral_wart_blocks");
 
+        /*
+         *  Blocks in this tag will be considered as Umbral Nylium
+         *  This block can be shoveled to create Umbral Path blocks (only if Cinderscapes is installed)
+         *  This tag is intended for Cinderscapes Compatibility
+         */
+        public static final TagKey<Block> UMBRAL_NYLIUM = createBlockTag("umbral_nylium");
+
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
 
@@ -153,9 +160,22 @@ public class ModTags {
         // Prevents Basaltic Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash");
 
+        // Prevents Blackstonic Geyser from creating Particles inside this Biome
+        public static final TagKey<Biome> HAS_WHITE_ASH_BLACKSTONIC = createBiomeTag("particles/has_white_ash_blackstonic");
+
+
+        // Prevents Basaltic Geyser from creating Particles inside this Biome
+        public static final TagKey<Biome> HAS_ASH_ASHEN = createBiomeTag("particles/has_ash_ashen");
+
 
         // used to check if the biome is Luminous Grove from Cinderscapes
         public static final TagKey<Biome> LUMINOUS_GROVE = createBiomeTag("luminous_grove");
+
+        // used to check if the biome is Ashy Shoals from Cinderscapes
+        public static final TagKey<Biome> ASHY_SHOALS = createBiomeTag("ashy_shoals");
+
+        // used to check if the biome is Blackstone Shales from Cinderscapes
+        public static final TagKey<Biome> BLACKSTONE_SHALES = createBiomeTag("blackstone_shales");
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.of(RegistryKeys.BIOME, new Identifier(NetherExp.MOD_ID, name));
