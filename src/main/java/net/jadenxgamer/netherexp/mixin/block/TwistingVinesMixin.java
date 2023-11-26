@@ -40,13 +40,13 @@ extends AbstractPlantStemBlock {
     }
 
     @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        float f = random.nextFloat();
-        int age = state.get(AGE);
-        if (f <= 0.3 && age < 25) {
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        float r = random.nextInt(50);
+        boolean b = state.get(BUDDING);
+        if (r == 0 && b) {
             world.setBlockState(pos, state.cycle(BUDDING), NOTIFY_LISTENERS);
         }
-        super.grow(world, random, pos, state);
+        super.randomTick(state, world, pos, random);
     }
 
     @Override

@@ -1,5 +1,4 @@
 {
-  "name": "netherexp:geyser_formation",
   "fallback": "minecraft:empty",
   "elements": [
     {
@@ -7,9 +6,19 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "netherexp:geyser_formation/arch_1",
-        "processors": "minecraft:empty"
+        "location": "netherexp:geyser_formation/arch1",
+        "processors": "netherexp:geyser_formation"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:geyser_formation/arch2",
+        "processors": "netherexp:geyser_formation"
       }
     }
   ]
 }
+

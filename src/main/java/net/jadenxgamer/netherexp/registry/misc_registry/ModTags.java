@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.misc_registry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -93,6 +94,9 @@ public class ModTags {
          */
         public static final TagKey<Block> UMBRAL_NYLIUM = createBlockTag("umbral_nylium");
 
+        // Killing Skeletons on these blocks Converts it to Fossil Ore
+        public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createBlockTag("fossil_ore_convertible");
+
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
 
@@ -179,6 +183,15 @@ public class ModTags {
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.of(RegistryKeys.BIOME, new Identifier(NetherExp.MOD_ID, name));
+        }
+    }
+
+    public static class Fluids {
+
+        public static final TagKey<Fluid> ECTOPLASM = createFluidTag("ectoplasm");
+
+        private static TagKey<Fluid> createFluidTag(String name) {
+            return TagKey.of(RegistryKeys.FLUID, new Identifier(NetherExp.MOD_ID, name));
         }
     }
 }

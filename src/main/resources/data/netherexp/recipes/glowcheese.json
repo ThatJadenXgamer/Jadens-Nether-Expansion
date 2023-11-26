@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:lightspores"
+    },
+    {
+      "item": "netherexp:nightspores"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "netherexp:glowcheese",
+    "count": 3
+  }
+}

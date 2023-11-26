@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -33,6 +34,11 @@ public class ModItemGroup {
                         entries.add(ModBlocks.CHISELED_SOUL_SLATE_BRICKS);
                         entries.add(ModBlocks.SOUL_SLATE_BRICK_PILLAR);
 
+                        entries.add(ModBlocks.FOSSIL_ORE);
+                        entries.add(ModBlocks.FOSSIL_FUEL_ORE);
+                        entries.add(ModBlocks.OPALIZED_FOSSIL_ORE);
+                        entries.add(ModItems.FOSSIL_FUEL);
+
                         entries.add(ModBlocks.SOUL_CANDLE);
                         entries.add(ModBlocks.SOUL_GLASS);
                         entries.add(ModBlocks.SOUL_SWIRLS);
@@ -42,6 +48,8 @@ public class ModItemGroup {
                         entries.add(Blocks.SOUL_SAND);
                         entries.add(ModBlocks.ECTO_SOUL_SAND);
                         entries.add(ModBlocks.SOUL_MAGMA_BLOCK);
+
+                        entries.add(ModFluids.ECTOPLASM_BUCKET);
 
                         entries.add(Blocks.SOUL_TORCH);
                         entries.add(Blocks.SOUL_LANTERN);
@@ -169,7 +177,6 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_SLAB);
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_WALL);
 
-                        entries.add(ModItems.RAW_PYRITE);
                         entries.add(ModItems.PYRITE_INGOT);
                         entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
                         entries.add(ModBlocks.PYRITE_BLOCK);
@@ -190,6 +197,10 @@ public class ModItemGroup {
                             entries.add(ModItems.BLIGHTSPORES);
                             entries.add(ModBlocks.SHROOMBLIGHT);
                         }
+
+                        entries.add(ModItems.GLOWCHEESE);
+                        entries.add(ModItems.NETHER_PIZZA);
+                        entries.add(ModItems.NETHER_PIZZA_SLICE);
 
                         entries.add(Items.NETHER_WART);
                         entries.add(Blocks.NETHER_WART_BLOCK);

@@ -7,6 +7,7 @@
     "netherexp:ecto_soul_sand",
     "netherexp:soul_magma_block",
     "netherexp:silica_sand",
-    "netherexp:silica_sandstone"
+    "netherexp:silica_sandstone",
+    "netherexp:souled_geyser"
   ]
 }

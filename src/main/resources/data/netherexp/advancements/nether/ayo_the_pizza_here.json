@@ -1,0 +1,45 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:nether_pizza"
+    },
+    "title": {
+      "translate": "advancements.nether.ayo_the_pizza_here.title"
+    },
+    "description": {
+      "translate": "advancements.nether.ayo_the_pizza_here.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "netherexp:nether/pizza_hunt",
+  "criteria": {
+    "allay_deliver_item_to_player": {
+      "trigger": "minecraft:thrown_item_picked_up_by_player",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:allay"
+            }
+          }
+        ],
+        "item": {
+          "items": [
+            "netherexp:nether_pizza"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "allay_deliver_item_to_player"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

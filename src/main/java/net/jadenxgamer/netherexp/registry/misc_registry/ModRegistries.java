@@ -22,6 +22,7 @@ public class ModRegistries {
         FuelRegistry registry = FuelRegistry.INSTANCE;
 
         registry.add(ModItems.RAW_PYRITE, 1600);
+        registry.add(ModItems.FOSSIL_FUEL, 1600);
     }
 
     private static void registerCompostingChances() {

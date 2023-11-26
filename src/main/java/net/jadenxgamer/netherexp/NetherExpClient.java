@@ -3,18 +3,25 @@ package net.jadenxgamer.netherexp;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.WarphopperRenderer;
+import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
 
 public class NetherExpClient implements ClientModInitializer {
+    public static boolean INSIDE_SOUL_GLASS = false;
+    public static boolean INSIDE_ECTOPLASM = false;
+
     @Override
     public void onInitializeClient() {
         // BLOCK OPACITY
@@ -73,6 +80,17 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_WARPED_SPORESHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_UMBRAL_SPORESHROOM, RenderLayer.getCutout());
 
+        // FLUIDS
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.ECTOPLASM, ModFluids.FLOWING_ECTOPLASM,
+                new SimpleFluidRenderHandler(
+                        new Identifier("netherexp:block/ectoplasm_still"),
+                        new Identifier("netherexp:block/ectoplasm_flow"),
+                        new Identifier("netherexp:block/ectoplasm_overlay")
+                ));
+
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                ModFluids.ECTOPLASM, ModFluids.FLOWING_ECTOPLASM);
+
         // PARTICLES
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.FIRE_SPARK, FireSparkParticle.Factory::new);
@@ -94,6 +112,8 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.WHITE_SMOKE, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.RED_SMOKE, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SOUL_EMBER, SmallRisingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.ECTORAYS, EctoraysParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.ECTOPLASMA, EctoplasmaParticle.Factory::new);
 
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);

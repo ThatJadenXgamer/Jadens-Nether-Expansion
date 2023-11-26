@@ -21,6 +21,9 @@
     "main": [
       "net.jadenxgamer.netherexp.NetherExp"
     ],
+    "terrablender": [
+      "net.jadenxgamer.netherexp.registry.worldgen.biome.NetherExpTerraBlender"
+    ],
     "client": [
       "net.jadenxgamer.netherexp.NetherExpClient"
     ]

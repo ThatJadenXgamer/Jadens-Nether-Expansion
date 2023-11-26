@@ -6,6 +6,7 @@
   "mixins": [
     "block.BlockEntityTypeMixin",
     "block.BlockSoundsMixin",
+    "block.FluidBlockMixin",
     "block.PumpkinStemMixin",
     "block.RootsBlockMixin",
     "block.SoulFireMixin",
@@ -13,12 +14,15 @@
     "block.WeepingVinesMixin",
     "entity.HoglinEntityMixin",
     "entity.PiglinEntityMixin",
+    "entity.SkeletonEntityMixin",
+    "entity.WitherSkeletonEntityMixin",
     "entity.ZombifiedPiglinEntityMixin",
     "item.BrewingRecipeRegistryAccessor",
     "item.BrewingRecipeRegistryMixin"
   ],
   "client": [
-    "renderer.BackgroundRendererMixin"
+    "renderer.BackgroundRendererMixin",
+    "renderer.CameraMixin"
   ],
   "injectors": {
     "defaultRequire": 1

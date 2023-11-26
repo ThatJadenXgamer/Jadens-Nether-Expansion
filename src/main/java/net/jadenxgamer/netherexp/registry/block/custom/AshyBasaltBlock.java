@@ -19,12 +19,12 @@ public class AshyBasaltBlock extends PillarBlock {
         super(settings);
     }
 
-    //Checks if the above block is not White Ash it will revert to Basalt
+    // Checks if the above block is not White Ash it will revert to Basalt
     @SuppressWarnings("deprecation")
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         BlockState up = world.getBlockState(pos.up());
-        if (up.isIn(ModTags.Blocks.WHITE_ASH)) {
+        if (!up.isIn(ModTags.Blocks.WHITE_ASH)) {
             AshyBasaltBlock.revertToBasalt(world, pos);
         }
     }
@@ -42,7 +42,6 @@ public class AshyBasaltBlock extends PillarBlock {
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
-    //does the reverting magic!
     private static void revertToBasalt(WorldAccess world, BlockPos pos) {
         world.setBlockState(pos, Blocks.BASALT.getDefaultState(), NOTIFY_LISTENERS);
     }
@@ -62,11 +61,6 @@ public class AshyBasaltBlock extends PillarBlock {
         return super.getPlacementState(ctx);
     }
 
-    /*
-    You aren't supposed to hold this item, sort of like moving pistons
-    This prevents that from happening and also
-    tricks you into thinking that it's just normal basalt
-    */
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         return new ItemStack(Items.BASALT);

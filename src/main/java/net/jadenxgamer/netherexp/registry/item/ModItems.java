@@ -41,6 +41,9 @@ public class ModItems {
     public static final Item PYRITE_INGOT = registerItem("pyrite_ingot",
             new Item(new FabricItemSettings()));
 
+    public static final Item FOSSIL_FUEL = registerItem("fossil_fuel",
+            new Item(new FabricItemSettings()));
+
     public static final Item RIFT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("rift_armor_trim_smithing_template",
             SmithingTemplateItem.of(ModArmorTrimPatterns.RIFT));
 
@@ -53,8 +56,14 @@ public class ModItems {
     public static final Item BLIGHTSPORES = registerItem("blightspores",
             new Item(new FabricItemSettings()));
 
-    public static final Item GLOW_CHEESE = registerItem("glow_cheese",
-            new Item(new FabricItemSettings().food(ModFoodComponents.GLOW_CHEESE)));
+    public static final Item GLOWCHEESE = registerItem("glowcheese",
+            new Item(new FabricItemSettings().food(ModFoodComponents.GLOWCHEESE)));
+
+    public static final Item NETHER_PIZZA = registerItem("nether_pizza",
+            new AliasedBlockItem(ModBlocks.NETHER_PIZZA ,new FabricItemSettings().maxCount(1)));
+
+    public static final Item NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice",
+            new Item(new FabricItemSettings().food(ModFoodComponents.PIZZA_SLICE)));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,

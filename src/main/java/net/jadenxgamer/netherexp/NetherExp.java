@@ -11,11 +11,13 @@ import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
 import net.jadenxgamer.netherexp.registry.event.CompatPathEvent;
 import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
+import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.item.potion.ModPotions;
 import net.jadenxgamer.netherexp.registry.misc_registry.*;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.worldgen.biome.ModBiomes;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.ModFeature;
 import net.jadenxgamer.netherexp.registry.worldgen.generate.ModWorldGenerator;
 import net.jadenxgamer.netherexp.util.ModLootTableModifier;
@@ -30,12 +32,14 @@ public class NetherExp implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroup.registerItemGroup();
+		ModBiomes.registerBiomes();
 		ModBlockSetType.registerBlockSetType();
 		ModWoodType.registerWoodType();
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModParticles.registerParticles();
+		ModFluids.registerModFluids();
 		ModArmorTrimPatterns.registerArmorTrimPatterns();
 
 		ModWorldGenerator.generateModWorldGen();

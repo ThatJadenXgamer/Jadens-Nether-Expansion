@@ -7,6 +7,9 @@
     "netherexp:white_ash_block",
     "netherexp:soul_soil_layer",
     "netherexp:soul_path",
-    "netherexp:silica_sand"
+    "netherexp:silica_sand",
+    "netherexp:fossil_ore",
+    "netherexp:fossil_fuel_ore",
+    "netherexp:opalized_fossil_ore"
   ]
 }

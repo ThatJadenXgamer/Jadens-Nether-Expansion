@@ -31,7 +31,7 @@ extends Block {
 
     public ExplosiveScoriaBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(UNSTABLE, true));
+        this.setDefaultState(this.stateManager.getDefaultState().with(UNSTABLE, true));
     }
 
     @Override

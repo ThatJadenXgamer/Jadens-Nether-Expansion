@@ -50,13 +50,13 @@
                 "blocks": "minecraft:air"
               },
               {
-                "type": "minecraft:matching_blocks",
+                "type": "minecraft:matching_block_tag",
                 "offset": [
                   0,
                   -1,
                   0
                 ],
-                "blocks": "cinderscapes:umbral_nylium"
+                "tag": "netherexp:umbral_nylium"
               }
             ]
           }
@@ -65,3 +65,4 @@
     }
   }
 }
+

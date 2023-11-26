@@ -6,7 +6,6 @@
   "item.netherexp.warphopper_fur": "Warphopper Fur",
   "item.netherexp.hogham": "Raw Hogham",
   "item.netherexp.cooked_hogham": "Cooked Hogham",
-  "item.netherexp.warpspores": "Warpspores",
   "item.netherexp.white_ash_powder": "White Ash Powder",
   "item.netherexp.lightspores": "Lightspores",
   "item.netherexp.nightspores": "Nightspores",
@@ -14,6 +13,7 @@
   "item.netherexp.foggy_essence": "Foggy Essence",
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
+  "item.netherexp.fossil_fuel": "Fossil Fuel",
   "item.netherexp.pyrite_ingot": "Pyrite Ingot",
   "item.netherexp.rift_armor_trim_smithing_template": "Rift Armor Trim Smithing Template",
   "trim_pattern.netherexp.rift": "Rift Armor Trim",
@@ -21,6 +21,11 @@
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
+
+  "item.netherexp.glowcheese": "Glowcheese",
+  "block.netherexp.nether_pizza": "Nether Pizza",
+  "item.netherexp.nether_pizza": "Nether Pizza",
+  "item.netherexp.nether_pizza_slice": "Nether Pizza Slice",
 
   "block.netherexp.soul_slate": "Soul Slate",
   "block.netherexp.pale_soul_slate": "Pale Soul Slate",
@@ -39,10 +44,17 @@
 
   "block.netherexp.soul_candle": "Soul Candle",
 
+  "block.netherexp.fossil_ore": "Fossil Ore",
+  "block.netherexp.fossil_fuel_ore": "Fossil Fuel Ore",
+  "block.netherexp.opalized_fossil_ore": "Opalized Fossil Ore",
+
   "block.netherexp.soul_glass": "Soul Glass",
   "block.netherexp.soul_swirls": "Soul Swirls",
   "block.netherexp.ecto_soul_sand": "Ecto Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
+
+  "block.netherexp.ectoplasm": "Ectoplasm",
+  "item.netherexp.ectoplasm_bucket": "Ectoplasm Bucket",
 
   "block.netherexp.sorrowsquash": "Sorrowsquash",
   "block.netherexp.carved_sorrowsquash": "Carved Sorrowsquash",
@@ -281,8 +293,10 @@
   "advancements.nether.overkill.description": "Deal ten hearts of damage in a single hit",
   "advancements.nether.stayin_frosty.title": "Stayin' Frosty",
   "advancements.nether.stayin_frosty.description": "Swim in lava while having the Fire Resistance effect.",
-  "advancements.nether.nether_again.title": "Nether doing that again!",
-  "advancements.nether.nether_again.description": "Attempt to sleep in the Nether",
+  "advancements.nether.pizza_hunt.title": "Pizza Hunt",
+  "advancements.nether.pizza_hunt.description": "Bake the perfect hellish pizza and then eat it",
+  "advancements.nether.ayo_the_pizza_here.title": "Ayo the Pizza Here",
+  "advancements.nether.ayo_the_pizza_here.description": "Have an Allay deliver Pizza to you, watch your step though...",
 
   "effect.netherexp.hallucination": "Hallucination",
 

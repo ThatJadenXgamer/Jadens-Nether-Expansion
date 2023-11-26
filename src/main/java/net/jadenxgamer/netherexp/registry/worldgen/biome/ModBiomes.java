@@ -13,4 +13,8 @@ public class ModBiomes
     private static RegistryKey<Biome> register(String name) {
         return RegistryKey.of(RegistryKeys.BIOME, new Identifier(NetherExp.MOD_ID, name));
     }
+
+    public static void registerBiomes() {
+        NetherExp.LOGGER.debug("Registering Biomes for " + NetherExp.MOD_ID);
+    }
 }

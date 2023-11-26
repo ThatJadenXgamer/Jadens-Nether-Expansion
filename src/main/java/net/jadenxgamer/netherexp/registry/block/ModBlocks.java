@@ -19,11 +19,14 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class ModBlocks {
 
-    // LIST OF BLOCKS:
+    /////////////////////
+    // LIST OF BLOCKS //
+    ////////////////////
 
     // Soul SLate
 
@@ -93,6 +96,15 @@ public class ModBlocks {
 
     public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
             new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.LIGHT_BLUE).luminance(3).sounds(ModSoundEvents.SOUL_MAGMA_BLOCK)));
+
+    public static final Block FOSSIL_ORE = registerBlock("fossil_ore",
+            new FossilOreBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).ticksRandomly().strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL)));
+
+    public static final Block FOSSIL_FUEL_ORE = registerBlock("fossil_fuel_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL), UniformIntProvider.create(1, 3)));
+
+    public static final Block OPALIZED_FOSSIL_ORE = registerBlock("opalized_fossil_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL), UniformIntProvider.create(3, 7)));
 
     // Sorrowsquash
 
@@ -429,7 +441,10 @@ public class ModBlocks {
     public static final Block PYRITE_NETHER_BRICKS = registerBlock("pyrite_nether_bricks",
             new RotatingBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_BRICKS)));
 
-    // Fortress Traps
+    // Utility Blocks
+
+    public static final Block NETHER_PIZZA = registerBlockWithoutItem("nether_pizza",
+            new NetherPizzaBlock(FabricBlockSettings.of().mapColor(MapColor.BRIGHT_RED).strength(0.5f).dropsNothing().nonOpaque().sounds(BlockSoundGroup.WOOL)));
 
     /*
      * TODO: THIS BLOCK IS UNOBTAINABLE
