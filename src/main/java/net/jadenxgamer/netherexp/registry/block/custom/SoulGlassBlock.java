@@ -31,8 +31,7 @@ public class SoulGlassBlock extends AbstractGlassBlock {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            assert entity instanceof LivingEntity;
-            if (!EnchantmentHelper.hasSoulSpeed((LivingEntity)entity)) {
+            if (entity instanceof LivingEntity && !EnchantmentHelper.hasSoulSpeed((LivingEntity)entity)) {
                 entity.slowMovement(state, new Vec3d(0.6, 0.5, 0.6));
             }
             if (world.isClient) {
@@ -44,7 +43,6 @@ public class SoulGlassBlock extends AbstractGlassBlock {
             }
         }
     }
-
 
     @SuppressWarnings("deprecation")
     @Override

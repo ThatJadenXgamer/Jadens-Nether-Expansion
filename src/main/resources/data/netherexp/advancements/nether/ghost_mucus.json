@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:ectoplasm_bucket"
+    },
+    "title": {
+      "translate": "advancements.nether.ghost_mucus.title"
+    },
+    "description": {
+      "translate": "advancements.nether.ghost_mucus.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "netherexp:ectoplasm_bucket"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

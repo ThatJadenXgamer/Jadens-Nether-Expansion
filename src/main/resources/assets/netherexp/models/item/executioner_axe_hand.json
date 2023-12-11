@@ -1,0 +1,33 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "netherexp:item/executioner_axe_hand"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 55],
+			"translation": [0, 3, 1],
+			"scale": [1.85, 1.85, 1.85]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, -55],
+			"translation": [0, 3, 1],
+			"scale": [1.85, 1.85, 1.85]
+		},
+		"firstperson_righthand": {
+			"rotation": [48, -64, 90],
+			"translation": [12, -0.05, -7.87],
+			"scale": [1.68, 1.68, 1.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-151.31, 74.25, 105.65],
+			"translation": [12, -0.05, -8.87],
+			"scale": [1.68, 1.68, 1.68]
+		},
+		"head": {
+			"translation": [0, 15.25, 0],
+			"scale": [2, 2, 2]
+		}
+	}
+}

@@ -1,9 +1,15 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
+import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.minecraft.block.*;
+import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FluidBlock;
+import net.minecraft.block.FluidDrainable;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -27,6 +33,10 @@ public abstract class FluidBlockMixin extends Block implements FluidDrainable {
         super(settings);
     }
 
+    private void playFreezeSound(World world, BlockPos pos) {
+        world.playSound(null, pos, ModSoundEvents.ECTOPLASM_FREEZE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+    }
+
     @SuppressWarnings("deprecation")
     @Inject(
             method = "receiveNeighborFluids",
@@ -39,8 +49,9 @@ public abstract class FluidBlockMixin extends Block implements FluidDrainable {
             for (Direction direction : FLOW_DIRECTIONS) {
                 BlockPos blockPos = pos.offset(direction.getOpposite());
                 if (world.getFluidState(blockPos).isIn(FluidTags.WATER)) {
-                    Block block = world.getFluidState(pos).isStill() ? Blocks.PACKED_ICE : Blocks.ICE;
+                    Block block = ModBlocks.BLACK_ICE;
                     world.setBlockState(pos, block.getDefaultState());
+                    this.playFreezeSound(world, pos);
                     cir.setReturnValue(false);
                 }
             }

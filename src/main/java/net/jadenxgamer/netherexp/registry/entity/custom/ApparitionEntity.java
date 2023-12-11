@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import com.google.common.annotations.VisibleForTesting;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -12,15 +13,21 @@ import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
+import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.StriderEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -39,13 +46,97 @@ implements GeoEntity, Angerable, Flutterer {
     @SuppressWarnings("all")
     private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
     private static final UniformIntProvider ANGER_TIME_RANGE;
+    private static final TrackedData<Integer> APPARITION_STAGE;
     private int angerTime;
     private UUID angryAt;
 
     public ApparitionEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
-        this.setPathfindingPenalty(PathNodeType.LAVA, -1.0F);
+        if (this.stage() >= 2) {
+            this.setPathfindingPenalty(PathNodeType.LAVA, -1.0F);
+        }
         this.moveControl = new FlightMoveControl(this, 20, true);
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(APPARITION_STAGE, 1);
+    }
+
+    public int stage() {
+        return this.getStage();
+    }
+
+    @VisibleForTesting
+    public void setStage(int size, boolean heal) {
+        int i = MathHelper.clamp(size, 1, 4);
+        this.dataTracker.set(APPARITION_STAGE, i);
+        this.refreshPosition();
+        this.calculateDimensions();
+        this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(i * i);
+        this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue(0.2F + 0.1F * (float)i);
+        this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(i);
+        if (heal) {
+            this.setHealth(this.getMaxHealth());
+        }
+
+        this.experiencePoints = i;
+    }
+
+    public int getStage() {
+        return this.dataTracker.get(APPARITION_STAGE);
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("Stage", this.getStage() - 1);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        this.setStage(nbt.getInt("Stage") + 1, false);
+        super.readCustomDataFromNbt(nbt);
+    }
+
+    public void calculateDimensions() {
+        double d = this.getX();
+        double e = this.getY();
+        double f = this.getZ();
+        super.calculateDimensions();
+        this.setPosition(d, e, f);
+    }
+
+    @Nullable
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        Random random = world.getRandom();
+        int i;
+        if (world.getDifficulty() == Difficulty.HARD) {
+            i = random.nextInt(3);
+        }
+        else if (world.getDifficulty() == Difficulty.NORMAL) {
+            i = random.nextInt(2);
+        }
+        else i = random.nextInt(1);
+        this.setStage(i, true);
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    public EntityDimensions getDimensions(EntityPose pose) {
+        return super.getDimensions(pose).scaled(0.255F * (float)this.getStage());
+    }
+
+    @Override
+    public void onTrackedDataSet(TrackedData<?> data) {
+        if (APPARITION_STAGE.equals(data)) {
+            this.calculateDimensions();
+            this.setYaw(this.headYaw);
+            this.bodyYaw = this.headYaw;
+        }
+
+        super.onTrackedDataSet(data);
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -89,7 +180,11 @@ implements GeoEntity, Angerable, Flutterer {
     @Override
     public boolean onKilledOther(ServerWorld world, LivingEntity other) {
         boolean bl = super.onKilledOther(world, other);
-        if (other instanceof SkeletonEntity skeletonEntity) {
+        int s = this.stage();
+        if (s < 4 && other instanceof BeeEntity beeEntity) {
+            this.setStage(s + 1, true);
+        }
+        if (s >= 1 && other instanceof SkeletonEntity skeletonEntity) {
             EndermiteEntity endermiteEntity = skeletonEntity.convertTo(EntityType.ENDERMITE, false);
             this.remove(RemovalReason.DISCARDED);
             if (endermiteEntity != null) {
@@ -126,6 +221,7 @@ implements GeoEntity, Angerable, Flutterer {
         this.targetSelector.add(3, new ActiveTargetGoal<>(this, SkeletonEntity.class, true));
         this.targetSelector.add(4, new ActiveTargetGoal<>(this, StriderEntity.class, true));
         this.targetSelector.add(5, new ActiveTargetGoal<>(this, MagmaCubeEntity.class, true));
+        this.targetSelector.add(7, new ActiveTargetGoal<>(this, BeeEntity.class, true));
         this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
     }
 
@@ -227,5 +323,6 @@ implements GeoEntity, Angerable, Flutterer {
 
     static {
         ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
+        APPARITION_STAGE = DataTracker.registerData(ApparitionEntity.class, TrackedDataHandlerRegistry.INTEGER);
     }
 }

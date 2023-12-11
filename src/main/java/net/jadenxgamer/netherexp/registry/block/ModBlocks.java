@@ -10,6 +10,7 @@ import net.jadenxgamer.netherexp.registry.misc_registry.ModWoodType;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -96,6 +97,9 @@ public class ModBlocks {
 
     public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
             new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.LIGHT_BLUE).luminance(3).sounds(ModSoundEvents.SOUL_MAGMA_BLOCK)));
+
+    public static final Block BLACK_ICE = registerBlock("black_ice",
+            new BlackIceBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE).mapColor(MapColor.BLACK).instrument(Instrument.CHIME).ticksRandomly().requiresTool().strength(0.5F).luminance(3).sounds(ModSoundEvents.BLACK_ICE)));
 
     public static final Block FOSSIL_ORE = registerBlock("fossil_ore",
             new FossilOreBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).ticksRandomly().strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL)));
@@ -445,6 +449,9 @@ public class ModBlocks {
 
     public static final Block NETHER_PIZZA = registerBlockWithoutItem("nether_pizza",
             new NetherPizzaBlock(FabricBlockSettings.of().mapColor(MapColor.BRIGHT_RED).strength(0.5f).dropsNothing().nonOpaque().sounds(BlockSoundGroup.WOOL)));
+
+    public static final Block WARPED_WART = registerBlockWithoutItem("warped_wart",
+            new WarpedWartBlock(FabricBlockSettings.of().mapColor(MapColor.BRIGHT_TEAL).breakInstantly().noCollision().ticksRandomly().pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.NETHER_WART)));
 
     /*
      * TODO: THIS BLOCK IS UNOBTAINABLE

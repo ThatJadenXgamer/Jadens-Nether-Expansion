@@ -13,4 +13,10 @@ public interface BrewingRecipeRegistryAccessor {
     static void netherexp$invokeRegisterPotionRecipe(Potion input, Item item, Potion output) {
         throw new AssertionError();
     }
+
+    @Invoker("registerItemRecipe")
+    static void netherexp$invokeRegisterItemRecipe(Item input, Item ingredient, Item output) {
+        throw new AssertionError();
+    }
+
 }

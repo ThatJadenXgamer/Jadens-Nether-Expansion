@@ -89,6 +89,14 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT = registerSoundEvent("block.polished_blackstone_bricks.hit");
     public static SoundEvent BLOCK_POLISHED_BLACKSTONE_BRICKS_FALL = registerSoundEvent("block.polished_blackstone_bricks.fall");
 
+    // Black Ice
+
+    public static SoundEvent BLOCK_BLACK_ICE_BREAK = registerSoundEvent("block.black_ice.break");
+    public static SoundEvent BLOCK_BLACK_ICE_STEP = registerSoundEvent("block.black_ice.step");
+    public static SoundEvent BLOCK_BLACK_ICE_PLACE = registerSoundEvent("block.black_ice.place");
+    public static SoundEvent BLOCK_BLACK_ICE_HIT = registerSoundEvent("block.black_ice.hit");
+    public static SoundEvent BLOCK_BLACK_ICE_FALL = registerSoundEvent("block.black_ice.fall");
+
     // Magma Block
 
     public static SoundEvent BLOCK_MAGMA_BLOCK_BREAK = registerSoundEvent("block.magma_block.break");
@@ -109,9 +117,13 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_QUARTZ_BLOCK_BREAK = registerSoundEvent("block.quartz_block.break");
     public static SoundEvent BLOCK_QUARTZ_BLOCK_PLACE = registerSoundEvent("block.quartz_block.place");
 
-    // ITEMS:
+    // ITEMS & EVENTS:
 
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
+    public static SoundEvent ECTOPLASM_FREEZE = registerSoundEvent("block.ectoplasm.freeze");
+    public static SoundEvent SOUL_SLATE_SOLIDIFYING = registerSoundEvent("block.soul_slate.solidifying");
+    public static SoundEvent ITEM_BUCKET_EMPTY_ECTOPLASM = registerSoundEvent("item.bucket.empty_ectoplasm");
+    public static SoundEvent ITEM_BUCKET_FILL_ECTOPLASM = registerSoundEvent("item.bucket.fill_ectoplasm");
     public static SoundEvent EXPLOSIVE_SCORIA_AMBIENT = registerSoundEvent("block.explosive_scoria.ambient");
     public static SoundEvent SPORESHROOM_TRAMPOLINED = registerSoundEvent("block.sporeshroom.trampolined");
     public static SoundEvent LIGHTSPORES_APPLY = registerSoundEvent("block.lightspores.apply");
@@ -186,6 +198,10 @@ public class ModSoundEvents {
     public static final BlockSoundGroup QUARTZ_BLOCK = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_QUARTZ_BLOCK_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, ModSoundEvents.BLOCK_QUARTZ_BLOCK_PLACE,
             SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
+
+    public static final BlockSoundGroup BLACK_ICE = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_BLACK_ICE_BREAK, ModSoundEvents.BLOCK_BLACK_ICE_STEP, ModSoundEvents.BLOCK_BLACK_ICE_PLACE,
+            ModSoundEvents.BLOCK_BLACK_ICE_HIT, ModSoundEvents.BLOCK_BLACK_ICE_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);

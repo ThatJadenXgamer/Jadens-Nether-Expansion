@@ -13,30 +13,30 @@
 			"bones": [
 				{
 					"name": "main",
-					"pivot": [0, 22, 0]
+					"pivot": [0, 16, 0]
 				},
 				{
 					"name": "body",
 					"parent": "main",
-					"pivot": [0, 22, 0],
+					"pivot": [0, 16, 0],
 					"cubes": [
-						{"origin": [-7, 13, -5], "size": [14, 18, 10], "inflate": 0.02, "uv": [0, 4]}
+						{"origin": [-7, 7, -5], "size": [14, 18, 10], "inflate": 0.02, "uv": [0, 4]}
 					]
 				},
 				{
 					"name": "crown",
 					"parent": "body",
-					"pivot": [0, 32, 0],
+					"pivot": [0, 26, 0],
 					"cubes": [
-						{"origin": [-3, 32, -3], "size": [6, 6, 6], "uv": [0, 39]}
+						{"origin": [-3, 26, -3], "size": [6, 6, 6], "uv": [0, 39]}
 					]
 				},
 				{
 					"name": "tail",
 					"parent": "body",
-					"pivot": [0, 12.5, 0],
+					"pivot": [0, 6.5, 0],
 					"cubes": [
-						{"origin": [-7, 6, -5], "size": [14, 7, 10], "inflate": -0.02, "uv": [16, 47]}
+						{"origin": [-7, 0, -5], "size": [14, 7, 10], "inflate": -0.02, "uv": [16, 47]}
 					]
 				}
 			]

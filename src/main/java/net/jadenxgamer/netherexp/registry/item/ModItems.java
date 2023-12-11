@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
+import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.item.custom.LightSporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightSporesItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
@@ -56,6 +57,15 @@ public class ModItems {
     public static final Item BLIGHTSPORES = registerItem("blightspores",
             new Item(new FabricItemSettings()));
 
+    public static final Item WITHER_ANTIDOTE = registerItem("wither_antidote",
+            new AntidoteItem(new FabricItemSettings()));
+
+    public static final Item HUNGER_ANTIDOTE = registerItem("hunger_antidote",
+            new AntidoteItem(new FabricItemSettings()));
+
+    public static final Item SLOWNESS_ANTIDOTE = registerItem("slowness_antidote",
+            new AntidoteItem(new FabricItemSettings()));
+
     public static final Item GLOWCHEESE = registerItem("glowcheese",
             new Item(new FabricItemSettings().food(ModFoodComponents.GLOWCHEESE)));
 
@@ -64,6 +74,18 @@ public class ModItems {
 
     public static final Item NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice",
             new Item(new FabricItemSettings().food(ModFoodComponents.PIZZA_SLICE)));
+
+    public static final Item WRAITHING_FLESH = registerItem("wraithing_flesh",
+            new Item(new FabricItemSettings().food(ModFoodComponents.WRAITHING_FLESH)));
+
+    public static final Item WARPED_WART = registerItem("warped_wart",
+            new AliasedBlockItem(ModBlocks.WARPED_WART, new FabricItemSettings()));
+
+    public static final Item NECRO_SHARD = registerItem("necro_shard",
+            new Item(new FabricItemSettings()));
+
+    public static final Item EXECUTIONER_AXE = registerItem("executioner_axe",
+            new AxeItem(ModToolMaterials.EXECUTIONER, 6.0F, -3.0F, new FabricItemSettings()));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,

@@ -834,11 +834,84 @@
       "netherexp:block/quartz_block/place4"
     ]
   },
+  "block.black_ice.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/black_ice/break1",
+      "netherexp:block/black_ice/break2",
+      "netherexp:block/black_ice/break3"
+    ]
+  },
+  "block.black_ice.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "netherexp:block/black_ice/step1",
+      "netherexp:block/black_ice/step2",
+      "netherexp:block/black_ice/step3",
+      "netherexp:block/black_ice/step4",
+      "netherexp:block/black_ice/step5"
+    ]
+  },
+  "block.black_ice.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/black_ice/place1",
+      "netherexp:block/black_ice/place2",
+      "netherexp:block/black_ice/place3"
+    ]
+  },
+  "block.black_ice.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "netherexp:block/black_ice/step1",
+      "netherexp:block/black_ice/step2",
+      "netherexp:block/black_ice/step3",
+      "netherexp:block/black_ice/step4",
+      "netherexp:block/black_ice/step5"
+    ]
+  },
+  "block.black_ice.fall": {
+    "sounds": [
+      "netherexp:block/black_ice/step1",
+      "netherexp:block/black_ice/step2",
+      "netherexp:block/black_ice/step3",
+      "netherexp:block/black_ice/step4",
+      "netherexp:block/black_ice/step5"
+    ]
+  },
   "item.gold_ingot.gilding": {
     "subtitle": "subtitles.item.gold_ingot.gilding",
     "sounds": [
       "netherexp:block/gilding/gilding1",
       "netherexp:block/gilding/gilding2"
+    ]
+  },
+  "block.ectoplasm.freeze": {
+    "subtitle": "subtitles.block.ectoplasm.freeze",
+    "sounds": [
+      "netherexp:block/soul_slate/solidify1",
+      "netherexp:block/soul_slate/solidify2"
+    ]
+  },
+  "block.soul_slate.solidifying": {
+    "subtitle": "subtitles.block.soul_slate.solidifying",
+    "sounds": [
+      "netherexp:block/soul_slate/solidify1",
+      "netherexp:block/soul_slate/solidify2"
+    ]
+  },
+  "item.bucket.empty_ectoplasm": {
+    "subtitle": "subtitles.item.bucket.empty",
+    "sounds": [
+      "netherexp:block/ectoplasm/empty1",
+      "netherexp:block/ectoplasm/empty2"
+    ]
+  },
+  "item.bucket.fill_ectoplasm": {
+    "subtitle": "subtitles.item.bucket.fill",
+    "sounds": [
+      "netherexp:block/ectoplasm/fill1",
+      "netherexp:block/ectoplasm/fill2"
     ]
   },
   "block.explosive_scoria.ambient": {

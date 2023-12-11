@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.registry.item.potion;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.mixin.item.BrewingRecipeRegistryAccessor;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.mixin.item.BrewingRecipeRegistryAccessor;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
@@ -30,8 +30,14 @@ public class ModPotions{
         BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.WARPHOPPER_FUR, Potions.INVISIBILITY);
     }
 
+    public static void registerItemRecipe() {
+        ModBrewingRecipeRegistry.registerAntidoteRecipe(ModItems.LIGHTSPORES, ModItems.NIGHTSPORES, ModItems.GLOWCHEESE);
+        ModBrewingRecipeRegistry.registerAntidoteRecipe(ModItems.HUNGER_ANTIDOTE, ModItems.WARPED_WART, ModItems.SLOWNESS_ANTIDOTE);
+    }
+
     public static void registerModPotions() {
         NetherExp.LOGGER.debug("Registering Potions for " + NetherExp.MOD_ID);
         registerPotionRecipe();
+        registerItemRecipe();
     }
 }

@@ -12,6 +12,9 @@ public class ModStatusEffects {
     public static final StatusEffect FOGSIGHT = registerStatusEffect("fogsight",
             new FogSightEffect(StatusEffectCategory.BENEFICIAL, 10442064));
 
+    public static final StatusEffect SOUL_SHIELD = registerStatusEffect("soul_shield",
+            new SoulShieldEffect(StatusEffectCategory.BENEFICIAL, 1717297));
+
     private static StatusEffect registerStatusEffect(String name, StatusEffect entry) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(NetherExp.MOD_ID, name), entry);
     }

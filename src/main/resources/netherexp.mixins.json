@@ -13,6 +13,7 @@
     "block.TwistingVinesMixin",
     "block.WeepingVinesMixin",
     "entity.HoglinEntityMixin",
+    "entity.LivingEntityMixin",
     "entity.PiglinEntityMixin",
     "entity.SkeletonEntityMixin",
     "entity.WitherSkeletonEntityMixin",
@@ -21,6 +22,9 @@
     "item.BrewingRecipeRegistryMixin"
   ],
   "client": [
+    "item.ItemRendererAccessor",
+    "item.ItemRendererMixin",
+    "item.ModelLoaderMixin",
     "renderer.BackgroundRendererMixin",
     "renderer.CameraMixin"
   ],

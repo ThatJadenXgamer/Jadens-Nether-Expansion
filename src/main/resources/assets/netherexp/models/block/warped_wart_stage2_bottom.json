@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "netherexp:block/warped_wart_stage2_bottom"
+  }
+}

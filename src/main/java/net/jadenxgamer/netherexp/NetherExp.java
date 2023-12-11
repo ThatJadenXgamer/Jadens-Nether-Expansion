@@ -65,4 +65,7 @@ public class NetherExp implements ModInitializer {
 	public static boolean checkModCompatCinderscapes() {
 		return FabricLoader.getInstance().isModLoaded("cinderscapes");
 	}
+	public static boolean checkModCompatGardensOfTheDead() {
+		return FabricLoader.getInstance().isModLoaded("gardens_of_the_dead");
+	}
 }

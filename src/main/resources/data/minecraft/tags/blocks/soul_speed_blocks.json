@@ -20,6 +20,7 @@
     "netherexp:soul_soil_layer",
     "netherexp:ecto_soul_sand",
     "netherexp:soul_magma_block",
-    "netherexp:souled_geyser"
+    "netherexp:souled_geyser",
+    "netherexp:black_ice"
   ]
 }

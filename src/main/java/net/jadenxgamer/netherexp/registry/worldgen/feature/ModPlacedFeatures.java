@@ -18,6 +18,9 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> ECTO_SOUL_SAND = registerKey("soul_sand_valley/ecto_soul_sand");
     public static final RegistryKey<PlacedFeature> BONE_ROD = registerKey("soul_sand_valley/bone_rod");
     public static final RegistryKey<PlacedFeature> JAGGED_SOUL_SLATE = registerKey("soul_sand_valley/jagged_soul_slate");
+    public static final RegistryKey<PlacedFeature> FOSSIL_FUEL_ORE = registerKey("soul_sand_valley/fossil_fuel_ore");
+    public static final RegistryKey<PlacedFeature> BLACK_ICE = registerKey("soul_sand_valley/black_ice");
+    public static final RegistryKey<PlacedFeature> ECTOPLASM_LAKE = registerKey("soul_sand_valley/ectoplasm_lake");
     public static final RegistryKey<PlacedFeature> ORE_SOUL_MAGMA = registerKey("soul_sand_valley/ore_soul_magma");
     public static final RegistryKey<PlacedFeature> SOUL_SWIRLS_CEILING = registerKey("soul_sand_valley/soul_swirls_ceiling");
     public static final RegistryKey<PlacedFeature> SOUL_SWIRLS_FLOOR = registerKey("soul_sand_valley/soul_swirls_floor");

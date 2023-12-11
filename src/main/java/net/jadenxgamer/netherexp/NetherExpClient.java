@@ -25,6 +25,7 @@ public class NetherExpClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         // BLOCK OPACITY
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_WART, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAGMA_CREAM_BLOCK, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_SWIRLS, RenderLayer.getCutout());
@@ -114,6 +115,7 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.SOUL_EMBER, SmallRisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.ECTORAYS, EctoraysParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.ECTOPLASMA, EctoplasmaParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.BLACK_AEROSOL, AerosolParticle.Factory::new);
 
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);

@@ -10,14 +10,14 @@ public class ModResourcePacks {
 
     @SuppressWarnings("deprecation")
     public static void registerModResourcePacks() {
-        Identifier classicPackId = new Identifier(NetherExp.MOD_ID, "vanilla_nether");
-        Identifier EmissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
+        Identifier vanillaPackId = new Identifier(NetherExp.MOD_ID, "vanilla_nether_expansion");
+        Identifier emissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
-        -> ResourceManagerHelper.registerBuiltinResourcePack(classicPackId, container, "Classic Nether", ResourcePackActivationType.NORMAL));
+        -> ResourceManagerHelper.registerBuiltinResourcePack(vanillaPackId, container, "Vanilla Nether Expansion", ResourcePackActivationType.NORMAL));
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
-        -> ResourceManagerHelper.registerBuiltinResourcePack(EmissivePackId, container, "Emissive Nether Expansion", ResourcePackActivationType.NORMAL));
+        -> ResourceManagerHelper.registerBuiltinResourcePack(emissivePackId, container, "Emissive Nether Expansion", ResourcePackActivationType.NORMAL));
 
 
         NetherExp.LOGGER.info("Registering Built-in ResourcePacks for " + NetherExp.MOD_ID);

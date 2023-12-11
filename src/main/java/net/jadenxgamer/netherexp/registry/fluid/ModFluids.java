@@ -3,12 +3,12 @@ package net.jadenxgamer.netherexp.registry.fluid;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.item.custom.EctoplasmBucketItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.fluid.FlowableFluid;
-import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -32,7 +32,7 @@ public class ModFluids {
         ECTOPLASM_BLOCK = Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, "ectoplasm"),
                 new FluidBlock(ModFluids.ECTOPLASM, FabricBlockSettings.of().mapColor(MapColor.LIGHT_BLUE).replaceable().noCollision().strength(100.0F).pistonBehavior(PistonBehavior.DESTROY).dropsNothing().luminance((state) -> 15).liquid().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
 
-        ECTOPLASM_BUCKET = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, "ectoplasm_bucket"), new BucketItem(ModFluids.ECTOPLASM,
+        ECTOPLASM_BUCKET = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, "ectoplasm_bucket"), new EctoplasmBucketItem(ModFluids.ECTOPLASM,
                 new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
 
         NetherExp.LOGGER.debug("Registering Fluids for " + NetherExp.MOD_ID);

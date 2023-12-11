@@ -34,6 +34,9 @@ public class SoulSandValleyFeatures {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SOUL_SAND_VALLEY),
                 GenerationStep.Feature.UNDERGROUND_DECORATION, ModPlacedFeatures.BONE_ROD);
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SOUL_SAND_VALLEY),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FOSSIL_FUEL_ORE);
+
         // STEP 8 - FLUID_SPRINGS
 
         // STEP 9 - VEGETAL_DECORATION
@@ -46,6 +49,9 @@ public class SoulSandValleyFeatures {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SOUL_SAND_VALLEY),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ECTO_SOUL_SAND);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SOUL_SAND_VALLEY),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ECTOPLASM_LAKE);
 
         // STEP 10 - TOP_LAYER_MODIFICATION
     }

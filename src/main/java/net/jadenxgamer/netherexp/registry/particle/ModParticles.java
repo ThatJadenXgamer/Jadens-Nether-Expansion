@@ -32,6 +32,7 @@ public class ModParticles {
     public static final DefaultParticleType SOUL_EMBER = FabricParticleTypes.simple();
     public static final DefaultParticleType ECTORAYS = FabricParticleTypes.simple();
     public static final DefaultParticleType ECTOPLASMA = FabricParticleTypes.simple();
+    public static final DefaultParticleType BLACK_AEROSOL = FabricParticleTypes.simple();
 
     // Registering Particles
     public static void registerParticles() {
@@ -79,6 +80,8 @@ public class ModParticles {
                 ECTORAYS);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "ectoplasma"),
                 ECTOPLASMA);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "black_aerosol"),
+                BLACK_AEROSOL);
 
         NetherExp.LOGGER.debug("Registering Particles for " + NetherExp.MOD_ID);
     }

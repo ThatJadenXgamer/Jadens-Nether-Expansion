@@ -39,6 +39,10 @@ public class ModItemGroup {
                         entries.add(ModBlocks.OPALIZED_FOSSIL_ORE);
                         entries.add(ModItems.FOSSIL_FUEL);
 
+                        entries.add(ModItems.NECRO_SHARD);
+                        entries.add(ModItems.EXECUTIONER_AXE);
+
+                        entries.add(ModItems.WRAITHING_FLESH);
                         entries.add(ModBlocks.SOUL_CANDLE);
                         entries.add(ModBlocks.SOUL_GLASS);
                         entries.add(ModBlocks.SOUL_SWIRLS);
@@ -49,6 +53,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.ECTO_SOUL_SAND);
                         entries.add(ModBlocks.SOUL_MAGMA_BLOCK);
 
+                        entries.add(ModBlocks.BLACK_ICE);
                         entries.add(ModFluids.ECTOPLASM_BUCKET);
 
                         entries.add(Blocks.SOUL_TORCH);
@@ -67,10 +72,10 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SMOOTH_NETHERRACK_STAIRS);
                         entries.add(ModBlocks.SMOOTH_NETHERRACK_SLAB);
                         entries.add(ModBlocks.SMOOTH_NETHERRACK_WALL);
+
                         entries.add(ModBlocks.NETHERRACK_BRICKS);
                         entries.add(ModBlocks.NETHERRACK_BRICK_STAIRS);
                         entries.add(ModBlocks.NETHERRACK_BRICK_SLAB);
-
                         entries.add(ModBlocks.NETHERRACK_BRICK_WALL);
                         entries.add(ModBlocks.NETHERRACK_TILES);
                         entries.add(ModBlocks.NETHERRACK_PILLAR);
@@ -207,6 +212,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.NETHER_WART_BEARD);
                         entries.add(ModBlocks.RED_SCALE_FUNGUS);
 
+                        entries.add(ModItems.WARPED_WART);
                         entries.add(Blocks.WARPED_WART_BLOCK);
                         entries.add(ModBlocks.WARPED_WART_BEARD);
                         entries.add(ModBlocks.BLUE_SCALE_FUNGUS);

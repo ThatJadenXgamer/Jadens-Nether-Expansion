@@ -10,7 +10,7 @@
       "item": "netherexp:stacked_bones"
     },
     "C": {
-      "tag": "netherexp:coal_items"
+      "tag": "minecraft:coals"
     }
   },
   "result": {

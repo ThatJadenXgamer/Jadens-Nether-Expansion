@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.fluid;
 
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -15,8 +16,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -121,7 +120,7 @@ public abstract class EctoplasmFluid extends FlowableFluid {
 
     @Override
     public Optional<SoundEvent> getBucketFillSound() {
-        return super.getBucketFillSound();
+        return Optional.of(ModSoundEvents.ITEM_BUCKET_FILL_ECTOPLASM);
     }
 
     public static class Flowing extends EctoplasmFluid {
