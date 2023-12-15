@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -24,14 +25,14 @@ public class SoulGlassBlock extends AbstractGlassBlock {
     @SuppressWarnings("deprecation")
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return false;
+        return !NetherExp.getConfig().blocks.soulGlassConfigs.phasmophobic_mobs;
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            if (entity instanceof LivingEntity && !EnchantmentHelper.hasSoulSpeed((LivingEntity)entity)) {
+            if (NetherExp.getConfig().blocks.soulGlassConfigs.viscous_soul_glass && entity instanceof LivingEntity && !EnchantmentHelper.hasSoulSpeed((LivingEntity)entity)) {
                 entity.slowMovement(state, new Vec3d(0.6, 0.5, 0.6));
             }
             if (world.isClient) {

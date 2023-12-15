@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.fluid;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.Block;
@@ -61,7 +62,7 @@ public abstract class EctoplasmFluid extends FlowableFluid {
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
         BlockPos blockPos = pos.up();
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos) && state.isOf(ModFluids.ECTOPLASM)) {
-            if (random.nextInt(55) == 0) {
+            if (NetherExp.getConfig().visualeffects.ectoplasm_particles && random.nextInt(55) == 0) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
@@ -69,7 +70,7 @@ public abstract class EctoplasmFluid extends FlowableFluid {
             }
         }
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
-            if (random.nextInt(18) == 0) {
+            if (NetherExp.getConfig().visualeffects.ectoplasm_particles && random.nextInt(18) == 0) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();

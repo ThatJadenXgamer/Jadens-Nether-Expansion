@@ -22,79 +22,9 @@ public class WrathRegion extends Region {
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
         this.addBiome(mapper,
                 //Temperature
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Humidity
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Continentalness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Erosion
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Weirdness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Depth
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                0.0F, BiomeKeys.NETHER_WASTES);
-        this.addBiome(mapper,
-                //Temperature
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Humidity
-                MultiNoiseUtil.ParameterRange.of(-0.5F),
-                //Continentalness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Erosion
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Weirdness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Depth
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                0.0F, BiomeKeys.SOUL_SAND_VALLEY);
-        this.addBiome(mapper,
-                //Temperature
-                MultiNoiseUtil.ParameterRange.of(0.4F),
-                //Humidity
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Continentalness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Erosion
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Weirdness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Depth
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                0.0F, BiomeKeys.CRIMSON_FOREST);
-        this.addBiome(mapper,
-                //Temperature
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Humidity
-                MultiNoiseUtil.ParameterRange.of(0.5F),
-                //Continentalness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Erosion
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Weirdness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Depth
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                0.375F, BiomeKeys.WARPED_FOREST);
-        this.addBiome(mapper,
-                //Temperature
                 MultiNoiseUtil.ParameterRange.of(-0.5F),
                 //Humidity
                 MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Continentalness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Erosion
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Weirdness
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                //Depth
-                MultiNoiseUtil.ParameterRange.of(0.0F),
-                0.175F, BiomeKeys.BASALT_DELTAS);
-        this.addBiome(mapper,
-                //Temperature
-                MultiNoiseUtil.ParameterRange.of(-0.3F),
-                //Humidity
-                MultiNoiseUtil.ParameterRange.of(0.3F),
                 //Continentalness
                 MultiNoiseUtil.ParameterRange.of(0.0F),
                 //Erosion

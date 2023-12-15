@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,13 +31,13 @@ public class DecayableShroomBlock extends Block {
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return state.get(DISTANCE) == 10;
+        return NetherExp.getConfig().blocks.decayableConfigs.decayable_shroomlight && state.get(DISTANCE) == 10;
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (this.shouldDecay(state)) {
+        if (NetherExp.getConfig().blocks.decayableConfigs.decayable_shroomlight && this.shouldDecay(state)) {
             world.removeBlock(pos, false);
         }
     }
@@ -89,7 +90,7 @@ public class DecayableShroomBlock extends Block {
         double x = (double)pos.getX() + random.nextDouble();
         double y = (double)pos.getY() - 0.05;
         double z = (double)pos.getZ() + random.nextDouble();
-        if (d >= 10 && f < 0.3f) {
+        if (NetherExp.getConfig().blocks.decayableConfigs.decayable_shroomlight && d >= 10 && f < 0.3f) {
             world.addParticle(this.particle, x, y, z, 0.0, 0.0, 0.0);
         }
     }

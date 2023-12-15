@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
@@ -39,7 +40,7 @@ public abstract class WeepingVinesMixin extends AbstractPlantStemBlock {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         float r = random.nextInt(50);
         boolean b = state.get(BUDDING);
-        if (r == 0 && b) {
+        if (NetherExp.getConfig().blocks.renewableConfigs.glowspores_from_vines && r == 0 && b) {
             world.setBlockState(pos, state.cycle(BUDDING), NOTIFY_LISTENERS);
         }
         super.randomTick(state, world, pos, random);

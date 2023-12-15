@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
@@ -8,6 +9,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
@@ -94,6 +96,16 @@ public class TwilightVinesBlock extends AbstractPlantStemBlock {
             double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getOffsetZ() : (double) random.nextFloat();
             world.addParticle(ModParticles.FALLING_SHROOMBLIGHT, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
         }
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        float r = random.nextInt(50);
+        boolean b = state.get(BUDDING);
+        if (NetherExp.getConfig().blocks.renewableConfigs.glowspores_from_vines && r == 0 && b) {
+            world.setBlockState(pos, state.cycle(BUDDING), NOTIFY_LISTENERS);
+        }
+        super.randomTick(state, world, pos, random);
     }
 
     @Override

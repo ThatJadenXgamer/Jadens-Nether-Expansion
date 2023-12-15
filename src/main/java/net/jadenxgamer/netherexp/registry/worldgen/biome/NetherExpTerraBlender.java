@@ -11,6 +11,6 @@ public class NetherExpTerraBlender implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
         // Generates Vent Mire
-        Regions.register(new WrathRegion(new Identifier(NetherExp.MOD_ID, "wrath"), 5));
+        Regions.register(new WrathRegion(new Identifier(NetherExp.MOD_ID, "wrath"), NetherExp.getConfig().worldgen.wrath_region_weight));
     }
 }

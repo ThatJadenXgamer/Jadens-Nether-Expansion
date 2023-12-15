@@ -1,15 +1,19 @@
 package net.jadenxgamer.netherexp;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.config.NetherExpConfigs;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
-import net.jadenxgamer.netherexp.registry.event.CompatPathEvent;
+import net.jadenxgamer.netherexp.registry.event.NyliumPathEvent;
+import net.jadenxgamer.netherexp.registry.event.SoulPathEvent;
 import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
@@ -28,6 +32,7 @@ import software.bernie.geckolib.GeckoLib;
 public class NetherExp implements ModInitializer {
 	public static final String MOD_ID = "netherexp";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	private static final NetherExpConfigs CONFIG = AutoConfig.register(NetherExpConfigs.class, GsonConfigSerializer::new).getConfig();
 
 	@Override
 	public void onInitialize() {
@@ -57,7 +62,11 @@ public class NetherExp implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.APPARITION, ApparitionEntity.setAttributes());
 
 		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
-		UseBlockCallback.EVENT.register(new CompatPathEvent());
+		UseBlockCallback.EVENT.register(new NyliumPathEvent());
+		UseBlockCallback.EVENT.register(new SoulPathEvent());
+	}
+	public static NetherExpConfigs getConfig () {
+		return CONFIG;
 	}
 
 	// MOD COMPATIBILITY

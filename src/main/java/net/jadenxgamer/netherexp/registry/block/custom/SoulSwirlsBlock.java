@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
@@ -19,7 +20,7 @@ implements Fertilizable {
 
     @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-        return true;
+        return NetherExp.getConfig().blocks.renewableConfigs.bone_mealable_soul_swirls;
     }
 
     @Override

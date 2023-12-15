@@ -20,5 +20,5 @@ public class ModEntities {
     public static final EntityType<ApparitionEntity> APPARITION = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "apparition"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ApparitionEntity::new).fireImmune()
-                    .dimensions(EntityDimensions.fixed(0.8F,1.8f)).build());
+                    .dimensions(EntityDimensions.fixed(0.8F,1.6f)).build());
 }

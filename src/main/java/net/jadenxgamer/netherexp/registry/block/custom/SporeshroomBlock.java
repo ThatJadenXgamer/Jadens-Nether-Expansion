@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -161,7 +162,7 @@ implements Waterloggable, Fertilizable {
 
     @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-        return true;
+        return NetherExp.getConfig().blocks.renewableConfigs.bone_meal_sporeshroom_duplication;
     }
 
     @Override

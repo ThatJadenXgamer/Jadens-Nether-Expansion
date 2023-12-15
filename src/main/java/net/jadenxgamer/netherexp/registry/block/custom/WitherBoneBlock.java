@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.entity.Entity;
@@ -16,7 +17,7 @@ public class WitherBoneBlock extends PillarBlock {
 
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        if(!entity.bypassesSteppingEffects() && entity instanceof LivingEntity livingEntity) {
+        if(NetherExp.getConfig().blocks.witherBoneBlockConfigs.harmful_wither_bone_block && !entity.bypassesSteppingEffects() && entity instanceof LivingEntity livingEntity) {
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 20, 3));
         }
 

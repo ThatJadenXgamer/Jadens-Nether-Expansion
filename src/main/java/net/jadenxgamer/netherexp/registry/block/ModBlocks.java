@@ -601,17 +601,17 @@ public class ModBlocks {
     
     // White Ash
 
-    public static final Block ASHY_BASALT = registerBlockWithoutItem("ashy_basalt",
-            new AshyBasaltBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
-
     public static final Block WHITE_ASH = registerBlock("white_ash",
-            new WhiteAshLayerBlock(FabricBlockSettings.of().strength(0.1f).requiresTool()
+            new WhiteAshBlock(FabricBlockSettings.of().strength(0.1f).requiresTool()
             .sounds(ModSoundEvents.WHITE_ASH).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))));
 
     public static final Block WHITE_ASH_BLOCK = registerBlock("white_ash_block",
-            new WhiteAshBlock(FabricBlockSettings.of().requiresTool().sounds(ModSoundEvents.WHITE_ASH)));
+            new Block(FabricBlockSettings.of().requiresTool().sounds(ModSoundEvents.WHITE_ASH)));
 
-    public static final Block CHAINWIRE_FENCE = registerBlock("chainwire_fence",
+    /*
+     * TODO: THIS BLOCK IS UNOBTAINABLE
+     */
+    public static final Block CHAINWIRE_FENCE = registerBlockWithoutItem("chainwire_fence",
             new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)));
 
     // Bones

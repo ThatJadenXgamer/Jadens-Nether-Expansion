@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "block.BlockEntityTypeMixin",
+    "block.BlocksMixin",
     "block.BlockSoundsMixin",
     "block.FluidBlockMixin",
     "block.PumpkinStemMixin",

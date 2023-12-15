@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -51,10 +52,14 @@ public class GeyserBlock extends Block {
         if (!state.get(COOLDOWN)) {
             Vec3d vec3d = entity.getVelocity();
             entity.addVelocity(vec3d.x,1.2, vec3d.z);
-            entity.damage(world.getDamageSources().hotFloor(), 1.0f);
-            world.setBlockState(pos, state.cycle(COOLDOWN), NOTIFY_LISTENERS);
+            if (NetherExp.getConfig().blocks.geyserConfigs.geyser_deals_damage) {
+                entity.damage(world.getDamageSources().hotFloor(), 1.0f);
+            }
             world.playSound(pos.getX(),pos.getY(),pos.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
-            world.scheduleBlockTick(pos, this, 100);
+            if (NetherExp.getConfig().blocks.geyserConfigs.geyser_cooldown) {
+                world.setBlockState(pos, state.cycle(COOLDOWN), NOTIFY_LISTENERS);
+                world.scheduleBlockTick(pos, this, NetherExp.getConfig().blocks.geyserConfigs.geyser_cooldown_delay_ticks);
+            }
         }
     }
 

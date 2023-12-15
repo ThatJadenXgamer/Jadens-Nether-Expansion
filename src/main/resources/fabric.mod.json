@@ -9,11 +9,11 @@
     "JadenXgamer"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/jadens-nether-expansions",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/jadens-nether-expansion",
     "sources": "https://github.com/ThatJadenXgamer/Jadens-Nether-Expansion"
   },
 
-  "license": "ARR",
+  "license": "CC-BY-NC-SA-4.0",
   "icon": "assets/netherexp/icon.png",
 
   "environment": "*",
@@ -21,11 +21,14 @@
     "main": [
       "net.jadenxgamer.netherexp.NetherExp"
     ],
+    "client": [
+      "net.jadenxgamer.netherexp.NetherExpClient"
+    ],
     "terrablender": [
       "net.jadenxgamer.netherexp.registry.worldgen.biome.NetherExpTerraBlender"
     ],
-    "client": [
-      "net.jadenxgamer.netherexp.NetherExpClient"
+    "modmenu": [
+      "net.jadenxgamer.netherexp.registry.config.ModMenuIntegration"
     ]
   },
   "mixins": [

@@ -1,12 +1,12 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -54,13 +54,13 @@ public class DecayableWartBlock extends Block {
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return state.get(DISTANCE) == 10;
+        return NetherExp.getConfig().blocks.decayableConfigs.decayable_wart_blocks && state.get(DISTANCE) == 10;
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (this.shouldDecay(state)) {
+        if (NetherExp.getConfig().blocks.decayableConfigs.decayable_wart_blocks && this.shouldDecay(state)) {
             world.removeBlock(pos, false);
         }
     }
@@ -161,7 +161,7 @@ public class DecayableWartBlock extends Block {
         double x = (double)pos.getX() + random.nextDouble();
         double y = (double)pos.getY() - 0.05;
         double z = (double)pos.getZ() + random.nextDouble();
-        if (d >= 10 && f < 0.3f) {
+        if (NetherExp.getConfig().blocks.decayableConfigs.decayable_wart_blocks && d >= 10 && f < 0.3f) {
             world.addParticle(this.particle, x, y, z, 0.0, 0.0, 0.0);
         }
     }
