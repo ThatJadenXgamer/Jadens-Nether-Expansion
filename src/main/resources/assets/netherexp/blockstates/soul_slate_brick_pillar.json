@@ -72,6 +72,60 @@
         "x": 90,
         "y": 90,
         "weight": 1
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/13",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/14",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/15",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/16",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/17",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/18",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/19",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/20",
+        "x": 90,
+        "y": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/21",
+        "x": 90,
+        "y": 90,
+        "weight": 50
       }
     ],
     "axis=y": [
@@ -122,6 +176,42 @@
       {
         "model": "netherexp:block/soul_slate_brick_pillar/12",
         "weight": 1
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/13",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/14",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/15",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/16",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/17",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/18",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/19",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/20",
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/21",
+        "weight": 50
       }
     ],
     "axis=z": [
@@ -184,6 +274,51 @@
         "model": "netherexp:block/soul_slate_brick_pillar/12",
         "x": 90,
         "weight": 1
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/13",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/14",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/15",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/16",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/17",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/18",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/19",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/20",
+        "x": 90,
+        "weight": 50
+      },
+      {
+        "model": "netherexp:block/soul_slate_brick_pillar/21",
+        "x": 90,
+        "weight": 50
       }
     ]
   }
