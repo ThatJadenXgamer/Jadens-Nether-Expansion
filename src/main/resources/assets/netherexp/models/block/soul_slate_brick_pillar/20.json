@@ -2,7 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "netherexp:block/soul_slate_brick_pillar/top",
-    "side": "netherexp:block/soul_slate_brick_pillar/20",
-
+    "side": "netherexp:block/soul_slate_brick_pillar/20"
   }
 }
