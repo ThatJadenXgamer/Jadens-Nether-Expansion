@@ -10,6 +10,7 @@ public class ModResourcePacks {
 
     @SuppressWarnings("deprecation")
     public static void registerModResourcePacks() {
+        // TODO: Add functionality to Vanilla and Emissive Packs
         Identifier vanillaPackId = new Identifier(NetherExp.MOD_ID, "vanilla_nether_expansion");
         Identifier emissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
 

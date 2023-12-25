@@ -97,6 +97,9 @@ public class ModTags {
         // Killing Skeletons on these blocks Converts it to Fossil Ore
         public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createBlockTag("fossil_ore_convertible");
 
+        // Wisps will try to find blocks in this tag and circle around it
+        public static final TagKey<Block> SOUL_FIRE_THAT_LURES_WISPS = createBlockTag("soul_fire_that_lures_wisps");
+
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
 
@@ -142,6 +145,9 @@ public class ModTags {
 
         // Smokestalk accepts these as fuel items
         public static final TagKey<Item> SMOKESTALK_FUEL = createItemTag("smokestalk_fuel");
+
+        // Items in this tag will lure Wisps towards the player
+        public static final TagKey<Item> SOUL_FIRE_THAT_LURES_WISPS = createItemTag("soul_fire_that_lures_wisps");
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(NetherExp.MOD_ID, name));

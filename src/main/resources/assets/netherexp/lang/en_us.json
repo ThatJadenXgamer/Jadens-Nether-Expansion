@@ -1,7 +1,7 @@
 {
   "biome.netherexp.vent_mire": "Vent Mire",
   "biome.netherexp.quartz_chasm": "Quartz Chasm",
-  "biome.netherexp.grieving_spires": "Grieving Spires",
+  "biome.netherexp.grieving_grove": "Grieving Grove",
 
   "item.netherexp.warphopper_fur": "Warphopper Fur",
   "item.netherexp.hogham": "Raw Hogham",
@@ -20,8 +20,9 @@
   "trim_pattern.netherexp.rift": "Rift Armor Trim",
   "item.netherexp.necro_shard": "Necro Shard",
   "item.netherexp.executioner_axe": "Executioner Axe",
-  "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
+  "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
+  "item.netherexp.wisp_spawn_egg": "Wisp Spawn Egg",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
@@ -279,12 +280,14 @@
   "death.attack.igneousThorns.player": "%1$s was pricked to death inside igneous thorns whilst trying to escape %2$s",
   "death.attack.explosiveScoria": "%1$s figured out what Volatile means",
 
-  "item.minecraft.tipped_arrow.effect.fogsight": "Arrow of FogSight",
-  "item.minecraft.potion.effect.fogsight": "Potion of FogSight",
-  "item.minecraft.splash_potion.effect.fogsight": "Splash Potion of FogSight",
-  "item.minecraft.lingering_potion.effect.fogsight": "Lingering Potion of FogSight",
+  "item.minecraft.tipped_arrow.effect.fogsight": "Arrow of Fogsight",
+  "item.minecraft.potion.effect.fogsight": "Potion of Fogsight",
+  "item.minecraft.splash_potion.effect.fogsight": "Splash Potion of Fogsight",
+  "item.minecraft.lingering_potion.effect.fogsight": "Lingering Potion of Fogsight",
 
   "entity.netherexp.apparition": "Apparition",
+
+  "entity.netherexp.wisp": "Wisp",
 
   "entity.netherexp.warphopper": "Warphopper",
   "subtitles.entity.warphopper.ambient": "Warphopper chirps",
@@ -307,7 +310,7 @@
   "advancements.nether.ghost_mucus.description": "Fill a Bucket with Ectoplasm",
   "advancements.nether.character_arch.title": "It's a Character Arch",
   "advancements.nether.character_arch.description": "Find a Geyser Formation in the Soul Sand Valley",
-  "advancements.nether.the_fog_is_going.title": "The Fog is Going, The Fog is Going",
+  "advancements.nether.the_fog_is_going.title": "The Fog is leaving",
   "advancements.nether.the_fog_is_going.description": "See further while in the Nether with the Fogsight effect",
   "advancements.nether.gravedigger.title": "Gravedigger",
   "advancements.nether.gravedigger.description": "Dig up fossilized remains to exploit Fossil Fuels",
@@ -317,8 +320,14 @@
   "advancements.nether.exorcism.description": "relieve a possessed mob of its Apparition",
   "advancements.nether.two_face.title": "Two face call me Harvey",
   "advancements.nether.two_face.description": "redirect incoming damage towards a Decoy Charm",
+  "advancements.nether.gothic_manor.title": "Gothic Manor",
+  "advancements.nether.gothic_chambers.description": "Find a Sanctum within a Soul Sand Valley",
+  "advancements.nether.weighted_execution.title": "Weighted Execution",
+  "advancements.nether.weighted_execution.description": "Increase the odds of getting Wither Skulls with a Guillotine",
+  "advancements.nether.angel_with_a_shotgun.title": "Angel with a Shotgun",
+  "advancements.nether.angel_with_a_shotgun.description": "Use a Burst Fist to fire shotgun like projectiles",
 
-  "effect.netherexp.fogsight": "FogSight",
+  "effect.netherexp.fogsight": "Fogsight",
   "effect.netherexp.soul_shield": "Soul Shield",
   "effect.netherexp.hallucination": "Hallucination",
 
@@ -413,6 +422,8 @@
   "text.autoconfig.netherexp.option.visualeffects.ectoplasm_particles.@Tooltip": "Ectoplasm will emit rays and rising particles if enabled",
   "text.autoconfig.netherexp.option.visualeffects.black_ice_particles": "Black Ice Particles",
   "text.autoconfig.netherexp.option.visualeffects.black_ice_particles.@Tooltip": "Black Ice will emit black aerosol particles if enabled",
+  "text.autoconfig.netherexp.option.visualeffects.improved_soul_fire_particles": "Improved Soul Fire Particles",
+  "text.autoconfig.netherexp.option.visualeffects.improved_soul_fire_particles.@Tooltip": "Soul Fire will produce rising souls instead of smoke when enabled",
 
   "text.autoconfig.netherexp.option.worldgen": "World Generation",
   "text.autoconfig.netherexp.option.worldgen.@Tooltip": "Changes to how Biomes and Terrain Generation is handled",
@@ -437,6 +448,18 @@
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_ecto_soul_sand.@Tooltip": "Ecto Soul Sand will generate in small blobs everywhere",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_ectoplasm_lakes": "Generate Ectoplasm Lakes",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_ectoplasm_lakes.@Tooltip": "Ectoplasm Lakes will sometimes generate on the surface",
+
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs": "Warped Forest Settings",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.@Tooltip": "Enable or disable any Warped Forest world generation",
+
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_sporeshroom": "Generate Sporeshroom",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_sporeshroom.@Tooltip": "Warped Sporeshrooms and rarely Crimson Sporeshrooms will generate on the surface",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_wart_beard": "Generate Wart Beard",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_wart_beard.@Tooltip": "Wart Beards will generate under Warped Huge Fungi",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_spotted_wart_blocks": "Generate Spotted Wart Blocks",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_spotted_wart_blocks.@Tooltip": "Warped Wart Blocks can generate with nightspore spots",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_twisting_ivy": "Generate Twisting Ivy",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_twisting_ivy.@Tooltip": "Patches of Twisting Ivy can generate on the floor",
 
   "itemGroup.netherexp.netherexp_tab": "Nether Expansion Tab"
 }

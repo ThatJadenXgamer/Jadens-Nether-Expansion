@@ -10,6 +10,7 @@ import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.WarphopperRenderer;
+import net.jadenxgamer.netherexp.registry.entity.client.WispRenderer;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
@@ -120,5 +121,6 @@ public class NetherExpClient implements ClientModInitializer {
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);
         EntityRendererRegistry.register(ModEntities.APPARITION, ApparitionRenderer::new);
+        EntityRendererRegistry.register(ModEntities.WISP, WispRenderer::new);
     }
 }

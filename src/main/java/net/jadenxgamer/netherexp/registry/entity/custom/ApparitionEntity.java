@@ -17,9 +17,9 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
-import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.StriderEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.BlockPos;
@@ -74,14 +74,24 @@ implements GeoEntity, Angerable, Flutterer {
         this.dataTracker.set(APPARITION_STAGE, i);
         this.refreshPosition();
         this.calculateDimensions();
-        this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(i * i);
+        this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(15 * i);
         this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue(0.2F + 0.1F * (float)i);
-        this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(i);
+        this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(4.0 + i);
         if (heal) {
             this.setHealth(this.getMaxHealth());
         }
 
         this.experiencePoints = i;
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (source.isIn(DamageTypeTags.IS_PROJECTILE)) {
+            return false;
+        }
+        else {
+            return super.damage(source, amount);
+        }
     }
 
     public int getStage() {
@@ -114,12 +124,12 @@ implements GeoEntity, Angerable, Flutterer {
         Random random = world.getRandom();
         int i;
         if (world.getDifficulty() == Difficulty.HARD) {
-            i = random.nextInt(3);
+            i = random.nextInt(4);
         }
         else if (world.getDifficulty() == Difficulty.NORMAL) {
-            i = random.nextInt(2);
+            i = random.nextInt(3);
         }
-        else i = random.nextInt(1);
+        else i = random.nextInt(2);
         this.setStage(i, true);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
@@ -181,7 +191,7 @@ implements GeoEntity, Angerable, Flutterer {
     public boolean onKilledOther(ServerWorld world, LivingEntity other) {
         boolean bl = super.onKilledOther(world, other);
         int s = this.stage();
-        if (s < 4 && other instanceof BeeEntity beeEntity) {
+        if (s < 4 && other instanceof WispEntity) {
             this.setStage(s + 1, true);
         }
         if (s >= 1 && other instanceof SkeletonEntity skeletonEntity) {
@@ -221,7 +231,7 @@ implements GeoEntity, Angerable, Flutterer {
         this.targetSelector.add(3, new ActiveTargetGoal<>(this, SkeletonEntity.class, true));
         this.targetSelector.add(4, new ActiveTargetGoal<>(this, StriderEntity.class, true));
         this.targetSelector.add(5, new ActiveTargetGoal<>(this, MagmaCubeEntity.class, true));
-        this.targetSelector.add(7, new ActiveTargetGoal<>(this, BeeEntity.class, true));
+        this.targetSelector.add(7, new ActiveTargetGoal<>(this, WispEntity.class, true));
         this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
     }
 

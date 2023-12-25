@@ -12,6 +12,7 @@ import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
+import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
 import net.jadenxgamer.netherexp.registry.event.NyliumPathEvent;
 import net.jadenxgamer.netherexp.registry.event.SoulPathEvent;
 import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
@@ -60,6 +61,7 @@ public class NetherExp implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(ModEntities.WARPHOPPER, WarphopperEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.APPARITION, ApparitionEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.WISP, WispEntity.setAttributes());
 
 		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
 		UseBlockCallback.EVENT.register(new NyliumPathEvent());
@@ -74,7 +76,16 @@ public class NetherExp implements ModInitializer {
 	public static boolean checkModCompatCinderscapes() {
 		return FabricLoader.getInstance().isModLoaded("cinderscapes");
 	}
+
+	public static boolean checkModCompatInfernalExpansion() {
+		return FabricLoader.getInstance().isModLoaded("infernalexp");
+	}
+
 	public static boolean checkModCompatGardensOfTheDead() {
 		return FabricLoader.getInstance().isModLoaded("gardens_of_the_dead");
+	}
+
+	public static boolean checkModCompatPigsteel() {
+		return FabricLoader.getInstance().isModLoaded("pigsteel");
 	}
 }

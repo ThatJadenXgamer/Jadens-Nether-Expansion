@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
+import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -21,4 +22,9 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "apparition"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ApparitionEntity::new).fireImmune()
                     .dimensions(EntityDimensions.fixed(0.8F,1.6f)).build());
+
+    public static final EntityType<WispEntity> WISP = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "wisp"),
+            FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, WispEntity::new).fireImmune()
+                    .dimensions(EntityDimensions.fixed(0.4F,0.4f)).build());
 }

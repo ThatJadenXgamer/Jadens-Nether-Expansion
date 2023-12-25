@@ -242,6 +242,7 @@ public class ModItemGroup {
                             entries.add(ModBlocks.UMBRAL_NYLIUM_PATH);
                         }
 
+                        entries.add(ModItems.WISP_SPAWN_EGG);
                         entries.add(ModItems.APPARITION_SPAWN_EGG);
 
                         entries.add(ModItems.FOGGY_ESSENCE);

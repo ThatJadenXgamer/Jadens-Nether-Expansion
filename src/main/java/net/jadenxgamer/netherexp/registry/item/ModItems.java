@@ -95,6 +95,10 @@ public class ModItems {
             new SpawnEggItem(ModEntities.APPARITION,4864303,699311,
                     new FabricItemSettings()));
 
+    public static final Item WISP_SPAWN_EGG = registerItem("wisp_spawn_egg",
+            new SpawnEggItem(ModEntities.WISP,6022120,699311,
+                    new FabricItemSettings()));
+
     public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",
             new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CLARET_SIGN, ModBlocks.CLARET_WALL_SIGN));
 
