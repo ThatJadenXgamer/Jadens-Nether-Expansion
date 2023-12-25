@@ -7,6 +7,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.blocks.*;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.worldgen.SoulSandValleyConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.worldgen.WarpedForestConfigs;
 
 @Config(name = NetherExp.MOD_ID)
 @Config.Gui.Background("netherexp:textures/block/pyrite_nether_bricks_left.png")
@@ -69,6 +70,9 @@ public class NetherExpConfigs implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean black_ice_particles = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean improved_soul_fire_particles = true;
     }
 
     // WORLDGEN //
@@ -84,5 +88,9 @@ public class NetherExpConfigs implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public SoulSandValleyConfigs soulSandValleyConfigs = new SoulSandValleyConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public WarpedForestConfigs warpedForestConfigs = new WarpedForestConfigs();
     }
 }
