@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -18,6 +17,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
@@ -87,8 +87,8 @@ implements GeoEntity, Flutterer {
     public static DefaultAttributeContainer.Builder setAttributes() {
         return HostileEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0)
-                .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.8)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4)
+                .add(EntityAttributes.GENERIC_FLYING_SPEED, 1.2)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0);
     }
 
@@ -100,7 +100,6 @@ implements GeoEntity, Flutterer {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(2, new WispFindSoulFire(this, 0.6, 32));
         this.goalSelector.add(2, new TemptGoal(this, 1.0, Ingredient.ofItems(Items.SOUL_TORCH), false));
         this.goalSelector.add(3, new FleeGoal<>(this, PlayerEntity.class, 8.0F, 0.4, 0.8));
         this.goalSelector.add(4, new WispWanderAroundGoal());
@@ -213,59 +212,6 @@ implements GeoEntity, Flutterer {
 
         public FleeGoal(WispEntity wisp, Class<T> fleeFromType, float distance, double slowSpeed, double fastSpeed) {
             super(wisp, fleeFromType, distance, slowSpeed, fastSpeed);
-        }
-    }
-
-    class WispFindSoulFire extends MoveToTargetPosGoal {
-        private final WispEntity wisp;
-        int ticks;
-        public WispFindSoulFire(WispEntity mob, double speed, int range) {
-            super(mob, speed, range);
-            this.wisp = mob;
-            this.ticks = WispEntity.this.getWorld().random.nextInt(10);
-            this.setControls(EnumSet.of(Control.MOVE));
-        }
-
-        @Override
-        public boolean canStart() {
-            return this.wisp.soulFirePos != null && !WispEntity.this.hasPositionTarget() && WispEntity.this.isSoulFire(WispEntity.this.soulFirePos) && !WispEntity.this.isWithinDistance(WispEntity.this.soulFirePos, 2);
-        }
-
-        @Override
-        public boolean shouldContinue() {
-            return this.canStart();
-        }
-
-        public void start() {
-            this.ticks = 0;
-            super.start();
-        }
-
-        public void stop() {
-            this.ticks = 0;
-            WispEntity.this.navigation.stop();
-            WispEntity.this.navigation.resetRangeMultiplier();
-        }
-
-
-        public void tick() {
-            if (WispEntity.this.soulFirePos != null) {
-                ++this.ticks;
-                if (this.ticks > this.getTickCount(600)) {
-                    WispEntity.this.soulFirePos = null;
-                } else if (!WispEntity.this.navigation.isFollowingPath()) {
-                    if (WispEntity.this.isTooFar(WispEntity.this.soulFirePos)) {
-                        WispEntity.this.soulFirePos = null;
-                    } else {
-                        WispEntity.this.startMovingTo(WispEntity.this.soulFirePos);
-                    }
-                }
-            }
-        }
-
-        @Override
-        protected boolean isTargetPos(WorldView world, BlockPos pos) {
-            return false;
         }
     }
 

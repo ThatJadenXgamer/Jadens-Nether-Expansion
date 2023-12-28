@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.worldgen.generate;
+package net.jadenxgamer.netherexp.registry.worldgen.generate.biome;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;

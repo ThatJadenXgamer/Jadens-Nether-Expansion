@@ -5,7 +5,10 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.blocks.*;
+import net.jadenxgamer.netherexp.registry.config.other.modcompat.CinderscapesConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.worldgen.CrimsonForestConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.worldgen.NetherWastesConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.worldgen.SoulSandValleyConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.worldgen.WarpedForestConfigs;
 
@@ -81,10 +84,6 @@ public class NetherExpConfigs implements ConfigData {
     public WorldGen worldgen = new WorldGen();
 
     public static class WorldGen {
-        @ConfigEntry.Gui.RequiresRestart
-        @ConfigEntry.Gui.Tooltip
-        public int wrath_region_weight = 5;
-
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public SoulSandValleyConfigs soulSandValleyConfigs = new SoulSandValleyConfigs();
@@ -92,5 +91,24 @@ public class NetherExpConfigs implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public WarpedForestConfigs warpedForestConfigs = new WarpedForestConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public CrimsonForestConfigs crimsonForestConfigs = new CrimsonForestConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public NetherWastesConfigs netherWastesConfigs = new NetherWastesConfigs();
+    }
+
+    // MOD COMPAT //
+
+    @ConfigEntry.Gui.CollapsibleObject()
+    public ModCompat modcompat = new ModCompat();
+
+    public static class ModCompat {
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip(count = 2)
+        public CinderscapesConfigs cinderscapesConfigs = new CinderscapesConfigs();
     }
 }

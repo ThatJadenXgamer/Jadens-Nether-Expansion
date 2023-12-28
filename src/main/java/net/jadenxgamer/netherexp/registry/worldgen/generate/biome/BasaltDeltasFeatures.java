@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.worldgen.generate;
+package net.jadenxgamer.netherexp.registry.worldgen.generate.biome;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -6,7 +6,7 @@ import net.jadenxgamer.netherexp.registry.worldgen.feature.ModPlacedFeatures;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 
-public class NetherWastesFeatures {
+public class BasaltDeltasFeatures {
     public static void generateFeatures() {
 
         // STEP 0 - RAW_GENERATION
@@ -30,11 +30,5 @@ public class NetherWastesFeatures {
         // STEP 9 - VEGETAL_DECORATION
 
         // STEP 10 - TOP_LAYER_MODIFICATION
-
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.NETHER_WASTES),
-                GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.QUARTZ_CRYSTAL);
-
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.NETHER_WASTES),
-                GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.QUARTZ_CRYSTAL_EXTRA);
     }
 }

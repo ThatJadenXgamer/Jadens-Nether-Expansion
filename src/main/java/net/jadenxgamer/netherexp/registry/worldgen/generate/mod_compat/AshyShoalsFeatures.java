@@ -1,12 +1,16 @@
-package net.jadenxgamer.netherexp.registry.worldgen.generate;
+package net.jadenxgamer.netherexp.registry.worldgen.generate.mod_compat;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.config.other.modcompat.cinderscapes.AshyShoalsConfigs;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.ModPlacedFeatures;
 import net.minecraft.world.gen.GenerationStep;
 
 public class AshyShoalsFeatures {
+    private static final AshyShoalsConfigs asConfigs = NetherExp.getConfig().modcompat.cinderscapesConfigs.ashyShoalsConfigs;
+
     public static void generateFeatures() {
 
         // STEP 0 - RAW_GENERATION
@@ -31,7 +35,9 @@ public class AshyShoalsFeatures {
 
         // STEP 10 - TOP_LAYER_MODIFICATION
 
-        BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.ASHY_SHOALS),
-                GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ASHEN_GEYSER);
+        if (asConfigs.generate_geyser) {
+            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.ASHY_SHOALS),
+                    GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ASHEN_GEYSER);
+        }
     }
 }

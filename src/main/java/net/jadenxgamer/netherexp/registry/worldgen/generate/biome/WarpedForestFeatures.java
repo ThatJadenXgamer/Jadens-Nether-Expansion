@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.worldgen.generate;
+package net.jadenxgamer.netherexp.registry.worldgen.generate.biome;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -9,8 +9,8 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 
 public class WarpedForestFeatures {
-
     private static final WarpedForestConfigs wfConfigs = NetherExp.getConfig().worldgen.warpedForestConfigs;
+
     public static void generateFeatures() {
 
         // STEP 0 - RAW_GENERATION
