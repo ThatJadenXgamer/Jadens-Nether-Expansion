@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "netherexp:item/executioner_axe"
+    "layer0": "netherexp:item/guillotine"
   }
 }

@@ -40,7 +40,7 @@ public class ModItemGroup {
                         entries.add(ModItems.FOSSIL_FUEL);
 
                         entries.add(ModItems.NECRO_SHARD);
-                        entries.add(ModItems.EXECUTIONER_AXE);
+                        entries.add(ModItems.GUILLOTINE);
 
                         entries.add(ModItems.WRAITHING_FLESH);
                         entries.add(ModBlocks.SOUL_CANDLE);

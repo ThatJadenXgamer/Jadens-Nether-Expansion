@@ -84,8 +84,8 @@ public class ModItems {
     public static final Item NECRO_SHARD = registerItem("necro_shard",
             new Item(new FabricItemSettings()));
 
-    public static final Item EXECUTIONER_AXE = registerItem("executioner_axe",
-            new AxeItem(ModToolMaterials.EXECUTIONER, 6.0F, -3.0F, new FabricItemSettings()));
+    public static final Item GUILLOTINE = registerItem("guillotine",
+            new AxeItem(ModToolMaterials.GUILLOTINE, 6.0F, -3.2F, new FabricItemSettings()));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,

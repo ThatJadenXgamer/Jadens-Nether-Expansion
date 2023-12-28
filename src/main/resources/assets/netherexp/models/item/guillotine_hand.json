@@ -2,7 +2,7 @@
 	"credit": "Made by @ThatJadenXgamer",
 	"parent": "minecraft:item/handheld",
 	"textures": {
-		"layer0": "netherexp:item/executioner_axe_hand"
+		"layer0": "netherexp:item/guillotine_hand"
 	},
 	"display": {
 		"thirdperson_righthand": {

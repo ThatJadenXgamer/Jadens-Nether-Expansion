@@ -6,7 +6,7 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial {
-    EXECUTIONER(0, 40, 2.0f, 0.0f, 0,
+    GUILLOTINE(0, 40, 2.0f, 0.0f, 0,
             () -> Ingredient.ofItems(ModItems.NECRO_SHARD));
 
     private final int miningLevel;

@@ -22,8 +22,8 @@ public abstract class ItemRendererMixin {
             argsOnly = true
     )
     public BakedModel useRubyStaffModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        if (stack.isOf(ModItems.EXECUTIONER_AXE) && renderMode != ModelTransformationMode.GUI) {
-            return ((ItemRendererAccessor) this).netherexp$getModels().getModelManager().getModel(new ModelIdentifier(NetherExp.MOD_ID, "executioner_axe_hand", "inventory"));
+        if (stack.isOf(ModItems.GUILLOTINE) && renderMode != ModelTransformationMode.GUI) {
+            return ((ItemRendererAccessor) this).netherexp$getModels().getModelManager().getModel(new ModelIdentifier(NetherExp.MOD_ID, "guillotine_hand", "inventory"));
         }
         return value;
     }

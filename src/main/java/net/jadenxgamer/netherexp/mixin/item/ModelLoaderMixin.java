@@ -25,6 +25,6 @@ public abstract class ModelLoaderMixin {
             method = "<init>",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
     public void netherexp$addHandModels(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.SourceTrackedData>> blockStates, CallbackInfo ci) {
-        this.addModel(new ModelIdentifier(NetherExp.MOD_ID, "executioner_axe_hand", "inventory"));
+        this.addModel(new ModelIdentifier(NetherExp.MOD_ID, "guillotine_hand", "inventory"));
     }
 }

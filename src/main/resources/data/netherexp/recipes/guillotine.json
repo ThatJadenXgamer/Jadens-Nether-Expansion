@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "NBN",
+    "N N",
     "NBN",
     " B "
   ],
@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "netherexp:executioner_axe",
+    "item": "netherexp:guillotine",
     "count": 1
   }
 }

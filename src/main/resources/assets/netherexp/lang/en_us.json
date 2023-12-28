@@ -19,7 +19,7 @@
   "item.netherexp.rift_armor_trim_smithing_template": "Rift Armor Trim Smithing Template",
   "trim_pattern.netherexp.rift": "Rift Armor Trim",
   "item.netherexp.necro_shard": "Necro Shard",
-  "item.netherexp.executioner_axe": "Executioner Axe",
+  "item.netherexp.guillotine": "Guillotine",
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
   "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
   "item.netherexp.wisp_spawn_egg": "Wisp Spawn Egg",
@@ -433,7 +433,6 @@
 
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs": "Soul Sand Valley Settings",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.@Tooltip": "Enable or disable any Soul Sand Valley world generation",
-
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_jagged_soul_slate": "Generate Jagged Soul Slate",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_jagged_soul_slate.@Tooltip": "Jagged Soul Slate will generate on the surface and cliff edges",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_soul_magma_blobs": "Generate Soul Magma Blobs",
@@ -451,7 +450,6 @@
 
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs": "Warped Forest Settings",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.@Tooltip": "Enable or disable any Warped Forest world generation",
-
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_sporeshroom": "Generate Sporeshroom",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_sporeshroom.@Tooltip": "Warped Sporeshrooms and rarely Crimson Sporeshrooms will generate on the surface",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_wart_beard": "Generate Wart Beard",
@@ -460,6 +458,52 @@
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_spotted_wart_blocks.@Tooltip": "Warped Wart Blocks can generate with nightspore spots",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_twisting_ivy": "Generate Twisting Ivy",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_twisting_ivy.@Tooltip": "Patches of Twisting Ivy can generate on the floor",
+
+  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs": "Crimson Forest Settings",
+  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.@Tooltip": "Enable or disable any Crimson Forest world generation",
+  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_sporeshroom": "Generate Sporeshroom",
+  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_sporeshroom.@Tooltip": "Crimson Sporeshrooms and rarely Warped Sporeshrooms will generate on the surface",
+  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_weeping_ivy": "Generate Weeping Ivy",
+  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_weeping_ivy.@Tooltip": "Patches of Weeping Ivy can generate on the ceiling",
+
+  "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs": "Nether Wastes Settings",
+  "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.@Tooltip": "Enable or disable any Nether Wastes world generation",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_quartz_crystals": "Generate Quartz Crystals",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_quartz_crystals.@Tooltip": "Quartz Crystals will generate on the surface",
+
+  "text.autoconfig.netherexp.option.modcompat": "Mod Compatibility",
+  "text.autoconfig.netherexp.option.modcompat.@Tooltip": "Changes to how Nether Expansion adds bonus content to other Mods",
+
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs": "Cinderscapes Configs",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.@Tooltip[0]": "Enable or disable any Cinderscapes Mod Compatibility",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.@Tooltip[1]": "these configs matter only if Cinderscapes is Installed",
+
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs": "Luminous Grove Settings",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.@Tooltip": "Enable or disable any Luminous Grove world generation",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_sporeshroom": "Generate Sporeshroom",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_sporeshroom.@Tooltip": "Umbral Sporeshrooms and rarely Warped Sporeshrooms will generate on the surface",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_twilight_vines": "Generate Twilight Vines",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_twilight_vines.@Tooltip": "Twilight Vines will hang down from the ceiling",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_twilight_ivy": "Generate Twilight Ivy",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_twilight_ivy.@Tooltip": "Patches of Twilight Ivy can generate on the ceiling",
+
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs": "Ashy Shoals Settings",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.@Tooltip": "Enable or disable any Ashy Shoals world generation",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_geyser": "Generate Geyser",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_geyser.@Tooltip": "Ashen Geysers will generate on the surface",
+
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs": "Blackstone Shales Settings",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.@Tooltip": "Enable or disable any Blackstone Shales world generation",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_geyser": "Generate Geyser",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_geyser.@Tooltip": "Blackstonic Geyser will generate on the surface",
+
+  "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs": "Gardens of the Dead Configs",
+  "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs.@Tooltip[0]": "Enable or disable any Gardens of the Dead Mod Compatibility",
+  "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs.@Tooltip[1]": "these configs matter only if Gardens of the Dead is Installed",
+
+  "text.autoconfig.netherexp.option.modcompat.pigsteelConfigs": "Pigsteel Configs",
+  "text.autoconfig.netherexp.option.modcompat.pigsteelConfigs.@Tooltip[0]": "Enable or disable any Pigsteel Mod Compatibility",
+  "text.autoconfig.netherexp.option.modcompat.pigsteelConfigs.@Tooltip[1]": "these configs matter only if Pigsteel is Installed",
 
   "itemGroup.netherexp.netherexp_tab": "Nether Expansion Tab"
 }
