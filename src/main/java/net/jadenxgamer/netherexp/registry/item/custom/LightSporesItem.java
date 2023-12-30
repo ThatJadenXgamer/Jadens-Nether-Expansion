@@ -41,10 +41,8 @@ public class LightSporesItem extends Item {
         */
         if (state.isOf(Blocks.NETHER_WART_BLOCK)) {
             world.setBlockState(pos, ModBlocks.SPOTTED_NETHER_WART_BLOCK.getDefaultState());
-            //TODO: Make a custom sound effect for this
             world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
-
             if (player != null) {
                 itemStack.decrement(1);
             }

@@ -41,7 +41,6 @@ public class NightSporesItem extends Item {
         */
         if (state.isOf(Blocks.WARPED_WART_BLOCK)) {
             world.setBlockState(pos, ModBlocks.SPOTTED_WARPED_WART_BLOCK.getDefaultState());
-            //TODO: Make a custom sound effect for this
             world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 

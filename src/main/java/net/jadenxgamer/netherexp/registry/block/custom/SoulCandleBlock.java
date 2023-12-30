@@ -44,16 +44,18 @@ implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final ToIntFunction<BlockState> STATE_TO_LUMINANCE = state -> state.get(LIT) ? 3 * state.get(CANDLES) : 0;
 
-    @SuppressWarnings("all")
-    private static final Int2ObjectMap<List<Vec3d>> CANDLES_TO_PARTICLE_OFFSETS = Util.make(() -> {
-        Int2ObjectOpenHashMap int2ObjectMap = new Int2ObjectOpenHashMap();
-        int2ObjectMap.defaultReturnValue(ImmutableList.of());
-        int2ObjectMap.put(1, ImmutableList.of(new Vec3d(0.5, 0.75, 0.5)));
-        int2ObjectMap.put(2, ImmutableList.of(new Vec3d(0.3125, 0.625, 0.3125), new Vec3d(0.6875, 0.75, 0.6875)));
-        //TODO: 3rd fire placement in Soul Candle is bugged
-        int2ObjectMap.put(3, ImmutableList.of(new Vec3d(0.25, 0.625, 0.25), new Vec3d(0.75, 0.625, 0.3125), new Vec3d(0.56, 0.5, 0.44)));
-        return Int2ObjectMaps.unmodifiable(int2ObjectMap);
-    });
+    private static final Int2ObjectMap<List<Vec3d>> CANDLES_TO_PARTICLE_OFFSETS;
+
+    static {
+        CANDLES_TO_PARTICLE_OFFSETS = Util.make(() -> {
+            Int2ObjectMap<List<Vec3d>> int2ObjectMap = new Int2ObjectOpenHashMap<>();
+            int2ObjectMap.defaultReturnValue(ImmutableList.of());
+            int2ObjectMap.put(1, ImmutableList.of(new Vec3d(0.5, 0.75, 0.5)));
+            int2ObjectMap.put(2, ImmutableList.of(new Vec3d(0.3125, 0.625, 0.3125), new Vec3d(0.6875, 0.75, 0.6875)));
+            int2ObjectMap.put(3, ImmutableList.of(new Vec3d(0.75, 0.5, 0.3125), new Vec3d(0.5, 0.75, 0.75), new Vec3d(0.25, 0.625, 0.375)));
+            return Int2ObjectMaps.unmodifiable(int2ObjectMap);
+        });
+    }
 
     private static final VoxelShape ONE_CANDLE_SHAPE = Block.createCuboidShape(5, 0, 5, 11, 10, 11);
     private static final VoxelShape TWO_CANDLES_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 10, 14);
