@@ -23,6 +23,7 @@
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
   "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
   "item.netherexp.wisp_spawn_egg": "Wisp Spawn Egg",
+  "item.netherexp.wisp_bottle": "Wisp in a Bottle",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
@@ -328,7 +329,7 @@
   "advancements.nether.angel_with_a_shotgun.description": "Use a Burst Fist to fire shotgun like projectiles",
 
   "effect.netherexp.fogsight": "Fogsight",
-  "effect.netherexp.soul_shield": "Soul Shield",
+  "effect.netherexp.unbounded_speed": "Unbounded Speed",
   "effect.netherexp.hallucination": "Hallucination",
 
   "text.autoconfig.netherexp.title": "Jaden's Nether Expansion - Settings",
@@ -372,6 +373,11 @@
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.viscous_soul_glass.@Tooltip": "Soul Glass slows down movement when submerged without Soul Speed",
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.phasmophobic_mobs": "Phasmophobic Mobs",
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.phasmophobic_mobs.@Tooltip": "Mobs will avoid going through Soul Glass",
+
+  "text.autoconfig.netherexp.option.blocks.soulSandConfigs": "Soul Sand Configs",
+  "text.autoconfig.netherexp.option.blocks.soulSandConfigs.@Tooltip": "Enable or disable Soul Sand functionality",
+  "text.autoconfig.netherexp.option.blocks.soulSandConfigs.nerfed_soul_sand_slowness": "Nerfed Soul Sand Slowness",
+  "text.autoconfig.netherexp.option.blocks.soulSandConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand's Speed Reduction will be less powerful if enabled",
 
   "text.autoconfig.netherexp.option.blocks.geyserConfigs": "Geyser",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.@Tooltip": "Enable or disable Geyser functionality",
@@ -468,8 +474,8 @@
 
   "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs": "Nether Wastes Settings",
   "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.@Tooltip": "Enable or disable any Nether Wastes world generation",
-  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_quartz_crystals": "Generate Quartz Crystals",
-  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_quartz_crystals.@Tooltip": "Quartz Crystals will generate on the surface",
+  "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.generate_quartz_crystals": "Generate Quartz Crystals",
+  "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.generate_quartz_crystals.@Tooltip": "Quartz Crystals will generate on the surface",
 
   "text.autoconfig.netherexp.option.modcompat": "Mod Compatibility",
   "text.autoconfig.netherexp.option.modcompat.@Tooltip": "Changes to how Nether Expansion adds bonus content to other Mods",

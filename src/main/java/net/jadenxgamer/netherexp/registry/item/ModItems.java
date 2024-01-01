@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
+import net.jadenxgamer.netherexp.registry.item.custom.EntityBottleItem;
 import net.jadenxgamer.netherexp.registry.item.custom.LightSporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightSporesItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
@@ -12,6 +13,7 @@ import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
@@ -74,6 +76,9 @@ public class ModItems {
 
     public static final Item NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice",
             new Item(new FabricItemSettings().food(ModFoodComponents.PIZZA_SLICE)));
+
+    public static final Item WISP_BOTTLE = registerItem("wisp_bottle",
+            new EntityBottleItem(ModEntities.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
 
     public static final Item WRAITHING_FLESH = registerItem("wraithing_flesh",
             new Item(new FabricItemSettings().food(ModFoodComponents.WRAITHING_FLESH)));

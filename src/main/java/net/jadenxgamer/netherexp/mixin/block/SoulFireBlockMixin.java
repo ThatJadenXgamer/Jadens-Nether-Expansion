@@ -13,10 +13,10 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(SoulFireBlock.class)
-public abstract class SoulFireMixin
+public abstract class SoulFireBlockMixin
 extends AbstractFireBlock {
 
-    public SoulFireMixin(Settings settings, float damage) {
+    public SoulFireBlockMixin(Settings settings, float damage) {
         super(settings, damage);
     }
 
