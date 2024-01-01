@@ -1,28 +1,54 @@
 {
   "variants": {
-    "facing=down": {
+    "facing=down,cooldown=false": {
       "model": "netherexp:block/soul_swirls_hanging",
       "x": 180
     },
-    "facing=east": {
+    "facing=east,cooldown=false": {
       "model": "netherexp:block/soul_swirls_wall",
       "x": 90,
       "y": 90
     },
-    "facing=north": {
+    "facing=north,cooldown=false": {
       "model": "netherexp:block/soul_swirls_wall",
       "x": 90
     },
-    "facing=south": {
+    "facing=south,cooldown=false": {
       "model": "netherexp:block/soul_swirls_wall",
       "x": 90,
       "y": 180
     },
-    "facing=up": {
+    "facing=up,cooldown=false": {
       "model": "netherexp:block/soul_swirls"
     },
-    "facing=west": {
+    "facing=west,cooldown=false": {
       "model": "netherexp:block/soul_swirls_wall",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,cooldown=true": {
+      "model": "netherexp:block/soul_swirls_hanging_cooldown",
+      "x": 180
+    },
+    "facing=east,cooldown=true": {
+      "model": "netherexp:block/soul_swirls_wall_cooldown",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,cooldown=true": {
+      "model": "netherexp:block/soul_swirls_wall_cooldown",
+      "x": 90
+    },
+    "facing=south,cooldown=true": {
+      "model": "netherexp:block/soul_swirls_wall_cooldown",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,cooldown=true": {
+      "model": "netherexp:block/soul_swirls_cooldown"
+    },
+    "facing=west,cooldown=true": {
+      "model": "netherexp:block/soul_swirls_wall_cooldown",
       "x": 90,
       "y": 270
     }

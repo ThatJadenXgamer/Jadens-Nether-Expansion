@@ -90,7 +90,8 @@ public class ModBlocks {
             new SoulGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(0.3f, 1200.0f).sounds(BlockSoundGroup.GLASS)));
 
     public static final Block SOUL_SWIRLS = registerBlock("soul_swirls",
-            new SoulSwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS)));
+            new SoulSwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
+                    state -> state.get(SoulSwirlsBlock.COOLDOWN) ? 5 : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS)));
 
     public static final Block ECTO_SOUL_SAND = registerBlock("ecto_soul_sand",
             new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).sounds(BlockSoundGroup.SOUL_SAND)));

@@ -10,7 +10,7 @@
     "block.FluidBlockMixin",
     "block.PumpkinStemMixin",
     "block.RootsBlockMixin",
-    "block.SoulFireMixin",
+    "block.SoulFireBlockMixin",
     "block.TwistingVinesMixin",
     "block.WeepingVinesMixin",
     "entity.HoglinEntityMixin",

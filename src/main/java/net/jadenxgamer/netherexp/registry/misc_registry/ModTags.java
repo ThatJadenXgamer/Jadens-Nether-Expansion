@@ -100,6 +100,9 @@ public class ModTags {
         // Wisps will try to find blocks in this tag and circle around it
         public static final TagKey<Block> SOUL_FIRE_THAT_LURES_WISPS = createBlockTag("soul_fire_that_lures_wisps");
 
+        // Blocks in this tag will no longer slow you down if Unbounded Speed is applied
+        public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks");
+
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
 
