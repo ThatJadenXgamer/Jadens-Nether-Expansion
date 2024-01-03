@@ -117,6 +117,7 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.ECTORAYS, EctoraysParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.ECTOPLASMA, EctoplasmaParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BLACK_AEROSOL, AerosolParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SWIRL_POP, RisingParticle.Factory::new);
 
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);

@@ -32,6 +32,7 @@ public class ModParticles {
     public static final DefaultParticleType SOUL_EMBER = FabricParticleTypes.simple();
     public static final DefaultParticleType ECTORAYS = FabricParticleTypes.simple();
     public static final DefaultParticleType ECTOPLASMA = FabricParticleTypes.simple();
+    public static final DefaultParticleType SWIRL_POP = FabricParticleTypes.simple();
     public static final DefaultParticleType BLACK_AEROSOL = FabricParticleTypes.simple();
 
     // Registering Particles
@@ -82,6 +83,8 @@ public class ModParticles {
                 ECTOPLASMA);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "black_aerosol"),
                 BLACK_AEROSOL);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "swirl_pop"),
+                SWIRL_POP);
 
         NetherExp.LOGGER.debug("Registering Particles for " + NetherExp.MOD_ID);
     }

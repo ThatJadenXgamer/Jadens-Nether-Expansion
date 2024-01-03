@@ -948,6 +948,14 @@
       "netherexp:block/lightspores/shear"
     ]
   },
+  "block.soul_swirls.boost": {
+    "subtitle": "subtitles.block.soul_swirls.boost",
+    "sounds": [
+      "netherexp:block/soul_swirls/boost1",
+      "netherexp:block/soul_swirls/boost2",
+      "netherexp:block/soul_swirls/boost3"
+    ]
+  },
   "entity.warphopper.ambient": {
     "subtitle": "subtitles.entity.warphopper.ambient",
     "sounds": [

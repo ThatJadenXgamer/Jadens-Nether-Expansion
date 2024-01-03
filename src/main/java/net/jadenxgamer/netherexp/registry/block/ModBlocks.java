@@ -265,7 +265,6 @@ public class ModBlocks {
     public static final Block IGNEOUS_REEDS = registerBlock("igneous_reeds",
             new IgneousReeds(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).noCollision().breakInstantly().requiresTool().offset(AbstractBlock.OffsetType.XZ).sounds(ModSoundEvents.SMOKESTALK)));
 
-    //TODO: Add LootTables
     public static final Block IGNEOUS_VINES = registerBlock("igneous_vines",
             new IgneousVinesBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
 

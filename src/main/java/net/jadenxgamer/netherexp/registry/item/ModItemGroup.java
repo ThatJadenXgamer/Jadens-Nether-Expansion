@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.config.other.worldgen.SoulSandValleyConfigs;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
@@ -127,10 +128,12 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SMOKESTALK_BUTTON);
                         entries.add(ModItems.SMOKESTALK_SIGN_ITEM);
                         entries.add(ModItems.SMOKESTALK_HANGING_SIGN_ITEM);
-                        entries.add(ModBlocks.IGNEOUS_REEDS);
-                        entries.add(ModBlocks.IGNEOUS_VINES);
-                        entries.add(ModBlocks.EXPLOSIVE_SCORIA);
-                        entries.add(ModItems.IRON_SCRAP);
+                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                            entries.add(ModBlocks.IGNEOUS_REEDS);
+                            entries.add(ModBlocks.IGNEOUS_VINES);
+                            entries.add(ModBlocks.EXPLOSIVE_SCORIA);
+                            entries.add(ModItems.IRON_SCRAP);
+                        }
 
                         entries.add(Items.QUARTZ);
                         entries.add(ModBlocks.QUARTZ_CRYSTAL);
@@ -149,17 +152,19 @@ public class ModItemGroup {
                         entries.add(Blocks.SMOOTH_QUARTZ_SLAB);
                         entries.add(ModBlocks.SMOOTH_QUARTZ_WALL);
 
-                        entries.add(ModBlocks.SILICA_SAND);
-                        entries.add(ModBlocks.SILICA_SANDSTONE);
-                        entries.add(ModBlocks.SILICA_SANDSTONE_STAIRS);
-                        entries.add(ModBlocks.SILICA_SANDSTONE_SLAB);
-                        entries.add(ModBlocks.SILICA_SANDSTONE_WALL);
-                        entries.add(ModBlocks.CUT_SILICA_SANDSTONE);
-                        entries.add(ModBlocks.CUT_SILICA_SANDSTONE_SLAB);
-                        entries.add(ModBlocks.CHISELED_SILICA_SANDSTONE);
-                        entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE);
-                        entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE_STAIRS);
-                        entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE_SLAB);
+                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                            entries.add(ModBlocks.SILICA_SAND);
+                            entries.add(ModBlocks.SILICA_SANDSTONE);
+                            entries.add(ModBlocks.SILICA_SANDSTONE_STAIRS);
+                            entries.add(ModBlocks.SILICA_SANDSTONE_SLAB);
+                            entries.add(ModBlocks.SILICA_SANDSTONE_WALL);
+                            entries.add(ModBlocks.CUT_SILICA_SANDSTONE);
+                            entries.add(ModBlocks.CUT_SILICA_SANDSTONE_SLAB);
+                            entries.add(ModBlocks.CHISELED_SILICA_SANDSTONE);
+                            entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE);
+                            entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE_STAIRS);
+                            entries.add(ModBlocks.SMOOTH_SILICA_SANDSTONE_SLAB);
+                        }
 
                         entries.add(Blocks.NETHER_BRICKS);
                         entries.add(Blocks.NETHER_BRICK_STAIRS);
@@ -182,17 +187,20 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_SLAB);
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_WALL);
 
-                        entries.add(ModItems.PYRITE_INGOT);
-                        entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
-                        entries.add(ModBlocks.PYRITE_BLOCK);
-                        entries.add(ModBlocks.PYRITE_STAIRS);
-                        entries.add(ModBlocks.PYRITE_SLAB);
-                        entries.add(ModBlocks.PYRITE_WALL);
-                        entries.add(ModBlocks.PYRITE_LANTERN);
-                        entries.add(ModBlocks.SOUL_PYRITE_LANTERN);
-                        entries.add(ModBlocks.PYRITE_CHAIN);
-                        entries.add(ModBlocks.MEDIUM_WEIGHTED_PRESSURE_PLATE);
-                        entries.add(ModBlocks.PYRITE_BUTTON);
+
+                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                            entries.add(ModItems.PYRITE_INGOT);
+                            entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
+                            entries.add(ModBlocks.PYRITE_BLOCK);
+                            entries.add(ModBlocks.PYRITE_STAIRS);
+                            entries.add(ModBlocks.PYRITE_SLAB);
+                            entries.add(ModBlocks.PYRITE_WALL);
+                            entries.add(ModBlocks.PYRITE_LANTERN);
+                            entries.add(ModBlocks.SOUL_PYRITE_LANTERN);
+                            entries.add(ModBlocks.PYRITE_CHAIN);
+                            entries.add(ModBlocks.MEDIUM_WEIGHTED_PRESSURE_PLATE);
+                            entries.add(ModBlocks.PYRITE_BUTTON);
+                        }
 
                         entries.add(ModItems.LIGHTSPORES);
                         entries.add(Blocks.SHROOMLIGHT);
@@ -251,9 +259,11 @@ public class ModItemGroup {
                         entries.add(ModItems.HOGHAM);
                         entries.add(ModItems.COOKED_HOGHAM);
 
-                        entries.add(ModItems.WARPHOPPER_FUR);
-                        entries.add(ModItems.MUSIC_DISC_CRICKET);
-                        entries.add(ModItems.WARPHOPPER_SPAWN_EGG);
+                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                            entries.add(ModItems.WARPHOPPER_FUR);
+                            entries.add(ModItems.MUSIC_DISC_CRICKET);
+                            entries.add(ModItems.WARPHOPPER_SPAWN_EGG);
+                        }
 
                         entries.add(ModBlocks.CRIMSON_SPORESHROOM);
                         entries.add(ModBlocks.WARPED_SPORESHROOM);

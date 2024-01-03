@@ -128,6 +128,7 @@ public class ModSoundEvents {
     public static SoundEvent SPORESHROOM_TRAMPOLINED = registerSoundEvent("block.sporeshroom.trampolined");
     public static SoundEvent LIGHTSPORES_APPLY = registerSoundEvent("block.lightspores.apply");
     public static SoundEvent LIGHTSPORES_SHEAR = registerSoundEvent("block.lightspores.shear");
+    public static SoundEvent SOUL_SWIRLS_BOOST = registerSoundEvent("block.soul_swirls.boost");
 
     // ENTITIES:
 
