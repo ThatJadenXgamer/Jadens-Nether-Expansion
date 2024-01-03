@@ -26,6 +26,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(WeepingVinesBlock.class)
 public abstract class WeepingVinesMixin extends AbstractPlantStemBlock {
@@ -94,10 +95,12 @@ public abstract class WeepingVinesMixin extends AbstractPlantStemBlock {
         return ActionResult.PASS;
     }
 
+    @Unique
     private static void dropLight(World world, BlockPos pos) {
         dropStack(world, pos, new ItemStack(ModItems.LIGHTSPORES, 1));
     }
 
+    @Unique
     private static void sporeParticles(World world, BlockPos pos) {
         Random random = world.random;
         for (Direction direction : Direction.values()) {

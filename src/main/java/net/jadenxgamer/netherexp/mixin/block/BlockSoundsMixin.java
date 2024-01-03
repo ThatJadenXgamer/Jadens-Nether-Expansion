@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.sound.BlockSoundGroup;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -20,6 +21,7 @@ public abstract class BlockSoundsMixin extends AbstractBlock {
         super(settings);
     }
 
+    @Unique
     private static final BlockSoundsConfigs soundsConfigs = NetherExp.getConfig().sounds.blockSoundsConfigs;
 
     @Inject(

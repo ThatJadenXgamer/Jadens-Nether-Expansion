@@ -276,6 +276,7 @@
   "subtitles.block.lightspores.apply": "Spores applied to Block",
   "subtitles.block.lightspores.shear": "Spores scraped from Block",
   "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
+  "subtitles.block.soul_swirls.boost": "Soul Swirls whoop",
 
   "death.attack.igneousThorns": "%1$s was pricked to death inside igneous thorns",
   "death.attack.igneousThorns.player": "%1$s was pricked to death inside igneous thorns whilst trying to escape %2$s",
@@ -374,11 +375,6 @@
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.phasmophobic_mobs": "Phasmophobic Mobs",
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.phasmophobic_mobs.@Tooltip": "Mobs will avoid going through Soul Glass",
 
-  "text.autoconfig.netherexp.option.blocks.soulSandConfigs": "Soul Sand Configs",
-  "text.autoconfig.netherexp.option.blocks.soulSandConfigs.@Tooltip": "Enable or disable Soul Sand functionality",
-  "text.autoconfig.netherexp.option.blocks.soulSandConfigs.nerfed_soul_sand_slowness": "Nerfed Soul Sand Slowness",
-  "text.autoconfig.netherexp.option.blocks.soulSandConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand's Speed Reduction will be less powerful if enabled",
-
   "text.autoconfig.netherexp.option.blocks.geyserConfigs": "Geyser",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.@Tooltip": "Enable or disable Geyser functionality",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_deals_damage": "Geyser Deals Damage",
@@ -403,8 +399,24 @@
   "text.autoconfig.netherexp.option.blocks.renewableConfigs.wart_beards_from_wart_blocks": "Wart Beards from Wart Blocks",
   "text.autoconfig.netherexp.option.blocks.renewableConfigs.wart_beards_from_wart_blocks.@Tooltip": "Vanilla and Modded Wart Blocks can be bone mealed to grow Wart Beards",
 
+  "text.autoconfig.netherexp.option.items": "Items",
+  "text.autoconfig.netherexp.option.items.@Tooltip": "Changes to how certain items behave",
+
+  "text.autoconfig.netherexp.option.gameMechanics": "Game Mechanics",
+  "text.autoconfig.netherexp.option.gameMechanics.@Tooltip": "Changes to how certain game mechanics are handled",
+
+  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs": "Soul Speed Configs",
+  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.@Tooltip": "Enable or disable Soul Speed related functionality",
+  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.nerfed_soul_sand_slowness": "Nerfed Soul Sand Slowness",
+  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand's Speed Reduction will be less powerful if enabled",
+  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.no_soul_speed_degradation": "No Soul Speed Degradation",
+  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.no_soul_speed_degradation.@Tooltip": "Soul Speed will no longer gradually damage your boots when used",
+
+  "text.autoconfig.netherexp.option.gameMechanics.enable_unfinished_items": "Enable Unfinished Items",
+  "text.autoconfig.netherexp.option.gameMechanics.enable_unfinished_items.@Tooltip": "Unfinished or Experimental Items will appear in the Creative Inventory",
+
   "text.autoconfig.netherexp.option.sounds": "Sounds",
-  "text.autoconfig.netherexp.option.sounds.@Tooltip": "Changes related to Sound Effects",
+  "text.autoconfig.netherexp.option.sounds.@Tooltip": "Changes related to sound effects",
 
   "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs": "Block Sounds",
   "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs.@Tooltip": "Enable or disable any Custom Block Sounds",
@@ -422,7 +434,7 @@
   "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs.quartz_block_sounds.@Tooltip": "Quartz Blocks will produce custom sounds",
 
   "text.autoconfig.netherexp.option.visualeffects": "Visual Effects",
-  "text.autoconfig.netherexp.option.visualeffects.@Tooltip": "Changes related to Visual Effects",
+  "text.autoconfig.netherexp.option.visualeffects.@Tooltip": "Changes related to visual effects",
 
   "text.autoconfig.netherexp.option.visualeffects.ectoplasm_particles": "Ectoplasm Particles",
   "text.autoconfig.netherexp.option.visualeffects.ectoplasm_particles.@Tooltip": "Ectoplasm will emit rays and rising particles if enabled",

@@ -98,10 +98,12 @@ extends AbstractPlantStemBlock {
         return ActionResult.PASS;
     }
 
+    @Unique
     private static void dropNight(World world, BlockPos pos) {
         dropStack(world, pos, new ItemStack(ModItems.NIGHTSPORES, 1));
     }
 
+    @Unique
     private static void sporeParticles(World world, BlockPos pos) {
         Random random = world.random;
         for (Direction direction : Direction.values()) {

@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.Slice;
 @Mixin(Blocks.class)
 public class BlocksMixin {
 
+    //TODO: implement Ashy Basalt textures
     @Redirect(
             method = "<clinit>",
             at = @At(

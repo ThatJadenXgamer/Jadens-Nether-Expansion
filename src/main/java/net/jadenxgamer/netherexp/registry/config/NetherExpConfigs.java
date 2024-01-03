@@ -44,15 +44,36 @@ public class NetherExpConfigs implements ConfigData {
 
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
-        public SoulSandConfigs soulSandConfigs = new SoulSandConfigs();
-
-        @ConfigEntry.Gui.CollapsibleObject()
-        @ConfigEntry.Gui.Tooltip
         public GeyserConfigs geyserConfigs = new GeyserConfigs();
 
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public RenewableConfigs renewableConfigs = new RenewableConfigs();
+    }
+
+    // ITEMS //
+
+    @ConfigEntry.Gui.CollapsibleObject()
+    public Items items = new Items();
+
+    public static class Items {
+
+    }
+
+    // GAME MECHANICS //
+
+    @ConfigEntry.Gui.CollapsibleObject()
+    public GameMechanics gameMechanics = new GameMechanics();
+
+    public static class GameMechanics {
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public SoulSpeedConfigs soulSpeedConfigs = new SoulSpeedConfigs();
+
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.Gui.RequiresRestart
+        public boolean enable_unfinished_items = false;
     }
 
     // SOUNDS //

@@ -16,7 +16,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements Attackable {
@@ -31,13 +34,21 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private void netherexp$getVelocityMultiplier(CallbackInfoReturnable<Float> cir) {
+    private void netherexp$soulSpeedVelocityMultiplier(CallbackInfoReturnable<Float> cir) {
         BlockState state = this.getWorld().getBlockState(this.getVelocityAffectingPos());
         if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasStatusEffect(ModStatusEffects.UNBOUNDED_SPEED) && !EnchantmentHelper.hasSoulSpeed((LivingEntity) (Object) this)) {
             cir.setReturnValue(1.0F);
         }
-        else if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().blocks.soulSandConfigs.nerfed_soul_sand_slowness) {
+        else if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().gameMechanics.soulSpeedConfigs.nerfed_soul_sand_slowness) {
             cir.setReturnValue(0.6F);
         }
+    }
+
+    @ModifyArg(
+            method = "addSoulSpeedBoostIfNeeded",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V")
+    )
+    private int netherexp$addSoulSpeedQOL(int amount) {
+        return NetherExp.getConfig().gameMechanics.soulSpeedConfigs.no_soul_speed_degradation ? 0 : 1;
     }
 }
