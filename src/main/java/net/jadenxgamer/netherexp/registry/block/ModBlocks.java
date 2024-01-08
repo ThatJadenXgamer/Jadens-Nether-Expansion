@@ -108,9 +108,6 @@ public class ModBlocks {
     public static final Block FOSSIL_FUEL_ORE = registerBlock("fossil_fuel_ore",
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL), UniformIntProvider.create(1, 3)));
 
-    public static final Block OPALIZED_FOSSIL_ORE = registerBlock("opalized_fossil_ore",
-            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL), UniformIntProvider.create(3, 7)));
-
     // Sorrowsquash
 
     public static final Block SORROWSQUASH = registerBlock("sorrowsquash",

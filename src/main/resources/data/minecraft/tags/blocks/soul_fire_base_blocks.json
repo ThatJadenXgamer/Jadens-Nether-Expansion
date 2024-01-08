@@ -13,6 +13,8 @@
     "netherexp:ecto_soul_sand",
     "netherexp:soul_magma_block",
     "netherexp:souled_geyser",
-    "netherexp:black_ice"
+    "netherexp:black_ice",
+    "netherexp:fossil_ore",
+    "netherexp:fossil_fuel_ore"
   ]
 }

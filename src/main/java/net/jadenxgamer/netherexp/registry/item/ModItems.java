@@ -117,7 +117,7 @@ public class ModItems {
             new HangingSignItem(ModBlocks.SMOKESTALK_HANGING_SIGN, ModBlocks.SMOKESTALK_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
 
     public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
-            new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET,new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));
+            new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name), item);

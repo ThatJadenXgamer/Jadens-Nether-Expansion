@@ -8,11 +8,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 
 public class WispRenderer extends GeoEntityRenderer<WispEntity> {
     public WispRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new WispModel());
         this.shadowRadius = 0.2f;
+        addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
     @Override
     public RenderLayer getRenderType(WispEntity animatable, Identifier texture, @Nullable VertexConsumerProvider bufferSource, float partialTick) {

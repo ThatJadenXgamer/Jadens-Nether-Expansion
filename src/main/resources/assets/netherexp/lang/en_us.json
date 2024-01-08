@@ -381,8 +381,8 @@
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_deals_damage.@Tooltip": "Geyser deals Hot Floor Damage when used",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown": "Geyser Cooldown",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown.@Tooltip": "Geysers go into Cooldown when used",
-  "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_delay_ticks": "Geyser Cooldown Delay Ticks",
-  "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_delay_ticks.@Tooltip": "Determines the tick delay for how long the Geyser goes to Cooldown for",
+  "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_ticks": "Geyser Cooldown Delay Ticks",
+  "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_ticks.@Tooltip": "Determines the tick delay for how long the Geyser goes to Cooldown for",
 
   "text.autoconfig.netherexp.option.blocks.renewableConfigs": "Renewable Blocks",
   "text.autoconfig.netherexp.option.blocks.renewableConfigs.@Tooltip": "Various Renewable Block Settings",

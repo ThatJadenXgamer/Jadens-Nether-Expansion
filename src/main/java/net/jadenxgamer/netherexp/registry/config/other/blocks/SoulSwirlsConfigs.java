@@ -2,14 +2,14 @@ package net.jadenxgamer.netherexp.registry.config.other.blocks;
 
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
-public class GeyserConfigs {
+public class SoulSwirlsConfigs {
 
     @ConfigEntry.Gui.Tooltip
-    public boolean geyser_deals_damage = true;
+    public boolean soul_swirls_boosting = true;
 
     @ConfigEntry.Gui.Tooltip
-    public boolean geyser_cooldown = true;
+    public int soul_swirls_cooldown_ticks = 1000;
 
     @ConfigEntry.Gui.Tooltip
-    public int geyser_cooldown_ticks = 100;
+    public int unbounded_speed_duration = 10;
 }

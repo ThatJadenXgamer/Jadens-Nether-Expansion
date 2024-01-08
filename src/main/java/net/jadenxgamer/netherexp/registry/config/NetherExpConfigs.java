@@ -5,6 +5,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.blocks.*;
+import net.jadenxgamer.netherexp.registry.config.other.gamemechanics.SoulSpeedConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.modcompat.CinderscapesConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.worldgen.CrimsonForestConfigs;
@@ -49,6 +50,10 @@ public class NetherExpConfigs implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public RenewableConfigs renewableConfigs = new RenewableConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public SoulSwirlsConfigs soulSwirlsConfigs = new SoulSwirlsConfigs();
     }
 
     // ITEMS //
@@ -70,10 +75,9 @@ public class NetherExpConfigs implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public SoulSpeedConfigs soulSpeedConfigs = new SoulSpeedConfigs();
 
-
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.Gui.RequiresRestart
-        public boolean enable_unfinished_items = false;
+        public boolean enable_unfinished_items = true;
     }
 
     // SOUNDS //

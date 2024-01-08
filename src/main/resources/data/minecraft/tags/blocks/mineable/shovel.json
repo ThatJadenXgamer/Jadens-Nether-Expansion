@@ -9,7 +9,6 @@
     "netherexp:soul_path",
     "netherexp:silica_sand",
     "netherexp:fossil_ore",
-    "netherexp:fossil_fuel_ore",
-    "netherexp:opalized_fossil_ore"
+    "netherexp:fossil_fuel_ore"
   ]
 }

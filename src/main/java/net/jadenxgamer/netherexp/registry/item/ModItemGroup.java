@@ -37,7 +37,6 @@ public class ModItemGroup {
 
                         entries.add(ModBlocks.FOSSIL_ORE);
                         entries.add(ModBlocks.FOSSIL_FUEL_ORE);
-                        entries.add(ModBlocks.OPALIZED_FOSSIL_ORE);
                         entries.add(ModItems.FOSSIL_FUEL);
 
                         entries.add(ModItems.NECRO_SHARD);

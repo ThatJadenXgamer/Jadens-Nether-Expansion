@@ -58,7 +58,7 @@ public class GeyserBlock extends Block {
             world.playSound(pos.getX(),pos.getY(),pos.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
             if (NetherExp.getConfig().blocks.geyserConfigs.geyser_cooldown) {
                 world.setBlockState(pos, state.cycle(COOLDOWN), NOTIFY_LISTENERS);
-                world.scheduleBlockTick(pos, this, NetherExp.getConfig().blocks.geyserConfigs.geyser_cooldown_delay_ticks);
+                world.scheduleBlockTick(pos, this, NetherExp.getConfig().blocks.geyserConfigs.geyser_cooldown_ticks);
             }
         }
     }

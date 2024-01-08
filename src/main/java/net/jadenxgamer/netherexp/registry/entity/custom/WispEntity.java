@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.LivingEntity;
@@ -21,7 +22,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -96,11 +96,16 @@ implements GeoEntity, Flutterer, Bottleable {
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
-        return HostileEntity.createMobAttributes()
+        return PassiveEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 1.2)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.8)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0);
+    }
+
+    @Override
+    public EntityGroup getGroup() {
+        return EntityGroup.UNDEAD;
     }
 
     @Nullable

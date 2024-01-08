@@ -23,6 +23,8 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
+import java.util.Objects;
+
 public class SoulSwirlsBlock
 extends AmethystClusterBlock
 implements Fertilizable {
@@ -37,12 +39,13 @@ implements Fertilizable {
     @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!state.get(COOLDOWN) && entity instanceof LivingEntity) {
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(ModStatusEffects.UNBOUNDED_SPEED, 1200, 0), entity);
+        if (!state.get(COOLDOWN) && entity instanceof LivingEntity && NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_boosting) {
+            int d = NetherExp.getConfig().blocks.soulSwirlsConfigs.unbounded_speed_duration * 20;
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(ModStatusEffects.UNBOUNDED_SPEED, d, 0), entity);
             swirlPopParticles(world, pos);
             world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.SOUL_SWIRLS_BOOST, SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.setBlockState(pos, state.cycle(COOLDOWN), NOTIFY_LISTENERS);
-            world.scheduleBlockTick(pos, this, 1000);
+            world.scheduleBlockTick(pos, this, NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_cooldown_ticks);
         }
     }
 

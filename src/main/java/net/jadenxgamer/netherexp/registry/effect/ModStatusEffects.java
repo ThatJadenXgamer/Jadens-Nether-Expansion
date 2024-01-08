@@ -13,7 +13,7 @@ public class ModStatusEffects {
             new FogSightEffect(StatusEffectCategory.BENEFICIAL, 10442064));
 
     public static final StatusEffect UNBOUNDED_SPEED = registerStatusEffect("unbounded_speed",
-            new UnboundedSpeed(StatusEffectCategory.BENEFICIAL, 1717297));
+            new UnboundedSpeed(StatusEffectCategory.BENEFICIAL, 1787717));
 
     private static StatusEffect registerStatusEffect(String name, StatusEffect entry) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(NetherExp.MOD_ID, name), entry);
