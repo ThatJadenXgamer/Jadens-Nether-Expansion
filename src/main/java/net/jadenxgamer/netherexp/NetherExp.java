@@ -11,6 +11,7 @@ import net.jadenxgamer.netherexp.registry.config.NetherExpConfigs;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
+import net.jadenxgamer.netherexp.registry.entity.custom.GraspEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
 import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
 import net.jadenxgamer.netherexp.registry.event.NyliumPathEvent;
@@ -62,6 +63,7 @@ public class NetherExp implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.WARPHOPPER, WarphopperEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.APPARITION, ApparitionEntity.setAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.WISP, WispEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.GRASP, GraspEntity.setAttributes());
 
 		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
 		UseBlockCallback.EVENT.register(new NyliumPathEvent());

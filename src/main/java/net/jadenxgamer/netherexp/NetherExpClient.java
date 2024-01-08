@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
+import net.jadenxgamer.netherexp.registry.entity.client.GraspRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.WarphopperRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.WispRenderer;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
@@ -123,5 +124,6 @@ public class NetherExpClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);
         EntityRendererRegistry.register(ModEntities.APPARITION, ApparitionRenderer::new);
         EntityRendererRegistry.register(ModEntities.WISP, WispRenderer::new);
+        EntityRendererRegistry.register(ModEntities.GRASP, GraspRenderer::new);
     }
 }

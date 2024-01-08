@@ -7,6 +7,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.PathNodeType;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -34,9 +37,32 @@ implements GeoEntity {
     @SuppressWarnings("all")
     private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
-    protected GraspEntity(EntityType<? extends HostileEntity> entityType, World world) {
+    public GraspEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
+        this.setPathfindingPenalty(PathNodeType.LAVA, -1.0F);
     }
+
+    public static DefaultAttributeContainer.Builder setAttributes() {
+        return HostileEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 40.0)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0);
+    }
+
+    @Override
+    protected void initGoals() {
+        this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
+        this.targetSelector.add(2, new RevengeGoal(this));
+        this.targetSelector.add(3, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
+        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(6, new LookAroundGoal(this));
+    }
+
+    /////////
+    // NBT //
+    /////////
 
     public void setHomePos(BlockPos pos) {
         this.dataTracker.set(HOME_POS, pos);
@@ -80,15 +106,48 @@ implements GeoEntity {
         HOME_POS = DataTracker.registerData(GraspEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
     }
 
-    @Override
-    protected void initGoals() {
-        this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(3, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(6, new LookAroundGoal(this));
-        this.goalSelector.add(8, new GoHomeGoal(this, 0.8));
+    ////////////////////
+    // GeckoLib Stuff //
+    ////////////////////
+
+    protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.grasp.idle");
+
+    protected static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.grasp.walk");
+
+    protected static final RawAnimation SOULS_ANIM = RawAnimation.begin().thenLoop("animation.grasp.souls");
+
+    @SuppressWarnings("all")
+    private PlayState movePredicate(AnimationState event) {
+        if (event.isMoving()) {
+            return event.setAndContinue(WALK_ANIM);
+        }
+        else if (!event.isMoving()) {
+            return event.setAndContinue(IDLE_ANIM);
+        }
+        return PlayState.STOP;
     }
+
+    @SuppressWarnings("all")
+    private PlayState soulsPredicate(AnimationState event) {
+        return event.setAndContinue(SOULS_ANIM);
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "moveController",
+                15, this::movePredicate));
+        controllers.add(new AnimationController<>(this, "soulsController",
+                0, this::soulsPredicate));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return factory;
+    }
+
+    ////////
+    // AI //
+    ////////
 
     static class GoHomeGoal extends Goal {
         private final GraspEntity grasp;
@@ -150,36 +209,6 @@ implements GeoEntity {
 
                 this.grasp.getNavigation().startMovingTo(vec3d2.x, vec3d2.y, vec3d2.z, this.speed);
             }
-
         }
-    }
-
-    @SuppressWarnings("all")
-    private PlayState idlePredicate(AnimationState animationState) {
-        if(!animationState.isMoving()) {
-            animationState.getController().setAnimation(RawAnimation.begin().then("animation.grasp.idle", Animation.LoopType.LOOP).then("animation.grasp.souls", Animation.LoopType.LOOP));
-        }
-        return PlayState.CONTINUE;
-    }
-
-    @SuppressWarnings("all")
-    private PlayState movePredicate(AnimationState animationState) {
-        if(animationState.isMoving()) {
-            animationState.getController().setAnimation(RawAnimation.begin().then("animation.grasp.walk", Animation.LoopType.LOOP).then("animation.grasp.souls", Animation.LoopType.LOOP));
-        }
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller",
-                10, this::idlePredicate));
-        controllers.add(new AnimationController<>(this, "move_controller",
-                10, this::movePredicate));
-    }
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return factory;
     }
 }

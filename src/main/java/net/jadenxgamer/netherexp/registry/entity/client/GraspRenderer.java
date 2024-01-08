@@ -1,29 +1,23 @@
 package net.jadenxgamer.netherexp.registry.entity.client;
 
-import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
+import net.jadenxgamer.netherexp.registry.entity.custom.GraspEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 
-public class ApparitionRenderer extends GeoEntityRenderer<ApparitionEntity> {
-    public ApparitionRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new ApparitionModel());
-        this.shadowRadius = 0.4f;
+public class GraspRenderer extends GeoEntityRenderer<GraspEntity> {
+    public GraspRenderer(EntityRendererFactory.Context ctx) {
+        super(ctx, new GraspModel());
+        this.shadowRadius = 0.6f;
         addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 
     @Override
-    public RenderLayer getRenderType(ApparitionEntity animatable, Identifier texture, @Nullable VertexConsumerProvider bufferSource, float partialTick) {
+    public RenderLayer getRenderType(GraspEntity animatable, Identifier texture, @Nullable VertexConsumerProvider bufferSource, float partialTick) {
         return super.getRenderType(animatable, texture, bufferSource, partialTick);
-    }
-
-    @Override
-    protected int getBlockLight(ApparitionEntity entity, BlockPos pos) {
-        return 15;
     }
 }

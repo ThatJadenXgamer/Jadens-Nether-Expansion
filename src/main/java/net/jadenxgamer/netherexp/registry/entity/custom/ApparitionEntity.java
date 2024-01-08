@@ -186,18 +186,19 @@ implements GeoEntity, Angerable, Flutterer {
     }
 
 
-    //TODO: Endermite is temporary replace it with Vessel
+    //TODO: Blaze is temporary replace it with Vessel
     @Override
     public boolean onKilledOther(ServerWorld world, LivingEntity other) {
         boolean bl = super.onKilledOther(world, other);
         int s = this.stage();
         if (s < 4 && other instanceof WispEntity) {
             this.setStage(s + 1, true);
+            other.remove(RemovalReason.KILLED);
         }
         if (s >= 1 && other instanceof SkeletonEntity skeletonEntity) {
-            EndermiteEntity endermiteEntity = skeletonEntity.convertTo(EntityType.ENDERMITE, false);
+            BlazeEntity blazeEntity = skeletonEntity.convertTo(EntityType.BLAZE, false);
             this.remove(RemovalReason.DISCARDED);
-            if (endermiteEntity != null) {
+            if (blazeEntity != null) {
                 skeletonEntity.initialize(world, world.getLocalDifficulty(skeletonEntity.getBlockPos()), SpawnReason.CONVERSION, new EntityData() {
                     @Override
                     public int hashCode() {
@@ -224,6 +225,7 @@ implements GeoEntity, Angerable, Flutterer {
 
     @Override
     protected void initGoals() {
+        int s = this.stage();
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
         this.goalSelector.add(4, new ApparitionWanderAroundGoal());
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -231,6 +233,7 @@ implements GeoEntity, Angerable, Flutterer {
         this.targetSelector.add(3, new ActiveTargetGoal<>(this, SkeletonEntity.class, true));
         this.targetSelector.add(4, new ActiveTargetGoal<>(this, StriderEntity.class, true));
         this.targetSelector.add(5, new ActiveTargetGoal<>(this, MagmaCubeEntity.class, true));
+        this.targetSelector.add(5, new ActiveTargetGoal<>(this, BlazeEntity.class, true));
         this.targetSelector.add(7, new ActiveTargetGoal<>(this, WispEntity.class, true));
         this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
     }
