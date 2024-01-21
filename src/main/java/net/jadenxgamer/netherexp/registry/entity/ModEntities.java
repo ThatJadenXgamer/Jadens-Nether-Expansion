@@ -2,10 +2,7 @@ package net.jadenxgamer.netherexp.registry.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.entity.custom.ApparitionEntity;
-import net.jadenxgamer.netherexp.registry.entity.custom.GraspEntity;
-import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
-import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
+import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -22,7 +19,7 @@ public class ModEntities {
     public static final EntityType<ApparitionEntity> APPARITION = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "apparition"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ApparitionEntity::new).fireImmune()
-                    .dimensions(EntityDimensions.fixed(0.8F, 1.6f)).build());
+                    .dimensions(EntityDimensions.changing(0.8F, 1.6f)).build());
 
     public static final EntityType<WispEntity> WISP = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "wisp"),
@@ -33,4 +30,14 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "grasp"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, GraspEntity::new).fireImmune()
                     .dimensions(EntityDimensions.fixed(1.2F, 3.5f)).build());
+
+    public static final EntityType<MistChargeEntity> MIST_CHARGE = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "mist_charge"),
+            FabricEntityTypeBuilder.<MistChargeEntity>create(SpawnGroup.MISC, MistChargeEntity::new)
+            .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build());
+
+    public static final EntityType<MistChargeCloudEntity> MIST_CHARGE_CLOUD = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "mist_charge_cloud"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, MistChargeCloudEntity::new).fireImmune()
+            .dimensions(EntityDimensions.changing(2.6F, 2.4F)).build());
 }

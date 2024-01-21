@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.misc_registry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -100,7 +101,7 @@ public class ModTags {
         // Wisps will try to find blocks in this tag and circle around it
         public static final TagKey<Block> SOUL_FIRE_THAT_LURES_WISPS = createBlockTag("soul_fire_that_lures_wisps");
 
-        // Blocks in this tag will no longer slow you down if Unbounded Speed is applied
+        // Blocks in this tag will no longer slow you down if Unbounded Speed effect is applied
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks");
 
         // Blocks in this tag produce Blackstone Sounds
@@ -201,6 +202,16 @@ public class ModTags {
 
         private static TagKey<Fluid> createFluidTag(String name) {
             return TagKey.of(RegistryKeys.FLUID, new Identifier(NetherExp.MOD_ID, name));
+        }
+    }
+
+    public static class DamageTypes {
+
+        public static final TagKey<DamageType> GRASP_SUFFOCATION = createDamageTypeTag("grasp_suffocation");
+        public static final TagKey<DamageType> VOLATILE_SCORIA_EXPLOSION = createDamageTypeTag("volatile_scoria_explosion");
+
+        private static TagKey<DamageType> createDamageTypeTag(String name) {
+            return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(NetherExp.MOD_ID, name));
         }
     }
 }

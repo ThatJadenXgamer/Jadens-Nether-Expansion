@@ -12,12 +12,14 @@ import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.GraspRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.WarphopperRenderer;
 import net.jadenxgamer.netherexp.registry.entity.client.WispRenderer;
+import net.jadenxgamer.netherexp.registry.entity.client.MistChargeRenderer;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class NetherExpClient implements ClientModInitializer {
@@ -119,11 +121,14 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.ECTOPLASMA, EctoplasmaParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BLACK_AEROSOL, AerosolParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SWIRL_POP, RisingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.GRASP_MIST, GraspMistParticle.Factory::new);
 
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);
         EntityRendererRegistry.register(ModEntities.APPARITION, ApparitionRenderer::new);
         EntityRendererRegistry.register(ModEntities.WISP, WispRenderer::new);
         EntityRendererRegistry.register(ModEntities.GRASP, GraspRenderer::new);
+        EntityRendererRegistry.register(ModEntities.MIST_CHARGE, MistChargeRenderer::new);
+        EntityRendererRegistry.register(ModEntities.MIST_CHARGE_CLOUD, EmptyEntityRenderer::new);
     }
 }

@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.registry.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.config.other.worldgen.SoulSandValleyConfigs;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
@@ -127,7 +126,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SMOKESTALK_BUTTON);
                         entries.add(ModItems.SMOKESTALK_SIGN_ITEM);
                         entries.add(ModItems.SMOKESTALK_HANGING_SIGN_ITEM);
-                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(ModBlocks.IGNEOUS_REEDS);
                             entries.add(ModBlocks.IGNEOUS_VINES);
                             entries.add(ModBlocks.EXPLOSIVE_SCORIA);
@@ -151,7 +150,7 @@ public class ModItemGroup {
                         entries.add(Blocks.SMOOTH_QUARTZ_SLAB);
                         entries.add(ModBlocks.SMOOTH_QUARTZ_WALL);
 
-                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(ModBlocks.SILICA_SAND);
                             entries.add(ModBlocks.SILICA_SANDSTONE);
                             entries.add(ModBlocks.SILICA_SANDSTONE_STAIRS);
@@ -187,7 +186,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_WALL);
 
 
-                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(ModItems.PYRITE_INGOT);
                             entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
                             entries.add(ModBlocks.PYRITE_BLOCK);
@@ -253,12 +252,14 @@ public class ModItemGroup {
                         entries.add(ModItems.WISP_SPAWN_EGG);
                         entries.add(ModItems.APPARITION_SPAWN_EGG);
 
+                        entries.add(ModItems.GRASP_SPAWN_EGG);
                         entries.add(ModItems.FOGGY_ESSENCE);
+                        entries.add(ModItems.MIST_CHARGE);
 
                         entries.add(ModItems.HOGHAM);
                         entries.add(ModItems.COOKED_HOGHAM);
 
-                        if (NetherExp.getConfig().gameMechanics.enable_unfinished_items) {
+                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(ModItems.WARPHOPPER_FUR);
                             entries.add(ModItems.MUSIC_DISC_CRICKET);
                             entries.add(ModItems.WARPHOPPER_SPAWN_EGG);

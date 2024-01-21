@@ -1,0 +1,7 @@
+{
+  "message_id": "graspSuffocation",
+  "exhaustion": 0,
+  "scaling": "never",
+  "effects": "hurt",
+  "death_message_type": "default"
+}

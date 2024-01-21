@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
-import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
-import net.jadenxgamer.netherexp.registry.item.custom.EntityBottleItem;
-import net.jadenxgamer.netherexp.registry.item.custom.LightSporesItem;
-import net.jadenxgamer.netherexp.registry.item.custom.NightSporesItem;
+import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.item.*;
@@ -86,6 +83,9 @@ public class ModItems {
     public static final Item WARPED_WART = registerItem("warped_wart",
             new AliasedBlockItem(ModBlocks.WARPED_WART, new FabricItemSettings()));
 
+    public static final Item MIST_CHARGE = registerItem("mist_charge",
+            new MistChargeItem(new FabricItemSettings().maxCount(16)));
+
     public static final Item NECRO_SHARD = registerItem("necro_shard",
             new Item(new FabricItemSettings()));
 
@@ -102,6 +102,10 @@ public class ModItems {
 
     public static final Item WISP_SPAWN_EGG = registerItem("wisp_spawn_egg",
             new SpawnEggItem(ModEntities.WISP,6022120,699311,
+                    new FabricItemSettings()));
+
+    public static final Item GRASP_SPAWN_EGG = registerItem("grasp_spawn_egg",
+            new SpawnEggItem(ModEntities.GRASP,4864303,6910597,
                     new FabricItemSettings()));
 
     public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",

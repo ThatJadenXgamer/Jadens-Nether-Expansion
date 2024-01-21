@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -41,8 +42,6 @@ public class EntityBottleItem extends Item {
             assert player != null;
             if (!player.isCreative()) {
                 stack.decrement(1);
-            }
-            if (stack.isEmpty()) {
                 new ItemStack(Items.GLASS_BOTTLE);
             }
             return ActionResult.success(world.isClient);
@@ -55,6 +54,7 @@ public class EntityBottleItem extends Item {
     }
 
     private void spawnEntity(ServerWorld world, ItemStack stack, BlockPos pos) {
+        NbtCompound nbt = stack.getOrCreateNbt();
         Entity entity = this.entityType.spawnFromItemStack(world, stack, null, pos, SpawnReason.BUCKET, true, false);
         if (entity instanceof Bottleable bottleable) {
             bottleable.copyDataFromNbt(stack.getOrCreateNbt());
