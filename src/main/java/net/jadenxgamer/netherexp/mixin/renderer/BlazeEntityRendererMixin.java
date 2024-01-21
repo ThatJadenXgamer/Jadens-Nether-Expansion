@@ -23,7 +23,6 @@ public abstract class BlazeEntityRendererMixin {
     @Unique
     private static final Identifier FADING = new Identifier(NetherExp.MOD_ID, "textures/entity/blaze/fading.png");
 
-    //TODO: Blaze Diminishing
     @Inject(
             method = "getTexture(Lnet/minecraft/entity/mob/BlazeEntity;)Lnet/minecraft/util/Identifier;",
             at = @At(value = "HEAD"),

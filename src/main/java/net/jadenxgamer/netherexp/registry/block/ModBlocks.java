@@ -87,7 +87,8 @@ public class ModBlocks {
     // Soul Decorations
 
     public static final Block SOUL_GLASS = registerBlock("soul_glass",
-            new SoulGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(0.3f, 1200.0f).sounds(BlockSoundGroup.GLASS)));
+            new SoulGlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).luminance(
+                    state -> state.get(SoulGlassBlock.LIT) ? 12 : 0).strength(0.3f, 1200.0f).sounds(BlockSoundGroup.GLASS)));
 
     public static final Block SOUL_SWIRLS = registerBlock("soul_swirls",
             new SoulSwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
