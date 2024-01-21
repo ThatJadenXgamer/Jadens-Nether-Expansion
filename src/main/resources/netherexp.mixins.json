@@ -27,6 +27,7 @@
     "item.ItemRendererMixin",
     "item.ModelLoaderMixin",
     "renderer.BackgroundRendererMixin",
+    "renderer.BlazeEntityRendererMixin",
     "renderer.CameraMixin"
   ],
   "injectors": {

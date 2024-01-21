@@ -11,6 +11,7 @@
   "item.netherexp.nightspores": "Nightspores",
   "item.netherexp.blightspores": "Blightspores",
   "item.netherexp.foggy_essence": "Foggy Essence",
+  "item.netherexp.mist_charge": "Mist Charge",
   "item.netherexp.wraithing_flesh": "Wraithing Flesh",
   "item.netherexp.iron_scrap": "Iron Scrap",
   "item.netherexp.raw_pyrite": "Raw Pyrite",
@@ -22,6 +23,7 @@
   "item.netherexp.guillotine": "Guillotine",
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
   "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
+  "item.netherexp.grasp_spawn_egg": "Grasp Spawn Egg",
   "item.netherexp.wisp_spawn_egg": "Wisp Spawn Egg",
   "item.netherexp.wisp_bottle": "Wisp in a Bottle",
   "item.netherexp.music_disc_cricket": "Music Disc",
@@ -289,6 +291,8 @@
 
   "entity.netherexp.apparition": "Apparition",
 
+  "entity.netherexp.grasp": "Grasp",
+
   "entity.netherexp.wisp": "Wisp",
 
   "entity.netherexp.warphopper": "Warphopper",
@@ -382,7 +386,16 @@
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown": "Geyser Cooldown",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown.@Tooltip": "Geysers go into Cooldown when used",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_ticks": "Geyser Cooldown Delay Ticks",
-  "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_ticks.@Tooltip": "Determines the tick delay for how long the Geyser goes to Cooldown for",
+  "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_ticks.@Tooltip": "Determines how long the Geyser goes to Cooldown for in Ticks",
+
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs": "Soul Swirls",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.@Tooltip": "Enable or disable Soul Swirls functionality",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_boosting": "Soul Swirls Boosting",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_boosting.@Tooltip": "Soul Swirls grant you Unbounded Speed when walked through",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_cooldown_ticks": "Soul Swirls Cooldown Ticks",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_cooldown_ticks.@Tooltip": "Determines how long Soul Swirls go in Cooldown for in Ticks",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.unbounded_speed_duration": "Unbounded Speed Duration",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.unbounded_speed_duration.@Tooltip": "Determines how long you'll be granted Unbounded Speed for in Seconds",
 
   "text.autoconfig.netherexp.option.blocks.renewableConfigs": "Renewable Blocks",
   "text.autoconfig.netherexp.option.blocks.renewableConfigs.@Tooltip": "Various Renewable Block Settings",
@@ -402,18 +415,26 @@
   "text.autoconfig.netherexp.option.items": "Items",
   "text.autoconfig.netherexp.option.items.@Tooltip": "Changes to how certain items behave",
 
-  "text.autoconfig.netherexp.option.gameMechanics": "Game Mechanics",
-  "text.autoconfig.netherexp.option.gameMechanics.@Tooltip": "Changes to how certain game mechanics are handled",
+  "text.autoconfig.netherexp.option.entities": "Entities",
+  "text.autoconfig.netherexp.option.entities.@Tooltip": "Changes to how mobs are handled",
 
-  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs": "Soul Speed Configs",
-  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.@Tooltip": "Enable or disable Soul Speed related functionality",
-  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.nerfed_soul_sand_slowness": "Nerfed Soul Sand Slowness",
-  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand's Speed Reduction will be less powerful if enabled",
-  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.no_soul_speed_degradation": "No Soul Speed Degradation",
-  "text.autoconfig.netherexp.option.gameMechanics.soulSpeedConfigs.no_soul_speed_degradation.@Tooltip": "Soul Speed will no longer gradually damage your boots when used",
+  "text.autoconfig.netherexp.option.entities.blazeConfigs": "Blaze Configs",
+  "text.autoconfig.netherexp.option.entities.blazeConfigs.@Tooltip": "Enable or disable any Blaze functionality",
+  "text.autoconfig.netherexp.option.entities.blazeConfigs.diminishing_blazes": "Diminishing Blazes",
+  "text.autoconfig.netherexp.option.entities.blazeConfigs.diminishing_blazes.@Tooltip": "Blazes get dimmer the more damage they receive",
 
-  "text.autoconfig.netherexp.option.gameMechanics.enable_unfinished_items": "Enable Unfinished Items",
-  "text.autoconfig.netherexp.option.gameMechanics.enable_unfinished_items.@Tooltip": "Unfinished or Experimental Items will appear in the Creative Inventory",
+  "text.autoconfig.netherexp.option.gamemechanics": "Game Mechanics",
+  "text.autoconfig.netherexp.option.gamemechanics.@Tooltip": "Changes to how certain game mechanics are handled",
+
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs": "Soul Speed Configs",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.@Tooltip": "Enable or disable Soul Speed related functionality",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness": "Nerfed Soul Sand Slowness",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand's Speed Reduction will be less powerful if enabled",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.no_soul_speed_degradation": "No Soul Speed Degradation",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.no_soul_speed_degradation.@Tooltip": "Soul Speed will no longer gradually damage your boots when used",
+
+  "text.autoconfig.netherexp.option.gamemechanics.enable_unfinished_items": "Enable Unfinished Items",
+  "text.autoconfig.netherexp.option.gamemechanics.enable_unfinished_items.@Tooltip": "Unfinished or Experimental Items will appear in the Creative Inventory",
 
   "text.autoconfig.netherexp.option.sounds": "Sounds",
   "text.autoconfig.netherexp.option.sounds.@Tooltip": "Changes related to sound effects",

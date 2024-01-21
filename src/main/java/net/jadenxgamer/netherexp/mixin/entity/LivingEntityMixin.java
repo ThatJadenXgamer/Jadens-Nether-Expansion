@@ -4,7 +4,6 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Attackable;
 import net.minecraft.entity.Entity;
@@ -17,9 +16,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements Attackable {
@@ -39,7 +36,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
         if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasStatusEffect(ModStatusEffects.UNBOUNDED_SPEED) && !EnchantmentHelper.hasSoulSpeed((LivingEntity) (Object) this)) {
             cir.setReturnValue(1.0F);
         }
-        else if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().gameMechanics.soulSpeedConfigs.nerfed_soul_sand_slowness) {
+        else if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness) {
             cir.setReturnValue(0.6F);
         }
     }
@@ -49,6 +46,6 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V")
     )
     private int netherexp$addSoulSpeedQOL(int amount) {
-        return NetherExp.getConfig().gameMechanics.soulSpeedConfigs.no_soul_speed_degradation ? 0 : 1;
+        return NetherExp.getConfig().gamemechanics.soulSpeedConfigs.no_soul_speed_degradation ? 0 : 1;
     }
 }

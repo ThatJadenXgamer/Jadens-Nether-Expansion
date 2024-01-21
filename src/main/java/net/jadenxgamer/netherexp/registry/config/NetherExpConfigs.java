@@ -5,6 +5,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.blocks.*;
+import net.jadenxgamer.netherexp.registry.config.other.entity.BlazeConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.gamemechanics.SoulSpeedConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.modcompat.CinderscapesConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
@@ -47,16 +48,28 @@ public class NetherExpConfigs implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public GeyserConfigs geyserConfigs = new GeyserConfigs();
 
-        @ConfigEntry.Gui.CollapsibleObject()
-        @ConfigEntry.Gui.Tooltip
-        public RenewableConfigs renewableConfigs = new RenewableConfigs();
 
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public SoulSwirlsConfigs soulSwirlsConfigs = new SoulSwirlsConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public RenewableConfigs renewableConfigs = new RenewableConfigs();
     }
 
-    // ITEMS //
+    // ENTITY //
+
+    @ConfigEntry.Gui.CollapsibleObject()
+    public Entities entities = new Entities();
+
+    public static class Entities {
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public BlazeConfigs blazeConfigs = new BlazeConfigs();
+    }
+
+    // ITEM //
 
     @ConfigEntry.Gui.CollapsibleObject()
     public Items items = new Items();
@@ -68,7 +81,7 @@ public class NetherExpConfigs implements ConfigData {
     // GAME MECHANICS //
 
     @ConfigEntry.Gui.CollapsibleObject()
-    public GameMechanics gameMechanics = new GameMechanics();
+    public GameMechanics gamemechanics = new GameMechanics();
 
     public static class GameMechanics {
         @ConfigEntry.Gui.CollapsibleObject()
@@ -77,7 +90,7 @@ public class NetherExpConfigs implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.Gui.RequiresRestart
-        public boolean enable_unfinished_items = true;
+        public boolean enable_unfinished_items = false;
     }
 
     // SOUNDS //

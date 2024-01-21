@@ -3,9 +3,13 @@ package net.jadenxgamer.netherexp.registry.entity.client;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.custom.WarphopperEntity;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 
-public class WarphopperModel extends GeoModel<WarphopperEntity> {
+public class WarphopperModel extends DefaultedEntityGeoModel<WarphopperEntity> {
+    public WarphopperModel() {
+        super(new Identifier(NetherExp.MOD_ID, "warphopper"), true);
+    }
+
     @Override
     public Identifier getModelResource(WarphopperEntity object) {
         return new Identifier(NetherExp.MOD_ID, "geo/warphopper.geo.json");
