@@ -1,10 +1,13 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.registry.misc_registry.ModDamageSources;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Ownable;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
@@ -14,15 +17,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class MistChargeCloudEntity extends Entity implements Ownable {
-    private int duration;
+public class GraveCloudEntity extends Entity implements Ownable {
+    private final int duration;
 
     @Nullable
     private LivingEntity owner;
     @Nullable
     private UUID ownerUuid;
 
-    public MistChargeCloudEntity(EntityType<?> type, World world) {
+    public GraveCloudEntity(EntityType<?> type, World world) {
         super(type, world);
         this.duration = 800;
         this.noClip = true;
@@ -63,7 +66,10 @@ public class MistChargeCloudEntity extends Entity implements Ownable {
     private void damageLivingEntities(List<Entity> entities) {
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity) {
-                entity.damage(this.getDamageSources().inWall(), 2);
+                if (!(entity instanceof GraspEntity)) {
+                    entity.damage(this.getDamageSources().create(ModDamageSources.DEATH_CLOUD_SUFFOCATION, this.getOwner()), 2);
+                    ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 4, false, true), this);
+                }
             }
         }
     }
@@ -71,14 +77,6 @@ public class MistChargeCloudEntity extends Entity implements Ownable {
     /////////
     // NBT //
     /////////
-
-    public int getDuration() {
-        return this.duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
 
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {

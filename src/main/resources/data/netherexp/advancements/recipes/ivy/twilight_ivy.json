@@ -7,7 +7,7 @@
         "items": [
           {
             "items": [
-              "minecraft:nether_bricks"
+              "netherexp:twilight_vines"
             ]
           }
         ]
@@ -16,7 +16,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "netherexp:blue_nether_bricks"
+        "recipe": "netherexp:twilight_ivy"
       }
     }
   },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "netherexp:blue_nether_bricks"
+      "netherexp:twilight_ivy"
     ]
   }
 }

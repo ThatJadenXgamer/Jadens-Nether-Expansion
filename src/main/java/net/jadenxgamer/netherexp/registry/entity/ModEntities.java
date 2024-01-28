@@ -36,8 +36,8 @@ public class ModEntities {
             FabricEntityTypeBuilder.<MistChargeEntity>create(SpawnGroup.MISC, MistChargeEntity::new)
             .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build());
 
-    public static final EntityType<MistChargeCloudEntity> MIST_CHARGE_CLOUD = Registry.register(
-            Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "mist_charge_cloud"),
-            FabricEntityTypeBuilder.create(SpawnGroup.MISC, MistChargeCloudEntity::new).fireImmune()
-            .dimensions(EntityDimensions.changing(2.6F, 2.4F)).build());
+    public static final EntityType<GraveCloudEntity> MIST_CHARGE_CLOUD = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "grave_cloud"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, GraveCloudEntity::new).fireImmune()
+            .dimensions(EntityDimensions.changing(3.0F, 2.4F)).build());
 }

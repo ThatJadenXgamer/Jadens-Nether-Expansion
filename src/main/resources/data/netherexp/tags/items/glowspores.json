@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "netherexp:lightspores",
-    "netherexp:nightspores"
+    "netherexp:nightspores",
+    "netherexp:blightspores"
   ]
 }

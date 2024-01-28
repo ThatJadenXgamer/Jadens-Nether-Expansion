@@ -52,6 +52,7 @@ public class NetherExp implements ModInitializer {
 		ModWorldGenerator.generateModWorldGen();
 
 		ModRegistries.registerModStuffs();
+		ModDamageSources.registerModDamageSources();
 		ModStatusEffects.registerModStatusEffects();
 		ModPotions.registerModPotions();
 		ModFeature.registerModFeature();

@@ -23,15 +23,25 @@ public class ModRegistries {
 
         registry.add(ModItems.RAW_PYRITE, 1600);
         registry.add(ModItems.FOSSIL_FUEL, 1600);
+        registry.add(ModItems.MAGMA_CUBE_BUCKET, 20600);
     }
 
     private static void registerCompostingChances() {
         NetherExp.LOGGER.info("Registering Composting Chances for " + NetherExp.MOD_ID);
         CompostingChanceRegistry registry = CompostingChanceRegistry.INSTANCE;
 
+        // 50%
+        registry.add(ModBlocks.TWISTING_IVY, 0.5f);
+        registry.add(ModBlocks.TWILIGHT_IVY, 0.5f);
+        registry.add(ModBlocks.TWILIGHT_VINES, 0.5f);
         registry.add(ModBlocks.WHITE_ASH_BLOCK, 0.5f);
-        registry.add(ModBlocks.WHITE_ASH, 0.2f);
-        registry.add(ModItems.WHITE_ASH_POWDER, 0.1f);
+
+        // 30%
+        registry.add(ModItems.WHITE_ASH_POWDER, 0.3f);
+        registry.add(ModItems.LIGHTSPORES, 0.3f);
+        registry.add(ModItems.NIGHTSPORES, 0.3f);
+        registry.add(ModItems.BLIGHTSPORES, 0.3f);
+        registry.add(ModBlocks.WEEPING_IVY, 0.5f);
     }
 
     private static void registerStrippables() {

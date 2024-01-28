@@ -25,7 +25,9 @@
   "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
   "item.netherexp.grasp_spawn_egg": "Grasp Spawn Egg",
   "item.netherexp.wisp_spawn_egg": "Wisp Spawn Egg",
-  "item.netherexp.wisp_bottle": "Wisp in a Bottle",
+  "item.netherexp.wisp_bottle": "Bottle of Wisp",
+  "item.netherexp.magma_cube_bucket": "Bucket of Magma Cube",
+  "item.netherexp.ecto_slab_bucket": "Bucket of Ecto Slab",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
@@ -58,6 +60,7 @@
   "block.netherexp.soul_glass": "Soul Glass",
   "block.netherexp.soul_swirls": "Soul Swirls",
   "block.netherexp.ecto_soul_sand": "Ecto Soul Sand",
+  "block.netherexp.suspicious_soul_sand": "Suspicious Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
 
   "block.netherexp.ectoplasm": "Ectoplasm",
@@ -280,9 +283,9 @@
   "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
   "subtitles.block.soul_swirls.boost": "Soul Swirls whoop",
 
-  "death.attack.igneousThorns": "%1$s was pricked to death inside igneous thorns",
-  "death.attack.igneousThorns.player": "%1$s was pricked to death inside igneous thorns whilst trying to escape %2$s",
-  "death.attack.explosiveScoria": "%1$s figured out what Volatile means",
+  "death.attack.graveMistSuffocation": "%1$s was shrouded and choked by souls",
+  "death.attack.graveMistSuffocation.player": "%1$s was shrouded and choked by %2$s's souls",
+  "death.attack.volatileScoriaExplosion": "%1$s was caught in a volatile redstone discharge",
 
   "item.minecraft.tipped_arrow.effect.fogsight": "Arrow of Fogsight",
   "item.minecraft.potion.effect.fogsight": "Potion of Fogsight",
@@ -292,6 +295,8 @@
   "entity.netherexp.apparition": "Apparition",
 
   "entity.netherexp.grasp": "Grasp",
+  "entity.netherexp.mist_charge": "Mist Charge",
+  "entity.netherexp.grave_cloud": "Grave Cloud",
 
   "entity.netherexp.wisp": "Wisp",
 
@@ -418,18 +423,23 @@
   "text.autoconfig.netherexp.option.entities": "Entities",
   "text.autoconfig.netherexp.option.entities.@Tooltip": "Changes to how mobs are handled",
 
-  "text.autoconfig.netherexp.option.entities.blazeConfigs": "Blaze Configs",
+  "text.autoconfig.netherexp.option.entities.blazeConfigs": "Blaze",
   "text.autoconfig.netherexp.option.entities.blazeConfigs.@Tooltip": "Enable or disable any Blaze functionality",
   "text.autoconfig.netherexp.option.entities.blazeConfigs.diminishing_blazes": "Diminishing Blazes",
   "text.autoconfig.netherexp.option.entities.blazeConfigs.diminishing_blazes.@Tooltip": "Blazes get dimmer the more damage they receive",
 
+  "text.autoconfig.netherexp.option.entities.magmaCubeConfigs": "Magma Cube",
+  "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.@Tooltip": "Enable or disable any Blaze functionality",
+  "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.bucketable_small_cubes": "Bucketable Small Cubes",
+  "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.bucketable_small_cubes.@Tooltip": "Small Magma Cubes can be put into Lava Buckets",
+
   "text.autoconfig.netherexp.option.gamemechanics": "Game Mechanics",
   "text.autoconfig.netherexp.option.gamemechanics.@Tooltip": "Changes to how certain game mechanics are handled",
 
-  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs": "Soul Speed Configs",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs": "Soul Speed Quality of Life",
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.@Tooltip": "Enable or disable Soul Speed related functionality",
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness": "Nerfed Soul Sand Slowness",
-  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand's Speed Reduction will be less powerful if enabled",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand will won't slow you down as much if enabled",
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.no_soul_speed_degradation": "No Soul Speed Degradation",
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.no_soul_speed_degradation.@Tooltip": "Soul Speed will no longer gradually damage your boots when used",
 
@@ -466,9 +476,6 @@
 
   "text.autoconfig.netherexp.option.worldgen": "World Generation",
   "text.autoconfig.netherexp.option.worldgen.@Tooltip": "Changes to how Biomes and Terrain Generation is handled",
-
-  "text.autoconfig.netherexp.option.worldgen.wrath_region_weight": "Wrath Region Weight",
-  "text.autoconfig.netherexp.option.worldgen.wrath_region_weight.@Tooltip": "Determines how often Vent Mire & Soul Sand Valley is generated",
 
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs": "Soul Sand Valley Settings",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.@Tooltip": "Enable or disable any Soul Sand Valley world generation",

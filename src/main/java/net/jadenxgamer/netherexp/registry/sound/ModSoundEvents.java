@@ -124,6 +124,9 @@ public class ModSoundEvents {
     public static SoundEvent SOUL_SLATE_SOLIDIFYING = registerSoundEvent("block.soul_slate.solidifying");
     public static SoundEvent ITEM_BUCKET_EMPTY_ECTOPLASM = registerSoundEvent("item.bucket.empty_ectoplasm");
     public static SoundEvent ITEM_BUCKET_FILL_ECTOPLASM = registerSoundEvent("item.bucket.fill_ectoplasm");
+    public static SoundEvent ITEM_BUCKET_EMPTY_MAGMA_CUBE = registerSoundEvent("item.bucket.empty_magma_cube");
+    public static SoundEvent ITEM_BUCKET_FILL_MAGMA_CUBE = registerSoundEvent("item.bucket.fill_magma_cube");
+    public static SoundEvent ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE = registerSoundEvent("item.brush.brushing_soul_sand_complete");
     public static SoundEvent EXPLOSIVE_SCORIA_AMBIENT = registerSoundEvent("block.explosive_scoria.ambient");
     public static SoundEvent SPORESHROOM_TRAMPOLINED = registerSoundEvent("block.sporeshroom.trampolined");
     public static SoundEvent LIGHTSPORES_APPLY = registerSoundEvent("block.lightspores.apply");
@@ -136,7 +139,10 @@ public class ModSoundEvents {
     public static SoundEvent ENTITY_WARPHOPPER_HURT = registerSoundEvent("entity.warphopper.hurt");
     public static SoundEvent ENTITY_WARPHOPPER_DEATH = registerSoundEvent("entity.warphopper.death");
     public static SoundEvent ENTITY_WARPHOPPER_CLOAK = registerSoundEvent("entity.warphopper.cloak");
+
     public static SoundEvent ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvent("entity.player.hurt_igneous_thorns");
+    public static SoundEvent ENTITY_PLAYER_HURT_SUFFOCATION = registerSoundEvent("entity.player.hurt_suffocation");
+
 
     // MUSIC:
     public static SoundEvent MUSIC_DISC_CRICKET = registerSoundEvent("music_disc.cricket");

@@ -914,6 +914,22 @@
       "netherexp:block/ectoplasm/fill2"
     ]
   },
+  "item.bucket.empty_magma_cube": {
+    "subtitle": "subtitles.item.bucket.empty",
+    "sounds": [
+      "netherexp:item/bucket/empty_magma_cube1",
+      "netherexp:item/bucket/empty_magma_cube2",
+      "netherexp:item/bucket/empty_magma_cube3"
+    ]
+  },
+  "item.bucket.fill_magma_cube": {
+    "subtitle": "subtitles.item.bucket.fill",
+    "sounds": [
+      "netherexp:item/bucket/fill_magma_cube1",
+      "netherexp:item/bucket/fill_magma_cube2",
+      "netherexp:item/bucket/fill_magma_cube3"
+    ]
+  },
   "block.explosive_scoria.ambient": {
     "subtitle": "subtitles.block.explosive_scoria.ambient",
     "sounds": [
@@ -990,6 +1006,14 @@
     "sounds": [
       "netherexp:mob/player/hurt/igneous_thorns_hurt1",
       "netherexp:mob/player/hurt/igneous_thorns_hurt2"
+    ]
+  },
+  "entity.player.hurt_suffocation": {
+    "subtitle": "subtitles.entity.player.hurt",
+    "sounds": [
+      "netherexp:mob/player/hurt/suffocation_hurt1",
+      "netherexp:mob/player/hurt/suffocation_hurt2",
+      "netherexp:mob/player/hurt/suffocation_hurt3"
     ]
   },
   "music_disc.cricket": {

@@ -17,6 +17,36 @@
           "output_state": {
             "Name": "netherexp:fossil_fuel_ore"
           }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:random_blockstate_match",
+            "block_state": {
+              "Name": "netherexp:soul_slate"
+            },
+            "probability": 0.1
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "netherexp:fossil_fuel_ore"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:random_blockstate_match",
+            "block_state": {
+              "Name": "netherexp:pale_soul_slate"
+            },
+            "probability": 0.3
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "netherexp:fossil_fuel_ore"
+          }
         }
       ]
     }

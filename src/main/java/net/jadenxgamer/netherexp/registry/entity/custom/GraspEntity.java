@@ -55,6 +55,7 @@ implements GeoEntity {
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.targetSelector.add(3, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.goalSelector.add(3, new GoHomeGoal(this, 0.35));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -110,7 +111,7 @@ implements GeoEntity {
     // GeckoLib Stuff //
     ////////////////////
 
-    protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.grasp.idle");
+    protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenPlayAndHold("animation.grasp.move_to_idle").thenLoop("animation.grasp.idle");
 
     protected static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.grasp.walk");
 
@@ -162,12 +163,11 @@ implements GeoEntity {
 
         public boolean canStart() {
             LivingEntity livingEntity = this.grasp.getTarget();
-            if (livingEntity != null && livingEntity.isAlive() && this.grasp.canTarget(livingEntity)) {
+            if (livingEntity != null && !this.grasp.canTarget(livingEntity) && this.grasp.getHomePos().isWithinDistance(this.grasp.getPos(), 64.0)) {
                 return true;
-            } else if (this.grasp.getRandom().nextInt(toGoalTicks(700)) != 0) {
+            }
+            else {
                 return false;
-            } else {
-                return !this.grasp.getHomePos().isWithinDistance(this.grasp.getPos(), 64.0);
             }
         }
 

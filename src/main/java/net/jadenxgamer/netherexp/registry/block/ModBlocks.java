@@ -19,6 +19,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
@@ -38,7 +39,7 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
 
     public static final Block JAGGED_SOUL_SLATE = registerBlock("jagged_soul_slate",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
+            new TopConnectingBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
 
     public static final Block SOUL_SLATE_SLAB = registerBlock("soul_slate_slab",
             new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
@@ -96,6 +97,9 @@ public class ModBlocks {
 
     public static final Block ECTO_SOUL_SAND = registerBlock("ecto_soul_sand",
             new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).sounds(BlockSoundGroup.SOUL_SAND)));
+
+    public static final Block SUSPICIOUS_SOUL_SAND = registerBlock("suspicious_soul_sand",
+            new BrushableBlock(Blocks.SOUL_SAND ,FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).velocityMultiplier(0.2F).strength(0.25F).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.SOUL_SAND), SoundEvents.ITEM_BRUSH_BRUSHING_SAND, ModSoundEvents.ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE));
 
     public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
             new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.LIGHT_BLUE).luminance(3).sounds(ModSoundEvents.SOUL_MAGMA_BLOCK)));
@@ -620,6 +624,16 @@ public class ModBlocks {
     public static final Block SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle",
             new SkullCandleBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).luminance(10), ModParticles.SMALL_SOUL_FLAME, ParticleTypes.SMOKE));
 
+    /*
+     * TODO Add Skeletal Heads
+
+    public static final Block SKELETAL_CREEPER_SKULL = registerBlockWithoutItem("skeletal_creeper_skull",
+            new ModSkullBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL), ModSkullBlock.Type.SKELETAL_CREEPER));
+
+    public static final Block SKELETAL_CREEPER_WALL_SKULL = registerBlockWithoutItem("skeletal_creeper_skull",
+            new ModSkullBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).dropsLike(SKELETAL_CREEPER_SKULL), ModSkullBlock.Type.SKELETAL_CREEPER));
+     */
+
     public static final Block BONE_ROD = registerBlock("bone_rod",
             new BoneRodBlock(FabricBlockSettings.of().noCollision().strength(0.5f).sounds(BlockSoundGroup.BONE)));
 
@@ -733,6 +747,7 @@ public class ModBlocks {
         new BlockItem(block, new FabricItemSettings()));
         return item;
     }
+
     @SuppressWarnings("all")
     private static Block registerCompatBlock(String name, Block block, String modID) {
         if (FabricLoader.getInstance().isModLoaded(modID)) {

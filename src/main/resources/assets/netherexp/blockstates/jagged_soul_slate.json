@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "connected=true": {
       "model": "netherexp:block/jagged_soul_slate"
+    },
+    "connected=false": {
+      "model": "netherexp:block/soul_slate"
     }
   }
 }

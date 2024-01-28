@@ -18,7 +18,7 @@ extends SpriteBillboardParticle {
         this.velocityX = velocityX;
         this.velocityY = velocityY + (double)(this.random.nextFloat() / 500.0f);
         this.velocityZ = velocityZ;
-        this.collidesWithWorld = false;
+        this.collidesWithWorld = true;
     }
 
     @Override

@@ -8,11 +8,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
-import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
-import net.jadenxgamer.netherexp.registry.entity.client.GraspRenderer;
-import net.jadenxgamer.netherexp.registry.entity.client.WarphopperRenderer;
-import net.jadenxgamer.netherexp.registry.entity.client.WispRenderer;
-import net.jadenxgamer.netherexp.registry.entity.client.MistChargeRenderer;
+import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
@@ -23,6 +19,8 @@ import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class NetherExpClient implements ClientModInitializer {
+
+    // FOG RENDERERS
     public static boolean INSIDE_SOUL_GLASS = false;
     public static boolean INSIDE_ECTOPLASM = false;
 

@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.util.math.MathHelper;
 
 @Environment(value= EnvType.CLIENT)
 public class GraspMistParticle
@@ -28,7 +27,7 @@ extends SpriteBillboardParticle {
 
     @Override
     public int getBrightness(float tint) {
-        return 16;
+        return 15728880;
     }
 
     @Override
