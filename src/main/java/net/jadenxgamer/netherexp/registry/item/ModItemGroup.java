@@ -48,6 +48,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SOUL_SOIL_LAYER);
                         entries.add(Blocks.SOUL_SOIL);
                         entries.add(ModBlocks.SOUL_PATH);
+                        entries.add(ModBlocks.SUSPICIOUS_SOUL_SAND);
                         entries.add(Blocks.SOUL_SAND);
                         entries.add(ModBlocks.ECTO_SOUL_SAND);
                         entries.add(ModBlocks.SOUL_MAGMA_BLOCK);
@@ -109,6 +110,7 @@ public class ModItemGroup {
                         entries.add(ModItems.CLARET_SIGN_ITEM);
                         entries.add(ModItems.CLARET_HANGING_SIGN_ITEM);
 
+                        entries.add(ModItems.MAGMA_CUBE_BUCKET);
                         entries.add(Items.MAGMA_CREAM);
                         entries.add(ModBlocks.MAGMA_CREAM_BLOCK);
 

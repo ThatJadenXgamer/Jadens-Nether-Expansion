@@ -7,12 +7,16 @@ import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.math.Direction;
 
 @SuppressWarnings("unused")
 public class ModItems {
@@ -77,6 +81,9 @@ public class ModItems {
     public static final Item WISP_BOTTLE = registerItem("wisp_bottle",
             new EntityBottleItem(ModEntities.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
 
+    public static final Item MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket",
+            new EntityBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, ModSoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE, new FabricItemSettings().maxCount(1)));
+
     public static final Item WRAITHING_FLESH = registerItem("wraithing_flesh",
             new Item(new FabricItemSettings().food(ModFoodComponents.WRAITHING_FLESH)));
 
@@ -119,6 +126,10 @@ public class ModItems {
 
     public static final Item SMOKESTALK_HANGING_SIGN_ITEM = registerItem("smokestalk_hanging_sign",
             new HangingSignItem(ModBlocks.SMOKESTALK_HANGING_SIGN, ModBlocks.SMOKESTALK_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+
+    // TODO Add Skeletal Heads
+//    public static final Item SKELETAL_CREEPER_SKULL_ITEM = registerItem("skeletal_creeper_skull",
+//            new VerticallyAttachableBlockItem(ModBlocks.SKELETAL_CREEPER_SKULL, ModBlocks.SKELETAL_CREEPER_WALL_SKULL, new FabricItemSettings().rarity(Rarity.UNCOMMON).equipmentSlot(stack -> EquipmentSlot.HEAD), Direction.DOWN));
 
     public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
             new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));

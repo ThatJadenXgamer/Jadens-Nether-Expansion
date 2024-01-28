@@ -207,7 +207,8 @@ public class ModTags {
 
     public static class DamageTypes {
 
-        public static final TagKey<DamageType> GRASP_SUFFOCATION = createDamageTypeTag("grasp_suffocation");
+        public static final TagKey<DamageType> IS_SUFFOCATION = createDamageTypeTag("is_suffocation");
+        public static final TagKey<DamageType> GRAVE_CLOUD_SUFFOCATION = createDamageTypeTag("grave_cloud_suffocation");
         public static final TagKey<DamageType> VOLATILE_SCORIA_EXPLOSION = createDamageTypeTag("volatile_scoria_explosion");
 
         private static TagKey<DamageType> createDamageTypeTag(String name) {

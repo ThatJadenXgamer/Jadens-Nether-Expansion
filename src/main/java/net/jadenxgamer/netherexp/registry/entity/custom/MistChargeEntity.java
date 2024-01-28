@@ -11,6 +11,8 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -48,17 +50,18 @@ public class MistChargeEntity extends ThrownItemEntity implements GeoEntity {
         return new EntitySpawnS2CPacket(this);
     }
 
-
+    // TODO: Add Custom Sounds to Mist Charge
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
+        BlockPos blockPos = entity.getBlockPos();
+        this.getWorld().playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BLOCK_MUD_PLACE, SoundCategory.NEUTRAL, 1F, 1F);
         if (this.getWorld() instanceof ServerWorld) {
-            BlockPos blockPos = entity.getBlockPos();
-            MistChargeCloudEntity mistChargeCloudEntity = ModEntities.MIST_CHARGE_CLOUD.create(this.getWorld());
-            if (mistChargeCloudEntity != null) {
-                mistChargeCloudEntity.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
-                mistChargeCloudEntity.setOwner((LivingEntity) this.getOwner());
-                this.getWorld().spawnEntity(mistChargeCloudEntity);
+            GraveCloudEntity graveCloudEntity = ModEntities.MIST_CHARGE_CLOUD.create(this.getWorld());
+            if (graveCloudEntity != null) {
+                graveCloudEntity.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
+                graveCloudEntity.setOwner((LivingEntity) this.getOwner());
+                this.getWorld().spawnEntity(graveCloudEntity);
             }
         }
 
@@ -69,12 +72,13 @@ public class MistChargeEntity extends ThrownItemEntity implements GeoEntity {
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         BlockPos blockPos = blockHitResult.getBlockPos();
+        this.getWorld().playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BLOCK_MUD_PLACE, SoundCategory.NEUTRAL, 1F, 1F);
         if (this.getWorld() instanceof ServerWorld) {
-            MistChargeCloudEntity mistChargeCloudEntity = ModEntities.MIST_CHARGE_CLOUD.create(this.getWorld());
-            if (mistChargeCloudEntity != null) {
-                mistChargeCloudEntity.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
-                mistChargeCloudEntity.setOwner((LivingEntity) this.getOwner());
-                this.getWorld().spawnEntity(mistChargeCloudEntity);
+            GraveCloudEntity graveCloudEntity = ModEntities.MIST_CHARGE_CLOUD.create(this.getWorld());
+            if (graveCloudEntity != null) {
+                graveCloudEntity.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
+                graveCloudEntity.setOwner((LivingEntity) this.getOwner());
+                this.getWorld().spawnEntity(graveCloudEntity);
             }
         }
 

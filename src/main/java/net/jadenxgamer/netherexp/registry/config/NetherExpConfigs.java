@@ -6,6 +6,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.blocks.*;
 import net.jadenxgamer.netherexp.registry.config.other.entity.BlazeConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.entity.MagmaCubeConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.gamemechanics.SoulSpeedConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.modcompat.CinderscapesConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
@@ -67,6 +68,10 @@ public class NetherExpConfigs implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public BlazeConfigs blazeConfigs = new BlazeConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public MagmaCubeConfigs magmaCubeConfigs = new MagmaCubeConfigs();
     }
 
     // ITEM //
