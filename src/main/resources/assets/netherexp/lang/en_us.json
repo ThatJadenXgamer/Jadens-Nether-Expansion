@@ -67,6 +67,10 @@
   "item.netherexp.ectoplasm_bucket": "Ectoplasm Bucket",
   "block.netherexp.black_ice": "Black Ice",
 
+  "block.netherexp.soul_torchflower": "Soul Torchflower",
+  "block.netherexp.soul_torchflower_crop": "Soul Torchflower Crop",
+  "block.netherexp.sorrowsquash": "Sorrowsquash",
+
   "block.netherexp.sorrowsquash": "Sorrowsquash",
   "block.netherexp.carved_sorrowsquash": "Carved Sorrowsquash",
   "block.netherexp.ghoul_o_lantern": "Ghoul o'Lantern",
@@ -272,6 +276,7 @@
   "block.netherexp.potted_crimson_sporeshroom": "Potted Crimson Sporeshroom",
   "block.netherexp.potted_warped_sporeshroom": "Potted Warped Sporeshroom",
   "block.netherexp.potted_umbral_sporeshroom": "Potted Umbral Sporeshroom",
+  "block.netherexp.potted_soul_torchflower": "Potted Soul Torchflower",
 
   "subtitles.item.gold_ingot.gilding": "Block gilded",
   "subtitles.block.ectoplasm.freeze": "Ectoplasm Freezes",

@@ -9,7 +9,7 @@
     "description": {
       "translate": "advancements.nether.non_renewable_yeah_right.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

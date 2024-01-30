@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "netherexp:block/suspicious_soul_sand_1"
+    "end": "netherexp:block/suspicious_soul_sand_1",
+    "side": "netherexp:block/suspicious_soul_sand_sand_1"
   }
 }

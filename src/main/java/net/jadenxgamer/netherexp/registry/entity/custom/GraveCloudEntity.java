@@ -67,7 +67,7 @@ public class GraveCloudEntity extends Entity implements Ownable {
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity) {
                 if (!(entity instanceof GraspEntity)) {
-                    entity.damage(this.getDamageSources().create(ModDamageSources.DEATH_CLOUD_SUFFOCATION, this.getOwner()), 2);
+                    entity.damage(this.getDamageSources().create(ModDamageSources.DEATH_CLOUD_SUFFOCATION, this.getOwner()), 1);
                     ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 4, false, true), this);
                 }
             }

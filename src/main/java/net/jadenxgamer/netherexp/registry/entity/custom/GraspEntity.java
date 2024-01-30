@@ -1,11 +1,9 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -17,7 +15,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -25,7 +22,10 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 
 public class GraspEntity
@@ -55,7 +55,7 @@ implements GeoEntity {
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.targetSelector.add(3, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        this.goalSelector.add(3, new GoHomeGoal(this, 0.35));
+        this.goalSelector.add(2, new GraspEruptGoal(this));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -150,64 +150,44 @@ implements GeoEntity {
     // AI //
     ////////
 
-    static class GoHomeGoal extends Goal {
+    private static class GraspEruptGoal extends Goal {
         private final GraspEntity grasp;
-        private final double speed;
-        private boolean noPath;
-        private int homeReachingTryTicks;
+        public int cooldown;
 
-        GoHomeGoal(GraspEntity grasp, double speed) {
+        private GraspEruptGoal(GraspEntity grasp) {
             this.grasp = grasp;
-            this.speed = speed;
         }
 
+        @Override
         public boolean canStart() {
-            LivingEntity livingEntity = this.grasp.getTarget();
-            if (livingEntity != null && !this.grasp.canTarget(livingEntity) && this.grasp.getHomePos().isWithinDistance(this.grasp.getPos(), 64.0)) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return this.grasp.getTarget() != null;
         }
 
+        @Override
         public void start() {
-            this.noPath = false;
-            this.homeReachingTryTicks = 0;
+            this.cooldown = 0;
         }
 
-        public void stop() {
-            this.grasp.getHomePos();
+        @Override
+        public boolean shouldRunEveryTick() {
+            return true;
         }
 
-        public boolean shouldContinue() {
-            return !this.grasp.getHomePos().isWithinDistance(this.grasp.getPos(), 7.0) && !this.noPath && this.homeReachingTryTicks <= this.getTickCount(600);
-        }
-
+        @Override
         public void tick() {
-            BlockPos blockPos = this.grasp.getHomePos();
-            boolean bl = blockPos.isWithinDistance(this.grasp.getPos(), 16.0);
-            if (bl) {
-                ++this.homeReachingTryTicks;
+            LivingEntity livingEntity = this.grasp.getTarget();
+            if (livingEntity != null) {
+                World world = this.grasp.getWorld();
+                ++this.cooldown;
+                if (cooldown == 10) {
+                    MistChargeEntity mistCharge = new MistChargeEntity(grasp, world);
+                    mistCharge.setVelocity(grasp, grasp.getPitch(), grasp.getYaw(), 0.0F, 1.5F, 1.0F);
+                    world.spawnEntity(mistCharge);
+                    this.cooldown = -40;
+                }
             }
-
-            if (this.grasp.getNavigation().isIdle()) {
-                Vec3d vec3d = Vec3d.ofBottomCenter(blockPos);
-                Vec3d vec3d2 = NoPenaltyTargeting.findTo(this.grasp, 16, 3, vec3d, 0.3141592741012573);
-                if (vec3d2 == null) {
-                    vec3d2 = NoPenaltyTargeting.findTo(this.grasp, 8, 7, vec3d, 1.5707963705062866);
-                }
-
-                if (vec3d2 != null && !bl && !this.grasp.getWorld().getBlockState(BlockPos.ofFloored(vec3d2)).isOf(Blocks.WATER)) {
-                    vec3d2 = NoPenaltyTargeting.findTo(this.grasp, 16, 5, vec3d, 1.5707963705062866);
-                }
-
-                if (vec3d2 == null) {
-                    this.noPath = true;
-                    return;
-                }
-
-                this.grasp.getNavigation().startMovingTo(vec3d2.x, vec3d2.y, vec3d2.z, this.speed);
+            else if (this.cooldown > 0) {
+                --this.cooldown;
             }
         }
     }

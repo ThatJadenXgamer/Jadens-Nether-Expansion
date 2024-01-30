@@ -55,8 +55,8 @@ public class ModTags {
         // Hoglins cannot spawn on these Blocks
         public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createBlockTag("hoglin_cannot_spawn_on");
 
-        // Sorrowsquash Vines are Plantable on these Blocks
-        public static final TagKey<Block> SORROWSQUASH_VINE_PLANTABLE_ON = createBlockTag("sorrowsquash_vine_plantable_on");
+        // Blocks in this tag are considered Soul Sand
+        public static final TagKey<Block> SOUL_SAND_BLOCKS = createBlockTag("soul_sand_blocks");
 
         // Weeping Vines can generate on these Blocks
         public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createBlockTag("weeping_vines_feature_valid");
@@ -103,6 +103,9 @@ public class ModTags {
 
         // Blocks in this tag will no longer slow you down if Unbounded Speed effect is applied
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks");
+        
+        // Crops in this tag are allowed to be planted on Soul Sand
+        public static final TagKey<Block> SOUL_SAND_CROPS = createBlockTag("soul_sand_crops");
 
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");
@@ -176,12 +179,10 @@ public class ModTags {
 
         // Prevents Blackstonic Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WHITE_ASH_BLACKSTONIC = createBiomeTag("particles/has_white_ash_blackstonic");
-
-
+        
         // Prevents Basaltic Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_ASH_ASHEN = createBiomeTag("particles/has_ash_ashen");
-
-
+        
         // used to check if the biome is Luminous Grove from Cinderscapes
         public static final TagKey<Biome> LUMINOUS_GROVE = createBiomeTag("luminous_grove");
 
@@ -207,8 +208,13 @@ public class ModTags {
 
     public static class DamageTypes {
 
+        // Produces Suffocation Sounds
         public static final TagKey<DamageType> IS_SUFFOCATION = createDamageTypeTag("is_suffocation");
+        
+        // Classified as Grave Cloud Suffocation Damage
         public static final TagKey<DamageType> GRAVE_CLOUD_SUFFOCATION = createDamageTypeTag("grave_cloud_suffocation");
+        
+        // Classified as Volatile Scoria Explosion Damage
         public static final TagKey<DamageType> VOLATILE_SCORIA_EXPLOSION = createDamageTypeTag("volatile_scoria_explosion");
 
         private static TagKey<DamageType> createDamageTypeTag(String name) {

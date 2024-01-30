@@ -114,7 +114,7 @@ extends AbstractPlantStemBlock {
         if (!this.canAttachTo(blockState)) {
             return false;
         } else {
-            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isIn(ModTags.Blocks.SORROWSQUASH_VINE_PLANTABLE_ON);
+            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isIn(ModTags.Blocks.SOUL_SAND_BLOCKS);
         }
     }
 

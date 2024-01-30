@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(StemBlock.class)
-public abstract class PumpkinStemMixin extends PlantBlock {
-    public PumpkinStemMixin(Settings settings) {
+public abstract class StemBlockMixin extends PlantBlock {
+    public StemBlockMixin(Settings settings) {
         super(settings);
     }
 
@@ -26,7 +26,7 @@ public abstract class PumpkinStemMixin extends PlantBlock {
             cancellable = true
     )
     private void netherexp$canPlantOnSoul(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        if (floor.isIn(ModTags.Blocks.SORROWSQUASH_VINE_PLANTABLE_ON)) {
+        if (this == Blocks.PUMPKIN_STEM && floor.isIn(ModTags.Blocks.SOUL_SAND_BLOCKS)) {
             cir.setReturnValue(true);
         }
     }
@@ -35,7 +35,7 @@ public abstract class PumpkinStemMixin extends PlantBlock {
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         BlockState floor = world.getBlockState(pos.down());
-        if (floor.isIn(ModTags.Blocks.SORROWSQUASH_VINE_PLANTABLE_ON) && state.isOf(Blocks.PUMPKIN_STEM)) {
+        if (floor.isIn(ModTags.Blocks.SOUL_SAND_BLOCKS) && state.isOf(Blocks.PUMPKIN_STEM)) {
             world.setBlockState(pos, ModBlocks.SORROWSQUASH_STEM.getDefaultState(), NOTIFY_LISTENERS);
         }
     }

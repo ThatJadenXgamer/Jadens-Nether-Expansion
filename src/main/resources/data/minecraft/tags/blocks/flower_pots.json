@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:potted_soul_swirls",
+    "netherexp:potted_enigma_crown",
+    "netherexp:potted_smokestalk",
+    "netherexp:potted_red_scale_fungus",
+    "netherexp:potted_blue_scale_fungus",
+    "netherexp:potted_violet_scale_fungus",
+    "netherexp:potted_crimson_sporeshroom",
+    "netherexp:potted_warped_sporeshroom",
+    "netherexp:potted_umbral_sporeshroom",
+    "netherexp:potted_soul_torchflower"
+  ]
+}

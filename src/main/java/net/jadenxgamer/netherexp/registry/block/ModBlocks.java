@@ -12,6 +12,7 @@ import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -114,6 +115,12 @@ public class ModBlocks {
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL), UniformIntProvider.create(1, 3)));
 
     // Sorrowsquash
+
+    public static final Block SOUL_TORCHFLOWER = registerBlock("soul_torchflower",
+            new NetherFlowerBlock(StatusEffects.NIGHT_VISION, 5, FabricBlockSettings.copyOf(Blocks.TORCHFLOWER)));
+
+    public static final Block SOUL_TORCHFLOWER_CROP = registerBlockWithoutItem("soul_torchflower_crop",
+            new SoulTorchflowerBlock(FabricBlockSettings.copyOf(Blocks.TORCHFLOWER_CROP)));
 
     public static final Block SORROWSQUASH = registerBlock("sorrowsquash",
             new SorrowsquashBlock(FabricBlockSettings.of().mapColor(MapColor.WHITE_GRAY).strength(1.0f).sounds(BlockSoundGroup.NETHER_STEM)));
@@ -727,6 +734,9 @@ public class ModBlocks {
     // CINDERSCAPES COMPATIBILITY
     public static final Block POTTED_UMBRAL_SPORESHROOM = registerBlockWithoutItem("potted_umbral_sporeshroom",
             new FlowerPotBlock(UMBRAL_SPORESHROOM, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block POTTED_SOUL_TORCHFLOWER = registerBlockWithoutItem("potted_soul_torchflower",
+            new FlowerPotBlock(SOUL_TORCHFLOWER, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
 
     // REGISTRIES:
 
