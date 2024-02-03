@@ -31,6 +31,7 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAGMA_CREAM_BLOCK, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_SWIRLS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SHALE_SWIRLS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SORROWSQUASH_STEM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SORROWSQUASH_STEM_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CHAINWIRE_FENCE, RenderLayer.getCutout());
@@ -76,6 +77,7 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOUL_TORCHFLOWER_CROP, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SOUL_SWIRLS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SHALE_SWIRLS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_ENIGMA_CROWN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SMOKESTALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_RED_SCALE_FUNGUS, RenderLayer.getCutout());
@@ -122,10 +124,12 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.ECTOPLASMA, EctoplasmaParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BLACK_AEROSOL, AerosolParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SWIRL_POP, RisingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SHALE_SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GRASP_MIST, GraspMistParticle.Factory::new);
 
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);
+        EntityRendererRegistry.register(ModEntities.STAMPEDE, StampedeRenderer::new);
         EntityRendererRegistry.register(ModEntities.APPARITION, ApparitionRenderer::new);
         EntityRendererRegistry.register(ModEntities.WISP, WispRenderer::new);
         EntityRendererRegistry.register(ModEntities.GRASP, GraspRenderer::new);

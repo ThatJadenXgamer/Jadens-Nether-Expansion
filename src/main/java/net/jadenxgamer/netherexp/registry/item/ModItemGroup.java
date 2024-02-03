@@ -45,6 +45,9 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SOUL_CANDLE);
                         entries.add(ModBlocks.SOUL_GLASS);
                         entries.add(ModBlocks.SOUL_SWIRLS);
+                        if (NetherExp.checkModCompatCinderscapes()){
+                            entries.add(ModBlocks.SHALE_SWIRLS);
+                        }
                         entries.add(ModBlocks.SOUL_SOIL_LAYER);
                         entries.add(Blocks.SOUL_SOIL);
                         entries.add(ModBlocks.SOUL_PATH);

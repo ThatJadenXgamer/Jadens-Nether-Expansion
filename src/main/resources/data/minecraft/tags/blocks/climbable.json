@@ -3,7 +3,8 @@
   "values": [
     "netherexp:igneous_vines",
     "netherexp:igneous_vines_plant",
-    "minecraft:chain",
+    "netherexp:twilight_vines",
+    "netherexp:twilight_vines_plant",
     "netherexp:pyrite_chain",
     "netherexp:sorrowsquash_stem",
     "netherexp:sorrowsquash_stem_plant"

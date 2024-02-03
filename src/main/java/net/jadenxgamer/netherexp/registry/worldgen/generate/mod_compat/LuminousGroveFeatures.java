@@ -40,9 +40,6 @@ public class LuminousGroveFeatures {
 
         // STEP 10 - TOP_LAYER_MODIFICATION
 
-        BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
-                GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.SHROOMBLIGHT);
-
         if (lgConfigs.generate_sporeshroom) {
             BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.UMBRAL_SPORESHROOM);

@@ -93,8 +93,13 @@ public class ModBlocks {
                     state -> state.get(SoulGlassBlock.LIT) ? 12 : 0).strength(0.3f, 1200.0f).sounds(BlockSoundGroup.GLASS)));
 
     public static final Block SOUL_SWIRLS = registerBlock("soul_swirls",
-            new SoulSwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
-                    state -> state.get(SoulSwirlsBlock.COOLDOWN) ? 5 : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS)));
+            new SwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
+                    state -> state.get(SwirlsBlock.COOLDOWN) ? 5 : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SWIRL_POP));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block SHALE_SWIRLS = registerCompatBlock("shale_swirls",
+            new SwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
+                    state -> state.get(SwirlsBlock.COOLDOWN) ? 5 : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SHALE_SWIRL_POP), "cinderscapes");
 
     public static final Block ECTO_SOUL_SAND = registerBlock("ecto_soul_sand",
             new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).sounds(BlockSoundGroup.SOUL_SAND)));
@@ -708,6 +713,10 @@ public class ModBlocks {
 
     public static final Block POTTED_SOUL_SWIRLS = registerBlockWithoutItem("potted_soul_swirls",
             new FlowerPotBlock(SOUL_SWIRLS, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
+    // CINDERSCAPES COMPATIBILITY
+    public static final Block POTTED_SHALE_SWIRLS = registerBlockWithoutItem("potted_shale_swirls",
+            new FlowerPotBlock(SHALE_SWIRLS, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
 
     public static final Block POTTED_ENIGMA_CROWN = registerBlockWithoutItem("potted_enigma_crown",
             new EnigmaCrownPotBlock(ENIGMA_CROWN, FabricBlockSettings.of().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));

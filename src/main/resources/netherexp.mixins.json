@@ -20,6 +20,7 @@
     "entity.PiglinEntityMixin",
     "entity.PlayerEntityMixin",
     "entity.SkeletonEntityMixin",
+    "entity.StriderEntityMixin",
     "entity.WitherSkeletonEntityMixin",
     "entity.ZombifiedPiglinEntityMixin",
     "item.BrewingRecipeRegistryAccessor",

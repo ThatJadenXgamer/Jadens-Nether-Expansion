@@ -3,6 +3,10 @@
   "values": [
     "minecraft:magma_block",
     "netherexp:soul_magma_block",
-    "minecraft:barrier"
+    "minecraft:barrier",
+    "netherexp:basaltic_geyser",
+    "netherexp:souled_geyser",
+    "netherexp:blackstonic_geyser",
+    "netherexp:ashen_geyser"
   ]
 }

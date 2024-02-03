@@ -22,6 +22,7 @@
   "item.netherexp.necro_shard": "Necro Shard",
   "item.netherexp.guillotine": "Guillotine",
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
+  "item.netherexp.stampede_spawn_egg": "Stampede Spawn Egg",
   "item.netherexp.apparition_spawn_egg": "Apparition Spawn Egg",
   "item.netherexp.grasp_spawn_egg": "Grasp Spawn Egg",
   "item.netherexp.wisp_spawn_egg": "Wisp Spawn Egg",
@@ -59,6 +60,7 @@
 
   "block.netherexp.soul_glass": "Soul Glass",
   "block.netherexp.soul_swirls": "Soul Swirls",
+  "block.netherexp.shale_swirls": "Shale Swirls",
   "block.netherexp.ecto_soul_sand": "Ecto Soul Sand",
   "block.netherexp.suspicious_soul_sand": "Suspicious Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
@@ -69,7 +71,6 @@
 
   "block.netherexp.soul_torchflower": "Soul Torchflower",
   "block.netherexp.soul_torchflower_crop": "Soul Torchflower Crop",
-  "block.netherexp.sorrowsquash": "Sorrowsquash",
 
   "block.netherexp.sorrowsquash": "Sorrowsquash",
   "block.netherexp.carved_sorrowsquash": "Carved Sorrowsquash",
@@ -289,7 +290,7 @@
   "subtitles.block.soul_swirls.boost": "Soul Swirls whoop",
 
   "death.attack.graveMistSuffocation": "%1$s was shrouded and choked by souls",
-  "death.attack.graveMistSuffocation.player": "%1$s was shrouded and choked by %2$s's souls",
+  "death.attack.stampedeCrush": "%1$s was crushed by %2$s",
   "death.attack.volatileScoriaExplosion": "%1$s was caught in a volatile redstone discharge",
 
   "item.minecraft.tipped_arrow.effect.fogsight": "Arrow of Fogsight",
@@ -298,6 +299,7 @@
   "item.minecraft.lingering_potion.effect.fogsight": "Lingering Potion of Fogsight",
 
   "entity.netherexp.apparition": "Apparition",
+  "entity.netherexp.stampede": "Stampede",
 
   "entity.netherexp.grasp": "Grasp",
   "entity.netherexp.mist_charge": "Mist Charge",
@@ -438,6 +440,11 @@
   "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.bucketable_small_cubes": "Bucketable Small Cubes",
   "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.bucketable_small_cubes.@Tooltip": "Small Magma Cubes can be put into Lava Buckets",
 
+  "text.autoconfig.netherexp.option.entities.striderConfigs": "Strider",
+  "text.autoconfig.netherexp.option.entities.striderConfigs.@Tooltip": "Enable or disable any Blaze functionality",
+  "text.autoconfig.netherexp.option.entities.striderConfigs.retrievable_saddles": "Retrievable Saddles",
+  "text.autoconfig.netherexp.option.entities.striderConfigs.retrievable_saddles.@Tooltip": "Sneak Right-Click with an Empty Hand to retrieve The Saddle",
+
   "text.autoconfig.netherexp.option.gamemechanics": "Game Mechanics",
   "text.autoconfig.netherexp.option.gamemechanics.@Tooltip": "Changes to how certain game mechanics are handled",
 
@@ -547,6 +554,8 @@
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.@Tooltip": "Enable or disable any Blackstone Shales world generation",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_geyser": "Generate Geyser",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_geyser.@Tooltip": "Blackstonic Geyser will generate on the surface",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_shale_swirls": "Generate Shale Swirls",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_shale_swirls.@Tooltip": "Shale Swirls will generate on the floor and ceiling",
 
   "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs": "Gardens of the Dead Configs",
   "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs.@Tooltip[0]": "Enable or disable any Gardens of the Dead Mod Compatibility",

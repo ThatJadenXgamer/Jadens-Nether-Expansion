@@ -18,6 +18,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.StriderEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.world.ServerWorld;
@@ -58,6 +59,113 @@ implements GeoEntity, Angerable, Flutterer {
         this.moveControl = new FlightMoveControl(this, 20, true);
     }
 
+    protected EntityNavigation createNavigation(World world) {
+        BirdNavigation birdNavigation = new BirdNavigation(this, world) {
+            public boolean isValidPosition(BlockPos pos) {
+                return !this.world.getBlockState(pos.down()).isAir();
+            }
+        };
+        birdNavigation.setCanPathThroughDoors(false);
+        birdNavigation.setCanSwim(false);
+        birdNavigation.setCanEnterOpenDoors(true);
+        return birdNavigation;
+    }
+
+    @Override
+    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
+        return false;
+    }
+
+    @Override
+    protected void fall(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {
+        fallDistance = 0;
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (!(source.getAttacker() instanceof PlayerEntity) && source.isIn(DamageTypeTags.IS_PROJECTILE)) {
+            return false;
+        }
+        else {
+            return super.damage(source, amount);
+        }
+    }
+
+    @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return world.getBlockState(pos).isAir() ? 10.0F : 0.0F;
+    }
+
+    public static DefaultAttributeContainer.Builder setAttributes() {
+        return HostileEntity.createMobAttributes()
+        .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0)
+        .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.7000000238418579)
+        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3)
+        .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10.0)
+        .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0);
+    }
+
+    public EntityGroup getGroup() {
+        return EntityGroup.UNDEAD;
+    }
+
+    protected boolean isDisallowedInPeaceful() {
+        return false;
+    }
+
+    @Override
+    public boolean isInAir() {
+        return true;
+    }
+
+    @Override
+    protected void initGoals() {
+        int s = this.stage();
+        this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
+        this.goalSelector.add(4, new ApparitionWanderAroundGoal());
+        this.goalSelector.add(6, new LookAroundGoal(this));
+        this.targetSelector.add(1, new RevengeGoal(this));
+        this.targetSelector.add(3, new ActiveTargetGoal<>(this, SkeletonEntity.class, true));
+        this.targetSelector.add(4, new ActiveTargetGoal<>(this, StriderEntity.class, true));
+        this.targetSelector.add(5, new ActiveTargetGoal<>(this, MagmaCubeEntity.class, true));
+        this.targetSelector.add(5, new ActiveTargetGoal<>(this, BlazeEntity.class, true));
+        this.targetSelector.add(7, new ActiveTargetGoal<>(this, WispEntity.class, true));
+        this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
+    }
+
+    //TODO: Blaze is temporary replace it with Vessel
+    @Override
+    public boolean onKilledOther(ServerWorld world, LivingEntity other) {
+        boolean bl = super.onKilledOther(world, other);
+        int s = this.stage();
+        if (s < 4 && other instanceof WispEntity) {
+            this.setStage(s + 1, true);
+            other.remove(RemovalReason.KILLED);
+        }
+        if (s >= 1 && other instanceof SkeletonEntity skeletonEntity) {
+            BlazeEntity blazeEntity = skeletonEntity.convertTo(EntityType.BLAZE, false);
+            this.remove(RemovalReason.DISCARDED);
+            if (blazeEntity != null) {
+                skeletonEntity.initialize(world, world.getLocalDifficulty(skeletonEntity.getBlockPos()), SpawnReason.CONVERSION, new EntityData() {
+                    @Override
+                    public int hashCode() {
+                        return super.hashCode();
+                    }
+                }, null);
+                if (!this.isSilent()) {
+                    world.syncWorldEvent(null, 1026, this.getBlockPos(), 0);
+                }
+
+                bl = false;
+            }
+        }
+        return bl;
+    }
+
+    /////////
+    // NBT //
+    /////////
+
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
@@ -66,6 +174,10 @@ implements GeoEntity, Angerable, Flutterer {
 
     public int stage() {
         return this.getStage();
+    }
+
+    public int getStage() {
+        return this.dataTracker.get(APPARITION_STAGE);
     }
 
     @VisibleForTesting
@@ -82,20 +194,6 @@ implements GeoEntity, Angerable, Flutterer {
         }
 
         this.experiencePoints = i;
-    }
-
-    @Override
-    public boolean damage(DamageSource source, float amount) {
-        if (source.isIn(DamageTypeTags.IS_PROJECTILE)) {
-            return false;
-        }
-        else {
-            return super.damage(source, amount);
-        }
-    }
-
-    public int getStage() {
-        return this.dataTracker.get(APPARITION_STAGE);
     }
 
     @Override
@@ -145,103 +243,12 @@ implements GeoEntity, Angerable, Flutterer {
             this.setYaw(this.headYaw);
             this.bodyYaw = this.headYaw;
         }
-
         super.onTrackedDataSet(data);
     }
 
-    protected EntityNavigation createNavigation(World world) {
-        BirdNavigation birdNavigation = new BirdNavigation(this, world) {
-            public boolean isValidPosition(BlockPos pos) {
-                return !this.world.getBlockState(pos.down()).isAir();
-            }
-        };
-        birdNavigation.setCanPathThroughDoors(false);
-        birdNavigation.setCanSwim(false);
-        birdNavigation.setCanEnterOpenDoors(true);
-        return birdNavigation;
-    }
-
-    @Override
-    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
-        return false;
-    }
-
-    @Override
-    protected void fall(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {
-        fallDistance = 0;
-    }
-
-    @Override
-    public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return world.getBlockState(pos).isAir() ? 10.0F : 0.0F;
-    }
-
-    public static DefaultAttributeContainer.Builder setAttributes() {
-        return HostileEntity.createMobAttributes()
-        .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0)
-        .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.7000000238418579)
-        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3)
-        .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10.0)
-        .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0);
-    }
-
-
-    //TODO: Blaze is temporary replace it with Vessel
-    @Override
-    public boolean onKilledOther(ServerWorld world, LivingEntity other) {
-        boolean bl = super.onKilledOther(world, other);
-        int s = this.stage();
-        if (s < 4 && other instanceof WispEntity) {
-            this.setStage(s + 1, true);
-            other.remove(RemovalReason.KILLED);
-        }
-        if (s >= 1 && other instanceof SkeletonEntity skeletonEntity) {
-            BlazeEntity blazeEntity = skeletonEntity.convertTo(EntityType.BLAZE, false);
-            this.remove(RemovalReason.DISCARDED);
-            if (blazeEntity != null) {
-                skeletonEntity.initialize(world, world.getLocalDifficulty(skeletonEntity.getBlockPos()), SpawnReason.CONVERSION, new EntityData() {
-                    @Override
-                    public int hashCode() {
-                        return super.hashCode();
-                    }
-                }, null);
-                if (!this.isSilent()) {
-                    world.syncWorldEvent(null, 1026, this.getBlockPos(), 0);
-                }
-
-                bl = false;
-            }
-        }
-        return bl;
-    }
-
-    public EntityGroup getGroup() {
-        return EntityGroup.UNDEAD;
-    }
-
-    protected boolean isDisallowedInPeaceful() {
-        return false;
-    }
-
-    @Override
-    protected void initGoals() {
-        int s = this.stage();
-        this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
-        this.goalSelector.add(4, new ApparitionWanderAroundGoal());
-        this.goalSelector.add(6, new LookAroundGoal(this));
-        this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(3, new ActiveTargetGoal<>(this, SkeletonEntity.class, true));
-        this.targetSelector.add(4, new ActiveTargetGoal<>(this, StriderEntity.class, true));
-        this.targetSelector.add(5, new ActiveTargetGoal<>(this, MagmaCubeEntity.class, true));
-        this.targetSelector.add(5, new ActiveTargetGoal<>(this, BlazeEntity.class, true));
-        this.targetSelector.add(7, new ActiveTargetGoal<>(this, WispEntity.class, true));
-        this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
-    }
-
-    @Override
-    public boolean isInAir() {
-        return true;
-    }
+    ////////
+    // AI //
+    ////////
 
     class ApparitionWanderAroundGoal extends Goal {
         ApparitionWanderAroundGoal() {
@@ -273,6 +280,10 @@ implements GeoEntity, Angerable, Flutterer {
             return vec3d3 != null ? vec3d3 : NoPenaltySolidTargeting.find(ApparitionEntity.this, 8, 4, -2, vec3d2.x, vec3d2.z, 1.5707963705062866);
         }
     }
+
+    ////////////////////
+    // GeckoLib Stuff //
+    ////////////////////
 
     @SuppressWarnings("all")
     private PlayState predicate(AnimationState animationState) {
@@ -307,6 +318,10 @@ implements GeoEntity, Angerable, Flutterer {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return factory;
     }
+
+    ///////////
+    // ANGER //
+    // /////////
 
     @Override
     public int getAngerTime() {
