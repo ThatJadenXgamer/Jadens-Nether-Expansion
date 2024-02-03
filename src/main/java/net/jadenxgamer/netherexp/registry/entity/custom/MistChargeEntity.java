@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
+import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -84,6 +85,25 @@ public class MistChargeEntity extends ThrownItemEntity implements GeoEntity {
 
         this.discard();
         super.onBlockHit(blockHitResult);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        this.spawnParticles(1);
+    }
+
+    private void spawnParticles(int amount) {
+        if (amount > 0) {
+            for(int j = 0; j < amount; ++j) {
+                this.getWorld().addParticle(ModParticles.GRASP_MIST, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), 0, 0, 0);
+            }
+        }
+    }
+
+    @Override
+    protected float getGravity() {
+        return 0.05F;
     }
 
     ////////////////////

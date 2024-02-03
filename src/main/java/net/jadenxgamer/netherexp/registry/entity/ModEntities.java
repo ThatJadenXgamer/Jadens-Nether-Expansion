@@ -16,6 +16,11 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, WarphopperEntity::new).fireImmune()
                     .dimensions(EntityDimensions.fixed(0.6F, 2.2f)).build());
 
+    public static final EntityType<StampedeEntity> STAMPEDE = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "stampede"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, StampedeEntity::new).fireImmune()
+                    .dimensions(EntityDimensions.fixed(1.4F, 3.5f)).build());
+
     public static final EntityType<ApparitionEntity> APPARITION = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "apparition"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ApparitionEntity::new).fireImmune()
