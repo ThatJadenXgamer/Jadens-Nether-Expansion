@@ -1,0 +1,21 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"textures": {
+		"particle": "cinderscapes:block/umbral_planks",
+		"texture": "cinderscapes:block/umbral_button"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 6],
+			"to": [11, 1, 10],
+			"faces": {
+				"north": {"uv": [5, 10, 11, 11], "texture": "#texture"},
+				"east": {"uv": [11, 6, 15, 7], "texture": "#texture"},
+				"south": {"uv": [5, 4, 11, 5], "texture": "#texture"},
+				"west": {"uv": [1, 6, 5, 7], "texture": "#texture"},
+				"up": {"uv": [5, 10, 11, 6], "texture": "#texture"},
+				"down": {"uv": [5, 6, 11, 10], "texture": "#texture", "cullface": "down"}
+			}
+		}
+	]
+}

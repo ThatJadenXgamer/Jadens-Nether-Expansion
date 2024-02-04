@@ -8,7 +8,6 @@ import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -16,7 +15,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.math.Direction;
 
 @SuppressWarnings("unused")
 public class ModItems {
@@ -91,7 +89,7 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.WARPED_WART, new FabricItemSettings()));
 
     public static final Item MIST_CHARGE = registerItem("mist_charge",
-            new MistChargeItem(new FabricItemSettings().maxCount(16)));
+            new MistChargeItem(new FabricItemSettings().maxCount(NetherExp.getConfig().items.mistChargeConfigs.mist_charge_stack_size)));
 
     public static final Item NECRO_SHARD = registerItem("necro_shard",
             new Item(new FabricItemSettings()));
@@ -130,6 +128,9 @@ public class ModItems {
     // TODO Add Skeletal Heads
 //    public static final Item SKELETAL_CREEPER_SKULL_ITEM = registerItem("skeletal_creeper_skull",
 //            new VerticallyAttachableBlockItem(ModBlocks.SKELETAL_CREEPER_SKULL, ModBlocks.SKELETAL_CREEPER_WALL_SKULL, new FabricItemSettings().rarity(Rarity.UNCOMMON).equipmentSlot(stack -> EquipmentSlot.HEAD), Direction.DOWN));
+
+    public static final Item SKULL_ON_A_STICK = registerItem("skull_on_a_stick",
+            new Item(new FabricItemSettings().maxDamage(100)));
 
     public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
             new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));

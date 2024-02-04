@@ -94,12 +94,12 @@ public class ModBlocks {
 
     public static final Block SOUL_SWIRLS = registerBlock("soul_swirls",
             new SwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
-                    state -> state.get(SwirlsBlock.COOLDOWN) ? 5 : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SWIRL_POP));
+                    state -> state.get(SwirlsBlock.COOLDOWN) ? NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_light_level : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SWIRL_POP));
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block SHALE_SWIRLS = registerCompatBlock("shale_swirls",
             new SwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
-                    state -> state.get(SwirlsBlock.COOLDOWN) ? 5 : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SHALE_SWIRL_POP), "cinderscapes");
+                    state -> state.get(SwirlsBlock.COOLDOWN) ? NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_light_level : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SHALE_SWIRL_POP), "cinderscapes");
 
     public static final Block ECTO_SOUL_SAND = registerBlock("ecto_soul_sand",
             new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).sounds(BlockSoundGroup.SOUL_SAND)));

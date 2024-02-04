@@ -355,26 +355,26 @@
   "text.autoconfig.netherexp.option.blocks.@Tooltip": "Changes to how certain blocks behave",
 
   "text.autoconfig.netherexp.option.blocks.decayableConfigs": "Decayable Blocks",
-  "text.autoconfig.netherexp.option.blocks.decayableConfigs.@Tooltip": "Enable or disable Decayable Blocks functionality",
+  "text.autoconfig.netherexp.option.blocks.decayableConfigs.@Tooltip": "Change Decayable Blocks functionality",
   "text.autoconfig.netherexp.option.blocks.decayableConfigs.decayable_wart_blocks": "Decayable Wart Blocks",
   "text.autoconfig.netherexp.option.blocks.decayableConfigs.decayable_wart_blocks.@Tooltip": "Wart Blocks grown from Nether Trees will decay if these is no stem",
   "text.autoconfig.netherexp.option.blocks.decayableConfigs.decayable_shroomlight": "Decayable Shroomlight",
   "text.autoconfig.netherexp.option.blocks.decayableConfigs.decayable_shroomlight.@Tooltip": "Shroomlights grown from Nether Trees will decay if these is no stem",
 
   "text.autoconfig.netherexp.option.blocks.pathBlockConfigs": "Path Blocks",
-  "text.autoconfig.netherexp.option.blocks.pathBlockConfigs.@Tooltip": "Enable or disable Path Blocks functionality",
+  "text.autoconfig.netherexp.option.blocks.pathBlockConfigs.@Tooltip": "Change Path Blocks functionality",
   "text.autoconfig.netherexp.option.blocks.pathBlockConfigs.enable_nylium_path_blocks": "Enable Nylium Path Blocks",
   "text.autoconfig.netherexp.option.blocks.pathBlockConfigs.enable_nylium_path_blocks.@Tooltip": "Shovels can flatten Vanilla and Modded Nylium into Nylium Path Blocks",
   "text.autoconfig.netherexp.option.blocks.pathBlockConfigs.enable_soul_path_blocks": "Enable Soul Path Blocks",
   "text.autoconfig.netherexp.option.blocks.pathBlockConfigs.enable_soul_path_blocks.@Tooltip": "Shovels can flatten Soul Sand and Soul Soil into Soul Path Blocks",
 
   "text.autoconfig.netherexp.option.blocks.witherBoneBlockConfigs": "Wither Bone Block",
-  "text.autoconfig.netherexp.option.blocks.witherBoneBlockConfigs.@Tooltip": "Enable or disable Wither Bone Block functionality",
+  "text.autoconfig.netherexp.option.blocks.witherBoneBlockConfigs.@Tooltip": "Change Wither Bone Block functionality",
   "text.autoconfig.netherexp.option.blocks.witherBoneBlockConfigs.harmful_wither_bone_block": "Harmful Wither Bone Block",
   "text.autoconfig.netherexp.option.blocks.witherBoneBlockConfigs.harmful_wither_bone_block.@Tooltip": "When Stepped on Wither Bone Blocks inflict the Wither Effect",
 
   "text.autoconfig.netherexp.option.blocks.fossilOreConfigs": "Fossil Ore",
-  "text.autoconfig.netherexp.option.blocks.fossilOreConfigs.@Tooltip": "Enable or disable Fossil Ore functionality",
+  "text.autoconfig.netherexp.option.blocks.fossilOreConfigs.@Tooltip": "Change Fossil Ore functionality",
   "text.autoconfig.netherexp.option.blocks.fossilOreConfigs.skeleton_fossilization": "Skeleton Fossilization",
   "text.autoconfig.netherexp.option.blocks.fossilOreConfigs.skeleton_fossilization.@Tooltip": "Skeletons when killed on Soul Soil will convert it to Fossil Ore",
   "text.autoconfig.netherexp.option.blocks.fossilOreConfigs.wither_skeleton_fossilization": "Wither Skeleton Fossilization",
@@ -385,14 +385,14 @@
   "text.autoconfig.netherexp.option.blocks.fossilOreConfigs.fossil_ore_conversion_odds.@Tooltip": "Determines the odds of Fossil Ore converting to Fossil Fuel Ore",
 
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs": "Soul Glass",
-  "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.@Tooltip": "Enable or disable Soul Glass functionality",
+  "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.@Tooltip": "Change Soul Glass functionality",
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.viscous_soul_glass": "Viscous Soul Glass",
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.viscous_soul_glass.@Tooltip": "Soul Glass slows down movement when submerged without Soul Speed",
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.phasmophobic_mobs": "Phasmophobic Mobs",
   "text.autoconfig.netherexp.option.blocks.soulGlassConfigs.phasmophobic_mobs.@Tooltip": "Mobs will avoid going through Soul Glass",
 
   "text.autoconfig.netherexp.option.blocks.geyserConfigs": "Geyser",
-  "text.autoconfig.netherexp.option.blocks.geyserConfigs.@Tooltip": "Enable or disable Geyser functionality",
+  "text.autoconfig.netherexp.option.blocks.geyserConfigs.@Tooltip": "Change Geyser functionality",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_deals_damage": "Geyser Deals Damage",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_deals_damage.@Tooltip": "Geyser deals Hot Floor Damage when used",
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown": "Geyser Cooldown",
@@ -401,13 +401,15 @@
   "text.autoconfig.netherexp.option.blocks.geyserConfigs.geyser_cooldown_ticks.@Tooltip": "Determines how long the Geyser goes to Cooldown for in Ticks",
 
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs": "Soul Swirls",
-  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.@Tooltip": "Enable or disable Soul Swirls functionality",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.@Tooltip": "Change Soul Swirls functionality",
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_boosting": "Soul Swirls Boosting",
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_boosting.@Tooltip": "Soul Swirls grant you Unbounded Speed when walked through",
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_cooldown_ticks": "Soul Swirls Cooldown Ticks",
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_cooldown_ticks.@Tooltip": "Determines how long Soul Swirls go in Cooldown for in Ticks",
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.unbounded_speed_duration": "Unbounded Speed Duration",
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.unbounded_speed_duration.@Tooltip": "Determines how long you'll be granted Unbounded Speed for in Seconds",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_light_level": "Soul Swirls Light Level",
+  "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_light_level.@Tooltip": "Determines how bright of a light Soul Swirls will emit when on cooldown",
 
   "text.autoconfig.netherexp.option.blocks.renewableConfigs": "Renewable Blocks",
   "text.autoconfig.netherexp.option.blocks.renewableConfigs.@Tooltip": "Various Renewable Block Settings",
@@ -427,21 +429,26 @@
   "text.autoconfig.netherexp.option.items": "Items",
   "text.autoconfig.netherexp.option.items.@Tooltip": "Changes to how certain items behave",
 
+  "text.autoconfig.netherexp.option.entities.mistChargeConfigs": "Mist Charge",
+  "text.autoconfig.netherexp.option.entities.mistChargeConfigs.@Tooltip": "Change any Mist Charge functionality",
+  "text.autoconfig.netherexp.option.entities.mistChargeConfigs.mist_charge_stack_size": "Diminishing Blazes",
+  "text.autoconfig.netherexp.option.entities.mistChargeConfigs.mist_charge_stack_size.@Tooltip": "Blazes get dimmer the more damage they receive",
+
   "text.autoconfig.netherexp.option.entities": "Entities",
   "text.autoconfig.netherexp.option.entities.@Tooltip": "Changes to how mobs are handled",
 
   "text.autoconfig.netherexp.option.entities.blazeConfigs": "Blaze",
-  "text.autoconfig.netherexp.option.entities.blazeConfigs.@Tooltip": "Enable or disable any Blaze functionality",
+  "text.autoconfig.netherexp.option.entities.blazeConfigs.@Tooltip": "Change any Blaze functionality",
   "text.autoconfig.netherexp.option.entities.blazeConfigs.diminishing_blazes": "Diminishing Blazes",
   "text.autoconfig.netherexp.option.entities.blazeConfigs.diminishing_blazes.@Tooltip": "Blazes get dimmer the more damage they receive",
 
   "text.autoconfig.netherexp.option.entities.magmaCubeConfigs": "Magma Cube",
-  "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.@Tooltip": "Enable or disable any Blaze functionality",
+  "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.@Tooltip": "Change any Magma Cube functionality",
   "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.bucketable_small_cubes": "Bucketable Small Cubes",
   "text.autoconfig.netherexp.option.entities.magmaCubeConfigs.bucketable_small_cubes.@Tooltip": "Small Magma Cubes can be put into Lava Buckets",
 
   "text.autoconfig.netherexp.option.entities.striderConfigs": "Strider",
-  "text.autoconfig.netherexp.option.entities.striderConfigs.@Tooltip": "Enable or disable any Blaze functionality",
+  "text.autoconfig.netherexp.option.entities.striderConfigs.@Tooltip": "Change any Strider functionality",
   "text.autoconfig.netherexp.option.entities.striderConfigs.retrievable_saddles": "Retrievable Saddles",
   "text.autoconfig.netherexp.option.entities.striderConfigs.retrievable_saddles.@Tooltip": "Sneak Right-Click with an Empty Hand to retrieve The Saddle",
 
@@ -449,7 +456,7 @@
   "text.autoconfig.netherexp.option.gamemechanics.@Tooltip": "Changes to how certain game mechanics are handled",
 
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs": "Soul Speed Quality of Life",
-  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.@Tooltip": "Enable or disable Soul Speed related functionality",
+  "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.@Tooltip": "Change Soul Speed related functionality",
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness": "Nerfed Soul Sand Slowness",
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness.@Tooltip": "Soul Sand will won't slow you down as much if enabled",
   "text.autoconfig.netherexp.option.gamemechanics.soulSpeedConfigs.no_soul_speed_degradation": "No Soul Speed Degradation",
@@ -462,7 +469,7 @@
   "text.autoconfig.netherexp.option.sounds.@Tooltip": "Changes related to sound effects",
 
   "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs": "Block Sounds",
-  "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs.@Tooltip": "Enable or disable any Custom Block Sounds",
+  "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs.@Tooltip": "Change any Custom Block Sounds",
   "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs.blackstone_sounds": "Blackstone Sounds",
   "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs.blackstone_sounds.@Tooltip": "Blackstone will produce custom sounds",
   "text.autoconfig.netherexp.option.sounds.blockSoundsConfigs.polished_blackstone_sounds": "Polished Blackstone Sounds",
@@ -490,7 +497,7 @@
   "text.autoconfig.netherexp.option.worldgen.@Tooltip": "Changes to how Biomes and Terrain Generation is handled",
 
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs": "Soul Sand Valley Settings",
-  "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.@Tooltip": "Enable or disable any Soul Sand Valley world generation",
+  "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.@Tooltip": "Change any Soul Sand Valley world generation",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_jagged_soul_slate": "Generate Jagged Soul Slate",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_jagged_soul_slate.@Tooltip": "Jagged Soul Slate will generate on the surface and cliff edges",
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_soul_magma_blobs": "Generate Soul Magma Blobs",
@@ -507,7 +514,7 @@
   "text.autoconfig.netherexp.option.worldgen.soulSandValleyConfigs.generate_ectoplasm_lakes.@Tooltip": "Ectoplasm Lakes will sometimes generate on the surface",
 
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs": "Warped Forest Settings",
-  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.@Tooltip": "Enable or disable any Warped Forest world generation",
+  "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.@Tooltip": "Change any Warped Forest world generation",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_sporeshroom": "Generate Sporeshroom",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_sporeshroom.@Tooltip": "Warped Sporeshrooms and rarely Crimson Sporeshrooms will generate on the surface",
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_wart_beard": "Generate Wart Beard",
@@ -518,26 +525,29 @@
   "text.autoconfig.netherexp.option.worldgen.warpedForestConfigs.generate_twisting_ivy.@Tooltip": "Patches of Twisting Ivy can generate on the floor",
 
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs": "Crimson Forest Settings",
-  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.@Tooltip": "Enable or disable any Crimson Forest world generation",
+  "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.@Tooltip": "Change any Crimson Forest world generation",
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_sporeshroom": "Generate Sporeshroom",
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_sporeshroom.@Tooltip": "Crimson Sporeshrooms and rarely Warped Sporeshrooms will generate on the surface",
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_weeping_ivy": "Generate Weeping Ivy",
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_weeping_ivy.@Tooltip": "Patches of Weeping Ivy can generate on the ceiling",
 
   "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs": "Nether Wastes Settings",
-  "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.@Tooltip": "Enable or disable any Nether Wastes world generation",
+  "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.@Tooltip": "Change any Nether Wastes world generation",
   "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.generate_quartz_crystals": "Generate Quartz Crystals",
   "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.generate_quartz_crystals.@Tooltip": "Quartz Crystals will generate on the surface",
 
   "text.autoconfig.netherexp.option.modcompat": "Mod Compatibility",
   "text.autoconfig.netherexp.option.modcompat.@Tooltip": "Changes to how Nether Expansion adds bonus content to other Mods",
 
+  "text.autoconfig.netherexp.option.modcompat.retexture_modded_woodsets": "Retexture Modded Woodsets",
+  "text.autoconfig.netherexp.option.modcompat.retexture_modded_woodsets.@Tooltip": "Changes Nether Woodsets from Other Mods to fit Nether Expansion",
+
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs": "Cinderscapes Configs",
-  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.@Tooltip[0]": "Enable or disable any Cinderscapes Mod Compatibility",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.@Tooltip[0]": "Change any Cinderscapes Mod Compatibility",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.@Tooltip[1]": "these configs matter only if Cinderscapes is Installed",
 
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs": "Luminous Grove Settings",
-  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.@Tooltip": "Enable or disable any Luminous Grove world generation",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.@Tooltip": "Change any Luminous Grove world generation",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_sporeshroom": "Generate Sporeshroom",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_sporeshroom.@Tooltip": "Umbral Sporeshrooms and rarely Warped Sporeshrooms will generate on the surface",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_twilight_vines": "Generate Twilight Vines",
@@ -546,23 +556,23 @@
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.luminousGroveConfigs.generate_twilight_ivy.@Tooltip": "Patches of Twilight Ivy can generate on the ceiling",
 
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs": "Ashy Shoals Settings",
-  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.@Tooltip": "Enable or disable any Ashy Shoals world generation",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.@Tooltip": "Change any Ashy Shoals world generation",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_geyser": "Generate Geyser",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_geyser.@Tooltip": "Ashen Geysers will generate on the surface",
 
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs": "Blackstone Shales Settings",
-  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.@Tooltip": "Enable or disable any Blackstone Shales world generation",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.@Tooltip": "Change any Blackstone Shales world generation",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_geyser": "Generate Geyser",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_geyser.@Tooltip": "Blackstonic Geyser will generate on the surface",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_shale_swirls": "Generate Shale Swirls",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.generate_shale_swirls.@Tooltip": "Shale Swirls will generate on the floor and ceiling",
 
   "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs": "Gardens of the Dead Configs",
-  "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs.@Tooltip[0]": "Enable or disable any Gardens of the Dead Mod Compatibility",
+  "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs.@Tooltip[0]": "Change any Gardens of the Dead Mod Compatibility",
   "text.autoconfig.netherexp.option.modcompat.gardensOfTheDeadConfigs.@Tooltip[1]": "these configs matter only if Gardens of the Dead is Installed",
 
   "text.autoconfig.netherexp.option.modcompat.pigsteelConfigs": "Pigsteel Configs",
-  "text.autoconfig.netherexp.option.modcompat.pigsteelConfigs.@Tooltip[0]": "Enable or disable any Pigsteel Mod Compatibility",
+  "text.autoconfig.netherexp.option.modcompat.pigsteelConfigs.@Tooltip[0]": "Change any Pigsteel Mod Compatibility",
   "text.autoconfig.netherexp.option.modcompat.pigsteelConfigs.@Tooltip[1]": "these configs matter only if Pigsteel is Installed",
 
   "itemGroup.netherexp.netherexp_tab": "Nether Expansion Tab"

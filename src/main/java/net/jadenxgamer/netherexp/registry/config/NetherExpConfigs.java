@@ -5,10 +5,11 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.blocks.*;
-import net.jadenxgamer.netherexp.registry.config.other.entity.BlazeConfigs;
-import net.jadenxgamer.netherexp.registry.config.other.entity.MagmaCubeConfigs;
-import net.jadenxgamer.netherexp.registry.config.other.entity.StriderConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.entities.BlazeConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.entities.MagmaCubeConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.entities.StriderConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.gamemechanics.SoulSpeedConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.items.MistChargeConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.modcompat.CinderscapesConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.worldgen.CrimsonForestConfigs;
@@ -85,7 +86,9 @@ public class NetherExpConfigs implements ConfigData {
     public Items items = new Items();
 
     public static class Items {
-
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public MistChargeConfigs mistChargeConfigs = new MistChargeConfigs();
     }
 
     // GAME MECHANICS //
@@ -159,6 +162,10 @@ public class NetherExpConfigs implements ConfigData {
     public ModCompat modcompat = new ModCompat();
 
     public static class ModCompat {
+        @ConfigEntry.Gui.Tooltip()
+        @ConfigEntry.Gui.RequiresRestart
+        public boolean retexture_modded_woodsets = true;
+
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip(count = 2)
         public CinderscapesConfigs cinderscapesConfigs = new CinderscapesConfigs();

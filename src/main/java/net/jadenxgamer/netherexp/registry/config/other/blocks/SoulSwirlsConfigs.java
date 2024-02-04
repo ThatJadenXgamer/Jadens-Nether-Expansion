@@ -12,4 +12,8 @@ public class SoulSwirlsConfigs {
 
     @ConfigEntry.Gui.Tooltip
     public int unbounded_speed_duration = 10;
+
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+    @ConfigEntry.Gui.Tooltip
+    public int soul_swirls_light_level = 5;
 }

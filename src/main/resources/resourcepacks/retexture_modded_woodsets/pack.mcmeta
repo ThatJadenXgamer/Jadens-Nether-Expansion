@@ -1,0 +1,8 @@
+﻿{
+   "pack":{
+      "pack_format": 18,
+      "description": [
+		{"text":"Changes Nether Woodsets from Other Mods to fit Nether Expansion","color":"gray"}
+	  ]
+   }
+}

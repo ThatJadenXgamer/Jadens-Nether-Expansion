@@ -1,0 +1,45 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "cinderscapes:block/scorched_fence/post"
+      }
+    },
+    {
+      "apply": {
+        "model": "cinderscapes:block/scorched_fence/north",
+        "uvlock": false
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cinderscapes:block/scorched_fence/east",
+        "uvlock": false
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cinderscapes:block/scorched_fence/south",
+        "uvlock": false
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "cinderscapes:block/scorched_fence/west",
+        "uvlock": false
+      },
+      "when": {
+        "west": "true"
+      }
+    }
+  ]
+}

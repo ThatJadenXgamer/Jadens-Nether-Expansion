@@ -74,6 +74,12 @@ public class NetherExp implements ModInitializer {
 
 	// MOD COMPATIBILITY
 
+	public static boolean checkAnyModWithWood() {
+		return FabricLoader.getInstance().isModLoaded("cinderscapes") ||
+				FabricLoader.getInstance().isModLoaded("infernalexp") ||
+				FabricLoader.getInstance().isModLoaded("gardens_of_the_dead");
+	}
+
 	public static boolean checkModCompatCinderscapes() {
 		return FabricLoader.getInstance().isModLoaded("cinderscapes");
 	}

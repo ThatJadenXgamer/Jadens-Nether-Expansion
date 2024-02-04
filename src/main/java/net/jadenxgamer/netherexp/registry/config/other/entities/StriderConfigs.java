@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.config.other.entity;
+package net.jadenxgamer.netherexp.registry.config.other.entities;
 
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
