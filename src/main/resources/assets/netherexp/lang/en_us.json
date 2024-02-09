@@ -29,6 +29,7 @@
   "item.netherexp.wisp_bottle": "Bottle of Wisp",
   "item.netherexp.magma_cube_bucket": "Bucket of Magma Cube",
   "item.netherexp.ecto_slab_bucket": "Bucket of Ecto Slab",
+  "item.netherexp.skull_on_a_stick": "Skull on a Sick",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
@@ -92,9 +93,15 @@
   "block.netherexp.netherrack_pillar": "Netherrack Pillar",
 
   "block.netherexp.basalt_slab": "Basalt Slab",
+  "block.netherexp.basalt_stairs": "Basalt Stairs",
+  "block.netherexp.basalt_wall": "Basalt Wall",
+  "block.netherexp.polished_basalt_slab": "Polished Basalt Slab",
+  "block.netherexp.polished_basalt_stairs": "Polished Basalt Stairs",
+  "block.netherexp.polished_basalt_wall": "Polished Basalt Wall",
   "block.netherexp.polished_basalt_bricks": "Polished Basalt Bricks",
   "block.netherexp.polished_basalt_brick_slab": "Polished Basalt Brick Slab",
   "block.netherexp.polished_basalt_brick_stairs": "Polished Basalt Brick Stairs",
+  "block.netherexp.polished_basalt_brick_wall": "Polished Basalt Brick Wall",
 
   "item.netherexp.warped_wart": "Warped Wart",
   "block.netherexp.warped_wart": "Warped Wart",

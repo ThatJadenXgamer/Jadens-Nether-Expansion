@@ -86,11 +86,18 @@ public class ModItemGroup {
                         entries.add(ModItems.WHITE_ASH_POWDER);
                         entries.add(ModBlocks.WHITE_ASH_BLOCK);
                         entries.add(ModBlocks.WHITE_ASH);
+                        entries.add(Blocks.BASALT);
                         entries.add(ModBlocks.BASALT_SLAB);
+                        entries.add(ModBlocks.BASALT_STAIRS);
+                        entries.add(ModBlocks.BASALT_WALL);
                         entries.add(Blocks.POLISHED_BASALT);
+                        entries.add(ModBlocks.POLISHED_BASALT_SLAB);
+                        entries.add(ModBlocks.POLISHED_BASALT_STAIRS);
+                        entries.add(ModBlocks.POLISHED_BASALT_WALL);
                         entries.add(ModBlocks.POLISHED_BASALT_BRICKS);
                         entries.add(ModBlocks.POLISHED_BASALT_BRICK_STAIRS);
                         entries.add(ModBlocks.POLISHED_BASALT_BRICK_SLAB);
+                        entries.add(ModBlocks.POLISHED_BASALT_BRICK_WALL);
 
                         entries.add(ModBlocks.ENIGMA_CROWN);
                         entries.add(ModBlocks.ENIGMA_SHELF);
@@ -190,7 +197,6 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_SLAB);
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_WALL);
 
-
                         if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(ModItems.PYRITE_INGOT);
                             entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
@@ -222,28 +228,24 @@ public class ModItemGroup {
                         entries.add(Blocks.NETHER_WART_BLOCK);
                         entries.add(ModBlocks.NETHER_WART_BEARD);
                         entries.add(ModBlocks.RED_SCALE_FUNGUS);
+                        entries.add(Blocks.WEEPING_VINES);
+                        entries.add(ModBlocks.WEEPING_IVY);
+                        entries.add(ModBlocks.CRIMSON_SPROUTS);
 
                         entries.add(ModItems.WARPED_WART);
                         entries.add(Blocks.WARPED_WART_BLOCK);
                         entries.add(ModBlocks.WARPED_WART_BEARD);
                         entries.add(ModBlocks.BLUE_SCALE_FUNGUS);
+                        entries.add(Blocks.TWISTING_VINES);
+                        entries.add(ModBlocks.TWISTING_IVY);
+                        entries.add(Blocks.NETHER_SPROUTS);
 
                         if (NetherExp.checkModCompatCinderscapes()) {
                             entries.add(ModBlocks.UMBRAL_WART_BEARD);
                             entries.add(ModBlocks.VIOLET_SCALE_FUNGUS);
-                        }
-
-                        entries.add(Blocks.WEEPING_VINES);
-                        entries.add(ModBlocks.WEEPING_IVY);
-                        entries.add(Blocks.TWISTING_VINES);
-                        entries.add(ModBlocks.TWISTING_IVY);
-                        if (NetherExp.checkModCompatCinderscapes()) {
                             entries.add(ModBlocks.TWILIGHT_VINES);
                             entries.add(ModBlocks.TWILIGHT_IVY);
                         }
-
-                        entries.add(Blocks.NETHER_SPROUTS);
-                        entries.add(ModBlocks.CRIMSON_SPROUTS);
 
                         entries.add(Blocks.CRIMSON_NYLIUM);
                         entries.add(ModBlocks.CRIMSON_NYLIUM_PATH);
@@ -282,6 +284,7 @@ public class ModItemGroup {
                             entries.add(ModBlocks.ASHEN_GEYSER);
                         }
 
+                        entries.add(ModItems.SKULL_ON_A_STICK);
                         entries.add(Items.SKELETON_SKULL);
                         entries.add(ModBlocks.SKELETON_SKULL_CANDLE);
                         entries.add(ModBlocks.SOUL_SKELETON_SKULL_CANDLE);

@@ -164,7 +164,7 @@ public class NetherExpConfigs implements ConfigData {
     public static class ModCompat {
         @ConfigEntry.Gui.Tooltip()
         @ConfigEntry.Gui.RequiresRestart
-        public boolean retexture_modded_woodsets = true;
+        public boolean retexture_modded_woodsets = false;
 
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip(count = 2)

@@ -10,6 +10,9 @@
     "netherexp:stacked_bone_stairs",
     "netherexp:stacked_wither_bone_stairs",
     "netherexp:silica_sandstone_stairs",
-    "netherexp:smooth_silica_sandstone_stairs"
+    "netherexp:smooth_silica_sandstone_stairs",
+    "netherexp:basalt_stairs",
+    "netherexp:polished_basalt_stairs",
+    "netherexp:polished_basalt_brick_stairs"
   ]
 }

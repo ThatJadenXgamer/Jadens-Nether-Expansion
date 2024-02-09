@@ -16,9 +16,7 @@ public class BlocksMixin {
     //TODO: implement Ashy Basalt textures
     @Redirect(
             method = "<clinit>",
-            at = @At(
-            value = "NEW",
-            target = "net/minecraft/block/PillarBlock",
+            at = @At(value = "NEW", target = "net/minecraft/block/PillarBlock",
             ordinal = 0
     ),
             slice = @Slice(
@@ -28,7 +26,7 @@ public class BlocksMixin {
                     )
             )
     )
-    private static PillarBlock basalt(AbstractBlock.Settings settings) {
+    private static PillarBlock netherexp$basalt(AbstractBlock.Settings settings) {
         return new BasaltBlock(settings);
     }
 }

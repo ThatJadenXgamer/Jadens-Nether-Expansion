@@ -189,6 +189,21 @@ public class ModBlocks {
     public static final Block BASALT_SLAB = registerBlock("basalt_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
 
+    public static final Block BASALT_STAIRS = registerBlock("basalt_stairs",
+            new ModStairsBlock(Blocks.BASALT.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
+
+    public static final Block BASALT_WALL = registerBlock("basalt_wall",
+            new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(BlockSoundGroup.BASALT)));
+
+    public static final Block POLISHED_BASALT_SLAB = registerBlock("polished_basalt_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(BlockSoundGroup.BASALT)));
+
+    public static final Block POLISHED_BASALT_STAIRS = registerBlock("polished_basalt_stairs",
+            new ModStairsBlock(Blocks.POLISHED_BASALT.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
+
+    public static final Block POLISHED_BASALT_WALL = registerBlock("polished_basalt_wall",
+            new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(BlockSoundGroup.BASALT)));
+
     public static final Block POLISHED_BASALT_BRICKS = registerBlock("polished_basalt_bricks",
             new PolishedBasaltBrickBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)));
 
@@ -198,6 +213,9 @@ public class ModBlocks {
     public static final Block POLISHED_BASALT_BRICK_STAIRS = registerBlock("polished_basalt_brick_stairs",
             new ModStairsBlock(Blocks.POLISHED_BASALT.getDefaultState(),
             FabricBlockSettings.copyOf(ModBlocks.POLISHED_BASALT_BRICKS).sounds(ModSoundEvents.BASALT_BRICKS)));
+
+    public static final Block POLISHED_BASALT_BRICK_WALL = registerBlock("polished_basalt_brick_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.POLISHED_BASALT_BRICKS).sounds(ModSoundEvents.BASALT_BRICKS)));
 
     // Enigma Block
 

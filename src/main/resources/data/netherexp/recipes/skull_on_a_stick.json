@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:fishing_rod"
+    },
+    "X": {
+      "item": "minecraft:skeleton_skull"
+    }
+  },
+  "pattern": [
+    "# ",
+    " X"
+  ],
+  "result": {
+    "item": "netherexp:skull_on_a_stick"
+  }
+}

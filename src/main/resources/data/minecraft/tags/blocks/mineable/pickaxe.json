@@ -30,9 +30,15 @@
     "netherexp:netherrack_pillar",
 
     "netherexp:basalt_slab",
+    "netherexp:basalt_stairs",
+    "netherexp:basalt_wall",
+    "netherexp:polished_basalt_slab",
+    "netherexp:polished_basalt_stairs",
+    "netherexp:polished_basalt_wall",
     "netherexp:polished_basalt_bricks",
     "netherexp:polished_basalt_brick_slab",
     "netherexp:polished_basalt_brick_stairs",
+    "netherexp:polished_basalt_brick_wall",
 
     "netherexp:explosive_scoria",
 
