@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import com.google.common.annotations.VisibleForTesting;
+import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -19,6 +20,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.StriderEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.world.ServerWorld;
@@ -142,7 +144,26 @@ implements GeoEntity, Angerable, Flutterer {
             this.setStage(s + 1, true);
             other.remove(RemovalReason.KILLED);
         }
-        if (s >= 1 && other instanceof SkeletonEntity skeletonEntity) {
+        else if (s >= 2 && other instanceof StriderEntity striderEntity) {
+            if (striderEntity.isSaddled()) {
+                this.dropItem(Items.SADDLE);
+            }
+            StampedeEntity stampedeEntity = striderEntity.convertTo(ModEntities.STAMPEDE, false);
+            this.remove(RemovalReason.DISCARDED);
+            if (stampedeEntity != null) {
+                striderEntity.initialize(world, world.getLocalDifficulty(striderEntity.getBlockPos()), SpawnReason.CONVERSION, new EntityData() {
+                    @Override
+                    public int hashCode() {
+                        return super.hashCode();
+                    }
+                }, null);
+                if (!this.isSilent()) {
+                    world.syncWorldEvent(null, 1026, this.getBlockPos(), 0);
+                }
+                bl = false;
+            }
+        }
+        else if (s >= 1 && other instanceof SkeletonEntity skeletonEntity) {
             BlazeEntity blazeEntity = skeletonEntity.convertTo(EntityType.BLAZE, false);
             this.remove(RemovalReason.DISCARDED);
             if (blazeEntity != null) {

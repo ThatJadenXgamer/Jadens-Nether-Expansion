@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BC",
+    "CB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bone_block"
+    },
+    "C": {
+      "tag": "minecraft:coals"
+    }
+  },
+  "result": {
+    "item": "netherexp:wither_bone_block",
+    "count": 2
+  }
+}

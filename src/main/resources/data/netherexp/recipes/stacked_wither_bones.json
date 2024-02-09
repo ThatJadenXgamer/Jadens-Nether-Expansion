@@ -1,16 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " # ",
-    "#C#",
-    " # "
+    "##",
+    "##"
   ],
   "key": {
     "#": {
-      "item": "netherexp:stacked_bones"
-    },
-    "C": {
-      "tag": "minecraft:coals"
+      "item": "netherexp:wither_bone_block"
     }
   },
   "result": {

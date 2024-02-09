@@ -12,7 +12,12 @@ public class StampedeModel extends DefaultedEntityGeoModel<StampedeEntity> {
 
     @Override
     public Identifier getModelResource(StampedeEntity object) {
-        return new Identifier(NetherExp.MOD_ID, "geo/stampede.geo.json");
+        if (object.isAngry()) {
+            return new Identifier(NetherExp.MOD_ID, "geo/stampede_angry.geo.json");
+        }
+        else {
+            return new Identifier(NetherExp.MOD_ID, "geo/stampede.geo.json");
+        }
     }
     @Override
     public Identifier getTextureResource(StampedeEntity object) {
@@ -20,6 +25,11 @@ public class StampedeModel extends DefaultedEntityGeoModel<StampedeEntity> {
     }
     @Override
     public Identifier getAnimationResource(StampedeEntity animatable) {
-        return new Identifier(NetherExp.MOD_ID, "animations/stampede.animation.json");
+        if (animatable.isAngry()) {
+            return new Identifier(NetherExp.MOD_ID, "animations/stampede_angry.animation.json");
+        }
+        else {
+            return new Identifier(NetherExp.MOD_ID, "animations/stampede.animation.json");
+        }
     }
 }

@@ -7,7 +7,7 @@
         "items": [
           {
             "items": [
-              "netherexp:wither_bone_block"
+              "minecraft:bone_block"
             ]
           }
         ]
@@ -16,7 +16,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "netherexp:stacked_wither_bones"
+        "recipe": "netherexp:wither_bone_block"
       }
     }
   },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "netherexp:stacked_wither_bones"
+      "netherexp:wither_bone_block"
     ]
   }
 }
