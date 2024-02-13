@@ -1,6 +1,49 @@
 {
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "netherexp:block/polished_basalt_bricks_left"
-  }
+	"credit": "Made by @ThatJadenXgamer",
+	"parent": "block/block",
+	"textures": {
+		"1": "netherexp:block/polished_basalt_brick_wall_post",
+		"2": "netherexp:block/polished_basalt_brick_wall_top",
+		"3": "netherexp:block/polished_basalt_brick_wall",
+		"particle": "netherexp:block/polished_basalt_bricks_left",
+		"wall": "netherexp:block/polished_basalt_bricks_left"
+	},
+	"elements": [
+		{
+			"name": "Center post",
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [0, 0, 8, 16], "texture": "#wall"},
+				"east": {"uv": [8, 0, 16, 16], "texture": "#wall"},
+				"south": {"uv": [0, 0, 8, 16], "texture": "#wall"},
+				"west": {"uv": [8, 0, 16, 16], "texture": "#wall"},
+				"up": {"uv": [8, 0, 16, 8], "texture": "#1"},
+				"down": {"uv": [8, 0, 16, 8], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Full wall",
+			"from": [5, 0, 0],
+			"to": [11, 13, 16],
+			"faces": {
+				"north": {"uv": [0, 3, 6, 16], "texture": "#1", "cullface": "south"},
+				"east": {"uv": [0, 3, 16, 16], "texture": "#3"},
+				"south": {"uv": [0, 3, 6, 16], "texture": "#1", "cullface": "south"},
+				"west": {"uv": [0, 3, 16, 16], "texture": "#3"},
+				"up": {"uv": [5, 0, 11, 16], "texture": "#2"},
+				"down": {"uv": [5, 16, 11, 0], "texture": "#2", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"gui": {
+			"rotation": [30, 135, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
 }

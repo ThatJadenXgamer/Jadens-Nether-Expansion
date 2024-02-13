@@ -10,8 +10,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side",
-        "uvlock": true
+        "model": "netherexp:block/polished_basalt_brick_wall/side_north",
+        "uvlock": false
       },
       "when": {
         "north": "low"
@@ -19,9 +19,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side",
-        "uvlock": true,
-        "y": 90
+        "model": "netherexp:block/polished_basalt_brick_wall/side_east",
+        "uvlock": false
       },
       "when": {
         "east": "low"
@@ -29,9 +28,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side",
-        "uvlock": true,
-        "y": 180
+        "model": "netherexp:block/polished_basalt_brick_wall/side_south",
+        "uvlock": false
       },
       "when": {
         "south": "low"
@@ -39,9 +37,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side",
-        "uvlock": true,
-        "y": 270
+        "model": "netherexp:block/polished_basalt_brick_wall/side_west",
+        "uvlock": false
       },
       "when": {
         "west": "low"
@@ -49,8 +46,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side_tall",
-        "uvlock": true
+        "model": "netherexp:block/polished_basalt_brick_wall/side_tall_north",
+        "uvlock": false
       },
       "when": {
         "north": "tall"
@@ -58,9 +55,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side_tall",
-        "uvlock": true,
-        "y": 90
+        "model": "netherexp:block/polished_basalt_brick_wall/side_tall_east",
+        "uvlock": false
       },
       "when": {
         "east": "tall"
@@ -68,9 +64,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side_tall",
-        "uvlock": true,
-        "y": 180
+        "model": "netherexp:block/polished_basalt_brick_wall/side_tall_south",
+        "uvlock": false
       },
       "when": {
         "south": "tall"
@@ -78,9 +73,8 @@
     },
     {
       "apply": {
-        "model": "netherexp:block/polished_basalt_brick_wall_side_tall",
-        "uvlock": true,
-        "y": 270
+        "model": "netherexp:block/polished_basalt_brick_wall/side_tall_west",
+        "uvlock": false
       },
       "when": {
         "west": "tall"
