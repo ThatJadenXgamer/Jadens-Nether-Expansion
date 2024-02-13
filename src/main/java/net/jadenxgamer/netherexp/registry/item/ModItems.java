@@ -8,6 +8,8 @@ import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -58,14 +60,14 @@ public class ModItems {
     public static final Item BLIGHTSPORES = registerItem("blightspores",
             new Item(new FabricItemSettings()));
 
-    public static final Item WITHER_ANTIDOTE = registerItem("wither_antidote",
-            new AntidoteItem(new FabricItemSettings()));
+    public static final Item AWKWARD_ANTIDOTE = registerItem("awkward_antidote",
+            new AntidoteItem(new FabricItemSettings(), null, false));
 
-    public static final Item HUNGER_ANTIDOTE = registerItem("hunger_antidote",
-            new AntidoteItem(new FabricItemSettings()));
+    public static final Item INACTIVE_SWIFTNESS_ANTIDOTE = registerItem("inactive_swiftness_antidote",
+            new AntidoteItem(new FabricItemSettings(), new StatusEffectInstance(StatusEffects.SPEED, 3600), true));
 
-    public static final Item SLOWNESS_ANTIDOTE = registerItem("slowness_antidote",
-            new AntidoteItem(new FabricItemSettings()));
+    public static final Item SWIFTNESS_ANTIDOTE = registerItem("swiftness_antidote",
+            new AntidoteItem(new FabricItemSettings(), new StatusEffectInstance(StatusEffects.SPEED, 3600),false));
 
     public static final Item GLOWCHEESE = registerItem("glowcheese",
             new Item(new FabricItemSettings().food(ModFoodComponents.GLOWCHEESE)));

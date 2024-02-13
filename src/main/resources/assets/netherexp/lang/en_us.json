@@ -1,5 +1,5 @@
 {
-  "biome.netherexp.vent_mire": "Vent Mire",
+  "biome.netherexp.exhaust_mire": "Exhaust Mire",
   "biome.netherexp.quartz_chasm": "Quartz Chasm",
   "biome.netherexp.grieving_grove": "Grieving Grove",
 
@@ -32,6 +32,12 @@
   "item.netherexp.skull_on_a_stick": "Skull on a Sick",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
+
+  "item.netherexp.antidote.inactive_tooltip": "To Activate needs to be Brewed With:",
+
+  "item.netherexp.awkward_antidote": "Awkward Antidote",
+  "item.netherexp.inactive_swiftness_antidote": "Inactive Antidote for Swiftness",
+  "item.netherexp.swiftness_antidote": "Antidote for Swiftness",
 
   "item.netherexp.glowcheese": "Glowcheese",
   "block.netherexp.nether_pizza": "Nether Pizza",

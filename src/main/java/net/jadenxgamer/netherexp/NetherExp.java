@@ -17,7 +17,7 @@ import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.item.potion.ModPotions;
+import net.jadenxgamer.netherexp.registry.item.brewing.ModPotions;
 import net.jadenxgamer.netherexp.registry.misc_registry.*;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.worldgen.biome.ModBiomes;

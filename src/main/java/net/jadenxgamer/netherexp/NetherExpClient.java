@@ -5,11 +5,13 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
+import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.ExplosionLargeParticle;
@@ -98,6 +100,11 @@ public class NetherExpClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
                 ModFluids.ECTOPLASM, ModFluids.FLOWING_ECTOPLASM);
+
+        // COLOR PROVIDERS
+        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : 3694022, ModItems.AWKWARD_ANTIDOTE);
+        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : 7124156, ModItems.INACTIVE_SWIFTNESS_ANTIDOTE);
+        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : 3402751, ModItems.SWIFTNESS_ANTIDOTE);
 
         // PARTICLES
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);

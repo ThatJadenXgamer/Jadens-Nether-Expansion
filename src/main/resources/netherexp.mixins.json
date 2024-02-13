@@ -14,6 +14,9 @@
     "block.TorchflowerBlockMixin",
     "block.TwistingVinesMixin",
     "block.WeepingVinesMixin",
+    "brewing.BrewingRecipeRegistryAccessor",
+    "brewing.BrewingRecipeRegistryMixin",
+    "brewing.BrewingStandBlockEntityMixin",
     "entity.HoglinEntityMixin",
     "entity.LivingEntityMixin",
     "entity.MagmaCubeEntityMixin",
@@ -22,9 +25,7 @@
     "entity.SkeletonEntityMixin",
     "entity.StriderEntityMixin",
     "entity.WitherSkeletonEntityMixin",
-    "entity.ZombifiedPiglinEntityMixin",
-    "item.BrewingRecipeRegistryAccessor",
-    "item.BrewingRecipeRegistryMixin"
+    "entity.ZombifiedPiglinEntityMixin"
   ],
   "client": [
     "item.ItemRendererAccessor",

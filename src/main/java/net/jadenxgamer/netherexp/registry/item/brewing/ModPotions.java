@@ -1,7 +1,7 @@
-package net.jadenxgamer.netherexp.registry.item.potion;
+package net.jadenxgamer.netherexp.registry.item.brewing;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.mixin.item.BrewingRecipeRegistryAccessor;
+import net.jadenxgamer.netherexp.mixin.brewing.BrewingRecipeRegistryAccessor;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -26,18 +26,13 @@ public class ModPotions{
 
     private static void registerPotionRecipe() {
         BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.FOGGY_ESSENCE, FOGSIGHT_POTION);
+        BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.FOGGY_ESSENCE, FOGSIGHT_POTION);
         BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(FOGSIGHT_POTION, Items.REDSTONE, LONG_FOGSIGHT_POTION);
         BrewingRecipeRegistryAccessor.netherexp$invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.WARPHOPPER_FUR, Potions.INVISIBILITY);
-    }
-
-    public static void registerItemRecipe() {
-        ModBrewingRecipeRegistry.registerAntidoteRecipe(ModItems.LIGHTSPORES, ModItems.NIGHTSPORES, ModItems.GLOWCHEESE);
-        ModBrewingRecipeRegistry.registerAntidoteRecipe(ModItems.HUNGER_ANTIDOTE, ModItems.WARPED_WART, ModItems.SLOWNESS_ANTIDOTE);
     }
 
     public static void registerModPotions() {
         NetherExp.LOGGER.debug("Registering Potions for " + NetherExp.MOD_ID);
         registerPotionRecipe();
-        registerItemRecipe();
     }
 }

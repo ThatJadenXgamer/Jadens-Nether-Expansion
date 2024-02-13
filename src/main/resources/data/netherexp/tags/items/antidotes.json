@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:awkward_antidote",
+    "netherexp:inactive_swiftness_antidote",
+    "netherexp:swiftness_antidote"
+  ]
+}

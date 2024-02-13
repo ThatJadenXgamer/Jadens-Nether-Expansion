@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.mixin.item;
+package net.jadenxgamer.netherexp.mixin.brewing;
 
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
@@ -18,5 +18,4 @@ public interface BrewingRecipeRegistryAccessor {
     static void netherexp$invokeRegisterItemRecipe(Item input, Item ingredient, Item output) {
         throw new AssertionError();
     }
-
 }
