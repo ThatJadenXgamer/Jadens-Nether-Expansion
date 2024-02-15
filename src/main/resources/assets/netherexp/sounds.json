@@ -879,6 +879,28 @@
       "netherexp:block/black_ice/step5"
     ]
   },
+  "block.suspicious_soul_sand.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/suspicious_soul_sand/break1",
+      "netherexp:block/suspicious_soul_sand/break2",
+      "netherexp:block/suspicious_soul_sand/break3",
+      "netherexp:block/suspicious_soul_sand/break4",
+      "netherexp:block/suspicious_soul_sand/break5",
+      "netherexp:block/suspicious_soul_sand/break6"
+    ]
+  },
+  "block.suspicious_soul_sand.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/suspicious_soul_sand/break1",
+      "netherexp:block/suspicious_soul_sand/break2",
+      "netherexp:block/suspicious_soul_sand/break3",
+      "netherexp:block/suspicious_soul_sand/break4",
+      "netherexp:block/suspicious_soul_sand/break5",
+      "netherexp:block/suspicious_soul_sand/break6"
+    ]
+  },
   "item.gold_ingot.gilding": {
     "subtitle": "subtitles.item.gold_ingot.gilding",
     "sounds": [
@@ -928,6 +950,12 @@
       "netherexp:item/bucket/fill_magma_cube1",
       "netherexp:item/bucket/fill_magma_cube2",
       "netherexp:item/bucket/fill_magma_cube3"
+    ]
+  },
+  "item.antidote.negate": {
+    "subtitle": "subtitles.item.antidote.negate",
+    "sounds": [
+      "netherexp:item/antidote/negate"
     ]
   },
   "block.explosive_scoria.ambient": {

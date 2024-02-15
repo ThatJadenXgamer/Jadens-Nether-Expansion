@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.ModEntities;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
@@ -61,13 +62,13 @@ public class ModItems {
             new Item(new FabricItemSettings()));
 
     public static final Item AWKWARD_ANTIDOTE = registerItem("awkward_antidote",
-            new AntidoteItem(new FabricItemSettings(), null, false));
+            new AntidoteItem(new FabricItemSettings().maxCount(1), null, false));
 
     public static final Item INACTIVE_SWIFTNESS_ANTIDOTE = registerItem("inactive_swiftness_antidote",
-            new AntidoteItem(new FabricItemSettings(), new StatusEffectInstance(StatusEffects.SPEED, 3600), true));
+            new AntidoteItem(new FabricItemSettings().maxCount(1), new StatusEffectInstance(StatusEffects.SPEED, 3600), true));
 
     public static final Item SWIFTNESS_ANTIDOTE = registerItem("swiftness_antidote",
-            new AntidoteItem(new FabricItemSettings(), new StatusEffectInstance(StatusEffects.SPEED, 3600),false));
+            new AntidoteItem(new FabricItemSettings().maxCount(1), new StatusEffectInstance(ModStatusEffects.SPEED_IMMUNITY, 3600),false));
 
     public static final Item GLOWCHEESE = registerItem("glowcheese",
             new Item(new FabricItemSettings().food(ModFoodComponents.GLOWCHEESE)));

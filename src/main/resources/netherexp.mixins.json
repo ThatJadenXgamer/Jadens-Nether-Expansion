@@ -17,6 +17,7 @@
     "brewing.BrewingRecipeRegistryAccessor",
     "brewing.BrewingRecipeRegistryMixin",
     "brewing.BrewingStandBlockEntityMixin",
+    "brewing.PotionSlotMixin",
     "entity.HoglinEntityMixin",
     "entity.LivingEntityMixin",
     "entity.MagmaCubeEntityMixin",

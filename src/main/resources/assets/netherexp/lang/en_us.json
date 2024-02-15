@@ -301,6 +301,7 @@
   "subtitles.block.lightspores.shear": "Spores scraped from Block",
   "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
   "subtitles.block.soul_swirls.boost": "Soul Swirls whoop",
+  "subtitles.item.antidote.negate": "Antidote negates effect",
 
   "death.attack.graveMistSuffocation": "%1$s was shrouded and choked by souls",
   "death.attack.stampedeCrush": "%1$s was crushed by %2$s",
@@ -361,6 +362,8 @@
   "effect.netherexp.fogsight": "Fogsight",
   "effect.netherexp.unbounded_speed": "Unbounded Speed",
   "effect.netherexp.hallucination": "Hallucination",
+
+  "effect.netherexp.speed_immunity": "Speed Immunity",
 
   "text.autoconfig.netherexp.title": "Jaden's Nether Expansion - Settings",
 

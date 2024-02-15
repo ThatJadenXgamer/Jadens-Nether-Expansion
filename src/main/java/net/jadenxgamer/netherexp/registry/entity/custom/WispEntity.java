@@ -68,6 +68,7 @@ implements GeoEntity, Flutterer, Bottleable {
         return true;
     }
 
+    @Override
     protected EntityNavigation createNavigation(World world) {
         BirdNavigation birdNavigation = new BirdNavigation(this, world) {
             public boolean isValidPosition(BlockPos pos) {

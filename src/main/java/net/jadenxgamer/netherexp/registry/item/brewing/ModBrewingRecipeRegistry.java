@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.registry.item.brewing;
 
 import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -16,11 +15,10 @@ public class ModBrewingRecipeRegistry {
 
     static {
         ANTIDOTE_RECIPES.add(convert(new BrewingIngredientPotion(Potions.WATER), (new BrewingIngredientItem(ModItems.WARPED_WART)), ModItems.AWKWARD_ANTIDOTE));
-        ANTIDOTE_RECIPES.add(convert(new BrewingIngredientItem(((AntidoteItem)ModItems.AWKWARD_ANTIDOTE)), (new BrewingIngredientItem(Items.HONEYCOMB)), ModItems.INACTIVE_SWIFTNESS_ANTIDOTE));
+        ANTIDOTE_RECIPES.add(convert(new BrewingIngredientItem(ModItems.AWKWARD_ANTIDOTE), (new BrewingIngredientItem(Items.HONEYCOMB)), ModItems.INACTIVE_SWIFTNESS_ANTIDOTE));
         ANTIDOTE_RECIPES.add(convert(new BrewingIngredientItem(ModItems.INACTIVE_SWIFTNESS_ANTIDOTE), (new BrewingIngredientPotion(Potions.SWIFTNESS)), ModItems.SWIFTNESS_ANTIDOTE));
         ANTIDOTE_RECIPES.add(convert(new BrewingIngredientItem(ModItems.INACTIVE_SWIFTNESS_ANTIDOTE), (new BrewingIngredientPotion(Potions.LONG_SWIFTNESS)), ModItems.SWIFTNESS_ANTIDOTE));
         ANTIDOTE_RECIPES.add(convert(new BrewingIngredientItem(ModItems.INACTIVE_SWIFTNESS_ANTIDOTE), (new BrewingIngredientPotion(Potions.STRONG_SWIFTNESS)), ModItems.SWIFTNESS_ANTIDOTE));
-        ANTIDOTE_RECIPES.add(convert(new BrewingIngredientItem(ModItems.LIGHTSPORES), (new BrewingIngredientItem(ModItems.WARPED_WART)), ModItems.NIGHTSPORES));
     }
 
     public static List<Triple<BrewingIngredient, BrewingIngredient, ItemStack>> getRecipes() {

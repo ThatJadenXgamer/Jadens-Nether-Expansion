@@ -117,6 +117,14 @@ public class ModSoundEvents {
     public static SoundEvent BLOCK_QUARTZ_BLOCK_BREAK = registerSoundEvent("block.quartz_block.break");
     public static SoundEvent BLOCK_QUARTZ_BLOCK_PLACE = registerSoundEvent("block.quartz_block.place");
 
+    // SUSPICIOUS SOUL SAND
+
+    public static SoundEvent BLOCK_SUSPICIOUS_SOUL_SAND_BREAK = registerSoundEvent("block.suspicious_soul_sand.break");
+    public static SoundEvent BLOCK_SUSPICIOUS_SOUL_SAND_STEP = registerSoundEvent("block.suspicious_soul_sand.step");
+    public static SoundEvent BLOCK_SUSPICIOUS_SOUL_SAND_PLACE = registerSoundEvent("block.suspicious_soul_sand.place");
+    public static SoundEvent BLOCK_SUSPICIOUS_SOUL_SAND_HIT = registerSoundEvent("block.suspicious_soul_sand.hit");
+    public static SoundEvent BLOCK_SUSPICIOUS_SOUL_SAND_FALL = registerSoundEvent("block.suspicious_soul_sand.fall");
+
     // ITEMS & EVENTS:
 
     public static SoundEvent GILDING = registerSoundEvent("item.gold_ingot.gilding");
@@ -132,6 +140,7 @@ public class ModSoundEvents {
     public static SoundEvent LIGHTSPORES_APPLY = registerSoundEvent("block.lightspores.apply");
     public static SoundEvent LIGHTSPORES_SHEAR = registerSoundEvent("block.lightspores.shear");
     public static SoundEvent SOUL_SWIRLS_BOOST = registerSoundEvent("block.soul_swirls.boost");
+    public static SoundEvent ANTIDOTE_NEGATE = registerSoundEvent("item.antidote.negate");
 
     // ENTITIES:
 
@@ -209,6 +218,10 @@ public class ModSoundEvents {
     public static final BlockSoundGroup BLACK_ICE = new BlockSoundGroup(1f, 1f,
             ModSoundEvents.BLOCK_BLACK_ICE_BREAK, ModSoundEvents.BLOCK_BLACK_ICE_STEP, ModSoundEvents.BLOCK_BLACK_ICE_PLACE,
             ModSoundEvents.BLOCK_BLACK_ICE_HIT, ModSoundEvents.BLOCK_BLACK_ICE_FALL);
+
+    public static final BlockSoundGroup SUSPICIOUS_SOUL_SAND = new BlockSoundGroup(1f, 1f,
+            ModSoundEvents.BLOCK_SUSPICIOUS_SOUL_SAND_BREAK, SoundEvents.BLOCK_SOUL_SAND_STEP, SoundEvents.BLOCK_SOUL_SAND_PLACE,
+            SoundEvents.BLOCK_SOUL_SAND_HIT, SoundEvents.BLOCK_SOUL_SAND_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = new Identifier(NetherExp.MOD_ID, name);
