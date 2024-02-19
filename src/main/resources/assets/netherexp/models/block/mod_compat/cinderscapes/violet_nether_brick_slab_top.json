@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "netherexp:block/mod_compat/cinderscapes/violet_nether_bricks",
+    "side": "netherexp:block/mod_compat/cinderscapes/violet_nether_bricks",
+    "top": "netherexp:block/mod_compat/cinderscapes/violet_nether_bricks"
+  }
+}

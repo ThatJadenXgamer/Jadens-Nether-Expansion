@@ -42,10 +42,10 @@ public class BlackstoneShalesFeatures {
 
         if (bsConfigs.generate_shale_swirls) {
             BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.BLACKSTONE_SHALES),
-                    GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.SHALE_SWIRLS_CEILING);
+                    GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.BLACKSTONE_SHALES_SHALE_SWIRLS_CEILING);
 
             BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.BLACKSTONE_SHALES),
-                    GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.SHALE_SWIRLS_FLOOR);
+                    GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.BLACKSTONE_SHALES_SHALE_SWIRLS_FLOOR);
         }
     }
 }

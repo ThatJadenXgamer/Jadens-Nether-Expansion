@@ -45,7 +45,7 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CLARET_TRAPDOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.NETHER_WART_BEARD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_WART_BEARD, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.UMBRAL_WART_BEARD, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.UMBRAL_WART_BEARD, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.QUARTZ_CRYSTAL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPIKETRAP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ENIGMA_CROWN, RenderLayer.getCutout());
@@ -71,6 +71,7 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_SPORESHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_SPORESHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.UMBRAL_SPORESHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOULBLIGHT_SPORESHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BASALTIC_GEYSER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SOULED_GEYSER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLACKSTONIC_GEYSER, RenderLayer.getCutout());
@@ -122,7 +123,6 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_SHROOMBLIGHT, FallingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.CRIMSON_SMOG, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.WARPED_SMOG, SmogParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.UMBRAL_SMOG, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BLACK_SMOKE, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.WHITE_SMOKE, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.RED_SMOKE, SmogParticle.Factory::new);
@@ -133,6 +133,10 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SHALE_SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GRASP_MIST, GraspMistParticle.Factory::new);
+
+        ParticleFactoryRegistry.getInstance().register(ModParticles.UMBRAL_SMOG, SmogParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SOULBLIGHT_SMOG, SmogParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SOULBLIGHT_SPORE, SoulblightSporeFactory::new);
 
         // ENTITY
         EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);

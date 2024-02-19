@@ -168,23 +168,17 @@ public class ModTags {
         // Prevents Crimson Sporeshroom from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_CRIMSON_SPORES = createBiomeTag("particles/has_crimson_spores");
 
-        // Prevents Warped Sporeshroom from creating Particles inside this Biome
+        // Prevents Warped & Umbral Sporeshroom from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WARPED_SPORES = createBiomeTag("particles/has_warped_spores");
 
-        // Prevents Umbral Sporeshroom from creating Particles inside this Biome
-        public static final TagKey<Biome> HAS_WARPED_SPORES_UMBRAL = createBiomeTag("particles/has_warped_spores_umbral");
+        // Prevents Soulblight Sporeshroom from creating Particles inside this Biome
+        public static final TagKey<Biome> HAS_SOULBLIGHT_SPORES = createBiomeTag("particles/has_soulblight_spores");
 
-        // Prevents Souled Geyser from creating Particles inside this Biome
+        // Prevents Souled & Ashen Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash");
 
-        // Prevents Basaltic Geyser from creating Particles inside this Biome
+        // Prevents Basaltic & Blackstonic Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash");
-
-        // Prevents Blackstonic Geyser from creating Particles inside this Biome
-        public static final TagKey<Biome> HAS_WHITE_ASH_BLACKSTONIC = createBiomeTag("particles/has_white_ash_blackstonic");
-        
-        // Prevents Basaltic Geyser from creating Particles inside this Biome
-        public static final TagKey<Biome> HAS_ASH_ASHEN = createBiomeTag("particles/has_ash_ashen");
         
         // used to check if the biome is Luminous Grove from Cinderscapes
         public static final TagKey<Biome> LUMINOUS_GROVE = createBiomeTag("luminous_grove");
@@ -194,6 +188,9 @@ public class ModTags {
 
         // used to check if the biome is Blackstone Shales from Cinderscapes
         public static final TagKey<Biome> BLACKSTONE_SHALES = createBiomeTag("blackstone_shales");
+
+        // used to check if the biome is Soulblight Forest from Gardens of The Dead
+        public static final TagKey<Biome> SOULBLIGHT_FOREST = createBiomeTag("soulblight_forest");
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.of(RegistryKeys.BIOME, new Identifier(NetherExp.MOD_ID, name));

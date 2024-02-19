@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "geysers",
+  "pattern": [
+    "B",
+    "G",
+    "L"
+  ],
+  "key": {
+    "G": {
+      "item": "netherexp:ashen_geyser"
+    },
+    "B": {
+      "item": "netherexp:smooth_netherrack"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+  "result": {
+    "item": "netherexp:ashen_geyser",
+    "count": 2
+  }
+}

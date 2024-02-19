@@ -5,7 +5,7 @@
 		"0": "netherexp:block/mod_compat/cinderscapes/ashen_geyser_side",
 		"1": "netherexp:block/mod_compat/cinderscapes/ashen_geyser_end",
 		"2": "netherexp:block/mod_compat/cinderscapes/ashen_geyser_top",
-		"3": "block/netherrack",
+		"3": "netherexp:block/smooth_netherrack",
 		"particle": "netherexp:block/mod_compat/cinderscapes/ashen_geyser_side"
 	},
 	"elements": [

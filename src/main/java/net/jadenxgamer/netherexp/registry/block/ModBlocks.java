@@ -426,10 +426,10 @@ public class ModBlocks {
     public static final Block RED_MIXED_NETHER_BRICKS = registerBlock("red_mixed_nether_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_BRICKS)));
 
+    // Blue Nether Bricks
+
     public static final Block BLUE_MIXED_NETHER_BRICKS = registerBlock("blue_mixed_nether_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_BRICKS)));
-
-    // Blue Nether Bricks
 
     public static final Block BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
@@ -443,6 +443,42 @@ public class ModBlocks {
 
     public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall",
             new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
+
+    // Violet Nether Bricks | CINDERSCAPES COMPATIBILITY
+
+    public static final Block VIOLET_MIXED_NETHER_BRICKS = registerCompatBlock("violet_mixed_nether_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+
+    public static final Block VIOLET_NETHER_BRICKS = registerCompatBlock("violet_nether_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+
+    public static final Block VIOLET_NETHER_BRICK_SLAB = registerCompatBlock("violet_nether_brick_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+
+    public static final Block VIOLET_NETHER_BRICK_STAIRS = registerCompatBlock("violet_nether_brick_stairs",
+            new ModStairsBlock(ModBlocks.VIOLET_NETHER_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(ModBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+
+    public static final Block VIOLET_NETHER_BRICK_WALL = registerCompatBlock("violet_nether_brick_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+
+    // Yellow Nether Bricks | GARDENS OF THE DEAD COMPATIBILITY
+
+    public static final Block YELLOW_MIXED_NETHER_BRICKS = registerCompatBlock("yellow_mixed_nether_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_BRICKS)), "gardens_of_the_dead");
+
+    public static final Block YELLOW_NETHER_BRICKS = registerCompatBlock("yellow_nether_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
+
+    public static final Block YELLOW_NETHER_BRICK_SLAB = registerCompatBlock("yellow_nether_brick_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
+
+    public static final Block YELLOW_NETHER_BRICK_STAIRS = registerCompatBlock("yellow_nether_brick_stairs",
+            new ModStairsBlock(ModBlocks.YELLOW_NETHER_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(ModBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
+
+    public static final Block YELLOW_NETHER_BRICK_WALL = registerCompatBlock("yellow_nether_brick_wall",
+            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
 
     // Pyrite
 
@@ -504,7 +540,11 @@ public class ModBlocks {
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block SHROOMBLIGHT = registerCompatBlock("shroomblight",
-            new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).mapColor(MapColor.WHITE).luminance(15).sounds(BlockSoundGroup.SHROOMLIGHT)), "cinderscapes");
+            new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).mapColor(MapColor.WHITE).luminance(12).sounds(BlockSoundGroup.SHROOMLIGHT)), "cinderscapes");
+
+    // GARDENS OF THE DEAD COMPATIBILITY
+    public static final Block SHROOMFRIGHT = registerCompatBlock("shroomfright",
+            new Block(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).mapColor(MapColor.DIAMOND_BLUE).luminance(10).sounds(BlockSoundGroup.SHROOMLIGHT)), "gardens_of_the_dead");
 
     public static final Block NETHER_WART_BEARD = registerBlock("nether_wart_beard",
             new BeardBlock(FabricBlockSettings.of().mapColor(MapColor.RED).breakInstantly().noCollision().sounds(BlockSoundGroup.WART_BLOCK)));
@@ -547,6 +587,10 @@ public class ModBlocks {
     // CINDERSCAPES COMPATIBILITY
     public static final Block VIOLET_SCALE_FUNGUS = registerCompatBlock("violet_scale_fungus",
             new ScaleFungusBlock(FabricBlockSettings.of().mapColor(MapColor.PURPLE).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)), "cinderscapes");
+
+    // GARDENS OF THE DEAD COMPATIBILITY
+    public static final Block YELLOW_SCALE_FUNGUS = registerCompatBlock("yellow_scale_fungus",
+            new ScaleFungusBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_YELLOW).ticksRandomly().breakInstantly().noCollision().sounds(BlockSoundGroup.FUNGUS)), "gardens_of_the_dead");
 
     /*
      * TODO: THIS BLOCK IS UNOBTAINABLE
@@ -621,15 +665,19 @@ public class ModBlocks {
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom",
-            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.UMBRAL_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES_UMBRAL), "cinderscapes");
+            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.UMBRAL_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES), "cinderscapes");
+
+    // GARDENS OF THE DEAD COMPATIBILITY
+    public static final Block SOULBLIGHT_SPORESHROOM = registerCompatBlock("soulblight_sporeshroom",
+            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.SOULBLIGHT_SMOG, ModParticles.SOULBLIGHT_SPORE, ModTags.Biomes.HAS_SOULBLIGHT_SPORES), "gardens_of_the_dead");
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block BLACKSTONIC_GEYSER = registerCompatBlock("blackstonic_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).nonOpaque(),ModParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH_BLACKSTONIC), "cinderscapes");
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).nonOpaque(),ModParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH), "cinderscapes");
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block ASHEN_GEYSER = registerCompatBlock("ashen_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).nonOpaque().sounds(BlockSoundGroup.NETHERRACK),ModParticles.BLACK_SMOKE, true, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH_ASHEN), "cinderscapes");
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).nonOpaque().sounds(BlockSoundGroup.NETHERRACK),ModParticles.BLACK_SMOKE, true, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH), "cinderscapes");
     
     // White Ash
 
@@ -767,24 +815,29 @@ public class ModBlocks {
 
     // REGISTRIES:
 
+    // Registers a Block with an Item
     @SuppressWarnings("all")
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
     }
 
+    @SuppressWarnings("all")
+    private static Item registerBlockItem(String name, Block block) {
+        Item item = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name),
+                new BlockItem(block, new FabricItemSettings()));
+        return item;
+    }
+
+    // Registers a Block without an Item
     private static Block registerBlockWithoutItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
     }
 
-
-    @SuppressWarnings("all")
-    private static Item registerBlockItem(String name, Block block) {
-        Item item = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name),
-        new BlockItem(block, new FabricItemSettings()));
-        return item;
-    }
-
+    /*
+    *  Registers a Mod Compat Block
+    *  If the corresponding Mod ID wasn't found It won't register an Item
+    */
     @SuppressWarnings("all")
     private static Block registerCompatBlock(String name, Block block, String modID) {
         if (FabricLoader.getInstance().isModLoaded(modID)) {

@@ -61,6 +61,9 @@ public class ModItems {
     public static final Item BLIGHTSPORES = registerItem("blightspores",
             new Item(new FabricItemSettings()));
 
+    public static final Item FRIGHTSPORES = registerItem("frightspores",
+            new Item(new FabricItemSettings()));
+
     public static final Item AWKWARD_ANTIDOTE = registerItem("awkward_antidote",
             new AntidoteItem(new FabricItemSettings().maxCount(1), null, false));
 

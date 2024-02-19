@@ -197,6 +197,22 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_SLAB);
                         entries.add(ModBlocks.BLUE_NETHER_BRICK_WALL);
 
+                        if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(ModBlocks.VIOLET_MIXED_NETHER_BRICKS);
+                            entries.add(ModBlocks.VIOLET_NETHER_BRICKS);
+                            entries.add(ModBlocks.VIOLET_NETHER_BRICK_STAIRS);
+                            entries.add(ModBlocks.VIOLET_NETHER_BRICK_SLAB);
+                            entries.add(ModBlocks.VIOLET_NETHER_BRICK_WALL);
+                        }
+
+                        if (NetherExp.checkModCompatGardensOfTheDead()) {
+                            entries.add(ModBlocks.YELLOW_MIXED_NETHER_BRICKS);
+                            entries.add(ModBlocks.YELLOW_NETHER_BRICKS);
+                            entries.add(ModBlocks.YELLOW_NETHER_BRICK_STAIRS);
+                            entries.add(ModBlocks.YELLOW_NETHER_BRICK_SLAB);
+                            entries.add(ModBlocks.YELLOW_NETHER_BRICK_WALL);
+                        }
+
                         if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(ModItems.PYRITE_INGOT);
                             entries.add(ModBlocks.PYRITE_NETHER_BRICKS);
@@ -218,6 +234,10 @@ public class ModItemGroup {
                         if (NetherExp.checkModCompatCinderscapes()) {
                             entries.add(ModItems.BLIGHTSPORES);
                             entries.add(ModBlocks.SHROOMBLIGHT);
+                        }
+                        if (NetherExp.checkModCompatGardensOfTheDead()) {
+                            entries.add(ModItems.FRIGHTSPORES);
+                            entries.add(ModBlocks.SHROOMFRIGHT);
                         }
 
                         entries.add(ModItems.GLOWCHEESE);
@@ -276,6 +296,9 @@ public class ModItemGroup {
                         entries.add(ModBlocks.WARPED_SPORESHROOM);
                         if (NetherExp.checkModCompatCinderscapes()) {
                             entries.add(ModBlocks.UMBRAL_SPORESHROOM);
+                        }
+                        if (NetherExp.checkModCompatGardensOfTheDead()) {
+                            entries.add(ModBlocks.SOULBLIGHT_SPORESHROOM);
                         }
                         entries.add(ModBlocks.SOULED_GEYSER);
                         entries.add(ModBlocks.BASALTIC_GEYSER);

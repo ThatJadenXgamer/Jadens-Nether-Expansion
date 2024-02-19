@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "netherexp:item/mod_compat/gardens_of_the_dead/frightspores"
+  }
+}

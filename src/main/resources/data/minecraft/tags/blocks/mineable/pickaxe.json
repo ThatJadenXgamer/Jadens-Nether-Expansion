@@ -65,12 +65,25 @@
     "netherexp:enigma_crown",
 
     "netherexp:nether_brick_pillar",
+    "netherexp:red_mixed_nether_bricks",
+
+    "netherexp:blue_mixed_nether_bricks",
     "netherexp:blue_nether_bricks",
     "netherexp:blue_nether_brick_slab",
     "netherexp:blue_nether_brick_stairs",
     "netherexp:blue_nether_brick_wall",
-    "netherexp:blue_mixed_nether_bricks",
-    "netherexp:red_mixed_nether_bricks",
+
+    "netherexp:violet_mixed_nether_bricks",
+    "netherexp:violet_nether_bricks",
+    "netherexp:violet_nether_brick_slab",
+    "netherexp:violet_nether_brick_stairs",
+    "netherexp:violet_nether_brick_wall",
+
+    "netherexp:yellow_mixed_nether_bricks",
+    "netherexp:yellow_nether_bricks",
+    "netherexp:yellow_nether_brick_slab",
+    "netherexp:yellow_nether_brick_stairs",
+    "netherexp:yellow_nether_brick_wall",
 
     "netherexp:pyrite_block",
     "netherexp:pyrite_slab",

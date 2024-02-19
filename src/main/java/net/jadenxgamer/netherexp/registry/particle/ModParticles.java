@@ -25,7 +25,6 @@ public class ModParticles {
     public static final DefaultParticleType FALLING_SHROOMBLIGHT = FabricParticleTypes.simple();
     public static final DefaultParticleType CRIMSON_SMOG = FabricParticleTypes.simple();
     public static final DefaultParticleType WARPED_SMOG = FabricParticleTypes.simple();
-    public static final DefaultParticleType UMBRAL_SMOG = FabricParticleTypes.simple();
     public static final DefaultParticleType BLACK_SMOKE = FabricParticleTypes.simple();
     public static final DefaultParticleType WHITE_SMOKE = FabricParticleTypes.simple();
     public static final DefaultParticleType RED_SMOKE = FabricParticleTypes.simple();
@@ -36,6 +35,11 @@ public class ModParticles {
     public static final DefaultParticleType SWIRL_POP = FabricParticleTypes.simple();
     public static final DefaultParticleType SHALE_SWIRL_POP = FabricParticleTypes.simple();
     public static final DefaultParticleType GRASP_MIST = FabricParticleTypes.simple();
+
+    // MOD COMPAT
+    public static final DefaultParticleType UMBRAL_SMOG = FabricParticleTypes.simple();
+    public static final DefaultParticleType SOULBLIGHT_SMOG = FabricParticleTypes.simple();
+    public static final DefaultParticleType SOULBLIGHT_SPORE = FabricParticleTypes.simple();
 
     // Registering Particles
     public static void registerParticles() {
@@ -69,8 +73,6 @@ public class ModParticles {
                 CRIMSON_SMOG);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "warped_smog"),
                 WARPED_SMOG);
-        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "umbral_smog"),
-                UMBRAL_SMOG);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "black_smoke"),
                 BLACK_SMOKE);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "white_smoke"),
@@ -91,6 +93,14 @@ public class ModParticles {
                 SHALE_SWIRL_POP);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "grasp_mist"),
                 GRASP_MIST);
+
+        // MOD COMPAT
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "umbral_smog"),
+                UMBRAL_SMOG);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "soulblight_smog"),
+                SOULBLIGHT_SMOG);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "soulblight_spore"),
+                SOULBLIGHT_SPORE);
 
         NetherExp.LOGGER.debug("Registering Particles for " + NetherExp.MOD_ID);
     }

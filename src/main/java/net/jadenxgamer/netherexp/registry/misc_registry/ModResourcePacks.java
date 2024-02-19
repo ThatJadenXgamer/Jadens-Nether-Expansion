@@ -15,6 +15,7 @@ public class ModResourcePacks {
         Identifier emissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");
         Identifier retextureModdedWoodsetsPackId = new Identifier(NetherExp.MOD_ID, "retexture_modded_woodsets");
         Identifier cinderscapesCompatId = new Identifier(NetherExp.MOD_ID, "cinderscapes_compat_datapack");
+        Identifier gardensOfTheDeadCompatDatapack = new Identifier(NetherExp.MOD_ID, "gardens_of_the_dead_compat_datapack");
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
         -> ResourceManagerHelper.registerBuiltinResourcePack(vanillaPackId, container, "Vanilla Nether Expansion", ResourcePackActivationType.NORMAL));
@@ -31,6 +32,12 @@ public class ModResourcePacks {
             FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
                     -> ResourceManagerHelper.registerBuiltinResourcePack(cinderscapesCompatId, container, "Cinderscapes Compat Datapack", ResourcePackActivationType.ALWAYS_ENABLED));
         }
-        NetherExp.LOGGER.info("Registering Built-in ResourcePacks for " + NetherExp.MOD_ID);
+
+        if (NetherExp.checkModCompatGardensOfTheDead()) {
+            FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container
+                    -> ResourceManagerHelper.registerBuiltinResourcePack(gardensOfTheDeadCompatDatapack, container, "Gardens of the Dead Compat Datapack", ResourcePackActivationType.ALWAYS_ENABLED));
+        }
+
+        NetherExp.LOGGER.info("Registering Built-in ResourcePacks & Datapacks for " + NetherExp.MOD_ID);
     }
 }

@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "netherexp:crimson_sprouts",
+    "netherexp:bone_rod",
+    "netherexp:shale_swirls",
+    "netherexp:soul_swirls",
+    "netherexp:soul_soil_layer",
     "netherexp:white_ash"
   ]
 }

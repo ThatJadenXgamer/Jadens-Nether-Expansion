@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "geysers",
+  "pattern": [
+    "B",
+    "G",
+    "L"
+  ],
+  "key": {
+    "G": {
+      "item": "netherexp:basaltic_geyser"
+    },
+    "B": {
+      "item": "minecraft:basalt"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+  "result": {
+    "item": "netherexp:basaltic_geyser",
+    "count": 2
+  }
+}

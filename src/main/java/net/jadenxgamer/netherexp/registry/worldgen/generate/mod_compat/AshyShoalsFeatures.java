@@ -39,5 +39,13 @@ public class AshyShoalsFeatures {
             BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.ASHY_SHOALS),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ASHEN_GEYSER);
         }
+
+        if (asConfigs.generate_shale_swirls) {
+            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.ASHY_SHOALS),
+                    GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ASHY_SHOALS_SHALE_SWIRLS_CEILING);
+
+            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.ASHY_SHOALS),
+                    GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.ASHY_SHOALS_SHALE_SWIRLS_FLOOR);
+        }
     }
 }

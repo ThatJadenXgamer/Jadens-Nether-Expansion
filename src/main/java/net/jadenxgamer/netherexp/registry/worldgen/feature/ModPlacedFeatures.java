@@ -58,7 +58,6 @@ public class ModPlacedFeatures {
 
     // LUMINOUS GROVE
 
-    public static final RegistryKey<PlacedFeature> SHROOMBLIGHT = registerKey("luminous_grove/shroomblight");
     public static final RegistryKey<PlacedFeature> UMBRAL_SPORESHROOM = registerKey("luminous_grove/umbral_sporeshroom");
     public static final RegistryKey<PlacedFeature> TWILIGHT_VINES = registerKey("luminous_grove/twilight_vines");
     public static final RegistryKey<PlacedFeature> TWILIGHT_IVY = registerKey("luminous_grove/twilight_ivy");
@@ -67,12 +66,15 @@ public class ModPlacedFeatures {
     // ASHY SHOALS
 
     public static final RegistryKey<PlacedFeature> ASHEN_GEYSER = registerKey("ashy_shoals/ashen_geyser");
+    public static final RegistryKey<PlacedFeature> ASHY_SHOALS_SHALE_SWIRLS_CEILING = registerKey("ashy_shoals/shale_swirls_ceiling");
+    public static final RegistryKey<PlacedFeature> ASHY_SHOALS_SHALE_SWIRLS_FLOOR = registerKey("ashy_shoals/shale_swirls_floor");
+
 
     // BLACKSTONE SHALES
 
     public static final RegistryKey<PlacedFeature> BLACKSTONIC_GEYSER = registerKey("blackstone_shales/blackstonic_geyser");
-    public static final RegistryKey<PlacedFeature> SHALE_SWIRLS_CEILING = registerKey("blackstone_shales/shale_swirls_ceiling");
-    public static final RegistryKey<PlacedFeature> SHALE_SWIRLS_FLOOR = registerKey("blackstone_shales/shale_swirls_floor");
+    public static final RegistryKey<PlacedFeature> BLACKSTONE_SHALES_SHALE_SWIRLS_CEILING = registerKey("blackstone_shales/shale_swirls_ceiling");
+    public static final RegistryKey<PlacedFeature> BLACKSTONE_SHALES_SHALE_SWIRLS_FLOOR = registerKey("blackstone_shales/shale_swirls_floor");
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(NetherExp.MOD_ID, name));

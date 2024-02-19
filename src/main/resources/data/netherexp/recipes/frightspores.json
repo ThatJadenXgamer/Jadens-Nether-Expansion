@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:shroomfright"
+    }
+  ],
+  "result": {
+    "item": "netherexp:frightspores",
+    "count": 9
+  }
+}

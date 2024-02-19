@@ -10,6 +10,7 @@
   "item.netherexp.lightspores": "Lightspores",
   "item.netherexp.nightspores": "Nightspores",
   "item.netherexp.blightspores": "Blightspores",
+  "item.netherexp.frightspores": "Frightspores",
   "item.netherexp.foggy_essence": "Foggy Essence",
   "item.netherexp.mist_charge": "Mist Charge",
   "item.netherexp.wraithing_flesh": "Wraithing Flesh",
@@ -192,6 +193,16 @@
   "block.netherexp.blue_nether_brick_slab": "Blue Nether Brick Slab",
   "block.netherexp.blue_nether_brick_stairs": "Blue Nether Brick Stairs",
   "block.netherexp.blue_nether_brick_wall": "Blue Nether Brick Wall",
+  "block.netherexp.violet_mixed_nether_bricks": "Violet Mixed Nether Bricks",
+  "block.netherexp.violet_nether_bricks": "Violet Nether Bricks",
+  "block.netherexp.violet_nether_brick_slab": "Violet Nether Brick Slab",
+  "block.netherexp.violet_nether_brick_stairs": "Violet Nether Brick Stairs",
+  "block.netherexp.violet_nether_brick_wall": "Violet Nether Brick Wall",
+  "block.netherexp.yellow_mixed_nether_bricks": "Yellow Mixed Nether Bricks",
+  "block.netherexp.yellow_nether_bricks": "Yellow Nether Bricks",
+  "block.netherexp.yellow_nether_brick_slab": "Yellow Nether Brick Slab",
+  "block.netherexp.yellow_nether_brick_stairs": "Yellow Nether Brick Stairs",
+  "block.netherexp.yellow_nether_brick_wall": "Yellow Nether Brick Wall",
 
   "block.netherexp.pyrite_block": "Block of Pyrite",
   "block.netherexp.pyrite_slab": "Pyrite Slab",
@@ -208,6 +219,7 @@
 
   "block.netherexp.shroomnight": "Shroomnight",
   "block.netherexp.shroomblight": "Shroomblight",
+  "block.netherexp.shroomfright": "Shroomfright",
 
   "block.netherexp.nether_wart_beard": "Nether Wart Beard",
   "block.netherexp.warped_wart_beard": "Warped Wart Beard",
@@ -445,10 +457,10 @@
   "text.autoconfig.netherexp.option.items": "Items",
   "text.autoconfig.netherexp.option.items.@Tooltip": "Changes to how certain items behave",
 
-  "text.autoconfig.netherexp.option.entities.mistChargeConfigs": "Mist Charge",
-  "text.autoconfig.netherexp.option.entities.mistChargeConfigs.@Tooltip": "Change any Mist Charge functionality",
-  "text.autoconfig.netherexp.option.entities.mistChargeConfigs.mist_charge_stack_size": "Diminishing Blazes",
-  "text.autoconfig.netherexp.option.entities.mistChargeConfigs.mist_charge_stack_size.@Tooltip": "Blazes get dimmer the more damage they receive",
+  "text.autoconfig.netherexp.option.items.mistChargeConfigs": "Mist Charge",
+  "text.autoconfig.netherexp.option.items.mistChargeConfigs.@Tooltip": "Change any Mist Charge functionality",
+  "text.autoconfig.netherexp.option.items.mistChargeConfigs.mist_charge_stack_size": "Diminishing Blazes",
+  "text.autoconfig.netherexp.option.items.mistChargeConfigs.mist_charge_stack_size.@Tooltip": "Blazes get dimmer the more damage they receive",
 
   "text.autoconfig.netherexp.option.entities": "Entities",
   "text.autoconfig.netherexp.option.entities.@Tooltip": "Changes to how mobs are handled",
@@ -575,6 +587,8 @@
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.@Tooltip": "Change any Ashy Shoals world generation",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_geyser": "Generate Geyser",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_geyser.@Tooltip": "Ashen Geysers will generate on the surface",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_shale_swirls": "Generate Shale Swirls",
+  "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.ashyShoalsConfigs.generate_shale_swirls.@Tooltip": "Shale Swirls will generate on the floor and ceiling",
 
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs": "Blackstone Shales Settings",
   "text.autoconfig.netherexp.option.modcompat.cinderscapesConfigs.blackstoneShalesConfigs.@Tooltip": "Change any Blackstone Shales world generation",

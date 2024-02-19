@@ -3,6 +3,7 @@
   "values": [
     "netherexp:lightspores",
     "netherexp:nightspores",
-    "netherexp:blightspores"
+    "netherexp:blightspores",
+    "netherexp:frightspores"
   ]
 }

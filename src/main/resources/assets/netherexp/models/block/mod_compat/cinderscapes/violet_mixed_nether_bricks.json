@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "netherexp:block/mod_compat/cinderscapes/violet_mixed_nether_bricks"
+  }
+}

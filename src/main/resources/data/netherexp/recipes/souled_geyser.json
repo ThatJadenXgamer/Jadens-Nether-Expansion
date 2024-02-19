@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "geysers",
+  "pattern": [
+    "B",
+    "G",
+    "L"
+  ],
+  "key": {
+    "G": {
+      "item": "netherexp:souled_geyser"
+    },
+    "B": {
+      "item": "netherexp:soul_slate"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+  "result": {
+    "item": "netherexp:souled_geyser",
+    "count": 2
+  }
+}
