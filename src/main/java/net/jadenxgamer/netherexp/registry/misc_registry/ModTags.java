@@ -137,6 +137,7 @@ public class ModTags {
          *  (This Tag does not have any functionality as of now)
          */
         public static final TagKey<EntityType<?>> SOUL_GLASS_PASSABLE = createEntityTypeTag("soul_glass_passable");
+        public static final TagKey<EntityType<?>> CANT_ACTIVATE_SWIRLS = createEntityTypeTag("cant_activate_swirls");
 
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
             return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, name));

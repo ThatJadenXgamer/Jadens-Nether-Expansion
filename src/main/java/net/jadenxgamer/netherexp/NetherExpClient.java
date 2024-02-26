@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.entity.ModEntities;
+import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
@@ -111,8 +111,8 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.FIRE_SPARK, FireSparkParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SOUL_FLAME, FlameParticle.SmallFactory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.GOLD_GLIMMER, GlimmerParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_SPARK, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.GOLD_GLIMMER, GlimmerParticle.NormalFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_SPARK, GlimmerParticle.NormalFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_EXPLOSION, ExplosionLargeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.REDSTONE_EXPLOSION_EMITTER, (new RedstoneExplosionEmitterParticle.Factory()));
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_NETHER_WART, FallingParticle.Factory::new);
@@ -133,18 +133,19 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SHALE_SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GRASP_MIST, GraspMistParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.WISP, GlimmerParticle.LongFactory::new);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.UMBRAL_SMOG, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SOULBLIGHT_SMOG, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SOULBLIGHT_SPORE, SoulblightSporeFactory::new);
 
         // ENTITY
-        EntityRendererRegistry.register(ModEntities.WARPHOPPER, WarphopperRenderer::new);
-        EntityRendererRegistry.register(ModEntities.STAMPEDE, StampedeRenderer::new);
-        EntityRendererRegistry.register(ModEntities.APPARITION, ApparitionRenderer::new);
-        EntityRendererRegistry.register(ModEntities.WISP, WispRenderer::new);
-        EntityRendererRegistry.register(ModEntities.GRASP, GraspRenderer::new);
-        EntityRendererRegistry.register(ModEntities.MIST_CHARGE, MistChargeRenderer::new);
-        EntityRendererRegistry.register(ModEntities.MIST_CHARGE_CLOUD, EmptyEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntityType.WARPHOPPER, WarphopperRenderer::new);
+        EntityRendererRegistry.register(ModEntityType.STAMPEDE, StampedeRenderer::new);
+        EntityRendererRegistry.register(ModEntityType.APPARITION, ApparitionRenderer::new);
+        EntityRendererRegistry.register(ModEntityType.WISP, WispRenderer::new);
+        EntityRendererRegistry.register(ModEntityType.GRASP, GraspRenderer::new);
+        EntityRendererRegistry.register(ModEntityType.MIST_CHARGE, MistChargeRenderer::new);
+        EntityRendererRegistry.register(ModEntityType.MIST_CHARGE_CLOUD, EmptyEntityRenderer::new);
     }
 }

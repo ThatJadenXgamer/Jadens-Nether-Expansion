@@ -102,7 +102,7 @@ public class ModBlocks {
                     state -> state.get(SwirlsBlock.COOLDOWN) ? NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_light_level : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SHALE_SWIRL_POP), "cinderscapes");
 
     public static final Block ECTO_SOUL_SAND = registerBlock("ecto_soul_sand",
-            new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).sounds(BlockSoundGroup.SOUL_SAND)));
+            new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).ticksRandomly().sounds(BlockSoundGroup.SOUL_SAND)));
 
     public static final Block SUSPICIOUS_SOUL_SAND = registerBlock("suspicious_soul_sand",
             new BrushableBlock(Blocks.SOUL_SAND ,FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).velocityMultiplier(0.2F).strength(0.25F).pistonBehavior(PistonBehavior.DESTROY).sounds(ModSoundEvents.SUSPICIOUS_SOUL_SAND), SoundEvents.ITEM_BRUSH_BRUSHING_SAND, ModSoundEvents.ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE));

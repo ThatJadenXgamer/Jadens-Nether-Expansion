@@ -439,6 +439,11 @@
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_light_level": "Soul Swirls Light Level",
   "text.autoconfig.netherexp.option.blocks.soulSwirlsConfigs.soul_swirls_light_level.@Tooltip": "Determines how bright of a light Soul Swirls will emit when on cooldown",
 
+  "text.autoconfig.netherexp.option.blocks.ectoSoulSandConfigs": "Ecto Soul Sand",
+  "text.autoconfig.netherexp.option.blocks.ectoSoulSandConfigs.@Tooltip": "Change Ecto Soul Sand functionality",
+  "text.autoconfig.netherexp.option.blocks.ectoSoulSandConfigs.wisp_emerging_chances": "Wisp Emerging Chances",
+  "text.autoconfig.netherexp.option.blocks.ectoSoulSandConfigs.wisp_emerging_chances.@Tooltip": "Determines how often Wisps emerge from Ecto Soul Sand",
+
   "text.autoconfig.netherexp.option.blocks.renewableConfigs": "Renewable Blocks",
   "text.autoconfig.netherexp.option.blocks.renewableConfigs.@Tooltip": "Various Renewable Block Settings",
   "text.autoconfig.netherexp.option.blocks.renewableConfigs.bone_meal_sporeshroom_duplication": "Bone Meal Sporeshroom Duplication",

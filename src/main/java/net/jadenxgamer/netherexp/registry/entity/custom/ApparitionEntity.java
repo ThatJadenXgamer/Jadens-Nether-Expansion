@@ -1,7 +1,8 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import com.google.common.annotations.VisibleForTesting;
-import net.jadenxgamer.netherexp.registry.entity.ModEntities;
+import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
+import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -122,7 +123,6 @@ implements GeoEntity, Angerable, Flutterer {
 
     @Override
     protected void initGoals() {
-        int s = this.stage();
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
         this.goalSelector.add(4, new ApparitionWanderAroundGoal());
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -133,6 +133,16 @@ implements GeoEntity, Angerable, Flutterer {
         this.targetSelector.add(5, new ActiveTargetGoal<>(this, BlazeEntity.class, true));
         this.targetSelector.add(7, new ActiveTargetGoal<>(this, WispEntity.class, true));
         this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
+    }
+
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (this.getWorld().isClient) {
+            for(int i = 0; i < 2; ++i) {
+                this.getWorld().addParticle(ModParticles.WISP, this.getParticleX(0.5), this.getY() + 0.1, this.getParticleZ(0.5), 0.0, 0.0, 0.0);
+            }
+        }
     }
 
     //TODO: Blaze is temporary replace it with Vessel
@@ -148,7 +158,7 @@ implements GeoEntity, Angerable, Flutterer {
             if (striderEntity.isSaddled()) {
                 this.dropItem(Items.SADDLE);
             }
-            StampedeEntity stampedeEntity = striderEntity.convertTo(ModEntities.STAMPEDE, false);
+            StampedeEntity stampedeEntity = striderEntity.convertTo(ModEntityType.STAMPEDE, false);
             this.remove(RemovalReason.DISCARDED);
             if (stampedeEntity != null) {
                 striderEntity.initialize(world, world.getLocalDifficulty(striderEntity.getBlockPos()), SpawnReason.CONVERSION, new EntityData() {
@@ -181,6 +191,19 @@ implements GeoEntity, Angerable, Flutterer {
             }
         }
         return bl;
+    }
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        World world = this.getWorld();
+        WispEntity wispEntity = ModEntityType.WISP.create(world);
+        if (wispEntity != null) {
+            wispEntity.setBoredDelay(random.nextInt(1000) + 600);
+            wispEntity.setPosition(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);
+            for (int i = 0; i < this.getStage(); i++) {
+                world.spawnEntity(wispEntity);
+            }
+        }
     }
 
     /////////

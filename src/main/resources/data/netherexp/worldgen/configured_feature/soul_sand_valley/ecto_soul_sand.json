@@ -10,7 +10,10 @@
           "block": "minecraft:soul_sand"
         },
         "state": {
-          "Name": "netherexp:ecto_soul_sand"
+          "Name": "netherexp:ecto_soul_sand",
+          "Properties": {
+            "spawns_wisps": "true"
+          }
         }
       }
     ]

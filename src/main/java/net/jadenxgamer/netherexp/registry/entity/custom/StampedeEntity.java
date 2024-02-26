@@ -86,11 +86,13 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
             ItemStack itemStack = this.getEquippedStack(EquipmentSlot.MAINHAND);
             if (!itemStack.isEmpty()) {
                 ++this.eatingAnim;
+                int f = this.random.nextInt(2);
                 if (this.eatingAnim > 100) {
                     this.equipStack(EquipmentSlot.MAINHAND, Items.AIR.getDefaultStack());
+                    this.setHealth(this.getMaxHealth());
                     this.eatingAnim = 0;
                 }
-                else if (this.eatingAnim > 0) {
+                else if (this.eatingAnim > 0 && f == 0) {
                     this.playSound(SoundEvents.ENTITY_GENERIC_EAT, 1.0F, 1.0F);
                 }
             }
@@ -122,7 +124,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     }
 
     public boolean isAngry() {
-        return this.eatingAnim > 0;
+        return true;
     }
 
     @Override

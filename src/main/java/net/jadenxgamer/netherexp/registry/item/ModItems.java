@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.ModBlocks;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
-import net.jadenxgamer.netherexp.registry.entity.ModEntities;
+import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
@@ -83,7 +83,7 @@ public class ModItems {
             new Item(new FabricItemSettings().food(ModFoodComponents.PIZZA_SLICE)));
 
     public static final Item WISP_BOTTLE = registerItem("wisp_bottle",
-            new EntityBottleItem(ModEntities.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
+            new EntityBottleItem(ModEntityType.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
 
     public static final Item MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket",
             new EntityBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, ModSoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE, new FabricItemSettings().maxCount(1)));
@@ -104,19 +104,19 @@ public class ModItems {
             new AxeItem(ModToolMaterials.GUILLOTINE, 6.0F, -3.2F, new FabricItemSettings()));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
-            new SpawnEggItem(ModEntities.WARPHOPPER,0x119b85,0x324149,
+            new SpawnEggItem(ModEntityType.WARPHOPPER,0x119b85,0x324149,
                     new FabricItemSettings()));
 
     public static final Item APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg",
-            new SpawnEggItem(ModEntities.APPARITION,4864303,699311,
+            new SpawnEggItem(ModEntityType.APPARITION,4864303,699311,
                     new FabricItemSettings()));
 
     public static final Item WISP_SPAWN_EGG = registerItem("wisp_spawn_egg",
-            new SpawnEggItem(ModEntities.WISP,6022120,699311,
+            new SpawnEggItem(ModEntityType.WISP,6022120,699311,
                     new FabricItemSettings()));
 
     public static final Item GRASP_SPAWN_EGG = registerItem("grasp_spawn_egg",
-            new SpawnEggItem(ModEntities.GRASP,4864303,6910597,
+            new SpawnEggItem(ModEntityType.GRASP,4864303,6910597,
                     new FabricItemSettings()));
 
     public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",

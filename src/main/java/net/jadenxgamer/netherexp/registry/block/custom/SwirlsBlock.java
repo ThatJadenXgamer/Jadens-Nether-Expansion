@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
+import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
 import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
@@ -39,7 +40,7 @@ implements Fertilizable {
     @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!state.get(COOLDOWN) && entity instanceof LivingEntity && NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_boosting) {
+        if (!state.get(COOLDOWN) && entity instanceof LivingEntity && !entity.getType().isIn(ModTags.EntityTypes.CANT_ACTIVATE_SWIRLS) && NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_boosting) {
             int d = NetherExp.getConfig().blocks.soulSwirlsConfigs.unbounded_speed_duration * 20;
             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(ModStatusEffects.UNBOUNDED_SPEED, d, 0), entity);
             swirlPopParticles(world, pos);

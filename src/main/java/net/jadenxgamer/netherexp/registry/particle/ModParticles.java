@@ -35,6 +35,7 @@ public class ModParticles {
     public static final DefaultParticleType SWIRL_POP = FabricParticleTypes.simple();
     public static final DefaultParticleType SHALE_SWIRL_POP = FabricParticleTypes.simple();
     public static final DefaultParticleType GRASP_MIST = FabricParticleTypes.simple();
+    public static final DefaultParticleType WISP = FabricParticleTypes.simple();
 
     // MOD COMPAT
     public static final DefaultParticleType UMBRAL_SMOG = FabricParticleTypes.simple();
@@ -93,6 +94,8 @@ public class ModParticles {
                 SHALE_SWIRL_POP);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "grasp_mist"),
                 GRASP_MIST);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "wisp"),
+                WISP);
 
         // MOD COMPAT
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "umbral_smog"),

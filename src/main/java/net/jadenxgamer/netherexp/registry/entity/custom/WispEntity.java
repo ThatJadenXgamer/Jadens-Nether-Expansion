@@ -1,7 +1,11 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.custom.EctoSoulSandBlock;
 import net.jadenxgamer.netherexp.registry.item.ModItems;
+import net.jadenxgamer.netherexp.registry.particle.ModParticles;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Flutterer;
@@ -9,10 +13,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.AboveGroundTargeting;
 import net.minecraft.entity.ai.NoPenaltySolidTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
-import net.minecraft.entity.ai.goal.FleeEntityGoal;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.LookAroundGoal;
-import net.minecraft.entity.ai.goal.TemptGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
@@ -22,12 +23,15 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.HoglinEntity;
+import net.minecraft.entity.mob.PiglinBruteEntity;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtHelper;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
@@ -52,10 +56,10 @@ extends PassiveEntity
 implements GeoEntity, Flutterer, Bottleable {
     @SuppressWarnings("all")
     private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
-    @Nullable
-    BlockPos soulFirePos;
 
-    private static final TrackedData<Boolean> FROM_BOTTLE;
+    public int boredDelay = 1000;
+
+    private static final TrackedData<Boolean> FROM_BOTTLE = DataTracker.registerData(WispEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
 
     public WispEntity(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
@@ -118,23 +122,27 @@ implements GeoEntity, Flutterer, Bottleable {
     @Override
     protected void initGoals() {
         this.goalSelector.add(2, new TemptGoal(this, 1.0, Ingredient.ofItems(Items.SOUL_TORCH), false));
-        this.goalSelector.add(3, new FleeGoal<>(this, PlayerEntity.class, 8.0F, 0.4, 0.8));
+        this.goalSelector.add(3, new FleeGoal<>(this, PiglinEntity.class, 8.0F, 0.4, 0.8));
+        this.goalSelector.add(3, new FleeGoal<>(this, PiglinBruteEntity.class, 8.0F, 0.4, 0.8));
+        this.goalSelector.add(3, new FleeGoal<>(this, HoglinEntity.class, 8.0F, 0.4, 0.8));
+        this.goalSelector.add(4, new BurrowInSoulSandGoal(this, 16));
         this.goalSelector.add(4, new WispWanderAroundGoal());
         this.goalSelector.add(5, new LookAroundGoal(this));
     }
 
-    @Nullable
-    public BlockPos getSoulFirePos() {
-        return this.soulFirePos;
-    }
-
-    public boolean hasSoulFire() {
-        return this.soulFirePos != null;
-    }
-
-    @SuppressWarnings("all")
-    boolean isWithinDistance(BlockPos pos, int distance) {
-        return pos.isWithinDistance(this.getBlockPos(), distance);
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (!this.getWorld().isClient) {
+            if (this.getBoredDelay() > 0 && !this.isFromBottle()) {
+                --this.boredDelay;
+            }
+        }
+        else {
+            for(int i = 0; i < 2; ++i) {
+                this.getWorld().addParticle(ModParticles.WISP, this.getParticleX(0.5), this.getRandomBodyY() - 0.25, this.getParticleZ(0.5), 0.0, 0.0, 0.0);
+            }
+        }
     }
 
     /////////
@@ -147,28 +155,26 @@ implements GeoEntity, Flutterer, Bottleable {
         this.dataTracker.startTracking(FROM_BOTTLE, false);
     }
 
-    static {
-        FROM_BOTTLE = DataTracker.registerData(WispEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    public void setBoredDelay(int boredDelay) {
+        this.boredDelay = boredDelay;
+    }
+
+    public int getBoredDelay() {
+        return this.boredDelay;
     }
 
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        if (this.hasSoulFire()) {
-            assert this.getSoulFirePos() != null;
-            nbt.put("SoulFirePos", NbtHelper.fromBlockPos(this.getSoulFirePos()));
-            nbt.putBoolean("FromBottle", this.isFromBottle());
-        }
+        nbt.putBoolean("FromBottle", this.isFromBottle());
+        nbt.putInt("BoredDelay", this.boredDelay);
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        this.soulFirePos = null;
-        if (nbt.contains("SoulFirePos")) {
-            this.soulFirePos = NbtHelper.toBlockPos(nbt.getCompound("SoulFirePos"));
-            this.setFromBottle(nbt.getBoolean("FromBottle"));
-        }
+        this.setFromBottle(nbt.getBoolean("FromBottle"));
+        this.boredDelay = nbt.getInt("BoredDelay");
     }
 
     @Override
@@ -282,6 +288,66 @@ implements GeoEntity, Flutterer, Bottleable {
 
             Vec3d vec3d3 = AboveGroundTargeting.find(WispEntity.this, 8, 7, vec3d2.x, vec3d2.z, 1.5707964F, 3, 1);
             return vec3d3 != null ? vec3d3 : NoPenaltySolidTargeting.find(WispEntity.this, 8, 4, -2, vec3d2.x, vec3d2.z, 1.5707963705062866);
+        }
+    }
+
+    static class BurrowInSoulSandGoal extends MoveToTargetPosGoal {
+        private final WispEntity wisp;
+
+        public BurrowInSoulSandGoal(WispEntity entity, int range) {
+            super(entity, 1.0F, range, range);
+            wisp = entity;
+        }
+
+        @Override
+        public double getDesiredDistanceToTarget() {
+            return 2.0;
+        }
+
+        @Override
+        protected boolean isTargetPos(WorldView world, BlockPos pos) {
+            BlockState blockState = world.getBlockState(pos);
+            return blockState.isOf(Blocks.SOUL_SAND);
+        }
+
+        @Override
+        protected BlockPos getTargetPos() {
+            return this.targetPos;
+        }
+
+        @Override
+        public void tick() {
+            super.tick();
+            BlockPos target = getTargetPos();
+            World world = wisp.getWorld();
+            if (target != null) {
+                if (this.hasReached()) {
+                    world.setBlockState(target, ModBlocks.ECTO_SOUL_SAND.getDefaultState().with(EctoSoulSandBlock.SPAWNS_WISPS, true));
+                    world.addParticle(ParticleTypes.SOUL, wisp.getX(), wisp.getY(), wisp.getZ(), 0.0, 0.0, 0.0);
+                    wisp.remove(RemovalReason.DISCARDED);
+                }
+            }
+        }
+
+        @Override
+        public boolean canStart() {
+            return wisp.getBoredDelay() <= 0 && !wisp.isFromBottle() && super.canStart();
+        }
+
+        @Override
+        public boolean shouldContinue() {
+            BlockPos target = getTargetPos();
+            return wisp.getWorld().getBlockState(target).isOf(Blocks.SOUL_SAND) && super.shouldContinue();
+        }
+
+        @Override
+        public void start() {
+            super.start();
+        }
+
+        @Override
+        public void stop() {
+            super.stop();
         }
     }
 }

@@ -51,10 +51,13 @@ public class NetherExpConfigs implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public GeyserConfigs geyserConfigs = new GeyserConfigs();
 
-
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public SoulSwirlsConfigs soulSwirlsConfigs = new SoulSwirlsConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public EctoSoulSandConfigs ectoSoulSandConfigs = new EctoSoulSandConfigs();
 
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip

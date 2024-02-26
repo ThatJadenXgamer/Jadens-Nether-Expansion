@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.entity.ai.DockNearAromaGeneratorGoal;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemSteerable;
 import net.minecraft.entity.Saddleable;
@@ -18,6 +19,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(StriderEntity.class)
@@ -28,6 +30,14 @@ public abstract class StriderEntityMixin extends AnimalEntity implements ItemSte
 
     protected StriderEntityMixin(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    @Inject(
+            method = "initGoals",
+            at = @At(value = "HEAD")
+    )
+    private void netherexp$initGoals(CallbackInfo ci) {
+        this.goalSelector.add(3, new DockNearAromaGeneratorGoal(((StriderEntity) (Object) this), 1.2, 16, 6));
     }
 
     // Lets you retrieve your saddle from a Strider without brutally murdering it

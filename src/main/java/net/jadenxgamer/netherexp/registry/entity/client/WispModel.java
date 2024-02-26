@@ -3,9 +3,14 @@ package net.jadenxgamer.netherexp.registry.entity.client;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
 import net.minecraft.util.Identifier;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 
-public class WispModel extends GeoModel<WispEntity> {
+public class WispModel extends DefaultedEntityGeoModel<WispEntity> {
+    public WispModel() {
+        super(new Identifier(NetherExp.MOD_ID, "wisp"), true);
+    }
+
     @Override
     public Identifier getModelResource(WispEntity object) {
         return new Identifier(NetherExp.MOD_ID, "geo/wisp.geo.json");
