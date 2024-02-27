@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;
@@ -50,7 +50,7 @@ extends HorizontalConnectingBlock {
     }
 
     private boolean canConnectToFence(BlockState state) {
-        return state.isIn(ModTags.Blocks.BONE_FENCES);
+        return state.isIn(JNETags.Blocks.BONE_FENCES);
     }
 
     @Override

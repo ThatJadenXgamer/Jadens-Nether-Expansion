@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModDamageSources;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -50,7 +50,7 @@ public class GraveCloudEntity extends Entity implements Ownable {
         super.tick();
         if (this.getWorld().isClient) {
             for(int i = 0; i < 2; ++i) {
-                this.getWorld().addParticle(ModParticles.GRASP_MIST, this.getParticleX(0.5), this.getRandomBodyY() - 0.25, this.getParticleZ(0.5), (this.random.nextDouble() - 0.5) * 2.0, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.0);
+                this.getWorld().addParticle(JNEParticles.GRASP_MIST, this.getParticleX(0.5), this.getRandomBodyY() - 0.25, this.getParticleZ(0.5), (this.random.nextDouble() - 0.5) * 2.0, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.0);
             }
         }
         else {
@@ -67,7 +67,7 @@ public class GraveCloudEntity extends Entity implements Ownable {
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity) {
                 if (!(entity instanceof GraspEntity)) {
-                    entity.damage(this.getDamageSources().create(ModDamageSources.DEATH_CLOUD_SUFFOCATION, this.getOwner()), 1);
+                    entity.damage(this.getDamageSources().create(JNEDamageSources.DEATH_CLOUD_SUFFOCATION, this.getOwner()), 1);
                     ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 10, 4, false, true), this);
                 }
             }

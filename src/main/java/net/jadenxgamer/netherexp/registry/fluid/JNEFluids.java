@@ -17,22 +17,22 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 @SuppressWarnings("deprecation")
-public class ModFluids {
+public class JNEFluids {
 
     public static FlowableFluid ECTOPLASM;
     public static FlowableFluid FLOWING_ECTOPLASM;
     public static Block ECTOPLASM_BLOCK;
     public static Item ECTOPLASM_BUCKET;
 
-    public static void registerModFluids() {
+    public static void registerFluids() {
         ECTOPLASM = Registry.register(Registries.FLUID, new Identifier(NetherExp.MOD_ID, "ectoplasm"), new EctoplasmFluid.Still());
 
         FLOWING_ECTOPLASM = Registry.register(Registries.FLUID, new Identifier(NetherExp.MOD_ID, "flowing_ectoplasm"), new EctoplasmFluid.Flowing());
 
         ECTOPLASM_BLOCK = Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, "ectoplasm"),
-                new FluidBlock(ModFluids.ECTOPLASM, FabricBlockSettings.of().mapColor(MapColor.LIGHT_BLUE).replaceable().noCollision().strength(100.0F).pistonBehavior(PistonBehavior.DESTROY).dropsNothing().luminance((state) -> 15).liquid().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
+                new FluidBlock(JNEFluids.ECTOPLASM, FabricBlockSettings.of().mapColor(MapColor.LIGHT_BLUE).replaceable().noCollision().strength(100.0F).pistonBehavior(PistonBehavior.DESTROY).dropsNothing().luminance((state) -> 15).liquid().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
 
-        ECTOPLASM_BUCKET = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, "ectoplasm_bucket"), new EctoplasmBucketItem(ModFluids.ECTOPLASM,
+        ECTOPLASM_BUCKET = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, "ectoplasm_bucket"), new EctoplasmBucketItem(JNEFluids.ECTOPLASM,
                 new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
 
         NetherExp.LOGGER.debug("Registering Fluids for " + NetherExp.MOD_ID);

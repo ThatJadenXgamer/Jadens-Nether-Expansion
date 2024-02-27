@@ -5,9 +5,9 @@ import net.minecraft.recipe.Ingredient;
 
 import java.util.function.Supplier;
 
-public enum ModToolMaterials implements ToolMaterial {
+public enum JNEToolMaterials implements ToolMaterial {
     GUILLOTINE(0, 40, 2.0f, 0.0f, 0,
-            () -> Ingredient.ofItems(ModItems.NECRO_SHARD));
+            () -> Ingredient.ofItems(JNEItems.NECRO_SHARD));
 
     private final int miningLevel;
     private final int itemDurability;
@@ -16,7 +16,7 @@ public enum ModToolMaterials implements ToolMaterial {
     private final int enchantability;
     private final Supplier<Ingredient> repairIngredient;
 
-    ModToolMaterials(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    JNEToolMaterials(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
         this.itemDurability = itemDurability;
         this.miningSpeed = miningSpeed;

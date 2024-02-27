@@ -464,8 +464,8 @@
 
   "text.autoconfig.netherexp.option.items.mistChargeConfigs": "Mist Charge",
   "text.autoconfig.netherexp.option.items.mistChargeConfigs.@Tooltip": "Change any Mist Charge functionality",
-  "text.autoconfig.netherexp.option.items.mistChargeConfigs.mist_charge_stack_size": "Diminishing Blazes",
-  "text.autoconfig.netherexp.option.items.mistChargeConfigs.mist_charge_stack_size.@Tooltip": "Blazes get dimmer the more damage they receive",
+  "text.autoconfig.netherexp.option.items.mistChargeConfigs.mist_charge_stack_size": "Mist Charge Stack Size",
+  "text.autoconfig.netherexp.option.items.mistChargeConfigs.mist_charge_stack_size.@Tooltip": "Determines the stack size of Mist Charges",
 
   "text.autoconfig.netherexp.option.entities": "Entities",
   "text.autoconfig.netherexp.option.entities.@Tooltip": "Changes to how mobs are handled",

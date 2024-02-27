@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.mixin.renderer;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jadenxgamer.netherexp.NetherExpClient;
-import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
+import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
 import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.CameraSubmersionType;
@@ -28,7 +28,7 @@ public abstract class BackgroundRendererMixin{
          * Increases Nether Fog & Underlava Visibility when the player has FogSight Effect
          * Does not work if the player has Blindness or Darkness or in the Overworld/End
          */
-        if (((LivingEntity) entity).hasStatusEffect(ModStatusEffects.FOGSIGHT) && !((LivingEntity) entity).hasStatusEffect(StatusEffects.BLINDNESS) && !((LivingEntity) entity).hasStatusEffect(StatusEffects.DARKNESS)) {
+        if (((LivingEntity) entity).hasStatusEffect(JNEStatusEffects.FOGSIGHT) && !((LivingEntity) entity).hasStatusEffect(StatusEffects.BLINDNESS) && !((LivingEntity) entity).hasStatusEffect(StatusEffects.DARKNESS)) {
             if (thickFog && cameraSubmersionType == CameraSubmersionType.NONE) {
                 RenderSystem.setShaderFogStart(0.0F);
                 RenderSystem.setShaderFogEnd(viewDistance);

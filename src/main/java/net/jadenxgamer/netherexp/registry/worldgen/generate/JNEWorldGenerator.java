@@ -6,8 +6,8 @@ import net.jadenxgamer.netherexp.registry.worldgen.generate.mod_compat.AshyShoal
 import net.jadenxgamer.netherexp.registry.worldgen.generate.mod_compat.BlackstoneShalesFeatures;
 import net.jadenxgamer.netherexp.registry.worldgen.generate.mod_compat.LuminousGroveFeatures;
 
-public class ModWorldGenerator {
-    public static void generateModWorldGen() {
+public class JNEWorldGenerator {
+    public static void generateWorldGen() {
         NetherWastesFeatures.generateFeatures();
         SoulSandValleyFeatures.generateFeatures();
         CrimsonForestFeatures.generateFeatures();

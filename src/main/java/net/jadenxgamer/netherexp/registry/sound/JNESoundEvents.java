@@ -9,7 +9,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 
-public class ModSoundEvents {
+public class JNESoundEvents {
 
     //// BLOCKS:
     // Soul Slate
@@ -160,67 +160,67 @@ public class ModSoundEvents {
     // LIST OF SOUND GROUPS:
 
     public static final BlockSoundGroup SOUL_SLATE = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_SOUL_SLATE_BREAK, ModSoundEvents.BLOCK_SOUL_SLATE_STEP, ModSoundEvents.BLOCK_SOUL_SLATE_PLACE,
-            ModSoundEvents.BLOCK_SOUL_SLATE_HIT, ModSoundEvents.BLOCK_SOUL_SLATE_FALL);
+            JNESoundEvents.BLOCK_SOUL_SLATE_BREAK, JNESoundEvents.BLOCK_SOUL_SLATE_STEP, JNESoundEvents.BLOCK_SOUL_SLATE_PLACE,
+            JNESoundEvents.BLOCK_SOUL_SLATE_HIT, JNESoundEvents.BLOCK_SOUL_SLATE_FALL);
 
     public static final BlockSoundGroup SOUL_SLATE_BRICKS = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_BREAK, ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_STEP, ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_PLACE,
-            ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_HIT, ModSoundEvents.BLOCK_SOUL_SLATE_BRICKS_FALL);
+            JNESoundEvents.BLOCK_SOUL_SLATE_BRICKS_BREAK, JNESoundEvents.BLOCK_SOUL_SLATE_BRICKS_STEP, JNESoundEvents.BLOCK_SOUL_SLATE_BRICKS_PLACE,
+            JNESoundEvents.BLOCK_SOUL_SLATE_BRICKS_HIT, JNESoundEvents.BLOCK_SOUL_SLATE_BRICKS_FALL);
 
     public static final BlockSoundGroup NETHERRACK_BRICKS = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_NETHERRACK_BRICKS_BREAK, ModSoundEvents.BLOCK_NETHERRACK_BRICKS_STEP, ModSoundEvents.BLOCK_NETHERRACK_BRICKS_PLACE,
-            ModSoundEvents.BLOCK_NETHERRACK_BRICKS_HIT, ModSoundEvents.BLOCK_NETHERRACK_BRICKS_FALL);
+            JNESoundEvents.BLOCK_NETHERRACK_BRICKS_BREAK, JNESoundEvents.BLOCK_NETHERRACK_BRICKS_STEP, JNESoundEvents.BLOCK_NETHERRACK_BRICKS_PLACE,
+            JNESoundEvents.BLOCK_NETHERRACK_BRICKS_HIT, JNESoundEvents.BLOCK_NETHERRACK_BRICKS_FALL);
 
     public static final BlockSoundGroup BASALT_BRICKS = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_BASALT_BRICKS_BREAK, ModSoundEvents.BLOCK_BASALT_BRICKS_STEP, ModSoundEvents.BLOCK_BASALT_BRICKS_PLACE,
-            ModSoundEvents.BLOCK_BASALT_BRICKS_HIT, ModSoundEvents.BLOCK_BASALT_BRICKS_FALL);
+            JNESoundEvents.BLOCK_BASALT_BRICKS_BREAK, JNESoundEvents.BLOCK_BASALT_BRICKS_STEP, JNESoundEvents.BLOCK_BASALT_BRICKS_PLACE,
+            JNESoundEvents.BLOCK_BASALT_BRICKS_HIT, JNESoundEvents.BLOCK_BASALT_BRICKS_FALL);
 
     public static final BlockSoundGroup WHITE_ASH = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_WHITE_ASH_BREAK, ModSoundEvents.BLOCK_WHITE_ASH_STEP, ModSoundEvents.BLOCK_WHITE_ASH_PLACE,
-            ModSoundEvents.BLOCK_WHITE_ASH_HIT, ModSoundEvents.BLOCK_WHITE_ASH_FALL);
+            JNESoundEvents.BLOCK_WHITE_ASH_BREAK, JNESoundEvents.BLOCK_WHITE_ASH_STEP, JNESoundEvents.BLOCK_WHITE_ASH_PLACE,
+            JNESoundEvents.BLOCK_WHITE_ASH_HIT, JNESoundEvents.BLOCK_WHITE_ASH_FALL);
 
     public static final BlockSoundGroup SMOKESTALK = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_SMOKESTALK_BREAK, SoundEvents.BLOCK_BAMBOO_STEP, ModSoundEvents.BLOCK_SMOKESTALK_PLACE,
+            JNESoundEvents.BLOCK_SMOKESTALK_BREAK, SoundEvents.BLOCK_BAMBOO_STEP, JNESoundEvents.BLOCK_SMOKESTALK_PLACE,
             SoundEvents.BLOCK_BAMBOO_HIT, SoundEvents.BLOCK_BAMBOO_FALL);
 
     public static final BlockSoundGroup SMOKESTALK_WOOD = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_SMOKESTALK_WOOD_BREAK, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_STEP, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_PLACE,
-            ModSoundEvents.BLOCK_SMOKESTALK_WOOD_HIT, ModSoundEvents.BLOCK_SMOKESTALK_WOOD_FALL);
+            JNESoundEvents.BLOCK_SMOKESTALK_WOOD_BREAK, JNESoundEvents.BLOCK_SMOKESTALK_WOOD_STEP, JNESoundEvents.BLOCK_SMOKESTALK_WOOD_PLACE,
+            JNESoundEvents.BLOCK_SMOKESTALK_WOOD_HIT, JNESoundEvents.BLOCK_SMOKESTALK_WOOD_FALL);
 
     public static final BlockSoundGroup SOUL_CANDLE = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_SOUL_CANDLE_BREAK, ModSoundEvents.BLOCK_SOUL_CANDLE_STEP, ModSoundEvents.BLOCK_SOUL_CANDLE_PLACE,
-            ModSoundEvents.BLOCK_SOUL_CANDLE_HIT, ModSoundEvents.BLOCK_SOUL_CANDLE_FALL);
+            JNESoundEvents.BLOCK_SOUL_CANDLE_BREAK, JNESoundEvents.BLOCK_SOUL_CANDLE_STEP, JNESoundEvents.BLOCK_SOUL_CANDLE_PLACE,
+            JNESoundEvents.BLOCK_SOUL_CANDLE_HIT, JNESoundEvents.BLOCK_SOUL_CANDLE_FALL);
 
     public static final BlockSoundGroup BLACKSTONE = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_BLACKSTONE_BREAK, ModSoundEvents.BLOCK_BLACKSTONE_STEP, ModSoundEvents.BLOCK_BLACKSTONE_PLACE,
-            ModSoundEvents.BLOCK_BLACKSTONE_HIT, ModSoundEvents.BLOCK_BLACKSTONE_FALL);
+            JNESoundEvents.BLOCK_BLACKSTONE_BREAK, JNESoundEvents.BLOCK_BLACKSTONE_STEP, JNESoundEvents.BLOCK_BLACKSTONE_PLACE,
+            JNESoundEvents.BLOCK_BLACKSTONE_HIT, JNESoundEvents.BLOCK_BLACKSTONE_FALL);
 
     public static final BlockSoundGroup POLISHED_BLACKSTONE_BRICKS = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_BREAK, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_STEP, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_PLACE,
-            ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT, ModSoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_FALL);
+            JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_BREAK, JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_STEP, JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_PLACE,
+            JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT, JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_FALL);
 
     public static final BlockSoundGroup MAGMA_BLOCK = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_MAGMA_BLOCK_BREAK, SoundEvents.BLOCK_NETHERRACK_STEP, ModSoundEvents.BLOCK_MAGMA_BLOCK_PLACE,
+            JNESoundEvents.BLOCK_MAGMA_BLOCK_BREAK, SoundEvents.BLOCK_NETHERRACK_STEP, JNESoundEvents.BLOCK_MAGMA_BLOCK_PLACE,
             SoundEvents.BLOCK_NETHERRACK_HIT, SoundEvents.BLOCK_NETHERRACK_FALL);
 
     public static final BlockSoundGroup SOUL_MAGMA_BLOCK = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_SOUL_MAGMA_BLOCK_BREAK, SoundEvents.BLOCK_SOUL_SOIL_STEP, ModSoundEvents.BLOCK_SOUL_MAGMA_BLOCK_PLACE,
+            JNESoundEvents.BLOCK_SOUL_MAGMA_BLOCK_BREAK, SoundEvents.BLOCK_SOUL_SOIL_STEP, JNESoundEvents.BLOCK_SOUL_MAGMA_BLOCK_PLACE,
             SoundEvents.BLOCK_SOUL_SOIL_HIT, SoundEvents.BLOCK_SOUL_SOIL_FALL);
 
     public static final BlockSoundGroup GLOWSTONE = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_GLOWSTONE_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, ModSoundEvents.BLOCK_GLOWSTONE_PLACE,
+            JNESoundEvents.BLOCK_GLOWSTONE_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, JNESoundEvents.BLOCK_GLOWSTONE_PLACE,
             SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
 
     public static final BlockSoundGroup QUARTZ_BLOCK = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_QUARTZ_BLOCK_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, ModSoundEvents.BLOCK_QUARTZ_BLOCK_PLACE,
+            JNESoundEvents.BLOCK_QUARTZ_BLOCK_BREAK, SoundEvents.BLOCK_NETHER_ORE_STEP, JNESoundEvents.BLOCK_QUARTZ_BLOCK_PLACE,
             SoundEvents.BLOCK_NETHER_ORE_HIT, SoundEvents.BLOCK_NETHER_ORE_FALL);
 
     public static final BlockSoundGroup BLACK_ICE = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_BLACK_ICE_BREAK, ModSoundEvents.BLOCK_BLACK_ICE_STEP, ModSoundEvents.BLOCK_BLACK_ICE_PLACE,
-            ModSoundEvents.BLOCK_BLACK_ICE_HIT, ModSoundEvents.BLOCK_BLACK_ICE_FALL);
+            JNESoundEvents.BLOCK_BLACK_ICE_BREAK, JNESoundEvents.BLOCK_BLACK_ICE_STEP, JNESoundEvents.BLOCK_BLACK_ICE_PLACE,
+            JNESoundEvents.BLOCK_BLACK_ICE_HIT, JNESoundEvents.BLOCK_BLACK_ICE_FALL);
 
     public static final BlockSoundGroup SUSPICIOUS_SOUL_SAND = new BlockSoundGroup(1f, 1f,
-            ModSoundEvents.BLOCK_SUSPICIOUS_SOUL_SAND_BREAK, SoundEvents.BLOCK_SOUL_SAND_STEP, SoundEvents.BLOCK_SOUL_SAND_PLACE,
+            JNESoundEvents.BLOCK_SUSPICIOUS_SOUL_SAND_BREAK, SoundEvents.BLOCK_SOUL_SAND_STEP, SoundEvents.BLOCK_SOUL_SAND_PLACE,
             SoundEvents.BLOCK_SOUL_SAND_HIT, SoundEvents.BLOCK_SOUL_SAND_FALL);
 
     public static SoundEvent registerSoundEvent(String name) {

@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +13,6 @@ public class IgneousReeds extends TallPlantBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(ModTags.Blocks.IGNEOUS_REEDS_PLANTABLE_ON) || super.canPlantOnTop(floor, world, pos);
+        return floor.isIn(JNETags.Blocks.IGNEOUS_REEDS_PLANTABLE_ON) || super.canPlantOnTop(floor, world, pos);
     }
 }

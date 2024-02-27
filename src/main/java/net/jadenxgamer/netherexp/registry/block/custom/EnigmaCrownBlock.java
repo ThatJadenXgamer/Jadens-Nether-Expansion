@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -20,7 +20,7 @@ public class EnigmaCrownBlock extends PlantBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(ModTags.Blocks.ENIGMA_CROWN_PLANTABLE_ON);
+        return floor.isIn(JNETags.Blocks.ENIGMA_CROWN_PLANTABLE_ON);
     }
 
     @SuppressWarnings("all")
@@ -37,7 +37,7 @@ public class EnigmaCrownBlock extends PlantBlock {
         double e = (double)pos.getZ() + vec3d.z;
         for (int i = 0; i < 3; ++i) {
             if (!random.nextBoolean()) continue;
-            world.addParticle(ModParticles.ENIGMA_PARTICLE, d + random.nextDouble() / 5.0, (double)pos.getY() + (0.5 - random.nextDouble()), e + random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticles.ENIGMA_PARTICLE, d + random.nextDouble() / 5.0, (double)pos.getY() + (0.5 - random.nextDouble()), e + random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
         }
     }
 }

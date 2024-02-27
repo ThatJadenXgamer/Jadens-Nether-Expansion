@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.modcompat.cinderscapes.BlackstoneShalesConfigs;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.ModPlacedFeatures;
 import net.minecraft.world.gen.GenerationStep;
 
@@ -36,15 +36,15 @@ public class BlackstoneShalesFeatures {
         // STEP 10 - TOP_LAYER_MODIFICATION
 
         if (bsConfigs.generate_geyser) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.BLACKSTONE_SHALES),
+            BiomeModifications.addFeature(BiomeSelectors.tag(JNETags.Biomes.BLACKSTONE_SHALES),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.BLACKSTONIC_GEYSER);
         }
 
         if (bsConfigs.generate_shale_swirls) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.BLACKSTONE_SHALES),
+            BiomeModifications.addFeature(BiomeSelectors.tag(JNETags.Biomes.BLACKSTONE_SHALES),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.BLACKSTONE_SHALES_SHALE_SWIRLS_CEILING);
 
-            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.BLACKSTONE_SHALES),
+            BiomeModifications.addFeature(BiomeSelectors.tag(JNETags.Biomes.BLACKSTONE_SHALES),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.BLACKSTONE_SHALES_SHALE_SWIRLS_FLOOR);
         }
     }

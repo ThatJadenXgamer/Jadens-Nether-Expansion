@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -28,7 +28,7 @@ extends AbstractPlantStemBlock {
 
     @Override
     protected Block getPlant() {
-        return ModBlocks.IGNEOUS_VINES_PLANT;
+        return JNEBlocks.IGNEOUS_VINES_PLANT;
     }
 
     @SuppressWarnings("deprecation")

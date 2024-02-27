@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractPlantBlock;
 import net.minecraft.block.AbstractPlantStemBlock;
@@ -19,6 +19,6 @@ extends AbstractPlantBlock {
 
     @Override
     protected AbstractPlantStemBlock getStem() {
-        return (AbstractPlantStemBlock) ModBlocks.SMOKESTALK;
+        return (AbstractPlantStemBlock) JNEBlocks.SMOKESTALK;
     }
 }

@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.worldgen.feature.custom;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.SmokestalkBlock;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.BlockState;
@@ -72,11 +72,11 @@ public class SmokestalkFeature extends Feature<TwistingVinesFeatureConfig> {
         for(int i = 1; i <= maxLength; ++i) {
             if (world.isAir(pos)) {
                 if (i == maxLength || !world.isAir(pos.up())) {
-                    world.setBlockState(pos, ModBlocks.SMOKESTALK.getDefaultState().with(AbstractPlantStemBlock.AGE, MathHelper.nextInt(random, minAge, maxAge)).with(SmokestalkBlock.ACTIVE, random.nextBoolean()), 2);
+                    world.setBlockState(pos, JNEBlocks.SMOKESTALK.getDefaultState().with(AbstractPlantStemBlock.AGE, MathHelper.nextInt(random, minAge, maxAge)).with(SmokestalkBlock.ACTIVE, random.nextBoolean()), 2);
                     break;
                 }
 
-                world.setBlockState(pos, ModBlocks.SMOKESTALK_PLANT.getDefaultState(), 2);
+                world.setBlockState(pos, JNEBlocks.SMOKESTALK_PLANT.getDefaultState(), 2);
             }
 
             pos.move(Direction.UP);

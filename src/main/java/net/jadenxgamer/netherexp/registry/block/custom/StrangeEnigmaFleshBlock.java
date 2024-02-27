@@ -1,12 +1,12 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-public class StrangeEnigmaFleshBlock extends ModFacingBlock{
+public class StrangeEnigmaFleshBlock extends JNEFacingBlock {
     public StrangeEnigmaFleshBlock(Settings settings) {
         super(settings);
     }
@@ -18,7 +18,7 @@ public class StrangeEnigmaFleshBlock extends ModFacingBlock{
         double e = (double)pos.getZ() + random.nextDouble();
         for (int i = 0; i < 3; ++i) {
             if (!random.nextBoolean()) continue;
-            world.addParticle(ModParticles.ENIGMA_PARTICLE, d, f, e, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticles.ENIGMA_PARTICLE, d, f, e, 0.0, 0.0, 0.0);
         }
     }
 }

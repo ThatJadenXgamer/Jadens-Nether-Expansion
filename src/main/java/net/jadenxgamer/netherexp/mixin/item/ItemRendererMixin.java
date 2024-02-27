@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.mixin.item;
 
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
@@ -22,7 +22,7 @@ public abstract class ItemRendererMixin {
             argsOnly = true
     )
     public BakedModel useRubyStaffModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        if (stack.isOf(ModItems.GUILLOTINE) && renderMode != ModelTransformationMode.GUI) {
+        if (stack.isOf(JNEItems.GUILLOTINE) && renderMode != ModelTransformationMode.GUI) {
             return ((ItemRendererAccessor) this).netherexp$getModels().getModelManager().getModel(new ModelIdentifier(NetherExp.MOD_ID, "guillotine_hand", "inventory"));
         }
         return value;

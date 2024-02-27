@@ -6,7 +6,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
-public class ModBiomes
+public class JNEBiomes
 {
     public static final RegistryKey<Biome> VENT_MIRE = register("vent_mire");
 

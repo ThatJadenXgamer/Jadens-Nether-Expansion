@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.registry.worldgen.generate.biome;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.jadenxgamer.netherexp.registry.worldgen.biome.ModBiomes;
+import net.jadenxgamer.netherexp.registry.worldgen.biome.JNEBiomes;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.ModPlacedFeatures;
 import net.minecraft.world.gen.GenerationStep;
 
@@ -29,18 +29,18 @@ public class VentMireFeatures {
 
         // STEP 9 - VEGETAL_DECORATION
 
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.VENT_MIRE),
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(JNEBiomes.VENT_MIRE),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.SMOKESTALK);
 
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.VENT_MIRE),
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(JNEBiomes.VENT_MIRE),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.IGNEOUS_REEDS);
 
         // STEP 10 - TOP_LAYER_MODIFICATION
 
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.VENT_MIRE),
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(JNEBiomes.VENT_MIRE),
                 GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.VENT_DELTA);
 
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.VENT_MIRE),
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(JNEBiomes.VENT_MIRE),
                 GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.BLACKSTONE_PATCH);
     }
 }

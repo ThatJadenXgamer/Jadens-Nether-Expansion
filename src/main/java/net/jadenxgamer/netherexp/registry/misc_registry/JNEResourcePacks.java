@@ -6,10 +6,10 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.util.Identifier;
 
-public class ModResourcePacks {
+public class JNEResourcePacks {
 
     @SuppressWarnings("deprecation")
-    public static void registerModResourcePacks() {
+    public static void registerResourcePacks() {
         // TODO: Add functionality to Vanilla and Emissive Packs
         Identifier vanillaPackId = new Identifier(NetherExp.MOD_ID, "vanilla_nether_expansion");
         Identifier emissivePackId = new Identifier(NetherExp.MOD_ID, "emissive_nether_expansion");

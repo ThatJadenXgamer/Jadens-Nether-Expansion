@@ -1,10 +1,10 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.DecayableWartBlock;
 import net.jadenxgamer.netherexp.registry.block.custom.SpottedWartBlock;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -40,8 +40,8 @@ public class NightSporesItem extends Item {
           Changes Wart Block to Spotted Wart Block
         */
         if (state.isOf(Blocks.WARPED_WART_BLOCK)) {
-            world.setBlockState(pos, ModBlocks.SPOTTED_WARPED_WART_BLOCK.getDefaultState());
-            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.setBlockState(pos, JNEBlocks.SPOTTED_WARPED_WART_BLOCK.getDefaultState());
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 
             if (player != null) {
@@ -52,9 +52,9 @@ public class NightSporesItem extends Item {
         /*
           Increases Spotted Wart Block's Spots
         */
-        else if (state.isOf(ModBlocks.SPOTTED_WARPED_WART_BLOCK) && !(spottedWartBlock = (SpottedWartBlock) block).maxSpots(state)) {
+        else if (state.isOf(JNEBlocks.SPOTTED_WARPED_WART_BLOCK) && !(spottedWartBlock = (SpottedWartBlock) block).maxSpots(state)) {
             world.setBlockState(pos, spottedWartBlock.setSpots(state));
-            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 
             if (player != null) {
@@ -65,9 +65,9 @@ public class NightSporesItem extends Item {
         /*
           Increases Decayable Wart Block's Spots
         */
-        else if (state.isOf(ModBlocks.DECAYABLE_WARPED_WART_BLOCK) && !(decayableWartBlock = (DecayableWartBlock) block).maxSpots(state)) {
+        else if (state.isOf(JNEBlocks.DECAYABLE_WARPED_WART_BLOCK) && !(decayableWartBlock = (DecayableWartBlock) block).maxSpots(state)) {
             world.setBlockState(pos, decayableWartBlock.setSpots(state));
-            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
             sporeParticles(world, pos);
 
             if (player != null) {
@@ -87,7 +87,7 @@ public class NightSporesItem extends Item {
             double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double)direction.getOffsetX() : (double)random.nextFloat();
             double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double)direction.getOffsetY() : (double)random.nextFloat();
             double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double)direction.getOffsetZ() : (double)random.nextFloat();
-            world.addParticle(ModParticles.FALLING_SHROOMNIGHT, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticles.FALLING_SHROOMNIGHT, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
         }
     }
 }

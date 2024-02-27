@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Attackable;
@@ -33,10 +33,10 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     )
     private void netherexp$soulSpeedVelocityMultiplier(CallbackInfoReturnable<Float> cir) {
         BlockState state = this.getWorld().getBlockState(this.getVelocityAffectingPos());
-        if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasStatusEffect(ModStatusEffects.UNBOUNDED_SPEED) && !EnchantmentHelper.hasSoulSpeed((LivingEntity) (Object) this)) {
+        if (state.isIn(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasStatusEffect(JNEStatusEffects.UNBOUNDED_SPEED) && !EnchantmentHelper.hasSoulSpeed((LivingEntity) (Object) this)) {
             cir.setReturnValue(1.0F);
         }
-        else if (state.isIn(ModTags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness) {
+        else if (state.isIn(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness) {
             cir.setReturnValue(0.6F);
         }
     }

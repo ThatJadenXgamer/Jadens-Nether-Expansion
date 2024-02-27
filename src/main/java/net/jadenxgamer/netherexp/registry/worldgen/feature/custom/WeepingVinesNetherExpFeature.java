@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.worldgen.feature.custom;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -30,7 +30,7 @@ public class WeepingVinesNetherExpFeature extends Feature<DefaultFeatureConfig> 
             return false;
         } else {
             BlockState blockState = structureWorldAccess.getBlockState(blockPos.up());
-            if (!blockState.isIn(ModTags.Blocks.WEEPING_VINES_FEATURE_VALID)) {
+            if (!blockState.isIn(JNETags.Blocks.WEEPING_VINES_FEATURE_VALID)) {
                 return false;
             } else {
                 this.generateNetherWartBlocksInArea(structureWorldAccess, random, blockPos);
@@ -79,7 +79,7 @@ public class WeepingVinesNetherExpFeature extends Feature<DefaultFeatureConfig> 
             mutable.set(pos, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
             if (world.isAir(mutable)) {
                 BlockState blockState = world.getBlockState(mutable.up());
-                if (blockState.isIn(ModTags.Blocks.WEEPING_VINES_FEATURE_VALID)) {
+                if (blockState.isIn(JNETags.Blocks.WEEPING_VINES_FEATURE_VALID)) {
                     int j = MathHelper.nextInt(random, 1, 8);
                     if (random.nextInt(6) == 0) {
                         j *= 2;

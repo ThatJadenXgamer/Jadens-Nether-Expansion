@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.FluidState;
@@ -68,7 +68,7 @@ implements Waterloggable, Fertilizable {
         Vec3d vec3d = entity.getVelocity();
         if (!entity.isSneaking() && !bl) {
             entity.addVelocity(vec3d.x,1.0, vec3d.z);
-            world.playSound(pos.getX(),pos.getY(),pos.getZ(), ModSoundEvents.SPORESHROOM_TRAMPOLINED, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
+            world.playSound(pos.getX(),pos.getY(),pos.getZ(), JNESoundEvents.SPORESHROOM_TRAMPOLINED, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
         }
     }
 

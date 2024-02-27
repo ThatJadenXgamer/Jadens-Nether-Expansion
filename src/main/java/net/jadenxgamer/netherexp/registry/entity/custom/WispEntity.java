@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.EctoSoulSandBlock;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityGroup;
@@ -59,7 +59,7 @@ implements GeoEntity, Flutterer, Bottleable {
 
     public int boredDelay = 1000;
 
-    private static final TrackedData<Boolean> FROM_BOTTLE = DataTracker.registerData(WispEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
+    private static final TrackedData<Boolean> FROM_BOTTLE = DataTracker.registerData(WispEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     public WispEntity(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
@@ -140,7 +140,7 @@ implements GeoEntity, Flutterer, Bottleable {
         }
         else {
             for(int i = 0; i < 2; ++i) {
-                this.getWorld().addParticle(ModParticles.WISP, this.getParticleX(0.5), this.getRandomBodyY() - 0.25, this.getParticleZ(0.5), 0.0, 0.0, 0.0);
+                this.getWorld().addParticle(JNEParticles.WISP, this.getParticleX(0.5), this.getRandomBodyY() - 0.25, this.getParticleZ(0.5), 0.0, 0.0, 0.0);
             }
         }
     }
@@ -199,7 +199,7 @@ implements GeoEntity, Flutterer, Bottleable {
 
     @Override
     public ItemStack getBottleItem() {
-        return new ItemStack(ModItems.WISP_BOTTLE);
+        return new ItemStack(JNEItems.WISP_BOTTLE);
     }
 
     @Override
@@ -322,7 +322,7 @@ implements GeoEntity, Flutterer, Bottleable {
             World world = wisp.getWorld();
             if (target != null) {
                 if (this.hasReached()) {
-                    world.setBlockState(target, ModBlocks.ECTO_SOUL_SAND.getDefaultState().with(EctoSoulSandBlock.SPAWNS_WISPS, true));
+                    world.setBlockState(target, JNEBlocks.ECTO_SOUL_SAND.getDefaultState().with(EctoSoulSandBlock.SPAWNS_WISPS, true));
                     world.addParticle(ParticleTypes.SOUL, wisp.getX(), wisp.getY(), wisp.getZ(), 0.0, 0.0, 0.0);
                     wisp.remove(RemovalReason.DISCARDED);
                 }
@@ -331,7 +331,7 @@ implements GeoEntity, Flutterer, Bottleable {
 
         @Override
         public boolean canStart() {
-            return wisp.getBoredDelay() <= 0 && !wisp.isFromBottle() && super.canStart();
+            return wisp.getBoredDelay() == 0 && !wisp.isFromBottle() && super.canStart();
         }
 
         @Override

@@ -2,8 +2,8 @@ package net.jadenxgamer.netherexp.mixin.entity;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.custom.LavaBucketable;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -92,13 +92,13 @@ public abstract class MagmaCubeEntityMixin extends SlimeEntity implements LavaBu
     @SuppressWarnings("all")
     @Override
     public ItemStack getBucketItem() {
-        return ModItems.MAGMA_CUBE_BUCKET.getDefaultStack();
+        return JNEItems.MAGMA_CUBE_BUCKET.getDefaultStack();
     }
 
     @SuppressWarnings("all")
     @Override
     public SoundEvent getBucketFillSound() {
-        return ModSoundEvents.ITEM_BUCKET_FILL_MAGMA_CUBE;
+        return JNESoundEvents.ITEM_BUCKET_FILL_MAGMA_CUBE;
     }
 
     @Nullable

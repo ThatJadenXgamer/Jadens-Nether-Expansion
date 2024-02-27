@@ -5,25 +5,27 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.config.NetherExpConfigs;
-import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
-import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.config.JNEConfigs;
+import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.jadenxgamer.netherexp.registry.event.NyliumPathEvent;
 import net.jadenxgamer.netherexp.registry.event.SoulPathEvent;
 import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
-import net.jadenxgamer.netherexp.registry.fluid.ModFluids;
-import net.jadenxgamer.netherexp.registry.item.ModItemGroup;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.item.brewing.ModPotions;
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
+import net.jadenxgamer.netherexp.registry.item.JNEItemGroup;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
 import net.jadenxgamer.netherexp.registry.misc_registry.*;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.worldgen.biome.ModBiomes;
-import net.jadenxgamer.netherexp.registry.worldgen.feature.ModFeature;
-import net.jadenxgamer.netherexp.registry.worldgen.generate.ModWorldGenerator;
-import net.jadenxgamer.netherexp.util.ModLootTableModifier;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.worldgen.biome.JNEBiomes;
+import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEFeature;
+import net.jadenxgamer.netherexp.registry.worldgen.generate.JNEWorldGenerator;
+import net.jadenxgamer.netherexp.util.JNELootTableModifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib.GeckoLib;
@@ -31,44 +33,68 @@ import software.bernie.geckolib.GeckoLib;
 public class NetherExp implements ModInitializer {
 	public static final String MOD_ID = "netherexp";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	private static final NetherExpConfigs CONFIG = AutoConfig.register(NetherExpConfigs.class, GsonConfigSerializer::new).getConfig();
+	private static final JNEConfigs CONFIG = AutoConfig.register(JNEConfigs.class, GsonConfigSerializer::new).getConfig();
 
 	@Override
 	public void onInitialize() {
-		ModItemGroup.registerItemGroup();
-		ModBiomes.registerBiomes();
-		ModBlockSetType.registerBlockSetType();
-		ModWoodType.registerWoodType();
+		// REGISTRIES
+		JNEItemGroup.registerItemGroup();
+		JNEBiomes.registerBiomes();
+		JNEBlockSetType.registerBlockSetType();
+		JNEWoodType.registerWoodType();
 
-		ModItems.registerModItems();
-		ModBlocks.registerModBlocks();
-		ModParticles.registerParticles();
-		ModFluids.registerModFluids();
-		ModArmorTrimPatterns.registerArmorTrimPatterns();
+		JNEItems.registerItems();
+		JNEBlocks.registerBlocks();
+		JNEParticles.registerParticles();
+		JNEFluids.registerFluids();
+		JNEArmorTrimPatterns.registerArmorTrimPatterns();
 
-		ModWorldGenerator.generateModWorldGen();
+		JNEWorldGenerator.generateWorldGen();
 
-		ModRegistries.registerModStuffs();
-		ModDamageSources.registerModDamageSources();
-		ModStatusEffects.registerModStatusEffects();
-		ModPotions.registerModPotions();
-		ModFeature.registerModFeature();
-		ModResourcePacks.registerModResourcePacks();
-		ModLootTableModifier.modifyLootTables();
+		JNEDamageSources.registerDamageSources();
+		JNEStatusEffects.registerStatusEffects();
+		JNEPotions.registerPotions();
+		JNEFeature.registerFeature();
+		JNEResourcePacks.registerResourcePacks();
+		JNELootTableModifier.modifyLootTables();
 
 		GeckoLib.initialize();
 
-		FabricDefaultAttributeRegistry.register(ModEntityType.WARPHOPPER, WarphopperEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntityType.STAMPEDE, StampedeEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntityType.APPARITION, ApparitionEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntityType.WISP, WispEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(ModEntityType.GRASP, GraspEntity.setAttributes());
+		// ENTITY ATTRIBUTES
+		FabricDefaultAttributeRegistry.register(JNEEntityType.WARPHOPPER, WarphopperEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityType.STAMPEDE, StampedeEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityType.APPARITION, ApparitionEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityType.WISP, WispEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityType.GRASP, GraspEntity.setAttributes());
 
+		// FUELS
+		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+		fuelRegistry.add(JNEItems.RAW_PYRITE, 1600);
+		fuelRegistry.add(JNEItems.FOSSIL_FUEL, 1600);
+		fuelRegistry.add(JNEItems.MAGMA_CUBE_BUCKET, 20600);
+
+		// COMPOSTABLES
+		CompostingChanceRegistry compostRegistry = CompostingChanceRegistry.INSTANCE;
+
+		// 50%
+		compostRegistry.add(JNEBlocks.WEEPING_IVY, 0.5f);
+		compostRegistry.add(JNEBlocks.TWISTING_IVY, 0.5f);
+		compostRegistry.add(JNEBlocks.TWILIGHT_IVY, 0.5f);
+		compostRegistry.add(JNEBlocks.TWILIGHT_VINES, 0.5f);
+		compostRegistry.add(JNEBlocks.WHITE_ASH_BLOCK, 0.5f);
+
+		// 30%
+		compostRegistry.add(JNEItems.WHITE_ASH_POWDER, 0.3f);
+		compostRegistry.add(JNEItems.LIGHTSPORES, 0.3f);
+		compostRegistry.add(JNEItems.NIGHTSPORES, 0.3f);
+		compostRegistry.add(JNEItems.BLIGHTSPORES, 0.3f);
+
+		// EVENTS
 		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
 		UseBlockCallback.EVENT.register(new NyliumPathEvent());
 		UseBlockCallback.EVENT.register(new SoulPathEvent());
 	}
-	public static NetherExpConfigs getConfig () {
+	public static JNEConfigs getConfig () {
 		return CONFIG;
 	}
 

@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.registry.fluid;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -47,7 +47,7 @@ public abstract class EctoplasmFluid extends FlowableFluid {
 
     @Override
     public boolean matchesType(Fluid fluid) {
-        return fluid == ModFluids.ECTOPLASM || fluid == ModFluids.FLOWING_ECTOPLASM;
+        return fluid == JNEFluids.ECTOPLASM || fluid == JNEFluids.FLOWING_ECTOPLASM;
     }
     @Override
     protected int getFlowSpeed(WorldView world) {
@@ -61,12 +61,12 @@ public abstract class EctoplasmFluid extends FlowableFluid {
 
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
         BlockPos blockPos = pos.up();
-        if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos) && state.isOf(ModFluids.ECTOPLASM)) {
+        if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos) && state.isOf(JNEFluids.ECTOPLASM)) {
             if (NetherExp.getConfig().visualeffects.ectoplasm_particles && random.nextInt(55) == 0) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
-                world.addParticle(ModParticles.ECTORAYS, d, e, f, 0.0, -0.03, 0.0);
+                world.addParticle(JNEParticles.ECTORAYS, d, e, f, 0.0, -0.03, 0.0);
             }
         }
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
@@ -74,7 +74,7 @@ public abstract class EctoplasmFluid extends FlowableFluid {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
-                world.addParticle(ModParticles.ECTOPLASMA, d, e, f, 0.0, 0.0, 0.0);
+                world.addParticle(JNEParticles.ECTOPLASMA, d, e, f, 0.0, 0.0, 0.0);
             }
         }
     }
@@ -96,22 +96,22 @@ public abstract class EctoplasmFluid extends FlowableFluid {
 
     @Override
     public Fluid getStill() {
-        return ModFluids.ECTOPLASM;
+        return JNEFluids.ECTOPLASM;
     }
 
     @Override
     public Fluid getFlowing() {
-        return ModFluids.FLOWING_ECTOPLASM;
+        return JNEFluids.FLOWING_ECTOPLASM;
     }
 
     @Override
     protected BlockState toBlockState(FluidState state) {
-        return ModFluids.ECTOPLASM_BLOCK.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
+        return JNEFluids.ECTOPLASM_BLOCK.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
     }
 
     @Override
     public Item getBucketItem() {
-        return ModFluids.ECTOPLASM_BUCKET;
+        return JNEFluids.ECTOPLASM_BUCKET;
     }
 
     @Override
@@ -121,7 +121,7 @@ public abstract class EctoplasmFluid extends FlowableFluid {
 
     @Override
     public Optional<SoundEvent> getBucketFillSound() {
-        return Optional.of(ModSoundEvents.ITEM_BUCKET_FILL_ECTOPLASM);
+        return Optional.of(JNESoundEvents.ITEM_BUCKET_FILL_ECTOPLASM);
     }
 
     public static class Flowing extends EctoplasmFluid {

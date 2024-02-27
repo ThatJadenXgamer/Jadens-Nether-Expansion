@@ -14,12 +14,12 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
-public class ModSkullBlock extends AbstractModSkullBlock {
+public class JNESkullBlock extends AbstractModSkullBlock {
     public static final int MAX_ROTATION_INDEX = RotationPropertyHelper.getMax();
     private static final int MAX_ROTATIONS = MAX_ROTATION_INDEX + 1;
     public static final IntProperty ROTATION = Properties.ROTATION;
 
-    public ModSkullBlock(Settings settings, ModSkullType type) {
+    public JNESkullBlock(Settings settings, ModSkullType type) {
         super(settings, type);
         this.setDefaultState(this.stateManager.getDefaultState().with(ROTATION, 0).with(POWERED, false));
     }

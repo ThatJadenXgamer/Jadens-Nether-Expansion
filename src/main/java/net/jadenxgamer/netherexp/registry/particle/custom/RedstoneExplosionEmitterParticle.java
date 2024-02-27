@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.registry.particle.custom;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.client.particle.NoRenderParticle;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleFactory;
@@ -23,7 +23,7 @@ public class RedstoneExplosionEmitterParticle extends NoRenderParticle {
             double d = this.x + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
             double e = this.y + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
             double f = this.z + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
-            this.world.addParticle(ModParticles.REDSTONE_EXPLOSION, d, e, f, (float)this.age_ / (float) maxAge_, 0.0, 0.0);
+            this.world.addParticle(JNEParticles.REDSTONE_EXPLOSION, d, e, f, (float)this.age_ / (float) maxAge_, 0.0, 0.0);
         }
 
         ++this.age_;

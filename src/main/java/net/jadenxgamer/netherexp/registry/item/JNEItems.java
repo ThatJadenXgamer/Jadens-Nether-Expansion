@@ -2,12 +2,12 @@ package net.jadenxgamer.netherexp.registry.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
-import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModArmorTrimPatterns;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEArmorTrimPatterns;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -20,16 +20,16 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 @SuppressWarnings("unused")
-public class ModItems {
+public class JNEItems {
 
     public static final Item WARPHOPPER_FUR = registerItem("warphopper_fur",
             new Item(new FabricItemSettings()));
 
     public static final Item HOGHAM = registerItem("hogham",
-            new Item(new FabricItemSettings().food(ModFoodComponents.HOGHAM)));
+            new Item(new FabricItemSettings().food(JNEFoodComponents.HOGHAM)));
 
     public static final Item COOKED_HOGHAM = registerItem("cooked_hogham",
-            new Item(new FabricItemSettings().food(ModFoodComponents.COOKED_HOGHAM)));
+            new Item(new FabricItemSettings().food(JNEFoodComponents.COOKED_HOGHAM)));
 
     public static final Item FOGGY_ESSENCE = registerItem("foggy_essence",
             new Item(new FabricItemSettings()));
@@ -50,7 +50,7 @@ public class ModItems {
             new Item(new FabricItemSettings()));
 
     public static final Item RIFT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("rift_armor_trim_smithing_template",
-            SmithingTemplateItem.of(ModArmorTrimPatterns.RIFT));
+            SmithingTemplateItem.of(JNEArmorTrimPatterns.RIFT));
 
     public static final Item NIGHTSPORES = registerItem("nightspores",
             new NightSporesItem(new FabricItemSettings()));
@@ -71,28 +71,28 @@ public class ModItems {
             new AntidoteItem(new FabricItemSettings().maxCount(1), new StatusEffectInstance(StatusEffects.SPEED, 3600), true));
 
     public static final Item SWIFTNESS_ANTIDOTE = registerItem("swiftness_antidote",
-            new AntidoteItem(new FabricItemSettings().maxCount(1), new StatusEffectInstance(ModStatusEffects.SPEED_IMMUNITY, 3600),false));
+            new AntidoteItem(new FabricItemSettings().maxCount(1), new StatusEffectInstance(JNEStatusEffects.SPEED_IMMUNITY, 3600),false));
 
     public static final Item GLOWCHEESE = registerItem("glowcheese",
-            new Item(new FabricItemSettings().food(ModFoodComponents.GLOWCHEESE)));
+            new Item(new FabricItemSettings().food(JNEFoodComponents.GLOWCHEESE)));
 
     public static final Item NETHER_PIZZA = registerItem("nether_pizza",
-            new AliasedBlockItem(ModBlocks.NETHER_PIZZA ,new FabricItemSettings().maxCount(1)));
+            new AliasedBlockItem(JNEBlocks.NETHER_PIZZA ,new FabricItemSettings().maxCount(1)));
 
     public static final Item NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice",
-            new Item(new FabricItemSettings().food(ModFoodComponents.PIZZA_SLICE)));
+            new Item(new FabricItemSettings().food(JNEFoodComponents.PIZZA_SLICE)));
 
     public static final Item WISP_BOTTLE = registerItem("wisp_bottle",
-            new EntityBottleItem(ModEntityType.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
+            new EntityBottleItem(JNEEntityType.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
 
     public static final Item MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket",
-            new EntityBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, ModSoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE, new FabricItemSettings().maxCount(1)));
+            new EntityBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE, new FabricItemSettings().maxCount(1)));
 
     public static final Item WRAITHING_FLESH = registerItem("wraithing_flesh",
-            new Item(new FabricItemSettings().food(ModFoodComponents.WRAITHING_FLESH)));
+            new Item(new FabricItemSettings().food(JNEFoodComponents.WRAITHING_FLESH)));
 
     public static final Item WARPED_WART = registerItem("warped_wart",
-            new AliasedBlockItem(ModBlocks.WARPED_WART, new FabricItemSettings()));
+            new AliasedBlockItem(JNEBlocks.WARPED_WART, new FabricItemSettings()));
 
     public static final Item MIST_CHARGE = registerItem("mist_charge",
             new MistChargeItem(new FabricItemSettings().maxCount(NetherExp.getConfig().items.mistChargeConfigs.mist_charge_stack_size)));
@@ -101,35 +101,35 @@ public class ModItems {
             new Item(new FabricItemSettings()));
 
     public static final Item GUILLOTINE = registerItem("guillotine",
-            new AxeItem(ModToolMaterials.GUILLOTINE, 6.0F, -3.2F, new FabricItemSettings()));
+            new AxeItem(JNEToolMaterials.GUILLOTINE, 6.0F, -3.2F, new FabricItemSettings()));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
-            new SpawnEggItem(ModEntityType.WARPHOPPER,0x119b85,0x324149,
+            new SpawnEggItem(JNEEntityType.WARPHOPPER,0x119b85,0x324149,
                     new FabricItemSettings()));
 
     public static final Item APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg",
-            new SpawnEggItem(ModEntityType.APPARITION,4864303,699311,
+            new SpawnEggItem(JNEEntityType.APPARITION,4864303,699311,
                     new FabricItemSettings()));
 
     public static final Item WISP_SPAWN_EGG = registerItem("wisp_spawn_egg",
-            new SpawnEggItem(ModEntityType.WISP,6022120,699311,
+            new SpawnEggItem(JNEEntityType.WISP,6022120,699311,
                     new FabricItemSettings()));
 
     public static final Item GRASP_SPAWN_EGG = registerItem("grasp_spawn_egg",
-            new SpawnEggItem(ModEntityType.GRASP,4864303,6910597,
+            new SpawnEggItem(JNEEntityType.GRASP,4864303,6910597,
                     new FabricItemSettings()));
 
     public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.CLARET_SIGN, ModBlocks.CLARET_WALL_SIGN));
+            new SignItem(new FabricItemSettings().maxCount(16), JNEBlocks.CLARET_SIGN, JNEBlocks.CLARET_WALL_SIGN));
 
     public static final Item CLARET_HANGING_SIGN_ITEM = registerItem("claret_hanging_sign",
-            new HangingSignItem(ModBlocks.CLARET_HANGING_SIGN, ModBlocks.CLARET_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+            new HangingSignItem(JNEBlocks.CLARET_HANGING_SIGN, JNEBlocks.CLARET_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
 
     public static final Item SMOKESTALK_SIGN_ITEM = registerItem("smokestalk_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.SMOKESTALK_SIGN, ModBlocks.SMOKESTALK_WALL_SIGN));
+            new SignItem(new FabricItemSettings().maxCount(16), JNEBlocks.SMOKESTALK_SIGN, JNEBlocks.SMOKESTALK_WALL_SIGN));
 
     public static final Item SMOKESTALK_HANGING_SIGN_ITEM = registerItem("smokestalk_hanging_sign",
-            new HangingSignItem(ModBlocks.SMOKESTALK_HANGING_SIGN, ModBlocks.SMOKESTALK_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+            new HangingSignItem(JNEBlocks.SMOKESTALK_HANGING_SIGN, JNEBlocks.SMOKESTALK_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
 
     // TODO Add Skeletal Heads
 //    public static final Item SKELETAL_CREEPER_SKULL_ITEM = registerItem("skeletal_creeper_skull",
@@ -139,13 +139,13 @@ public class ModItems {
             new Item(new FabricItemSettings().maxDamage(100)));
 
     public static final Item MUSIC_DISC_CRICKET = registerItem("music_disc_cricket",
-            new MusicDiscItem(13, ModSoundEvents.MUSIC_DISC_CRICKET, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));
+            new MusicDiscItem(13, JNESoundEvents.MUSIC_DISC_CRICKET, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 164));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name), item);
     }
 
-    public static void registerModItems() {
+    public static void registerItems() {
         NetherExp.LOGGER.debug("Registering Items for " + NetherExp.MOD_ID);
     }
 }

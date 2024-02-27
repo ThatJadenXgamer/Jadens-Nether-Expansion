@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.StateManager;
@@ -22,7 +22,7 @@ public class TopConnectingBlock extends Block {
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         boolean c = state.get(CONNECTED);
         if (!c) {
-            if (world.getBlockState(pos.up()).isOf(ModBlocks.JAGGED_SOUL_SLATE)) {
+            if (world.getBlockState(pos.up()).isOf(JNEBlocks.JAGGED_SOUL_SLATE)) {
                 world.setBlockState(pos, state.cycle(CONNECTED), NOTIFY_LISTENERS);
             }
         }
@@ -33,7 +33,7 @@ public class TopConnectingBlock extends Block {
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         boolean c = state.get(CONNECTED);
         if (!c) {
-            if (world.getBlockState(pos.up()).isOf(ModBlocks.JAGGED_SOUL_SLATE)) {
+            if (world.getBlockState(pos.up()).isOf(JNEBlocks.JAGGED_SOUL_SLATE)) {
                 world.setBlockState(pos, state.cycle(CONNECTED), NOTIFY_LISTENERS);
             }
         }

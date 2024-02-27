@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -41,11 +41,11 @@ public class SpottedWartBlock extends Block {
 
     private static void dropLight(World world, BlockPos pos, BlockState state) {
         int s = state.get(SPOTS);
-        SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.LIGHTSPORES, s));
+        SpottedWartBlock.dropStack(world, pos, new ItemStack(JNEItems.LIGHTSPORES, s));
     }
     private static void dropNight(World world, BlockPos pos, BlockState state) {
         int s = state.get(SPOTS);
-        SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.NIGHTSPORES, s));
+        SpottedWartBlock.dropStack(world, pos, new ItemStack(JNEItems.NIGHTSPORES, s));
     }
 
     @SuppressWarnings("deprecation")
@@ -60,7 +60,7 @@ public class SpottedWartBlock extends Block {
             else if (this.spore == 2) {
                 dropNight(world, pos, state);
             }
-            world.playSound(player, pos, ModSoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(player, pos, JNESoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.setBlockState(pos, this.base.getDefaultState(), Block.NOTIFY_LISTENERS);
             world.emitGameEvent(player, GameEvent.SHEAR, pos);
             itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));

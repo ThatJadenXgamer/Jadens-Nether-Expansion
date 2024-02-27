@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RootsBlock;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +19,7 @@ public class RootsBlockMixin {
             cancellable = true
     )
     private void netherexp$changeCanPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        if (floor.isIn(ModTags.Blocks.ROOTS_PLANTABLE_ON)) {
+        if (floor.isIn(JNETags.Blocks.ROOTS_PLANTABLE_ON)) {
             cir.setReturnValue(true);
         }
     }

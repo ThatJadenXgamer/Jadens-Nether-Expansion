@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.AbstractPlantBlock;
 import net.minecraft.block.AbstractPlantStemBlock;
@@ -16,6 +16,6 @@ public class TwilightVinesPlantBlock extends AbstractPlantBlock {
     }
 
     protected AbstractPlantStemBlock getStem() {
-        return (AbstractPlantStemBlock) ModBlocks.TWILIGHT_VINES;
+        return (AbstractPlantStemBlock) JNEBlocks.TWILIGHT_VINES;
     }
 }

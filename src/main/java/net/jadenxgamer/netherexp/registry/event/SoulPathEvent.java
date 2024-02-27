@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.registry.event;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,7 +26,7 @@ public class SoulPathEvent implements UseBlockCallback {
         if (NetherExp.getConfig().blocks.pathBlockConfigs.enable_soul_path_blocks && itemStack.isIn(ItemTags.SHOVELS) && upState.isAir()) {
             if (state.isOf(Blocks.SOUL_SOIL)) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos(), ModBlocks.SOUL_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos(), JNEBlocks.SOUL_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
                 }
@@ -34,7 +34,7 @@ public class SoulPathEvent implements UseBlockCallback {
             }
             if (state.isOf(Blocks.SOUL_SAND)) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos(), ModBlocks.SOUL_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos(), JNEBlocks.SOUL_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
                 }

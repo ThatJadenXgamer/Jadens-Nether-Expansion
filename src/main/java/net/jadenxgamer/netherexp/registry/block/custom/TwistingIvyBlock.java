@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -45,7 +45,7 @@ Waterloggable {
 
     @Override
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        return !context.getStack().isOf(ModBlocks.TWISTING_IVY.asItem()) || super.canReplace(state, context);
+        return !context.getStack().isOf(JNEBlocks.TWISTING_IVY.asItem()) || super.canReplace(state, context);
     }
 
     @Override

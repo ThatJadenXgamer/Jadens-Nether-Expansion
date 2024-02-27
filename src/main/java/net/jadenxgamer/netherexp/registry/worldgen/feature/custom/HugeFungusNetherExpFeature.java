@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.worldgen.feature.custom;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -101,7 +101,7 @@ public class HugeFungusNetherExpFeature extends Feature<HugeFungusFeatureConfig>
 
     private void generateHat(StructureWorldAccess world, Random random, HugeFungusFeatureConfig config, BlockPos pos, int hatHeight, boolean thickStem) {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
-        boolean bl = config.hatState.isIn(ModTags.Blocks.HUGE_FUNGUS_GENERATES_VINES);
+        boolean bl = config.hatState.isIn(JNETags.Blocks.HUGE_FUNGUS_GENERATES_VINES);
         int i = Math.min(random.nextInt(1 + hatHeight / 3) + 5, hatHeight);
         int j = hatHeight - i;
 

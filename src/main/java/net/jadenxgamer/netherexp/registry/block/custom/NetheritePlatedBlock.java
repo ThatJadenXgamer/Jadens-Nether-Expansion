@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemPlacementContext;
@@ -22,7 +22,7 @@ public class NetheritePlatedBlock extends Block {
     }
 
     private static boolean rustsIn(BlockState state) {
-        return state.getFluidState().isIn(ModTags.Fluids.ECTOPLASM);
+        return state.getFluidState().isIn(JNETags.Fluids.ECTOPLASM);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {

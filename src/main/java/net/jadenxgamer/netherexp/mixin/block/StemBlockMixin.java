@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PlantBlock;
@@ -26,7 +26,7 @@ public abstract class StemBlockMixin extends PlantBlock {
             cancellable = true
     )
     private void netherexp$canPlantOnSoul(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        if (this == Blocks.PUMPKIN_STEM && floor.isIn(ModTags.Blocks.SOUL_SAND_BLOCKS)) {
+        if (this == Blocks.PUMPKIN_STEM && floor.isIn(JNETags.Blocks.SOUL_SAND_BLOCKS)) {
             cir.setReturnValue(true);
         }
     }
@@ -35,8 +35,8 @@ public abstract class StemBlockMixin extends PlantBlock {
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         BlockState floor = world.getBlockState(pos.down());
-        if (floor.isIn(ModTags.Blocks.SOUL_SAND_BLOCKS) && state.isOf(Blocks.PUMPKIN_STEM)) {
-            world.setBlockState(pos, ModBlocks.SORROWSQUASH_STEM.getDefaultState(), NOTIFY_LISTENERS);
+        if (floor.isIn(JNETags.Blocks.SOUL_SAND_BLOCKS) && state.isOf(Blocks.PUMPKIN_STEM)) {
+            world.setBlockState(pos, JNEBlocks.SORROWSQUASH_STEM.getDefaultState(), NOTIFY_LISTENERS);
         }
     }
 }

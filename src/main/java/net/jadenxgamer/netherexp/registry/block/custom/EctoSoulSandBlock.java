@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -64,7 +64,7 @@ extends Block
     }
 
     private void spawnWisp(ServerWorld world, BlockPos pos, Random random) {
-        WispEntity wispEntity = ModEntityType.WISP.create(world);
+        WispEntity wispEntity = JNEEntityType.WISP.create(world);
         if (wispEntity != null) {
             wispEntity.setBoredDelay(random.nextInt(1000) + 600);
             wispEntity.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);

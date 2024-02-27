@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -117,7 +117,7 @@ implements Fertilizable {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(ModTags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || floor.isIn(BlockTags.NYLIUM) || super.canPlantOnTop(floor, world, pos);
+        return floor.isIn(JNETags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || floor.isIn(BlockTags.NYLIUM) || super.canPlantOnTop(floor, world, pos);
     }
 
     @Override

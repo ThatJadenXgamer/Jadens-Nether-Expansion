@@ -6,7 +6,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
-public class ModArmorTrimPatterns {
+public class JNEArmorTrimPatterns {
     public static final RegistryKey<ArmorTrimPattern> RIFT = registerTrim("rift");
 
     private static RegistryKey<ArmorTrimPattern> registerTrim(String name) {

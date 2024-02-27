@@ -2,17 +2,19 @@ package net.jadenxgamer.netherexp.registry.block;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlattenableBlockRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.custom.*;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModWoodType;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEWoodType;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -25,7 +27,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 @SuppressWarnings({"deprecation", "unused"})
-public class ModBlocks {
+public class JNEBlocks {
 
     /////////////////////
     // LIST OF BLOCKS //
@@ -34,57 +36,57 @@ public class ModBlocks {
     // Soul SLate
 
     public static final Block SOUL_SLATE = registerBlock("soul_slate",
-            new Block(FabricBlockSettings.of().mapColor(MapColor.BROWN).strength(4f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE)));
+            new Block(FabricBlockSettings.of().mapColor(MapColor.BROWN).strength(4f).requiresTool().sounds(JNESoundEvents.SOUL_SLATE)));
 
     public static final Block PALE_SOUL_SLATE = registerBlock("pale_soul_slate",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE).sounds(JNESoundEvents.SOUL_SLATE)));
 
     public static final Block JAGGED_SOUL_SLATE = registerBlock("jagged_soul_slate",
-            new TopConnectingBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
+            new TopConnectingBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE).sounds(JNESoundEvents.SOUL_SLATE)));
 
     public static final Block SOUL_SLATE_SLAB = registerBlock("soul_slate_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE).sounds(JNESoundEvents.SOUL_SLATE)));
 
     public static final Block SOUL_SLATE_STAIRS = registerBlock("soul_slate_stairs",
-            new ModStairsBlock(ModBlocks.SOUL_SLATE.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
+            new JNEStairsBlock(JNEBlocks.SOUL_SLATE.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE).sounds(JNESoundEvents.SOUL_SLATE)));
 
     public static final Block SOUL_SLATE_WALL = registerBlock("soul_slate_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).sounds(ModSoundEvents.SOUL_SLATE)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE).sounds(JNESoundEvents.SOUL_SLATE)));
 
     // Soul Slate Bricks
 
     public static final Block SOUL_SLATE_BRICKS = registerBlock("soul_slate_bricks",
-            new Block(FabricBlockSettings.of().mapColor(MapColor.BROWN).strength(2f).requiresTool().sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new Block(FabricBlockSettings.of().mapColor(MapColor.BROWN).strength(2f).requiresTool().sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     public static final Block SOUL_SLATE_BRICK_SLAB = registerBlock("soul_slate_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE_BRICKS).sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     public static final Block SOUL_SLATE_BRICK_STAIRS = registerBlock("soul_slate_brick_stairs",
-            new ModStairsBlock(ModBlocks.SOUL_SLATE_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new JNEStairsBlock(JNEBlocks.SOUL_SLATE_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE_BRICKS).sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     public static final Block SOUL_SLATE_BRICK_WALL = registerBlock("soul_slate_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE_BRICKS).sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     public static final Block INDENTED_SOUL_SLATE_BRICKS = registerBlock("indented_soul_slate_bricks",
-            new LightAbleBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).luminance(
-            state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new LightAbleBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE_BRICKS).luminance(
+            state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     public static final Block CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE_BRICKS).sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     public static final Block SOUL_SLATE_BRICK_PILLAR = registerBlock("soul_slate_brick_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE_BRICKS).sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     public static final Block CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks",
-            new LightAbleBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE_BRICKS).luminance(
-            state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(ModSoundEvents.SOUL_SLATE_BRICKS)));
+            new LightAbleBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE_BRICKS).luminance(
+            state -> state.get(LightAbleBlock.LIT) ? 7 : 0).sounds(JNESoundEvents.SOUL_SLATE_BRICKS)));
 
     // Soul Candle
 
     public static final Block SOUL_CANDLE = registerBlock("soul_candle",
-            new SoulCandleBlock(FabricBlockSettings.of().mapColor(MapColor.BROWN).noCollision().nonOpaque().strength(0.1f).sounds(ModSoundEvents.SOUL_CANDLE).luminance(SoulCandleBlock.STATE_TO_LUMINANCE)));
+            new SoulCandleBlock(FabricBlockSettings.of().mapColor(MapColor.BROWN).noCollision().nonOpaque().strength(0.1f).sounds(JNESoundEvents.SOUL_CANDLE).luminance(SoulCandleBlock.STATE_TO_LUMINANCE)));
 
     // Soul Decorations
 
@@ -94,24 +96,24 @@ public class ModBlocks {
 
     public static final Block SOUL_SWIRLS = registerBlock("soul_swirls",
             new SwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
-                    state -> state.get(SwirlsBlock.COOLDOWN) ? NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_light_level : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SWIRL_POP));
+                    state -> state.get(SwirlsBlock.COOLDOWN) ? NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_light_level : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), JNEParticles.SWIRL_POP));
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block SHALE_SWIRLS = registerCompatBlock("shale_swirls",
             new SwirlsBlock(7,3,FabricBlockSettings.of().mapColor(MapColor.BROWN).luminance(
-                    state -> state.get(SwirlsBlock.COOLDOWN) ? NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_light_level : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), ModParticles.SHALE_SWIRL_POP), "cinderscapes");
+                    state -> state.get(SwirlsBlock.COOLDOWN) ? NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_light_level : 0).noCollision().breakInstantly().sounds(BlockSoundGroup.NETHER_SPROUTS), JNEParticles.SHALE_SWIRL_POP), "cinderscapes");
 
     public static final Block ECTO_SOUL_SAND = registerBlock("ecto_soul_sand",
             new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).ticksRandomly().sounds(BlockSoundGroup.SOUL_SAND)));
 
     public static final Block SUSPICIOUS_SOUL_SAND = registerBlock("suspicious_soul_sand",
-            new BrushableBlock(Blocks.SOUL_SAND ,FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).velocityMultiplier(0.2F).strength(0.25F).pistonBehavior(PistonBehavior.DESTROY).sounds(ModSoundEvents.SUSPICIOUS_SOUL_SAND), SoundEvents.ITEM_BRUSH_BRUSHING_SAND, ModSoundEvents.ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE));
+            new BrushableBlock(Blocks.SOUL_SAND ,FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).velocityMultiplier(0.2F).strength(0.25F).pistonBehavior(PistonBehavior.DESTROY).sounds(JNESoundEvents.SUSPICIOUS_SOUL_SAND), SoundEvents.ITEM_BRUSH_BRUSHING_SAND, JNESoundEvents.ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE));
 
     public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
-            new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.LIGHT_BLUE).luminance(3).sounds(ModSoundEvents.SOUL_MAGMA_BLOCK)));
+            new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.LIGHT_BLUE).luminance(3).sounds(JNESoundEvents.SOUL_MAGMA_BLOCK)));
 
     public static final Block BLACK_ICE = registerBlock("black_ice",
-            new BlackIceBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE).mapColor(MapColor.BLACK).instrument(Instrument.CHIME).ticksRandomly().requiresTool().strength(0.5F).luminance(3).sounds(ModSoundEvents.BLACK_ICE)));
+            new BlackIceBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE).mapColor(MapColor.BLACK).instrument(Instrument.CHIME).ticksRandomly().requiresTool().strength(0.5F).luminance(3).sounds(JNESoundEvents.BLACK_ICE)));
 
     public static final Block FOSSIL_ORE = registerBlock("fossil_ore",
             new FossilOreBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).ticksRandomly().strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL)));
@@ -122,7 +124,7 @@ public class ModBlocks {
     // Sorrowsquash
 
     public static final Block SOUL_TORCHFLOWER = registerBlock("soul_torchflower",
-            new NetherFlowerBlock(StatusEffects.NIGHT_VISION, 5, FabricBlockSettings.copyOf(Blocks.TORCHFLOWER)));
+            new NetherFlowerBlock(JNEStatusEffects.FOGSIGHT, 5, FabricBlockSettings.copyOf(Blocks.TORCHFLOWER)));
 
     public static final Block SOUL_TORCHFLOWER_CROP = registerBlockWithoutItem("soul_torchflower_crop",
             new SoulTorchflowerBlock(FabricBlockSettings.copyOf(Blocks.TORCHFLOWER_CROP)));
@@ -137,7 +139,7 @@ public class ModBlocks {
             new CarvedSorrowsquashBlock(FabricBlockSettings.of().mapColor(MapColor.ORANGE).strength(1.0f).luminance(15).sounds(BlockSoundGroup.NETHER_STEM)));
 
     public static final Block SOUL_GHOUL_O_LANTERN = registerBlock("soul_ghoul_o_lantern",
-            new CarvedSorrowsquashBlock(FabricBlockSettings.copyOf(ModBlocks.GHOUL_O_LANTERN).mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.NETHER_STEM)));
+            new CarvedSorrowsquashBlock(FabricBlockSettings.copyOf(JNEBlocks.GHOUL_O_LANTERN).mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.NETHER_STEM)));
 
     public static final Block SOUL_JACK_O_LANTERN = registerBlock("soul_jack_o_lantern",
             new CarvedPumpkinBlock(FabricBlockSettings.copyOf(Blocks.JACK_O_LANTERN).mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.WOOD)));
@@ -154,35 +156,35 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.4f).requiresTool().sounds(BlockSoundGroup.NETHERRACK)));
 
     public static final Block SMOOTH_NETHERRACK_SLAB = registerBlock("smooth_netherrack_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)));
 
     public static final Block SMOOTH_NETHERRACK_STAIRS = registerBlock("smooth_netherrack_stairs",
-            new ModStairsBlock(ModBlocks.SMOOTH_NETHERRACK.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)));
+            new JNEStairsBlock(JNEBlocks.SMOOTH_NETHERRACK.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)));
 
     public static final Block SMOOTH_NETHERRACK_WALL = registerBlock("smooth_netherrack_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.SMOOTH_NETHERRACK).sounds(BlockSoundGroup.NETHERRACK)));
 
     // Netherrack Bricks
 
     public static final Block NETHERRACK_BRICKS = registerBlock("netherrack_bricks",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_NETHERRACK).requiresTool().sounds(ModSoundEvents.NETHERRACK_BRICKS)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.SMOOTH_NETHERRACK).requiresTool().sounds(JNESoundEvents.NETHERRACK_BRICKS)));
 
     public static final Block NETHERRACK_BRICK_SLAB = registerBlock("netherrack_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERRACK_BRICKS).sounds(JNESoundEvents.NETHERRACK_BRICKS)));
 
     public static final Block NETHERRACK_BRICK_STAIRS = registerBlock("netherrack_brick_stairs",
-            new ModStairsBlock(ModBlocks.NETHERRACK_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)));
+            new JNEStairsBlock(JNEBlocks.NETHERRACK_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.NETHERRACK_BRICKS).sounds(JNESoundEvents.NETHERRACK_BRICKS)));
 
     public static final Block NETHERRACK_BRICK_WALL = registerBlock("netherrack_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERRACK_BRICKS).sounds(JNESoundEvents.NETHERRACK_BRICKS)));
 
     public static final Block NETHERRACK_TILES = registerBlock("netherrack_tiles",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.NETHERRACK_BRICKS).sounds(JNESoundEvents.NETHERRACK_BRICKS)));
 
     public static final Block NETHERRACK_PILLAR = registerBlock("netherrack_pillar",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.NETHERRACK_BRICKS).sounds(ModSoundEvents.NETHERRACK_BRICKS)));
+            new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERRACK_BRICKS).sounds(JNESoundEvents.NETHERRACK_BRICKS)));
 
     // Basalt
 
@@ -190,7 +192,7 @@ public class ModBlocks {
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
 
     public static final Block BASALT_STAIRS = registerBlock("basalt_stairs",
-            new ModStairsBlock(Blocks.BASALT.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
+            new JNEStairsBlock(Blocks.BASALT.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
 
     public static final Block BASALT_WALL = registerBlock("basalt_wall",
             new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(BlockSoundGroup.BASALT)));
@@ -199,23 +201,23 @@ public class ModBlocks {
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(BlockSoundGroup.BASALT)));
 
     public static final Block POLISHED_BASALT_STAIRS = registerBlock("polished_basalt_stairs",
-            new ModStairsBlock(Blocks.POLISHED_BASALT.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
+            new JNEStairsBlock(Blocks.POLISHED_BASALT.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BASALT).sounds(BlockSoundGroup.BASALT)));
 
     public static final Block POLISHED_BASALT_WALL = registerBlock("polished_basalt_wall",
             new WallBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(BlockSoundGroup.BASALT)));
 
     public static final Block POLISHED_BASALT_BRICKS = registerBlock("polished_basalt_bricks",
-            new PolishedBasaltBrickBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(ModSoundEvents.BASALT_BRICKS)));
+            new PolishedBasaltBrickBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT).sounds(JNESoundEvents.BASALT_BRICKS)));
 
     public static final Block POLISHED_BASALT_BRICK_SLAB = registerBlock("polished_basalt_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.POLISHED_BASALT_BRICKS).sounds(ModSoundEvents.BASALT_BRICKS)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.POLISHED_BASALT_BRICKS).sounds(JNESoundEvents.BASALT_BRICKS)));
 
     public static final Block POLISHED_BASALT_BRICK_STAIRS = registerBlock("polished_basalt_brick_stairs",
-            new ModStairsBlock(Blocks.POLISHED_BASALT.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.POLISHED_BASALT_BRICKS).sounds(ModSoundEvents.BASALT_BRICKS)));
+            new JNEStairsBlock(Blocks.POLISHED_BASALT.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.POLISHED_BASALT_BRICKS).sounds(JNESoundEvents.BASALT_BRICKS)));
 
     public static final Block POLISHED_BASALT_BRICK_WALL = registerBlock("polished_basalt_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.POLISHED_BASALT_BRICKS).sounds(ModSoundEvents.BASALT_BRICKS)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.POLISHED_BASALT_BRICKS).sounds(JNESoundEvents.BASALT_BRICKS)));
 
     // Enigma Block
 
@@ -223,7 +225,7 @@ public class ModBlocks {
             new PillarBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(1.8f).sounds(BlockSoundGroup.FUNGUS)));
 
     public static final Block STRANGE_ENIGMA_FLESH = registerBlock("strange_enigma_flesh",
-            new StrangeEnigmaFleshBlock(FabricBlockSettings.copyOf(ModBlocks.ENIGMA_FLESH).mapColor(MapColor.DIAMOND_BLUE).luminance(12).sounds(BlockSoundGroup.FUNGUS)));
+            new StrangeEnigmaFleshBlock(FabricBlockSettings.copyOf(JNEBlocks.ENIGMA_FLESH).mapColor(MapColor.DIAMOND_BLUE).luminance(12).sounds(BlockSoundGroup.FUNGUS)));
 
     public static final Block ENIGMA_CROWN = registerBlock("enigma_crown",
             new EnigmaCrownBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(0.2f).sounds(BlockSoundGroup.FUNGUS)));
@@ -248,17 +250,17 @@ public class ModBlocks {
             new Block(FabricBlockSettings.of().strength(2.0f, 3.0f).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD)));
 
     public static final Block CLARET_SLAB = registerBlock("claret_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD)));
 
     public static final Block CLARET_STAIRS = registerBlock("claret_stairs",
-            new ModStairsBlock(ModBlocks.CLARET_PLANKS.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD)));
+            new JNEStairsBlock(JNEBlocks.CLARET_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD)));
 
     public static final Block CLARET_FENCE = registerBlock("claret_fence",
-            new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD)));
+            new FenceBlock(FabricBlockSettings.copyOf(JNEBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD)));
 
     public static final Block CLARET_FENCE_GATE = registerBlock("claret_fence_gate",
-            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD), WoodType.CRIMSON));
+            new FenceGateBlock(FabricBlockSettings.copyOf(JNEBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD), WoodType.CRIMSON));
 
     public static final Block CLARET_DOOR = registerBlock("claret_door",
             new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.CRIMSON));
@@ -270,19 +272,19 @@ public class ModBlocks {
             new ButtonBlock(FabricBlockSettings.of().noCollision().strength(0.5f).mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.CRIMSON, 30, true));
 
     public static final Block CLARET_PRESSURE_PLATE = registerBlock("claret_pressure_plate",
-            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).strength(0.5f).noCollision().sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.CRIMSON));
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(JNEBlocks.CLARET_PLANKS).mapColor(MapColor.DARK_RED).strength(0.5f).noCollision().sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.CRIMSON));
 
     public static final Block CLARET_SIGN = registerBlockWithoutItem("claret_sign",
-            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
+            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).sounds(BlockSoundGroup.NETHER_WOOD), JNEWoodType.CLARET));
 
     public static final Block CLARET_WALL_SIGN = registerBlockWithoutItem("claret_wall_sign",
-            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).dropsLike(CLARET_SIGN).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
+            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).dropsLike(CLARET_SIGN).sounds(BlockSoundGroup.NETHER_WOOD), JNEWoodType.CLARET));
 
     public static final Block CLARET_HANGING_SIGN = registerBlockWithoutItem("claret_hanging_sign",
-            new HangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HANGING_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
+            new HangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HANGING_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).sounds(BlockSoundGroup.NETHER_WOOD), JNEWoodType.CLARET));
 
     public static final Block CLARET_WALL_HANGING_SIGN = registerBlockWithoutItem("claret_wall_hanging_sign",
-            new WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_HANGING_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).dropsLike(CLARET_HANGING_SIGN).sounds(BlockSoundGroup.NETHER_WOOD), ModWoodType.CLARET));
+            new WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_HANGING_SIGN).mapColor(MapColor.DARK_RED).strength(1.0f).dropsLike(CLARET_HANGING_SIGN).sounds(BlockSoundGroup.NETHER_WOOD), JNEWoodType.CLARET));
 
     // Magma Cream
 
@@ -295,7 +297,7 @@ public class ModBlocks {
             new ExplosiveScoriaBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_RED).strength(3.0f,0.2f).requiresTool().sounds(BlockSoundGroup.NETHER_ORE)));
 
     public static final Block IGNEOUS_REEDS = registerBlock("igneous_reeds",
-            new IgneousReeds(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).noCollision().breakInstantly().requiresTool().offset(AbstractBlock.OffsetType.XZ).sounds(ModSoundEvents.SMOKESTALK)));
+            new IgneousReeds(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).noCollision().breakInstantly().requiresTool().offset(AbstractBlock.OffsetType.XZ).sounds(JNESoundEvents.SMOKESTALK)));
 
     public static final Block IGNEOUS_VINES = registerBlock("igneous_vines",
             new IgneousVinesBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
@@ -304,66 +306,66 @@ public class ModBlocks {
             new IgneousVinesPlantBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).noCollision().breakInstantly().sounds(BlockSoundGroup.WEEPING_VINES)));
 
     public static final Block SMOKESTALK = registerBlock("smokestalk",
-            new SmokestalkBlock(FabricBlockSettings.of().ticksRandomly().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).breakInstantly().sounds(ModSoundEvents.SMOKESTALK)));
+            new SmokestalkBlock(FabricBlockSettings.of().ticksRandomly().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).breakInstantly().sounds(JNESoundEvents.SMOKESTALK)));
 
     public static final Block SMOKESTALK_PLANT = registerBlockWithoutItem("smokestalk_plant",
-            new SmokestalkPlantBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).breakInstantly().sounds(ModSoundEvents.SMOKESTALK)));
+            new SmokestalkPlantBlock(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).breakInstantly().sounds(JNESoundEvents.SMOKESTALK)));
 
     // Smokestalk Woodset
 
     public static final Block SMOKESTALK_BLOCK = registerBlock("smokestalk_block",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).sounds(ModSoundEvents.SMOKESTALK_WOOD)));
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.WARPED_STEM).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).sounds(JNESoundEvents.SMOKESTALK_WOOD)));
 
     public static final Block STRIPPED_SMOKESTALK_BLOCK = registerBlock("stripped_smokestalk_block",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_STEM).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).sounds(ModSoundEvents.SMOKESTALK_WOOD)));
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_WARPED_STEM).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).sounds(JNESoundEvents.SMOKESTALK_WOOD)));
 
     public static final Block SMOKESTALK_PLANKS = registerBlock("smokestalk_planks",
-            new Block(FabricBlockSettings.of().strength(2.0f, 3.0f).mapColor(MapColor.GRAY).sounds(ModSoundEvents.SMOKESTALK_WOOD)));
+            new Block(FabricBlockSettings.of().strength(2.0f, 3.0f).mapColor(MapColor.GRAY).sounds(JNESoundEvents.SMOKESTALK_WOOD)));
 
     public static final Block SMOKESTALK_SLAB = registerBlock("smokestalk_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(ModSoundEvents.SMOKESTALK_WOOD)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(JNESoundEvents.SMOKESTALK_WOOD)));
 
     public static final Block SMOKESTALK_STAIRS = registerBlock("smokestalk_stairs",
-            new ModStairsBlock(ModBlocks.CLARET_PLANKS.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(ModSoundEvents.SMOKESTALK_WOOD)));
+            new JNEStairsBlock(JNEBlocks.CLARET_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(JNESoundEvents.SMOKESTALK_WOOD)));
 
     public static final Block SMOKESTALK_FENCE = registerBlock("smokestalk_fence",
-            new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(ModSoundEvents.SMOKESTALK_WOOD)));
+            new FenceBlock(FabricBlockSettings.copyOf(JNEBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(JNESoundEvents.SMOKESTALK_WOOD)));
 
     public static final Block SMOKESTALK_FENCE_GATE = registerBlock("smokestalk_fence_gate",
-            new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(ModSoundEvents.SMOKESTALK_WOOD), WoodType.BAMBOO));
+            new FenceGateBlock(FabricBlockSettings.copyOf(JNEBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).sounds(JNESoundEvents.SMOKESTALK_WOOD), WoodType.BAMBOO));
 
     public static final Block SMOKESTALK_DOOR = registerBlock("smokestalk_door",
-            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.GRAY).sounds(ModSoundEvents.SMOKESTALK_WOOD), BlockSetType.BAMBOO));
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.GRAY).sounds(JNESoundEvents.SMOKESTALK_WOOD), BlockSetType.BAMBOO));
 
     public static final Block SMOKESTALK_TRAPDOOR = registerBlock("smokestalk_trapdoor",
-            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).mapColor(MapColor.GRAY).sounds(ModSoundEvents.SMOKESTALK_WOOD), BlockSetType.BAMBOO));
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).mapColor(MapColor.GRAY).sounds(JNESoundEvents.SMOKESTALK_WOOD), BlockSetType.BAMBOO));
 
     public static final Block SMOKESTALK_BUTTON = registerBlock("smokestalk_button",
             new ButtonBlock(FabricBlockSettings.of().noCollision().strength(0.5f).mapColor(MapColor.GRAY).sounds(BlockSoundGroup.NETHER_WOOD), BlockSetType.BAMBOO, 30, true));
 
     public static final Block SMOKESTALK_PRESSURE_PLATE = registerBlock("smokestalk_pressure_plate",
-            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(ModBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).strength(0.5f).noCollision().sounds(ModSoundEvents.SMOKESTALK_WOOD), BlockSetType.BAMBOO));
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,FabricBlockSettings.copyOf(JNEBlocks.SMOKESTALK_PLANKS).mapColor(MapColor.GRAY).strength(0.5f).noCollision().sounds(JNESoundEvents.SMOKESTALK_WOOD), BlockSetType.BAMBOO));
 
     public static final Block SMOKESTALK_SIGN = registerBlockWithoutItem("smokestalk_sign",
-            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.GRAY).strength(1.0f).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
+            new SignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.GRAY).strength(1.0f).sounds(JNESoundEvents.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
 
     public static final Block SMOKESTALK_WALL_SIGN = registerBlockWithoutItem("smokestalk_wall_sign",
-            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.GRAY).strength(1.0f).dropsLike(SMOKESTALK_SIGN).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
+            new WallSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.GRAY).strength(1.0f).dropsLike(SMOKESTALK_SIGN).sounds(JNESoundEvents.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
 
     public static final Block SMOKESTALK_HANGING_SIGN = registerBlockWithoutItem("smokestalk_hanging_sign",
-            new HangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HANGING_SIGN).mapColor(MapColor.GRAY).strength(1.0f).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
+            new HangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_HANGING_SIGN).mapColor(MapColor.GRAY).strength(1.0f).sounds(JNESoundEvents.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
 
     public static final Block SMOKESTALK_WALL_HANGING_SIGN = registerBlockWithoutItem("smokestalk_wall_hanging_sign",
-            new WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_HANGING_SIGN).mapColor(MapColor.GRAY).strength(1.0f).dropsLike(SMOKESTALK_HANGING_SIGN).sounds(ModSoundEvents.SMOKESTALK_WOOD), ModWoodType.SMOKESTALK));
+            new WallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WALL_HANGING_SIGN).mapColor(MapColor.GRAY).strength(1.0f).dropsLike(SMOKESTALK_HANGING_SIGN).sounds(JNESoundEvents.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
 
     // Quartz Block
 
     public static final Block QUARTZ_CRYSTAL = registerBlock("quartz_crystal",
-            new AmethystClusterBlock(7, 3, FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).nonOpaque().strength(1.5f).sounds(ModSoundEvents.QUARTZ_BLOCK)));
+            new AmethystClusterBlock(7, 3, FabricBlockSettings.of().mapColor(MapColor.OFF_WHITE).nonOpaque().strength(1.5f).sounds(JNESoundEvents.QUARTZ_BLOCK)));
 
     public static final Block QUARTZ_CRYSTAL_BLOCK = registerBlock("quartz_crystal_block",
-            new PillarBlock(FabricBlockSettings.of().strength(2.5f).mapColor(MapColor.OFF_WHITE).requiresTool().sounds(ModSoundEvents.QUARTZ_BLOCK)));
+            new PillarBlock(FabricBlockSettings.of().strength(2.5f).mapColor(MapColor.OFF_WHITE).requiresTool().sounds(JNESoundEvents.QUARTZ_BLOCK)));
 
     public static final Block SMOOTH_QUARTZ_WALL = registerBlock("smooth_quartz_wall",
             new WallBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.OFF_WHITE)));
@@ -375,7 +377,7 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.OFF_WHITE)));
 
     public static final Block CHISELED_QUARTZ_PILLAR = registerBlock("chiseled_quartz_pillar",
-            new ModFacingBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.OFF_WHITE)));
+            new JNEFacingBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.OFF_WHITE)));
 
     // Silica Sandstone
 
@@ -386,14 +388,14 @@ public class ModBlocks {
             new Block(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(1.0f).requiresTool()));
 
     public static final Block SILICA_SANDSTONE_SLAB = registerBlock("silica_sandstone_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
 
     public static final Block SILICA_SANDSTONE_STAIRS = registerBlock("silica_sandstone_stairs",
-            new ModStairsBlock(ModBlocks.SILICA_SANDSTONE.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
+            new JNEStairsBlock(JNEBlocks.SILICA_SANDSTONE.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
 
     public static final Block SILICA_SANDSTONE_WALL = registerBlock("silica_sandstone_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
 
     // Cut Silica Sandstone
 
@@ -401,10 +403,10 @@ public class ModBlocks {
             new Block(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(1.0f, 6.0f).requiresTool()));
 
     public static final Block CUT_SILICA_SANDSTONE_SLAB = registerBlock("cut_silica_sandstone_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CUT_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.CUT_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
 
     public static final Block CHISELED_SILICA_SANDSTONE = registerBlock("chiseled_silica_sandstone",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.CUT_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.CUT_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
 
     // Smooth Silica Sandstone
 
@@ -412,11 +414,11 @@ public class ModBlocks {
             new Block(FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(2.2f, 6.0f)));
 
     public static final Block SMOOTH_SILICA_SANDSTONE_SLAB = registerBlock("smooth_silica_sandstone_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SMOOTH_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.SMOOTH_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
 
     public static final Block SMOOTH_SILICA_SANDSTONE_STAIRS = registerBlock("smooth_silica_sandstone_stairs",
-            new ModStairsBlock(ModBlocks.SMOOTH_SILICA_SANDSTONE.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.SMOOTH_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
+            new JNEStairsBlock(JNEBlocks.SMOOTH_SILICA_SANDSTONE.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.SMOOTH_SILICA_SANDSTONE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)));
 
     // Nether Bricks
 
@@ -435,14 +437,14 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
 
     public static final Block BLUE_NETHER_BRICK_SLAB = registerBlock("blue_nether_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.BLUE_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
 
     public static final Block BLUE_NETHER_BRICK_STAIRS = registerBlock("blue_nether_brick_stairs",
-            new ModStairsBlock(ModBlocks.BLUE_NETHER_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
+            new JNEStairsBlock(JNEBlocks.BLUE_NETHER_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.BLUE_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
 
     public static final Block BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.BLUE_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.BLUE_NETHER_BRICKS).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.NETHER_BRICKS)));
 
     // Violet Nether Bricks | CINDERSCAPES COMPATIBILITY
 
@@ -453,14 +455,14 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
 
     public static final Block VIOLET_NETHER_BRICK_SLAB = registerCompatBlock("violet_nether_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
 
     public static final Block VIOLET_NETHER_BRICK_STAIRS = registerCompatBlock("violet_nether_brick_stairs",
-            new ModStairsBlock(ModBlocks.VIOLET_NETHER_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+            new JNEStairsBlock(JNEBlocks.VIOLET_NETHER_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
 
     public static final Block VIOLET_NETHER_BRICK_WALL = registerCompatBlock("violet_nether_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.VIOLET_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE).sounds(BlockSoundGroup.NETHER_BRICKS)), "cinderscapes");
 
     // Yellow Nether Bricks | GARDENS OF THE DEAD COMPATIBILITY
 
@@ -471,14 +473,14 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
 
     public static final Block YELLOW_NETHER_BRICK_SLAB = registerCompatBlock("yellow_nether_brick_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
 
     public static final Block YELLOW_NETHER_BRICK_STAIRS = registerCompatBlock("yellow_nether_brick_stairs",
-            new ModStairsBlock(ModBlocks.YELLOW_NETHER_BRICKS.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
+            new JNEStairsBlock(JNEBlocks.YELLOW_NETHER_BRICKS.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
 
     public static final Block YELLOW_NETHER_BRICK_WALL = registerCompatBlock("yellow_nether_brick_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.YELLOW_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW).sounds(BlockSoundGroup.NETHER_BRICKS)), "garden_of_the_dead");
 
     // Pyrite
 
@@ -486,14 +488,14 @@ public class ModBlocks {
             new Block(FabricBlockSettings.of().strength(3.5f,6.5f).mapColor(MapColor.TERRACOTTA_ORANGE).requiresTool().sounds(BlockSoundGroup.COPPER)));
 
     public static final Block PYRITE_SLAB = registerBlock("pyrite_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).sounds(BlockSoundGroup.COPPER)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).sounds(BlockSoundGroup.COPPER)));
 
     public static final Block PYRITE_STAIRS = registerBlock("pyrite_stairs",
-            new ModStairsBlock(ModBlocks.PYRITE_BLOCK.getDefaultState(),
-                    FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).sounds(BlockSoundGroup.COPPER)));
+            new JNEStairsBlock(JNEBlocks.PYRITE_BLOCK.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).sounds(BlockSoundGroup.COPPER)));
 
     public static final Block PYRITE_WALL = registerBlock("pyrite_wall",
-            new WallBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).sounds(BlockSoundGroup.COPPER)));
+            new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).sounds(BlockSoundGroup.COPPER)));
 
     public static final Block PYRITE_BUTTON = registerBlock("pyrite_button",
             new ButtonBlock(FabricBlockSettings.of().noCollision().strength(1f).mapColor(MapColor.TERRACOTTA_ORANGE).sounds(BlockSoundGroup.COPPER), BlockSetType.STONE, 10, false));
@@ -502,10 +504,10 @@ public class ModBlocks {
             new WeightedPressurePlateBlock(75, FabricBlockSettings.of().mapColor(MapColor.TERRACOTTA_ORANGE).noCollision().strength(1f).sounds(BlockSoundGroup.METAL), BlockSetType.IRON));
 
     public static final Block PYRITE_LANTERN = registerBlock("pyrite_lantern",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).strength(0.4f).luminance(15).sounds(BlockSoundGroup.LANTERN)));
+            new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.PYRITE_BLOCK).mapColor(MapColor.TERRACOTTA_ORANGE).strength(0.4f).luminance(15).sounds(BlockSoundGroup.LANTERN)));
 
     public static final Block SOUL_PYRITE_LANTERN = registerBlock("soul_pyrite_lantern",
-            new PillarBlock(FabricBlockSettings.copyOf(ModBlocks.PYRITE_LANTERN).mapColor(MapColor.TERRACOTTA_ORANGE).luminance(10).sounds(BlockSoundGroup.LANTERN)));
+            new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.PYRITE_LANTERN).mapColor(MapColor.TERRACOTTA_ORANGE).luminance(10).sounds(BlockSoundGroup.LANTERN)));
 
     public static final Block PYRITE_CHAIN = registerBlock("pyrite_chain",
             new ChainBlock(FabricBlockSettings.of().strength(3.5f,6.5f).mapColor(MapColor.TERRACOTTA_ORANGE).requiresTool().nonOpaque().sounds(BlockSoundGroup.CHAIN)));
@@ -638,55 +640,55 @@ public class ModBlocks {
     // Decayable Blocks
 
     public static final Block DECAYABLE_NETHER_WART_BLOCK = registerBlockWithoutItem("decayable_nether_wart_block",
-            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).mapColor(MapColor.RED).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_NETHER_WART, Blocks.NETHER_WART_BLOCK, 1));
+            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.NETHER_WART_BLOCK).mapColor(MapColor.RED).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK), JNEParticles.FALLING_NETHER_WART, Blocks.NETHER_WART_BLOCK, 1));
 
     public static final Block DECAYABLE_WARPED_WART_BLOCK = registerBlockWithoutItem("decayable_warped_wart_block",
-            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).mapColor(MapColor.BRIGHT_TEAL).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK),ModParticles.FALLING_WARPED_WART, Blocks.WARPED_WART_BLOCK, 2));
+            new DecayableWartBlock(FabricBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).mapColor(MapColor.BRIGHT_TEAL).ticksRandomly().sounds(BlockSoundGroup.WART_BLOCK), JNEParticles.FALLING_WARPED_WART, Blocks.WARPED_WART_BLOCK, 2));
 
     public static final Block DECAYABLE_SHROOMLIGHT = registerBlockWithoutItem("decayable_shroomlight",
-            new DecayableShroomBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).mapColor(MapColor.ORANGE).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMLIGHT, Blocks.SHROOMLIGHT));
+            new DecayableShroomBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).mapColor(MapColor.ORANGE).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT), JNEParticles.FALLING_SHROOMLIGHT, Blocks.SHROOMLIGHT));
 
     public static final Block DECAYABLE_SHROOMNIGHT = registerBlockWithoutItem("decayable_shroomnight",
-            new DecayableShroomBlock(FabricBlockSettings.copyOf(ModBlocks.SHROOMNIGHT).mapColor(MapColor.PINK).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT),ModParticles.FALLING_SHROOMNIGHT, ModBlocks.SHROOMNIGHT));
+            new DecayableShroomBlock(FabricBlockSettings.copyOf(JNEBlocks.SHROOMNIGHT).mapColor(MapColor.PINK).ticksRandomly().sounds(BlockSoundGroup.SHROOMLIGHT), JNEParticles.FALLING_SHROOMNIGHT, JNEBlocks.SHROOMNIGHT));
 
     // Particle Emitters
 
     public static final Block CRIMSON_SPORESHROOM = registerBlock("crimson_sporeshroom",
-            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.CRIMSON_SMOG, ParticleTypes.CRIMSON_SPORE, ModTags.Biomes.HAS_CRIMSON_SPORES));
+            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS), JNEParticles.CRIMSON_SMOG, ParticleTypes.CRIMSON_SPORE, JNETags.Biomes.HAS_CRIMSON_SPORES));
 
     public static final Block WARPED_SPORESHROOM = registerBlock("warped_sporeshroom",
-            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.WARPED_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES));
+            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS), JNEParticles.WARPED_SMOG, ParticleTypes.WARPED_SPORE, JNETags.Biomes.HAS_WARPED_SPORES));
 
     public static final Block SOULED_GEYSER = registerBlock("souled_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(ModBlocks.SOUL_SLATE).nonOpaque().sounds(ModSoundEvents.SOUL_SLATE),ModParticles.BLACK_SMOKE, false, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH));
+            new GeyserBlock(FabricBlockSettings.copyOf(JNEBlocks.SOUL_SLATE).nonOpaque().sounds(JNESoundEvents.SOUL_SLATE), JNEParticles.BLACK_SMOKE, false, ParticleTypes.ASH, JNETags.Biomes.HAS_ASH));
 
     public static final Block BASALTIC_GEYSER = registerBlock("basaltic_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).nonOpaque().sounds(BlockSoundGroup.BASALT),ModParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH));
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BASALT).nonOpaque().sounds(BlockSoundGroup.BASALT), JNEParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, JNETags.Biomes.HAS_WHITE_ASH));
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom",
-            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.UMBRAL_SMOG, ParticleTypes.WARPED_SPORE, ModTags.Biomes.HAS_WARPED_SPORES), "cinderscapes");
+            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS), JNEParticles.UMBRAL_SMOG, ParticleTypes.WARPED_SPORE, JNETags.Biomes.HAS_WARPED_SPORES), "cinderscapes");
 
     // GARDENS OF THE DEAD COMPATIBILITY
     public static final Block SOULBLIGHT_SPORESHROOM = registerCompatBlock("soulblight_sporeshroom",
-            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS),ModParticles.SOULBLIGHT_SMOG, ModParticles.SOULBLIGHT_SPORE, ModTags.Biomes.HAS_SOULBLIGHT_SPORES), "gardens_of_the_dead");
+            new SporeshroomBlock(FabricBlockSettings.of().strength(0.5f).pistonBehavior(PistonBehavior.DESTROY).sounds(BlockSoundGroup.FUNGUS), JNEParticles.SOULBLIGHT_SMOG, JNEParticles.SOULBLIGHT_SPORE, JNETags.Biomes.HAS_SOULBLIGHT_SPORES), "gardens_of_the_dead");
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block BLACKSTONIC_GEYSER = registerCompatBlock("blackstonic_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).nonOpaque(),ModParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, ModTags.Biomes.HAS_WHITE_ASH), "cinderscapes");
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).nonOpaque(), JNEParticles.WHITE_SMOKE, true, ParticleTypes.WHITE_ASH, JNETags.Biomes.HAS_WHITE_ASH), "cinderscapes");
 
     // CINDERSCAPES COMPATIBILITY
     public static final Block ASHEN_GEYSER = registerCompatBlock("ashen_geyser",
-            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).nonOpaque().sounds(BlockSoundGroup.NETHERRACK),ModParticles.BLACK_SMOKE, true, ParticleTypes.ASH, ModTags.Biomes.HAS_ASH), "cinderscapes");
+            new GeyserBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).nonOpaque().sounds(BlockSoundGroup.NETHERRACK), JNEParticles.BLACK_SMOKE, true, ParticleTypes.ASH, JNETags.Biomes.HAS_ASH), "cinderscapes");
     
     // White Ash
 
     public static final Block WHITE_ASH = registerBlock("white_ash",
             new WhiteAshBlock(FabricBlockSettings.of().strength(0.1f).requiresTool()
-            .sounds(ModSoundEvents.WHITE_ASH).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))));
+            .sounds(JNESoundEvents.WHITE_ASH).blockVision(((state, world, pos) -> state.get(LayerBlock.LAYERS) >= 8))));
 
     public static final Block WHITE_ASH_BLOCK = registerBlock("white_ash_block",
-            new Block(FabricBlockSettings.of().requiresTool().sounds(ModSoundEvents.WHITE_ASH)));
+            new Block(FabricBlockSettings.of().requiresTool().sounds(JNESoundEvents.WHITE_ASH)));
 
     /*
      * TODO: THIS BLOCK IS UNOBTAINABLE
@@ -700,7 +702,7 @@ public class ModBlocks {
             new SkullCandleBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).luminance(13), ParticleTypes.SMALL_FLAME, ParticleTypes.SMOKE));
 
     public static final Block SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle",
-            new SkullCandleBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).luminance(10), ModParticles.SMALL_SOUL_FLAME, ParticleTypes.SMOKE));
+            new SkullCandleBlock(FabricBlockSettings.copyOf(Blocks.SKELETON_SKULL).luminance(10), JNEParticles.SMALL_SOUL_FLAME, ParticleTypes.SMOKE));
 
     /*
      * TODO Add Skeletal Heads
@@ -722,20 +724,20 @@ public class ModBlocks {
             new RotatingBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
 
     public static final Block BURNING_SKULL_BLOCK = registerBlock("burning_skull_block",
-            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(JNEBlocks.SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
 
     public static final Block SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block",
-            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(JNEBlocks.BURNING_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_BONES = registerBlock("stacked_bones",
             new Block(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_BONE_SLAB = registerBlock("stacked_bone_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.STACKED_BONES).sounds(BlockSoundGroup.BONE)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.STACKED_BONES).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_BONE_STAIRS = registerBlock("stacked_bone_stairs",
-            new ModStairsBlock(ModBlocks.STACKED_BONES.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.STACKED_BONES).sounds(BlockSoundGroup.BONE)));
+            new JNEStairsBlock(JNEBlocks.STACKED_BONES.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.STACKED_BONES).sounds(BlockSoundGroup.BONE)));
 
     // Wither Bones
 
@@ -743,23 +745,23 @@ public class ModBlocks {
             new WitherBoneBlock(FabricBlockSettings.copyOf(Blocks.BONE_BLOCK).strength(4.5f,9.0f).sounds(BlockSoundGroup.BONE)));
 
     public static final Block WITHER_SKULL_BLOCK = registerBlock("wither_skull_block",
-            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(JNEBlocks.WITHER_BONE_BLOCK).sounds(BlockSoundGroup.BONE)));
 
     public static final Block BURNING_WITHER_SKULL_BLOCK = registerBlock("burning_wither_skull_block",
-            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.WITHER_SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(JNEBlocks.WITHER_SKULL_BLOCK).luminance(15).sounds(BlockSoundGroup.BONE)));
 
     public static final Block SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block",
-            new RotatingBlock(FabricBlockSettings.copyOf(ModBlocks.BURNING_WITHER_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
+            new RotatingBlock(FabricBlockSettings.copyOf(JNEBlocks.BURNING_WITHER_SKULL_BLOCK).luminance(10).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_WITHER_BONES = registerBlock("stacked_wither_bones",
-            new Block(FabricBlockSettings.copyOf(ModBlocks.WITHER_BONE_BLOCK).strength(2.0f,9.0f).sounds(BlockSoundGroup.BONE)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.WITHER_BONE_BLOCK).strength(2.0f,9.0f).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_WITHER_BONE_SLAB = registerBlock("stacked_wither_bone_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)));
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)));
 
     public static final Block STACKED_WITHER_BONE_STAIRS = registerBlock("stacked_wither_bone_stairs",
-            new ModStairsBlock(ModBlocks.STACKED_WITHER_BONES.getDefaultState(),
-            FabricBlockSettings.copyOf(ModBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)));
+            new JNEStairsBlock(JNEBlocks.STACKED_WITHER_BONES.getDefaultState(),
+            FabricBlockSettings.copyOf(JNEBlocks.STACKED_WITHER_BONES).sounds(BlockSoundGroup.BONE)));
 
     // Blackstone
 
@@ -849,7 +851,15 @@ public class ModBlocks {
         }
     }
 
-    public static void registerModBlocks() {
+    private static void registerTransformable() {
+        StrippableBlockRegistry.register(JNEBlocks.CLARET_STEM, JNEBlocks.STRIPPED_CLARET_STEM);
+        StrippableBlockRegistry.register(JNEBlocks.SMOKESTALK_BLOCK, JNEBlocks.STRIPPED_SMOKESTALK_BLOCK);
+        StrippableBlockRegistry.register(JNEBlocks.CLARET_HYPHAE, JNEBlocks.STRIPPED_CLARET_HYPHAE);
+        FlattenableBlockRegistry.register(JNEBlocks.ECTO_SOUL_SAND, Blocks.SOUL_SAND.getDefaultState());
+    }
+
+    public static void registerBlocks() {
+        registerTransformable();
         NetherExp.LOGGER.debug("Registering Blocks for " + NetherExp.MOD_ID);
     }
 }

@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TorchflowerBlock;
 
@@ -11,6 +11,6 @@ public class SoulTorchflowerBlock extends TorchflowerBlock {
 
     @Override
     public BlockState withAge(int age) {
-        return age == 2 ? ModBlocks.SOUL_TORCHFLOWER.getDefaultState() : super.withAge(age);
+        return age == 2 ? JNEBlocks.SOUL_TORCHFLOWER.getDefaultState() : super.withAge(age);
     }
 }

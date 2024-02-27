@@ -2,8 +2,8 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
@@ -62,7 +62,7 @@ extends AbstractPlantStemBlock {
 
     @Override
     protected Block getPlant() {
-        return ModBlocks.SORROWSQUASH_STEM_PLANT;
+        return JNEBlocks.SORROWSQUASH_STEM_PLANT;
     }
 
     @Override
@@ -114,7 +114,7 @@ extends AbstractPlantStemBlock {
         if (!this.canAttachTo(blockState)) {
             return false;
         } else {
-            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isIn(ModTags.Blocks.SOUL_SAND_BLOCKS);
+            return blockState.isOf(this.getStem()) || blockState.isOf(this.getPlant()) || blockState.isIn(JNETags.Blocks.SOUL_SAND_BLOCKS);
         }
     }
 

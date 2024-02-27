@@ -11,7 +11,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
-public class ModTags {
+public class JNETags {
     public static class Blocks {
 
         // Decides if Ash can or cannot be placed on these Blocks

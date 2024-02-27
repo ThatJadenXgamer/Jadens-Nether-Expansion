@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -16,10 +16,10 @@ public class WhiteAshBlock extends LayerBlock{
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockState blockState = world.getBlockState(pos.down());
-        if (blockState.isIn(ModTags.Blocks.ASH_CANNOT_SURVIVE_ON)) {
+        if (blockState.isIn(JNETags.Blocks.ASH_CANNOT_SURVIVE_ON)) {
             return false;
         }
-        if (blockState.isIn(ModTags.Blocks.ASH_CAN_SURVIVE_ON)) {
+        if (blockState.isIn(JNETags.Blocks.ASH_CAN_SURVIVE_ON)) {
             return true;
         }
         return Block.isFaceFullSquare(blockState.getCollisionShape(world, pos.down()), Direction.UP) || blockState.isOf(this) && blockState.get(LAYERS) == 8;

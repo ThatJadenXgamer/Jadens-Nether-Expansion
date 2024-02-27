@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BucketItem;
@@ -24,7 +24,7 @@ public class EctoplasmBucketItem extends BucketItem {
     @SuppressWarnings("deprecation")
     @Override
     protected void playEmptyingSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos) {
-        SoundEvent soundEvent = this.fluid.isIn(ModTags.Fluids.ECTOPLASM) ? ModSoundEvents.ITEM_BUCKET_EMPTY_ECTOPLASM : SoundEvents.ITEM_BUCKET_EMPTY;
+        SoundEvent soundEvent = this.fluid.isIn(JNETags.Fluids.ECTOPLASM) ? JNESoundEvents.ITEM_BUCKET_EMPTY_ECTOPLASM : SoundEvents.ITEM_BUCKET_EMPTY;
         world.playSound(player, pos, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);
         world.emitGameEvent(player, GameEvent.FLUID_PLACE, pos);
     }

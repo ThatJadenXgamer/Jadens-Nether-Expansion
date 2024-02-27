@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
@@ -102,17 +102,17 @@ implements GeoEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return ModSoundEvents.ENTITY_WARPHOPPER_AMBIENT;
+        return JNESoundEvents.ENTITY_WARPHOPPER_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSoundEvents.ENTITY_WARPHOPPER_HURT;
+        return JNESoundEvents.ENTITY_WARPHOPPER_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSoundEvents.ENTITY_WARPHOPPER_DEATH;
+        return JNESoundEvents.ENTITY_WARPHOPPER_DEATH;
     }
 
     @Override

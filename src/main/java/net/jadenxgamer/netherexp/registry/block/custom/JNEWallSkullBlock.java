@@ -12,10 +12,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
-public class ModWallSkullBlock extends AbstractModSkullBlock{
+public class JNEWallSkullBlock extends AbstractModSkullBlock{
     public static final DirectionProperty FACING = Properties.FACING;
 
-    protected ModWallSkullBlock(Settings settings, ModSkullBlock.ModSkullType type) {
+    protected JNEWallSkullBlock(Settings settings, JNESkullBlock.ModSkullType type) {
         super(settings, type);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false));
     }

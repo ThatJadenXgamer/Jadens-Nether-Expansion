@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.entity.ModSkullBlockEntity;
+import net.jadenxgamer.netherexp.registry.block.entity.JNESkullBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -14,9 +14,9 @@ import net.minecraft.world.World;
 
 public abstract class AbstractModSkullBlock extends BlockWithEntity {
     public static final BooleanProperty POWERED = Properties.POWERED;
-    private final ModSkullBlock.ModSkullType type;
+    private final JNESkullBlock.ModSkullType type;
 
-    protected AbstractModSkullBlock(Settings settings, ModSkullBlock.ModSkullType type) {
+    protected AbstractModSkullBlock(Settings settings, JNESkullBlock.ModSkullType type) {
         super(settings);
         this.type = type;
         this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, false));
@@ -28,10 +28,10 @@ public abstract class AbstractModSkullBlock extends BlockWithEntity {
     }
 
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ModSkullBlockEntity(pos, state);
+        return new JNESkullBlockEntity(pos, state);
     }
 
-    public ModSkullBlock.ModSkullType getSkullType() {
+    public JNESkullBlock.ModSkullType getSkullType() {
         return this.type;
     }
 

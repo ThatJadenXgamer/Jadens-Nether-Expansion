@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -74,7 +74,7 @@ public class DecayableShroomBlock extends Block {
     }
 
     private static int getDistanceFromStem(BlockState state) {
-        if (state.isIn(ModTags.Blocks.STEMS)) {
+        if (state.isIn(JNETags.Blocks.STEMS)) {
             return 0;
         }
         if (state.getBlock() instanceof DecayableShroomBlock) {

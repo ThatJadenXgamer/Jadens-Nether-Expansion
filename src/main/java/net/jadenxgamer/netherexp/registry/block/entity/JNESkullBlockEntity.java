@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry.block.entity;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -8,16 +7,16 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ModSkullBlockEntity extends BlockEntity {
+public class JNESkullBlockEntity extends BlockEntity {
     private int poweredTicks;
     private boolean powered;
 
     // TODO Add Skeletal Heads
-    public ModSkullBlockEntity(BlockPos pos, BlockState state) {
+    public JNESkullBlockEntity(BlockPos pos, BlockState state) {
         super(null, pos, state);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, ModSkullBlockEntity blockEntity) {
+    public static void tick(World world, BlockPos pos, BlockState state, JNESkullBlockEntity blockEntity) {
         if (world.isReceivingRedstonePower(pos)) {
             blockEntity.powered = true;
             ++blockEntity.poweredTicks;

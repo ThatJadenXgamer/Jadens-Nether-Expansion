@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
@@ -18,8 +18,8 @@ public abstract class PlayerEntityMixin {
             cancellable = true
     )
     private void netherexp$getCustomHurtSound(DamageSource source, CallbackInfoReturnable<SoundEvent> cir) {
-        if (source.isIn(ModTags.DamageTypes.IS_SUFFOCATION)) {
-            cir.setReturnValue(ModSoundEvents.ENTITY_PLAYER_HURT_SUFFOCATION);
+        if (source.isIn(JNETags.DamageTypes.IS_SUFFOCATION)) {
+            cir.setReturnValue(JNESoundEvents.ENTITY_PLAYER_HURT_SUFFOCATION);
         }
     }
 }

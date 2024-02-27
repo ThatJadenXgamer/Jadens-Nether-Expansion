@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.effect;
 
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -19,7 +19,7 @@ public class ImmunityEffect extends StatusEffect {
         super.applyUpdateEffect(entity, amplifier);
         if (entity.hasStatusEffect(this.statusEffect)) {
             int duration = entity.getStatusEffect(this).getDuration();
-            entity.playSound(ModSoundEvents.ANTIDOTE_NEGATE, 1, 1);
+            entity.playSound(JNESoundEvents.ANTIDOTE_NEGATE, 1, 1);
             entity.removeStatusEffect(statusEffect);
             entity.removeStatusEffect(this);
             entity.addStatusEffect(new StatusEffectInstance(this, (duration - 400), 0));

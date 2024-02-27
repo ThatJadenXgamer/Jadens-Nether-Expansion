@@ -1,10 +1,10 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -79,7 +79,7 @@ public class DecayableWartBlock extends Block {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         int i;
-        if ((i = DecayableWartBlock.getDistanceFromStem(neighborState) + 1) != 1 || state.get(DISTANCE) != i && !neighborState.isOf(ModBlocks.WARPED_WART_BEARD)) {
+        if ((i = DecayableWartBlock.getDistanceFromStem(neighborState) + 1) != 1 || state.get(DISTANCE) != i && !neighborState.isOf(JNEBlocks.WARPED_WART_BEARD)) {
             world.scheduleBlockTick(pos, this, 1);
         }
         return state;
@@ -87,12 +87,12 @@ public class DecayableWartBlock extends Block {
 
     private static void dropLight(World world, BlockPos pos, BlockState state) {
         int s = state.get(SPOTS);
-        SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.LIGHTSPORES, s));
+        SpottedWartBlock.dropStack(world, pos, new ItemStack(JNEItems.LIGHTSPORES, s));
     }
 
     private static void dropNight(World world, BlockPos pos, BlockState state) {
         int s = state.get(SPOTS);
-        SpottedWartBlock.dropStack(world, pos, new ItemStack(ModItems.NIGHTSPORES, s));
+        SpottedWartBlock.dropStack(world, pos, new ItemStack(JNEItems.NIGHTSPORES, s));
     }
 
     @SuppressWarnings("deprecation")
@@ -108,7 +108,7 @@ public class DecayableWartBlock extends Block {
             else if (this.spore == 2) {
                 dropNight(world, pos, state);
             }
-            world.playSound(player, pos, ModSoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(player, pos, JNESoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.setBlockState(pos, state.with(SPOTS, 0), Block.NOTIFY_LISTENERS);
             world.emitGameEvent(player, GameEvent.SHEAR, pos);
             itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
@@ -145,7 +145,7 @@ public class DecayableWartBlock extends Block {
     }
 
     private static int getDistanceFromStem(BlockState state) {
-        if (state.isIn(ModTags.Blocks.STEMS)) {
+        if (state.isIn(JNETags.Blocks.STEMS)) {
             return 0;
         }
         if (state.getBlock() instanceof DecayableWartBlock) {

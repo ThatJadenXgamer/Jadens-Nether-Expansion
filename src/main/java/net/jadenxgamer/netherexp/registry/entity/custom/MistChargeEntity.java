@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -38,12 +38,12 @@ public class MistChargeEntity extends ThrownItemEntity implements GeoEntity {
     }
 
     public MistChargeEntity(LivingEntity livingEntity, World world) {
-        super(ModEntityType.MIST_CHARGE, livingEntity, world);
+        super(JNEEntityType.MIST_CHARGE, livingEntity, world);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return ModItems.MIST_CHARGE;
+        return JNEItems.MIST_CHARGE;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class MistChargeEntity extends ThrownItemEntity implements GeoEntity {
         BlockPos blockPos = entity.getBlockPos();
         this.getWorld().playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BLOCK_MUD_PLACE, SoundCategory.NEUTRAL, 1F, 1F);
         if (this.getWorld() instanceof ServerWorld) {
-            GraveCloudEntity graveCloudEntity = ModEntityType.MIST_CHARGE_CLOUD.create(this.getWorld());
+            GraveCloudEntity graveCloudEntity = JNEEntityType.MIST_CHARGE_CLOUD.create(this.getWorld());
             if (graveCloudEntity != null) {
                 graveCloudEntity.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
                 graveCloudEntity.setOwner((LivingEntity) this.getOwner());
@@ -75,7 +75,7 @@ public class MistChargeEntity extends ThrownItemEntity implements GeoEntity {
         BlockPos blockPos = blockHitResult.getBlockPos();
         this.getWorld().playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BLOCK_MUD_PLACE, SoundCategory.NEUTRAL, 1F, 1F);
         if (this.getWorld() instanceof ServerWorld) {
-            GraveCloudEntity graveCloudEntity = ModEntityType.MIST_CHARGE_CLOUD.create(this.getWorld());
+            GraveCloudEntity graveCloudEntity = JNEEntityType.MIST_CHARGE_CLOUD.create(this.getWorld());
             if (graveCloudEntity != null) {
                 graveCloudEntity.refreshPositionAfterTeleport(Vec3d.ofBottomCenter(blockPos));
                 graveCloudEntity.setOwner((LivingEntity) this.getOwner());
@@ -96,7 +96,7 @@ public class MistChargeEntity extends ThrownItemEntity implements GeoEntity {
     private void spawnParticles(int amount) {
         if (amount > 0) {
             for(int j = 0; j < amount; ++j) {
-                this.getWorld().addParticle(ModParticles.GRASP_MIST, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), 0, 0, 0);
+                this.getWorld().addParticle(JNEParticles.GRASP_MIST, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), 0, 0, 0);
             }
         }
     }

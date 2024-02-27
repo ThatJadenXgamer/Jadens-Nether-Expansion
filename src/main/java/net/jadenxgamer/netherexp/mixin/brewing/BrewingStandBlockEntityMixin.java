@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.brewing;
 
-import net.jadenxgamer.netherexp.registry.item.brewing.BrewingRecipeHelper;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.entity.BrewingStandBlockEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Debug;
@@ -20,7 +19,7 @@ public abstract class BrewingStandBlockEntityMixin {
             cancellable = true
     )
     private void netherexp$setCustomValid(int slot, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (slot < 3 && stack.isIn(ModTags.Items.ANTIDOTES)) {
+        if (slot < 3 && stack.isIn(JNETags.Items.ANTIDOTES)) {
             cir.setReturnValue(true);
         }
     }

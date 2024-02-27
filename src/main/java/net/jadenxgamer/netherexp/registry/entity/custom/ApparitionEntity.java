@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import com.google.common.annotations.VisibleForTesting;
-import net.jadenxgamer.netherexp.registry.entity.ModEntityType;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -140,7 +140,7 @@ implements GeoEntity, Angerable, Flutterer {
         super.tickMovement();
         if (this.getWorld().isClient) {
             for(int i = 0; i < 2; ++i) {
-                this.getWorld().addParticle(ModParticles.WISP, this.getParticleX(0.5), this.getY() + 0.1, this.getParticleZ(0.5), 0.0, 0.0, 0.0);
+                this.getWorld().addParticle(JNEParticles.WISP, this.getParticleX(0.5), this.getY() + 0.1, this.getParticleZ(0.5), 0.0, 0.0, 0.0);
             }
         }
     }
@@ -158,7 +158,7 @@ implements GeoEntity, Angerable, Flutterer {
             if (striderEntity.isSaddled()) {
                 this.dropItem(Items.SADDLE);
             }
-            StampedeEntity stampedeEntity = striderEntity.convertTo(ModEntityType.STAMPEDE, false);
+            StampedeEntity stampedeEntity = striderEntity.convertTo(JNEEntityType.STAMPEDE, false);
             this.remove(RemovalReason.DISCARDED);
             if (stampedeEntity != null) {
                 striderEntity.initialize(world, world.getLocalDifficulty(striderEntity.getBlockPos()), SpawnReason.CONVERSION, new EntityData() {
@@ -196,7 +196,7 @@ implements GeoEntity, Angerable, Flutterer {
     @Override
     public void onDeath(DamageSource damageSource) {
         World world = this.getWorld();
-        WispEntity wispEntity = ModEntityType.WISP.create(world);
+        WispEntity wispEntity = JNEEntityType.WISP.create(world);
         if (wispEntity != null) {
             wispEntity.setBoredDelay(random.nextInt(1000) + 600);
             wispEntity.setPosition(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);

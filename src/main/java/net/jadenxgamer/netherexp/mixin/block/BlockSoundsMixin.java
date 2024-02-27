@@ -2,8 +2,8 @@ package net.jadenxgamer.netherexp.mixin.block;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,23 +30,23 @@ public abstract class BlockSoundsMixin extends AbstractBlock {
             cancellable = true
     )
     private void netherexp$changeSoundGroup(BlockState state, CallbackInfoReturnable<BlockSoundGroup> cir) {
-        if (soundsConfigs.blackstone_sounds && state.isIn(ModTags.Blocks.SOUNDS_BLACKSTONE)) {
-            cir.setReturnValue(ModSoundEvents.BLACKSTONE);
+        if (soundsConfigs.blackstone_sounds && state.isIn(JNETags.Blocks.SOUNDS_BLACKSTONE)) {
+            cir.setReturnValue(JNESoundEvents.BLACKSTONE);
         }
-        else if (soundsConfigs.polished_blackstone_sounds && state.isIn(ModTags.Blocks.SOUNDS_POLISHED_BLACKSTONE)) {
-            cir.setReturnValue(ModSoundEvents.POLISHED_BLACKSTONE_BRICKS);
+        else if (soundsConfigs.polished_blackstone_sounds && state.isIn(JNETags.Blocks.SOUNDS_POLISHED_BLACKSTONE)) {
+            cir.setReturnValue(JNESoundEvents.POLISHED_BLACKSTONE_BRICKS);
         }
-        else if (soundsConfigs.polished_blackstone_brick_sounds && state.isIn(ModTags.Blocks.SOUNDS_POLISHED_BLACKSTONE_BRICKS)) {
-            cir.setReturnValue(ModSoundEvents.POLISHED_BLACKSTONE_BRICKS);
+        else if (soundsConfigs.polished_blackstone_brick_sounds && state.isIn(JNETags.Blocks.SOUNDS_POLISHED_BLACKSTONE_BRICKS)) {
+            cir.setReturnValue(JNESoundEvents.POLISHED_BLACKSTONE_BRICKS);
         }
-        else if (soundsConfigs.magma_block_sounds && state.isIn(ModTags.Blocks.SOUNDS_MAGMA_BLOCK)) {
-            cir.setReturnValue(ModSoundEvents.MAGMA_BLOCK);
+        else if (soundsConfigs.magma_block_sounds && state.isIn(JNETags.Blocks.SOUNDS_MAGMA_BLOCK)) {
+            cir.setReturnValue(JNESoundEvents.MAGMA_BLOCK);
         }
-        else if (soundsConfigs.glowstone_sounds && state.isIn(ModTags.Blocks.SOUNDS_GLOWSTONE)) {
-            cir.setReturnValue(ModSoundEvents.GLOWSTONE);
+        else if (soundsConfigs.glowstone_sounds && state.isIn(JNETags.Blocks.SOUNDS_GLOWSTONE)) {
+            cir.setReturnValue(JNESoundEvents.GLOWSTONE);
         }
-        else if (soundsConfigs.quartz_block_sounds && state.isIn(ModTags.Blocks.SOUNDS_QUARTZ_BLOCK)) {
-            cir.setReturnValue(ModSoundEvents.QUARTZ_BLOCK);
+        else if (soundsConfigs.quartz_block_sounds && state.isIn(JNETags.Blocks.SOUNDS_QUARTZ_BLOCK)) {
+            cir.setReturnValue(JNESoundEvents.QUARTZ_BLOCK);
         }
     }
 }

@@ -2,8 +2,8 @@ package net.jadenxgamer.netherexp.registry.event;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,27 +28,27 @@ public class WartBeardGrowerEvent implements UseBlockCallback {
         ItemStack itemStack = player.getStackInHand(hand);
         boolean bl = false;
         if (NetherExp.getConfig().blocks.renewableConfigs.wart_beards_from_wart_blocks && itemStack.isOf(Items.BONE_MEAL)) {
-            if (state.isIn(ModTags.Blocks.NETHER_WART_BLOCKS) && bottomState.isAir()) {
+            if (state.isIn(JNETags.Blocks.NETHER_WART_BLOCKS) && bottomState.isAir()) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos().down(), ModBlocks.NETHER_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos().down(), JNEBlocks.NETHER_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
                 }
                 boneMealParticles(world, hitResult.getBlockPos().down());
                 bl = true;
             }
-            else if (state.isIn(ModTags.Blocks.WARPED_WART_BLOCKS) && bottomState.isAir()) {
+            else if (state.isIn(JNETags.Blocks.WARPED_WART_BLOCKS) && bottomState.isAir()) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos().down(), ModBlocks.WARPED_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos().down(), JNEBlocks.WARPED_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
                 }
                 boneMealParticles(world, hitResult.getBlockPos().down());
                 bl = true;
             }
-            else if (NetherExp.checkModCompatCinderscapes() && state.isIn(ModTags.Blocks.UMBRAL_WART_BLOCKS) && bottomState.isAir()) {
+            else if (NetherExp.checkModCompatCinderscapes() && state.isIn(JNETags.Blocks.UMBRAL_WART_BLOCKS) && bottomState.isAir()) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos().down(), ModBlocks.UMBRAL_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos().down(), JNEBlocks.UMBRAL_WART_BEARD.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
                 }

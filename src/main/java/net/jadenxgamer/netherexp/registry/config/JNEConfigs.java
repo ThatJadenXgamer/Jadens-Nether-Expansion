@@ -19,7 +19,7 @@ import net.jadenxgamer.netherexp.registry.config.other.worldgen.WarpedForestConf
 
 @Config(name = NetherExp.MOD_ID)
 @Config.Gui.Background("netherexp:textures/block/pyrite_nether_bricks_left.png")
-public class NetherExpConfigs implements ConfigData {
+public class JNEConfigs implements ConfigData {
 
     // BLOCKS //
 

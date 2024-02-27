@@ -1,12 +1,15 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModDamageSources;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.SkeletonEntity;
@@ -14,6 +17,7 @@ import net.minecraft.entity.mob.StrayEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvents;
@@ -41,8 +45,9 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
     private int angerTime;
     private UUID angryAt;
-    private int eatingAnim;
-    static final Predicate<ItemEntity> PICKABLE_DROP_FILTER = (item) -> !item.cannotPickup() && item.isAlive();
+    private int eating = 0;
+    static final Predicate<ItemEntity> PICKABLE_DROP_FILTER = (item) -> !item.cannotPickup() && item.isAlive() && item.getStack().isOf(Items.BONE);
+    private static final TrackedData<Boolean> ANGRY = DataTracker.registerData(StampedeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     public StampedeEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -70,7 +75,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
         this.goalSelector.add(2, new WanderNearTargetGoal(this, 1.4, 32.0F));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
         this.goalSelector.add(3, new PickupItemGoal());
-        this.goalSelector.add(2, new TemptGoal(this, 1.0, Ingredient.ofItems(ModItems.SKULL_ON_A_STICK), false));
+        this.goalSelector.add(2, new TemptGoal(this, 1.0, Ingredient.ofItems(JNEItems.SKULL_ON_A_STICK), false));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.targetSelector.add(1, new RevengeGoal(this));
@@ -85,14 +90,16 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
         if (!this.getWorld().isClient && this.isAlive() && this.canMoveVoluntarily()) {
             ItemStack itemStack = this.getEquippedStack(EquipmentSlot.MAINHAND);
             if (!itemStack.isEmpty()) {
-                ++this.eatingAnim;
+                ++this.eating;
+                this.setAngry(true);
                 int f = this.random.nextInt(2);
-                if (this.eatingAnim > 100) {
+                if (this.eating > 100) {
                     this.equipStack(EquipmentSlot.MAINHAND, Items.AIR.getDefaultStack());
                     this.setHealth(this.getMaxHealth());
-                    this.eatingAnim = 0;
+                    this.eating = 0;
+                    this.setAngry(false);
                 }
-                else if (this.eatingAnim > 0 && f == 0) {
+                else if (this.eating > 0 && f == 0) {
                     this.playSound(SoundEvents.ENTITY_GENERIC_EAT, 1.0F, 1.0F);
                 }
             }
@@ -103,7 +110,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     private void damageLivingEntities(List<Entity> entities) {
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity) {
-                entity.damage(this.getDamageSources().create(ModDamageSources.STAMPEDE_CRUSH, this), 10);
+                entity.damage(this.getDamageSources().create(JNEDamageSources.STAMPEDE_CRUSH, this), 10);
             }
         }
     }
@@ -123,14 +130,56 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
         return false;
     }
 
-    public boolean isAngry() {
-        return true;
-    }
-
     @Override
     public boolean canPickupItem(ItemStack stack) {
         ItemStack itemStack = this.getEquippedStack(EquipmentSlot.MAINHAND);
         return itemStack.isEmpty() && stack.isOf(Items.BONE);
+    }
+
+    @Override
+    public void onAttacking(Entity target) {
+        super.onAttacking(target);
+        int i = random.nextInt(10);
+        int a = random.nextInt(3) + 1;
+        if (i == 0) {
+            for (int d = 0; d < a; ++d) {
+                this.dropItem(Items.NETHERITE_SCRAP);
+            }
+        }
+    }
+
+    /////////
+    // NBT //
+    /////////
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(ANGRY, false);
+    }
+
+    public boolean isAngry() {
+        return this.dataTracker.get(ANGRY);
+    }
+
+    public void setAngry(boolean angry) {
+        this.dataTracker.set(ANGRY, angry);
+    }
+
+    public int getEating() {
+        return this.eating;
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("Eating", this.eating);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.eating = nbt.getInt("Eating");
     }
 
     ////////////////////
@@ -162,7 +211,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
 
     @SuppressWarnings("all")
     private PlayState eatPredicate(AnimationState event) {
-        if (this.eatingAnim > 0) {
+        if (getEating() > 0) {
             return event.setAndContinue(EATING_ANIM);
         }
         return PlayState.STOP;

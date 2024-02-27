@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.worldgen.biome.nether;
 
 import com.mojang.datafixers.util.Pair;
-import net.jadenxgamer.netherexp.registry.worldgen.biome.ModBiomes;
+import net.jadenxgamer.netherexp.registry.worldgen.biome.JNEBiomes;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
@@ -32,6 +32,6 @@ public class WrathRegion extends Region {
                 MultiNoiseUtil.ParameterRange.of(0.0F),
                 //Depth
                 MultiNoiseUtil.ParameterRange.of(0.0F),
-                0.0F, ModBiomes.VENT_MIRE);
+                0.0F, JNEBiomes.VENT_MIRE);
     }
 }

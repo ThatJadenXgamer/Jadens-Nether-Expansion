@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.item.ModItems;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.item.ItemStack;
@@ -100,7 +100,7 @@ public class WarpedWartBlock extends PlantBlock {
     }
 
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return new ItemStack(ModItems.WARPED_WART);
+        return new ItemStack(JNEItems.WARPED_WART);
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

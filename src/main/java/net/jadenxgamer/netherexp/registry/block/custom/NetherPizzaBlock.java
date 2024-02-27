@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.item.ModItems;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -55,7 +55,7 @@ public class NetherPizzaBlock extends Block {
         ItemStack itemStack = player.getStackInHand(hand);
         int s = state.get(SLICES);
         if (itemStack.isEmpty()) {
-            player.setStackInHand(hand, new ItemStack(ModItems.NETHER_PIZZA_SLICE));
+            player.setStackInHand(hand, new ItemStack(JNEItems.NETHER_PIZZA_SLICE));
             if (s == 1) {
                 world.removeBlock(pos, false);
             }

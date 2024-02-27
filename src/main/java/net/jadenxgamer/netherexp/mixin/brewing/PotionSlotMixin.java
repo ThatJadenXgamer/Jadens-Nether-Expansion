@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.brewing;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.BrewingStandScreenHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +17,7 @@ public class PotionSlotMixin {
             cancellable = true
     )
     private static void netherexp$changeMatches(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (stack.isIn(ModTags.Items.ANTIDOTES)) {
+        if (stack.isIn(JNETags.Items.ANTIDOTES)) {
             cir.setReturnValue(true);
         }
     }

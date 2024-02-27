@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.Hoglin;
@@ -32,7 +32,7 @@ implements Monster, Hoglin {
             cancellable = true
     )
     private static void netherexp$changeCanSpawn(EntityType<PiglinEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {
-        if (world.getBlockState(pos.down()).isIn(ModTags.Blocks.HOGLIN_CANNOT_SPAWN_ON)) {
+        if (world.getBlockState(pos.down()).isIn(JNETags.Blocks.HOGLIN_CANNOT_SPAWN_ON)) {
             cir.setReturnValue(false);
         }
     }

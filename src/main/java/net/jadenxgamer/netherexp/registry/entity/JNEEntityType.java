@@ -10,7 +10,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class ModEntityType {
+public class JNEEntityType {
     public static final EntityType<WarphopperEntity> WARPHOPPER = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, "warphopper"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, WarphopperEntity::new).fireImmune()

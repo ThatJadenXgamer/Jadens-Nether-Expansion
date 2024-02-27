@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.config.other.modcompat.cinderscapes.LuminousGroveConfigs;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.ModPlacedFeatures;
 import net.minecraft.world.gen.GenerationStep;
 
@@ -34,19 +34,19 @@ public class LuminousGroveFeatures {
         // STEP 9 - VEGETAL_DECORATION
 
         if (lgConfigs.generate_twilight_vines) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
+            BiomeModifications.addFeature(BiomeSelectors.tag(JNETags.Biomes.LUMINOUS_GROVE),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.TWILIGHT_VINES);
         }
 
         // STEP 10 - TOP_LAYER_MODIFICATION
 
         if (lgConfigs.generate_sporeshroom) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
+            BiomeModifications.addFeature(BiomeSelectors.tag(JNETags.Biomes.LUMINOUS_GROVE),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.UMBRAL_SPORESHROOM);
         }
 
         if (lgConfigs.generate_twilight_ivy) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.LUMINOUS_GROVE),
+            BiomeModifications.addFeature(BiomeSelectors.tag(JNETags.Biomes.LUMINOUS_GROVE),
                     GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModPlacedFeatures.TWILIGHT_IVY);
         }
     }

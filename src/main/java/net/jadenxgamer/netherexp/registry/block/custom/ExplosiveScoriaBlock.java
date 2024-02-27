@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -40,7 +40,7 @@ extends Block {
         double y = pos.getY() + 0.5;
         double z = pos.getZ() + 0.5;
         if (!player.isCreative() && state.get(UNSTABLE)) {
-            world.addParticle(ModParticles.REDSTONE_EXPLOSION_EMITTER, x, y, z, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticles.REDSTONE_EXPLOSION_EMITTER, x, y, z, 0.0, 0.0, 0.0);
             world.playSound(x, y, z, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
         }
         if (!world.isClient() && !player.isCreative() && state.get(UNSTABLE)) {
@@ -87,7 +87,7 @@ extends Block {
         if (f < 0.3f) {
             ExplosiveScoriaBlock.sparkParticles(world, pos);
             if (f < 0.17f) {
-                world.playSound((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, ModSoundEvents.EXPLOSIVE_SCORIA_AMBIENT, SoundCategory.BLOCKS,0.3f,random.nextFloat() * 0.7f + 0.3f,false);
+                world.playSound((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, JNESoundEvents.EXPLOSIVE_SCORIA_AMBIENT, SoundCategory.BLOCKS,0.3f,random.nextFloat() * 0.7f + 0.3f,false);
             }
         }
     }
@@ -101,7 +101,7 @@ extends Block {
             double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double)direction.getOffsetX() : (double)random.nextFloat();
             double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double)direction.getOffsetY() : (double)random.nextFloat();
             double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double)direction.getOffsetZ() : (double)random.nextFloat();
-            world.addParticle(ModParticles.REDSTONE_SPARK, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticles.REDSTONE_SPARK, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
         }
     }
 

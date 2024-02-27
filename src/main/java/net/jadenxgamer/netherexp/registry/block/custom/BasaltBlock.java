@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
@@ -30,7 +30,7 @@ public class BasaltBlock extends PillarBlock {
     }
 
     private static boolean isAsh(BlockState state) {
-        return state.isIn(ModTags.Blocks.WHITE_ASH);
+        return state.isIn(JNETags.Blocks.WHITE_ASH);
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

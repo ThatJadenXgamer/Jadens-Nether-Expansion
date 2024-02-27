@@ -9,7 +9,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.feature.*;
 
-public abstract class ModFeature<FC extends FeatureConfig> {
+public abstract class JNEFeature<FC extends FeatureConfig> {
 
     public static final Feature<DefaultFeatureConfig> WEEPING_VINES_NETHEREXP = registerFeature("weeping_vines_netherexp",
             new WeepingVinesNetherExpFeature(DefaultFeatureConfig.CODEC));
@@ -24,7 +24,7 @@ public abstract class ModFeature<FC extends FeatureConfig> {
         return Registry.register(Registries.FEATURE, new Identifier(NetherExp.MOD_ID, name), feature);
     }
 
-    public static void registerModFeature() {
+    public static void registerFeature() {
         NetherExp.LOGGER.debug("Registering Features for " + NetherExp.MOD_ID);
     }
 }

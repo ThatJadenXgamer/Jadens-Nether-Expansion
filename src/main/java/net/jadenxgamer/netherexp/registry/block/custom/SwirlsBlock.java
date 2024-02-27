@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.effect.ModStatusEffects;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -40,11 +40,11 @@ implements Fertilizable {
     @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!state.get(COOLDOWN) && entity instanceof LivingEntity && !entity.getType().isIn(ModTags.EntityTypes.CANT_ACTIVATE_SWIRLS) && NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_boosting) {
+        if (!state.get(COOLDOWN) && entity instanceof LivingEntity && !entity.getType().isIn(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_boosting) {
             int d = NetherExp.getConfig().blocks.soulSwirlsConfigs.unbounded_speed_duration * 20;
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(ModStatusEffects.UNBOUNDED_SPEED, d, 0), entity);
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(JNEStatusEffects.UNBOUNDED_SPEED, d, 0, true, true), entity);
             swirlPopParticles(world, pos);
-            world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.SOUL_SWIRLS_BOOST, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SWIRLS_BOOST, SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.setBlockState(pos, state.cycle(COOLDOWN), NOTIFY_LISTENERS);
             world.scheduleBlockTick(pos, this, NetherExp.getConfig().blocks.soulSwirlsConfigs.soul_swirls_cooldown_ticks);
         }

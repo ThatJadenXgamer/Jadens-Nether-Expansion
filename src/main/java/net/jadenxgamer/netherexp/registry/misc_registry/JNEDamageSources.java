@@ -6,7 +6,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
-public class ModDamageSources {
+public class JNEDamageSources {
 
     public static final RegistryKey<DamageType> DEATH_CLOUD_SUFFOCATION = register("grave_cloud_suffocation");
 
@@ -16,7 +16,7 @@ public class ModDamageSources {
         return RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(NetherExp.MOD_ID, name));
     }
 
-    public static void registerModDamageSources() {
+    public static void registerDamageSources() {
         NetherExp.LOGGER.debug("Registering Damage Sources for " + NetherExp.MOD_ID);
     }
 }

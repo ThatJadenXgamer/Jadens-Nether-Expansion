@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.registry.block;
 
 import net.jadenxgamer.netherexp.NetherExp;
 
-public class ModBlockEntities {
+public class JNEBlockEntities {
 
     // TODO Add Skeletal Heads
 //    public static final BlockEntityType<ModSkullBlockEntity> SKULL =

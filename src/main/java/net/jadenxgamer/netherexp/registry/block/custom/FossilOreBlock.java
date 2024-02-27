@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.server.world.ServerWorld;
@@ -27,7 +27,7 @@ public class FossilOreBlock extends Block {
                 world.getBlockState(pos.east()).isSolid() &&
                 world.getBlockState(pos.west()).isSolid();
         if (NetherExp.getConfig().blocks.fossilOreConfigs.enable_fossil_ore_conversion && r == 0 && sideChecks) {
-            world.setBlockState(pos, ModBlocks.FOSSIL_FUEL_ORE.getDefaultState(), NOTIFY_LISTENERS);
+            world.setBlockState(pos, JNEBlocks.FOSSIL_FUEL_ORE.getDefaultState(), NOTIFY_LISTENERS);
             world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
         }
     }

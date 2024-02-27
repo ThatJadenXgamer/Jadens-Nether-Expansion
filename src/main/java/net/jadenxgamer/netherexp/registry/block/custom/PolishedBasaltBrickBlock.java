@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -43,7 +43,7 @@ extends RotatingBlock {
         boolean bl = false;
         if (!gilded) {
             if (itemStack.isOf(Items.GOLD_NUGGET)) {
-                world.playSound(player, player.getX(), player.getY(), player.getZ(), ModSoundEvents.GILDING, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                world.playSound(player, player.getX(), player.getY(), player.getZ(), JNESoundEvents.GILDING, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 world.setBlockState(pos, state.cycle(GILDED), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
@@ -71,7 +71,7 @@ extends RotatingBlock {
             double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double)direction.getOffsetX() : (double)random.nextFloat();
             double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double)direction.getOffsetY() : (double)random.nextFloat();
             double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double)direction.getOffsetZ() : (double)random.nextFloat();
-            world.addParticle(ModParticles.GOLD_GLIMMER, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticles.GOLD_GLIMMER, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
         }
     }
 

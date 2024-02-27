@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -41,7 +41,7 @@ extends AbstractPlantStemBlock {
 
     @Override
     protected Block getPlant() {
-        return ModBlocks.SMOKESTALK_PLANT;
+        return JNEBlocks.SMOKESTALK_PLANT;
     }
 
     @SuppressWarnings("deprecation")
@@ -51,7 +51,7 @@ extends AbstractPlantStemBlock {
         boolean active = state.get(ACTIVE);
         boolean bl = false;
         if (!active) {
-            if (itemStack.isIn(ModTags.Items.SMOKESTALK_FUEL)) {
+            if (itemStack.isIn(JNETags.Items.SMOKESTALK_FUEL)) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 world.setBlockState(pos, state.cycle(ACTIVE), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {

@@ -9,9 +9,9 @@ import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.Direction;
 
-public class ModFacingBlock
+public class JNEFacingBlock
 extends FacingBlock {
-    public ModFacingBlock(Settings settings) {
+    public JNEFacingBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }

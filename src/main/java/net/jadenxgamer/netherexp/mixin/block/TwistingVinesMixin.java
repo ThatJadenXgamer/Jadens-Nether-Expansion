@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.item.ModItems;
-import net.jadenxgamer.netherexp.registry.particle.ModParticles;
-import net.jadenxgamer.netherexp.registry.sound.ModSoundEvents;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -58,7 +58,7 @@ extends AbstractPlantStemBlock {
         double y = (double)pos.getY() + 0.8;
         double z = (double)pos.getZ() + random.nextDouble();
         if (!budding && f < 0.3) {
-            world.addParticle(ModParticles.RISING_SHROOMNIGHT, x, y, z, MathHelper.nextDouble(random, -0.02, 0.02), 0.08, MathHelper.nextDouble(random, -0.02, 0.02));
+            world.addParticle(JNEParticles.RISING_SHROOMNIGHT, x, y, z, MathHelper.nextDouble(random, -0.02, 0.02), 0.08, MathHelper.nextDouble(random, -0.02, 0.02));
         }
     }
 
@@ -69,8 +69,8 @@ extends AbstractPlantStemBlock {
         boolean budding = state.get(BUDDING);
         boolean bl = false;
         if (budding) {
-            if (itemStack.isOf(ModItems.NIGHTSPORES)) {
-                world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            if (itemStack.isOf(JNEItems.NIGHTSPORES)) {
+                world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.LIGHTSPORES_APPLY, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 world.setBlockState(pos,state.cycle(BUDDING), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.decrement(1);
@@ -82,7 +82,7 @@ extends AbstractPlantStemBlock {
         else {
            if (itemStack.isOf(Items.SHEARS)) {
                dropNight(world, pos);
-               world.playSound(player, pos, ModSoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
+               world.playSound(player, pos, JNESoundEvents.LIGHTSPORES_SHEAR, SoundCategory.BLOCKS, 1.0f, 1.0f);
                world.setBlockState(pos, state.cycle(BUDDING), Block.NOTIFY_LISTENERS);
                world.emitGameEvent(player, GameEvent.SHEAR, pos);
                itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
@@ -100,7 +100,7 @@ extends AbstractPlantStemBlock {
 
     @Unique
     private static void dropNight(World world, BlockPos pos) {
-        dropStack(world, pos, new ItemStack(ModItems.NIGHTSPORES, 1));
+        dropStack(world, pos, new ItemStack(JNEItems.NIGHTSPORES, 1));
     }
 
     @Unique
@@ -113,7 +113,7 @@ extends AbstractPlantStemBlock {
             double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getOffsetX() : (double) random.nextFloat();
             double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getOffsetY() : (double) random.nextFloat();
             double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getOffsetZ() : (double) random.nextFloat();
-            world.addParticle(ModParticles.FALLING_SHROOMNIGHT, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticles.FALLING_SHROOMNIGHT, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.0, 0.0);
         }
     }
 

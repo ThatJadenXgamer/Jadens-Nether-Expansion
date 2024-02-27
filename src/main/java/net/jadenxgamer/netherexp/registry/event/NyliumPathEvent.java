@@ -2,8 +2,8 @@ package net.jadenxgamer.netherexp.registry.event;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.ModBlocks;
-import net.jadenxgamer.netherexp.registry.misc_registry.ModTags;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -27,7 +27,7 @@ public class NyliumPathEvent implements UseBlockCallback {
         if (NetherExp.getConfig().blocks.pathBlockConfigs.enable_nylium_path_blocks && itemStack.isIn(ItemTags.SHOVELS) && upState.isAir()) {
             if (state.isOf(Blocks.CRIMSON_NYLIUM)) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos(), ModBlocks.CRIMSON_NYLIUM_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos(), JNEBlocks.CRIMSON_NYLIUM_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
                 }
@@ -35,15 +35,15 @@ public class NyliumPathEvent implements UseBlockCallback {
             }
             if (state.isOf(Blocks.WARPED_NYLIUM)) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos(), ModBlocks.WARPED_NYLIUM_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos(), JNEBlocks.WARPED_NYLIUM_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
                 }
                 bl = true;
             }
-            if (state.isIn(ModTags.Blocks.UMBRAL_NYLIUM) && NetherExp.checkModCompatCinderscapes()) {
+            if (state.isIn(JNETags.Blocks.UMBRAL_NYLIUM) && NetherExp.checkModCompatCinderscapes()) {
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(hitResult.getBlockPos(), ModBlocks.UMBRAL_NYLIUM_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
+                world.setBlockState(hitResult.getBlockPos(), JNEBlocks.UMBRAL_NYLIUM_PATH.getDefaultState(), Block.NOTIFY_LISTENERS);
                 if (!player.isCreative()) {
                     itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
                 }
