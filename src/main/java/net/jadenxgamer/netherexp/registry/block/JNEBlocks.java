@@ -213,11 +213,41 @@ public class JNEBlocks {
             new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.POLISHED_BASALT_BRICKS).sounds(JNESoundEvents.BASALT_BRICKS)));
 
     public static final Block POLISHED_BASALT_BRICK_STAIRS = registerBlock("polished_basalt_brick_stairs",
-            new JNEStairsBlock(Blocks.POLISHED_BASALT.getDefaultState(),
+            new JNEStairsBlock(JNEBlocks.POLISHED_BASALT_BRICKS.getDefaultState(),
             FabricBlockSettings.copyOf(JNEBlocks.POLISHED_BASALT_BRICKS).sounds(JNESoundEvents.BASALT_BRICKS)));
 
     public static final Block POLISHED_BASALT_BRICK_WALL = registerBlock("polished_basalt_brick_wall",
             new WallBlock(FabricBlockSettings.copyOf(JNEBlocks.POLISHED_BASALT_BRICKS).sounds(JNESoundEvents.BASALT_BRICKS)));
+
+    // Netherite Block
+
+    public static final Block NETHERITE_PLATED_BLOCK = registerFireProofBlock("netherite_plated_block",
+            new Block(FabricBlockSettings.of().mapColor(MapColor.BLACK).strength(1.0f, 1200.0f).requiresTool().sounds(BlockSoundGroup.NETHERITE)));
+
+    public static final Block CUT_NETHERITE_BLOCK = registerFireProofBlock("cut_netherite_block",
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+
+    public static final Block CUT_NETHERITE_SLAB = registerFireProofBlock("cut_netherite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+
+    public static final Block CUT_NETHERITE_STAIRS = registerFireProofBlock("cut_netherite_stairs",
+            new JNEStairsBlock(JNEBlocks.CUT_NETHERITE_BLOCK.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+
+    // Rusty Netherite Block
+
+    public static final Block RUSTY_NETHERITE_PLATED_BLOCK = registerFireProofBlock("rusty_netherite_plated_block",
+            new Block(FabricBlockSettings.of().mapColor(MapColor.BLACK).strength(1.0f, 1200.0f).requiresTool().sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+
+    public static final Block RUSTY_CUT_NETHERITE_BLOCK = registerFireProofBlock("rusty_cut_netherite_block",
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+
+    public static final Block RUSTY_CUT_NETHERITE_SLAB = registerFireProofBlock("rusty_cut_netherite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+
+    public static final Block RUSTY_CUT_NETHERITE_STAIRS = registerFireProofBlock("rusty_cut_netherite_stairs",
+            new JNEStairsBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.getDefaultState(),
+                    FabricBlockSettings.copyOf(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
 
     // Enigma Block
 
@@ -828,6 +858,20 @@ public class JNEBlocks {
     private static Item registerBlockItem(String name, Block block) {
         Item item = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name),
                 new BlockItem(block, new FabricItemSettings()));
+        return item;
+    }
+
+    // Registers a Block with a Fire-proof Item
+    @SuppressWarnings("all")
+    private static Block registerFireProofBlock(String name, Block block) {
+        registerFireProofBlockItem(name, block);
+        return Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, name), block);
+    }
+
+    @SuppressWarnings("all")
+    private static Item registerFireProofBlockItem(String name, Block block) {
+        Item item = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, name),
+                new BlockItem(block, new FabricItemSettings().fireproof()));
         return item;
     }
 

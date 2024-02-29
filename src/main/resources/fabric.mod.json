@@ -42,7 +42,7 @@
       "net.jadenxgamer.netherexp.NetherExpClient"
     ],
     "terrablender": [
-      "net.jadenxgamer.netherexp.registry.worldgen.biome.NetherExpTerraBlender"
+      "net.jadenxgamer.netherexp.registry.worldgen.biome.TerraBlenderIntegration"
     ],
     "modmenu": [
       "net.jadenxgamer.netherexp.registry.config.ModMenuIntegration"

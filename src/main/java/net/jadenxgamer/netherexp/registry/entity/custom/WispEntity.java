@@ -4,6 +4,7 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.EctoSoulSandBlock;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
+import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityGroup;
@@ -349,5 +350,15 @@ implements GeoEntity, Flutterer, Bottleable {
         public void stop() {
             super.stop();
         }
+    }
+
+    ////////////
+    // SOUNDS //
+    ////////////
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JNESoundEvents.ENTITY_WISP_AMBIENT;
     }
 }

@@ -6,41 +6,42 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.*;
 import net.minecraft.potion.Potions;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class JNEBrewingRecipeRegistry {
-    private static final List<Triple<Triple<BrewingIngredient, NbtCompound, Integer>, BrewingIngredient, Triple<ItemStack, NbtCompound, Integer>>> ANTIDOTE_RECIPES = new ArrayList<>();
+    private static final List<Triple<Pair<BrewingIngredient, NbtCompound>, BrewingIngredient, Pair<ItemStack, NbtCompound>>> ANTIDOTE_RECIPES = new ArrayList<>();
 
     static {
         NbtCompound awkward = new NbtCompound();
-        awkward.putString("AntidoteEffects", "netherexp:empty");
-        ANTIDOTE_RECIPES.add(convert(Triple.of(new BrewingIngredientPotion(Potions.WATER), null, 0), (new BrewingIngredientItem(JNEItems.WARPED_WART)), JNEItems.AWKWARD_ANTIDOTE, awkward, 0));
+        awkward.putString("AntidoteEffects", "minecraft:empty");
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientPotion(Potions.WATER), null), (new BrewingIngredientItem(JNEItems.WARPED_WART)), JNEItems.AWKWARD_ANTIDOTE, awkward));
         NbtCompound inactiveSpeed = new NbtCompound();
-        awkward.putString("AntidoteEffects", "netherexp:speed");
-        awkward.putBoolean("Inactive", true);
-        ANTIDOTE_RECIPES.add(convert(Triple.of(new BrewingIngredientItem(JNEItems.AWKWARD_ANTIDOTE), awkward, 0), (new BrewingIngredientItem(Items.HONEYCOMB)), JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE, inactiveSpeed, 0));
+        inactiveSpeed.putString("AntidoteEffects", "minecraft:speed");
+        inactiveSpeed.putBoolean("Inactive", true);
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.AWKWARD_ANTIDOTE), awkward), (new BrewingIngredientItem(Items.HONEYCOMB)), JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE, inactiveSpeed));
         NbtCompound speed = new NbtCompound();
-        awkward.putString("AntidoteEffects", "netherexp:speed");
-        ANTIDOTE_RECIPES.add(convert(Triple.of(new BrewingIngredientItem(JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE), inactiveSpeed, 0), (new BrewingIngredientPotion(Potions.SWIFTNESS)), JNEItems.SWIFTNESS_ANTIDOTE, speed, 0));
-        ANTIDOTE_RECIPES.add(convert(Triple.of(new BrewingIngredientItem(JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE), inactiveSpeed, 0), (new BrewingIngredientPotion(Potions.LONG_SWIFTNESS)), JNEItems.SWIFTNESS_ANTIDOTE, speed, 0));
-        ANTIDOTE_RECIPES.add(convert(Triple.of(new BrewingIngredientItem(JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE), inactiveSpeed, 0), (new BrewingIngredientPotion(Potions.STRONG_SWIFTNESS)), JNEItems.SWIFTNESS_ANTIDOTE, speed, 0));
+        speed.putString("AntidoteEffects", "minecraft:speed");
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE), inactiveSpeed), (new BrewingIngredientPotion(Potions.SWIFTNESS)), JNEItems.SWIFTNESS_ANTIDOTE, speed));
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE), inactiveSpeed), (new BrewingIngredientPotion(Potions.LONG_SWIFTNESS)), JNEItems.SWIFTNESS_ANTIDOTE, speed));
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE), inactiveSpeed), (new BrewingIngredientPotion(Potions.STRONG_SWIFTNESS)), JNEItems.SWIFTNESS_ANTIDOTE, speed));
     }
 
-    public static List<Triple<Triple<BrewingIngredient, NbtCompound, Integer>, BrewingIngredient, Triple<ItemStack, NbtCompound, Integer>>> getRecipes() {
+    public static List<Triple<Pair<BrewingIngredient, NbtCompound>, BrewingIngredient, Pair<ItemStack, NbtCompound>>> getRecipes() {
         return ANTIDOTE_RECIPES;
     }
 
-    private static Triple<Triple<BrewingIngredient, NbtCompound, Integer>, BrewingIngredient, Triple<ItemStack, NbtCompound, Integer>> convert(Triple<BrewingIngredient, NbtCompound, Integer> input, BrewingIngredient ingredient, Item output, NbtCompound nbt, int nbtFlag) {
+    private static Triple<Pair<BrewingIngredient, NbtCompound>, BrewingIngredient, Pair<ItemStack, NbtCompound>> convert(Pair<BrewingIngredient, NbtCompound> input, BrewingIngredient ingredient, Item output, NbtCompound nbt) {
         ItemStack stack = output.getDefaultStack();
         if (nbt != null) {
             stack.setNbt(nbt);
         }
         return new Triple<>() {
             @Override
-            public Triple<BrewingIngredient, NbtCompound, Integer> getLeft() {
+            public Pair<BrewingIngredient, NbtCompound> getLeft() {
                 return input;
             }
 
@@ -50,8 +51,8 @@ public class JNEBrewingRecipeRegistry {
             }
 
             @Override
-            public Triple<ItemStack, NbtCompound, Integer> getRight() {
-                return Triple.of(stack, nbt, nbtFlag);
+            public Pair<ItemStack, NbtCompound> getRight() {
+                return Pair.of(stack, nbt);
             }
         };
     }

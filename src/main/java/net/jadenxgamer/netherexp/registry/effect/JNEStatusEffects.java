@@ -1,6 +1,9 @@
 package net.jadenxgamer.netherexp.registry.effect;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.effect.custom.FogSightEffect;
+import net.jadenxgamer.netherexp.registry.effect.custom.ImmunityEffect;
+import net.jadenxgamer.netherexp.registry.effect.custom.UnboundedSpeed;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffects;

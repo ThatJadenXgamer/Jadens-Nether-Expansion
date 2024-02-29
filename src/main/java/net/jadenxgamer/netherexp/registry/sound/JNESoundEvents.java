@@ -149,6 +149,8 @@ public class JNESoundEvents {
     public static SoundEvent ENTITY_WARPHOPPER_DEATH = registerSoundEvent("entity.warphopper.death");
     public static SoundEvent ENTITY_WARPHOPPER_CLOAK = registerSoundEvent("entity.warphopper.cloak");
 
+    public static SoundEvent ENTITY_WISP_AMBIENT = registerSoundEvent("entity.wisp.ambient");
+
     public static SoundEvent ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvent("entity.player.hurt_igneous_thorns");
     public static SoundEvent ENTITY_PLAYER_HURT_SUFFOCATION = registerSoundEvent("entity.player.hurt_suffocation");
 

@@ -1029,6 +1029,15 @@
       "netherexp:mob/warphopper/cloak"
     ]
   },
+  "entity.wisp.ambient": {
+    "subtitle": "subtitles.entity.wisp.ambient",
+    "sounds": [
+      "netherexp:mob/wisp/idle1",
+      "netherexp:mob/wisp/idle2",
+      "netherexp:mob/wisp/idle3",
+      "netherexp:mob/wisp/idle4"
+    ]
+  },
   "entity.player.hurt_igneous_thorns": {
     "subtitle": "subtitles.entity.player.hurt",
     "sounds": [

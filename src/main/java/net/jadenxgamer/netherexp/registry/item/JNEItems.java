@@ -97,6 +97,12 @@ public class JNEItems {
     public static final Item MIST_CHARGE = registerItem("mist_charge",
             new MistChargeItem(new FabricItemSettings().maxCount(NetherExp.getConfig().items.mistChargeConfigs.mist_charge_stack_size)));
 
+    public static final Item STRIDITE = registerItem("stridite",
+            new Item(new FabricItemSettings().fireproof()));
+
+    public static final Item NETHERITE_PLATING = registerItem("netherite_plating",
+            new Item(new FabricItemSettings().fireproof()));
+
     public static final Item NECRO_SHARD = registerItem("necro_shard",
             new Item(new FabricItemSettings()));
 

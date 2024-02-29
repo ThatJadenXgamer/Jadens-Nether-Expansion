@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#N#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blackstone"
+    },
+    "N": {
+      "item": "netherexp:netherite_plating"
+    }
+  },
+  "result": {
+    "item": "netherexp:netherite_plated_block",
+    "count": 8
+  }
+}

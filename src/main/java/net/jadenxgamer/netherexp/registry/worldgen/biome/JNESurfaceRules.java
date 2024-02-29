@@ -2,12 +2,9 @@ package net.jadenxgamer.netherexp.registry.worldgen.biome;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.math.VerticalSurfaceType;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 
-public class ModSurfaceRules
+public class JNESurfaceRules
 {
     private static final MaterialRules.MaterialRule NETHERRACK = makeStateRule(Blocks.NETHERRACK);
     private static final MaterialRules.MaterialRule SOUL_SAND = makeStateRule(Blocks.SOUL_SAND);

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cut_netherite_stairs",
+  "key": {
+    "#": {
+      "item": "netherexp:rusty_cut_netherite_block"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "netherexp:rusty_cut_netherite_stairs"
+  }
+}

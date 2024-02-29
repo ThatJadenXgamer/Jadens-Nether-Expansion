@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.effect;
+package net.jadenxgamer.netherexp.registry.effect.custom;
 
 import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.entity.LivingEntity;
@@ -9,7 +9,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 public class ImmunityEffect extends StatusEffect {
     private final StatusEffect statusEffect;
 
-    protected ImmunityEffect(StatusEffectCategory category, int color, StatusEffect statusEffect) {
+    public ImmunityEffect(StatusEffectCategory category, int color, StatusEffect statusEffect) {
         super(category, color);
         this.statusEffect = statusEffect;
     }

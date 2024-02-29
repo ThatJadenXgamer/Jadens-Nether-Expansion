@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GS",
+    "SN"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:stridite"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    }
+  },
+  "result": {
+    "item": "netherexp:netherite_plating",
+    "count": 64
+  }
+}

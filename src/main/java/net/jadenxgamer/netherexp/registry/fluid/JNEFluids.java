@@ -30,7 +30,7 @@ public class JNEFluids {
         FLOWING_ECTOPLASM = Registry.register(Registries.FLUID, new Identifier(NetherExp.MOD_ID, "flowing_ectoplasm"), new EctoplasmFluid.Flowing());
 
         ECTOPLASM_BLOCK = Registry.register(Registries.BLOCK, new Identifier(NetherExp.MOD_ID, "ectoplasm"),
-                new FluidBlock(JNEFluids.ECTOPLASM, FabricBlockSettings.of().mapColor(MapColor.LIGHT_BLUE).replaceable().noCollision().strength(100.0F).pistonBehavior(PistonBehavior.DESTROY).dropsNothing().luminance((state) -> 15).liquid().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
+                new EctoplasmBlock(JNEFluids.ECTOPLASM, FabricBlockSettings.of().mapColor(MapColor.LIGHT_BLUE).replaceable().noCollision().strength(100.0F).pistonBehavior(PistonBehavior.DESTROY).dropsNothing().luminance((state) -> 15).liquid().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
 
         ECTOPLASM_BUCKET = Registry.register(Registries.ITEM, new Identifier(NetherExp.MOD_ID, "ectoplasm_bucket"), new EctoplasmBucketItem(JNEFluids.ECTOPLASM,
                 new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));

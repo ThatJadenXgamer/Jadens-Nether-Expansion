@@ -143,7 +143,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
         int a = random.nextInt(3) + 1;
         if (i == 0) {
             for (int d = 0; d < a; ++d) {
-                this.dropItem(Items.NETHERITE_SCRAP);
+                this.dropItem(JNEItems.STRIDITE);
             }
         }
     }
