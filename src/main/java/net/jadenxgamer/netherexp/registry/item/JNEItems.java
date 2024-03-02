@@ -3,14 +3,11 @@ package net.jadenxgamer.netherexp.registry.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -64,14 +61,8 @@ public class JNEItems {
     public static final Item FRIGHTSPORES = registerItem("frightspores",
             new Item(new FabricItemSettings()));
 
-    public static final Item AWKWARD_ANTIDOTE = registerItem("awkward_antidote",
-            new AntidoteItem(new FabricItemSettings().maxCount(1), null, false));
-
-    public static final Item INACTIVE_SWIFTNESS_ANTIDOTE = registerItem("inactive_swiftness_antidote",
-            new AntidoteItem(new FabricItemSettings().maxCount(1), new StatusEffectInstance(StatusEffects.SPEED, 3600), true));
-
-    public static final Item SWIFTNESS_ANTIDOTE = registerItem("swiftness_antidote",
-            new AntidoteItem(new FabricItemSettings().maxCount(1), new StatusEffectInstance(JNEStatusEffects.SPEED_IMMUNITY, 3600),false));
+    public static final Item ANTIDOTE = registerItem("antidote",
+            new AntidoteItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item GLOWCHEESE = registerItem("glowcheese",
             new Item(new FabricItemSettings().food(JNEFoodComponents.GLOWCHEESE)));

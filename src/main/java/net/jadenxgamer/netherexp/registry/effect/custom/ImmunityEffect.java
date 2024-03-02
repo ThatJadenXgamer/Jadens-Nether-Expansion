@@ -22,7 +22,7 @@ public class ImmunityEffect extends StatusEffect {
             entity.playSound(JNESoundEvents.ANTIDOTE_NEGATE, 1, 1);
             entity.removeStatusEffect(statusEffect);
             entity.removeStatusEffect(this);
-            entity.addStatusEffect(new StatusEffectInstance(this, (duration - 400), 0));
+            entity.addStatusEffect(new StatusEffectInstance(this, (duration - 600), 0));
         }
     }
 

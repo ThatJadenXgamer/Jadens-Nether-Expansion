@@ -225,7 +225,7 @@ public class JNEBlocks {
             new Block(FabricBlockSettings.of().mapColor(MapColor.BLACK).strength(1.0f, 1200.0f).requiresTool().sounds(BlockSoundGroup.NETHERITE)));
 
     public static final Block CUT_NETHERITE_BLOCK = registerFireProofBlock("cut_netherite_block",
-            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
 
     public static final Block CUT_NETHERITE_SLAB = registerFireProofBlock("cut_netherite_slab",
             new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
@@ -233,6 +233,12 @@ public class JNEBlocks {
     public static final Block CUT_NETHERITE_STAIRS = registerFireProofBlock("cut_netherite_stairs",
             new JNEStairsBlock(JNEBlocks.CUT_NETHERITE_BLOCK.getDefaultState(),
                     FabricBlockSettings.copyOf(JNEBlocks.CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+
+    public static final Block CUT_NETHERITE_PILLAR = registerFireProofBlock("cut_netherite_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+
+    public static final Block NETHERITE_GRATE = registerFireProofBlock("netherite_grate",
+            new LiquidloggedGrateBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
 
     // Rusty Netherite Block
 
@@ -248,6 +254,13 @@ public class JNEBlocks {
     public static final Block RUSTY_CUT_NETHERITE_STAIRS = registerFireProofBlock("rusty_cut_netherite_stairs",
             new JNEStairsBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.getDefaultState(),
                     FabricBlockSettings.copyOf(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+
+    public static final Block RUSTY_CUT_NETHERITE_PILLAR = registerFireProofBlock("rusty_cut_netherite_pillar",
+            new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+
+    public static final Block RUSTY_NETHERITE_GRATE = registerFireProofBlock("rusty_netherite_grate",
+            new LiquidloggedGrateBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+
 
     // Enigma Block
 

@@ -33,7 +33,7 @@ public class BrewingRecipeHelper {
         for (Triple<Pair<BrewingIngredient, NbtCompound>, BrewingIngredient, Pair<ItemStack, NbtCompound>> recipe : recipes) {
             Pair<BrewingIngredient, NbtCompound> recipeInput = recipe.getLeft();
             if (recipeInput.getLeft().matches(input)) {
-                // Check if the NBT of input matches the NBT of the recipe
+                // Grabs the NBT Tags from Input and Recipe's Input to check afterwards
                 NbtCompound inputNbt = input.getOrCreateNbt();
                 NbtCompound recipeNbt = recipeInput.getRight();
                 if (compareNbt(inputNbt, recipeNbt)) {
@@ -52,15 +52,14 @@ public class BrewingRecipeHelper {
     }
 
     private static boolean compareNbt(NbtCompound inputNbt, NbtCompound recipeNbt) {
-        // Check if both tags are null
-        if (inputNbt == null && recipeNbt == null) {
+        /*
+        * Checks if the recipe's NBT is null
+        * which means we aren't checking for NBT, so it'll pass true
+        */
+        if (recipeNbt == null) {
             return true;
         }
-        // Check if one of the tags is null
-        if (inputNbt == null || recipeNbt == null) {
-            return false;
-        }
-        // Compare the NBT tags
+        // Compares the NBT tags
         return inputNbt.equals(recipeNbt);
     }
 }

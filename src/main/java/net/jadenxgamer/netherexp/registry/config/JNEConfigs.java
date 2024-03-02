@@ -12,10 +12,7 @@ import net.jadenxgamer.netherexp.registry.config.other.gamemechanics.SoulSpeedCo
 import net.jadenxgamer.netherexp.registry.config.other.items.MistChargeConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.modcompat.CinderscapesConfigs;
 import net.jadenxgamer.netherexp.registry.config.other.sounds.BlockSoundsConfigs;
-import net.jadenxgamer.netherexp.registry.config.other.worldgen.CrimsonForestConfigs;
-import net.jadenxgamer.netherexp.registry.config.other.worldgen.NetherWastesConfigs;
-import net.jadenxgamer.netherexp.registry.config.other.worldgen.SoulSandValleyConfigs;
-import net.jadenxgamer.netherexp.registry.config.other.worldgen.WarpedForestConfigs;
+import net.jadenxgamer.netherexp.registry.config.other.worldgen.*;
 
 @Config(name = NetherExp.MOD_ID)
 @Config.Gui.Background("netherexp:textures/block/pyrite_nether_bricks_left.png")
@@ -153,6 +150,10 @@ public class JNEConfigs implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip
         public CrimsonForestConfigs crimsonForestConfigs = new CrimsonForestConfigs();
+
+        @ConfigEntry.Gui.CollapsibleObject()
+        @ConfigEntry.Gui.Tooltip
+        public BasaltDeltasConfigs basaltDeltasConfigs = new BasaltDeltasConfigs();
 
         @ConfigEntry.Gui.CollapsibleObject()
         @ConfigEntry.Gui.Tooltip

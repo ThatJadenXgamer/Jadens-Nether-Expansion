@@ -33,15 +33,22 @@
   "item.netherexp.wisp_bottle": "Bottle of Wisp",
   "item.netherexp.magma_cube_bucket": "Bucket of Magma Cube",
   "item.netherexp.ecto_slab_bucket": "Bucket of Ecto Slab",
-  "item.netherexp.skull_on_a_stick": "Skull on a Sick",
+  "item.netherexp.skull_on_a_stick": "Skull on a Stick",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
   "item.netherexp.antidote.inactive_tooltip": "To Activate needs to be Brewed With:",
 
-  "item.netherexp.awkward_antidote": "Awkward Antidote",
-  "item.netherexp.inactive_swiftness_antidote": "Inactive Antidote for Swiftness",
-  "item.netherexp.swiftness_antidote": "Antidote for Swiftness",
+  "item.netherexp.antidote": "Antidote",
+  "item.netherexp.antidote.effect.empty": "Antidote",
+  "item.netherexp.antidote.effect.awkward": "Awkward Antidote",
+  "item.netherexp.antidote.effect.inactive_swiftness": "Inactive Antidote for Swiftness",
+  "item.netherexp.antidote.effect.inactive_slowness": "Inactive Antidote for Slowness",
+  "item.netherexp.antidote.effect.inactive_leaping": "Inactive Antidote for Leaping",
+  "item.netherexp.antidote.effect.swiftness": "Antidote for Swiftness",
+  "item.netherexp.antidote.effect.slowness": "Antidote for Slowness",
+  "item.netherexp.antidote.effect.leaping": "Antidote for Leaping",
+  "item.netherexp.antidote.effect.resistance": "Antidote for Resistance",
 
   "item.netherexp.glowcheese": "Glowcheese",
   "block.netherexp.nether_pizza": "Nether Pizza",
@@ -114,6 +121,7 @@
   "block.netherexp.polished_basalt_brick_wall": "Polished Basalt Brick Wall",
 
   "block.netherexp.netherite_plated_block": "Netherite Plated Block",
+  "block.netherexp.netherite_grate": "Netherite Grate",
   "block.netherexp.cut_netherite_block": "Cut Netherite Block",
   "block.netherexp.cut_netherite_slab": "Cut Netherite Slab",
   "block.netherexp.cut_netherite_stairs": "Cut Netherite Stairs",
@@ -121,6 +129,7 @@
   "block.netherexp.netherite_bars": "Netherite Bars",
 
   "block.netherexp.rusty_netherite_plated_block": "Rusty Netherite Plated Block",
+  "block.netherexp.rusty_netherite_grate": "Rusty Netherite Grate",
   "block.netherexp.rusty_cut_netherite_block": "Rusty Cut Netherite Block",
   "block.netherexp.rusty_cut_netherite_slab": "Rusty Cut Netherite Slab",
   "block.netherexp.rusty_cut_netherite_stairs": "Rusty Cut Netherite Stairs",
@@ -393,6 +402,9 @@
   "effect.netherexp.hallucination": "Hallucination",
 
   "effect.netherexp.speed_immunity": "Speed Immunity",
+  "effect.netherexp.slowness_immunity": "Slowness Immunity",
+  "effect.netherexp.jump_boost_immunity": "Jump Boost Immunity",
+  "effect.netherexp.resistance_immunity": "Resistance Immunity",
 
   "text.autoconfig.netherexp.title": "Jaden's Nether Expansion - Settings",
 
@@ -580,6 +592,11 @@
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_sporeshroom.@Tooltip": "Crimson Sporeshrooms and rarely Warped Sporeshrooms will generate on the surface",
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_weeping_ivy": "Generate Weeping Ivy",
   "text.autoconfig.netherexp.option.worldgen.crimsonForestConfigs.generate_weeping_ivy.@Tooltip": "Patches of Weeping Ivy can generate on the ceiling",
+
+  "text.autoconfig.netherexp.option.worldgen.basaltDeltasConfigs": "Basalt Deltas Settings",
+  "text.autoconfig.netherexp.option.worldgen.basaltDeltasConfigs.@Tooltip": "Change any Basalt Deltas world generation",
+  "text.autoconfig.netherexp.option.modcompat.basaltDeltasConfigs.generate_geyser": "Generate Geyser",
+  "text.autoconfig.netherexp.option.modcompat.basaltDeltasConfigs.generate_geyser.@Tooltip": "Basaltic Geysers will generate on the surface",
 
   "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs": "Nether Wastes Settings",
   "text.autoconfig.netherexp.option.worldgen.netherWastesConfigs.@Tooltip": "Change any Nether Wastes world generation",

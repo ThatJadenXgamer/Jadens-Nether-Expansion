@@ -99,10 +99,12 @@ public class JNEItemGroup {
                         entries.add(JNEBlocks.POLISHED_BASALT_BRICK_SLAB);
                         entries.add(JNEBlocks.POLISHED_BASALT_BRICK_WALL);
 
-                        entries.add(JNEBlocks.ENIGMA_CROWN);
-                        entries.add(JNEBlocks.ENIGMA_SHELF);
-                        entries.add(JNEBlocks.ENIGMA_FLESH);
-                        entries.add(JNEBlocks.STRANGE_ENIGMA_FLESH);
+                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
+                            entries.add(JNEBlocks.ENIGMA_CROWN);
+                            entries.add(JNEBlocks.ENIGMA_SHELF);
+                            entries.add(JNEBlocks.ENIGMA_FLESH);
+                            entries.add(JNEBlocks.STRANGE_ENIGMA_FLESH);
+                        }
 
                         entries.add(JNEBlocks.CLARET_STEM);
                         entries.add(JNEBlocks.CLARET_HYPHAE);
@@ -162,19 +164,17 @@ public class JNEItemGroup {
                         entries.add(Blocks.SMOOTH_QUARTZ_SLAB);
                         entries.add(JNEBlocks.SMOOTH_QUARTZ_WALL);
 
-                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
-                            entries.add(JNEBlocks.SILICA_SAND);
-                            entries.add(JNEBlocks.SILICA_SANDSTONE);
-                            entries.add(JNEBlocks.SILICA_SANDSTONE_STAIRS);
-                            entries.add(JNEBlocks.SILICA_SANDSTONE_SLAB);
-                            entries.add(JNEBlocks.SILICA_SANDSTONE_WALL);
-                            entries.add(JNEBlocks.CUT_SILICA_SANDSTONE);
-                            entries.add(JNEBlocks.CUT_SILICA_SANDSTONE_SLAB);
-                            entries.add(JNEBlocks.CHISELED_SILICA_SANDSTONE);
-                            entries.add(JNEBlocks.SMOOTH_SILICA_SANDSTONE);
-                            entries.add(JNEBlocks.SMOOTH_SILICA_SANDSTONE_STAIRS);
-                            entries.add(JNEBlocks.SMOOTH_SILICA_SANDSTONE_SLAB);
-                        }
+                        entries.add(JNEBlocks.SILICA_SAND);
+                        entries.add(JNEBlocks.SILICA_SANDSTONE);
+                        entries.add(JNEBlocks.SILICA_SANDSTONE_STAIRS);
+                        entries.add(JNEBlocks.SILICA_SANDSTONE_SLAB);
+                        entries.add(JNEBlocks.SILICA_SANDSTONE_WALL);
+                        entries.add(JNEBlocks.CUT_SILICA_SANDSTONE);
+                        entries.add(JNEBlocks.CUT_SILICA_SANDSTONE_SLAB);
+                        entries.add(JNEBlocks.CHISELED_SILICA_SANDSTONE);
+                        entries.add(JNEBlocks.SMOOTH_SILICA_SANDSTONE);
+                        entries.add(JNEBlocks.SMOOTH_SILICA_SANDSTONE_STAIRS);
+                        entries.add(JNEBlocks.SMOOTH_SILICA_SANDSTONE_SLAB);
 
                         entries.add(Blocks.NETHER_BRICKS);
                         entries.add(Blocks.NETHER_BRICK_STAIRS);
@@ -244,6 +244,8 @@ public class JNEItemGroup {
                         entries.add(JNEItems.NETHER_PIZZA);
                         entries.add(JNEItems.NETHER_PIZZA_SLICE);
 
+                        entries.add(Blocks.CRIMSON_NYLIUM);
+                        entries.add(JNEBlocks.CRIMSON_NYLIUM_PATH);
                         entries.add(Items.NETHER_WART);
                         entries.add(Blocks.NETHER_WART_BLOCK);
                         entries.add(JNEBlocks.NETHER_WART_BEARD);
@@ -252,6 +254,8 @@ public class JNEItemGroup {
                         entries.add(JNEBlocks.WEEPING_IVY);
                         entries.add(JNEBlocks.CRIMSON_SPROUTS);
 
+                        entries.add(Blocks.WARPED_NYLIUM);
+                        entries.add(JNEBlocks.WARPED_NYLIUM_PATH);
                         entries.add(JNEItems.WARPED_WART);
                         entries.add(Blocks.WARPED_WART_BLOCK);
                         entries.add(JNEBlocks.WARPED_WART_BEARD);
@@ -261,25 +265,16 @@ public class JNEItemGroup {
                         entries.add(Blocks.NETHER_SPROUTS);
 
                         if (NetherExp.checkModCompatCinderscapes()) {
+                            entries.add(JNEBlocks.UMBRAL_NYLIUM_PATH);
                             entries.add(JNEBlocks.UMBRAL_WART_BEARD);
                             entries.add(JNEBlocks.VIOLET_SCALE_FUNGUS);
                             entries.add(JNEBlocks.TWILIGHT_VINES);
                             entries.add(JNEBlocks.TWILIGHT_IVY);
                         }
 
-                        entries.add(Blocks.CRIMSON_NYLIUM);
-                        entries.add(JNEBlocks.CRIMSON_NYLIUM_PATH);
-                        entries.add(Blocks.WARPED_NYLIUM);
-                        entries.add(JNEBlocks.WARPED_NYLIUM_PATH);
-                        if (NetherExp.checkModCompatCinderscapes()) {
-                            entries.add(JNEBlocks.UMBRAL_NYLIUM_PATH);
-                        }
-
                         entries.add(JNEItems.WISP_BOTTLE);
-                        entries.add(JNEItems.WISP_SPAWN_EGG);
-                        entries.add(JNEItems.APPARITION_SPAWN_EGG);
 
-                        entries.add(JNEItems.GRASP_SPAWN_EGG);
+
                         entries.add(JNEItems.FOGGY_ESSENCE);
                         entries.add(JNEItems.MIST_CHARGE);
 
@@ -289,7 +284,6 @@ public class JNEItemGroup {
                         if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(JNEItems.WARPHOPPER_FUR);
                             entries.add(JNEItems.MUSIC_DISC_CRICKET);
-                            entries.add(JNEItems.WARPHOPPER_SPAWN_EGG);
                         }
 
                         entries.add(JNEBlocks.CRIMSON_SPORESHROOM);
@@ -354,6 +348,13 @@ public class JNEItemGroup {
                         entries.add(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS);
 
                         entries.add(JNEItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE);
+
+                        entries.add(JNEItems.WISP_SPAWN_EGG);
+                        entries.add(JNEItems.APPARITION_SPAWN_EGG);
+                        entries.add(JNEItems.GRASP_SPAWN_EGG);
+                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
+                            entries.add(JNEItems.WARPHOPPER_SPAWN_EGG);
+                        }
                     }).build());
 
     public static void registerItemGroup() {

@@ -24,6 +24,15 @@ public class JNEStatusEffects {
     public static final StatusEffect SPEED_IMMUNITY = registerStatusEffect("speed_immunity",
             new ImmunityEffect(StatusEffectCategory.HARMFUL, 3402751, StatusEffects.SPEED));
 
+    public static final StatusEffect SLOWNESS_IMMUNITY = registerStatusEffect("slowness_immunity",
+            new ImmunityEffect(StatusEffectCategory.BENEFICIAL, 9154528, StatusEffects.SLOWNESS));
+
+    public static final StatusEffect JUMP_BOOST_IMMUNITY = registerStatusEffect("jump_boost_immunity",
+            new ImmunityEffect(StatusEffectCategory.HARMFUL, 16646020, StatusEffects.JUMP_BOOST));
+
+    public static final StatusEffect RESISTANCE_IMMUNITY = registerStatusEffect("resistance_immunity",
+            new ImmunityEffect(StatusEffectCategory.HARMFUL, 9520880, StatusEffects.RESISTANCE));
+
     private static StatusEffect registerStatusEffect(String name, StatusEffect entry) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(NetherExp.MOD_ID, name), entry);
     }

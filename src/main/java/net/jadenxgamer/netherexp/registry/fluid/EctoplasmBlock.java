@@ -60,9 +60,11 @@ public class EctoplasmBlock extends FluidBlock {
         }
         FREEZES = Util.make(Maps.newHashMap(), (map) -> {
             map.put(JNEBlocks.NETHERITE_PLATED_BLOCK, JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK);
+            map.put(JNEBlocks.NETHERITE_GRATE, JNEBlocks.RUSTY_NETHERITE_GRATE);
             map.put(JNEBlocks.CUT_NETHERITE_BLOCK, JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK);
             map.put(JNEBlocks.CUT_NETHERITE_SLAB, JNEBlocks.RUSTY_CUT_NETHERITE_SLAB);
             map.put(JNEBlocks.CUT_NETHERITE_STAIRS, JNEBlocks.RUSTY_CUT_NETHERITE_STAIRS);
+            map.put(JNEBlocks.CUT_NETHERITE_PILLAR, JNEBlocks.RUSTY_CUT_NETHERITE_PILLAR);
         });
     }
 }

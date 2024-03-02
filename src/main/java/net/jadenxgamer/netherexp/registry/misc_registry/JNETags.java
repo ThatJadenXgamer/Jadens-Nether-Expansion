@@ -157,9 +157,6 @@ public class JNETags {
         // Items in this tag will lure Wisps towards the player
         public static final TagKey<Item> SOUL_FIRE_THAT_LURES_WISPS = createItemTag("soul_fire_that_lures_wisps");
 
-        // Items in this tag will lure Wisps towards the player
-        public static final TagKey<Item> ANTIDOTES = createItemTag("antidotes");
-
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(NetherExp.MOD_ID, name));
         }

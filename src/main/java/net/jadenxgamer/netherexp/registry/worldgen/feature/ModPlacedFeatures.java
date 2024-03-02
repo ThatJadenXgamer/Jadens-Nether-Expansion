@@ -43,6 +43,7 @@ public class ModPlacedFeatures {
     // BASALT DELTAS
 
     public static final RegistryKey<PlacedFeature> WHITE_ASH = registerKey("basalt_deltas/white_ash");
+    public static final RegistryKey<PlacedFeature> BASALTIC_GEYSER = registerKey("basalt_deltas/basaltic_geyser");
 
 
     // VENT MIRE

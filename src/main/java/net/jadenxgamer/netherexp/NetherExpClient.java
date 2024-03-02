@@ -12,6 +12,7 @@ import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.ExplosionLargeParticle;
@@ -29,6 +30,8 @@ public class NetherExpClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         // BLOCK OPACITY
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.NETHERITE_GRATE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.RUSTY_NETHERITE_GRATE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WARPED_WART, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_GLASS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.MAGMA_CREAM_BLOCK, RenderLayer.getTranslucent());
@@ -103,9 +106,7 @@ public class NetherExpClient implements ClientModInitializer {
                 JNEFluids.ECTOPLASM, JNEFluids.FLOWING_ECTOPLASM);
 
         // COLOR PROVIDERS
-        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : 3694022, JNEItems.AWKWARD_ANTIDOTE);
-        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : 7124156, JNEItems.INACTIVE_SWIFTNESS_ANTIDOTE);
-        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : 3402751, JNEItems.SWIFTNESS_ANTIDOTE);
+        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : AntidoteItem.getColor(stack), JNEItems.ANTIDOTE);
 
         // PARTICLES
         ParticleFactoryRegistry.getInstance().register(JNEParticles.ENIGMA_PARTICLE, EnigmaSporeParticle.Factory::new);
