@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:rusty_cut_netherite_block"
+    }
+  },
+  "result": {
+    "item": "netherexp:rusty_cut_netherite_pillar"
+  }
+}

@@ -103,6 +103,9 @@ public class JNETags {
 
         // Blocks in this tag will no longer slow you down if Unbounded Speed effect is applied
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks");
+
+        // Blocks in this tag will no longer slow you down if Unbounded Speed effect is applied
+        public static final TagKey<Block> NETHERITE_GRATES = createBlockTag("netherite_grates");
         
         // Crops in this tag are allowed to be planted on Soul Sand
         public static final TagKey<Block> SOUL_SAND_CROPS = createBlockTag("soul_sand_crops");

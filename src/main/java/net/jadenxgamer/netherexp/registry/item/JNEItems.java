@@ -108,6 +108,10 @@ public class JNEItems {
             new SpawnEggItem(JNEEntityType.APPARITION,4864303,699311,
                     new FabricItemSettings()));
 
+    public static final Item STAMPEDE_SPAWN_EGG = registerItem("stampede_spawn_egg",
+            new SpawnEggItem(JNEEntityType.STAMPEDE,4864303,10236982,
+                    new FabricItemSettings()));
+
     public static final Item WISP_SPAWN_EGG = registerItem("wisp_spawn_egg",
             new SpawnEggItem(JNEEntityType.WISP,6022120,699311,
                     new FabricItemSettings()));

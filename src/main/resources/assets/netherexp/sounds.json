@@ -588,7 +588,7 @@
     "subtitle": "subtitles.block.generic.hit",
     "sounds": [
       "minecraft:block/candle/step1",
-      "netherexp:block/candle/step2",
+      "minecraft:block/candle/step2",
       "minecraft:block/candle/step3",
       "minecraft:block/candle/step4",
       "minecraft:block/candle/step5"

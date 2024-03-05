@@ -5,47 +5,28 @@
       "rules": [
         {
           "location_predicate": {
-            "predicate_type": "minecraft:random_blockstate_match",
-            "block_state": {
-              "Name": "minecraft:soul_soil"
-            },
-            "probability": 0.3
-          },
-          "input_predicate": {
             "predicate_type": "minecraft:always_true"
           },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "netherexp:fossil_fuel_ore",
+            "probability": 0.5
+          },
           "output_state": {
-            "Name": "netherexp:fossil_fuel_ore"
+            "Name": "minecraft:soul_soil"
           }
         },
         {
           "location_predicate": {
-            "predicate_type": "minecraft:random_blockstate_match",
-            "block_state": {
-              "Name": "netherexp:soul_slate"
-            },
-            "probability": 0.1
-          },
-          "input_predicate": {
             "predicate_type": "minecraft:always_true"
           },
-          "output_state": {
-            "Name": "netherexp:fossil_fuel_ore"
-          }
-        },
-        {
-          "location_predicate": {
-            "predicate_type": "minecraft:random_blockstate_match",
-            "block_state": {
-              "Name": "netherexp:pale_soul_slate"
-            },
-            "probability": 0.3
-          },
           "input_predicate": {
-            "predicate_type": "minecraft:always_true"
+            "predicate_type": "minecraft:random_block_match",
+            "block": "netherexp:fossil_fuel_ore",
+            "probability": 0.01
           },
           "output_state": {
-            "Name": "netherexp:fossil_fuel_ore"
+            "Name": "netherexp:diamond_fossil_ore"
           }
         }
       ]

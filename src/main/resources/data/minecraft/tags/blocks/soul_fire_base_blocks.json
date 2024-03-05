@@ -15,6 +15,7 @@
     "netherexp:souled_geyser",
     "netherexp:black_ice",
     "netherexp:fossil_ore",
-    "netherexp:fossil_fuel_ore"
+    "netherexp:fossil_fuel_ore",
+    "netherexp:diamond_fossil_ore"
   ]
 }

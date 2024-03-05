@@ -13,6 +13,7 @@ import net.jadenxgamer.netherexp.registry.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
+import net.jadenxgamer.netherexp.registry.event.LiquidloggedBucketEvent;
 import net.jadenxgamer.netherexp.registry.event.NyliumPathEvent;
 import net.jadenxgamer.netherexp.registry.event.SoulPathEvent;
 import net.jadenxgamer.netherexp.registry.event.WartBeardGrowerEvent;
@@ -93,6 +94,7 @@ public class NetherExp implements ModInitializer {
 		UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
 		UseBlockCallback.EVENT.register(new NyliumPathEvent());
 		UseBlockCallback.EVENT.register(new SoulPathEvent());
+		UseBlockCallback.EVENT.register(new LiquidloggedBucketEvent());
 	}
 	public static JNEConfigs getConfig () {
 		return CONFIG;

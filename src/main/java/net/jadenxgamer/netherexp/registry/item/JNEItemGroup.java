@@ -36,6 +36,7 @@ public class JNEItemGroup {
 
                         entries.add(JNEBlocks.FOSSIL_ORE);
                         entries.add(JNEBlocks.FOSSIL_FUEL_ORE);
+                        entries.add(JNEBlocks.DIAMOND_FOSSIL_ORE);
                         entries.add(JNEItems.FOSSIL_FUEL);
 
                         entries.add(JNEItems.NECRO_SHARD);
@@ -98,6 +99,26 @@ public class JNEItemGroup {
                         entries.add(JNEBlocks.POLISHED_BASALT_BRICK_STAIRS);
                         entries.add(JNEBlocks.POLISHED_BASALT_BRICK_SLAB);
                         entries.add(JNEBlocks.POLISHED_BASALT_BRICK_WALL);
+
+                        entries.add(Items.NETHERITE_INGOT);
+                        entries.add(Blocks.NETHERITE_BLOCK);
+                        entries.add(JNEItems.STRIDITE);
+                        entries.add(JNEItems.NETHERITE_PLATING);
+                        entries.add(JNEBlocks.NETHERITE_PLATED_BLOCK);
+                        entries.add(JNEBlocks.NETHERITE_GRATE);
+                        entries.add(JNEBlocks.CUT_NETHERITE_BLOCK);
+                        entries.add(JNEBlocks.CUT_NETHERITE_STAIRS);
+                        entries.add(JNEBlocks.CUT_NETHERITE_SLAB);
+                        entries.add(JNEBlocks.CUT_NETHERITE_PILLAR);
+
+                        entries.add(Items.NETHERITE_SCRAP);
+                        entries.add(Blocks.ANCIENT_DEBRIS);
+                        entries.add(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK);
+                        entries.add(JNEBlocks.RUSTY_NETHERITE_GRATE);
+                        entries.add(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK);
+                        entries.add(JNEBlocks.RUSTY_CUT_NETHERITE_STAIRS);
+                        entries.add(JNEBlocks.RUSTY_CUT_NETHERITE_SLAB);
+                        entries.add(JNEBlocks.RUSTY_CUT_NETHERITE_PILLAR);
 
                         if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(JNEBlocks.ENIGMA_CROWN);
@@ -351,6 +372,7 @@ public class JNEItemGroup {
 
                         entries.add(JNEItems.WISP_SPAWN_EGG);
                         entries.add(JNEItems.APPARITION_SPAWN_EGG);
+                        entries.add(JNEItems.STAMPEDE_SPAWN_EGG);
                         entries.add(JNEItems.GRASP_SPAWN_EGG);
                         if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(JNEItems.WARPHOPPER_SPAWN_EGG);

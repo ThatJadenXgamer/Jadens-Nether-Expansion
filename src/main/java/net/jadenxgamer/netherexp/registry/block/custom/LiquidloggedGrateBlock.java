@@ -29,6 +29,13 @@ public class LiquidloggedGrateBlock extends Block implements Waterloggable {
         this.setDefaultState(this.stateManager.getDefaultState().with(LIQUIDLOGGED, Liquids.AIR));
     }
 
+    public static int getLuminance(BlockState state) {
+        if (state.get(LIQUIDLOGGED) == Liquids.LAVA || state.get(LIQUIDLOGGED) == Liquids.ECTOPLASM) {
+            return 15;
+        }
+        else return 0;
+    }
+
     @SuppressWarnings("deprecation")
     public VoxelShape getSidesShape(BlockState state, BlockView world, BlockPos pos) {
         return VoxelShapes.empty();

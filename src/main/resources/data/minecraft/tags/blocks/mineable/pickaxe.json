@@ -40,6 +40,20 @@
     "netherexp:polished_basalt_brick_stairs",
     "netherexp:polished_basalt_brick_wall",
 
+    "netherexp:netherite_plated_block",
+    "netherexp:netherite_grate",
+    "netherexp:cut_netherite_block",
+    "netherexp:cut_netherite_slab",
+    "netherexp:cut_netherite_stairs",
+    "netherexp:cut_netherite_pillar",
+
+    "netherexp:rusty_netherite_plated_block",
+    "netherexp:rusty_netherite_grate",
+    "netherexp:rusty_cut_netherite_block",
+    "netherexp:rusty_cut_netherite_slab",
+    "netherexp:rusty_cut_netherite_stairs",
+    "netherexp:rusty_cut_netherite_pillar",
+
     "netherexp:explosive_scoria",
 
     "netherexp:quartz_crystal_block",

@@ -121,6 +121,9 @@ public class JNEBlocks {
     public static final Block FOSSIL_FUEL_ORE = registerBlock("fossil_fuel_ore",
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).strength(0.6f).sounds(BlockSoundGroup.SOUL_SOIL), UniformIntProvider.create(1, 3)));
 
+    public static final Block DIAMOND_FOSSIL_ORE = registerBlock("diamond_fossil_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.BROWN).strength(0.6f).requiresTool().sounds(BlockSoundGroup.SOUL_SOIL), UniformIntProvider.create(1, 3)));
+
     // Sorrowsquash
 
     public static final Block SOUL_TORCHFLOWER = registerBlock("soul_torchflower",
@@ -238,7 +241,7 @@ public class JNEBlocks {
             new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
 
     public static final Block NETHERITE_GRATE = registerFireProofBlock("netherite_grate",
-            new LiquidloggedGrateBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+            new LiquidloggedGrateBlock(FabricBlockSettings.copyOf(JNEBlocks.NETHERITE_PLATED_BLOCK).nonOpaque().luminance(LiquidloggedGrateBlock::getLuminance).sounds(BlockSoundGroup.NETHERITE)));
 
     // Rusty Netherite Block
 
@@ -246,7 +249,7 @@ public class JNEBlocks {
             new Block(FabricBlockSettings.of().mapColor(MapColor.BLACK).strength(1.0f, 1200.0f).requiresTool().sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
 
     public static final Block RUSTY_CUT_NETHERITE_BLOCK = registerFireProofBlock("rusty_cut_netherite_block",
-            new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+            new Block(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
 
     public static final Block RUSTY_CUT_NETHERITE_SLAB = registerFireProofBlock("rusty_cut_netherite_slab",
             new SlabBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
@@ -259,7 +262,7 @@ public class JNEBlocks {
             new PillarBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
 
     public static final Block RUSTY_NETHERITE_GRATE = registerFireProofBlock("rusty_netherite_grate",
-            new LiquidloggedGrateBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
+            new LiquidloggedGrateBlock(FabricBlockSettings.copyOf(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK).nonOpaque().luminance(LiquidloggedGrateBlock::getLuminance).sounds(BlockSoundGroup.ANCIENT_DEBRIS)));
 
 
     // Enigma Block

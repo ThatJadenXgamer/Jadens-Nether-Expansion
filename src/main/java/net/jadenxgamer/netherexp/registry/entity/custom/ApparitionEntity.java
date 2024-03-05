@@ -198,7 +198,7 @@ implements GeoEntity, Angerable, Flutterer {
         World world = this.getWorld();
         WispEntity wispEntity = JNEEntityType.WISP.create(world);
         if (wispEntity != null) {
-            wispEntity.setBoredDelay(random.nextInt(1000) + 600);
+            wispEntity.setBoredDelay(10);
             wispEntity.setPosition(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);
             for (int i = 0; i < this.getStage(); i++) {
                 world.spawnEntity(wispEntity);
