@@ -18,11 +18,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ItemStackParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -48,6 +52,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     private int eating = 0;
     static final Predicate<ItemEntity> PICKABLE_DROP_FILTER = (item) -> !item.cannotPickup() && item.isAlive() && item.getStack().isOf(Items.BONE);
     private static final TrackedData<Boolean> ANGRY = DataTracker.registerData(StampedeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> EATING = DataTracker.registerData(StampedeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     public StampedeEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -72,7 +77,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0, false));
-        this.goalSelector.add(2, new WanderNearTargetGoal(this, 1.4, 32.0F));
+        this.goalSelector.add(2, new WanderNearTargetGoal(this, 1.2, 32.0F));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8, 1.0000001E-5f));
         this.goalSelector.add(3, new PickupItemGoal());
         this.goalSelector.add(2, new TemptGoal(this, 1.0, Ingredient.ofItems(JNEItems.SKULL_ON_A_STICK), false));
@@ -91,20 +96,40 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
             ItemStack itemStack = this.getEquippedStack(EquipmentSlot.MAINHAND);
             if (!itemStack.isEmpty()) {
                 ++this.eating;
+                this.playEatingAnimation();
                 this.setAngry(true);
-                int f = this.random.nextInt(2);
+                this.setEating(true);
                 if (this.eating > 100) {
                     this.equipStack(EquipmentSlot.MAINHAND, Items.AIR.getDefaultStack());
                     this.setHealth(this.getMaxHealth());
                     this.eating = 0;
                     this.setAngry(false);
-                }
-                else if (this.eating > 0 && f == 0) {
-                    this.playSound(SoundEvents.ENTITY_GENERIC_EAT, 1.0F, 1.0F);
+                    this.setEating(false);
                 }
             }
+            else this.setAngry(this.getTarget() != null);
         }
-        damageLivingEntities(this.getWorld().getOtherEntities(this, this.getBoundingBox(), EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR));
+
+        if (this.getWorld().getDifficulty() != Difficulty.PEACEFUL) {
+            damageLivingEntities(this.getWorld().getOtherEntities(this, this.getBoundingBox(), EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR));
+        }
+    }
+
+    private void playEatingAnimation() {
+        if (this.eating % 5 == 0) {
+            this.playSound(SoundEvents.ENTITY_GENERIC_EAT, 0.5F + 0.5F * (float)this.random.nextInt(2), (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+
+            for(int i = 0; i < 6; ++i) {
+                Vec3d vec3d = new Vec3d(((double)this.random.nextFloat() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, ((double)this.random.nextFloat() - 0.5) * 0.1);
+                vec3d = vec3d.rotateX(-this.getPitch() * 0.017453292F);
+                vec3d = vec3d.rotateY(-this.getYaw() * 0.017453292F);
+                double d = (double)(-this.random.nextFloat()) * 0.6 - 0.3;
+                Vec3d vec3d2 = new Vec3d(((double)this.random.nextFloat() - 0.5) * 0.8, d, 1.0 + ((double)this.random.nextFloat() - 0.5) * 0.4);
+                vec3d2 = vec3d2.rotateY(-this.bodyYaw * 0.017453292F);
+                vec3d2 = vec3d2.add(this.getX(), this.getEyeY() + 1.0, this.getZ());
+                this.getWorld().addParticle(new ItemStackParticleEffect(ParticleTypes.ITEM, this.getEquippedStack(EquipmentSlot.MAINHAND)), vec3d2.x, vec3d2.y, vec3d2.z, vec3d.x, vec3d.y + 0.05, vec3d.z);
+            }
+        }
     }
 
     private void damageLivingEntities(List<Entity> entities) {
@@ -139,12 +164,16 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     @Override
     public void onAttacking(Entity target) {
         super.onAttacking(target);
-        int i = random.nextInt(10);
-        int a = random.nextInt(3) + 1;
+        int i = random.nextInt(5);
         if (i == 0) {
-            for (int d = 0; d < a; ++d) {
-                this.dropItem(JNEItems.STRIDITE);
-            }
+            this.dropStridite();
+        }
+    }
+
+    private void dropStridite() {
+        int a = random.nextInt(3) + 1;
+        for (int d = 0; d < a; ++d) {
+            this.dropItem(JNEItems.STRIDITE);
         }
     }
 
@@ -156,6 +185,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(ANGRY, false);
+        this.dataTracker.startTracking(EATING, false);
     }
 
     public boolean isAngry() {
@@ -166,8 +196,12 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
         this.dataTracker.set(ANGRY, angry);
     }
 
-    public int getEating() {
-        return this.eating;
+    public boolean isEating() {
+        return this.dataTracker.get(EATING);
+    }
+
+    public void setEating(boolean eating) {
+        this.dataTracker.set(EATING, eating);
     }
 
     @Override
@@ -191,6 +225,7 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
     protected static final RawAnimation RUN_ANIM = RawAnimation.begin().thenLoop("animation.stampede.run");
     protected static final RawAnimation SWIMMING_ANIM = RawAnimation.begin().thenLoop("animation.stampede.swimming");
     protected static final RawAnimation EATING_ANIM = RawAnimation.begin().thenLoop("animation.stampede.eating");
+    protected static final RawAnimation CRAZED_ANIM = RawAnimation.begin().thenLoop("animation.stampede.crazed");
 
     @SuppressWarnings("all")
     private PlayState movePredicate(AnimationState event) {
@@ -211,8 +246,11 @@ public class StampedeEntity extends HostileEntity implements GeoEntity, Angerabl
 
     @SuppressWarnings("all")
     private PlayState eatPredicate(AnimationState event) {
-        if (getEating() > 0) {
+        if (isEating() && isAngry()) {
             return event.setAndContinue(EATING_ANIM);
+        }
+        else if (isAngry()) {
+            return event.setAndContinue(CRAZED_ANIM);
         }
         return PlayState.STOP;
     }
