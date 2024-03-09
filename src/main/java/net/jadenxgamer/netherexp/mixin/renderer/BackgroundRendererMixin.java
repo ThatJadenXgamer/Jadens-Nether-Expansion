@@ -47,6 +47,14 @@ public abstract class BackgroundRendererMixin{
             RenderSystem.setShaderFogColor(0.118f, 0.231f, 0.243f);
         }
         /*
+         * Adds a Fog when submerged inside Magma Cream Block
+         */
+        if (NetherExpClient.INSIDE_MAGMA_CREAM_BLOCK) {
+            RenderSystem.setShaderFogStart(2.0F);
+            RenderSystem.setShaderFogEnd(6.0F);
+            RenderSystem.setShaderFogColor(1.0f, 0.4f, 0.0f);
+        }
+        /*
          * Adds a Fog when submerged inside Ectoplasm
          */
         if (NetherExpClient.INSIDE_ECTOPLASM) {

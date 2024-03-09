@@ -211,12 +211,6 @@ public class JNETags {
 
         // Produces Suffocation Sounds
         public static final TagKey<DamageType> IS_SUFFOCATION = createDamageTypeTag("is_suffocation");
-        
-        // Classified as Grave Cloud Suffocation Damage
-        public static final TagKey<DamageType> GRAVE_CLOUD_SUFFOCATION = createDamageTypeTag("grave_cloud_suffocation");
-        
-        // Classified as Volatile Scoria Explosion Damage
-        public static final TagKey<DamageType> VOLATILE_SCORIA_EXPLOSION = createDamageTypeTag("volatile_scoria_explosion");
 
         private static TagKey<DamageType> createDamageTypeTag(String name) {
             return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(NetherExp.MOD_ID, name));

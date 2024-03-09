@@ -36,6 +36,7 @@ public class JNEParticles {
     public static final DefaultParticleType SHALE_SWIRL_POP = FabricParticleTypes.simple();
     public static final DefaultParticleType GRASP_MIST = FabricParticleTypes.simple();
     public static final DefaultParticleType WISP = FabricParticleTypes.simple();
+    public static final DefaultParticleType MAGMA_CREAM = FabricParticleTypes.simple();
 
     // MOD COMPAT
     public static final DefaultParticleType UMBRAL_SMOG = FabricParticleTypes.simple();
@@ -96,6 +97,8 @@ public class JNEParticles {
                 GRASP_MIST);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "wisp"),
                 WISP);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "magma_cream"),
+                MAGMA_CREAM);
 
         // MOD COMPAT
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(NetherExp.MOD_ID, "umbral_smog"),

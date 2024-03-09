@@ -26,6 +26,7 @@ public class NetherExpClient implements ClientModInitializer {
     // FOG RENDERERS
     public static boolean INSIDE_SOUL_GLASS = false;
     public static boolean INSIDE_ECTOPLASM = false;
+    public static boolean INSIDE_MAGMA_CREAM_BLOCK = false;
 
     @Override
     public void onInitializeClient() {
@@ -135,6 +136,7 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticles.SHALE_SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.GRASP_MIST, GraspMistParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.WISP, GlimmerParticle.LongFactory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticles.MAGMA_CREAM, RisingParticle.Factory::new);
 
         ParticleFactoryRegistry.getInstance().register(JNEParticles.UMBRAL_SMOG, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.SOULBLIGHT_SMOG, SmogParticle.Factory::new);
@@ -148,5 +150,6 @@ public class NetherExpClient implements ClientModInitializer {
         EntityRendererRegistry.register(JNEEntityType.GRASP, GraspRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE, MistChargeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE_CLOUD, EmptyEntityRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET, SoulBulletEntityRenderer::new);
     }
 }

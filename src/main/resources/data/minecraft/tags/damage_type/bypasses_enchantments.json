@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:grave_cloud_suffocation"
+    "netherexp:grave_cloud_suffocation",
+    "netherexp:soul_bullet"
   ]
 }

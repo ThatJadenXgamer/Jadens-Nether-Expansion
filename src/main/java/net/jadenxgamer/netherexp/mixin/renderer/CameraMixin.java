@@ -33,6 +33,7 @@ public abstract class CameraMixin {
         BlockState blockState = this.area.getBlockState(blockPos);
         FluidState fluidState = this.area.getFluidState(this.blockPos);
         NetherExpClient.INSIDE_SOUL_GLASS = this.ready && blockState.isOf(JNEBlocks.SOUL_GLASS);
+        NetherExpClient.INSIDE_MAGMA_CREAM_BLOCK = this.ready && blockState.isOf(JNEBlocks.MAGMA_CREAM_BLOCK);
         NetherExpClient.INSIDE_ECTOPLASM = this.ready && fluidState.isIn(JNETags.Fluids.ECTOPLASM);
     }
 }

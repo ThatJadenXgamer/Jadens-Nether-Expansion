@@ -100,6 +100,9 @@ public class JNEItems {
     public static final Item GUILLOTINE = registerItem("guillotine",
             new AxeItem(JNEToolMaterials.GUILLOTINE, 6.0F, -3.2F, new FabricItemSettings()));
 
+    public static final Item SHOTGUN_FIST = registerItem("shotgun_fist",
+            new ShotgunFistItem(new FabricItemSettings().maxCount(1).maxDamage(300)));
+
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
             new SpawnEggItem(JNEEntityType.WARPHOPPER,0x119b85,0x324149,
                     new FabricItemSettings()));

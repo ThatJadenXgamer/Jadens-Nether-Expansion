@@ -41,6 +41,7 @@ public class JNEItemGroup {
 
                         entries.add(JNEItems.NECRO_SHARD);
                         entries.add(JNEItems.GUILLOTINE);
+                        entries.add(JNEItems.SHOTGUN_FIST);
 
                         entries.add(JNEItems.WRAITHING_FLESH);
                         entries.add(JNEBlocks.SOUL_CANDLE);

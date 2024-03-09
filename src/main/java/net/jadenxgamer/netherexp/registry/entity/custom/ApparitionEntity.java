@@ -196,13 +196,12 @@ implements GeoEntity, Angerable, Flutterer {
     @Override
     public void onDeath(DamageSource damageSource) {
         World world = this.getWorld();
-        WispEntity wispEntity = JNEEntityType.WISP.create(world);
-        if (wispEntity != null) {
+        for (int i = 0; i < this.getStage(); i++) {
+            WispEntity wispEntity = JNEEntityType.WISP.create(world);
+            assert wispEntity != null;
             wispEntity.setBoredDelay(10);
             wispEntity.setPosition(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);
-            for (int i = 0; i < this.getStage(); i++) {
-                world.spawnEntity(wispEntity);
-            }
+            world.spawnEntity(wispEntity);
         }
     }
 
