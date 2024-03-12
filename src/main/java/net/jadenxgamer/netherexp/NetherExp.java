@@ -11,7 +11,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.jadenxgamer.netherexp.registry.event.LiquidloggedBucketEvent;
 import net.jadenxgamer.netherexp.registry.event.NyliumPathEvent;
@@ -62,11 +62,11 @@ public class NetherExp implements ModInitializer {
 		GeckoLib.initialize();
 
 		// ENTITY ATTRIBUTES
-		FabricDefaultAttributeRegistry.register(JNEEntityType.WARPHOPPER, WarphopperEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(JNEEntityType.STAMPEDE, StampedeEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(JNEEntityType.APPARITION, ApparitionEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(JNEEntityType.WISP, WispEntity.setAttributes());
-		FabricDefaultAttributeRegistry.register(JNEEntityType.GRASP, GraspEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityTypes.WARPHOPPER, WarphopperEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityTypes.STAMPEDE, StampedeEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityTypes.APPARITION, ApparitionEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityTypes.WISP, WispEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(JNEEntityTypes.GRASP, GraspEntity.setAttributes());
 
 		// FUELS
 		FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;

@@ -5,10 +5,12 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityTypes;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
@@ -21,6 +23,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.util.Identifier;
 
+@SuppressWarnings("deprecation")
 public class NetherExpClient implements ClientModInitializer {
 
     // FOG RENDERERS
@@ -143,13 +146,14 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticles.SOULBLIGHT_SPORE, SoulblightSporeFactory::new);
 
         // ENTITY
-        EntityRendererRegistry.register(JNEEntityType.WARPHOPPER, WarphopperRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.STAMPEDE, StampedeRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.APPARITION, ApparitionRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.WISP, WispRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.GRASP, GraspRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE, MistChargeRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE_CLOUD, EmptyEntityRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET, SoulBulletEntityRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.WARPHOPPER, WarphopperRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.STAMPEDE, StampedeRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.APPARITION, ApparitionRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.WISP, WispRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.GRASP, GraspRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.MIST_CHARGE, MistChargeRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.MIST_CHARGE_CLOUD, EmptyEntityRenderer::new);
+        EntityRendererRegistry.register(JNEEntityTypes.SOUL_BULLET, SoulBulletEntityRenderer::new);
+        BlockEntityRendererRegistry.register(JNEBlockEntityTypes.BRUSHABLE_BLOCK, JNEBrushableBlockEntityRenderer::new);
     }
 }

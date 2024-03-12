@@ -3,7 +3,7 @@ package net.jadenxgamer.netherexp.registry.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEArmorTrimPatterns;
 import net.jadenxgamer.netherexp.registry.sound.JNESoundEvents;
@@ -74,7 +74,7 @@ public class JNEItems {
             new Item(new FabricItemSettings().food(JNEFoodComponents.PIZZA_SLICE)));
 
     public static final Item WISP_BOTTLE = registerItem("wisp_bottle",
-            new EntityBottleItem(JNEEntityType.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
+            new EntityBottleItem(JNEEntityTypes.WISP, SoundEvents.ITEM_BOTTLE_EMPTY, new FabricItemSettings().maxCount(1)));
 
     public static final Item MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket",
             new EntityBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE, new FabricItemSettings().maxCount(1)));
@@ -104,23 +104,23 @@ public class JNEItems {
             new ShotgunFistItem(new FabricItemSettings().maxCount(1).maxDamage(300)));
 
     public static final Item WARPHOPPER_SPAWN_EGG = registerItem("warphopper_spawn_egg",
-            new SpawnEggItem(JNEEntityType.WARPHOPPER,0x119b85,0x324149,
+            new SpawnEggItem(JNEEntityTypes.WARPHOPPER,0x119b85,0x324149,
                     new FabricItemSettings()));
 
     public static final Item APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg",
-            new SpawnEggItem(JNEEntityType.APPARITION,4864303,699311,
+            new SpawnEggItem(JNEEntityTypes.APPARITION,4864303,699311,
                     new FabricItemSettings()));
 
     public static final Item STAMPEDE_SPAWN_EGG = registerItem("stampede_spawn_egg",
-            new SpawnEggItem(JNEEntityType.STAMPEDE,4864303,10236982,
+            new SpawnEggItem(JNEEntityTypes.STAMPEDE,4864303,10236982,
                     new FabricItemSettings()));
 
     public static final Item WISP_SPAWN_EGG = registerItem("wisp_spawn_egg",
-            new SpawnEggItem(JNEEntityType.WISP,6022120,699311,
+            new SpawnEggItem(JNEEntityTypes.WISP,6022120,699311,
                     new FabricItemSettings()));
 
     public static final Item GRASP_SPAWN_EGG = registerItem("grasp_spawn_egg",
-            new SpawnEggItem(JNEEntityType.GRASP,4864303,6910597,
+            new SpawnEggItem(JNEEntityTypes.GRASP,4864303,6910597,
                     new FabricItemSettings()));
 
     public static final Item CLARET_SIGN_ITEM = registerItem("claret_sign",

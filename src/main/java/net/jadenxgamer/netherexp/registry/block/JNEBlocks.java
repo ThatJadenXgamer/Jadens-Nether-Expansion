@@ -107,7 +107,7 @@ public class JNEBlocks {
             new EctoSoulSandBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).luminance(3).ticksRandomly().sounds(BlockSoundGroup.SOUL_SAND)));
 
     public static final Block SUSPICIOUS_SOUL_SAND = registerBlock("suspicious_soul_sand",
-            new BrushableBlock(Blocks.SOUL_SAND ,FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).velocityMultiplier(0.2F).strength(0.25F).pistonBehavior(PistonBehavior.DESTROY).sounds(JNESoundEvents.SUSPICIOUS_SOUL_SAND), SoundEvents.ITEM_BRUSH_BRUSHING_SAND, JNESoundEvents.ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE));
+            new JNEBrushableBlock(Blocks.SOUL_SAND ,FabricBlockSettings.copyOf(Blocks.SOUL_SAND).mapColor(MapColor.BROWN).velocityMultiplier(0.2F).strength(0.25F).pistonBehavior(PistonBehavior.DESTROY).sounds(JNESoundEvents.SUSPICIOUS_SOUL_SAND), SoundEvents.ITEM_BRUSH_BRUSHING_SAND, JNESoundEvents.ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE));
 
     public static final Block SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block",
             new SoulMagmaBlock(FabricBlockSettings.copyOf(Blocks.SOUL_SOIL).mapColor(MapColor.LIGHT_BLUE).luminance(3).sounds(JNESoundEvents.SOUL_MAGMA_BLOCK)));

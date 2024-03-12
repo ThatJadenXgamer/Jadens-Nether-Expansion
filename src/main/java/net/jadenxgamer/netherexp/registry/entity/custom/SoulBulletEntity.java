@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -20,7 +20,7 @@ public class SoulBulletEntity extends PersistentProjectileEntity {
     }
 
     public SoulBulletEntity(World world, LivingEntity owner) {
-        super(JNEEntityType.SOUL_BULLET, owner, world);
+        super(JNEEntityTypes.SOUL_BULLET, owner, world);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SoulBulletEntity extends PersistentProjectileEntity {
         if (!this.getWorld().isClient) {
             Entity entity = entityHitResult.getEntity();
             Entity owner = getOwner();
-            entity.damage(this.getDamageSources().create(JNEDamageSources.SOUL_BULLET, this, owner), 1);
+            entity.damage(this.getDamageSources().create(JNEDamageSources.SOUL_BULLET, this, owner), 2);
             this.playSound(getHitSound(), 0.5f, 1.0f);
             this.getWorld().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             this.discard();

@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import com.google.common.annotations.VisibleForTesting;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -158,7 +158,7 @@ implements GeoEntity, Angerable, Flutterer {
             if (striderEntity.isSaddled()) {
                 this.dropItem(Items.SADDLE);
             }
-            StampedeEntity stampedeEntity = striderEntity.convertTo(JNEEntityType.STAMPEDE, false);
+            StampedeEntity stampedeEntity = striderEntity.convertTo(JNEEntityTypes.STAMPEDE, false);
             this.remove(RemovalReason.DISCARDED);
             if (stampedeEntity != null) {
                 striderEntity.initialize(world, world.getLocalDifficulty(striderEntity.getBlockPos()), SpawnReason.CONVERSION, new EntityData() {
@@ -197,7 +197,7 @@ implements GeoEntity, Angerable, Flutterer {
     public void onDeath(DamageSource damageSource) {
         World world = this.getWorld();
         for (int i = 0; i < this.getStage(); i++) {
-            WispEntity wispEntity = JNEEntityType.WISP.create(world);
+            WispEntity wispEntity = JNEEntityTypes.WISP.create(world);
             assert wispEntity != null;
             wispEntity.setBoredDelay(10);
             wispEntity.setPosition(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);

@@ -43,9 +43,6 @@ public class JNETags {
         // Igneous Reeds are Plantable on these Blocks
         public static final TagKey<Block> IGNEOUS_REEDS_PLANTABLE_ON = createBlockTag("igneous_reeds_plantable_on");
 
-        // Tag to define all kinds of Magma Blocks
-        public static final TagKey<Block> MAGMA_BLOCKS = createBlockTag("magma_blocks");
-
         // Zombified Piglins cannot spawn on these Blocks
         public static final TagKey<Block> ZOMBIFIED_PIGLIN_CANNOT_SPAWN_ON = createBlockTag("zombified_piglin_cannot_spawn_on");
 
@@ -98,9 +95,6 @@ public class JNETags {
         // Killing Skeletons on these blocks Converts it to Fossil Ore
         public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createBlockTag("fossil_ore_convertible");
 
-        // Wisps will try to find blocks in this tag and circle around it
-        public static final TagKey<Block> SOUL_FIRE_THAT_LURES_WISPS = createBlockTag("soul_fire_that_lures_wisps");
-
         // Blocks in this tag will no longer slow you down if Unbounded Speed effect is applied
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks");
 
@@ -140,6 +134,8 @@ public class JNETags {
          *  (This Tag does not have any functionality as of now)
          */
         public static final TagKey<EntityType<?>> SOUL_GLASS_PASSABLE = createEntityTypeTag("soul_glass_passable");
+
+        // Entities in this tag cannot activate Swirls
         public static final TagKey<EntityType<?>> CANT_ACTIVATE_SWIRLS = createEntityTypeTag("cant_activate_swirls");
 
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
