@@ -14,7 +14,6 @@ public class ApparitionRenderer extends GeoEntityRenderer<ApparitionEntity> {
     public ApparitionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new ApparitionModel());
         this.shadowRadius = 0.4f;
-        addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 
     @Override

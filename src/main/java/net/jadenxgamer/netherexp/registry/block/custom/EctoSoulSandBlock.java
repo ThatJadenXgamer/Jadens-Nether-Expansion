@@ -1,8 +1,11 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNELootTables;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.server.world.ServerWorld;
@@ -13,6 +16,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 public class EctoSoulSandBlock
 extends Block
@@ -36,31 +40,32 @@ extends Block
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int i = random.nextInt(NetherExp.getConfig().blocks.ectoSoulSandConfigs.wisp_emerging_chances);
         if (i == 0) {
+            this.setSoulSand(world, pos, random);
             if (world.getBlockState(pos.up()).isAir() ) {
                 this.spawnWisp(world, pos.up(), random);
-                world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
             }
             else if (world.getBlockState(pos.north()).isAir() ) {
                 this.spawnWisp(world, pos.north(), random);
-                world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
             }
             else if (world.getBlockState(pos.east()).isAir() ) {
                 this.spawnWisp(world, pos.east(), random);
-                world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
             }
             else if (world.getBlockState(pos.south()).isAir() ) {
                 this.spawnWisp(world, pos.south(), random);
-                world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
             }
             else if (world.getBlockState(pos.west()).isAir() ) {
                 this.spawnWisp(world, pos.west(), random);
-                world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
             }
             else if (world.getBlockState(pos.down()).isAir() ) {
                 this.spawnWisp(world, pos.down(), random);
-                world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
             }
         }
+    }
+
+    private void setSoulSand(World world, BlockPos pos, Random random) {
+        int i = random.nextInt(10);
+        world.setBlockState(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
+        JNEBrushableBlockEntity.setLootTable(world, random, pos, JNELootTables.ARCHAEOLOGY_SOUL_SAND_VALLEY);
     }
 
     private void spawnWisp(ServerWorld world, BlockPos pos, Random random) {
