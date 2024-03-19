@@ -736,12 +736,6 @@ public class JNEBlocks {
     public static final Block WHITE_ASH_BLOCK = registerBlock("white_ash_block",
             new Block(FabricBlockSettings.of().requiresTool().sounds(JNESoundEvents.WHITE_ASH)));
 
-    /*
-     * TODO: THIS BLOCK IS UNOBTAINABLE
-     */
-    public static final Block CHAINWIRE_FENCE = registerBlockWithoutItem("chainwire_fence",
-            new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN)));
-
     // Bones
 
     public static final Block SKELETON_SKULL_CANDLE = registerBlock("skeleton_skull_candle",

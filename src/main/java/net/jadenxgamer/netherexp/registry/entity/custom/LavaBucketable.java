@@ -18,7 +18,7 @@ import java.util.Optional;
 
 public interface LavaBucketable {
 
-    // CODE TAKEN FROM VANILLA'S BUCKETABLE CLASS
+    // Code taken from Vanilla's Bucketable Class
 
     boolean isFromBucket();
 

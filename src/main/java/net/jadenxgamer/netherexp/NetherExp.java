@@ -11,6 +11,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.effect.JNEStatusEffects;
+import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.jadenxgamer.netherexp.registry.event.LiquidloggedBucketEvent;
@@ -21,7 +22,9 @@ import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNEItemGroup;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
-import net.jadenxgamer.netherexp.registry.misc_registry.*;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEArmorTrimPatterns;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEResourcePacks;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticles;
 import net.jadenxgamer.netherexp.registry.worldgen.biome.JNEBiomes;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEFeature;
@@ -41,8 +44,6 @@ public class NetherExp implements ModInitializer {
 		// REGISTRIES
 		JNEItemGroup.registerItemGroup();
 		JNEBiomes.registerBiomes();
-		JNEBlockSetType.registerBlockSetType();
-		JNEWoodType.registerWoodType();
 
 		JNEItems.registerItems();
 		JNEBlocks.registerBlocks();
@@ -54,6 +55,7 @@ public class NetherExp implements ModInitializer {
 
 		JNEDamageSources.registerDamageSources();
 		JNEStatusEffects.registerStatusEffects();
+		JNEEnchantments.registerEnchantments();
 		JNEPotions.registerPotions();
 		JNEFeature.registerFeature();
 		JNEResourcePacks.registerResourcePacks();

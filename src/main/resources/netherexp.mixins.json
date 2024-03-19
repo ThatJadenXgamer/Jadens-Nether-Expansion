@@ -21,6 +21,7 @@
     "entity.HoglinEntityMixin",
     "entity.LivingEntityMixin",
     "entity.MagmaCubeEntityMixin",
+    "entity.ProjectileEntityMixin",
     "entity.PiglinEntityMixin",
     "entity.PlayerEntityMixin",
     "entity.SkeletonEntityMixin",

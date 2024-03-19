@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -8,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.StateManager;
@@ -34,6 +36,22 @@ public class LiquidloggedGrateBlock extends Block implements Waterloggable {
             return 15;
         }
         else return 0;
+    }
+
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        if (fluidState.getFluid() == Fluids.WATER) {
+            return this.getDefaultState().with(LIQUIDLOGGED, Liquids.WATER);
+        }
+        else if (fluidState.getFluid() == Fluids.LAVA) {
+            return this.getDefaultState().with(LIQUIDLOGGED, Liquids.LAVA);
+        }
+        else if (fluidState.getFluid() == JNEFluids.ECTOPLASM) {
+            return JNEBlocks.RUSTY_NETHERITE_GRATE.getDefaultState().with(LIQUIDLOGGED, Liquids.ECTOPLASM);
+        }
+        else return this.getDefaultState();
     }
 
     @SuppressWarnings("deprecation")

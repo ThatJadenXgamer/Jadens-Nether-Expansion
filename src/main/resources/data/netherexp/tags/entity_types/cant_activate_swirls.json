@@ -3,6 +3,8 @@
   "values": [
     "netherexp:grasp",
     "netherexp:wisp",
-    "netherexp:apparition"
+    "netherexp:apparition",
+    "netherexp:stampede",
+    "minecraft:ghast"
   ]
 }

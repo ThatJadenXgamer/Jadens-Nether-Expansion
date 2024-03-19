@@ -43,7 +43,6 @@ public class NetherExpClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SHALE_SWIRLS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SORROWSQUASH_STEM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SORROWSQUASH_STEM_PLANT, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CHAINWIRE_FENCE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CRIMSON_SPROUTS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WHITE_ASH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.PYRITE_CHAIN, RenderLayer.getCutout());
@@ -139,7 +138,7 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticles.SHALE_SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.GRASP_MIST, GraspMistParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.WISP, GlimmerParticle.LongFactory::new);
-        ParticleFactoryRegistry.getInstance().register(JNEParticles.MAGMA_CREAM, RisingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticles.MAGMA_CREAM, FallingParticle.Factory::new);
 
         ParticleFactoryRegistry.getInstance().register(JNEParticles.UMBRAL_SMOG, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.SOULBLIGHT_SMOG, SmogParticle.Factory::new);

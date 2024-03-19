@@ -138,6 +138,9 @@ public class JNETags {
         // Entities in this tag cannot activate Swirls
         public static final TagKey<EntityType<?>> CANT_ACTIVATE_SWIRLS = createEntityTypeTag("cant_activate_swirls");
 
+        // Projects will not collide with entities in this tag
+        public static final TagKey<EntityType<?>> PROJECTILES_PASS_THROUGH = createEntityTypeTag("projectiles_pass_through");
+
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
             return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NetherExp.MOD_ID, name));
         }
