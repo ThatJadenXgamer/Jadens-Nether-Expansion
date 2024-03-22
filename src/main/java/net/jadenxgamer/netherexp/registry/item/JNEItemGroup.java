@@ -4,14 +4,20 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
+import net.jadenxgamer.netherexp.registry.item.brewing.JNEAntidotes;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemStackSet;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
+import java.util.Set;
 
 public class JNEItemGroup {
 
@@ -370,6 +376,7 @@ public class JNEItemGroup {
                         entries.add(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS);
 
                         entries.add(JNEItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE);
+                        entries.add(JNEItems.SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE);
 
                         entries.add(JNEItems.WISP_SPAWN_EGG);
                         entries.add(JNEItems.APPARITION_SPAWN_EGG);
@@ -378,7 +385,23 @@ public class JNEItemGroup {
                         if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
                             entries.add(JNEItems.WARPHOPPER_SPAWN_EGG);
                         }
+
+                        addAntidotes(entries);
+
                     }).build());
+
+    private static void addAntidotes(ItemGroup.Entries entries) {
+        List<NbtCompound> nbtCompounds = JNEAntidotes.ANTIDOTES;
+        Set<ItemStack> set = ItemStackSet.create();
+
+        for (NbtCompound nbtCompound : nbtCompounds) {
+            ItemStack stack = new ItemStack(JNEItems.ANTIDOTE);
+            stack.setNbt(nbtCompound);
+            set.add(stack);
+        }
+
+        entries.addAll(set);
+    }
 
     public static void registerItemGroup() {
     }

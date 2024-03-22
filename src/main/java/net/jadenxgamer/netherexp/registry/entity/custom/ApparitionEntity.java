@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -140,6 +141,23 @@ public class ApparitionEntity extends HostileEntity implements Flutterer, GeoEnt
             this.targetSelector.add(5, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         }
     }
+
+    ////////////////
+    // POSSESSION //
+    ////////////////
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        super.onDeath(damageSource);
+        for (int i = 0; i < getWorld().getRandom().nextInt(4) + 1; i++) {
+            WispEntity wispEntity = JNEEntityTypes.WISP.create(this.getWorld());
+            assert wispEntity != null;
+            wispEntity.setBoredDelay(0);
+            wispEntity.setPosition(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);
+            this.getWorld().spawnEntity(wispEntity);
+        }
+    }
+
 
     /////////
     // NBT //

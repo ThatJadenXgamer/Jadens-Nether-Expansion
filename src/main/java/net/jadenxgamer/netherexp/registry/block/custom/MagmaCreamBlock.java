@@ -27,7 +27,6 @@ public class MagmaCreamBlock extends Block {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
             entity.slowMovement(state, new Vec3d(0.8999999761581421, 0.5, 0.8999999761581421));
-
             if (!world.isClient) {
                 if (entity.isOnFire() && entity.canModifyAt(world, pos)) {
                     world.playSound(entity, pos, SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.BLOCKS, 1.0f, 1.0f);
@@ -39,7 +38,7 @@ public class MagmaCreamBlock extends Block {
                 boolean bl = entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ();
                 Random random = world.getRandom();
                 if (bl && random.nextBoolean()) {
-                    world.addParticle(JNEParticles.MAGMA_CREAM, entity.getX(), pos.getY() + 1, entity.getZ(), MathHelper.nextBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, MathHelper.nextBetween(random, -1.0f, 1.0f) * 0.083333336f);
+                    world.addParticle(JNEParticles.MAGMA_CREAM, entity.getX(), pos.getY() + 1, entity.getZ(), MathHelper.nextBetween(random, -1.0f, 1.0f) * 0.083333336f, 0, MathHelper.nextBetween(random, -1.0f, 1.0f) * 0.083333336f);
                 }
             }
         }

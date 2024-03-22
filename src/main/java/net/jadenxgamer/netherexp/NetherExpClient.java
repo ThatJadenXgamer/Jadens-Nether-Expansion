@@ -138,7 +138,7 @@ public class NetherExpClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticles.SHALE_SWIRL_POP, RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.GRASP_MIST, GraspMistParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.WISP, GlimmerParticle.LongFactory::new);
-        ParticleFactoryRegistry.getInstance().register(JNEParticles.MAGMA_CREAM, FallingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticles.MAGMA_CREAM, RisingParticle.Factory::new);
 
         ParticleFactoryRegistry.getInstance().register(JNEParticles.UMBRAL_SMOG, SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticles.SOULBLIGHT_SMOG, SmogParticle.Factory::new);

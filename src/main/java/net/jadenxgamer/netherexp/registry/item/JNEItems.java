@@ -49,6 +49,9 @@ public class JNEItems {
     public static final Item RIFT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("rift_armor_trim_smithing_template",
             SmithingTemplateItem.of(JNEArmorTrimPatterns.RIFT));
 
+    public static final Item SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("spirit_armor_trim_smithing_template",
+            SmithingTemplateItem.of(JNEArmorTrimPatterns.SPIRIT));
+
     public static final Item NIGHTSPORES = registerItem("nightspores",
             new NightSporesItem(new FabricItemSettings()));
 

@@ -4,8 +4,10 @@ import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -28,8 +30,16 @@ public abstract class ProjectileEntityMixin {
         EntityHitResult entityHitResult = (EntityHitResult) hitResult;
         Entity entity = entityHitResult.getEntity();
         World world = entity.getWorld();
-        if (entity.getType().isIn(JNETags.EntityTypes.PROJECTILES_PASS_THROUGH) || EnchantmentHelper.getEquipmentLevel(JNEEnchantments.PHANTASM_HULL, (LivingEntity) entity) > 0) {
+        if (entity.getType().isIn(JNETags.EntityTypes.PROJECTILES_PASS_THROUGH)) {
             world.addParticle(ParticleTypes.SOUL, entity.getParticleX(0.5), entity.getRandomBodyY() - 0.25, entity.getParticleZ(0.5), MathHelper.nextBetween(world.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, MathHelper.nextBetween(world.random, -1.0f, 1.0f) * 0.083333336f);
+            ci.cancel();
+        }
+        else if (EnchantmentHelper.getEquipmentLevel(JNEEnchantments.PHANTASM_HULL, (LivingEntity) entity) > 0) {
+            world.addParticle(ParticleTypes.SOUL, entity.getParticleX(0.5), entity.getRandomBodyY() - 0.25, entity.getParticleZ(0.5), MathHelper.nextBetween(world.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, MathHelper.nextBetween(world.random, -1.0f, 1.0f) * 0.083333336f);
+            if (world.getRandom().nextInt(5) == 0) {
+                ItemStack itemStack = ((LivingEntity) entity).getEquippedStack(EquipmentSlot.CHEST);
+                itemStack.damage(1, ((LivingEntity) entity), (player) -> player.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+            }
             ci.cancel();
         }
     }

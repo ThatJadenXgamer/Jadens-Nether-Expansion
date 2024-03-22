@@ -6,12 +6,16 @@ import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.entity.custom.WispEntity;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNELootTables;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -41,29 +45,25 @@ extends Block
         int i = random.nextInt(NetherExp.getConfig().blocks.ectoSoulSandConfigs.wisp_emerging_chances);
         if (i == 0) {
             this.setSoulSand(world, pos, random);
-            if (world.getBlockState(pos.up()).isAir() ) {
-                this.spawnWisp(world, pos.up(), random);
-            }
-            else if (world.getBlockState(pos.north()).isAir() ) {
-                this.spawnWisp(world, pos.north(), random);
-            }
-            else if (world.getBlockState(pos.east()).isAir() ) {
-                this.spawnWisp(world, pos.east(), random);
-            }
-            else if (world.getBlockState(pos.south()).isAir() ) {
-                this.spawnWisp(world, pos.south(), random);
-            }
-            else if (world.getBlockState(pos.west()).isAir() ) {
-                this.spawnWisp(world, pos.west(), random);
-            }
-            else if (world.getBlockState(pos.down()).isAir() ) {
-                this.spawnWisp(world, pos.down(), random);
+            BlockPos targetPos = findAirNeighbor(world, pos);
+            if (targetPos != null) {
+                spawnWisp(world, targetPos, random);
             }
         }
     }
 
+    private BlockPos findAirNeighbor(ServerWorld world, BlockPos pos) {
+        Direction[] var5 = Direction.values();
+        for (Direction direction : var5) {
+            BlockPos neighborPos = pos.offset(direction);
+            if (world.getBlockState(neighborPos).isAir()) {
+                return neighborPos;
+            }
+        }
+        return null;
+    }
+
     private void setSoulSand(World world, BlockPos pos, Random random) {
-        int i = random.nextInt(10);
         world.setBlockState(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.getDefaultState(), NOTIFY_LISTENERS);
         JNEBrushableBlockEntity.setLootTable(world, random, pos, JNELootTables.ARCHAEOLOGY_SOUL_SAND_VALLEY);
     }

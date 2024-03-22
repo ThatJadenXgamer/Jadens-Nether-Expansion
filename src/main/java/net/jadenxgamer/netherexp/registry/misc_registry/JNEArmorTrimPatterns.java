@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class JNEArmorTrimPatterns {
     public static final RegistryKey<ArmorTrimPattern> RIFT = registerTrim("rift");
+    public static final RegistryKey<ArmorTrimPattern> SPIRIT = registerTrim("spirit");
 
     private static RegistryKey<ArmorTrimPattern> registerTrim(String name) {
         return RegistryKey.of(RegistryKeys.TRIM_PATTERN, new Identifier(NetherExp.MOD_ID, name));
