@@ -33,7 +33,7 @@ public class JNEBlocks {
     // LIST OF BLOCKS //
     ////////////////////
 
-    // Soul SLate
+    // Soul Slate
 
     public static final Block SOUL_SLATE = registerBlock("soul_slate",
             new Block(FabricBlockSettings.of().mapColor(MapColor.BROWN).strength(4f).requiresTool().sounds(JNESoundEvents.SOUL_SLATE)));
