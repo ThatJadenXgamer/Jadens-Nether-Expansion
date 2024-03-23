@@ -1,0 +1,36 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "CC-BY-NC-SA-4.0"
+
+[[mods]]
+modId = "netherexp"
+version = "${version}"
+displayName = "Jaden's Nether Expansion"
+authors = "JadenXgamer"
+description = '''
+A Large Content Mod which Overhauls and Expands upon the Entire Nether
+'''
+credits = "Contributors: Bold_Muddy, ceasingbonsai17, Sydokiddo, apicella111"
+logoFile = "icon.png"
+
+[[dependencies.netherexp]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.netherexp]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.netherexp]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.1.12,)"
+ordering = "AFTER"
+side = "BOTH"

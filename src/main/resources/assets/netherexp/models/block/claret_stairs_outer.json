@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "netherexp:block/claret_planks",
-    "side": "netherexp:block/claret_planks",
-    "top": "netherexp:block/claret_planks"
-  }
-}

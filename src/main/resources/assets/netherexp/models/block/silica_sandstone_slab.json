@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "netherexp:block/silica_sandstone_bottom",
-    "side": "netherexp:block/silica_sandstone",
-    "top": "netherexp:block/silica_sandstone_top"
-  }
-}

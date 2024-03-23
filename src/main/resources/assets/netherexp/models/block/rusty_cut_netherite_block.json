@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "netherexp:block/rusty_cut_netherite_block"
-  }
-}

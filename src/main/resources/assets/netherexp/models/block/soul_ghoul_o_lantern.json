@@ -1,9 +1,0 @@
-{
-  "parent": "netherexp:block/cube_bottom_top_facing",
-  "textures": {
-    "top": "netherexp:block/sorrowsquash_top",
-    "bottom": "netherexp:block/sorrowsquash_bottom",
-    "side": "netherexp:block/sorrowsquash",
-    "front": "netherexp:block/soul_ghoul_o_lantern"
-  }
-}

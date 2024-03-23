@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "netherexp:block/mod_compat/gardens_of_the_dead/yellow_nether_bricks"
-  }
-}

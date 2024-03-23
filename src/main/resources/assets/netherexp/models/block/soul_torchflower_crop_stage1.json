@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "netherexp:block/soul_torchflower_crop_stage1"
-  }
-}

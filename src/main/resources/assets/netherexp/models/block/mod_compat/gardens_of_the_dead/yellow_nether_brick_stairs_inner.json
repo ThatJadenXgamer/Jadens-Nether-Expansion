@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "netherexp:block/mod_compat/gardens_of_the_dead/yellow_nether_bricks",
-    "side": "netherexp:block/mod_compat/gardens_of_the_dead/yellow_nether_bricks",
-    "top": "netherexp:block/mod_compat/gardens_of_the_dead/yellow_nether_bricks"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "minecraft:basalt"
-  },
-  "result": "netherexp:basalt_wall",
-  "count": 1
-}

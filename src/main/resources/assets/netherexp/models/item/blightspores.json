@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "netherexp:item/mod_compat/cinderscapes/blightspores"
-  }
-}

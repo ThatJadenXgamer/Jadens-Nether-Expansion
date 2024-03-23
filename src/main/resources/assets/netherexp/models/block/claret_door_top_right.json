@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_right",
-  "textures": {
-    "bottom": "netherexp:block/claret_door_bottom",
-    "top": "netherexp:block/claret_door_top"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "netherexp:netherrack_bricks"
-  },
-  "result": "netherexp:netherrack_tiles",
-  "count": 1
-}

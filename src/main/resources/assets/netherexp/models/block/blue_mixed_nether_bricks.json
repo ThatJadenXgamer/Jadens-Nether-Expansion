@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "netherexp:block/blue_mixed_nether_bricks"
-  }
-}

@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "netherexp:item/antidote_overlay",
-        "layer1": "netherexp:item/antidote"
-    }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "netherexp:block/polished_basalt_bricks_left",
-    "side": "netherexp:block/polished_basalt_bricks_left",
-    "top": "netherexp:block/polished_basalt_bricks_left"
-  }
-}

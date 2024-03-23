@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "netherexp:smokestalk",
-    "netherexp:smokestalk_block",
-    "netherexp:smokestalk_plant",
-    "minecraft:air"
-  ]
-}

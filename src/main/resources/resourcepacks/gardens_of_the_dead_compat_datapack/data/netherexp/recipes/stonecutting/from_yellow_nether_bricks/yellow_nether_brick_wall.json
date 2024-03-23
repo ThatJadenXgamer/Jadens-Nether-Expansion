@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "netherexp:yellow_nether_bricks"
-  },
-  "result": "netherexp:yellow_nether_brick_wall",
-  "count": 1
-}

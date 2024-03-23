@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "netherexp:pyrite_block"
-  },
-  "result": "netherexp:pyrite_stairs",
-  "count": 1
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "netherexp:block/mod_compat/gardens_of_the_dead/yellow_mixed_nether_bricks"
-  }
-}

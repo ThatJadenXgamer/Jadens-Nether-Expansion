@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "netherexp:block/claret_stem_top",
-    "side": "netherexp:block/claret_stem"
-  }
-}
