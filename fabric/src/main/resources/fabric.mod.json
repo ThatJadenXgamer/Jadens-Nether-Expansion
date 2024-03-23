@@ -3,20 +3,31 @@
   "id": "netherexp",
   "version": "${version}",
   "name": "Jaden's Nether Expansion",
-  "description": "A Large Content Mod which Overhauls and Expands upon the Entire Nether",
+  "description": "Reimagines and Expands upon the Entire Nether Dimension",
   "authors": [
-    "JadenXgamer"
+    {
+      "name": "@ThatJadenXgamer",
+      "contact": {
+        "email": "jadenxgamer26@gmail.com"
+      }
+    }
+  ],
+  "contributors": [
+    "@Bold_Muddy",
+    "@ceasingbonsai17",
+    "@Sydokiddo",
+    "@apicella111"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/jadens-nether-expansion",
+    "sources": "https://github.com/ThatJadenXgamer/Jadens-Nether-Expansion"
   },
   "license": "CC-BY-NC-SA-4.0",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.jadenxgamer.netherexp.fabric.ExampleModFabric"
+      "net.jadenxgamer.netherexp.fabric.NetherExpFabric"
     ]
   },
   "mixins": [

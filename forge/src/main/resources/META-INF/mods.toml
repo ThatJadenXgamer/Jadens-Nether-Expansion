@@ -7,11 +7,11 @@ license = "CC-BY-NC-SA-4.0"
 modId = "netherexp"
 version = "${version}"
 displayName = "Jaden's Nether Expansion"
-authors = "JadenXgamer"
+authors = "@ThatJadenXgamer"
 description = '''
-A Large Content Mod which Overhauls and Expands upon the Entire Nether
+Reimagines and Expands upon the Entire Nether Dimension
 '''
-credits = "Contributors: Bold_Muddy, ceasingbonsai17, Sydokiddo, apicella111"
+credits = "Contributors: @Bold_Muddy, @ceasingbonsai17, @Sydokiddo, @apicella111"
 logoFile = "icon.png"
 
 [[dependencies.netherexp]]
