@@ -28,6 +28,9 @@
   "entrypoints": {
     "main": [
       "net.jadenxgamer.netherexp.fabric.NetherExpFabric"
+    ],
+    "client": [
+      "net.jadenxgamer.netherexp.fabric.NetherExpFabricClient"
     ]
   },
   "mixins": [

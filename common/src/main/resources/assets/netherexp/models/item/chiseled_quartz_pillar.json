@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "netherexp:block/chiseled_quartz_pillar_top",
+    "side": "netherexp:block/chiseled_quartz_pillar"
+  }
+}

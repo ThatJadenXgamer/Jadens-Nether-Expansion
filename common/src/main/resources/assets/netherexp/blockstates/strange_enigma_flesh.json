@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "netherexp:block/strange_enigma_flesh_vertical",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "netherexp:block/strange_enigma_flesh",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "netherexp:block/strange_enigma_flesh"
+    },
+    "facing=south": {
+      "model": "netherexp:block/strange_enigma_flesh",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "netherexp:block/strange_enigma_flesh_vertical"
+    },
+    "facing=west": {
+      "model": "netherexp:block/strange_enigma_flesh",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "netherexp:block/mod_compat/cinderscapes/shale_swirls"
+  }
+}

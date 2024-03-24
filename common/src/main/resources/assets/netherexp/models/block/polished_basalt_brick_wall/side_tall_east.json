@@ -1,0 +1,22 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"textures": {
+		"1": "netherexp:block/polished_basalt_brick_wall_top",
+		"particle": "netherexp:block/polished_basalt_brick_wall_tall",
+		"wall": "netherexp:block/polished_basalt_brick_wall_tall"
+	},
+	"elements": [
+		{
+			"from": [8, 0, 5],
+			"to": [16, 16, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 16], "texture": "#wall"},
+				"east": {"uv": [5, 0, 11, 16], "texture": "#wall", "cullface": "north"},
+				"south": {"uv": [16, 0, 8, 16], "texture": "#wall"},
+				"up": {"uv": [5, 0, 11, 8], "rotation": 90, "texture": "#1", "cullface": "up"},
+				"down": {"uv": [5, 16, 11, 8], "rotation": 270, "texture": "#1", "cullface": "down"}
+			}
+		}
+	]
+}

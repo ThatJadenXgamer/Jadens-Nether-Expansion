@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "netherexp:block/crimson_sporeshroom"
+    },
+    "hanging=true": {
+      "model": "netherexp:block/crimson_sporeshroom_hanging"
+    }
+  }
+}

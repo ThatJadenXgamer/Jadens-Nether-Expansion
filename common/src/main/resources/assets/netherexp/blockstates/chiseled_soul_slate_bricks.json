@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "netherexp:block/chiseled_soul_slate_bricks"
+    },
+    "lit=true": {
+      "model": "netherexp:block/chiseled_soul_slate_bricks_lit"
+    }
+  }
+}

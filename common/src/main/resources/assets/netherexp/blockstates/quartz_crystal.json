@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "netherexp:block/quartz_crystal",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "netherexp:block/quartz_crystal",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "netherexp:block/quartz_crystal",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "netherexp:block/quartz_crystal",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "netherexp:block/quartz_crystal"
+    },
+    "facing=west": {
+      "model": "netherexp:block/quartz_crystal",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

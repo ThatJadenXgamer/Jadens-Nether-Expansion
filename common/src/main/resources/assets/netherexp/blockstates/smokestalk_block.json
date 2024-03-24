@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "netherexp:block/smokestalk_block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "netherexp:block/smokestalk_block"
+    },
+    "axis=z": {
+      "model": "netherexp:block/smokestalk_block",
+      "x": 90
+    }
+  }
+}

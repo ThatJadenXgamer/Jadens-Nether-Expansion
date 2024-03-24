@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "netherexp:block/claret_slab"
+    },
+    "type=double": {
+      "model": "netherexp:block/claret_planks"
+    },
+    "type=top": {
+      "model": "netherexp:block/claret_slab_top"
+    }
+  }
+}

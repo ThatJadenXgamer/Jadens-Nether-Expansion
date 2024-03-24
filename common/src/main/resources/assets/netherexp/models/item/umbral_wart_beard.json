@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "netherexp:block/mod_compat/cinderscapes/umbral_wart_beard"
+  }
+}

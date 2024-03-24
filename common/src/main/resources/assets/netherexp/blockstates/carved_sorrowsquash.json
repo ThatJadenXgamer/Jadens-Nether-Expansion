@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "netherexp:block/carved_sorrowsquash",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "netherexp:block/carved_sorrowsquash"
+    },
+    "facing=south": {
+      "model": "netherexp:block/carved_sorrowsquash",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "netherexp:block/carved_sorrowsquash",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "netherexp:block/stacked_bone_slab"
+    },
+    "type=double": {
+      "model": "netherexp:block/stacked_bones"
+    },
+    "type=top": {
+      "model": "netherexp:block/stacked_bone_slab_top"
+    }
+  }
+}

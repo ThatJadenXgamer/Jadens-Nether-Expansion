@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=east,gilded=false": {
+      "model": "netherexp:block/polished_basalt_bricks_right"
+    },
+    "facing=north,gilded=false": {
+      "model": "netherexp:block/polished_basalt_bricks_left"
+    },
+    "facing=south,gilded=false": {
+      "model": "netherexp:block/polished_basalt_bricks_left"
+    },
+    "facing=west,gilded=false": {
+      "model": "netherexp:block/polished_basalt_bricks_right"
+    },
+    "facing=east,gilded=true": {
+      "model": "netherexp:block/gilded_basalt_bricks_right"
+    },
+    "facing=north,gilded=true": {
+      "model": "netherexp:block/gilded_basalt_bricks_left"
+    },
+    "facing=south,gilded=true": {
+      "model": "netherexp:block/gilded_basalt_bricks_left"
+    },
+    "facing=west,gilded=true": {
+      "model": "netherexp:block/gilded_basalt_bricks_right"
+    }
+  }
+}

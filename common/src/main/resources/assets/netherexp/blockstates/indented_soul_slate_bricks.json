@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "lit=true": [
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/lit/0",
+        "weight": 5
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/lit/1",
+        "weight": 5
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/lit/2",
+        "weight": 5
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/lit/3",
+        "weight": 3
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/lit/4",
+        "weight": 3
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/lit/5",
+        "weight": 3
+      }
+    ],
+    "lit=false": [
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/0",
+        "weight": 5
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/1",
+        "weight": 5
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/2",
+        "weight": 5
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/3",
+        "weight": 3
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/4",
+        "weight": 3
+      },
+      {
+        "model": "netherexp:block/indented_soul_slate_bricks/5",
+        "weight": 3
+      }
+    ]
+  }
+}

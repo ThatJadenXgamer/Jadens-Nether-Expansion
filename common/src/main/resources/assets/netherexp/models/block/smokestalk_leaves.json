@@ -1,0 +1,84 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"textures": {
+		"0": "netherexp:block/smokestalk_leaves",
+		"1": "netherexp:block/smokestalk_plain_tip",
+		"3": "netherexp:block/smokestalk_top",
+		"particle": "netherexp:block/smokestalk_plain_tip"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 8, 11],
+			"faces": {
+				"north": {"uv": [5, 8, 11, 16], "texture": "#1"},
+				"east": {"uv": [5, 8, 11, 16], "texture": "#1"},
+				"south": {"uv": [5, 8, 11, 16], "texture": "#1"},
+				"west": {"uv": [5, 8, 11, 16], "texture": "#1"},
+				"down": {"uv": [5, 5, 11, 11], "texture": "#3"}
+			}
+		},
+		{
+			"from": [4, 8, 4],
+			"to": [12, 12, 12],
+			"faces": {
+				"north": {"uv": [4, 4, 12, 8], "texture": "#1"},
+				"east": {"uv": [4, 4, 12, 8], "texture": "#1"},
+				"south": {"uv": [4, 4, 12, 8], "texture": "#1"},
+				"west": {"uv": [4, 4, 12, 8], "texture": "#1"},
+				"up": {"uv": [4, 4, 12, 12], "texture": "#3"},
+				"down": {"uv": [4, 4, 12, 12], "texture": "#3"}
+			}
+		},
+		{
+			"from": [0, 3, 0],
+			"to": [16, 3, 16],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 3, 8]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 3, 0],
+			"to": [16, 3, 16],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [8, 3, 8]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 3, 0],
+			"to": [16, 3, 16],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 3, 8]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 3, 0],
+			"to": [16, 3, 16],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 3, 8]},
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		1,
+		{
+			"name": "group",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": [2, 3, 4, 5]
+		}
+	]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "cooldown=false": {
+      "model": "netherexp:block/mod_compat/cinderscapes/ashen_geyser"
+    },
+    "cooldown=true": {
+      "model": "netherexp:block/mod_compat/cinderscapes/ashen_geyser_cooldown"
+    }
+  }
+}

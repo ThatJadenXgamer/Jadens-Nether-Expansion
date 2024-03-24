@@ -1,0 +1,18 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"textures": {
+		"0": "netherexp:block/bone_fence_rope",
+		"particle": "netherexp:block/bone_fence_rope"
+	},
+	"elements": [
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 0, 8.5]},
+			"faces": {
+				"east": {"uv": [0, 0, 8, 16], "texture": "#0"},
+				"west": {"uv": [8, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	]
+}

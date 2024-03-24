@@ -1,0 +1,45 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "netherexp:block/polished_blackstone_fence/post"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/polished_blackstone_fence/north",
+        "uvlock": false
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/polished_blackstone_fence/east",
+        "uvlock": false
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/polished_blackstone_fence/south",
+        "uvlock": false
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/polished_blackstone_fence/west",
+        "uvlock": false
+      },
+      "when": {
+        "west": "true"
+      }
+    }
+  ]
+}

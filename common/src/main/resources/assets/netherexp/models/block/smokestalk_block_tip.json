@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "netherexp:block/smokestalk_block_top",
+    "side": "netherexp:block/smokestalk_block_tip"
+  }
+}

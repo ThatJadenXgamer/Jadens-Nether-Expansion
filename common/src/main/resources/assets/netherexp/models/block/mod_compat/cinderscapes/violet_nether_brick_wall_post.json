@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "netherexp:block/mod_compat/cinderscapes/violet_nether_bricks"
+  }
+}

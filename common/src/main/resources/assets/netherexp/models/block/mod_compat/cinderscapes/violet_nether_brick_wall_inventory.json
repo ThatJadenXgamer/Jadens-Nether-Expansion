@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "netherexp:block/mod_compat/cinderscapes/violet_nether_bricks"
+  }
+}

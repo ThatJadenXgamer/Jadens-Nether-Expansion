@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "cooldown=false": {
+      "model": "netherexp:block/basaltic_geyser"
+    },
+    "cooldown=true": {
+      "model": "netherexp:block/basaltic_geyser_cooldown"
+    }
+  }
+}

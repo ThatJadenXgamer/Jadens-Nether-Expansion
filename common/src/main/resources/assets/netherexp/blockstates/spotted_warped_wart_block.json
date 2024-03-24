@@ -1,0 +1,46 @@
+{
+  "variants": {
+    "spots=1": [
+      {
+        "model": "minecraft:block/warped_wart_block/small/1",
+        "weight": 50
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/small/2",
+        "weight": 45
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/small/3",
+        "weight": 40
+      }
+    ],
+    "spots=2": [
+      {
+        "model": "minecraft:block/warped_wart_block/medium/1",
+        "weight": 50
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/medium/2",
+        "weight": 45
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/medium/3",
+        "weight": 40
+      }
+    ],
+    "spots=3": [
+      {
+        "model": "minecraft:block/warped_wart_block/big/1",
+        "weight": 50
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/big/2",
+        "weight": 45
+      },
+      {
+        "model": "minecraft:block/warped_wart_block/big/3",
+        "weight": 40
+      }
+    ]
+  }
+}
