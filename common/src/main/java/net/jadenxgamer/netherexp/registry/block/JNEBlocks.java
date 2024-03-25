@@ -87,7 +87,7 @@ public class JNEBlocks {
     //TODO: Add Block
     //Cinderscapes Compat
     public static final RegistrySupplier<Block> SHALE_SWIRLS = registerCompatBlock("shale_swirls", () ->
-            new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get())), "cinderscapes");
+            new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get())), "cinderscapes");
 
     // TODO Add Block
     public static final RegistrySupplier<Block> ECTO_SOUL_SAND = registerBlock("ecto_soul_sand", () ->
