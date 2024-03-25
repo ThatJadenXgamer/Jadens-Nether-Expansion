@@ -19,11 +19,11 @@ import net.minecraft.world.level.material.Fluids;
 
 import java.util.function.ToIntFunction;
 
-public class WeepingIvyBlock extends MultifaceBlock implements BonemealableBlock, SimpleWaterloggedBlock {
+public class IvyBlock extends MultifaceBlock implements BonemealableBlock, SimpleWaterloggedBlock {
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private final MultifaceSpreader spreader = new MultifaceSpreader(this);
 
-    public WeepingIvyBlock(Properties properties) {
+    public IvyBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
     }

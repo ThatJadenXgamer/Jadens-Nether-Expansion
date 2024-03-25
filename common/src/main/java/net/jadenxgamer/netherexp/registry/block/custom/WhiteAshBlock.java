@@ -5,11 +5,17 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class WhiteAshBlock extends LayerBlock {
+public class WhiteAshBlock extends SnowLayerBlock {
     public WhiteAshBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public boolean isRandomlyTicking(BlockState blockState) {
+        return false;
     }
 
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {

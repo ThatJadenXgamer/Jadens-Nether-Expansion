@@ -107,7 +107,7 @@ public class WarpedWartBlock extends BushBlock {
 
     @Override
     public @NotNull ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
-        return new ItemStack(JNEItems.WARPED_WART);
+        return new ItemStack(JNEItems.WARPED_WART.get());
     }
 
     @Override
