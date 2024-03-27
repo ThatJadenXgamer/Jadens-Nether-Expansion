@@ -1,8 +1,11 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.TorchflowerCropBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,13 +22,12 @@ public abstract class TorchflowerCropBlockMixin extends CropBlock {
         return blockState.is(JNETags.Blocks.SOUL_SAND_BLOCKS) || super.mayPlaceOn(blockState, blockGetter, blockPos);
     }
 
-    //TODO: Reimplement Soul Torchflower
-//    @SuppressWarnings("deprecation")
-//    @Override
-//    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-//        BlockState floor = world.getBlockState(pos.down());
-//        if (floor.isIn(JNETags.Blocks.SOUL_SAND_BLOCKS) && state.isOf(Blocks.TORCHFLOWER_CROP)) {
-//            world.setBlockState(pos, JNEBlocks.SOUL_TORCHFLOWER_CROP.getDefaultState(), NOTIFY_LISTENERS);
-//        }
-//    }
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState oldState, boolean notify) {
+        BlockState floor = level.getBlockState(blockPos.below());
+        if (floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS) && blockState.is(Blocks.TORCHFLOWER_CROP)) {
+            level.setBlock(blockPos, JNEBlocks.SOUL_TORCHFLOWER_CROP.get().defaultBlockState(), UPDATE_ALL);
+        }
+    }
 }

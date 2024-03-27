@@ -11,7 +11,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
     public void onInitializeClient() {
         NetherExpClient.init();
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_CANDLE.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_GLASS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_GLASS.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_SWIRLS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SHALE_SWIRLS.get(), RenderType.cutout());
     }

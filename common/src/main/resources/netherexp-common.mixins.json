@@ -7,6 +7,13 @@
     "renderer.BlazeRendererMixin"
   ],
   "mixins": [
+    "block.BlockSetTypeAccessor",
+    "block.BlockSoundsMixin",
+    "block.RootsBlockMixin",
+    "block.StemBlockMixin",
+    "block.TorchflowerCropBlockMixin",
+    "block.WoodTypeAccessor",
+    "entity.BlockEntityTypeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

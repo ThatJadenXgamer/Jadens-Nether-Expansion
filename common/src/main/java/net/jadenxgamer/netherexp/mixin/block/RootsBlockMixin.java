@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(RootsBlock.class)
 public class RootsBlockMixin {
-
     @Inject(
             method = "mayPlaceOn",
             at = @At(value = "TAIL"),

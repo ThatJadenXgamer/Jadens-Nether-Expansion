@@ -10,9 +10,8 @@ public class SoulTorchflowerBlock extends TorchflowerCropBlock {
         super(settings);
     }
 
-    //TODO: Add Soul Torchflower
     @Override
     public @NotNull BlockState getStateForAge(int age) {
-        return age == 2 ? JNEBlocks.SOUL_SLATE.get().defaultBlockState() : super.getStateForAge(age);
+        return age == 2 ? JNEBlocks.SOUL_TORCHFLOWER.get().defaultBlockState() : super.getStateForAge(age);
     }
 }

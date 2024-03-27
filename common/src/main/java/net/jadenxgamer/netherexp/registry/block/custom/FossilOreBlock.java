@@ -27,8 +27,7 @@ public class FossilOreBlock extends Block {
                 level.getBlockState(pos.east()).isSolid() &&
                 level.getBlockState(pos.west()).isSolid();
         if (r == 0 && sideChecks) {
-            // TODO Add Fossil Fuel Ore
-            level.setBlock(pos, JNEBlocks.SOUL_SLATE.get().defaultBlockState(), UPDATE_CLIENTS);
+            level.setBlock(pos, JNEBlocks.FOSSIL_FUEL_ORE.get().defaultBlockState(), UPDATE_CLIENTS);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }

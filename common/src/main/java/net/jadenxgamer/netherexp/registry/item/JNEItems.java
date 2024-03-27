@@ -3,11 +3,10 @@ package net.jadenxgamer.netherexp.registry.item;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
+import net.minecraft.world.item.*;
 
 import java.util.function.Supplier;
 
@@ -18,7 +17,7 @@ public class JNEItems {
     public static final RegistrySupplier<Item> WARPHOPPER_FUR = registerItem("warphopper_fur", () ->
             new Item(new Item.Properties()));
 
-    public static final RegistrySupplier<Item> HOGHAM  = registerItem("hogham", () ->
+    public static final RegistrySupplier<Item> HOGHAM = registerItem("hogham", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.HOGHAM)));
 
     public static final RegistrySupplier<Item> COOKED_HOGHAM = registerItem("cooked_hogham", () ->
@@ -92,6 +91,18 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
             new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> CLARET_SIGN = registerItem("claret_sign", () ->
+            new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));
+
+    public static final RegistrySupplier<Item> CLARET_HANGING_SIGN = registerItem("claret_hanging_sign", () ->
+            new HangingSignItem(JNEBlocks.CLARET_HANGING_SIGN.get(), JNEBlocks.CLARET_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+
+    public static final RegistrySupplier<Item> SMOKESTALK_SIGN = registerItem("smokestalk_sign", () ->
+            new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.SMOKESTALK_SIGN.get(), JNEBlocks.SMOKESTALK_WALL_SIGN.get()));
+
+    public static final RegistrySupplier<Item> SMOKESTALK_HANGING_SIGN = registerItem("smokestalk_hanging_sign", () ->
+            new HangingSignItem(JNEBlocks.SMOKESTALK_HANGING_SIGN.get(), JNEBlocks.SMOKESTALK_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
     public static final RegistrySupplier<Item> MUSIC_DISC_CRICKET  = registerItem("music_disc_cricket", () ->
             new RecordItem(13, JNESoundEvents.MUSIC_DISC_CRICKET.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 164));

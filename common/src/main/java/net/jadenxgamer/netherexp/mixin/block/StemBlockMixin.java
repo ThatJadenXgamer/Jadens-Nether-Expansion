@@ -1,8 +1,10 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.StemBlock;
@@ -29,13 +31,12 @@ public abstract class StemBlockMixin extends BushBlock {
         }
     }
 
-    //TODO: Reimplement Sorrowsquash
-//    @SuppressWarnings("deprecation")
-//    @Override
-//    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-//        BlockState floor = world.getBlockState(pos.down());
-//        if (floor.isIn(JNETags.Blocks.SOUL_SAND_BLOCKS) && state.isOf(Blocks.PUMPKIN_STEM)) {
-//            world.setBlockState(pos, JNEBlocks.SORROWSQUASH_STEM.getDefaultState(), NOTIFY_LISTENERS);
-//        }
-//    }
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState oldState, boolean notify) {
+        BlockState floor = level.getBlockState(blockPos.below());
+        if (floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS) && blockState.is(Blocks.PUMPKIN_STEM)) {
+            level.setBlock(blockPos, JNEBlocks.SORROWSQUASH_STEM.get().defaultBlockState(), UPDATE_ALL);
+        }
+    }
 }

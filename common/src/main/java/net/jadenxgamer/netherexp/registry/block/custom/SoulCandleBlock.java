@@ -9,8 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -82,25 +80,24 @@ implements SimpleWaterloggedBlock {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         boolean lit = blockState.getValue(LIT);
         boolean bl = false;
-        if (!lit) {
-            if (itemStack.is(Items.FLINT_AND_STEEL)) {
-                level.playSound(player, blockPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-                level.setBlock(blockPos, blockState.cycle(LIT), Block.UPDATE_CLIENTS);
-                if (!player.isCreative()) {
-                    itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(interactionHand));
-                }
-                bl = true;
-            } else if (itemStack.is(Items.FIRE_CHARGE)){
-                level.playSound(player, blockPos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-                level.setBlock(blockPos, blockState.cycle(LIT), Block.UPDATE_CLIENTS);
-                if (!player.isCreative()) {
-                    itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(interactionHand));
-                }
-                bl = true;
+        if (player.getAbilities().mayBuild && itemStack.isEmpty() && lit) {
+            SoulCandleBlock.extinguish(player, blockState, level, blockPos);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        else if (itemStack.is(Items.FLINT_AND_STEEL) && !lit && canBeLit(blockState)) {
+            level.playSound(player, blockPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+            level.setBlock(blockPos, blockState.cycle(LIT), Block.UPDATE_CLIENTS);
+            if (!player.isCreative()) {
+                itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(interactionHand));
             }
-            if (!level.isClientSide && bl) {
-                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+            bl = true;
+        } else if (itemStack.is(Items.FIRE_CHARGE) && !lit && this.canBeLit(blockState)){
+            level.playSound(player, blockPos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+            level.setBlock(blockPos, blockState.cycle(LIT), Block.UPDATE_CLIENTS);
+            if (!player.isCreative()) {
+                itemStack.shrink(1);
             }
+            bl = true;
         }
         if (bl) {
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -210,10 +207,6 @@ implements SimpleWaterloggedBlock {
         return true;
     }
 
-    public static boolean canBeLit(BlockState blockState) {
-        return blockState.is(BlockTags.CANDLES) && !blockState.getValue(LIT) && !blockState.getValue(WATERLOGGED);
-    }
-
     @SuppressWarnings("deprecation")
     @Override
     protected Iterable<Vec3> getParticleOffsets(BlockState state) {
@@ -221,8 +214,8 @@ implements SimpleWaterloggedBlock {
     }
 
     @Override
-    protected boolean isNotLit(BlockState state) {
-        return state.getValue(WATERLOGGED) && super.isNotLit(state);
+    protected boolean canBeLit(BlockState state) {
+        return !state.getValue(WATERLOGGED) && super.canBeLit(state);
     }
 
     @SuppressWarnings("deprecation")

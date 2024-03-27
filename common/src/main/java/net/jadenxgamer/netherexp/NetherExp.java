@@ -22,7 +22,7 @@ public class NetherExp {
     public static final String MOD_ID = "netherexp";
     // We can use this if we don't want to use DeferredRegister
     public static final Supplier<RegistrarManager> REGISTRIES = Suppliers.memoize(() -> RegistrarManager.get(MOD_ID));
-    
+
     public static void init() {
         JNECreativeModeTabs.init();
         JNESoundEvents.init();

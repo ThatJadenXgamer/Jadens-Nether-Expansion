@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -18,7 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public abstract class AbstractSoulCandleBlock extends Block {
-    public static final int field_30987 = 3;
+    public static final int LIGHT_PER_CANDLE = 3;
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
     protected AbstractSoulCandleBlock(Properties properties) {
@@ -27,8 +28,8 @@ public abstract class AbstractSoulCandleBlock extends Block {
 
     protected abstract Iterable<Vec3> getParticleOffsets(BlockState blockState);
 
-    protected boolean isNotLit(BlockState state) {
-        return !state.getValue(LIT);
+    public static boolean isLit(BlockState state) {
+        return state.hasProperty(LIT) && (state.is(BlockTags.CANDLES) || state.is(BlockTags.CANDLE_CAKES)) && state.getValue(LIT);
     }
 
     @SuppressWarnings("deprecation")
@@ -39,30 +40,39 @@ public abstract class AbstractSoulCandleBlock extends Block {
         }
     }
 
-    @Override
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
-        if (!blockState.getValue(LIT)) {
-            return;
-        }
-        this.getParticleOffsets(blockState).forEach(offset -> spawnCandleParticles(level, BlockPos.containing(offset.add(blockPos.getX(), blockPos.getY(), blockPos.getZ())), randomSource));
+    protected boolean canBeLit(BlockState blockState) {
+        return !(Boolean)blockState.getValue(LIT);
     }
 
-    private void spawnCandleParticles(Level world, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.3f) {
-            world.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
-            if (random.nextFloat() < 0.17f) {
-                world.playSound(null, pos, SoundEvents.CANDLE_AMBIENT, SoundSource.BLOCKS, 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f);
+    @Override
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
+        if (blockState.getValue(LIT)) {
+            this.getParticleOffsets(blockState).forEach((vec3) -> {
+                addParticlesAndSound(level, vec3.add(blockPos.getX(), blockPos.getY(), blockPos.getZ()), randomSource);
+            });
+        }
+    }
+
+    private static void addParticlesAndSound(Level level, Vec3 vec3, RandomSource randomSource) {
+        float f = randomSource.nextFloat();
+        if (f < 0.3F) {
+            level.addParticle(ParticleTypes.SMOKE, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+            if (f < 0.17F) {
+                level.playLocalSound(vec3.x + 0.5, vec3.y + 0.5, vec3.z + 0.5, JNESoundEvents.BLOCK_SOUL_CANDLE_AMBIENT.get(), SoundSource.BLOCKS, 1.0F + randomSource.nextFloat(), randomSource.nextFloat() * 0.7F + 0.3F, false);
             }
         }
-        world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
+        //todo add particles
+        level.addParticle(ParticleTypes.SMALL_FLAME, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
     }
 
     public static void extinguish(Player player, BlockState blockState, LevelAccessor level, BlockPos blockPos) {
         setLit(level, blockState, blockPos, false);
-        level.playSound(player, blockPos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
-        if (!level.isClientSide()) {
-            level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
+        if (blockState.getBlock() instanceof AbstractSoulCandleBlock) {
+            ((AbstractSoulCandleBlock)blockState.getBlock()).getParticleOffsets(blockState).forEach((vec3) -> level.addParticle(ParticleTypes.SMOKE, (double)blockPos.getX() + vec3.x(), (double)blockPos.getY() + vec3.y(), (double)blockPos.getZ() + vec3.z(), 0.0, 0.10000000149011612, 0.0));
         }
+
+        level.playSound(null, blockPos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
+        level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
     }
 
 
