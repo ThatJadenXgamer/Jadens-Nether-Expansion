@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
@@ -17,8 +18,7 @@ public class StrangeEnigmaFleshBlock extends JNEDirectionalBlock {
         double e = (double)pos.getZ() + random.nextDouble();
         for (int i = 0; i < 3; ++i) {
             if (!random.nextBoolean()) continue;
-            //TODO Particles
-            //world.addParticle(JNEParticles.ENIGMA_PARTICLE, d, f, e, 0.0, 0.0, 0.0);
+            world.addParticle(JNEParticleTypes.ENIGMA_KERNEL.get(), d, f, e, 0.0, 0.0, 0.0);
         }
     }
 }

@@ -13,7 +13,8 @@
     "block.StemBlockMixin",
     "block.TorchflowerCropBlockMixin",
     "block.WoodTypeAccessor",
-    "entity.BlockEntityTypeMixin"
+    "entity.BlockEntityTypeMixin",
+    "renderer.SimpleParticleTypeAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

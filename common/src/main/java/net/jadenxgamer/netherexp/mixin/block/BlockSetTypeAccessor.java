@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface BlockSetTypeAccessor {
 
     @Invoker("register")
-    static BlockSetType invokerRegistry(BlockSetType blockSetType) {
+    static BlockSetType netherexp$invokeRegisterBlockSetType(BlockSetType blockSetType) {
         throw new AssertionError();
     }
 }

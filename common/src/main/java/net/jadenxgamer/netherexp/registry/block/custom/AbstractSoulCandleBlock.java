@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -61,8 +62,7 @@ public abstract class AbstractSoulCandleBlock extends Block {
                 level.playLocalSound(vec3.x + 0.5, vec3.y + 0.5, vec3.z + 0.5, JNESoundEvents.BLOCK_SOUL_CANDLE_AMBIENT.get(), SoundSource.BLOCKS, 1.0F + randomSource.nextFloat(), randomSource.nextFloat() * 0.7F + 0.3F, false);
             }
         }
-        //todo add particles
-        level.addParticle(ParticleTypes.SMALL_FLAME, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+        level.addParticle(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get(), vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
     }
 
     public static void extinguish(Player player, BlockState blockState, LevelAccessor level, BlockPos blockPos) {

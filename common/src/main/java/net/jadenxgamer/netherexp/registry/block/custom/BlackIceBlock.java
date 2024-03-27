@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -37,13 +38,12 @@ public class BlackIceBlock extends Block {
 
         for (Direction direction : directions) {
             BlockPos blockPos = pos.relative(direction);
-            if (!world.getBlockState(blockPos).isCollisionShapeFullBlock(world, blockPos) && random.nextInt(80) == 0) {
+            if (!world.getBlockState(blockPos).isCollisionShapeFullBlock(world, blockPos) && random.nextInt(120) == 0) {
                 Direction.Axis axis = direction.getAxis();
                 double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) random.nextFloat();
                 double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) random.nextFloat();
                 double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) random.nextFloat();
-                //TODO Add Particles
-                //world.addParticle(JNEParticles.BLACK_AEROSOL, (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0, 0.0, 0.0);
+                world.addParticle(JNEParticleTypes.BLACK_AEROSOL.get(), (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0, 0.0, 0.0);
             }
         }
     }

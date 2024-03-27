@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
@@ -23,8 +24,7 @@ public class EnigmaCrownPotBlock extends FlowerPotBlock {
         double e = (double)pos.getZ() + vec3.z;
         for (int i = 0; i < 3; ++i) {
             if (!random.nextBoolean()) continue;
-            //TODO: Add Particles
-            //level.addParticle(JNEParticles.ENIGMA_PARTICLE, d + random.nextDouble() / 5.0, (double)pos.getY() + (0.5 - random.nextDouble()), e + random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
+            level.addParticle(JNEParticleTypes.ENIGMA_KERNEL.get(), d + random.nextDouble() / 5.0, (double)pos.getY() + (0.5 - random.nextDouble()), e + random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
         }
     }
 }

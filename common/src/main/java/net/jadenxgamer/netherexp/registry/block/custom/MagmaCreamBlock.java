@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -37,8 +38,7 @@ public class MagmaCreamBlock extends Block {
                 boolean bl = entity.xOld != entity.getX() || entity.zOld != entity.getZ();
                 RandomSource random = level.getRandom();
                 if (bl && random.nextBoolean()) {
-                    //TODO Add Particles
-                    //level.addParticle(ParticleTypes.SOUL, entity.getX(), blockPos.getY() + 1, entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
+                    level.addParticle(JNEParticleTypes.MAGMA_CREAM.get(), entity.getX(), blockPos.getY() + 1, entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
                 }
             }
         }

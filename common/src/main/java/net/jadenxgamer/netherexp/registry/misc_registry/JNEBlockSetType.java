@@ -36,7 +36,7 @@ public class JNEBlockSetType {
 
     private static BlockSetType registerBlockSetType(String name, SoundType soundType, SoundEvent doorClose, SoundEvent doorOpen, SoundEvent trapdoorClose, SoundEvent trapdoorOpen, SoundEvent pressurePlateClickOff, SoundEvent pressurePlateClickOn, SoundEvent buttonClickOff, SoundEvent buttonClickOn) {
         BlockSetType result = new BlockSetType(new ResourceLocation(NetherExp.MOD_ID, name).toString(), true, soundType, doorClose, doorOpen, trapdoorClose, trapdoorOpen, pressurePlateClickOff, pressurePlateClickOn, buttonClickOff, buttonClickOn);
-        BlockSetTypeAccessor.invokerRegistry(result);
+        BlockSetTypeAccessor.netherexp$invokeRegisterBlockSetType(result);
         return result;
     }
 }

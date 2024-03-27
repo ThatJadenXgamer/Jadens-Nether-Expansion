@@ -34,7 +34,7 @@ public class JNEWoodType {
     private static WoodType registerWoodType(String path, BlockSetType blockSetType, SoundType soundType, SoundType hangingSignSoundType, SoundEvent fenceGateCloseSound, SoundEvent fenceGateOpenSound) {
         String name = new ResourceLocation(NetherExp.MOD_ID, path).toString();
         WoodType result = new WoodType(name, blockSetType, soundType, hangingSignSoundType, fenceGateCloseSound, fenceGateOpenSound);
-        WoodTypeAccessor.invokerRegistry(result);
+        WoodTypeAccessor.netherexp$invokeRegisterWoodType(result);
         WOOD_TYPES.add(result);
         return result;
     }

@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
@@ -9,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface WoodTypeAccessor {
 
     @Invoker("register")
-    static WoodType invokerRegistry(WoodType woodType) {
+    static WoodType netherexp$invokeRegisterWoodType(WoodType woodType) {
         throw new AssertionError();
     }
 }

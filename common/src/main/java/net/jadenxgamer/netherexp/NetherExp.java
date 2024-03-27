@@ -10,6 +10,7 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.item.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -26,6 +27,7 @@ public class NetherExp {
     public static void init() {
         JNECreativeModeTabs.init();
         JNESoundEvents.init();
+        JNEParticleTypes.init();
 
         JNEBlocks.init();
         JNEItems.init();

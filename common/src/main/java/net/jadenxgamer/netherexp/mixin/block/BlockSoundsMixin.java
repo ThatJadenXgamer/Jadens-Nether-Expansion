@@ -17,7 +17,7 @@ public abstract class BlockSoundsMixin extends BlockBehaviour {
     public BlockSoundsMixin(Properties properties) {
         super(properties);
     }
-    
+
     @Inject(
             method = "getSoundType",
             at = @At(value = "HEAD"),

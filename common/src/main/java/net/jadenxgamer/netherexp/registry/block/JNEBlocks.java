@@ -24,6 +24,7 @@ import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class JNEBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(NetherExp.MOD_ID, Registries.BLOCK);
 
@@ -165,22 +166,22 @@ public class JNEBlocks {
     // NETHERRACK BRICKS
 
     public static final RegistrySupplier<Block> NETHERRACK_BRICKS = registerBlock("netherrack_bricks", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).strength(1.4f).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).strength(1.4f).requiresCorrectToolForDrops().sound(JNESoundType.NETHERRACK_BRICKS)));
 
     public static final RegistrySupplier<Block> NETHERRACK_BRICK_SLAB = registerBlock("netherrack_brick_slab", () ->
-            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.SMOOTH_NETHERRACK.get())));
+            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHERRACK_BRICKS.get())));
 
     public static final RegistrySupplier<Block> NETHERRACK_BRICK_STAIRS = registerBlock("netherrack_brick_stairs", () ->
-            new JNEStairBlock(JNEBlocks.NETHERRACK_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.SMOOTH_NETHERRACK.get())));
+            new JNEStairBlock(JNEBlocks.NETHERRACK_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.NETHERRACK_BRICKS.get())));
 
     public static final RegistrySupplier<Block> NETHERRACK_BRICK_WALL = registerBlock("netherrack_brick_wall", () ->
-            new WallBlock(BlockBehaviour.Properties.copy(JNEBlocks.SMOOTH_NETHERRACK.get())));
+            new WallBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHERRACK_BRICKS.get())));
 
     public static final RegistrySupplier<Block> NETHERRACK_TILES = registerBlock("netherrack_tiles", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.SMOOTH_NETHERRACK.get())));
+            new Block(BlockBehaviour.Properties.copy(JNEBlocks.NETHERRACK_BRICKS.get())));
 
     public static final RegistrySupplier<Block> NETHERRACK_PILLAR = registerBlock("netherrack_pillar", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.SMOOTH_NETHERRACK.get())));
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHERRACK_BRICKS.get())));
 
     // BASALT
 
@@ -392,6 +393,7 @@ public class JNEBlocks {
 
     private static <T extends Block> RegistrySupplier<T> registerCompatBlock(String name, Supplier<T> block, String modId) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
+        // If The Specified ModId is not found, then the Block Item won't be registered
         if (Platform.isModLoaded(modId)) {
             registerBlockItem(name, toReturn);
         }
