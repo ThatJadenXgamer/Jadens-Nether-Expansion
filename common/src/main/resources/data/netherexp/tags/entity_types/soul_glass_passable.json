@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:player",
+    "#minecraft:arrows",
+    "minecraft:dragon_fireball",
+    "minecraft:small_fireball",
+    "minecraft:fireball",
+    "minecraft:snowball",
+    "minecraft:egg",
+    "minecraft:wither_skull",
+    "minecraft:trident"
+  ]
+}

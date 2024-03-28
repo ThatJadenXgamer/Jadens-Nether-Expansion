@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:nightspores"
+    }
+  },
+  "result": {
+    "item": "netherexp:shroomnight",
+    "count": 1
+  }
+}

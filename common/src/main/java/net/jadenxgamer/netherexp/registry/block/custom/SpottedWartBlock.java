@@ -21,10 +21,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class SpottedWartBlock extends Block {
-    public static final IntegerProperty SPOTS = IntegerProperty.create("spots", 1, 3);
-
-    // Base is the vanilla block the Spotted Wart is related to
-    protected final Block base;
+    public static final IntegerProperty SPOTS = IntegerProperty.create("spots", 0, 3);
 
     /*
      * Spore value dictates what kind of spore to drop when sheared
@@ -33,9 +30,8 @@ public class SpottedWartBlock extends Block {
     */
     protected final int spore;
 
-    public SpottedWartBlock(Properties properties, Block base, int spore) {
+    public SpottedWartBlock(Properties properties, int spore) {
         super(properties);
-        this.base = base;
         this.spore = spore;
         this.registerDefaultState(this.defaultBlockState().setValue(SPOTS, 1));
     }
@@ -92,10 +88,5 @@ public class SpottedWartBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SPOTS);
-    }
-
-    @Override
-    public @NotNull ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
-        return new ItemStack(this.base);
     }
 }

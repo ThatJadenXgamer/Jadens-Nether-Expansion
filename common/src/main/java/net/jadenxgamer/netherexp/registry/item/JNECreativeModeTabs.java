@@ -141,6 +141,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.CLARET_SIGN.get());
                         output.accept(JNEItems.CLARET_HANGING_SIGN.get());
 
+                        output.accept(JNEBlocks.SMOKESTALK.get());
                         output.accept(JNEBlocks.SMOKESTALK_BLOCK.get());
                         output.accept(JNEBlocks.STRIPPED_SMOKESTALK_BLOCK.get());
                         output.accept(JNEBlocks.SMOKESTALK_PLANKS.get());

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "netherexp:polished_basalt_bricks"
+  },
+  "result": "netherexp:polished_basalt_brick_stairs",
+  "count": 1
+}

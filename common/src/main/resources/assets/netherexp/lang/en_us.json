@@ -15,9 +15,7 @@
   "item.netherexp.mist_charge": "Mist Charge",
   "item.netherexp.wraithing_flesh": "Wraithing Flesh",
   "item.netherexp.iron_scrap": "Iron Scrap",
-  "item.netherexp.raw_pyrite": "Raw Pyrite",
   "item.netherexp.fossil_fuel": "Fossil Fuel",
-  "item.netherexp.pyrite_ingot": "Pyrite Ingot",
   "item.netherexp.rift_armor_trim_smithing_template": "Smithing Template",
   "trim_pattern.netherexp.rift": "Rift Armor Trim",
   "item.netherexp.spirit_armor_trim_smithing_template": "Smithing Template",
@@ -219,8 +217,6 @@
 
   "block.netherexp.quartz_crystal_block": "Quartz Crystal Block",
   "block.netherexp.quartz_crystal": "Quartz Crystal",
-  "block.netherexp.smooth_quartz_wall": "Smooth Quartz Wall",
-  "block.netherexp.quartz_brick_wall": "Quartz Brick Wall",
   "block.netherexp.cracked_quartz_bricks": "Cracked Quartz Bricks",
   "block.netherexp.chiseled_quartz_pillar": "Chiseled Quartz Pillar",
 
@@ -256,19 +252,6 @@
   "block.netherexp.yellow_nether_brick_stairs": "Yellow Nether Brick Stairs",
   "block.netherexp.yellow_nether_brick_wall": "Yellow Nether Brick Wall",
 
-  "block.netherexp.pyrite_block": "Block of Pyrite",
-  "block.netherexp.pyrite_slab": "Pyrite Slab",
-  "block.netherexp.pyrite_stairs": "Pyrite Stairs",
-  "block.netherexp.pyrite_wall": "Pyrite Wall",
-  "block.netherexp.pyrite_button": "Pyrite Button",
-  "block.netherexp.medium_weighted_pressure_plate": "Medium Weighted Pressure Plate",
-  "block.netherexp.pyrite_lantern": "Pyrite Lantern",
-  "block.netherexp.soul_pyrite_lantern": "Soul Pyrite Lantern",
-  "block.netherexp.pyrite_chain": "Pyrite Chain",
-  "block.netherexp.pyrite_nether_bricks": "Pyrite Nether Bricks",
-  "block.netherexp.flamethrower": "Flamethrower",
-  "block.netherexp.spiketrap": "Spiketrap",
-
   "block.netherexp.shroomnight": "Shroomnight",
   "block.netherexp.shroomblight": "Shroomblight",
   "block.netherexp.shroomfright": "Shroomfright",
@@ -298,9 +281,6 @@
   "block.netherexp.crimson_nylium_path": "Crimson Nylium Path",
   "block.netherexp.warped_nylium_path": "Warped Nylium Path",
   "block.netherexp.umbral_nylium_path": "Umbral Nylium Path",
-
-  "block.netherexp.spotted_nether_wart_block": "Spotted Nether Wart Block",
-  "block.netherexp.spotted_warped_wart_block": "Spotted Warped Wart Block",
 
   "block.netherexp.decayable_nether_wart_block": "Decayable Nether Wart Block",
   "block.netherexp.decayable_warped_wart_block": "Decayable Warped Wart Block",

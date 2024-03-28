@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#S#",
+    "#S#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:bone"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "netherexp:bone_fence",
+    "count": 4
+  }
+}

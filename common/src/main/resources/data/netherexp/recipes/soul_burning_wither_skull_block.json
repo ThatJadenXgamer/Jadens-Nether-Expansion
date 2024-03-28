@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "T"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:wither_skull_block"
+    },
+    "T": {
+      "item": "minecraft:soul_torch"
+    }
+  },
+  "result": {
+    "item": "netherexp:soul_burning_wither_skull_block",
+    "count": 1
+  }
+}

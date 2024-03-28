@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:pale_soul_slate"
+    },
+    "title": {
+      "translate": "advancements.nether.character_arch.title"
+    },
+    "description": {
+      "translate": "advancements.nether.character_arch.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "structure": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "netherexp:geyser_formation"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "structure"
+    ]
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "T"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:carved_pumpkin"
+    },
+    "T": {
+      "item": "minecraft:soul_torch"
+    }
+  },
+  "result": {
+    "item": "netherexp:soul_jack_o_lantern",
+    "count": 1
+  }
+}

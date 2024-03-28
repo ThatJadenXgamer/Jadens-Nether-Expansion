@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:netherrack",
+    "minecraft:blackstone",
+    "minecraft:crimson_nylium",
+    "minecraft:warped_nylium",
+    "minecraft:mycelium",
+    "minecraft:soul_sand",
+    "minecraft:soul_soil"
+  ]
+}

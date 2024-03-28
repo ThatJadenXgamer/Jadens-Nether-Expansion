@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:wither_bone_block"
+    }
+  },
+  "result": {
+    "item": "netherexp:stacked_wither_bones",
+    "count": 4
+  }
+}

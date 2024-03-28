@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:soul_sand",
+    "netherexp:ecto_soul_sand"
+  ]
+}

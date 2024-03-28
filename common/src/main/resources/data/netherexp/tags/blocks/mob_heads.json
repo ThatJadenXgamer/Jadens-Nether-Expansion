@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:skeleton_skull",
+    "minecraft:wither_skeleton_skull",
+    "minecraft:zombie_head",
+    "minecraft:player_head",
+    "minecraft:creeper_head",
+    "minecraft:dragon_head",
+    "minecraft:skeleton_wall_skull",
+    "minecraft:wither_skeleton_wall_skull",
+    "minecraft:zombie_wall_head",
+    "minecraft:player_wall_head",
+    "minecraft:creeper_wall_head",
+    "minecraft:dragon_wall_head",
+    "netherexp:skeleton_skull_candle",
+    "netherexp:soul_skeleton_skull_candle"
+  ]
+}

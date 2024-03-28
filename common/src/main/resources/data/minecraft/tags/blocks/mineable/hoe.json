@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:shroomnight",
+    "netherexp:shroomblight",
+    "netherexp:boomshroom_bundle",
+    "netherexp:crimson_sporeshroom",
+    "netherexp:warped_sporeshroom",
+    "netherexp:umbral_sporeshroom",
+    "netherexp:decayable_nether_wart_block",
+    "netherexp:decayable_warped_wart_block",
+    "netherexp:decayable_shroomlight",
+    "netherexp:decayable_shroomnight"
+  ]
+}

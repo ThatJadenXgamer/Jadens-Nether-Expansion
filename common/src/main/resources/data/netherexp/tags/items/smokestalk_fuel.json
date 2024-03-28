@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stick",
+    "minecraft:gunpowder",
+    "minecraft:bone",
+    "minecraft:coal",
+    "minecraft:charcoal"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:stacked_bones"
+    }
+  },
+  "result": {
+    "item": "netherexp:stacked_bone_stairs",
+    "count": 4
+  }
+}

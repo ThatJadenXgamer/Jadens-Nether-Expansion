@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:fossil_fuel"
+    },
+    "title": {
+      "translate": "advancements.nether.gravedigger.title"
+    },
+    "description": {
+      "translate": "advancements.nether.gravedigger.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/character_arch",
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "netherexp:fossil_fuel"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

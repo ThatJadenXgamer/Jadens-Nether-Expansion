@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:lightspores",
+    "netherexp:nightspores",
+    "netherexp:blightspores",
+    "netherexp:frightspores"
+  ]
+}

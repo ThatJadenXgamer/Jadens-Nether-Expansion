@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:magma_cream"
+    }
+  },
+  "result": {
+    "item": "netherexp:magma_cream_block",
+    "count": 1
+  }
+}

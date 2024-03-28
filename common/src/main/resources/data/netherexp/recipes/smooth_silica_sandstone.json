@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "netherexp:silica_sandstone"
+  },
+  "result": "netherexp:smooth_silica_sandstone"
+}

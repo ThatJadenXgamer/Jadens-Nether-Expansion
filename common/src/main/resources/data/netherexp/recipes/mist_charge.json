@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:foggy_essence"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "tag": "minecraft:soul_fire_base_blocks"
+    }
+  ],
+  "result": {
+    "item": "netherexp:mist_charge",
+    "count": 5
+  }
+}
+

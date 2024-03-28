@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#",
+    "#X"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "X": {
+      "item": "minecraft:magma_cream"
+    }
+  },
+  "result": {
+    "item": "netherexp:soul_magma_block",
+    "count": 4
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:barrier",
+    "netherexp:basaltic_geyser",
+    "netherexp:souled_geyser",
+    "netherexp:blackstonic_geyser",
+    "netherexp:ashen_geyser"
+  ]
+}

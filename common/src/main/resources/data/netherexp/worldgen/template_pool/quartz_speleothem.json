@@ -1,0 +1,14 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 5,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:quartz_speleothem/crystal1",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

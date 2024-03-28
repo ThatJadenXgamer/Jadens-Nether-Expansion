@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:weeping_vines",
+    "minecraft:nether_wart_block",
+    "netherexp:decayable_nether_wart_block"
+  ]
+}

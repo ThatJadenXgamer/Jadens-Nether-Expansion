@@ -1,0 +1,7 @@
+{
+  "message_id": "stampedeCrush",
+  "exhaustion": 0.1,
+  "scaling": "when_caused_by_living_non_player",
+  "effects": "hurt",
+  "death_message_type": "default"
+}

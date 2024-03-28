@@ -32,8 +32,6 @@ public class NetherPizzaBlock extends Block {
         this.registerDefaultState(this.defaultBlockState().setValue(SLICES, 4));
     }
 
-
-
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter level, BlockPos blockPos, CollisionContext context) {

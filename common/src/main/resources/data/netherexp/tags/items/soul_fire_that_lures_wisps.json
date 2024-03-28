@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:soul_fire",
+    "minecraft:soul_torch",
+    "minecraft:soul_lantern",
+    "minecraft:soul_campfire",
+    "netherexp:soul_jack_o_lantern",
+    "netherexp:soul_ghoul_o_lantern",
+    "netherexp:soul_pyrite_lantern",
+    "netherexp:soul_skeleton_skull_candle",
+    "netherexp:soul_burning_skull_block",
+    "netherexp:soul_burning_wither_skull_block"
+  ]
+}

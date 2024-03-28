@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:rift_armor_trim_smithing_template",
+    "netherexp:spirit_armor_trim_smithing_template"
+  ]
+}

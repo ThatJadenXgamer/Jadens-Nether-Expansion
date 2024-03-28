@@ -1,0 +1,106 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "netherexp:explosive_scoria",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:redstone",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 7,
+                    "max": 10
+                  },
+                  "add": false
+                },
+                {
+                  "function": "minecraft:apply_bonus",
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "parameters": {
+                    "bonusMultiplier": 1
+                  }
+                },
+                {
+                  "function": "minecraft:explosion_decay"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "netherexp:explosive_scoria",
+              "properties": {
+                "unstable": "false"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "netherexp:iron_scrap",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 6,
+                "max": 9
+              }
+            },
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:uniform_bonus_count",
+              "parameters": {
+                "bonusMultiplier": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "netherexp:explosive_scoria",
+              "properties": {
+                "unstable": "false"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

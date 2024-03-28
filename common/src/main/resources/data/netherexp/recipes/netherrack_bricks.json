@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:smooth_netherrack"
+    }
+  },
+  "result": {
+    "item": "netherexp:netherrack_bricks",
+    "count": 4
+  }
+}

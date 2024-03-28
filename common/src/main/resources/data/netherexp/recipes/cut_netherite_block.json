@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cut_netherite_block",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:netherite_plated_block"
+    }
+  },
+  "result": {
+    "item": "netherexp:cut_netherite_block",
+    "count": 4
+  }
+}

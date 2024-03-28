@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:bone_block"
+  },
+  "result": "netherexp:stacked_bone_slab",
+  "count": 2
+}

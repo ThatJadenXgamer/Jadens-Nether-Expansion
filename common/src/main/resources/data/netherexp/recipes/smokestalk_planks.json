@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "netherexp:smokestalk_blocks"
+    }
+  ],
+  "result": {
+    "item": "netherexp:smokestalk_planks",
+    "count": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "feature": "netherexp:basalt_deltas/white_ash",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 0,
+          "max_inclusive": 8
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

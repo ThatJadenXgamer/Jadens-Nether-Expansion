@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "N N",
+    "NBN",
+    " B "
+  ],
+  "key": {
+    "N": {
+      "item": "netherexp:necro_shard"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "netherexp:guillotine",
+    "count": 1
+  }
+}

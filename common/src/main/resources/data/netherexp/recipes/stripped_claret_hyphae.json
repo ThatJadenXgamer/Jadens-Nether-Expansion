@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "key": {
+    "#": {
+      "item": "netherexp:stripped_claret_stem"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "item": "netherexp:stripped_claret_hyphae"
+  }
+}

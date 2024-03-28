@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    },
+    {
+      "item": "netherexp:soul_soil_layer"
+    }
+  ],
+  "result": {
+    "item": "minecraft:soul_soil"
+  }
+}

@@ -8,7 +8,6 @@
     "minecraft:chiseled_quartz_block",
 
     "minecraft:quartz_bricks",
-    "netherexp:quartz_brick_wall",
     "netherexp:cracked_quartz_bricks",
 
     "minecraft:quartz_pillar",
@@ -17,6 +16,5 @@
     "minecraft:smooth_quartz",
     "minecraft:smooth_quartz_stairs",
     "minecraft:smooth_quartz_slab",
-    "netherexp:smooth_quartz_wall"
   ]
 }

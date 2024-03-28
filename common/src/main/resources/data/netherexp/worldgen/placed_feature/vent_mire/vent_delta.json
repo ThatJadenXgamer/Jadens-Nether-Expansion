@@ -1,0 +1,18 @@
+{
+  "feature": "netherexp:vent_mire/vent_delta",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 8,
+          "max_inclusive": 12
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

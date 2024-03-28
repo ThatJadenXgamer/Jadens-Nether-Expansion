@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:warped_wart"
+    }
+  },
+  "result": {
+    "item": "minecraft:warped_wart_block",
+    "count": 1
+  }
+}

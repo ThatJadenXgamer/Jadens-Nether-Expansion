@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:grasp",
+    "netherexp:wisp",
+    "netherexp:apparition",
+    "netherexp:stampede",
+    "minecraft:ghast"
+  ]
+}

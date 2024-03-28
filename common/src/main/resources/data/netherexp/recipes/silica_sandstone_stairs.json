@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": [
+      {
+        "item": "netherexp:silica_sandstone"
+      },
+      {
+        "item": "netherexp:chiseled_silica_sandstone"
+      },
+      {
+        "item": "netherexp:cut_silica_sandstone"
+      }
+    ]
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "netherexp:silica_sandstone_stairs"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "light_blue_dye",
+  "ingredients": [
+    {
+      "item": "netherexp:soul_torchflower"
+    }
+  ],
+  "result": {
+    "item": "minecraft:light_blue_dye"
+  }
+}
+

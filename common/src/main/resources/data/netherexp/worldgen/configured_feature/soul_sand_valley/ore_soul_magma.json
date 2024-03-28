@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 33,
+    "discard_chance_on_air_exposure": 0,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:soul_fire_base_blocks"
+        },
+        "state": {
+          "Name": "netherexp:soul_magma_block"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:netherrack"
+        },
+        "state": {
+          "Name": "minecraft:magma_block"
+        }
+      }
+    ]
+  }
+}
+

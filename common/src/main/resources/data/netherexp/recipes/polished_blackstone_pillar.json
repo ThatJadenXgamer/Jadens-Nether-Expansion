@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "S"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:polished_blackstone"
+    }
+  },
+  "result": {
+    "item": "netherexp:polished_blackstone_pillar",
+    "count": 2
+  }
+}

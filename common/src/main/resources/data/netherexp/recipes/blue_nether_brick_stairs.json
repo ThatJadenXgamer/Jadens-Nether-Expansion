@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:blue_nether_bricks"
+    }
+  },
+  "result": {
+    "item": "netherexp:blue_nether_brick_stairs",
+    "count": 4
+  }
+}

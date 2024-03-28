@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:lake",
+  "config": {
+    "fluid": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "netherexp:ectoplasm",
+        "Properties": {
+          "level": "0"
+        }
+      }
+    },
+    "barrier": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 5,
+          "data": {
+            "Name": "netherexp:pale_soul_slate"
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "netherexp:soul_magma_block"
+          }
+        }
+      ]
+    }
+  }
+}

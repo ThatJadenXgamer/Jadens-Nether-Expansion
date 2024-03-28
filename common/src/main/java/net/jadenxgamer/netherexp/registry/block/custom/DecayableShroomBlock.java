@@ -25,18 +25,10 @@ public class DecayableShroomBlock extends Block {
     // Persistent is the default block obtained when middle-clicked
     protected final Block persistent;
 
-    /*
-     * Spore value dictates what kind of spore to drop when sheared
-     * 1 = Lightspores
-     * 2 = Nightspores
-     */
-    protected final int spore;
-
-    public DecayableShroomBlock(Properties properties, ParticleOptions particle, Block persistent, int spore) {
+    public DecayableShroomBlock(Properties properties, ParticleOptions particle, Block persistent) {
         super(properties);
         this.particle = particle;
         this.persistent = persistent;
-        this.spore = spore;
         this.registerDefaultState(this.defaultBlockState().setValue(DISTANCE, 10));
     }
 

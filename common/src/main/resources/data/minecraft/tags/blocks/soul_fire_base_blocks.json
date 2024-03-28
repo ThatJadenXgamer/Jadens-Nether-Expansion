@@ -1,6 +1,21 @@
 {
   "replace": false,
   "values": [
-    "netherexp:soul_slate"
+    "netherexp:soul_slate",
+    "netherexp:pale_soul_slate",
+    "netherexp:jagged_soul_slate",
+    "netherexp:soul_slate_bricks",
+    "netherexp:indented_soul_slate_bricks",
+    "netherexp:cracked_soul_slate_bricks",
+    "netherexp:soul_slate_brick_pillar",
+    "netherexp:chiseled_soul_slate_bricks",
+    "netherexp:soul_glass",
+    "netherexp:ecto_soul_sand",
+    "netherexp:soul_magma_block",
+    "netherexp:souled_geyser",
+    "netherexp:black_ice",
+    "netherexp:fossil_ore",
+    "netherexp:fossil_fuel_ore",
+    "netherexp:diamond_fossil_ore"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "brown_dye",
+  "ingredients": [
+    {
+      "item": "netherexp:fossil_fuel"
+    },
+    {
+      "item": "minecraft:white_dye"
+    }
+  ],
+  "result": {
+    "item": "minecraft:brown_dye",
+    "count": 2
+  }
+}

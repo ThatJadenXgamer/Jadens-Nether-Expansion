@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "ivy_blocks",
+  "ingredients": [
+    {
+      "item": "minecraft:twisting_vines"
+    }
+  ],
+  "result": {
+    "item": "netherexp:twisting_ivy"
+  }
+}
