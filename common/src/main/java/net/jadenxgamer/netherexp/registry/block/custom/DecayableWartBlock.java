@@ -1,12 +1,11 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -31,9 +30,6 @@ public class DecayableWartBlock extends Block {
     public static final IntegerProperty DISTANCE = IntegerProperty.create("distance", 1, 10);
     public static final IntegerProperty SPOTS = IntegerProperty.create("spots", 0, 3);
 
-    // Particle is used to get the falling warts when decaying
-    protected final ParticleOptions particle;
-
     // Persistent is the default block obtained when middle-clicked
     protected final Block persistent;
 
@@ -42,13 +38,12 @@ public class DecayableWartBlock extends Block {
      * 1 = Lightspores
      * 2 = Nightspores
      */
-    protected final int spore;
+    protected final int type;
 
-    public DecayableWartBlock(Properties properties, ParticleOptions particle, Block persistent, int spore) {
+    public DecayableWartBlock(Properties properties, int type, Block persistent) {
         super(properties);
-        this.particle = particle;
+        this.type = type;
         this.persistent = persistent;
-        this.spore = spore;
         this.registerDefaultState(this.defaultBlockState().setValue(DISTANCE, 10).setValue(SPOTS, 0));
     }
 
@@ -85,14 +80,14 @@ public class DecayableWartBlock extends Block {
         return state;
     }
 
-    private static void dropLight(Level level, BlockPos pos, BlockState state) {
+    private static void dropLight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        DecayableWartBlock.popResource(level, pos, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
+        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
     }
 
-    private static void dropNight(Level level, BlockPos pos, BlockState state) {
+    private static void dropNight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        DecayableWartBlock.popResource(level, pos, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
+        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
     }
 
     @SuppressWarnings("deprecation")
@@ -102,10 +97,13 @@ public class DecayableWartBlock extends Block {
         boolean bl = false;
         int s = state.getValue(SPOTS);
         if (itemStack.is(Items.SHEARS) && s >= 1) {
-            if (this.spore == 1) {
-                dropLight(level, pos, state);
-            } else if (this.spore == 2) {
-                dropNight(level, pos, state);
+            switch (type) {
+                default: {
+                    dropLight(level, pos, state, hitResult.getDirection());
+                }
+                case 2: {
+                    dropNight(level, pos, state, hitResult.getDirection());
+                }
             }
             level.playSound(player, pos, JNESoundEvents.LIGHTSPORES_SHEAR.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             level.setBlockAndUpdate(pos, state.setValue(SPOTS, 0));
@@ -168,7 +166,14 @@ public class DecayableWartBlock extends Block {
         double y = (double)pos.getY() - 0.05;
         double z = (double)pos.getZ() + random.nextDouble();
         if (d >= 10 && f < 0.3f) {
-            level.addParticle(this.particle, x, y, z, 0.0, 0.0, 0.0);
+            switch (type) {
+                default: {
+                    level.addParticle(JNEParticleTypes.FALLING_NETHER_WART.get(), x, y, z, 0.0, 0.0, 0.0);
+                }
+                case 2: {
+                    level.addParticle(JNEParticleTypes.FALLING_WARPED_WART.get(), x, y, z, 0.0, 0.0, 0.0);
+                }
+            }
         }
     }
 

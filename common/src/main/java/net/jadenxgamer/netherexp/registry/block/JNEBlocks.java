@@ -9,8 +9,6 @@ import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEBlockSetType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEWoodType;
-import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
@@ -423,7 +421,7 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> CUT_SILICA_SANDSTONE = registerBlock("cut_silica_sandstone", () ->
             new Block(BlockBehaviour.Properties.copy(JNEBlocks.SILICA_SANDSTONE.get())));
 
-    public static final RegistrySupplier<Block> CUT_SILICA_SANDSTONE_SLAB = registerBlock("cut_silica_sandstone_stairs", () ->
+    public static final RegistrySupplier<Block> CUT_SILICA_SANDSTONE_SLAB = registerBlock("cut_silica_sandstone_slab", () ->
             new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.SILICA_SANDSTONE.get())));
 
     public static final RegistrySupplier<Block> CHISELED_SILICA_SANDSTONE = registerBlock("chiseled_silica_sandstone", () ->
@@ -443,10 +441,13 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> NETHER_BRICK_PILLAR = registerBlock("nether_brick_pillar", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICKS)));
 
-    public static final RegistrySupplier<Block> RED_MIXED_NETHER_BRICKS = registerBlock("", () ->
+    public static final RegistrySupplier<Block> RED_MIXED_NETHER_BRICKS = registerBlock("red_mixed_nether_bricks", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICKS)));
 
     // Blue Nether Bricks
+
+    public static final RegistrySupplier<Block> BLUE_MIXED_NETHER_BRICKS = registerBlock("blue_mixed_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICKS)));
 
     public static final RegistrySupplier<Block> BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.WARPED_WART_BLOCK)));
@@ -462,7 +463,7 @@ public class JNEBlocks {
 
     // Nether Pizza
 
-    public static final RegistrySupplier<Block> NETHER_PIZZA = registerBlockWithoutItem("nether_pizza", () ->
+    public static final RegistrySupplier<Block> NETHER_PIZZA = registerBlock("nether_pizza", () ->
             new NetherPizzaBlock(BlockBehaviour.Properties.of().strength(0.5f).noLootTable().noOcclusion().sound(SoundType.WOOL)));
 
     public static final RegistrySupplier<Block> WARPED_WART = registerBlockWithoutItem("warped_wart", () ->
@@ -537,17 +538,17 @@ public class JNEBlocks {
 
     // Decayable Blocks
 
-    public static final RegistrySupplier<Block> DECAYABLE_NETHER_WART_BLOCK = registerBlock("decayable_nether_wart_block", () ->
-            new DecayableWartBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_WART_BLOCK).randomTicks(), JNEParticleTypes.FALLING_NETHER_WART.get(), Blocks.NETHER_WART_BLOCK, 1));
+    public static final RegistrySupplier<Block> DECAYABLE_NETHER_WART_BLOCK = registerBlockWithoutItem("decayable_nether_wart_block", () ->
+            new DecayableWartBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_WART_BLOCK).randomTicks(), 1, Blocks.NETHER_WART_BLOCK));
 
-    public static final RegistrySupplier<Block> DECAYABLE_WARPED_WART_BLOCK = registerBlock("decayable_warped_wart_block", () ->
-            new DecayableWartBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_WART_BLOCK).randomTicks(), JNEParticleTypes.FALLING_WARPED_WART.get(), Blocks.WARPED_WART_BLOCK, 2));
+    public static final RegistrySupplier<Block> DECAYABLE_WARPED_WART_BLOCK = registerBlockWithoutItem("decayable_warped_wart_block", () ->
+            new DecayableWartBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_WART_BLOCK).randomTicks(), 2, Blocks.WARPED_WART_BLOCK));
 
-    public static final RegistrySupplier<Block> DECAYABLE_SHROOMLIGHT = registerBlock("decayable_shroomlight", () ->
-            new DecayableShroomBlock(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).randomTicks(), JNEParticleTypes.FALLING_SHROOMLIGHT.get(), Blocks.SHROOMLIGHT));
+    public static final RegistrySupplier<Block> DECAYABLE_SHROOMLIGHT = registerBlockWithoutItem("decayable_shroomlight", () ->
+            new DecayableShroomBlock(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).randomTicks(), 1, Blocks.SHROOMLIGHT));
 
-    public static final RegistrySupplier<Block> DECAYABLE_SHROOMNIGHT = registerBlock("decayable_shroomnight", () ->
-            new DecayableShroomBlock(BlockBehaviour.Properties.copy(JNEBlocks.SHROOMNIGHT.get()).randomTicks(), JNEParticleTypes.FALLING_SHROOMNIGHT.get(), JNEBlocks.SHROOMNIGHT.get()));
+    public static final RegistrySupplier<Block> DECAYABLE_SHROOMNIGHT = registerBlockWithoutItem("decayable_shroomnight", () ->
+            new DecayableShroomBlock(BlockBehaviour.Properties.copy(JNEBlocks.SHROOMNIGHT.get()).randomTicks(), 2, JNEBlocks.SHROOMNIGHT.get()));
 
     // Particle Emitters
 
@@ -600,10 +601,10 @@ public class JNEBlocks {
     // Bones
 
     public static final RegistrySupplier<Block> SKELETON_SKULL_CANDLE = registerBlock("skeleton_skull_candle", () ->
-            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 14), ParticleTypes.SMALL_FLAME, ParticleTypes.SMOKE));
+            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 14), 1));
 
     public static final RegistrySupplier<Block> SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle", () ->
-            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 10), JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get(), ParticleTypes.SMOKE));
+            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 10), 2));
 
     public static final RegistrySupplier<Block> BONE_ROD = registerBlock("bone_rod", () ->
             new BoneRodBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5f).sound(SoundType.BONE_BLOCK)));

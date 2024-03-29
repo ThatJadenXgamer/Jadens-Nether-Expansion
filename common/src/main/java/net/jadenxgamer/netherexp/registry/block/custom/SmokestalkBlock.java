@@ -34,6 +34,7 @@ public class SmokestalkBlock extends GrowingPlantHeadBlock {
 
     public SmokestalkBlock(Properties properties) {
         super(properties, Direction.UP, SHAPE, false, 0.1);
+        this.registerDefaultState(defaultBlockState().setValue(SMOKEY, false));
     }
 
     @Override

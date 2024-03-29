@@ -59,9 +59,6 @@ public class JNEItems {
     public static final RegistrySupplier<Item> GLOWCHEESE = registerItem("glowcheese", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.GLOWCHEESE)));
 
-    public static final RegistrySupplier<Item> NETHER_PIZZA = registerItem("nether_pizza", () ->
-            new Item(new Item.Properties()));
-
     public static final RegistrySupplier<Item> NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE)));
 
@@ -75,13 +72,13 @@ public class JNEItems {
             new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));
 
     public static final RegistrySupplier<Item> WARPED_WART = registerItem("warped_wart", () ->
-            new Item(new Item.Properties()));
+            new BlockItem(JNEBlocks.WARPED_WART.get(), new Item.Properties()));
 
     public static final RegistrySupplier<Item> MIST_CHARGE = registerItem("mist_charge", () ->
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> STRIDITE = registerItem("stridite", () ->
-            new Item(new Item.Properties()));
+            new Item(new Item.Properties()));;
 
     public static final RegistrySupplier<Item> NETHERITE_PLATING = registerItem("netherite_plating", () ->
             new Item(new Item.Properties()));

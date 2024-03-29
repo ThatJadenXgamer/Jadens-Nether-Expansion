@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
@@ -20,14 +20,14 @@ public class DecayableShroomBlock extends Block {
     public static final IntegerProperty DISTANCE = IntegerProperty.create("distance", 1, 10);
 
     // Particle is used to get the falling warts when decaying
-    protected final ParticleOptions particle;
+    protected final int type;
 
     // Persistent is the default block obtained when middle-clicked
     protected final Block persistent;
 
-    public DecayableShroomBlock(Properties properties, ParticleOptions particle, Block persistent) {
+    public DecayableShroomBlock(Properties properties, int type, Block persistent) {
         super(properties);
-        this.particle = particle;
+        this.type = type;
         this.persistent = persistent;
         this.registerDefaultState(this.defaultBlockState().setValue(DISTANCE, 10));
     }
@@ -99,7 +99,14 @@ public class DecayableShroomBlock extends Block {
         double y = (double)pos.getY() - 0.05;
         double z = (double)pos.getZ() + random.nextDouble();
         if (d >= 10 && f < 0.3f) {
-            level.addParticle(this.particle, x, y, z, 0.0, 0.0, 0.0);
+            switch (type) {
+                default: {
+                    level.addParticle(JNEParticleTypes.FALLING_SHROOMLIGHT.get(), x, y, z, 0.0, 0.0, 0.0);
+                }
+                case 2: {
+                    level.addParticle(JNEParticleTypes.FALLING_SHROOMNIGHT.get(), x, y, z, 0.0, 0.0, 0.0);
+                }
+            }
         }
     }
 

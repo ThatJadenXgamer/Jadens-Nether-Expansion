@@ -118,8 +118,8 @@ implements BonemealableBlock {
     }
 
     @Override
-    public boolean canSurvive(BlockState floor, LevelReader levelReader, BlockPos blockPos) {
-        return floor.is(JNETags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || floor.is(BlockTags.NYLIUM) || super.canSurvive(floor, levelReader, blockPos);
+    public boolean mayPlaceOn(BlockState floor, BlockGetter level, BlockPos blockPos) {
+        return floor.is(JNETags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || floor.is(BlockTags.NYLIUM) || super.mayPlaceOn(floor, level, blockPos);
     }
 
     @Override

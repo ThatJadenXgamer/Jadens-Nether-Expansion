@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -10,7 +11,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,27 +23,22 @@ import org.jetbrains.annotations.NotNull;
 public class SpottedWartBlock extends Block {
     public static final IntegerProperty SPOTS = IntegerProperty.create("spots", 0, 3);
 
-    /*
-     * Spore value dictates what kind of spore to drop when sheared
-     * 1 = Lightspores
-     * 2 = Nightspores
-    */
-    protected final int spore;
+    protected final int type;
 
-    public SpottedWartBlock(Properties properties, int spore) {
+    public SpottedWartBlock(Properties properties, int type) {
         super(properties);
-        this.spore = spore;
-        this.registerDefaultState(this.defaultBlockState().setValue(SPOTS, 1));
+        this.type = type;
+        this.registerDefaultState(this.defaultBlockState().setValue(SPOTS, 0));
     }
 
-    private static void dropLight(Level level, BlockPos pos, BlockState state) {
+    private static void dropLight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        SpottedWartBlock.popResource(level, pos, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
+        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
     }
 
-    private static void dropNight(Level level, BlockPos pos, BlockState state) {
+    private static void dropNight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        SpottedWartBlock.popResource(level, pos, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
+        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
     }
 
     @SuppressWarnings("deprecation")
@@ -52,11 +47,14 @@ public class SpottedWartBlock extends Block {
         ItemStack itemStack = player.getItemInHand(hand);
         boolean bl = false;
         int s = state.getValue(SPOTS);
-        if (itemStack.is(Items.SHEARS)) {
-            if (this.spore == 1) {
-                dropLight(level, pos, state);
-            } else if (this.spore == 2) {
-                dropNight(level, pos, state);
+        if (itemStack.is(Items.SHEARS) && s >= 1) {
+            switch (type) {
+                default: {
+                    dropLight(level, pos, state, hitResult.getDirection());
+                }
+                case 2: {
+                    dropNight(level, pos, state, hitResult.getDirection());
+                }
             }
             level.playSound(player, pos, JNESoundEvents.LIGHTSPORES_SHEAR.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             level.setBlockAndUpdate(pos, state.setValue(SPOTS, 0));

@@ -8,13 +8,13 @@
   ],
   "mixins": [
     "block.BlockSetTypeAccessor",
+    "block.BlocksMixin",
     "block.BlockSoundsMixin",
     "block.RootsBlockMixin",
     "block.StemBlockMixin",
     "block.TorchflowerCropBlockMixin",
     "block.WoodTypeAccessor",
-    "entity.BlockEntityTypeMixin",
-    "renderer.SimpleParticleTypeAccessor"
+    "entity.BlockEntityTypeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -2,20 +2,12 @@ package net.jadenxgamer.netherexp;
 
 import com.google.common.base.Suppliers;
 import dev.architectury.platform.Platform;
-import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrarManager;
-import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.item.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 import java.util.function.Supplier;
 
@@ -35,5 +27,9 @@ public class NetherExp {
 
     public static boolean checkModCompatCinderscapes() {
         return Platform.isModLoaded("cinderscapes");
+    }
+
+    public static boolean checkModCompatGardensOfTheDead() {
+        return Platform.isModLoaded("gardens_of_the_dead");
     }
 }
