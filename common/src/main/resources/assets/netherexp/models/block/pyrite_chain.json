@@ -1,5 +1,6 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
 	"ambientocclusion": false,
 	"textures": {
 		"2": "netherexp:block/pyrite_chain_front",

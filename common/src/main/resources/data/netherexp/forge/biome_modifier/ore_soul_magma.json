@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:soul_sand_valley",
+  "features": "netherexp:soul_sand_valley/ore_soul_magma",
+  "step": "underground_decoration"
+}

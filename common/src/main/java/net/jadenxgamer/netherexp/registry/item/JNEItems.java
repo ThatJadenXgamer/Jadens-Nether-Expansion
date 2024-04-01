@@ -4,9 +4,13 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.item.custom.LightsporesItem;
+import net.jadenxgamer.netherexp.registry.item.custom.NightsporesItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.function.Supplier;
 
@@ -41,11 +45,12 @@ public class JNEItems {
     public static final RegistrySupplier<Item> SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("spirit_armor_trim_smithing_template", () ->
             new Item(new Item.Properties()));
 
-    public static final RegistrySupplier<Item> NIGHTSPORES = registerItem("nightspores", () ->
-            new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> LIGHTSPORES = registerItem("lightspores", () ->
-            new Item(new Item.Properties()));
+            new LightsporesItem(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> NIGHTSPORES = registerItem("nightspores", () ->
+            new NightsporesItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> BLIGHTSPORES = registerItem("blightspores", () ->
             new Item(new Item.Properties()));
@@ -53,6 +58,7 @@ public class JNEItems {
     public static final RegistrySupplier<Item> FRIGHTSPORES = registerItem("frightspores", () ->
             new Item(new Item.Properties()));
 
+    // TODO Needs Item
     public static final RegistrySupplier<Item> ANTIDOTE = registerItem("antidote", () ->
             new Item(new Item.Properties()));
 
@@ -62,11 +68,12 @@ public class JNEItems {
     public static final RegistrySupplier<Item> NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE)));
 
+    // TODO Needs Item
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket", () ->
-            new Item(new Item.Properties()));
+            new MobBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE.get(), new Item.Properties()));
 
     public static final RegistrySupplier<Item> WRAITHING_FLESH = registerItem("wraithing_flesh", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));
@@ -74,6 +81,7 @@ public class JNEItems {
     public static final RegistrySupplier<Item> WARPED_WART = registerItem("warped_wart", () ->
             new BlockItem(JNEBlocks.WARPED_WART.get(), new Item.Properties()));
 
+    // TODO Needs Item
     public static final RegistrySupplier<Item> MIST_CHARGE = registerItem("mist_charge", () ->
             new Item(new Item.Properties()));
 
@@ -86,6 +94,7 @@ public class JNEItems {
     public static final RegistrySupplier<Item> NECRO_SHARD = registerItem("necro_shard", () ->
             new Item(new Item.Properties()));
 
+    // TODO Needs Item
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
             new Item(new Item.Properties()));
 

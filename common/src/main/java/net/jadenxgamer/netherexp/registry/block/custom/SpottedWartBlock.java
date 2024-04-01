@@ -51,17 +51,17 @@ public class SpottedWartBlock extends Block {
             switch (type) {
                 default: {
                     dropLight(level, pos, state, hitResult.getDirection());
+                    break;
                 }
                 case 2: {
                     dropNight(level, pos, state, hitResult.getDirection());
+                    break;
                 }
             }
             level.playSound(player, pos, JNESoundEvents.LIGHTSPORES_SHEAR.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             level.setBlockAndUpdate(pos, state.setValue(SPOTS, 0));
             level.gameEvent(player, GameEvent.SHEAR, pos);
-            itemStack.hurtAndBreak(1, player, (playerEntity) -> {
-                playerEntity.broadcastBreakEvent(hand);
-            });
+            itemStack.hurtAndBreak(1, player, (playerEntity) -> playerEntity.broadcastBreakEvent(hand));
             bl = true;
         }
         if (!level.isClientSide && bl) {

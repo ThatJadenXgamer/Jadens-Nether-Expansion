@@ -1,5 +1,6 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"1": "netherexp:block/bone_fence",
 		"particle": "netherexp:block/bone_fence"

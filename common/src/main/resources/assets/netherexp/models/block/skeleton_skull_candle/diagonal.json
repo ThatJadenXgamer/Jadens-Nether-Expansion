@@ -1,5 +1,6 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
 	"texture_size": [32, 32],
 	"textures": {
 		"2": "netherexp:block/skeleton_skull_candle",

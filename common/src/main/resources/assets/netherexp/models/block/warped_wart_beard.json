@@ -1,5 +1,6 @@
 {
   "credit": "Made by @ThatJadenXgamer",
+  "render_type": "minecraft:cutout",
   "textures": {
     "0": "netherexp:block/warped_wart_beard",
     "particle": "netherexp:block/warped_wart_beard"

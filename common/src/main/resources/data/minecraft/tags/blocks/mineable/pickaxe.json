@@ -54,8 +54,6 @@
     "netherexp:rusty_cut_netherite_stairs",
     "netherexp:rusty_cut_netherite_pillar",
 
-    "netherexp:explosive_scoria",
-
     "netherexp:quartz_crystal_block",
     "netherexp:quartz_crystal",
     "netherexp:cracked_quartz_bricks",
@@ -84,18 +82,6 @@
     "netherexp:blue_nether_brick_slab",
     "netherexp:blue_nether_brick_stairs",
     "netherexp:blue_nether_brick_wall",
-
-    "netherexp:violet_mixed_nether_bricks",
-    "netherexp:violet_nether_bricks",
-    "netherexp:violet_nether_brick_slab",
-    "netherexp:violet_nether_brick_stairs",
-    "netherexp:violet_nether_brick_wall",
-
-    "netherexp:yellow_mixed_nether_bricks",
-    "netherexp:yellow_nether_bricks",
-    "netherexp:yellow_nether_brick_slab",
-    "netherexp:yellow_nether_brick_stairs",
-    "netherexp:yellow_nether_brick_wall",
 
     "netherexp:bone_rod",
     "netherexp:bone_fence",

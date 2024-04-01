@@ -1,5 +1,6 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:translucent",
 	"textures": {
 		"3": "netherexp:block/magma_cream_block",
 		"4": "netherexp:block/magma_cream_block_inside",

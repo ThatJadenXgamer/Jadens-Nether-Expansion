@@ -2,6 +2,7 @@
 	"credit": "Made by @ThatJadenXgamer",
 	"parent": "block/block",
 	"ambientocclusion": false,
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"particle": "block/flower_pot",
 		"flowerpot": "block/flower_pot",

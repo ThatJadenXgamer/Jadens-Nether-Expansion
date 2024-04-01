@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "netherexp:block/boomshroom_bundle_bottom",
-    "side": "netherexp:block/boomshroom_bundle",
-    "top": "netherexp:block/boomshroom_bundle_top"
-  }
-}

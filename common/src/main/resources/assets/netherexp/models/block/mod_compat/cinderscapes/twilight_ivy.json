@@ -1,5 +1,6 @@
 {
     "ambientocclusion": false,
+    "render_type": "minecraft:cutout",
     "textures": {
         "particle": "netherexp:block/mod_compat/cinderscapes/twilight_ivy",
         "glow_lichen": "netherexp:block/mod_compat/cinderscapes/twilight_ivy"

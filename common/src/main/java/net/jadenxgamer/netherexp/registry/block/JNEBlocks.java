@@ -226,7 +226,7 @@ public class JNEBlocks {
             new Block(BlockBehaviour.Properties.copy(JNEBlocks.NETHERITE_PLATED_BLOCK.get())));
 
     public static final RegistrySupplier<Block> CUT_NETHERITE_SLAB = registerFireProofBlock("cut_netherite_slab", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
+            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
 
     public static final RegistrySupplier<Block> CUT_NETHERITE_STAIRS = registerFireProofBlock("cut_netherite_stairs", () ->
             new JNEStairBlock(JNEBlocks.CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
@@ -247,7 +247,7 @@ public class JNEBlocks {
             new Block(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK.get())));
 
     public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_SLAB = registerFireProofBlock("rusty_cut_netherite_slab", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
+            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
 
     public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_STAIRS = registerFireProofBlock("rusty_cut_netherite_stairs", () ->
             new JNEStairBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));

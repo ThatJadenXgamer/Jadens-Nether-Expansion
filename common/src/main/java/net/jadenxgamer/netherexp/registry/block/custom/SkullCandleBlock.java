@@ -60,9 +60,11 @@ extends Block {
         switch (type) {
             default: {
                 level.addParticle(ParticleTypes.SMALL_FLAME, x, y, z, 0.0, 0.0, 0.0);
+                break;
             }
             case 2: {
                 level.addParticle(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get(), x, y, z, 0.0, 0.0, 0.0);
+                break;
             }
         }
     }

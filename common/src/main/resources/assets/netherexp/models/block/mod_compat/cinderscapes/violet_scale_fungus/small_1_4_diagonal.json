@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"2": "netherexp:block/mod_compat/cinderscapes/violet_scale_fungus_small",
 		"particle": "netherexp:block/mod_compat/cinderscapes/violet_scale_fungus_big"

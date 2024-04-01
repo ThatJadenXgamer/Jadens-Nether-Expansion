@@ -33,11 +33,6 @@ public class DecayableWartBlock extends Block {
     // Persistent is the default block obtained when middle-clicked
     protected final Block persistent;
 
-    /*
-     * Spore value dictates what kind of spore to drop when sheared
-     * 1 = Lightspores
-     * 2 = Nightspores
-     */
     protected final int type;
 
     public DecayableWartBlock(Properties properties, int type, Block persistent) {
@@ -100,9 +95,11 @@ public class DecayableWartBlock extends Block {
             switch (type) {
                 default: {
                     dropLight(level, pos, state, hitResult.getDirection());
+                    break;
                 }
                 case 2: {
                     dropNight(level, pos, state, hitResult.getDirection());
+                    break;
                 }
             }
             level.playSound(player, pos, JNESoundEvents.LIGHTSPORES_SHEAR.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -169,9 +166,11 @@ public class DecayableWartBlock extends Block {
             switch (type) {
                 default: {
                     level.addParticle(JNEParticleTypes.FALLING_NETHER_WART.get(), x, y, z, 0.0, 0.0, 0.0);
+                    break;
                 }
                 case 2: {
                     level.addParticle(JNEParticleTypes.FALLING_WARPED_WART.get(), x, y, z, 0.0, 0.0, 0.0);
+                    break;
                 }
             }
         }

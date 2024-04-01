@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/door_top_right",
+  "render_type": "minecraft:cutout",
   "textures": {
     "bottom": "netherexp:block/claret_door_bottom",
     "top": "netherexp:block/claret_door_top"

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block_column",
+  "config": {
+    "direction": "down",
+    "allowed_placement": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:air"
+    },
+    "prioritize_tip": true,
+    "layers": [
+      {
+        "height": 1,
+        "provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "netherexp:soul_swirls",
+            "Properties": {
+              "facing": "down"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

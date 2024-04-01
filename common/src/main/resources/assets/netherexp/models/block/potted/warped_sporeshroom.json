@@ -1,5 +1,6 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {

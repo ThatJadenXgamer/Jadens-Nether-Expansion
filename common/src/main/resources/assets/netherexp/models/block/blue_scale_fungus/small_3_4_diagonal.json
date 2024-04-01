@@ -1,5 +1,6 @@
 {
-	"cblueit": "Made with Blockbench",
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"2": "netherexp:block/blue_scale_fungus_small",
 		"particle": "netherexp:block/blue_scale_fungus_big"

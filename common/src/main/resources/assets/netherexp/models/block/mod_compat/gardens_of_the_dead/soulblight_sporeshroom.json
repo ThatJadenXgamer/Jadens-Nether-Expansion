@@ -1,5 +1,6 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/mod_compat/gardens_of_the_dead/soulblight_sporeshroom_side",
 		"1": "netherexp:block/mod_compat/gardens_of_the_dead/soulblight_sporeshroom_top",

@@ -102,9 +102,11 @@ public class DecayableShroomBlock extends Block {
             switch (type) {
                 default: {
                     level.addParticle(JNEParticleTypes.FALLING_SHROOMLIGHT.get(), x, y, z, 0.0, 0.0, 0.0);
+                    break;
                 }
                 case 2: {
                     level.addParticle(JNEParticleTypes.FALLING_SHROOMNIGHT.get(), x, y, z, 0.0, 0.0, 0.0);
+                    break;
                 }
             }
         }

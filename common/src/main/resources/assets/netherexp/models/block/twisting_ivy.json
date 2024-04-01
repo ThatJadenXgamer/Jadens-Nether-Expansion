@@ -1,5 +1,6 @@
 {
     "ambientocclusion": false,
+    "render_type": "minecraft:cutout",
     "textures": {
         "particle": "netherexp:block/twisting_ivy",
         "glow_lichen": "netherexp:block/twisting_ivy"
