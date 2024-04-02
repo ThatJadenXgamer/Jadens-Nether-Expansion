@@ -3,10 +3,10 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.TallGrassBlock;
+import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IgneousReeds extends TallGrassBlock {
+public class IgneousReeds extends TallFlowerBlock {
     public IgneousReeds(Properties properties) {
         super(properties);
     }

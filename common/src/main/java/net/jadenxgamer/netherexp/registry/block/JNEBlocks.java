@@ -40,10 +40,6 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> PALE_SOUL_SLATE = registerBlock("pale_soul_slate", () ->
             new Block(BlockBehaviour.Properties.copy(SOUL_SLATE.get())));
 
-    // TODO: Add Block
-    public static final RegistrySupplier<Block> JAGGED_SOUL_SLATE = registerBlock("jagged_soul_slate", () ->
-            new Block(BlockBehaviour.Properties.copy(SOUL_SLATE.get())));
-
     public static final RegistrySupplier<Block> SOUL_SLATE_SLAB = registerBlock("soul_slate_slab", () ->
             new SlabBlock(BlockBehaviour.Properties.copy(SOUL_SLATE.get())));
 
@@ -89,14 +85,13 @@ public class JNEBlocks {
                     blockState -> blockState.getValue(SoulGlassBlock.LIT) ? 12 : 0).strength(0.3f, 1200.0f).sound(SoundType.GLASS)
             ));
 
-    //TODO: Add Block
+
     public static final RegistrySupplier<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
-            new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().sound(SoundType.NETHER_SPROUTS)));
+            new SwirlsBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().sound(SoundType.NETHER_SPROUTS), 1));
 
     // CINDERSCAPES COMPATIBILITY
-    //TODO: Add Block
     public static final RegistrySupplier<Block> SHALE_SWIRLS = registerCompatBlock("shale_swirls", () ->
-            new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get())), "cinderscapes");
+            new SwirlsBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get()), 2), "cinderscapes");
 
     // TODO Add Block
     public static final RegistrySupplier<Block> ECTO_SOUL_SAND = registerBlock("ecto_soul_sand", () ->

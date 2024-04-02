@@ -20,7 +20,6 @@ public class JNECreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(JNEBlocks.SOUL_SLATE.get());
                         output.accept(JNEBlocks.PALE_SOUL_SLATE.get());
-                        output.accept(JNEBlocks.JAGGED_SOUL_SLATE.get());
                         output.accept(JNEBlocks.SOUL_SLATE_STAIRS.get());
                         output.accept(JNEBlocks.SOUL_SLATE_SLAB.get());
                         output.accept(JNEBlocks.SOUL_SLATE_WALL.get());

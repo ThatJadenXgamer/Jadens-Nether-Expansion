@@ -5,7 +5,7 @@
       "fallback": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "netherexp:jagged_soul_slate"
+          "Name": "netherexp:pale_soul_slate"
         }
       },
       "rules": []

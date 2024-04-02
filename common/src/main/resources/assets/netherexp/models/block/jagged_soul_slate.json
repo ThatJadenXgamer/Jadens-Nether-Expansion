@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "netherexp:block/soul_slate",
-    "side": "netherexp:block/jagged_soul_slate",
-    "top": "netherexp:block/pale_soul_slate"
-  }
-}

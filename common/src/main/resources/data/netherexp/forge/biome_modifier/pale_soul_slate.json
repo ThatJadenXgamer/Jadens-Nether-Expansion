@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "minecraft:soul_sand_valley",
-  "features": "netherexp:soul_sand_valley/jagged_soul_slate",
+  "features": "netherexp:soul_sand_valley/pale_soul_slate",
   "step": "underground_decoration"
 }
