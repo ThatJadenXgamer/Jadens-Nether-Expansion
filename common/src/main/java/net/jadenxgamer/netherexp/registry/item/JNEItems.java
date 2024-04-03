@@ -3,13 +3,18 @@ package net.jadenxgamer.netherexp.registry.item;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.mixin.brewing.PotionBrewingAccessor;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
+import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.item.custom.LightsporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightsporesItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.function.Supplier;
@@ -40,11 +45,10 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> RIFT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("rift_armor_trim_smithing_template", () ->
-            new Item(new Item.Properties()));
+            SmithingTemplateItem.createArmorTrimTemplate(JNETrimPatterns.RIFT));
 
     public static final RegistrySupplier<Item> SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("spirit_armor_trim_smithing_template", () ->
-            new Item(new Item.Properties()));
-
+            SmithingTemplateItem.createArmorTrimTemplate(JNETrimPatterns.SPIRIT));
 
     public static final RegistrySupplier<Item> LIGHTSPORES = registerItem("lightspores", () ->
             new LightsporesItem(new Item.Properties()));
@@ -58,9 +62,8 @@ public class JNEItems {
     public static final RegistrySupplier<Item> FRIGHTSPORES = registerItem("frightspores", () ->
             new Item(new Item.Properties()));
 
-    // TODO Needs Item
     public static final RegistrySupplier<Item> ANTIDOTE = registerItem("antidote", () ->
-            new Item(new Item.Properties()));
+            new AntidoteItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> GLOWCHEESE = registerItem("glowcheese", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.GLOWCHEESE)));

@@ -3,12 +3,16 @@ package net.jadenxgamer.netherexp.fabric;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
+import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.renderer.RenderType;
 
 public class NetherExpFabricClient implements ClientModInitializer {
@@ -77,6 +81,9 @@ public class NetherExpFabricClient implements ClientModInitializer {
 //        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_WARPED_SPORESHROOM, RenderType.cutout());
 //        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_UMBRAL_SPORESHROOM, RenderType.cutout());
 
+        // TINTS
+        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : AntidoteItem.getColor(stack), JNEItems.ANTIDOTE.get());
+
         // PARTICLES
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.ENIGMA_KERNEL.get(), EnigmaKernelParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FIRE_SPARK.get(), FireSparkParticle.Factory::new);
@@ -103,6 +110,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.GRASP_MIST.get(), GraspMistParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.WISP.get(), GlimmerParticle.LongFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.MAGMA_CREAM.get(), RisingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobProvider::new);
 
         // MOD COMPAT
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);

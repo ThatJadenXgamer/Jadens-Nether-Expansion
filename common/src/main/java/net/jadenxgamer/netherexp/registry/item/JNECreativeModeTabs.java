@@ -4,12 +4,18 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.item.brewing.JNEAntidotes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackLinkedSet;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+
+import java.util.List;
+import java.util.Set;
 
 public class JNECreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(NetherExp.MOD_ID, Registries.CREATIVE_MODE_TAB);
@@ -361,7 +367,23 @@ public class JNECreativeModeTabs {
 //                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
 //                            output.accept(JNEItems.WARPHOPPER_SPAWN_EGG);
 //                        }
+
+                        addAntidotes(output);
+
                     }).build());
+
+    private static void addAntidotes(CreativeModeTab.Output output) {
+        List<CompoundTag> list = JNEAntidotes.ANTIDOTES;
+        Set<ItemStack> set = ItemStackLinkedSet.createTypeAndTagSet();
+
+        for (CompoundTag nbt : list) {
+            ItemStack stack = new ItemStack(JNEItems.ANTIDOTE.get());
+            stack.setTag(nbt);
+            set.add(stack);
+        }
+
+        output.acceptAll(set);
+    }
 
     public static void init() {
         CREATIVE_MODE_TABS.register();
