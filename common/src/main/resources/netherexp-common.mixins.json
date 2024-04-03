@@ -25,6 +25,7 @@
     "brewing.PotionSlotMixin",
     "entity.BlockEntityTypeMixin",
     "entity.LivingEntityMixin",
+    "entity.PlayerMixin",
     "entity.ProjectileMixin",
     "entity.SkeletonMixin",
     "entity.WitherSkeletonMixin"

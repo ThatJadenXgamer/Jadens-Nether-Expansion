@@ -79,31 +79,31 @@ public class GeyserBlock extends Block {
     }
 
     @Override
-    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         int i = pos.getX();
         int j = pos.getY();
         int k = pos.getZ();
         boolean a = state.getValue(ACTIVE);
         boolean cd = state.getValue(COOLDOWN);
-        boolean b = world.getBiome(pos).is(this.biome);
+        boolean b = level.getBiome(pos).is(this.biome);
         float f = random.nextFloat();
         BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
         for (int l = 0; l < 14; ++l) {
             mutable.set(i + Mth.nextInt(random, -20, 20), j + random.nextInt(20), k + Mth.nextInt(random, -20, 20));
-            BlockState blockState = world.getBlockState(mutable);
-            if (blockState.isSolidRender(world, mutable)) continue;
+            BlockState blockState = level.getBlockState(mutable);
+            if (blockState.isSolidRender(level, mutable)) continue;
             if (a && !b) {
                 switch (type) {
                     default: {
-                        world.addParticle(ParticleTypes.ASH, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                        level.addParticle(ParticleTypes.ASH, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
                         break;
                     }
                     case 2: {
-                        world.addParticle(ParticleTypes.WHITE_ASH, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                        level.addParticle(ParticleTypes.WHITE_ASH, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
                         break;
                     }
                     case 3: {
-                        world.addParticle(JNEParticleTypes.FIRE_SPARK.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                        level.addParticle(JNEParticleTypes.FIRE_SPARK.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
                         break;
                     }
                 }
@@ -112,21 +112,21 @@ public class GeyserBlock extends Block {
         if (a) {
             switch (type) {
                 default: {
-                    world.addParticle(JNEParticleTypes.BLACK_SMOKE.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                    level.addParticle(JNEParticleTypes.BLACK_SMOKE.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
                     break;
                 }
                 case 2: {
-                    world.addParticle(JNEParticleTypes.WHITE_SMOKE.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                    level.addParticle(JNEParticleTypes.WHITE_SMOKE.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
                     break;
                 }
                 case 3: {
-                    world.addParticle(JNEParticleTypes.RED_SMOKE.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                    level.addParticle(JNEParticleTypes.RED_SMOKE.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
                     break;
                 }
             }
         }
         if (!cd && this.spark && f < 0.3f) {
-            world.addParticle(ParticleTypes.LAVA, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
+            level.addParticle(ParticleTypes.LAVA, (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
         }
     }
 

@@ -63,7 +63,7 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> ANTIDOTE = registerItem("antidote", () ->
-            new AntidoteItem(new Item.Properties()));
+            new AntidoteItem(new Item.Properties().stacksTo(1)));
 
     public static final RegistrySupplier<Item> GLOWCHEESE = registerItem("glowcheese", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.GLOWCHEESE)));

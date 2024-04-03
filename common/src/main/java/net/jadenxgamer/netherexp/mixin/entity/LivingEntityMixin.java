@@ -79,14 +79,8 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
                 int i = this.entityData.get(DATA_EFFECT_COLOR_ID);
                 if (i > 0) {
                     boolean flag;
-                    if (this.isInvisible()) {
-                        flag = this.random.nextInt(15) == 0;
-                    } else {
-                        flag = this.random.nextBoolean();
-                    }
-
-                    flag &= this.random.nextInt(5) == 0;
-                    if (flag) {
+                    flag = !this.isInvisible();
+                    if (flag && this.random.nextInt(5) == 0) {
                         double d0 = (double) (i >> 16 & 255) / 255.0;
                         double d1 = (double) (i >> 8 & 255) / 255.0;
                         double d2 = (double) (i & 255) / 255.0;

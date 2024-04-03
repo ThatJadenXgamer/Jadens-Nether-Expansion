@@ -523,14 +523,14 @@ public class JNEBlocks {
             new SoulPathBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL)));
 
     public static final RegistrySupplier<Block> CRIMSON_NYLIUM_PATH = registerBlock("crimson_nylium_path", () ->
-            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_NYLIUM)));
+            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)));
 
     public static final RegistrySupplier<Block> WARPED_NYLIUM_PATH = registerBlock("warped_nylium_path", () ->
-            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_NYLIUM)));
+            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)));
 
     // CINDERSCAPES COMPATIBLITY
     public static final RegistrySupplier<Block> UMBRAL_NYLIUM_PATH = registerCompatBlock("umbral_nylium_path", () ->
-            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_NYLIUM)), "cinderscapes");
+            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)), "cinderscapes");
 
     // Decayable Blocks
 

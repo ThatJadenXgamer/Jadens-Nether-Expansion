@@ -7,6 +7,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -60,16 +62,7 @@ public class AntidoteItem extends Item {
             playerEntity.awardStat(Stats.ITEM_USED.get(this));
             if (!playerEntity.getAbilities().instabuild) {
                 stack.shrink(1);
-            }
-        }
-
-        if (playerEntity == null || !playerEntity.getAbilities().instabuild) {
-            if (stack.isEmpty()) {
-                return new ItemStack(Items.GLASS_BOTTLE);
-            }
-
-            if (playerEntity != null) {
-                playerEntity.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
+                level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5f, 1.0f);
             }
         }
 
@@ -120,8 +113,6 @@ public class AntidoteItem extends Item {
         nbt.getString("Antidote");
         return this.getDescriptionId() + ".effect." + nbt.getString("Antidote");
     }
-
-
 
     @Override
     public int getUseDuration(ItemStack stack) {

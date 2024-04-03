@@ -34,6 +34,7 @@ public abstract class ProjectileMixin {
             level.addParticle(ParticleTypes.SOUL, entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f);
             ci.cancel();
         }
+        //TODO: Polish VFX for Phantasm Hull
         else if (EnchantmentHelper.getEnchantmentLevel(JNEEnchantments.PHANTASM_HULL.get(), (LivingEntity) entity) > 0 && entity.isShiftKeyDown()) {
             level.addParticle(ParticleTypes.SOUL, entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f);
             if (level.getRandom().nextInt(2) == 0) {
