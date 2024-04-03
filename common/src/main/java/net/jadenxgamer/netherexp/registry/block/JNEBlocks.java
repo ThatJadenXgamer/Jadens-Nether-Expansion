@@ -8,6 +8,7 @@ import net.jadenxgamer.netherexp.registry.block.custom.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEBlockSetType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundType;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEWoodType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -547,41 +548,34 @@ public class JNEBlocks {
 
     // Particle Emitters
 
-    // TODO: Add Block
     public static final RegistrySupplier<Block> CRIMSON_SPORESHROOM = registerBlock("crimson_sporeshroom", () ->
-            new Block(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS)));
+            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 1, JNETags.Biomes.HAS_CRIMSON_SPORES));
 
-    // TODO: Add Block
     public static final RegistrySupplier<Block> WARPED_SPORESHROOM = registerBlock("warped_sporeshroom", () ->
-            new Block(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS)));
+            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 2, JNETags.Biomes.HAS_WARPED_SPORES));
 
     // CINDERSCAPES COMPATIBILITY
-    // TODO: Add Block
     public static final RegistrySupplier<Block> UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom", () ->
-            new Block(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS)), "cinderscapes");
+            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 3, JNETags.Biomes.HAS_WARPED_SPORES), "cinderscapes");
 
     // CINDERSCAPES COMPATIBILITY
-    // TODO: Add Block
+    // TODO: Add Type and Particles to Soulblight Sporeshroom
     public static final RegistrySupplier<Block> SOULBLIGHT_SPORESHROOM = registerCompatBlock("soulblight_sporeshroom", () ->
-            new Block(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS)), "gardens_of_the_dead");
+            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 1, JNETags.Biomes.HAS_SOULBLIGHT_SPORES), "gardens_of_the_dead");
 
-    // TODO: Add Block
     public static final RegistrySupplier<Block> SOULED_GEYSER = registerBlock("souled_geyser", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.SOUL_SLATE.get()).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE)));
+            new GeyserBlock(BlockBehaviour.Properties.copy(JNEBlocks.SOUL_SLATE.get()).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 1, false, JNETags.Biomes.HAS_ASH));
 
-    // TODO: Add Block
     public static final RegistrySupplier<Block> BASALTIC_GEYSER = registerBlock("basaltic_geyser", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.BASALT).pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT)));
+            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.BASALT).pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT), 2, true, JNETags.Biomes.HAS_WHITE_ASH));
 
     // CINDERSCAPES COMPATIBILITY
-    // TODO: Add Block
     public static final RegistrySupplier<Block> BLACKSTONIC_GEYSER = registerCompatBlock("blackstonic_geyser", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE)), "cinderscapes");
+            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 2, true, JNETags.Biomes.HAS_WHITE_ASH), "cinderscapes");
 
     // CINDERSCAPES COMPATIBILITY
-    // TODO: Add Block
     public static final RegistrySupplier<Block> ASHEN_GEYSER = registerCompatBlock("ashen_geyser", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE)), "cinderscapes");
+            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 1, true, JNETags.Biomes.HAS_ASH), "cinderscapes");
 
     // White Ash
 
