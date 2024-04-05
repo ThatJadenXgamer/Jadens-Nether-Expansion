@@ -63,8 +63,9 @@ public class ApparitionModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-		this.animateWalk(JNEAnimationDefinition.APPARITION_WALK1, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.animate(((Apparition) entity).idleAnimationState, JNEAnimationDefinition.APPARITION_IDLE1, ageInTicks, 1.0f);
+		//this.animateWalk(JNEAnimationDefinition.APPARITION_WALK1, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animate(((Apparition) entity).idleAnimationState, JNEAnimationDefinition.APPARITION_IDLE1, ageInTicks);
+		this.animate(((Apparition) entity).walkAnimationState, JNEAnimationDefinition.APPARITION_WALK1, ageInTicks);
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
