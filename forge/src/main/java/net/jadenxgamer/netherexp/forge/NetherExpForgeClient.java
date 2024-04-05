@@ -1,5 +1,9 @@
 package net.jadenxgamer.netherexp.forge;
 
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
+import net.jadenxgamer.netherexp.registry.entity.client.ApparitionModel;
+import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
+import net.jadenxgamer.netherexp.registry.entity.client.JNEModelLayers;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -7,9 +11,12 @@ import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class NetherExpForgeClient {
@@ -17,8 +24,14 @@ public class NetherExpForgeClient {
     public static void init() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        eventBus.addListener(NetherExpForgeClient::onClientSetup);
         eventBus.addListener(NetherExpForgeClient::renderParticles);
         eventBus.addListener(NetherExpForgeClient::itemTints);
+        eventBus.addListener(NetherExpForgeClient::registerLayer);
+    }
+
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        EntityRenderers.register(JNEEntityTypes.APPARITION.get(), ApparitionRenderer::new);
     }
 
     public static void itemTints(RegisterColorHandlersEvent.Item event) {
@@ -57,5 +70,10 @@ public class NetherExpForgeClient {
         event.registerSpriteSet(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.UMBRAL_SMOG.get(), SmogParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SHALE_SWIRL_POP.get(), RisingParticle.Factory::new);
+    }
+
+
+    public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);
     }
 }

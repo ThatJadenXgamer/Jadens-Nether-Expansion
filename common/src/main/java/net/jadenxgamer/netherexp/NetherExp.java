@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.mixin.brewing.PotionBrewingAccessor;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.item.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
@@ -23,6 +24,7 @@ public class NetherExp {
         JNEEnchantments.init();
         JNEMobEffects.init();
 
+        JNEEntityTypes.init();
         JNEBlocks.init();
         JNEItems.init();
         JNEPotions.init();

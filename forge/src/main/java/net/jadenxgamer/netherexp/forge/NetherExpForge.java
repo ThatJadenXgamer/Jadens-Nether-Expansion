@@ -4,7 +4,10 @@ import dev.architectury.platform.forge.EventBuses;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.forge.item.brewing.JNEPotionRecipeForge;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
+import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -18,11 +21,17 @@ public class NetherExpForge {
         NetherExp.init();
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpClient::init);
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpForgeClient::init);
+
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(NetherExpForge::commonSetup);
+        eventBus.addListener(NetherExpForge::registerAttributes);
     }
 
     public static void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(JNEPotionRecipeForge::init);
+    }
+
+    public static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(JNEEntityTypes.APPARITION.get(), Apparition.createAttributes().build());
     }
 }

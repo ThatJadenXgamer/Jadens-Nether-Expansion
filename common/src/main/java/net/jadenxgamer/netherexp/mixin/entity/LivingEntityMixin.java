@@ -23,7 +23,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Collection;
 import java.util.Map;
 
 @Mixin(LivingEntity.class)
@@ -31,10 +30,6 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     @Shadow public abstract boolean hasEffect(MobEffect effect);
 
     @Shadow @Final private static EntityDataAccessor<Integer> DATA_EFFECT_COLOR_ID;
-
-    @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
-
-    @Shadow public abstract Collection<MobEffectInstance> getActiveEffects();
 
     @Shadow public abstract Map<MobEffect, MobEffectInstance> getActiveEffectsMap();
 

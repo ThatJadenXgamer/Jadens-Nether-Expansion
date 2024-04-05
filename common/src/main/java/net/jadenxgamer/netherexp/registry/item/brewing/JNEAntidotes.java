@@ -148,7 +148,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "swiftness");
         nbt.putString("AntidoteEffect", "netherexp:speed_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 600);
         return nbt;
     }
 
@@ -156,7 +156,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "slowness");
         nbt.putString("AntidoteEffect", "netherexp:slowness_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 600);
         return nbt;
     }
 
@@ -164,7 +164,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "strength");
         nbt.putString("AntidoteEffect", "netherexp:strength_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 600);
         return nbt;
     }
 
@@ -172,7 +172,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "leaping");
         nbt.putString("AntidoteEffect", "netherexp:jump_boost_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 600);
         return nbt;
     }
 
@@ -188,7 +188,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "fire_resistance");
         nbt.putString("AntidoteEffect", "netherexp:fire_resistance_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 120);
         return nbt;
     }
 
@@ -196,7 +196,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "water_breathing");
         nbt.putString("AntidoteEffect", "netherexp:water_breathing_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 120);
         return nbt;
     }
 
@@ -212,7 +212,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "weakness");
         nbt.putString("AntidoteEffect", "netherexp:weakness_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 600);
         return nbt;
     }
 
@@ -220,7 +220,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "poison");
         nbt.putString("AntidoteEffect", "netherexp:poison_immunity");
-        nbt.putInt("Duration", 300);
+        nbt.putInt("Duration", 600);
         return nbt;
     }
 
@@ -228,7 +228,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "resistance");
         nbt.putString("AntidoteEffect", "netherexp:resistance_immunity");
-        nbt.putInt("Duration", 480);
+        nbt.putInt("Duration", 900);
         return nbt;
     }
 
@@ -236,7 +236,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "absorption");
         nbt.putString("AntidoteEffect", "netherexp:absorption_immunity");
-        nbt.putInt("Duration", 480);
+        nbt.putInt("Duration", 900);
         return nbt;
     }
 
@@ -252,7 +252,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "mining_fatigue");
         nbt.putString("AntidoteEffect", "netherexp:mining_fatigue_immunity");
-        nbt.putInt("Duration", 1500);
+        nbt.putInt("Duration", 1800);
         return nbt;
     }
 
@@ -260,7 +260,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "darkness");
         nbt.putString("AntidoteEffect", "netherexp:darkness_immunity");
-        nbt.putInt("Duration", 1500);
+        nbt.putInt("Duration", 1800);
         return nbt;
     }
 
@@ -268,7 +268,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "levitation");
         nbt.putString("AntidoteEffect", "netherexp:levitation_immunity");
-        nbt.putInt("Duration", 480);
+        nbt.putInt("Duration", 1080);
         return nbt;
     }
 
@@ -276,7 +276,7 @@ public class JNEAntidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "hunger");
         nbt.putString("AntidoteEffect", "netherexp:hunger_immunity");
-        nbt.putInt("Duration", 480);
+        nbt.putInt("Duration", 1080);
         return nbt;
     }
 }

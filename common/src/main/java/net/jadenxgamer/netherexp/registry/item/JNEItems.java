@@ -1,11 +1,11 @@
 package net.jadenxgamer.netherexp.registry.item;
 
+import dev.architectury.core.item.ArchitecturySpawnEggItem;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.mixin.brewing.PotionBrewingAccessor;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.item.custom.LightsporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightsporesItem;
@@ -14,7 +14,6 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.function.Supplier;
@@ -89,7 +88,7 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> STRIDITE = registerItem("stridite", () ->
-            new Item(new Item.Properties()));;
+            new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> NETHERITE_PLATING = registerItem("netherite_plating", () ->
             new Item(new Item.Properties()));
@@ -116,6 +115,8 @@ public class JNEItems {
     public static final RegistrySupplier<Item> MUSIC_DISC_CRICKET  = registerItem("music_disc_cricket", () ->
             new RecordItem(13, JNESoundEvents.MUSIC_DISC_CRICKET.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 164));
 
+    public static final RegistrySupplier<Item> APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg", () ->
+            new ArchitecturySpawnEggItem(JNEEntityTypes.APPARITION, 4864303, 699311, new Item.Properties()));
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);

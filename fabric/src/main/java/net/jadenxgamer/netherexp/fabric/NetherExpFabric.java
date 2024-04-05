@@ -1,14 +1,12 @@
 package net.jadenxgamer.netherexp.fabric;
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.fabricmc.api.ModInitializer;
 import net.jadenxgamer.netherexp.fabric.item.brewing.JNEPotionRecipeFabric;
-import net.jadenxgamer.netherexp.mixin.brewing.PotionBrewingAccessor;
 import net.jadenxgamer.netherexp.fabric.worldgen.SoulSandValleyFeatures;
-import net.jadenxgamer.netherexp.registry.item.JNEItems;
-import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potions;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
+import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
 
 public class NetherExpFabric implements ModInitializer {
     @Override
@@ -16,5 +14,7 @@ public class NetherExpFabric implements ModInitializer {
         NetherExp.init();
         SoulSandValleyFeatures.generateFeatures();
         JNEPotionRecipeFabric.init();
+
+        FabricDefaultAttributeRegistry.register(JNEEntityTypes.APPARITION.get(), Apparition.createAttributes());
     }
 }

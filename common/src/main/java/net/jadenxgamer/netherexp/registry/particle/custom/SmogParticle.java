@@ -13,7 +13,7 @@ public class SmogParticle
 extends TextureSheetParticle {
     SmogParticle(ClientLevel level, double x, double y, double z, double velocityX, double velocityY, double velocityZ, boolean signal) {
         super(level, x, y, z);
-        this.quadSize *= 0.75f;
+        this.scale(2.0F);
         this.setSize(0.25f, 0.25f);
         this.lifetime = signal ? this.random.nextInt(50) + 280 : this.random.nextInt(50) + 80;
         this.gravity = 3.0E-6f;
