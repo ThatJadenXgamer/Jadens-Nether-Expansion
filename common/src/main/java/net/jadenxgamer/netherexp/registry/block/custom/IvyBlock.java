@@ -16,8 +16,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-
-import java.util.function.ToIntFunction;
+import org.jetbrains.annotations.NotNull;
 
 public class IvyBlock extends MultifaceBlock implements BonemealableBlock, SimpleWaterloggedBlock {
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -28,16 +27,12 @@ public class IvyBlock extends MultifaceBlock implements BonemealableBlock, Simpl
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
     }
 
-    public static ToIntFunction<BlockState> emission(int i) {
-        return (blockState) -> MultifaceBlock.hasAnyFace(blockState) ? i : 0;
-    }
-
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(WATERLOGGED);
     }
 
-    public BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
+    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
         if (blockState.getValue(WATERLOGGED)) {
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
@@ -61,7 +56,7 @@ public class IvyBlock extends MultifaceBlock implements BonemealableBlock, Simpl
         this.spreader.spreadFromRandomFaceTowardRandomDirection(blockState, serverLevel, blockPos, randomSource);
     }
 
-    public FluidState getFluidState(BlockState blockState) {
+    public @NotNull FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
     }
 
@@ -69,7 +64,7 @@ public class IvyBlock extends MultifaceBlock implements BonemealableBlock, Simpl
         return blockState.getFluidState().isEmpty();
     }
 
-    public MultifaceSpreader getSpreader() {
+    public @NotNull MultifaceSpreader getSpreader() {
         return this.spreader;
     }
 }

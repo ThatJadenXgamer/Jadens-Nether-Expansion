@@ -8,10 +8,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
-import net.jadenxgamer.netherexp.registry.entity.client.ApparitionModel;
-import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
-import net.jadenxgamer.netherexp.registry.entity.client.JNEModelLayers;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -123,7 +121,9 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.UMBRAL_SMOG.get(), SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.SHALE_SWIRL_POP.get(), RisingParticle.Factory::new);
 
-        EntityRendererRegistry.register(JNEEntityTypes.APPARITION.get(), ApparitionRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
     }
 }

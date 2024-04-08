@@ -94,9 +94,8 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> SHALE_SWIRLS = registerCompatBlock("shale_swirls", () ->
             new SwirlsBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get()), 2), "cinderscapes");
 
-    // TODO Add Block
     public static final RegistrySupplier<Block> ECTO_SOUL_SAND = registerBlock("ecto_soul_sand", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).lightLevel((state) -> 4).randomTicks()));
+            new EctoSoulSandBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).lightLevel((state) -> 4).randomTicks()));
 
     // TODO Add Block
     public static final RegistrySupplier<Block> SUSPICIOUS_SOUL_SAND = registerBlock("suspicious_soul_sand", () ->
@@ -138,10 +137,10 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> SOUL_JACK_O_LANTERN = registerBlock("soul_jack_o_lantern", () ->
         new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.0f).lightLevel((state) -> 10)));
 
-    public static final RegistrySupplier<Block> SORROWSQUASH_STEM = registerBlock("sorrowsquash_stem", () ->
+    public static final RegistrySupplier<Block> SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem", () ->
             new VineStemBlock((StemGrownBlock) JNEBlocks.SORROWSQUASH.get(), () -> Items.PUMPKIN_SEEDS, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().randomTicks().sound(SoundType.NETHER_WOOD)));
 
-    public static final RegistrySupplier<Block> SORROWSQUASH_STEM_PLANT = registerBlock("sorrowsquash_stem_plant", () ->
+    public static final RegistrySupplier<Block> SORROWSQUASH_STEM_PLANT = registerBlockWithoutItem("sorrowsquash_stem_plant", () ->
             new VineStemPlantBlock((StemGrownBlock) JNEBlocks.SORROWSQUASH.get(), () -> Items.PUMPKIN_SEEDS, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().sound(SoundType.NETHER_WOOD)));
 
     public static final RegistrySupplier<Block> SOUL_SOIL_LAYER = registerBlock("soul_soil_layer", () ->

@@ -1,9 +1,7 @@
 package net.jadenxgamer.netherexp.forge;
 
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
-import net.jadenxgamer.netherexp.registry.entity.client.ApparitionModel;
-import net.jadenxgamer.netherexp.registry.entity.client.ApparitionRenderer;
-import net.jadenxgamer.netherexp.registry.entity.client.JNEModelLayers;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -31,7 +29,8 @@ public class NetherExpForgeClient {
     }
 
     public static void onClientSetup(FMLClientSetupEvent event) {
-        EntityRenderers.register(JNEEntityTypes.APPARITION.get(), ApparitionRenderer::new);
+        EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
+        EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
     }
 
     public static void itemTints(RegisterColorHandlersEvent.Item event) {
@@ -75,5 +74,6 @@ public class NetherExpForgeClient {
 
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);
+        event.registerLayerDefinition(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
     }
 }

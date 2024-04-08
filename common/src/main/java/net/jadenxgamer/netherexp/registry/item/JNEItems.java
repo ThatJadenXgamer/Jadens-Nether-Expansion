@@ -5,13 +5,15 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityTypes;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.item.custom.LightsporesItem;
+import net.jadenxgamer.netherexp.registry.item.custom.MobBottleItem;
 import net.jadenxgamer.netherexp.registry.item.custom.NightsporesItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
@@ -70,9 +72,8 @@ public class JNEItems {
     public static final RegistrySupplier<Item> NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE)));
 
-    // TODO Needs Item
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
-            new Item(new Item.Properties()));
+            new MobBottleItem(JNEEntityType.WISP.get(), SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1)));
 
     public static final RegistrySupplier<Item> MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket", () ->
             new MobBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE.get(), new Item.Properties()));
@@ -116,7 +117,7 @@ public class JNEItems {
             new RecordItem(13, JNESoundEvents.MUSIC_DISC_CRICKET.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 164));
 
     public static final RegistrySupplier<Item> APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg", () ->
-            new ArchitecturySpawnEggItem(JNEEntityTypes.APPARITION, 4864303, 699311, new Item.Properties()));
+            new ArchitecturySpawnEggItem(JNEEntityType.APPARITION, 4864303, 699311, new Item.Properties()));
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);

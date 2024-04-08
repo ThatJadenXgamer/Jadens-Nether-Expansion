@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.animation.JNEAnimationDefinition;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -63,9 +62,14 @@ public class ApparitionModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-		//this.animateWalk(JNEAnimationDefinition.APPARITION_WALK1, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.animate(((Apparition) entity).idleAnimationState, JNEAnimationDefinition.APPARITION_IDLE1, ageInTicks);
-		this.animate(((Apparition) entity).walkAnimationState, JNEAnimationDefinition.APPARITION_WALK1, ageInTicks);
+		this.animate(((Apparition) entity).idle1AnimationState, JNEAnimationDefinition.APPARITION_IDLE1, ageInTicks);
+		this.animate(((Apparition) entity).walk1AnimationState, JNEAnimationDefinition.APPARITION_WALK1, ageInTicks);
+		this.animate(((Apparition) entity).idle2AnimationState, JNEAnimationDefinition.APPARITION_IDLE2, ageInTicks);
+		this.animate(((Apparition) entity).walk2AnimationState, JNEAnimationDefinition.APPARITION_WALK2, ageInTicks);
+		this.animate(((Apparition) entity).idle3AnimationState, JNEAnimationDefinition.APPARITION_IDLE3, ageInTicks);
+		this.animate(((Apparition) entity).walk3AnimationState, JNEAnimationDefinition.APPARITION_WALK3, ageInTicks);
+		this.animate(((Apparition) entity).idle4AnimationState, JNEAnimationDefinition.APPARITION_IDLE4, ageInTicks);
+		this.animate(((Apparition) entity).walk4AnimationState, JNEAnimationDefinition.APPARITION_WALK4, ageInTicks);
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
