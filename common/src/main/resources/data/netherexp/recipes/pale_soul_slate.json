@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     " S ",
-    "SGS",
+    "SNS",
     " S "
   ],
   "key": {
-    "G": {
-      "item": "minecraft:gravel"
+    "N": {
+      "item": "minecraft:netherrack"
     },
     "S": {
       "item": "netherexp:soul_slate"

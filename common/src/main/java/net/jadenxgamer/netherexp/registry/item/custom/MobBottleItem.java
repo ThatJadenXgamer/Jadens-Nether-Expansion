@@ -1,12 +1,12 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.player.Player;
@@ -21,12 +21,10 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 
 public class MobBottleItem extends Item {
-    private final EntityType<?> type;
     private final SoundEvent emptySound;
 
-    public MobBottleItem(EntityType<?> type, SoundEvent emptySound, Properties properties) {
+    public MobBottleItem(SoundEvent emptySound, Properties properties) {
         super(properties);
-        this.type = type;
         this.emptySound = emptySound;
     }
 
@@ -54,7 +52,7 @@ public class MobBottleItem extends Item {
     }
 
     private void spawn(ServerLevel serverLevel, ItemStack itemStack, BlockPos blockPos) {
-        Entity entity = this.type.spawn(serverLevel, itemStack, null, blockPos, MobSpawnType.BUCKET, true, false);
+        Entity entity = JNEEntityType.WISP.get().spawn(serverLevel, itemStack, null, blockPos, MobSpawnType.BUCKET, true, false);
         if (entity instanceof Bucketable bucketable) {
             bucketable.loadFromBucketTag(itemStack.getOrCreateTag());
             bucketable.setFromBucket(true);

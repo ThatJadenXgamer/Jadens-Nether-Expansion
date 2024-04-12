@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "netherexp:block/indented_soul_slate_tiles"
+    },
+    "lit=true": {
+      "model": "netherexp:block/indented_soul_slate_tiles_lit"
+    }
+  }
+}

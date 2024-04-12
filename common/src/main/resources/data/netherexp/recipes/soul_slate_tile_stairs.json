@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:soul_slate_tiles"
+    }
+  },
+  "result": {
+    "item": "netherexp:soul_slate_tile_stairs",
+    "count": 4
+  }
+}

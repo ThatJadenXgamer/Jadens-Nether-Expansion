@@ -18,7 +18,7 @@ public class JNEEntityType {
 
     public static final RegistrySupplier<EntityType<Wisp>> WISP = ENTITY_TYPES.register("wisp", () ->
             EntityType.Builder.of(Wisp::new, MobCategory.AMBIENT)
-                    .sized(0.4f, 0.4f).fireImmune().build("wisp"));
+                    .sized(0.6f, 0.6f).fireImmune().build("wisp"));
 
     public static void init() {
         ENTITY_TYPES.register();

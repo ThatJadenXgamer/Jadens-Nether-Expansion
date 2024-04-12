@@ -25,7 +25,6 @@ public class JNECreativeModeTabs {
                     .title(Component.literal("Jaden's Nether Expansion"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(JNEBlocks.SOUL_SLATE.get());
-                        output.accept(JNEBlocks.PALE_SOUL_SLATE.get());
                         output.accept(JNEBlocks.SOUL_SLATE_STAIRS.get());
                         output.accept(JNEBlocks.SOUL_SLATE_SLAB.get());
                         output.accept(JNEBlocks.SOUL_SLATE_WALL.get());
@@ -37,6 +36,14 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.INDENTED_SOUL_SLATE_BRICKS.get());
                         output.accept(JNEBlocks.CHISELED_SOUL_SLATE_BRICKS.get());
                         output.accept(JNEBlocks.SOUL_SLATE_BRICK_PILLAR.get());
+
+                        output.accept(JNEBlocks.PALE_SOUL_SLATE.get());
+                        output.accept(JNEBlocks.SOUL_SLATE_TILES.get());
+                        output.accept(JNEBlocks.SOUL_SLATE_TILE_STAIRS.get());
+                        output.accept(JNEBlocks.SOUL_SLATE_TILE_SLAB.get());
+                        output.accept(JNEBlocks.SOUL_SLATE_TILE_WALL.get());
+                        output.accept(JNEBlocks.INDENTED_SOUL_SLATE_TILES.get());
+                        output.accept(JNEBlocks.CHISELED_SOUL_SLATE_TILES.get());
 
                         output.accept(JNEBlocks.FOSSIL_ORE.get());
                         output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());

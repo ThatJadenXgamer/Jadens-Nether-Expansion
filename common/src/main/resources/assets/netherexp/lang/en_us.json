@@ -93,6 +93,13 @@
   "block.netherexp.soul_slate_brick_pillar": "Soul Slate Brick Pillar",
   "block.netherexp.chiseled_soul_slate_bricks": "Chiseled Soul Slate Bricks",
 
+  "block.netherexp.soul_slate_tiles": "Soul Slate Tiles",
+  "block.netherexp.soul_slate_tile_stairs": "Soul Slate Tile Stairs",
+  "block.netherexp.soul_slate_tile_slab": "Soul Slate Tile Slab",
+  "block.netherexp.soul_slate_tile_wall": "Soul Slate Tile Wall",
+  "block.netherexp.indented_soul_slate_tiles": "Indented Soul Slate Tiles",
+  "block.netherexp.chiseled_soul_slate_tiles": "Chiseled Soul Slate Tiles",
+
   "block.netherexp.soul_candle": "Soul Candle",
 
   "block.netherexp.fossil_ore": "Fossil Ore",

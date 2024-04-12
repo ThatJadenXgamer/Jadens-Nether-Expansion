@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
@@ -235,19 +236,17 @@ public class Apparition extends Monster implements FlyingAnimal {
     // POSSESSION //
     ////////////////
 
-    //TODO: Add Wisps
-//    @Override
-//    public void die(DamageSource damageSource) {
-//        super.die(damageSource);
-//        for (int i = 0; i < this.level().getRandom().nextInt(4) + 1; i++) {
-//            WispEntity wispEntity = JNEEntityTypes.WISP.create(this.getWorld());
-//            assert wispEntity != null;
-//            wispEntity.setBoredDelay(0);
-//            wispEntity.setPosition(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);
-//            this.getWorld().spawnEntity(wispEntity);
-//        }
-//    }
-
+    @Override
+    public void die(DamageSource damageSource) {
+        super.die(damageSource);
+        for (int i = 0; i < this.level().getRandom().nextInt(4) + 1; i++) {
+            Wisp wisp = JNEEntityType.WISP.get().create(this.level());
+            assert wisp != null;
+            wisp.setBoredDelay(0);
+            wisp.setPos(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);
+            this.level().addFreshEntity(wisp);
+        }
+    }
 
     /////////
     // NBT //

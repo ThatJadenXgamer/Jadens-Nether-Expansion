@@ -73,7 +73,7 @@ public class JNEItems {
             new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE)));
 
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
-            new MobBottleItem(JNEEntityType.WISP.get(), SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1)));
+            new MobBottleItem(SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1)));
 
     public static final RegistrySupplier<Item> MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket", () ->
             new MobBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE.get(), new Item.Properties()));

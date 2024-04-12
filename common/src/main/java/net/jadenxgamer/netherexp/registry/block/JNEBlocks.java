@@ -39,7 +39,7 @@ public class JNEBlocks {
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(4.0f).requiresCorrectToolForDrops().sound(JNESoundType.SOUL_SLATE)));
 
     public static final RegistrySupplier<Block> PALE_SOUL_SLATE = registerBlock("pale_soul_slate", () ->
-            new Block(BlockBehaviour.Properties.copy(SOUL_SLATE.get())));
+            new Block(BlockBehaviour.Properties.copy(SOUL_SLATE.get()).mapColor(MapColor.TERRACOTTA_PINK)));
 
     public static final RegistrySupplier<Block> SOUL_SLATE_SLAB = registerBlock("soul_slate_slab", () ->
             new SlabBlock(BlockBehaviour.Properties.copy(SOUL_SLATE.get())));
@@ -74,6 +74,25 @@ public class JNEBlocks {
 
     public static final RegistrySupplier<Block> CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks", () ->
             new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get()).lightLevel(
+                    blockState -> blockState.getValue(SoulGlassBlock.LIT) ? 12 : 0)));
+
+    public static final RegistrySupplier<Block> SOUL_SLATE_TILES = registerBlock("soul_slate_tiles", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(2.0f).requiresCorrectToolForDrops().sound(JNESoundType.SOUL_SLATE_BRICKS)));
+
+    public static final RegistrySupplier<Block> SOUL_SLATE_TILE_SLAB = registerBlock("soul_slate_tile_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get())));
+
+    public static final RegistrySupplier<Block> SOUL_SLATE_TILE_STAIRS = registerBlock("soul_slate_tile_stairs", () ->
+            new StairBlock(JNEBlocks.SOUL_SLATE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get())));
+
+    public static final RegistrySupplier<Block> SOUL_SLATE_TILE_WALL = registerBlock("soul_slate_tile_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get())));
+
+    public static final RegistrySupplier<Block> INDENTED_SOUL_SLATE_TILES = registerBlock("indented_soul_slate_tiles", () ->
+            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get())));
+
+    public static final RegistrySupplier<Block> CHISELED_SOUL_SLATE_TILES = registerBlock("chiseled_soul_slate_tiles", () ->
+            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get()).lightLevel(
                     blockState -> blockState.getValue(SoulGlassBlock.LIT) ? 12 : 0)));
 
     // Soul Decorations
