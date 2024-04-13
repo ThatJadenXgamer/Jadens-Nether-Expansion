@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "netherexp:block/shotgun_barrel",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "netherexp:block/shotgun_barrel"
+    },
+    "facing=south": {
+      "model": "netherexp:block/shotgun_barrel",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "netherexp:block/shotgun_barrel",
+      "y": 270
+    }
+  }
+}

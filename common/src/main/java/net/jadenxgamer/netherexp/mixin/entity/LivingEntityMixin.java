@@ -45,7 +45,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     private void netherexp$soulSpeedVelocityMultiplier(CallbackInfoReturnable<Float> cir) {
         BlockState state = this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement());
         if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) && !EnchantmentHelper.hasSoulSpeed((LivingEntity) (Object) this)) {
-            cir.setReturnValue(1.0F);
+            cir.setReturnValue(1.0f);
         }
         // TODO Add Configs
 //        else if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness) {
@@ -58,7 +58,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V")
     )
     private int netherexp$addSoulSpeedQOL(int amount) {
-        return 1;
+        return 0;
         // TODO Add Configs
 //        return NetherExp.getConfig().gamemechanics.soulSpeedConfigs.no_soul_speed_degradation ? 0 : 1;
     }

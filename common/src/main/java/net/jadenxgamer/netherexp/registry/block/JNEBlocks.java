@@ -167,6 +167,9 @@ public class JNEBlocks {
                     ((state, world, pos) -> state.getValue(SoulSoilLayerBlock.LAYERS) >= 8))
             ));
 
+    public static final RegistrySupplier<Block> SHOTGUN_BARREL = registerBlock("shotgun_barrel", () ->
+        new ShotgunBarrelBlock(BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.COPPER)));
+
     // Netherrack
 
     public static final RegistrySupplier<Block> SMOOTH_NETHERRACK = registerBlock("smooth_netherrack", () ->

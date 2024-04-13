@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "RSR",
+    "NNN"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:shotgun_barrel"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "N": {
+      "item": "netherexp:necro_shard"
+    },
+    "B": {
+      "item": "minecraft:bone_block"
+    }
+  },
+  "result": {
+    "item": "netherexp:shotgun_barrel",
+    "count": 2
+  }
+}

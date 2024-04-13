@@ -35,8 +35,6 @@ public class JNETags {
         public static final TagKey<Block> SCALE_FUNGUS_PLANTABLE_ON = createBlockTag("scale_fungus_plantable_on");
 
         /*
-
-
          *  Makes Bone Fences connect with Blocks in this tag
          *  This is not normally used but exists if for whatever reason you may need it
          */
@@ -102,9 +100,6 @@ public class JNETags {
 
         // Blocks in this tag will no longer slow you down if Unbounded Speed effect is applied
         public static final TagKey<Block> NETHERITE_GRATES = createBlockTag("netherite_grates");
-
-        // Crops in this tag are allowed to be planted on Soul Sand
-        public static final TagKey<Block> SOUL_SAND_CROPS = createBlockTag("soul_sand_crops");
 
         // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone");

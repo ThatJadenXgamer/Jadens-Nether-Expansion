@@ -53,6 +53,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.NECRO_SHARD.get());
 //                        output.accept(JNEItems.GUILLOTINE);
                         output.accept(JNEItems.SHOTGUN_FIST.get());
+                        output.accept(JNEBlocks.SHOTGUN_BARREL.get());
 
                         output.accept(JNEItems.WRAITHING_FLESH.get());
                         output.accept(JNEBlocks.SOUL_CANDLE.get());

@@ -1,6 +1,7 @@
 {
   "biome.netherexp.exhaust_mire": "Exhaust Mire",
   "biome.netherexp.quartz_chasm": "Quartz Chasm",
+  "biome.netherexp.plume_bowels": "Plume Bowels",
   "biome.netherexp.grieving_grove": "Grieving Grove",
 
   "item.netherexp.warphopper_fur": "Warphopper Fur",
@@ -127,6 +128,8 @@
   "block.netherexp.soul_jack_o_lantern": "Soul Jack o'Lantern",
   "block.netherexp.sorrowsquash_stem": "Sorrowsquash Stem",
   "block.netherexp.sorrowsquash_stem_plant": "Sorrowsquash Stem Plant",
+
+  "block.netherexp.shotgun_barrel": "Shotgun Barrel",
 
   "block.netherexp.smooth_netherrack": "Smooth Netherrack",
   "block.netherexp.smooth_netherrack_slab": "Smooth Netherrack Slab",

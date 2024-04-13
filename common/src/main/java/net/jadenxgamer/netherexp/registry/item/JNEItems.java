@@ -6,10 +6,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
-import net.jadenxgamer.netherexp.registry.item.custom.LightsporesItem;
-import net.jadenxgamer.netherexp.registry.item.custom.MobBottleItem;
-import net.jadenxgamer.netherexp.registry.item.custom.NightsporesItem;
+import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
 import net.minecraft.core.registries.Registries;
@@ -97,9 +94,8 @@ public class JNEItems {
     public static final RegistrySupplier<Item> NECRO_SHARD = registerItem("necro_shard", () ->
             new Item(new Item.Properties()));
 
-    // TODO Needs Item
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
-            new Item(new Item.Properties()));
+            new ShotgunFistItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> CLARET_SIGN = registerItem("claret_sign", () ->
             new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));

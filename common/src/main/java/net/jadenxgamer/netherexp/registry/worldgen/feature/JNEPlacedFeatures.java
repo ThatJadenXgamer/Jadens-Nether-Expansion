@@ -22,7 +22,7 @@ public class JNEPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BLACK_ICE = registerKey("soul_sand_valley/black_ice");
 
     //TODO Add Ectoplasm
-    //    public static final ResourceKey<PlacedFeature> ECTOPLASM_LAKE = registerKey("soul_sand_valley/ectoplasm_lake");
+//    public static final ResourceKey<PlacedFeature> ECTOPLASM_LAKE = registerKey("soul_sand_valley/ectoplasm_lake");
     public static final ResourceKey<PlacedFeature> ORE_SOUL_MAGMA = registerKey("soul_sand_valley/ore_soul_magma");
     public static final ResourceKey<PlacedFeature> SOUL_SWIRLS_CEILING = registerKey("soul_sand_valley/soul_swirls_ceiling");
     public static final ResourceKey<PlacedFeature> SOUL_SWIRLS_FLOOR = registerKey("soul_sand_valley/soul_swirls_floor");

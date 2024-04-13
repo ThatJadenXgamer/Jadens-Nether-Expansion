@@ -31,6 +31,7 @@ public class NetherExpForgeClient {
     public static void onClientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
+        EntityRenderers.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
     }
 
     public static void itemTints(RegisterColorHandlersEvent.Item event) {
