@@ -6,8 +6,6 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.SoundType;
 
 public class JNESoundEvents {
 
@@ -133,17 +131,18 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> GILDING = registerSoundEvents("item.gold_ingot.gilding");
     public static RegistrySupplier<SoundEvent> ECTOPLASM_FREEZE = registerSoundEvents("block.ectoplasm.freeze");
     public static RegistrySupplier<SoundEvent> SOUL_SLATE_SOLIDIFYING = registerSoundEvents("block.soul_slate.solidifying");
-    public static RegistrySupplier<SoundEvent> ITEM_BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
-    public static RegistrySupplier<SoundEvent> ITEM_BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");
-    public static RegistrySupplier<SoundEvent> ITEM_BUCKET_EMPTY_MAGMA_CUBE = registerSoundEvents("item.bucket.empty_magma_cube");
-    public static RegistrySupplier<SoundEvent> ITEM_BUCKET_FILL_MAGMA_CUBE = registerSoundEvents("item.bucket.fill_magma_cube");
-    public static RegistrySupplier<SoundEvent> ITEM_BRUSH_BRUSHING_SOUL_SAND_COMPLETE = registerSoundEvents("item.brush.brushing_soul_sand_complete");
+    public static RegistrySupplier<SoundEvent> BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
+    public static RegistrySupplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");
+    public static RegistrySupplier<SoundEvent> BUCKET_EMPTY_MAGMA_CUBE = registerSoundEvents("item.bucket.empty_magma_cube");
+    public static RegistrySupplier<SoundEvent> BUCKET_FILL_MAGMA_CUBE = registerSoundEvents("item.bucket.fill_magma_cube");
+    public static RegistrySupplier<SoundEvent> BRUSH_BRUSHING_SOUL_SAND_COMPLETE = registerSoundEvents("item.brush.brushing_soul_sand_complete");
     public static RegistrySupplier<SoundEvent> EXPLOSIVE_SCORIA_AMBIENT = registerSoundEvents("block.explosive_scoria.ambient");
     public static RegistrySupplier<SoundEvent> SPORESHROOM_TRAMPOLINED = registerSoundEvents("block.sporeshroom.trampolined");
     public static RegistrySupplier<SoundEvent> LIGHTSPORES_APPLY = registerSoundEvents("block.lightspores.apply");
     public static RegistrySupplier<SoundEvent> LIGHTSPORES_SHEAR = registerSoundEvents("block.lightspores.shear");
     public static RegistrySupplier<SoundEvent> SOUL_SWIRLS_BOOST = registerSoundEvents("block.soul_swirls.boost");
     public static RegistrySupplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
+    public static RegistrySupplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
 
     // ENTITIES:
 

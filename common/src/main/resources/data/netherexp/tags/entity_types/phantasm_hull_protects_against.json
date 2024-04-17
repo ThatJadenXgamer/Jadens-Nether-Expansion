@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:arrows",
+    "minecraft:trident",
+    "minecraft:fireball",
+    "minecraft:small_fireball",
+    "minecraft:snowball",
+    "minecraft:egg",
+    "netherexp:soul_bullet"
+  ]
+}

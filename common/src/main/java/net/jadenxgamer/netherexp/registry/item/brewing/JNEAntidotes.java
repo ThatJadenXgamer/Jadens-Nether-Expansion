@@ -27,6 +27,7 @@ public class JNEAntidotes {
         ANTIDOTES.add(JNEAntidotes.DARKNESS());
         ANTIDOTES.add(JNEAntidotes.LEVITATION());
         ANTIDOTES.add(JNEAntidotes.HUNGER());
+        ANTIDOTES.add(JNEAntidotes.WITHER());
         ANTIDOTES.add(JNEAntidotes.INACTIVE_SWIFTNESS());
         ANTIDOTES.add(JNEAntidotes.INACTIVE_SLOWNESS());
         ANTIDOTES.add(JNEAntidotes.INACTIVE_STRENGTH());
@@ -277,6 +278,14 @@ public class JNEAntidotes {
         nbt.putString("Antidote", "hunger");
         nbt.putString("AntidoteEffect", "netherexp:hunger_immunity");
         nbt.putInt("Duration", 1080);
+        return nbt;
+    }
+
+    public static CompoundTag WITHER() {
+        CompoundTag nbt = new CompoundTag();
+        nbt.putString("Antidote", "wither");
+        nbt.putString("AntidoteEffect", "netherexp:wither_immunity");
+        nbt.putInt("Duration", 900);
         return nbt;
     }
 }

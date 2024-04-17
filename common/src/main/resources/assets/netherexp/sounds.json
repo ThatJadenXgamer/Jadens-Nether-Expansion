@@ -958,6 +958,12 @@
       "netherexp:item/antidote/negate"
     ]
   },
+  "item.shotgun.use": {
+    "subtitle": "subtitles.item.shotgun.use",
+    "sounds": [
+      "netherexp:item/shotgun/use"
+    ]
+  },
   "block.explosive_scoria.ambient": {
     "subtitle": "subtitles.block.explosive_scoria.ambient",
     "sounds": [

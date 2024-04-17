@@ -73,7 +73,7 @@ public class JNEItems {
             new MobBottleItem(SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1)));
 
     public static final RegistrySupplier<Item> MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket", () ->
-            new MobBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.ITEM_BUCKET_EMPTY_MAGMA_CUBE.get(), new Item.Properties()));
+            new MobBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.BUCKET_EMPTY_MAGMA_CUBE.get(), new Item.Properties()));
 
     public static final RegistrySupplier<Item> WRAITHING_FLESH = registerItem("wraithing_flesh", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));
@@ -114,6 +114,12 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.APPARITION, 4864303, 699311, new Item.Properties()));
+
+    public static final RegistrySupplier<Item> WISP_SPAWN_EGG = registerItem("wisp_spawn_egg", () ->
+            new ArchitecturySpawnEggItem(JNEEntityType.WISP, 6022120, 699311, new Item.Properties()));
+
+    public static final RegistrySupplier<Item> VESSEL_SPAWN_EGG = registerItem("vessel_spawn_egg", () ->
+            new ArchitecturySpawnEggItem(JNEEntityType.VESSEL, 4864303, 12698049, new Item.Properties()));
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);

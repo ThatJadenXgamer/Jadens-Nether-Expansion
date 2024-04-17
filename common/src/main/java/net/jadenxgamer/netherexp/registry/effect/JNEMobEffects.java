@@ -16,7 +16,7 @@ public class JNEMobEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(NetherExp.MOD_ID, Registries.MOB_EFFECT);
 
     public static final RegistrySupplier<MobEffect> FOGSIGHT = MOB_EFFECTS.register("fogsight", () ->
-            new FogSightEffect(MobEffectCategory.BENEFICIAL, 10442064));
+            new FogSightEffect(MobEffectCategory.BENEFICIAL, 6497843));
 
     public static final RegistrySupplier<MobEffect> UNBOUNDED_SPEED = MOB_EFFECTS.register("unbounded_speed", () ->
             new UnboundedSpeed(MobEffectCategory.BENEFICIAL, 1787717));
@@ -74,7 +74,7 @@ public class JNEMobEffects {
     public static final RegistrySupplier<MobEffect> HUNGER_IMMUNITY = MOB_EFFECTS.register("hunger_immunity", () ->
             new ImmunityEffect(MobEffectCategory.BENEFICIAL, 5797459, MobEffects.HUNGER));
 
-    public static final RegistrySupplier<MobEffect> WITHER_IMMUNITY = MOB_EFFECTS.register("winter_immunity", () ->
+    public static final RegistrySupplier<MobEffect> WITHER_IMMUNITY = MOB_EFFECTS.register("wither_immunity", () ->
             new ImmunityEffect(MobEffectCategory.BENEFICIAL, 7561558, MobEffects.WITHER));
 
     public static void init() {

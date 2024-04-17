@@ -48,6 +48,7 @@ public class JNEPotionRecipe {
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), JNEAntidotes.AWKWARD()), (new BrewingIngredientItem(Items.ECHO_SHARD)), JNEItems.ANTIDOTE.get(), JNEAntidotes.DARKNESS()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), JNEAntidotes.AWKWARD()), (new BrewingIngredientItem(Items.CHORUS_FRUIT)), JNEItems.ANTIDOTE.get(), JNEAntidotes.LEVITATION()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), JNEAntidotes.AWKWARD()), (new BrewingIngredientItem(Items.ROTTEN_FLESH)), JNEItems.ANTIDOTE.get(), JNEAntidotes.HUNGER()));
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), JNEAntidotes.AWKWARD()), (new BrewingIngredientItem(Items.DIAMOND)), JNEItems.ANTIDOTE.get(), JNEAntidotes.WITHER()));
     }
 
     public static List<Triple<Pair<BrewingIngredient, CompoundTag>, BrewingIngredient, Pair<ItemStack, CompoundTag>>> getRecipes() {

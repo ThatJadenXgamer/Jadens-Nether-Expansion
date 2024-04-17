@@ -135,8 +135,11 @@ public class JNETags {
         // Entities in this tag cannot activate Swirls
         public static final TagKey<EntityType<?>> CANT_ACTIVATE_SWIRLS = createEntityTypeTag("cant_activate_swirls");
 
-        // Projects will not collide with entities in this tag
+        // Projectiles in the PHANTASM_HULL_PROTECTS_AGAINST will not collide with entities in this tag
         public static final TagKey<EntityType<?>> PROJECTILES_PASS_THROUGH = createEntityTypeTag("projectiles_pass_through");
+
+        // Phantasm Hull will protect you against projectiles in this tag
+        public static final TagKey<EntityType<?>> PHANTASM_HULL_PROTECTS_AGAINST = createEntityTypeTag("phantasm_hull_protects_against");
 
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(NetherExp.MOD_ID, name));

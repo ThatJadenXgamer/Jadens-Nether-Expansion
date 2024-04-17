@@ -24,7 +24,7 @@ public class EctoplasmBucketItem extends BucketItem {
     @SuppressWarnings("deprecation")
     @Override
     protected void playEmptySound(@Nullable Player player, LevelAccessor level, BlockPos pos) {
-        SoundEvent soundEvent = this.fluid.is(JNETags.Fluids.ECTOPLASM) ? JNESoundEvents.ITEM_BUCKET_EMPTY_ECTOPLASM.get() : SoundEvents.BUCKET_EMPTY;
+        SoundEvent soundEvent = this.fluid.is(JNETags.Fluids.ECTOPLASM) ? JNESoundEvents.BUCKET_EMPTY_ECTOPLASM.get() : SoundEvents.BUCKET_EMPTY;
         level.playSound(player, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
         level.gameEvent(player, GameEvent.FLUID_PLACE, pos);
     }

@@ -5,6 +5,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
 import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
+import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
@@ -20,6 +21,10 @@ public class JNEEntityType {
     public static final RegistrySupplier<EntityType<Wisp>> WISP = ENTITY_TYPES.register("wisp", () ->
             EntityType.Builder.of(Wisp::new, MobCategory.AMBIENT)
                     .sized(0.6f, 0.6f).fireImmune().build("wisp"));
+
+    public static final RegistrySupplier<EntityType<Vessel>> VESSEL = ENTITY_TYPES.register("vessel", () ->
+            EntityType.Builder.of(Vessel::new, MobCategory.MONSTER)
+                    .sized(0.6F, 2.99F).fireImmune().build("vessel"));
 
     public static final RegistrySupplier<EntityType<SoulBullet>> SOUL_BULLET = ENTITY_TYPES.register("soul_bullet", () ->
             EntityType.Builder.<SoulBullet>of(SoulBullet::new, MobCategory.MISC)

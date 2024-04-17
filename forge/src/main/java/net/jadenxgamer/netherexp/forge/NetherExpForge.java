@@ -6,6 +6,7 @@ import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.forge.item.brewing.JNEPotionRecipeForge;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
+import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -35,5 +36,6 @@ public class NetherExpForge {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(JNEEntityType.APPARITION.get(), Apparition.createAttributes().build());
         event.put(JNEEntityType.WISP.get(), Wisp.createAttributes().build());
+        event.put(JNEEntityType.VESSEL.get(), Vessel.createAttributes().build());
     }
 }

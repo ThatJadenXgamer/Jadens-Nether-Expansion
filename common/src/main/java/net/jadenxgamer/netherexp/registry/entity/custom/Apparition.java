@@ -1,15 +1,12 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
-import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -55,7 +52,7 @@ public class Apparition extends Monster implements FlyingAnimal {
     public Apparition(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(BlockPathTypes.LAVA, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.WATER, 1.0F);
         this.moveControl = new FlyingMoveControl(this, 20, true);
     }
 
@@ -99,6 +96,11 @@ public class Apparition extends Monster implements FlyingAnimal {
                 i.startIfStopped(this.tickCount);
             }
         }
+    }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return false;
     }
 
     private boolean isMoving() {
@@ -190,45 +192,6 @@ public class Apparition extends Monster implements FlyingAnimal {
         else if (p == 4) {
             this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Blaze.class, true));
             this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        }
-    }
-
-    @Override
-    public void handleDamageEvent(DamageSource damageSource) {
-        super.handleDamageEvent(damageSource);
-        this.teleportAway();
-    }
-
-    protected void teleportAway() {
-        if (this.level().isClientSide) {
-            for(int i = 0; i < 15; ++i) {
-                this.level().addParticle(JNEParticleTypes.WISP.get(), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), (this.random.nextDouble() - 0.5) * 2.0, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.0);
-            }
-        }
-
-        if (!this.level().isClientSide() && this.isAlive()) {
-            double d = this.getX() + (this.random.nextDouble() - 0.5) * 64.0;
-            double e = this.getY() + (double)(this.random.nextInt(64) - 32);
-            double f = this.getZ() + (this.random.nextDouble() - 0.5) * 64.0;
-            this.teleport(d, e, f);
-        }
-    }
-
-    @SuppressWarnings("deprecation")
-    private void teleport(double d, double e, double f) {
-        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(d, e, f);
-
-        BlockState blockState = this.level().getBlockState(mutableBlockPos);
-        boolean bl = blockState.blocksMotion();
-        boolean bl2 = blockState.getFluidState().is(FluidTags.WATER);
-        if (!bl2) {
-            boolean bl3 = this.randomTeleport(d, e, f, true);
-            if (bl3) {
-                if (!this.isSilent()) {
-                    this.level().playSound(null, this.xo, this.yo, this.zo, JNESoundEvents.ENTITY_WARPHOPPER_CLOAK.get(), this.getSoundSource(), 1.0F, 1.0F);
-                    this.playSound(JNESoundEvents.ENTITY_WARPHOPPER_CLOAK.get(), 1.0F, 1.0F);
-                }
-            }
         }
     }
 

@@ -10,4 +10,7 @@ public class JNEModelLayers {
 
     public static final ModelLayerLocation WISP_LAYER = new ModelLayerLocation(
             new ResourceLocation(NetherExp.MOD_ID, "wisp_layer"), "main");
+
+    public static final ModelLayerLocation VESSEL_LAYER = new ModelLayerLocation(
+            new ResourceLocation(NetherExp.MOD_ID, "vessel_layer"), "main");
 }

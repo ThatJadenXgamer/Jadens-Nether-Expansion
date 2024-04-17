@@ -369,8 +369,9 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
 
                         //TODO: Add Spawn Eggs
-//                        output.accept(JNEItems.WISP_SPAWN_EGG);
+                        output.accept(JNEItems.WISP_SPAWN_EGG.get());
                         output.accept(JNEItems.APPARITION_SPAWN_EGG.get());
+                        output.accept(JNEItems.VESSEL_SPAWN_EGG.get());
 //                        output.accept(JNEItems.STAMPEDE_SPAWN_EGG);
 //                        output.accept(JNEItems.GRASP_SPAWN_EGG);
 //                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {

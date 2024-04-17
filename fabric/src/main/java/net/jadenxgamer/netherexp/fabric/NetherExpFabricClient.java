@@ -123,8 +123,10 @@ public class NetherExpFabricClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.WISP.get(), WispRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.VESSEL_LAYER, VesselModel::createBodyLayer);
     }
 }

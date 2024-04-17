@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.item.custom;
 
 import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -13,6 +14,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +28,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int remainingUseTicks) {
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         if (user instanceof Player player) {
             boolean creative = player.getAbilities().instabuild;
             ItemStack projectileStack = player.getProjectile(stack);
@@ -35,7 +38,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
                 }
                 boolean bl = creative && projectileStack.getItem() == JNEItems.WRAITHING_FLESH.get();
                 if (!level.isClientSide) {
-                    int count = Mth.nextInt(level.random, 8, 16);
+                    int count = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, stack) > 0 ? Mth.nextInt(level.random, 8, 16) : Mth.nextInt(level.random, 16, 20);
                     for (int i = 0; i < count; i++) {
                         SoulBullet soulBullet = new SoulBullet(level, player);
                         Vec3 lookVector = player.getLookAngle();
@@ -51,10 +54,11 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
                     }
                 }
 
-                level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+                level.playSound(null, user.getX(), user.getY(), user.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
                 player.awardStat(Stats.ITEM_USED.get(this));
             }
         }
+        return stack;
     }
 
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
@@ -75,7 +79,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return 72000;
+        return 20;
     }
 
     @Override

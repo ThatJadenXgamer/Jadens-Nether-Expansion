@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.boss.EnderDragonPart;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -48,7 +49,16 @@ public class SoulBullet extends AbstractArrow {
     protected void onHitEntity(EntityHitResult entityHitResult) {
         if (!this.level().isClientSide) {
             Entity entity = entityHitResult.getEntity();
-            entity.hurt(level().damageSources().source(JNEDamageSources.SOUL_BULLET), 1);
+            if (entity instanceof EnderDragonPart enderDragonPart) {
+                entity = enderDragonPart.parentMob;
+            }
+            Entity owner = this.getOwner();
+            if (owner != null) {
+                entity.hurt(level().damageSources().source(JNEDamageSources.SOUL_BULLET, owner), 1);
+            }
+            else {
+                entity.hurt(level().damageSources().source(JNEDamageSources.SOUL_BULLET), 1);
+            }
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
             this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             this.discard();
