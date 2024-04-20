@@ -2,8 +2,8 @@
 	"credit": "Made by @ThatJadenXgamer",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "netherexp:entity/shotgun_fist_handheld",
-		"particle": "netherexp:entity/shotgun_fist_handheld"
+		"0": "netherexp:item/shotgun_fist_handheld",
+		"particle": "netherexp:item/shotgun_fist_handheld"
 	},
 	"elements": [
 		{

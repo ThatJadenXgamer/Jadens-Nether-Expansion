@@ -1,0 +1,45 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:shotgun_fist",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.nether.angel_with_a_shotgun.title"
+    },
+    "description": {
+      "translate": "advancements.nether.angel_with_a_shotgun.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/find_fortress",
+  "criteria": {
+    "criteria": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "id": "minecraft:is_projectile",
+                "expected": true
+              }
+            ],
+            "direct_entity": {
+              "type": "netherexp:soul_bullet"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "criteria"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

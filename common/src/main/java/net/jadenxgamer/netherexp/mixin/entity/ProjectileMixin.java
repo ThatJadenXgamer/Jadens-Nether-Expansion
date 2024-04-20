@@ -35,11 +35,11 @@ public abstract class ProjectileMixin {
             ci.cancel();
         }
         //TODO: Polish VFX for Phantasm Hull
-        else if (EnchantmentHelper.getEnchantmentLevel(JNEEnchantments.PHANTASM_HULL.get(), (LivingEntity) entity) > 0 && entity.isShiftKeyDown() && ((Projectile) (Object) this).getType().is(JNETags.EntityTypes.PHANTASM_HULL_PROTECTS_AGAINST)) {
-            level.addParticle(ParticleTypes.SOUL, entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f);
+        else if (entity instanceof LivingEntity livingEntity && EnchantmentHelper.getEnchantmentLevel(JNEEnchantments.PHANTASM_HULL.get(), livingEntity) > 0 && livingEntity.isShiftKeyDown() && ((Projectile) (Object) this).getType().is(JNETags.EntityTypes.PHANTASM_HULL_PROTECTS_AGAINST)) {
+            level.addParticle(ParticleTypes.SOUL, livingEntity.getRandomX(0.5), livingEntity.getRandomY() - 0.25, livingEntity.getRandomZ(0.5), Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f);
             if (level.getRandom().nextInt(2) == 0) {
-                ItemStack itemStack = ((LivingEntity) entity).getItemBySlot(EquipmentSlot.CHEST);
-                itemStack.hurtAndBreak(1, ((LivingEntity) entity), (player) -> player.broadcastBreakEvent(EquipmentSlot.CHEST));
+                ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
+                itemStack.hurtAndBreak(1, livingEntity, (user) -> user.broadcastBreakEvent(EquipmentSlot.CHEST));
             }
             ci.cancel();
         }

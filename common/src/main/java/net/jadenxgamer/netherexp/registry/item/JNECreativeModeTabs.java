@@ -4,7 +4,7 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.item.brewing.JNEAntidotes;
+import net.jadenxgamer.netherexp.registry.item.brewing.Antidotes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -383,7 +383,7 @@ public class JNECreativeModeTabs {
                     }).build());
 
     private static void addAntidotes(CreativeModeTab.Output output) {
-        List<CompoundTag> list = JNEAntidotes.ANTIDOTES;
+        List<CompoundTag> list = Antidotes.ANTIDOTES;
         Set<ItemStack> set = ItemStackLinkedSet.createTypeAndTagSet();
 
         for (CompoundTag nbt : list) {

@@ -1,6 +1,21 @@
 {
   "parent": "minecraft:item/generated",
+  "loader": "forge:separate_transforms",
   "textures": {
     "layer0": "netherexp:item/shotgun_fist"
+  },
+  "base": {
+    "parent": "netherexp:item/shotgun_fist_handheld"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "netherexp:item/shotgun_fist_inventory"
+    },
+    "ground": {
+      "parent": "netherexp:item/shotgun_fist_inventory"
+    },
+    "fixed": {
+      "parent": "netherexp:item/shotgun_fist_inventory"
+    }
   }
 }

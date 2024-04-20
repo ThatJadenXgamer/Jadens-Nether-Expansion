@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.custom.Bottleable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -53,9 +54,9 @@ public class MobBottleItem extends Item {
 
     private void spawn(ServerLevel serverLevel, ItemStack itemStack, BlockPos blockPos) {
         Entity entity = JNEEntityType.WISP.get().spawn(serverLevel, itemStack, null, blockPos, MobSpawnType.BUCKET, true, false);
-        if (entity instanceof Bucketable bucketable) {
-            bucketable.loadFromBucketTag(itemStack.getOrCreateTag());
-            bucketable.setFromBucket(true);
+        if (entity instanceof Bottleable bottleable) {
+            bottleable.loadFromBottleTag(itemStack.getOrCreateTag());
+            bottleable.setFromBottle(true);
         }
     }
 }

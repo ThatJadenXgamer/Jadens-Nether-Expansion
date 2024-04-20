@@ -19,10 +19,11 @@ public class ImmunityEffect extends MobEffect {
         super.applyEffectTick(entity, i);
         if (entity.hasEffect(this.mobEffect)) {
             int duration = entity.getEffect(this).getDuration();
+            int amplifier = entity.getEffect(this.mobEffect).getAmplifier() + 1;
             entity.playSound(JNESoundEvents.ANTIDOTE_NEGATE.get(), 1, 1);
             entity.removeEffect(mobEffect);
             entity.removeEffect(this);
-            entity.addEffect(new MobEffectInstance(this, (duration - 600), 0));
+            entity.addEffect(new MobEffectInstance(this, (duration - 600 * amplifier), 0));
         }
     }
 

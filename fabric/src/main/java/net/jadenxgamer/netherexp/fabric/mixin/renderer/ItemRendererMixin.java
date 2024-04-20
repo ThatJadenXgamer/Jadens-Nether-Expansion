@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.mixin.renderer;
+package net.jadenxgamer.netherexp.fabric.mixin.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jadenxgamer.netherexp.NetherExp;
@@ -9,16 +9,14 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Debug(export = true)
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererMixin {
     @ModifyVariable(
-            method = "renderStatic",
+            method = "render",
             at = @At(value = "HEAD"),
             argsOnly = true
     )

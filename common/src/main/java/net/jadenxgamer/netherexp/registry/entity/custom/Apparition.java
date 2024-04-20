@@ -145,6 +145,11 @@ public class Apparition extends Monster implements FlyingAnimal {
         return MobType.UNDEAD;
     }
 
+    @Override
+    public boolean isSensitiveToWater() {
+        return true;
+    }
+
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 24.0)
@@ -202,13 +207,30 @@ public class Apparition extends Monster implements FlyingAnimal {
     @Override
     public void die(DamageSource damageSource) {
         super.die(damageSource);
-        for (int i = 0; i < this.level().getRandom().nextInt(4) + 1; i++) {
+        for (int i = 0; i < this.level().getRandom().nextInt(2) + 1; i++) {
             Wisp wisp = JNEEntityType.WISP.get().create(this.level());
-            assert wisp != null;
-            wisp.setBoredDelay(0);
-            wisp.setPos(this.getX() + 0.5, this.getY(), this.getZ() + 0.5);
-            this.level().addFreshEntity(wisp);
+            if (wisp != null) {
+                wisp.setBoredDelay(0);
+                wisp.setPos(this.getX(), this.getY(), this.getZ());
+                this.level().addFreshEntity(wisp);
+            }
         }
+    }
+
+    @Override
+    public boolean killedEntity(ServerLevel serverLevel, LivingEntity livingEntity) {
+        if (livingEntity instanceof Skeleton skeleton) {
+            Vessel vessel = skeleton.convertTo(JNEEntityType.VESSEL.get(), false);
+            if (vessel != null) {
+                vessel.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(vessel.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, true), null);
+                if (skeleton.hasCustomName()) {
+                    vessel.setCustomName(skeleton.getCustomName());
+                }
+                this.discard();
+                return false;
+            }
+        }
+        return super.killedEntity(serverLevel, livingEntity);
     }
 
     /////////
@@ -240,10 +262,6 @@ public class Apparition extends Monster implements FlyingAnimal {
     public void setPreference(int preference) {
         this.entityData.set(PREFERENCE, preference);
     }
-
-    ////////////////////
-    // GeckoLib Stuff //
-    ////////////////////
 
     ////////
     // AI //

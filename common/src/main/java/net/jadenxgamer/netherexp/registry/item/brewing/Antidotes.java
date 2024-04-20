@@ -5,39 +5,39 @@ import net.minecraft.nbt.CompoundTag;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JNEAntidotes {
+public class Antidotes {
     public static final List<CompoundTag> ANTIDOTES = new ArrayList<>();
 
     static {
-        ANTIDOTES.add(JNEAntidotes.AWKWARD());
-        ANTIDOTES.add(JNEAntidotes.SWIFTNESS());
-        ANTIDOTES.add(JNEAntidotes.SLOWNESS());
-        ANTIDOTES.add(JNEAntidotes.STRENGTH());
-        ANTIDOTES.add(JNEAntidotes.JUMP_BOOST());
-        ANTIDOTES.add(JNEAntidotes.REGENERATION());
-        ANTIDOTES.add(JNEAntidotes.FIRE_RESISTANCE());
-        ANTIDOTES.add(JNEAntidotes.WATER_BREATHING());
-        ANTIDOTES.add(JNEAntidotes.INVISIBILITY());
-        ANTIDOTES.add(JNEAntidotes.WEAKNESS());
-        ANTIDOTES.add(JNEAntidotes.POISON());
-        ANTIDOTES.add(JNEAntidotes.RESISTANCE());
-        ANTIDOTES.add(JNEAntidotes.ABSORPTION());
-        ANTIDOTES.add(JNEAntidotes.HASTE());
-        ANTIDOTES.add(JNEAntidotes.MINING_FATIGUE());
-        ANTIDOTES.add(JNEAntidotes.DARKNESS());
-        ANTIDOTES.add(JNEAntidotes.LEVITATION());
-        ANTIDOTES.add(JNEAntidotes.HUNGER());
-        ANTIDOTES.add(JNEAntidotes.WITHER());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_SWIFTNESS());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_SLOWNESS());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_STRENGTH());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_JUMP_BOOST());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_REGENERATION());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_FIRE_RESISTANCE());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_WATER_BREATHING());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_INVISIBILITY());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_WEAKNESS());
-        ANTIDOTES.add(JNEAntidotes.INACTIVE_POISON());
+        ANTIDOTES.add(Antidotes.AWKWARD());
+        ANTIDOTES.add(Antidotes.SWIFTNESS());
+        ANTIDOTES.add(Antidotes.SLOWNESS());
+        ANTIDOTES.add(Antidotes.STRENGTH());
+        ANTIDOTES.add(Antidotes.JUMP_BOOST());
+        ANTIDOTES.add(Antidotes.REGENERATION());
+        ANTIDOTES.add(Antidotes.FIRE_RESISTANCE());
+        ANTIDOTES.add(Antidotes.WATER_BREATHING());
+        ANTIDOTES.add(Antidotes.INVISIBILITY());
+        ANTIDOTES.add(Antidotes.WEAKNESS());
+        ANTIDOTES.add(Antidotes.POISON());
+        ANTIDOTES.add(Antidotes.RESISTANCE());
+        ANTIDOTES.add(Antidotes.ABSORPTION());
+        ANTIDOTES.add(Antidotes.HASTE());
+        ANTIDOTES.add(Antidotes.MINING_FATIGUE());
+        ANTIDOTES.add(Antidotes.DARKNESS());
+        ANTIDOTES.add(Antidotes.LEVITATION());
+        ANTIDOTES.add(Antidotes.HUNGER());
+        ANTIDOTES.add(Antidotes.WITHER());
+        ANTIDOTES.add(Antidotes.INACTIVE_SWIFTNESS());
+        ANTIDOTES.add(Antidotes.INACTIVE_SLOWNESS());
+        ANTIDOTES.add(Antidotes.INACTIVE_STRENGTH());
+        ANTIDOTES.add(Antidotes.INACTIVE_JUMP_BOOST());
+        ANTIDOTES.add(Antidotes.INACTIVE_REGENERATION());
+        ANTIDOTES.add(Antidotes.INACTIVE_FIRE_RESISTANCE());
+        ANTIDOTES.add(Antidotes.INACTIVE_WATER_BREATHING());
+        ANTIDOTES.add(Antidotes.INACTIVE_INVISIBILITY());
+        ANTIDOTES.add(Antidotes.INACTIVE_WEAKNESS());
+        ANTIDOTES.add(Antidotes.INACTIVE_POISON());
     }
 
     /*
@@ -283,7 +283,7 @@ public class JNEAntidotes {
 
     public static CompoundTag WITHER() {
         CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "wither");
+        nbt.putString("Antidote", "decay");
         nbt.putString("AntidoteEffect", "netherexp:wither_immunity");
         nbt.putInt("Duration", 900);
         return nbt;

@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class SoulBullet extends AbstractArrow {
@@ -26,8 +27,13 @@ public class SoulBullet extends AbstractArrow {
         this.setPos(d, e, f);
     }
 
-    public SoulBullet(Level world, LivingEntity owner) {
-        super(JNEEntityType.SOUL_BULLET.get(), owner, world);
+    public SoulBullet(Level level, LivingEntity owner) {
+        super(JNEEntityType.SOUL_BULLET.get(), owner, level);
+    }
+
+    public SoulBullet(double d, double e, double f, Level level, LivingEntity owner) {
+        super(JNEEntityType.SOUL_BULLET.get(), owner, level);
+        this.setPos(d, e, f);
     }
 
     @Override
@@ -47,18 +53,9 @@ public class SoulBullet extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
+        Entity entity = entityHitResult.getEntity();
+        entity.hurt(this.damageSources().source(JNEDamageSources.SOUL_BULLET), 1);
         if (!this.level().isClientSide) {
-            Entity entity = entityHitResult.getEntity();
-            if (entity instanceof EnderDragonPart enderDragonPart) {
-                entity = enderDragonPart.parentMob;
-            }
-            Entity owner = this.getOwner();
-            if (owner != null) {
-                entity.hurt(level().damageSources().source(JNEDamageSources.SOUL_BULLET, owner), 1);
-            }
-            else {
-                entity.hurt(level().damageSources().source(JNEDamageSources.SOUL_BULLET), 1);
-            }
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
             this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             this.discard();
@@ -72,8 +69,10 @@ public class SoulBullet extends AbstractArrow {
 
     @Override
     protected void onHitBlock(BlockHitResult blockHitResult) {
-        this.playSound(getDefaultHitGroundSoundEvent(), 0.2f, 1.5f);
-        this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-        this.discard();
+        if (!this.level().isClientSide) {
+            this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
+            this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            this.discard();
+        }
     }
 }
