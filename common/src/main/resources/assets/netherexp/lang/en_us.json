@@ -75,12 +75,18 @@
   "item.netherexp.antidote.effect.hunger": "Antidote for Hunger",
   "item.netherexp.antidote.effect.decay": "Antidote for Decay",
 
+  "shotgun_fist.ammo": "Ammo:",
+
   "item.netherexp.glowcheese": "Glowcheese",
   "block.netherexp.nether_pizza": "Nether Pizza",
   "item.netherexp.nether_pizza": "Nether Pizza",
   "item.netherexp.nether_pizza_slice": "Nether Pizza Slice",
 
   "enchantment.netherexp.phantasm_hull": "Phantasm Hull",
+  "enchantment.netherexp.cartridge": "Cartridge",
+  "enchantment.netherexp.recoil": "Recoil",
+  "enchantment.netherexp.converge": "Converge",
+  "enchantment.netherexp.pump_charge": "Pump Charge",
 
   "block.netherexp.soul_slate": "Soul Slate",
   "block.netherexp.pale_soul_slate": "Pale Soul Slate",

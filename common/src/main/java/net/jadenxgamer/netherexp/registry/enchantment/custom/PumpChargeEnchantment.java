@@ -1,14 +1,21 @@
 package net.jadenxgamer.netherexp.registry.enchantment.custom;
 
+import net.jadenxgamer.netherexp.registry.item.custom.ShotgunFistItem;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.MendingEnchantment;
 import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 
-public class PhantasmHullEnchantment extends Enchantment {
-    public PhantasmHullEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_CHEST, new EquipmentSlot[]{EquipmentSlot.CHEST});
+public class PumpChargeEnchantment extends Enchantment {
+    public PumpChargeEnchantment() {
+        super(Rarity.VERY_RARE, EnchantmentCategory.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+    }
+
+    @Override
+    public boolean canEnchant(ItemStack stack) {
+        return stack.getItem() instanceof ShotgunFistItem;
     }
 
     @Override
@@ -37,7 +44,7 @@ public class PhantasmHullEnchantment extends Enchantment {
     }
 
     @Override
-    public boolean checkCompatibility(Enchantment other) {
-        return !(other instanceof MendingEnchantment) && !(other instanceof ProtectionEnchantment) && super.checkCompatibility(other);
+    protected boolean checkCompatibility(Enchantment other) {
+        return !(other instanceof CartridgeEnchantment) && !(other instanceof ConvergeEnchantment);
     }
 }

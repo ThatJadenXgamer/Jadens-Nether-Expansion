@@ -68,7 +68,7 @@ implements SimpleWaterloggedBlock, BonemealableBlock {
         Vec3 vec3 = entity.getDeltaMovement();
         if (!entity.isShiftKeyDown() && !bl) {
             entity.push(vec3.x, 1.0, vec3.z);
-            level.playSound(null, pos.getX(),pos.getY(),pos.getZ(), JNESoundEvents.SPORESHROOM_TRAMPOLINED.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SPORESHROOM_TRAMPOLINED.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }
 
