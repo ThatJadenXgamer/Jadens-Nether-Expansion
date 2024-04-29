@@ -15,31 +15,22 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:nether/find_fortress",
+  "parent": "netherexp:nether/gothic_manor",
   "criteria": {
-    "criteria": {
-      "trigger": "minecraft:player_hurt_entity",
+    "shot_trident": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "damage": {
-          "type": {
-            "tags": [
-              {
-                "id": "minecraft:is_projectile",
-                "expected": true
-              }
-            ],
-            "direct_entity": {
-              "type": "netherexp:soul_bullet"
-            }
+        "items": [
+          {
+            "tag": "netherexp:shotguns"
           }
-        }
+        ]
       }
     }
   },
   "requirements": [
     [
-      "criteria"
+      "shot_trident"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

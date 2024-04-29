@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "netherexp:item/pump_charge_upgrade_smithing_template"
+  }
+}

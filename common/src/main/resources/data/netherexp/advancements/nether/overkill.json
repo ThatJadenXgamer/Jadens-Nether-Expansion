@@ -22,6 +22,14 @@
         "damage": {
           "dealt": {
             "min": 20
+          },
+          "type": {
+            "tags": [
+              {
+                "id": "netherexp:overkill_valid",
+                "expected": true
+              }
+            ]
           }
         },
         "entity": []

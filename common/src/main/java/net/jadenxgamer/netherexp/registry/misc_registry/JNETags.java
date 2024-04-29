@@ -83,14 +83,14 @@ public class JNETags {
          *  Bone Mealing it causes Umbral Wart Beards to grow (only if Cinderscapes is installed)
          *  This tag is intended for Cinderscapes Compatibility
          */
-        public static final TagKey<Block> UMBRAL_WART_BLOCKS = createBlockTag("umbral_wart_blocks");
+        public static final TagKey<Block> UMBRAL_WART_BLOCKS = createBlockTag("mod_compat/umbral_wart_blocks");
 
         /*
          *  Blocks in this tag will be considered as Umbral Nylium
          *  This block can be shoveled to create Umbral Path blocks (only if Cinderscapes is installed)
          *  This tag is intended for Cinderscapes Compatibility
          */
-        public static final TagKey<Block> UMBRAL_NYLIUM = createBlockTag("umbral_nylium");
+        public static final TagKey<Block> UMBRAL_NYLIUM = createBlockTag("mod_compat/umbral_nylium");
 
         // Killing Skeletons on these blocks Converts it to Fossil Ore
         public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createBlockTag("fossil_ore_convertible");
@@ -159,6 +159,9 @@ public class JNETags {
         // Items in this tag will lure Wisps towards the player
         public static final TagKey<Item> SOUL_FIRE_THAT_LURES_WISPS = createItemTag("soul_fire_that_lures_wisps");
 
+        // Items in this tag will be treated as Shotguns and can be Enchanted like one too
+        public static final TagKey<Item> SHOTGUNS = createItemTag("shotguns");
+
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(NetherExp.MOD_ID, name));
         }
@@ -181,16 +184,16 @@ public class JNETags {
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash");
 
         // used to check if the biome is Luminous Grove from Cinderscapes
-        public static final TagKey<Biome> LUMINOUS_GROVE = createBiomeTag("luminous_grove");
+        public static final TagKey<Biome> LUMINOUS_GROVE = createBiomeTag("mod_compat/luminous_grove");
 
         // used to check if the biome is Ashy Shoals from Cinderscapes
-        public static final TagKey<Biome> ASHY_SHOALS = createBiomeTag("ashy_shoals");
+        public static final TagKey<Biome> ASHY_SHOALS = createBiomeTag("mod_compat/ashy_shoals");
 
         // used to check if the biome is Blackstone Shales from Cinderscapes
-        public static final TagKey<Biome> BLACKSTONE_SHALES = createBiomeTag("blackstone_shales");
+        public static final TagKey<Biome> BLACKSTONE_SHALES = createBiomeTag("mod_compat/blackstone_shales");
 
         // used to check if the biome is Soulblight Forest from Gardens of The Dead
-        public static final TagKey<Biome> SOULBLIGHT_FOREST = createBiomeTag("soulblight_forest");
+        public static final TagKey<Biome> SOULBLIGHT_FOREST = createBiomeTag("mod_compat/soulblight_forest");
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(NetherExp.MOD_ID, name));

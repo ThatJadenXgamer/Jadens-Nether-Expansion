@@ -6,7 +6,9 @@
   "client": [
     "renderer.BlazeRendererMixin",
     "renderer.CameraMixin",
-    "renderer.FogRendererMixin"
+    "renderer.FogRendererMixin",
+    "renderer.LightTextureMixin",
+    "renderer.PlayerRendererMixin"
   ],
   "mixins": [
     "block.BlockSetTypeAccessor",

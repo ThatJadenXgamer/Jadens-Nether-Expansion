@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:volatile_scoria_explosion"
+    "netherexp:volatile_scoria_explosion",
+    "netherexp:shotgun_explosion"
   ]
 }

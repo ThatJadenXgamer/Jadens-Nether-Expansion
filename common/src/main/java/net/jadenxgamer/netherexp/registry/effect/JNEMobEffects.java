@@ -5,7 +5,8 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.effect.custom.FogSightEffect;
 import net.jadenxgamer.netherexp.registry.effect.custom.ImmunityEffect;
-import net.jadenxgamer.netherexp.registry.effect.custom.UnboundedSpeed;
+import net.jadenxgamer.netherexp.registry.effect.custom.JNEMobEffect;
+import net.jadenxgamer.netherexp.registry.effect.custom.UnboundedSpeedEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -19,7 +20,10 @@ public class JNEMobEffects {
             new FogSightEffect(MobEffectCategory.BENEFICIAL, 6497843));
 
     public static final RegistrySupplier<MobEffect> UNBOUNDED_SPEED = MOB_EFFECTS.register("unbounded_speed", () ->
-            new UnboundedSpeed(MobEffectCategory.BENEFICIAL, 1787717));
+            new UnboundedSpeedEffect(MobEffectCategory.BENEFICIAL, 1787717));
+
+    public static final RegistrySupplier<MobEffect> BETRAYED = MOB_EFFECTS.register("betrayed", () ->
+            new JNEMobEffect(MobEffectCategory.HARMFUL, 11730944));
 
     // IMMUNITY EFFECTS
 

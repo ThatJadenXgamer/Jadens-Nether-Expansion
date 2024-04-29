@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond"
+    },
+    "title": {
+      "translate": "advancements.nether.diamond_under_corpses.title"
+    },
+    "description": {
+      "translate": "advancements.nether.diamond_under_corpses.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/gravedigger",
+  "criteria": {
+    "has_item": {
+      "trigger": "netherexp:broken_diamond_fossil_ore"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

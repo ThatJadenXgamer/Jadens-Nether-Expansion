@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.enchantment.custom;
 
 import net.jadenxgamer.netherexp.registry.item.custom.ShotgunFistItem;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -14,7 +15,7 @@ public class ConvergeEnchantment extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack stack) {
-        return stack.getItem() instanceof ShotgunFistItem;
+        return stack.is(JNETags.Items.SHOTGUNS);
     }
 
     public int getMinCost(int i) {
@@ -27,10 +28,5 @@ public class ConvergeEnchantment extends Enchantment {
 
     public int getMaxLevel() {
         return 4;
-    }
-
-    @Override
-    protected boolean checkCompatibility(Enchantment other) {
-        return !(other instanceof PumpChargeEnchantment);
     }
 }

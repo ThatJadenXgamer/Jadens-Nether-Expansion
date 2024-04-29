@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:chiseled_soul_slate_bricks"
+    },
+    "title": {
+      "translate": "advancements.nether.gothic_manor.title"
+    },
+    "description": {
+      "translate": "advancements.nether.gothic_manor.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "sanctum": {
+      "trigger": "minecraft:impossible",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "sanctum"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

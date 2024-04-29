@@ -48,6 +48,9 @@ public class JNEItems {
     public static final RegistrySupplier<Item> SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("spirit_armor_trim_smithing_template", () ->
             SmithingTemplateItem.createArmorTrimTemplate(JNETrimPatterns.SPIRIT));
 
+    public static final RegistrySupplier<Item> PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE = registerItem("pump_charge_upgrade_smithing_template",
+            PumpChargeSmithingTemplateItem::new);
+
     public static final RegistrySupplier<Item> LIGHTSPORES = registerItem("lightspores", () ->
             new LightsporesItem(new Item.Properties()));
 
@@ -91,11 +94,17 @@ public class JNEItems {
     public static final RegistrySupplier<Item> NETHERITE_PLATING = registerItem("netherite_plating", () ->
             new Item(new Item.Properties()));
 
+    public static final RegistrySupplier<Item> TREACHEROUS_FLAME = registerItem("treacherous_flame", () ->
+            new Item(new Item.Properties()));
+
     public static final RegistrySupplier<Item> NECRO_SHARD = registerItem("necro_shard", () ->
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
             new ShotgunFistItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistrySupplier<Item> PUMP_CHARGE_SHOTGUN = registerItem("pump_charge_shotgun", () ->
+            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static final RegistrySupplier<Item> CLARET_SIGN = registerItem("claret_sign", () ->
             new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));

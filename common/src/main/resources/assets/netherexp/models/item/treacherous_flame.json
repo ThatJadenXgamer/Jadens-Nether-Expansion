@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "netherexp:item/shotgun_fist"
+    "layer0": "netherexp:item/treacherous_flame"
   }
 }

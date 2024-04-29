@@ -3,11 +3,9 @@ package net.jadenxgamer.netherexp.registry.item.custom;
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
 import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
-import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -16,37 +14,31 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.Predicate;
 
-public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable {
-    public ShotgunFistItem(Properties settings) {
-        super(settings);
+public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanishable {
+    public PumpChargeShotgunItem(Properties properties) {
+        super(properties);
     }
 
-    public static int getAmmo(ItemStack stack) {
+    public static int getCharge(ItemStack stack) {
         CompoundTag nbt = stack.getOrCreateTag();
-        return nbt.getInt("Ammo");
+        return nbt.getInt("Charge");
     }
 
-    public static void setAmmo(ItemStack stack, int i) {
+    public static void setCharge(ItemStack stack, int i) {
         CompoundTag nbt = stack.getOrCreateTag();
-        nbt.putInt("Ammo", i);
-    }
-
-    @Override
-    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
-        useProjectile(stack, user);
-        setAmmo(stack, getAmmo(stack) + 1);
-        level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0F, 1.0F);
-        return stack;
+        nbt.putInt("Charge", i);
+        nbt.putInt("CustomModelData", i);
     }
 
     private void useProjectile(ItemStack stack, LivingEntity user) {
@@ -72,79 +64,63 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack stack = player.getItemInHand(interactionHand);
-        int cartridge = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack);
-        if (cartridge > 0) {
-            if (getAmmo(stack) >= 1 && !player.isShiftKeyDown()) {
-                performShooting(level, player, stack);
-                setAmmo(stack, getAmmo(stack) - 1);
-                stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-                level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                return InteractionResultHolder.success(stack);
-            }
-            else if (player.isShiftKeyDown() && getAmmo(stack) <= cartridge) {
-                if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
-                    player.startUsingItem(interactionHand);
-                    return InteractionResultHolder.consume(stack);
-                }
-            }
+        int cartridge = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack) * 10;
+        if (player.isShiftKeyDown() && getCharge(stack) <= 3) {
+            setCharge(stack, getCharge(stack) + 1);
+            player.startUsingItem(interactionHand);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
         else {
-            if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
+            if (getCharge(stack) <= 3) {
+                if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
+                    performShooting(level, player, stack);
+                    stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                    player.getCooldowns().addCooldown(this, 40);
+                    if (level.random.nextInt(25) - cartridge != 0) {
+                        useProjectile(stack, player);
+                    }
+                    setCharge(stack, 0);
+                    return InteractionResultHolder.success(stack);
+                }
+            }
+            else {
+                level.explode(player, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.TNT);
+                player.getCooldowns().addCooldown(this, 80);
+                player.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, player), 10);
                 useProjectile(stack, player);
-                performShooting(level, player, stack);
-                stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
+                stack.hurtAndBreak(2, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                player.getCooldowns().addCooldown(this, 30);
-                return InteractionResultHolder.success(stack);
+                setCharge(stack, 0);
             }
         }
         return InteractionResultHolder.fail(stack);
     }
 
     public static void performShooting(Level level, LivingEntity livingEntity, ItemStack stack) {
-        int count = Mth.nextInt(level.random, 8, 16);
-        // Enchantment Checks
+        int chargeCount = getCharge(stack) * 6;
+        int chargeInaccuracy = getCharge(stack) * 8;
+        int count = Mth.nextInt(level.random, 4, 6) + chargeCount;
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
-        // Bonuses
-        int rBulletBonus = recoil / 5;
-        double rPushBonus = (double) recoil / 20;
-        // Vectors
+        int rBulletBonus = recoil / 2;
+        double rPushBonus = (double) recoil / 10;
+        double cPushBonus = (double) getCharge(stack) / 10;
         Vec3 look = livingEntity.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, livingEntity);
-                soulBullet.shoot(look.x, look.y, look.z, 1.0F + rBulletBonus, 16);
+                soulBullet.shoot(look.x, look.y, look.z, 1.0F + rBulletBonus, 5 + chargeInaccuracy);
                 level.addFreshEntity(soulBullet);
             }
         }
-        double d = 0.3 + rPushBonus;
+        double d = 0.3 + rPushBonus + cPushBonus;
         livingEntity.push(pushBack.x * d, pushBack.y * d, pushBack.z * d);
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        if (EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack) > 0) {
-            if (getAmmo(stack) >= 1) {
-                tooltip.add(Component.translatable("shotgun_fist.ammo").append(CommonComponents.SPACE).append(Component.literal("" + getAmmo(stack))).withStyle(ChatFormatting.DARK_AQUA));
-                tooltip.add((Component.empty()));
-            }
-            else {
-                tooltip.add(Component.translatable("shotgun_fist.ammo").append(CommonComponents.SPACE).append(Component.literal("" + getAmmo(stack))).withStyle(ChatFormatting.RED));
-                tooltip.add((Component.empty()));
-            }
-        }
     }
 
     @Override
     public @NotNull UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
-    }
-
-    @Override
-    public int getUseDuration(ItemStack stack) {
-        int ammo = getAmmo(stack) * 10;
-        return 10 + ammo;
     }
 
     @Override

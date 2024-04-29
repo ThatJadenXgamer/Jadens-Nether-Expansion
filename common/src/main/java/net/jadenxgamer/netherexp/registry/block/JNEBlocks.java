@@ -130,10 +130,10 @@ public class JNEBlocks {
             new FossilOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).randomTicks().strength(0.6f)));
 
     public static final RegistrySupplier<Block> FOSSIL_FUEL_ORE = registerBlock("fossil_fuel_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(0.6f), UniformInt.of(0, 2)));
+            new JNEOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(0.6f), UniformInt.of(0, 2), 0));
 
     public static final RegistrySupplier<Block> DIAMOND_FOSSIL_ORE = registerBlock("diamond_fossil_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(0.6f).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
+            new JNEOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(0.6f).requiresCorrectToolForDrops(), UniformInt.of(3, 7), 1));
 
     public static final RegistrySupplier<Block> SOUL_TORCHFLOWER = registerBlock("soul_torchflower", () ->
             new NetherFlowerBlock(MobEffects.LEVITATION, 5, BlockBehaviour.Properties.copy(Blocks.TORCHFLOWER)));
@@ -154,7 +154,7 @@ public class JNEBlocks {
         new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.0f).lightLevel((state) -> 10).sound(SoundType.NETHER_WOOD)));
 
     public static final RegistrySupplier<Block> SOUL_JACK_O_LANTERN = registerBlock("soul_jack_o_lantern", () ->
-        new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.0f).lightLevel((state) -> 10)));
+        new CarvedPumpkinBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.0f).lightLevel((state) -> 10)));
 
     public static final RegistrySupplier<Block> SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem", () ->
             new VineStemBlock((StemGrownBlock) JNEBlocks.SORROWSQUASH.get(), () -> Items.PUMPKIN_SEEDS, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().randomTicks().sound(SoundType.NETHER_WOOD)));

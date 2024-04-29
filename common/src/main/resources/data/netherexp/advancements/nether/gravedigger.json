@@ -17,16 +17,7 @@
   "parent": "netherexp:nether/character_arch",
   "criteria": {
     "has_item": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "netherexp:fossil_fuel"
-            ]
-          }
-        ]
-      }
+      "trigger": "netherexp:broken_fossil_fuel_ore"
     }
   },
   "requirements": [
