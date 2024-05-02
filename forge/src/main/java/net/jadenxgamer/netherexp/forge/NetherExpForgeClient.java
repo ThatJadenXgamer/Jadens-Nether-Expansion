@@ -1,8 +1,10 @@
 package net.jadenxgamer.netherexp.forge;
 
+import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
+import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
+import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
-import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -10,11 +12,13 @@ import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.SkeletonRenderer;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.eventbus.EventBus;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -35,6 +39,9 @@ public class NetherExpForgeClient {
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRenderers.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
+        EntityRenderers.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
+        EntityRenderers.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
+        BlockEntityRenderers.register(JNEBlockEntityType.BRUSHABLE_BLOCK.get(), JNEBrushableBlockRenderer::new);
     }
 
     public static void itemTints(RegisterColorHandlersEvent.Item event) {
@@ -80,5 +87,6 @@ public class NetherExpForgeClient {
         event.registerLayerDefinition(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.VESSEL_LAYER, VesselModel::createBodyLayer);
+        event.registerLayerDefinition(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
     }
 }

@@ -1224,4 +1224,32 @@ public class JNEAnimationDefinition {
                                     AnimationChannel.Interpolations.CATMULLROM),
                             new Keyframe(2f, KeyframeAnimations.scaleVec(1f, 1.3f, 1f),
                                     AnimationChannel.Interpolations.CATMULLROM))).build();
+
+    public static final AnimationDefinition MIST_CHARGE_DEFAULT = AnimationDefinition.Builder.withLength(4f).looping()
+            .addAnimation("bone",
+                    new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                            new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f),
+                                    AnimationChannel.Interpolations.CATMULLROM),
+                            new Keyframe(4f, KeyframeAnimations.degreeVec(-360f, 0f, 360f),
+                                    AnimationChannel.Interpolations.CATMULLROM)))
+            .addAnimation("bone",
+                    new AnimationChannel(AnimationChannel.Targets.SCALE,
+                            new Keyframe(0f, KeyframeAnimations.scaleVec(1f, 1f, 1f),
+                                    AnimationChannel.Interpolations.CATMULLROM),
+                            new Keyframe(1f, KeyframeAnimations.scaleVec(1.3f, 1f, 1.1f),
+                                    AnimationChannel.Interpolations.CATMULLROM),
+                            new Keyframe(2f, KeyframeAnimations.scaleVec(1.1f, 1.3f, 1f),
+                                    AnimationChannel.Interpolations.CATMULLROM),
+                            new Keyframe(3f, KeyframeAnimations.scaleVec(1.1f, 1f, 1.3f),
+                                    AnimationChannel.Interpolations.CATMULLROM),
+                            new Keyframe(4f, KeyframeAnimations.scaleVec(1f, 1f, 1f),
+                                    AnimationChannel.Interpolations.CATMULLROM)))
+            .addAnimation("bone2",
+                    new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                            new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR),
+                            new Keyframe(2f, KeyframeAnimations.degreeVec(360f, 0f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR),
+                            new Keyframe(4f, KeyframeAnimations.degreeVec(720f, 0f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR))).build();
 }

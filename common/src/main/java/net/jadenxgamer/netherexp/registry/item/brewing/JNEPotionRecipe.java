@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.item.brewing;
 
+import net.jadenxgamer.netherexp.mixin.brewing.PotionBrewingAccessor;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
@@ -76,5 +77,10 @@ public class JNEPotionRecipe {
                 return Pair.of(stack, nbt);
             }
         };
+    }
+
+    public static void addInvokerPotionRecipes() {
+        PotionBrewingAccessor.netherexp$addMix(Potions.AWKWARD, JNEItems.FOGGY_ESSENCE.get(), JNEPotions.FOGSIGHT.get());
+        PotionBrewingAccessor.netherexp$addMix(JNEPotions.FOGSIGHT.get(), Items.REDSTONE, JNEPotions.LONG_FOGSIGHT.get());
     }
 }

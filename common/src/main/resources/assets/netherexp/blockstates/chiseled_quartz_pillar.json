@@ -1,25 +1,22 @@
 {
   "variants": {
     "facing=down": {
-      "model": "netherexp:block/chiseled_quartz_pillar_vertical_alt"
+      "model": "netherexp:block/chiseled_quartz_pillar/down"
     },
     "facing=east": {
-      "model": "netherexp:block/chiseled_quartz_pillar",
-      "y": 90
+      "model": "netherexp:block/chiseled_quartz_pillar/east"
     },
     "facing=north": {
-      "model": "netherexp:block/chiseled_quartz_pillar"
+      "model": "netherexp:block/chiseled_quartz_pillar/north"
     },
     "facing=south": {
-      "model": "netherexp:block/chiseled_quartz_pillar_alt",
-      "y": 180
+      "model": "netherexp:block/chiseled_quartz_pillar/south"
     },
     "facing=up": {
-      "model": "netherexp:block/chiseled_quartz_pillar_vertical"
+      "model": "netherexp:block/chiseled_quartz_pillar/up"
     },
     "facing=west": {
-      "model": "netherexp:block/chiseled_quartz_pillar_alt",
-      "y": 270
+      "model": "netherexp:block/chiseled_quartz_pillar/west"
     }
   }
 }

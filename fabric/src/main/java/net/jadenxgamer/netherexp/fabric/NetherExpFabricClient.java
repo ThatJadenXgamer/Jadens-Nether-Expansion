@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.fabric;
 
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -7,7 +8,9 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.jadenxgamer.netherexp.NetherExpClient;
+import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
@@ -18,6 +21,7 @@ import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 
 public class NetherExpFabricClient implements ClientModInitializer {
     @Override
@@ -121,12 +125,19 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.UMBRAL_SMOG.get(), SmogParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.SHALE_SWIRL_POP.get(), RisingParticle.Factory::new);
 
+        // ENTITY
         EntityRendererRegistry.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
+        BlockEntityRendererRegistry.register(JNEBlockEntityType.BRUSHABLE_BLOCK.get(), JNEBrushableBlockRenderer::new);
+
+        // LAYERS
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.VESSEL_LAYER, VesselModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
     }
 }

@@ -3,10 +3,7 @@ package net.jadenxgamer.netherexp.registry.entity;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
-import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
-import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
-import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
+import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -29,6 +26,14 @@ public class JNEEntityType {
     public static final RegistrySupplier<EntityType<SoulBullet>> SOUL_BULLET = ENTITY_TYPES.register("soul_bullet", () ->
             EntityType.Builder.<SoulBullet>of(SoulBullet::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("soul_bullet"));
+
+    public static final RegistrySupplier<EntityType<MistCharge>> MIST_CHARGE = ENTITY_TYPES.register("mist_charge", () ->
+            EntityType.Builder.<MistCharge>of(MistCharge::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("mist_charge"));
+
+    public static final RegistrySupplier<EntityType<GraveCloud>> GRAVE_CLOUD = ENTITY_TYPES.register("grave_cloud", () ->
+            EntityType.Builder.of(GraveCloud::new, MobCategory.MISC)
+                    .sized(3.0F, 2.4F).fireImmune().build("grave_cloud"));
 
     public static void init() {
         ENTITY_TYPES.register();

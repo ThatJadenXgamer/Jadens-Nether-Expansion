@@ -18,7 +18,7 @@ public class LightTextureMixin {
     @Shadow @Final private Minecraft minecraft;
 
     @Unique
-    private boolean hasBetrayedEffect() {
+    private boolean netherexp$hasBetrayedEffect() {
         return minecraft.player != null && minecraft.player.hasEffect(JNEMobEffects.BETRAYED.get());
     }
 
@@ -27,9 +27,9 @@ public class LightTextureMixin {
             at = @At(value = "INVOKE", target = "Lorg/joml/Vector3f;lerp(Lorg/joml/Vector3fc;F)Lorg/joml/Vector3f;", ordinal = 2)
     )
     private void netherexp$updateLightTexture(Args args) {
-        if (hasBetrayedEffect()) {
+        if (netherexp$hasBetrayedEffect()) {
             args.set(0, new Vector3f(1.0f, 0.2f, 0.2f));
-            args.set(1, 1.5F);
+            args.set(1, 1.1F);
         }
     }
 }

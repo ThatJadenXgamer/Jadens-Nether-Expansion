@@ -1,11 +1,14 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -32,28 +35,30 @@ import org.jetbrains.annotations.NotNull;
 public class EctoSoulSandBlock extends Block {
     protected static final VoxelShape COLLISION_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
-    public static final BooleanProperty WAXED = BooleanProperty.create("waxed");
+    public static final BooleanProperty SALTED = BooleanProperty.create("salted");
+
+    public static final ResourceLocation ARCHAEOLOGY_SOUL_SAND_VALLEY = new ResourceLocation(NetherExp.MOD_ID, "archaeology/soul_sand_valley");
 
     public EctoSoulSandBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(WAXED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(SALTED, false));
     }
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {
-        return !state.getValue(WAXED);
+        return !state.getValue(SALTED);
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        boolean waxed = blockState.getValue(WAXED);
+        boolean waxed = blockState.getValue(SALTED);
         boolean bl = false;
         if (!waxed) {
             if (itemStack.is(Items.HONEYCOMB)) {
                 level.playSound(player, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-                level.setBlock(blockPos, blockState.cycle(WAXED), Block.UPDATE_CLIENTS);
+                level.setBlock(blockPos, blockState.cycle(SALTED), Block.UPDATE_CLIENTS);
                 if (!player.isCreative()) {
                     itemStack.shrink(1);
                 }
@@ -114,8 +119,7 @@ public class EctoSoulSandBlock extends Block {
 
     private void setSoulSand(Level level, BlockPos pos, RandomSource random) {
         level.setBlock(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.get().defaultBlockState(), UPDATE_CLIENTS);
-        //TODO: Add Sus Soul Sand
-//        JNEBrushableBlockEntity.setLootTable(level, random, pos, JNELootTables.ARCHAEOLOGY_SOUL_SAND_VALLEY);
+        JNEBrushableBlockEntity.setLootTable(level, random, pos, ARCHAEOLOGY_SOUL_SAND_VALLEY);
     }
 
     private void spawnWisp(ServerLevel level, BlockPos pos, RandomSource random) {
@@ -129,7 +133,7 @@ public class EctoSoulSandBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WAXED);
+        builder.add(SALTED);
     }
 
     @SuppressWarnings("deprecation")

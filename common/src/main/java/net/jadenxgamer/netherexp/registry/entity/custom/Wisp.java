@@ -309,7 +309,7 @@ implements FlyingAnimal, Bottleable {
             BlockPos target = getMoveToTarget();
             Level level = wisp.level();
             if (this.isReachedTarget()) {
-                level.setBlock(target, JNEBlocks.ECTO_SOUL_SAND.get().defaultBlockState().setValue(EctoSoulSandBlock.WAXED, false), 2);
+                level.setBlock(target, JNEBlocks.ECTO_SOUL_SAND.get().defaultBlockState().setValue(EctoSoulSandBlock.SALTED, false), 2);
                 level.addParticle(ParticleTypes.SOUL, wisp.getX(), wisp.getY(), wisp.getZ(), 0.0, 0.0, 0.0);
                 wisp.remove(RemovalReason.DISCARDED);
             }

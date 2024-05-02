@@ -936,22 +936,6 @@
       "netherexp:block/ectoplasm/fill2"
     ]
   },
-  "item.bucket.empty_magma_cube": {
-    "subtitle": "subtitles.item.bucket.empty",
-    "sounds": [
-      "netherexp:item/bucket/empty_magma_cube1",
-      "netherexp:item/bucket/empty_magma_cube2",
-      "netherexp:item/bucket/empty_magma_cube3"
-    ]
-  },
-  "item.bucket.fill_magma_cube": {
-    "subtitle": "subtitles.item.bucket.fill",
-    "sounds": [
-      "netherexp:item/bucket/fill_magma_cube1",
-      "netherexp:item/bucket/fill_magma_cube2",
-      "netherexp:item/bucket/fill_magma_cube3"
-    ]
-  },
   "item.antidote.negate": {
     "subtitle": "subtitles.item.antidote.negate",
     "sounds": [

@@ -160,7 +160,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.CLARET_SIGN.get());
                         output.accept(JNEItems.CLARET_HANGING_SIGN.get());
 
-                        output.accept(JNEItems.MAGMA_CUBE_BUCKET.get());
                         output.accept(Items.MAGMA_CREAM);
                         output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
 

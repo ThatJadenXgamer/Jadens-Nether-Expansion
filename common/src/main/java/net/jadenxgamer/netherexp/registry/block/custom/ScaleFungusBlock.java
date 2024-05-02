@@ -136,7 +136,7 @@ implements BonemealableBlock {
     public void performBonemeal(ServerLevel level, RandomSource randomSource, BlockPos pos, BlockState state) {
         int age = state.getValue(AGE);
         if (age < 2) {
-            level.setBlock(pos, defaultBlockState().setValue(AGE, age + 1), Block.UPDATE_CLIENTS);
+            level.setBlock(pos, state.setValue(AGE, age + 1), Block.UPDATE_CLIENTS);
         }
     }
 }

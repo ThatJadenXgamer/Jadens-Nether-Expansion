@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.item;
 
 import dev.architectury.core.item.ArchitecturySpawnEggItem;
+import dev.architectury.registry.fuel.FuelRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
@@ -11,9 +12,7 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.material.Fluids;
 
 import java.util.function.Supplier;
 
@@ -39,8 +38,8 @@ public class JNEItems {
     public static final RegistrySupplier<Item> WHITE_ASH_POWDER = registerItem("white_ash_powder", () ->
             new Item(new Item.Properties()));
 
-    public static final RegistrySupplier<Item> FOSSIL_FUEL = registerItem("fossil_fuel", () ->
-            new Item(new Item.Properties()));
+    public static final RegistrySupplier<Item> FOSSIL_FUEL = registerFuel("fossil_fuel", () ->
+            new Item(new Item.Properties()), 100);
 
     public static final RegistrySupplier<Item> RIFT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("rift_armor_trim_smithing_template", () ->
             SmithingTemplateItem.createArmorTrimTemplate(JNETrimPatterns.RIFT));
@@ -75,18 +74,14 @@ public class JNEItems {
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
             new MobBottleItem(SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1)));
 
-    public static final RegistrySupplier<Item> MAGMA_CUBE_BUCKET = registerItem("magma_cube_bucket", () ->
-            new MobBucketItem(EntityType.MAGMA_CUBE, Fluids.LAVA, JNESoundEvents.BUCKET_EMPTY_MAGMA_CUBE.get(), new Item.Properties()));
-
     public static final RegistrySupplier<Item> WRAITHING_FLESH = registerItem("wraithing_flesh", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));
 
     public static final RegistrySupplier<Item> WARPED_WART = registerItem("warped_wart", () ->
             new BlockItem(JNEBlocks.WARPED_WART.get(), new Item.Properties()));
 
-    // TODO Needs Item
     public static final RegistrySupplier<Item> MIST_CHARGE = registerItem("mist_charge", () ->
-            new Item(new Item.Properties()));
+            new MistChargeItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> STRIDITE = registerItem("stridite", () ->
             new Item(new Item.Properties()));
@@ -132,6 +127,14 @@ public class JNEItems {
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);
+    }
+
+    private static RegistrySupplier<Item> registerFuel(String name, Supplier<Item> supplier, int fuelValue) {
+        return ITEMS.register(name, () -> {
+            Item item = supplier.get();
+            FuelRegistry.register(fuelValue, item);
+            return item;
+        });
     }
 
     public static void init() {

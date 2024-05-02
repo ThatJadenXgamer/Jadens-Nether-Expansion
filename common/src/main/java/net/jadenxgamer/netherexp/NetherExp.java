@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp;
 
 import dev.architectury.platform.Platform;
+import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
@@ -23,6 +24,7 @@ public class NetherExp {
 
         JNEEntityType.init();
         JNEBlocks.init();
+        JNEBlockEntityType.init();
         JNEItems.init();
         JNEPotions.init();
     }

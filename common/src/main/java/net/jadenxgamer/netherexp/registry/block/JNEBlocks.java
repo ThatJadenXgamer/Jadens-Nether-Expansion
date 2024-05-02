@@ -6,11 +6,9 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.custom.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNEBlockSetType;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundType;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNEWoodType;
+import net.jadenxgamer.netherexp.registry.misc_registry.*;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -25,7 +23,7 @@ import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.Supplier;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "deprecation"})
 public class JNEBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(NetherExp.MOD_ID, Registries.BLOCK);
 
@@ -116,9 +114,8 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> ECTO_SOUL_SAND = registerBlock("ecto_soul_sand", () ->
             new EctoSoulSandBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).lightLevel((state) -> 4).randomTicks()));
 
-    // TODO Add Block
     public static final RegistrySupplier<Block> SUSPICIOUS_SOUL_SAND = registerBlock("suspicious_soul_sand", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).speedFactor(0.2f).strength(0.25f).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND)));
+            new JNEBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).speedFactor(0.2f).strength(0.25f).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND), SoundEvents.BRUSH_SAND, JNESoundEvents.BRUSH_BRUSHING_SOUL_SAND_COMPLETE.get()));
 
     public static final RegistrySupplier<Block> SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block", () ->
             new SoulMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).lightLevel((state) -> 4).sound(JNESoundType.SOUL_MAGMA_BLOCK)));

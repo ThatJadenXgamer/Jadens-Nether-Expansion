@@ -102,8 +102,8 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         int chargeInaccuracy = getCharge(stack) * 8;
         int count = Mth.nextInt(level.random, 4, 6) + chargeCount;
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
-        int rBulletBonus = recoil / 2;
-        double rPushBonus = (double) recoil / 10;
+        int rBulletBonus = recoil / 5;
+        double rPushBonus = (double) recoil / 20;
         double cPushBonus = (double) getCharge(stack) / 10;
         Vec3 look = livingEntity.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();

@@ -141,6 +141,9 @@ public class JNETags {
         // Phantasm Hull will protect you against projectiles in this tag
         public static final TagKey<EntityType<?>> PHANTASM_HULL_PROTECTS_AGAINST = createEntityTypeTag("phantasm_hull_protects_against");
 
+        // Phantasm Hull will protect you against projectiles in this tag
+        public static final TagKey<EntityType<?>> IMMUNE_TO_GRAVE_CLOUDS = createEntityTypeTag("immune_to_grave_clouds");
+
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(NetherExp.MOD_ID, name));
         }

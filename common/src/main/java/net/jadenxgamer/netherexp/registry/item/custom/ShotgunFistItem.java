@@ -103,11 +103,10 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
 
     public static void performShooting(Level level, LivingEntity livingEntity, ItemStack stack) {
         int count = Mth.nextInt(level.random, 8, 16);
-        // Enchantment Checks
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
         // Bonuses
         int rBulletBonus = recoil / 5;
-        double rPushBonus = (double) recoil / 20;
+        double rPushBonus = (double) recoil / 16;
         // Vectors
         Vec3 look = livingEntity.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
