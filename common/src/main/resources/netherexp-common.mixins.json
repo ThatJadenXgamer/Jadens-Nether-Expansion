@@ -29,7 +29,9 @@
     "entity.PlayerMixin",
     "entity.ProjectileMixin",
     "entity.SkeletonMixin",
-    "entity.WitherSkeletonMixin"
+    "entity.WitherSkeletonMixin",
+    "item.AxeItemMixin",
+    "item.ShovelItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

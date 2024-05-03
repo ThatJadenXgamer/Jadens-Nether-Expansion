@@ -85,13 +85,15 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
                 }
             }
             else {
-                level.explode(player, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.TNT);
-                player.getCooldowns().addCooldown(this, 80);
-                player.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, player), 10);
-                useProjectile(stack, player);
-                stack.hurtAndBreak(2, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-                level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                setCharge(stack, 0);
+                if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
+                    level.explode(player, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.TNT);
+                    player.getCooldowns().addCooldown(this, 80);
+                    player.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, player), 10);
+                    useProjectile(stack, player);
+                    stack.hurtAndBreak(5, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                    setCharge(stack, 0);
+                }
             }
         }
         return InteractionResultHolder.fail(stack);

@@ -217,6 +217,9 @@ public class JNETags {
         // Produces Suffocation Sounds
         public static final TagKey<DamageType> IS_SUFFOCATION = createDamageTypeTag("is_suffocation");
 
+        // Damage Types in this tag won't take durability away from armor
+        public static final TagKey<DamageType> CANT_DAMAGE_ARMOR = createDamageTypeTag("cant_damage_armor");
+
         private static TagKey<DamageType> createDamageTypeTag(String name) {
             return TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(NetherExp.MOD_ID, name));
         }

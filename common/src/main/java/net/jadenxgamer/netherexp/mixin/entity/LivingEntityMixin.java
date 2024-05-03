@@ -5,12 +5,15 @@ import net.jadenxgamer.netherexp.registry.effect.custom.ImmunityEffect;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.world.damagesource.CombatRules;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Attackable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -68,7 +71,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"),
             cancellable = true
     )
-    private void netherexp$antidoteParticles(CallbackInfo ci) {
+    private void netherexp$antidoteParticles(CallbackInfo cir) {
         for (MobEffect effect : this.getActiveEffectsMap().keySet()) {
             if (effect instanceof ImmunityEffect) {
                 int i = this.entityData.get(DATA_EFFECT_COLOR_ID);
@@ -82,8 +85,20 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
                         this.level().addParticle(JNEParticleTypes.IMMUNITY_EFFECT.get(), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), d0, d1, d2);
                     }
                 }
-                ci.cancel();
+                cir.cancel();
             }
+        }
+    }
+
+    @Inject(
+            method = "getDamageAfterArmorAbsorb",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hurtArmor(Lnet/minecraft/world/damagesource/DamageSource;F)V"),
+            cancellable = true
+    )
+    private void netherexp$preventArmorDamage(DamageSource damageSource, float f, CallbackInfoReturnable<Float> cir) {
+        if (damageSource.is(JNETags.DamageTypes.CANT_DAMAGE_ARMOR)) {
+            f = CombatRules.getDamageAfterAbsorb(f, ((LivingEntity) (Object) this).getArmorValue(), (float)((LivingEntity) (Object) this).getAttributeValue(Attributes.ARMOR_TOUGHNESS));
+            cir.setReturnValue(f);
         }
     }
 }

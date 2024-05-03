@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp;
 
 import dev.architectury.platform.Platform;
+import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
@@ -16,6 +17,7 @@ public class NetherExp {
     public static final String MOD_ID = "netherexp";
 
     public static void init() {
+        JNECriteriaTriggers.init();
         JNECreativeModeTabs.init();
         JNESoundEvents.init();
         JNEParticleTypes.init();

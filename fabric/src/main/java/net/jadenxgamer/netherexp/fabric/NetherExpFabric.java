@@ -1,10 +1,8 @@
 package net.jadenxgamer.netherexp.fabric;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.fabric.event.UseBlockCallbackEvent;
 import net.jadenxgamer.netherexp.fabric.worldgen.SoulSandValleyFeatures;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
@@ -22,7 +20,5 @@ public class NetherExpFabric implements ModInitializer {
         FabricDefaultAttributeRegistry.register(JNEEntityType.APPARITION.get(), Apparition.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.WISP.get(), Wisp.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.VESSEL.get(), Vessel.createAttributes());
-
-        UseBlockCallback.EVENT.register(new UseBlockCallbackEvent());
     }
 }

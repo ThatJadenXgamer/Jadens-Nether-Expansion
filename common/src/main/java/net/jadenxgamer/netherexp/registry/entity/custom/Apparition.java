@@ -224,7 +224,7 @@ public class Apparition extends Monster implements FlyingAnimal {
         if (livingEntity instanceof Skeleton skeleton) {
             Vessel vessel = skeleton.convertTo(JNEEntityType.VESSEL.get(), false);
             if (vessel != null) {
-                vessel.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(vessel.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, true), null);
+                vessel.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(vessel.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
                 if (skeleton.hasCustomName()) {
                     vessel.setCustomName(skeleton.getCustomName());
                 }
