@@ -62,7 +62,7 @@ public class AntidoteItem extends Item {
             playerEntity.awardStat(Stats.ITEM_USED.get(this));
             if (!playerEntity.getAbilities().instabuild) {
                 stack.shrink(1);
-                level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5f, 1.5f);
+                level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.5f, 1.0f);
             }
         }
 

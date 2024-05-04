@@ -16,7 +16,6 @@ import java.util.UUID;
 
 public class GraveCloud extends Entity implements TraceableEntity {
     private final int duration;
-
     @Nullable
     private LivingEntity owner;
     @Nullable
@@ -59,16 +58,14 @@ public class GraveCloud extends Entity implements TraceableEntity {
         }
     }
 
-
-
     private void damageLivingEntities(List<Entity> entities) {
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity livingEntity && !(livingEntity.getType().is(JNETags.EntityTypes.IMMUNE_TO_GRAVE_CLOUDS))) {
-                    livingEntity.hurt(this.damageSources().source(JNEDamageSources.DEATH_CLOUD_SUFFOCATION), 1);
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 4, false, true), this);
-                }
+                livingEntity.hurt(this.damageSources().source(JNEDamageSources.DEATH_CLOUD_SUFFOCATION), 1);
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 4, false, true), this);
             }
         }
+    }
 
     /////////
     // NBT //

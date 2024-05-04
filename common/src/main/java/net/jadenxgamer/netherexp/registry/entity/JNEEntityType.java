@@ -35,6 +35,14 @@ public class JNEEntityType {
             EntityType.Builder.of(GraveCloud::new, MobCategory.MISC)
                     .sized(3.0F, 2.4F).fireImmune().build("grave_cloud"));
 
+    public static final RegistrySupplier<EntityType<ThrownAntidote>> ANTIDOTE = ENTITY_TYPES.register("antidote", () ->
+            EntityType.Builder.<ThrownAntidote>of(ThrownAntidote::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F).build("antidote"));
+
+    public static final RegistrySupplier<EntityType<GrenadeEffectCloud>> GRENADE_EFFECT_CLOUD = ENTITY_TYPES.register("grenade_effect_cloud", () ->
+            EntityType.Builder.<GrenadeEffectCloud>of(GrenadeEffectCloud::new, MobCategory.MISC)
+                    .sized(8.0F, 5.0F).fireImmune().build("grenade_effect_cloud"));
+
     public static void init() {
         ENTITY_TYPES.register();
     }

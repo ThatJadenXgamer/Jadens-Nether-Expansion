@@ -46,6 +46,7 @@ public class NetherExpForgeClient {
 
     public static void itemTints(RegisterColorHandlersEvent.Item event) {
         event.register((stack, tint) -> tint > 0 ? -1 : AntidoteItem.getColor(stack), JNEItems.ANTIDOTE.get());
+        event.register((stack, tint) -> tint > 0 ? -1 : AntidoteItem.getColor(stack), JNEItems.GRENADE_ANTIDOTE.get());
     }
 
     public static void renderParticles(RegisterParticleProvidersEvent event) {

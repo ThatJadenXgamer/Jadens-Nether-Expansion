@@ -390,9 +390,13 @@ public class JNECreativeModeTabs {
         Set<ItemStack> set = ItemStackLinkedSet.createTypeAndTagSet();
 
         for (CompoundTag nbt : list) {
-            ItemStack stack = new ItemStack(JNEItems.ANTIDOTE.get());
-            stack.setTag(nbt);
-            set.add(stack);
+            ItemStack antidote = new ItemStack(JNEItems.ANTIDOTE.get());
+            antidote.setTag(nbt);
+            set.add(antidote);
+
+            ItemStack grenade = new ItemStack(JNEItems.GRENADE_ANTIDOTE.get());
+            grenade.setTag(nbt);
+            set.add(grenade);
         }
 
         output.acceptAll(set);

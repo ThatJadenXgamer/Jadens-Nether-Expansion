@@ -22,6 +22,7 @@ import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.NoopRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
 public class NetherExpFabricClient implements ClientModInitializer {
     @Override
@@ -91,6 +92,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
 
         // TINTS
         ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : AntidoteItem.getColor(stack), JNEItems.ANTIDOTE.get());
+        ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : AntidoteItem.getColor(stack), JNEItems.GRENADE_ANTIDOTE.get());
 
         // PARTICLES
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.ENIGMA_KERNEL.get(), EnigmaKernelParticle.Factory::new);
@@ -132,6 +134,8 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.ANTIDOTE.get(), ThrownItemRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.GRENADE_EFFECT_CLOUD.get(), NoopRenderer::new);
         BlockEntityRendererRegistry.register(JNEBlockEntityType.BRUSHABLE_BLOCK.get(), JNEBrushableBlockRenderer::new);
 
         // LAYERS

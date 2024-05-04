@@ -16,8 +16,8 @@ public abstract class PotionBrewingMixin {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private static void netherexp$isValidIngredient(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (BrewingRecipeHelper.isValidIngredientSlot(stack)) {
+    private static void netherexp$isIngredient(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        if (BrewingRecipeHelper.isIngredient(stack)) {
             cir.setReturnValue(true);
         }
     }
@@ -27,8 +27,8 @@ public abstract class PotionBrewingMixin {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private static void netherexp$hasRecipe(ItemStack input, ItemStack ingredient, CallbackInfoReturnable<Boolean> cir) {
-        if (BrewingRecipeHelper.hasRecipe(input, ingredient)) {
+    private static void netherexp$hasMix(ItemStack input, ItemStack ingredient, CallbackInfoReturnable<Boolean> cir) {
+        if (BrewingRecipeHelper.hasMix(input, ingredient)) {
             cir.setReturnValue(true);
         }
     }
@@ -38,9 +38,9 @@ public abstract class PotionBrewingMixin {
             at = @At(value = "RETURN"),
             cancellable = true
     )
-    private static void netherexp$craft(ItemStack ingredient, ItemStack input, CallbackInfoReturnable<ItemStack> cir) {
+    private static void netherexp$mix(ItemStack ingredient, ItemStack input, CallbackInfoReturnable<ItemStack> cir) {
         if (!cir.getReturnValue().isEmpty()) {
-            final ItemStack result = BrewingRecipeHelper.recipeResultOf(input, ingredient);
+            final ItemStack result = BrewingRecipeHelper.mix(input, ingredient);
             if (!result.isEmpty()) {
                 cir.setReturnValue(result);
             }

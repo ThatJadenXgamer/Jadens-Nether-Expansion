@@ -14,6 +14,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -115,6 +116,9 @@ public class Vessel extends Monster implements RangedAttackMob {
         Skeleton skeleton = this.convertTo(EntityType.SKELETON, false);
         if (skeleton != null) {
             skeleton.finalizeSpawn((ServerLevel)this.level(), this.level().getCurrentDifficultyAt(skeleton.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
+            skeleton.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
+            skeleton.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
+            skeleton.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
             if (this.hasCustomName()) {
                 skeleton.setCustomName(skeleton.getCustomName());
             }

@@ -31,6 +31,7 @@
     "entity.SkeletonMixin",
     "entity.WitherSkeletonMixin",
     "item.AxeItemMixin",
+    "item.ItemStackMixin",
     "item.ShovelItemMixin"
   ],
   "injectors": {

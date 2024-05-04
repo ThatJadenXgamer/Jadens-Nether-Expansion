@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "netherexp:item/grenade_antidote_overlay",
+        "layer1": "netherexp:item/grenade_antidote"
+    }
+}
