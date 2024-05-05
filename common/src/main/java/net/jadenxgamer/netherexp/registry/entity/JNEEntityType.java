@@ -41,7 +41,7 @@ public class JNEEntityType {
 
     public static final RegistrySupplier<EntityType<GrenadeEffectCloud>> GRENADE_EFFECT_CLOUD = ENTITY_TYPES.register("grenade_effect_cloud", () ->
             EntityType.Builder.<GrenadeEffectCloud>of(GrenadeEffectCloud::new, MobCategory.MISC)
-                    .sized(8.0F, 5.0F).fireImmune().build("grenade_effect_cloud"));
+                    .sized(10.0F, 6.5F).fireImmune().build("grenade_effect_cloud"));
 
     public static void init() {
         ENTITY_TYPES.register();

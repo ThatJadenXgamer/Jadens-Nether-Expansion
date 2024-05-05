@@ -142,6 +142,8 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> LIGHTSPORES_SHEAR = registerSoundEvents("block.lightspores.shear");
     public static RegistrySupplier<SoundEvent> SOUL_SWIRLS_BOOST = registerSoundEvents("block.soul_swirls.boost");
     public static RegistrySupplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
+    public static RegistrySupplier<SoundEvent> GRENADE_ANTIDOTE_TICK = registerSoundEvents("item.grenade_antidote.tick");
+    public static RegistrySupplier<SoundEvent> GRENADE_ANTIDOTE_EXPLODE = registerSoundEvents("item.grenade_antidote.explode");
     public static RegistrySupplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
 
     // ENTITIES:

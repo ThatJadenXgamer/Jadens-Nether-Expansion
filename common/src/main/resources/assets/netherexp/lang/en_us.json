@@ -400,7 +400,9 @@
   "subtitles.block.lightspores.shear": "Spores scraped from Block",
   "subtitles.block.soul_candle.ambient": "Soul Candle whispers",
   "subtitles.block.soul_swirls.boost": "Soul Swirls whoop",
-  "subtitles.item.antidote.negate": "Antidote negates effect",
+  "subtitles.item.antidote.negate": "Antidote negates a effect",
+  "subtitles.item.grenade_antidote.tick": "Grenade Antidote ticks",
+  "subtitles.item.grenade_antidote.explode": "Grenade Antidote explodes",
   "subtitles.item.shotgun.use": "Shotgun fires",
 
   "death.attack.graveMistSuffocation": "%1$s was shrouded and choked by souls",

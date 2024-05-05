@@ -11,7 +11,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
@@ -47,7 +46,7 @@ public class ThrownAntidote extends ThrowableItemProjectile implements ItemSuppl
             this.setTickCounter(tick + 1);
             ItemStack stack = this.getItem();
             MobEffect mobEffect = getAntidoteEffect(stack);
-            if (tick % 15 == 0) {
+            if (tick % 10 == 0) {
                 if (this.level().isClientSide) {
                     if (mobEffect != null) {
                         this.playPotionParticles(mobEffect);
@@ -56,11 +55,14 @@ public class ThrownAntidote extends ThrowableItemProjectile implements ItemSuppl
                         this.level().addParticle(ParticleTypes.BUBBLE_POP, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0f, 0.2f, 0.0f);
                     }
                 }
-                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ANTIDOTE_NEGATE.get(), SoundSource.NEUTRAL, 1.0f, 0.8f);
+                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.GRENADE_ANTIDOTE_TICK.get(), SoundSource.NEUTRAL, 1.0f, 0.75f + ((float) tick / 20));
             }
             else {
                 if (tick > 40) {
-                    this.applyGrenade(stack);
+                    assert stack.getTag() != null;
+                    if (stack.getTag().contains("Antidote")) {
+                        this.applyGrenade(stack);
+                    }
                     this.discard();
                     if (mobEffect != null) {
                         this.playPotionParticles(mobEffect);
@@ -68,7 +70,7 @@ public class ThrownAntidote extends ThrowableItemProjectile implements ItemSuppl
                     else {
                         this.level().addParticle(ParticleTypes.BUBBLE_POP, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0f, 0.2f, 0.0f);
                     }
-                    this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.BREWING_STAND_BREW, SoundSource.NEUTRAL, 1.0f, 0.8f);
+                    this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.GRENADE_ANTIDOTE_EXPLODE.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 }
             }
         }
@@ -85,7 +87,7 @@ public class ThrownAntidote extends ThrowableItemProjectile implements ItemSuppl
     }
 
     private void applyGrenade(ItemStack stack) {
-        GrenadeEffectCloud grenadeEffectCloud = new GrenadeEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
+        GrenadeEffectCloud grenadeEffectCloud = new GrenadeEffectCloud(this.level(), this.getX() - 2.0, this.getY(), this.getZ());
         Entity entity = this.getOwner();
         CompoundTag nbt = stack.getTag();
         if (entity instanceof LivingEntity) {

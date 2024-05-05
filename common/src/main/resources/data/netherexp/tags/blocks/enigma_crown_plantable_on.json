@@ -11,7 +11,6 @@
     "netherexp:ecto_soul_sand",
     "minecraft:soul_soil",
     "netherexp:soul_slate",
-    "netherexp:pale_soul_slate",
-    "netherexp:jagged_soul_slate"
+    "netherexp:pale_soul_slate"
   ]
 }

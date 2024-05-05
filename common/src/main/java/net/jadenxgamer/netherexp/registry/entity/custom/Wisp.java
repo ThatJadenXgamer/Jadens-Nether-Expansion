@@ -114,10 +114,14 @@ implements FlyingAnimal, Bottleable {
         return level.getBlockState(pos).isAir() ? 10.0F : 0.0F;
     }
 
-
     @Override
     public @NotNull MobType getMobType() {
         return MobType.UNDEAD;
+    }
+
+    @Override
+    public boolean isSensitiveToWater() {
+        return true;
     }
 
     public static AttributeSupplier.Builder createAttributes() {

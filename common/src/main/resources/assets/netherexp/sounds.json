@@ -942,6 +942,19 @@
       "netherexp:item/antidote/negate"
     ]
   },
+  "item.grenade_antidote.tick": {
+    "subtitle": "subtitles.item.grenade_antidote.tick",
+    "sounds": [
+      "netherexp:item/antidote/grenade_tick"
+    ]
+  },
+  "item.grenade_antidote.explode": {
+    "subtitle": "subtitles.item.grenade_antidote.explode",
+    "sounds": [
+      "netherexp:item/antidote/grenade_explode1",
+      "netherexp:item/antidote/grenade_explode2"
+    ]
+  },
   "item.shotgun.use": {
     "subtitle": "subtitles.item.shotgun.use",
     "sounds": [

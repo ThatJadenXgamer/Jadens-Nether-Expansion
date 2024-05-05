@@ -69,7 +69,11 @@ public class GrenadeEffectCloud extends Entity implements TraceableEntity {
                 }
             }
             else {
-                this.level().addParticle(ParticleTypes.BUBBLE_POP, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0f, 0.2f, 0.0f);
+                if (this.random.nextInt(5) == 0) {
+                    for(int i = 0; i < 20; ++i) {
+                        this.level().addParticle(ParticleTypes.BUBBLE_POP, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0f, 0.2f, 0.0f);
+                    }
+                }
             }
         }
         else {
