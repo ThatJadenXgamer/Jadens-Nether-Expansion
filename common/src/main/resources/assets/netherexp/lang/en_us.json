@@ -81,6 +81,8 @@
   "item.netherexp.antidote.effect.levitation": "Antidote for Levitation",
   "item.netherexp.antidote.effect.hunger": "Antidote for Hunger",
   "item.netherexp.antidote.effect.decay": "Antidote for Decay",
+  "item.netherexp.antidote.effect.luck": "Antidote for Luck",
+  "item.netherexp.antidote.effect.unluck": "Antidote for Unluck",
 
   "item.netherexp.grenade_antidote": "Grenade Antidote",
   "item.netherexp.grenade_antidote.effect.": "Uncraftable Grenade Antidote",
@@ -114,6 +116,8 @@
   "item.netherexp.grenade_antidote.effect.levitation": "Grenade Antidote for Levitation",
   "item.netherexp.grenade_antidote.effect.hunger": "Grenade Antidote for Hunger",
   "item.netherexp.grenade_antidote.effect.decay": "Grenade Antidote for Decay",
+  "item.netherexp.grenade_antidote.effect.luck": "Grenade Antidote for Luck",
+  "item.netherexp.grenade_antidote.effect.unluck": "Grenade Antidote for Unluck",
 
   "shotgun_fist.ammo": "Ammo:",
 
@@ -496,6 +500,8 @@
   "effect.netherexp.levitation_immunity": "Levitation Immunity",
   "effect.netherexp.hunger_immunity": "Hunger Immunity",
   "effect.netherexp.wither_immunity": "Wither Immunity",
+  "effect.netherexp.luck_immunity": "Luck Immunity",
+  "effect.netherexp.unluck_immunity": "Unluck Immunity",
 
   "text.autoconfig.netherexp.title": "Jaden's Nether Expansion - Settings",
 

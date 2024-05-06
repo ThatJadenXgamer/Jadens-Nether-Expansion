@@ -5,6 +5,10 @@ import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -45,10 +49,45 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class Vessel extends Monster implements RangedAttackMob {
+
+    public final AnimationState idleAnimationState = new AnimationState();
+    public final AnimationState walkAnimationState = new AnimationState();
+    public final AnimationState aimAnimationState = new AnimationState();
+    public final AnimationState aimIdleAnimationState = new AnimationState();
+    public final AnimationState shootAnimationState = new AnimationState();
+
+    private static final EntityDataAccessor<Boolean> IS_AIMING = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
+
     public Vessel(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, 1.0F);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (this.level().isClientSide) {
+            if (this.isMoving()) {
+                idleAnimationState.stop();
+                walkAnimationState.startIfStopped(this.tickCount);
+            }
+            else {
+                walkAnimationState.stop();
+                idleAnimationState.startIfStopped(this.tickCount);
+            }
+            if (getIsAiming()) {
+                aimIdleAnimationState.startIfStopped(this.tickCount);
+            }
+            else {
+                aimIdleAnimationState.stop();
+            }
+        }
+    }
+
+    private boolean isMoving() {
+        return this.getDeltaMovement().horizontalDistance() > 0.01F;
     }
 
     @Override
@@ -73,7 +112,7 @@ public class Vessel extends Monster implements RangedAttackMob {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 30.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
-                .add(Attributes.FOLLOW_RANGE, 10.0);
+                .add(Attributes.FOLLOW_RANGE, 12.0);
     }
 
     @Override
@@ -161,6 +200,38 @@ public class Vessel extends Monster implements RangedAttackMob {
         }
     }
 
+    /////////
+    // NBT //
+    /////////
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.getEntityData().define(IS_AIMING, false);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag nbt) {
+        super.readAdditionalSaveData(nbt);
+        if (nbt.contains("IsAiming")) {
+            this.setIsAiming(nbt.getBoolean("IsAiming"));
+        }
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag nbt) {
+        super.addAdditionalSaveData(nbt);
+        nbt.putBoolean("IsAiming", this.getIsAiming());
+    }
+
+    private boolean getIsAiming() {
+        return this.getEntityData().get(IS_AIMING);
+    }
+
+    private void setIsAiming(boolean bl) {
+        this.getEntityData().set(IS_AIMING, bl);
+    }
+
     ////////////
     // SOUNDS //
     ////////////
@@ -225,6 +296,7 @@ public class Vessel extends Monster implements RangedAttackMob {
         @Override
         public void stop() {
             this.shot = false;
+            vessel.setIsAiming(false);
             this.seeTime = 0;
             this.attackTime = 60;
         }
@@ -291,10 +363,13 @@ public class Vessel extends Monster implements RangedAttackMob {
                 }
 
                 if (distance < attackRadius && hasSight) {
-                    if (this.attackTime == 20) {
-                        vessel.level().playSound(null, vessel.getX(), vessel.getY(), vessel.getZ(), SoundEvents.AMETHYST_BLOCK_BREAK, vessel.getSoundSource(), 1.0F, 1.0F);
+                    if (this.attackTime == 40) {
+                        vessel.aimAnimationState.startIfStopped(vessel.tickCount);
+                        vessel.setIsAiming(true);
                     } else if (this.attackTime <= 0) {
                         this.shot = true;
+                        vessel.setIsAiming(false);
+                        vessel.shootAnimationState.startIfStopped(vessel.tickCount);
                         vessel.performRangedAttack(target, 1.0f);
                     }
                 }

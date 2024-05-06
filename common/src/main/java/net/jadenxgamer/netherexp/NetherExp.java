@@ -31,11 +31,33 @@ public class NetherExp {
         JNEPotions.init();
     }
 
-    public static boolean checkModCompatCinderscapes() {
+    // MOD COMPATIBILITY CHECKS
+
+    public static boolean compatCinderscapes() {
         return Platform.isModLoaded("cinderscapes");
     }
 
-    public static boolean checkModCompatGardensOfTheDead() {
+    public static boolean compatGardensOfTheDead() {
         return Platform.isModLoaded("gardens_of_the_dead");
+    }
+
+    public static boolean compatInfernalExpansion() {
+        return Platform.isModLoaded("infernalexp");
+    }
+
+    public static boolean compatGreedAndBleed() {
+        return Platform.isModLoaded("greedandbleed");
+    }
+
+    public static boolean compatBiomesOPlenty() {
+        return Platform.isModLoaded("biomesoplenty");
+    }
+
+    public static boolean compatQuark() {
+        return Platform.isModLoaded("quark");
+    }
+
+    public static boolean compatDiceyVentures() {
+        return Platform.isModLoaded("dicey_ventures");
     }
 }

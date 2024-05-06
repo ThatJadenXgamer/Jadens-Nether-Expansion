@@ -63,7 +63,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SOUL_CANDLE.get());
                         output.accept(JNEBlocks.SOUL_GLASS.get());
                         output.accept(JNEBlocks.SOUL_SWIRLS.get());
-                        if (NetherExp.checkModCompatCinderscapes()){
+                        if (NetherExp.compatCinderscapes()){
                             output.accept(JNEBlocks.SHALE_SWIRLS.get());
                         }
                         output.accept(JNEBlocks.SOUL_SOIL_LAYER.get());
@@ -252,11 +252,11 @@ public class JNECreativeModeTabs {
                         output.accept(Blocks.SHROOMLIGHT);
                         output.accept(JNEItems.NIGHTSPORES.get());
                         output.accept(JNEBlocks.SHROOMNIGHT.get());
-                        if (NetherExp.checkModCompatCinderscapes()) {
+                        if (NetherExp.compatCinderscapes()) {
                             output.accept(JNEItems.BLIGHTSPORES.get());
                             output.accept(JNEBlocks.SHROOMBLIGHT.get());
                         }
-                        if (NetherExp.checkModCompatGardensOfTheDead()) {
+                        if (NetherExp.compatGardensOfTheDead()) {
                             output.accept(JNEItems.FRIGHTSPORES.get());
                             output.accept(JNEBlocks.SHROOMFRIGHT.get());
                         }
@@ -285,7 +285,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.TWISTING_IVY.get());
                         output.accept(Blocks.NETHER_SPROUTS);
 
-                        if (NetherExp.checkModCompatCinderscapes()) {
+                        if (NetherExp.compatCinderscapes()) {
                             output.accept(JNEBlocks.UMBRAL_NYLIUM_PATH.get());
                             output.accept(JNEBlocks.UMBRAL_WART_BEARD.get());
                             output.accept(JNEBlocks.VIOLET_SCALE_FUNGUS.get());
@@ -309,15 +309,15 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEBlocks.CRIMSON_SPORESHROOM.get());
                         output.accept(JNEBlocks.WARPED_SPORESHROOM.get());
-                        if (NetherExp.checkModCompatCinderscapes()) {
+                        if (NetherExp.compatCinderscapes()) {
                             output.accept(JNEBlocks.UMBRAL_SPORESHROOM.get());
                         }
-                        if (NetherExp.checkModCompatGardensOfTheDead()) {
+                        if (NetherExp.compatGardensOfTheDead()) {
                             output.accept(JNEBlocks.SOULBLIGHT_SPORESHROOM.get());
                         }
                         output.accept(JNEBlocks.SOULED_GEYSER.get());
                         output.accept(JNEBlocks.BASALTIC_GEYSER.get());
-                        if (NetherExp.checkModCompatCinderscapes()) {
+                        if (NetherExp.compatCinderscapes()) {
                             output.accept(JNEBlocks.BLACKSTONIC_GEYSER.get());
                             output.accept(JNEBlocks.ASHEN_GEYSER.get());
                         }

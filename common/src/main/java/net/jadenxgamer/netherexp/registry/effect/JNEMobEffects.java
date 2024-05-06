@@ -81,6 +81,12 @@ public class JNEMobEffects {
     public static final RegistrySupplier<MobEffect> WITHER_IMMUNITY = MOB_EFFECTS.register("wither_immunity", () ->
             new ImmunityEffect(MobEffectCategory.BENEFICIAL, 7561558, MobEffects.WITHER));
 
+    public static final RegistrySupplier<MobEffect> LUCK_IMMUNITY = MOB_EFFECTS.register("luck_immunity", () ->
+            new ImmunityEffect(MobEffectCategory.HARMFUL, 5882118, MobEffects.LUCK));
+
+    public static final RegistrySupplier<MobEffect> UNLUCK_IMMUNITY = MOB_EFFECTS.register("unluck_immunity", () ->
+            new ImmunityEffect(MobEffectCategory.BENEFICIAL, 12624973, MobEffects.UNLUCK));
+
     public static void init() {
         MOB_EFFECTS.register();
     }

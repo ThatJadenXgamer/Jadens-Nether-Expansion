@@ -28,6 +28,8 @@ public class Antidotes {
         ANTIDOTES.add(Antidotes.LEVITATION());
         ANTIDOTES.add(Antidotes.HUNGER());
         ANTIDOTES.add(Antidotes.WITHER());
+        ANTIDOTES.add(Antidotes.LUCK());
+        ANTIDOTES.add(Antidotes.UNLUCK());
         ANTIDOTES.add(Antidotes.INACTIVE_SWIFTNESS());
         ANTIDOTES.add(Antidotes.INACTIVE_SLOWNESS());
         ANTIDOTES.add(Antidotes.INACTIVE_STRENGTH());
@@ -285,6 +287,22 @@ public class Antidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "decay");
         nbt.putString("AntidoteEffect", "netherexp:wither_immunity");
+        nbt.putInt("Duration", 900);
+        return nbt;
+    }
+
+    public static CompoundTag LUCK() {
+        CompoundTag nbt = new CompoundTag();
+        nbt.putString("Antidote", "luck");
+        nbt.putString("AntidoteEffect", "netherexp:luck_immunity");
+        nbt.putInt("Duration", 900);
+        return nbt;
+    }
+
+    public static CompoundTag UNLUCK() {
+        CompoundTag nbt = new CompoundTag();
+        nbt.putString("Antidote", "unluck");
+        nbt.putString("AntidoteEffect", "netherexp:unluck_immunity");
         nbt.putInt("Duration", 900);
         return nbt;
     }
