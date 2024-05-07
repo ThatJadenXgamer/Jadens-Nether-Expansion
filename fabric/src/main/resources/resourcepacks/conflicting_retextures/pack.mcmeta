@@ -1,0 +1,11 @@
+﻿{
+  "pack": {
+    "pack_format": 15,
+    "description": [
+      {
+        "text": "Adds Retextures which may cause Mod Conflicts",
+        "color": "gray"
+      }
+    ]
+  }
+}

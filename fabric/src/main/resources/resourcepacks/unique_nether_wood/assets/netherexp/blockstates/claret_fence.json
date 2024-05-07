@@ -1,0 +1,45 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "netherexp:block/claret_fence/post"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/claret_fence/north",
+        "uvlock": false
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/claret_fence/east",
+        "uvlock": false
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/claret_fence/south",
+        "uvlock": false
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/claret_fence/west",
+        "uvlock": false
+      },
+      "when": {
+        "west": "true"
+      }
+    }
+  ]
+}

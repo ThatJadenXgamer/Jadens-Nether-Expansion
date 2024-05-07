@@ -1,0 +1,45 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:block/warped_fence/post"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/warped_fence/north",
+        "uvlock": false
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/warped_fence/east",
+        "uvlock": false
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/warped_fence/south",
+        "uvlock": false
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/warped_fence/west",
+        "uvlock": false
+      },
+      "when": {
+        "west": "true"
+      }
+    }
+  ]
+}

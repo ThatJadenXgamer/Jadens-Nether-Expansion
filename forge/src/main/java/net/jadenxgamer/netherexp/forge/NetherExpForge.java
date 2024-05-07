@@ -10,7 +10,6 @@ import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotionRecipe;
 import net.minecraft.SharedConstants;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
@@ -25,11 +24,9 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.forgespi.language.IModFileInfo;
-import net.minecraftforge.forgespi.language.IModInfo;
 
-import static org.codehaus.plexus.util.FileUtils.fileExists;
+import java.nio.file.Path;
 
 @Mod(NetherExp.MOD_ID)
 public class NetherExpForge {
@@ -58,36 +55,34 @@ public class NetherExpForge {
 
     private static void addBuiltinPacks(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            IModFileInfo pathMVR = getPackInfo(new ResourceLocation(NetherExp.MOD_ID, "netherexp_vanilla_retextures"));
-            event.addRepositorySource((packConsumer) ->
-                    packConsumer.accept(Pack.create(
-                            "resourcepacks/" + pathMVR,
-                            Component.literal("Nether Expansion Retextures"), false,
-                            (path) -> new PathPackResources(path, pathMVR.getFile().findResource("resourcepacks/" + pathMVR.getFile()), true),
-                            createInfoForLatest(Component.literal("Optional Revamps for many Vanilla Textures"), false),
-                            PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, false, PackSource.BUILT_IN)));
-
+            rpConflictingRetextures(event);
+            rpUniqueNetherWood(event);
         }
     }
 
-    private static IModFileInfo getPackInfo(ResourceLocation pack) {
-        if (!FMLLoader.isProduction()) {
-            for (IModInfo mod : ModList.get().getMods()) {
-                if (mod.getModId().startsWith("generated_") && fileExists("resourcepacks/" + pack.getPath())) {
-                    return mod.getOwningFile();
-                }
-            }
-        }
-        return ModList.get().getModFileById(pack.getNamespace());
+    private static void rpConflictingRetextures(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/conflicting_retextures");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(Pack.create(
+                        "netherexp:conflicting_retextures",
+                        Component.literal("Conflicting Retextures"),
+                        false,
+                        (path) -> new PathPackResources(path, file, true),
+                        new Pack.Info(Component.literal("Adds Retextures which may cause Mod Conflicts"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
+                        PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, false, PackSource.BUILT_IN)));
     }
 
-    private static Pack.Info createInfoForLatest(Component description, boolean hidden) {
-        return new Pack.Info(
-                description,
-                SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA),
-                SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES),
-                FeatureFlagSet.of(),
-                hidden
-        );
+    private static void rpUniqueNetherWood(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/unique_nether_wood");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(Pack.create(
+                        "unique_nether_wood",
+                        Component.literal("Unique Nether Wood"),
+                        false,
+                        (path) -> new PathPackResources(path, file, true),
+                        new Pack.Info(Component.literal("Gives All Nether Woodsets Unique Designs"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
+                        PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, false, PackSource.BUILT_IN)));
     }
 }
