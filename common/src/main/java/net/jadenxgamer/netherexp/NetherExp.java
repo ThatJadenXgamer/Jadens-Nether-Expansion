@@ -12,6 +12,7 @@ import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
+import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructures;
 
 public class NetherExp {
     public static final String MOD_ID = "netherexp";
@@ -25,6 +26,7 @@ public class NetherExp {
         JNEMobEffects.init();
 
         JNEEntityType.init();
+        JNEStructures.init();
         JNEBlocks.init();
         JNEBlockEntityType.init();
         JNEItems.init();

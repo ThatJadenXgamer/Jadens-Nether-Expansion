@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "netherexp:mega_fossil",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 464662789,
+    "spacing": 5,
+    "separation": 2
+  }
+}

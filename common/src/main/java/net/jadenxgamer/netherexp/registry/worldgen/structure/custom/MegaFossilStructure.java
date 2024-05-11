@@ -1,13 +1,20 @@
-package net.jadenxgamer.netherexp.registry.structure.custom;
+package net.jadenxgamer.netherexp.registry.worldgen.structure.custom;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructures;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.world.level.NoiseColumn;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.WorldGenerationContext;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -52,31 +59,36 @@ public class MegaFossilStructure extends Structure {
         return GenerationStep.Decoration.SURFACE_STRUCTURES;
     }
 
-    public static BlockPos findValidBlockPos(Structure.GenerationContext context, int min, int max) {
-        BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
-        NoiseColumn blockReader = context.chunkGenerator().getBaseColumn(blockpos.getX(), blockpos.getZ(), context.heightAccessor(), context.randomState());
-
-        boolean bl = false;
-        for (int y = min; y < max; y++) {
-            if (blockReader.getBlock(y + 1).isAir() && blockReader.getBlock(y).isAir()) {
-                blockpos = new BlockPos(blockpos.getX(), y, blockpos.getZ());
-                bl = true;
-            }
-        }
-        if (!bl) {
-            blockpos = new BlockPos(blockpos.getX(), new Random(context.seed()).nextInt(max - min) + min, blockpos.getZ());
-        }
-        return blockpos;
-    }
-
     @Override
     public @NotNull Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
-        BlockPos blockpos = findValidBlockPos(context, 36, 80);
-        return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+        WorldgenRandom worldgenRandom = context.random();
+        int x = context.chunkPos().getMinBlockX() + worldgenRandom.nextInt(16);
+        int z = context.chunkPos().getMinBlockZ() + worldgenRandom.nextInt(16);
+        int sea = context.chunkGenerator().getSeaLevel();
+        WorldGenerationContext worldGenerationContext = new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor());
+        int y = this.startHeight.sample(worldgenRandom, worldGenerationContext);
+        NoiseColumn noiseColumn = context.chunkGenerator().getBaseColumn(x, z, context.heightAccessor(), context.randomState());
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(x, y, z);
+
+        while(y > sea) {
+            BlockState blockState = noiseColumn.getBlock(y);
+            --y;
+            BlockState blockState2 = noiseColumn.getBlock(y);
+            if (blockState.isAir() && (blockState2.is(Blocks.SOUL_SAND) || blockState2.isFaceSturdy(EmptyBlockGetter.INSTANCE, mutableBlockPos.setY(y), Direction.UP))) {
+                break;
+            }
+        }
+
+        if (y <= sea) {
+            return Optional.empty();
+        } else {
+            BlockPos blockPos = new BlockPos(x, y, z);
+            return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockPos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+        }
     }
 
     @Override
     public @NotNull StructureType<?> type() {
-        return null;
+        return JNEStructures.MEGA_FOSSIL.get();
     }
 }
