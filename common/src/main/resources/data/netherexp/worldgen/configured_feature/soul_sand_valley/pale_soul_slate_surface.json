@@ -11,11 +11,8 @@
       "rules": []
     },
     "target": {
-      "type": "minecraft:matching_blocks",
-      "blocks": [
-        "minecraft:netherrack",
-        "netherexp:pale_soul_slate"
-      ]
+      "type": "minecraft:matching_block_tag",
+      "tag": "netherexp:soul_slate_replaceable"
     },
     "radius": {
       "type": "minecraft:uniform",
@@ -24,6 +21,6 @@
         "max_inclusive": 6
       }
     },
-    "half_height": 2
+    "half_height": 1
   }
 }

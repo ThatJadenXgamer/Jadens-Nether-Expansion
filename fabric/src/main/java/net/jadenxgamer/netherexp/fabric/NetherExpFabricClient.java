@@ -119,6 +119,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.SWIRL_POP.get(), RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.GRASP_MIST.get(), GraspMistParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.WISP.get(), GlimmerParticle.LongFactory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.COLORED_WISP.get(), GlimmerParticle.ColoredFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.MAGMA_CREAM.get(), RisingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobProvider::new);
 

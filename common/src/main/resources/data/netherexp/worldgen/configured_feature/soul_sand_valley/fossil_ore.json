@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 8,
+    "discard_chance_on_air_exposure": 0.1,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:soul_soil"
+        },
+        "state": {
+          "Name": "netherexp:fossil_ore"
+        }
+      }
+    ]
+  }
+}
+
+

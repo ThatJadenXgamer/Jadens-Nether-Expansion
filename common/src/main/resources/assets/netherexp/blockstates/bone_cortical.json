@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "axis=x,tethered=false": {
+      "model": "netherexp:block/bone_cortical",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,tethered=false": {
+      "model": "netherexp:block/bone_cortical"
+    },
+    "axis=z,tethered=false": {
+      "model": "netherexp:block/bone_cortical",
+      "x": 90
+    },
+    "axis=x,tethered=true": {
+      "model": "netherexp:block/bone_cortical_tethered",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,tethered=true": {
+      "model": "netherexp:block/bone_cortical_tethered"
+    },
+    "axis=z,tethered=true": {
+      "model": "netherexp:block/bone_cortical_tethered",
+      "x": 90
+    }
+  }
+}

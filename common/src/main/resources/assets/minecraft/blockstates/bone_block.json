@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "axis=x,tethered=false": {
+      "model": "minecraft:block/bone_block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,tethered=false": {
+      "model": "minecraft:block/bone_block"
+    },
+    "axis=z,tethered=false": {
+      "model": "minecraft:block/bone_block",
+      "x": 90
+    },
+    "axis=x,tethered=true": {
+      "model": "netherexp:block/bone_block_tethered",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,tethered=true": {
+      "model": "netherexp:block/bone_block_tethered"
+    },
+    "axis=z,tethered=true": {
+      "model": "netherexp:block/bone_block_tethered",
+      "x": 90
+    }
+  }
+}

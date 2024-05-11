@@ -60,6 +60,7 @@ public class NetherExpForge {
         }
     }
 
+    // Adds Re-textures which may cause some Mod Conflicts or Inconsistencies
     private static void rpConflictingRetextures(AddPackFindersEvent event) {
         IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
         Path file = mod.getFile().findResource("resourcepacks/conflicting_retextures");
@@ -73,6 +74,7 @@ public class NetherExpForge {
                         PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, false, PackSource.BUILT_IN)));
     }
 
+    // Gives all Nether Woodsets a unique design
     private static void rpUniqueNetherWood(AddPackFindersEvent event) {
         IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
         Path file = mod.getFile().findResource("resourcepacks/unique_nether_wood");

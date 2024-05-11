@@ -18,7 +18,9 @@ public class JNEPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ECTO_SOUL_SAND = registerKey("soul_sand_valley/ecto_soul_sand");
     public static final ResourceKey<PlacedFeature> BONE_ROD = registerKey("soul_sand_valley/bone_rod");
     public static final ResourceKey<PlacedFeature> PALE_SOUL_SLATE = registerKey("soul_sand_valley/pale_soul_slate");
+    public static final ResourceKey<PlacedFeature> PALE_SOUL_SLATE_SURFACE = registerKey("soul_sand_valley/pale_soul_slate_surface");
     public static final ResourceKey<PlacedFeature> FOSSIL_FUEL_ORE = registerKey("soul_sand_valley/fossil_fuel_ore");
+    public static final ResourceKey<PlacedFeature> FOSSIL_ORE = registerKey("soul_sand_valley/fossil_ore");
     public static final ResourceKey<PlacedFeature> BLACK_ICE = registerKey("soul_sand_valley/black_ice");
 
     //TODO Add Ectoplasm

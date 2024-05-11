@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "netherexp:block/bone_cortical",
+    "side": "minecraft:block/bone_block_side"
+  }
+}

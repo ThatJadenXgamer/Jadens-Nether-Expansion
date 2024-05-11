@@ -105,7 +105,7 @@ public class JNEBlocks {
 
 
     public static final RegistrySupplier<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
-            new SwirlsBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().sound(SoundType.NETHER_SPROUTS), 1));
+            new SwirlsBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak().sound(SoundType.NETHER_SPROUTS), 1));
 
     // CINDERSCAPES COMPATIBILITY
     public static final RegistrySupplier<Block> SHALE_SWIRLS = registerCompatBlock("shale_swirls", () ->
@@ -121,7 +121,7 @@ public class JNEBlocks {
             new SoulMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).lightLevel((state) -> 4).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
 
     public static final RegistrySupplier<Block> BLACK_ICE = registerBlock("black_ice", () ->
-            new BlackIceBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).mapColor(MapColor.COLOR_BLACK).randomTicks().requiresCorrectToolForDrops().strength(0.5f).lightLevel((state) -> 5).sound(JNESoundType.BLACK_ICE)));
+            new BlackIceBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).mapColor(MapColor.COLOR_BLACK).randomTicks().requiresCorrectToolForDrops().strength(0.5f).lightLevel((state) -> 7).sound(JNESoundType.BLACK_ICE)));
 
     public static final RegistrySupplier<Block> FOSSIL_ORE = registerBlock("fossil_ore", () ->
             new FossilOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).randomTicks().strength(0.6f)));
@@ -612,6 +612,9 @@ public class JNEBlocks {
 
     public static final RegistrySupplier<Block> SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle", () ->
             new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 10), 2));
+
+    public static final RegistrySupplier<Block> BONE_CORTICAL = registerBlock("bone_cortical", () ->
+            new BoneBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)));
 
     public static final RegistrySupplier<Block> BONE_ROD = registerBlock("bone_rod", () ->
             new BoneRodBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5f).sound(SoundType.BONE_BLOCK)));

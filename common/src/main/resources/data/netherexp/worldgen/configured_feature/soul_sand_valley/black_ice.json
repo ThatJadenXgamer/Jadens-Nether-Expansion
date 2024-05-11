@@ -1,19 +1,35 @@
 {
-  "type": "minecraft:netherrack_replace_blobs",
+  "type": "minecraft:vegetation_patch",
   "config": {
-    "state": {
-      "Name": "netherexp:black_ice"
-    },
-    "target": {
-      "Name": "minecraft:soul_sand"
-    },
-    "radius": {
+    "surface": "ceiling",
+    "depth": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 3,
+        "min_inclusive": 2,
+        "max_inclusive": 4
+      }
+    },
+    "vertical_range": 5,
+    "extra_bottom_block_chance": 0,
+    "extra_edge_column_chance": 0.3,
+    "vegetation_chance": 0.02,
+    "xz_radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
         "max_inclusive": 7
       }
+    },
+    "replaceable": "#netherexp:soul_slate_replaceable",
+    "ground_state": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "netherexp:black_ice"
+      }
+    },
+    "vegetation_feature": {
+      "feature": "minecraft:basalt_pillar",
+      "placement": []
     }
   }
 }
-

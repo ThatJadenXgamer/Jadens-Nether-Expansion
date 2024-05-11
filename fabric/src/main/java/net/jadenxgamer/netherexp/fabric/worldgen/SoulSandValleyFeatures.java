@@ -12,6 +12,12 @@ public class SoulSandValleyFeatures {
 
         // STEP 0 - RAW_GENERATION
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
+                GenerationStep.Decoration.RAW_GENERATION, JNEPlacedFeatures.PALE_SOUL_SLATE);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
+                GenerationStep.Decoration.RAW_GENERATION, JNEPlacedFeatures.PALE_SOUL_SLATE_SURFACE);
+
         // STEP 1 - LAKES
 
         // STEP 2 - LOCAL_MODIFICATIONS
@@ -27,9 +33,6 @@ public class SoulSandValleyFeatures {
         // STEP 7 - UNDERGROUND_DECORATION
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
-                GenerationStep.Decoration.UNDERGROUND_DECORATION, JNEPlacedFeatures.PALE_SOUL_SLATE);
-
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
                 GenerationStep.Decoration.UNDERGROUND_DECORATION, JNEPlacedFeatures.ORE_SOUL_MAGMA);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
@@ -37,6 +40,9 @@ public class SoulSandValleyFeatures {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
                 GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.FOSSIL_FUEL_ORE);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
+                GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.FOSSIL_ORE);
 
         // STEP 8 - FLUID_SPRINGS
 

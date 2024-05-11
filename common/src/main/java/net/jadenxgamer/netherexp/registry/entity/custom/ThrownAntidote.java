@@ -116,11 +116,11 @@ public class ThrownAntidote extends ThrowableItemProjectile implements ItemSuppl
 
     private void playPotionParticles(MobEffect mobEffect) {
         int c = mobEffect.getColor();
-        if (c > 0 && this.random.nextInt(5) == 0) {
+        if (c > 0) {
             double d0 = (double) (c >> 16 & 255) / 255.0;
             double d1 = (double) (c >> 8 & 255) / 255.0;
             double d2 = (double) (c & 255) / 255.0;
-            for(int i = 0; i < 5; ++i) {
+            for(int i = 0; i < 3; ++i) {
                 this.level().addParticle(JNEParticleTypes.IMMUNITY_EFFECT.get(), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), d0, d1, d2);
             }
         }

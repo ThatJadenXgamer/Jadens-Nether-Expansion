@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
 import net.jadenxgamer.netherexp.registry.block.custom.BasaltBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.BoneBlock;
 import net.jadenxgamer.netherexp.registry.block.custom.SpottedWartBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -29,6 +30,22 @@ public class BlocksMixin {
     )
     private static RotatedPillarBlock netherexp$basalt(BlockBehaviour.Properties settings) {
         return new BasaltBlock(settings);
+    }
+
+    @Redirect(
+            method = "<clinit>",
+            at = @At(value = "NEW", target = "net/minecraft/world/level/block/RotatedPillarBlock",
+                    ordinal = 0
+            ),
+            slice = @Slice(
+                    from = @At(
+                            value = "CONSTANT",
+                            args = "stringValue=bone_block"
+                    )
+            )
+    )
+    private static RotatedPillarBlock netherexp$bone_block(BlockBehaviour.Properties settings) {
+        return new BoneBlock(settings);
     }
 
     @Redirect(

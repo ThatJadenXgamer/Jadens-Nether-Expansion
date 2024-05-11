@@ -8,7 +8,6 @@ import net.minecraft.core.particles.SimpleParticleType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Environment(value= EnvType.CLIENT)
 public class GlimmerParticle
 extends TextureSheetParticle {
     private final SpriteSet spriteSet;
@@ -38,7 +37,6 @@ extends TextureSheetParticle {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    @Environment(value = EnvType.CLIENT)
     public static class NormalFactory
     implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
@@ -62,7 +60,6 @@ extends TextureSheetParticle {
         }
     }
 
-    @Environment(value = EnvType.CLIENT)
     public static class LongFactory
     implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
@@ -81,6 +78,29 @@ extends TextureSheetParticle {
                 glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
             }
             glimmerParticle.setParticleSpeed(g * 0.01, h * 0.01, i * 0.01);
+            glimmerParticle.setLifetime(clientLevel.random.nextInt(30) + 30);
+            return glimmerParticle;
+        }
+    }
+
+    public static class ColoredFactory
+    implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet spriteSet;
+
+        public ColoredFactory(SpriteSet spriteSet) {
+            this.spriteSet = spriteSet;
+        }
+
+        @Nullable
+        @Override
+        public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
+            GlimmerParticle glimmerParticle = new GlimmerParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, this.spriteSet);
+            if (clientLevel.random.nextBoolean()) {
+                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
+            } else {
+                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
+            }
+            glimmerParticle.setColor((float)g, (float)h, (float)i);
             glimmerParticle.setLifetime(clientLevel.random.nextInt(30) + 30);
             return glimmerParticle;
         }

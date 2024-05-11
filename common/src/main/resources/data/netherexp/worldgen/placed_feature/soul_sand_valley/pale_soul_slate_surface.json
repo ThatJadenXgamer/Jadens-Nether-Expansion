@@ -1,9 +1,9 @@
 {
-  "feature": "netherexp:soul_sand_valley/soul_swirls_floor",
+  "feature": "netherexp:soul_sand_valley/pale_soul_slate_surface",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 4
+      "count": 8
     },
     {
       "type": "minecraft:in_square"

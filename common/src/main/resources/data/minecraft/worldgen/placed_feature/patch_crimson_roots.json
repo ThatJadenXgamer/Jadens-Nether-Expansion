@@ -1,9 +1,9 @@
 {
-  "feature": "netherexp:soul_sand_valley/soul_swirls_floor",
+  "feature": "minecraft:patch_crimson_roots",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 4
+      "count": 8
     },
     {
       "type": "minecraft:in_square"
@@ -13,10 +13,10 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "above_bottom": 4
+          "above_bottom": 0
         },
         "max_inclusive": {
-          "below_top": 4
+          "below_top": 0
         }
       }
     },

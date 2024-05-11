@@ -1,9 +1,9 @@
 {
-  "feature": "netherexp:soul_sand_valley/soul_swirls_floor",
+  "feature": "netherexp:soul_sand_valley/fossil_ore",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 4
+      "count": 64
     },
     {
       "type": "minecraft:in_square"
@@ -25,3 +25,4 @@
     }
   ]
 }
+
