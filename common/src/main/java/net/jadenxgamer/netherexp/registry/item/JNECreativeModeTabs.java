@@ -331,6 +331,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.BONE_ROD.get());
                         output.accept(JNEBlocks.BONE_FENCE.get());
                         output.accept(Blocks.BONE_BLOCK);
+                        output.accept(JNEBlocks.BONE_CORTICAL.get());
                         output.accept(JNEBlocks.STACKED_BONES.get());
                         output.accept(JNEBlocks.STACKED_BONE_STAIRS.get());
                         output.accept(JNEBlocks.STACKED_BONE_SLAB.get());

@@ -2,13 +2,17 @@
   "structures": [
     {
       "structure": "netherexp:mega_fossil",
+      "weight": 4
+    },
+    {
+      "structure": "netherexp:mega_fossil_campsite",
       "weight": 1
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
     "salt": 464662789,
-    "spacing": 5,
+    "spacing": 3,
     "separation": 2
   }
 }

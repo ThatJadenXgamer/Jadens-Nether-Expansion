@@ -1,0 +1,60 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:capped",
+      "limit": 8,
+      "delegate": {
+        "processor_type": "minecraft:rule",
+        "rules": [
+          {
+            "location_predicate": {
+              "predicate_type": "minecraft:always_true"
+            },
+            "input_predicate": {
+              "predicate_type": "minecraft:block_match",
+              "block": "minecraft:soul_sand"
+            },
+            "output_state": {
+              "Name": "netherexp:suspicious_soul_sand",
+              "Properties": {
+                "dusted": "0"
+              }
+            },
+            "block_entity_modifier": {
+              "type": "minecraft:append_loot",
+              "loot_table": "netherexp:archaeology/mega_fossil_common"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "processor_type": "minecraft:capped",
+      "limit": 4,
+      "delegate": {
+        "processor_type": "minecraft:rule",
+        "rules": [
+          {
+            "location_predicate": {
+              "predicate_type": "minecraft:always_true"
+            },
+            "input_predicate": {
+              "predicate_type": "minecraft:block_match",
+              "block": "minecraft:soul_sand"
+            },
+            "output_state": {
+              "Name": "netherexp:suspicious_soul_sand",
+              "Properties": {
+                "dusted": "0"
+              }
+            },
+            "block_entity_modifier": {
+              "type": "minecraft:append_loot",
+              "loot_table": "netherexp:archaeology/mega_fossil_rare"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

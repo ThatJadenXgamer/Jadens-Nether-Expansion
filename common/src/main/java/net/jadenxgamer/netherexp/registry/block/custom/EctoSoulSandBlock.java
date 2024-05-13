@@ -97,10 +97,10 @@ public class EctoSoulSandBlock extends Block {
         //TODO: Configs
 //        int i = random.nextInt(NetherExp.getConfig().blocks.ectoSoulSandConfigs.wisp_emerging_chances);
         int i = random.nextInt(50);
-        if (i == 0) {
+        if (i == 0 && !(level.getBlockState(pos.below()).isAir())) {
             this.setSoulSand(level, pos, random);
             BlockPos targetPos = findAirNeighbor(level, pos);
-            if (targetPos != null) {
+            if (targetPos != null && random.nextInt(3) != 0) {
                 spawnWisp(level, targetPos, random);
             }
         }
