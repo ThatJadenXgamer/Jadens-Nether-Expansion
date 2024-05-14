@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:soul_sand_valley",
+  "features": "netherexp:soul_sand_valley/fossil_ore",
+  "step": "underground_decoration"
+}

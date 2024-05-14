@@ -14,10 +14,14 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
@@ -40,6 +44,7 @@ public class NetherExpForge {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(NetherExpForge::commonSetup);
         eventBus.addListener(NetherExpForge::registerAttributes);
+        eventBus.addListener(NetherExpForge::registerSpawnPlacements);
         eventBus.addListener(NetherExpForge::addBuiltinPacks);
     }
 
@@ -51,6 +56,13 @@ public class NetherExpForge {
         event.put(JNEEntityType.APPARITION.get(), Apparition.createAttributes().build());
         event.put(JNEEntityType.WISP.get(), Wisp.createAttributes().build());
         event.put(JNEEntityType.VESSEL.get(), Vessel.createAttributes().build());
+    }
+
+    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+        event.register(JNEEntityType.VESSEL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(JNEEntityType.APPARITION.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
     private static void addBuiltinPacks(AddPackFindersEvent event) {

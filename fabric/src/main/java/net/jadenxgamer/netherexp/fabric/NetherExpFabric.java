@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.fabric;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.fabric.worldgen.EntityGeneration;
 import net.jadenxgamer.netherexp.fabric.worldgen.SoulSandValleyFeatures;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
@@ -15,6 +16,7 @@ public class NetherExpFabric implements ModInitializer {
     public void onInitialize() {
         NetherExp.init();
         SoulSandValleyFeatures.generateFeatures();
+        EntityGeneration.generateEntities();
         JNEPotionRecipe.addInvokerPotionRecipes();
 
         FabricDefaultAttributeRegistry.register(JNEEntityType.APPARITION.get(), Apparition.createAttributes());

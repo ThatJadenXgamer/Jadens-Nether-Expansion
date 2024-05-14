@@ -39,10 +39,10 @@ public class SoulSandValleyFeatures {
                 GenerationStep.Decoration.UNDERGROUND_DECORATION, JNEPlacedFeatures.BONE_ROD);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
-                GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.FOSSIL_FUEL_ORE);
+                GenerationStep.Decoration.UNDERGROUND_DECORATION, JNEPlacedFeatures.FOSSIL_FUEL_ORE);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
-                GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.FOSSIL_ORE);
+                GenerationStep.Decoration.UNDERGROUND_DECORATION, JNEPlacedFeatures.FOSSIL_ORE);
 
         // STEP 8 - FLUID_SPRINGS
 

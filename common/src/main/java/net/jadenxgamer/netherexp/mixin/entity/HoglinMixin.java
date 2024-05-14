@@ -17,8 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Hoglin.class)
-public abstract class HoglinMixin
-extends Animal
+public abstract class HoglinMixin extends Animal
 implements Enemy, HoglinBase {
     protected HoglinMixin(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
