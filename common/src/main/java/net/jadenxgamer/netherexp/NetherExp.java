@@ -7,6 +7,7 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
@@ -27,6 +28,7 @@ public class NetherExp {
 
         JNEEntityType.init();
         JNEStructures.init();
+        JNEFluids.init();
         JNEBlocks.init();
         JNEBlockEntityType.init();
         JNEItems.init();
@@ -61,5 +63,9 @@ public class NetherExp {
 
     public static boolean compatDiceyVentures() {
         return Platform.isModLoaded("dicey_ventures");
+    }
+
+    public static boolean compatAmplifiedNether() {
+        return Platform.isModLoaded("starmute");
     }
 }

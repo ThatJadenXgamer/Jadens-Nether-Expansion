@@ -13,6 +13,7 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -76,6 +77,8 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.ASHEN_GEYSER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_TORCHFLOWER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_TORCHFLOWER_CROP.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(),
+                JNEFluids.ECTOPLASM.get(), JNEFluids.FLOWING_ECTOPLASM.get());
 
         // Todo Add potted blocks
 //        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_SOUL_SWIRLS, RenderType.cutout());

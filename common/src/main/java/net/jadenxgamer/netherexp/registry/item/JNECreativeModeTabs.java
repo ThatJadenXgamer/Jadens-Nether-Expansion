@@ -4,6 +4,7 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.brewing.Antidotes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -75,7 +76,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SOUL_MAGMA_BLOCK.get());
 
                         output.accept(JNEBlocks.BLACK_ICE.get());
-//                        output.accept(JNEFluids.ECTOPLASM_BUCKET);
+                        output.accept(JNEFluids.ECTOPLASM_BUCKET.get());
 
                         output.accept(Blocks.SOUL_TORCH);
                         output.accept(Blocks.SOUL_LANTERN);

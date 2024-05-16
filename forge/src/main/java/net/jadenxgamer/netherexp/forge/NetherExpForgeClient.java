@@ -4,6 +4,7 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -11,6 +12,8 @@ import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -34,6 +37,8 @@ public class NetherExpForgeClient {
     }
 
     public static void onClientSetup(FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(JNEFluids.ECTOPLASM.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(JNEFluids.FLOWING_ECTOPLASM.get(), RenderType.translucent());
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);

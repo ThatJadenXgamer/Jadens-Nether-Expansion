@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "minecraft:soul_sand_valley",
+  "spawners":
+  {
+    "type": "netherexp:apparition",
+    "weight": 70,
+    "minCount": 1,
+    "maxCount": 3
+  }
+}

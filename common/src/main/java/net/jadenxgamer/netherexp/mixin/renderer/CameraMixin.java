@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.renderer;
 
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.client.Camera;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -33,7 +34,6 @@ public abstract class CameraMixin {
         FluidState fluidState = this.level.getFluidState(this.blockPosition);
         NetherExpClient.INSIDE_SOUL_GLASS = this.initialized && blockState.is(JNEBlocks.SOUL_GLASS.get());
         NetherExpClient.INSIDE_MAGMA_CREAM_BLOCK = this.initialized && blockState.is(JNEBlocks.MAGMA_CREAM_BLOCK.get());
-        //TODO Add Ectoplasm
-//        NetherExpClient.INSIDE_ECTOPLASM = this.initialized && fluidState.is(JNETags.Fluids.ECTOPLASM);
+        NetherExpClient.INSIDE_ECTOPLASM = this.initialized && fluidState.is(JNETags.Fluids.ECTOPLASM);
     }
 }
