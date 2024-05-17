@@ -10,10 +10,12 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -37,7 +39,7 @@ public class JNEFluids {
             new ArchitecturyFlowingFluid.Flowing(JNEFluids.ECTOPLASM_ATTRIBUTE));
 
     public static final RegistrySupplier<LiquidBlock> ECTOPLASM_BLOCK = JNEBlocks.BLOCKS.register("ectoplasm", () ->
-            new ArchitecturyLiquidBlock(JNEFluids.ECTOPLASM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
+            new ArchitecturyLiquidBlock(JNEFluids.ECTOPLASM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 15).noLootTable().liquid().sound(SoundType.EMPTY)));
 
     public static final RegistrySupplier<Item> ECTOPLASM_BUCKET = JNEItems.ITEMS.register("ectoplasm_bucket", () ->
             new ArchitecturyBucketItem(JNEFluids.ECTOPLASM, new Item.Properties()));
@@ -48,26 +50,29 @@ public class JNEFluids {
             .sourceTexture(new ResourceLocation("netherexp:block/ectoplasm_still"))
             .flowingTexture(new ResourceLocation("netherexp:block/ectoplasm_flow"))
             .overlayTexture(new ResourceLocation("netherexp:textures/block/ectoplasm_overlay.png"))
+            .emptySound(JNESoundEvents.BUCKET_EMPTY_ECTOPLASM.get())
+            .fillSound(JNESoundEvents.BUCKET_FILL_ECTOPLASM.get())
             .color(16777215).rarity(Rarity.COMMON)
             .blockSupplier(() -> JNEFluids.ECTOPLASM_BLOCK)
             .bucketItemSupplier(() -> JNEFluids.ECTOPLASM_BUCKET);
 
     private static void ectoplasmParticles(Level level, BlockPos pos, RandomSource random) {
-        BlockPos blockPos = pos.above();
-        if (level.getBlockState(blockPos).isAir() && !level.getBlockState(blockPos).isSolidRender(level, blockPos)) {
+        BlockPos abovePos = pos.above();
+        if (level.getBlockState(abovePos).isAir() && !level.getBlockState(abovePos).isSolidRender(level, abovePos)) {
             if (random.nextInt(55) == 0) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
                 level.addParticle(JNEParticleTypes.ECTORAYS.get(), d, e, f, 0.0, -0.03, 0.0);
             }
-        }
-        if (level.getBlockState(blockPos).isAir() && !level.getBlockState(blockPos).isSolidRender(level, blockPos)) {
             if (random.nextInt(18) == 0) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
                 level.addParticle(JNEParticleTypes.ECTOPLASMA.get(), d, e, f, 0.0, 0.0, 0.0);
+            }
+            if (random.nextInt(300) == 0) {
+                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.ECTOPLASM_WHISPERING.get(), SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
             }
         }
     }

@@ -130,6 +130,7 @@ public class JNESoundEvents {
 
     public static RegistrySupplier<SoundEvent> GILDING = registerSoundEvents("item.gold_ingot.gilding");
     public static RegistrySupplier<SoundEvent> ECTOPLASM_FREEZE = registerSoundEvents("block.ectoplasm.freeze");
+    public static RegistrySupplier<SoundEvent> ECTOPLASM_WHISPERING = registerSoundEvents("block.ectoplasm.whispering");
     public static RegistrySupplier<SoundEvent> SOUL_SLATE_SOLIDIFYING = registerSoundEvents("block.soul_slate.solidifying");
     public static RegistrySupplier<SoundEvent> BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
     public static RegistrySupplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");

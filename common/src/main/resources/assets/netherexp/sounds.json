@@ -915,6 +915,15 @@
       "netherexp:block/soul_slate/solidify2"
     ]
   },
+  "block.ectoplasm.whispering": {
+    "subtitle": "subtitles.block.ectoplasm.whispering",
+    "sounds": [
+      "netherexp:block/ectoplasm/whispering1",
+      "netherexp:block/ectoplasm/whispering2",
+      "netherexp:block/ectoplasm/whispering3",
+      "netherexp:block/ectoplasm/whispering4"
+    ]
+  },
   "block.soul_slate.solidifying": {
     "subtitle": "subtitles.block.soul_slate.solidifying",
     "sounds": [

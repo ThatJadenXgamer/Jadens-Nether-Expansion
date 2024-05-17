@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -28,6 +27,8 @@ public class BoneBlock extends RotatedPillarBlock {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(TETHERED, false).setValue(AXIS, Direction.Axis.Y));
     }
+
+
 
     @SuppressWarnings("deprecation")
     @Override

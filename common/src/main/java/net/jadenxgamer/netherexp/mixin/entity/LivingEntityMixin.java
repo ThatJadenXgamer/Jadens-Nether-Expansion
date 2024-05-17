@@ -47,7 +47,8 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     )
     private void netherexp$soulSpeedVelocityMultiplier(CallbackInfoReturnable<Float> cir) {
         BlockState state = this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement());
-        if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) && !EnchantmentHelper.hasSoulSpeed((LivingEntity) (Object) this)) {
+        LivingEntity entity = ((LivingEntity) (Object) this);
+        if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) || entity.getType().is(JNETags.EntityTypes.IGNORES_SOUL_SAND_SLOWNESS) && !EnchantmentHelper.hasSoulSpeed(entity)) {
             cir.setReturnValue(1.0f);
         }
         // TODO Add Configs

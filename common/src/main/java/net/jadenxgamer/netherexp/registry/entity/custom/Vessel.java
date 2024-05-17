@@ -122,7 +122,7 @@ public class Vessel extends Monster implements RangedAttackMob {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 30.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
-                .add(Attributes.FOLLOW_RANGE, 12.0);
+                .add(Attributes.FOLLOW_RANGE, 16.0);
     }
 
     @Override

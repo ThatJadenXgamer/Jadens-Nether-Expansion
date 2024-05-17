@@ -358,8 +358,6 @@
   "block.netherexp.white_ash": "White Ash",
   "block.netherexp.white_ash_block": "White Ash Block",
 
-  "block.netherexp.chainwire_fence": "Chainwire Fence",
-
   "block.netherexp.bone_cortical": "Bone Cortical",
   "block.netherexp.bone_rod": "Bone Rod",
   "block.netherexp.bone_fence": "Bone Fence",
@@ -398,6 +396,7 @@
 
   "subtitles.item.gold_ingot.gilding": "Block gilded",
   "subtitles.block.ectoplasm.freeze": "Ectoplasm Freezes",
+  "subtitles.block.ectoplasm.whispering": "Ectoplasm whispering gibberish",
   "subtitles.block.soul_slate.solidifying": "Soul Sand Solidifies to Soul Slate",
   "subtitles.block.explosive_scoria.ambient": "Unstable electrical sparks",
   "subtitles.block.sporeshroom.trampolined": "Sporeshroom trampolined",
