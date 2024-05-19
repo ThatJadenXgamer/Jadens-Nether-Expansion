@@ -37,7 +37,7 @@ public class JNEBlocks {
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(4.0f).requiresCorrectToolForDrops().sound(JNESoundType.SOUL_SLATE)));
 
     public static final RegistrySupplier<Block> PALE_SOUL_SLATE = registerBlock("pale_soul_slate", () ->
-            new Block(BlockBehaviour.Properties.copy(SOUL_SLATE.get()).mapColor(MapColor.TERRACOTTA_PINK)));
+            new Block(BlockBehaviour.Properties.copy(SOUL_SLATE.get()).strength(3.0f, 1.0f).mapColor(MapColor.TERRACOTTA_PINK)));
 
     public static final RegistrySupplier<Block> SOUL_SLATE_SLAB = registerBlock("soul_slate_slab", () ->
             new SlabBlock(BlockBehaviour.Properties.copy(SOUL_SLATE.get())));

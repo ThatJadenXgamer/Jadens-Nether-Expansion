@@ -37,8 +37,8 @@ public class NetherExpForgeClient {
     }
 
     public static void onClientSetup(FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(JNEFluids.ECTOPLASM.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(JNEFluids.FLOWING_ECTOPLASM.get(), RenderType.translucent());
+//        ItemBlockRenderTypes.setRenderLayer(JNEFluids.ECTOPLASM.get(), RenderType.translucent());
+//        ItemBlockRenderTypes.setRenderLayer(JNEFluids.FLOWING_ECTOPLASM.get(), RenderType.translucent());
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);

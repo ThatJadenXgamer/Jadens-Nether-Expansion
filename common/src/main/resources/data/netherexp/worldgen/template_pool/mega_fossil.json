@@ -38,11 +38,20 @@
       }
     },
     {
-      "weight": 15,
+      "weight": 10,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:mega_fossil/spine",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 8,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:mega_fossil/flood_spine",
         "processors": "minecraft:empty"
       }
     },

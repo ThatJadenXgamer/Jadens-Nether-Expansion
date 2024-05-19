@@ -50,8 +50,6 @@ public class JNEFluids {
             .sourceTexture(new ResourceLocation("netherexp:block/ectoplasm_still"))
             .flowingTexture(new ResourceLocation("netherexp:block/ectoplasm_flow"))
             .overlayTexture(new ResourceLocation("netherexp:textures/block/ectoplasm_overlay.png"))
-            .emptySound(JNESoundEvents.BUCKET_EMPTY_ECTOPLASM.get())
-            .fillSound(JNESoundEvents.BUCKET_FILL_ECTOPLASM.get())
             .color(16777215).rarity(Rarity.COMMON)
             .blockSupplier(() -> JNEFluids.ECTOPLASM_BLOCK)
             .bucketItemSupplier(() -> JNEFluids.ECTOPLASM_BUCKET);

@@ -12,9 +12,9 @@ import net.minecraft.world.level.levelgen.Heightmap;
 public class EntityGeneration {
     public static void generateEntities() {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY), MobCategory.MONSTER,
-                JNEEntityType.VESSEL.get(), 50, 1, 2);
+                JNEEntityType.VESSEL.get(), 8, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY), MobCategory.MONSTER,
-                JNEEntityType.APPARITION.get(), 70, 1, 3);
+                JNEEntityType.APPARITION.get(), 15, 1, 1);
 
         SpawnPlacements.register(JNEEntityType.VESSEL.get(), SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);

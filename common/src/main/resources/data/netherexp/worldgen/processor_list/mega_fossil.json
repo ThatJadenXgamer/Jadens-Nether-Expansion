@@ -2,7 +2,7 @@
   "processors": [
     {
       "processor_type": "minecraft:capped",
-      "limit": 8,
+      "limit": 6,
       "delegate": {
         "processor_type": "minecraft:rule",
         "rules": [
