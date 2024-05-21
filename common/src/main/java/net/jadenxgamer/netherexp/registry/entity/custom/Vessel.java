@@ -173,7 +173,7 @@ public class Vessel extends Monster implements RangedAttackMob {
             }
         }
         this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.NEUTRAL, 1.0f, 1.0f);
-        for(int i = 0; i < 10; ++i) {
+        for(int i = 0; i < 10; i++) {
             this.level().addParticle(JNEParticleTypes.WISP.get(), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0, 0.0, 0.0);
         }
     }

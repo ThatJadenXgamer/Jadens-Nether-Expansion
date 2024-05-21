@@ -7,7 +7,9 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.jadenxgamer.netherexp.NetherExpClient;
+import net.jadenxgamer.netherexp.fabric.client.ShotgunTemperatureOverlayFabric;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
@@ -29,6 +31,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         NetherExpClient.init();
+        HudRenderCallback.EVENT.register(new ShotgunTemperatureOverlayFabric());
         
         // BLOCK OPACITY
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.NETHERITE_GRATE.get(), RenderType.cutout());

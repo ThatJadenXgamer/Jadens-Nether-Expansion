@@ -14,6 +14,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -27,8 +28,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable {
+    private int cooldown;
+
     public ShotgunFistItem(Properties settings) {
         super(settings);
+        cooldown = 200;
     }
 
     public static int getAmmo(ItemStack stack) {
@@ -41,11 +45,34 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         nbt.putInt("Ammo", i);
     }
 
+    public static int getTemperature(ItemStack stack) {
+        CompoundTag nbt = stack.getOrCreateTag();
+        return nbt.getInt("Temperature");
+    }
+
+    public static void setTemperature(ItemStack stack, int i) {
+        CompoundTag nbt = stack.getOrCreateTag();
+        nbt.putInt("Temperature", i);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+        if (!level.isClientSide && getTemperature(stack) > 0) {
+            --this.cooldown;
+            if (cooldown <= 0) {
+                setTemperature(stack, getTemperature(stack) - 1);
+                this.cooldown = 200;
+            }
+        }
+        super.inventoryTick(stack, level, entity, slot, selected);
+    }
+
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         useProjectile(stack, user);
+        int heat = getTemperature(stack);
         setAmmo(stack, getAmmo(stack) + 1);
-        level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0F, 1.0F);
+        level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0F - (0.15f * heat), 1.0F + (0.2f * heat));
         return stack;
     }
 
@@ -92,9 +119,12 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
             if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
                 useProjectile(stack, player);
                 performShooting(level, player, stack);
-                stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
+                if (getTemperature(stack) < 5 && !player.getAbilities().instabuild) {
+                    setTemperature(stack, getTemperature(stack) + 1);
+                }
+                stack.hurtAndBreak(getTemperature(stack), player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                player.getCooldowns().addCooldown(this, 30);
+                player.getCooldowns().addCooldown(this, 10);
                 return InteractionResultHolder.success(stack);
             }
         }
@@ -102,36 +132,47 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
     }
 
     public static void performShooting(Level level, LivingEntity livingEntity, ItemStack stack) {
-        int count = Mth.nextInt(level.random, 8, 16);
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
+        int heat = getTemperature(stack);
         // Bonuses
-        int rBulletBonus = recoil / 5;
+        int rBulletDistanceBonus = recoil / 5;
         double rPushBonus = (double) recoil / 16;
+        int hBulletDistancePenalty = heat / 8;
+        int hCountPenalty = heat * 3;
+        int hScatterPenalty = heat * 5;
         // Vectors
         Vec3 look = livingEntity.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
+        int count;
+        if (EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack) > 0) {
+            count = Mth.nextInt(level.random, 6, 8);
+        }
+        else {
+            count = 16 - hCountPenalty;
+        }
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, livingEntity);
-                soulBullet.shoot(look.x, look.y, look.z, 1.0F + rBulletBonus, 16);
+                soulBullet.shoot(look.x, look.y, look.z, (1.0F + rBulletDistanceBonus) - hBulletDistancePenalty, 16 + hScatterPenalty);
                 level.addFreshEntity(soulBullet);
             }
         }
         double d = 0.3 + rPushBonus;
         livingEntity.push(pushBack.x * d, pushBack.y * d, pushBack.z * d);
+        if (heat == 5) {
+            livingEntity.setSecondsOnFire(2);
+        }
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
         if (EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack) > 0) {
-            if (getAmmo(stack) >= 1) {
-                tooltip.add(Component.translatable("shotgun_fist.ammo").append(CommonComponents.SPACE).append(Component.literal("" + getAmmo(stack))).withStyle(ChatFormatting.DARK_AQUA));
-                tooltip.add((Component.empty()));
-            }
-            else {
-                tooltip.add(Component.translatable("shotgun_fist.ammo").append(CommonComponents.SPACE).append(Component.literal("" + getAmmo(stack))).withStyle(ChatFormatting.RED));
-                tooltip.add((Component.empty()));
-            }
+            tooltip.add(Component.translatable("shotgun_fist.ammo").append(CommonComponents.SPACE).append(Component.literal("" + getAmmo(stack))).withStyle(ChatFormatting.DARK_AQUA));
+            tooltip.add((Component.empty()));
+        }
+        else {
+            tooltip.add(Component.translatable("shotgun_fist.heat").append(CommonComponents.SPACE).append(Component.literal("" + getTemperature(stack))).withStyle(ChatFormatting.RED));
+            tooltip.add((Component.empty()));
         }
     }
 
