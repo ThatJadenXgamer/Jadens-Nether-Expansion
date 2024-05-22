@@ -28,7 +28,7 @@ public class ShotgunTemperatureOverlayFabric implements HudRenderCallback {
                     int ammo = ShotgunFistItem.getAmmo(stack);
                     guiGraphics.blit(new ResourceLocation(NetherExp.MOD_ID, "textures/gui/shotgun_temperature.png"), (width / 2 -6), height - 50, ammo * 12, 12, 12, 12);
                 }
-                else if (stack.is(JNEItems.SHOTGUN_FIST.get())) {
+                else if (stack.is(JNEItems.SHOTGUN_FIST.get()) || stack.is(JNEItems.PUMP_CHARGE_SHOTGUN.get())) {
                     int temperature = ShotgunFistItem.getTemperature(stack);
                     guiGraphics.blit(new ResourceLocation(NetherExp.MOD_ID, "textures/gui/shotgun_temperature.png"), (width / 2 -6), height - 50, temperature * 12, 0, 12, 12);
                 }

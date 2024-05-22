@@ -172,7 +172,7 @@ public class Apparition extends Monster implements FlyingAnimal {
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData, @Nullable CompoundTag compoundTag) {
-        if (mobSpawnType != MobSpawnType.CONVERSION) {
+        if (this.getPreference() == 0) {
             setPreference(Mth.nextInt(level.getRandom(),1, 4));
         }
         if (level instanceof ServerLevel) {

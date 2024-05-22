@@ -70,9 +70,8 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         useProjectile(stack, user);
-        int heat = getTemperature(stack);
         setAmmo(stack, getAmmo(stack) + 1);
-        level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0F - (0.15f * heat), 1.0F + (0.2f * heat));
+        level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0f, 1.0f);
         return stack;
     }
 
@@ -105,7 +104,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
                 performShooting(level, player, stack);
                 setAmmo(stack, getAmmo(stack) - 1);
                 stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-                level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
                 return InteractionResultHolder.success(stack);
             }
             else if (player.isShiftKeyDown() && getAmmo(stack) <= cartridge) {
@@ -117,13 +116,14 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         }
         else {
             if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
+                int heat = getTemperature(stack);
                 useProjectile(stack, player);
                 performShooting(level, player, stack);
-                if (getTemperature(stack) < 5 && !player.getAbilities().instabuild) {
-                    setTemperature(stack, getTemperature(stack) + 1);
+                if (heat < 4 && !player.getAbilities().instabuild) {
+                    setTemperature(stack, heat + 1);
                 }
-                stack.hurtAndBreak(getTemperature(stack), player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-                level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                stack.hurtAndBreak(heat, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f - (0.15f * heat), 1.0f + (0.2f * heat));
                 player.getCooldowns().addCooldown(this, 10);
                 return InteractionResultHolder.success(stack);
             }
@@ -138,7 +138,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         int rBulletDistanceBonus = recoil / 5;
         double rPushBonus = (double) recoil / 16;
         int hBulletDistancePenalty = heat / 8;
-        int hCountPenalty = heat * 3;
+        int hCountPenalty = heat * 4;
         int hScatterPenalty = heat * 5;
         // Vectors
         Vec3 look = livingEntity.getLookAngle();
@@ -159,7 +159,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         }
         double d = 0.3 + rPushBonus;
         livingEntity.push(pushBack.x * d, pushBack.y * d, pushBack.z * d);
-        if (heat == 5) {
+        if (heat == 4) {
             livingEntity.setSecondsOnFire(2);
         }
     }
