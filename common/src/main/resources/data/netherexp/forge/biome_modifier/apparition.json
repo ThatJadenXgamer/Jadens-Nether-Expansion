@@ -4,7 +4,7 @@
   "spawners":
   {
     "type": "netherexp:apparition",
-    "weight": 15,
+    "weight": 20,
     "minCount": 1,
     "maxCount": 1
   }

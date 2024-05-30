@@ -19,7 +19,7 @@ public class EntityGeneration {
     BiomeModifications.create(new ResourceLocation(NetherExp.MOD_ID, "ssv_spawn")).add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY), (selectionContext, modificationContext) -> {
             BiomeModificationContext.SpawnSettingsContext settings = modificationContext.getSpawnSettings();
             settings.setSpawnCost(JNEEntityType.VESSEL.get(), 0.7, 0.15);
-            settings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JNEEntityType.VESSEL.get(), 20, 1, 1));
+            settings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JNEEntityType.VESSEL.get(), 30, 1, 1));
             settings.setSpawnCost(JNEEntityType.APPARITION.get(), 0.7, 0.15);
             settings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JNEEntityType.APPARITION.get(), 20, 1, 1));
         });

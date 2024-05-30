@@ -36,6 +36,8 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
 
     @Shadow public abstract Map<MobEffect, MobEffectInstance> getActiveEffectsMap();
 
+    @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
+
     public LivingEntityMixin(EntityType<?> type, Level level) {
         super(type, level);
     }

@@ -84,7 +84,6 @@ extends CrossCollisionBlock {
         return super.updateShape(blockState, direction, neighborState, levelAccessor, blockPos, neighborPos);
     }
 
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(NORTH, EAST, WEST, SOUTH, WATERLOGGED);

@@ -20,15 +20,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class BoneBlock extends RotatedPillarBlock {
-
     private static final BooleanProperty TETHERED = BooleanProperty.create("tethered");
 
     public BoneBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(TETHERED, false).setValue(AXIS, Direction.Axis.Y));
     }
-
-
 
     @SuppressWarnings("deprecation")
     @Override

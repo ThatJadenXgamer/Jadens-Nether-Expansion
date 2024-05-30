@@ -5,7 +5,6 @@ import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -14,9 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -30,7 +27,6 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
@@ -43,8 +39,6 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
@@ -61,17 +55,15 @@ public class Vessel extends Monster implements RangedAttackMob {
     public final AnimationState aimIdleAnimationState = new AnimationState();
     public final AnimationState shootAnimationState = new AnimationState();
 
+    private static final EntityDataAccessor<Boolean> PREPARING_AIM = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
+
     private static final EntityDataAccessor<Boolean> IS_AIMING = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
 
     public Vessel(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, 1.0F);
-    }
-
-    @Override
-    public boolean checkSpawnRules(LevelAccessor levelAccessor, MobSpawnType mobSpawnType) {
-        return super.checkSpawnRules(levelAccessor, mobSpawnType);
     }
 
     @Override
@@ -92,6 +84,12 @@ public class Vessel extends Monster implements RangedAttackMob {
             }
             else {
                 aimIdleAnimationState.stop();
+            }
+            if (getPreparingAim()) {
+                aimAnimationState.startIfStopped(this.tickCount);
+            }
+            else {
+                aimAnimationState.stop();
             }
         }
     }
@@ -217,21 +215,17 @@ public class Vessel extends Monster implements RangedAttackMob {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+        this.getEntityData().define(PREPARING_AIM, false);
         this.getEntityData().define(IS_AIMING, false);
+        this.getEntityData().define(SHOOT, false);
     }
 
-    @Override
-    public void readAdditionalSaveData(CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
-        if (nbt.contains("IsAiming")) {
-            this.setIsAiming(nbt.getBoolean("IsAiming"));
-        }
+    private boolean getPreparingAim() {
+        return this.getEntityData().get(PREPARING_AIM);
     }
 
-    @Override
-    public void addAdditionalSaveData(CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("IsAiming", this.getIsAiming());
+    private void setPreparingAim(boolean bl) {
+        this.getEntityData().set(PREPARING_AIM, bl);
     }
 
     private boolean getIsAiming() {
@@ -240,6 +234,14 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     private void setIsAiming(boolean bl) {
         this.getEntityData().set(IS_AIMING, bl);
+    }
+
+    private boolean getShoot() {
+        return this.getEntityData().get(SHOOT);
+    }
+
+    private void setShoot(boolean bl) {
+        this.getEntityData().set(SHOOT, bl);
     }
 
     ////////////
@@ -373,13 +375,15 @@ public class Vessel extends Monster implements RangedAttackMob {
                 }
 
                 if (distance < attackRadius && hasSight) {
+                    if (this.attackTime == 55) {
+                        vessel.setPreparingAim(true);
+                    }
                     if (this.attackTime == 40) {
-                        vessel.aimAnimationState.startIfStopped(vessel.tickCount);
+                        vessel.setPreparingAim(false);
                         vessel.setIsAiming(true);
                     } else if (this.attackTime <= 0) {
                         this.shot = true;
-                        vessel.setIsAiming(false);
-                        vessel.shootAnimationState.startIfStopped(vessel.tickCount);
+                        vessel.shootAnimationState.start(vessel.tickCount);
                         vessel.performRangedAttack(target, 1.0f);
                     }
                 }

@@ -7,12 +7,11 @@ import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.level.levelgen.Heightmap;
 
 public class JNEEntityType {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(NetherExp.MOD_ID, Registries.ENTITY_TYPE);
+
+    // LIVING ENTITIES
 
     public static final RegistrySupplier<EntityType<Apparition>> APPARITION = ENTITY_TYPES.register("apparition", () ->
             EntityType.Builder.of(Apparition::new, MobCategory.MONSTER)
@@ -25,6 +24,12 @@ public class JNEEntityType {
     public static final RegistrySupplier<EntityType<Vessel>> VESSEL = ENTITY_TYPES.register("vessel", () ->
             EntityType.Builder.of(Vessel::new, MobCategory.MONSTER)
                     .sized(0.6F, 2.99F).fireImmune().build("vessel"));
+
+    public static final RegistrySupplier<EntityType<EctoSlab>> ECTO_SLAB = ENTITY_TYPES.register("ecto_slab", () ->
+            EntityType.Builder.of(EctoSlab::new, MobCategory.MONSTER)
+                    .sized(2.04F, 2.04F).fireImmune().build("ecto_slab"));
+
+    // OTHER
 
     public static final RegistrySupplier<EntityType<SoulBullet>> SOUL_BULLET = ENTITY_TYPES.register("soul_bullet", () ->
             EntityType.Builder.<SoulBullet>of(SoulBullet::new, MobCategory.MISC)

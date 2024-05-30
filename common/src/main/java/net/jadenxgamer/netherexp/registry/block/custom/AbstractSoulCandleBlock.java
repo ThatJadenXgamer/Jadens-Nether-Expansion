@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -20,7 +19,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public abstract class AbstractSoulCandleBlock extends Block {
-    public static final int LIGHT_PER_CANDLE = 3;
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
     protected AbstractSoulCandleBlock(Properties properties) {
@@ -28,10 +26,6 @@ public abstract class AbstractSoulCandleBlock extends Block {
     }
 
     protected abstract Iterable<Vec3> getParticleOffsets(BlockState blockState);
-
-    public static boolean isLit(BlockState state) {
-        return state.hasProperty(LIT) && (state.is(BlockTags.CANDLES) || state.is(BlockTags.CANDLE_CAKES)) && state.getValue(LIT);
-    }
 
     @SuppressWarnings("deprecation")
     @Override
@@ -48,9 +42,7 @@ public abstract class AbstractSoulCandleBlock extends Block {
     @Override
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         if (blockState.getValue(LIT)) {
-            this.getParticleOffsets(blockState).forEach((vec3) -> {
-                addParticlesAndSound(level, vec3.add(blockPos.getX(), blockPos.getY(), blockPos.getZ()), randomSource);
-            });
+            this.getParticleOffsets(blockState).forEach((vec3) -> addParticlesAndSound(level, vec3.add(blockPos.getX(), blockPos.getY(), blockPos.getZ()), randomSource));
         }
     }
 

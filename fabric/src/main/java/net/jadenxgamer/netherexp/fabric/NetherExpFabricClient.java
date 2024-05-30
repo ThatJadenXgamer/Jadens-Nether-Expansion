@@ -138,6 +138,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
@@ -149,6 +150,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.VESSEL_LAYER, VesselModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.ECTO_SLAB_LAYER, EctoSlabModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
     }
 }
