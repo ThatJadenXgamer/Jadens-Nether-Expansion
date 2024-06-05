@@ -14,6 +14,7 @@ public class JNEEnchantments {
     public static final RegistrySupplier<Enchantment> PHANTASM_HULL = ENCHANTMENTS.register("phantasm_hull", PhantasmHullEnchantment::new);
     public static final RegistrySupplier<Enchantment> CARTRIDGE = ENCHANTMENTS.register("cartridge", CartridgeEnchantment::new);
     public static final RegistrySupplier<Enchantment> RECOIL = ENCHANTMENTS.register("recoil", RecoilEnchantment::new);
+    public static final RegistrySupplier<Enchantment> ARTEMIS = ENCHANTMENTS.register("artemis", ArtemisEnchantment::new);
 
     public static void init() {
         ENCHANTMENTS.register();

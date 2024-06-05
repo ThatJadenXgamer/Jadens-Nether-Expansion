@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "opacity=1": {
+      "model": "netherexp:block/frogmist/verdant_1"
+    },
+    "opacity=2": {
+      "model": "netherexp:block/frogmist/verdant_2"
+    },
+    "opacity=3": {
+      "model": "netherexp:block/frogmist/verdant_3"
+    },
+    "opacity=4": {
+      "model": "netherexp:block/frogmist/verdant_4"
+    }
+  }
+}

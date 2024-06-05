@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/character_arch",
+  "parent": "minecraft:nether/brew_potion",
   "criteria": {
     "c1": {
       "trigger": "minecraft:location",

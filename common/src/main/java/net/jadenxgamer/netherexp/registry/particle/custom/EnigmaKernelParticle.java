@@ -20,6 +20,11 @@ public class EnigmaKernelParticle extends SmokeParticle {
         this.lifetime = 32;
     }
 
+    @Override
+    protected int getLightColor(float f) {
+        return 15728880;
+    }
+
     @Environment(value= EnvType.CLIENT)
     public static class Factory
             implements ParticleProvider<SimpleParticleType> {

@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:pale_soul_slate"
+      "item": "minecraft:bone_block"
     },
     "title": {
-      "translate": "advancements.nether.character_arch.title"
+      "translate": "advancements.nether.rattling_remnants.title"
     },
     "description": {
-      "translate": "advancements.nether.character_arch.description"
+      "translate": "advancements.nether.rattling_remnants.description"
     },
     "frame": "task",
     "show_toast": true,
@@ -25,7 +25,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "netherexp:geyser_formation"
+                "structure": "netherexp:mega_fossil_campsite"
               }
             }
           }

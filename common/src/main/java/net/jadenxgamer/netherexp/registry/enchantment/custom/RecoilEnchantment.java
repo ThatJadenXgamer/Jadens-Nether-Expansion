@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry.enchantment.custom;
 
-import net.jadenxgamer.netherexp.registry.item.custom.ShotgunFistItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;

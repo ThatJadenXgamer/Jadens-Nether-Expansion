@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry.fluid;
 
-import dev.architectury.core.block.ArchitecturyLiquidBlock;
 import dev.architectury.core.fluid.ArchitecturyFlowingFluid;
 import dev.architectury.core.fluid.ArchitecturyFluidAttributes;
 import dev.architectury.core.fluid.SimpleArchitecturyFluidAttributes;
@@ -9,6 +8,7 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.custom.EctoplasmLiquidBlock;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -39,7 +39,7 @@ public class JNEFluids {
             new ArchitecturyFlowingFluid.Flowing(JNEFluids.ECTOPLASM_ATTRIBUTE));
 
     public static final RegistrySupplier<LiquidBlock> ECTOPLASM_BLOCK = JNEBlocks.BLOCKS.register("ectoplasm", () ->
-            new ArchitecturyLiquidBlock(JNEFluids.ECTOPLASM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 15).noLootTable().liquid().sound(SoundType.EMPTY)));
+            new EctoplasmLiquidBlock(JNEFluids.ECTOPLASM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 15).noLootTable().liquid().sound(SoundType.EMPTY)));
 
     public static final RegistrySupplier<Item> ECTOPLASM_BUCKET = JNEItems.ITEMS.register("ectoplasm_bucket", () ->
             new ArchitecturyBucketItem(JNEFluids.ECTOPLASM, new Item.Properties()));
@@ -54,6 +54,12 @@ public class JNEFluids {
             .blockSupplier(() -> JNEFluids.ECTOPLASM_BLOCK)
             .bucketItemSupplier(() -> JNEFluids.ECTOPLASM_BUCKET);
 
+
+    // FLUID BEHAVIORS
+    /*
+    *  For whatever reason ArchitecturyFlowingFluid cannot be extended
+    *  meaning we're forced to use this janky cursed way of adding particles. no clue why
+    */
     private static void ectoplasmParticles(Level level, BlockPos pos, RandomSource random) {
         BlockPos abovePos = pos.above();
         if (level.getBlockState(abovePos).isAir() && !level.getBlockState(abovePos).isSolidRender(level, abovePos)) {

@@ -9,6 +9,9 @@
     "netherexp:decayable_nether_wart_block",
     "netherexp:decayable_warped_wart_block",
     "netherexp:decayable_shroomlight",
-    "netherexp:decayable_shroomnight"
+    "netherexp:decayable_shroomnight",
+    "netherexp:ochre_frogmist",
+    "netherexp:verdant_frogmist",
+    "netherexp:pearlescent_frogmist"
   ]
 }

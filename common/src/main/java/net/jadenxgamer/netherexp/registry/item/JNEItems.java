@@ -80,6 +80,9 @@ public class JNEItems {
     public static final RegistrySupplier<Item> WRAITHING_FLESH = registerItem("wraithing_flesh", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));
 
+    public static final RegistrySupplier<Item> PHASMO_SHARD = registerItem("phasmo_shard", () ->
+            new Item(new Item.Properties()));
+
     public static final RegistrySupplier<Item> WARPED_WART = registerItem("warped_wart", () ->
             new BlockItem(JNEBlocks.WARPED_WART.get(), new Item.Properties()));
 
@@ -93,9 +96,6 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> TREACHEROUS_FLAME = registerItem("treacherous_flame", () ->
-            new Item(new Item.Properties()));
-
-    public static final RegistrySupplier<Item> NECRO_SHARD = registerItem("necro_shard", () ->
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
@@ -127,6 +127,9 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> VESSEL_SPAWN_EGG = registerItem("vessel_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.VESSEL, 4864303, 12698049, new Item.Properties()));
+
+    public static final RegistrySupplier<Item> ECTO_SLAB_SPAWN_EGG = registerItem("ecto_slab_spawn_egg", () ->
+            new ArchitecturySpawnEggItem(JNEEntityType.ECTO_SLAB, 4864303, 1788232, new Item.Properties()));
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);

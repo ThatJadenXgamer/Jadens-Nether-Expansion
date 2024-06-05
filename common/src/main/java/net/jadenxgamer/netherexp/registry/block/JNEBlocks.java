@@ -103,6 +103,14 @@ public class JNEBlocks {
                     blockState -> blockState.getValue(SoulGlassBlock.LIT) ? 12 : 0).strength(0.3f, 1200.0f).sound(SoundType.GLASS)
             ));
 
+    public static final RegistrySupplier<Block> OCHRE_FROGMIST = registerBlock("ochre_frogmist", () ->
+            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)));
+
+    public static final RegistrySupplier<Block> VERDANT_FROGMIST = registerBlock("verdant_frogmist", () ->
+            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)));
+
+    public static final RegistrySupplier<Block> PEARLESCENT_FROGMIST = registerBlock("pearlescent_frogmist", () ->
+            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)));
 
     public static final RegistrySupplier<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
             new SwirlsBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak().sound(SoundType.NETHER_SPROUTS), 1));
@@ -248,9 +256,8 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> CUT_NETHERITE_PILLAR = registerFireProofBlock("cut_netherite_pillar", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
 
-    //TODO: Add Block
     public static final RegistrySupplier<Block> NETHERITE_GRATE = registerFireProofBlock("netherite_grate", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
+            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
 
     // Rusty Netherite
 
@@ -269,9 +276,8 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_PILLAR = registerFireProofBlock("rusty_cut_netherite_pillar", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
 
-    //TODO: Add Block
     public static final RegistrySupplier<Block> RUSTY_NETHERITE_GRATE = registerFireProofBlock("rusty_netherite_grate", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
+            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
 
     // Enigma
 
@@ -505,8 +511,6 @@ public class JNEBlocks {
     // CINDERSCAPES COMPATIBILITY
     public static final RegistrySupplier<Block> UMBRAL_WART_BEARD = registerCompatBlock("umbral_wart_beard", () ->
             new BeardBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHER_WART_BEARD.get())), "cinderscapes");
-
-    //TODO: ADD TWILIGHT VINES
 
     public static final RegistrySupplier<Block> WEEPING_IVY = registerBlock("weeping_ivy", () ->
             new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));

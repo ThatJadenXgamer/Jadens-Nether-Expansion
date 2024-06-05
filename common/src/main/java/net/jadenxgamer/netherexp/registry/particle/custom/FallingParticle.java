@@ -31,6 +31,11 @@ extends TextureSheetParticle {
     }
 
     @Override
+    protected int getLightColor(float f) {
+        return 15728880;
+    }
+
+    @Override
     public float getQuadSize(float tickDelta) {
         return this.quadSize * Mth.clamp(((float)this.age + tickDelta) / (float)this.lifetime * 32.0f, 0.0f, 1.0f);
     }

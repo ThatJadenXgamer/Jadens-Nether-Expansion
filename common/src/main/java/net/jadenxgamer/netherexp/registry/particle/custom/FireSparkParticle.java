@@ -21,6 +21,11 @@ public class FireSparkParticle extends SmokeParticle {
         this.quadSize = 0.05f;
     }
 
+    @Override
+    protected int getLightColor(float f) {
+        return 15728880;
+    }
+
     @Environment(value= EnvType.CLIENT)
     public static class Factory
             implements ParticleProvider<SimpleParticleType> {

@@ -6,13 +6,19 @@ import net.jadenxgamer.netherexp.registry.entity.custom.EctoSlab;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.monster.MagmaCube;
 import org.jetbrains.annotations.NotNull;
 
 public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabModel<EctoSlab>> {
     public EctoSlabRenderer(EntityRendererProvider.Context context) {
         super(context, new EctoSlabModel<>(context.bakeLayer(JNEModelLayers.ECTO_SLAB_LAYER)), 0.25f);
+    }
+
+    protected int getBlockLightLevel(MagmaCube magmaCube, BlockPos blockPos) {
+        return 15;
     }
 
     @Override
@@ -34,6 +40,6 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabModel<EctoSl
     @Override
     public @NotNull ResourceLocation getTextureLocation(EctoSlab entity) {
         int size = Math.min(entity.getSize(), 4);
-        return new ResourceLocation(NetherExp.MOD_ID, "textures/entity/ecto_slab_" + 2 + ".png");
+        return new ResourceLocation(NetherExp.MOD_ID, "textures/entity/ecto_slab/ecto_slab_" + size + ".png");
     }
 }

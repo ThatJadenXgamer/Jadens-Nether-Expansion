@@ -31,6 +31,11 @@ extends BaseAshSmokeParticle {
     }
 
     @Override
+    protected int getLightColor(float f) {
+        return 15728880;
+    }
+
+    @Override
     public @NotNull ParticleRenderType getRenderType() {
         return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }

@@ -1,21 +1,21 @@
 package net.jadenxgamer.netherexp.registry.enchantment.custom;
 
 import net.jadenxgamer.netherexp.registry.item.custom.ShotgunFistItem;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.item.enchantment.MendingEnchantment;
-import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 
-public class PumpChargeEnchantment extends Enchantment {
-    public PumpChargeEnchantment() {
+public class ArtemisEnchantment extends Enchantment {
+    public ArtemisEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentCategory.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
     public boolean canEnchant(ItemStack stack) {
-        return stack.getItem() instanceof ShotgunFistItem;
+        return stack.is(JNETags.Items.SHOTGUNS) || stack.is(Items.BOW) || stack.is(Items.CROSSBOW);
     }
 
     @Override
@@ -26,6 +26,10 @@ public class PumpChargeEnchantment extends Enchantment {
     @Override
     public int getMaxCost(int level) {
         return this.getMinCost(level) + 50;
+    }
+
+    public int getMaxLevel() {
+        return 2;
     }
 
     @Override
@@ -45,6 +49,6 @@ public class PumpChargeEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(Enchantment other) {
-        return !(other instanceof CartridgeEnchantment) && !(other instanceof ConvergeEnchantment);
+        return !(other instanceof RecoilEnchantment);
     }
 }

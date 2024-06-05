@@ -1,6 +1,7 @@
-package net.jadenxgamer.netherexp.registry.entity.client;
+package net.jadenxgamer.netherexp.registry.entity.client.layer;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.entity.client.VesselModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;

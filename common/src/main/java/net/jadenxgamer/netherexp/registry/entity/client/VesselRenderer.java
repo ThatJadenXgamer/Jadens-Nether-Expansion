@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.entity.client;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.entity.client.layer.VesselGlowlayer;
 import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " S ",
+    "SGS",
+    " S "
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "S": {
+      "item": "netherexp:phasmo_shard"
+    }
+  },
+  "result": {
+    "item": "netherexp:soul_glass",
+    "count": 4
+  }
+}
+

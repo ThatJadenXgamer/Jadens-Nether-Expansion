@@ -38,6 +38,9 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.RUSTY_NETHERITE_GRATE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WARPED_WART.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_GLASS.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.OCHRE_FROGMIST.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.VERDANT_FROGMIST.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.PEARLESCENT_FROGMIST.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.MAGMA_CREAM_BLOCK.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_SWIRLS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SHALE_SWIRLS.get(), RenderType.cutout());

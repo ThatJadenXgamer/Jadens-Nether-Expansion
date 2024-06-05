@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "opacity=1": {
+      "model": "netherexp:block/frogmist/ochre_1"
+    },
+    "opacity=2": {
+      "model": "netherexp:block/frogmist/ochre_2"
+    },
+    "opacity=3": {
+      "model": "netherexp:block/frogmist/ochre_3"
+    },
+    "opacity=4": {
+      "model": "netherexp:block/frogmist/ochre_4"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "netherexp:block/frogmist_1",
+  "textures": {
+    "frogmist": "netherexp:block/verdant_frogmist"
+  }
+}

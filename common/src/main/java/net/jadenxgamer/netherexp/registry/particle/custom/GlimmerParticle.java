@@ -1,7 +1,5 @@
 package net.jadenxgamer.netherexp.registry.particle.custom;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -49,11 +47,7 @@ extends TextureSheetParticle {
         @Override
         public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
             GlimmerParticle glimmerParticle = new GlimmerParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, this.spriteSet);
-            if (clientLevel.random.nextBoolean()) {
-                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
-            } else {
-                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
-            }
+            glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
             glimmerParticle.setParticleSpeed(g * 0.01, h * 0.01, i * 0.01);
             glimmerParticle.setLifetime(clientLevel.random.nextInt(30) + 10);
             return glimmerParticle;
@@ -72,11 +66,7 @@ extends TextureSheetParticle {
         @Override
         public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
             GlimmerParticle glimmerParticle = new GlimmerParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, this.spriteSet);
-            if (clientLevel.random.nextBoolean()) {
-                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
-            } else {
-                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
-            }
+            glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
             glimmerParticle.setParticleSpeed(g * 0.01, h * 0.01, i * 0.01);
             glimmerParticle.setLifetime(clientLevel.random.nextInt(30) + 30);
             return glimmerParticle;
@@ -95,11 +85,6 @@ extends TextureSheetParticle {
         @Override
         public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
             GlimmerParticle glimmerParticle = new GlimmerParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, this.spriteSet);
-            if (clientLevel.random.nextBoolean()) {
-                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
-            } else {
-                glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
-            }
             glimmerParticle.setColor((float)g, (float)h, (float)i);
             glimmerParticle.setLifetime(clientLevel.random.nextInt(30) + 30);
             return glimmerParticle;

@@ -33,7 +33,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
 
     public PumpChargeShotgunItem(Properties properties) {
         super(properties);
-        cooldown = 150;
+        cooldown = 200;
     }
 
     public static int getCharge(ItemStack stack) {
@@ -137,9 +137,10 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         int chargeCount = getCharge(stack) * 6;
         int chargeInaccuracy = getCharge(stack) * 8;
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
+        int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), stack);
         int heat = getTemperature(stack);
         // Bonuses
-        int rBulletBonus = recoil / 5;
+        int rBulletDistanceBonus = artemis / 5;
         double rPushBonus = (double) recoil / 20;
         double cPushBonus = (double) getCharge(stack) / 10;
         int hBulletDistancePenalty = heat / 8;
@@ -148,19 +149,18 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
 
         Vec3 look = livingEntity.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
-        int count = 4 + chargeCount - hCountPenalty;
+        int baseCount = 4 + chargeCount;
+        int minCount = Math.max(1, (4 + (getCharge(stack) / 2)));
+        int count = Math.max(minCount, baseCount - hCountPenalty);
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, livingEntity);
-                soulBullet.shoot(look.x, look.y, look.z, (1.0F + rBulletBonus) - hBulletDistancePenalty, (5 + chargeInaccuracy) + hScatterPenalty);
+                soulBullet.shoot(look.x, look.y, look.z, (1.0F + rBulletDistanceBonus) - hBulletDistancePenalty, (5 + chargeInaccuracy) + hScatterPenalty);
                 level.addFreshEntity(soulBullet);
             }
         }
         double d = 0.3 + rPushBonus + cPushBonus;
         livingEntity.push(pushBack.x * d, pushBack.y * d, pushBack.z * d);
-        if (heat == 4) {
-            livingEntity.setSecondsOnFire(2);
-        }
     }
 
     @Override

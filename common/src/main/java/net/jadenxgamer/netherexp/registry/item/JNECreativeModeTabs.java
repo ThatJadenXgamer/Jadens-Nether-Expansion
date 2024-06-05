@@ -51,8 +51,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.DIAMOND_FOSSIL_ORE.get());
                         output.accept(JNEItems.FOSSIL_FUEL.get());
 
-                        output.accept(JNEItems.NECRO_SHARD.get());
-//                        output.accept(JNEItems.GUILLOTINE);
                         output.accept(JNEItems.SHOTGUN_FIST.get());
                         output.accept(JNEBlocks.SHOTGUN_BARREL.get());
 
@@ -62,7 +60,7 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEItems.WRAITHING_FLESH.get());
                         output.accept(JNEBlocks.SOUL_CANDLE.get());
-                        output.accept(JNEBlocks.SOUL_GLASS.get());
+
                         output.accept(JNEBlocks.SOUL_SWIRLS.get());
                         if (NetherExp.compatCinderscapes()){
                             output.accept(JNEBlocks.SHALE_SWIRLS.get());
@@ -74,6 +72,12 @@ public class JNECreativeModeTabs {
                         output.accept(Blocks.SOUL_SAND);
                         output.accept(JNEBlocks.ECTO_SOUL_SAND.get());
                         output.accept(JNEBlocks.SOUL_MAGMA_BLOCK.get());
+
+                        output.accept(JNEItems.PHASMO_SHARD.get());
+                        output.accept(JNEBlocks.SOUL_GLASS.get());
+                        output.accept(JNEBlocks.OCHRE_FROGMIST.get());
+                        output.accept(JNEBlocks.VERDANT_FROGMIST.get());
+                        output.accept(JNEBlocks.PEARLESCENT_FROGMIST.get());
 
                         output.accept(JNEBlocks.BLACK_ICE.get());
                         output.accept(JNEFluids.ECTOPLASM_BUCKET.get());
@@ -377,6 +381,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.WISP_SPAWN_EGG.get());
                         output.accept(JNEItems.APPARITION_SPAWN_EGG.get());
                         output.accept(JNEItems.VESSEL_SPAWN_EGG.get());
+                        output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
 //                        output.accept(JNEItems.STAMPEDE_SPAWN_EGG);
 //                        output.accept(JNEItems.GRASP_SPAWN_EGG);
 //                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {

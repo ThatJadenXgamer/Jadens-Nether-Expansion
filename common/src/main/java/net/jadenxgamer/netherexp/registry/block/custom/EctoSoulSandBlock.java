@@ -98,9 +98,9 @@ public class EctoSoulSandBlock extends Block {
 //        int i = random.nextInt(NetherExp.getConfig().blocks.ectoSoulSandConfigs.wisp_emerging_chances);
         int i = random.nextInt(50);
         if (i == 0 && !(level.getBlockState(pos.below()).isAir())) {
-            this.setSoulSand(level, pos, random);
+            this.setSusSoulSand(level, pos, random);
             BlockPos targetPos = findAirNeighbor(level, pos);
-            if (targetPos != null && random.nextInt(3) != 0) {
+            if (targetPos != null) {
                 spawnWisp(level, targetPos, random);
             }
         }
@@ -117,8 +117,8 @@ public class EctoSoulSandBlock extends Block {
         return null;
     }
 
-    private void setSoulSand(Level level, BlockPos pos, RandomSource random) {
-        level.setBlock(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.get().defaultBlockState(), UPDATE_CLIENTS);
+    private void setSusSoulSand(Level level, BlockPos pos, RandomSource random) {
+        level.setBlock(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.get().defaultBlockState().setValue(JNEBrushableBlock.PERSISTENT, false), UPDATE_CLIENTS);
         JNEBrushableBlockEntity.setLootTable(level, random, pos, ARCHAEOLOGY_SOUL_SAND_VALLEY);
     }
 

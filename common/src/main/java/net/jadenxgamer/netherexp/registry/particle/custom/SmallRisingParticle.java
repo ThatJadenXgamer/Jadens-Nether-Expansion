@@ -24,6 +24,10 @@ extends TextureSheetParticle {
     }
 
     @Override
+    protected int getLightColor(float f) {
+        return 15728880;
+    }
+    @Override
     public void tick() {
         this.xo = this.x;
         this.yo = this.y;

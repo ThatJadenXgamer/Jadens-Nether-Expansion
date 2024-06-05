@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/character_arch",
+  "parent": "netherexp:nether/rattling_remnants",
   "criteria": {
     "has_item": {
       "trigger": "netherexp:broken_fossil_fuel_ore"

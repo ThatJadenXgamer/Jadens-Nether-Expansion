@@ -133,9 +133,10 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
 
     public static void performShooting(Level level, LivingEntity livingEntity, ItemStack stack) {
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
+        int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), stack);
         int heat = getTemperature(stack);
         // Bonuses
-        int rBulletDistanceBonus = recoil / 5;
+        int rBulletDistanceBonus = artemis / 5;
         double rPushBonus = (double) recoil / 16;
         int hBulletDistancePenalty = heat / 8;
         int hCountPenalty = heat * 4;
@@ -147,9 +148,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         if (EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack) > 0) {
             count = Mth.nextInt(level.random, 6, 8);
         }
-        else {
-            count = 16 - hCountPenalty;
-        }
+        else count = 16 - hCountPenalty;
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, livingEntity);
@@ -159,9 +158,6 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         }
         double d = 0.3 + rPushBonus;
         livingEntity.push(pushBack.x * d, pushBack.y * d, pushBack.z * d);
-        if (heat == 4) {
-            livingEntity.setSecondsOnFire(2);
-        }
     }
 
     @Override

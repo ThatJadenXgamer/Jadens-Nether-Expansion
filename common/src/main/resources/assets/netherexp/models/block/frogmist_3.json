@@ -1,0 +1,30 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "#frogmist"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#frogmist"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#frogmist"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"up": {"uv": [0, 0, 16, 16], "texture": "#frogmist"}
+			}
+		}
+	]
+}

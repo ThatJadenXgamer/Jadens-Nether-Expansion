@@ -91,6 +91,12 @@ public class Vessel extends Monster implements RangedAttackMob {
             else {
                 aimAnimationState.stop();
             }
+            if (getShoot()) {
+                shootAnimationState.startIfStopped(this.tickCount);
+            }
+            else {
+                shootAnimationState.stop();
+            }
         }
     }
 
@@ -308,6 +314,7 @@ public class Vessel extends Monster implements RangedAttackMob {
         @Override
         public void stop() {
             this.shot = false;
+            vessel.setShoot(false);
             vessel.setIsAiming(false);
             this.seeTime = 0;
             this.attackTime = 60;
@@ -377,11 +384,13 @@ public class Vessel extends Monster implements RangedAttackMob {
                 if (distance < attackRadius && hasSight) {
                     if (this.attackTime == 55) {
                         vessel.setPreparingAim(true);
-                    }
-                    if (this.attackTime == 40) {
+                    } else if (this.attackTime == 40) {
                         vessel.setPreparingAim(false);
                         vessel.setIsAiming(true);
-                    } else if (this.attackTime <= 0) {
+                    } else if (this.attackTime == 5) {
+                        vessel.setShoot(true);
+                    }
+                    if (this.attackTime <= 0) {
                         this.shot = true;
                         vessel.shootAnimationState.start(vessel.tickCount);
                         vessel.performRangedAttack(target, 1.0f);

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:hoes",
+    "netherexp:ochre_frogmist",
+    "netherexp:verdant_frogmist",
+    "netherexp:pearlescent_frogmist"
+  ]
+}

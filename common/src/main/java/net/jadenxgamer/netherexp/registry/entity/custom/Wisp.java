@@ -141,9 +141,9 @@ implements FlyingAnimal, Bottleable {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(2, new TemptGoal(this, 1.0, Ingredient.of(Items.SOUL_TORCH), false));
-        this.goalSelector.addGoal(3, new wispAvoidEntityGoal<>(this, Piglin.class, 8.0F, 0.4, 0.8));
-        this.goalSelector.addGoal(3, new wispAvoidEntityGoal<>(this, PiglinBrute.class, 8.0F, 0.4, 0.8));
-        this.goalSelector.addGoal(3, new wispAvoidEntityGoal<>(this, Hoglin.class, 8.0F, 0.4, 0.8));
+        this.goalSelector.addGoal(3, new WispAvoidEntityGoal<>(this, Piglin.class, 8.0F, 0.4, 0.8));
+        this.goalSelector.addGoal(3, new WispAvoidEntityGoal<>(this, PiglinBrute.class, 8.0F, 0.4, 0.8));
+        this.goalSelector.addGoal(3, new WispAvoidEntityGoal<>(this, Hoglin.class, 8.0F, 0.4, 0.8));
         this.goalSelector.addGoal(4, new BurrowInSoulSandGoal(this, 16));
         this.goalSelector.addGoal(4, new WispWanderAroundGoal());
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
@@ -245,10 +245,10 @@ implements FlyingAnimal, Bottleable {
     // AI //
     ////////
 
-    static class wispAvoidEntityGoal<T extends LivingEntity>
+    static class WispAvoidEntityGoal<T extends LivingEntity>
     extends AvoidEntityGoal<T> {
 
-        public wispAvoidEntityGoal(Wisp wisp, Class<T> fleeFromType, float distance, double slowSpeed, double fastSpeed) {
+        public WispAvoidEntityGoal(Wisp wisp, Class<T> fleeFromType, float distance, double slowSpeed, double fastSpeed) {
             super(wisp, fleeFromType, distance, slowSpeed, fastSpeed);
         }
     }

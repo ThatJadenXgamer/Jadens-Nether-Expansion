@@ -7,6 +7,7 @@
     "renderer.BlazeRendererMixin",
     "renderer.CameraMixin",
     "renderer.FogRendererMixin",
+    "renderer.ParticleEngineMixin",
     "renderer.PlayerRendererMixin"
   ],
   "mixins": [

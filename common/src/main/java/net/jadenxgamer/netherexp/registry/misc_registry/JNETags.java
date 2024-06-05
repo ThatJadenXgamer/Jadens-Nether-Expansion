@@ -35,6 +35,7 @@ public class JNETags {
         public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createBlockTag("fossil_ore_convertible"); // Killing Skeletons on these blocks Converts it to Fossil Ore
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks"); // Blocks in this tag will no longer slow you down if Unbounded Speed or if the Entity is in IGNORES_SOUL_SAND_SLOWNESS
         public static final TagKey<Block> NETHERITE_GRATES = createBlockTag("netherite_grates"); // Blocks in this tag are treated as Netherite Grates
+        public static final TagKey<Block> FROGMIST = createBlockTag("frogmist"); // Tag to define all Frogmist (p.s: due to some quirks if a frogmist block isn't in this tag it may crash the game)
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone"); // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE = createBlockTag("sounds/polished_blackstone"); // Blocks in this tag produce Polished Blackstone Sounds
         public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createBlockTag("sounds/polished_blackstone_bricks"); // Blocks in this tag produce Blackstone Brick Sounds
@@ -57,6 +58,7 @@ public class JNETags {
         public static final TagKey<EntityType<?>> PHANTASM_HULL_PROTECTS_AGAINST = createEntityTypeTag("phantasm_hull_protects_against"); // Phantasm Hull will protect you against projectiles in this tag
         public static final TagKey<EntityType<?>> IMMUNE_TO_GRAVE_CLOUDS = createEntityTypeTag("immune_to_grave_clouds"); // Grave Clouds don't damage or slow down entities in this tag
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createEntityTypeTag("ignores_soul_sand_slowness"); // Soul Sand won't slow down entities in this tag
+        public static final TagKey<EntityType<?>> ECTOSLAB_POUNCE_DAMAGES = createEntityTypeTag("ectoslab_pounce_damages"); // Ecto Slab Pounce Damages Entities in this tag
 
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(NetherExp.MOD_ID, name));
@@ -65,6 +67,7 @@ public class JNETags {
     public static class Items {
         public static final TagKey<Item> SMOKESTALK_FUEL = createItemTag("smokestalk_fuel"); // Smokestalk accepts these as fuel items
         public static final TagKey<Item> SHOTGUNS = createItemTag("shotguns"); // Items in this tag will be treated as Shotguns and can be Enchanted like one too
+        public static final TagKey<Item> FROGMIST_VISIBLE_ITEMS = createItemTag("frogmist_visible_items"); // Frogmist's hitbox shows up only if you're holding items in this tag
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(NetherExp.MOD_ID, name));
