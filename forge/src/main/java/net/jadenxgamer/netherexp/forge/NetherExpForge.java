@@ -1,8 +1,10 @@
 package net.jadenxgamer.netherexp.forge;
 
+import com.mojang.serialization.Codec;
 import dev.architectury.platform.forge.EventBuses;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
+import net.jadenxgamer.netherexp.forge.worldgen.JNESpawnCostsBiomeModifier;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
 import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
@@ -19,6 +21,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -29,6 +32,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forgespi.language.IModFileInfo;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.nio.file.Path;
 
@@ -42,6 +47,9 @@ public class NetherExpForge {
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpForgeClient::init);
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        final DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
+        BIOME_MODIFIER_SERIALIZERS.register(eventBus);
+        BIOME_MODIFIER_SERIALIZERS.register("jne_spawn_costs", JNESpawnCostsBiomeModifier::createCodec);
         eventBus.addListener(NetherExpForge::commonSetup);
         eventBus.addListener(NetherExpForge::registerAttributes);
         eventBus.addListener(NetherExpForge::registerSpawnPlacements);
