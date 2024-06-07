@@ -33,6 +33,9 @@
     ],
     "client": [
       "net.jadenxgamer.netherexp.fabric.NetherExpFabricClient"
+    ],
+    "terrablender": [
+      "net.jadenxgamer.netherexp.fabric.NetherExpFabric"
     ]
   },
   "mixins": [

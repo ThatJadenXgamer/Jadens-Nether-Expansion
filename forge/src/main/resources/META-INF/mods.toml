@@ -34,3 +34,9 @@ mandatory = true
 versionRange = "[9.1.12,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.netherexp]]
+modId="terrablender"
+mandatory=true
+versionRange="[3.0.1.7,)"
+ordering="NONE"
