@@ -414,6 +414,18 @@
   "subtitles.item.grenade_antidote.explode": "Grenade Antidote explodes",
   "subtitles.item.shotgun.use": "Shotgun fires",
 
+  "subtitles.entity.warphopper.ambient": "Warphopper chirps",
+  "subtitles.entity.warphopper.hurt": "Warphopper hurts",
+  "subtitles.entity.warphopper.death": "Warphopper dies",
+  "subtitles.entity.warphopper.cloak": "Warphopper cloaks",
+  "subtitles.entity.warphopper.loop": "Warphopper sings",
+  "subtitles.entity.wisp.ambient": "Wisp whimpers",
+  "subtitles.entity.wisp.hurt": "Wisp hurts",
+  "subtitles.entity.wisp.death": "Wisp dies",
+  "subtitles.entity.apparition.ambient": "Apparition rumbles",
+  "subtitles.entity.apparition.hurt": "Apparition hurts",
+  "subtitles.entity.apparition.death": "Apparition dies",
+
   "death.attack.graveMistSuffocation": "%1$s was shrouded and choked by souls",
   "death.attack.stampedeCrush": "%1$s was crushed by %2$s",
   "death.attack.soulBullet": "%1$s was shot with a lethal firearm",
@@ -425,6 +437,7 @@
   "item.minecraft.splash_potion.effect.fogsight": "Splash Potion of Fogsight",
   "item.minecraft.lingering_potion.effect.fogsight": "Lingering Potion of Fogsight",
 
+  "entity.netherexp.wisp": "Wisp",
   "entity.netherexp.apparition": "Apparition",
   "entity.netherexp.vessel": "Vessel",
   "entity.netherexp.ecto_slab": "Ecto Slab",
@@ -438,15 +451,7 @@
 
   "entity.netherexp.antidote": "Antidote",
   "entity.netherexp.grenade_effect_cloud": "Grenade Effect Cloud",
-
-  "entity.netherexp.wisp": "Wisp",
-
   "entity.netherexp.warphopper": "Warphopper",
-  "subtitles.entity.warphopper.ambient": "Warphopper chirps",
-  "subtitles.entity.warphopper.hurt": "Warphopper hurts",
-  "subtitles.entity.warphopper.death": "Warphopper dies",
-  "subtitles.entity.warphopper.cloak": "Warphopper cloaks",
-  "subtitles.entity.warphopper.loop": "Warphopper sings",
 
   "advancements.nether.add_spores_to_block.title": "Algaebra",
   "advancements.nether.add_spores_to_block.description": "Apply Lightspores or Nightspores to an appropriate wart block",

@@ -387,7 +387,7 @@ public class Vessel extends Monster implements RangedAttackMob {
                     } else if (this.attackTime == 40) {
                         vessel.setPreparingAim(false);
                         vessel.setIsAiming(true);
-                    } else if (this.attackTime == 5) {
+                    } else if (this.attackTime == 3) {
                         vessel.setShoot(true);
                     }
                     if (this.attackTime <= 0) {

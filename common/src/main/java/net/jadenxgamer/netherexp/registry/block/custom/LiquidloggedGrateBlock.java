@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -59,6 +60,11 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
         return Shapes.empty();
     }
 
+    @SuppressWarnings("deprecation")
+    public @NotNull VoxelShape getVisualShape(BlockState arg, BlockGetter arg2, BlockPos arg3, CollisionContext arg4) {
+        return Shapes.empty();
+    }
+
     @Override
     public boolean canPlaceLiquid(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, Fluid fluid) {
         return fluid == Fluids.WATER || fluid == Fluids.LAVA || fluid == JNEFluids.ECTOPLASM.get();
@@ -85,13 +91,12 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
     }
 
     @Override
-    public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
+    public @NotNull ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
         if (state.getValue(LIQUIDLOGGED) != Liquids.AIR) {
             level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquids.AIR), 3);
             if (!state.canSurvive(level, pos)) {
                 level.destroyBlock(pos, true);
             }
-
             if (state.getValue(LIQUIDLOGGED) == Liquids.WATER) {
                 return new ItemStack(Items.WATER_BUCKET);
             }

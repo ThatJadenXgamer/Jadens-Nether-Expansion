@@ -54,6 +54,7 @@ implements FlyingAnimal, Bottleable {
     public int boredDelay = 1000;
 
     private static final EntityDataAccessor<Boolean> FROM_BOTTLE = SynchedEntityData.defineId(Wisp.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> SALTED = SynchedEntityData.defineId(Wisp.class, EntityDataSerializers.BOOLEAN);
 
     public Wisp(EntityType<? extends AgeableMob> entityType, Level level) {
         super(entityType, level);
@@ -153,7 +154,7 @@ implements FlyingAnimal, Bottleable {
     public void aiStep() {
         super.aiStep();
         if (!this.level().isClientSide) {
-            if (this.getBoredDelay() > 0 && !this.fromBottle()) {
+            if (this.getBoredDelay() > 0 && !this.getSalted()) {
                 --this.boredDelay;
             }
         }
@@ -172,6 +173,7 @@ implements FlyingAnimal, Bottleable {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(FROM_BOTTLE, false);
+        this.entityData.define(SALTED, false);
     }
 
     public void setBoredDelay(int boredDelay) {
@@ -186,6 +188,7 @@ implements FlyingAnimal, Bottleable {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("FromBottle", this.fromBottle());
+        nbt.putBoolean("Salted", this.getSalted());
         nbt.putInt("BoredDelay", this.boredDelay);
     }
 
@@ -193,6 +196,7 @@ implements FlyingAnimal, Bottleable {
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setFromBottle(nbt.getBoolean("FromBottle"));
+        this.setSalted(nbt.getBoolean("Salted"));
         this.boredDelay = nbt.getInt("BoredDelay");
     }
 
@@ -204,6 +208,14 @@ implements FlyingAnimal, Bottleable {
     @Override
     public void setFromBottle(boolean bl) {
         this.entityData.set(FROM_BOTTLE, bl);
+    }
+
+    public boolean getSalted() {
+        return this.entityData.get(SALTED);
+    }
+
+    public void setSalted(boolean bl) {
+        this.entityData.set(SALTED, bl);
     }
 
     @Override
@@ -228,17 +240,56 @@ implements FlyingAnimal, Bottleable {
 
     @Override
     protected @NotNull InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
-        return Bottleable.bottleMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
+        ItemStack itemStack = player.getItemInHand(interactionHand);
+        if (itemStack.is(Items.HONEYCOMB) && !this.isPersistenceRequired()) {
+            if (!this.level().isClientSide) {
+                this.setSalted(true);
+                itemStack.shrink(1);
+                return InteractionResult.SUCCESS;
+            }
+            else {
+                for(int i = 0; i < 4; ++i) {
+                    this.level().addParticle(ParticleTypes.WAX_ON, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), 0.0, 0.0, 0.0);
+                }
+                return InteractionResult.CONSUME;
+            }
+        }
+        else {
+            return Bottleable.bottleMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
+        }
     }
 
     @Override
     public boolean requiresCustomPersistence() {
-        return super.requiresCustomPersistence() || this.fromBottle();
+        return super.requiresCustomPersistence() || this.getSalted();
     }
 
     @Override
     public boolean removeWhenFarAway(double distanceSquared) {
-        return !this.fromBottle() && !this.hasCustomName();
+        return !this.getSalted() && !this.hasCustomName();
+    }
+
+    ////////////
+    // SOUNDS //
+    ////////////
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JNESoundEvents.ENTITY_WISP_AMBIENT.get();
+    }
+
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return JNESoundEvents.ENTITY_WISP_HURT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JNESoundEvents.ENTITY_WISP_HURT.get();
     }
 
     ////////
@@ -321,7 +372,7 @@ implements FlyingAnimal, Bottleable {
 
         @Override
         public boolean canUse() {
-            return wisp.getBoredDelay() == 0 && !wisp.fromBottle() && super.canUse();
+            return wisp.getBoredDelay() == 0 && !wisp.getSalted() && super.canUse();
         }
 
         @Override
@@ -339,15 +390,5 @@ implements FlyingAnimal, Bottleable {
         public void stop() {
             super.stop();
         }
-    }
-
-    ////////////
-    // SOUNDS //
-    ////////////
-
-    @Nullable
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return JNESoundEvents.ENTITY_WISP_AMBIENT.get();
     }
 }

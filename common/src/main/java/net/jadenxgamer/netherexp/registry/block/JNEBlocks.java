@@ -257,7 +257,7 @@ public class JNEBlocks {
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
 
     public static final RegistrySupplier<Block> NETHERITE_GRATE = registerFireProofBlock("netherite_grate", () ->
-            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
+            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)));
 
     // Rusty Netherite
 
@@ -277,7 +277,7 @@ public class JNEBlocks {
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
 
     public static final RegistrySupplier<Block> RUSTY_NETHERITE_GRATE = registerFireProofBlock("rusty_netherite_grate", () ->
-            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
+            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)));
 
     // Enigma
 

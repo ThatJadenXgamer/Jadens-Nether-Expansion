@@ -51,8 +51,10 @@ public class EctoSlab extends Slime {
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState digAnimationState = new AnimationState();
+    public final AnimationState attackAnimation = new AnimationState();
 
     private static final EntityDataAccessor<Boolean> IS_UNDERGROUND = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
 
     public static final Predicate<LivingEntity> ECTO_SLAB_CAN_DAMAGE = (arg) -> arg.getType().is(JNETags.EntityTypes.ECTOSLAB_POUNCE_DAMAGES);
 
@@ -69,12 +71,19 @@ public class EctoSlab extends Slime {
         super.tick();
 
         if (this.level().isClientSide) {
-            idleAnimationState.startIfStopped(this.tickCount);
             if (this.getIsUnderground()) {
+                idleAnimationState.stop();
                 digAnimationState.startIfStopped(this.tickCount);
             }
             else {
+                idleAnimationState.startIfStopped(this.tickCount);
                 digAnimationState.stop();
+            }
+            if (this.getAttack()) {
+                attackAnimation.startIfStopped(this.tickCount);
+            }
+            else {
+                attackAnimation.stop();
             }
         }
     }
@@ -138,6 +147,14 @@ public class EctoSlab extends Slime {
             super.pushEntities();
         }
     }
+
+    //    @Override
+//    public @NotNull EntityDimensions getDimensions(Pose pose) {
+//        if (!this.getIsUnderground()) {
+//            return super.getDimensions(pose).scale(0.255F * (float)this.getSize());
+//            refreshDimensions();
+//        }
+//    }
 
     @Override
     public void refreshDimensions() {
@@ -237,7 +254,7 @@ public class EctoSlab extends Slime {
         return ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) * f;
     }
 
-    private boolean getIsUnderground() {
+    public boolean getIsUnderground() {
         return this.getEntityData().get(IS_UNDERGROUND);
     }
 
@@ -245,10 +262,19 @@ public class EctoSlab extends Slime {
         this.getEntityData().set(IS_UNDERGROUND, bl);
     }
 
+    public boolean getAttack() {
+        return this.getEntityData().get(ATTACK);
+    }
+
+    private void setAttack(boolean bl) {
+        this.getEntityData().set(ATTACK, bl);
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.getEntityData().define(IS_UNDERGROUND, false);
+        this.getEntityData().define(ATTACK, false);
     }
 
     private void damageLivingEntities(List<LivingEntity> allEntities) {
@@ -395,6 +421,12 @@ public class EctoSlab extends Slime {
             super.start();
         }
 
+        @Override
+        public void stop() {
+            super.stop();
+            ectoSlab.setAttack(false);
+        }
+
         public boolean canContinueToUse() {
             LivingEntity livingEntity = this.ectoSlab.getTarget();
             if (livingEntity == null) {
@@ -417,6 +449,7 @@ public class EctoSlab extends Slime {
             }
             else {
                 ectoSlab.setIsUnderground(false);
+                ectoSlab.setAttack(true);
                 ectoSlab.damageLivingEntities(ectoSlab.level().getEntitiesOfClass(LivingEntity.class, this.ectoSlab.getBoundingBox(), ECTO_SLAB_CAN_DAMAGE));
             }
             LivingEntity livingEntity = this.ectoSlab.getTarget();

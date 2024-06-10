@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.animation.JNEAnimationDefinition;
 import net.jadenxgamer.netherexp.registry.entity.custom.EctoSlab;
+import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.NotNull;
 
 public class EctoSlabModel<T extends Entity> extends HierarchicalModel<T> {
+	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(NetherExp.MOD_ID, "ectoslab"), "main");
 	private final ModelPart ecto_slab;
 
@@ -38,6 +40,8 @@ public class EctoSlabModel<T extends Entity> extends HierarchicalModel<T> {
 
 		PartDefinition cube_r2 = bottom.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(0, 26).addBox(-4.0F, 2.0F, -5.0F, 9.0F, 4.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-0.5F, -4.0F, -0.5F, 0.0F, -1.5708F, 0.0F));
 
+		PartDefinition beam = ecto_slab.addOrReplaceChild("beam", CubeListBuilder.create().texOffs(40, 48).addBox(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
@@ -47,6 +51,7 @@ public class EctoSlabModel<T extends Entity> extends HierarchicalModel<T> {
 
 		this.animate(((EctoSlab) entity).idleAnimationState, JNEAnimationDefinition.ECTO_SLAB_IDLE, ageInTicks);
 		this.animate(((EctoSlab) entity).digAnimationState, JNEAnimationDefinition.ECTO_SLAB_DIG, ageInTicks);
+		this.animate(((EctoSlab) entity).attackAnimation, JNEAnimationDefinition.ECTO_SLAB_ATTACK, ageInTicks);
 	}
 
 	@Override

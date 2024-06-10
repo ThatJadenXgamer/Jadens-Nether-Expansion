@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.MagmaCube;
 import org.jetbrains.annotations.NotNull;
 
 public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionModel<Apparition>> {
@@ -16,8 +17,14 @@ public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionModel<
         super(context, new ApparitionModel<>(context.bakeLayer(JNEModelLayers.APPARITION_LAYER)), 0.8f);
         this.addLayer(new ApparitionGlowlayer<>(this));
     }
+
     @Override
     public @NotNull ResourceLocation getTextureLocation(Apparition entity) {
         return new ResourceLocation(NetherExp.MOD_ID, "textures/entity/apparition.png");
+    }
+
+    @Override
+    protected int getBlockLightLevel(Apparition entity, BlockPos pos) {
+        return 15;
     }
 }

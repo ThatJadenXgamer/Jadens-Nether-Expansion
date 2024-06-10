@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.entity.client.layer.EctoSlabGlowlayer;
 import net.jadenxgamer.netherexp.registry.entity.custom.EctoSlab;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -9,21 +10,25 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.MagmaCube;
 import org.jetbrains.annotations.NotNull;
 
 public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabModel<EctoSlab>> {
     public EctoSlabRenderer(EntityRendererProvider.Context context) {
         super(context, new EctoSlabModel<>(context.bakeLayer(JNEModelLayers.ECTO_SLAB_LAYER)), 0.25f);
+        this.addLayer(new EctoSlabGlowlayer<>(this));
     }
 
-    protected int getBlockLightLevel(MagmaCube magmaCube, BlockPos blockPos) {
+    @Override
+    protected int getBlockLightLevel(EctoSlab entity, BlockPos pos) {
         return 15;
     }
 
     @Override
     public void render(EctoSlab ectoSlab, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
-        this.shadowRadius = 0.25F * (float)ectoSlab.getSize();
+        if (!ectoSlab.getIsUnderground()) {
+            this.shadowRadius = 0.25f * (float)ectoSlab.getSize();
+        }
+        else this.shadowRadius = 0.0f;
         super.render(ectoSlab, f, g, poseStack, multiBufferSource, i);
     }
 

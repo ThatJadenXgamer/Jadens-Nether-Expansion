@@ -25,7 +25,7 @@ public class SoulSoilLayerBlock extends SnowLayerBlock {
         } else if (blockState2.is(JNETags.Blocks.SOUL_LAYER_CAN_SURVIVE_ON)) {
             return true;
         } else {
-            return Block.isFaceFull(blockState2.getCollisionShape(levelReader, blockPos.below()), Direction.UP) || blockState2.is(this) && (Integer)blockState2.getValue(LAYERS) == 8;
+            return Block.isFaceFull(blockState2.getCollisionShape(levelReader, blockPos.below()), Direction.UP) || blockState2.is(this) && blockState2.getValue(LAYERS) == 8;
         }
     }
 }

@@ -1,12 +1,14 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -265,7 +267,28 @@ public class Apparition extends Monster implements FlyingAnimal {
         this.entityData.set(PREFERENCE, preference);
     }
 
-    ////////
+    ////////////
+    // SOUNDS //
+    ////////////
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JNESoundEvents.ENTITY_APPARITION_AMBIENT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return JNESoundEvents.ENTITY_APPARITION_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JNESoundEvents.ENTITY_APPARITION_DEATH.get();
+    }
+
+////////
     // AI //
     ////////
 

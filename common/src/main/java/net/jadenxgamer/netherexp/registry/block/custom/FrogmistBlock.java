@@ -9,7 +9,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -102,7 +101,9 @@ public class FrogmistBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
         BlockState belowState = levelReader.getBlockState(blockPos.below());
-        return Block.isFaceFull(belowState.getCollisionShape(levelReader, blockPos.below()), Direction.UP);
+        FluidState fluidState = levelReader.getFluidState(blockPos);
+        FluidState belowFluidState = levelReader.getFluidState(blockPos.below());
+        return Block.isFaceFull(belowState.getCollisionShape(levelReader, blockPos.below()), Direction.UP) || belowFluidState.getType() == Fluids.WATER && fluidState.getType() == Fluids.EMPTY;
     }
 
     @Override

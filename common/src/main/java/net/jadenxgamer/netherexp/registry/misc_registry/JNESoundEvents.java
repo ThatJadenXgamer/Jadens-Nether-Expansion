@@ -134,8 +134,6 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> SOUL_SLATE_SOLIDIFYING = registerSoundEvents("block.soul_slate.solidifying");
     public static RegistrySupplier<SoundEvent> BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
     public static RegistrySupplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");
-    public static RegistrySupplier<SoundEvent> BUCKET_EMPTY_MAGMA_CUBE = registerSoundEvents("item.bucket.empty_magma_cube");
-    public static RegistrySupplier<SoundEvent> BUCKET_FILL_MAGMA_CUBE = registerSoundEvents("item.bucket.fill_magma_cube");
     public static RegistrySupplier<SoundEvent> BRUSH_BRUSHING_SOUL_SAND_COMPLETE = registerSoundEvents("item.brush.brushing_soul_sand_complete");
     public static RegistrySupplier<SoundEvent> EXPLOSIVE_SCORIA_AMBIENT = registerSoundEvents("block.explosive_scoria.ambient");
     public static RegistrySupplier<SoundEvent> SPORESHROOM_TRAMPOLINED = registerSoundEvents("block.sporeshroom.trampolined");
@@ -155,6 +153,11 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> ENTITY_WARPHOPPER_CLOAK = registerSoundEvents("entity.warphopper.cloak");
 
     public static RegistrySupplier<SoundEvent> ENTITY_WISP_AMBIENT = registerSoundEvents("entity.wisp.ambient");
+    public static RegistrySupplier<SoundEvent> ENTITY_WISP_HURT = registerSoundEvents("entity.wisp.hurt");
+
+    public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_AMBIENT = registerSoundEvents("entity.apparition.ambient");
+    public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_HURT = registerSoundEvents("entity.apparition.hurt");
+    public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_DEATH = registerSoundEvents("entity.apparition.death");
 
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvents("entity.player.hurt_igneous_thorns");
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_SUFFOCATION = registerSoundEvents("entity.player.hurt_suffocation");

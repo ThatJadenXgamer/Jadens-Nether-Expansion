@@ -1050,6 +1050,36 @@
       "netherexp:mob/wisp/idle4"
     ]
   },
+  "entity.wisp.hurt": {
+    "subtitle": "subtitles.entity.wisp.hurt",
+    "sounds": [
+      "netherexp:mob/wisp/hurt1",
+      "netherexp:mob/wisp/hurt2"
+    ]
+  },
+  "entity.apparition.ambient": {
+    "subtitle": "subtitles.entity.apparition.ambient",
+    "sounds": [
+      "netherexp:mob/apparition/idle1",
+      "netherexp:mob/apparition/idle2",
+      "netherexp:mob/apparition/idle3"
+    ]
+  },
+  "entity.apparition.hurt": {
+    "subtitle": "subtitles.entity.apparition.hurt",
+    "sounds": [
+      "netherexp:mob/apparition/hurt1",
+      "netherexp:mob/apparition/hurt2",
+      "netherexp:mob/apparition/hurt3"
+    ]
+  },
+  "entity.apparition.death": {
+    "subtitle": "subtitles.entity.apparition.death",
+    "sounds": [
+      "netherexp:mob/apparition/death1",
+      "netherexp:mob/apparition/death2"
+    ]
+  },
   "entity.player.hurt_igneous_thorns": {
     "subtitle": "subtitles.entity.player.hurt",
     "sounds": [
