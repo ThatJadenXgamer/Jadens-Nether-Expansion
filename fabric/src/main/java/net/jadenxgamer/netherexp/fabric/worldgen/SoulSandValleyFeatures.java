@@ -57,8 +57,8 @@ public class SoulSandValleyFeatures {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
                 GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.ECTO_SOUL_SAND);
 
-//        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
-//                GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.ECTOPLASM_LAKE);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
+                GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.ECTOPLASM_LAKE);
         
         // STEP 10 - TOP_LAYER_MODIFICATION
     }

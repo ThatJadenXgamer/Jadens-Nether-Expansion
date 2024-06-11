@@ -41,7 +41,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enchanted_golden_apple",
-          "weight": 5
+          "weight": 1
         }
       ]
     }

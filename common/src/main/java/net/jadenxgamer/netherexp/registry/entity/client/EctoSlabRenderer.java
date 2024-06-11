@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabModel<EctoSlab>> {
     public EctoSlabRenderer(EntityRendererProvider.Context context) {
         super(context, new EctoSlabModel<>(context.bakeLayer(JNEModelLayers.ECTO_SLAB_LAYER)), 0.25f);
-        this.addLayer(new EctoSlabGlowlayer<>(this));
     }
 
     @Override

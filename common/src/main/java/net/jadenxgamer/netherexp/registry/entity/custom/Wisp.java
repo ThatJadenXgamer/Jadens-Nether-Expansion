@@ -241,7 +241,7 @@ implements FlyingAnimal, Bottleable {
     @Override
     protected @NotNull InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        if (itemStack.is(Items.HONEYCOMB) && !this.isPersistenceRequired()) {
+        if (itemStack.is(Items.HONEYCOMB) && !this.getSalted()) {
             if (!this.level().isClientSide) {
                 this.setSalted(true);
                 itemStack.shrink(1);

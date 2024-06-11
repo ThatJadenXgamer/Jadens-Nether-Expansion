@@ -1,9 +1,9 @@
 {
-  "feature": "netherexp:soul_sand_valley/ore_soul_magma",
+  "feature": "netherexp:warped_forest/twisting_ivy",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 1
+      "count": 26
     },
     {
       "type": "minecraft:in_square"
@@ -13,10 +13,10 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 90
+          "above_bottom": 4
         },
         "max_inclusive": {
-          "absolute": 120
+          "below_top": 4
         }
       }
     },

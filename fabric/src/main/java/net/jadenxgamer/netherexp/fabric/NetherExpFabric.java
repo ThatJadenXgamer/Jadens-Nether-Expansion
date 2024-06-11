@@ -3,8 +3,7 @@ package net.jadenxgamer.netherexp.fabric;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.fabric.worldgen.EntityGeneration;
-import net.jadenxgamer.netherexp.fabric.worldgen.SoulSandValleyFeatures;
+import net.jadenxgamer.netherexp.fabric.worldgen.*;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
 import net.jadenxgamer.netherexp.registry.entity.custom.EctoSlab;
@@ -17,7 +16,11 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
     @Override
     public void onInitialize() {
         NetherExp.init();
+        NetherWastesFeatures.generateFeatures();
         SoulSandValleyFeatures.generateFeatures();
+        CrimsonForestFeatures.generateFeatures();
+        WarpedForestFeatures.generateFeatures();
+        BasaltDeltasFeatures.generateFeatures();
         EntityGeneration.generateEntities();
         JNEPotionRecipe.addInvokerPotionRecipes();
 

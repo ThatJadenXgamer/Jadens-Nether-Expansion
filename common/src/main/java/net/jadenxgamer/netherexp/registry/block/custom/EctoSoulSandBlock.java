@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -37,7 +38,13 @@ public class EctoSoulSandBlock extends Block {
 
     public static final BooleanProperty SALTED = BooleanProperty.create("salted");
 
+    public static final ResourceLocation ARCHAEOLOGY_NETHER_WASTES = new ResourceLocation(NetherExp.MOD_ID, "archaeology/nether_wastes");
     public static final ResourceLocation ARCHAEOLOGY_SOUL_SAND_VALLEY = new ResourceLocation(NetherExp.MOD_ID, "archaeology/soul_sand_valley");
+    public static final ResourceLocation ARCHAEOLOGY_CRIMSON_FOREST = new ResourceLocation(NetherExp.MOD_ID, "archaeology/crimson_forest");
+    public static final ResourceLocation ARCHAEOLOGY_WARPED_FOREST = new ResourceLocation(NetherExp.MOD_ID, "archaeology/warped_forest");
+    public static final ResourceLocation ARCHAEOLOGY_BASALT_DELTAS = new ResourceLocation(NetherExp.MOD_ID, "archaeology/basalt_deltas");
+    public static final ResourceLocation ARCHAEOLOGY_FORTRESS = new ResourceLocation(NetherExp.MOD_ID, "archaeology/fortress");
+    public static final ResourceLocation ARCHAEOLOGY_BASTION_REMNANT = new ResourceLocation(NetherExp.MOD_ID, "archaeology/bastion_remnant");
 
     public EctoSoulSandBlock(Properties properties) {
         super(properties);
@@ -118,8 +125,21 @@ public class EctoSoulSandBlock extends Block {
     }
 
     private void setSusSoulSand(Level level, BlockPos pos, RandomSource random) {
+        ResourceLocation lootTable = ARCHAEOLOGY_NETHER_WASTES;
+        if (level.getBiome(pos).is(Biomes.SOUL_SAND_VALLEY)) {
+            lootTable = ARCHAEOLOGY_SOUL_SAND_VALLEY;
+        }
+        else if (level.getBiome(pos).is(Biomes.CRIMSON_FOREST)) {
+            lootTable = ARCHAEOLOGY_CRIMSON_FOREST;
+        }
+        else if (level.getBiome(pos).is(Biomes.WARPED_FOREST)) {
+            lootTable = ARCHAEOLOGY_WARPED_FOREST;
+        }
+        else if (level.getBiome(pos).is(Biomes.BASALT_DELTAS)) {
+            lootTable = ARCHAEOLOGY_BASALT_DELTAS;
+        }
         level.setBlock(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.get().defaultBlockState().setValue(JNEBrushableBlock.PERSISTENT, false), UPDATE_CLIENTS);
-        JNEBrushableBlockEntity.setLootTable(level, random, pos, ARCHAEOLOGY_SOUL_SAND_VALLEY);
+        JNEBrushableBlockEntity.setLootTable(level, random, pos, lootTable);
     }
 
     private void spawnWisp(ServerLevel level, BlockPos pos, RandomSource random) {

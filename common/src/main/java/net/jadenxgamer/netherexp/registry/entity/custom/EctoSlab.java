@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -69,6 +70,7 @@ public class EctoSlab extends Slime {
     @Override
     public void tick() {
         super.tick();
+        this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
 
         if (this.level().isClientSide) {
             if (this.getIsUnderground()) {
