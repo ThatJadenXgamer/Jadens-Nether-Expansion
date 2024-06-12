@@ -18,6 +18,12 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class EctoplasmLiquidBlock extends ArchitecturyLiquidBlock {
+    /*
+     * Based on Alex's Caves AcidBlock.java code
+     * https://github.com/AlexModGuy/AlexsCaves/blob/main/src/main/java/com/github/alexmodguy/alexscaves/server/block/AcidBlock.java
+     * https://www.curseforge.com/minecraft/mc-mods/alexs-caves
+     */
+
     private static Map<Block, Block> FREEZES;
 
     public EctoplasmLiquidBlock(Supplier<? extends FlowingFluid> fluid, Properties properties) {

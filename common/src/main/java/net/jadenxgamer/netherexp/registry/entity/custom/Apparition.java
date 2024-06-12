@@ -28,6 +28,7 @@ import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
 import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -188,6 +189,7 @@ public class Apparition extends Monster implements FlyingAnimal {
         if (p == 1) {
             this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Skeleton.class, true));
             this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Stray.class, true));
+            this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
         }
         else if (p == 2) {
@@ -196,10 +198,12 @@ public class Apparition extends Monster implements FlyingAnimal {
         else if (p == 3) {
             this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, MagmaCube.class, true));
             this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Slime.class, true));
+            this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
             this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true));
         }
         else if (p == 4) {
             this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Blaze.class, true));
+            this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
             this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true));
         }
     }

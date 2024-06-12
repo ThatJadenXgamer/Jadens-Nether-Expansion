@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/rattling_remnants",
+  "parent": "netherexp:nether/ghost_mucus",
   "criteria": {
     "has_item": {
       "trigger": "netherexp:exorcism"

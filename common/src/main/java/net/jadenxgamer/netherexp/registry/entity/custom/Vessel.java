@@ -167,8 +167,8 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     private void doExorcism() {
         Skeleton skeleton = this.convertTo(EntityType.SKELETON, false);
-        if (skeleton != null) {
-            skeleton.finalizeSpawn((ServerLevel)this.level(), this.level().getCurrentDifficultyAt(skeleton.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
+        if (skeleton != null && this.level() instanceof ServerLevel serverLevel) {
+            skeleton.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(skeleton.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
             skeleton.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
             skeleton.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
             skeleton.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
@@ -176,7 +176,7 @@ public class Vessel extends Monster implements RangedAttackMob {
                 skeleton.setCustomName(skeleton.getCustomName());
             }
         }
-        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.NEUTRAL, 1.0f, 1.0f);
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
         for(int i = 0; i < 10; i++) {
             this.level().addParticle(JNEParticleTypes.WISP.get(), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0, 0.0, 0.0);
         }
@@ -192,17 +192,8 @@ public class Vessel extends Monster implements RangedAttackMob {
     @Override
     public void die(DamageSource damageSource) {
         super.die(damageSource);
-        if (this.level().getDifficulty() == Difficulty.EASY) {
-            for (int i = 0; i < this.level().getRandom().nextInt(2) + 1; i++) {
-                Wisp wisp = JNEEntityType.WISP.get().create(this.level());
-                if (wisp != null) {
-                    wisp.setBoredDelay(0);
-                    wisp.setPos(this.getX(), this.getY(), this.getZ());
-                    this.level().addFreshEntity(wisp);
-                }
-            }
-        }
-        else {
+        int escapingOdds = this.random.nextInt(this.level().getDifficulty() == Difficulty.HARD ? 1 : 3);
+        if (this.level().getDifficulty() != Difficulty.EASY && escapingOdds == 0) {
             Apparition apparition = JNEEntityType.APPARITION.get().create(this.level());
             if (apparition != null) {
                 apparition.setPos(this.getX(), this.getY(), this.getZ());

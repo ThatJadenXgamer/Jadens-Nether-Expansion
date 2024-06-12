@@ -21,8 +21,7 @@ public class JNEBrushableBlockRenderer implements BlockEntityRenderer<JNEBrushab
         this.itemRenderer = context.getItemRenderer();
     }
 
-    // Literally just Vanilla's BrushableBlockRenderer Code
-
+    // Taken from Vanilla's BrushableBlockRenderer code
     @Override
     public void render(JNEBrushableBlockEntity jneBrushableBlockEntity, float tickDelta, PoseStack poseStack, MultiBufferSource multiBufferSource, int light, int overlay) {
         if (jneBrushableBlockEntity.getLevel() != null) {

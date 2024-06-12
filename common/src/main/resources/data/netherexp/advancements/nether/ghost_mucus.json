@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:nether/root",
+  "parent": "netherexp:nether/soul_sand_valley",
   "criteria": {
     "has_item": {
       "trigger": "minecraft:inventory_changed",

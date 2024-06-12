@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:soul_swirls"
+    },
+    "title": {
+      "translate": "advancements.nether.frightening_rush.title"
+    },
+    "description": {
+      "translate": "advancements.nether.frightening_rush.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley",
+  "criteria": {
+    "condition": {
+      "trigger": "minecraft:enter_block",
+      "conditions": {
+        "block": "netherexp:soul_swirls"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "condition"
+    ]
+  ]
+}

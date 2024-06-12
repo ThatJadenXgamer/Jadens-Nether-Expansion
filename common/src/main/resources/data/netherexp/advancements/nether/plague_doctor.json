@@ -1,0 +1,53 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:warped_wart"
+    },
+    "title": {
+      "translate": "advancements.nether.plague_doctor.title"
+    },
+    "description": {
+      "translate": "advancements.nether.plague_doctor.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/the_caduceus",
+  "criteria": {
+    "all_effects": {
+      "trigger": "minecraft:effects_changed",
+      "conditions": {
+        "effects": {
+          "netherexp:speed_immunity": {},
+          "netherexp:slowness_immunity": {},
+          "netherexp:strength_immunity": {},
+          "netherexp:jump_boost_immunity": {},
+          "netherexp:regeneration_immunity": {},
+          "netherexp:fire_resistance_immunity": {},
+          "netherexp:water_breathing_immunity": {},
+          "netherexp:invisibility_immunity": {},
+          "netherexp:weakness_immunity": {},
+          "netherexp:poison_immunity": {},
+          "netherexp:resistance_immunity": {},
+          "netherexp:absorption_immunity": {},
+          "netherexp:haste_immunity": {},
+          "netherexp:mining_fatigue_immunity": {},
+          "netherexp:darkness_immunity": {},
+          "netherexp:levitation_immunity": {},
+          "netherexp:hunger_immunity": {},
+          "netherexp:wither_immunity": {}
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "all_effects"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

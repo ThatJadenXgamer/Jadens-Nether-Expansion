@@ -1,0 +1,8 @@
+{
+  "blocks": "#netherexp:paintable/nether_brick_slab",
+  "mappings": {
+    "arts_and_crafts:bleachdew_paintbrush": "minecraft:nether_brick_slab",
+    "arts_and_crafts:red_paintbrush": "minecraft:red_nether_brick_slab",
+    "arts_and_crafts:cyan_paintbrush": "netherexp:blue_nether_brick_slab"
+  }
+}

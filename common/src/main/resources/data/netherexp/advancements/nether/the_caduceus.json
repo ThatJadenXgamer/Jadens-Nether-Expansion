@@ -10,7 +10,7 @@
       "translate": "advancements.nether.the_caduceus.description"
     }
   },
-  "parent": "minecraft:nether/brew_potion",
+  "parent": "netherexp:nether/gothic_manor",
   "criteria": {
     "c1": {
       "trigger": "minecraft:inventory_changed",

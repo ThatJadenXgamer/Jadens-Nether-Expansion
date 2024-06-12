@@ -1,6 +1,9 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -9,8 +12,11 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.FluidTags;
@@ -19,6 +25,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
@@ -33,11 +40,16 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.MagmaCube;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrownPotion;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
@@ -62,7 +74,7 @@ public class EctoSlab extends Slime {
     public EctoSlab(EntityType<? extends Slime> entityType, Level level) {
         super(entityType, level);
         this.fixupDimensions();
-        this.setMaxUpStep(1.0F);
+        this.setMaxUpStep(2.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.moveControl = new EctoSlabMoveControl(this);
     }
@@ -70,7 +82,7 @@ public class EctoSlab extends Slime {
     @Override
     public void tick() {
         super.tick();
-        this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+        this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getRandomX(0.3 * this.getSize()), this.getY(), this.getRandomZ(0.3 * this.getSize()), 0.0, 0.0, 0.0);
 
         if (this.level().isClientSide) {
             if (this.getIsUnderground()) {
@@ -88,6 +100,14 @@ public class EctoSlab extends Slime {
                 attackAnimation.stop();
             }
         }
+    }
+
+    @Override
+    public void aiStep() {
+        if (this.isInWaterOrRain()) {
+            this.doExorcism();
+        }
+        super.aiStep();
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -149,14 +169,6 @@ public class EctoSlab extends Slime {
             super.pushEntities();
         }
     }
-
-    //    @Override
-//    public @NotNull EntityDimensions getDimensions(Pose pose) {
-//        if (!this.getIsUnderground()) {
-//            return super.getDimensions(pose).scale(0.255F * (float)this.getSize());
-//            refreshDimensions();
-//        }
-//    }
 
     @Override
     public void refreshDimensions() {
@@ -287,6 +299,42 @@ public class EctoSlab extends Slime {
         }
     }
 
+    @Override
+    public boolean hurt(DamageSource damageSource, float f) {
+        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion)) {
+            doExorcism();
+            if (thrownPotion.getOwner() instanceof Player player) {
+                JNECriteriaTriggers.EXORCISM.trigger((ServerPlayer) player);
+            }
+        }
+        return super.hurt(damageSource, f);
+    }
+
+    private void doExorcism() {
+        MagmaCube magmaCube = this.convertTo(EntityType.MAGMA_CUBE, false);
+        if (magmaCube != null && this.level() instanceof ServerLevel serverLevel) {
+            magmaCube.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(magmaCube.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
+            magmaCube.setSize(getSize(), true);
+            magmaCube.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
+            magmaCube.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));
+            magmaCube.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
+            if (this.hasCustomName()) {
+                magmaCube.setCustomName(magmaCube.getCustomName());
+            }
+        }
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+        for(int i = 0; i < 10; i++) {
+            this.level().addParticle(JNEParticleTypes.WISP.get(), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0, 0.0, 0.0);
+        }
+    }
+
+    private boolean hurtWithCleanWater(ThrownPotion thrownPotion) {
+        ItemStack itemStack = thrownPotion.getItem();
+        Potion potion = PotionUtils.getPotion(itemStack);
+        List<MobEffectInstance> list = PotionUtils.getMobEffects(itemStack);
+        return potion == Potions.WATER && list.isEmpty();
+    }
+
     ////////
     // AI //
     ////////
@@ -331,9 +379,7 @@ public class EctoSlab extends Slime {
 
                     n = (float)(Mth.atan2(z, x) * 57.2957763671875) - 90.0F;
                     this.mob.setYRot(this.rotlerp(this.mob.getYRot(), n, 90.0F));
-                    this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED) - 0.15f));
-                    BlockPos blockPos = this.mob.blockPosition();
-                    BlockState blockState = this.mob.level().getBlockState(blockPos);
+                    this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
                 }
                 else {
                     this.mob.setZza(0.0F);
@@ -419,7 +465,7 @@ public class EctoSlab extends Slime {
         }
 
         public void start() {
-            this.undergroundTime = reducedTickDelay(200);
+            this.undergroundTime = reducedTickDelay(180 + ectoSlab.random.nextInt(50));
             super.start();
         }
 
@@ -436,7 +482,7 @@ public class EctoSlab extends Slime {
             } else if (!this.ectoSlab.canAttack(livingEntity)) {
                 return false;
             } else {
-                return this.undergroundTime > -60;
+                return this.undergroundTime > -70;
             }
         }
 
