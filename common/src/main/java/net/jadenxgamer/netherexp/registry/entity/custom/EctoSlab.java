@@ -189,7 +189,7 @@ public class EctoSlab extends Slime {
 
     @Override
     protected @NotNull ParticleOptions getParticleType() {
-        return ParticleTypes.SOUL_FIRE_FLAME;
+        return getIsUnderground() ? new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()) : ParticleTypes.SOUL_FIRE_FLAME;
     }
 
     @Override

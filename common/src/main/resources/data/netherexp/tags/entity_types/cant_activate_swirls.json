@@ -3,6 +3,7 @@
   "values": [
     "netherexp:wisp",
     "netherexp:apparition",
-    "netherexp:vessel"
+    "netherexp:vessel",
+    "netherexp:ecto_slab"
   ]
 }
