@@ -425,6 +425,9 @@
   "subtitles.entity.apparition.ambient": "Apparition rumbles",
   "subtitles.entity.apparition.hurt": "Apparition hurts",
   "subtitles.entity.apparition.death": "Apparition dies",
+  "subtitles.entity.vessel.ambient": "Vessel rattles",
+  "subtitles.entity.vessel.hurt": "Vessel hurts",
+  "subtitles.entity.vessel.death": "Vessel dies",
 
   "death.attack.graveMistSuffocation": "%1$s was shrouded and choked by souls",
   "death.attack.stampedeCrush": "%1$s was crushed by %2$s",

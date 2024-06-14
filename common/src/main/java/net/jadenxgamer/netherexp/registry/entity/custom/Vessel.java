@@ -247,17 +247,17 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.SKELETON_AMBIENT;
+        return JNESoundEvents.ENTITY_VESSEL_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.SKELETON_HURT;
+        return JNESoundEvents.ENTITY_VESSEL_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.SKELETON_DEATH;
+        return JNESoundEvents.ENTITY_VESSEL_DEATH.get();
     }
 
     @Override

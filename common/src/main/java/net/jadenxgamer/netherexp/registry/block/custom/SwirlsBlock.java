@@ -53,7 +53,7 @@ implements BonemealableBlock {
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SWIRLS_BOOST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(pos, state.cycle(COOLDOWN), UPDATE_CLIENTS);
             level.scheduleTick(pos, this, 1000);
-            if (livingEntity instanceof Player && random.nextInt(livingEntity.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) ? 3 : 20) == 0) {
+            if (livingEntity instanceof Player && random.nextInt(livingEntity.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) ? 5 : 20) == 0) {
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                 spawnEctoSlab(level, pos, livingEntity, random);
             }
@@ -62,9 +62,13 @@ implements BonemealableBlock {
 
     private void spawnEctoSlab(Level level, BlockPos pos, LivingEntity entity, RandomSource random) {
         EctoSlab ectoSlab = JNEEntityType.ECTO_SLAB.get().create(level);
-        int[] sizes = {1, 2, 4};
+        int size = random.nextInt(2);
+        if (size == 2) {
+            size = level.getDifficulty() == Difficulty.HARD ? 3 : 1;
+        }
         if (ectoSlab != null) {
-            ectoSlab.setSize(random.nextInt(sizes.length), true);
+            ectoSlab.setSize(size, true);
+            ectoSlab.push(ectoSlab.getX(), 0.4, ectoSlab.getZ());
             ectoSlab.setTarget(entity);
             ectoSlab.setPos(pos.getX(), pos.getY(), pos.getZ());
             level.addFreshEntity(ectoSlab);

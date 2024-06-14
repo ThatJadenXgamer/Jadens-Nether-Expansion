@@ -1080,6 +1080,29 @@
       "netherexp:mob/apparition/death2"
     ]
   },
+  "entity.vessel.ambient": {
+    "subtitle": "subtitles.entity.vessel.ambient",
+    "sounds": [
+      "netherexp:mob/vessel/idle1",
+      "netherexp:mob/vessel/idle2",
+      "netherexp:mob/vessel/idle3"
+    ]
+  },
+  "entity.vessel.hurt": {
+    "subtitle": "subtitles.entity.vessel.hurt",
+    "sounds": [
+      "netherexp:mob/vessel/hurt1",
+      "netherexp:mob/vessel/hurt2",
+      "netherexp:mob/vessel/hurt3",
+      "netherexp:mob/vessel/hurt4"
+    ]
+  },
+  "entity.vessel.death": {
+    "subtitle": "subtitles.entity.vessel.death",
+    "sounds": [
+      "netherexp:mob/vessel/death1"
+    ]
+  },
   "entity.player.hurt_igneous_thorns": {
     "subtitle": "subtitles.entity.player.hurt",
     "sounds": [
