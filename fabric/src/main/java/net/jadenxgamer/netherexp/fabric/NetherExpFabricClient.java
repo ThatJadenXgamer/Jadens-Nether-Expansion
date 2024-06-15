@@ -143,6 +143,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.ANTIDOTE.get(), ThrownItemRenderer::new);

@@ -83,6 +83,9 @@ public class JNEItems {
     public static final RegistrySupplier<Item> PHASMO_SHARD = registerItem("phasmo_shard", () ->
             new Item(new Item.Properties()));
 
+    public static final RegistrySupplier<Item> PHASMO_ARROW = registerItem("phasmo_arrow", () ->
+            new PhasmoArrowItem(new Item.Properties()));
+
     public static final RegistrySupplier<Item> WARPED_WART = registerItem("warped_wart", () ->
             new BlockItem(JNEBlocks.WARPED_WART.get(), new Item.Properties()));
 

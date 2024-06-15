@@ -11,9 +11,9 @@
     "renderer.PlayerRendererMixin"
   ],
   "mixins": [
+    "block.BlockMixin",
     "block.BlockSetTypeAccessor",
     "block.BlocksMixin",
-    "block.BlockSoundsMixin",
     "block.LiquidBlockMixin",
     "block.RootsBlockMixin",
     "block.SoulFireBlockMixin",
@@ -26,6 +26,7 @@
     "brewing.PotionBrewingAccessor",
     "brewing.PotionBrewingMixin",
     "brewing.PotionSlotMixin",
+    "entity.AbstractArrowMixin",
     "entity.BlockEntityTypeMixin",
     "entity.HoglinMixin",
     "entity.LivingEntityMixin",

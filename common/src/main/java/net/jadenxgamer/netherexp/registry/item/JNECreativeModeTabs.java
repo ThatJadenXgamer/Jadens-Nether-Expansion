@@ -74,6 +74,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SOUL_MAGMA_BLOCK.get());
 
                         output.accept(JNEItems.PHASMO_SHARD.get());
+                        output.accept(JNEItems.PHASMO_ARROW.get());
                         output.accept(JNEBlocks.SOUL_GLASS.get());
                         output.accept(JNEBlocks.OCHRE_FROGMIST.get());
                         output.accept(JNEBlocks.VERDANT_FROGMIST.get());
@@ -377,7 +378,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
                         output.accept(JNEItems.SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
 
-                        //TODO: Add Spawn Eggs
                         output.accept(JNEItems.WISP_SPAWN_EGG.get());
                         output.accept(JNEItems.APPARITION_SPAWN_EGG.get());
                         output.accept(JNEItems.VESSEL_SPAWN_EGG.get());

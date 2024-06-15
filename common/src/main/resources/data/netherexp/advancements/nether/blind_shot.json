@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:adventure/kill_a_mob",
+  "parent": "netherexp:nether/frightening_rush",
   "criteria": {
     "shot_arrow": {
       "trigger": "minecraft:player_hurt_entity",

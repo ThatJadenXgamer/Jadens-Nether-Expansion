@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:phasmo_arrow"
+    },
+    "X": {
+      "item": "minecraft:arrow"
+    }
+  },
+  "result": {
+    "item": "netherexp:phasmo_shard",
+    "count": 4
+  }
+}

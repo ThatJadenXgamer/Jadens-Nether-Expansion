@@ -1,13 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "item": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:soul_sand"
+              "netherexp:phasmo_shard"
             ]
           }
         ]
@@ -16,19 +16,19 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "netherexp:cooking/soul_glass"
+        "recipe": "netherexp:phasmo_arrow"
       }
     }
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_item"
+      "item",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "netherexp:cooking/soul_glass"
+      "netherexp:phasmo_arrow"
     ]
   }
 }

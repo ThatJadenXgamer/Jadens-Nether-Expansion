@@ -48,6 +48,7 @@ public class NetherExpForgeClient {
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRenderers.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRenderers.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
+        EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRenderers.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
         EntityRenderers.register(JNEEntityType.ANTIDOTE.get(), ThrownItemRenderer::new);

@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:arrows",
+    "minecraft:arrow",
+    "minecraft:spectral_arrow",
     "minecraft:trident",
     "minecraft:fireball",
     "minecraft:small_fireball",

@@ -102,7 +102,7 @@ public class SoulGlassBlock extends AbstractGlassBlock {
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        if (collisionContext instanceof EntityCollisionContext && ((EntityCollisionContext)collisionContext).getEntity() != null) {
+        if (collisionContext instanceof EntityCollisionContext entityCollisionContext && entityCollisionContext.getEntity() != null) {
             if (collisionContext.isAbove(Shapes.block(), blockPos, false) && !collisionContext.isDescending()) {
                 return super.getCollisionShape(blockState, blockGetter, blockPos, collisionContext);
             }
