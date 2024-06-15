@@ -683,7 +683,38 @@ public class JNEBlocks {
 
     // Flower Pots
 
-    //TODO: Add Flower Pots
+    public static final RegistrySupplier<Block> POTTED_SOUL_SWIRLS = registerBlock("potted_soul_swirls", () ->
+            new FlowerPotBlock(SOUL_SWIRLS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_SHALE_SWIRLS = registerBlock("potted_shale_swirls", () ->
+            new FlowerPotBlock(SHALE_SWIRLS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_ENIGMA_CROWN = registerBlock("potted_enigma_crown", () ->
+            new FlowerPotBlock(ENIGMA_CROWN.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_SMOKESTALK = registerBlock("potted_smokestalk", () ->
+            new FlowerPotBlock(SMOKESTALK.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_RED_SCALE_FUNGUS = registerBlock("potted_red_scale_fungus", () ->
+            new FlowerPotBlock(RED_SCALE_FUNGUS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_BLUE_SCALE_FUNGUS = registerBlock("potted_blue_scale_fungus", () ->
+            new FlowerPotBlock(BLUE_SCALE_FUNGUS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_VIOLET_SCALE_FUNGUS = registerBlock("potted_violet_scale_fungus", () ->
+            new FlowerPotBlock(VIOLET_SCALE_FUNGUS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_CRIMSON_SPORESHROOM = registerBlock("potted_crimson_sporeshroom", () ->
+            new FlowerPotBlock(CRIMSON_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_WARPED_SPORESHROOM = registerBlock("potted_warped_sporeshroom", () ->
+            new FlowerPotBlock(WARPED_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_UMBRAL_SPORESHROOM = registerBlock("potted_umbral_sporeshroom", () ->
+            new FlowerPotBlock(UMBRAL_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistrySupplier<Block> POTTED_SOUL_TORCHFLOWER = registerBlock("potted_soul_torchflower", () ->
+            new FlowerPotBlock(SOUL_TORCHFLOWER.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     ////////////////
     // REGISTRIES //

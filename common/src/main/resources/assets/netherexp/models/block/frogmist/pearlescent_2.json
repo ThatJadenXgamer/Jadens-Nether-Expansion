@@ -3,7 +3,8 @@
 	"ambientocclusion": false,
 	"textures": {
 		"1": "netherexp:block/pearlescent_frogmist_overlay",
-		"2": "netherexp:block/pearlescent_frogmist"
+		"2": "netherexp:block/pearlescent_frogmist",
+		"particle": "netherexp:block/pearlescent_frogmist"
 	},
 	"elements": [
 		{
