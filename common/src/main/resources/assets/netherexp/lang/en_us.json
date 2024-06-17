@@ -152,6 +152,19 @@
   "block.netherexp.indented_soul_slate_tiles": "Indented Soul Slate Tiles",
   "block.netherexp.chiseled_soul_slate_tiles": "Chiseled Soul Slate Tiles",
 
+  "block.netherexp.gargoyle_statue": "Gargoyle Statue",
+  "block.netherexp.ossified_gargoyle_statue": "Ossified",
+  "block.netherexp.trample_gargoyle_statue": "Trample",
+  "block.netherexp.phase_gargoyle_statue": "Phase",
+  "block.netherexp.ghoul_gargoyle_statue": "Ghoul",
+  "block.netherexp.wretched_gargoyle_statue": "Wretched",
+  "block.netherexp.treacherous_gargoyle_statue": "Treacherous",
+  "block.netherexp.cirripedia_gargoyle_statue": "Cirripedia",
+  "block.netherexp.occult_gargoyle_statue": "Occult",
+  "block.netherexp.sealed_gargoyle_statue": "Sealed",
+  "block.netherexp.obfuscated_gargoyle_statue": "Obfuscated",
+  "block.netherexp.angel_gargoyle_statue": "Angel",
+
   "block.netherexp.soul_candle": "Soul Candle",
 
   "block.netherexp.fossil_ore": "Fossil Ore",

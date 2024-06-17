@@ -6,6 +6,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.custom.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.item.custom.GargoyleStatueItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
@@ -61,18 +62,18 @@ public class JNEBlocks {
             new WallBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get())));
 
     public static final RegistrySupplier<Block> INDENTED_SOUL_SLATE_BRICKS = registerBlock("indented_soul_slate_bricks", () ->
-            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get())));
+            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get()).lightLevel(
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 12 : 0)));
 
     public static final RegistrySupplier<Block> CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks", () ->
-            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get()).lightLevel(
-                    blockState -> blockState.getValue(SoulGlassBlock.LIT) ? 12 : 0)));
+            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get())));
 
     public static final RegistrySupplier<Block> SOUL_SLATE_BRICK_PILLAR = registerBlock("soul_slate_brick_pillar", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get())));
 
     public static final RegistrySupplier<Block> CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks", () ->
             new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get()).lightLevel(
-                    blockState -> blockState.getValue(SoulGlassBlock.LIT) ? 12 : 0)));
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 12 : 0)));
 
     public static final RegistrySupplier<Block> SOUL_SLATE_TILES = registerBlock("soul_slate_tiles", () ->
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(2.0f).requiresCorrectToolForDrops().sound(JNESoundType.SOUL_SLATE_BRICKS)));
@@ -87,11 +88,12 @@ public class JNEBlocks {
             new WallBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get())));
 
     public static final RegistrySupplier<Block> INDENTED_SOUL_SLATE_TILES = registerBlock("indented_soul_slate_tiles", () ->
-            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get())));
+            new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get()).lightLevel(
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 7 : 0)));
 
     public static final RegistrySupplier<Block> CHISELED_SOUL_SLATE_TILES = registerBlock("chiseled_soul_slate_tiles", () ->
             new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get()).lightLevel(
-                    blockState -> blockState.getValue(SoulGlassBlock.LIT) ? 12 : 0)));
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 12 : 0)));
 
     // Soul Decorations
 
@@ -681,6 +683,41 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> TWISTING_POLISHED_BLACKSTONE_BRICKS = registerBlock("twisting_polished_blackstone_bricks", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
 
+    // GARGOYLE STATUES
+
+    public static final RegistrySupplier<Block> OSSIFIED_GARGOYLE_STATUE = registerGargoyleBlock("ossified_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> TRAMPLE_GARGOYLE_STATUE = registerGargoyleBlock("trample_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> PHASE_GARGOYLE_STATUE = registerGargoyleBlock("phase_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> GHOUL_GARGOYLE_STATUE = registerGargoyleBlock("ghoul_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> WRETCHED_GARGOYLE_STATUE = registerGargoyleBlock("wretched_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> TREACHEROUS_GARGOYLE_STATUE = registerGargoyleBlock("treacherous_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> CIRRIPEDIA_GARGOYLE_STATUE = registerGargoyleBlock("cirripedia_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> OCCULT_GARGOYLE_STATUE = registerGargoyleBlock("occult_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> SEALED_GARGOYLE_STATUE = registerGargoyleBlock("sealed_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> OBFUSCATED_GARGOYLE_STATUE = registerGargoyleBlock("obfuscated_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistrySupplier<Block> ANGEL_GARGOYLE_STATUE = registerGargoyleBlock("angel_gargoyle_statue", () ->
+            new AngelStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).randomTicks().sound(JNESoundType.SOUL_SLATE)));
+
     // Flower Pots
 
     public static final RegistrySupplier<Block> POTTED_SOUL_SWIRLS = registerBlock("potted_soul_swirls", () ->
@@ -725,6 +762,11 @@ public class JNEBlocks {
         registerBlockItem(name, toReturn);
         return toReturn;
     }
+    private static <T extends Block> RegistrySupplier<T> registerGargoyleBlock(String name, Supplier<T> block) {
+        RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
+        registerGargoyleBlockItem(name, toReturn);
+        return toReturn;
+    }
 
     private static <T extends Block> RegistrySupplier<T> registerBlockWithoutItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
@@ -742,6 +784,10 @@ public class JNEBlocks {
 
     private static <T extends Block> RegistrySupplier<Item> registerBlockItem(String name, RegistrySupplier<T> block) {
         return JNEItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static <T extends Block> RegistrySupplier<Item> registerGargoyleBlockItem(String name, RegistrySupplier<T> block) {
+        return JNEItems.ITEMS.register(name, () -> new GargoyleStatueItem(block.get(), new Item.Properties()));
     }
 
     private static <T extends Block> RegistrySupplier<T> registerFireProofBlock(String name, Supplier<T> block) {

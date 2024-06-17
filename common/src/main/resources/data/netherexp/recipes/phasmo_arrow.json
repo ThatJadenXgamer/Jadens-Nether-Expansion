@@ -8,14 +8,14 @@
   ],
   "key": {
     "#": {
-      "item": "netherexp:phasmo_arrow"
+      "item": "netherexp:phasmo_shard"
     },
     "X": {
       "item": "minecraft:arrow"
     }
   },
   "result": {
-    "item": "netherexp:phasmo_shard",
-    "count": 4
+    "item": "netherexp:phasmo_arrow",
+    "count": 2
   }
 }

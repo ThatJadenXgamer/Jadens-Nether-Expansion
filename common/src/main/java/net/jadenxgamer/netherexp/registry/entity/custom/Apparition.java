@@ -292,7 +292,7 @@ public class Apparition extends Monster implements FlyingAnimal {
         return JNESoundEvents.ENTITY_APPARITION_DEATH.get();
     }
 
-////////
+    ////////
     // AI //
     ////////
 

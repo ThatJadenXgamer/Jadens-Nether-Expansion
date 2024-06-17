@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "netherexp:block/gargoyle_statue/base"
+    },
+    "half=upper,facing=north": {
+      "model": "netherexp:block/gargoyle_statue/ossified"
+    },
+    "half=upper,facing=east": {
+      "model": "netherexp:block/gargoyle_statue/ossified",
+      "y": 90
+    },
+    "half=upper,facing=south": {
+      "model": "netherexp:block/gargoyle_statue/ossified",
+      "y": 180
+    },
+    "half=upper,facing=west": {
+      "model": "netherexp:block/gargoyle_statue/ossified",
+      "y": 270
+    }
+  }
+}
