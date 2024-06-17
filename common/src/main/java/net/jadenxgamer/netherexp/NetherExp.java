@@ -11,6 +11,7 @@ import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotions;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEPaintings;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEFeature;
@@ -30,6 +31,7 @@ public class NetherExp {
         JNEEntityType.init();
         JNEStructures.init();
         JNEFluids.init();
+        JNEPaintings.init();
         JNEBlocks.init();
         JNEFeature.init();
         JNEBlockEntityType.init();
