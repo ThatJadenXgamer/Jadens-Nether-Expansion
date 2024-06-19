@@ -1,8 +1,13 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.custom.GargoyleStatueBlock;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -10,16 +15,14 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
@@ -165,6 +168,7 @@ public class Apparition extends Monster implements FlyingAnimal {
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(1, new PossessGargoyleStatueGoal(this, 12));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, false));
         this.goalSelector.addGoal(2, new ApparitionWanderAroundGoal());
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
@@ -233,6 +237,18 @@ public class Apparition extends Monster implements FlyingAnimal {
                 vessel.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(vessel.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
                 if (skeleton.hasCustomName()) {
                     vessel.setCustomName(skeleton.getCustomName());
+                }
+                this.discard();
+                return false;
+            }
+        }
+        if (livingEntity instanceof MagmaCube magmaCube) {
+            EctoSlab ectoSlab = magmaCube.convertTo(JNEEntityType.ECTO_SLAB.get(), false);
+            if (ectoSlab != null) {
+                ectoSlab.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(ectoSlab.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
+                ectoSlab.setSize(magmaCube.getSize(), true);
+                if (magmaCube.hasCustomName()) {
+                    ectoSlab.setCustomName(magmaCube.getCustomName());
                 }
                 this.discard();
                 return false;
@@ -324,6 +340,96 @@ public class Apparition extends Monster implements FlyingAnimal {
 
             Vec3 vec3d3 = HoverRandomPos.getPos(Apparition.this, 8, 7, vec3d2.x, vec3d2.z, 1.5707964F, 3, 1);
             return vec3d3 != null ? vec3d3 : AirAndWaterRandomPos.getPos(Apparition.this, 8, 4, -2, vec3d2.x, vec3d2.z, 1.5707963705062866);
+        }
+    }
+
+    static class PossessGargoyleStatueGoal extends MoveToBlockGoal {
+        private final Apparition apparition;
+
+        public PossessGargoyleStatueGoal(Apparition entity, int range) {
+            super(entity, 1.0F, range, range);
+            apparition = entity;
+        }
+
+        @Override
+        public double acceptedDistance() {
+            return 2.0;
+        }
+
+        @Override
+        protected boolean isValidTarget(LevelReader level, BlockPos pos) {
+            BlockState blockState = level.getBlockState(pos);
+            return blockState.is(JNETags.Blocks.POSSESSABLE_GARGOYLE_STATUES) && !blockState.getValue(GargoyleStatueBlock.SALTED);
+        }
+
+        @Override
+        protected @NotNull BlockPos getMoveToTarget() {
+            return this.blockPos;
+        }
+
+        @Override
+        public void tick() {
+            super.tick();
+            BlockPos target = getMoveToTarget();
+            Level level = apparition.level();
+            RandomSource random = level.random;
+            if (this.isReachedTarget()) {
+                if (level.getBlockState(target).is(JNEBlocks.PHASE_GARGOYLE_STATUE.get())) {
+                    EctoSlab ectoSlab = JNEEntityType.ECTO_SLAB.get().create(level);
+                    if (ectoSlab != null) {
+                        if (apparition.hasCustomName()) {
+                            ectoSlab.setCustomName(apparition.getCustomName());
+                        }
+                        level.addFreshEntity(ectoSlab);
+                    }
+                }
+                else {
+                    /* Fallback in case the tag was tampered with and included a statue which doesn't have a builtin transformation
+                     * this also deals with Ossified Statue's transformation
+                     */
+                    Vessel vessel = JNEEntityType.VESSEL.get().create(level);
+                    if (vessel != null) {
+                        if (apparition.hasCustomName()) {
+                            vessel.setCustomName(apparition.getCustomName());
+                        }
+                        level.addFreshEntity(vessel);
+                    }
+                }
+                apparition.remove(RemovalReason.DISCARDED);
+                Direction[] var5 = Direction.values();
+                for (Direction direction : var5) {
+                    BlockPos directionPos = blockPos.relative(direction);
+                    if (!level.getBlockState(directionPos).isSolidRender(level, directionPos)) {
+                        Direction.Axis axis = direction.getAxis();
+                        double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * direction.getStepX() : random.nextFloat();
+                        double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * direction.getStepY() : random.nextFloat();
+                        double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * direction.getStepZ() : random.nextFloat();
+                        level.addParticle(JNEParticleTypes.GOLD_GLIMMER.get(), target.getX() + e, target.getY() + f, target.getZ() + g, 0.0, 0.0, 0.0);
+                    }
+                }
+            }
+        }
+
+        @Override
+        public boolean canUse() {
+            return super.canUse();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            BlockPos target = getMoveToTarget();
+            BlockState blockState = apparition.level().getBlockState(target);
+            return blockState.is(JNETags.Blocks.POSSESSABLE_GARGOYLE_STATUES) && !blockState.getValue(GargoyleStatueBlock.SALTED) && super.canContinueToUse();
+        }
+
+        @Override
+        public void start() {
+            super.start();
+        }
+
+        @Override
+        public void stop() {
+            super.stop();
         }
     }
 }

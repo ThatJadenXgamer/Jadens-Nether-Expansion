@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:ossified_gargoyle_statue",
+    "netherexp:trample_gargoyle_statue",
+    "netherexp:phase_gargoyle_statue",
+    "netherexp:ghoul_gargoyle_statue"
+  ]
+}

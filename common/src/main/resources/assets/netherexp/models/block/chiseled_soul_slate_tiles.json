@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "netherexp:block/chiseled_soul_slate_tiles"
+    "end": "netherexp:block/chiseled_soul_slate_tiles_top",
+    "side": "netherexp:block/chiseled_soul_slate_tiles"
   }
 }

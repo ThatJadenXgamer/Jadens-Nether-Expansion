@@ -23,6 +23,6 @@ public class GargoyleStatueItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        tooltip.add(Component.translatable(this.getBlock().getDescriptionId()).withStyle(ChatFormatting.GOLD));
+        tooltip.add(Component.translatable(this.getBlock().getDescriptionId()).withStyle(ChatFormatting.DARK_AQUA));
     }
 }

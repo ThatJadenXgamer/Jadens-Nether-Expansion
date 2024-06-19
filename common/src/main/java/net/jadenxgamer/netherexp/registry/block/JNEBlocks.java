@@ -244,7 +244,7 @@ public class JNEBlocks {
     // Netherite
 
     public static final RegistrySupplier<Block> NETHERITE_PLATED_BLOCK = registerFireProofBlock("netherite_plated_block", () ->
-            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(1.0f, 1200.0f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK)));
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.5f, 0.5f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK)));
 
     public static final RegistrySupplier<Block> CUT_NETHERITE_BLOCK = registerFireProofBlock("cut_netherite_block", () ->
             new Block(BlockBehaviour.Properties.copy(JNEBlocks.NETHERITE_PLATED_BLOCK.get())));
@@ -264,7 +264,7 @@ public class JNEBlocks {
     // Rusty Netherite
 
     public static final RegistrySupplier<Block> RUSTY_NETHERITE_PLATED_BLOCK = registerFireProofBlock("rusty_netherite_plated_block", () ->
-            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(1.0f, 1200.0f).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS)));
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.5f, 0.5f).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS)));
 
     public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_BLOCK = registerFireProofBlock("rusty_cut_netherite_block", () ->
             new Block(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK.get())));
@@ -714,9 +714,6 @@ public class JNEBlocks {
 
     public static final RegistrySupplier<Block> OBFUSCATED_GARGOYLE_STATUE = registerGargoyleBlock("obfuscated_gargoyle_statue", () ->
             new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
-
-    public static final RegistrySupplier<Block> ANGEL_GARGOYLE_STATUE = registerGargoyleBlock("angel_gargoyle_statue", () ->
-            new AngelStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).randomTicks().sound(JNESoundType.SOUL_SLATE)));
 
     // Flower Pots
 

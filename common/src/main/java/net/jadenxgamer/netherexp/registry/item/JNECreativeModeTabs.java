@@ -388,6 +388,16 @@ public class JNECreativeModeTabs {
 //                            output.accept(JNEItems.WARPHOPPER_SPAWN_EGG);
 //                        }
 
+                        output.accept(JNEBlocks.OSSIFIED_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.TRAMPLE_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.PHASE_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.GHOUL_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.WRETCHED_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.TREACHEROUS_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.CIRRIPEDIA_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.OCCULT_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.SEALED_GARGOYLE_STATUE.get());
+                        output.accept(JNEBlocks.OBFUSCATED_GARGOYLE_STATUE.get());
                         addAntidotes(output);
 
                     }).build());

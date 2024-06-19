@@ -60,9 +60,9 @@ public class EctoSoulSandBlock extends Block {
     @Override
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
-        boolean waxed = blockState.getValue(SALTED);
+        boolean salted = blockState.getValue(SALTED);
         boolean bl = false;
-        if (!waxed) {
+        if (!salted) {
             if (itemStack.is(Items.HONEYCOMB)) {
                 level.playSound(player, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
                 level.setBlock(blockPos, blockState.cycle(SALTED), Block.UPDATE_CLIENTS);

@@ -16,18 +16,18 @@
       "y": 270
     },
     "half=upper,facing=north": {
-      "model": "netherexp:block/gargoyle_statue/ossified"
+      "model": "netherexp:block/gargoyle_statue/trample"
     },
     "half=upper,facing=east": {
-      "model": "netherexp:block/gargoyle_statue/ossified",
+      "model": "netherexp:block/gargoyle_statue/trample",
       "y": 90
     },
     "half=upper,facing=south": {
-      "model": "netherexp:block/gargoyle_statue/ossified",
+      "model": "netherexp:block/gargoyle_statue/trample",
       "y": 180
     },
     "half=upper,facing=west": {
-      "model": "netherexp:block/gargoyle_statue/ossified",
+      "model": "netherexp:block/gargoyle_statue/trample",
       "y": 270
     }
   }
