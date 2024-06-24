@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -32,6 +33,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
@@ -48,6 +50,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class Vessel extends Monster implements RangedAttackMob {
+    private int changeType = 1;
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
@@ -56,7 +59,6 @@ public class Vessel extends Monster implements RangedAttackMob {
     public final AnimationState shootAnimationState = new AnimationState();
 
     private static final EntityDataAccessor<Boolean> PREPARING_AIM = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
-
     private static final EntityDataAccessor<Boolean> IS_AIMING = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
 
@@ -106,7 +108,7 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     @Override
     public void aiStep() {
-        if (this.isInWaterOrRain()) {
+        if (this.isInWaterOrRain() && getChangeType() != 0) {
             this.doExorcism();
         }
         super.aiStep();
@@ -137,6 +139,7 @@ public class Vessel extends Monster implements RangedAttackMob {
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0f));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
     }
 
@@ -156,7 +159,7 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
-        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion)) {
+        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion) && getChangeType() != 0) {
             doExorcism();
             if (thrownPotion.getOwner() instanceof Player player) {
                 JNECriteriaTriggers.EXORCISM.trigger((ServerPlayer) player);
@@ -197,6 +200,7 @@ public class Vessel extends Monster implements RangedAttackMob {
             Apparition apparition = JNEEntityType.APPARITION.get().create(this.level());
             if (apparition != null) {
                 apparition.setPos(this.getX(), this.getY(), this.getZ());
+                apparition.setCooldown(1200);
                 if (this.getTarget() != null) {
                     apparition.setTarget(this.getTarget());
                 }
@@ -239,6 +243,26 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     private void setShoot(boolean bl) {
         this.getEntityData().set(SHOOT, bl);
+    }
+
+    public int getChangeType() {
+        return this.changeType;
+    }
+
+    public void setChangeType(int changeType) {
+        this.changeType = changeType;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag nbt) {
+        super.addAdditionalSaveData(nbt);
+        nbt.putInt("ChangeType", this.getChangeType());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag nbt) {
+        super.readAdditionalSaveData(nbt);
+        this.setChangeType(nbt.getInt("ChangeType"));
     }
 
     ////////////

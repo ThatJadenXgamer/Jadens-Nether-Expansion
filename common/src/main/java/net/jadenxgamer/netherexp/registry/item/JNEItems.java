@@ -134,6 +134,9 @@ public class JNEItems {
     public static final RegistrySupplier<Item> ECTO_SLAB_SPAWN_EGG = registerItem("ecto_slab_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.ECTO_SLAB, 4864303, 1788232, new Item.Properties()));
 
+    public static final RegistrySupplier<Item> STAMPEDE_SPAWN_EGG = registerItem("stampede_spawn_egg", () ->
+            new ArchitecturySpawnEggItem(JNEEntityType.STAMPEDE, 4864303, 10236982, new Item.Properties()));
+
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);
     }

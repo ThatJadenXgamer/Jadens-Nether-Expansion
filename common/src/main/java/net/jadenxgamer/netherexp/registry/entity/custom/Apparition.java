@@ -1,23 +1,26 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.GargoyleStatueBlock;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
-import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -33,6 +36,11 @@ import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrownPotion;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -43,8 +51,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public class Apparition extends Monster implements FlyingAnimal {
+
+    public int cooldown = 0;
     private static final EntityDataAccessor<Integer> PREFERENCE = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.INT);
 
     public final AnimationState idle1AnimationState = new AnimationState();
@@ -167,6 +178,14 @@ public class Apparition extends Monster implements FlyingAnimal {
     }
 
     @Override
+    public void aiStep() {
+        if (this.level().isClientSide() && this.getCooldown() > 0) {
+            --this.cooldown;
+        }
+        super.aiStep();
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new PossessGargoyleStatueGoal(this, 12));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, false));
@@ -215,6 +234,21 @@ public class Apparition extends Monster implements FlyingAnimal {
     ////////////////
     // POSSESSION //
     ////////////////
+
+    private boolean hurtWithCleanWater(ThrownPotion thrownPotion) {
+        ItemStack itemStack = thrownPotion.getItem();
+        Potion potion = PotionUtils.getPotion(itemStack);
+        List<MobEffectInstance> list = PotionUtils.getMobEffects(itemStack);
+        return potion == Potions.WATER && list.isEmpty();
+    }
+
+    @Override
+    public boolean hurt(DamageSource damageSource, float f) {
+        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion)) {
+            this.die(this.getLastDamageSource());
+        }
+        return super.hurt(damageSource, f);
+    }
 
     @Override
     public void die(DamageSource damageSource) {
@@ -271,12 +305,14 @@ public class Apparition extends Monster implements FlyingAnimal {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putInt("Preference", this.getPreference());
+        nbt.putInt("Cooldown", this.cooldown);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setPreference(nbt.getInt("Preference"));
+        this.setCooldown(nbt.getInt("Cooldown"));
     }
 
     public int getPreference() {
@@ -285,6 +321,14 @@ public class Apparition extends Monster implements FlyingAnimal {
 
     public void setPreference(int preference) {
         this.entityData.set(PREFERENCE, preference);
+    }
+
+    public int getCooldown() {
+        return this.cooldown;
+    }
+
+    public void setCooldown(int cooldown) {
+        this.cooldown = cooldown;
     }
 
     ////////////
@@ -377,6 +421,9 @@ public class Apparition extends Monster implements FlyingAnimal {
                 if (level.getBlockState(target).is(JNEBlocks.PHASE_GARGOYLE_STATUE.get())) {
                     EctoSlab ectoSlab = JNEEntityType.ECTO_SLAB.get().create(level);
                     if (ectoSlab != null) {
+                        ectoSlab.setPos(apparition.getX(), apparition.getY(), apparition.getZ());
+                        ectoSlab.setSize(4, true);
+                        ectoSlab.setChangeType(0);
                         if (apparition.hasCustomName()) {
                             ectoSlab.setCustomName(apparition.getCustomName());
                         }
@@ -389,6 +436,8 @@ public class Apparition extends Monster implements FlyingAnimal {
                      */
                     Vessel vessel = JNEEntityType.VESSEL.get().create(level);
                     if (vessel != null) {
+                        vessel.setPos(apparition.getX(), apparition.getY(), apparition.getZ());
+                        vessel.setChangeType(0);
                         if (apparition.hasCustomName()) {
                             vessel.setCustomName(apparition.getCustomName());
                         }
@@ -404,7 +453,7 @@ public class Apparition extends Monster implements FlyingAnimal {
                         double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * direction.getStepX() : random.nextFloat();
                         double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * direction.getStepY() : random.nextFloat();
                         double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * direction.getStepZ() : random.nextFloat();
-                        level.addParticle(JNEParticleTypes.GOLD_GLIMMER.get(), target.getX() + e, target.getY() + f, target.getZ() + g, 0.0, 0.0, 0.0);
+                        level.addParticle(ParticleTypes.SOUL, target.getX() + e, target.getY() + f, target.getZ() + g, 0.0, 0.0, 0.0);
                     }
                 }
             }
@@ -412,7 +461,7 @@ public class Apparition extends Monster implements FlyingAnimal {
 
         @Override
         public boolean canUse() {
-            return super.canUse();
+            return apparition.getCooldown() <= 0 && super.canUse();
         }
 
         @Override

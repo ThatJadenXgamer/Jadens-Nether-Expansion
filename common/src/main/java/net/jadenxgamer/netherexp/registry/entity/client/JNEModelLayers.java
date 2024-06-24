@@ -17,6 +17,9 @@ public class JNEModelLayers {
     public static final ModelLayerLocation ECTO_SLAB_LAYER = new ModelLayerLocation(
             new ResourceLocation(NetherExp.MOD_ID, "ecto_slab_layer"), "main");
 
+    public static final ModelLayerLocation STAMPEDE_LAYER = new ModelLayerLocation(
+            new ResourceLocation(NetherExp.MOD_ID, "stampede_layer"), "main");
+
     public static final ModelLayerLocation MIST_CHARGE_LAYER = new ModelLayerLocation(
             new ResourceLocation(NetherExp.MOD_ID, "mist_charge_layer"), "main");
 }

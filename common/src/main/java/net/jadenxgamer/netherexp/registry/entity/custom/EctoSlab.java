@@ -41,6 +41,7 @@ import net.minecraft.world.entity.monster.MagmaCube;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
@@ -61,6 +62,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class EctoSlab extends Slime {
+    private int changeType = 1;
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState digAnimationState = new AnimationState();
@@ -104,7 +106,7 @@ public class EctoSlab extends Slime {
 
     @Override
     public void aiStep() {
-        if (this.isInWaterOrRain()) {
+        if (this.isInWaterOrRain() && getChangeType() != 0) {
             this.doExorcism();
         }
         super.aiStep();
@@ -130,23 +132,34 @@ public class EctoSlab extends Slime {
         this.goalSelector.addGoal(3, new EctoSlabRandomDirectionGoal(this));
         this.goalSelector.addGoal(5, new EctoSlabMoveGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
     }
 
     /////////
     // NBT //
     /////////
 
+    public int getChangeType() {
+        return this.changeType;
+    }
+
+    public void setChangeType(int changeType) {
+        this.changeType = changeType;
+    }
+
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("IsUnderground", this.getIsUnderground());
+        nbt.putInt("ChangeType", this.getChangeType());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setIsUnderground(nbt.getBoolean("IsUnderground"));
+        this.setChangeType(nbt.getInt("ChangeType"));
     }
 
     public boolean isInvulnerableTo(DamageSource damageSource) {
@@ -301,7 +314,7 @@ public class EctoSlab extends Slime {
 
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
-        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion)) {
+        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion) && getChangeType() != 0) {
             doExorcism();
             if (thrownPotion.getOwner() instanceof Player player) {
                 JNECriteriaTriggers.EXORCISM.trigger((ServerPlayer) player);

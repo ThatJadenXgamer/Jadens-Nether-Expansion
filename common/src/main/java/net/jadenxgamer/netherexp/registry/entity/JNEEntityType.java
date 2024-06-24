@@ -29,6 +29,10 @@ public class JNEEntityType {
             EntityType.Builder.of(EctoSlab::new, MobCategory.MONSTER)
                     .sized(2.04F, 2.04F).fireImmune().build("ecto_slab"));
 
+    public static final RegistrySupplier<EntityType<Stampede>> STAMPEDE = ENTITY_TYPES.register("stampede", () ->
+            EntityType.Builder.of(Stampede::new, MobCategory.MONSTER)
+                    .sized(1.8F, 4.0F).fireImmune().build("stampede"));
+
     // OTHER
 
     public static final RegistrySupplier<EntityType<SoulBullet>> SOUL_BULLET = ENTITY_TYPES.register("soul_bullet", () ->

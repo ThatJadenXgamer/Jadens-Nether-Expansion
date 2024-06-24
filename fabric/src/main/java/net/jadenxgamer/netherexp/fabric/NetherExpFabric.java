@@ -5,10 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.fabric.worldgen.*;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
-import net.jadenxgamer.netherexp.registry.entity.custom.EctoSlab;
-import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
-import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
+import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotionRecipe;
 import terrablender.api.TerraBlenderApi;
 
@@ -28,5 +25,6 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
         FabricDefaultAttributeRegistry.register(JNEEntityType.WISP.get(), Wisp.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.VESSEL.get(), Vessel.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.ECTO_SLAB.get(), EctoSlab.createAttributes());
+        FabricDefaultAttributeRegistry.register(JNEEntityType.STAMPEDE.get(), Stampede.createAttributes());
     }
 }
