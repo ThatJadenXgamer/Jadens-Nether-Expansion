@@ -30,23 +30,12 @@ public class Antidotes {
         ANTIDOTES.add(Antidotes.WITHER());
         ANTIDOTES.add(Antidotes.LUCK());
         ANTIDOTES.add(Antidotes.UNLUCK());
-        ANTIDOTES.add(Antidotes.INACTIVE_SWIFTNESS());
-        ANTIDOTES.add(Antidotes.INACTIVE_SLOWNESS());
-        ANTIDOTES.add(Antidotes.INACTIVE_STRENGTH());
-        ANTIDOTES.add(Antidotes.INACTIVE_JUMP_BOOST());
-        ANTIDOTES.add(Antidotes.INACTIVE_REGENERATION());
-        ANTIDOTES.add(Antidotes.INACTIVE_FIRE_RESISTANCE());
-        ANTIDOTES.add(Antidotes.INACTIVE_WATER_BREATHING());
-        ANTIDOTES.add(Antidotes.INACTIVE_INVISIBILITY());
-        ANTIDOTES.add(Antidotes.INACTIVE_WEAKNESS());
-        ANTIDOTES.add(Antidotes.INACTIVE_POISON());
     }
 
     /*
      * "Antidote" | Used for the Antidote's Name and could be considered an equivalent to it's "Registration"
-     * "AntidoteEffect" | Is the MobEffect you'll get once you drink it. OR if the Antidote is Inactive then it's used for the activation tooltip
-     * "Inactive" | A Boolean that determines if it's Inactive or not
-     * "CustomAntidoteColor" | By Default grabs the color from the MobEffect but if present will override it. normally used for Inactive Antidotes
+     * "AntidoteEffect" | Is the MobEffect you'll get once you drink it
+     * "CustomAntidoteColor" | By Default grabs the color from the MobEffect but if present will override it
      * "Duration" | Gets the Duration for the MobEffectInstance
      */
 
@@ -54,96 +43,6 @@ public class Antidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "awkward");
         nbt.putInt("CustomAntidoteColor", 3694022);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_SWIFTNESS() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_swiftness");
-        nbt.putString("AntidoteEffect", "minecraft:speed");
-        nbt.putInt("CustomAntidoteColor", 7124156);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_SLOWNESS() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_slowness");
-        nbt.putString("AntidoteEffect", "minecraft:slowness");
-        nbt.putInt("CustomAntidoteColor", 6391508);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_STRENGTH() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_strength");
-        nbt.putString("AntidoteEffect", "minecraft:strength");
-        nbt.putInt("CustomAntidoteColor", 10261348);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_JUMP_BOOST() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_leaping");
-        nbt.putString("AntidoteEffect", "minecraft:jump_boost");
-        nbt.putInt("CustomAntidoteColor", 10203046);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_REGENERATION() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_regeneration");
-        nbt.putString("AntidoteEffect", "minecraft:regeneration");
-        nbt.putInt("CustomAntidoteColor", 8609209);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_FIRE_RESISTANCE() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_fire_resistance");
-        nbt.putString("AntidoteEffect", "minecraft:fire_resistance");
-        nbt.putInt("CustomAntidoteColor", 12420418);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_WATER_BREATHING() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_water_breathing");
-        nbt.putString("AntidoteEffect", "minecraft:water_breathing");
-        nbt.putInt("CustomAntidoteColor", 7909826);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_INVISIBILITY() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_invisibility");
-        nbt.putString("AntidoteEffect", "minecraft:invisibility");
-        nbt.putInt("CustomAntidoteColor", 13029354);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_WEAKNESS() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_weakness");
-        nbt.putString("AntidoteEffect", "minecraft:weakness");
-        nbt.putInt("CustomAntidoteColor", 4477288);
-        nbt.putBoolean("Inactive", true);
-        return nbt;
-    }
-
-    public static CompoundTag INACTIVE_POISON() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.putString("Antidote", "inactive_poison");
-        nbt.putString("AntidoteEffect", "minecraft:poison");
-        nbt.putInt("CustomAntidoteColor", 6917252);
-        nbt.putBoolean("Inactive", true);
         return nbt;
     }
 

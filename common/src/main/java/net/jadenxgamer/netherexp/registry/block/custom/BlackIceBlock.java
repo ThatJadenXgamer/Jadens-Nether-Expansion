@@ -5,7 +5,6 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
@@ -22,28 +21,27 @@ public class BlackIceBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        BlockState bottomState = world.getBlockState(pos.below());
-        // int r = random.nextInt(NetherExp.getConfig().blocks.renewableConfigs.soul_slate_from_black_ice_odds);
-        int r = random.nextInt(50);
-        if (r == 0 && bottomState.is(Blocks.SOUL_SAND)) {
-            world.setBlock(pos.below(), JNEBlocks.SOUL_SLATE.get().defaultBlockState(), Block.UPDATE_ALL);
-            world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SLATE_SOLIDIFYING.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean bl) {
+        if (!level.isClientSide()) {
+            if (level.getBlockState(fromPos).is(Blocks.SOUL_SAND)) {
+                level.setBlock(fromPos, JNEBlocks.SOUL_SLATE.get().defaultBlockState(), 2);
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SLATE_SOLIDIFYING.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+            }
         }
     }
 
     @Override
-    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         Direction[] directions = Direction.values();
 
         for (Direction direction : directions) {
             BlockPos blockPos = pos.relative(direction);
-            if (!world.getBlockState(blockPos).isCollisionShapeFullBlock(world, blockPos) && random.nextInt(120) == 0) {
+            if (!level.getBlockState(blockPos).isCollisionShapeFullBlock(level, blockPos) && random.nextInt(120) == 0) {
                 Direction.Axis axis = direction.getAxis();
                 double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) random.nextFloat();
                 double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) random.nextFloat();
                 double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) random.nextFloat();
-                world.addParticle(JNEParticleTypes.BLACK_AEROSOL.get(), (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0, 0.0, 0.0);
+                level.addParticle(JNEParticleTypes.BLACK_AEROSOL.get(), (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0, 0.0, 0.0);
             }
         }
     }
