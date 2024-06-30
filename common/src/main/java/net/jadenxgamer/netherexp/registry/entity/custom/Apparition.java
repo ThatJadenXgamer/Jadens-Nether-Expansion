@@ -16,6 +16,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -79,39 +80,39 @@ public class Apparition extends Monster implements FlyingAnimal {
         super.tick();
 
         if (this.level().isClientSide) {
-            AnimationState i;
-            AnimationState w;
+            AnimationState idle;
+            AnimationState walk;
 
             switch (this.getPreference()) {
                 default: {
-                    i = this.idle1AnimationState;
-                    w = this.walk1AnimationState;
+                    idle = this.idle1AnimationState;
+                    walk = this.walk1AnimationState;
                     break;
                 }
                 case 2: {
-                    i = this.idle2AnimationState;
-                    w = this.walk2AnimationState;
+                    idle = this.idle2AnimationState;
+                    walk = this.walk2AnimationState;
                     break;
                 }
                 case 3: {
-                    i = this.idle3AnimationState;
-                    w = this.walk3AnimationState;
+                    idle = this.idle3AnimationState;
+                    walk = this.walk3AnimationState;
                     break;
                 }
                 case 4: {
-                    i = this.idle4AnimationState;
-                    w = this.walk4AnimationState;
+                    idle = this.idle4AnimationState;
+                    walk = this.walk4AnimationState;
                     break;
                 }
             }
 
             if (this.isMoving()) {
-                i.stop();
-                w.startIfStopped(this.tickCount);
+                idle.stop();
+                walk.startIfStopped(this.tickCount);
             }
             else {
-                w.stop();
-                i.startIfStopped(this.tickCount);
+                walk.stop();
+                idle.startIfStopped(this.tickCount);
             }
         }
     }
@@ -245,7 +246,8 @@ public class Apparition extends Monster implements FlyingAnimal {
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
         if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion)) {
-            this.die(this.getLastDamageSource());
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+            this.discard();
         }
         return super.hurt(damageSource, f);
     }
@@ -312,7 +314,7 @@ public class Apparition extends Monster implements FlyingAnimal {
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setPreference(nbt.getInt("Preference"));
-        this.setCooldown(nbt.getInt("Cooldown"));
+        this.cooldown = nbt.getInt("Cooldown");
     }
 
     public int getPreference() {

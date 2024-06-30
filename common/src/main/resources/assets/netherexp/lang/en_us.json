@@ -467,6 +467,9 @@
   "entity.netherexp.grenade_effect_cloud": "Grenade Effect Cloud",
   "entity.netherexp.warphopper": "Warphopper",
 
+  "painting.netherexp.house.author": "Navidson Realty",
+  "painting.netherexp.house.title": "House",
+
   "advancements.nether.add_spores_to_block.title": "Algaebra",
   "advancements.nether.add_spores_to_block.description": "Apply Lightspores or Nightspores to an appropriate wart block",
   "advancements.nether.overkill.title": "Overkill",

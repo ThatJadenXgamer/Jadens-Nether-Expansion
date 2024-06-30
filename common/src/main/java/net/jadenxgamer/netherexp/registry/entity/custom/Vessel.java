@@ -108,8 +108,12 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     @Override
     public void aiStep() {
-        if (this.isInWaterOrRain() && getChangeType() != 0) {
-            this.doExorcism();
+        if (this.isInWaterOrRain()) {
+            if (getChangeType() == 0) {
+                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+                this.discard();
+            }
+            else this.doExorcism();
         }
         super.aiStep();
     }
@@ -159,7 +163,7 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
-        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion) && getChangeType() != 0) {
+        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion) && getChangeType() > 0) {
             doExorcism();
             if (thrownPotion.getOwner() instanceof Player player) {
                 JNECriteriaTriggers.EXORCISM.trigger((ServerPlayer) player);
@@ -181,7 +185,7 @@ public class Vessel extends Monster implements RangedAttackMob {
         }
         this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
         for(int i = 0; i < 10; i++) {
-            this.level().addParticle(JNEParticleTypes.WISP.get(), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0, 0.0, 0.0);
+            this.level().addParticle(JNEParticleTypes.WISP.get(), this.getRandomX(1.5), this.getRandomY(), this.getRandomZ(1.5), 0.0, 0.0, 0.0);
         }
     }
 

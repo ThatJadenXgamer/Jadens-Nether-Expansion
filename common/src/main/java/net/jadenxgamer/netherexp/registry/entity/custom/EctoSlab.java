@@ -106,8 +106,12 @@ public class EctoSlab extends Slime {
 
     @Override
     public void aiStep() {
-        if (this.isInWaterOrRain() && getChangeType() != 0) {
-            this.doExorcism();
+        if (this.isInWaterOrRain()) {
+            if (getChangeType() == 0) {
+                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+                this.discard();
+            }
+            else this.doExorcism();
         }
         super.aiStep();
     }
@@ -314,8 +318,10 @@ public class EctoSlab extends Slime {
 
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
-        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion) && getChangeType() != 0) {
-            doExorcism();
+        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion)) {
+            if (getChangeType() > 0) {
+                doExorcism();
+            }
             if (thrownPotion.getOwner() instanceof Player player) {
                 JNECriteriaTriggers.EXORCISM.trigger((ServerPlayer) player);
             }

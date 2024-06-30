@@ -30,6 +30,7 @@
     "entity.BlockEntityTypeMixin",
     "entity.HoglinMixin",
     "entity.LivingEntityMixin",
+    "entity.NearestAttackableTargetGoalMixin",
     "entity.PiglinMixin",
     "entity.PlayerMixin",
     "entity.ProjectileMixin",
