@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:chiseled_soul_slate_tiles"
+    },
+    "title": {
+      "translate": "advancements.nether.occult_manor.title"
+    },
+    "description": {
+      "translate": "advancements.nether.occult_manor.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley",
+  "criteria": {
+    "sanctum": {
+      "trigger": "minecraft:impossible",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "sanctum"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

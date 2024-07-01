@@ -39,8 +39,8 @@ extends HorizontalDirectionalBlock {
     }
 
     /*
-    Sets Gilded BlockState to True
-    when Interacted with a Gold Ingot
+     * Sets Gilded BlockState to True
+     * when Interacted with a Gold Nugget
      */
     @SuppressWarnings("deprecation")
     @Override

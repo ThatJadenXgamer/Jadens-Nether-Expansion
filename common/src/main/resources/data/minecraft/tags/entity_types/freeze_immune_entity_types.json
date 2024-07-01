@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:apparition",
+    "netherexp:wisp",
+    "netherexp:vessel",
+    "netherexp:ecto_slab",
+    "netherexp:stampede"
+  ]
+}

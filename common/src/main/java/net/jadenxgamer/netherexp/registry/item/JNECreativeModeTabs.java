@@ -34,7 +34,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SOUL_SLATE_BRICK_SLAB.get());
                         output.accept(JNEBlocks.SOUL_SLATE_BRICK_WALL.get());
                         output.accept(JNEBlocks.CRACKED_SOUL_SLATE_BRICKS.get());
-                        output.accept(JNEBlocks.INDENTED_SOUL_SLATE_BRICKS.get());
+                        output.accept(JNEBlocks.ETCHED_SOUL_SLATE_BRICKS.get());
                         output.accept(JNEBlocks.CHISELED_SOUL_SLATE_BRICKS.get());
                         output.accept(JNEBlocks.SOUL_SLATE_BRICK_PILLAR.get());
 
@@ -43,7 +43,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SOUL_SLATE_TILE_STAIRS.get());
                         output.accept(JNEBlocks.SOUL_SLATE_TILE_SLAB.get());
                         output.accept(JNEBlocks.SOUL_SLATE_TILE_WALL.get());
-                        output.accept(JNEBlocks.INDENTED_SOUL_SLATE_TILES.get());
+                        output.accept(JNEBlocks.ETCHED_SOUL_SLATE_TILES.get());
                         output.accept(JNEBlocks.CHISELED_SOUL_SLATE_TILES.get());
 
                         output.accept(JNEBlocks.FOSSIL_ORE.get());

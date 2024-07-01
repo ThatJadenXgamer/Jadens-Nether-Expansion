@@ -10,7 +10,7 @@
       "translate": "advancements.nether.the_caduceus.description"
     }
   },
-  "parent": "netherexp:nether/gothic_manor",
+  "parent": "netherexp:nether/occult_manor",
   "criteria": {
     "c1": {
       "trigger": "minecraft:inventory_changed",

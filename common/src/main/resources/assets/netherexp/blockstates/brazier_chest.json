@@ -1,0 +1,51 @@
+{
+  "variants": {
+    "facing=north,locked=false,open=false": {
+      "model": "netherexp:block/brazier_chest_lit"
+    },
+    "facing=east,locked=false,open=false": {
+      "model": "netherexp:block/brazier_chest_lit",
+      "y": 90
+    },
+    "facing=south,locked=false,open=false": {
+      "model": "netherexp:block/brazier_chest_lit",
+      "y": 180
+    },
+    "facing=west,locked=false,open=false": {
+      "model": "netherexp:block/brazier_chest_lit",
+      "y": 270
+    },
+
+    "facing=north,locked=false,open=true": {
+      "model": "netherexp:block/brazier_chest_open"
+    },
+    "facing=east,locked=false,open=true": {
+      "model": "netherexp:block/brazier_chest_open",
+      "y": 90
+    },
+    "facing=south,locked=false,open=true": {
+      "model": "netherexp:block/brazier_chest_open",
+      "y": 180
+    },
+    "facing=west,locked=false,open=true": {
+      "model": "netherexp:block/brazier_chest_open",
+      "y": 270
+    },
+
+    "facing=north,locked=true": {
+      "model": "netherexp:block/brazier_chest"
+    },
+    "facing=east,locked=true": {
+      "model": "netherexp:block/brazier_chest",
+      "y": 90
+    },
+    "facing=south,locked=true": {
+      "model": "netherexp:block/brazier_chest",
+      "y": 180
+    },
+    "facing=west,locked=true": {
+      "model": "netherexp:block/brazier_chest",
+      "y": 270
+    }
+  }
+}

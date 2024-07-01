@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.block;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.block.entity.BrazierChestBlockEntity;
 import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -13,6 +14,9 @@ public class JNEBlockEntityType {
 
     public static final RegistrySupplier<BlockEntityType<JNEBrushableBlockEntity>> BRUSHABLE_BLOCK = BLOCK_ENTITY_TYPES.register("brushable_block", () ->
             BlockEntityType.Builder.of(JNEBrushableBlockEntity::new, JNEBlocks.SUSPICIOUS_SOUL_SAND.get()).build(null));
+
+    public static final RegistrySupplier<BlockEntityType<BrazierChestBlockEntity>> BRAZIER_CHEST = BLOCK_ENTITY_TYPES.register("brazier_chest", () ->
+            BlockEntityType.Builder.of(BrazierChestBlockEntity::new, JNEBlocks.BRAZIER_CHEST.get()).build(null));
 
     public static void init() {
         BLOCK_ENTITY_TYPES.register();

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "netherexp:block/etched_soul_slate_bricks/lit/0"
+  }
+}

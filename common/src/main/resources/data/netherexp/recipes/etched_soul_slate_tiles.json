@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "S S",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:soul_slate_tiles"
+    }
+  },
+  "result": {
+    "item": "netherexp:etched_soul_slate_tiles",
+    "count": 8
+  }
+}

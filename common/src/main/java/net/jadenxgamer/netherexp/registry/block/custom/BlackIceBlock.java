@@ -24,7 +24,7 @@ public class BlackIceBlock extends Block {
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean bl) {
         if (!level.isClientSide()) {
             if (level.getBlockState(fromPos).is(Blocks.SOUL_SAND)) {
-                level.setBlock(fromPos, JNEBlocks.SOUL_SLATE.get().defaultBlockState(), 2);
+                level.setBlock(fromPos, JNEBlocks.PALE_SOUL_SLATE.get().defaultBlockState(), 2);
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SLATE_SOLIDIFYING.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             }
         }

@@ -15,7 +15,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/gothic_manor",
+  "parent": "netherexp:nether/occult_manor",
   "criteria": {
     "shot_trident": {
       "trigger": "minecraft:inventory_changed",

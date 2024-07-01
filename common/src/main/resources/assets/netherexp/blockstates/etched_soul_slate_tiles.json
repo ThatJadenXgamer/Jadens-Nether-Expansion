@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "netherexp:block/etched_soul_slate_tiles_lit"
+    },
+    "lit=false": {
+      "model": "netherexp:block/etched_soul_slate_tiles"
+    }
+  }
+}
