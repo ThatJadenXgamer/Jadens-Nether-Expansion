@@ -1,10 +1,13 @@
 package net.jadenxgamer.netherexp.registry.block.entity;
 
+import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
+import net.jadenxgamer.netherexp.registry.block.custom.BrazierChestBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -16,19 +19,21 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BarrelBlock;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> items;
     private final ContainerOpenersCounter openersCounter;
 
+    @Nullable
+    protected ResourceLocation refillLootTable;
+
     public BrazierChestBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityType.BARREL, pos, state);
+        super(JNEBlockEntityType.BRAZIER_CHEST.get(), pos, state);
         this.items = NonNullList.withSize(27, ItemStack.EMPTY);
         this.openersCounter = new ContainerOpenersCounter() {
             protected void onOpen(Level arg, BlockPos arg2, BlockState arg3) {
@@ -53,6 +58,18 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
                 }
             }
         };
+    }
+
+    public void refillLoot() {
+        if (this.level != null) {
+            if (this.lootTable != null && refillLootTable == null) {
+                this.refillLootTable = lootTable;
+            }
+            if (this.refillLootTable != null) {
+                this.clearContent();
+                setLootTable(this.level, this.level.random, this.getBlockPos(), this.refillLootTable);
+            }
+        }
     }
 
     protected void saveAdditional(CompoundTag nbt) {
@@ -111,11 +128,11 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
 
     void updateBlockState(BlockState state, boolean bl) {
         assert this.level != null;
-        this.level.setBlock(this.getBlockPos(), state.setValue(BarrelBlock.OPEN, bl), 3);
+        this.level.setBlock(this.getBlockPos(), state.setValue(BrazierChestBlock.OPEN, bl), 3);
     }
 
     void playSound(BlockState state, SoundEvent sound) {
-        Vec3i vec3i = state.getValue(BarrelBlock.FACING).getNormal();
+        Vec3i vec3i = state.getValue(BrazierChestBlock.FACING).getNormal();
         double d = (double)this.worldPosition.getX() + 0.5 + (double)vec3i.getX() / 2.0;
         double e = (double)this.worldPosition.getY() + 0.5 + (double)vec3i.getY() / 2.0;
         double f = (double)this.worldPosition.getZ() + 0.5 + (double)vec3i.getZ() / 2.0;

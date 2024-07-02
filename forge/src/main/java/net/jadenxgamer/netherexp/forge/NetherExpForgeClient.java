@@ -47,6 +47,7 @@ public class NetherExpForgeClient {
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRenderers.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
+        EntityRenderers.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
         EntityRenderers.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
@@ -102,6 +103,7 @@ public class NetherExpForgeClient {
         event.registerLayerDefinition(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.VESSEL_LAYER, VesselModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.ECTO_SLAB_LAYER, EctoSlabModel::createBodyLayer);
+        event.registerLayerDefinition(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
     }
 }

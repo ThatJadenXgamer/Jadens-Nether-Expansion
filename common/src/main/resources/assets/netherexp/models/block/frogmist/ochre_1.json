@@ -1,6 +1,7 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"ambientocclusion": false,
+	"render_type": "minecraft:translucent",
 	"textures": {
 		"1": "netherexp:block/ochre_frogmist_overlay",
 		"2": "netherexp:block/ochre_frogmist",

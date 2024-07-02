@@ -4,7 +4,6 @@ import net.jadenxgamer.netherexp.registry.block.entity.BrazierChestBlockEntity;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,7 +18,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -31,16 +29,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class BrazierChestBlock extends BaseEntityBlock {
-    public static final ResourceLocation LOOT_TABLE = new ResourceLocation("chests/ruined_portal");
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final BooleanProperty LOCKED = BooleanProperty.create("locked");
-    public static final BooleanProperty COOLDOWN = BooleanProperty.create("cooldown");
 
     public BrazierChestBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false).setValue(LOCKED, true).setValue(COOLDOWN, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false).setValue(LOCKED, true));
     }
 
     @SuppressWarnings("deprecation")
@@ -48,28 +44,27 @@ public class BrazierChestBlock extends BaseEntityBlock {
         ItemStack stack = player.getItemInHand(hand);
         BlockEntity blockEntity = level.getBlockEntity(pos);
         boolean locked = state.getValue(LOCKED);
-        boolean cooldown = state.getValue(COOLDOWN);
-        if (locked && !cooldown) {
-            if (stack.is(JNEItems.TREACHEROUS_FLAME.get())) {
-                state.cycle(LOCKED);
-                if (blockEntity instanceof BrazierChestBlockEntity) {
-                    RandomizableContainerBlockEntity.setLootTable(level, level.getRandom(), pos, LOOT_TABLE);
-                    level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+        if (!level.isClientSide()) {
+            if (locked) {
+                if (stack.is(JNEItems.TREACHEROUS_FLAME.get())) {
+                    level.setBlock(pos, state.cycle(LOCKED), 2);
+                    if (blockEntity instanceof BrazierChestBlockEntity) {
+                        ((BrazierChestBlockEntity) blockEntity).refillLoot();
+                        level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                    }
+                    if (!player.getAbilities().instabuild) {
+                        stack.shrink(1);
+                    }
                 }
             }
             else {
-                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1.0f, 1.0f);
-            }
-        }
-        else if (!locked && !cooldown) {
-            if (!level.isClientSide) {
                 if (blockEntity instanceof BrazierChestBlockEntity) {
                     player.openMenu((BrazierChestBlockEntity) blockEntity);
                 }
-                return InteractionResult.CONSUME;
             }
+            return InteractionResult.CONSUME;
         }
-        return InteractionResult.FAIL;
+        else return InteractionResult.FAIL;
     }
 
     @SuppressWarnings("deprecation")
@@ -96,7 +91,6 @@ public class BrazierChestBlock extends BaseEntityBlock {
                 ((BrazierChestBlockEntity)blockEntity).setCustomName(stack.getHoverName());
             }
         }
-
     }
 
     @SuppressWarnings("deprecation")
@@ -120,7 +114,7 @@ public class BrazierChestBlock extends BaseEntityBlock {
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, OPEN, LOCKED, COOLDOWN);
+        builder.add(FACING, OPEN, LOCKED);
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {

@@ -62,7 +62,7 @@ implements BonemealableBlock {
 
     private void spawnEctoSlab(Level level, BlockPos pos, LivingEntity entity, RandomSource random) {
         EctoSlab ectoSlab = JNEEntityType.ECTO_SLAB.get().create(level);
-        int size = random.nextInt(1);
+        int size = Mth.nextInt(random, 1, 2);
         if (ectoSlab != null) {
             ectoSlab.setSize(size, true);
             ectoSlab.push(ectoSlab.getX(), 0.4, ectoSlab.getZ());

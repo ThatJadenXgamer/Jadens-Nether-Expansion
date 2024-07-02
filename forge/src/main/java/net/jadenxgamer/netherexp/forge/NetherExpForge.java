@@ -65,6 +65,7 @@ public class NetherExpForge {
         event.put(JNEEntityType.WISP.get(), Wisp.createAttributes().build());
         event.put(JNEEntityType.VESSEL.get(), Vessel.createAttributes().build());
         event.put(JNEEntityType.ECTO_SLAB.get(), Vessel.createAttributes().build());
+        event.put(JNEEntityType.STAMPEDE.get(), Vessel.createAttributes().build());
     }
 
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {

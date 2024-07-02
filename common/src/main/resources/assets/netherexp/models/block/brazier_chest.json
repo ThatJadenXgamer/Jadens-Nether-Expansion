@@ -1,6 +1,7 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"ambientocclusion": false,
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/brazier_chest_front",
 		"1": "netherexp:block/brazier_chest_side",

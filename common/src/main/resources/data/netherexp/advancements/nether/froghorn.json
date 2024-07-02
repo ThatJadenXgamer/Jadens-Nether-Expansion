@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/frightening_rush",
+  "parent": "netherexp:nether/blind_shot",
   "criteria": {
     "froglights": {
       "trigger": "minecraft:inventory_changed",
