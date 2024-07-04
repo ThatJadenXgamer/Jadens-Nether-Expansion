@@ -27,10 +27,7 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
@@ -186,6 +183,14 @@ public class EctoSlab extends Slime {
             super.pushEntities();
         }
     }
+
+    public void push(Entity entity) {
+        super.push(entity);
+        if (entity instanceof Piglin && this.isDealsDamage()) {
+            this.dealDamage((LivingEntity)entity);
+        }
+    }
+
 
     @Override
     public void refreshDimensions() {

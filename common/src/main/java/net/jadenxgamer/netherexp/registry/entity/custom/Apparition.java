@@ -279,14 +279,16 @@ public class Apparition extends Monster implements FlyingAnimal {
             }
         }
         if (livingEntity instanceof MagmaCube magmaCube) {
-            EctoSlab ectoSlab = magmaCube.convertTo(JNEEntityType.ECTO_SLAB.get(), false);
+            EctoSlab ectoSlab = JNEEntityType.ECTO_SLAB.get().create(this.level());
             if (ectoSlab != null) {
-                ectoSlab.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(ectoSlab.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
                 ectoSlab.setSize(magmaCube.getSize(), true);
+                ectoSlab.setPos(this.position());
                 if (magmaCube.hasCustomName()) {
                     ectoSlab.setCustomName(magmaCube.getCustomName());
                 }
+                this.level().addFreshEntity(ectoSlab);
                 this.discard();
+                magmaCube.discard();
                 return false;
             }
         }

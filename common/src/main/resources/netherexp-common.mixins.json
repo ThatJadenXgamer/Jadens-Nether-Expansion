@@ -36,6 +36,7 @@
     "entity.PlayerMixin",
     "entity.ProjectileMixin",
     "entity.SkeletonMixin",
+    "entity.SlimeMixin",
     "entity.WitherSkeletonMixin",
     "entity.ZombifiedPiglinMixin",
     "item.AxeItemMixin",

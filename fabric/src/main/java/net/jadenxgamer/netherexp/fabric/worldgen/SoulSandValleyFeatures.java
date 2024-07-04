@@ -18,6 +18,9 @@ public class SoulSandValleyFeatures {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
                 GenerationStep.Decoration.RAW_GENERATION, JNEPlacedFeatures.PALE_SOUL_SLATE_SURFACE);
 
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SOUL_SAND_VALLEY),
+                GenerationStep.Decoration.UNDERGROUND_DECORATION, JNEPlacedFeatures.SOUL_MAGMA_CLUSTER);
+
         // STEP 1 - LAKES
 
         // STEP 2 - LOCAL_MODIFICATIONS
