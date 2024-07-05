@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:sealed_pottery_sherd",
+    "netherexp:spectre_pottery_sherd",
+    "netherexp:marionette_pottery_sherd",
+    "netherexp:eldritch_pottery_sherd",
+    "netherexp:deception_pottery_sherd",
+    "netherexp:firearm_pottery_sherd",
+    "netherexp:botanical_pottery_sherd"
+  ]
+}

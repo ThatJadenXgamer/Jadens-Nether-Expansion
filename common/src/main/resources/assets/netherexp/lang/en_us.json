@@ -533,6 +533,14 @@
   "block.netherexp.potted_violet_scale_fungus": "Potted Violet Scale Fungus",
   "block.netherexp.potted_umbral_sporeshroom": "Potted Umbral Sporeshroom",
 
+  "item.netherexp.sealed_pottery_sherd": "Sealed Pottery Sherd",
+  "item.netherexp.spectre_pottery_sherd": "Spectre Pottery Sherd",
+  "item.netherexp.marionette_pottery_sherd": "Marionette Pottery Sherd",
+  "item.netherexp.eldritch_pottery_sherd": "Eldritch Pottery Sherd",
+  "item.netherexp.deception_pottery_sherd": "Deception Pottery Sherd",
+  "item.netherexp.firearm_pottery_sherd": "Firearm Pottery Sherd",
+  "item.netherexp.botanical_pottery_sherd": "Botanical Pottery Sherd",
+
   "tooltipped.block.netherexp.soul_slate.desc": "A sturdy durable rock made with Frozen Souls",
   "tooltipped.block.netherexp.pale_soul_slate.desc": "Soul Slate that has been tainted with bits of Netherrack",
   "tooltipped.block.netherexp.soul_slate_bricks.desc": "Souls compacted into Bricks",

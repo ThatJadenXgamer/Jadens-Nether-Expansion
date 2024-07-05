@@ -46,6 +46,8 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.ETCHED_SOUL_SLATE_TILES.get());
                         output.accept(JNEBlocks.CHISELED_SOUL_SLATE_TILES.get());
 
+                        output.accept(JNEBlocks.BRAZIER_CHEST.get());
+
                         output.accept(JNEBlocks.FOSSIL_ORE.get());
                         output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
                         output.accept(JNEBlocks.DIAMOND_FOSSIL_ORE.get());
@@ -205,17 +207,17 @@ public class JNECreativeModeTabs {
                         output.accept(Blocks.SMOOTH_QUARTZ_STAIRS);
                         output.accept(Blocks.SMOOTH_QUARTZ_SLAB);
 
-                        output.accept(JNEBlocks.SILICA_SAND.get());
-                        output.accept(JNEBlocks.SILICA_SANDSTONE.get());
-                        output.accept(JNEBlocks.SILICA_SANDSTONE_STAIRS.get());
-                        output.accept(JNEBlocks.SILICA_SANDSTONE_SLAB.get());
-                        output.accept(JNEBlocks.SILICA_SANDSTONE_WALL.get());
-                        output.accept(JNEBlocks.CUT_SILICA_SANDSTONE.get());
-                        output.accept(JNEBlocks.CUT_SILICA_SANDSTONE_SLAB.get());
-                        output.accept(JNEBlocks.CHISELED_SILICA_SANDSTONE.get());
-                        output.accept(JNEBlocks.SMOOTH_SILICA_SANDSTONE.get());
-                        output.accept(JNEBlocks.SMOOTH_SILICA_SANDSTONE_STAIRS.get());
-                        output.accept(JNEBlocks.SMOOTH_SILICA_SANDSTONE_SLAB.get());
+//                        output.accept(JNEBlocks.SILICA_SAND.get());
+//                        output.accept(JNEBlocks.SILICA_SANDSTONE.get());
+//                        output.accept(JNEBlocks.SILICA_SANDSTONE_STAIRS.get());
+//                        output.accept(JNEBlocks.SILICA_SANDSTONE_SLAB.get());
+//                        output.accept(JNEBlocks.SILICA_SANDSTONE_WALL.get());
+//                        output.accept(JNEBlocks.CUT_SILICA_SANDSTONE.get());
+//                        output.accept(JNEBlocks.CUT_SILICA_SANDSTONE_SLAB.get());
+//                        output.accept(JNEBlocks.CHISELED_SILICA_SANDSTONE.get());
+//                        output.accept(JNEBlocks.SMOOTH_SILICA_SANDSTONE.get());
+//                        output.accept(JNEBlocks.SMOOTH_SILICA_SANDSTONE_STAIRS.get());
+//                        output.accept(JNEBlocks.SMOOTH_SILICA_SANDSTONE_SLAB.get());
 
                         output.accept(Blocks.NETHER_BRICKS);
                         output.accept(Blocks.NETHER_BRICK_STAIRS);
@@ -399,6 +401,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SEALED_GARGOYLE_STATUE.get());
                         output.accept(JNEBlocks.OBFUSCATED_GARGOYLE_STATUE.get());
                         addAntidotes(output);
+                        addGrenadeAntidotes(output);
 
                     }).build());
 
@@ -410,7 +413,16 @@ public class JNECreativeModeTabs {
             ItemStack antidote = new ItemStack(JNEItems.ANTIDOTE.get());
             antidote.setTag(nbt);
             set.add(antidote);
+        }
 
+        output.acceptAll(set);
+    }
+
+    private static void addGrenadeAntidotes(CreativeModeTab.Output output) {
+        List<CompoundTag> list = Antidotes.ANTIDOTES;
+        Set<ItemStack> set = ItemStackLinkedSet.createTypeAndTagSet();
+
+        for (CompoundTag nbt : list) {
             ItemStack grenade = new ItemStack(JNEItems.GRENADE_ANTIDOTE.get());
             grenade.setTag(nbt);
             set.add(grenade);

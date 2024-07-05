@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.entity;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.custom.BrazierChestBlock;
+import net.minecraft.client.renderer.texture.Tickable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
@@ -25,9 +26,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
+public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity implements Tickable {
     private NonNullList<ItemStack> items;
     private final ContainerOpenersCounter openersCounter;
+    private int lockTimer;
 
     @Nullable
     protected ResourceLocation refillLootTable;
@@ -35,6 +37,7 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
     public BrazierChestBlockEntity(BlockPos pos, BlockState state) {
         super(JNEBlockEntityType.BRAZIER_CHEST.get(), pos, state);
         this.items = NonNullList.withSize(27, ItemStack.EMPTY);
+        this.lockTimer = 0;
         this.openersCounter = new ContainerOpenersCounter() {
             protected void onOpen(Level arg, BlockPos arg2, BlockState arg3) {
                 BrazierChestBlockEntity.this.playSound(arg3, SoundEvents.CHEST_OPEN);
@@ -138,5 +141,21 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
         double f = (double)this.worldPosition.getZ() + 0.5 + (double)vec3i.getZ() / 2.0;
         assert this.level != null;
         this.level.playSound(null, d, e, f, sound, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+    }
+
+    @Override
+    public void tick() {
+        Level level = this.level;
+        BlockState state = this.getBlockState();
+        boolean locked = state.getValue(BrazierChestBlock.LOCKED);
+        if (!locked) {
+            if (this.lockTimer >= 2400) {
+                assert level != null;
+                level.setBlock(this.getBlockPos(), state.cycle(BrazierChestBlock.LOCKED), 2);
+                level.playSound(null, this.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
+                this.lockTimer = 0;
+            }
+            else this.lockTimer++;
+        }
     }
 }

@@ -137,6 +137,27 @@ public class JNEItems {
     public static final RegistrySupplier<Item> STAMPEDE_SPAWN_EGG = registerItem("stampede_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.STAMPEDE, 4864303, 10236982, new Item.Properties()));
 
+    public static final RegistrySupplier<Item> SEALED_POTTERY_SHERD = registerItem("sealed_pottery_sherd", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> SPECTRE_POTTERY_SHERD = registerItem("spectre_pottery_sherd", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> MARIONETTE_POTTERY_SHERD = registerItem("marionette_pottery_sherd", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> ELDRITCH_POTTERY_SHERD = registerItem("eldritch_pottery_sherd", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> DECEPTION_POTTERY_SHERD = registerItem("deception_pottery_sherd", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> FIREARM_POTTERY_SHERD = registerItem("firearm_pottery_sherd", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> BOTANICAL_POTTERY_SHERD = registerItem("botanical_pottery_sherd", () ->
+            new Item(new Item.Properties()));
+
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);
     }

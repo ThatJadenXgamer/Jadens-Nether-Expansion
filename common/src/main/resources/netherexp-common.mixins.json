@@ -29,6 +29,7 @@
     "brewing.PotionSlotMixin",
     "entity.AbstractArrowMixin",
     "entity.BlockEntityTypeMixin",
+    "entity.DecoratedPotPatternsMixin",
     "entity.HoglinMixin",
     "entity.LivingEntityMixin",
     "entity.NearestAttackableTargetGoalMixin",

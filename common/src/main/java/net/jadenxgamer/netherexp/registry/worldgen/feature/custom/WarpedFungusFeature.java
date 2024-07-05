@@ -20,6 +20,8 @@ import net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration;
 
 public class WarpedFungusFeature extends Feature<HugeFungusConfiguration> {
 
+    // Based on Vanilla HugeFungusFeature with cleaner variables, different height distribution and beard placement
+
     public WarpedFungusFeature(Codec<HugeFungusConfiguration> codec) {
         super(codec);
     }
@@ -27,116 +29,115 @@ public class WarpedFungusFeature extends Feature<HugeFungusConfiguration> {
     @Override
     public boolean place(FeaturePlaceContext<HugeFungusConfiguration> context) {
         WorldGenLevel worldGenLevel = context.level();
-        BlockPos pos = context.origin();
+        BlockPos originPos = context.origin();
         RandomSource random = context.random();
-        ChunkGenerator chunk = context.chunkGenerator();
-        HugeFungusConfiguration hugeFungusConfiguration = context.config();
-        Block block = hugeFungusConfiguration.validBaseState.getBlock();
-        BlockPos pos2 = null;
-        BlockState blockState = worldGenLevel.getBlockState(pos.below());
-        if (blockState.is(block)) {
-            pos2 = pos;
+        ChunkGenerator chunkGenerator = context.chunkGenerator();
+        HugeFungusConfiguration config = context.config();
+        Block baseBlock = config.validBaseState.getBlock();
+        BlockPos placePos = null;
+        BlockState baseBlockState = worldGenLevel.getBlockState(originPos.below());
+
+        if (baseBlockState.is(baseBlock)) {
+            placePos = originPos;
         }
 
-        if (pos2 == null) {
+        if (placePos == null) {
             return false;
         } else {
-            int i = Mth.nextInt(random, 4, 13);
+            int height = Mth.nextInt(random, 9, 13);
             if (random.nextInt(12) == 0) {
-                i *= 2;
+                height *= 2;
             }
 
-            if (!hugeFungusConfiguration.planted) {
-                int j = chunk.getGenDepth();
-                if (pos2.getY() + i + 1 >= j) {
+            if (!config.planted) {
+                int maxGenDepth = chunkGenerator.getGenDepth();
+                if (placePos.getY() + height + 1 >= maxGenDepth) {
                     return false;
                 }
             }
 
-            boolean bl = !hugeFungusConfiguration.planted && random.nextFloat() < 0.06F;
-            worldGenLevel.setBlock(pos, Blocks.AIR.defaultBlockState(), 4);
-            this.placeStem(worldGenLevel, random, hugeFungusConfiguration, pos2, i, bl);
-            this.placeHat(worldGenLevel, random, hugeFungusConfiguration, pos2, i, bl);
+            boolean largeStem = !config.planted && random.nextFloat() < 0.06F;
+            worldGenLevel.setBlock(originPos, Blocks.AIR.defaultBlockState(), 4);
+            this.placeStem(worldGenLevel, random, config, placePos, height, largeStem);
+            this.placeHat(worldGenLevel, random, config, placePos, height, largeStem);
             return true;
         }
     }
 
-    private static boolean isReplaceable(WorldGenLevel level, BlockPos pos, HugeFungusConfiguration config, boolean bl) {
+    private static boolean isReplaceable(WorldGenLevel level, BlockPos pos, HugeFungusConfiguration config, boolean checkReplaceableBlocks) {
         if (level.isStateAtPosition(pos, BlockBehaviour.BlockStateBase::canBeReplaced)) {
             return true;
         } else {
-            return bl && config.replaceableBlocks.test(level, pos);
+            return checkReplaceableBlocks && config.replaceableBlocks.test(level, pos);
         }
     }
 
-    private void placeStem(WorldGenLevel level, RandomSource random, HugeFungusConfiguration config, BlockPos pos, int i, boolean bl) {
+    private void placeStem(WorldGenLevel level, RandomSource random, HugeFungusConfiguration config, BlockPos pos, int height, boolean largeStem) {
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        BlockState blockState = config.stemState;
-        int j = bl ? 1 : 0;
+        BlockState stemState = config.stemState;
+        int stemRadius = largeStem ? 1 : 0;
 
-        for(int k = -j; k <= j; ++k) {
-            for(int l = -j; l <= j; ++l) {
-                boolean bl2 = bl && Mth.abs(k) == j && Mth.abs(l) == j;
+        for (int x = -stemRadius; x <= stemRadius; ++x) {
+            for (int z = -stemRadius; z <= stemRadius; ++z) {
+                boolean isCorner = largeStem && Mth.abs(x) == stemRadius && Mth.abs(z) == stemRadius;
 
-                for(int m = 0; m < i; ++m) {
-                    mutableBlockPos.setWithOffset(pos, k, m, l);
+                for (int y = 0; y < height; ++y) {
+                    mutableBlockPos.setWithOffset(pos, x, y, z);
                     if (isReplaceable(level, mutableBlockPos, config, true)) {
                         if (config.planted) {
                             if (!level.getBlockState(mutableBlockPos.below()).isAir()) {
                                 level.destroyBlock(mutableBlockPos, true);
                             }
-
-                            level.setBlock(mutableBlockPos, blockState, 3);
-                        } else if (bl2) {
+                            level.setBlock(mutableBlockPos, stemState, 3);
+                        } else if (isCorner) {
                             if (random.nextFloat() < 0.1F) {
-                                this.setBlock(level, mutableBlockPos, blockState);
+                                this.setBlock(level, mutableBlockPos, stemState);
                             }
                         } else {
-                            this.setBlock(level, mutableBlockPos, blockState);
+                            this.setBlock(level, mutableBlockPos, stemState);
                         }
                     }
                 }
             }
         }
-
     }
 
-    private void placeHat(WorldGenLevel level, RandomSource random, HugeFungusConfiguration config, BlockPos pos, int i, boolean bl) {
+    private void placeHat(WorldGenLevel level, RandomSource random, HugeFungusConfiguration config, BlockPos pos, int height, boolean largeStem) {
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
         boolean beardValid = config.hatState.is(JNETags.Blocks.WART_BEARD_FEATURE_VALID);
-        int j = Math.min(random.nextInt(1 + i / 3) + 5, i);
-        int k = i - j;
+        int hatHeight = Math.min(random.nextInt(1 + height / 3) + 5, height);
+        int stemHeight = height - hatHeight;
 
-        for(int l = k; l <= i; ++l) {
-            int m = l < i - random.nextInt(3) ? 2 : 1;
-            if (j > 8 && l < k + 4) {
-                m = 3;
+        for (int y = stemHeight; y <= height; ++y) {
+            int hatRadius = y < height - random.nextInt(3) ? 2 : 1;
+            if (hatHeight > 8 && y < stemHeight + 4) {
+                hatRadius = 3;
             }
 
-            if (bl) {
-                ++m;
+            if (largeStem) {
+                ++hatRadius;
             }
 
-            for(int n = -m; n <= m; ++n) {
-                for(int o = -m; o <= m; ++o) {
-                    boolean bl3 = n == -m || n == m;
-                    boolean bl4 = o == -m || o == m;
-                    boolean bl5 = !bl3 && !bl4 && l != i;
-                    boolean bl6 = bl3 && bl4;
-                    boolean bl7 = l < k + 3;
-                    mutableBlockPos.setWithOffset(pos, n, l, o);
+            for (int x = -hatRadius; x <= hatRadius; ++x) {
+                for (int z = -hatRadius; z <= hatRadius; ++z) {
+                    boolean isEdgeX = x == -hatRadius || x == hatRadius;
+                    boolean isEdgeZ = z == -hatRadius || z == hatRadius;
+                    boolean isCenter = !isEdgeX && !isEdgeZ && y != height;
+                    boolean isCorner = isEdgeX && isEdgeZ;
+                    boolean lowHat = y < stemHeight + 3;
+                    mutableBlockPos.setWithOffset(pos, x, y, z);
                     if (isReplaceable(level, mutableBlockPos, config, false)) {
                         if (config.planted && !level.getBlockState(mutableBlockPos.below()).isAir()) {
                             level.destroyBlock(mutableBlockPos, true);
                         }
 
-                        if (bl7) {
-                            if (!bl5) {
+                        if (lowHat) {
+                            if (!isCenter) {
                                 this.placeHatDropBlock(level, random, mutableBlockPos, config.hatState, beardValid);
                             }
-                        } else if (bl5) {
+                        } else if (isCenter) {
                             this.placeHatBlock(level, random, config, mutableBlockPos, 0.1F, 0.2F, beardValid ? 0.1F : 0.0F);
-                        } else if (bl6) {
+                        } else if (isCorner) {
                             this.placeHatBlock(level, random, config, mutableBlockPos, 0.01F, 0.7F, beardValid ? 0.083F : 0.0F);
                         } else {
                             this.placeHatBlock(level, random, config, mutableBlockPos, 5.0E-4F, 0.98F, beardValid ? 0.07F : 0.0F);
@@ -145,27 +146,23 @@ public class WarpedFungusFeature extends Feature<HugeFungusConfiguration> {
                 }
             }
         }
-
     }
 
-    private void placeHatBlock(LevelAccessor level, RandomSource random, HugeFungusConfiguration context, BlockPos.MutableBlockPos pos, float f, float g, float h) {
-        if (random.nextFloat() < f) {
-            this.setBlock(level, pos, context.decorState);
-        }
-        else if (random.nextFloat() < g) {
-            this.setBlock(level, pos, context.hatState);
+    private void placeHatBlock(LevelAccessor level, RandomSource random, HugeFungusConfiguration config, BlockPos.MutableBlockPos pos, float probability1, float probability2, float probability3) {
+        if (random.nextFloat() < probability1) {
+            this.setBlock(level, pos, config.decorState);
+        } else if (random.nextFloat() < probability2) {
+            this.setBlock(level, pos, config.hatState);
             tryPlaceBeard(pos, level);
         }
     }
 
-    private void placeHatDropBlock(LevelAccessor level, RandomSource random, BlockPos pos, BlockState state, boolean bl) {
+    private void placeHatDropBlock(LevelAccessor level, RandomSource random, BlockPos pos, BlockState state, boolean beardValid) {
         if (level.getBlockState(pos.below()).is(state.getBlock())) {
             this.setBlock(level, pos, state);
-        }
-        else if ((double)random.nextFloat() < 0.15) {
+        } else if (random.nextFloat() < 0.15) {
             this.setBlock(level, pos, state);
-        }
-        else if (level.getBlockState(pos.above()).is(state.getBlock())) {
+        } else if (level.getBlockState(pos.above()).is(state.getBlock())) {
             tryPlaceBeard(pos, level);
         }
     }

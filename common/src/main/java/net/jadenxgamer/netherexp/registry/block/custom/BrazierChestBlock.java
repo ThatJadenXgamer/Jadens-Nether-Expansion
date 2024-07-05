@@ -2,11 +2,13 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.block.entity.BrazierChestBlockEntity;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -14,6 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -40,31 +43,40 @@ public class BrazierChestBlock extends BaseEntityBlock {
     }
 
     @SuppressWarnings("deprecation")
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        ItemStack stack = player.getItemInHand(hand);
+    @Override
+    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        boolean locked = state.getValue(LOCKED);
-        if (!level.isClientSide()) {
-            if (locked) {
-                if (stack.is(JNEItems.TREACHEROUS_FLAME.get())) {
-                    level.setBlock(pos, state.cycle(LOCKED), 2);
-                    if (blockEntity instanceof BrazierChestBlockEntity) {
-                        ((BrazierChestBlockEntity) blockEntity).refillLoot();
-                        level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                    }
-                    if (!player.getAbilities().instabuild) {
-                        stack.shrink(1);
-                    }
-                }
-            }
-            else {
+        boolean locked = blockState.getValue(LOCKED);
+        boolean bl = false;
+        if (locked) {
+            if (itemStack.is(JNEItems.TREACHEROUS_FLAME.get())) {
+                bl = true;
+                level.setBlock(pos, blockState.cycle(LOCKED), Block.UPDATE_CLIENTS);
                 if (blockEntity instanceof BrazierChestBlockEntity) {
+                    ((BrazierChestBlockEntity) blockEntity).refillLoot();
                     player.openMenu((BrazierChestBlockEntity) blockEntity);
+                    level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
+                }
+                if (!level.isClientSide) {
+                    player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                 }
             }
-            return InteractionResult.CONSUME;
         }
-        else return InteractionResult.FAIL;
+        else {
+            bl = true;
+            if (blockEntity instanceof BrazierChestBlockEntity) {
+                ((BrazierChestBlockEntity) blockEntity).refillLoot();
+                player.openMenu((BrazierChestBlockEntity) blockEntity);
+            }
+        }
+        if (bl) {
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        return InteractionResult.PASS;
     }
 
     @SuppressWarnings("deprecation")
