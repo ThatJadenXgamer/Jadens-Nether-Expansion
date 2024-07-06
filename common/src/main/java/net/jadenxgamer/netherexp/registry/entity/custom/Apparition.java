@@ -180,7 +180,7 @@ public class Apparition extends Monster implements FlyingAnimal {
 
     @Override
     public void aiStep() {
-        if (this.level().isClientSide() && this.getCooldown() > 0) {
+        if (!this.level().isClientSide() && this.getCooldown() > 0) {
             --this.cooldown;
         }
         super.aiStep();

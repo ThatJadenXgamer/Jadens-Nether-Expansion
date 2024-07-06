@@ -970,6 +970,12 @@
       "netherexp:item/shotgun/use"
     ]
   },
+  "item.shotgun.load": {
+    "subtitle": "subtitles.item.shotgun.load",
+    "sounds": [
+      "netherexp:item/shotgun/load"
+    ]
+  },
   "block.explosive_scoria.ambient": {
     "subtitle": "subtitles.block.explosive_scoria.ambient",
     "sounds": [

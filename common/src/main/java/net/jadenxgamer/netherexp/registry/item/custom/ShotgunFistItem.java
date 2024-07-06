@@ -8,7 +8,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
@@ -71,7 +70,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         useProjectile(stack, user);
         setAmmo(stack, getAmmo(stack) + 1);
-        level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0f, 1.0f);
+        level.playSound(null, user.getX(), user.getY(), user.getZ(), JNESoundEvents.SHOTGUN_LOAD.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
         return stack;
     }
 

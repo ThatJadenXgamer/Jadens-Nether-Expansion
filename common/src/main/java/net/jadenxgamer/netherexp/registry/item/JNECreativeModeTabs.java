@@ -46,8 +46,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.ETCHED_SOUL_SLATE_TILES.get());
                         output.accept(JNEBlocks.CHISELED_SOUL_SLATE_TILES.get());
 
-                        output.accept(JNEBlocks.BRAZIER_CHEST.get());
-
                         output.accept(JNEBlocks.FOSSIL_ORE.get());
                         output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
                         output.accept(JNEBlocks.DIAMOND_FOSSIL_ORE.get());
@@ -57,6 +55,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SHOTGUN_BARREL.get());
 
                         output.accept(JNEItems.TREACHEROUS_FLAME.get());
+                        output.accept(JNEBlocks.BRAZIER_CHEST.get());
                         output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
 
@@ -384,8 +383,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.APPARITION_SPAWN_EGG.get());
                         output.accept(JNEItems.VESSEL_SPAWN_EGG.get());
                         output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
-//                        output.accept(JNEItems.STAMPEDE_SPAWN_EGG);
-//                        output.accept(JNEItems.GRASP_SPAWN_EGG);
+                        output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
 //                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
 //                            output.accept(JNEItems.WARPHOPPER_SPAWN_EGG);
 //                        }
@@ -400,6 +398,13 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.OCCULT_GARGOYLE_STATUE.get());
                         output.accept(JNEBlocks.SEALED_GARGOYLE_STATUE.get());
                         output.accept(JNEBlocks.OBFUSCATED_GARGOYLE_STATUE.get());
+                        output.accept(JNEItems.SEALED_POTTERY_SHERD.get());
+                        output.accept(JNEItems.SPECTRE_POTTERY_SHERD.get());
+                        output.accept(JNEItems.MARIONETTE_POTTERY_SHERD.get());
+                        output.accept(JNEItems.ELDRITCH_POTTERY_SHERD.get());
+                        output.accept(JNEItems.DECEPTION_POTTERY_SHERD.get());
+                        output.accept(JNEItems.FIREARM_POTTERY_SHERD.get());
+                        output.accept(JNEItems.BOTANICAL_POTTERY_SHERD.get());
                         addAntidotes(output);
                         addGrenadeAntidotes(output);
 

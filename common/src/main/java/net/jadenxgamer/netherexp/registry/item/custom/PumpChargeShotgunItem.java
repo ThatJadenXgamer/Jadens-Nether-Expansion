@@ -98,7 +98,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         if (player.isShiftKeyDown() && getCharge(stack) <= 3) {
             setCharge(stack, getCharge(stack) + 1);
             player.startUsingItem(interactionHand);
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundSource.PLAYERS, 1.0F, 1.0F);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_LOAD.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         }
         else {
             if (getCharge(stack) <= 3) {
@@ -140,7 +140,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), stack);
         int heat = getTemperature(stack);
         // Bonuses
-        int rBulletDistanceBonus = artemis / 5;
+        int aBulletDistanceBonus = artemis / 5;
         double rPushBonus = (double) recoil / 20;
         double cPushBonus = (double) getCharge(stack) / 10;
         int hBulletDistancePenalty = heat / 8;
@@ -155,7 +155,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, livingEntity);
-                soulBullet.shoot(look.x, look.y, look.z, (1.0F + rBulletDistanceBonus) - hBulletDistancePenalty, (5 + chargeInaccuracy) + hScatterPenalty);
+                soulBullet.shoot(look.x, look.y, look.z, (1.0F + aBulletDistanceBonus) - hBulletDistancePenalty, (5 + chargeInaccuracy) + hScatterPenalty);
                 level.addFreshEntity(soulBullet);
             }
         }

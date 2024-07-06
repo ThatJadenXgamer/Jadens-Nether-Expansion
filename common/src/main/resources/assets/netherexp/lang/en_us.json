@@ -380,6 +380,7 @@
   "subtitles.item.grenade_antidote.tick": "Grenade Antidote ticks",
   "subtitles.item.grenade_antidote.explode": "Grenade Antidote explodes",
   "subtitles.item.shotgun.use": "Shotgun fires",
+  "subtitles.item.shotgun.load": "Shotgun loads",
 
   "subtitles.entity.warphopper.ambient": "Warphopper chirps",
   "subtitles.entity.warphopper.hurt": "Warphopper hurts",

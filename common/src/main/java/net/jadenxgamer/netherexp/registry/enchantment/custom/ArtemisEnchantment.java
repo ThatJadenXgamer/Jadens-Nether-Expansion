@@ -1,10 +1,10 @@
 package net.jadenxgamer.netherexp.registry.enchantment.custom;
 
-import net.jadenxgamer.netherexp.registry.item.custom.ShotgunFistItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.ArrowDamageEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
@@ -15,7 +15,7 @@ public class ArtemisEnchantment extends Enchantment {
 
     @Override
     public boolean canEnchant(ItemStack stack) {
-        return stack.is(JNETags.Items.SHOTGUNS) || stack.is(Items.BOW) || stack.is(Items.CROSSBOW);
+        return stack.is(JNETags.Items.SHOTGUNS) || stack.is(Items.BOW);
     }
 
     @Override
@@ -49,6 +49,6 @@ public class ArtemisEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(Enchantment other) {
-        return !(other instanceof RecoilEnchantment);
+        return !(other instanceof RecoilEnchantment) && !(other instanceof ArrowDamageEnchantment);
     }
 }

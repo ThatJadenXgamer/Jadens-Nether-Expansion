@@ -144,6 +144,7 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> GRENADE_ANTIDOTE_TICK = registerSoundEvents("item.grenade_antidote.tick");
     public static RegistrySupplier<SoundEvent> GRENADE_ANTIDOTE_EXPLODE = registerSoundEvents("item.grenade_antidote.explode");
     public static RegistrySupplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
+    public static RegistrySupplier<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
 
     // ENTITIES:
 

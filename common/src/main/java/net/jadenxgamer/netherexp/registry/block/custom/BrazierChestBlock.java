@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.entity.BrazierChestBlockEntity;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -16,11 +16,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -69,7 +70,6 @@ public class BrazierChestBlock extends BaseEntityBlock {
         else {
             bl = true;
             if (blockEntity instanceof BrazierChestBlockEntity) {
-                ((BrazierChestBlockEntity) blockEntity).refillLoot();
                 player.openMenu((BrazierChestBlockEntity) blockEntity);
             }
         }
@@ -131,5 +131,12 @@ public class BrazierChestBlock extends BaseEntityBlock {
 
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
+        return createTickerHelper(blockEntityType, JNEBlockEntityType.BRAZIER_CHEST.get(),
+                (level1, pos, state2, blockEntity) -> blockEntity.tick(level1, pos, state2));
     }
 }
