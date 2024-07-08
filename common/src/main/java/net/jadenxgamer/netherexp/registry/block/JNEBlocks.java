@@ -98,7 +98,8 @@ public class JNEBlocks {
     // Sanctum
 
     public static final RegistrySupplier<Block> BRAZIER_CHEST = registerBlock("brazier_chest", () ->
-            new BrazierChestBlock(BlockBehaviour.Properties.of().strength(60.0f, 1200.0f).sound(JNESoundType.SOUL_SLATE)));
+            new BrazierChestBlock(BlockBehaviour.Properties.of().strength(60.0f, 1200.0f).lightLevel(
+                    blockState -> blockState.getValue(BrazierChestBlock.LOCKED) ? 0 : 12).sound(JNESoundType.SOUL_SLATE)));
 
     // Soul Decorations
 

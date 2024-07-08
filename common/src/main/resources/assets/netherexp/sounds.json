@@ -221,6 +221,24 @@
       "netherexp:block/white_ash/break3"
     ]
   },
+  "block.brazier_chest.open": {
+    "subtitle": "subtitles.block.brazier_chest.open",
+    "sounds": [
+      "netherexp:block/brazier_chest/open"
+    ]
+  },
+  "block.brazier_chest.close": {
+    "subtitle": "subtitles.block.brazier_chest.close",
+    "sounds": [
+      "netherexp:block/brazier_chest/close"
+    ]
+  },
+  "block.brazier_chest.lit": {
+    "subtitle": "subtitles.block.brazier_chest.lit",
+    "sounds": [
+      "netherexp:block/brazier_chest/lit"
+    ]
+  },
   "block.white_ash.step": {
     "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [

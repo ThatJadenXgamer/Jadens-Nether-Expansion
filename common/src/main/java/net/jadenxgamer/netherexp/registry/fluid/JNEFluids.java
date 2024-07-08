@@ -75,7 +75,7 @@ public class JNEFluids {
                 double f = (double) pos.getZ() + random.nextDouble();
                 level.addParticle(JNEParticleTypes.ECTOPLASMA.get(), d, e, f, 0.0, 0.0, 0.0);
             }
-            if (random.nextInt(300) == 0) {
+            if (random.nextInt(600) == 0) {
                 level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.ECTOPLASM_WHISPERING.get(), SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
             }
         }

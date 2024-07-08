@@ -145,6 +145,9 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> GRENADE_ANTIDOTE_EXPLODE = registerSoundEvents("item.grenade_antidote.explode");
     public static RegistrySupplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
     public static RegistrySupplier<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
+    public static RegistrySupplier<SoundEvent> BRAZIER_CHEST_OPEN = registerSoundEvents("block.brazier_chest.open");
+    public static RegistrySupplier<SoundEvent> BRAZIER_CHEST_CLOSE = registerSoundEvents("block.brazier_chest.close");
+    public static RegistrySupplier<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
 
     // ENTITIES:
 

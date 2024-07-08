@@ -523,6 +523,9 @@ public class EctoSlab extends Slime {
                 ectoSlab.setIsUnderground(false);
                 ectoSlab.setAttack(true);
                 ectoSlab.damageLivingEntities(ectoSlab.level().getEntitiesOfClass(LivingEntity.class, this.ectoSlab.getBoundingBox(), ECTO_SLAB_CAN_DAMAGE));
+                for (int i = 0; i < 10; ++i) {
+                    ectoSlab.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, ectoSlab.getBlockStateOn()), ectoSlab.getRandomX(0.3 * ectoSlab.getSize()), ectoSlab.getY(), ectoSlab.getRandomZ(0.3 * ectoSlab.getSize()), 0.0, 0.5, 0.0);
+                }
             }
             LivingEntity livingEntity = this.ectoSlab.getTarget();
             if (livingEntity != null) {

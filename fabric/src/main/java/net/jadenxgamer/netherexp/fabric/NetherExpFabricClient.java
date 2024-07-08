@@ -112,6 +112,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.ENIGMA_KERNEL.get(), EnigmaKernelParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FIRE_SPARK.get(), FireSparkParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get(), FlameParticle.SmallFlameProvider::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.TREACHEROUS_FLAME.get(), FlameParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.GOLD_GLIMMER.get(), GlimmerParticle.NormalFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.REDSTONE_SPARK.get(), GlimmerParticle.NormalFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.REDSTONE_EXPLOSION.get(), HugeExplosionParticle.Provider::new);

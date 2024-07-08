@@ -381,6 +381,9 @@
   "subtitles.item.grenade_antidote.explode": "Grenade Antidote explodes",
   "subtitles.item.shotgun.use": "Shotgun fires",
   "subtitles.item.shotgun.load": "Shotgun loads",
+  "subtitles.block.brazier_chest.open": "Brazier Chest opens",
+  "subtitles.block.brazier_chest.close": "Brazier Chest closes",
+  "subtitles.block.brazier_chest.lit": "Brazier Chest flames screech",
 
   "subtitles.entity.warphopper.ambient": "Warphopper chirps",
   "subtitles.entity.warphopper.hurt": "Warphopper hurts",

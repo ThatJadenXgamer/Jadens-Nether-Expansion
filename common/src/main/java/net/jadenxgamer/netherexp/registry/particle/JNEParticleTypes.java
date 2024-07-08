@@ -14,6 +14,7 @@ public class JNEParticleTypes {
     public static final RegistrySupplier<SimpleParticleType> ENIGMA_KERNEL = PARTICLE_TYPES.register("enigma_kernel", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> FIRE_SPARK = PARTICLE_TYPES.register("fire_spark", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> SMALL_SOUL_FIRE_FLAME = PARTICLE_TYPES.register("small_soul_fire_flame", () -> new SimpleParticleType(false){});
+    public static final RegistrySupplier<SimpleParticleType> TREACHEROUS_FLAME = PARTICLE_TYPES.register("treacherous_flame", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> GOLD_GLIMMER = PARTICLE_TYPES.register("gold_glimmer", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> REDSTONE_SPARK = PARTICLE_TYPES.register("redstone_spark", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> REDSTONE_EXPLOSION = PARTICLE_TYPES.register("redstone_explosion", () -> new SimpleParticleType(false){});

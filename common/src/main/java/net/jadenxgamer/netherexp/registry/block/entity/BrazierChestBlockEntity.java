@@ -2,6 +2,8 @@ package net.jadenxgamer.netherexp.registry.block.entity;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.custom.BrazierChestBlock;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
@@ -19,7 +21,8 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.*;
+import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,12 +41,12 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
         this.lockTimer = 0;
         this.openersCounter = new ContainerOpenersCounter() {
             protected void onOpen(Level arg, BlockPos arg2, BlockState arg3) {
-                BrazierChestBlockEntity.this.playSound(arg3, SoundEvents.CHEST_OPEN);
+                BrazierChestBlockEntity.this.playSound(arg3, JNESoundEvents.BRAZIER_CHEST_OPEN.get());
                 BrazierChestBlockEntity.this.updateBlockState(arg3, true);
             }
 
             protected void onClose(Level level, BlockPos pos, BlockState state) {
-                BrazierChestBlockEntity.this.playSound(state, SoundEvents.CHEST_CLOSE);
+                BrazierChestBlockEntity.this.playSound(state, JNESoundEvents.BRAZIER_CHEST_CLOSE.get());
                 BrazierChestBlockEntity.this.updateBlockState(state, false);
             }
 
@@ -132,7 +135,7 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
         assert level != null;
         if (!locked) {
             this.lockTimer++;
-            if (this.lockTimer >= 2400) {
+            if (this.lockTimer >= 72000) {
                 level.setBlock(pos, state.cycle(BrazierChestBlock.LOCKED), 2);
                 level.playSound(null, this.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                 this.lockTimer = 0;
@@ -153,6 +156,4 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
         assert this.level != null;
         this.level.playSound(null, d, e, f, sound, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
     }
-
-
 }

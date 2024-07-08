@@ -3,10 +3,11 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.entity.BrazierChestBlockEntity;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
@@ -45,19 +46,19 @@ public class BrazierChestBlock extends BaseEntityBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack itemStack = player.getItemInHand(hand);
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        boolean locked = blockState.getValue(LOCKED);
+        boolean locked = state.getValue(LOCKED);
         boolean bl = false;
         if (locked) {
             if (itemStack.is(JNEItems.TREACHEROUS_FLAME.get())) {
                 bl = true;
-                level.setBlock(pos, blockState.cycle(LOCKED), Block.UPDATE_CLIENTS);
+                level.setBlock(pos, state.cycle(LOCKED), Block.UPDATE_CLIENTS);
                 if (blockEntity instanceof BrazierChestBlockEntity) {
+                    fireParticles(level, pos);
                     ((BrazierChestBlockEntity) blockEntity).refillLoot();
-                    player.openMenu((BrazierChestBlockEntity) blockEntity);
-                    level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                    level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 }
                 if (!player.isCreative()) {
                     itemStack.shrink(1);
@@ -84,6 +85,14 @@ public class BrazierChestBlock extends BaseEntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BrazierChestBlockEntity) {
             ((BrazierChestBlockEntity)blockEntity).recheckOpen();
+        }
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        int i = random.nextInt(3);
+        if (i == 0) {
+            level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), (double)pos.getX() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), 0.0, 0.07, 0.0);
         }
     }
 
@@ -138,5 +147,21 @@ public class BrazierChestBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
         return createTickerHelper(blockEntityType, JNEBlockEntityType.BRAZIER_CHEST.get(),
                 (level1, pos, state2, blockEntity) -> blockEntity.tick(level1, pos, state2));
+    }
+
+    private static void fireParticles(Level level, BlockPos blockPos) {
+        RandomSource randomSource = level.random;
+        Direction[] var5 = Direction.values();
+
+        for (Direction direction : var5) {
+            BlockPos blockPos2 = blockPos.relative(direction);
+            if (!level.getBlockState(blockPos2).isSolidRender(level, blockPos2)) {
+                Direction.Axis axis = direction.getAxis();
+                double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) randomSource.nextFloat();
+                double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) randomSource.nextFloat();
+                double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) randomSource.nextFloat();
+                level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), (double) blockPos.getX() + e, (double) blockPos.getY() + f, (double) blockPos.getZ() + g, 0.0, 0.0, 0.0);
+            }
+        }
     }
 }
