@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 public class JNECriteriaTriggers extends CriteriaTriggers {
     public static PlayerTrigger BROKEN_FOSSIL_FUEL_ORE;
     public static PlayerTrigger BROKEN_DIAMOND_FOSSIL_ORE;
-
     public static PlayerTrigger EXORCISM;
 
     public static void init() {

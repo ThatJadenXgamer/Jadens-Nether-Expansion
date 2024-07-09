@@ -45,7 +45,7 @@ public class LightAbleBlock extends Block {
                 }
                 blockParticle(level, blockPos);
                 bl = true;
-            } else if (itemStack.is(Items.FIRE_CHARGE)){
+            } else if (itemStack.is(Items.FIRE_CHARGE)) {
                 level.playSound(player, blockPos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
                 level.setBlock(blockPos, blockState.cycle(LIT), Block.UPDATE_CLIENTS);
                 if (!player.isCreative()) {

@@ -88,6 +88,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.PHASE_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.GHOUL_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BRAZIER_CHEST.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TREACHEROUS_CANDLE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(),
                 JNEFluids.ECTOPLASM.get(), JNEFluids.FLOWING_ECTOPLASM.get());
 

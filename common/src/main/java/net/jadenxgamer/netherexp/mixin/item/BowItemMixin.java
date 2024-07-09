@@ -20,8 +20,7 @@ public abstract class BowItemMixin {
     private void netherexp$modifyArrowVelocity(AbstractArrow instance, Entity entity, float x, float y, float z, float v, float a) {
         if (entity instanceof Player player) {
             int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), player.getMainHandItem());
-            int arrowDistanceBonus = artemis / 2;
-            instance.shootFromRotation(entity, x, y, z, v + arrowDistanceBonus, a);
+            instance.shootFromRotation(entity, x, y, z, v + artemis, a);
         }
     }
 }

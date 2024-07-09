@@ -1,0 +1,50 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:treacherous_flame"
+    },
+    "title": {
+      "translate": "advancements.nether.eldritch_manipulation.title"
+    },
+    "description": {
+      "translate": "advancements.nether.eldritch_manipulation.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/occult_manor",
+  "criteria": {
+    "used_item": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "netherexp:brazier_chest"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "netherexp:treacherous_flame"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "used_item"
+    ]
+  ]
+}

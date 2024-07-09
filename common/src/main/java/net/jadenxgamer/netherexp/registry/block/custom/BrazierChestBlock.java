@@ -56,7 +56,7 @@ public class BrazierChestBlock extends BaseEntityBlock {
                 bl = true;
                 level.setBlock(pos, state.cycle(LOCKED), Block.UPDATE_CLIENTS);
                 if (blockEntity instanceof BrazierChestBlockEntity) {
-                    fireParticles(level, pos);
+                    fireParticles(level, pos.above());
                     ((BrazierChestBlockEntity) blockEntity).refillLoot();
                     level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 }
@@ -90,8 +90,8 @@ public class BrazierChestBlock extends BaseEntityBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        int i = random.nextInt(3);
-        if (i == 0) {
+        int i = random.nextInt(1);
+        if (i == 0 && !state.getValue(LOCKED)) {
             level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), (double)pos.getX() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), 0.0, 0.07, 0.0);
         }
     }
