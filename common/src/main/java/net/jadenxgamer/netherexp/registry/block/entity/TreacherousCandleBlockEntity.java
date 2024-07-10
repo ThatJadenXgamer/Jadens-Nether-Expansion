@@ -31,6 +31,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private int mobsPerWave = 4;
     private int resetMobsPerWave = 4;
     private int increaseInMobsPerWave = 2;
+    private int health = 20;
     private List<EntityType<?>> spawnableMobs = new ArrayList<>();
 
     public TreacherousCandleBlockEntity(BlockPos pos, BlockState state) {
@@ -55,6 +56,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         this.increaseInMobsPerWave = nbt.getInt("IncreaseInMobsPerWave");
         // Spawn Radius of Mobs
         this.spawnRadius = nbt.getInt("SpawnRadius");
+        // Health of the Candle
+        this.health = nbt.getInt("Health");
 
         // List of Spawnable Mobs
         spawnableMobs.clear();
@@ -73,14 +76,23 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         nbt.putInt("CurrentWaveDelay", this.currentWaveDelay);
         nbt.putInt("MobsPerWave", this.mobsPerWave);
         nbt.putInt("ResetMobsPerWave", this.resetMobsPerWave);
-        nbt.putInt("SpawnRadius", this.spawnRadius);
         nbt.putInt("IncreaseInMobsPerWave", this.increaseInMobsPerWave);
+        nbt.putInt("SpawnRadius", this.spawnRadius);
+        nbt.putInt("Health", this.health);
 
         ListTag mobsListTag = new ListTag();
         for (EntityType<?> entityType : spawnableMobs) {
             mobsListTag.add(StringTag.valueOf(EntityType.getKey(entityType).toString()));
         }
         nbt.put("SpawnableMobs", mobsListTag);
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public static void clientTick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {

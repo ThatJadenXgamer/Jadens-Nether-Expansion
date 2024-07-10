@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wither",
+    "minecraft:warden",
+    "minecraft:ender_dragon",
+    "minecraft:iron_golem",
+    "minecraft:snow_golem",
+    "minecraft:villager",
+    "minecraft:wandering_trader",
+    "minecraft:elder_guardian",
+    "netherexp:wisp",
+    "minecraft:cat",
+    "minecraft:wolf",
+    "minecraft:parrot",
+    "minecraft:allay",
+    "minecraft:horse",
+    "minecraft:camel",
+    "minecraft:donkey",
+    "minecraft:mule",
+    "minecraft:axolotl",
+    "minecraft:skeleton_horse",
+    "minecraft:zombie_horse",
+    "minecraft:fox"
+  ]
+}
