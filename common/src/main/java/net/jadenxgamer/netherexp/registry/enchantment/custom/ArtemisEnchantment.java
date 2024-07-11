@@ -49,6 +49,6 @@ public class ArtemisEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(Enchantment other) {
-        return !(other instanceof RecoilEnchantment) && !(other instanceof ArrowDamageEnchantment);
+        return !(other instanceof RecoilEnchantment) && !(other instanceof ArrowDamageEnchantment) && super.checkCompatibility(other);
     }
 }

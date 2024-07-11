@@ -39,6 +39,10 @@ public class JNEEntityType {
             EntityType.Builder.<SoulBullet>of(SoulBullet::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("soul_bullet"));
 
+    public static final RegistrySupplier<EntityType<BloodDrop>> BLOOD_DROP = ENTITY_TYPES.register("blood_drop", () ->
+            EntityType.Builder.<BloodDrop>of(BloodDrop::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("blood_drop"));
+
     public static final RegistrySupplier<EntityType<PhasmoArrow>> PHASMO_ARROW = ENTITY_TYPES.register("phasmo_arrow", () ->
             EntityType.Builder.<PhasmoArrow>of(PhasmoArrow::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("phasmo_arrow"));

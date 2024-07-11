@@ -105,6 +105,7 @@
   "item.netherexp.nether_pizza_slice": "Nether Pizza Slice",
 
   "enchantment.netherexp.phantasm_hull": "Phantasm Hull",
+  "enchantment.netherexp.bloodshed": "Bloodshed",
   "enchantment.netherexp.cartridge": "Cartridge",
   "enchantment.netherexp.recoil": "Recoil",
   "enchantment.netherexp.artemis": "Artemis",
@@ -423,6 +424,7 @@
   "entity.netherexp.ecto_slab": "Ecto Slab",
   "entity.netherexp.stampede": "Stampede",
   "entity.netherexp.soul_bullet": "Soul Bullet",
+  "entity.netherexp.blood_drop": "Blood Drop",
   "entity.netherexp.phasmo_arrow": "Phasmo Arrow",
   "entity.netherexp.grasp": "Grasp",
   "entity.netherexp.mist_charge": "Mist Charge",
