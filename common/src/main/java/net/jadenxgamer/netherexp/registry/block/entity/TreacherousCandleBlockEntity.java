@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.entity;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
+import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -12,12 +13,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +29,14 @@ import java.util.List;
 public class TreacherousCandleBlockEntity extends BlockEntity {
     private int maximumWaves = 5;
     private int currentWave = 1;
-    private int maximumWaveDelay = 1800;
+    private int maximumWaveDelay = 650;
     private int currentWaveDelay = 80;
-    private int spawnRadius = 6;
+    private int spawnRadius = 8;
     private int mobsPerWave = 4;
     private int resetMobsPerWave = 4;
     private int increaseInMobsPerWave = 2;
     private int health = 20;
+    private int completionCooldown = 72000;
     private List<EntityType<?>> spawnableMobs = new ArrayList<>();
 
     public TreacherousCandleBlockEntity(BlockPos pos, BlockState state) {
@@ -40,26 +45,18 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
 
     public void load(CompoundTag nbt) {
         super.load(nbt);
-        // Maximum Number of Waves
-        this.maximumWaves = nbt.getInt("MaximumWaves");
-        // Tracks current Wave's number
-        this.currentWave = nbt.getInt("CurrentWave");
-        // Maximum Time Delay between Waves
-        this.maximumWaveDelay = nbt.getInt("MaximumWaveDelay");
-        // Tracks current Time Delay between Waves
-        this.currentWaveDelay = nbt.getInt("CurrentWaveDelay");
-        // Number of Mobs Spawned Per Wave
-        this.mobsPerWave = nbt.getInt("MobsPerWave");
-        // Resets MobsPerWave once it's been defeated
-        this.resetMobsPerWave = nbt.getInt("ResetMobsPerWave");
-        // Gradual increase in mob spawns per wave
-        this.increaseInMobsPerWave = nbt.getInt("IncreaseInMobsPerWave");
-        // Spawn Radius of Mobs
-        this.spawnRadius = nbt.getInt("SpawnRadius");
-        // Health of the Candle
-        this.health = nbt.getInt("Health");
+        this.maximumWaves = nbt.getInt("MaximumWaves"); // Maximum Number of Waves
+        this.currentWave = nbt.getInt("CurrentWave"); // Tracks current Wave's number
+        this.maximumWaveDelay = nbt.getInt("MaximumWaveDelay"); // Maximum Time Delay between Waves
+        this.currentWaveDelay = nbt.getInt("CurrentWaveDelay"); // Tracks current Time Delay between Waves
+        this.spawnRadius = nbt.getInt("SpawnRadius"); // Spawn Radius of Mobs
+        this.mobsPerWave = nbt.getInt("MobsPerWave"); // Number of Mobs Spawned Per Wave
+        this.resetMobsPerWave = nbt.getInt("ResetMobsPerWave"); // Resets MobsPerWave once it's been defeated
+        this.increaseInMobsPerWave = nbt.getInt("IncreaseInMobsPerWave"); // Gradual increase in mob spawns per wave
+        this.health = nbt.getInt("Health"); // Health of the Candle
+        this.completionCooldown = nbt.getInt("CompletionCooldown"); // Once completed tracks the candle's cooldown to reset it
 
-        // List of Spawnable Mobs
+        // List for Spawnable Mobs
         spawnableMobs.clear();
         ListTag mobsListTag = nbt.getList("SpawnableMobs", 8);
         for (int i = 0; i < mobsListTag.size(); i++) {
@@ -79,6 +76,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         nbt.putInt("IncreaseInMobsPerWave", this.increaseInMobsPerWave);
         nbt.putInt("SpawnRadius", this.spawnRadius);
         nbt.putInt("Health", this.health);
+        nbt.putInt("CompletionCooldown", this.completionCooldown);
 
         ListTag mobsListTag = new ListTag();
         for (EntityType<?> entityType : spawnableMobs) {
@@ -100,9 +98,20 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {
-        if (state.getValue(TreacherousCandleBlock.LIT) && !state.getValue(TreacherousCandleBlock.COMPLETED)) {
+        if (state.getValue(TreacherousCandleBlock.COMPLETED)) {
+            --blockEntity.completionCooldown;
+            if (blockEntity.completionCooldown <= 0) {
+                resetValues(blockEntity);
+                level.setBlock(pos, state.setValue(TreacherousCandleBlock.COMPLETED, false).setValue(TreacherousCandleBlock.LIT, false), 2);
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 0.5f, 1.0f);
+            }
+        }
+        else if (state.getValue(TreacherousCandleBlock.LIT)) {
             if (blockEntity.currentWave <= blockEntity.maximumWaves) {
                 --blockEntity.currentWaveDelay;
+                for (Player player : level.getEntitiesOfClass(Player.class, (new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX(), pos.getY(), pos.getZ())).inflate(16.0, 16.0, 16.0))) {
+                    player.addEffect(new MobEffectInstance(JNEMobEffects.BETRAYED.get(), 80, 0));
+                }
                 if (blockEntity.currentWaveDelay <= 0) {
                     blockEntity.currentWave++;
                     blockEntity.spawnWave((ServerLevel) level, pos);
@@ -115,6 +124,14 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
                 level.setBlock(pos, state.cycle(TreacherousCandleBlock.COMPLETED), 2);
             }
         }
+    }
+
+    public static void resetValues(TreacherousCandleBlockEntity blockEntity) {
+        blockEntity.completionCooldown = 72000;
+        blockEntity.currentWave = 1;
+        blockEntity.health = 20;
+        blockEntity.mobsPerWave = blockEntity.resetMobsPerWave;
+        blockEntity.currentWaveDelay = 80;
     }
 
     private void spawnWave(ServerLevel level, BlockPos pos) {

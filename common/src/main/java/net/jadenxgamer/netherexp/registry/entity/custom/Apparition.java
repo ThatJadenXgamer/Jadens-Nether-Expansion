@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.GargoyleStatueBlock;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
@@ -14,7 +13,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -221,7 +219,6 @@ public class Apparition extends Monster implements FlyingAnimal {
         }
         else if (p == 3) {
             this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, MagmaCube.class, true));
-            this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Slime.class, true));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
             this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Player.class, true));
         }

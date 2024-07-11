@@ -62,7 +62,8 @@ public class JNETags {
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createEntityTypeTag("ignores_soul_sand_slowness"); // Soul Sand won't slow down entities in this tag
         public static final TagKey<EntityType<?>> ECTOSLAB_POUNCE_DAMAGES = createEntityTypeTag("ectoslab_pounce_damages"); // Ecto Slab Pounce Damages Entities in this tag
         public static final TagKey<EntityType<?>> IGNORES_BLOCK_COLLISION = createEntityTypeTag("ignores_block_collision"); // Entities in this tag will ignore all block collision
-        public static final TagKey<EntityType<?>> IGNORES_TREACHEROUS_CANDLE = createEntityTypeTag("ignores_treacherous_candle"); // Does not care about the Treacherous Candle if the opportunity to break it is available
+        public static final TagKey<EntityType<?>> IGNORES_TREACHEROUS_CANDLE = createEntityTypeTag("ignores_treacherous_candle"); // Mobs in this do not care about the Treacherous Candle if the opportunity to break it is available
+        public static final TagKey<EntityType<?>> TARGETS_REGARDLESS_OF_BETRAYED = createEntityTypeTag("targets_regardless_of_betrayed"); // Mobs in this tag find and attack targets even if they have Betrayed
 
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(NetherExp.MOD_ID, name));

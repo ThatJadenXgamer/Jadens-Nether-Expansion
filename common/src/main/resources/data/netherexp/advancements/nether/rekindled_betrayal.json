@@ -1,0 +1,50 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:treacherous_candle"
+    },
+    "title": {
+      "translate": "advancements.nether.rekindled_betrayal.title"
+    },
+    "description": {
+      "translate": "advancements.nether.rekindled_betrayal.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/occult_manor",
+  "criteria": {
+    "used_item": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "netherexp:treacherous_candle"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "minecraft:flint_and_steel"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "used_item"
+    ]
+  ]
+}

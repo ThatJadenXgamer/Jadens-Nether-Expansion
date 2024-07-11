@@ -15,6 +15,21 @@
       "model": "netherexp:block/treacherous_candle_lit",
       "y": 270
     },
+    "facing=north,broken=true,lit=false": {
+      "model": "netherexp:block/treacherous_candle_broken"
+    },
+    "facing=east,broken=true,lit=false": {
+      "model": "netherexp:block/treacherous_candle_broken",
+      "y": 90
+    },
+    "facing=south,broken=true,lit=false": {
+      "model": "netherexp:block/treacherous_candle_broken",
+      "y": 180
+    },
+    "facing=west,broken=true,lit=false": {
+      "model": "netherexp:block/treacherous_candle_broken",
+      "y": 270
+    },
     "facing=north,lit=false": {
       "model": "netherexp:block/treacherous_candle"
     },

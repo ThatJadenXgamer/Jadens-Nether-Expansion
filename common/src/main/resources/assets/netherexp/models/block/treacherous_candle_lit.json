@@ -3,7 +3,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "netherexp:block/treacherous_candle",
-		"particle": "netherexp:block/treacherous_candle"
+		"particle": "netherexp:block/treacherous_candle_particle"
 	},
 	"elements": [
 		{

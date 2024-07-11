@@ -1,0 +1,50 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:honeycomb"
+    },
+    "title": {
+      "translate": "advancements.nether.back_with_a_vengeance.title"
+    },
+    "description": {
+      "translate": "advancements.nether.back_with_a_vengeance.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/rekindled_betrayal",
+  "criteria": {
+    "used_item": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "netherexp:treacherous_candle"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "minecraft:honeycomb"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "used_item"
+    ]
+  ]
+}

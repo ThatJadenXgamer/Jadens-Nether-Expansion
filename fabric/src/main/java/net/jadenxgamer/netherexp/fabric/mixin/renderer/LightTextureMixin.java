@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.mixin.renderer;
+package net.jadenxgamer.netherexp.fabric.mixin.renderer;
 
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.minecraft.client.Minecraft;

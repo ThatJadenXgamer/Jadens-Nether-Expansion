@@ -65,6 +65,8 @@ public class EctoSlab extends Slime {
     public final AnimationState digAnimationState = new AnimationState();
     public final AnimationState attackAnimation = new AnimationState();
 
+    private static final EntityDimensions UNDERGROUND_DIMENSIONS = new EntityDimensions(2.04F, 0.1F, true);
+
     private static final EntityDataAccessor<Boolean> IS_UNDERGROUND = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
 
@@ -110,6 +112,7 @@ public class EctoSlab extends Slime {
             }
             else this.doExorcism();
         }
+        refreshDimensions();
         super.aiStep();
     }
 
@@ -195,6 +198,11 @@ public class EctoSlab extends Slime {
     @Override
     public void refreshDimensions() {
         super.refreshDimensions();
+    }
+
+    @Override
+    public @NotNull EntityDimensions getDimensions(Pose pose) {
+        return getIsUnderground() ? UNDERGROUND_DIMENSIONS : super.getDimensions(pose);
     }
 
     @Override
@@ -506,7 +514,7 @@ public class EctoSlab extends Slime {
             } else if (!this.ectoSlab.canAttack(livingEntity)) {
                 return false;
             } else {
-                return this.undergroundTime > -70;
+                return this.undergroundTime > -90;
             }
         }
 
@@ -518,9 +526,11 @@ public class EctoSlab extends Slime {
             --undergroundTime;
             if (undergroundTime > 0) {
                 ectoSlab.setIsUnderground(true);
+                ectoSlab.refreshDimensions();
             }
             else {
                 ectoSlab.setIsUnderground(false);
+                ectoSlab.refreshDimensions();
                 ectoSlab.setAttack(true);
                 ectoSlab.damageLivingEntities(ectoSlab.level().getEntitiesOfClass(LivingEntity.class, this.ectoSlab.getBoundingBox(), ECTO_SLAB_CAN_DAMAGE));
                 for (int i = 0; i < 10; ++i) {

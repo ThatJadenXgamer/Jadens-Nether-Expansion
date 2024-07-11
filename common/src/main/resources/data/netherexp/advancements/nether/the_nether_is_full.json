@@ -1,28 +1,30 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:shotgun_fist",
+      "item": "netherexp:pump_charge_shotgun",
       "nbt": "{Damage:0}"
     },
     "title": {
-      "translate": "advancements.nether.angel_with_a_shotgun.title"
+      "translate": "advancements.nether.the_nether_is_full.title"
     },
     "description": {
-      "translate": "advancements.nether.angel_with_a_shotgun.description"
+      "translate": "advancements.nether.the_nether_is_full.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/eldritch_manipulation",
+  "parent": "netherexp:nether/angel_with_a_shotgun",
   "criteria": {
     "shot_trident": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "netherexp:shotguns"
+            "items": [
+              "netherexp:pump_charge_shotgun"
+            ]
           }
         ]
       }

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:ecto_slab",
+    "minecraft:magma_cube",
+    "minecraft:slime"
+  ]
+}

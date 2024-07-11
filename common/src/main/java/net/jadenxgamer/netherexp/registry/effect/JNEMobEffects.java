@@ -23,7 +23,7 @@ public class JNEMobEffects {
             new UnboundedSpeedEffect(MobEffectCategory.BENEFICIAL, 1787717));
 
     public static final RegistrySupplier<MobEffect> BETRAYED = MOB_EFFECTS.register("betrayed", () ->
-            new JNEMobEffect(MobEffectCategory.HARMFUL, 11730944));
+            new JNEMobEffect(MobEffectCategory.NEUTRAL, 11730944));
 
     // IMMUNITY EFFECTS
 

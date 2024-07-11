@@ -71,12 +71,27 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
         ItemStack itemStack = player.getItemInHand(hand);
         BlockEntity blockEntity = level.getBlockEntity(pos);
         boolean lit = state.getValue(LIT);
+        boolean broken = state.getValue(BROKEN);
         boolean bl = false;
-        if (!lit) {
+        if (broken) {
+            if (itemStack.is(Items.HONEYCOMB)) {
+                bl = true;
+                if (blockEntity instanceof TreacherousCandleBlockEntity treacherousCandleBlock) {
+                    TreacherousCandleBlockEntity.resetValues(treacherousCandleBlock);
+                }
+                level.setBlock(pos, state.setValue(BROKEN, false), Block.UPDATE_CLIENTS);
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_SOUL_CANDLE_PLACE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
+                }
+            }
+        }
+        else if (!lit) {
             if (itemStack.is(Items.FLINT_AND_STEEL)) {
                 bl = true;
                 level.setBlock(pos, state.cycle(LIT), Block.UPDATE_CLIENTS);
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                fireParticles(level, pos);
                 if (!player.isCreative()) {
                     itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
                 }
