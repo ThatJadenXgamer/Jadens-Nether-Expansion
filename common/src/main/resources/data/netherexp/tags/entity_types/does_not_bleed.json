@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:wisp",
+    "netherexp:apparition",
+    "netherexp:ecto_slab",
+    "minecraft:slime",
+    "minecraft:magma_cube",
+    "minecraft:skeleton_horse",
+    "#minecraft:skeletons",
+    "minecraft:wither",
+    "minecraft:iron_golem",
+    "minecraft:snow_golem",
+    "minecraft:allay",
+    "minecraft:vex",
+    "minecraft:armor_stand",
+    "minecraft:warden",
+    "minecraft:enderman",
+    "minecraft:endermite",
+    "minecraft:shulker",
+    "minecraft:ender_dragon"
+  ]
+}

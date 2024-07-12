@@ -46,7 +46,6 @@ public class SoulBullet extends AbstractArrow {
         super.tick();
         if (!this.level().isClientSide && tickCount > 600) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.5f, 1.0f);
-            this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             this.discard();
         }
     }
@@ -55,9 +54,9 @@ public class SoulBullet extends AbstractArrow {
     protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         entity.hurt(this.damageSources().source(JNEDamageSources.SOUL_BULLET), 1);
+        this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         if (!this.level().isClientSide) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
-            this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             this.discard();
         }
     }
@@ -69,9 +68,9 @@ public class SoulBullet extends AbstractArrow {
 
     @Override
     protected void onHitBlock(BlockHitResult blockHitResult) {
+        this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         if (!this.level().isClientSide) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
-            this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             this.discard();
         }
     }

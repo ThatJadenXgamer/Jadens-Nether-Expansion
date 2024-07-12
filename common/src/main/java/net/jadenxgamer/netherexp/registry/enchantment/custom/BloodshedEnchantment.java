@@ -36,7 +36,7 @@ public class BloodshedEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 2;
+        return 5;
     }
 
     @Override

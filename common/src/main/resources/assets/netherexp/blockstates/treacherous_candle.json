@@ -1,47 +1,47 @@
 {
   "variants": {
-    "facing=north,lit=true": {
-      "model": "netherexp:block/treacherous_candle_lit"
-    },
-    "facing=east,lit=true": {
-      "model": "netherexp:block/treacherous_candle_lit",
-      "y": 90
-    },
-    "facing=south,lit=true": {
-      "model": "netherexp:block/treacherous_candle_lit",
-      "y": 180
-    },
-    "facing=west,lit=true": {
-      "model": "netherexp:block/treacherous_candle_lit",
-      "y": 270
-    },
-    "facing=north,broken=true,lit=false": {
+    "facing=north,lit=false,broken=true": {
       "model": "netherexp:block/treacherous_candle_broken"
     },
-    "facing=east,broken=true,lit=false": {
+    "facing=east,lit=false,broken=true": {
       "model": "netherexp:block/treacherous_candle_broken",
       "y": 90
     },
-    "facing=south,broken=true,lit=false": {
+    "facing=south,lit=false,broken=true": {
       "model": "netherexp:block/treacherous_candle_broken",
       "y": 180
     },
-    "facing=west,broken=true,lit=false": {
+    "facing=west,lit=false,broken=true": {
       "model": "netherexp:block/treacherous_candle_broken",
       "y": 270
     },
-    "facing=north,lit=false": {
+    "facing=north,lit=true,broken=false": {
+      "model": "netherexp:block/treacherous_candle_lit"
+    },
+    "facing=east,lit=true,broken=false": {
+      "model": "netherexp:block/treacherous_candle_lit",
+      "y": 90
+    },
+    "facing=south,lit=true,broken=false": {
+      "model": "netherexp:block/treacherous_candle_lit",
+      "y": 180
+    },
+    "facing=west,lit=true,broken=false": {
+      "model": "netherexp:block/treacherous_candle_lit",
+      "y": 270
+    },
+    "facing=north,lit=false,broken=false": {
       "model": "netherexp:block/treacherous_candle"
     },
-    "facing=east,lit=false": {
+    "facing=east,lit=false,broken=false": {
       "model": "netherexp:block/treacherous_candle",
       "y": 90
     },
-    "facing=south,lit=false": {
+    "facing=south,lit=false,broken=false": {
       "model": "netherexp:block/treacherous_candle",
       "y": 180
     },
-    "facing=west,lit=false": {
+    "facing=west,lit=false,broken=false": {
       "model": "netherexp:block/treacherous_candle",
       "y": 270
     }

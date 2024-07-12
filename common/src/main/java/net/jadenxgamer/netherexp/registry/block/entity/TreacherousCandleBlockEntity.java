@@ -138,9 +138,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
             for (int i = 0; i < this.mobsPerWave; i++) {
-                double distance = spawnRadius * Math.sqrt(random.nextDouble());
-
                 // Makes sure mobs spawn in a donut shape around the candle
+                double distance = spawnRadius * Math.sqrt(random.nextDouble());
                 if (distance < (double) spawnRadius / 2) {
                     distance += (double) spawnRadius / 2;
                 }

@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
+import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.BloodDrop;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
@@ -34,14 +35,17 @@ public abstract class PlayerMixin {
             method = "killedEntity",
             at = @At(value = "HEAD")
     )
-    private void netherexp$killedEntity(ServerLevel level, LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
+    private void netherexp$killedEntity(ServerLevel level, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
         Player player = ((Player) (Object) this);
         ItemStack stack = player.getMainHandItem();
-        int count = 16;
-        if (!level.isClientSide && EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BLOODSHED.get(), stack) > 0) {
+        int bloodshed = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BLOODSHED.get(), stack);
+        if (!level.isClientSide && bloodshed > 0 && !other.getType().is(JNETags.EntityTypes.DOES_NOT_BLEED)) {
+            float width = other.getDimensions(other.getPose()).width;
+            float height = other.getDimensions(other.getPose()).height;
+            int count = Math.max(1, Math.round((width + height) * 6.5f));
             for (int i = 0; i < count; i++) {
-                BloodDrop bloodDrop = new BloodDrop(level, player);
-                bloodDrop.shoot(Mth.nextDouble(level.random, -0.25, 0.25), Mth.nextDouble(level.random, 0.5, 1), Mth.nextDouble(level.random, -0.25, 0.25), 0.5f, 24);
+                BloodDrop bloodDrop = new BloodDrop(other.getX(), other.getY() + 0.5, other.getZ(), level, other, bloodshed);
+                bloodDrop.shoot(Mth.nextDouble(level.random, -0.25, 0.25), Mth.nextDouble(level.random, 0.4, 0.6), Mth.nextDouble(level.random, -0.25, 0.25), 0.5f, 16);
                 level.addFreshEntity(bloodDrop);
             }
         }
