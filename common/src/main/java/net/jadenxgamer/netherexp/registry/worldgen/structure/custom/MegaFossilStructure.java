@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.registry.worldgen.structure.custom;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructures;
+import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructureType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -23,7 +23,6 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
-import java.util.Random;
 
 public class MegaFossilStructure extends Structure {
 
@@ -89,6 +88,6 @@ public class MegaFossilStructure extends Structure {
 
     @Override
     public @NotNull StructureType<?> type() {
-        return JNEStructures.MEGA_FOSSIL.get();
+        return JNEStructureType.MEGA_FOSSIL.get();
     }
 }

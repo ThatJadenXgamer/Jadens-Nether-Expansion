@@ -53,7 +53,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         this.mobsPerWave = nbt.getInt("MobsPerWave"); // Number of Mobs Spawned Per Wave
         this.resetMobsPerWave = nbt.getInt("ResetMobsPerWave"); // Resets MobsPerWave once it's been defeated
         this.increaseInMobsPerWave = nbt.getInt("IncreaseInMobsPerWave"); // Gradual increase in mob spawns per wave
-        this.health = nbt.getInt("Health"); // Health of the Candle
+        this.health = nbt.getInt("Health"); // Current Health of the Candle
         this.completionCooldown = nbt.getInt("CompletionCooldown"); // Once completed tracks the candle's cooldown to reset it
 
         // List for Spawnable Mobs
@@ -93,13 +93,12 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         this.health = health;
     }
 
-    public static void clientTick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {
-
-    }
-
-    public static void serverTick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {
         if (state.getValue(TreacherousCandleBlock.COMPLETED)) {
             --blockEntity.completionCooldown;
+            if (blockEntity.completionCooldown == 20) {
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.PLAYERS, 0.5f, 1.0f);
+            }
             if (blockEntity.completionCooldown <= 0) {
                 resetValues(blockEntity);
                 level.setBlock(pos, state.setValue(TreacherousCandleBlock.COMPLETED, false).setValue(TreacherousCandleBlock.LIT, false), 2);
@@ -114,7 +113,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
                 }
                 if (blockEntity.currentWaveDelay <= 0) {
                     blockEntity.currentWave++;
-                    blockEntity.spawnWave((ServerLevel) level, pos);
+                    blockEntity.spawnWave(level, pos);
                     blockEntity.mobsPerWave = blockEntity.mobsPerWave + blockEntity.increaseInMobsPerWave;
                     blockEntity.currentWaveDelay = blockEntity.maximumWaveDelay;
                 }
@@ -134,7 +133,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         blockEntity.currentWaveDelay = 80;
     }
 
-    private void spawnWave(ServerLevel level, BlockPos pos) {
+    private void spawnWave(Level level, BlockPos pos) {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
             for (int i = 0; i < this.mobsPerWave; i++) {
@@ -147,17 +146,33 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
                 double x = pos.getX() + distance * Math.cos(random.nextDouble() * 2 * Math.PI);
                 double z = pos.getZ() + distance * Math.sin(random.nextDouble() * 2 * Math.PI);
                 double y = pos.getY();
+                int retries = 0;
+                boolean validPosition = false;
+
+                // Checks if the current position is a valid one, otherwise moves it up
+                while (retries < 10 && !validPosition) {
+                    BlockPos currentPos = new BlockPos((int)x, (int)y, (int)z);
+                    if (level.getBlockState(currentPos).isAir()) {
+                        validPosition = true;
+                    }
+                    else {
+                        y++;
+                        retries++;
+                    }
+                }
 
                 EntityType<?> entityType = spawnableMobs.get(random.nextInt(spawnableMobs.size()));
                 Mob mob = (Mob) entityType.create(level);
                 if (mob != null) {
+                    level.playSound(null, x, y, z, SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.0f);
                     for (int p = 0; p < 7; ++p) {
                         level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), mob.getRandomX(0.5), mob.getRandomY() - 0.25, mob.getRandomZ(0.5), (random.nextDouble() - 0.5) * 2.0, random.nextDouble(), (random.nextDouble() - 0.5) * 2.0);
                     }
-                    level.playSound(null, x, y, z, SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.0f);
-                    mob.setPos(x, y, z);
-                    mob.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
-                    level.addFreshEntity(mob);
+                    if (level instanceof ServerLevel serverLevel) {
+                        mob.setPos(x, y, z);
+                        mob.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
+                        level.addFreshEntity(mob);
+                    }
                 }
             }
         }

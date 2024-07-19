@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -25,6 +26,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,6 +38,9 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
     public static final BooleanProperty COMPLETED = BooleanProperty.create("completed");
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
+    protected static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 16, 13);
+    protected static final VoxelShape BROKEN_SHAPE = Block.box(1, 0, 1, 15, 2, 15);
+
     public TreacherousCandleBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(LIT, false).setValue(BROKEN, false).setValue(FACING, Direction.NORTH).setValue(COMPLETED, false));
@@ -42,7 +48,13 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level arg, BlockState arg2, BlockEntityType<T> arg3) {
-        return createTickerHelper(arg3, JNEBlockEntityType.TREACHEROUS_CANDLE.get(), arg.isClientSide ? TreacherousCandleBlockEntity::clientTick : TreacherousCandleBlockEntity::serverTick);
+        return createTickerHelper(arg3, JNEBlockEntityType.TREACHEROUS_CANDLE.get(), TreacherousCandleBlockEntity::tick);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return state.getValue(BROKEN) ? BROKEN_SHAPE : SHAPE;
     }
 
     @Nullable

@@ -90,7 +90,7 @@ public class NetherExpForgeClient {
         event.registerSpriteSet(JNEParticleTypes.WISP.get(), GlimmerParticle.LongFactory::new);
         event.registerSpriteSet(JNEParticleTypes.COLORED_WISP.get(), GlimmerParticle.ColoredFactory::new);
         event.registerSpriteSet(JNEParticleTypes.MAGMA_CREAM.get(), RisingParticle.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.BLOOD.get(), FallingParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BLOOD.get(), GlimmerParticle.LongFactory::new);
         event.registerSpriteSet(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobProvider::new);
 
         // MOD COMPAT

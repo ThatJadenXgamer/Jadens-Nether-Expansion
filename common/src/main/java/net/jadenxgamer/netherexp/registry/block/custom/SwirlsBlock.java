@@ -20,6 +20,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.AmethystClusterBlock;
@@ -46,7 +47,7 @@ implements BonemealableBlock {
     @SuppressWarnings("deprecation")
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!state.getValue(COOLDOWN) && entity instanceof LivingEntity livingEntity && !livingEntity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS)) {
+        if (!state.getValue(COOLDOWN) && entity instanceof LivingEntity livingEntity && !livingEntity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && !EnchantmentHelper.hasSoulSpeed((livingEntity))) {
             RandomSource random = level.random;
             livingEntity.addEffect(new MobEffectInstance(JNEMobEffects.UNBOUNDED_SPEED.get(), 200, 0, true, true), entity);
             swirlPopParticles(level, pos);
@@ -90,7 +91,7 @@ implements BonemealableBlock {
         if (cooldown && i == 0 ) {
             switch (type) {
                 default: {
-                    level.addParticle(ParticleTypes.SOUL, x, y, z, Mth.nextDouble(random, -0.02, 0.02), 0.08, Mth.nextDouble(random, -0.02, 0.02));
+                    level.addParticle(JNEParticleTypes.SWIRL_POP.get(), x, y, z, Mth.nextDouble(random, -0.02, 0.02), 0.08, Mth.nextDouble(random, -0.02, 0.02));
                     break;
                 }
                 case 2: {
@@ -112,7 +113,7 @@ implements BonemealableBlock {
             double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) random.nextFloat();
             switch (type) {
                 default: {
-                    level.addParticle(ParticleTypes.SOUL, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.02, 0.0);
+                    level.addParticle(JNEParticleTypes.SWIRL_POP.get(), (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0, 0.02, 0.0);
                     break;
                 }
                 case 2: {

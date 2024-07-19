@@ -15,7 +15,7 @@ extends TextureSheetParticle {
         this.friction = 0.96f;
         this.spriteSet = spriteSet;
         this.quadSize *= 0.75f;
-        this.hasPhysics = false;
+        this.hasPhysics = true;
         this.setSpriteFromAge(spriteSet);
     }
 

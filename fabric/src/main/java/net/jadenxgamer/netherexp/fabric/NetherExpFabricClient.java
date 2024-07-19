@@ -87,6 +87,11 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TRAMPLE_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.PHASE_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.GHOUL_GARGOYLE_STATUE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WRETCHED_GARGOYLE_STATUE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TREACHEROUS_GARGOYLE_STATUE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CIRRIPEDIA_GARGOYLE_STATUE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.OCCULT_GARGOYLE_STATUE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SEALED_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BRAZIER_CHEST.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TREACHEROUS_CANDLE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(),
@@ -137,7 +142,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.WISP.get(), GlimmerParticle.LongFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.COLORED_WISP.get(), GlimmerParticle.ColoredFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.MAGMA_CREAM.get(), RisingParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.BLOOD.get(), FallingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.BLOOD.get(), GlimmerParticle.LongFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobProvider::new);
 
         // MOD COMPAT

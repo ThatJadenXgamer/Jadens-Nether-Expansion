@@ -15,8 +15,8 @@ public class SoulMagmaBlock extends Block {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        if (entity.isSprinting() && entity instanceof LivingEntity && !EnchantmentHelper.hasSoulSpeed((LivingEntity)entity)) {
-            entity.hurt(level.damageSources().hotFloor(), 2.0f);
+        if (entity.isSprinting() && entity instanceof LivingEntity livingEntity && !EnchantmentHelper.hasSoulSpeed(livingEntity)) {
+            livingEntity.hurt(level.damageSources().hotFloor(), 2.0f);
         }
         super.stepOn(level, pos, state, entity);
     }

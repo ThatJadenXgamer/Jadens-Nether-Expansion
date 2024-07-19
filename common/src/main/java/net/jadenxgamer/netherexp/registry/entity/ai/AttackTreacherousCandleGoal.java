@@ -56,17 +56,11 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
                 if (attackDelay <= 0 && !state.getValue(TreacherousCandleBlock.BROKEN)) {
                     if (health > 0) {
                         treacherousCandle.setHealth(health - 1);
-                        level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.CANDLE_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
-                        for (int i = 0; i < 4; i++) {
-                            level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.CANDLE.defaultBlockState()), target.getX(), target.getY(), target.getZ(), 0.0, 0.5, 0.0);
-                        }
+                        level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 1.0f, 1.0f);
                     }
                     else {
                         level.setBlock(target, level.getBlockState(target).setValue(TreacherousCandleBlock.LIT, false).setValue(TreacherousCandleBlock.BROKEN, true), 2);
                         level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 1.0f, 1.0f);
-                        for (int i = 0; i < 4; i++) {
-                            level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.CANDLE.defaultBlockState()), target.getX(), target.getY(), target.getZ(), 0.0, 0.5, 0.0);
-                        }
                     }
                     attackDelay = 60;
                 }

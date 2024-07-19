@@ -29,7 +29,7 @@ public abstract class MobMixin {
     private void netherexp$finalizeAttackTreacherousCandle(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag, CallbackInfoReturnable<SpawnGroupData> cir) {
         Mob mob = ((Mob) (Object) this);
         if (mob instanceof PathfinderMob pathfinderMob) {
-            targetSelector.addGoal(2, new AttackTreacherousCandleGoal(pathfinderMob, 12));
+            targetSelector.addGoal(2, new AttackTreacherousCandleGoal(pathfinderMob, 32));
         }
     }
 }
