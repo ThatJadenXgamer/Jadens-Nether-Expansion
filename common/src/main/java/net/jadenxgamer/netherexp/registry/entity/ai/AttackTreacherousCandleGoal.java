@@ -5,15 +5,12 @@ import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
 import net.jadenxgamer.netherexp.registry.block.entity.TreacherousCandleBlockEntity;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +76,8 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
     @Override
     public boolean canContinueToUse() {
         BlockPos target = getMoveToTarget();
-        return entity.level().getBlockState(target).is(JNEBlocks.TREACHEROUS_CANDLE.get()) && super.canContinueToUse();
+        BlockState targetState = entity.level().getBlockState(target);
+        return targetState.is(JNEBlocks.TREACHEROUS_CANDLE.get()) && !targetState.getValue(TreacherousCandleBlock.COMPLETED) && targetState.getValue(TreacherousCandleBlock.LIT) && super.canContinueToUse();
     }
 
     @Override

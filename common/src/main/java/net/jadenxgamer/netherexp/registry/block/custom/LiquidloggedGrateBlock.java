@@ -33,10 +33,17 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
     }
 
     public static int getLuminance(BlockState state) {
-        if (state.getValue(LIQUIDLOGGED) == Liquids.LAVA || state.getValue(LIQUIDLOGGED) == Liquids.ECTOPLASM) {
-            return 15;
+        switch (state.getValue(LIQUIDLOGGED)) {
+            default -> {
+                return 0;
+            }
+            case LAVA -> {
+                return 15;
+            }
+            case ECTOPLASM -> {
+                return 7;
+            }
         }
-        else return 0;
     }
 
     @Nullable

@@ -38,6 +38,7 @@ public class JNETags {
         public static final TagKey<Block> NETHERITE_GRATES = createBlockTag("netherite_grates"); // Blocks in this tag are treated as Netherite Grates
         public static final TagKey<Block> FROGMIST = createBlockTag("frogmist"); // Tag to define all Frogmist (p.s: due to some quirks if a frogmist block isn't in this tag it may crash the game)
         public static final TagKey<Block> POSSESSABLE_GARGOYLE_STATUES = createBlockTag("possessable_gargoyle_statues"); // Gargoyle Statues defined in this tag will be sought after by Apparitions
+        public static final TagKey<Block> CAN_OBSTRUCT_TREACHEROUS_CANDLE = createBlockTag("can_obstruct_treacherous_candle"); // Blocks in this tag can obstruct treacherous candles and mobs will not try to break it
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone"); // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE = createBlockTag("sounds/polished_blackstone"); // Blocks in this tag produce Polished Blackstone Sounds
         public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createBlockTag("sounds/polished_blackstone_bricks"); // Blocks in this tag produce Blackstone Brick Sounds

@@ -136,44 +136,57 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private void spawnWave(Level level, BlockPos pos) {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
-            for (int i = 0; i < this.mobsPerWave; i++) {
-                // Makes sure mobs spawn in a donut shape around the candle
-                double distance = spawnRadius * Math.sqrt(random.nextDouble());
-                if (distance < (double) spawnRadius / 2) {
-                    distance += (double) spawnRadius / 2;
+            for (int i = 0; i < mobsPerWave; i++) {
+                BlockPos spawnPos = findValidSpawnPosition(level, pos, random);
+                if (spawnPos != null) {
+                    spawnMob(level, spawnPos, random);
                 }
+            }
+        }
+    }
 
-                double x = pos.getX() + distance * Math.cos(random.nextDouble() * 2 * Math.PI);
-                double z = pos.getZ() + distance * Math.sin(random.nextDouble() * 2 * Math.PI);
-                double y = pos.getY();
-                int retries = 0;
-                boolean validPosition = false;
+    private BlockPos findValidSpawnPosition(Level level, BlockPos pos, RandomSource random) {
+        // Finds a random position within the specified SpawnRadius
+        double x = pos.getZ() + random.nextInt(2 * spawnRadius) - spawnRadius;
+        double y = pos.getY();
+        double z = pos.getX() + random.nextInt(2 * spawnRadius) - spawnRadius;
 
-                // Checks if the current position is a valid one, otherwise moves it up
-                while (retries < 10 && !validPosition) {
-                    BlockPos currentPos = new BlockPos((int)x, (int)y, (int)z);
-                    if (level.getBlockState(currentPos).isAir()) {
-                        validPosition = true;
-                    }
-                    else {
-                        y++;
-                        retries++;
-                    }
-                }
+        // Checks for a valid spawn position
+        for (int retries = 0; retries < 10; retries++) {
+            BlockPos currentPos = new BlockPos((int) x, (int) y, (int) z);
+            BlockPos belowPos = currentPos.below();
 
-                EntityType<?> entityType = spawnableMobs.get(random.nextInt(spawnableMobs.size()));
-                Mob mob = (Mob) entityType.create(level);
-                if (mob != null) {
-                    level.playSound(null, x, y, z, SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.0f);
-                    for (int p = 0; p < 7; ++p) {
-                        level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), mob.getRandomX(0.5), mob.getRandomY() - 0.25, mob.getRandomZ(0.5), (random.nextDouble() - 0.5) * 2.0, random.nextDouble(), (random.nextDouble() - 0.5) * 2.0);
-                    }
-                    if (level instanceof ServerLevel serverLevel) {
-                        mob.setPos(x, y, z);
-                        mob.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
-                        level.addFreshEntity(mob);
-                    }
-                }
+            // If the current position is air and the block below the entity is solid then it'll spawn the mob
+            if (level.getBlockState(currentPos).isAir() && level.getBlockState(belowPos).isSolidRender(level, belowPos)) {
+                return currentPos;
+            }
+
+            /*
+             * Otherwise it moves the X and Z position closer to the center where it is guaranteed to almost spawn due to the candle being there
+             * and if necessary it'll move the Y position up as well
+            */
+            x = (x + pos.getX()) / 2;
+            z = (z + pos.getZ()) / 2;
+            if (!level.getBlockState(currentPos).isAir()) {
+                y++;
+            }
+        }
+        return null;
+    }
+
+    private void spawnMob(Level level, BlockPos pos, RandomSource random) {
+        // picks a random entity from SpawnableMobs and summons it
+        EntityType<?> entityType = spawnableMobs.get(random.nextInt(spawnableMobs.size()));
+        Mob mob = (Mob) entityType.create(level);
+        if (mob != null) {
+            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.0f);
+            for (int p = 0; p < 7; ++p) {
+                level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), mob.getRandomX(0.5), mob.getRandomY() - 0.25, mob.getRandomZ(0.5), (random.nextDouble() - 0.5) * 2.0, random.nextDouble(), (random.nextDouble() - 0.5) * 2.0);
+            }
+            if (level instanceof ServerLevel serverLevel) {
+                mob.setPos(pos.getX(), pos.getY(), pos.getZ());
+                mob.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
+                level.addFreshEntity(mob);
             }
         }
     }

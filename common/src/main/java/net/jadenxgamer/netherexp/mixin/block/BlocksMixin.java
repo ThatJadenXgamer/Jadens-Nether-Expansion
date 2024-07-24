@@ -16,21 +16,21 @@ import org.spongepowered.asm.mixin.injection.Slice;
 public class BlocksMixin {
 
     //TODO: implement Ashy Basalt textures
-    @Redirect(
-            method = "<clinit>",
-            at = @At(value = "NEW", target = "net/minecraft/world/level/block/RotatedPillarBlock",
-                    ordinal = 0
-            ),
-            slice = @Slice(
-                    from = @At(
-                            value = "CONSTANT",
-                            args = "stringValue=basalt"
-                    )
-            )
-    )
-    private static RotatedPillarBlock netherexp$basalt(BlockBehaviour.Properties settings) {
-        return new BasaltBlock(settings);
-    }
+//    @Redirect(
+//            method = "<clinit>",
+//            at = @At(value = "NEW", target = "net/minecraft/world/level/block/RotatedPillarBlock",
+//                    ordinal = 0
+//            ),
+//            slice = @Slice(
+//                    from = @At(
+//                            value = "CONSTANT",
+//                            args = "stringValue=basalt"
+//                    )
+//            )
+//    )
+//    private static RotatedPillarBlock netherexp$basalt(BlockBehaviour.Properties settings) {
+//        return new BasaltBlock(settings);
+//    }
 
     @Redirect(
             method = "<clinit>",

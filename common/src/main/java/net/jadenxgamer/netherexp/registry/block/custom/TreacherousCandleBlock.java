@@ -6,6 +6,7 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -99,7 +100,7 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
             }
         }
         else if (!lit) {
-            if (itemStack.is(Items.FLINT_AND_STEEL)) {
+            if (itemStack.is(Items.FLINT_AND_STEEL) && validPath(state, pos, level)) {
                 bl = true;
                 level.setBlock(pos, state.cycle(LIT), Block.UPDATE_CLIENTS);
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -108,11 +109,29 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
                     itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
                 }
             }
+            else if (!validPath(state, pos, level)) {
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.BLOCKS, 1.0f, 1.0f);
+            }
         }
         if (bl) {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;
+    }
+
+    private boolean validPath(BlockState state, BlockPos pos, Level level) {
+        Direction facing = state.getValue(FACING);
+
+        for (int d = 1; d <= 8; d++) {
+            BlockPos raycast = pos.relative(facing, d);
+            BlockPos raycastAbove = raycast.above();
+
+            // Checks if the block above and in the center is air
+            if (!level.getBlockState(raycast).isAir() || !level.getBlockState(raycastAbove).isAir()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public @NotNull RenderShape getRenderShape(BlockState arg) {

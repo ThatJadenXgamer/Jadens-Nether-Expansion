@@ -39,7 +39,7 @@ public class JNEFluids {
             new ArchitecturyFlowingFluid.Flowing(JNEFluids.ECTOPLASM_ATTRIBUTE));
 
     public static final RegistrySupplier<LiquidBlock> ECTOPLASM_BLOCK = JNEBlocks.BLOCKS.register("ectoplasm", () ->
-            new EctoplasmLiquidBlock(JNEFluids.ECTOPLASM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 15).noLootTable().liquid().sound(SoundType.EMPTY)));
+            new EctoplasmLiquidBlock(JNEFluids.ECTOPLASM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 7).noLootTable().liquid().sound(SoundType.EMPTY)));
 
     public static final RegistrySupplier<Item> ECTOPLASM_BUCKET = JNEItems.ITEMS.register("ectoplasm_bucket", () ->
             new ArchitecturyBucketItem(JNEFluids.ECTOPLASM, new Item.Properties()));

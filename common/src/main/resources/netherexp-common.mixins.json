@@ -42,6 +42,7 @@
     "entity.WitherSkeletonMixin",
     "entity.ZombifiedPiglinMixin",
     "item.AxeItemMixin",
+    "item.BlockItemMixin",
     "item.BowItemMixin",
     "item.ItemStackMixin",
     "item.ShovelItemMixin"
