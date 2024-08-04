@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.entity;
 
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.effect.custom.ImmunityEffect;
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -22,7 +23,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -30,13 +30,17 @@ import java.util.Map;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements Attackable {
-    @Shadow public abstract boolean hasEffect(MobEffect effect);
+    @Shadow
+    public abstract boolean hasEffect(MobEffect effect);
 
-    @Shadow @Final private static EntityDataAccessor<Integer> DATA_EFFECT_COLOR_ID;
+    @Shadow
+    @Final
+    private static EntityDataAccessor<Integer> DATA_EFFECT_COLOR_ID;
 
-    @Shadow public abstract Map<MobEffect, MobEffectInstance> getActiveEffectsMap();
+    @Shadow
+    public abstract Map<MobEffect, MobEffectInstance> getActiveEffectsMap();
 
-    @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
+    @Shadow public abstract boolean isDeadOrDying();
 
     public LivingEntityMixin(EntityType<?> type, Level level) {
         super(type, level);
@@ -53,20 +57,6 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
         if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) || entity.getType().is(JNETags.EntityTypes.IGNORES_SOUL_SAND_SLOWNESS) && !EnchantmentHelper.hasSoulSpeed(entity)) {
             cir.setReturnValue(1.0f);
         }
-        // TODO Add Configs
-//        else if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && NetherExp.getConfig().gamemechanics.soulSpeedConfigs.nerfed_soul_sand_slowness) {
-//            cir.setReturnValue(0.6F);
-//        }
-    }
-
-    @ModifyArg(
-            method = "tryAddSoulSpeed",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V")
-    )
-    private int netherexp$addSoulSpeedQOL(int amount) {
-        return 0;
-        // TODO Add Configs
-//        return NetherExp.getConfig().gamemechanics.soulSpeedConfigs.no_soul_speed_degradation ? 0 : 1;
     }
 
     @Inject(
@@ -100,8 +90,23 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     )
     private void netherexp$preventArmorDamage(DamageSource damageSource, float f, CallbackInfoReturnable<Float> cir) {
         if (damageSource.is(JNETags.DamageTypes.CANT_DAMAGE_ARMOR)) {
-            f = CombatRules.getDamageAfterAbsorb(f, ((LivingEntity) (Object) this).getArmorValue(), (float)((LivingEntity) (Object) this).getAttributeValue(Attributes.ARMOR_TOUGHNESS));
+            f = CombatRules.getDamageAfterAbsorb(f, ((LivingEntity) (Object) this).getArmorValue(), (float) ((LivingEntity) (Object) this).getAttributeValue(Attributes.ARMOR_TOUGHNESS));
             cir.setReturnValue(f);
+        }
+    }
+
+    @Inject(
+            method = "aiStep",
+            at = @At(value = "TAIL")
+    )
+    private void netherexp$aiStep(CallbackInfo cir) {
+        if (!this.level().isClientSide() && !this.isDeadOrDying()) {
+            int ticksFrozen = this.getTicksFrozen();
+            if (this.level().getFluidState(this.blockPosition()).getType() == JNEFluids.ECTOPLASM.get() && this.canFreeze()) {
+                this.setTicksFrozen(Math.min(this.getTicksRequiredToFreeze(), ticksFrozen + 1));
+            } else {
+                this.setTicksFrozen(Math.max(0, ticksFrozen - 2));
+            }
         }
     }
 }

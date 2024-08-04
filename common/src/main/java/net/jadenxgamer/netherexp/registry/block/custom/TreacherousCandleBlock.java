@@ -109,7 +109,7 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
                     itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
                 }
             }
-            else if (!validPath(state, pos, level)) {
+            else if (itemStack.is(Items.FLINT_AND_STEEL) && !validPath(state, pos, level)) {
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.BLOCKS, 1.0f, 1.0f);
             }
         }

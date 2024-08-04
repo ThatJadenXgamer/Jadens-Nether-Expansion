@@ -45,7 +45,11 @@
     "item.BlockItemMixin",
     "item.BowItemMixin",
     "item.ItemStackMixin",
-    "item.ShovelItemMixin"
+    "item.ShovelItemMixin",
+    "worldgen.BasaltColumnsFeatureMixin",
+    "worldgen.DeltaFeatureMixin",
+    ,
+    "worldgen.JigsawPlacementMixin"
   ],
   "injectors": {
     "defaultRequire": 1

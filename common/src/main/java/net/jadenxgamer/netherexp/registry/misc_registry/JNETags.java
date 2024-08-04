@@ -34,14 +34,14 @@ public class JNETags {
         public static final TagKey<Block> NETHER_WART_BLOCKS = createBlockTag("nether_wart_blocks"); // Blocks in this tag will be considered as Nether Wart Block
         public static final TagKey<Block> WARPED_WART_BLOCKS = createBlockTag("warped_wart_blocks"); // Blocks in this tag will be considered as Warped Wart Block
         public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createBlockTag("fossil_ore_convertible"); // Killing Skeletons on these blocks Converts it to Fossil Ore
-        public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks"); // Blocks in this tag will no longer slow you down if Unbounded Speed or if the Entity is in IGNORES_SOUL_SAND_SLOWNESS
+        public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks"); // Blocks in this tag will no longer slow you down if inflicted with Unbounded Speed or the Entity is in the IGNORES_SOUL_SAND_SLOWNESS tag
         public static final TagKey<Block> NETHERITE_GRATES = createBlockTag("netherite_grates"); // Blocks in this tag are treated as Netherite Grates
         public static final TagKey<Block> FROGMIST = createBlockTag("frogmist"); // Tag to define all Frogmist (p.s: due to some quirks if a frogmist block isn't in this tag it may crash the game)
-        public static final TagKey<Block> POSSESSABLE_GARGOYLE_STATUES = createBlockTag("possessable_gargoyle_statues"); // Gargoyle Statues defined in this tag will be sought after by Apparitions
-        public static final TagKey<Block> CAN_OBSTRUCT_TREACHEROUS_CANDLE = createBlockTag("can_obstruct_treacherous_candle"); // Blocks in this tag can obstruct treacherous candles and mobs will not try to break it
+        public static final TagKey<Block> POSSESSABLE_GARGOYLE_STATUES = createBlockTag("possessable_gargoyle_statues"); // Gargoyle Statues defined in this tag will be sought after by Apparitions (if the specified statue doesn't have a possession hardcoded into it then the apparition will turn into a Vessel)
+        public static final TagKey<Block> SANCTUM_BLOCKS = createBlockTag("sanctum_blocks"); // Prevents those pesky Basalt Deltas configured features from overriding or replacing Sanctum Blocks
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone"); // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE = createBlockTag("sounds/polished_blackstone"); // Blocks in this tag produce Polished Blackstone Sounds
-        public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createBlockTag("sounds/polished_blackstone_bricks"); // Blocks in this tag produce Blackstone Brick Sounds
+        public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createBlockTag("sounds/polished_blackstone_bricks"); // Blocks in this tag produce Polished Blackstone Brick Sounds
         public static final TagKey<Block> SOUNDS_MAGMA_BLOCK = createBlockTag("sounds/magma_block"); // Blocks in this tag produce Magma Block Sounds
         public static final TagKey<Block> SOUNDS_GLOWSTONE = createBlockTag("sounds/glowstone"); // Blocks in this tag produce Glowstone Sounds
         public static final TagKey<Block> SOUNDS_QUARTZ_BLOCK = createBlockTag("sounds/quartz_block"); // Blocks in this tag produce Quartz Block Sounds
@@ -55,9 +55,9 @@ public class JNETags {
         }
     }
     public static class EntityTypes {
-        public static final TagKey<EntityType<?>> SOUL_GLASS_PASSABLE = createEntityTypeTag("soul_glass_passable"); //Entities in this tag can go through Soul Glass
+        public static final TagKey<EntityType<?>> SOUL_GLASS_PASSABLE = createEntityTypeTag("soul_glass_passable"); //Entities in this tag can go through Soul Glass (UNUSED)
         public static final TagKey<EntityType<?>> CANT_ACTIVATE_SWIRLS = createEntityTypeTag("cant_activate_swirls"); // Entities in this tag cannot activate Swirls
-        public static final TagKey<EntityType<?>> PROJECTILES_PASS_THROUGH = createEntityTypeTag("projectiles_pass_through"); // Projectiles in the PHANTASM_HULL_PROTECTS_AGAINST will not collide with entities in this tag
+        public static final TagKey<EntityType<?>> PROJECTILES_PASS_THROUGH = createEntityTypeTag("projectiles_pass_through"); // Projectiles in the PHANTASM_HULL_PROTECTS_AGAINST tag will phase through entities in this tag
         public static final TagKey<EntityType<?>> PHANTASM_HULL_PROTECTS_AGAINST = createEntityTypeTag("phantasm_hull_protects_against"); // Phantasm Hull will protect you against projectiles in this tag
         public static final TagKey<EntityType<?>> IMMUNE_TO_GRAVE_CLOUDS = createEntityTypeTag("immune_to_grave_clouds"); // Grave Clouds don't damage or slow down entities in this tag
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createEntityTypeTag("ignores_soul_sand_slowness"); // Soul Sand won't slow down entities in this tag

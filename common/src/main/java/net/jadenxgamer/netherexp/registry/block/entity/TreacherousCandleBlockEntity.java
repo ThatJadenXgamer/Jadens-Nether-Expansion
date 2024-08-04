@@ -3,16 +3,19 @@ package net.jadenxgamer.netherexp.registry.block.entity;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
-import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -36,11 +39,14 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private int resetMobsPerWave = 4;
     private int increaseInMobsPerWave = 2;
     private int health = 20;
+    private int maximumHealth = 20;
     private int completionCooldown = 72000;
     private List<EntityType<?>> spawnableMobs = new ArrayList<>();
+    private final ServerBossEvent bossEvent;
 
     public TreacherousCandleBlockEntity(BlockPos pos, BlockState state) {
         super(JNEBlockEntityType.TREACHEROUS_CANDLE.get(), pos, state);
+        this.bossEvent = (ServerBossEvent)(new ServerBossEvent(Component.translatable("treacherous_candle.health"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(false);
     }
 
     public void load(CompoundTag nbt) {
@@ -54,6 +60,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         this.resetMobsPerWave = nbt.getInt("ResetMobsPerWave"); // Resets MobsPerWave once it's been defeated
         this.increaseInMobsPerWave = nbt.getInt("IncreaseInMobsPerWave"); // Gradual increase in mob spawns per wave
         this.health = nbt.getInt("Health"); // Current Health of the Candle
+        this.maximumHealth = nbt.getInt("MaximumHealth"); // Maximum Health of the Candle
         this.completionCooldown = nbt.getInt("CompletionCooldown"); // Once completed tracks the candle's cooldown to reset it
 
         // List for Spawnable Mobs
@@ -76,6 +83,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         nbt.putInt("IncreaseInMobsPerWave", this.increaseInMobsPerWave);
         nbt.putInt("SpawnRadius", this.spawnRadius);
         nbt.putInt("Health", this.health);
+        nbt.putInt("MaximumHealth", this.maximumHealth);
         nbt.putInt("CompletionCooldown", this.completionCooldown);
 
         ListTag mobsListTag = new ListTag();
@@ -96,8 +104,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     public static void tick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {
         if (state.getValue(TreacherousCandleBlock.COMPLETED)) {
             --blockEntity.completionCooldown;
-            if (blockEntity.completionCooldown == 20) {
-                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.PLAYERS, 0.5f, 1.0f);
+            for (ServerPlayer player : blockEntity.bossEvent.getPlayers()) {
+                blockEntity.bossEvent.removePlayer(player);
             }
             if (blockEntity.completionCooldown <= 0) {
                 resetValues(blockEntity);
@@ -106,10 +114,14 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
             }
         }
         else if (state.getValue(TreacherousCandleBlock.LIT)) {
+            blockEntity.bossEvent.setProgress((float) blockEntity.health / blockEntity.maximumHealth);
             if (blockEntity.currentWave <= blockEntity.maximumWaves) {
                 --blockEntity.currentWaveDelay;
                 for (Player player : level.getEntitiesOfClass(Player.class, (new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX(), pos.getY(), pos.getZ())).inflate(16.0, 16.0, 16.0))) {
-                    player.addEffect(new MobEffectInstance(JNEMobEffects.BETRAYED.get(), 80, 0));
+                    player.addEffect(new MobEffectInstance(JNEMobEffects.BETRAYED.get(), 200, 0));
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        blockEntity.bossEvent.addPlayer(serverPlayer);
+                    }
                 }
                 if (blockEntity.currentWaveDelay <= 0) {
                     blockEntity.currentWave++;
@@ -123,12 +135,17 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
                 level.setBlock(pos, state.cycle(TreacherousCandleBlock.COMPLETED), 2);
             }
         }
+        else if (!state.getValue(TreacherousCandleBlock.LIT)) {
+            for (ServerPlayer player : blockEntity.bossEvent.getPlayers()) {
+                blockEntity.bossEvent.removePlayer(player);
+            }
+        }
     }
 
     public static void resetValues(TreacherousCandleBlockEntity blockEntity) {
         blockEntity.completionCooldown = 72000;
         blockEntity.currentWave = 1;
-        blockEntity.health = 20;
+        blockEntity.health = blockEntity.maximumHealth;
         blockEntity.mobsPerWave = blockEntity.resetMobsPerWave;
         blockEntity.currentWaveDelay = 80;
     }
@@ -136,57 +153,50 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private void spawnWave(Level level, BlockPos pos) {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
-            for (int i = 0; i < mobsPerWave; i++) {
+            for (int i = 0; i < this.mobsPerWave; i++) {
                 BlockPos spawnPos = findValidSpawnPosition(level, pos, random);
-                if (spawnPos != null) {
-                    spawnMob(level, spawnPos, random);
+
+                EntityType<?> entityType = spawnableMobs.get(random.nextInt(spawnableMobs.size()));
+                Mob mob = (Mob) entityType.create(level);
+                if (mob != null) {
+                    level.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.0f);
+                    if (level instanceof ServerLevel serverLevel) {
+                        mob.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        mob.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
+                        level.addFreshEntity(mob);
+                    }
                 }
             }
         }
     }
 
     private BlockPos findValidSpawnPosition(Level level, BlockPos pos, RandomSource random) {
-        // Finds a random position within the specified SpawnRadius
-        double x = pos.getZ() + random.nextInt(2 * spawnRadius) - spawnRadius;
+        double x = pos.getX() + random.nextInt(spawnRadius);
         double y = pos.getY();
-        double z = pos.getX() + random.nextInt(2 * spawnRadius) - spawnRadius;
+        double z = pos.getZ() + random.nextInt(spawnRadius);
+        int retries = 0;
 
-        // Checks for a valid spawn position
-        for (int retries = 0; retries < 10; retries++) {
-            BlockPos currentPos = new BlockPos((int) x, (int) y, (int) z);
-            BlockPos belowPos = currentPos.below();
-
-            // If the current position is air and the block below the entity is solid then it'll spawn the mob
-            if (level.getBlockState(currentPos).isAir() && level.getBlockState(belowPos).isSolidRender(level, belowPos)) {
+        // Checks if the current position is a valid one, otherwise moves it up
+        while (retries < 10) {
+            BlockPos currentPos = new BlockPos((int)x, (int)y, (int)z);
+            if (level.getBlockState(currentPos).isAir() && level.getBlockState(currentPos.below()).isSolid()) {
                 return currentPos;
             }
-
-            /*
-             * Otherwise it moves the X and Z position closer to the center where it is guaranteed to almost spawn due to the candle being there
-             * and if necessary it'll move the Y position up as well
-            */
-            x = (x + pos.getX()) / 2;
-            z = (z + pos.getZ()) / 2;
-            if (!level.getBlockState(currentPos).isAir()) {
+            else {
                 y++;
+                retries++;
             }
         }
-        return null;
+        return pos.above();
     }
 
-    private void spawnMob(Level level, BlockPos pos, RandomSource random) {
-        // picks a random entity from SpawnableMobs and summons it
-        EntityType<?> entityType = spawnableMobs.get(random.nextInt(spawnableMobs.size()));
-        Mob mob = (Mob) entityType.create(level);
-        if (mob != null) {
-            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.0f);
-            for (int p = 0; p < 7; ++p) {
-                level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), mob.getRandomX(0.5), mob.getRandomY() - 0.25, mob.getRandomZ(0.5), (random.nextDouble() - 0.5) * 2.0, random.nextDouble(), (random.nextDouble() - 0.5) * 2.0);
-            }
-            if (level instanceof ServerLevel serverLevel) {
-                mob.setPos(pos.getX(), pos.getY(), pos.getZ());
-                mob.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
-                level.addFreshEntity(mob);
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        assert level != null;
+        if (!level.isClientSide() && this.bossEvent != null) {
+            for (ServerPlayer player : this.bossEvent.getPlayers()) {
+                this.bossEvent.removePlayer(player);
             }
         }
     }
