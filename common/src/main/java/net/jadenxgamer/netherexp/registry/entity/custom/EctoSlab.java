@@ -70,7 +70,7 @@ public class EctoSlab extends Slime {
     private static final EntityDataAccessor<Boolean> IS_UNDERGROUND = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
 
-    public static final Predicate<LivingEntity> ECTO_SLAB_CAN_DAMAGE = (arg) -> arg.getType().is(JNETags.EntityTypes.ECTOSLAB_POUNCE_DAMAGES);
+    public static final Predicate<LivingEntity> ECTO_SLAB_CAN_DAMAGE = (arg) -> arg.getType().is(JNETags.EntityTypes.ECTO_SLAB_POUNCE_DAMAGES);
 
     public EctoSlab(EntityType<? extends Slime> entityType, Level level) {
         super(entityType, level);
@@ -247,7 +247,7 @@ public class EctoSlab extends Slime {
 
     @Override
     protected void jumpInLiquid(TagKey<Fluid> tagKey) {
-        if (tagKey == FluidTags.LAVA) {
+        if (tagKey == FluidTags.LAVA || tagKey == JNETags.Fluids.ECTOPLASM) {
             Vec3 vec3 = this.getDeltaMovement();
             this.setDeltaMovement(vec3.x, 0.22F + (float)this.getSize() * 0.05F, vec3.z);
             this.hasImpulse = true;
@@ -514,7 +514,7 @@ public class EctoSlab extends Slime {
             } else if (!this.ectoSlab.canAttack(livingEntity)) {
                 return false;
             } else {
-                return this.undergroundTime > -90;
+                return ectoSlab.isTiny() ? this.undergroundTime > -240 : this.undergroundTime > -140;
             }
         }
 

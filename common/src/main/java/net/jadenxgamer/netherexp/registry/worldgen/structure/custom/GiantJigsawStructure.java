@@ -65,12 +65,12 @@ public class GiantJigsawStructure extends Structure {
         this(structure, startPool, Optional.empty(), maxDepth, startHeight, useExpansionHack, Optional.empty(), 240);
     }
 
-    public @NotNull Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext arg) {
-        System.out.println("JIG = " + maxDistanceFromCenter);
-        ChunkPos chunkPos = arg.chunkPos();
-        int i = this.startHeight.sample(arg.random(), new WorldGenerationContext(arg.chunkGenerator(), arg.heightAccessor()));
+    @Override
+    public @NotNull Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
+        ChunkPos chunkPos = context.chunkPos();
+        int i = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
         BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), i, chunkPos.getMinBlockZ());
-        return GiantJigsawPlacement.addPieces(arg, this.startPool, this.startJigsawName, this.maxDepth, blockPos, this.useExpansionHack, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+        return GiantJigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.maxDepth, blockPos, this.useExpansionHack, this.projectStartToHeightmap, this.maxDistanceFromCenter);
     }
 
     public @NotNull StructureType<?> type() {

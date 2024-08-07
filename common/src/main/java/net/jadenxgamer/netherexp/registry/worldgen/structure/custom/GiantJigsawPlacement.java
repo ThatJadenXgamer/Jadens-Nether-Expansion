@@ -10,9 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.JigsawBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
@@ -43,7 +41,6 @@ public class GiantJigsawPlacement {
     }
 
     public static Optional<Structure.GenerationStub> addPieces(Structure.GenerationContext context, Holder<StructureTemplatePool> startPool, Optional<ResourceLocation> startJigsawName, int maxDepth, BlockPos pos, boolean useExpansionHack, Optional<Heightmap.Types> projectStartToHeightmap, int maxDistanceFromCenter) {
-        System.out.println("GIANT JIGSAW maxDistanceFromCenter = " + maxDistanceFromCenter);
         RegistryAccess registryAccess = context.registryAccess();
         ChunkGenerator chunkGenerator = context.chunkGenerator();
         StructureTemplateManager structureTemplateManager = context.structureTemplateManager();
@@ -91,7 +88,6 @@ public class GiantJigsawPlacement {
                 list.add(poolElementStructurePiece);
                 if (maxDepth > 0) {
                     AABB aABB = new AABB(k - maxDistanceFromCenter, o - 64, l - maxDistanceFromCenter, (k + maxDistanceFromCenter + 1), (o + 64 + 1), (l + maxDistanceFromCenter + 1));
-                    LOGGER.info("New AABB: minX={}, minY={}, minZ={}, maxX={}, maxY={}, maxZ={}", aABB.minX, aABB.minY, aABB.minZ, aABB.maxX, aABB.maxY, aABB.maxZ);
                     VoxelShape voxelShape = Shapes.join(Shapes.create(aABB), Shapes.create(AABB.of(boundingBox)), BooleanOp.ONLY_FIRST);
                     addPiecesChild(context.randomState(), maxDepth, useExpansionHack, chunkGenerator, structureTemplateManager, levelHeightAccessor, worldgenRandom, registry, poolElementStructurePiece, list, voxelShape);
                     Objects.requireNonNull(structurePiecesBuilder);
@@ -310,7 +306,6 @@ public class GiantJigsawPlacement {
                                                 s = Math.max(m + 1, boundingBox4.maxY() - boundingBox4.minY());
                                                 boundingBox4.encapsulate(new BlockPos(boundingBox4.minX(), boundingBox4.minY() + s, boundingBox4.minZ()));
                                             }
-                                            LOGGER.info("BoundingBox: minX={}, minY={}, minZ={}, maxX={}, maxY={}, maxZ={}", boundingBox4.minX(), boundingBox4.minY(), boundingBox4.minZ(), boundingBox4.maxX(), boundingBox4.maxY(), boundingBox4.maxZ());
                                         } while(Shapes.joinIsNotEmpty((VoxelShape)mutableObject3.getValue(), Shapes.create(AABB.of(boundingBox4)), BooleanOp.ONLY_SECOND));
 
                                         mutableObject3.setValue(Shapes.joinUnoptimized((VoxelShape)mutableObject3.getValue(), Shapes.create(AABB.of(boundingBox4)), BooleanOp.ONLY_FIRST));

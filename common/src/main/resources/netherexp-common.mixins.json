@@ -47,9 +47,7 @@
     "item.ItemStackMixin",
     "item.ShovelItemMixin",
     "worldgen.BasaltColumnsFeatureMixin",
-    "worldgen.DeltaFeatureMixin",
-    ,
-    "worldgen.JigsawPlacementMixin"
+    "worldgen.DeltaFeatureMixin"
   ],
   "injectors": {
     "defaultRequire": 1
