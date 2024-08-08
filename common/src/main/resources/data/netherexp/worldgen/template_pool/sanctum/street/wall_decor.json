@@ -1,0 +1,128 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:empty_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/bland",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/basement",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/statues/ghoul_gargoyle_statue",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/statues/treacherous_gargoyle_statue",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/sewer",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/window",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/window_breaker",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/window_basement",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/worship",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/underbland",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/roof_respawn_anchor",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/roof_entry",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/basement_stairs",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    }
+  ]
+}

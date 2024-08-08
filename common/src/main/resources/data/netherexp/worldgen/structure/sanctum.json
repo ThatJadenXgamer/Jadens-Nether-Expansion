@@ -1,0 +1,67 @@
+{
+  "type": "netherexp:giant_jigsaw",
+  "biomes": "#netherexp:has_structure/sanctum",
+  "step": "underground_decoration",
+  "spawn_overrides": {
+    "ambient": {
+      "bounding_box": "full",
+      "spawns": []
+    },
+    "axolotls": {
+      "bounding_box": "full",
+      "spawns": []
+    },
+    "creature": {
+      "bounding_box": "full",
+      "spawns": []
+    },
+    "misc": {
+      "bounding_box": "full",
+      "spawns": []
+    },
+    "monster": {
+      "bounding_box": "full",
+      "spawns": [
+        {
+          "type": "minecraft:skeleton",
+          "weight": 10,
+          "minCount": 1,
+          "maxCount": 3
+        },
+        {
+          "type": "netherexp:vessel",
+          "weight": 5,
+          "minCount": 1,
+          "maxCount": 2
+        },
+        {
+          "type": "netherexp:apparition",
+          "weight": 7,
+          "minCount": 1,
+          "maxCount": 1
+        }
+      ]
+    },
+    "underground_water_creature": {
+      "bounding_box": "full",
+      "spawns": []
+    },
+    "water_ambient": {
+      "bounding_box": "full",
+      "spawns": []
+    },
+    "water_creature": {
+      "bounding_box": "full",
+      "spawns": []
+    }
+  },
+  "terrain_adaptation": "beard_box",
+  "start_pool": "netherexp:sanctum/church/center",
+  "size": 15,
+  "start_height": {
+    "absolute": 33
+  },
+  "start_jigsaw_name": "netherexp:sanctum_anchor",
+  "max_distance_from_center": 240,
+  "use_expansion_hack": false
+}

@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "netherexp:sanctum",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1253950950,
+    "spread_type": "triangular",
+    "spacing": 120,
+    "separation": 80
+  }
+}

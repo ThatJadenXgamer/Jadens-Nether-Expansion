@@ -1,0 +1,42 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/street/straight_street",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/street/threeway_street",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/street/cross_street",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/arena/narrow_arena",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    }
+  ]
+}
+
