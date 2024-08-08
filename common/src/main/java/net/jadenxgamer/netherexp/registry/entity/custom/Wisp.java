@@ -59,6 +59,7 @@ implements FlyingAnimal, Bottleable {
     public Wisp(EntityType<? extends AgeableMob> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(BlockPathTypes.LAVA, -1.0F);
+        this.xpReward = 1;
         this.moveControl = new FlyingMoveControl(this, 20, true);
     }
 

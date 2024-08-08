@@ -155,12 +155,14 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.BLOOD_DROP.get(), BloodDropRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.WILL_O_WISP.get(), ThrownItemRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.ANTIDOTE.get(), ThrownItemRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.GRENADE_EFFECT_CLOUD.get(), NoopRenderer::new);
         BlockEntityRendererRegistry.register(JNEBlockEntityType.BRUSHABLE_BLOCK.get(), JNEBrushableBlockRenderer::new);
@@ -171,6 +173,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.VESSEL_LAYER, VesselModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.ECTO_SLAB_LAYER, EctoSlabModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.BANSHEE_LAYER, BansheeModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
     }
 }

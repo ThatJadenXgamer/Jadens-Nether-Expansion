@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "B#B",
+    " B "
+  ],
+  "key": {
+    "B": {
+      "item": "netherexp:banshee_powder"
+    },
+    "#": {
+      "item": "netherexp:wisp_bottle"
+    }
+  },
+  "result": {
+    "item": "netherexp:will_o_wisp",
+    "count": 4
+  }
+}

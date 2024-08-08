@@ -96,9 +96,9 @@ public class Vessel extends Monster implements RangedAttackMob {
             if (getShoot()) {
                 shootAnimationState.startIfStopped(this.tickCount);
             }
-            else {
-                shootAnimationState.stop();
-            }
+//            else {
+//                shootAnimationState.stop();
+//            }
         }
     }
 

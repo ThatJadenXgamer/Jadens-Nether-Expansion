@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:banshee_rod"
+    }
+  ],
+  "result": {
+    "item": "netherexp:banshee_powder",
+    "count": 2
+  }
+}

@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.worldgen;
 
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.levelgen.feature.BasaltColumnsFeature;
 import org.spongepowered.asm.mixin.Debug;
@@ -20,7 +21,7 @@ public class BasaltColumnsFeatureMixin {
             cancellable = true
     )
     private static void netherexp$canPlaceAt(LevelAccessor levelAccessor, int i, BlockPos.MutableBlockPos mutableBlockPos, CallbackInfoReturnable<Boolean> cir) {
-        if (levelAccessor.getBlockState(mutableBlockPos).is(JNETags.Blocks.SANCTUM_BLOCKS)) {
+        if (levelAccessor.getBlockState(mutableBlockPos.move(Direction.DOWN)).is(JNETags.Blocks.SANCTUM_BLOCKS)) {
             cir.setReturnValue(false);
         }
     }

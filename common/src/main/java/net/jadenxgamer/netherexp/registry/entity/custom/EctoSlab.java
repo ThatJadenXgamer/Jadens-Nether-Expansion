@@ -70,12 +70,12 @@ public class EctoSlab extends Slime {
     private static final EntityDataAccessor<Boolean> IS_UNDERGROUND = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> ATTACK = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
 
-    public static final Predicate<LivingEntity> ECTO_SLAB_CAN_DAMAGE = (arg) -> arg.getType().is(JNETags.EntityTypes.ECTO_SLAB_POUNCE_DAMAGES);
+    public static final Predicate<LivingEntity> ECTO_SLAB_CAN_DAMAGE = (entity) -> entity.getType().is(JNETags.EntityTypes.ECTO_SLAB_POUNCE_DAMAGES);
 
     public EctoSlab(EntityType<? extends Slime> entityType, Level level) {
         super(entityType, level);
         this.fixupDimensions();
-        this.setMaxUpStep(2.0F);
+        this.setMaxUpStep(8.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.moveControl = new EctoSlabMoveControl(this);
     }

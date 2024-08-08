@@ -94,6 +94,6 @@ public class MistCharge extends ThrowableItemProjectile {
 
     @Override
     protected float getGravity() {
-        return 0.05F;
+        return 0.05f;
     }
 }

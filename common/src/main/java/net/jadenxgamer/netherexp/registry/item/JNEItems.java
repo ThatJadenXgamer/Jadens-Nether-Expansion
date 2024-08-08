@@ -92,6 +92,15 @@ public class JNEItems {
     public static final RegistrySupplier<Item> MIST_CHARGE = registerItem("mist_charge", () ->
             new MistChargeItem(new Item.Properties()));
 
+    public static final RegistrySupplier<Item> BANSHEE_ROD = registerItem("banshee_rod", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> BANSHEE_POWDER = registerItem("banshee_powder", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> WILL_O_WISP = registerItem("will_o_wisp", () ->
+            new WillOWispItem(new Item.Properties()));
+
     public static final RegistrySupplier<Item> STRIDITE = registerItem("stridite", () ->
             new Item(new Item.Properties()));
 
@@ -133,6 +142,9 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> ECTO_SLAB_SPAWN_EGG = registerItem("ecto_slab_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.ECTO_SLAB, 4864303, 1788232, new Item.Properties()));
+
+    public static final RegistrySupplier<Item> BANSHEE_SPAWN_EGG = registerItem("banshee_spawn_egg", () ->
+            new ArchitecturySpawnEggItem(JNEEntityType.BANSHEE, 1985382, 1788232, new Item.Properties()));
 
     public static final RegistrySupplier<Item> STAMPEDE_SPAWN_EGG = registerItem("stampede_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.STAMPEDE, 4864303, 10236982, new Item.Properties()));

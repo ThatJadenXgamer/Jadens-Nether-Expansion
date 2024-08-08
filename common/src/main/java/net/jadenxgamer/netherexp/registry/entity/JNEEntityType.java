@@ -29,6 +29,10 @@ public class JNEEntityType {
             EntityType.Builder.of(EctoSlab::new, MobCategory.MONSTER)
                     .sized(2.04F, 2.04F).fireImmune().build("ecto_slab"));
 
+    public static final RegistrySupplier<EntityType<Banshee>> BANSHEE = ENTITY_TYPES.register("banshee", () ->
+            EntityType.Builder.of(Banshee::new, MobCategory.MONSTER)
+                    .sized(1.2F, 2.55F).fireImmune().build("banshee"));
+
     public static final RegistrySupplier<EntityType<Stampede>> STAMPEDE = ENTITY_TYPES.register("stampede", () ->
             EntityType.Builder.of(Stampede::new, MobCategory.MONSTER)
                     .sized(1.8F, 4.0F).fireImmune().build("stampede"));
@@ -54,6 +58,10 @@ public class JNEEntityType {
     public static final RegistrySupplier<EntityType<GraveCloud>> GRAVE_CLOUD = ENTITY_TYPES.register("grave_cloud", () ->
             EntityType.Builder.of(GraveCloud::new, MobCategory.MISC)
                     .sized(3.0F, 2.4F).fireImmune().build("grave_cloud"));
+
+    public static final RegistrySupplier<EntityType<WillOWisp>> WILL_O_WISP = ENTITY_TYPES.register("will_o_wisp", () ->
+            EntityType.Builder.<WillOWisp>of(WillOWisp::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F).build("will_o_wisp"));
 
     public static final RegistrySupplier<EntityType<ThrownAntidote>> ANTIDOTE = ENTITY_TYPES.register("antidote", () ->
             EntityType.Builder.<ThrownAntidote>of(ThrownAntidote::new, MobCategory.MISC)

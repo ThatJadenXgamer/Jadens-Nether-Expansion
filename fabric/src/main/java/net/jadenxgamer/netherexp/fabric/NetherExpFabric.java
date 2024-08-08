@@ -29,6 +29,7 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
         FabricDefaultAttributeRegistry.register(JNEEntityType.WISP.get(), Wisp.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.VESSEL.get(), Vessel.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.ECTO_SLAB.get(), EctoSlab.createAttributes());
+        FabricDefaultAttributeRegistry.register(JNEEntityType.BANSHEE.get(), Banshee.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.STAMPEDE.get(), Stampede.createAttributes());
 
         ResourceLocation rpConflictingRetextures = new ResourceLocation(NetherExp.MOD_ID, "conflicting_retextures");

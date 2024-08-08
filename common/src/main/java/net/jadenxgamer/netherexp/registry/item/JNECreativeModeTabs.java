@@ -82,6 +82,10 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.VERDANT_FROGMIST.get());
                         output.accept(JNEBlocks.PEARLESCENT_FROGMIST.get());
 
+                        output.accept(JNEItems.BANSHEE_ROD.get());
+                        output.accept(JNEItems.BANSHEE_POWDER.get());
+                        output.accept(JNEItems.WILL_O_WISP.get());
+
                         output.accept(JNEBlocks.BLACK_ICE.get());
                         output.accept(JNEFluids.ECTOPLASM_BUCKET.get());
 
@@ -303,10 +307,6 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEItems.WISP_BOTTLE.get());
 
-
-                        output.accept(JNEItems.FOGGY_ESSENCE.get());
-                        output.accept(JNEItems.MIST_CHARGE.get());
-
                         output.accept(JNEItems.HOGHAM.get());
                         output.accept(JNEItems.COOKED_HOGHAM.get());
 
@@ -384,6 +384,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.APPARITION_SPAWN_EGG.get());
                         output.accept(JNEItems.VESSEL_SPAWN_EGG.get());
                         output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
+                        output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
                         output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
 //                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
 //                            output.accept(JNEItems.WARPHOPPER_SPAWN_EGG);

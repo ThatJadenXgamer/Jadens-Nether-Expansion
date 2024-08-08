@@ -179,7 +179,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         // Checks if the current position is a valid one, otherwise moves it up
         while (retries < 10) {
             BlockPos currentPos = new BlockPos((int)x, (int)y, (int)z);
-            if (level.getBlockState(currentPos).isAir() && level.getBlockState(currentPos.below()).isSolid()) {
+            if (level.getBlockState(currentPos).isAir() && level.getBlockState(currentPos.below()).isSolid() || level.getBlockState(currentPos.below().below()).isSolid()) {
                 return currentPos;
             }
             else {
