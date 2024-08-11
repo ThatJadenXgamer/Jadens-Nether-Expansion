@@ -405,9 +405,11 @@
   "subtitles.entity.apparition.ambient": "Apparition rumbles",
   "subtitles.entity.apparition.hurt": "Apparition hurts",
   "subtitles.entity.apparition.death": "Apparition dies",
+  "subtitles.entity.apparition.fly": "Apparition flies",
   "subtitles.entity.vessel.ambient": "Vessel rattles",
   "subtitles.entity.vessel.hurt": "Vessel hurts",
   "subtitles.entity.vessel.death": "Vessel dies",
+  "subtitles.entity.banshee.cloaks": "Banshee cloaks",
 
   "container.brazier_chest": "Brazier Chest",
 
@@ -415,6 +417,8 @@
   "death.attack.stampedeCrush": "%1$s was crushed by %2$s",
   "death.attack.soulBullet": "%1$s was shot with a lethal firearm",
   "death.attack.soulBullet.player": "%1$s was shot with a lethal firearm",
+  "death.attack.will_o_wisp": "%1$s was haunted by a will o' wisp",
+  "death.attack.will_o_wisp.player": "%1$s was haunted by a will o' wisp",
   "death.attack.volatileScoriaExplosion": "%1$s was caught in a volatile redstone discharge",
   "death.attack.shotgunExplosion": "%1$s was caught in a over-charged shotgun explosion",
 
@@ -487,8 +491,8 @@
   "advancements.nether.ultrakill.description": "Kill 15 Mobs with a single over-pumped explosion",
   "advancements.nether.the_caduceus.title": "The Caduceus",
   "advancements.nether.the_caduceus.description": "Brew an Antidote using Warped Warts",
-  "advancements.nether.occult_manor.title": "Occult Manor",
-  "advancements.nether.occult_manor.description": "Locate a Sanctum within the Soul Sand Valley",
+  "advancements.nether.castlemania.title": "Castlemania",
+  "advancements.nether.castlemania.description": "Locate a Sanctum in the Soul Sand Valley",
   "advancements.nether.rekindled_betrayal.title": "Rekindled Betrayal",
   "advancements.nether.rekindled_betrayal.description": "Light a Treacherous Candle and defend it",
   "advancements.nether.eldritch_manipulation.title": "Eldritch Manipulation",
@@ -499,8 +503,8 @@
   "advancements.nether.lorekeeper.description": "Obtain every single Gargoyle Statue Variant",
   "advancements.nether.back_with_a_vengeance.title": "Back with a Vengeance",
   "advancements.nether.back_with_a_vengeance.description": "Fix broken Treacherous Candles using Honeycombs",
-  "advancements.nether.wicked_waxing.title": "Wicked Waxing",
-  "advancements.nether.wicked_waxing.description": "Make your own Wicked Candle using Ancient Wax",
+  "advancements.nether.tower_defense.title": "Candles' Tower Defense 6",
+  "advancements.nether.tower_defense.description": "Make your own Treacherous Candle using Ancient Wax",
 
   "effect.netherexp.fogsight": "Fogsight",
   "effect.netherexp.unbounded_speed": "Unbounded Speed",

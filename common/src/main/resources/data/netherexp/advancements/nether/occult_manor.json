@@ -4,10 +4,10 @@
       "item": "netherexp:chiseled_soul_slate_tiles"
     },
     "title": {
-      "translate": "advancements.nether.occult_manor.title"
+      "translate": "advancements.nether.castlemania.title"
     },
     "description": {
-      "translate": "advancements.nether.occult_manor.description"
+      "translate": "advancements.nether.castlemania.description"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,14 +16,26 @@
   },
   "parent": "netherexp:nether/soul_sand_valley",
   "criteria": {
-    "sanctum": {
-      "trigger": "minecraft:impossible",
-      "conditions": {}
+    "structure": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "netherexp:sanctum"
+              }
+            }
+          }
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "sanctum"
+      "structure"
     ]
   ],
   "sends_telemetry_event": true

@@ -21,7 +21,7 @@ public class BasaltColumnsFeatureMixin {
             cancellable = true
     )
     private static void netherexp$canPlaceAt(LevelAccessor levelAccessor, int i, BlockPos.MutableBlockPos mutableBlockPos, CallbackInfoReturnable<Boolean> cir) {
-        if (levelAccessor.getBlockState(mutableBlockPos.move(Direction.DOWN)).is(JNETags.Blocks.SANCTUM_BLOCKS)) {
+        if (levelAccessor.getBlockState(mutableBlockPos.below()).is(JNETags.Blocks.SANCTUM_BLOCKS)) {
             cir.setReturnValue(false);
         }
     }

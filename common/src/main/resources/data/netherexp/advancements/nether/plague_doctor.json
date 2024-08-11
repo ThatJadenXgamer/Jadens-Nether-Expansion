@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:warped_wart"
+      "item": "netherexp:grenade_antidote"
     },
     "title": {
       "translate": "advancements.nether.plague_doctor.title"

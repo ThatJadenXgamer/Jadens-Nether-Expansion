@@ -14,6 +14,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -180,6 +181,9 @@ public class Apparition extends Monster implements FlyingAnimal {
     public void aiStep() {
         if (!this.level().isClientSide() && this.getCooldown() > 0) {
             --this.cooldown;
+        }
+        if (this.random.nextInt(30) == 0) {
+            this.playSound(JNESoundEvents.ENTITY_APPARITION_FLY.get(), 0.15F, 1.0F);
         }
         super.aiStep();
     }
@@ -353,6 +357,11 @@ public class Apparition extends Monster implements FlyingAnimal {
         return JNESoundEvents.ENTITY_APPARITION_DEATH.get();
     }
 
+    @Override
+    protected void playStepSound(BlockPos blockPos, BlockState blockState) {
+        this.playSound(JNESoundEvents.ENTITY_APPARITION_FLY.get(), 0.15F, 1.0F);
+    }
+
     ////////
     // AI //
     ////////
@@ -432,7 +441,7 @@ public class Apparition extends Monster implements FlyingAnimal {
                     }
                 }
                 else {
-                    /* Fallback in case the tag was tampered with and included a statue which doesn't have a builtin transformation
+                    /* Fallback in case the tag was tampered with and included a statue which doesn't have a hardcoded transformation
                      * this also deals with Ossified Statue's transformation
                      */
                     Vessel vessel = JNEEntityType.VESSEL.get().create(level);

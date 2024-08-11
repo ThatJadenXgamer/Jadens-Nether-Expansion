@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 public class WillOWisp extends ThrowableItemProjectile {
     private LivingEntity target;
     private float speed;
+    private int damage;
 
     public WillOWisp(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
         super(entityType, level);
@@ -35,14 +36,16 @@ public class WillOWisp extends ThrowableItemProjectile {
         this.noPhysics = true;
         this.target = target;
         this.speed = speed;
+        this.damage = 3;
     }
 
-    public WillOWisp(LivingEntity livingEntity, Level level, LivingEntity target, double x, double y, double z, float speed) {
+    public WillOWisp(LivingEntity livingEntity, Level level, LivingEntity target, double x, double y, double z, float speed, int damage) {
         super(JNEEntityType.WILL_O_WISP.get(), livingEntity, level);
         this.noPhysics = true;
         this.target = target;
         this.setPos(x, y, z);
         this.speed = speed;
+        this.damage = damage;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class WillOWisp extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
-        entity.hurt(this.damageSources().source(JNEDamageSources.SOUL_BULLET), 5);
+        entity.hurt(this.damageSources().source(JNEDamageSources.WILL_O_WISP), damage);
         this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         if (!this.level().isClientSide) {
             this.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.MUD_PLACE, SoundSource.NEUTRAL, 1F, 1F);

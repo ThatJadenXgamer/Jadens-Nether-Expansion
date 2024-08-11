@@ -22,8 +22,7 @@ public class JNEPotionRecipe {
         // ANTIDOTES
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.HONEYCOMB)), JNEItems.ANTIDOTE.get(), Antidotes.SWIFTNESS()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.COOKIE)), JNEItems.ANTIDOTE.get(), Antidotes.SLOWNESS()));
-        // TODO: Change Raw Copper to Banshee Rod
-        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.RAW_COPPER)), JNEItems.ANTIDOTE.get(), Antidotes.STRENGTH()));
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(JNEItems.BANSHEE_POWDER.get())), JNEItems.ANTIDOTE.get(), Antidotes.STRENGTH()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.GRAVEL)), JNEItems.ANTIDOTE.get(), Antidotes.JUMP_BOOST()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.BLUE_ICE)), JNEItems.ANTIDOTE.get(), Antidotes.REGENERATION()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.FIRE_CHARGE)), JNEItems.ANTIDOTE.get(), Antidotes.FIRE_RESISTANCE()));

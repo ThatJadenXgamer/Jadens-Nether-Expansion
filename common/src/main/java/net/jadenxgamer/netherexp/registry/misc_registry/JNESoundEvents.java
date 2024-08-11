@@ -162,10 +162,13 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_AMBIENT = registerSoundEvents("entity.apparition.ambient");
     public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_HURT = registerSoundEvents("entity.apparition.hurt");
     public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_DEATH = registerSoundEvents("entity.apparition.death");
+    public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_FLY = registerSoundEvents("entity.apparition.fly");
 
     public static RegistrySupplier<SoundEvent> ENTITY_VESSEL_AMBIENT = registerSoundEvents("entity.vessel.ambient");
     public static RegistrySupplier<SoundEvent> ENTITY_VESSEL_HURT = registerSoundEvents("entity.vessel.hurt");
     public static RegistrySupplier<SoundEvent> ENTITY_VESSEL_DEATH = registerSoundEvents("entity.vessel.death");
+
+    public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_TELEPORT = registerSoundEvents("entity.banshee.teleport");
 
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvents("entity.player.hurt_igneous_thorns");
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_SUFFOCATION = registerSoundEvents("entity.player.hurt_suffocation");

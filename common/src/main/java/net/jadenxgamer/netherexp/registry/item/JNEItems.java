@@ -75,7 +75,7 @@ public class JNEItems {
             new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE)));
 
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
-            new MobBottleItem(SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1)));
+            new MobBottleItem(SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE)));
 
     public static final RegistrySupplier<Item> WRAITHING_FLESH = registerItem("wraithing_flesh", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));

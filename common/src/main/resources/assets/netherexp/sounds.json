@@ -1104,6 +1104,15 @@
       "netherexp:mob/apparition/death2"
     ]
   },
+  "entity.apparition.fly": {
+    "subtitle": "subtitles.entity.apparition.fly",
+    "sounds": [
+      "netherexp:mob/apparition/fly1",
+      "netherexp:mob/apparition/fly2",
+      "netherexp:mob/apparition/fly3",
+      "netherexp:mob/apparition/fly4"
+    ]
+  },
   "entity.vessel.ambient": {
     "subtitle": "subtitles.entity.vessel.ambient",
     "sounds": [
@@ -1125,6 +1134,13 @@
     "subtitle": "subtitles.entity.vessel.death",
     "sounds": [
       "netherexp:mob/vessel/death1"
+    ]
+  },
+  "entity.banshee.teleport": {
+    "subtitle": "subtitles.entity.banshee.teleport",
+    "sounds": [
+      "netherexp:mob/banshee/teleport1",
+      "netherexp:mob/banshee/teleport2"
     ]
   },
   "entity.player.hurt_igneous_thorns": {
