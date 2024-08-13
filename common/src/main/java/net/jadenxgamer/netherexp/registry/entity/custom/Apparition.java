@@ -14,7 +14,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -279,7 +278,7 @@ public class Apparition extends Monster implements FlyingAnimal {
                 return false;
             }
         }
-        if (livingEntity instanceof MagmaCube magmaCube) {
+        else if (livingEntity instanceof MagmaCube magmaCube) {
             EctoSlab ectoSlab = JNEEntityType.ECTO_SLAB.get().create(this.level());
             if (ectoSlab != null) {
                 ectoSlab.setSize(magmaCube.getSize(), true);
@@ -290,6 +289,17 @@ public class Apparition extends Monster implements FlyingAnimal {
                 this.level().addFreshEntity(ectoSlab);
                 this.discard();
                 magmaCube.discard();
+                return false;
+            }
+        }
+        else if (livingEntity instanceof Blaze blaze) {
+            Banshee banshee = blaze.convertTo(JNEEntityType.BANSHEE.get(), false);
+            if (banshee != null) {
+                banshee.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(banshee.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
+                if (blaze.hasCustomName()) {
+                    banshee.setCustomName(blaze.getCustomName());
+                }
+                this.discard();
                 return false;
             }
         }
@@ -438,6 +448,17 @@ public class Apparition extends Monster implements FlyingAnimal {
                             ectoSlab.setCustomName(apparition.getCustomName());
                         }
                         level.addFreshEntity(ectoSlab);
+                    }
+                }
+                else if (level.getBlockState(target).is(JNEBlocks.GHOUL_GARGOYLE_STATUE.get())) {
+                    Banshee banshee = JNEEntityType.BANSHEE.get().create(level);
+                    if (banshee != null) {
+                        banshee.setPos(apparition.getX(), apparition.getY(), apparition.getZ());
+                        banshee.setChangeType(0);
+                        if (apparition.hasCustomName()) {
+                            banshee.setCustomName(apparition.getCustomName());
+                        }
+                        level.addFreshEntity(banshee);
                     }
                 }
                 else {

@@ -13,6 +13,7 @@
   "item.netherexp.foggy_essence": "Foggy Essence",
   "item.netherexp.mist_charge": "Mist Charge",
   "item.netherexp.wraithing_flesh": "Wraithing Flesh",
+  "item.netherexp.sanctum_compass": "Sanctum Compass",
   "item.netherexp.banshee_rod": "Banshee Rod",
   "item.netherexp.banshee_powder": "Banshee Powder",
   "item.netherexp.will_o_wisp": "Will O' Wisp",
@@ -102,6 +103,8 @@
 
   "shotgun_fist.ammo": "Ammo:",
   "shotgun_fist.heat": "Temperature:",
+  "sanctum_compass.to_activate": "To Activate Requires:",
+  "sanctum_compass.tracking": "Bound to a Sanctum",
 
   "item.netherexp.glowcheese": "Glowcheese",
   "block.netherexp.nether_pizza": "Nether Pizza",

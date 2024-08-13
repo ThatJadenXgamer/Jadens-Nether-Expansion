@@ -53,7 +53,7 @@ public class SoulBullet extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
-        entity.hurt(this.damageSources().source(JNEDamageSources.SOUL_BULLET), 5);
+        entity.hurt(this.damageSources().source(JNEDamageSources.SOUL_BULLET), 1);
         if (!this.level().isClientSide) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
             this.discard();

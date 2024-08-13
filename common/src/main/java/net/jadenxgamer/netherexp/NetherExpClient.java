@@ -1,5 +1,12 @@
 package net.jadenxgamer.netherexp;
 
+import net.jadenxgamer.netherexp.mixin.block.ItemPropertiesAccessor;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.item.custom.SanctumCompassItem;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+
 public class NetherExpClient {
 
     public static boolean INSIDE_SOUL_GLASS = false;
@@ -7,5 +14,12 @@ public class NetherExpClient {
     public static boolean INSIDE_ECTOPLASM = false;
 
     public static void init() {
+        ItemPropertiesAccessor.netherexp$invokeRegisterItemProperties(
+                JNEItems.SANCTUM_COMPASS.get(),
+                new ResourceLocation("angle"),
+                new CompassItemPropertyFunction(
+                        (level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack.getOrCreateTag())
+                )
+        );
     }
 }

@@ -2,7 +2,7 @@
   "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:empty_pool_element"
       }
@@ -121,6 +121,15 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/brazier_chests/basement_stairs",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/brazier_chests/bland_secret",
         "processors": "netherexp:etched_sanctum_blocks"
       }
     }

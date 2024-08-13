@@ -10,6 +10,7 @@ import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
@@ -72,10 +73,13 @@ public class JNEItems {
             new Item(new Item.Properties().food(JNEFoodProperties.GLOWCHEESE)));
 
     public static final RegistrySupplier<Item> NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice", () ->
-            new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE)));
+            new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE).rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
             new MobBottleItem(SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE)));
+
+    public static final RegistrySupplier<Item> SANCTUM_COMPASS = registerItem("sanctum_compass", () ->
+            new SanctumCompassItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> WRAITHING_FLESH = registerItem("wraithing_flesh", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));
@@ -108,13 +112,13 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> TREACHEROUS_FLAME = registerItem("treacherous_flame", () ->
-            new Item(new Item.Properties()));
+            new Item(new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
-            new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(256).rarity(Rarity.UNCOMMON)));
+            new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(256).rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> PUMP_CHARGE_SHOTGUN = registerItem("pump_charge_shotgun", () ->
-            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).durability(356).rarity(Rarity.UNCOMMON)));
+            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).durability(356).rarity(Rarity.EPIC)));
 
     public static final RegistrySupplier<Item> CLARET_SIGN = registerItem("claret_sign", () ->
             new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));

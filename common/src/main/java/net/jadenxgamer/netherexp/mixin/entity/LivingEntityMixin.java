@@ -2,9 +2,11 @@ package net.jadenxgamer.netherexp.mixin.entity;
 
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.effect.custom.ImmunityEffect;
+import net.jadenxgamer.netherexp.registry.entity.custom.Banshee;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
@@ -23,6 +25,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -108,5 +111,16 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
                 this.setTicksFrozen(Math.max(0, ticksFrozen - 2));
             }
         }
+    }
+
+    @ModifyArg(
+            method = "handleEntityEvent",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V")
+    )
+    private ParticleOptions netherexp$handleEntityEvent(ParticleOptions particle) {
+        if (((LivingEntity) (Object) this) instanceof Banshee) {
+            return JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get();
+        }
+        return particle;
     }
 }
