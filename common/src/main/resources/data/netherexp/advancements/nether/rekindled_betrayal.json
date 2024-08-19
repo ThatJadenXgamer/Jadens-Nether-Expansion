@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:treacherous_candle"
+      "item": "netherexp:treacherous_flame"
     },
     "title": {
       "translate": "advancements.nether.rekindled_betrayal.title"

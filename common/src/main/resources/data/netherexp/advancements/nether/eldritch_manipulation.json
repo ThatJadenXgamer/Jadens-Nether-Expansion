@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/occult_manor",
+  "parent": "netherexp:nether/rekindled_betrayal",
   "criteria": {
     "used_item": {
       "trigger": "minecraft:item_used_on_block",

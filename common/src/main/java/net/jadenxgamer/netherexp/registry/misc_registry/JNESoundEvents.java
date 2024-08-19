@@ -168,6 +168,11 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> ENTITY_VESSEL_HURT = registerSoundEvents("entity.vessel.hurt");
     public static RegistrySupplier<SoundEvent> ENTITY_VESSEL_DEATH = registerSoundEvents("entity.vessel.death");
 
+    public static RegistrySupplier<SoundEvent> ENTITY_SHOTGUN_GUY_AMBIENT = registerSoundEvents("entity.shotgun_guy.ambient");
+    public static RegistrySupplier<SoundEvent> ENTITY_SHOTGUN_GUY_HURT = registerSoundEvents("entity.shotgun_guy.hurt");
+    public static RegistrySupplier<SoundEvent> ENTITY_SHOTGUN_GUY_DEATH = registerSoundEvents("entity.shotgun_guy.death");
+    public static RegistrySupplier<SoundEvent> ENTITY_SHOTGUN_GUY_FIRE = registerSoundEvents("entity.shotgun_guy.fire");
+
     public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_TELEPORT = registerSoundEvents("entity.banshee.teleport");
 
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvents("entity.player.hurt_igneous_thorns");

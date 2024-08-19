@@ -35,6 +35,12 @@
           "maxCount": 2
         },
         {
+          "type": "netherexp:banshee",
+          "weight": 5,
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
           "type": "netherexp:apparition",
           "weight": 7,
           "minCount": 1,

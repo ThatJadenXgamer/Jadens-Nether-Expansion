@@ -6,6 +6,7 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -45,12 +46,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 import java.util.List;
 
 public class Vessel extends Monster implements RangedAttackMob {
     private int changeType = 1;
+    boolean isShotgunGuy;
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
@@ -146,7 +149,8 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     @Override
     public void performRangedAttack(LivingEntity livingEntity, float f) {
-        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.SHOTGUN_USE.get(), this.getSoundSource(), 1.0F, 1.0F);
+        SoundEvent fireSound = this.isShotgunGuy ? JNESoundEvents.ENTITY_SHOTGUN_GUY_FIRE.get() : JNESoundEvents.SHOTGUN_USE.get();
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), fireSound, this.getSoundSource(), 1.0F, 1.0F);
         int count = Mth.nextInt(this.level().random, 16, 20);
         Vec3 look = this.getLookAngle();
         double d0 = livingEntity.getX() - this.getX();
@@ -258,12 +262,25 @@ public class Vessel extends Monster implements RangedAttackMob {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putInt("ChangeType", this.getChangeType());
+        if (this.isShotgunGuy) {
+            nbt.putBoolean("ShotgunGuy", true);
+        }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setChangeType(nbt.getInt("ChangeType"));
+        if (nbt.contains("Johnny", 99)) {
+            this.isShotgunGuy = nbt.getBoolean("ShotgunGuy");
+        }
+    }
+
+    public void setCustomName(@Nullable Component name) {
+        super.setCustomName(name);
+        if (!this.isShotgunGuy && name != null && name.getString().equals("ShotgunGuy") || name.getString().equals("Shotgun Guy")) {
+            this.isShotgunGuy = true;
+        }
     }
 
     ////////////
@@ -272,17 +289,17 @@ public class Vessel extends Monster implements RangedAttackMob {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return JNESoundEvents.ENTITY_VESSEL_AMBIENT.get();
+        return this.isShotgunGuy ? JNESoundEvents.ENTITY_SHOTGUN_GUY_AMBIENT.get() : JNESoundEvents.ENTITY_VESSEL_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return JNESoundEvents.ENTITY_VESSEL_HURT.get();
+        return this.isShotgunGuy ? JNESoundEvents.ENTITY_SHOTGUN_GUY_HURT.get() : JNESoundEvents.ENTITY_VESSEL_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return JNESoundEvents.ENTITY_VESSEL_DEATH.get();
+        return this.isShotgunGuy ? JNESoundEvents.ENTITY_SHOTGUN_GUY_DEATH.get() : JNESoundEvents.ENTITY_VESSEL_DEATH.get();
     }
 
     @Override

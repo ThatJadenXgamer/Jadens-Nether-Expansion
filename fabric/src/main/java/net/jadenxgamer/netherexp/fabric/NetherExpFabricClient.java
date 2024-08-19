@@ -31,7 +31,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         NetherExpClient.init();
-        HudRenderCallback.EVENT.register(new ShotgunTemperatureOverlayFabric());
+//        HudRenderCallback.EVENT.register(new ShotgunTemperatureOverlayFabric());
         
         // BLOCK OPACITY
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.NETHERITE_GRATE.get(), RenderType.cutout());

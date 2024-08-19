@@ -169,7 +169,7 @@ public class WarpedFungusFeature extends Feature<HugeFungusConfiguration> {
 
     private static void tryPlaceBeard(BlockPos pos, LevelAccessor level) {
         BlockPos.MutableBlockPos mutableBlockPos = pos.mutable().move(Direction.DOWN);
-        if (level.isEmptyBlock(mutableBlockPos)) {
+        if (level.isEmptyBlock(mutableBlockPos) && level.getBlockState(mutableBlockPos.above()).is(JNETags.Blocks.WART_BEARD_FEATURE_VALID)) {
             level.setBlock(mutableBlockPos, JNEBlocks.WARPED_WART_BEARD.get().defaultBlockState(), 2);
         }
     }

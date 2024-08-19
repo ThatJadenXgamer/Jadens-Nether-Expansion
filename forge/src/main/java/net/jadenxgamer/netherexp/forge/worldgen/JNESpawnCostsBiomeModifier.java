@@ -21,6 +21,7 @@ public record JNESpawnCostsBiomeModifier() implements BiomeModifier {
             if (biomes.is(Biomes.SOUL_SAND_VALLEY)) {
                 builder.getMobSpawnSettings().addMobCharge(JNEEntityType.APPARITION.get(), 0.7, 0.15);
                 builder.getMobSpawnSettings().addMobCharge(JNEEntityType.VESSEL.get(), 0.7, 0.15);
+                builder.getMobSpawnSettings().addMobCharge(JNEEntityType.BANSHEE.get(), 0.7, 0.15);
             }
         }
     }

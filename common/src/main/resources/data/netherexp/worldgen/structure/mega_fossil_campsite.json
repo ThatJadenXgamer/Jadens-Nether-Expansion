@@ -8,13 +8,13 @@
       "spawns": [
         {
           "type": "minecraft:skeleton",
-          "weight": 100,
+          "weight": 3,
           "minCount": 1,
           "maxCount": 1
         },
         {
           "type": "netherexp:vessel",
-          "weight": 1,
+          "weight": 5,
           "minCount": 1,
           "maxCount": 1
         }

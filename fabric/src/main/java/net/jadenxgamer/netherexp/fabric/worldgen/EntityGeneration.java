@@ -22,11 +22,14 @@ public class EntityGeneration {
             settings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JNEEntityType.VESSEL.get(), 30, 1, 1));
             settings.setSpawnCost(JNEEntityType.APPARITION.get(), 0.7, 0.15);
             settings.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(JNEEntityType.APPARITION.get(), 20, 1, 1));
+            settings.setSpawnCost(JNEEntityType.BANSHEE.get(), 0.7, 0.15);
         });
 
         SpawnPlacements.register(JNEEntityType.VESSEL.get(), SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(JNEEntityType.APPARITION.get(), SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+        SpawnPlacements.register(JNEEntityType.BANSHEE.get(), SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
     }
 }

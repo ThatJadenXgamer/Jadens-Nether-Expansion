@@ -54,7 +54,7 @@ implements BonemealableBlock {
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SWIRLS_BOOST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(pos, state.cycle(COOLDOWN), UPDATE_CLIENTS);
             level.scheduleTick(pos, this, 1000);
-            if (livingEntity instanceof Player && random.nextInt(livingEntity.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) ? 5 : 20) == 0) {
+            if (livingEntity instanceof Player && random.nextInt(livingEntity.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) ? 5 : 40) == 0) {
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                 spawnEctoSlab(level, pos, livingEntity, random);
             }

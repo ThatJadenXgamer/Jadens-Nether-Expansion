@@ -37,7 +37,7 @@ public class NetherExpForgeClient {
     }
 
     public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-        event.registerAboveAll("shotgun_temprature", ShotgunTemperatureOverlayForge.HUD);
+//        event.registerAboveAll("shotgun_temprature", ShotgunTemperatureOverlayForge.HUD);
     }
 
     public static void onClientSetup(FMLClientSetupEvent event) {

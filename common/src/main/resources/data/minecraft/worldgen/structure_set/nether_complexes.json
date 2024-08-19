@@ -1,0 +1,22 @@
+{
+  "structures": [
+    {
+      "structure": "minecraft:fortress",
+      "weight": 2
+    },
+    {
+      "structure": "minecraft:bastion_remnant",
+      "weight": 3
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 30084232,
+    "exclusion_zone": {
+      "other_set": "netherexp:sanctum",
+      "chunk_count": 16
+    },
+    "spacing": 27,
+    "separation": 4
+  }
+}

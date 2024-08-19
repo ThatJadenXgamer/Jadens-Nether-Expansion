@@ -143,14 +143,14 @@ public class Banshee extends Monster {
 
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
-        if (damageSource.getEntity() instanceof LivingEntity) {
-            teleport();
-        }
-        else if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion) && getChangeType() > 0) {
+        if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion) && getChangeType() > 0) {
             doExorcism();
             if (thrownPotion.getOwner() instanceof Player player) {
                 JNECriteriaTriggers.EXORCISM.trigger((ServerPlayer) player);
             }
+        }
+        else if (damageSource.getEntity() instanceof LivingEntity) {
+            teleport();
         }
         return super.hurt(damageSource, f);
     }
@@ -225,6 +225,11 @@ public class Banshee extends Monster {
     @Override
     protected void checkFallDamage(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {
         fallDistance = 0;
+    }
+
+    @Override
+    public boolean isSensitiveToWater() {
+        return true;
     }
 
     /////////

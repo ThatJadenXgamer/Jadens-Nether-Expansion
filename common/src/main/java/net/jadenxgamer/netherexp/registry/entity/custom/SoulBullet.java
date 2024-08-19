@@ -62,7 +62,7 @@ public class SoulBullet extends AbstractArrow {
 
     @Override
     protected @NotNull SoundEvent getDefaultHitGroundSoundEvent() {
-        return SoundEvents.FIRE_EXTINGUISH;
+        return SoundEvents.SOUL_ESCAPE;
     }
 
     @Override

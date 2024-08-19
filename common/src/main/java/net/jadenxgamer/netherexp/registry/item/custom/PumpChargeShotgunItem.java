@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanishable {
-
     private int cooldown;
 
     public PumpChargeShotgunItem(Properties properties) {
@@ -104,15 +103,13 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
             if (getCharge(stack) <= 3) {
                 if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
                     performShooting(level, player, stack);
-                    if (heat < 4 && !player.getAbilities().instabuild) {
-                        setTemperature(stack, heat + 1);
-                    }
+//                    if (heat < 4 && !player.getAbilities().instabuild) {
+//                        setTemperature(stack, heat + 1);
+//                    }
                     stack.hurtAndBreak(heat, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f - (0.15f * heat), 1.0f + (0.2f * heat));
                     player.getCooldowns().addCooldown(this, 10);
-                    if (level.random.nextInt(25) - cartridge != 0) {
-                        useProjectile(stack, player);
-                    }
+                    useProjectile(stack, player);
                     setCharge(stack, 0);
                     return InteractionResultHolder.success(stack);
                 }
@@ -122,9 +119,9 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
                     level.explode(player, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.TNT);
                     player.getCooldowns().addCooldown(this, 80);
                     player.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, player), 10);
-                    useProjectile(stack, player);
                     stack.hurtAndBreak(5, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-                    setTemperature(stack, 4);
+//                    setTemperature(stack, 4);
+                    useProjectile(stack, player);
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
                     setCharge(stack, 0);
                 }

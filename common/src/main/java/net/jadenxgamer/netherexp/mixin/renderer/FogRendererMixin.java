@@ -24,18 +24,15 @@ public abstract class FogRendererMixin {
     private static void netherexp$applyCustomFog(Camera camera, FogRenderer.FogMode fogMode, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
         Entity entity = camera.getEntity();
         FogType fogType = camera.getFluidInCamera();
-        /*
-         * Increases Nether Fog & Underlava Visibility when the player has FogSight Effect
-         * Does not work if the player has Blindness or Darkness or in the Overworld/End
-         */
-        if (((LivingEntity) entity).hasEffect(JNEMobEffects.FOGSIGHT.get()) && !((LivingEntity) entity).hasEffect(MobEffects.BLINDNESS) && !((LivingEntity) entity).hasEffect(MobEffects.DARKNESS)) {
-            if (thickFog && fogType == FogType.NONE) {
-                RenderSystem.setShaderFogStart(0.0F);
-                RenderSystem.setShaderFogEnd(viewDistance);
-            }
-            else if (fogType == FogType.LAVA && !entity.isSpectator()) {
-                RenderSystem.setShaderFogStart(-8.0F);
-                RenderSystem.setShaderFogEnd(viewDistance * 0.65F);
+        if (entity instanceof LivingEntity livingEntity) {
+            /*
+             * Increases Default Nether Fog distance
+             */
+            if (!livingEntity.hasEffect(MobEffects.BLINDNESS) && !livingEntity.hasEffect(MobEffects.DARKNESS) && thickFog) {
+                if (fogType == FogType.NONE) {
+                    RenderSystem.setShaderFogStart(0.0f);
+                    RenderSystem.setShaderFogEnd((viewDistance / 2) + 3);
+                }
             }
         }
         /*
@@ -60,7 +57,7 @@ public abstract class FogRendererMixin {
         if (NetherExpClient.INSIDE_ECTOPLASM) {
             RenderSystem.setShaderFogStart(-8.0F);
             RenderSystem.setShaderFogEnd(8.0F);
-            RenderSystem.setShaderFogColor(0.02f, 0.333f, 0.357f);
+            RenderSystem.setShaderFogColor(0.106f, 0.278f, 0.271f);
         }
     }
 }

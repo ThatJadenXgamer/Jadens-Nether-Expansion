@@ -1136,6 +1136,33 @@
       "netherexp:mob/vessel/death1"
     ]
   },
+  "entity.shotgun_guy.ambient": {
+    "subtitle": "subtitles.entity.vessel.ambient",
+    "sounds": [
+      "netherexp:mob/shotgun_guy/idle1",
+      "netherexp:mob/shotgun_guy/idle2",
+      "netherexp:mob/shotgun_guy/idle3"
+    ]
+  },
+  "entity.shotgun_guy.hurt": {
+    "subtitle": "subtitles.entity.vessel.hurt",
+    "sounds": [
+      "netherexp:mob/shotgun_guy/hurt"
+    ]
+  },
+  "entity.shotgun_guy.death": {
+    "subtitle": "subtitles.entity.vessel.death",
+    "sounds": [
+      "netherexp:mob/shotgun_guy/death1",
+      "netherexp:mob/shotgun_guy/death2"
+    ]
+  },
+  "entity.shotgun_guy.fire": {
+    "subtitle": "subtitles.item.shotgun.use",
+    "sounds": [
+      "netherexp:mob/shotgun_guy/fire"
+    ]
+  },
   "entity.banshee.teleport": {
     "subtitle": "subtitles.entity.banshee.teleport",
     "sounds": [
