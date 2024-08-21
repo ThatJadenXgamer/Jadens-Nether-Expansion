@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.fabric.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.fabric.worldgen.*;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
@@ -24,6 +25,7 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
         BasaltDeltasFeatures.generateFeatures();
         EntityGeneration.generateEntities();
         JNEPotionRecipe.addInvokerPotionRecipes();
+        JNELootModifiers.modifyLootTables();
 
         FabricDefaultAttributeRegistry.register(JNEEntityType.APPARITION.get(), Apparition.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.WISP.get(), Wisp.createAttributes());

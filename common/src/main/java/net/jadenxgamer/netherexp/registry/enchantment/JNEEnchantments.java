@@ -15,6 +15,7 @@ public class JNEEnchantments {
     public static final RegistrySupplier<Enchantment> BLOODSHED = ENCHANTMENTS.register("bloodshed", BloodshedEnchantment::new);
     public static final RegistrySupplier<Enchantment> CARTRIDGE = ENCHANTMENTS.register("cartridge", CartridgeEnchantment::new);
     public static final RegistrySupplier<Enchantment> RECOIL = ENCHANTMENTS.register("recoil", RecoilEnchantment::new);
+    public static final RegistrySupplier<Enchantment> BARRAGE = ENCHANTMENTS.register("barrage", BarrageEnchantment::new);
     public static final RegistrySupplier<Enchantment> ARTEMIS = ENCHANTMENTS.register("artemis", ArtemisEnchantment::new);
 
     public static void init() {

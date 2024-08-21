@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:treacherous_flame"
+      "item": "netherexp:brazier_chest"
     },
     "title": {
       "translate": "advancements.nether.eldritch_manipulation.title"

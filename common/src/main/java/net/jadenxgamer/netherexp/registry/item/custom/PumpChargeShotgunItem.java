@@ -103,9 +103,6 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
             if (getCharge(stack) <= 3) {
                 if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
                     performShooting(level, player, stack);
-//                    if (heat < 4 && !player.getAbilities().instabuild) {
-//                        setTemperature(stack, heat + 1);
-//                    }
                     stack.hurtAndBreak(heat, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f - (0.15f * heat), 1.0f + (0.2f * heat));
                     player.getCooldowns().addCooldown(this, 10);
@@ -120,7 +117,6 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
                     player.getCooldowns().addCooldown(this, 80);
                     player.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, player), 10);
                     stack.hurtAndBreak(5, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-//                    setTemperature(stack, 4);
                     useProjectile(stack, player);
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
                     setCharge(stack, 0);

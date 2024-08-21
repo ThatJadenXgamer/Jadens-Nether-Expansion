@@ -7,6 +7,7 @@ import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
@@ -105,7 +106,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     private void netherexp$aiStep(CallbackInfo cir) {
         if (!this.level().isClientSide() && !this.isDeadOrDying()) {
             int ticksFrozen = this.getTicksFrozen();
-            if (this.level().getFluidState(this.blockPosition()).getType() == JNEFluids.ECTOPLASM.get() && this.canFreeze()) {
+            if (this.level().getFluidState(this.blockPosition()).getType() == JNEFluids.ECTOPLASM.get()) {
                 this.setTicksFrozen(Math.min(this.getTicksRequiredToFreeze(), ticksFrozen + 1));
             } else {
                 this.setTicksFrozen(Math.max(0, ticksFrozen - 2));
@@ -119,7 +120,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     )
     private ParticleOptions netherexp$handleEntityEvent(ParticleOptions particle) {
         if (((LivingEntity) (Object) this) instanceof Banshee) {
-            return JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get();
+            return ParticleTypes.SOUL;
         }
         return particle;
     }

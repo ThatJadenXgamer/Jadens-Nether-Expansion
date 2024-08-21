@@ -12,8 +12,8 @@ import net.minecraftforge.common.world.ModifiableBiomeInfo;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public record JNESpawnCostsBiomeModifier() implements BiomeModifier {
-    private static final RegistryObject<Codec<? extends BiomeModifier>> SERIALIZER = RegistryObject.create(new ResourceLocation(NetherExp.MOD_ID, "jne_spawn_costs"), ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
+public record SpawnCostsBiomeModifier() implements BiomeModifier {
+    private static final RegistryObject<Codec<? extends BiomeModifier>> CODEC = RegistryObject.create(new ResourceLocation(NetherExp.MOD_ID, "jne_spawn_costs"), ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
 
     @Override
     public void modify(Holder<Biome> biomes, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
@@ -28,10 +28,10 @@ public record JNESpawnCostsBiomeModifier() implements BiomeModifier {
 
     @Override
     public Codec<? extends BiomeModifier> codec() {
-        return SERIALIZER.get();
+        return CODEC.get();
     }
 
-    public static Codec<JNESpawnCostsBiomeModifier> createCodec() {
-        return Codec.unit(JNESpawnCostsBiomeModifier::new);
+    public static Codec<SpawnCostsBiomeModifier> createCodec() {
+        return Codec.unit(SpawnCostsBiomeModifier::new);
     }
 }

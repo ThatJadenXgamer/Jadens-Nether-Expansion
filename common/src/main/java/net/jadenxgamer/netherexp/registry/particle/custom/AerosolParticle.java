@@ -8,9 +8,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Environment(value= EnvType.CLIENT)
-public class AerosolParticle
-extends TextureSheetParticle {
+public class AerosolParticle extends TextureSheetParticle {
     AerosolParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z);
         this.setSize(0.25f, 1.0f);
@@ -38,7 +36,6 @@ extends TextureSheetParticle {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    @Environment(value=EnvType.CLIENT)
     public static class Factory
             implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;

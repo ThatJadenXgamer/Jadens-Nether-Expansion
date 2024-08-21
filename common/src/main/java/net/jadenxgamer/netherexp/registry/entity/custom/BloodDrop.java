@@ -2,7 +2,6 @@ package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -48,7 +47,7 @@ public class BloodDrop extends AbstractArrow {
     public void tick() {
         super.tick();
         if (random.nextInt(3) == 0) {
-            this.level().addParticle(JNEParticleTypes.BLOOD.get(), this.getX(), this.getY(), this.getZ(), 0.0, 0.5, 0.0);
+            this.level().addParticle(JNEParticleTypes.FALLING_BLOOD.get(), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         }
         if (!this.level().isClientSide && tickCount > 600) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.5f, 1.0f);
@@ -62,7 +61,7 @@ public class BloodDrop extends AbstractArrow {
         if (entity instanceof Player player) {
             player.heal(heals);
             for (int i = 0; i < 4; i++) {
-                this.level().addParticle(JNEParticleTypes.BLOOD.get(), player.getRandomX(0.5), player.getRandomY(), player.getRandomZ(0.5), 0.5, 0.0, 0.0);
+                this.level().addParticle(JNEParticleTypes.FALLING_BLOOD.get(), player.getRandomX(0.5), player.getRandomY(), player.getRandomZ(0.5), 0.0, 0.0, 0.0);
             }
                 if (!this.level().isClientSide) {
                 this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
@@ -78,7 +77,7 @@ public class BloodDrop extends AbstractArrow {
 
     @Override
     protected void onHitBlock(BlockHitResult blockHitResult) {
-        this.level().addParticle(JNEParticleTypes.BLOOD.get(), this.getX(), this.getY(), this.getZ(), 0.0, 0.5, 0.0);
+        this.level().addParticle(JNEParticleTypes.FALLING_BLOOD.get(), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         if (!this.level().isClientSide) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
             this.discard();

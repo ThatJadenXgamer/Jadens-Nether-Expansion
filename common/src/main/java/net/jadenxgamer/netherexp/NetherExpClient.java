@@ -14,12 +14,5 @@ public class NetherExpClient {
     public static boolean INSIDE_ECTOPLASM = false;
 
     public static void init() {
-        ItemPropertiesAccessor.netherexp$invokeRegisterItemProperties(
-                JNEItems.SANCTUM_COMPASS.get(),
-                new ResourceLocation("angle"),
-                new CompassItemPropertyFunction(
-                        (level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack.getOrCreateTag())
-                )
-        );
     }
 }

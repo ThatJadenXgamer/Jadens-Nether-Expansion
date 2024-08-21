@@ -3,13 +3,14 @@ package net.jadenxgamer.netherexp.registry.enchantment.custom;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.ArrowDamageEnchantment;
+import net.minecraft.world.item.enchantment.DamageEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraft.world.item.enchantment.QuickChargeEnchantment;
 
-public class RecoilEnchantment extends Enchantment {
+public class BarrageEnchantment extends Enchantment {
 
-    public RecoilEnchantment() {
+    public BarrageEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentCategory.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
@@ -27,10 +28,11 @@ public class RecoilEnchantment extends Enchantment {
     }
 
     public int getMaxLevel() {
-        return 3;
+        return 4;
     }
 
-    protected boolean checkCompatibility(Enchantment other) {
-        return !(other instanceof ArtemisEnchantment) && super.checkCompatibility(other);
+    @Override
+    public boolean checkCompatibility(Enchantment other) {
+        return !(other instanceof QuickChargeEnchantment) && super.checkCompatibility(other);
     }
 }

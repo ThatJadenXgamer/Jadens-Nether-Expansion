@@ -39,8 +39,7 @@ extends TextureSheetParticle {
     }
 
     @Environment(value=EnvType.CLIENT)
-    public static class Factory
-            implements ParticleProvider<SimpleParticleType> {
+    public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
         public Factory(SpriteSet spriteSet) {

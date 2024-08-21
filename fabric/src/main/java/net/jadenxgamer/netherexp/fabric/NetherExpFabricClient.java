@@ -7,9 +7,8 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.jadenxgamer.netherexp.NetherExpClient;
-import net.jadenxgamer.netherexp.fabric.client.ShotgunTemperatureOverlayFabric;
+import net.jadenxgamer.netherexp.mixin.block.ItemPropertiesAccessor;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
@@ -18,19 +17,28 @@ import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
+import net.jadenxgamer.netherexp.registry.item.custom.SanctumCompassItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
+import net.minecraft.client.particle.DripParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
+import net.minecraft.resources.ResourceLocation;
 
 public class NetherExpFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         NetherExpClient.init();
+        ItemPropertiesAccessor.netherexp$invokeRegisterItemProperties(
+                JNEItems.SANCTUM_COMPASS.get(),
+                new ResourceLocation("angle"),
+                new CompassItemPropertyFunction((level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack.getOrCreateTag()))
+        );
 //        HudRenderCallback.EVENT.register(new ShotgunTemperatureOverlayFabric());
         
         // BLOCK OPACITY
@@ -60,9 +68,6 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WEEPING_IVY.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TWISTING_IVY.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TWILIGHT_IVY.get(), RenderType.cutout());
-        // Todo Add twilight vines
-//        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TWILIGHT_VINES, RenderType.cutout());
-//        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TWILIGHT_VINES_PLANT, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.RED_SCALE_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BLUE_SCALE_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.VIOLET_SCALE_FUNGUS.get(), RenderType.cutout());
@@ -142,8 +147,9 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.WISP.get(), GlimmerParticle.LongFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.COLORED_WISP.get(), GlimmerParticle.ColoredFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.MAGMA_CREAM.get(), RisingParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.BLOOD.get(), GlimmerParticle.LongFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobProvider::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_BLOOD.get(), BloodFallAndLandParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.LANDING_BLOOD.get(), BloodLandParticle.Factory::new);
 
         // MOD COMPAT
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);
@@ -158,7 +164,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
-        EntityRendererRegistry.register(JNEEntityType.BLOOD_DROP.get(), BloodDropRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.BLOOD_DROP.get(), NoopRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);

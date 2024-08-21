@@ -79,11 +79,6 @@
 		}
 	],
 	"gui_light": "front",
-	"overrides": [
-		{"predicate": {"cooldown": 0.25}, "model": "netherexp:item/shotgun_fist_cooldown_1"},
-		{"predicate": {"cooldown": 0.5}, "model": "netherexp:item/shotgun_fist_cooldown_2"},
-		{"predicate": {"cooldown": 0.75}, "model": "netherexp:item/shotgun_fist_cooldown_1"}
-	],
 	"display": {
 		"thirdperson_righthand": {
 			"translation": [0, -1.25, -2.25],

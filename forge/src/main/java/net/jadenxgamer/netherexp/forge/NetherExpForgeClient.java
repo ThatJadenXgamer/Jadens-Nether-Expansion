@@ -1,12 +1,13 @@
 package net.jadenxgamer.netherexp.forge;
 
-import net.jadenxgamer.netherexp.forge.client.ShotgunTemperatureOverlayForge;
+import net.jadenxgamer.netherexp.mixin.block.ItemPropertiesAccessor;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
+import net.jadenxgamer.netherexp.registry.item.custom.SanctumCompassItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
 import net.minecraft.client.particle.FlameParticle;
@@ -16,6 +17,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -41,8 +44,6 @@ public class NetherExpForgeClient {
     }
 
     public static void onClientSetup(FMLClientSetupEvent event) {
-//        ItemBlockRenderTypes.setRenderLayer(JNEFluids.ECTOPLASM.get(), RenderType.translucent());
-//        ItemBlockRenderTypes.setRenderLayer(JNEFluids.FLOWING_ECTOPLASM.get(), RenderType.translucent());
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
@@ -50,6 +51,7 @@ public class NetherExpForgeClient {
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
         EntityRenderers.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
         EntityRenderers.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
+        EntityRenderers.register(JNEEntityType.BLOOD_DROP.get(), NoopRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRenderers.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
@@ -57,6 +59,12 @@ public class NetherExpForgeClient {
         EntityRenderers.register(JNEEntityType.ANTIDOTE.get(), ThrownItemRenderer::new);
         EntityRenderers.register(JNEEntityType.GRENADE_EFFECT_CLOUD.get(), NoopRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.BRUSHABLE_BLOCK.get(), JNEBrushableBlockRenderer::new);
+        event.enqueueWork(() ->
+                ItemPropertiesAccessor.netherexp$invokeRegisterItemProperties(
+                JNEItems.SANCTUM_COMPASS.get(),
+                new ResourceLocation("angle"),
+                new CompassItemPropertyFunction((level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack.getOrCreateTag()))
+        ));
     }
 
     public static void itemTints(RegisterColorHandlersEvent.Item event) {
@@ -92,8 +100,9 @@ public class NetherExpForgeClient {
         event.registerSpriteSet(JNEParticleTypes.WISP.get(), GlimmerParticle.LongFactory::new);
         event.registerSpriteSet(JNEParticleTypes.COLORED_WISP.get(), GlimmerParticle.ColoredFactory::new);
         event.registerSpriteSet(JNEParticleTypes.MAGMA_CREAM.get(), RisingParticle.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.BLOOD.get(), GlimmerParticle.LongFactory::new);
         event.registerSpriteSet(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.FALLING_BLOOD.get(), BloodFallAndLandParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.LANDING_BLOOD.get(), BloodLandParticle.Factory::new);
 
         // MOD COMPAT
         event.registerSpriteSet(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);

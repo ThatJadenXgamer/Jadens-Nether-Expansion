@@ -4,7 +4,9 @@ import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
 import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -18,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
@@ -44,14 +47,10 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         nbt.putInt("Ammo", i);
     }
 
+    // Unused, left it here, so I can salvage the hud element code for a later date
     public static int getTemperature(ItemStack stack) {
         CompoundTag nbt = stack.getOrCreateTag();
         return nbt.getInt("Temprature");
-    }
-
-    public static void setTemperature(ItemStack stack, int i) {
-        CompoundTag nbt = stack.getOrCreateTag();
-        nbt.putInt("Temprature", i);
     }
 
     @Override
@@ -86,9 +85,13 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack stack = player.getItemInHand(interactionHand);
         int cartridge = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack);
+        int barrage = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BARRAGE.get(), stack);
+        int quickCharge = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.QUICK_CHARGE, stack);
+        int cooldown = barrage > 0 ? 40 + (barrage * 15) : 40 - (quickCharge * 8);
         if (cartridge > 0) {
             if (getAmmo(stack) >= 1 && !player.isShiftKeyDown()) {
                 performShooting(level, player, stack);
+                player.getCooldowns().addCooldown(this, 10);
                 setAmmo(stack, getAmmo(stack) - 1);
                 stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
@@ -107,7 +110,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
                 performShooting(level, player, stack);
                 stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-                player.getCooldowns().addCooldown(this, 60);
+                player.getCooldowns().addCooldown(this, cooldown);
                 return InteractionResultHolder.success(stack);
             }
         }
@@ -117,20 +120,22 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
     public static void performShooting(Level level, LivingEntity user, ItemStack stack) {
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
         int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), stack);
+        int barrage = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BARRAGE.get(), stack);
+        int quickCharge = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.QUICK_CHARGE, stack);
         // Bonuses
-        int rBulletDistanceBonus = artemis / 5;
-        double rPushBonus = (double) recoil / 16;
+        int recoilBulletDistanceBonus = artemis / 5;
+        double recoilPushBonus = (double) recoil / 16;
         // Vectors
         Vec3 look = user.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
-        int count = 30;
+        int count = barrage > 0 ? 25 + (barrage * 5) : 25 - (quickCharge * 5);
         if (EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack) > 0) {
-            count = Mth.nextInt(level.random, 6, 8);
+            count = Mth.nextInt(level.random, 8, 12);
         }
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, user);
-                soulBullet.shoot(look.x, look.y, look.z, 1.2F + rBulletDistanceBonus, 26);
+                soulBullet.shoot(look.x, look.y, look.z, 1.0F + recoilBulletDistanceBonus, 20);
                 level.addFreshEntity(soulBullet);
             }
         }
@@ -139,9 +144,9 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable 
         AABB aabb = new AABB(raycastStart, raycastEnd);
         EntityHitResult entityHitResult = ProjectileUtil.getEntityHitResult(level, user, raycastStart, raycastEnd, aabb, (entity) -> entity instanceof LivingEntity && entity != user);
         if (entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity livingEntity && livingEntity.isAlive()) {
-            user.push(pushBack.x * (0.75 + rPushBonus), pushBack.y * (0.75 + rPushBonus), pushBack.z * (0.75 + rPushBonus));
+            user.push(pushBack.x * (0.75 + recoilPushBonus), pushBack.y * (0.75 + recoilPushBonus), pushBack.z * (0.75 + recoilPushBonus));
         } else {
-            user.push(pushBack.x * (0.3 + rPushBonus), pushBack.y * (0.3 + rPushBonus), pushBack.z * (0.3 + rPushBonus));
+            user.push(pushBack.x * (0.3 + recoilPushBonus), pushBack.y * (0.3 + recoilPushBonus), pushBack.z * (0.3 + recoilPushBonus));
         }
     }
 

@@ -45,6 +45,7 @@
     "item.AxeItemMixin",
     "item.BlockItemMixin",
     "item.BowItemMixin",
+    "item.EnchantmentMixin",
     "item.ItemStackMixin",
     "item.ShovelItemMixin",
     "worldgen.BasaltColumnsFeatureMixin",

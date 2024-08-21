@@ -64,10 +64,10 @@ implements SimpleWaterloggedBlock, BonemealableBlock {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        boolean bl = state.getValue(HANGING);
-        Vec3 vec3 = entity.getDeltaMovement();
-        if (!entity.isShiftKeyDown() && !bl) {
-            entity.push(vec3.x, 1.0, vec3.z);
+        boolean hanging = state.getValue(HANGING);
+        Vec3 velocity = entity.getDeltaMovement();
+        if (!entity.isShiftKeyDown() && !hanging) {
+            entity.push(velocity.x, 1.0, velocity.z);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SPORESHROOM_TRAMPOLINED.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }
