@@ -13,7 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public record SpawnCostsBiomeModifier() implements BiomeModifier {
-    private static final RegistryObject<Codec<? extends BiomeModifier>> CODEC = RegistryObject.create(new ResourceLocation(NetherExp.MOD_ID, "jne_spawn_costs"), ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
+    private static final RegistryObject<Codec<? extends BiomeModifier>> CODEC = RegistryObject.create(new ResourceLocation(NetherExp.MOD_ID, "spawn_costs"), ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
 
     @Override
     public void modify(Holder<Biome> biomes, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {

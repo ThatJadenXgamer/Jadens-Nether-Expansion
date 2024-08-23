@@ -2,8 +2,8 @@
   "type": "netherexp:replace_item",
   "conditions": [
     {
-      "loot_table_id": "minecraft:entities/hoglin",
-      "condition": "forge:loot_table_id"
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/hoglin"
     }
   ],
   "target_item": "minecraft:porkchop",

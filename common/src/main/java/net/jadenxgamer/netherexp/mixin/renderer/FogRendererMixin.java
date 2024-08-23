@@ -31,7 +31,7 @@ public abstract class FogRendererMixin {
             if (!livingEntity.hasEffect(MobEffects.BLINDNESS) && !livingEntity.hasEffect(MobEffects.DARKNESS) && thickFog) {
                 if (fogType == FogType.NONE) {
                     RenderSystem.setShaderFogStart(0.0f);
-                    RenderSystem.setShaderFogEnd((viewDistance / 2) + 3);
+                    RenderSystem.setShaderFogEnd(viewDistance);
                 }
             }
         }

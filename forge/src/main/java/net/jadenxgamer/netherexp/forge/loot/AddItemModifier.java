@@ -4,6 +4,7 @@ import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -17,14 +18,10 @@ import java.util.function.Supplier;
 
 public class AddItemModifier extends LootModifier {
     public static final Supplier<Codec<AddItemModifier>> CODEC = Suppliers.memoize(()
-            -> RecordCodecBuilder.create(inst -> codecStart(inst)
-            .and(ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(m -> m.item))
-            .apply(inst, AddItemModifier::new)));
-    private final Item item;
+            -> RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, AddItemModifier::new)));
 
-    public AddItemModifier(LootItemCondition[] conditionsIn, Item item) {
+    public AddItemModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
-        this.item = item;
     }
 
     @Override
@@ -34,7 +31,7 @@ public class AddItemModifier extends LootModifier {
                 return generatedLoot;
             }
         }
-        generatedLoot.add(new ItemStack(this.item));
+        generatedLoot.add(new ItemStack(JNEItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE.get()));
         return generatedLoot;
     }
 

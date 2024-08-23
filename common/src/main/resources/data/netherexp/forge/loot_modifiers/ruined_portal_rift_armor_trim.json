@@ -2,13 +2,9 @@
   "type": "netherexp:add_item",
   "conditions": [
     {
-      "loot_table_id": "minecraft:chests/ruined_portal",
-      "condition": "forge:loot_table_id"
-    },
-    {
-      "chance": 0.35,
-      "condition": "minecraft:random_chance"
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ruined_portal"
     }
   ],
-  "item": "netherexp:rift_armor_trim_smithing_template"
+  "item": "netherexp:wraithing_flesh"
 }

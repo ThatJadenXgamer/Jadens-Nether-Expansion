@@ -45,7 +45,7 @@ public abstract class DecoratedPotPatternsMixin {
 
     @Inject(
             method = "bootstrap",
-            at = @At(value = "HEAD")
+            at = @At(value = "TAIL")
     )
     private static void netherexp$bootstrap(Registry<String> registry, CallbackInfoReturnable<String> cir) {
         Registry.register(registry, JNEDecoratedPotPatterns.SEALED, "sealed_pottery_pattern");

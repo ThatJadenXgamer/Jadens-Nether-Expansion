@@ -49,10 +49,10 @@ public class NetherExpForge {
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpForgeClient::init);
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        JNELootModifiers.register(eventBus);
         final DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
         BIOME_MODIFIER_SERIALIZERS.register(eventBus);
         BIOME_MODIFIER_SERIALIZERS.register("spawn_costs", SpawnCostsBiomeModifier::createCodec);
-        JNELootModifiers.register(eventBus);
         eventBus.addListener(NetherExpForge::commonSetup);
         eventBus.addListener(NetherExpForge::registerAttributes);
         eventBus.addListener(NetherExpForge::registerSpawnPlacements);
@@ -88,7 +88,7 @@ public class NetherExpForge {
         }
     }
 
-    // Adds Re-textures which may cause some Mod Conflicts or Inconsistencies
+    // Adds Retextures which may cause some Mod Conflicts or Inconsistencies
     private static void rpConflictingRetextures(AddPackFindersEvent event) {
         IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
         Path file = mod.getFile().findResource("resourcepacks/conflicting_retextures");
