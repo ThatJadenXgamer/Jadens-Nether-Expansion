@@ -3,7 +3,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
-public enum Liquids implements StringRepresentable {
+public enum Liquidlogged implements StringRepresentable {
     AIR("air"),
     WATER("water"),
     LAVA("lava"),
@@ -11,7 +11,7 @@ public enum Liquids implements StringRepresentable {
 
     private final String name;
 
-    Liquids(String name) {
+    Liquidlogged(String name) {
         this.name = name;
     }
 

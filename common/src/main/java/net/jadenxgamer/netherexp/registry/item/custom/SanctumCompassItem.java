@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
 import com.mojang.serialization.DataResult;
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.ChatFormatting;

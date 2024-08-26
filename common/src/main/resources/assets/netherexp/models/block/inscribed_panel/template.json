@@ -1,0 +1,21 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"textures": {
+		"particle": "#letter"
+	},
+	"elements": [
+		{
+			"from": [1, 2, 14],
+			"to": [15, 16, 16],
+			"faces": {
+				"north": {"uv": [1, 1, 15, 15], "texture": "#letter"},
+				"east": {"uv": [1, 1, 3, 15], "texture": "#letter"},
+				"south": {"uv": [1, 1, 15, 15], "texture": "#letter"},
+				"west": {"uv": [13, 1, 15, 15], "texture": "#letter"},
+				"up": {"uv": [1, 1, 15, 3], "texture": "#letter"},
+				"down": {"uv": [15, 13, 1, 15], "texture": "#letter"}
+			}
+		}
+	],
+	"display": {}
+}

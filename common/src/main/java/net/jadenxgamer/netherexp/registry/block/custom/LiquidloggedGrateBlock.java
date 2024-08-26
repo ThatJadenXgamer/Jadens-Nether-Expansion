@@ -25,11 +25,11 @@ import org.jetbrains.annotations.Nullable;
 
 public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBlock {
 
-    public static final EnumProperty<Liquids> LIQUIDLOGGED = EnumProperty.create("liquidlogged", Liquids.class);
+    public static final EnumProperty<Liquidlogged> LIQUIDLOGGED = EnumProperty.create("liquidlogged", Liquidlogged.class);
 
     public LiquidloggedGrateBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(LIQUIDLOGGED, Liquids.AIR));
+        this.registerDefaultState(this.defaultBlockState().setValue(LIQUIDLOGGED, Liquidlogged.AIR));
     }
 
     public static int getLuminance(BlockState state) {
@@ -51,13 +51,13 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
         if (fluidState.getType() == Fluids.WATER) {
-            return this.defaultBlockState().setValue(LIQUIDLOGGED, Liquids.WATER);
+            return this.defaultBlockState().setValue(LIQUIDLOGGED, Liquidlogged.WATER);
         }
         else if (fluidState.getType() == Fluids.LAVA) {
-            return this.defaultBlockState().setValue(LIQUIDLOGGED, Liquids.LAVA);
+            return this.defaultBlockState().setValue(LIQUIDLOGGED, Liquidlogged.LAVA);
         }
         else if (fluidState.getType() == JNEFluids.ECTOPLASM.get()) {
-            return JNEBlocks.RUSTY_NETHERITE_GRATE.get().defaultBlockState().setValue(LIQUIDLOGGED, Liquids.ECTOPLASM);
+            return JNEBlocks.RUSTY_NETHERITE_GRATE.get().defaultBlockState().setValue(LIQUIDLOGGED, Liquidlogged.ECTOPLASM);
         }
         else return this.defaultBlockState();
     }
@@ -79,14 +79,14 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
 
     @Override
     public boolean placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState fluidState) {
-        if (state.getValue(LIQUIDLOGGED) == Liquids.AIR) {
+        if (state.getValue(LIQUIDLOGGED) == Liquidlogged.AIR) {
             if (!level.isClientSide()) {
                 if (fluidState.getType() == Fluids.WATER) {
-                    level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquids.WATER), 3);
+                    level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquidlogged.WATER), 3);
                 } else if (fluidState.getType() == Fluids.LAVA) {
-                    level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquids.LAVA), 3);
+                    level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquidlogged.LAVA), 3);
                 } else if (fluidState.getType() == JNEFluids.ECTOPLASM) {
-                    level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquids.ECTOPLASM), 3);
+                    level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquidlogged.ECTOPLASM), 3);
                 }
                 level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
             }
@@ -99,15 +99,15 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
 
     @Override
     public @NotNull ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
-        if (state.getValue(LIQUIDLOGGED) != Liquids.AIR) {
-            level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquids.AIR), 3);
+        if (state.getValue(LIQUIDLOGGED) != Liquidlogged.AIR) {
+            level.setBlock(pos, state.setValue(LIQUIDLOGGED, Liquidlogged.AIR), 3);
             if (!state.canSurvive(level, pos)) {
                 level.destroyBlock(pos, true);
             }
-            if (state.getValue(LIQUIDLOGGED) == Liquids.WATER) {
+            if (state.getValue(LIQUIDLOGGED) == Liquidlogged.WATER) {
                 return new ItemStack(Items.WATER_BUCKET);
             }
-            else if (state.getValue(LIQUIDLOGGED) == Liquids.LAVA) {
+            else if (state.getValue(LIQUIDLOGGED) == Liquidlogged.LAVA) {
                 return new ItemStack(Items.LAVA_BUCKET);
             }
             else {
@@ -121,13 +121,13 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull FluidState getFluidState(BlockState state) {
-        if (state.getValue(LIQUIDLOGGED) == Liquids.WATER) {
+        if (state.getValue(LIQUIDLOGGED) == Liquidlogged.WATER) {
             return Fluids.WATER.getSource(false);
         }
-        else if (state.getValue(LIQUIDLOGGED) == Liquids.LAVA) {
+        else if (state.getValue(LIQUIDLOGGED) == Liquidlogged.LAVA) {
             return Fluids.LAVA.getSource(false);
         }
-        else if (state.getValue(LIQUIDLOGGED) == Liquids.ECTOPLASM) {
+        else if (state.getValue(LIQUIDLOGGED) == Liquidlogged.ECTOPLASM) {
             return JNEFluids.ECTOPLASM.get().getSource(false);
         }
         else {
@@ -138,13 +138,13 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        if ((state.getValue(LIQUIDLOGGED) == Liquids.WATER)) {
+        if ((state.getValue(LIQUIDLOGGED) == Liquidlogged.WATER)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        else if ((state.getValue(LIQUIDLOGGED) == Liquids.LAVA)) {
+        else if ((state.getValue(LIQUIDLOGGED) == Liquidlogged.LAVA)) {
             level.scheduleTick(pos, Fluids.LAVA, Fluids.LAVA.getTickDelay(level));
         }
-        else if ((state.getValue(LIQUIDLOGGED) == Liquids.ECTOPLASM)) {
+        else if ((state.getValue(LIQUIDLOGGED) == Liquidlogged.ECTOPLASM)) {
             level.scheduleTick(pos, JNEFluids.ECTOPLASM.get(), JNEFluids.ECTOPLASM.get().getTickDelay(level));
         }
 

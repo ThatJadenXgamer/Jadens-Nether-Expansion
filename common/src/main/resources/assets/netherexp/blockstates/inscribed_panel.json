@@ -1,0 +1,467 @@
+{
+  "variants": {
+    "inscription=0,facing=north": {
+      "model": "netherexp:block/inscribed_panel/0"
+    },
+    "inscription=0,facing=east": {
+      "model": "netherexp:block/inscribed_panel/0",
+      "y": 90
+    },
+    "inscription=0,facing=south": {
+      "model": "netherexp:block/inscribed_panel/0",
+      "y": 180
+    },
+    "inscription=0,facing=west": {
+      "model": "netherexp:block/inscribed_panel/0",
+      "y": 270
+    },
+    
+    "inscription=1,facing=north": {
+      "model": "netherexp:block/inscribed_panel/1"
+    },
+    "inscription=1,facing=east": {
+      "model": "netherexp:block/inscribed_panel/1",
+      "y": 90
+    },
+    "inscription=1,facing=south": {
+      "model": "netherexp:block/inscribed_panel/1",
+      "y": 180
+    },
+    "inscription=1,facing=west": {
+      "model": "netherexp:block/inscribed_panel/1",
+      "y": 270
+    },
+    
+    "inscription=2,facing=north": {
+      "model": "netherexp:block/inscribed_panel/2"
+    },
+    "inscription=2,facing=east": {
+      "model": "netherexp:block/inscribed_panel/2",
+      "y": 90
+    },
+    "inscription=2,facing=south": {
+      "model": "netherexp:block/inscribed_panel/2",
+      "y": 180
+    },
+    "inscription=2,facing=west": {
+      "model": "netherexp:block/inscribed_panel/2",
+      "y": 270
+    },
+
+    "inscription=3,facing=north": {
+      "model": "netherexp:block/inscribed_panel/3"
+    },
+    "inscription=3,facing=east": {
+      "model": "netherexp:block/inscribed_panel/3",
+      "y": 90
+    },
+    "inscription=3,facing=south": {
+      "model": "netherexp:block/inscribed_panel/3",
+      "y": 180
+    },
+    "inscription=3,facing=west": {
+      "model": "netherexp:block/inscribed_panel/3",
+      "y": 270
+    },
+
+    "inscription=4,facing=north": {
+      "model": "netherexp:block/inscribed_panel/4"
+    },
+    "inscription=4,facing=east": {
+      "model": "netherexp:block/inscribed_panel/4",
+      "y": 90
+    },
+    "inscription=4,facing=south": {
+      "model": "netherexp:block/inscribed_panel/4",
+      "y": 180
+    },
+    "inscription=4,facing=west": {
+      "model": "netherexp:block/inscribed_panel/4",
+      "y": 270
+    },
+
+    "inscription=5,facing=north": {
+      "model": "netherexp:block/inscribed_panel/5"
+    },
+    "inscription=5,facing=east": {
+      "model": "netherexp:block/inscribed_panel/5",
+      "y": 90
+    },
+    "inscription=5,facing=south": {
+      "model": "netherexp:block/inscribed_panel/5",
+      "y": 180
+    },
+    "inscription=5,facing=west": {
+      "model": "netherexp:block/inscribed_panel/5",
+      "y": 270
+    },
+
+    "inscription=6,facing=north": {
+      "model": "netherexp:block/inscribed_panel/6"
+    },
+    "inscription=6,facing=east": {
+      "model": "netherexp:block/inscribed_panel/6",
+      "y": 90
+    },
+    "inscription=6,facing=south": {
+      "model": "netherexp:block/inscribed_panel/6",
+      "y": 180
+    },
+    "inscription=6,facing=west": {
+      "model": "netherexp:block/inscribed_panel/6",
+      "y": 270
+    },
+
+    "inscription=7,facing=north": {
+      "model": "netherexp:block/inscribed_panel/7"
+    },
+    "inscription=7,facing=east": {
+      "model": "netherexp:block/inscribed_panel/7",
+      "y": 90
+    },
+    "inscription=7,facing=south": {
+      "model": "netherexp:block/inscribed_panel/7",
+      "y": 180
+    },
+    "inscription=7,facing=west": {
+      "model": "netherexp:block/inscribed_panel/7",
+      "y": 270
+    },
+
+    "inscription=8,facing=north": {
+      "model": "netherexp:block/inscribed_panel/8"
+    },
+    "inscription=8,facing=east": {
+      "model": "netherexp:block/inscribed_panel/8",
+      "y": 90
+    },
+    "inscription=8,facing=south": {
+      "model": "netherexp:block/inscribed_panel/8",
+      "y": 180
+    },
+    "inscription=8,facing=west": {
+      "model": "netherexp:block/inscribed_panel/8",
+      "y": 270
+    },
+
+    "inscription=9,facing=north": {
+      "model": "netherexp:block/inscribed_panel/9"
+    },
+    "inscription=9,facing=east": {
+      "model": "netherexp:block/inscribed_panel/9",
+      "y": 90
+    },
+    "inscription=9,facing=south": {
+      "model": "netherexp:block/inscribed_panel/9",
+      "y": 180
+    },
+    "inscription=9,facing=west": {
+      "model": "netherexp:block/inscribed_panel/9",
+      "y": 270
+    },
+
+    "inscription=10,facing=north": {
+      "model": "netherexp:block/inscribed_panel/10"
+    },
+    "inscription=10,facing=east": {
+      "model": "netherexp:block/inscribed_panel/10",
+      "y": 90
+    },
+    "inscription=10,facing=south": {
+      "model": "netherexp:block/inscribed_panel/10",
+      "y": 180
+    },
+    "inscription=10,facing=west": {
+      "model": "netherexp:block/inscribed_panel/10",
+      "y": 270
+    },
+
+    "inscription=11,facing=north": {
+      "model": "netherexp:block/inscribed_panel/11"
+    },
+    "inscription=11,facing=east": {
+      "model": "netherexp:block/inscribed_panel/11",
+      "y": 90
+    },
+    "inscription=11,facing=south": {
+      "model": "netherexp:block/inscribed_panel/11",
+      "y": 180
+    },
+    "inscription=11,facing=west": {
+      "model": "netherexp:block/inscribed_panel/11",
+      "y": 270
+    },
+
+    "inscription=12,facing=north": {
+      "model": "netherexp:block/inscribed_panel/12"
+    },
+    "inscription=12,facing=east": {
+      "model": "netherexp:block/inscribed_panel/12",
+      "y": 90
+    },
+    "inscription=12,facing=south": {
+      "model": "netherexp:block/inscribed_panel/12",
+      "y": 180
+    },
+    "inscription=12,facing=west": {
+      "model": "netherexp:block/inscribed_panel/12",
+      "y": 270
+    },
+
+    "inscription=13,facing=north": {
+      "model": "netherexp:block/inscribed_panel/13"
+    },
+    "inscription=13,facing=east": {
+      "model": "netherexp:block/inscribed_panel/13",
+      "y": 90
+    },
+    "inscription=13,facing=south": {
+      "model": "netherexp:block/inscribed_panel/13",
+      "y": 180
+    },
+    "inscription=13,facing=west": {
+      "model": "netherexp:block/inscribed_panel/13",
+      "y": 270
+    },
+
+    "inscription=14,facing=north": {
+      "model": "netherexp:block/inscribed_panel/14"
+    },
+    "inscription=14,facing=east": {
+      "model": "netherexp:block/inscribed_panel/14",
+      "y": 90
+    },
+    "inscription=14,facing=south": {
+      "model": "netherexp:block/inscribed_panel/14",
+      "y": 180
+    },
+    "inscription=14,facing=west": {
+      "model": "netherexp:block/inscribed_panel/14",
+      "y": 270
+    },
+
+    "inscription=15,facing=north": {
+      "model": "netherexp:block/inscribed_panel/15"
+    },
+    "inscription=15,facing=east": {
+      "model": "netherexp:block/inscribed_panel/15",
+      "y": 90
+    },
+    "inscription=15,facing=south": {
+      "model": "netherexp:block/inscribed_panel/15",
+      "y": 180
+    },
+    "inscription=15,facing=west": {
+      "model": "netherexp:block/inscribed_panel/15",
+      "y": 270
+    },
+
+    "inscription=16,facing=north": {
+      "model": "netherexp:block/inscribed_panel/16"
+    },
+    "inscription=16,facing=east": {
+      "model": "netherexp:block/inscribed_panel/16",
+      "y": 90
+    },
+    "inscription=16,facing=south": {
+      "model": "netherexp:block/inscribed_panel/16",
+      "y": 180
+    },
+    "inscription=16,facing=west": {
+      "model": "netherexp:block/inscribed_panel/16",
+      "y": 270
+    },
+
+    "inscription=17,facing=north": {
+      "model": "netherexp:block/inscribed_panel/17"
+    },
+    "inscription=17,facing=east": {
+      "model": "netherexp:block/inscribed_panel/17",
+      "y": 90
+    },
+    "inscription=17,facing=south": {
+      "model": "netherexp:block/inscribed_panel/17",
+      "y": 180
+    },
+    "inscription=17,facing=west": {
+      "model": "netherexp:block/inscribed_panel/17",
+      "y": 270
+    },
+
+    "inscription=18,facing=north": {
+      "model": "netherexp:block/inscribed_panel/18"
+    },
+    "inscription=18,facing=east": {
+      "model": "netherexp:block/inscribed_panel/18",
+      "y": 90
+    },
+    "inscription=18,facing=south": {
+      "model": "netherexp:block/inscribed_panel/18",
+      "y": 180
+    },
+    "inscription=18,facing=west": {
+      "model": "netherexp:block/inscribed_panel/18",
+      "y": 270
+    },
+
+    "inscription=19,facing=north": {
+      "model": "netherexp:block/inscribed_panel/19"
+    },
+    "inscription=19,facing=east": {
+      "model": "netherexp:block/inscribed_panel/19",
+      "y": 90
+    },
+    "inscription=19,facing=south": {
+      "model": "netherexp:block/inscribed_panel/19",
+      "y": 180
+    },
+    "inscription=19,facing=west": {
+      "model": "netherexp:block/inscribed_panel/19",
+      "y": 270
+    },
+
+    "inscription=20,facing=north": {
+      "model": "netherexp:block/inscribed_panel/20"
+    },
+    "inscription=20,facing=east": {
+      "model": "netherexp:block/inscribed_panel/20",
+      "y": 90
+    },
+    "inscription=20,facing=south": {
+      "model": "netherexp:block/inscribed_panel/20",
+      "y": 180
+    },
+    "inscription=20,facing=west": {
+      "model": "netherexp:block/inscribed_panel/20",
+      "y": 270
+    },
+
+    "inscription=21,facing=north": {
+      "model": "netherexp:block/inscribed_panel/21"
+    },
+    "inscription=21,facing=east": {
+      "model": "netherexp:block/inscribed_panel/21",
+      "y": 90
+    },
+    "inscription=21,facing=south": {
+      "model": "netherexp:block/inscribed_panel/21",
+      "y": 180
+    },
+    "inscription=21,facing=west": {
+      "model": "netherexp:block/inscribed_panel/21",
+      "y": 270
+    },
+
+    "inscription=22,facing=north": {
+      "model": "netherexp:block/inscribed_panel/22"
+    },
+    "inscription=22,facing=east": {
+      "model": "netherexp:block/inscribed_panel/22",
+      "y": 90
+    },
+    "inscription=22,facing=south": {
+      "model": "netherexp:block/inscribed_panel/22",
+      "y": 180
+    },
+    "inscription=22,facing=west": {
+      "model": "netherexp:block/inscribed_panel/22",
+      "y": 270
+    },
+
+    "inscription=23,facing=north": {
+      "model": "netherexp:block/inscribed_panel/23"
+    },
+    "inscription=23,facing=east": {
+      "model": "netherexp:block/inscribed_panel/23",
+      "y": 90
+    },
+    "inscription=23,facing=south": {
+      "model": "netherexp:block/inscribed_panel/23",
+      "y": 180
+    },
+    "inscription=23,facing=west": {
+      "model": "netherexp:block/inscribed_panel/23",
+      "y": 270
+    },
+
+    "inscription=24,facing=north": {
+      "model": "netherexp:block/inscribed_panel/24"
+    },
+    "inscription=24,facing=east": {
+      "model": "netherexp:block/inscribed_panel/24",
+      "y": 90
+    },
+    "inscription=24,facing=south": {
+      "model": "netherexp:block/inscribed_panel/24",
+      "y": 180
+    },
+    "inscription=24,facing=west": {
+      "model": "netherexp:block/inscribed_panel/4",
+      "y": 270
+    },
+
+    "inscription=25,facing=north": {
+      "model": "netherexp:block/inscribed_panel/25"
+    },
+    "inscription=25,facing=east": {
+      "model": "netherexp:block/inscribed_panel/25",
+      "y": 90
+    },
+    "inscription=25,facing=south": {
+      "model": "netherexp:block/inscribed_panel/25",
+      "y": 180
+    },
+    "inscription=25,facing=west": {
+      "model": "netherexp:block/inscribed_panel/25",
+      "y": 270
+    },
+
+    "inscription=26,facing=north": {
+      "model": "netherexp:block/inscribed_panel/26"
+    },
+    "inscription=26,facing=east": {
+      "model": "netherexp:block/inscribed_panel/26",
+      "y": 90
+    },
+    "inscription=26,facing=south": {
+      "model": "netherexp:block/inscribed_panel/26",
+      "y": 180
+    },
+    "inscription=26,facing=west": {
+      "model": "netherexp:block/inscribed_panel/26",
+      "y": 270
+    },
+
+    "inscription=27,facing=north": {
+      "model": "netherexp:block/inscribed_panel/27"
+    },
+    "inscription=27,facing=east": {
+      "model": "netherexp:block/inscribed_panel/27",
+      "y": 90
+    },
+    "inscription=27,facing=south": {
+      "model": "netherexp:block/inscribed_panel/27",
+      "y": 180
+    },
+    "inscription=27,facing=west": {
+      "model": "netherexp:block/inscribed_panel/27",
+      "y": 270
+    },
+
+    "inscription=28,facing=north": {
+      "model": "netherexp:block/inscribed_panel/28"
+    },
+    "inscription=28,facing=east": {
+      "model": "netherexp:block/inscribed_panel/28",
+      "y": 90
+    },
+    "inscription=28,facing=south": {
+      "model": "netherexp:block/inscribed_panel/28",
+      "y": 180
+    },
+    "inscription=28,facing=west": {
+      "model": "netherexp:block/inscribed_panel/28",
+      "y": 270
+    }
+  }
+}

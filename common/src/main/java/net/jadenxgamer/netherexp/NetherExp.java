@@ -16,9 +16,12 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEFeature;
 import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructureType;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class NetherExp {
     public static final String MOD_ID = "netherexp";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static void init() {
         JNECriteriaTriggers.init();

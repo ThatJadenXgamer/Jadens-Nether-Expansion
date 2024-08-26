@@ -131,8 +131,6 @@ implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
-        // TODO: Add configs
-//        return NetherExp.getConfig().blocks.renewableConfigs.bone_mealable_soul_swirls;
         return true;
     }
 

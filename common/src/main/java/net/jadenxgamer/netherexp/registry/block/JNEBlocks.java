@@ -725,8 +725,10 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> OBFUSCATED_GARGOYLE_STATUE = registerGargoyleBlock("obfuscated_gargoyle_statue", () ->
             new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)));
 
-    // Flower Pots
+    public static final RegistrySupplier<Block> INSCRIBED_PANEL = registerBlock("inscribed_panel", () ->
+            new InscribedPanelBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE).lightLevel(InscribedPanelBlock.STATE_TO_LUMINANCE)));
 
+    // Flower Pots
     public static final RegistrySupplier<Block> POTTED_SOUL_SWIRLS = registerBlock("potted_soul_swirls", () ->
             new FlowerPotBlock(SOUL_SWIRLS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
@@ -766,12 +768,12 @@ public class JNEBlocks {
 
     private static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
+        JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
     private static <T extends Block> RegistrySupplier<T> registerGargoyleBlock(String name, Supplier<T> block) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
-        registerGargoyleBlockItem(name, toReturn);
+        JNEItems.ITEMS.register(name, () -> new GargoyleStatueItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
 
@@ -784,27 +786,15 @@ public class JNEBlocks {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
         // If The Specified ModId is not found, then the Block Item won't be registered
         if (Platform.isModLoaded(modId)) {
-            registerBlockItem(name, toReturn);
+            JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         }
         return toReturn;
     }
 
-    private static <T extends Block> RegistrySupplier<Item> registerBlockItem(String name, RegistrySupplier<T> block) {
-        return JNEItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
-    }
-
-    private static <T extends Block> RegistrySupplier<Item> registerGargoyleBlockItem(String name, RegistrySupplier<T> block) {
-        return JNEItems.ITEMS.register(name, () -> new GargoyleStatueItem(block.get(), new Item.Properties()));
-    }
-
     private static <T extends Block> RegistrySupplier<T> registerFireProofBlock(String name, Supplier<T> block) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
-        registerFireProofBlockItem(name, toReturn);
+        JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties().fireResistant()));
         return toReturn;
-    }
-
-    private static <T extends Block> RegistrySupplier<Item> registerFireProofBlockItem(String name, RegistrySupplier<T> block) {
-        return JNEItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().fireResistant()));
     }
 
     public static void init() {

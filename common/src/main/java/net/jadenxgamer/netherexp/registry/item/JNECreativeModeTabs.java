@@ -391,6 +391,7 @@ public class JNECreativeModeTabs {
 //                            output.accept(JNEItems.WARPHOPPER_SPAWN_EGG);
 //                        }
 
+                        output.accept(JNEBlocks.INSCRIBED_PANEL.get());
                         output.accept(JNEBlocks.OSSIFIED_GARGOYLE_STATUE.get());
                         output.accept(JNEBlocks.TRAMPLE_GARGOYLE_STATUE.get());
                         output.accept(JNEBlocks.PHASE_GARGOYLE_STATUE.get());
