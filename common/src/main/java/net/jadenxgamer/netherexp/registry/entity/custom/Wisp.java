@@ -247,15 +247,13 @@ implements FlyingAnimal, Bottleable {
                 this.setSalted(true);
                 itemStack.shrink(1);
                 return InteractionResult.SUCCESS;
-            }
-            else {
+            } else {
                 for(int i = 0; i < 4; ++i) {
                     this.level().addParticle(ParticleTypes.WAX_ON, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), 0.0, 0.0, 0.0);
                 }
                 return InteractionResult.CONSUME;
             }
-        }
-        else {
+        } else {
             return Bottleable.bottleMobPickup(player, interactionHand, this).orElse(super.mobInteract(player, interactionHand));
         }
     }

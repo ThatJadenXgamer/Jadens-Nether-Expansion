@@ -387,6 +387,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
                         output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
                         output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
+                        output.accept(JNEItems.CARCASS_SPAWN_EGG.get());
 //                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
 //                            output.accept(JNEItems.WARPHOPPER_SPAWN_EGG);
 //                        }

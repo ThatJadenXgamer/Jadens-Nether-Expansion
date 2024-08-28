@@ -7,10 +7,7 @@ import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.forge.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.forge.worldgen.SpawnCostsBiomeModifier;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
-import net.jadenxgamer.netherexp.registry.entity.custom.Banshee;
-import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
-import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
+import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotionRecipe;
 import net.minecraft.SharedConstants;
 import net.minecraft.network.chat.Component;
@@ -70,6 +67,7 @@ public class NetherExpForge {
         event.put(JNEEntityType.ECTO_SLAB.get(), Vessel.createAttributes().build());
         event.put(JNEEntityType.BANSHEE.get(), Banshee.createAttributes().build());
         event.put(JNEEntityType.STAMPEDE.get(), Vessel.createAttributes().build());
+        event.put(JNEEntityType.CARCASS.get(), Carcass.createAttributes().build());
     }
 
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {

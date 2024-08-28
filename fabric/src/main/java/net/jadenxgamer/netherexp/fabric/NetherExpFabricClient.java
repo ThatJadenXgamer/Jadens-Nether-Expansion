@@ -163,6 +163,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
+        EntityRendererRegistry.register(JNEEntityType.CARCASS.get(), CarcassRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.BLOOD_DROP.get(), NoopRenderer::new);
         EntityRendererRegistry.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
@@ -178,8 +179,9 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.WISP_LAYER, WispModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.VESSEL_LAYER, VesselModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.ECTO_SLAB_LAYER, EctoSlabModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.BANSHEE_LAYER, BansheeModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.CARCASS_LAYER, CarcassModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
     }
 }

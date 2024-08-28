@@ -23,6 +23,9 @@ public class JNEModelLayers {
     public static final ModelLayerLocation STAMPEDE_LAYER = new ModelLayerLocation(
             new ResourceLocation(NetherExp.MOD_ID, "stampede_layer"), "main");
 
+    public static final ModelLayerLocation CARCASS_LAYER = new ModelLayerLocation(
+            new ResourceLocation(NetherExp.MOD_ID, "carcass_layer"), "main");
+
     public static final ModelLayerLocation MIST_CHARGE_LAYER = new ModelLayerLocation(
             new ResourceLocation(NetherExp.MOD_ID, "mist_charge_layer"), "main");
 }

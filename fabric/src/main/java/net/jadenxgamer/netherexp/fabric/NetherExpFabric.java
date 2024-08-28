@@ -33,6 +33,7 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
         FabricDefaultAttributeRegistry.register(JNEEntityType.ECTO_SLAB.get(), EctoSlab.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.BANSHEE.get(), Banshee.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.STAMPEDE.get(), Stampede.createAttributes());
+        FabricDefaultAttributeRegistry.register(JNEEntityType.CARCASS.get(), Carcass.createAttributes());
 
         ResourceLocation rpConflictingRetextures = new ResourceLocation(NetherExp.MOD_ID, "conflicting_retextures");
         ResourceLocation rpUniqueNetherWood = new ResourceLocation(NetherExp.MOD_ID, "unique_nether_wood");

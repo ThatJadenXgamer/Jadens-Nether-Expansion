@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "netherexp:carcass",
     "minecraft:wither",
     "minecraft:warden",
     "minecraft:ender_dragon",

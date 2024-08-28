@@ -153,6 +153,9 @@ public class JNEItems {
     public static final RegistrySupplier<Item> STAMPEDE_SPAWN_EGG = registerItem("stampede_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.STAMPEDE, 4864303, 10236982, new Item.Properties()));
 
+    public static final RegistrySupplier<Item> CARCASS_SPAWN_EGG = registerItem("carcass_spawn_egg", () ->
+            new ArchitecturySpawnEggItem(JNEEntityType.CARCASS, 8263192, 4066060, new Item.Properties()));
+
     public static final RegistrySupplier<Item> SEALED_POTTERY_SHERD = registerItem("sealed_pottery_sherd", () ->
             new Item(new Item.Properties()));
 

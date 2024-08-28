@@ -50,6 +50,7 @@ public class NetherExpForgeClient {
         EntityRenderers.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
         EntityRenderers.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
+        EntityRenderers.register(JNEEntityType.CARCASS.get(), CarcassRenderer::new);
         EntityRenderers.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityRenderers.register(JNEEntityType.BLOOD_DROP.get(), NoopRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
@@ -118,6 +119,7 @@ public class NetherExpForgeClient {
         event.registerLayerDefinition(JNEModelLayers.ECTO_SLAB_LAYER, EctoSlabModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.BANSHEE_LAYER, BansheeModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
+        event.registerLayerDefinition(JNEModelLayers.CARCASS_LAYER, CarcassModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
     }
 }

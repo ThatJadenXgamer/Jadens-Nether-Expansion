@@ -37,6 +37,10 @@ public class JNEEntityType {
             EntityType.Builder.of(Stampede::new, MobCategory.MONSTER)
                     .sized(1.8F, 4.0F).fireImmune().build("stampede"));
 
+    public static final RegistrySupplier<EntityType<Carcass>> CARCASS = ENTITY_TYPES.register("carcass", () ->
+            EntityType.Builder.of(Carcass::new, MobCategory.MISC)
+                    .sized(1.0F, 1.4F).fireImmune().build("carcass"));
+
     // OTHER
 
     public static final RegistrySupplier<EntityType<SoulBullet>> SOUL_BULLET = ENTITY_TYPES.register("soul_bullet", () ->
