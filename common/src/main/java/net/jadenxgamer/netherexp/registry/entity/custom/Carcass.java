@@ -64,7 +64,7 @@ public class Carcass extends PathfinderMob {
                     idleAnimationState.startIfStopped(this.tickCount);
                 }
             }
-            else if (!this.getIsReanimated() && deactivationAnimationTimer == 25) {
+            else if (!this.getIsReanimated() && !this.reanimationFlag && deactivationAnimationTimer == 25) {
                 deactivateAnimationState.startIfStopped(this.tickCount);
             }
         }
@@ -146,7 +146,6 @@ public class Carcass extends PathfinderMob {
         }
         if (this.reanimationAnimationTimer <= 0) {
             reanimateAnimationState.stop();
-            this.setHealth(this.getMaxHealth());
             this.setIsReanimated(true);
             this.reanimationFlag = false;
             this.reanimationAnimationTimer = 22;
@@ -163,6 +162,7 @@ public class Carcass extends PathfinderMob {
         }
         if (this.deactivationAnimationTimer <= 0) {
             this.setIsReanimated(false);
+            this.setHealth(this.getMaxHealth());
             this.setReanimationCooldown(36000);
             this.deactivationAnimationTimer = 25;
         }
@@ -175,9 +175,6 @@ public class Carcass extends PathfinderMob {
             this.level().playSound(null, this.getX(), this.getY(), this.getX(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0f, 1.0f);
             this.reanimationFlag = true;
             return InteractionResult.SUCCESS;
-        }
-        else {
-            NetherExp.LOGGER.warn("Unable to Reanimate {}", this.getName());
         }
         return InteractionResult.PASS;
     }

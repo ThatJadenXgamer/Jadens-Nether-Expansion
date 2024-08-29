@@ -18,6 +18,7 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
     @Override
     public void onInitialize() {
         NetherExp.init();
+        JNEConfigHelperFabric.registerConfigs();
         NetherWastesFeatures.generateFeatures();
         SoulSandValleyFeatures.generateFeatures();
         CrimsonForestFeatures.generateFeatures();
