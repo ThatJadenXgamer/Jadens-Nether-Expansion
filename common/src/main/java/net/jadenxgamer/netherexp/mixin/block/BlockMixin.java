@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.world.level.block.Block;
@@ -24,22 +25,22 @@ public abstract class BlockMixin extends BlockBehaviour {
             cancellable = true
     )
     private void netherexp$changeSoundGroup(BlockState blockState, CallbackInfoReturnable<SoundType> cir) {
-        if (blockState.is(JNETags.Blocks.SOUNDS_BLACKSTONE)) {
+        if (blockState.is(JNETags.Blocks.SOUNDS_BLACKSTONE) && JNEConfigs.BLACKSTONE_SOUNDS.get()) {
             cir.setReturnValue(JNESoundType.BLACKSTONE);
         }
-        else if (blockState.is(JNETags.Blocks.SOUNDS_POLISHED_BLACKSTONE)) {
+        else if (blockState.is(JNETags.Blocks.SOUNDS_POLISHED_BLACKSTONE) && JNEConfigs.POLISHED_BLACKSTONE_SOUNDS.get()) {
             cir.setReturnValue(JNESoundType.POLISHED_BLACKSTONE_BRICKS);
         }
-        else if (blockState.is(JNETags.Blocks.SOUNDS_POLISHED_BLACKSTONE_BRICKS)) {
+        else if (blockState.is(JNETags.Blocks.SOUNDS_POLISHED_BLACKSTONE_BRICKS) && JNEConfigs.POLISHED_BLACKSTONE_SOUNDS.get()) {
             cir.setReturnValue(JNESoundType.POLISHED_BLACKSTONE_BRICKS);
         }
-        else if (blockState.is(JNETags.Blocks.SOUNDS_MAGMA_BLOCK)) {
+        else if (blockState.is(JNETags.Blocks.SOUNDS_MAGMA_BLOCK) && JNEConfigs.MAGMA_BLOCK_SOUNDS.get()) {
             cir.setReturnValue(JNESoundType.MAGMA_BLOCK);
         }
-        else if (blockState.is(JNETags.Blocks.SOUNDS_GLOWSTONE)) {
+        else if (blockState.is(JNETags.Blocks.SOUNDS_GLOWSTONE) && JNEConfigs.GLOWSTONE_SOUNDS.get()) {
             cir.setReturnValue(JNESoundType.GLOWSTONE);
         }
-        else if (blockState.is(JNETags.Blocks.SOUNDS_QUARTZ_BLOCK)) {
+        else if (blockState.is(JNETags.Blocks.SOUNDS_QUARTZ_BLOCK) && JNEConfigs.QUARTZ_BLOCK_SOUNDS.get()) {
             cir.setReturnValue(JNESoundType.QUARTZ_BLOCK);
         }
     }

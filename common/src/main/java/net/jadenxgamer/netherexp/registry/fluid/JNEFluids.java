@@ -7,6 +7,7 @@ import dev.architectury.core.item.ArchitecturyBucketItem;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.EctoplasmLiquidBlock;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
@@ -62,20 +63,20 @@ public class JNEFluids {
     */
     private static void ectoplasmParticles(Level level, BlockPos pos, RandomSource random) {
         BlockPos abovePos = pos.above();
-        if (level.getBlockState(abovePos).isAir() && !level.getBlockState(abovePos).isSolidRender(level, abovePos)) {
+        if (level.getBlockState(abovePos).isAir() && !level.getBlockState(abovePos).isSolidRender(level, abovePos) && JNEConfigs.ENABLE_ECTOPLASM_PARTICLES.get()) {
             if (random.nextInt(55) == 0) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
                 level.addParticle(JNEParticleTypes.ECTORAYS.get(), d, e, f, 0.0, -0.03, 0.0);
             }
-            if (random.nextInt(18) == 0) {
+            if (random.nextInt(18) == 0 && JNEConfigs.ENABLE_ECTOPLASM_PARTICLES.get()) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
                 level.addParticle(JNEParticleTypes.ECTOPLASMA.get(), d, e, f, 0.0, 0.0, 0.0);
             }
-            if (random.nextInt(600) == 0) {
+            if (random.nextInt(600) == 0 && JNEConfigs.ENABLE_ECTOPLASM_SOUNDS.get()) {
                 level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.ECTOPLASM_WHISPERING.get(), SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
             }
         }

@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -79,7 +80,10 @@ public class FrogmistBlock extends Block implements SimpleWaterloggedBlock {
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        if (((EntityCollisionContext) context).getEntity() instanceof Player player && player.getMainHandItem().is(JNETags.Items.FROGMIST_VISIBLE_ITEMS)) {
+        if (JNEConfigs.FROGMIST_BREAKABLE_BY_FIST.get()) {
+            return SHAPE;
+        }
+        else if (((EntityCollisionContext) context).getEntity() instanceof Player player && player.getMainHandItem().is(JNETags.Items.FROGMIST_VISIBLE_ITEMS)) {
             return SHAPE;
         }
         return Shapes.empty();

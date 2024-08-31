@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
@@ -67,7 +68,7 @@ implements SimpleWaterloggedBlock, BonemealableBlock {
         boolean hanging = state.getValue(HANGING);
         Vec3 velocity = entity.getDeltaMovement();
         if (!entity.isShiftKeyDown() && !hanging) {
-            entity.push(velocity.x, 1.0, velocity.z);
+            entity.push(velocity.x, JNEConfigs.SPORESHROOM_PUSH_VELOCITY.get(), velocity.z);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SPORESHROOM_TRAMPOLINED.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }

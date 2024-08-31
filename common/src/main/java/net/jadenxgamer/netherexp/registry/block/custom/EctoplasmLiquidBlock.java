@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import com.google.common.collect.Maps;
 import dev.architectury.core.block.ArchitecturyLiquidBlock;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.Util;
@@ -19,7 +20,7 @@ import java.util.function.Supplier;
 
 public class EctoplasmLiquidBlock extends ArchitecturyLiquidBlock {
     /*
-     * Based on Alex's Caves AcidBlock.java code
+     * Based on Alex's Caves AcidBlock.java code with a few tweaks
      * https://github.com/AlexModGuy/AlexsCaves/blob/main/src/main/java/com/github/alexmodguy/alexscaves/server/block/AcidBlock.java
      * https://www.curseforge.com/minecraft/mc-mods/alexs-caves
      */
@@ -33,13 +34,17 @@ public class EctoplasmLiquidBlock extends ArchitecturyLiquidBlock {
     @Override
     public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
         super.onPlace(blockState, level, blockPos, blockState2, bl);
-        this.checkFreeze(level, blockPos);
+        if (JNEConfigs.ECTOPLASM_RUSTS_NETHERITE.get()) {
+            this.checkFreeze(level, blockPos);
+        }
     }
 
     @Override
     public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos2, boolean bl) {
         super.neighborChanged(blockState, level, blockPos, block, blockPos2, bl);
-        this.checkFreeze(level, blockPos);
+        if (JNEConfigs.ECTOPLASM_RUSTS_NETHERITE.get()) {
+            this.checkFreeze(level, blockPos);
+        }
     }
 
     public void checkFreeze(Level level, BlockPos pos) {

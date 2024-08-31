@@ -1,5 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -45,7 +47,7 @@ public class SoulGlassBlock extends AbstractGlassBlock {
     @SuppressWarnings("deprecation")
     @Override
     public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
-        return false;
+        return !JNEConfigs.PHASMOPHOBIC_MOBS.get();
     }
 
     @SuppressWarnings("deprecation")

@@ -1,5 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
@@ -22,9 +24,7 @@ public abstract class SkeletonMixin extends AbstractSkeleton {
     protected void createWitherRose(@Nullable LivingEntity adversary) {
         BlockState floor = this.getBlockStateOn();
         BlockPos floorPos = this.blockPosition().below();
-        // TODO Add Configs
-        // NetherExp.getConfig().blocks.fossilOreConfigs.skeleton_fossilization
-        if (floor.is(JNETags.Blocks.FOSSIL_ORE_CONVERTIBLE)) {
+        if (floor.is(JNETags.Blocks.FOSSIL_ORE_CONVERTIBLE) && JNEConfigs.SKELETON_FOSSILIZATION.get()) {
             level().setBlock(floorPos, JNEBlocks.FOSSIL_ORE.get().defaultBlockState(), 2);
         }
         super.createWitherRose(adversary);

@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import dev.architectury.platform.forge.EventBuses;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
-import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.forge.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.forge.worldgen.SpawnCostsBiomeModifier;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
@@ -43,7 +43,7 @@ import java.nio.file.Path;
 public class NetherExpForge {
     public NetherExpForge() {
         EventBuses.registerModEventBus(NetherExp.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JNEConfigs.COMMON);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JNEForgeConfigs.COMMON);
         NetherExp.init();
 
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpClient::init);

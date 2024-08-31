@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;

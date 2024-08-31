@@ -64,10 +64,10 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> ANTIDOTE = registerItem("antidote", () ->
-            new AntidoteItem(new Item.Properties().stacksTo(16)));
+            new AntidoteItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> GRENADE_ANTIDOTE = registerItem("grenade_antidote", () ->
-            new GrenadeAntidoteItem(new Item.Properties().stacksTo(16)));
+            new GrenadeAntidoteItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> GLOWCHEESE = registerItem("glowcheese", () ->
             new Item(new Item.Properties().food(JNEFoodProperties.GLOWCHEESE)));

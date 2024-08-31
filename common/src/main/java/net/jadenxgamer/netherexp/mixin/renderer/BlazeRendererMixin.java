@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.renderer;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.minecraft.client.renderer.entity.BlazeRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;

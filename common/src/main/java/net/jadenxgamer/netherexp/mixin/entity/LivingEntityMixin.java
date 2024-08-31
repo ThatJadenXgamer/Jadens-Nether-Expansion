@@ -1,5 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.entity;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.effect.custom.ImmunityEffect;
 import net.jadenxgamer.netherexp.registry.entity.custom.Banshee;
@@ -20,6 +22,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -61,6 +64,17 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
         if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) || entity.getType().is(JNETags.EntityTypes.IGNORES_SOUL_SAND_SLOWNESS) && !EnchantmentHelper.hasSoulSpeed(entity)) {
             cir.setReturnValue(1.0f);
         }
+        else if (state.is(Blocks.SOUL_SAND) || state.is(JNEBlocks.ECTO_SOUL_SAND.get()) && JNEConfigs.REDUCE_SOUL_SAND_SLOWNESS.get() && !EnchantmentHelper.hasSoulSpeed(entity)) {
+            cir.setReturnValue(0.7f);
+        }
+    }
+
+    @ModifyArg(
+            method = "tryAddSoulSpeed",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V")
+    )
+    private int netherexp$addSoulSpeedQOL(int amount) {
+        return JNEConfigs.REMOVE_SOUL_SPEED_DURABILITY_PENALTY.get() ? 0 : amount;
     }
 
     @Inject(

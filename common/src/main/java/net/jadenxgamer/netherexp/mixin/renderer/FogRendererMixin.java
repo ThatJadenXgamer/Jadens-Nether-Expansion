@@ -2,7 +2,9 @@ package net.jadenxgamer.netherexp.mixin.renderer;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jadenxgamer.netherexp.NetherExpClient;
-import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
+import net.jadenxgamer.netherexp.config.enums.NetherFogDistance;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.effect.MobEffects;
@@ -10,6 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.material.FogType;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -26,12 +29,12 @@ public abstract class FogRendererMixin {
         FogType fogType = camera.getFluidInCamera();
         if (entity instanceof LivingEntity livingEntity) {
             /*
-             * Increases Default Nether Fog distance
+             * Increases Default Nether Fog distance if enabled in configs
              */
-            if (!livingEntity.hasEffect(MobEffects.BLINDNESS) && !livingEntity.hasEffect(MobEffects.DARKNESS) && thickFog) {
+            if (JNEConfigs.NETHER_FOG_DISTANCE.get() != NetherFogDistance.VANILLA && !livingEntity.hasEffect(MobEffects.BLINDNESS) && !livingEntity.hasEffect(MobEffects.DARKNESS) && thickFog) {
                 if (fogType == FogType.NONE) {
-                    RenderSystem.setShaderFogStart(0.0f);
-                    RenderSystem.setShaderFogEnd(viewDistance);
+                    RenderSystem.setShaderFogStart(netherexp$getFogStart(JNEConfigs.NETHER_FOG_DISTANCE.get()));
+                    RenderSystem.setShaderFogEnd(netherexp$getFogEnd(JNEConfigs.NETHER_FOG_DISTANCE.get(), viewDistance));
                 }
             }
         }
@@ -59,5 +62,26 @@ public abstract class FogRendererMixin {
             RenderSystem.setShaderFogEnd(8.0F);
             RenderSystem.setShaderFogColor(0.106f, 0.278f, 0.271f);
         }
+    }
+
+    @Unique
+    private static float netherexp$getFogStart(NetherFogDistance config) {
+        if (config == NetherFogDistance.DISABLED) {
+            return -8.0f;
+        }
+        return 0.0f;
+    }
+
+    @Unique
+    private static float netherexp$getFogEnd(NetherFogDistance config, float viewDistance) {
+        switch (config) {
+            case FAR -> {
+                return viewDistance * 1.5f;
+            }
+            case DISABLED -> {
+                return 1_000_000.0f;
+            }
+        }
+        return viewDistance;
     }
 }

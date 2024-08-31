@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.entity;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
@@ -40,7 +41,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private int increaseInMobsPerWave = 2;
     private int health = 20;
     private int maximumHealth = 20;
-    private int completionCooldown = 72000;
+    private int completionCooldown = JNEConfigs.TREACHEROUS_CANDLE_COMPLETION_COOLDOWN.get() * 20;
     private List<EntityType<?>> spawnableMobs = new ArrayList<>();
     private final ServerBossEvent bossEvent;
 
@@ -143,7 +144,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     }
 
     public static void resetValues(TreacherousCandleBlockEntity blockEntity) {
-        blockEntity.completionCooldown = 72000;
+        blockEntity.completionCooldown = JNEConfigs.TREACHEROUS_CANDLE_COMPLETION_COOLDOWN.get() * 20;
         blockEntity.currentWave = 1;
         blockEntity.health = blockEntity.maximumHealth;
         blockEntity.mobsPerWave = blockEntity.resetMobsPerWave;
@@ -176,7 +177,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         double z = pos.getZ() + random.nextInt(spawnRadius);
         int retries = 0;
 
-        // Checks if the current position is a valid one, otherwise moves it up
+        // Checks if the current position is a valid one, otherwise moves the entity up
         while (retries < 10) {
             BlockPos currentPos = new BlockPos((int)x, (int)y, (int)z);
             if (level.getBlockState(currentPos).isAir() && level.getBlockState(currentPos.below()).isSolid() || level.getBlockState(currentPos.below().below()).isSolid()) {

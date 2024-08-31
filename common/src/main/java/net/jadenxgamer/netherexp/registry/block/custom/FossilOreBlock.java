@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -18,15 +19,14 @@ public class FossilOreBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        // float r = random.nextInt(NetherExp.getConfig().blocks.fossilOreConfigs.fossil_ore_conversion_odds);
-        float r = random.nextInt(50);
+        float conversionOdds = random.nextInt(50);
         boolean sideChecks = level.getBlockState(pos.above()).isSolid() &&
                 level.getBlockState(pos.below()).isSolid() &&
                 level.getBlockState(pos.north()).isSolid() &&
                 level.getBlockState(pos.south()).isSolid() &&
                 level.getBlockState(pos.east()).isSolid() &&
                 level.getBlockState(pos.west()).isSolid();
-        if (r == 0 && sideChecks) {
+        if (conversionOdds == 0 && sideChecks && JNEConfigs.RENEWABLE_FOSSIL_FUEL.get()) {
             level.setBlock(pos, JNEBlocks.FOSSIL_FUEL_ORE.get().defaultBlockState(), UPDATE_CLIENTS);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0f, 1.0f);
         }

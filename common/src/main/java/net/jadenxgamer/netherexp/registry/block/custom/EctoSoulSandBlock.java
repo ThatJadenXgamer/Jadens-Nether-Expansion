@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
@@ -61,7 +62,7 @@ public class EctoSoulSandBlock extends Block {
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         boolean salted = blockState.getValue(SALTED);
-        boolean bl = false;
+        boolean wasSuccess = false;
         if (!salted) {
             if (itemStack.is(Items.HONEYCOMB)) {
                 level.playSound(player, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
@@ -70,13 +71,13 @@ public class EctoSoulSandBlock extends Block {
                     itemStack.shrink(1);
                 }
                 blockParticle(level, blockPos);
-                bl = true;
+                wasSuccess = true;
             }
-            if (!level.isClientSide && bl) {
+            if (!level.isClientSide && wasSuccess) {
                 player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
             }
         }
-        if (bl) {
+        if (wasSuccess) {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;
@@ -101,12 +102,12 @@ public class EctoSoulSandBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        //TODO: Configs
-//        int i = random.nextInt(NetherExp.getConfig().blocks.ectoSoulSandConfigs.wisp_emerging_chances);
-        int i = random.nextInt(50);
-        if (i == 0 && !(level.getBlockState(pos.below()).isAir())) {
-            this.setSusSoulSand(level, pos, random);
+        int emergingOdds = random.nextInt(JNEConfigs.WISP_EMERGING_CHANCE.get());
+        if (emergingOdds == 0 && !(level.getBlockState(pos.below()).isAir())) {
             BlockPos targetPos = findAirNeighbor(level, pos);
+            if (JNEConfigs.SUSPICIOUS_SOUL_SAND_FROM_WISP_EMERGING.get()) {
+                this.setSusSoulSand(level, pos, random);
+            }
             if (targetPos != null) {
                 spawnWisp(level, targetPos, random);
             }
@@ -114,8 +115,8 @@ public class EctoSoulSandBlock extends Block {
     }
 
     private BlockPos findAirNeighbor(ServerLevel level, BlockPos pos) {
-        Direction[] var5 = Direction.values();
-        for (Direction direction : var5) {
+        Direction[] directions = Direction.values();
+        for (Direction direction : directions) {
             BlockPos neighborPos = pos.offset(direction.getNormal());
             if (level.getBlockState(neighborPos).isAir()) {
                 return neighborPos;

@@ -23,13 +23,5 @@ public class JNELootModifiers {
                 tableBuilder.pool(poolBuilder.build());
             }
         });
-
-        // I have to replace the whole loot table because fabric is stupid that way
-        LootTableEvents.REPLACE.register(((resourceManager, lootManager, id, original, source) -> {
-            if (id.equals(new ResourceLocation("minecraft", "entities/hoglin"))) {
-                return lootManager.getLootTable(new ResourceLocation(NetherExp.MOD_ID, "entities/hoglin"));
-            }
-            return original;
-        }));
     }
 }

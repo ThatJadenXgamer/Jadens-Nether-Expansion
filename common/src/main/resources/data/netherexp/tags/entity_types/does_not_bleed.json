@@ -12,6 +12,9 @@
     "minecraft:enderman",
     "minecraft:endermite",
     "minecraft:shulker",
-    "minecraft:ender_dragon"
+    "minecraft:ender_dragon",
+    "minecraft:slime",
+    "minecraft:magma_cube",
+    "netherexp:ecto_slab"
   ]
 }

@@ -1,6 +1,10 @@
 package net.jadenxgamer.netherexp.mixin.item;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
+import net.jadenxgamer.netherexp.registry.item.custom.GrenadeAntidoteItem;
+import net.jadenxgamer.netherexp.registry.item.custom.WillOWispItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
@@ -22,7 +26,16 @@ public abstract class ItemStackMixin {
     )
     private void netherexp$setCustomMaxStackSize(CallbackInfoReturnable<Integer> cir) {
         if (this.getItem() instanceof PotionItem) {
-            cir.setReturnValue(16);
+            cir.setReturnValue(JNEConfigs.POTION_STACK_SIZE.get());
+        }
+        if (this.getItem() instanceof AntidoteItem) {
+            cir.setReturnValue(JNEConfigs.POTION_STACK_SIZE.get());
+        }
+        if (this.getItem() instanceof GrenadeAntidoteItem) {
+            cir.setReturnValue(JNEConfigs.POTION_STACK_SIZE.get());
+        }
+        if (this.getItem() instanceof WillOWispItem) {
+            cir.setReturnValue(JNEConfigs.WILL_O_WISP_STACK_SIZE.get());
         }
     }
 }

@@ -1,5 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.enums.SoulMagmaDamageType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,8 +17,14 @@ public class SoulMagmaBlock extends Block {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        if (entity.isSprinting() && entity instanceof LivingEntity livingEntity && !EnchantmentHelper.hasSoulSpeed(livingEntity)) {
-            livingEntity.hurt(level.damageSources().hotFloor(), 2.0f);
+        if (JNEConfigs.SOUL_MAGMA_DAMAGE_TYPE.get() == SoulMagmaDamageType.SPRINTING) {
+            if (entity.isSprinting() && entity instanceof LivingEntity livingEntity && !EnchantmentHelper.hasSoulSpeed(livingEntity)) {
+                livingEntity.hurt(level.damageSources().hotFloor(), 2.0f);
+            }
+        } else {
+            if (!entity.isShiftKeyDown() && entity instanceof LivingEntity livingEntity && !EnchantmentHelper.hasSoulSpeed(livingEntity)) {
+                livingEntity.hurt(level.damageSources().hotFloor(), 2.0f);
+            }
         }
         super.stepOn(level, pos, state, entity);
     }

@@ -1,5 +1,8 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.enums.EctoSlabEmerging;
+import net.jadenxgamer.netherexp.config.enums.SoulSwirlsBoneMeal;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.EctoSlab;
@@ -12,6 +15,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -25,6 +29,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -49,16 +54,27 @@ implements BonemealableBlock {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!state.getValue(COOLDOWN) && entity instanceof LivingEntity livingEntity && !livingEntity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && !EnchantmentHelper.hasSoulSpeed((livingEntity))) {
             RandomSource random = level.random;
-            livingEntity.addEffect(new MobEffectInstance(JNEMobEffects.UNBOUNDED_SPEED.get(), 200, 0, true, true), entity);
+            livingEntity.addEffect(new MobEffectInstance(JNEMobEffects.UNBOUNDED_SPEED.get(), JNEConfigs.UNBOUNDED_SPEED_DURATION.get() * 20, 0, true, true), entity);
             swirlPopParticles(level, pos);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SWIRLS_BOOST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(pos, state.cycle(COOLDOWN), UPDATE_CLIENTS);
-            level.scheduleTick(pos, this, 1000);
-            if (livingEntity instanceof Player && random.nextInt(livingEntity.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) ? 5 : 40) == 0) {
-                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
-                spawnEctoSlab(level, pos, livingEntity, random);
+            level.scheduleTick(pos, this, JNEConfigs.SOUL_SWIRLS_COOLDOWN.get() * 20);
+            if (livingEntity instanceof Player player && JNEConfigs.ECTO_SLAB_EMERGING_BEHAVIOR.get() != EctoSlabEmerging.NEVER) {
+                checksForSpawningEctoSlab(level, pos, player, random, JNEConfigs.ECTO_SLAB_EMERGING_BEHAVIOR.get());
             }
         }
+    }
+
+    private void checksForSpawningEctoSlab(Level level, BlockPos pos, Player player, RandomSource random, EctoSlabEmerging config) {
+        if (config == EctoSlabEmerging.ALWAYS) {
+            if (random.nextInt(player.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) ? JNEConfigs.ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED.get() : JNEConfigs.ECTO_SLAB_EMERGING_CHANCE.get()) == 0) {
+                spawnEctoSlab(level, pos, player, random);
+            }
+        }
+        else if (player.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) && random.nextInt(JNEConfigs.ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED.get()) == 0) {
+            spawnEctoSlab(level, pos, player, random);
+        }
+        level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     private void spawnEctoSlab(Level level, BlockPos pos, LivingEntity entity, RandomSource random) {
@@ -131,7 +147,7 @@ implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
-        return true;
+        return JNEConfigs.SOUL_SWIRLS_BONE_MEAL_BEHAVIOR.get() != SoulSwirlsBoneMeal.DISABLED;
     }
 
     @Override
@@ -140,7 +156,17 @@ implements BonemealableBlock {
     }
 
     @Override
-    public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        popResource(serverLevel, blockPos, new ItemStack(this));
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        if (JNEConfigs.SOUL_SWIRLS_BONE_MEAL_BEHAVIOR.get() == SoulSwirlsBoneMeal.DROPS) {
+            popResource(level, pos, new ItemStack(this));
+        } else {
+            Direction randomDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+            BlockPos offsetPos = pos.offset(randomDirection.getNormal());
+            BlockState offsetFloorState = level.getBlockState(offsetPos.below());
+            boolean isUpright = state.getValue(FACING) == Direction.UP;
+            if (level.getBlockState(offsetPos).isAir() && offsetFloorState.is(Blocks.SOUL_SOIL) || offsetFloorState.is(Blocks.SOUL_SAND) && isUpright) {
+                level.setBlock(offsetPos, this.defaultBlockState(), UPDATE_CLIENTS);
+            }
+        }
     }
 }

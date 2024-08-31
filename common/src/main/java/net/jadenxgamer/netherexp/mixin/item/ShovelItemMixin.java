@@ -1,5 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.item;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -28,7 +30,7 @@ public abstract class ShovelItemMixin {
         BlockState state = level.getBlockState(useOnContext.getClickedPos());
         BlockState aboveState = level.getBlockState(useOnContext.getClickedPos().above());
         Player player = useOnContext.getPlayer();
-        if (state.is(Blocks.CRIMSON_NYLIUM) && aboveState.isAir()) {
+        if (state.is(Blocks.CRIMSON_NYLIUM) && aboveState.isAir() && JNEConfigs.ENABLE_NYLIUM_PATHS.get()) {
             level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(useOnContext.getClickedPos(), JNEBlocks.CRIMSON_NYLIUM_PATH.get().defaultBlockState(), 2);
             if (!player.isCreative()) {
@@ -36,7 +38,7 @@ public abstract class ShovelItemMixin {
             }
             cir.setReturnValue(InteractionResult.SUCCESS);
         }
-        else if (state.is(Blocks.WARPED_NYLIUM) && aboveState.isAir()) {
+        else if (state.is(Blocks.WARPED_NYLIUM) && aboveState.isAir() && JNEConfigs.ENABLE_NYLIUM_PATHS.get()) {
             level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(useOnContext.getClickedPos(), JNEBlocks.WARPED_NYLIUM_PATH.get().defaultBlockState(), 2);
             if (!player.isCreative()) {
@@ -44,7 +46,7 @@ public abstract class ShovelItemMixin {
             }
             cir.setReturnValue(InteractionResult.SUCCESS);
         }
-        else if (state.is(Blocks.SOUL_SOIL) && aboveState.isAir()) {
+        else if (state.is(Blocks.SOUL_SOIL) && aboveState.isAir() && JNEConfigs.ENABLE_SOUL_PATHS.get()) {
             level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(useOnContext.getClickedPos(), JNEBlocks.SOUL_PATH.get().defaultBlockState(), 2);
             if (!player.isCreative()) {

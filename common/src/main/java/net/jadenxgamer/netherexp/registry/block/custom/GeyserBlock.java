@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -49,7 +50,7 @@ public class GeyserBlock extends Block {
         boolean c = state.getValue(COOLDOWN);
         if (!c) {
             Vec3 vec3 = entity.getDeltaMovement();
-            entity.push(vec3.x,1.2, vec3.z);
+            entity.push(vec3.x,JNEConfigs.GEYSER_PUSH_VELOCITY.get(), vec3.z);
             entity.hurt(level.damageSources().hotFloor(), 1.0f);
             level.playSound(null, pos.getX(),pos.getY(),pos.getZ(), SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
             // TODO Add Configs
@@ -58,7 +59,7 @@ public class GeyserBlock extends Block {
 //                level.scheduleTick(pos, this, NetherExp.getConfig().blocks.geyserConfigs.geyser_cooldown_ticks);
 //            }
             level.setBlock(pos, state.cycle(COOLDOWN), UPDATE_CLIENTS);
-            level.scheduleTick(pos, this, 100);
+            level.scheduleTick(pos, this, JNEConfigs.GEYSER_COOLDOWN.get() * 20);
         }
     }
 

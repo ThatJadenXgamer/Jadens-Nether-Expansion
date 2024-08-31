@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -31,8 +32,10 @@ public class MagmaCreamBlock extends Block {
             if (entity.isOnFire() && entity.mayInteract(level, blockPos)) {
                 entity.makeStuckInBlock(blockState, new Vec3(0.6, 0.5, 0.6));
                 level.playSound(entity, blockPos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                entity.setSharedFlagOnFire(false);
-                entity.setRemainingFireTicks(0);
+                if (JNEConfigs.MAGMA_CREAM_BLOCK_DOUSES_FIRE.get()) {
+                    entity.setSharedFlagOnFire(false);
+                    entity.setRemainingFireTicks(0);
+                }
             }
             if (level.isClientSide) {
                 boolean bl = entity.xOld != entity.getX() || entity.zOld != entity.getZ();

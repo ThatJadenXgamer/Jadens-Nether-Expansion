@@ -5,6 +5,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -66,6 +67,8 @@ public class Carcass extends PathfinderMob {
             }
             else if (!this.getIsReanimated() && !this.reanimationFlag && deactivationAnimationTimer == 25) {
                 deactivateAnimationState.startIfStopped(this.tickCount);
+                idleAnimationState.stop();
+                moveAnimationState.stop();
             }
         }
     }
@@ -153,10 +156,6 @@ public class Carcass extends PathfinderMob {
     }
 
     private void deactivateCarcass() {
-        if (this.deactivationAnimationTimer == 25) {
-            idleAnimationState.stop();
-            moveAnimationState.stop();
-        }
         if (this.deactivationAnimationTimer > 0) {
             --this.deactivationAnimationTimer;
         }

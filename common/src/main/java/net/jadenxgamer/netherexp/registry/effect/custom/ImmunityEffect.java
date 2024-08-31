@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.effect.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -19,11 +20,11 @@ public class ImmunityEffect extends MobEffect {
         super.applyEffectTick(entity, i);
         if (entity.hasEffect(this.mobEffect)) {
             int duration = entity.getEffect(this).getDuration();
-            int amplifier = entity.getEffect(this.mobEffect).getAmplifier() + 1;
+            int amplifier = JNEConfigs.AMPLIFIER_IMMUNITY_REDUCTION.get() ? 0 : entity.getEffect(this.mobEffect).getAmplifier();
             entity.playSound(JNESoundEvents.ANTIDOTE_NEGATE.get(), 1, 1);
             entity.removeEffect(mobEffect);
             entity.removeEffect(this);
-            entity.addEffect(new MobEffectInstance(this, (duration - 600 * amplifier), 0));
+            entity.addEffect(new MobEffectInstance(this, (duration - (600 * amplifier)), 0));
         }
     }
 
