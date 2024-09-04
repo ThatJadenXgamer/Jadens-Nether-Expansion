@@ -25,6 +25,7 @@ public abstract class ItemStackMixin {
             cancellable = true
     )
     private void netherexp$setCustomMaxStackSize(CallbackInfoReturnable<Integer> cir) {
+        // changes the stack size of vanilla and some of our modded items to dynamically change stack sizes with configs
         if (this.getItem() instanceof PotionItem) {
             cir.setReturnValue(JNEConfigs.POTION_STACK_SIZE.get());
         }

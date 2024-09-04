@@ -1170,6 +1170,24 @@
       "netherexp:mob/banshee/teleport2"
     ]
   },
+  "entity.ecto_slab.jump": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/jump1",
+      "netherexp:mob/ecto_slab/jump2",
+      "netherexp:mob/ecto_slab/jump3",
+      "netherexp:mob/ecto_slab/jump4"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.squish"
+  },
+  "entity.ecto_slab.squish": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/big1",
+      "netherexp:mob/ecto_slab/big2",
+      "netherexp:mob/ecto_slab/big3",
+      "netherexp:mob/ecto_slab/big4"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.squish"
+  },
   "entity.player.hurt_igneous_thorns": {
     "subtitle": "subtitles.entity.player.hurt",
     "sounds": [

@@ -545,8 +545,6 @@ public class JNEBlocks {
             new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)), "cinderscapes");
 
     // GARDENS OF THE DEAD COMPATIBILITY
-    public static final RegistrySupplier<Block> YELLOW_SCALE_FUNGUS = registerCompatBlock("yellow_scale_fungus", () ->
-            new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)), "gardens_of_the_dead");
 
     public static final RegistrySupplier<Block> CRIMSON_SPROUTS = registerBlock("crimson_sprouts", () ->
             new NetherSproutsBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_SPROUTS)));

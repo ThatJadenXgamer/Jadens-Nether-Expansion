@@ -24,6 +24,10 @@ public abstract class AxeItemMixin {
             cancellable = true
     )
     private void netherexp$useOn(UseOnContext useOnContext, CallbackInfoReturnable<InteractionResult> cir) {
+        /* Because of forge's sheer stupidity, right click functionality like stripping need to be done though the block class
+         * and obviously will not do because we're on multiloader and will cause issues on fabric
+         * thus why this mixin exists
+        */
         Level level = useOnContext.getLevel();
         BlockState state = level.getBlockState(useOnContext.getClickedPos());
         Player player = useOnContext.getPlayer();

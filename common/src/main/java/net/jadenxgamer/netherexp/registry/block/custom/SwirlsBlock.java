@@ -74,7 +74,6 @@ implements BonemealableBlock {
         else if (player.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) && random.nextInt(JNEConfigs.ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED.get()) == 0) {
             spawnEctoSlab(level, pos, player, random);
         }
-        level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     private void spawnEctoSlab(Level level, BlockPos pos, LivingEntity entity, RandomSource random) {
@@ -86,6 +85,7 @@ implements BonemealableBlock {
             ectoSlab.setTarget(entity);
             ectoSlab.setPos(pos.getX(), pos.getY(), pos.getZ());
             level.addFreshEntity(ectoSlab);
+            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }
 

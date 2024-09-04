@@ -36,6 +36,10 @@ public abstract class PlayerMixin {
             at = @At(value = "HEAD")
     )
     private void netherexp$killedEntity(ServerLevel level, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
+        /* Players which kill an entity with the bloodshed enchantment will make the entity splatter into healing blood projectiles
+         * the amount of blood which spawns from it is calculated by the entity's hitbox size and generally checks if it bleeds
+         * the amount of health each blood heals is dependent on the enchantment level
+        */
         Player player = ((Player) (Object) this);
         ItemStack stack = player.getMainHandItem();
         int bloodshed = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BLOODSHED.get(), stack);

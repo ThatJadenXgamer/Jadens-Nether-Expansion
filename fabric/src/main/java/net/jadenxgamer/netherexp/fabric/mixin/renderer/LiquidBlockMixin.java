@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.mixin.block;
+package net.jadenxgamer.netherexp.fabric.mixin.renderer;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;

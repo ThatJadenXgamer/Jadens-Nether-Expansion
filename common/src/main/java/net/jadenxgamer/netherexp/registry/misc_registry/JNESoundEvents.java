@@ -173,6 +173,9 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> ENTITY_SHOTGUN_GUY_DEATH = registerSoundEvents("entity.shotgun_guy.death");
     public static RegistrySupplier<SoundEvent> ENTITY_SHOTGUN_GUY_FIRE = registerSoundEvents("entity.shotgun_guy.fire");
 
+    public static RegistrySupplier<SoundEvent> ENTITY_ECTO_SLAB_JUMP = registerSoundEvents("entity.ecto_slab.jump");
+    public static RegistrySupplier<SoundEvent> ENTITY_ECTO_SLAB_SQUISH = registerSoundEvents("entity.ecto_slab.squish");
+
     public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_TELEPORT = registerSoundEvents("entity.banshee.teleport");
 
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvents("entity.player.hurt_igneous_thorns");

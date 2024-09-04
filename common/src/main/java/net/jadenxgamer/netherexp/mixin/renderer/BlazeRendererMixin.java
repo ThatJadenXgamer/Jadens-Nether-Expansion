@@ -16,6 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BlazeRenderer.class)
 public abstract class BlazeRendererMixin {
 
+    // Makes it so blazes get visually dimmer with lower health
+
     @Unique
     private static final ResourceLocation netherexp$LIT = new ResourceLocation(NetherExp.MOD_ID, "textures/entity/blaze/lit.png");
     @Unique

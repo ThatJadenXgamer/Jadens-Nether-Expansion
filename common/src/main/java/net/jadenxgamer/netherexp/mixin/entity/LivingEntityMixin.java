@@ -59,6 +59,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             cancellable = true
     )
     private void netherexp$soulSpeedVelocityMultiplier(CallbackInfoReturnable<Float> cir) {
+        // deals with unbounded speed mechanics by overriding the speed factor for certain blocks with conditions
         BlockState state = this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement());
         LivingEntity entity = ((LivingEntity) (Object) this);
         if (state.is(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS) && this.hasEffect(JNEMobEffects.UNBOUNDED_SPEED.get()) || entity.getType().is(JNETags.EntityTypes.IGNORES_SOUL_SAND_SLOWNESS) && !EnchantmentHelper.hasSoulSpeed(entity)) {
@@ -74,6 +75,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V")
     )
     private int netherexp$addSoulSpeedQOL(int amount) {
+        // removes the stupid soul speed durability if enabled in configs
         return JNEConfigs.REMOVE_SOUL_SPEED_DURABILITY_PENALTY.get() ? 0 : amount;
     }
 
@@ -83,6 +85,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             cancellable = true
     )
     private void netherexp$antidoteParticles(CallbackInfo cir) {
+        // changes the normal effect particles with unique antidote ones if you have an immunity effect
         for (MobEffect effect : this.getActiveEffectsMap().keySet()) {
             if (effect instanceof ImmunityEffect) {
                 int i = this.entityData.get(DATA_EFFECT_COLOR_ID);
@@ -107,24 +110,10 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             cancellable = true
     )
     private void netherexp$preventArmorDamage(DamageSource damageSource, float f, CallbackInfoReturnable<Float> cir) {
+        // makes it so some damage types do not take away armor durability since shotguns are absolutely BUSTED otherwise
         if (damageSource.is(JNETags.DamageTypes.CANT_DAMAGE_ARMOR)) {
             f = CombatRules.getDamageAfterAbsorb(f, ((LivingEntity) (Object) this).getArmorValue(), (float) ((LivingEntity) (Object) this).getAttributeValue(Attributes.ARMOR_TOUGHNESS));
             cir.setReturnValue(f);
-        }
-    }
-
-    @Inject(
-            method = "aiStep",
-            at = @At(value = "TAIL")
-    )
-    private void netherexp$aiStep(CallbackInfo cir) {
-        if (!this.level().isClientSide() && !this.isDeadOrDying()) {
-            int ticksFrozen = this.getTicksFrozen();
-            if (this.level().getFluidState(this.blockPosition()).getType() == JNEFluids.ECTOPLASM.get()) {
-                this.setTicksFrozen(Math.min(this.getTicksRequiredToFreeze(), ticksFrozen + 1));
-            } else {
-                this.setTicksFrozen(Math.max(0, ticksFrozen - 2));
-            }
         }
     }
 
@@ -133,6 +122,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V")
     )
     private ParticleOptions netherexp$handleEntityEvent(ParticleOptions particle) {
+        // for whatever reason the teleport particles are hardcoded (yippie!!!) and need to be mixed into change. thanks mojang
         if (((LivingEntity) (Object) this) instanceof Banshee) {
             return ParticleTypes.SOUL;
         }

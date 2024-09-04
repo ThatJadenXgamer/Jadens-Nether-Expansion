@@ -20,14 +20,13 @@ public abstract class ZombifiedPiglinMixin extends Zombie {
     public ZombifiedPiglinMixin(EntityType<? extends Zombie> entityType, Level level) {
         super(entityType, level);
     }
-
-    // Prevents Zombified Piglins from spawning on these Blocks
     @Inject(
             method = "checkZombifiedPiglinSpawnRules",
             at = @At(value = "HEAD"),
             cancellable = true
     )
     private static void netherexp$changeCanSpawn(EntityType<Hoglin> entityType, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource, CallbackInfoReturnable<Boolean> cir) {
+        // Prevents Zombified Piglins from spawning on these Blocks
         if (levelAccessor.getBlockState(blockPos.below()).is(JNETags.Blocks.ZOMBIFIED_PIGLIN_CANNOT_SPAWN_ON)) {
             cir.setReturnValue(false);
         }

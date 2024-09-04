@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
@@ -41,13 +42,9 @@ public abstract class TwistingVinesMixin extends GrowingPlantHeadBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        float r = random.nextInt(50);
-        boolean b = state.getValue(BUDDING);
-        //TODO Add Configs
-//        if (NetherExp.getConfig().blocks.renewableConfigs.glowspores_from_vines && r == 0 && b) {
-//            level.setBlockState(pos, state.cycle(BUDDING), NOTIFY_LISTENERS);
-//        }
-        if (r == 0 && b) {
+        float chance = random.nextInt(50);
+        boolean budding = state.getValue(BUDDING);
+        if (chance == 0 && budding && JNEConfigs.SHOULD_NETHER_VINES_GROW_SPORES.get()) {
             level.setBlock(pos, state.cycle(BUDDING), UPDATE_CLIENTS);
         }
         super.randomTick(state, level, pos, random);

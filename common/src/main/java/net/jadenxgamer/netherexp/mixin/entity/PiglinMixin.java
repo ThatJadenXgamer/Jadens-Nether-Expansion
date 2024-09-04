@@ -25,13 +25,13 @@ implements CrossbowAttackMob, InventoryCarrier {
         super(entityType, level);
     }
 
-    // Prevents Piglins from spawning on these Blocks
     @Inject(
             method = "checkPiglinSpawnRules",
             at = @At(value = "HEAD"),
             cancellable = true
     )
     private static void netherexp$changeCanSpawn(EntityType<Hoglin> entityType, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource, CallbackInfoReturnable<Boolean> cir) {
+        // Prevents Piglins from spawning on these Blocks
         if (levelAccessor.getBlockState(blockPos.below()).is(JNETags.Blocks.PIGLIN_CANNOT_SPAWN_ON)) {
             cir.setReturnValue(false);
         }

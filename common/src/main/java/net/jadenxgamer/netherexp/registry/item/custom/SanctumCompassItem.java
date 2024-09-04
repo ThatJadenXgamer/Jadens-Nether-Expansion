@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.item.custom;
 
 import com.mojang.serialization.DataResult;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.ChatFormatting;
@@ -14,6 +15,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -94,6 +96,7 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
                         this.useWraithingFlesh(stack, player);
                         nbt.putInt("CustomModelData", 1);
                         nbt.putBoolean(IS_ACTIVE, true);
+                        JNECriteriaTriggers.ACTIVATE_SANCTUM_COMPASS.trigger((ServerPlayer) player);
                         return InteractionResultHolder.success(stack);
                     }
                 } else {

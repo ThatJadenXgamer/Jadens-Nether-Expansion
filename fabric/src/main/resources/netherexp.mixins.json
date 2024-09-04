@@ -6,6 +6,7 @@
   "client": [
   ],
   "mixins": [
+    "renderer.LiquidBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

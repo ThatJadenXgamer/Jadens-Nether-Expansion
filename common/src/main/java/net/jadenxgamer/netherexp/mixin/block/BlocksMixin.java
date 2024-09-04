@@ -15,30 +15,13 @@ import org.spongepowered.asm.mixin.injection.Slice;
 @Mixin(Blocks.class)
 public class BlocksMixin {
 
-    //TODO: implement Ashy Basalt textures
-//    @Redirect(
-//            method = "<clinit>",
-//            at = @At(value = "NEW", target = "net/minecraft/world/level/block/RotatedPillarBlock",
-//                    ordinal = 0
-//            ),
-//            slice = @Slice(
-//                    from = @At(
-//                            value = "CONSTANT",
-//                            args = "stringValue=basalt"
-//                    )
-//            )
-//    )
-//    private static RotatedPillarBlock netherexp$basalt(BlockBehaviour.Properties settings) {
-//        return new BasaltBlock(settings);
-//    }
-
     @Redirect(
             method = "<clinit>",
             at = @At(value = "NEW", target = "net/minecraft/world/level/block/RotatedPillarBlock", ordinal = 0),
             slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=bone_block"))
     )
-    private static RotatedPillarBlock netherexp$bone_block(BlockBehaviour.Properties settings) {
-        return new BoneBlock(settings);
+    private static RotatedPillarBlock netherexp$bone_block(BlockBehaviour.Properties properties) {
+        return new BoneBlock(properties);
     }
 
     @Redirect(
@@ -46,15 +29,15 @@ public class BlocksMixin {
             at = @At(value = "NEW", target = "net/minecraft/world/level/block/Block", ordinal = 0),
             slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=nether_wart_block"))
     )
-    private static Block netherexp$netherWartBlock(BlockBehaviour.Properties settings) {
-        return new SpottedWartBlock(settings, 1);
+    private static Block netherexp$netherWartBlock(BlockBehaviour.Properties properties) {
+        return new SpottedWartBlock(properties, 1);
     }
 
     @Redirect(
             method = "<clinit>",
             at = @At(value = "NEW", target = "net/minecraft/world/level/block/Block", ordinal = 0), slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=warped_wart_block"))
     )
-    private static Block netherexp$warpedWartBlock(BlockBehaviour.Properties settings) {
-        return new SpottedWartBlock(settings, 2);
+    private static Block netherexp$warpedWartBlock(BlockBehaviour.Properties properties) {
+        return new SpottedWartBlock(properties, 2);
     }
 }

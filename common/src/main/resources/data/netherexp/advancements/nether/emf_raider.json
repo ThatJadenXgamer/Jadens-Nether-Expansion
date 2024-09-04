@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:sanctum_compass"
+    },
+    "title": {
+      "translate": "advancements.nether.emf_raider.title"
+    },
+    "description": {
+      "translate": "advancements.nether.emf_raider.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley",
+  "criteria": {
+    "has_item": {
+      "trigger": "netherexp:activate_sanctum_compass"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

@@ -17,6 +17,7 @@ public abstract class BrewingStandBlockEntityMixin {
             cancellable = true
     )
     private void netherexp$setCustomValid(int slot, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        // this makes it so antidotes are accepted in the brewing stand ui
         if (slot < 3 && stack.is(JNEItems.ANTIDOTE.get())) {
             cir.setReturnValue(true);
         }

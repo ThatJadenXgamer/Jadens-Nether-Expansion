@@ -7,8 +7,21 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "name": "minecraft:chainmail_boots",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:soul_speed": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:bone",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -21,8 +34,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
           "name": "netherexp:fossil_fuel",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -35,8 +48,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
           "name": "netherexp:wraithing_flesh",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -49,8 +62,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 5,
           "name": "netherexp:stridite",
+          "weight": 5,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -63,8 +76,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 8,
           "name": "minecraft:quartz",
+          "weight": 8,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -77,8 +90,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
           "name": "minecraft:gold_nugget",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -91,8 +104,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 8,
           "name": "minecraft:gunpowder",
+          "weight": 8,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -105,13 +118,13 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 1,
-          "name": "minecraft:skeleton_skull"
+          "name": "minecraft:skeleton_skull",
+          "weight": 1
         },
         {
           "type": "minecraft:item",
-          "weight": 8,
           "name": "minecraft:arrow",
+          "weight": 8,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -124,8 +137,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 1,
-          "name": "netherexp:spirit_armor_trim_smithing_template"
+          "name": "netherexp:spirit_armor_trim_smithing_template",
+          "weight": 1
         }
       ]
     }

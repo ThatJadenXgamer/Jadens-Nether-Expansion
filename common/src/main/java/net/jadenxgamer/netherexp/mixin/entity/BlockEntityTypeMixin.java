@@ -18,11 +18,11 @@ public class BlockEntityTypeMixin {
             at = @At("HEAD"),
             cancellable = true
     )
-    private void isValid(BlockState blockState, CallbackInfoReturnable<Boolean> cir) {
-        if(BlockEntityType.SIGN.equals(this) && (blockState.getBlock() instanceof SignBlock || blockState.getBlock() instanceof WallSignBlock)) {
+    private void isValid(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+        if(BlockEntityType.SIGN.equals(this) && (state.getBlock() instanceof SignBlock || state.getBlock() instanceof WallSignBlock)) {
             cir.setReturnValue(true);
         }
-        if(BlockEntityType.HANGING_SIGN.equals(this) && (blockState.getBlock() instanceof CeilingHangingSignBlock || blockState.getBlock() instanceof WallHangingSignBlock)) {
+        if(BlockEntityType.HANGING_SIGN.equals(this) && (state.getBlock() instanceof CeilingHangingSignBlock || state.getBlock() instanceof WallHangingSignBlock)) {
             cir.setReturnValue(true);
         }
     }

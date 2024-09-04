@@ -27,8 +27,8 @@ public abstract class ProjectileMixin {
             cancellable = true
     )
     private void netherexp$entityCollisionCheck(HitResult hitResult, CallbackInfo ci) {
-        EntityHitResult entityHitResult = (EntityHitResult) hitResult;
-        Entity entity = entityHitResult.getEntity();
+        // makes it so entities with phantasm hull or a specific tag are immune to all projectiles because it'll phase through it
+        Entity entity = ((EntityHitResult) hitResult).getEntity();
         Level level = entity.level();
         if (entity.getType().is(JNETags.EntityTypes.PROJECTILES_PASS_THROUGH) && ((Projectile) (Object) this).getType().is(JNETags.EntityTypes.PHANTASM_HULL_PROTECTS_AGAINST)) {
             level.addParticle(ParticleTypes.SOUL, entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f);

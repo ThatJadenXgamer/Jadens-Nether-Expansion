@@ -7,8 +7,10 @@ import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.forge.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.forge.worldgen.SpawnCostsBiomeModifier;
+import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotionRecipe;
 import net.minecraft.SharedConstants;
 import net.minecraft.network.chat.Component;
@@ -21,17 +23,20 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidInteractionRegistry;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forgespi.language.IModFileInfo;
 import net.minecraftforge.registries.DeferredRegister;
@@ -50,13 +55,18 @@ public class NetherExpForge {
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpForgeClient::init);
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        JNELootModifiers.register(eventBus);
+
+        // Forge-specific Registries
+        JNELootModifiers.init(eventBus);
         final DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
         BIOME_MODIFIER_SERIALIZERS.register(eventBus);
         BIOME_MODIFIER_SERIALIZERS.register("spawn_costs", SpawnCostsBiomeModifier::createCodec);
+
+        // Events
         eventBus.addListener(NetherExpForge::commonSetup);
         eventBus.addListener(NetherExpForge::registerAttributes);
         eventBus.addListener(NetherExpForge::registerSpawnPlacements);
+        eventBus.addListener(NetherExpForge::loadComplete);
         eventBus.addListener(NetherExpForge::addBuiltinPacks);
     }
 
@@ -81,6 +91,14 @@ public class NetherExpForge {
                 Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(JNEEntityType.BANSHEE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    }
+
+    public static void loadComplete(FMLLoadCompleteEvent event) {
+        event.enqueueWork(NetherExpForge::registerFluidInteractions);
+    }
+
+    private static void registerFluidInteractions() {
+        FluidInteractionRegistry.addInteraction(JNEFluids.ECTOPLASM.get().getFluidType(), new FluidInteractionRegistry.InteractionInformation(ForgeMod.WATER_TYPE.get(), fluidState -> JNEBlocks.BLACK_ICE.get().defaultBlockState()));
     }
 
     private static void addBuiltinPacks(AddPackFindersEvent event) {

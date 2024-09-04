@@ -285,12 +285,12 @@ public class EctoSlab extends Slime {
 
     @Override
     protected @NotNull SoundEvent getSquishSound() {
-        return this.isTiny() ? SoundEvents.MAGMA_CUBE_SQUISH_SMALL : SoundEvents.MAGMA_CUBE_SQUISH;
+        return this.isTiny() ? SoundEvents.MAGMA_CUBE_SQUISH_SMALL : JNESoundEvents.ENTITY_ECTO_SLAB_SQUISH.get();
     }
 
     @Override
     protected @NotNull SoundEvent getJumpSound() {
-        return SoundEvents.MAGMA_CUBE_JUMP;
+        return JNESoundEvents.ENTITY_ECTO_SLAB_JUMP.get();
     }
 
     float getSoundPitch() {

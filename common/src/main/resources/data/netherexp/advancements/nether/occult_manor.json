@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/soul_sand_valley",
+  "parent": "netherexp:nether/emf_raider",
   "criteria": {
     "structure": {
       "trigger": "minecraft:location",

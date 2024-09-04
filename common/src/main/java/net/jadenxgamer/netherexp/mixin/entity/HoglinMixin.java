@@ -23,13 +23,13 @@ implements Enemy, HoglinBase {
         super(entityType, level);
     }
 
-    // Prevents Hoglins from spawning on these Blocks
     @Inject(
             method = "checkHoglinSpawnRules",
             at = @At(value = "HEAD"),
             cancellable = true
     )
     private static void netherexp$changeCanSpawn(EntityType<Hoglin> entityType, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource, CallbackInfoReturnable<Boolean> cir) {
+        // Prevents Hoglins from spawning on these Blocks
         if (levelAccessor.getBlockState(blockPos.below()).is(JNETags.Blocks.HOGLIN_CANNOT_SPAWN_ON)) {
             cir.setReturnValue(false);
         }

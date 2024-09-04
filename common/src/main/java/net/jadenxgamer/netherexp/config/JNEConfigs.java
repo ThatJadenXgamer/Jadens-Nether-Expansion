@@ -1,15 +1,13 @@
 package net.jadenxgamer.netherexp.config;
 
-import net.jadenxgamer.netherexp.config.enums.EctoSlabEmerging;
-import net.jadenxgamer.netherexp.config.enums.NetherFogDistance;
-import net.jadenxgamer.netherexp.config.enums.SoulMagmaDamageType;
-import net.jadenxgamer.netherexp.config.enums.SoulSwirlsBoneMeal;
+import net.jadenxgamer.netherexp.config.enums.*;
 
 import java.util.function.Supplier;
 
 public class JNEConfigs {
     // Blocks
     public static Supplier<Boolean> ENABLE_NYLIUM_PATHS = () -> true;
+    public static Supplier<Boolean> SHOULD_NETHER_VINES_GROW_SPORES = () -> true;
     public static Supplier<Boolean> ENABLE_SOUL_PATHS = () -> true;
     public static Supplier<Boolean> RENEWABLE_FOSSIL_FUEL = () -> true;
     public static Supplier<Integer> GEYSER_COOLDOWN = () -> 5;
@@ -28,6 +26,15 @@ public class JNEConfigs {
     // Items
     public static Supplier<Integer> WILL_O_WISP_STACK_SIZE = () -> 16;
     public static Supplier<Integer> POTION_STACK_SIZE = () -> 16;
+    public static Supplier<Boolean> ENABLE_GOLD_TWEAKS = () -> true;
+    public static Supplier<Integer> GOLD_TOOLS_DURABILITY = () -> 96;
+    public static Supplier<Float> GOLD_TOOLS_SPEED = () -> 16.0f;
+    public static Supplier<GoldMiningTier> GOLD_TOOLS_MINING_TIER = () -> GoldMiningTier.VANILLA;
+    public static Supplier<Integer> GOLD_ARMOR_DURABILITY = () -> 7;
+    public static Supplier<Integer> GOLD_BOOTS_PROTECTION = () -> 1;
+    public static Supplier<Integer> GOLD_LEGGINGS_PROTECTION = () -> 3;
+    public static Supplier<Integer> GOLD_CHESTPLATE_PROTECTION = () -> 5;
+    public static Supplier<Integer> GOLD_HELMET_PROTECTION = () -> 2;
 
     // Entities
     public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;

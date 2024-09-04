@@ -25,18 +25,18 @@ public abstract class StemBlockMixin extends BushBlock {
             at = @At(value = "HEAD"),
             cancellable = true
     )
-    private void netherexp$canPlantOnSoul(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
-        if (this == Blocks.PUMPKIN_STEM && blockState.is(JNETags.Blocks.SOUL_SAND_BLOCKS)) {
+    private void netherexp$canPlantOnSoul(BlockState state, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+        if (this == Blocks.PUMPKIN_STEM && state.is(JNETags.Blocks.SOUL_SAND_BLOCKS)) {
             cir.setReturnValue(true);
         }
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState oldState, boolean notify) {
-        BlockState floor = level.getBlockState(blockPos.below());
-        if (floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS) && blockState.is(Blocks.PUMPKIN_STEM)) {
-            level.setBlock(blockPos, JNEBlocks.SORROWSQUASH_STEM.get().defaultBlockState(), UPDATE_ALL);
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean notify) {
+        BlockState floor = level.getBlockState(pos.below());
+        if (floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS) && state.is(Blocks.PUMPKIN_STEM)) {
+            level.setBlock(pos, JNEBlocks.SORROWSQUASH_STEM.get().defaultBlockState(), UPDATE_ALL);
         }
     }
 }

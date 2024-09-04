@@ -19,6 +19,7 @@ public class BlockItemMixin {
             cancellable = true
     )
     private void preventPlacementWithBetrayed(BlockPlaceContext blockPlaceContext, CallbackInfoReturnable<BlockState> cir) {
+        // prevents block placement for players with Betrayed Effect
         Player player = blockPlaceContext.getPlayer();
         if (player != null && player.hasEffect(JNEMobEffects.BETRAYED.get())) {
             cir.setReturnValue(null);

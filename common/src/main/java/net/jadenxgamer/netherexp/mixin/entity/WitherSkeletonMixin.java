@@ -21,13 +21,13 @@ public abstract class WitherSkeletonMixin extends AbstractSkeleton {
     }
 
     @Override
-    protected void createWitherRose(@Nullable LivingEntity adversary) {
+    protected void createWitherRose(@Nullable LivingEntity other) {
         BlockState floor = this.getBlockStateOn();
         BlockPos floorPos = this.blockPosition().below();
         if (floor.is(JNETags.Blocks.FOSSIL_ORE_CONVERTIBLE) && JNEConfigs.WITHER_SKELETON_FOSSILIZATION.get()) {
             level().setBlock(floorPos, JNEBlocks.FOSSIL_FUEL_ORE.get().defaultBlockState(), 2);
         }
-        super.createWitherRose(adversary);
+        super.createWitherRose(other);
     }
 }
 

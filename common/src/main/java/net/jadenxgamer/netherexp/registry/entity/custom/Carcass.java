@@ -1,11 +1,11 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -91,12 +91,21 @@ public class Carcass extends PathfinderMob {
         this.goalSelector.addGoal(7, new CarcassLookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(7, new CarcassRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(8, new CarcassRandomLookAroundGoal(this));
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Mob.class, 5, false, false, (livingEntity) -> livingEntity instanceof Enemy && !(livingEntity instanceof Creeper)));
     }
 
     @Override
     public boolean isDeadOrDying() {
+        return false;
+    }
+
+    @Override
+    public boolean requiresCustomPersistence() {
+        return true;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double d) {
         return false;
     }
 
@@ -164,6 +173,8 @@ public class Carcass extends PathfinderMob {
             this.setHealth(this.getMaxHealth());
             this.setReanimationCooldown(36000);
             this.deactivationAnimationTimer = 25;
+            idleAnimationState.stop();
+            moveAnimationState.stop();
         }
     }
 
@@ -171,8 +182,11 @@ public class Carcass extends PathfinderMob {
     protected @NotNull InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (stack.is(Items.FLINT_AND_STEEL) && !this.getIsReanimated()) {
-            this.level().playSound(null, this.getX(), this.getY(), this.getX(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0f, 1.0f);
+            this.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0f, 1.0f);
             this.reanimationFlag = true;
+            if (player instanceof ServerPlayer serverPlayer) {
+                JNECriteriaTriggers.REVIVE_CARCASS.trigger(serverPlayer);
+            }
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;

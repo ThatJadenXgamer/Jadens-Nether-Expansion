@@ -19,6 +19,7 @@ public class EnchantmentMixin {
             cancellable = true
     )
     private void canEnchant(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        // makes it so some vanilla enchantments accept modded items like the shotgun
         if (((Enchantment) (Object) this) instanceof QuickChargeEnchantment) {
             if (stack.is(JNETags.Items.SHOTGUNS)) {
                 cir.setReturnValue(true);

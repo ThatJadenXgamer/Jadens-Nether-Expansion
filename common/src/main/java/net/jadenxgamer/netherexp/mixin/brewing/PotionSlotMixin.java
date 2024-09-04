@@ -17,6 +17,8 @@ public class PotionSlotMixin {
             cancellable = true
     )
     private static void netherexp$changeMatches(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        // also makes sure antidotes are accepted in the brewing stand ui
+        // cuz for some reason the menu also has a check as well as the block entity???
         if (stack.is(JNEItems.ANTIDOTE.get())) {
             cir.setReturnValue(true);
         }

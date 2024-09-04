@@ -17,8 +17,8 @@ public class RootsBlockMixin {
             at = @At(value = "TAIL"),
             cancellable = true
     )
-    private void netherexp$changeCanPlantOnTop(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
-        if (blockState.is(JNETags.Blocks.ROOTS_PLANTABLE_ON)) {
+    private void netherexp$changeCanPlantOnTop(BlockState state, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+        if (state.is(JNETags.Blocks.ROOTS_PLANTABLE_ON)) {
             cir.setReturnValue(true);
         }
     }

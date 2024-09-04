@@ -1,9 +1,6 @@
 package net.jadenxgamer.netherexp.config;
 
-import net.jadenxgamer.netherexp.config.enums.EctoSlabEmerging;
-import net.jadenxgamer.netherexp.config.enums.NetherFogDistance;
-import net.jadenxgamer.netherexp.config.enums.SoulMagmaDamageType;
-import net.jadenxgamer.netherexp.config.enums.SoulSwirlsBoneMeal;
+import net.jadenxgamer.netherexp.config.enums.*;
 import net.minecraftforge.common.ForgeConfigSpec;
 import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
 
@@ -11,6 +8,9 @@ public class JNEForgeConfigs {
     public static ForgeConfigSpec COMMON;
 
     private static void registerBlockConfigs(ForgeConfigSpec.Builder BUILDER) {
+        SHOULD_NETHER_VINES_GROW_SPORES = BUILDER
+                .comment("Nether vines have a random chance to grow their biomes' respective spores if they haven't reached maturity")
+                .define("should_nether_vines_grow_spores", true);
         ENABLE_NYLIUM_PATHS = BUILDER
                 .comment("Nylium can be flattened with a shovel to make Nylium Paths")
                 .define("enable_nylium_paths", true);
@@ -65,6 +65,33 @@ public class JNEForgeConfigs {
         WILL_O_WISP_STACK_SIZE = BUILDER
                 .comment("Defines the stack size for Will O' Wisps")
                 .defineInRange("will_o_wisp_stack_size", 16, 1, 64);
+        ENABLE_GOLD_TWEAKS = BUILDER
+                .comment("Enables the gold related configs below, turn it off in case you run into mod compatibility issues")
+                .define("enable_gold_tweaks", true);
+        GOLD_TOOLS_DURABILITY = BUILDER
+                .comment("Lets you change Golden Tools Durability \nif you want the vanilla value back, set to \"32\"")
+                .define("gold_tools_durability", 96);
+        GOLD_TOOLS_SPEED = BUILDER
+                .comment("Lets you change Golden Tools Speed \nif you want the vanilla value back, set to \"12.0\"")
+                .define("gold_tools_speed", 16.0f);
+        GOLD_TOOLS_MINING_TIER = BUILDER
+                .comment("Lets you change the Mining Tier of Golden Tools \nVANILLA - behaves like wooden tools \nSTONE_LIKE - lets you break blocks stone tools can break \nIRON_LIKE - lets you break blocks iron tools can break \nDIAMOND_LIKE - lets you break blocks diamond tools can break \n ")
+                .defineEnum("gold_tools_mining_tier", GoldMiningTier.VANILLA);
+        GOLD_ARMOR_DURABILITY = BUILDER
+                .comment("Lets you change Golden Armor Durability Multiplier")
+                .define("gold_armor_durability", 7);
+        GOLD_BOOTS_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Boots give when worn")
+                .define("gold_boots_protection", 1);
+        GOLD_LEGGINGS_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Leggings give when worn")
+                .define("gold_leggings_protection", 3);
+        GOLD_CHESTPLATE_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Chestplate give when worn")
+                .define("gold_chestplate_protection", 5);
+        GOLD_HELMET_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Helmet give when worn")
+                .define("gold_helmet_protection", 2);
     }
 
     private static void registerEntityConfigs(ForgeConfigSpec.Builder BUILDER) {

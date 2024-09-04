@@ -25,6 +25,7 @@ public abstract class BlockMixin extends BlockBehaviour {
             cancellable = true
     )
     private void netherexp$changeSoundGroup(BlockState blockState, CallbackInfoReturnable<SoundType> cir) {
+        // adds unique sounds to vanilla blocks if the specific configs are turned on
         if (blockState.is(JNETags.Blocks.SOUNDS_BLACKSTONE) && JNEConfigs.BLACKSTONE_SOUNDS.get()) {
             cir.setReturnValue(JNESoundType.BLACKSTONE);
         }

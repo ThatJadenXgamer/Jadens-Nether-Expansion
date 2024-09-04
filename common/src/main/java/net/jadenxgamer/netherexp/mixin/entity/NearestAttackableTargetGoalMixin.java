@@ -29,6 +29,7 @@ public abstract class NearestAttackableTargetGoalMixin extends TargetGoal {
             cancellable = true
     )
     private void netherexp$canUse(CallbackInfoReturnable<Boolean> cir) {
+        // makes it so mobs do not target entities with the betrayed effect and instead focus on the candle
         if (!mob.getType().is(JNETags.EntityTypes.TARGETS_REGARDLESS_OF_BETRAYED) && this.target != null && this.target.hasEffect(JNEMobEffects.BETRAYED.get())) {
             cir.setReturnValue(false);
         }
