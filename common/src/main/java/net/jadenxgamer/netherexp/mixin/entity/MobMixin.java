@@ -2,7 +2,6 @@ package net.jadenxgamer.netherexp.mixin.entity;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.registry.entity.ai.AttackTreacherousCandleGoal;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.nbt.CompoundTag;
@@ -34,7 +33,7 @@ public abstract class MobMixin {
     )
     private void netherexp$finalizeAttackTreacherousCandle(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag, CallbackInfoReturnable<SpawnGroupData> cir) {
         // all mobs spawned in will be given this special target goal to go break treacherous candles assuming they care about it
-        if (((Mob) (Object) this) instanceof PathfinderMob pathfinderMob && pathfinderMob.getType().is(JNETags.EntityTypes.IGNORES_TREACHEROUS_CANDLE)) {
+        if (((Mob) (Object) this) instanceof PathfinderMob pathfinderMob && !pathfinderMob.getType().is(JNETags.EntityTypes.IGNORES_TREACHEROUS_CANDLE)) {
             targetSelector.addGoal(2, new AttackTreacherousCandleGoal(pathfinderMob, 32));
         }
     }

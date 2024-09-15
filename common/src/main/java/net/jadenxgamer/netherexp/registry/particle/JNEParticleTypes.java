@@ -41,6 +41,7 @@ public class JNEParticleTypes {
     public static final RegistrySupplier<SimpleParticleType> IMMUNITY_EFFECT = PARTICLE_TYPES.register("immunity_effect", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> FALLING_BLOOD = PARTICLE_TYPES.register("falling_blood", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> LANDING_BLOOD = PARTICLE_TYPES.register("landing_blood", () -> new SimpleParticleType(false){});
+    public static final RegistrySupplier<SimpleParticleType> CANDLE_BURST = PARTICLE_TYPES.register("candle_burst", () -> new SimpleParticleType(false){});
 
     // MOD COMPAT
     public static final RegistrySupplier<SimpleParticleType> FALLING_SHROOMBLIGHT = PARTICLE_TYPES.register("falling_shroomblight", () -> new SimpleParticleType(false){});

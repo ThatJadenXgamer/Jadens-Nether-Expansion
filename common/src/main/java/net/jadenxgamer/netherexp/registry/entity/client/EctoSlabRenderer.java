@@ -2,7 +2,6 @@ package net.jadenxgamer.netherexp.registry.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.entity.client.layer.EctoSlabGlowlayer;
 import net.jadenxgamer.netherexp.registry.entity.custom.EctoSlab;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

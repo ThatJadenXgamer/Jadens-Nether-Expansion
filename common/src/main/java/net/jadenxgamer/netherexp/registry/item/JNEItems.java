@@ -48,6 +48,9 @@ public class JNEItems {
     public static final RegistrySupplier<Item> SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("spirit_armor_trim_smithing_template", () ->
             SmithingTemplateItem.createArmorTrimTemplate(JNETrimPatterns.SPIRIT));
 
+    public static final RegistrySupplier<Item> VALOR_ARMOR_TRIM_SMITHING_TEMPLATE = registerItem("valor_armor_trim_smithing_template", () ->
+            SmithingTemplateItem.createArmorTrimTemplate(JNETrimPatterns.VALOR));
+
     public static final RegistrySupplier<Item> PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE = registerItem("pump_charge_upgrade_smithing_template",
             PumpChargeSmithingTemplateItem::new);
 
@@ -115,10 +118,10 @@ public class JNEItems {
             new Item(new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
-            new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(256).rarity(Rarity.RARE)));
+            new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(512).rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> PUMP_CHARGE_SHOTGUN = registerItem("pump_charge_shotgun", () ->
-            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).durability(356).rarity(Rarity.EPIC)));
+            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).durability(640).rarity(Rarity.EPIC)));
 
     public static final RegistrySupplier<Item> CLARET_SIGN = registerItem("claret_sign", () ->
             new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));
@@ -176,6 +179,11 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> BOTANICAL_POTTERY_SHERD = registerItem("botanical_pottery_sherd", () ->
             new Item(new Item.Properties()));
+
+    // NETHERITE ARTIFACTS
+
+    public static final RegistrySupplier<Item> SHOTGUN_CORE = registerItem("shotgun_core", () ->
+            new NetheriteArtifactItem(new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.RARE)));
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);

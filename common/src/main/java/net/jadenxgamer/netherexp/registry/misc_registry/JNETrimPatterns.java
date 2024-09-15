@@ -9,6 +9,7 @@ import net.minecraft.world.item.armortrim.TrimPattern;
 public class JNETrimPatterns {
     public static final ResourceKey<TrimPattern> RIFT = registerTrim("rift");
     public static final ResourceKey<TrimPattern> SPIRIT = registerTrim("spirit");
+    public static final ResourceKey<TrimPattern> VALOR = registerTrim("valor");
 
     private static ResourceKey<TrimPattern> registerTrim(String name) {
         return ResourceKey.create(Registries.TRIM_PATTERN, new ResourceLocation(NetherExp.MOD_ID, name));

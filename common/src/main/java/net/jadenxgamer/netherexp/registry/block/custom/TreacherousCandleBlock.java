@@ -102,6 +102,9 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
         else if (!lit) {
             if (itemStack.is(Items.FLINT_AND_STEEL) && validPath(state, pos, level)) {
                 bl = true;
+                if (blockEntity instanceof TreacherousCandleBlockEntity treacherousCandleBlock) {
+                    TreacherousCandleBlockEntity.findAllNearbyPlayers(treacherousCandleBlock, pos, level);
+                }
                 level.setBlock(pos, state.cycle(LIT), Block.UPDATE_CLIENTS);
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 fireParticles(level, pos);
@@ -141,6 +144,14 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(LIT, COMPLETED, BROKEN, FACING);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        int i = random.nextInt(1);
+        if (i == 0 && state.getValue(LIT)) {
+            level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), (double)pos.getX() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), 0.0, 0.07, 0.0);
+        }
     }
 
     private static void fireParticles(Level level, BlockPos blockPos) {

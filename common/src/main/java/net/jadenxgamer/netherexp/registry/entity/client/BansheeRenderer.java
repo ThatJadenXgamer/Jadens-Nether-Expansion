@@ -1,6 +1,8 @@
 package net.jadenxgamer.netherexp.registry.entity.client;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.entity.client.layer.BansheeGlowlayer;
+import net.jadenxgamer.netherexp.registry.entity.client.layer.CarcassGlowlayer;
 import net.jadenxgamer.netherexp.registry.entity.client.layer.WispGlowlayer;
 import net.jadenxgamer.netherexp.registry.entity.custom.Banshee;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
@@ -12,7 +14,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class BansheeRenderer extends MobRenderer<Banshee, BansheeModel<Banshee>> {
     public BansheeRenderer(EntityRendererProvider.Context context) {
-        super(context, new BansheeModel<>(context.bakeLayer(JNEModelLayers.BANSHEE_LAYER)), 0.5f);
+        super(context, new BansheeModel<>(context.bakeLayer(JNEModelLayers.BANSHEE_LAYER)), 0.5f);;
+        this.addLayer(new BansheeGlowlayer<>(this));
     }
 
     @Override

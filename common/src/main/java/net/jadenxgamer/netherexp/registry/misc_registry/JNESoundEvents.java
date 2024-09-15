@@ -176,6 +176,9 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> ENTITY_ECTO_SLAB_JUMP = registerSoundEvents("entity.ecto_slab.jump");
     public static RegistrySupplier<SoundEvent> ENTITY_ECTO_SLAB_SQUISH = registerSoundEvents("entity.ecto_slab.squish");
 
+    public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_AMBIENT = registerSoundEvents("entity.banshee.ambient");
+    public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_HURT = registerSoundEvents("entity.banshee.hurt");
+    public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_DEATH = registerSoundEvents("entity.banshee.death");
     public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_TELEPORT = registerSoundEvents("entity.banshee.teleport");
 
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvents("entity.player.hurt_igneous_thorns");

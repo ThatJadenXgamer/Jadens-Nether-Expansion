@@ -3,14 +3,14 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
-public enum LavaWaterlogged implements StringRepresentable {
+public enum EctoplasmWaterlogged implements StringRepresentable {
     AIR("air"),
     WATER("water"),
-    LAVA("lava");
+    ECTOPLASM("ectoplasm");
 
     private final String name;
 
-    LavaWaterlogged(String name) {
+    EctoplasmWaterlogged(String name) {
         this.name = name;
     }
 

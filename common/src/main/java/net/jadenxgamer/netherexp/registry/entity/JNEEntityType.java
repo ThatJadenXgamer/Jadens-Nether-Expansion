@@ -39,7 +39,7 @@ public class JNEEntityType {
 
     public static final RegistrySupplier<EntityType<Carcass>> CARCASS = ENTITY_TYPES.register("carcass", () ->
             EntityType.Builder.of(Carcass::new, MobCategory.MISC)
-                    .sized(1.0F, 1.4F).fireImmune().build("carcass"));
+                    .sized(1.4F, 1.4F).fireImmune().build("carcass"));
 
     // OTHER
 

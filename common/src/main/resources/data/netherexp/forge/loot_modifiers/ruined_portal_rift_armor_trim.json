@@ -5,6 +5,5 @@
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/ruined_portal"
     }
-  ],
-  "item": "netherexp:wraithing_flesh"
+  ]
 }

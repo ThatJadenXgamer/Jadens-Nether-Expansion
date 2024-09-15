@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.fabric.mixin.renderer;
+package net.jadenxgamer.netherexp.fabric.mixin.fabric;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.client.color.block.BlockColors;

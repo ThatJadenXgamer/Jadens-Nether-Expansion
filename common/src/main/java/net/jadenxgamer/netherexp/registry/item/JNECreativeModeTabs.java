@@ -51,6 +51,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.DIAMOND_FOSSIL_ORE.get());
                         output.accept(JNEItems.FOSSIL_FUEL.get());
 
+                        output.accept(JNEItems.SHOTGUN_CORE.get());
                         output.accept(JNEItems.SHOTGUN_FIST.get());
                         output.accept(JNEBlocks.SHOTGUN_BARREL.get());
 
@@ -380,6 +381,7 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
                         output.accept(JNEItems.SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
+                        output.accept(JNEItems.VALOR_ARMOR_TRIM_SMITHING_TEMPLATE.get());
 
                         output.accept(JNEItems.WISP_SPAWN_EGG.get());
                         output.accept(JNEItems.APPARITION_SPAWN_EGG.get());

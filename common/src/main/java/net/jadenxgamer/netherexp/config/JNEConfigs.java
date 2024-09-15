@@ -38,6 +38,7 @@ public class JNEConfigs {
 
     // Entities
     public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;
+    public static Supplier<Boolean> PIXEL_CONSISTENT_MAGMA_CUBES = () -> true;
     public static Supplier<Boolean> SKELETON_FOSSILIZATION = () -> true;
     public static Supplier<Boolean> WITHER_SKELETON_FOSSILIZATION = () -> true;
     public static Supplier<Boolean> PHASMOPHOBIC_MOBS = () -> true;

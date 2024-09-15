@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,8 +36,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.ToIntFunction;
 
-public class InscribedPanelBlock extends Block implements SimpleLavaWaterloggedBlock {
-    public static final EnumProperty<LavaWaterlogged> LIQUIDLOGGED = EnumProperty.create("liquidlogged", LavaWaterlogged.class);
+public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterloggedBlock {
+    public static final EnumProperty<EctoplasmWaterlogged> LIQUIDLOGGED = EnumProperty.create("liquidlogged", EctoplasmWaterlogged.class);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final IntegerProperty INSCRIPTION = IntegerProperty.create("inscription", 0, 28);
     public static final BooleanProperty SALTED = BooleanProperty.create("salted");
@@ -46,11 +47,11 @@ public class InscribedPanelBlock extends Block implements SimpleLavaWaterloggedB
     public static final VoxelShape SOUTH_SHAPE =  Block.box(1, 2, 0, 15, 16, 2);
     public static final VoxelShape WEST_SHAPE =  Block.box(14, 2, 1, 16, 16, 15);
 
-    public static final ToIntFunction<BlockState> STATE_TO_LUMINANCE = state -> state.getValue(LIQUIDLOGGED) == LavaWaterlogged.LAVA ? 15 : 0;
+    public static final ToIntFunction<BlockState> STATE_TO_LUMINANCE = state -> state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.ECTOPLASM ? 15 : 0;
 
     public InscribedPanelBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(LIQUIDLOGGED, LavaWaterlogged.AIR).setValue(INSCRIPTION, 0).setValue(SALTED, false).setValue(FACING, Direction.NORTH));
+        this.registerDefaultState(this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.AIR).setValue(INSCRIPTION, 0).setValue(SALTED, false).setValue(FACING, Direction.NORTH));
     }
 
     @SuppressWarnings("deprecation")
@@ -87,10 +88,10 @@ public class InscribedPanelBlock extends Block implements SimpleLavaWaterloggedB
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
         if (fluidState.getType() == Fluids.WATER) {
-            return this.defaultBlockState().setValue(LIQUIDLOGGED, LavaWaterlogged.WATER).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+            return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.WATER).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
         }
-        else if (fluidState.getType() == Fluids.LAVA) {
-            return this.defaultBlockState().setValue(LIQUIDLOGGED, LavaWaterlogged.LAVA).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        else if (fluidState.getType() == JNEFluids.ECTOPLASM.get()) {
+            return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.ECTOPLASM).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
         }
         else return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
@@ -110,11 +111,11 @@ public class InscribedPanelBlock extends Block implements SimpleLavaWaterloggedB
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull FluidState getFluidState(BlockState state) {
-        if (state.getValue(LIQUIDLOGGED) == LavaWaterlogged.WATER) {
+        if (state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.WATER) {
             return Fluids.WATER.getSource(true);
         }
-        else if (state.getValue(LIQUIDLOGGED) == LavaWaterlogged.LAVA) {
-            return Fluids.LAVA.getSource(true);
+        else if (state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.ECTOPLASM) {
+            return JNEFluids.ECTOPLASM.get().getSource(true);
         }
         else {
             return super.getFluidState(state);
@@ -124,11 +125,11 @@ public class InscribedPanelBlock extends Block implements SimpleLavaWaterloggedB
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        if ((state.getValue(LIQUIDLOGGED) == LavaWaterlogged.WATER)) {
+        if ((state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.WATER)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        else if ((state.getValue(LIQUIDLOGGED) == LavaWaterlogged.LAVA)) {
-            level.scheduleTick(pos, Fluids.LAVA, Fluids.LAVA.getTickDelay(level));
+        else if ((state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.ECTOPLASM)) {
+            level.scheduleTick(pos, JNEFluids.ECTOPLASM.get(), JNEFluids.ECTOPLASM.get().getTickDelay(level));
         }
 
         return state;

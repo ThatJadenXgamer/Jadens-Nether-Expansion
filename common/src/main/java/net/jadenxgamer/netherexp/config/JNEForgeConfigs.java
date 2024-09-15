@@ -96,8 +96,11 @@ public class JNEForgeConfigs {
 
     private static void registerEntityConfigs(ForgeConfigSpec.Builder BUILDER) {
         DIMINISHING_BLAZES = BUILDER
-                .comment("Blazes get dimmer as their health decreases like in MCD")
+                .comment("Blazes get dimmer as their health decreases like in Minecraft Dungeons")
                 .define("diminishing_blazes", true);
+        PIXEL_CONSISTENT_MAGMA_CUBES = BUILDER
+                .comment("Magma Cube texture changes depending on it's size so that it's no longer mixels \nThe New Textures used are from FaithFul 32x and 64x respectively")
+                .define("pixel_consistent_magma_cubes", true);
         SKELETON_FOSSILIZATION = BUILDER
                 .comment("Skeletons when killed fossilize soul soil blocks underneath into Fossil Ore")
                 .define("skeleton_fossilization", true);

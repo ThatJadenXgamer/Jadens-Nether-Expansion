@@ -153,7 +153,7 @@ public class JNEBlocks {
             new JNEOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(0.6f).requiresCorrectToolForDrops(), UniformInt.of(3, 7), 1));
 
     public static final RegistrySupplier<Block> SOUL_TORCHFLOWER = registerBlock("soul_torchflower", () ->
-            new NetherFlowerBlock(MobEffects.LEVITATION, 5, BlockBehaviour.Properties.copy(Blocks.TORCHFLOWER)));
+            new NetherFlowerBlock(MobEffects.DIG_SPEED, 5, BlockBehaviour.Properties.copy(Blocks.TORCHFLOWER)));
 
     public static final RegistrySupplier<Block> SOUL_TORCHFLOWER_CROP = registerBlockWithoutItem("soul_torchflower_crop", () ->
             new SoulTorchflowerBlock(BlockBehaviour.Properties.copy(Blocks.TORCHFLOWER_CROP)));

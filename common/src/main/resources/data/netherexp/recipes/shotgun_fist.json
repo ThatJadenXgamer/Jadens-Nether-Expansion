@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "N#S",
+    "N  "
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "#": {
+      "item": "netherexp:shotgun_core"
+    },
+    "S": {
+      "item": "minecraft:skeleton_skull"
+    }
+  },
+  "result": {
+    "item": "netherexp:shotgun_fist",
+    "count": 1
+  }
+}

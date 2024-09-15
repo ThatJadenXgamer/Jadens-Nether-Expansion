@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.fabric.mixin.renderer;
+package net.jadenxgamer.netherexp.fabric.mixin.fabric;
 
 import net.minecraft.client.renderer.ItemModelShaper;
 import net.minecraft.client.renderer.entity.ItemRenderer;

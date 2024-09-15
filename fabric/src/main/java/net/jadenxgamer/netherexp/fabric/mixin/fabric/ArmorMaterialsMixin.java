@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.mixin.item;
+package net.jadenxgamer.netherexp.fabric.mixin.fabric;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.minecraft.Util;

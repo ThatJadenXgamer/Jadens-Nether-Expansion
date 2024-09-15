@@ -5,10 +5,10 @@ import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
@@ -27,7 +27,6 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
@@ -39,6 +38,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -182,9 +182,8 @@ public class Banshee extends Monster {
     protected boolean teleport() {
         if (!this.level().isClientSide() && this.isAlive()) {
             double x = this.getX() + (this.random.nextDouble() - 0.5) * 12.0;
-            double y = this.getY() + (double)(this.random.nextInt(10) - 8);
             double z = this.getZ() + (this.random.nextDouble() - 0.5) * 12.0;
-            return this.teleport(x, y, z);
+            return this.teleport(x, this.getY(), z);
         } else {
             return false;
         }
@@ -192,15 +191,13 @@ public class Banshee extends Monster {
 
     @SuppressWarnings("deprecation")
     private boolean teleport(double x, double y, double z) {
-        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos(x, y, z);
+        BlockPos targetPos = new BlockPos((int) x, (int) y - 1, (int) z);
 
-        while(mutablePos.getY() > this.level().getMinBuildHeight() && !this.level().getBlockState(mutablePos).blocksMotion()) {
-            mutablePos.move(Direction.DOWN);
-        }
+        BlockState state = this.level().getBlockState(targetPos);
+        boolean isSolidGround = state.blocksMotion();
+        boolean isLava = state.getFluidState().is(FluidTags.LAVA);
 
-        BlockState state = this.level().getBlockState(mutablePos);
-        boolean isWater = state.getFluidState().is(FluidTags.WATER);
-        if (!isWater) {
+        if (isSolidGround && !isLava) {
             boolean teleport = this.randomTeleport(x, y, z, true);
             if (teleport) {
                 this.setDeltaMovement(this.getDeltaMovement().add(0.0, 0.05, 0.0));
@@ -230,6 +227,32 @@ public class Banshee extends Monster {
     @Override
     public boolean isSensitiveToWater() {
         return true;
+    }
+
+    ////////////
+    // SOUNDS //
+    ////////////
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return JNESoundEvents.ENTITY_BANSHEE_AMBIENT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return JNESoundEvents.ENTITY_BANSHEE_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return JNESoundEvents.ENTITY_BANSHEE_DEATH.get();
+    }
+
+    @Override
+    protected void playStepSound(BlockPos blockPos, BlockState blockState) {
+        this.playSound(JNESoundEvents.ENTITY_APPARITION_FLY.get(), 0.15F, 1.0F);
     }
 
     /////////

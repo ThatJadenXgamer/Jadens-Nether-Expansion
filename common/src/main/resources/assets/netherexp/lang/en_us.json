@@ -37,6 +37,7 @@
   "item.netherexp.netherite_plating": "Netherite Plating",
   "item.netherexp.netherite_nugget": "Netherite Nugget",
   "item.netherexp.treacherous_flame": "Treacherous Flame",
+  "item.netherexp.shotgun_core": "Shotgun Core",
   "item.netherexp.shotgun_fist": "Shotgun Fist",
   "item.netherexp.pump_charge_shotgun": "Pump-Charge Shotgun",
   "item.netherexp.warphopper_spawn_egg": "Warphopper Spawn Egg",
@@ -53,6 +54,7 @@
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
 
   "item.netherexp.antidote.inactive_tooltip": "To Activate needs to be Brewed With:",
+  "item.netherexp.netherite_artifact.tooltip": "Netherite Artifact",
 
   "item.netherexp.antidote": "Antidote",
   "item.netherexp.antidote.effect.": "Uncraftable Antidote",
@@ -418,6 +420,9 @@
   "subtitles.entity.vessel.death": "Vessel dies",
   "subtitles.entity.ecto_slab.jump": "Ecto Slab jumps",
   "subtitles.entity.ecto_slab.squish": "Ecto Slab squish",
+  "subtitles.entity.banshee.ambient": "Banshee cackles",
+  "subtitles.entity.banshee.hurt": "Banshee hurts",
+  "subtitles.entity.banshee.death": "Banshee dies",
   "subtitles.entity.banshee.teleport": "Banshee teleports",
 
   "container.brazier_chest": "Brazier Chest",
@@ -494,7 +499,7 @@
   "advancements.nether.soul_sand_valley.title": "Soul Sand Valley",
   "advancements.nether.soul_sand_valley.description": "Where frights and paranormal are plentiful",
   "advancements.nether.angel_with_a_shotgun.title": "Angel with a Shotgun",
-  "advancements.nether.angel_with_a_shotgun.description": "Find a Shotgun Fist within a Brazier Chest",
+  "advancements.nether.angel_with_a_shotgun.description": "Craft a Shotgun Fist with your Shotgun Core Artifact",
   "advancements.nether.the_nether_is_full.title": "The Nether is Full, Blood is Fuel",
   "advancements.nether.the_nether_is_full.description": "Upgrade your Shotgun with a Pump-Charge Smithing Template",
   "advancements.nether.ultrakill.title": "ULTRA-OVERKILL",

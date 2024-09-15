@@ -1163,6 +1163,29 @@
       "netherexp:mob/shotgun_guy/fire"
     ]
   },
+  "entity.banshee.ambient": {
+    "subtitle": "subtitles.entity.banshee.ambient",
+    "sounds": [
+      "netherexp:mob/banshee/idle1",
+      "netherexp:mob/banshee/idle2",
+      "netherexp:mob/banshee/idle3",
+      "netherexp:mob/banshee/idle4"
+    ]
+  },
+  "entity.banshee.hurt": {
+    "subtitle": "subtitles.entity.banshee.hurt",
+    "sounds": [
+      "netherexp:mob/banshee/hurt1",
+      "netherexp:mob/banshee/hurt2",
+      "netherexp:mob/banshee/hurt3"
+    ]
+  },
+  "entity.banshee.death": {
+    "subtitle": "subtitles.entity.banshee.death",
+    "sounds": [
+      "netherexp:mob/banshee/death"
+    ]
+  },
   "entity.banshee.teleport": {
     "subtitle": "subtitles.entity.banshee.teleport",
     "sounds": [

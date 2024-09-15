@@ -39,9 +39,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class SporeshroomBlock
-extends Block
-implements SimpleWaterloggedBlock, BonemealableBlock {
+public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, BonemealableBlock {
 
     // BlockStates
     public static final BooleanProperty HANGING = BlockStateProperties.HANGING;

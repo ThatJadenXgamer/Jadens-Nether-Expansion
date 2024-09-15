@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.fabric.mixin.renderer;
+package net.jadenxgamer.netherexp.fabric.mixin.fabric;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jadenxgamer.netherexp.NetherExp;

@@ -17,9 +17,12 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -126,7 +129,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         return InteractionResultHolder.fail(stack);
     }
 
-    public static void performShooting(Level level, LivingEntity livingEntity, ItemStack stack) {
+    public static void performShooting(Level level, LivingEntity user, ItemStack stack) {
         int chargeCount = getCharge(stack) * 6;
         int chargeInaccuracy = getCharge(stack) * 8;
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
@@ -134,26 +137,33 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         int heat = getTemperature(stack);
         // Bonuses
         int aBulletDistanceBonus = artemis / 5;
-        double rPushBonus = (double) recoil / 20;
-        double cPushBonus = (double) getCharge(stack) / 10;
+        double recoilPushBonus = (double) recoil / 16;
+        double chargePushBonus = (double) getCharge(stack) / 10;
         int hBulletDistancePenalty = heat / 8;
         int hCountPenalty = heat * 4;
         int hScatterPenalty = heat * 5;
 
-        Vec3 look = livingEntity.getLookAngle();
+        Vec3 look = user.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
         int baseCount = 4 + chargeCount;
         int minCount = Math.max(1, (4 + (getCharge(stack) / 2)));
         int count = Math.max(minCount, baseCount - hCountPenalty);
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
-                SoulBullet soulBullet = new SoulBullet(level, livingEntity);
+                SoulBullet soulBullet = new SoulBullet(level, user);
                 soulBullet.shoot(look.x, look.y, look.z, (1.0F + aBulletDistanceBonus) - hBulletDistancePenalty, (5 + chargeInaccuracy) + hScatterPenalty);
                 level.addFreshEntity(soulBullet);
             }
         }
-        double d = 0.3 + rPushBonus + cPushBonus;
-        livingEntity.push(pushBack.x * d, pushBack.y * d, pushBack.z * d);
+        Vec3 raycastStart = user.getEyePosition(1.0F);
+        Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(5));
+        AABB aabb = new AABB(raycastStart, raycastEnd);
+        EntityHitResult entityHitResult = ProjectileUtil.getEntityHitResult(level, user, raycastStart, raycastEnd, aabb, (entity) -> entity instanceof LivingEntity && entity != user);
+        if (entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity livingEntity && livingEntity.isAlive()) {
+            user.push(pushBack.x * (0.75 + recoilPushBonus + chargePushBonus), pushBack.y * (0.75 + recoilPushBonus + chargePushBonus), pushBack.z * (0.75 + recoilPushBonus + chargePushBonus));
+        } else {
+            user.push(pushBack.x * (0.3 + recoilPushBonus + chargePushBonus), pushBack.y * (0.3 + recoilPushBonus + chargePushBonus), pushBack.z * (0.3 + recoilPushBonus + chargePushBonus));
+        }
     }
 
     @Override

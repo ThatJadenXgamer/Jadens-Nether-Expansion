@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/rekindled_betrayal",
+  "parent": "netherexp:nether/occult_manor",
   "criteria": {
     "has_item": {
       "trigger": "netherexp:revive_carcass"

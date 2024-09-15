@@ -9,6 +9,7 @@
     "renderer.BlazeRendererMixin",
     "renderer.CameraMixin",
     "renderer.FogRendererMixin",
+    "renderer.MagmaCubeRendererMixin",
     "renderer.ParticleEngineMixin",
     "renderer.PlayerRendererMixin"
   ],
@@ -41,16 +42,13 @@
     "entity.SlimeMixin",
     "entity.WitherSkeletonMixin",
     "entity.ZombifiedPiglinMixin",
-    "item.ArmorMaterialsMixin",
     "item.AxeItemMixin",
     "item.BlockItemMixin",
     "item.BowItemMixin",
     "item.EnchantmentMixin",
+    "item.ItemMixin",
     "item.ItemStackMixin",
-    "item.ShovelItemMixin",
-    "item.TiersMixin",
-    "worldgen.BasaltColumnsFeatureMixin",
-    "worldgen.DeltaFeatureMixin"
+    "item.ShovelItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

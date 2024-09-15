@@ -150,6 +150,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobProvider::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_BLOOD.get(), BloodFallAndLandParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.LANDING_BLOOD.get(), BloodLandParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
 
         // MOD COMPAT
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);
