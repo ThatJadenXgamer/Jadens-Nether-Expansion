@@ -65,33 +65,6 @@ public class JNEForgeConfigs {
         WILL_O_WISP_STACK_SIZE = BUILDER
                 .comment("Defines the stack size for Will O' Wisps")
                 .defineInRange("will_o_wisp_stack_size", 16, 1, 64);
-        ENABLE_GOLD_TWEAKS = BUILDER
-                .comment("Enables the gold related configs below, turn it off in case you run into mod compatibility issues")
-                .define("enable_gold_tweaks", true);
-        GOLD_TOOLS_DURABILITY = BUILDER
-                .comment("Lets you change Golden Tools Durability \nif you want the vanilla value back, set to \"32\"")
-                .define("gold_tools_durability", 96);
-        GOLD_TOOLS_SPEED = BUILDER
-                .comment("Lets you change Golden Tools Speed \nif you want the vanilla value back, set to \"12.0\"")
-                .define("gold_tools_speed", 16.0f);
-        GOLD_TOOLS_MINING_TIER = BUILDER
-                .comment("Lets you change the Mining Tier of Golden Tools \nVANILLA - behaves like wooden tools \nSTONE_LIKE - lets you break blocks stone tools can break \nIRON_LIKE - lets you break blocks iron tools can break \nDIAMOND_LIKE - lets you break blocks diamond tools can break \n ")
-                .defineEnum("gold_tools_mining_tier", GoldMiningTier.VANILLA);
-        GOLD_ARMOR_DURABILITY = BUILDER
-                .comment("Lets you change Golden Armor Durability Multiplier")
-                .define("gold_armor_durability", 7);
-        GOLD_BOOTS_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Boots give when worn")
-                .define("gold_boots_protection", 1);
-        GOLD_LEGGINGS_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Leggings give when worn")
-                .define("gold_leggings_protection", 3);
-        GOLD_CHESTPLATE_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Chestplate give when worn")
-                .define("gold_chestplate_protection", 5);
-        GOLD_HELMET_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Helmet give when worn")
-                .define("gold_helmet_protection", 2);
     }
 
     private static void registerEntityConfigs(ForgeConfigSpec.Builder BUILDER) {
@@ -137,6 +110,9 @@ public class JNEForgeConfigs {
         NETHER_FOG_DISTANCE = BUILDER
                 .comment("Changes how close the nether fog is to the player \nVANILLA - Fog caps at 12 chunks \nMEDIUM - Changes with render distance \nFAR - Behaves like Medium but with even greater distance \nDISABLED - Turns off the nether fog \n ")
                 .defineEnum("nether_fog_distance", NetherFogDistance.MEDIUM);
+        LARGER_NETHER_BIOMES = BUILDER
+                .comment("Increases the size of all nether biomes, great for experiencing the new biome overhauls \nWARNING: this setting has to be enabled before you generate a new world \nonce enabled in a world it cannot be disabled without deleting DIM-1 in the world folder")
+                .define("larger_nether_biomes", true);
         AMPLIFIER_IMMUNITY_REDUCTION = BUILDER
                 .comment("Defines if Immunity Effect duration reduction is scaled by the incoming effect amplifier")
                 .define("amplifier_immunity_reduction", true);
@@ -181,6 +157,36 @@ public class JNEForgeConfigs {
                 .define("quartz_sounds", true);
     }
 
+    private static void registerExperimentalConfigs(ForgeConfigSpec.Builder BUILDER) {
+        ENABLE_GOLD_TWEAKS = BUILDER
+                .comment("Enables the gold related configs \nThis feature is still experimental and is subject to change, so far has only been implemented on Fabric")
+                .define("enable_gold_tweaks", false);
+        GOLD_TOOLS_DURABILITY = BUILDER
+                .comment("Lets you change Golden Tools Durability \nif you want the vanilla value back, set to \"32\"")
+                .define("gold_tools_durability", 96);
+        GOLD_TOOLS_SPEED = BUILDER
+                .comment("Lets you change Golden Tools Speed \nif you want the vanilla value back, set to \"12.0\"")
+                .define("gold_tools_speed", 16.0f);
+        GOLD_TOOLS_MINING_TIER = BUILDER
+                .comment("Lets you change the Mining Tier of Golden Tools \nVANILLA - behaves like wooden tools \nSTONE_LIKE - lets you break blocks stone tools can break \nIRON_LIKE - lets you break blocks iron tools can break \nDIAMOND_LIKE - lets you break blocks diamond tools can break \n ")
+                .defineEnum("gold_tools_mining_tier", GoldMiningTier.VANILLA);
+        GOLD_ARMOR_DURABILITY = BUILDER
+                .comment("Lets you change Golden Armor Durability Multiplier")
+                .define("gold_armor_durability", 7);
+        GOLD_BOOTS_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Boots give when worn")
+                .define("gold_boots_protection", 1);
+        GOLD_LEGGINGS_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Leggings give when worn")
+                .define("gold_leggings_protection", 3);
+        GOLD_CHESTPLATE_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Chestplate give when worn")
+                .define("gold_chestplate_protection", 5);
+        GOLD_HELMET_PROTECTION = BUILDER
+                .comment("Defines the armor points Golden Helmet give when worn")
+                .define("gold_helmet_protection", 2);
+    }
+
     static {
         ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
         BUILDER.comment("Block Settings").push("blocks");
@@ -201,6 +207,10 @@ public class JNEForgeConfigs {
 
         BUILDER.comment("Particle & Sound Settings").push("particles_and_sounds");
         registerParticlesAndSoundsConfigs(BUILDER);
+        BUILDER.pop();
+
+        BUILDER.comment("Experimental Settings").push("experimental");
+        registerExperimentalConfigs(BUILDER);
         BUILDER.pop();
 
         COMMON = BUILDER.build();

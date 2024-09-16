@@ -1,7 +1,7 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
-	"texture_size": [128, 128],
 	"render_type": "minecraft:cutout",
+	"texture_size": [128, 128],
 	"textures": {
 		"0": "netherexp:block/gargoyle_statue/trample",
 		"particle": "netherexp:block/soul_slate"
@@ -32,10 +32,10 @@
 			}
 		},
 		{
-			"from": [10, 3, 6],
-			"to": [13, 9, 9],
+			"from": [3, 3, 6],
+			"to": [6, 9, 9],
 			"faces": {
-				"north": {"uv": [0.375, 4.125, 0.75, 4.875], "texture": "#0"},
+				"north": {"uv": [0.75, 4.125, 0.375, 4.875], "texture": "#0"},
 				"east": {"uv": [0, 4.125, 0.375, 4.875], "texture": "#0"},
 				"south": {"uv": [1.125, 4.125, 1.5, 4.875], "texture": "#0"},
 				"west": {"uv": [0.75, 4.125, 1.125, 4.875], "texture": "#0"},
@@ -44,15 +44,16 @@
 			}
 		},
 		{
-			"from": [3, 3, 6],
-			"to": [6, 9, 9],
+			"from": [10, 3, 6],
+			"to": [13, 9, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 0]},
 			"faces": {
 				"north": {"uv": [0.375, 4.125, 0.75, 4.875], "texture": "#0"},
-				"east": {"uv": [0, 4.125, 0.375, 4.875], "texture": "#0"},
-				"south": {"uv": [1.125, 4.125, 1.5, 4.875], "texture": "#0"},
-				"west": {"uv": [0.75, 4.125, 1.125, 4.875], "texture": "#0"},
-				"up": {"uv": [0.75, 4.125, 0.375, 3.75], "texture": "#0"},
-				"down": {"uv": [1.125, 3.75, 0.75, 4.125], "texture": "#0"}
+				"east": {"uv": [1.125, 4.125, 0.75, 4.875], "texture": "#0"},
+				"south": {"uv": [1.5, 4.125, 1.125, 4.875], "texture": "#0"},
+				"west": {"uv": [0.375, 4.125, 0, 4.875], "texture": "#0"},
+				"up": {"uv": [0.375, 4.125, 0.75, 3.75], "texture": "#0"},
+				"down": {"uv": [0.75, 3.75, 1.125, 4.125], "texture": "#0"}
 			}
 		},
 		{

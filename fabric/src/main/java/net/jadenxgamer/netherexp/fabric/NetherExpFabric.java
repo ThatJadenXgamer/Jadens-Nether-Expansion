@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.fabric.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.fabric.worldgen.*;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
@@ -38,10 +39,15 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
 
         ResourceLocation rpConflictingRetextures = new ResourceLocation(NetherExp.MOD_ID, "conflicting_retextures");
         ResourceLocation rpUniqueNetherWood = new ResourceLocation(NetherExp.MOD_ID, "unique_nether_wood");
+        ResourceLocation dpLargerNetherBiomes = new ResourceLocation(NetherExp.MOD_ID, "larger_nether_biomes");
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container ->
         ResourceManagerHelper.registerBuiltinResourcePack(rpConflictingRetextures, container, "Conflicting Retextures", ResourcePackActivationType.NORMAL));
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container ->
         ResourceManagerHelper.registerBuiltinResourcePack(rpUniqueNetherWood, container, "Unique Nether Wood", ResourcePackActivationType.NORMAL));
+        if (JNEConfigs.LARGER_NETHER_BIOMES.get()) {
+            FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container ->
+                    ResourceManagerHelper.registerBuiltinResourcePack(dpLargerNetherBiomes, container, "Larger Nether Biomes", ResourcePackActivationType.ALWAYS_ENABLED));
+        }
     }
 }

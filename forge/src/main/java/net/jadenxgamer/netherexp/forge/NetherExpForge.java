@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import dev.architectury.platform.forge.EventBuses;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.forge.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.forge.worldgen.SpawnCostsBiomeModifier;
@@ -106,6 +107,11 @@ public class NetherExpForge {
             rpConflictingRetextures(event);
             rpUniqueNetherWood(event);
         }
+        if (event.getPackType() == PackType.SERVER_DATA) {
+            if (JNEConfigs.LARGER_NETHER_BIOMES.get()) {
+                dpLargerNetherBiomes(event);
+            }
+        }
     }
 
     // Adds Retextures which may cause some Mod Conflicts or Inconsistencies
@@ -134,5 +140,19 @@ public class NetherExpForge {
                         (path) -> new PathPackResources(path, file, true),
                         new Pack.Info(Component.literal("Gives All Nether Woodsets Unique Designs"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
                         PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, false, PackSource.BUILT_IN)));
+    }
+
+    // Increases the size of all nether biomes
+    private static void dpLargerNetherBiomes(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/larger_nether_biomes");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(Pack.create(
+                        "larger_nether_biomes",
+                        Component.literal("Larger Nether Biomes"),
+                        false,
+                        (path) -> new PathPackResources(path, file, true),
+                        new Pack.Info(Component.literal("Increases the size of all nether biomes"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
+                        PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
     }
 }

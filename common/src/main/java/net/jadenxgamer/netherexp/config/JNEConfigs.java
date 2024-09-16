@@ -26,15 +26,6 @@ public class JNEConfigs {
     // Items
     public static Supplier<Integer> WILL_O_WISP_STACK_SIZE = () -> 16;
     public static Supplier<Integer> POTION_STACK_SIZE = () -> 16;
-    public static Supplier<Boolean> ENABLE_GOLD_TWEAKS = () -> true;
-    public static Supplier<Integer> GOLD_TOOLS_DURABILITY = () -> 96;
-    public static Supplier<Float> GOLD_TOOLS_SPEED = () -> 16.0f;
-    public static Supplier<GoldMiningTier> GOLD_TOOLS_MINING_TIER = () -> GoldMiningTier.VANILLA;
-    public static Supplier<Integer> GOLD_ARMOR_DURABILITY = () -> 7;
-    public static Supplier<Integer> GOLD_BOOTS_PROTECTION = () -> 1;
-    public static Supplier<Integer> GOLD_LEGGINGS_PROTECTION = () -> 3;
-    public static Supplier<Integer> GOLD_CHESTPLATE_PROTECTION = () -> 5;
-    public static Supplier<Integer> GOLD_HELMET_PROTECTION = () -> 2;
 
     // Entities
     public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;
@@ -52,6 +43,7 @@ public class JNEConfigs {
 
     // Game Mechanics
     public static Supplier<NetherFogDistance> NETHER_FOG_DISTANCE = () -> NetherFogDistance.MEDIUM;
+    public static Supplier<Boolean> LARGER_NETHER_BIOMES = () -> false;
     public static Supplier<Boolean> AMPLIFIER_IMMUNITY_REDUCTION = () -> false;
     public static Supplier<Boolean> ECTOPLASM_RUSTS_NETHERITE = () -> true;
     public static Supplier<Boolean> REDUCE_SOUL_SAND_SLOWNESS = () -> false;
@@ -67,4 +59,16 @@ public class JNEConfigs {
     public static Supplier<Boolean> MAGMA_BLOCK_SOUNDS = () -> true;
     public static Supplier<Boolean> GLOWSTONE_SOUNDS = () -> true;
     public static Supplier<Boolean> QUARTZ_BLOCK_SOUNDS = () -> true;
+
+    // Experimental
+
+    public static Supplier<Boolean> ENABLE_GOLD_TWEAKS = () -> false;
+    public static Supplier<Integer> GOLD_TOOLS_DURABILITY = () -> 96;
+    public static Supplier<Float> GOLD_TOOLS_SPEED = () -> 16.0f;
+    public static Supplier<GoldMiningTier> GOLD_TOOLS_MINING_TIER = () -> GoldMiningTier.VANILLA;
+    public static Supplier<Integer> GOLD_ARMOR_DURABILITY = () -> 7;
+    public static Supplier<Integer> GOLD_BOOTS_PROTECTION = () -> 1;
+    public static Supplier<Integer> GOLD_LEGGINGS_PROTECTION = () -> 3;
+    public static Supplier<Integer> GOLD_CHESTPLATE_PROTECTION = () -> 5;
+    public static Supplier<Integer> GOLD_HELMET_PROTECTION = () -> 2;
 }
