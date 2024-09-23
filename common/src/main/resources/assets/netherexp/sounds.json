@@ -239,6 +239,18 @@
       "netherexp:block/brazier_chest/lit"
     ]
   },
+  "block.treacherous_candle.victory": {
+    "subtitle": "subtitles.block.treacherous_candle.victory",
+    "sounds": [
+      "netherexp:block/treacherous_candle/victory"
+    ]
+  },
+  "block.treacherous_candle.defeat": {
+    "subtitle": "subtitles.block.treacherous_candle.defeat",
+    "sounds": [
+      "netherexp:block/treacherous_candle/defeat"
+    ]
+  },
   "block.white_ash.step": {
     "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
@@ -1113,6 +1125,23 @@
       "netherexp:mob/apparition/fly4"
     ]
   },
+  "entity.apparition.attack": {
+    "subtitle": "subtitles.entity.apparition.attack",
+    "sounds": [
+      "netherexp:mob/apparition/attack1",
+      "netherexp:mob/apparition/attack2"
+    ]
+  },
+  "entity.carcass.ambient": {
+    "subtitle": "subtitles.entity.carcass.ambient",
+    "sounds": [
+      "netherexp:mob/carcass/idle1",
+      "netherexp:mob/carcass/idle2",
+      "netherexp:mob/carcass/idle3",
+      "netherexp:mob/carcass/idle4",
+      "netherexp:mob/carcass/idle5"
+    ]
+  },
   "entity.vessel.ambient": {
     "subtitle": "subtitles.entity.vessel.ambient",
     "sounds": [
@@ -1191,6 +1220,12 @@
     "sounds": [
       "netherexp:mob/banshee/teleport1",
       "netherexp:mob/banshee/teleport2"
+    ]
+  },
+  "entity.banshee.shoot": {
+    "subtitle": "subtitles.entity.banshee.shoot",
+    "sounds": [
+      "netherexp:mob/banshee/shoot"
     ]
   },
   "entity.ecto_slab.jump": {

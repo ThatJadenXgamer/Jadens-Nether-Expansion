@@ -112,7 +112,7 @@ public class JNEForgeConfigs {
                 .defineEnum("nether_fog_distance", NetherFogDistance.MEDIUM);
         LARGER_NETHER_BIOMES = BUILDER
                 .comment("Increases the size of all nether biomes, great for experiencing the new biome overhauls \nWARNING: this setting has to be enabled before you generate a new world \nonce enabled in a world it cannot be disabled without deleting DIM-1 in the world folder")
-                .define("larger_nether_biomes", true);
+                .define("larger_nether_biomes", false);
         AMPLIFIER_IMMUNITY_REDUCTION = BUILDER
                 .comment("Defines if Immunity Effect duration reduction is scaled by the incoming effect amplifier")
                 .define("amplifier_immunity_reduction", true);

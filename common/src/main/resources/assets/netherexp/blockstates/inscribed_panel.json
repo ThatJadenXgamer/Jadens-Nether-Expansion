@@ -396,7 +396,7 @@
       "y": 180
     },
     "inscription=24,facing=west": {
-      "model": "netherexp:block/inscribed_panel/4",
+      "model": "netherexp:block/inscribed_panel/24",
       "y": 270
     },
 

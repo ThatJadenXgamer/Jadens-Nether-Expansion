@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:warped_forest",
+  "features": "netherexp:warped_forest/twisting_ivy",
+  "step": "vegetal_decoration"
+}

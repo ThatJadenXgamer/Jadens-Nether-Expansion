@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
+import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
 import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
@@ -9,6 +10,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -16,6 +18,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.*;
@@ -116,13 +119,22 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
             }
             else {
                 if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
-                    level.explode(player, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.TNT);
-                    player.getCooldowns().addCooldown(this, 80);
+                    level.explode(player, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.NONE);
+                    player.getCooldowns().addCooldown(this, 100);
                     player.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, player), 10);
                     stack.hurtAndBreak(5, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                     useProjectile(stack, player);
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
                     setCharge(stack, 0);
+
+                    Vec3 look = player.getLookAngle();
+                    Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
+                    player.push(pushBack.x * (1.75), pushBack.y * (1.75), pushBack.z * (1.75));
+
+                    List<Entity> nearbyEntities = level.getEntities(player, new AABB(player.getOnPos()).inflate(5.0, 5.0, 5.0));
+                    if (nearbyEntities.stream().filter(entity -> entity instanceof Mob).filter(entity -> ((Mob) entity).isDeadOrDying()).count() >= 10 && player instanceof ServerPlayer serverPlayer) {
+                        JNECriteriaTriggers.KILLED_WITH_PUMP_CHARGE.trigger(serverPlayer);
+                    }
                 }
             }
         }

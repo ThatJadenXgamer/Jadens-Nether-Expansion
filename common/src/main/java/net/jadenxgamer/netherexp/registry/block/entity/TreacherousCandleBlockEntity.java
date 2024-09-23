@@ -5,8 +5,8 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -115,49 +115,91 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {
-        if (state.getValue(TreacherousCandleBlock.COMPLETED)) {
-            --blockEntity.completionCooldown;
-            List<ServerPlayer> playersToRemove = new ArrayList<>(blockEntity.bossEvent.getPlayers());
-            for (ServerPlayer player : playersToRemove) {
-                blockEntity.bossEvent.removePlayer(player);
-            }
+        boolean isCompleted = state.getValue(TreacherousCandleBlock.COMPLETED);
+        boolean isLit = state.getValue(TreacherousCandleBlock.LIT);
+
+        // When completed all players are removed from the bossEvent and starts the cooldown
+        if (isCompleted) {
+            blockEntity.completionCooldown--;
+            clearBossBarPlayers(blockEntity);
+
             if (blockEntity.completionCooldown <= 0) {
                 resetValues(blockEntity);
                 level.setBlock(pos, state.setValue(TreacherousCandleBlock.COMPLETED, false).setValue(TreacherousCandleBlock.LIT, false), 2);
-                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 0.5f, 1.0f);
+                level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 0.5f, 1.0f);
             }
+            return;
         }
-        else if (state.getValue(TreacherousCandleBlock.LIT)) {
-            blockEntity.bossEvent.setProgress((float) blockEntity.health / blockEntity.maximumHealth);
-            for (Player player : level.getEntitiesOfClass(Player.class, (new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX(), pos.getY(), pos.getZ())).inflate(16.0, 16.0, 16.0))) {
-                player.addEffect(new MobEffectInstance(JNEMobEffects.BETRAYED.get(), 200, 0));
-                if (player instanceof ServerPlayer serverPlayer) {
-                    blockEntity.bossEvent.addPlayer(serverPlayer);
-                }
-            }
-            --blockEntity.currentWaveDelay;
+
+        // Handle lit state
+        if (isLit) {
+            updateHealth(blockEntity);
+            List<ServerPlayer> playersInRadius = getPlayersInRadius(level, pos);
+            updateBossBarPlayers(blockEntity, playersInRadius, level);
+
+            blockEntity.currentWaveDelay--;
             if (blockEntity.currentWave <= blockEntity.maximumWaves) {
-                if (blockEntity.currentWaveDelay == 40) {
-                    level.playSound(null, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.BLOCKS, 0.50f, 0.60f);
-                }
-                if (blockEntity.currentWaveDelay <= 0) {
-                    blockEntity.currentWave++;
-                    level.addParticle(JNEParticleTypes.CANDLE_BURST.get(), pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
-                    blockEntity.spawnWave(level, pos);
-                    blockEntity.mobsPerWave = blockEntity.mobsPerWave + blockEntity.increaseInMobsPerWave;
-                    blockEntity.currentWaveDelay = blockEntity.maximumWaveDelay;
-                }
-            }
-            else if (blockEntity.currentWaveDelay <= 0) {
+                prepareWaves(level, pos, blockEntity);
+            } else if (blockEntity.currentWaveDelay <= 0) {
                 dropFire(level, pos.above(), blockEntity);
+                level.playSound(null, pos, JNESoundEvents.TREACHEROUS_CANDLE_VICTORY.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
                 level.setBlock(pos, state.cycle(TreacherousCandleBlock.COMPLETED), 2);
             }
+            return;
         }
-        else if (!state.getValue(TreacherousCandleBlock.LIT)) {
-            List<ServerPlayer> playersToRemove = new ArrayList<>(blockEntity.bossEvent.getPlayers());
-            for (ServerPlayer player : playersToRemove) {
+
+        // Removes all players from bossEvent if the candle is not lit
+        clearBossBarPlayers(blockEntity);
+    }
+
+    private static void clearBossBarPlayers(TreacherousCandleBlockEntity blockEntity) {
+        // We make a list before clearing the players otherwise it causes a ConcurrentModificationException
+        List<ServerPlayer> playersToRemove = new ArrayList<>(blockEntity.bossEvent.getPlayers());
+        for (ServerPlayer player : playersToRemove) {
+            blockEntity.bossEvent.removePlayer(player);
+        }
+    }
+
+    private static void updateHealth(TreacherousCandleBlockEntity blockEntity) {
+        blockEntity.bossEvent.setProgress((float) blockEntity.health / blockEntity.maximumHealth);
+    }
+
+    private static List<ServerPlayer> getPlayersInRadius(Level level, BlockPos pos) {
+        return level.getEntitiesOfClass(ServerPlayer.class, new AABB(pos).inflate(16.0, 16.0, 16.0));
+    }
+
+    private static void updateBossBarPlayers(TreacherousCandleBlockEntity blockEntity, List<ServerPlayer> playersInRadius, Level level) {
+        for (ServerPlayer player : playersInRadius) {
+            if (player.isAlive() && player.level() == level) {
+                player.addEffect(new MobEffectInstance(JNEMobEffects.BETRAYED.get(), 200, 0));
+                if (!blockEntity.bossEvent.getPlayers().contains(player)) {
+                    blockEntity.bossEvent.addPlayer(player);
+                }
+            }
+        }
+
+        // Remove players which are no longer in radius, dead, or in another dimension
+        List<ServerPlayer> playersToRemove = new ArrayList<>(blockEntity.bossEvent.getPlayers());
+        for (ServerPlayer player : playersToRemove) {
+            if (!playersInRadius.contains(player) || !player.isAlive() || player.level() != level) {
                 blockEntity.bossEvent.removePlayer(player);
             }
+        }
+    }
+
+    private static void prepareWaves(Level level, BlockPos pos, TreacherousCandleBlockEntity blockEntity) {
+        if (blockEntity.currentWaveDelay == 40) {
+            level.playSound(null, pos, SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.BLOCKS, 0.50f, 0.60f);
+        }
+        // for some reason causes a weird desync if in the (<= 0) check
+        if (blockEntity.currentWaveDelay == 1) {
+            level.addParticle(JNEParticleTypes.CANDLE_BURST.get(), pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
+        }
+        if (blockEntity.currentWaveDelay <= 0) {
+            blockEntity.currentWave++;
+            blockEntity.spawnWave(level, pos);
+            blockEntity.mobsPerWave += blockEntity.increaseInMobsPerWave;
+            blockEntity.currentWaveDelay = blockEntity.maximumWaveDelay;
         }
     }
 
@@ -188,7 +230,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private void spawnWave(Level level, BlockPos pos) {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
-            for (int i = 0; i < this.mobsPerWave + playersNearby; i++) {
+            int bonusSpawns = this.playersNearby > 1 ? playersNearby * 2 : 0;
+            for (int i = 0; i < this.mobsPerWave + bonusSpawns; i++) {
                 BlockPos spawnPos = findValidSpawnPosition(level, pos, random);
 
                 EntityType<?> entityType = spawnableMobs.get(random.nextInt(spawnableMobs.size()));
@@ -214,13 +257,14 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         double z = pos.getZ() + random.nextInt(spawnRadius);
         int retries = 0;
         BlockPos currentPos = new BlockPos((int)x, (int)y, (int)z);
-        // Checks if the current position is a valid one, otherwise moves the entity up
+        // Checks if the current position is a valid one, otherwise moves the entity up if space is available
         while (retries < 10) {
-            if (level.getBlockState(currentPos).isAir() && level.getBlockState(currentPos.below()).isSolid()) {
+            if (level.getBlockState(currentPos).isAir()) {
                 return currentPos;
             }
             else {
                 y++;
+                currentPos = new BlockPos((int)x, (int)y, (int)z);
                 retries++;
             }
         }
@@ -232,7 +276,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         super.setRemoved();
         assert level != null;
         if (!level.isClientSide() && this.bossEvent != null) {
-            for (ServerPlayer player : this.bossEvent.getPlayers()) {
+            List<ServerPlayer> playersToRemove = new ArrayList<>(this.bossEvent.getPlayers());
+            for (ServerPlayer player : playersToRemove) {
                 this.bossEvent.removePlayer(player);
             }
         }

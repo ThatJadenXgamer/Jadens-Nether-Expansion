@@ -306,6 +306,12 @@ public class Apparition extends Monster implements FlyingAnimal {
         return super.killedEntity(serverLevel, livingEntity);
     }
 
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        this.playSound(JNESoundEvents.ENTITY_APPARITION_ATTACK.get(), 1.0f, 1.0f);
+        return super.doHurtTarget(entity);
+    }
+
     /////////
     // NBT //
     /////////

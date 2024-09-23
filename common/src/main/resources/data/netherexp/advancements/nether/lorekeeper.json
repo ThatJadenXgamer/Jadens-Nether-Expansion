@@ -1,0 +1,83 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:ossified_gargoyle_statue"
+    },
+    "title": {
+      "translate": "advancements.nether.lorekeeper.title"
+    },
+    "description": {
+      "translate": "advancements.nether.lorekeeper.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/hp_minecraftian",
+  "criteria": {
+    "froglights": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "netherexp:ossified_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:trample_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:phase_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:ghoul_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:wretched_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:sealed_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:occult_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:treacherous_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:cirripedia_gargoyle_statue"
+            ]
+          },
+          {
+            "items": [
+              "netherexp:obfuscated_gargoyle_statue"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "froglights"
+    ]
+  ]
+}
+

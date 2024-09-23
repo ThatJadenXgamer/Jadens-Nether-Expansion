@@ -66,9 +66,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SOUL_CANDLE.get());
 
                         output.accept(JNEBlocks.SOUL_SWIRLS.get());
-                        if (NetherExp.compatCinderscapes()){
-                            output.accept(JNEBlocks.SHALE_SWIRLS.get());
-                        }
                         output.accept(JNEBlocks.SOUL_SOIL_LAYER.get());
                         output.accept(Blocks.SOUL_SOIL);
                         output.accept(JNEBlocks.SOUL_PATH.get());
@@ -115,9 +112,9 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.NETHERRACK_TILES.get());
                         output.accept(JNEBlocks.NETHERRACK_PILLAR.get());
 
-                        output.accept(JNEItems.WHITE_ASH_POWDER.get());
-                        output.accept(JNEBlocks.WHITE_ASH_BLOCK.get());
-                        output.accept(JNEBlocks.WHITE_ASH.get());
+//                        output.accept(JNEItems.WHITE_ASH_POWDER.get());
+//                        output.accept(JNEBlocks.WHITE_ASH_BLOCK.get());
+//                        output.accept(JNEBlocks.WHITE_ASH.get());
                         output.accept(Blocks.BASALT);
                         output.accept(JNEBlocks.BASALT_SLAB.get());
                         output.accept(JNEBlocks.BASALT_STAIRS.get());
@@ -158,40 +155,40 @@ public class JNECreativeModeTabs {
 //                            output.accept(JNEBlocks.STRANGE_ENIGMA_FLESH);
 //                        }
 
-                        output.accept(JNEBlocks.CLARET_STEM.get());
-                        output.accept(JNEBlocks.CLARET_HYPHAE.get());
-                        output.accept(JNEBlocks.STRIPPED_CLARET_STEM.get());
-                        output.accept(JNEBlocks.STRIPPED_CLARET_HYPHAE.get());
-                        output.accept(JNEBlocks.CLARET_PLANKS.get());
-                        output.accept(JNEBlocks.CLARET_STAIRS.get());
-                        output.accept(JNEBlocks.CLARET_SLAB.get());
-                        output.accept(JNEBlocks.CLARET_FENCE.get());
-                        output.accept(JNEBlocks.CLARET_FENCE_GATE.get());
-                        output.accept(JNEBlocks.CLARET_DOOR.get());
-                        output.accept(JNEBlocks.CLARET_TRAPDOOR.get());
-                        output.accept(JNEBlocks.CLARET_PRESSURE_PLATE.get());
-                        output.accept(JNEBlocks.CLARET_BUTTON.get());
-                        output.accept(JNEItems.CLARET_SIGN.get());
-                        output.accept(JNEItems.CLARET_HANGING_SIGN.get());
+//                        output.accept(JNEBlocks.CLARET_STEM.get());
+//                        output.accept(JNEBlocks.CLARET_HYPHAE.get());
+//                        output.accept(JNEBlocks.STRIPPED_CLARET_STEM.get());
+//                        output.accept(JNEBlocks.STRIPPED_CLARET_HYPHAE.get());
+//                        output.accept(JNEBlocks.CLARET_PLANKS.get());
+//                        output.accept(JNEBlocks.CLARET_STAIRS.get());
+//                        output.accept(JNEBlocks.CLARET_SLAB.get());
+//                        output.accept(JNEBlocks.CLARET_FENCE.get());
+//                        output.accept(JNEBlocks.CLARET_FENCE_GATE.get());
+//                        output.accept(JNEBlocks.CLARET_DOOR.get());
+//                        output.accept(JNEBlocks.CLARET_TRAPDOOR.get());
+//                        output.accept(JNEBlocks.CLARET_PRESSURE_PLATE.get());
+//                        output.accept(JNEBlocks.CLARET_BUTTON.get());
+//                        output.accept(JNEItems.CLARET_SIGN.get());
+//                        output.accept(JNEItems.CLARET_HANGING_SIGN.get());
 
                         output.accept(Items.MAGMA_CREAM);
                         output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
 
-                        output.accept(JNEBlocks.IGNEOUS_REEDS.get());
-                        output.accept(JNEBlocks.SMOKESTALK.get());
-                        output.accept(JNEBlocks.SMOKESTALK_BLOCK.get());
-                        output.accept(JNEBlocks.STRIPPED_SMOKESTALK_BLOCK.get());
-                        output.accept(JNEBlocks.SMOKESTALK_PLANKS.get());
-                        output.accept(JNEBlocks.SMOKESTALK_STAIRS.get());
-                        output.accept(JNEBlocks.SMOKESTALK_SLAB.get());
-                        output.accept(JNEBlocks.SMOKESTALK_FENCE.get());
-                        output.accept(JNEBlocks.SMOKESTALK_FENCE_GATE.get());
-                        output.accept(JNEBlocks.SMOKESTALK_DOOR.get());
-                        output.accept(JNEBlocks.SMOKESTALK_TRAPDOOR.get());
-                        output.accept(JNEBlocks.SMOKESTALK_PRESSURE_PLATE.get());
-                        output.accept(JNEBlocks.SMOKESTALK_BUTTON.get());
-                        output.accept(JNEItems.SMOKESTALK_SIGN.get());
-                        output.accept(JNEItems.SMOKESTALK_HANGING_SIGN.get());
+//                        output.accept(JNEBlocks.IGNEOUS_REEDS.get());
+//                        output.accept(JNEBlocks.SMOKESTALK.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_BLOCK.get());
+//                        output.accept(JNEBlocks.STRIPPED_SMOKESTALK_BLOCK.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_PLANKS.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_STAIRS.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_SLAB.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_FENCE.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_FENCE_GATE.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_DOOR.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_TRAPDOOR.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_PRESSURE_PLATE.get());
+//                        output.accept(JNEBlocks.SMOKESTALK_BUTTON.get());
+//                        output.accept(JNEItems.SMOKESTALK_SIGN.get());
+//                        output.accept(JNEItems.SMOKESTALK_HANGING_SIGN.get());
 //                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
 //
 ////                            output.accept(JNEBlocks.EXPLOSIVE_SCORIA);
@@ -266,14 +263,6 @@ public class JNECreativeModeTabs {
                         output.accept(Blocks.SHROOMLIGHT);
                         output.accept(JNEItems.NIGHTSPORES.get());
                         output.accept(JNEBlocks.SHROOMNIGHT.get());
-                        if (NetherExp.compatCinderscapes()) {
-                            output.accept(JNEItems.BLIGHTSPORES.get());
-                            output.accept(JNEBlocks.SHROOMBLIGHT.get());
-                        }
-                        if (NetherExp.compatGardensOfTheDead()) {
-                            output.accept(JNEItems.FRIGHTSPORES.get());
-                            output.accept(JNEBlocks.SHROOMFRIGHT.get());
-                        }
 
                         output.accept(JNEItems.GLOWCHEESE.get());
                         output.accept(JNEBlocks.NETHER_PIZZA.get());
@@ -299,14 +288,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.TWISTING_IVY.get());
                         output.accept(Blocks.NETHER_SPROUTS);
 
-                        if (NetherExp.compatCinderscapes()) {
-                            output.accept(JNEBlocks.UMBRAL_NYLIUM_PATH.get());
-                            output.accept(JNEBlocks.UMBRAL_WART_BEARD.get());
-                            output.accept(JNEBlocks.VIOLET_SCALE_FUNGUS.get());
-//                            output.accept(JNEBlocks.TWILIGHT_VINES.get());
-                            output.accept(JNEBlocks.TWILIGHT_IVY.get());
-                        }
-
                         output.accept(JNEItems.WISP_BOTTLE.get());
 
                         output.accept(JNEItems.HOGHAM.get());
@@ -319,18 +300,8 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEBlocks.CRIMSON_SPORESHROOM.get());
                         output.accept(JNEBlocks.WARPED_SPORESHROOM.get());
-                        if (NetherExp.compatCinderscapes()) {
-                            output.accept(JNEBlocks.UMBRAL_SPORESHROOM.get());
-                        }
-                        if (NetherExp.compatGardensOfTheDead()) {
-                            output.accept(JNEBlocks.SOULBLIGHT_SPORESHROOM.get());
-                        }
                         output.accept(JNEBlocks.SOULED_GEYSER.get());
                         output.accept(JNEBlocks.BASALTIC_GEYSER.get());
-                        if (NetherExp.compatCinderscapes()) {
-                            output.accept(JNEBlocks.BLACKSTONIC_GEYSER.get());
-                            output.accept(JNEBlocks.ASHEN_GEYSER.get());
-                        }
 
 //                        output.accept(JNEItems.SKULL_ON_A_STICK);
                         output.accept(Items.SKELETON_SKULL);
@@ -390,9 +361,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
                         output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
                         output.accept(JNEItems.CARCASS_SPAWN_EGG.get());
-//                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
-//                            output.accept(JNEItems.WARPHOPPER_SPAWN_EGG);
-//                        }
 
                         output.accept(JNEBlocks.INSCRIBED_PANEL.get());
                         output.accept(JNEBlocks.OSSIFIED_GARGOYLE_STATUE.get());

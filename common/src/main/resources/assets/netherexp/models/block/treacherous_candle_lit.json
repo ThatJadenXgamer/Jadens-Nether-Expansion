@@ -1,9 +1,9 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"texture_size": [64, 64],
-	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/treacherous_candle",
+		"3": "netherexp:block/treacherous_candle_flame",
 		"particle": "netherexp:block/treacherous_candle_particle"
 	},
 	"elements": [
@@ -24,12 +24,8 @@
 			"to": [12, 30, 8],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 23, 8]},
 			"faces": {
-				"north": {"uv": [10, 0, 12, 3.5], "texture": "#0"},
-				"east": {"uv": [14, 0, 14, 3.5], "texture": "#0"},
-				"south": {"uv": [12, 0, 14, 3.5], "texture": "#0"},
-				"west": {"uv": [12, 0, 12, 3.5], "texture": "#0"},
-				"up": {"uv": [12, 0, 12, -2], "rotation": 270, "texture": "#0"},
-				"down": {"uv": [12, -2, 12, 0], "rotation": 90, "texture": "#0"}
+				"north": {"uv": [3, 0, 10, 14], "texture": "#3"},
+				"south": {"uv": [3, 0, 10, 14], "texture": "#3"}
 			}
 		}
 	],

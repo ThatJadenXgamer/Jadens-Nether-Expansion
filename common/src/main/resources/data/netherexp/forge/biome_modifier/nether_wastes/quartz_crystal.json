@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:nether_wastes",
+  "features": "netherexp:nether_wastes/quartz_crystal",
+  "step": "top_layer_modification"
+}

@@ -6,16 +6,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "netherexp:sanctum/street/straight_street",
-        "processors": "netherexp:etched_sanctum_blocks"
-      }
-    },
-    {
-      "weight": 3,
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "projection": "rigid",
-        "location": "netherexp:sanctum/street/threeway_street",
+        "location": "netherexp:sanctum/street/street_straight",
         "processors": "netherexp:etched_sanctum_blocks"
       }
     },
@@ -24,28 +15,27 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "netherexp:sanctum/street/cross_street",
+        "location": "netherexp:sanctum/street/street_cross",
         "processors": "netherexp:etched_sanctum_blocks"
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "netherexp:sanctum/arena/bland_arena",
+        "location": "netherexp:sanctum/arena/bland_normal",
         "processors": "netherexp:etched_sanctum_blocks"
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "netherexp:sanctum/arena/narrow_arena",
+        "location": "netherexp:sanctum/arena/pyramid_normal",
         "processors": "netherexp:etched_sanctum_blocks"
       }
     }
   ]
 }
-

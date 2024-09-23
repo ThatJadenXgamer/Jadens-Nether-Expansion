@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.entity.ai;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
 import net.jadenxgamer.netherexp.registry.block.entity.TreacherousCandleBlockEntity;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -57,7 +58,8 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
                     }
                     else {
                         level.setBlock(target, level.getBlockState(target).setValue(TreacherousCandleBlock.LIT, false).setValue(TreacherousCandleBlock.BROKEN, true), 2);
-                        level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 1.0f, 1.0f);
+                        level.playSound(null, target.getX(), target.getY(), target.getZ(), JNESoundEvents.TREACHEROUS_CANDLE_DEFEAT.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+                        level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 0.5f, 1.0f);
                     }
                     attackDelay = 60;
                 }

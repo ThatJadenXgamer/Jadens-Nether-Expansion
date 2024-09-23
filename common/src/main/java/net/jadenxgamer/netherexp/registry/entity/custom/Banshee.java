@@ -314,7 +314,7 @@ public class Banshee extends Monster {
                 else if (distance < 300.0) {
                     if (this.attackTime == 20) {
                         this.banshee.level().addFreshEntity(new WillOWisp(this.banshee, this.banshee.level(), target, banshee.getX(), banshee.getY() + 0.5, banshee.getZ(), 0.2f, 6));
-                        this.banshee.playSound(SoundEvents.SHULKER_SHOOT, 2.0F, (this.banshee.random.nextFloat() - this.banshee.random.nextFloat()) * 0.2F + 1.0F);
+                        this.banshee.playSound(JNESoundEvents.ENTITY_BANSHEE_SHOOT.get(), 2.0F, (this.banshee.random.nextFloat() - this.banshee.random.nextFloat()) * 0.2F + 1.0F);
                     }
                     if (this.attackTime <= 0) {
                         this.attackTime = 40 + this.banshee.random.nextInt(30);

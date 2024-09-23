@@ -1,0 +1,62 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "netherexp:soul_slate_bricks",
+            "probability": 0.2
+          },
+          "output_state": {
+            "Name": "netherexp:etched_soul_slate_bricks",
+            "Properties": {
+              "lit": "false"
+            }
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_blockstate_match",
+            "block_state": {
+              "Name": "netherexp:soul_slate_bricks"
+            },
+            "probability": 0.2
+          },
+          "output_state": {
+            "Name": "netherexp:cracked_soul_slate_bricks"
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "netherexp:soul_slate_tiles",
+            "probability": 0.2
+          },
+          "output_state": {
+            "Name": "netherexp:etched_soul_slate_tiles",
+            "Properties": {
+              "lit": "false"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

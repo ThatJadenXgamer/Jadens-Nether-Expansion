@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "netherexp:chapel",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 571263421,
+    "spread_type": "triangular",
+    "spacing": 30,
+    "separation": 10
+  }
+}

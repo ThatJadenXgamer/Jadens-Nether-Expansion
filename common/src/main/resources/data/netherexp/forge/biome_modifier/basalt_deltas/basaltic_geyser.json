@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:basalt_deltas",
+  "features": "netherexp:basalt_deltas/basaltic_geyser",
+  "step": "vegetal_decoration"
+}

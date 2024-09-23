@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:shotgun_core"
+    },
+    "title": {
+      "translate": "advancements.nether.ultra_overkill.title"
+    },
+    "description": {
+      "translate": "advancements.nether.ultra_overkill.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "netherexp:nether/the_nether_is_full",
+  "criteria": {
+    "has_item": {
+      "trigger": "netherexp:killed_with_pump_charge"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

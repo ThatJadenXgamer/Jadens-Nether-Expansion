@@ -27,7 +27,7 @@ public class WillOWispItem extends Item {
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         Vec3 raycastStart = user.getEyePosition(1.0F);
-        Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(15));
+        Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(35));
         AABB aabb = new AABB(raycastStart, raycastEnd);
         EntityHitResult entityHitResult = ProjectileUtil.getEntityHitResult(level, user, raycastStart, raycastEnd, aabb, (entity) -> entity instanceof LivingEntity && entity != user);
         LivingEntity target = null;
@@ -37,7 +37,7 @@ public class WillOWispItem extends Item {
         if (!level.isClientSide() && target != null) {
             WillOWisp willOWisp = new WillOWisp(user, level, target, 0.25f);
             level.addFreshEntity(willOWisp);
-            level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+            level.playSound(null, user.getX(), user.getY(), user.getZ(), JNESoundEvents.ENTITY_BANSHEE_SHOOT.get(), SoundSource.NEUTRAL, 2.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
             user.awardStat(Stats.ITEM_USED.get(this));
             if (!user.getAbilities().instabuild) {
                 itemStack.shrink(1);

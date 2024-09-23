@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "half=lower,facing=north": {
+      "model": "netherexp:block/gargoyle_statue/base"
+    },
+    "half=lower,facing=east": {
+      "model": "netherexp:block/gargoyle_statue/base",
+      "y": 90
+    },
+    "half=lower,facing=south": {
+      "model": "netherexp:block/gargoyle_statue/base",
+      "y": 180
+    },
+    "half=lower,facing=west": {
+      "model": "netherexp:block/gargoyle_statue/base",
+      "y": 270
+    },
+    "half=upper,facing=north": {
+      "model": "netherexp:block/gargoyle_statue/occult"
+    },
+    "half=upper,facing=east": {
+      "model": "netherexp:block/gargoyle_statue/occult",
+      "y": 90
+    },
+    "half=upper,facing=south": {
+      "model": "netherexp:block/gargoyle_statue/occult",
+      "y": 180
+    },
+    "half=upper,facing=west": {
+      "model": "netherexp:block/gargoyle_statue/occult",
+      "y": 270
+    }
+  }
+}

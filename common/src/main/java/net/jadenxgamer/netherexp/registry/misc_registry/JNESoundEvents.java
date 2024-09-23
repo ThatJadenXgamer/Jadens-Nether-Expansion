@@ -148,6 +148,8 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> BRAZIER_CHEST_OPEN = registerSoundEvents("block.brazier_chest.open");
     public static RegistrySupplier<SoundEvent> BRAZIER_CHEST_CLOSE = registerSoundEvents("block.brazier_chest.close");
     public static RegistrySupplier<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
+    public static RegistrySupplier<SoundEvent> TREACHEROUS_CANDLE_VICTORY = registerSoundEvents("block.treacherous_candle.victory");
+    public static RegistrySupplier<SoundEvent> TREACHEROUS_CANDLE_DEFEAT = registerSoundEvents("block.treacherous_candle.defeat");
 
     // ENTITIES:
 
@@ -163,6 +165,9 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_HURT = registerSoundEvents("entity.apparition.hurt");
     public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_DEATH = registerSoundEvents("entity.apparition.death");
     public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_FLY = registerSoundEvents("entity.apparition.fly");
+    public static RegistrySupplier<SoundEvent> ENTITY_APPARITION_ATTACK = registerSoundEvents("entity.apparition.attack");
+
+    public static RegistrySupplier<SoundEvent> ENTITY_CARCASS_AMBIENT = registerSoundEvents("entity.carcass.ambient");
 
     public static RegistrySupplier<SoundEvent> ENTITY_VESSEL_AMBIENT = registerSoundEvents("entity.vessel.ambient");
     public static RegistrySupplier<SoundEvent> ENTITY_VESSEL_HURT = registerSoundEvents("entity.vessel.hurt");
@@ -180,6 +185,7 @@ public class JNESoundEvents {
     public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_HURT = registerSoundEvents("entity.banshee.hurt");
     public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_DEATH = registerSoundEvents("entity.banshee.death");
     public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_TELEPORT = registerSoundEvents("entity.banshee.teleport");
+    public static RegistrySupplier<SoundEvent> ENTITY_BANSHEE_SHOOT = registerSoundEvents("entity.banshee.shoot");
 
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_IGNEOUS_THORNS = registerSoundEvents("entity.player.hurt_igneous_thorns");
     public static RegistrySupplier<SoundEvent> ENTITY_PLAYER_HURT_SUFFOCATION = registerSoundEvents("entity.player.hurt_suffocation");
