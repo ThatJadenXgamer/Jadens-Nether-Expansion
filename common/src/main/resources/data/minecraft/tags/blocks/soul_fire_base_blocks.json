@@ -21,6 +21,7 @@
     "netherexp:black_ice",
     "netherexp:fossil_ore",
     "netherexp:fossil_fuel_ore",
-    "netherexp:diamond_fossil_ore"
+    "netherexp:diamond_fossil_ore",
+    "netherexp:sculk_grinder"
   ]
 }

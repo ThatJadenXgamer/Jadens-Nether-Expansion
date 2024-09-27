@@ -56,6 +56,9 @@ public class JNEForgeConfigs {
         SOUL_SWIRLS_BONE_MEAL_BEHAVIOR = BUILDER
                 .comment("Defines what happens when Soul Swirls are bone mealed \nDROPS - Drops more of itself when bone mealed \nDUPLICATES - Places another soul swirl beside it \nDISABLED - Disables bone mealing soul swirls \n ")
                 .defineEnum("soul_swirls_bone_meal_behavior", SoulSwirlsBoneMeal.DUPLICATES);
+        SCULK_GRINDER_EXPERIENCE = BUILDER
+                .comment("Defines how much experience is dropped when treacherous flames are grinded down")
+                .define("sculk_grinder_experience", 120);
     }
 
     private static void registerItemConfigs(ForgeConfigSpec.Builder BUILDER) {

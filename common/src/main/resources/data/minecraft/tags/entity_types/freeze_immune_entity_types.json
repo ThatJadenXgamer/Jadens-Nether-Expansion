@@ -5,6 +5,7 @@
     "netherexp:wisp",
     "netherexp:vessel",
     "netherexp:ecto_slab",
-    "netherexp:stampede"
+    "netherexp:stampede",
+    "netherexp:banshee"
   ]
 }

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:ecto_slab"
+    "netherexp:ecto_slab",
+    "netherexp:banshee"
   ]
 }

@@ -118,10 +118,10 @@ public class JNEItems {
             new Item(new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
-            new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(512).rarity(Rarity.RARE)));
+            new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(512).fireResistant().rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> PUMP_CHARGE_SHOTGUN = registerItem("pump_charge_shotgun", () ->
-            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).durability(640).rarity(Rarity.EPIC)));
+            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).durability(640).fireResistant().rarity(Rarity.EPIC)));
 
     public static final RegistrySupplier<Item> CLARET_SIGN = registerItem("claret_sign", () ->
             new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));
