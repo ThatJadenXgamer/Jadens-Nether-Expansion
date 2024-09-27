@@ -20,7 +20,6 @@ import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.item.custom.SanctumCompassItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.particle.custom.*;
-import net.minecraft.client.particle.DripParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
@@ -97,6 +96,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CIRRIPEDIA_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.OCCULT_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SEALED_GARGOYLE_STATUE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.OBFUSCATED_GARGOYLE_STATUE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BRAZIER_CHEST.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TREACHEROUS_CANDLE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(),

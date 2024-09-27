@@ -42,6 +42,15 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
+        "location": "netherexp:sanctum/crypt/statue_wretched",
+        "processors": "netherexp:etched_sanctum_blocks"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
         "location": "netherexp:sanctum/cipher/cipher_2",
         "processors": "netherexp:etched_sanctum_blocks"
       }

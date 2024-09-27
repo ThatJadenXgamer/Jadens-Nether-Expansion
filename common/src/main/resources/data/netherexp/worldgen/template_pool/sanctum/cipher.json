@@ -9,6 +9,24 @@
         "location": "netherexp:sanctum/cipher/cipher_1",
         "processors": "minecraft:empty"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/cipher/cipher_8",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/cipher/cipher_9",
+        "processors": "minecraft:empty"
+      }
     }
   ]
 }

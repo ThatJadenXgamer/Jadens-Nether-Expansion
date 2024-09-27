@@ -1,9 +1,10 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"texture_size": [128, 128],
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/gargoyle_statue/obfuscated",
-		"particle": "netherexp:block/gargoyle_statue/obfuscated"
+		"particle": "netherexp:block/soul_slate"
 	},
 	"elements": [
 		{

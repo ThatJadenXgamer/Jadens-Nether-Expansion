@@ -171,6 +171,7 @@ public class Banshee extends Monster {
             if (apparition != null) {
                 apparition.setPos(this.getX(), this.getY(), this.getZ());
                 apparition.setCooldown(1200);
+                apparition.setPreference(4);
                 if (this.getTarget() != null) {
                     apparition.setTarget(this.getTarget());
                 }

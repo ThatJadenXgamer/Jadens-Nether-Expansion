@@ -4,15 +4,15 @@
       "item": "netherexp:shotgun_core"
     },
     "title": {
-      "translate": "advancements.nether.ultra_overkill.title"
+      "translate": "advancements.nether.ultrakill.title"
     },
     "description": {
-      "translate": "advancements.nether.ultra_overkill.description"
+      "translate": "advancements.nether.ultrakill.description"
     },
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": true
+    "hidden": false
   },
   "parent": "netherexp:nether/the_nether_is_full",
   "criteria": {

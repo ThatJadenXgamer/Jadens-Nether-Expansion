@@ -179,12 +179,6 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
-        tooltip.add(Component.translatable("shotgun_fist.heat").append(CommonComponents.SPACE).append(Component.literal("" + getTemperature(stack))).withStyle(ChatFormatting.RED));
-        tooltip.add((Component.empty()));
-    }
-
-    @Override
     public @NotNull UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
     }

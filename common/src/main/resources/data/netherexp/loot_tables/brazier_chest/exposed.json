@@ -80,7 +80,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 3,
-                "max": 8
+                "max": 18
               },
               "add": false
             }
@@ -270,12 +270,7 @@
         {
           "type": "minecraft:item",
           "name": "netherexp:shotgun_core",
-          "weight": 5
-        },
-        {
-          "type": "minecraft:item",
-          "name": "netherexp:pump_charge_upgrade_smithing_template",
-          "weight": 1
+          "weight": 8
         },
         {
           "type": "minecraft:item",

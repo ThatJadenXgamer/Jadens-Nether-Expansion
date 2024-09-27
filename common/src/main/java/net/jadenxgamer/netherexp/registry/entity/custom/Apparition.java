@@ -447,6 +447,9 @@ public class Apparition extends Monster implements FlyingAnimal {
                 if (level.getBlockState(target).is(JNEBlocks.PHASE_GARGOYLE_STATUE.get())) {
                     EctoSlab ectoSlab = JNEEntityType.ECTO_SLAB.get().create(level);
                     if (ectoSlab != null) {
+                        if (level instanceof ServerLevel serverLevel) {
+                            ectoSlab.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(this.blockPos), MobSpawnType.MOB_SUMMONED, null, null);
+                        }
                         ectoSlab.setPos(apparition.getX(), apparition.getY(), apparition.getZ());
                         ectoSlab.setSize(4, true);
                         ectoSlab.setChangeType(0);
@@ -459,6 +462,9 @@ public class Apparition extends Monster implements FlyingAnimal {
                 else if (level.getBlockState(target).is(JNEBlocks.GHOUL_GARGOYLE_STATUE.get())) {
                     Banshee banshee = JNEEntityType.BANSHEE.get().create(level);
                     if (banshee != null) {
+                        if (level instanceof ServerLevel serverLevel) {
+                            banshee.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(this.blockPos), MobSpawnType.MOB_SUMMONED, null, null);
+                        }
                         banshee.setPos(apparition.getX(), apparition.getY(), apparition.getZ());
                         banshee.setChangeType(0);
                         if (apparition.hasCustomName()) {
@@ -473,6 +479,9 @@ public class Apparition extends Monster implements FlyingAnimal {
                      */
                     Vessel vessel = JNEEntityType.VESSEL.get().create(level);
                     if (vessel != null) {
+                        if (level instanceof ServerLevel serverLevel) {
+                            vessel.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(this.blockPos), MobSpawnType.MOB_SUMMONED, null, null);
+                        }
                         vessel.setPos(apparition.getX(), apparition.getY(), apparition.getZ());
                         vessel.setChangeType(0);
                         if (apparition.hasCustomName()) {

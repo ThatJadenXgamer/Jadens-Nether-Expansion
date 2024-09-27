@@ -105,6 +105,10 @@ public class JNEBlocks {
             new TreacherousCandleBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().lightLevel(
                     blockState -> blockState.getValue(TreacherousCandleBlock.LIT) ? 10 : 0).sound(JNESoundType.SOUL_SLATE)));
 
+
+    public static final RegistrySupplier<Block> SCULK_GRINDER = registerBlock("sculk_grinder", () ->
+            new SculkGrinderBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).lightLevel(state -> 15).sound(SoundType.SCULK_CATALYST)));
+
     // Soul Decorations
 
     public static final RegistrySupplier<Block> SOUL_CANDLE = registerBlock("soul_candle", () ->

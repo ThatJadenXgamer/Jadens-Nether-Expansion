@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "netherexp:wraithing_flesh"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "netherexp:gargoyle_statues/ossified",
+      "netherexp:gargoyle_statues/trample",
+      "netherexp:gargoyle_statues/phase",
+      "netherexp:gargoyle_statues/ghoul",
+      "netherexp:gargoyle_statues/wretched",
+      "netherexp:gargoyle_statues/sealed",
+      "netherexp:gargoyle_statues/treacherous",
+      "netherexp:gargoyle_statues/occult",
+      "netherexp:gargoyle_statues/cirripedia",
+      "netherexp:gargoyle_statues/obfuscated"
+    ]
+  }
+}

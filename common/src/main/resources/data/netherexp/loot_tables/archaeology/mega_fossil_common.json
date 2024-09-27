@@ -84,6 +84,16 @@
           "type": "minecraft:item",
           "name": "netherexp:spirit_armor_trim_smithing_template",
           "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "netherexp:spectre_pottery_sherd",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "netherexp:marionette_pottery_sherd",
+          "weight": 10
         }
       ]
     }

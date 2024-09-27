@@ -6,9 +6,11 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
+import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructureKeys;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -22,11 +24,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -127,17 +132,26 @@ public class EctoSoulSandBlock extends Block {
 
     private void setSusSoulSand(Level level, BlockPos pos, RandomSource random) {
         ResourceLocation lootTable = ARCHAEOLOGY_NETHER_WASTES;
-        if (level.getBiome(pos).is(Biomes.SOUL_SAND_VALLEY)) {
-            lootTable = ARCHAEOLOGY_SOUL_SAND_VALLEY;
-        }
-        else if (level.getBiome(pos).is(Biomes.CRIMSON_FOREST)) {
-            lootTable = ARCHAEOLOGY_CRIMSON_FOREST;
-        }
-        else if (level.getBiome(pos).is(Biomes.WARPED_FOREST)) {
-            lootTable = ARCHAEOLOGY_WARPED_FOREST;
-        }
-        else if (level.getBiome(pos).is(Biomes.BASALT_DELTAS)) {
-            lootTable = ARCHAEOLOGY_BASALT_DELTAS;
+        if (level instanceof ServerLevel serverLevel) {
+            StructureManager structureManager = serverLevel.structureManager();
+            if (structureManager.getStructureAt(pos, serverLevel.registryAccess().registryOrThrow(Registries.STRUCTURE).get(BuiltinStructures.FORTRESS)).isValid()) {
+                lootTable = ARCHAEOLOGY_FORTRESS;
+            }
+            else if (structureManager.getStructureAt(pos, serverLevel.registryAccess().registryOrThrow(Registries.STRUCTURE).get(BuiltinStructures.FORTRESS)).isValid()) {
+                lootTable = ARCHAEOLOGY_BASTION_REMNANT;
+            }
+            else if (serverLevel.getBiome(pos).is(Biomes.SOUL_SAND_VALLEY)) {
+                lootTable = ARCHAEOLOGY_SOUL_SAND_VALLEY;
+            }
+            else if (serverLevel.getBiome(pos).is(Biomes.CRIMSON_FOREST)) {
+                lootTable = ARCHAEOLOGY_CRIMSON_FOREST;
+            }
+            else if (serverLevel.getBiome(pos).is(Biomes.WARPED_FOREST)) {
+                lootTable = ARCHAEOLOGY_WARPED_FOREST;
+            }
+            else if (serverLevel.getBiome(pos).is(Biomes.BASALT_DELTAS)) {
+                lootTable = ARCHAEOLOGY_BASALT_DELTAS;
+            }
         }
         level.setBlock(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.get().defaultBlockState().setValue(JNEBrushableBlock.PERSISTENT, false), UPDATE_CLIENTS);
         JNEBrushableBlockEntity.setLootTable(level, random, pos, lootTable);

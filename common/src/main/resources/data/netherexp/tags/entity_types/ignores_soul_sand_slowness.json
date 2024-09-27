@@ -4,6 +4,8 @@
     "netherexp:wisp",
     "netherexp:apparition",
     "netherexp:vessel",
-    "netherexp:ecto_slab"
+    "netherexp:ecto_slab",
+    "netherexp:banshee",
+    "netherexp:carcass"
   ]
 }

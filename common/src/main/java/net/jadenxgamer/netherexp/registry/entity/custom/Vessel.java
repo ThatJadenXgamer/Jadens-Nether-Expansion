@@ -206,6 +206,7 @@ public class Vessel extends Monster implements RangedAttackMob {
             if (apparition != null) {
                 apparition.setPos(this.getX(), this.getY(), this.getZ());
                 apparition.setCooldown(1200);
+                apparition.setPreference(1);
                 if (this.getTarget() != null) {
                     apparition.setTarget(this.getTarget());
                 }

@@ -17,7 +17,6 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Enemy;
@@ -35,6 +34,7 @@ public class Carcass extends PathfinderMob {
 
     private static final EntityDataAccessor<Boolean> IS_REANIMATED = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> REANIMATION_COOLDOWN = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> REANIMATION_FLAG = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.BOOLEAN);
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState moveAnimationState = new AnimationState();
@@ -43,7 +43,6 @@ public class Carcass extends PathfinderMob {
 
     private int deactivationAnimationTimer;
     private int reanimationAnimationTimer;
-    private boolean reanimationFlag = false;
 
     public Carcass(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -54,6 +53,12 @@ public class Carcass extends PathfinderMob {
     @Override
     public void tick() {
         super.tick();
+        if (this.getReanimationFlag()) {
+            this.reanimateCarcass();
+        }
+        if (this.getIsReanimated() && this.getHealth() <= 0) {
+            this.deactivateCarcass();
+        }
 
         if (this.level().isClientSide) {
             if (this.getIsReanimated()) {
@@ -66,7 +71,7 @@ public class Carcass extends PathfinderMob {
                     idleAnimationState.startIfStopped(this.tickCount);
                 }
             }
-            else if (!this.getIsReanimated() && !this.reanimationFlag && deactivationAnimationTimer == 25) {
+            else if (!this.getIsReanimated() && !this.getReanimationFlag() && deactivationAnimationTimer == 25) {
                 deactivateAnimationState.startIfStopped(this.tickCount);
                 idleAnimationState.stop();
                 moveAnimationState.stop();
@@ -118,7 +123,7 @@ public class Carcass extends PathfinderMob {
                 return true;
             }
             else if (damageSource.getDirectEntity() instanceof Projectile projectile && projectile.isOnFire()) {
-                this.reanimationFlag = true;
+                this.setReanimationFlag(true);
             }
             else return false;
         }
@@ -135,16 +140,6 @@ public class Carcass extends PathfinderMob {
     @Override
     public void aiStep() {
         super.aiStep();
-        int cooldown = this.getReanimationCooldown();
-        if (this.reanimationFlag) {
-            this.reanimateCarcass();
-        }
-        if (this.getIsReanimated() && this.getHealth() <= 0) {
-            this.deactivateCarcass();
-        }
-        if (cooldown > 0 && !this.getIsReanimated()) {
-            this.setReanimationCooldown(--cooldown);
-        }
     }
 
     @Override
@@ -163,12 +158,15 @@ public class Carcass extends PathfinderMob {
         if (this.reanimationAnimationTimer <= 0) {
             reanimateAnimationState.stop();
             this.setIsReanimated(true);
-            this.reanimationFlag = false;
+            this.setReanimationFlag(false);
             this.reanimationAnimationTimer = 22;
         }
     }
 
     private void deactivateCarcass() {
+        idleAnimationState.stop();
+        moveAnimationState.stop();
+        reanimateAnimationState.stop();
         if (this.deactivationAnimationTimer > 0) {
             --this.deactivationAnimationTimer;
         }
@@ -187,7 +185,7 @@ public class Carcass extends PathfinderMob {
         ItemStack stack = player.getItemInHand(hand);
         if (stack.is(Items.FLINT_AND_STEEL) && !this.getIsReanimated()) {
             this.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0f, 1.0f);
-            this.reanimationFlag = true;
+            this.setReanimationFlag(true);
             if (player instanceof ServerPlayer serverPlayer) {
                 JNECriteriaTriggers.REVIVE_CARCASS.trigger(serverPlayer);
             }
@@ -201,6 +199,7 @@ public class Carcass extends PathfinderMob {
         super.defineSynchedData();
         this.entityData.define(IS_REANIMATED, false);
         this.entityData.define(REANIMATION_COOLDOWN, 0);
+        this.entityData.define(REANIMATION_FLAG, false);
     }
 
     @Override
@@ -231,6 +230,14 @@ public class Carcass extends PathfinderMob {
 
     public void setReanimationCooldown(int cooldown) {
         this.entityData.set(REANIMATION_COOLDOWN, cooldown);
+    }
+
+    public boolean getReanimationFlag() {
+        return this.entityData.get(REANIMATION_FLAG);
+    }
+
+    public void setReanimationFlag(boolean flag) {
+        this.entityData.set(REANIMATION_FLAG, flag);
     }
 
     ////////

@@ -64,8 +64,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 5,
-                "max": 7
+                "min": 7,
+                "max": 10
               },
               "add": false
             }
@@ -80,7 +80,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 3,
-                "max": 8
+                "max": 18
               },
               "add": false
             }
@@ -292,7 +292,7 @@
         {
           "type": "minecraft:item",
           "name": "netherexp:pump_charge_upgrade_smithing_template",
-          "weight": 5
+          "weight": 8
         },
         {
           "type": "minecraft:item",
@@ -303,7 +303,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1,
-                "max": 2
+                "max": 4
               }
             }
           ]
