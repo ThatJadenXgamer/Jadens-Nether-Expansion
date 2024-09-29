@@ -1,6 +1,7 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"texture_size": [64, 64],
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/treacherous_candle",
 		"3": "netherexp:block/treacherous_candle_flame",
