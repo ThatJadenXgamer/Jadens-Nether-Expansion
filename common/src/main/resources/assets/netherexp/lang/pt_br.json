@@ -49,6 +49,8 @@
   "item.netherexp.skull_on_a_stick": "Crânio em um Graveto",
   "item.netherexp.music_disc_cricket": "Disco Musical",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
+  "item.netherexp.music_disc_buckshot_wonderland": "Disco Musical",
+  "item.netherexp.music_disc_buckshot_wonderland.desc": "Shroomaniac - Buckshot Wonderland",
 
   "item.netherexp.antidote.inactive_tooltip": "Para Ativar Precisa ser Preparado com:",
   "item.netherexp.netherite_artifact.tooltip": "Artefato de Netherita",

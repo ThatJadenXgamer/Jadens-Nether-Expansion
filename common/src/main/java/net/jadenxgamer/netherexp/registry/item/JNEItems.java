@@ -137,6 +137,8 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> MUSIC_DISC_CRICKET  = registerItem("music_disc_cricket", () ->
             new RecordItem(13, JNESoundEvents.MUSIC_DISC_CRICKET.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 164));
+    public static final RegistrySupplier<Item> MUSIC_DISC_BUCKSHOT_WONDERLAND = registerItem("music_disc_buckshot_wonderland", () ->
+            new RecordItem(8, JNESoundEvents.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 193));
 
     public static final RegistrySupplier<Item> APPARITION_SPAWN_EGG = registerItem("apparition_spawn_egg", () ->
             new ArchitecturySpawnEggItem(JNEEntityType.APPARITION, 4864303, 699311, new Item.Properties()));

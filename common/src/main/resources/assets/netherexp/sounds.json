@@ -1268,5 +1268,13 @@
         "stream": true
       }
     ]
+  },
+  "music_disc.buckshot_wonderland": {
+    "sounds": [
+      {
+        "name": "netherexp:records/buckshot_wonderland",
+        "stream": true
+      }
+    ]
   }
 }

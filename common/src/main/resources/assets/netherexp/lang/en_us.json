@@ -49,6 +49,8 @@
   "item.netherexp.skull_on_a_stick": "Skull on a Stick",
   "item.netherexp.music_disc_cricket": "Music Disc",
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
+  "item.netherexp.music_disc_buckshot_wonderland": "Music Disc",
+  "item.netherexp.music_disc_buckshot_wonderland.desc": "Shroomaniac - Buckshot Wonderland",
 
   "item.netherexp.antidote.inactive_tooltip": "To Activate needs to be Brewed With:",
   "item.netherexp.netherite_artifact.tooltip": "Netherite Artifact",

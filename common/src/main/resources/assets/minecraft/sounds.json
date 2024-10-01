@@ -1,0 +1,10 @@
+{
+  "music.nether.warped_forest": {
+    "sounds": [
+      {
+        "name": "netherexp:music/game/nether/warped_forest/hospital",
+        "stream": true
+      }
+    ]
+  }
+}

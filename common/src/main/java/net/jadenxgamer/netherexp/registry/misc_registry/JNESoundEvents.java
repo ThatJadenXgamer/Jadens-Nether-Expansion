@@ -193,6 +193,7 @@ public class JNESoundEvents {
 
     // MUSIC:
     public static RegistrySupplier<SoundEvent> MUSIC_DISC_CRICKET = registerSoundEvents("music_disc.cricket");
+    public static RegistrySupplier<SoundEvent> MUSIC_DISC_BUCKSHOT_WONDERLAND = registerSoundEvents("music_disc.buckshot_wonderland");
 
     private static RegistrySupplier<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(NetherExp.MOD_ID, name)));

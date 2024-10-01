@@ -286,6 +286,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "netherexp:music_disc_buckshot_wonderland",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
           "name": "netherexp:shotgun_core",
           "weight": 10
         },

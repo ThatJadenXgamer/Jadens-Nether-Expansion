@@ -61,6 +61,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
                         output.accept(JNEBlocks.SCULK_GRINDER.get());
+                        output.accept(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get());
 
                         output.accept(JNEItems.SANCTUM_COMPASS.get());
                         output.accept(JNEItems.WRAITHING_FLESH.get());

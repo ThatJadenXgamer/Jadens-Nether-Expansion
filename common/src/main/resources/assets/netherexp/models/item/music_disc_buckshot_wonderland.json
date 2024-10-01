@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "netherexp:item/music_disc_buckshot_wonderland"
+  }
+}
