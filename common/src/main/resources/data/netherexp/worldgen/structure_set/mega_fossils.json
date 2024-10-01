@@ -12,6 +12,10 @@
   "placement": {
     "type": "minecraft:random_spread",
     "salt": 464662789,
+    "exclusion_zone": {
+      "other_set": "netherexp:sanctum",
+      "chunk_count": 3
+    },
     "spacing": 3,
     "separation": 2
   }
