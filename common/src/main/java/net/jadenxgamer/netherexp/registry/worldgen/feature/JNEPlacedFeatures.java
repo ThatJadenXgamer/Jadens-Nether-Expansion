@@ -31,6 +31,7 @@ public class JNEPlacedFeatures {
     // CRIMSON FOREST
     public static final ResourceKey<PlacedFeature> CRIMSON_SPORESHROOM = registerKey("crimson_forest/crimson_sporeshroom");
     public static final ResourceKey<PlacedFeature> WEEPING_IVY = registerKey("crimson_forest/weeping_ivy");
+    public static final ResourceKey<PlacedFeature> CRIMSON_SPROUTS = registerKey("crimson_forest/crimson_sprouts");
 
     // WARPED FOREST
 

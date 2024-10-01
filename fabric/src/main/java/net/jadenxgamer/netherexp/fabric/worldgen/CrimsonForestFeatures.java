@@ -35,6 +35,9 @@ public class CrimsonForestFeatures {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.CRIMSON_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.WEEPING_IVY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.CRIMSON_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, JNEPlacedFeatures.CRIMSON_SPROUTS);
         
         // STEP 10 - TOP_LAYER_MODIFICATION
     }
