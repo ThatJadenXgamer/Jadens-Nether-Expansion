@@ -1,5 +1,6 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"2": "netherexp:block/sorrowsquash_stem_plant",
 		"particle": "netherexp:block/sorrowsquash_stem_plant"
