@@ -152,9 +152,6 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> FOSSIL_FUEL_ORE = registerBlock("fossil_fuel_ore", () ->
             new JNEOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(0.6f), UniformInt.of(0, 2), 0));
 
-    public static final RegistrySupplier<Block> DIAMOND_FOSSIL_ORE = registerBlock("diamond_fossil_ore", () ->
-            new JNEOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(0.6f).requiresCorrectToolForDrops(), UniformInt.of(3, 7), 1));
-
     public static final RegistrySupplier<Block> SOUL_TORCHFLOWER = registerBlock("soul_torchflower", () ->
             new NetherFlowerBlock(MobEffects.DIG_SPEED, 5, BlockBehaviour.Properties.copy(Blocks.TORCHFLOWER)));
 
