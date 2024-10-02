@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:smooth_netherrack",
+    "netherexp:smooth_netherrack_slab",
+    "netherexp:smooth_netherrack_stairs",
+    "netherexp:smooth_netherrack_wall",
+    "netherexp:netherrack_bricks",
+    "netherexp:netherrack_brick_slab",
+    "netherexp:netherrack_brick_stairs",
+    "netherexp:netherrack_brick_wall",
+    "netherexp:netherrack_tiles",
+    "netherexp:netherrrack_pillar"
+  ]
+}
