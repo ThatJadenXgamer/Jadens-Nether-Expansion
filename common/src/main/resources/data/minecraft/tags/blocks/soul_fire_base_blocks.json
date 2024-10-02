@@ -1,9 +1,16 @@
 {
   "replace": false,
   "values": [
+    "netherexp:soul_soil_layer",
     "netherexp:soul_slate",
+    "netherexp:soul_slate_slab",
+    "netherexp:soul_slate_stairs",
+    "netherexp:soul_slate_wall",
     "netherexp:pale_soul_slate",
     "netherexp:soul_slate_bricks",
+    "netherexp:soul_slate_brick_slab",
+    "netherexp:soul_slate_brick_stairs",
+    "netherexp:soul_slate_brick_wall",
     "netherexp:etched_soul_slate_bricks",
     "netherexp:cracked_soul_slate_bricks",
     "netherexp:soul_slate_brick_pillar",
@@ -21,6 +28,7 @@
     "netherexp:black_ice",
     "netherexp:fossil_ore",
     "netherexp:fossil_fuel_ore",
-    "netherexp:sculk_grinder"
+    "netherexp:sculk_grinder",
+    "netherexp:soul_path"
   ]
 }
