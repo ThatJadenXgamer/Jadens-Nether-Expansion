@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:bone_block"
+    },
+    "F": {
+      "item": "netherexp:treacherous_flame"
+    },
+    "S": {
+      "item": "netherexp:pump_charge_upgrade_smithing_template"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#F#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "netherexp:pump_charge_upgrade_smithing_template"
+  },
+  "show_notification": true
+}
