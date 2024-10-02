@@ -109,10 +109,10 @@ public class JNEItems {
             new WillOWispItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> STRIDITE = registerItem("stridite", () ->
-            new Item(new Item.Properties()));
+            new Item(new Item.Properties().fireResistant()));
 
     public static final RegistrySupplier<Item> NETHERITE_PLATING = registerItem("netherite_plating", () ->
-            new Item(new Item.Properties()));
+            new Item(new Item.Properties().fireResistant()));
 
     public static final RegistrySupplier<Item> TREACHEROUS_FLAME = registerItem("treacherous_flame", () ->
             new Item(new Item.Properties().rarity(Rarity.RARE)));
