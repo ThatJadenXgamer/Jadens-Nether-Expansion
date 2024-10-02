@@ -183,11 +183,14 @@ public class Carcass extends PathfinderMob {
     @Override
     protected @NotNull InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(Items.FLINT_AND_STEEL) && !this.getIsReanimated()) {
+        if (stack.is(Items.FLINT_AND_STEEL) || stack.is(Items.FIRE_CHARGE) && !this.getIsReanimated()) {
             this.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0f, 1.0f);
             this.setReanimationFlag(true);
             if (player instanceof ServerPlayer serverPlayer) {
                 JNECriteriaTriggers.REVIVE_CARCASS.trigger(serverPlayer);
+            }
+            if (stack.is(Items.FIRE_CHARGE) && !player.getAbilities().instabuild) {
+                stack.shrink(1);
             }
             return InteractionResult.SUCCESS;
         }
