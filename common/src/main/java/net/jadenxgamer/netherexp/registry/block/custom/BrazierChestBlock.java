@@ -5,8 +5,10 @@ import net.jadenxgamer.netherexp.registry.block.entity.BrazierChestBlockEntity;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -65,6 +67,11 @@ public class BrazierChestBlock extends BaseEntityBlock {
                 }
                 if (!level.isClientSide) {
                     player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+                }
+            }
+            else {
+                if (level.isClientSide) {
+                    player.displayClientMessage(Component.translatable("block.netherexp.brazier_chest.locked").withStyle(ChatFormatting.DARK_RED), true);
                 }
             }
         }

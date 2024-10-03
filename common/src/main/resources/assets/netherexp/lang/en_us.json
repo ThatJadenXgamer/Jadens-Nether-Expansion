@@ -34,6 +34,7 @@
   "item.netherexp.netherite_plating": "Netherite Plating",
   "item.netherexp.netherite_nugget": "Netherite Nugget",
   "item.netherexp.treacherous_flame": "Treacherous Flame",
+  "item.netherexp.treacherous_flame.description": "Opens Brazier Chest",
   "item.netherexp.shotgun_core": "Shotgun Core",
   "item.netherexp.shotgun_fist": "Shotgun-Fist",
   "item.netherexp.pump_charge_shotgun": "Pump-Charge Shotgun",
@@ -142,6 +143,7 @@
   "block.netherexp.chiseled_soul_slate_tiles": "Chiseled Soul Slate Tiles",
 
   "block.netherexp.brazier_chest": "Brazier Chest",
+  "block.netherexp.brazier_chest.locked": "Brazier Chest is Locked, requires Treacherous Flame to open",
   "block.netherexp.treacherous_candle": "Treacherous Candle",
   "treacherous_candle.health": "Treacherous Candle",
   "block.netherexp.sculk_grinder": "Sculk Grinder",

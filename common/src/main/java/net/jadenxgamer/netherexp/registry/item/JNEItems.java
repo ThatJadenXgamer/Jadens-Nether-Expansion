@@ -115,7 +115,7 @@ public class JNEItems {
             new Item(new Item.Properties().fireResistant()));
 
     public static final RegistrySupplier<Item> TREACHEROUS_FLAME = registerItem("treacherous_flame", () ->
-            new Item(new Item.Properties().rarity(Rarity.RARE)));
+            new TreacherousFlameItem(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
 
     public static final RegistrySupplier<Item> SHOTGUN_FIST = registerItem("shotgun_fist", () ->
             new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(512).fireResistant().rarity(Rarity.RARE)));
