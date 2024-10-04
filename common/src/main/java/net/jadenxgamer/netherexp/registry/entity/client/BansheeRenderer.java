@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BansheeRenderer extends MobRenderer<Banshee, BansheeModel<Banshee>> {
     public BansheeRenderer(EntityRendererProvider.Context context) {
-        super(context, new BansheeModel<>(context.bakeLayer(JNEModelLayers.BANSHEE_LAYER)), 0.5f);;
+        super(context, new BansheeModel<>(context.bakeLayer(JNEModelLayers.BANSHEE_LAYER)), 0.5f);
         this.addLayer(new BansheeGlowlayer<>(this));
     }
 

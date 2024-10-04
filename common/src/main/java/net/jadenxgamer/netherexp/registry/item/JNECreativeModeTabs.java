@@ -48,7 +48,6 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEBlocks.FOSSIL_ORE.get());
                         output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
-                        output.accept(JNEBlocks.DIAMOND_FOSSIL_ORE.get());
                         output.accept(JNEItems.FOSSIL_FUEL.get());
 
                         output.accept(JNEItems.SHOTGUN_CORE.get());

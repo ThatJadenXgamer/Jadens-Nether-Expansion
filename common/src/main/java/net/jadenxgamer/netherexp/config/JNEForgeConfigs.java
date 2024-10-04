@@ -58,7 +58,7 @@ public class JNEForgeConfigs {
                 .defineEnum("soul_swirls_bone_meal_behavior", SoulSwirlsBoneMeal.DUPLICATES);
         SCULK_GRINDER_EXPERIENCE = BUILDER
                 .comment("Defines how much experience is dropped when treacherous flames are grinded down")
-                .define("sculk_grinder_experience", 120);
+                .define("sculk_grinder_experience", 300);
     }
 
     private static void registerItemConfigs(ForgeConfigSpec.Builder BUILDER) {

@@ -16,19 +16,38 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.LargeFireball;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@Debug(export = true)
 @Mixin(ThrownItemRenderer.class)
 public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> extends EntityRenderer<T> {
-
-    private final GhastFireBallModel<T> largeFireballModel;
+    @Unique
+    private GhastFireBallModel<T> largeFireballModel;
 
     protected ThrownItemRendererMixin(EntityRendererProvider.Context context) {
         super(context);
+    }
+
+    @Inject(
+            method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;)V",
+            at = @At("TAIL")
+    )
+    private void netherexp$init(EntityRendererProvider.Context context, CallbackInfo ci) {
+        this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
+    }
+
+
+    @Inject(
+            method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;FZ)V",
+            at = @At("TAIL")
+    )
+    private void netherexp$initTwo(EntityRendererProvider.Context context, float f, boolean bl, CallbackInfo ci) {
         this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
     }
 
@@ -42,8 +61,7 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
             cir.cancel();
 
             poseStack.pushPose();
-            poseStack.mulPose(Axis.YP.rotationDegrees(-entity.getYRot()));
-            poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRot()));
+            poseStack.scale(1.5f, 1.5f, 1.5f);
             VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutout(getTextureLocation(entity)));
             this.largeFireballModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 

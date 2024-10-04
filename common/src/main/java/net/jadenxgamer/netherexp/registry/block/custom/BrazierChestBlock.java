@@ -52,10 +52,8 @@ public class BrazierChestBlock extends BaseEntityBlock {
         ItemStack itemStack = player.getItemInHand(hand);
         BlockEntity blockEntity = level.getBlockEntity(pos);
         boolean locked = state.getValue(LOCKED);
-        boolean bl = false;
         if (locked) {
             if (itemStack.is(JNEItems.TREACHEROUS_FLAME.get())) {
-                bl = true;
                 level.setBlock(pos, state.cycle(LOCKED), Block.UPDATE_CLIENTS);
                 if (blockEntity instanceof BrazierChestBlockEntity) {
                     fireParticles(level, pos.above());
@@ -77,15 +75,11 @@ public class BrazierChestBlock extends BaseEntityBlock {
             }
         }
         else {
-            bl = true;
             if (blockEntity instanceof BrazierChestBlockEntity) {
                 player.openMenu((BrazierChestBlockEntity) blockEntity);
             }
         }
-        if (bl) {
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-        return InteractionResult.PASS;
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @SuppressWarnings("deprecation")

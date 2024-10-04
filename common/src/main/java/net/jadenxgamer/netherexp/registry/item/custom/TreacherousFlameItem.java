@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +18,6 @@ public class TreacherousFlameItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
         tooltip.add((Component.empty()));
-        tooltip.add(Component.translatable("sanctum_compass.tracking").withStyle(ChatFormatting.RED));
+        tooltip.add(Component.translatable("item.netherexp.treacherous_flame.description").withStyle(ChatFormatting.RED));
     }
 }
