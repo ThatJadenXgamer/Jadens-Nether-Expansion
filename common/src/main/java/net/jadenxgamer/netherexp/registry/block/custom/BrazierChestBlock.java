@@ -70,6 +70,7 @@ public class BrazierChestBlock extends BaseEntityBlock {
                 }
             }
             else {
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_SOUL_SLATE_BRICKS_HIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (level.isClientSide) {
                     player.displayClientMessage(Component.translatable("block.netherexp.brazier_chest.locked").withStyle(ChatFormatting.DARK_RED), true);
                 }

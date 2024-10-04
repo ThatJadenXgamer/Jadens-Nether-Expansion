@@ -151,6 +151,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_BLOOD.get(), BloodFallAndLandParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.LANDING_BLOOD.get(), BloodLandParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FIREBALL_TRAIL.get(), GlimmerParticle.LargeNormalFactory::new);
 
         // MOD COMPAT
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);
@@ -184,5 +185,6 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.CARCASS_LAYER, CarcassModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.GHAST_FIREBALL_LAYER, GhastFireBallModel::createBodyLayer);
     }
 }

@@ -11,7 +11,8 @@
     "renderer.FogRendererMixin",
     "renderer.MagmaCubeRendererMixin",
     "renderer.ParticleEngineMixin",
-    "renderer.PlayerRendererMixin"
+    "renderer.PlayerRendererMixin",
+    "renderer.ThrownItemRendererMixin"
   ],
   "mixins": [
     "block.BlockMixin",

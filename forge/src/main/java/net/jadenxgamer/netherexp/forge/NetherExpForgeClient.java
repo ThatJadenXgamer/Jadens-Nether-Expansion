@@ -105,6 +105,7 @@ public class NetherExpForgeClient {
         event.registerSpriteSet(JNEParticleTypes.FALLING_BLOOD.get(), BloodFallAndLandParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.LANDING_BLOOD.get(), BloodLandParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.FIREBALL_TRAIL.get(), GlimmerParticle.LargeNormalFactory::new);
 
         // MOD COMPAT
         event.registerSpriteSet(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);
@@ -122,5 +123,6 @@ public class NetherExpForgeClient {
         event.registerLayerDefinition(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.CARCASS_LAYER, CarcassModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
+        event.registerLayerDefinition(JNEModelLayers.GHAST_FIREBALL_LAYER, GhastFireBallModel::createBodyLayer);
     }
 }
