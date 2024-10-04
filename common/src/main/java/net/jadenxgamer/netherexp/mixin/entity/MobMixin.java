@@ -24,19 +24,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Mob.class)
 public abstract class MobMixin {
-    @Shadow @Final
-    protected GoalSelector targetSelector;
-
-    @Inject(
-            method = "finalizeSpawn",
-            at = @At(value = "HEAD")
-    )
-    private void netherexp$finalizeAttackTreacherousCandle(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CompoundTag compoundTag, CallbackInfoReturnable<SpawnGroupData> cir) {
-        // all mobs spawned in will be given this special target goal to go break treacherous candles assuming they care about it
-        if (((Mob) (Object) this) instanceof PathfinderMob pathfinderMob && !pathfinderMob.getType().is(JNETags.EntityTypes.IGNORES_TREACHEROUS_CANDLE)) {
-            targetSelector.addGoal(2, new AttackTreacherousCandleGoal(pathfinderMob, 32));
-        }
-    }
 
     @Inject(
             method = "getDefaultLootTable",

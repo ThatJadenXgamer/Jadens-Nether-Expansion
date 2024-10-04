@@ -4,8 +4,10 @@ import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
 import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
+import net.jadenxgamer.netherexp.registry.entity.ai.AttackTreacherousCandleGoal;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -24,6 +26,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
@@ -243,6 +246,9 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
                         mob.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
                         if (mob instanceof Slime slime) {
                             slime.setSize(2, true);
+                        }
+                        if (mob instanceof PathfinderMob pathfinder && !pathfinder.getType().is(JNETags.EntityTypes.IGNORES_TREACHEROUS_CANDLE)) {
+                            mob.targetSelector.addGoal(2, new AttackTreacherousCandleGoal(pathfinder, 32));
                         }
                         level.addFreshEntity(mob);
                     }

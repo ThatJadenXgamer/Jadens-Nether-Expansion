@@ -2,6 +2,7 @@ accessWidener   v2  named
 
 accessible class net/minecraft/world/inventory/BrewingStandMenu$PotionSlot
 
+accessible field net/minecraft/world/entity/Mob targetSelector Lnet/minecraft/world/entity/ai/goal/GoalSelector;
 accessible method net/minecraft/world/damagesource/DamageSources source (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/damagesource/DamageSource;
 accessible method net/minecraft/world/damagesource/DamageSources source (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/damagesource/DamageSource;
 accessible field net/minecraft/client/gui/screens/advancements/AdvancementWidget advancement Lnet/minecraft/advancements/Advancement;
