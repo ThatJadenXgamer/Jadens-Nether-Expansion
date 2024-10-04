@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.entity.client.GhastFireBallModel;
 import net.jadenxgamer.netherexp.registry.entity.client.JNEModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,6 +15,7 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import org.spongepowered.asm.mixin.Debug;
@@ -30,6 +32,12 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
     @Unique
     private GhastFireBallModel<T> largeFireballModel;
 
+    @Unique
+    private GhastFireBallModel<T> fireballModel;
+
+    @Unique
+    private boolean isConfigEnabled = JNEConfigs.REDESIGNED_FIREBALLS.get();
+
     protected ThrownItemRendererMixin(EntityRendererProvider.Context context) {
         super(context);
     }
@@ -40,6 +48,7 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
     )
     private void netherexp$init(EntityRendererProvider.Context context, CallbackInfo ci) {
         this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
+        this.fireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
     }
 
 
@@ -49,6 +58,7 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
     )
     private void netherexp$initTwo(EntityRendererProvider.Context context, float f, boolean bl, CallbackInfo ci) {
         this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
+        this.fireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
     }
 
     @Inject(
@@ -57,15 +67,28 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
             cancellable = true
     )
     private void netherexp$render(T entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo cir) {
-        if (entity instanceof LargeFireball) {
-            cir.cancel();
+        if (isConfigEnabled) {
+            if (entity instanceof LargeFireball) {
+                cir.cancel();
 
-            poseStack.pushPose();
-            poseStack.scale(1.5f, 1.5f, 1.5f);
-            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutout(getTextureLocation(entity)));
-            this.largeFireballModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+                poseStack.pushPose();
+                poseStack.scale(1.5f, 1.5f, 1.5f);
+                poseStack.translate(0.0, -0.8, 0.0);
+                VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutout(getTextureLocation(entity)));
+                this.largeFireballModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 
-            poseStack.popPose();
+                poseStack.popPose();
+            }
+            else if (entity instanceof Fireball) {
+                cir.cancel();
+
+                poseStack.pushPose();
+                poseStack.translate(0.0, -1.0, 0.0);
+                VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entityCutout(getTextureLocation(entity)));
+                this.fireballModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+
+                poseStack.popPose();
+            }
         }
     }
 
@@ -75,8 +98,13 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
             cancellable = true
     )
     private void netherexp$getTextureLocation(Entity entity, CallbackInfoReturnable<ResourceLocation> cir) {
-        if (entity instanceof LargeFireball) {
-            cir.setReturnValue(new ResourceLocation(NetherExp.MOD_ID, "textures/entity/ghast_fireball.png"));
+        if (isConfigEnabled) {
+            if (entity instanceof LargeFireball) {
+                cir.setReturnValue(new ResourceLocation(NetherExp.MOD_ID, "textures/entity/ghast_fireball.png"));
+            }
+            else if (entity instanceof Fireball) {
+                cir.setReturnValue(new ResourceLocation(NetherExp.MOD_ID, "textures/entity/fireball.png"));
+            }
         }
     }
 }

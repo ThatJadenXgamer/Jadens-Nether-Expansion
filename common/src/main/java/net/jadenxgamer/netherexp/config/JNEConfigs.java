@@ -29,6 +29,7 @@ public class JNEConfigs {
     public static Supplier<Integer> POTION_STACK_SIZE = () -> 16;
 
     // Entities
+    public static Supplier<Boolean> REDESIGNED_FIREBALLS = () -> true;
     public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;
     public static Supplier<Boolean> PIXEL_CONSISTENT_MAGMA_CUBES = () -> true;
     public static Supplier<Boolean> SKELETON_FOSSILIZATION = () -> true;

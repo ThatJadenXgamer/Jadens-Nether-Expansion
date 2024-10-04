@@ -54,11 +54,11 @@ extends TextureSheetParticle {
         }
     }
 
-    public static class LargeNormalFactory
+    public static class GhastFireballFactory
     implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
-        public LargeNormalFactory(SpriteSet spriteSet) {
+        public GhastFireballFactory(SpriteSet spriteSet) {
             this.spriteSet = spriteSet;
         }
 
@@ -67,9 +67,29 @@ extends TextureSheetParticle {
         public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
             GlimmerParticle glimmerParticle = new GlimmerParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, this.spriteSet);
             glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
-            glimmerParticle.setSize(0.25f, 0.25f);
+            glimmerParticle.quadSize = 0.9f;
             glimmerParticle.setParticleSpeed(g * 0.01, h * 0.01, i * 0.01);
-            glimmerParticle.setLifetime(clientLevel.random.nextInt(30) + 10);
+            glimmerParticle.setLifetime(clientLevel.random.nextInt(20));
+            return glimmerParticle;
+        }
+    }
+
+    public static class FireballFactory
+            implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet spriteSet;
+
+        public FireballFactory(SpriteSet spriteSet) {
+            this.spriteSet = spriteSet;
+        }
+
+        @Nullable
+        @Override
+        public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
+            GlimmerParticle glimmerParticle = new GlimmerParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, this.spriteSet);
+            glimmerParticle.setColor(1.0f, 1.0f, 1.0f);
+            glimmerParticle.quadSize = 0.5f;
+            glimmerParticle.setParticleSpeed(g * 0.01, h * 0.01, i * 0.01);
+            glimmerParticle.setLifetime(clientLevel.random.nextInt(10));
             return glimmerParticle;
         }
     }

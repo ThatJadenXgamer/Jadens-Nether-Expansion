@@ -1,0 +1,8 @@
+
+public static final AnimationDefinition ANIMATION = AnimationDefinition.Builder.withLength(1f).looping()
+.addAnimation("bone",
+	new AnimationChannel(AnimationChannel.Targets.ROTATION,
+		new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f),
+			AnimationChannel.Interpolations.LINEAR),
+		new Keyframe(1f, KeyframeAnimations.degreeVec(0f, -360f, 0f),
+			AnimationChannel.Interpolations.LINEAR))).build();

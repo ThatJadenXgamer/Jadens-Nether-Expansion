@@ -71,6 +71,9 @@ public class JNEForgeConfigs {
     }
 
     private static void registerEntityConfigs(ForgeConfigSpec.Builder BUILDER) {
+        REDESIGNED_FIREBALLS = BUILDER
+                .comment("Ghast and Blaze Fireballs will be redesigned if enabled")
+                .define("redesigned_fireballs", true);
         DIMINISHING_BLAZES = BUILDER
                 .comment("Blazes get dimmer as their health decreases like in Minecraft Dungeons")
                 .define("diminishing_blazes", true);

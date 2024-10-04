@@ -34,7 +34,7 @@
     "entity.BlockEntityTypeMixin",
     "entity.DecoratedPotPatternsMixin",
     "entity.HoglinMixin",
-    "entity.LargeFireballMixin",
+    "entity.FireballMixin",
     "entity.LivingEntityMixin",
     "entity.MobMixin",
     "entity.NearestAttackableTargetGoalMixin",
