@@ -107,6 +107,7 @@ public class NetherExpForgeClient {
         event.registerSpriteSet(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.FIREBALL_TRAIL.get(), GlimmerParticle.GhastFireballFactory::new);
         event.registerSpriteSet(JNEParticleTypes.SMALL_FIREBALL_TRAIL.get(), GlimmerParticle.FireballFactory::new);
+        event.registerSpriteSet(JNEParticleTypes.DRAGON_FIREBALL_TRAIL.get(), GlimmerParticle.GhastFireballFactory::new);
 
         // MOD COMPAT
         event.registerSpriteSet(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);

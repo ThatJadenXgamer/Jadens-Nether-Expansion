@@ -430,11 +430,6 @@
   "death.attack.volatileScoriaExplosion": "%1$s was caught in a volatile redstone discharge",
   "death.attack.shotgunExplosion": "%1$s was caught in a over-charged shotgun explosion",
 
-  "item.minecraft.tipped_arrow.effect.fogsight": "Arrow of Fogsight",
-  "item.minecraft.potion.effect.fogsight": "Potion of Fogsight",
-  "item.minecraft.splash_potion.effect.fogsight": "Splash Potion of Fogsight",
-  "item.minecraft.lingering_potion.effect.fogsight": "Lingering Potion of Fogsight",
-
   "entity.netherexp.wisp": "Wisp",
   "entity.netherexp.apparition": "Apparition",
   "entity.netherexp.vessel": "Vessel",

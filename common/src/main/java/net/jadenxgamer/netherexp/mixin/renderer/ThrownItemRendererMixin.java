@@ -2,7 +2,6 @@ package net.jadenxgamer.netherexp.mixin.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.entity.client.GhastFireBallModel;

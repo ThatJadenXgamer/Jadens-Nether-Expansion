@@ -150,6 +150,7 @@
   "block.netherexp.soul_candle": "灵魂蜡烛",
   "block.netherexp.fossil_ore": "化石矿石",
   "block.netherexp.fossil_fuel_ore": "化石燃料矿石",
+
   "block.netherexp.soul_glass": "灵魂玻璃",
   "block.netherexp.ochre_frogmist": "赭黄蛙朦雾",
   "block.netherexp.verdant_frogmist": "青翠蛙朦雾",
@@ -378,10 +379,6 @@
   "death.attack.will_o_wisp.player": "%1$s 被鬼火团夺舍了",
   "death.attack.volatileScoriaExplosion": "%1$s was caught in a volatile redstone discharge",
   "death.attack.shotgunExplosion": "%1$s 被过载的霰弹炮炸飞了",
-  "item.minecraft.tipped_arrow.effect.fogsight": "Arrow of Fogsight",
-  "item.minecraft.potion.effect.fogsight": "Potion of Fogsight",
-  "item.minecraft.splash_potion.effect.fogsight": "Splash Potion of Fogsight",
-  "item.minecraft.lingering_potion.effect.fogsight": "Lingering Potion of Fogsight",
   "entity.netherexp.wisp": "小鬼火",
   "entity.netherexp.apparition": "幻鬼",
   "entity.netherexp.vessel": "容器",

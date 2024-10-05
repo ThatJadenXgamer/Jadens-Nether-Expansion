@@ -320,9 +320,6 @@
   "block.netherexp.red_scale_fungus": "Fungo de Escama Vermelha",
   "block.netherexp.blue_scale_fungus": "Fungo de Escama Azul",
 
-  "block.netherexp.boomshroom": "Boomgumelo",
-  "block.netherexp.boomshroom_bundle": "Pacote de Boomgumelo",
-
   "block.netherexp.crimson_sprouts": "Brotos do Nether Carmesim",
 
   "block.netherexp.soul_soil_layer": "Camada de Terra das Almas",
@@ -429,11 +426,6 @@
   "death.attack.will_o_wisp.player": "%1$s foi assombrado por um will o' wisp",
   "death.attack.volatileScoriaExplosion": "%1$s foi pego em uma descarga volátil de redstone",
   "death.attack.shotgunExplosion": "%1$s foi pego em uma explosão de espingarda sobrecarregada",
-
-  "item.minecraft.tipped_arrow.effect.fogsight": "Flecha da Visão de Nevoeiro",
-  "item.minecraft.potion.effect.fogsight": "Poção de Visão de Nevoeiro",
-  "item.minecraft.splash_potion.effect.fogsight": "Poção Arremessável de Visão de Nevoeiro",
-  "item.minecraft.lingering_potion.effect.fogsight": "Poção Prolongada de Visão de Nevoeiro",
 
   "entity.netherexp.wisp": "Wisp",
   "entity.netherexp.apparition": "Aparição",

@@ -153,6 +153,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FIREBALL_TRAIL.get(), GlimmerParticle.GhastFireballFactory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.SMALL_FIREBALL_TRAIL.get(), GlimmerParticle.FireballFactory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.DRAGON_FIREBALL_TRAIL.get(), GlimmerParticle.GhastFireballFactory::new);
 
         // MOD COMPAT
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);

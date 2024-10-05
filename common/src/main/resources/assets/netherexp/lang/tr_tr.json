@@ -164,7 +164,6 @@
 
   "block.netherexp.fossil_ore": "Fosil Cevheri",
   "block.netherexp.fossil_fuel_ore": "Fosil Yakıt Cevheri",
-  "block.netherexp.diamond_fossil_ore": "Elmas Fosili Cevheri",
 
   "block.netherexp.soul_glass": "Ruh Camı",
   "block.netherexp.ochre_frogmist": "Okre Kurbağa Pusu",
@@ -431,11 +430,6 @@
   "death.attack.will_o_wisp.player": "%1$s ruhlar tarafından lanetlendi",
   "death.attack.volatileScoriaExplosion": "%1$s uçucu bir kızıl taş sızıntısına yakalandı",
   "death.attack.shotgunExplosion": "%1$s aşırı yüklenmiş bir pompalı tüfek patlamasına yakalandı",
-
-  "item.minecraft.tipped_arrow.effect.fogsight": "Sis Görüşü Oku",
-  "item.minecraft.potion.effect.fogsight": "Sis Görüşü İksiri",
-  "item.minecraft.splash_potion.effect.fogsight": "Patlayıcı Sis Görüşü İksiri",
-  "item.minecraft.lingering_potion.effect.fogsight": "Kalıcı Sis Görüşü İksiri",
 
   "entity.netherexp.wisp": "Ruh",
   "entity.netherexp.apparition": "Hayalet",

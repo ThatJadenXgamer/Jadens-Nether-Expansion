@@ -123,7 +123,7 @@ public class NetherExpForge {
                 packConsumer.accept(Pack.create(
                         "netherexp:jne_retextures",
                         Component.literal("JNE-Retextures"),
-                        false,
+                        true,
                         (path) -> new PathPackResources(path, file, true),
                         new Pack.Info(Component.literal("Built-in JNE Vanilla Retextures"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
                         PackType.CLIENT_RESOURCES, Pack.Position.TOP, true, PackSource.BUILT_IN)));
