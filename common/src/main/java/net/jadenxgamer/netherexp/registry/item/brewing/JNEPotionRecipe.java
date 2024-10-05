@@ -68,7 +68,7 @@ public class JNEPotionRecipe {
     }
 
     public static void addInvokerPotionRecipes() {
-        PotionBrewingAccessor.netherexp$addMix(Potions.AWKWARD, JNEItems.FOGGY_ESSENCE.get(), JNEPotions.FOGSIGHT.get());
-        PotionBrewingAccessor.netherexp$addMix(JNEPotions.FOGSIGHT.get(), Items.REDSTONE, JNEPotions.LONG_FOGSIGHT.get());
+//        PotionBrewingAccessor.netherexp$addMix(Potions.AWKWARD, JNEItems.FOGGY_ESSENCE.get(), JNEPotions.FOGSIGHT.get());
+//        PotionBrewingAccessor.netherexp$addMix(JNEPotions.FOGSIGHT.get(), Items.REDSTONE, JNEPotions.LONG_FOGSIGHT.get());
     }
 }
