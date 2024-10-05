@@ -37,10 +37,13 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
         FabricDefaultAttributeRegistry.register(JNEEntityType.STAMPEDE.get(), Stampede.createAttributes());
         FabricDefaultAttributeRegistry.register(JNEEntityType.CARCASS.get(), Carcass.createAttributes());
 
+        ResourceLocation rpJNERetextures = new ResourceLocation(NetherExp.MOD_ID, "jne_retextures");
         ResourceLocation rpConflictingRetextures = new ResourceLocation(NetherExp.MOD_ID, "conflicting_retextures");
         ResourceLocation rpUniqueNetherWood = new ResourceLocation(NetherExp.MOD_ID, "unique_nether_wood");
         ResourceLocation dpLargerNetherBiomes = new ResourceLocation(NetherExp.MOD_ID, "larger_nether_biomes");
 
+        FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container ->
+        ResourceManagerHelper.registerBuiltinResourcePack(rpJNERetextures, container, "JNE-Retextures", ResourcePackActivationType.ALWAYS_ENABLED));
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container ->
         ResourceManagerHelper.registerBuiltinResourcePack(rpConflictingRetextures, container, "Conflicting Retextures", ResourcePackActivationType.NORMAL));
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container ->

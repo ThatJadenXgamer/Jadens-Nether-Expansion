@@ -104,6 +104,7 @@ public class NetherExpForge {
 
     private static void addBuiltinPacks(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            rpJNERetextures(event);
             rpConflictingRetextures(event);
             rpUniqueNetherWood(event);
         }
@@ -112,6 +113,20 @@ public class NetherExpForge {
                 dpLargerNetherBiomes(event);
             }
         }
+    }
+
+    // Adds vanilla retextures, it is separated because forge for some reason has mod resources below vanilla
+    private static void rpJNERetextures(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/jne_retextures");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(Pack.create(
+                        "netherexp:jne_retextures",
+                        Component.literal("JNE-Retextures"),
+                        false,
+                        (path) -> new PathPackResources(path, file, true),
+                        new Pack.Info(Component.literal("Built-in JNE Vanilla Retextures"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
+                        PackType.CLIENT_RESOURCES, Pack.Position.TOP, true, PackSource.BUILT_IN)));
     }
 
     // Adds Retextures which may cause some Mod Conflicts or Inconsistencies

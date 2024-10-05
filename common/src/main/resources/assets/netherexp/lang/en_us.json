@@ -576,7 +576,7 @@
   "enchantment.netherexp.cartridge.desc": "Allows the Shotgun-Fist to store ammo and shoot multiple times.",
   "enchantment.netherexp.recoil.desc": "Increases self pushback of the Shotgun-Fist.",
   "enchantment.netherexp.barrage.desc": "Increases shots fired at once of the Shotgun-Fist.",
-  "enchantment.netherexp.artemis.desc": "Increases range of the Shotgun-Fist.",
+  "enchantment.netherexp.artemis.desc": "Increases range of the bullets and arrows for Shotgun-Fist and Bows",
 
   "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
 }
