@@ -22,7 +22,7 @@ public class JNEConfigs {
     public static Supplier<Integer> SOUL_SWIRLS_COOLDOWN = () -> 50;
     public static Supplier<Integer> UNBOUNDED_SPEED_DURATION = () -> 10;
     public static Supplier<SoulSwirlsBoneMeal> SOUL_SWIRLS_BONE_MEAL_BEHAVIOR = () -> SoulSwirlsBoneMeal.DUPLICATES;
-    public static Supplier<Integer> SCULK_GRINDER_EXPERIENCE = () -> 300;
+    public static Supplier<Integer> SCULK_GRINDER_EXPERIENCE = () -> 450;
 
     // Items
     public static Supplier<Integer> WILL_O_WISP_STACK_SIZE = () -> 16;

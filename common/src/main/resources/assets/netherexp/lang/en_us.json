@@ -323,9 +323,6 @@
   "block.netherexp.red_scale_fungus": "Red Scale Fungus",
   "block.netherexp.blue_scale_fungus": "Blue Scale Fungus",
 
-  "block.netherexp.boomshroom": "Boomshroom",
-  "block.netherexp.boomshroom_bundle": "Bundle of Boomshroom",
-
   "block.netherexp.crimson_sprouts": "Crimson Sprouts",
 
   "block.netherexp.soul_soil_layer": "Soul Soil Layer",
@@ -573,6 +570,13 @@
   "item.netherexp.deception_pottery_sherd": "Deception Pottery Sherd",
   "item.netherexp.firearm_pottery_sherd": "Firearm Pottery Sherd",
   "item.netherexp.botanical_pottery_sherd": "Botanical Pottery Sherd",
+
+  "enchantment.netherexp.phantasm_hull.desc": "Most projectiles will phase through you when you crouch.",
+  "enchantment.netherexp.bloodshed.desc": "Mobs burst into healing blood upon death.",
+  "enchantment.netherexp.cartridge.desc": "Allows the Shotgun-Fist to store ammo and shoot multiple times.",
+  "enchantment.netherexp.recoil.desc": "Increases self pushback of the Shotgun-Fist.",
+  "enchantment.netherexp.barrage.desc": "Increases shots fired at once of the Shotgun-Fist.",
+  "enchantment.netherexp.artemis.desc": "Increases range of the Shotgun-Fist.",
 
   "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
 }
