@@ -54,7 +54,7 @@
   "item.netherexp.music_disc_buckshot_wonderland.desc": "Shroomaniac - Buckshot Wonderland",
   
   "item.netherexp.antidote.inactive_tooltip": "Para Activarse necesita ser Preparado con:",
-  "item.netherexp.netherite_artifact.tooltip": "Artefacto de Netherita"
+  "item.netherexp.netherite_artifact.tooltip": "Artefacto de Netherita",
   
   "item.netherexp.antidote": "Antídoto",
   "item.netherexp.antidote.effect.": "Antídoto No-Crafteable",
@@ -102,7 +102,7 @@
   "item.netherexp.grenade_antidote.effect.hunger": "Granada de Antídoto para Hambre",
   "item.netherexp.grenade_antidote.effect.decay": "Granada de Antídoto para Decadencia",
   "item.netherexp.grenade_antidote.effect.luck": "Granada de Antídoto para Suerte",
-  "item.netherexp.grenade_antidote.effect.unluck": "Granada de Antídoto para Mala Suerte"
+  "item.netherexp.grenade_antidote.effect.unluck": "Granada de Antídoto para Mala Suerte",
 
   "shotgun_fist.ammo": "Munición:",
   "shotgun_fist.heat": "Temperatura:",
@@ -133,7 +133,7 @@
   "block.netherexp.etched_soul_slate_bricks": "Ladrillos de Pizarra de Alma Grabados",
   "block.netherexp.cracked_soul_slate_bricks": "Ladrillos de Pizarra de Alma Agrietados",
   "block.netherexp.soul_slate_brick_pillar": "Pilar de Ladrillo de Pizarra de Alma",
-  "block.netherexp.chiseled_soul_slate_bricks": "Ladrillos de Pizarra de Alma Cincelados"
+  "block.netherexp.chiseled_soul_slate_bricks": "Ladrillos de Pizarra de Alma Cincelados",
   
   "block.netherexp.soul_slate_tiles": "Baldosas de Pizarra de Alma",
   "block.netherexp.soul_slate_tile_stairs": "Escaleras de Baldosas de Pizarra de Alma",
@@ -183,7 +183,7 @@
   "block.netherexp.black_ice": "Hielo Negro",
   
   "block.netherexp.soul_torchflower": "Flor Antorcha de Alma",
-  "block.netherexp.soul_torchflower_crop": "Cultivo de Flor Antorcha de Alma"
+  "block.netherexp.soul_torchflower_crop": "Cultivo de Flor Antorcha de Alma",
   
   "block.netherexp.sorrowsquash": "Calabaza de Pena",
   "block.netherexp.carved_sorrowsquash": "Calabaza de Pena Tallada",
@@ -234,7 +234,7 @@
   "block.netherexp.rusty_netherite_bars": "Barras de Netherita Oxidado",
   
   "item.netherexp.warped_wart": "Verruga Distorsionada",
-  "block.netherexp.warped_wart": "Verruga Distorsionada"
+  "block.netherexp.warped_wart": "Verruga Distorsionada",
   
   "block.netherexp.enigma_flesh": "Carne de Enigma",
   "block.netherexp.strange_enigma_flesh": "Carne Extraña de Enigma",
@@ -303,7 +303,7 @@
   
   "block.netherexp.smooth_silica_sandstone": "Arenisca de Sílice Lisa",
   "block.netherexp.smooth_silica_sandstone_slab": "Losa de Arenisca de Sílice Lisa",
-  "block.netherexp.smooth_silica_sandstone_stairs": "Escaleras de Arenisca de Sílice Lisa"
+  "block.netherexp.smooth_silica_sandstone_stairs": "Escaleras de Arenisca de Sílice Lisa",
   
   "block.netherexp.nether_brick_pillar": "Pilar de Ladrillo del Nether",
   "block.netherexp.red_mixed_nether_bricks": "Ladrillos del Nether Mixtos Rojos",
@@ -374,7 +374,7 @@
   "block.netherexp.potted_blue_scale_fungus": "Hongo de Escama Azul en Maceta",
   "block.netherexp.potted_crimson_sporeshroom": "Esporahongo Carmesí en Maceta",
   "block.netherexp.potted_warped_sporeshroom": "Esporahongo Distorsionado en Maceta",
-  "block.netherexp.potted_soul_torchflower": "Flor Antorcha de Almas en Maceta"
+  "block.netherexp.potted_soul_torchflower": "Flor Antorcha de Almas en Maceta",
   
   "subtitles.item.gold_ingot.gilding": "Bloque dorado",
   "subtitles.block.ectoplasm.freeze": "El ectoplasma se congela",
@@ -432,11 +432,6 @@
   "death.attack.will_o_wisp.player": "%1$s fue atormentado por un fuego fatuo",
   "death.attack.volatileScoriaExplosion": "%1$s fue atrapado en una descarga inestable de piedra roja",
   "death.attack.shotgunExplosion": "%1$s fue atrapado en una explosión de escopeta sobrecargada",
-  
-  "item.minecraft.tipped_arrow.effect.fogsight": "Flecha de Visión Nebulosa",
-  "item.minecraft.potion.effect.fogsight": "Poción de Visión Nebulosa",
-  "item.minecraft.splash_potion.effect.fogsight": "Poción Arrojadiza de Visión Nebulosa",
-  "item.minecraft.lingering_potion.effect.fogsight": "Poción Persistente de Visión Nebulosa"
   
   "entity.netherexp.wisp": "Wisp",
   "entity.netherexp.apparition": "Aparición",

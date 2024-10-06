@@ -1,6 +1,6 @@
 {
   "biome.netherexp.exhaust_mire": "Egzoz Bataklığı",
-  "biome.netherexp.quartz_chasm": "Kuartz Kanyonu",
+  "biome.netherexp.quartz_chasm": "Kuvars Kanyonu",
   "biome.netherexp.plume_bowels": "Tüylü Bağırsaklar",
   "biome.netherexp.grieving_grove": "Hüzünlü Koru",
 
@@ -20,7 +20,7 @@
   "item.netherexp.fossil_fuel": "Fosil Yakıt",
   "item.netherexp.rift_armor_trim_smithing_template": "Demirci Şablonu",
   "trim_pattern.netherexp.rift": "Yarık Zırh Süslemesi",
-  "item.netherexp.spirit_armor_trim_smithing_template": "Dermirci Şablonu",
+  "item.netherexp.spirit_armor_trim_smithing_template": "Demirci Şablonu",
   "trim_pattern.netherexp.spirit": "Ruh Zırh Süslemesi",
   "item.netherexp.valor_armor_trim_smithing_template": "Demirci Şablonu",
   "trim_pattern.netherexp.valor": "Hamaset Zırh Süslemesi",
@@ -52,7 +52,7 @@
   "item.netherexp.music_disc_buckshot_wonderland": "Müzik Diski",
   "item.netherexp.music_disc_buckshot_wonderland.desc": "Shroomaniac - Buckshot Wonderland",
 
-  "item.netherexp.antidote.inactive_tooltip": "Etkinleştirmek İçin Pişirilmesi Gerek:",
+  "item.netherexp.antidote.inactive_tooltip": "Etkinleştirmek için Pişirilmesi Gerek:",
   "item.netherexp.netherite_artifact.tooltip": "Netherit Yapıtı",
 
   "item.netherexp.antidote": "Panzehir",
@@ -105,7 +105,7 @@
 
   "shotgun_fist.ammo": "Cephane:",
   "shotgun_fist.heat": "Isı:",
-  "sanctum_compass.to_activate": "Etkinleştirmek İçin Gerekli:",
+  "sanctum_compass.to_activate": "Etkinleştirmek için Gerekli:",
   "sanctum_compass.tracking": "Bir Mabede Bağlı",
 
   "item.netherexp.glowcheese": "Parlayan Peynir",
@@ -277,17 +277,17 @@
   "block.netherexp.smokestalk_pressure_plate": "Tütsü Ağacı Basınç Plakası",
   "block.netherexp.smokestalk_door": "Tütsü Ağacı Kapı",
   "block.netherexp.smokestalk_trapdoor": "Tütsü Ağacı Tuzak Kapısı",
-  "item.netherexp.smokestalk_sign": "Tütsü Ağacı Tebela",
+  "item.netherexp.smokestalk_sign": "Tütsü Ağacı Tabela",
   "block.netherexp.smokestalk_sign": "Tütsü Ağacı Tabela",
   "block.netherexp.smokestalk_wall_sign": "Tütsü Ağacı Tabela",
   "item.netherexp.smokestalk_hanging_sign": "Tütsü Ağacı Asılı Tabela",
   "block.netherexp.smokestalk_hanging_sign": "Tütsü Ağacı Asılı Tabela",
   "block.netherexp.smokestalk_wall_hanging_sign": "Tütsü Ağacı Asılı Tabela",
 
-  "block.netherexp.quartz_crystal_block": "Kristal Kuartz Blok",
-  "block.netherexp.quartz_crystal": "Kristal Kuartz",
-  "block.netherexp.cracked_quartz_bricks": "Kırık Kuartz Tuğlası",
-  "block.netherexp.chiseled_quartz_pillar": "Oyma Kuartz Sütun",
+  "block.netherexp.quartz_crystal_block": "Kristal Kuvars Bloğu",
+  "block.netherexp.quartz_crystal": "Kristal Kuvars",
+  "block.netherexp.cracked_quartz_bricks": "Kırık Kuvars Tuğlası",
+  "block.netherexp.chiseled_quartz_pillar": "Oyma Kuvars Sütun",
 
   "block.netherexp.silica_sand": "Silika Kumu",
   "block.netherexp.silica_sandstone": "Silika Kum Taşı",
@@ -320,9 +320,6 @@
 
   "block.netherexp.red_scale_fungus": "Kırmızı Pullu Mantar",
   "block.netherexp.blue_scale_fungus": "Mavi Pullu Mantar",
-
-  "block.netherexp.boomshroom": "Boomshroom",
-  "block.netherexp.boomshroom_bundle": "Bundle of Boomshroom",
 
   "block.netherexp.crimson_sprouts": "Kızıl Filizler",
 
@@ -379,7 +376,7 @@
   "subtitles.block.ectoplasm.whispering": "Ektoplazma anlamsız sözler fısıldıyor",
   "subtitles.block.soul_slate.solidifying": "Ruh Kumu, Ruh Taşına Katılaşıyor",
   "subtitles.block.explosive_scoria.ambient": "Kararsız elektrik kıvılcımları",
-  "subtitles.block.sporeshroom.trampolined": "Spor Mantarı zıpladı",
+  "subtitles.block.sporeshroom.trampolined": "Spor Mantarı zıplattı",
   "subtitles.block.lightspores.apply": "Sporlar Bloğa uygulandı",
   "subtitles.block.lightspores.shear": "Bloktan Sporlar elde edildi",
   "subtitles.block.soul_candle.ambient": "Ruh Mumu fısıldadı",
@@ -429,7 +426,7 @@
   "death.attack.will_o_wisp": "%1$s ruhlar tarafından lanetlendi",
   "death.attack.will_o_wisp.player": "%1$s ruhlar tarafından lanetlendi",
   "death.attack.volatileScoriaExplosion": "%1$s uçucu bir kızıl taş sızıntısına yakalandı",
-  "death.attack.shotgunExplosion": "%1$s aşırı yüklenmiş bir pompalı tüfek patlamasına yakalandı",
+  "death.attack.shotgunExplosion": "%1$s aşırı yüklenmiş bir pompalı tüfek patlamasına maruz kaldı",
 
   "entity.netherexp.wisp": "Ruh",
   "entity.netherexp.apparition": "Hayalet",
@@ -462,7 +459,7 @@
   "advancements.nether.ghost_mucus.title": "Hayalet Sümüğü ",
   "advancements.nether.ghost_mucus.description": "Bir kovayı Ektoplazma ile doldur",
   "advancements.nether.rattling_remnants.title": "Tıkırdayan Kalıntılar",
-  "advancements.nether.rattling_remnants.description": "Ruh Kumu Vadisinde bir Mega Fosil Kamp Alanı bul",
+  "advancements.nether.rattling_remnants.description": "Ruh Kumu Vadisinde bir Mega Fosil Kamp Alanı keşfet",
   "advancements.nether.gravedigger.title": "Mezarcı",
   "advancements.nether.gravedigger.description": "Fosil Yakıtları kötüye kullanmak için korunmuş fosil kalıntılarını kaz",
   "advancements.nether.non_renewable_yeah_right.title": "Yenilenemez mi? Tabii, öyledir..",
@@ -474,9 +471,9 @@
   "advancements.nether.phasmophobic.title": "Fazmofobik",
   "advancements.nether.phasmophobic.description": "Ruh Camının içinden geç",
   "advancements.nether.blind_shot.title": "Kör Atış",
-  "advancements.nether.blind_shot.description": "Hayalet Ok kullanarak duvarın ötesindeki bir canlıyı vurun",
+  "advancements.nether.blind_shot.description": "Hayalet Ok kullanarak duvarın ötesindeki bir canlıyı vur",
   "advancements.nether.froghorn.title": "Kurbağa Düdüğü",
-  "advancements.nether.froghorn.description": "Tüm Kubarağa Puslarını envanterinde bulundur",
+  "advancements.nether.froghorn.description": "Tüm Kurbağa Puslarını envanterinde bulundur",
   "advancements.nether.plague_doctor.title": "Veba Doktoru",
   "advancements.nether.plague_doctor.description": "Aynı anda tüm panzehir etkilerine sahip ol",
   "advancements.nether.soul_sand_valley.title": "Ruh Kumu Vadisi",
@@ -497,7 +494,7 @@
   "advancements.nether.eldritch_manipulation.description": "Hain Ateşi kullanarak bir Maltız Sandığını aç",
   "advancements.nether.hp_minecraftian.title": "H.P Minecraftian",
   "advancements.nether.hp_minecraftian.description": "Bir Kalıntıyı Çakmak Taşı ve Çelikle canlandır",
-  "advancements.nether.lorekeeper.title": "Efsane Koruyucusu",
+  "advancements.nether.lorekeeper.title": "Efsanelerin Koruyucusu",
   "advancements.nether.lorekeeper.description": "Her bir Hilkat Garibesi çeşidini elde et",
   "advancements.nether.back_with_a_vengeance.title": "İntikam için Geri Döndü",
   "advancements.nether.back_with_a_vengeance.description": "Bozuk Hain Mumu Bal Mumu ile onar",

@@ -126,7 +126,7 @@ public class NetherExpForge {
                         true,
                         (path) -> new PathPackResources(path, file, true),
                         new Pack.Info(Component.literal("Built-in JNE Vanilla Retextures"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
-                        PackType.CLIENT_RESOURCES, Pack.Position.TOP, true, PackSource.BUILT_IN)));
+                        PackType.CLIENT_RESOURCES, Pack.Position.TOP, false, PackSource.BUILT_IN)));
     }
 
     // Adds Retextures which may cause some Mod Conflicts or Inconsistencies
