@@ -16,8 +16,8 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEFeature;
 import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructureType;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class NetherExp {
     public static final String MOD_ID = "netherexp";
@@ -74,5 +74,9 @@ public class NetherExp {
 
     public static boolean compatAmplifiedNether() {
         return Platform.isModLoaded("starmute");
+    }
+
+    public static boolean compatNethersDelight() {
+        return Platform.isModLoaded("mynethersdelight");
     }
 }

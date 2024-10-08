@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HWH",
+    "CCC",
+    "BNB"
+  ],
+  "key": {
+    "C": {
+      "item": "netherexp:glowcheese"
+    },
+    "N": {
+      "item": "minecraft:nether_wart"
+    },
+    "B": {
+      "item": "minecraft:bread"
+    },
+    "H": {
+      "item": "mynethersdelight:cooked_loin"
+    },
+    "W": {
+      "item": "netherexp:warped_wart"
+    }
+  },
+  "result": {
+    "item": "netherexp:nether_pizza",
+    "count": 1
+  }
+}
