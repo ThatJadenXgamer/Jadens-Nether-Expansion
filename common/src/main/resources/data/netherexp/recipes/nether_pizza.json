@@ -16,7 +16,7 @@
       "item": "minecraft:bread"
     },
     "H": {
-      "item": "netherexp:cooked_hogham"
+      "tag": "netherexp:cooked_hogham"
     },
     "W": {
       "item": "netherexp:warped_wart"

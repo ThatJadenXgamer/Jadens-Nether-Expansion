@@ -158,6 +158,9 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> SOUL_TORCHFLOWER_CROP = registerBlockWithoutItem("soul_torchflower_crop", () ->
             new SoulTorchflowerBlock(BlockBehaviour.Properties.copy(Blocks.TORCHFLOWER_CROP)));
 
+    public static final RegistrySupplier<Block> SORROWEED = registerBlock("sorroweed", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.5f).sound(SoundType.MOSS)));
+
     public static final RegistrySupplier<Block> SORROWSQUASH = registerBlock("sorrowsquash", () ->
             new SorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.PUMPKIN).mapColor(MapColor.COLOR_LIGHT_GRAY).strength(1.0f).sound(SoundType.NETHER_WOOD)));
 
