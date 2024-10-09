@@ -2,8 +2,14 @@
   "type": "netherexp:add_item",
   "conditions": [
     {
+      "condition": "minecraft:random_chance",
+      "chance": 0.35
+    },
+    {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/ruined_portal"
     }
-  ]
+  ],
+  "item": "netherexp:rift_armor_trim_smithing_template"
 }
+

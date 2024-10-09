@@ -163,36 +163,6 @@ public class JNEForgeConfigs {
                 .define("quartz_sounds", true);
     }
 
-    private static void registerExperimentalConfigs(ForgeConfigSpec.Builder BUILDER) {
-        ENABLE_GOLD_TWEAKS = BUILDER
-                .comment("Enables the gold related configs \nThis feature is still experimental and is subject to change, so far has only been implemented on Fabric")
-                .define("enable_gold_tweaks", false);
-        GOLD_TOOLS_DURABILITY = BUILDER
-                .comment("Lets you change Golden Tools Durability \nif you want the vanilla value back, set to \"32\"")
-                .define("gold_tools_durability", 96);
-        GOLD_TOOLS_SPEED = BUILDER
-                .comment("Lets you change Golden Tools Speed \nif you want the vanilla value back, set to \"12.0\"")
-                .define("gold_tools_speed", 16.0f);
-        GOLD_TOOLS_MINING_TIER = BUILDER
-                .comment("Lets you change the Mining Tier of Golden Tools \nVANILLA - behaves like wooden tools \nSTONE_LIKE - lets you break blocks stone tools can break \nIRON_LIKE - lets you break blocks iron tools can break \nDIAMOND_LIKE - lets you break blocks diamond tools can break \n ")
-                .defineEnum("gold_tools_mining_tier", GoldMiningTier.VANILLA);
-        GOLD_ARMOR_DURABILITY = BUILDER
-                .comment("Lets you change Golden Armor Durability Multiplier")
-                .define("gold_armor_durability", 7);
-        GOLD_BOOTS_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Boots give when worn")
-                .define("gold_boots_protection", 1);
-        GOLD_LEGGINGS_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Leggings give when worn")
-                .define("gold_leggings_protection", 3);
-        GOLD_CHESTPLATE_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Chestplate give when worn")
-                .define("gold_chestplate_protection", 5);
-        GOLD_HELMET_PROTECTION = BUILDER
-                .comment("Defines the armor points Golden Helmet give when worn")
-                .define("gold_helmet_protection", 2);
-    }
-
     static {
         ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
         BUILDER.comment("Block Settings").push("blocks");
@@ -213,10 +183,6 @@ public class JNEForgeConfigs {
 
         BUILDER.comment("Particle & Sound Settings").push("particles_and_sounds");
         registerParticlesAndSoundsConfigs(BUILDER);
-        BUILDER.pop();
-
-        BUILDER.comment("Experimental Settings").push("experimental");
-        registerExperimentalConfigs(BUILDER);
         BUILDER.pop();
 
         COMMON = BUILDER.build();
