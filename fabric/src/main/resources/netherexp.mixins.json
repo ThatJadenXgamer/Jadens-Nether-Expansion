@@ -6,9 +6,7 @@
   "client": [
   ],
   "mixins": [
-    "fabric.LiquidBlockMixin",
-    "fabric.ArmorMaterialsMixin",
-    "fabric.TiersMixin"
+    "fabric.LiquidBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
