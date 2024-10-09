@@ -58,7 +58,7 @@ public class NetherExpForge {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Forge-specific Registries
-        JNELootModifiers.init(eventBus);
+        JNELootModifiers.LOOT_MODIFIERS.register(eventBus);
         final DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
         BIOME_MODIFIER_SERIALIZERS.register(eventBus);
         BIOME_MODIFIER_SERIALIZERS.register("spawn_costs", SpawnCostsBiomeModifier::createCodec);
