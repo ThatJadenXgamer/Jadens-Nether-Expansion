@@ -24,13 +24,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Mob.class)
 public abstract class MobMixin {
-    @Inject(method = "getDefaultLootTable", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "getDefaultLootTable",
+            at = @At(value = "HEAD"),
+            cancellable = true
+    )
     private void netherexp$configurableLootTables(CallbackInfoReturnable<ResourceLocation> cir) {
         // this lets me dynamically alter the drop loot tables for mobs with configs and not have to
         // rely on LootTableModifications or just overriding the loot json
         Mob mob = ((Mob) (Object) this);
-        if (mob instanceof Hoglin && JNEConfigs.HOGLIN_DROPS_HOGHAM.get()
-            && !NetherExp.compatNethersDelight()) {
+        if (mob instanceof Hoglin && JNEConfigs.HOGLIN_DROPS_HOGHAM.get() && !NetherExp.compatNethersDelight()) {
             cir.setReturnValue(new ResourceLocation(NetherExp.MOD_ID, "entities/hoglin_hogham"));
         }
         if (mob instanceof WitherSkeleton && JNEConfigs.WITHER_SKELETON_DROPS_FOSSIL_FUEL.get()) {

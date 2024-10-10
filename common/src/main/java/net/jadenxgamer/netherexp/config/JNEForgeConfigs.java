@@ -131,6 +131,12 @@ public class JNEForgeConfigs {
         REMOVE_SOUL_SPEED_DURABILITY_PENALTY = BUILDER
                 .comment("Soul Speed will no longer damage your boots when enabled")
                 .define("remove_soul_speed_durability_penalty", false);
+        ENABLE_SUB_BIOMES = BUILDER
+                .comment("Secondary and Tertiary sub-biomes will start generating if enabled")
+                .define("enable_sub_biomes", true);
+        SECONDARY_SUB_BIOME_WEIGHTS = BUILDER
+                .comment("Defines the weight for Secondary sub-biome regions")
+                .define("secondary_sub_biome_weights", 2);
     }
 
     private static void registerParticlesAndSoundsConfigs(ForgeConfigSpec.Builder BUILDER) {

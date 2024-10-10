@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:vent_mire"
+    "netherexp:exhaust_mire",
+    "netherexp:sorrowsquash_pasture"
   ]
 }
