@@ -35,7 +35,7 @@ public abstract class StemBlockMixin extends BushBlock {
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean notify) {
         BlockState floor = level.getBlockState(pos.below());
-        if (floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS) && state.is(Blocks.PUMPKIN_STEM) || state.is(JNEBlocks.SORROWEED.get())) {
+        if (floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS) || state.is(JNEBlocks.SORROWEED.get()) && state.is(Blocks.PUMPKIN_STEM)) {
             level.setBlock(pos, JNEBlocks.SORROWSQUASH_STEM.get().defaultBlockState(), UPDATE_ALL);
         }
     }

@@ -50,6 +50,8 @@ public class JNEConfigs {
     public static Supplier<Boolean> ECTOPLASM_RUSTS_NETHERITE = () -> true;
     public static Supplier<Boolean> REDUCE_SOUL_SAND_SLOWNESS = () -> false;
     public static Supplier<Boolean> REMOVE_SOUL_SPEED_DURABILITY_PENALTY = () -> false;
+    public static Supplier<Boolean> ENABLE_SUB_BIOMES = () -> true;
+    public static Supplier<Integer> SECONDARY_SUB_BIOME_WEIGHTS = () -> 2;
 
     // Particles & Sounds
     public static Supplier<Boolean> IMPROVED_SOUL_FIRE_PARTICLES = () -> true;
