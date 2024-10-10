@@ -11,17 +11,15 @@ import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -54,7 +52,6 @@ implements BonemealableBlock {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!state.getValue(COOLDOWN) && entity instanceof LivingEntity livingEntity && !livingEntity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && !EnchantmentHelper.hasSoulSpeed((livingEntity))) {
             RandomSource random = level.random;
-            livingEntity.addEffect(new MobEffectInstance(JNEMobEffects.UNBOUNDED_SPEED.get(), JNEConfigs.UNBOUNDED_SPEED_DURATION.get() * 20, 0, true, true), entity);
             swirlPopParticles(level, pos);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SWIRLS_BOOST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(pos, state.cycle(COOLDOWN), UPDATE_CLIENTS);
@@ -62,6 +59,10 @@ implements BonemealableBlock {
             if (livingEntity instanceof Player player && JNEConfigs.ECTO_SLAB_EMERGING_BEHAVIOR.get() != EctoSlabEmerging.NEVER) {
                 checksForSpawningEctoSlab(level, pos, player, random, JNEConfigs.ECTO_SLAB_EMERGING_BEHAVIOR.get());
             }
+            else if (livingEntity instanceof Frog && random.nextInt(10) == 0) {
+                spawnEctoSlab(level, pos, null, random);
+            }
+            livingEntity.addEffect(new MobEffectInstance(JNEMobEffects.UNBOUNDED_SPEED.get(), JNEConfigs.UNBOUNDED_SPEED_DURATION.get() * 20, 0, true, true), entity);
         }
     }
 
@@ -82,7 +83,9 @@ implements BonemealableBlock {
         if (ectoSlab != null) {
             ectoSlab.setSize(size, true);
             ectoSlab.push(ectoSlab.getX(), 0.4, ectoSlab.getZ());
-            ectoSlab.setTarget(entity);
+            if (entity !=  null) {
+                ectoSlab.setTarget(entity);
+            }
             ectoSlab.setPos(pos.getX(), pos.getY(), pos.getZ());
             level.addFreshEntity(ectoSlab);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
