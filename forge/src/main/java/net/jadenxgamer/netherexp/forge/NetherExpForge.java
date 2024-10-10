@@ -7,15 +7,12 @@ import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.forge.loot.JNELootModifiers;
-import net.jadenxgamer.netherexp.forge.worldgen.SecondaryVanillaSubBiomes;
 import net.jadenxgamer.netherexp.forge.worldgen.SpawnCostsBiomeModifier;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotionRecipe;
-import net.jadenxgamer.netherexp.registry.worldgen.JNESurfaceRules;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Monster;
@@ -37,8 +34,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
 
 @Mod(NetherExp.MOD_ID)
 public class NetherExpForge {
@@ -69,10 +64,6 @@ public class NetherExpForge {
 
     public static void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(JNEPotionRecipe::addInvokerPotionRecipes);
-//        event.enqueueWork(() -> {
-//            Regions.register(new SecondaryVanillaSubBiomes(new ResourceLocation(NetherExp.MOD_ID, "secondary_vanilla_sub_biomes"), JNEConfigs.SECONDARY_SUB_BIOME_WEIGHTS.get()));
-//            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, NetherExp.MOD_ID, JNESurfaceRules.init());
-//        });
     }
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
