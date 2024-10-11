@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 25,
+          "data": {
+            "Name": "minecraft:crimson_fungus"
+          }
+        },
+        {
+          "weight": 50,
+          "data": {
+            "Name": "minecraft:crimson_roots"
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Name": "netherexp:soul_swirls"
+          }
+        }
+      ]
+    }
+  }
+}

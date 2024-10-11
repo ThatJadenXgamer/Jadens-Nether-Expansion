@@ -1,8 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
-import net.jadenxgamer.netherexp.registry.block.custom.BasaltBlock;
 import net.jadenxgamer.netherexp.registry.block.custom.BoneBlock;
-import net.jadenxgamer.netherexp.registry.block.custom.SpottedWartBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.WartBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -30,7 +29,7 @@ public class BlocksMixin {
             slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=nether_wart_block"))
     )
     private static Block netherexp$netherWartBlock(BlockBehaviour.Properties properties) {
-        return new SpottedWartBlock(properties, 1);
+        return new WartBlock(properties, 1);
     }
 
     @Redirect(
@@ -38,6 +37,6 @@ public class BlocksMixin {
             at = @At(value = "NEW", target = "net/minecraft/world/level/block/Block", ordinal = 0), slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=warped_wart_block"))
     )
     private static Block netherexp$warpedWartBlock(BlockBehaviour.Properties properties) {
-        return new SpottedWartBlock(properties, 2);
+        return new WartBlock(properties, 2);
     }
 }

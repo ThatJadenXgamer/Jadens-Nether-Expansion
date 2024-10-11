@@ -20,12 +20,12 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class SpottedWartBlock extends Block {
+public class WartBlock extends Block {
     public static final IntegerProperty SPOTS = IntegerProperty.create("spots", 0, 3);
 
     protected final int type;
 
-    public SpottedWartBlock(Properties properties, int type) {
+    public WartBlock(Properties properties, int type) {
         super(properties);
         this.type = type;
         this.registerDefaultState(this.defaultBlockState().setValue(SPOTS, 0));
@@ -33,12 +33,12 @@ public class SpottedWartBlock extends Block {
 
     private static void dropLight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
+        WartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
     }
 
     private static void dropNight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
+        WartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
     }
 
     @SuppressWarnings("deprecation")

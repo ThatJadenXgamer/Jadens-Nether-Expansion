@@ -41,13 +41,6 @@ public class JNEPlacedFeatures {
     // BASALT DELTAS
     public static final ResourceKey<PlacedFeature> BASALTIC_GEYSER = registerKey("basalt_deltas/basaltic_geyser");
 
-    // VENT MIRE
-
-    public static final ResourceKey<PlacedFeature> SMOKESTALK = registerKey("vent_mire/smokestalk");
-    public static final ResourceKey<PlacedFeature> IGNEOUS_REEDS = registerKey("vent_mire/igneous_reeds");
-    public static final ResourceKey<PlacedFeature> BLACKSTONE_PATCH = registerKey("vent_mire/blackstone_patch");
-    public static final ResourceKey<PlacedFeature> VENT_DELTA = registerKey("vent_mire/vent_delta");
-
     ///////////////////////
     // MOD COMPATIBILITY //
     ///////////////////////

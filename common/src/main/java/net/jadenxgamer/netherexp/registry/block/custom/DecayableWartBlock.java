@@ -77,12 +77,12 @@ public class DecayableWartBlock extends Block {
 
     private static void dropLight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
+        WartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.LIGHTSPORES.get(), s));
     }
 
     private static void dropNight(Level level, BlockPos pos, BlockState state, Direction direction) {
         int s = state.getValue(SPOTS);
-        SpottedWartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
+        WartBlock.popResourceFromFace(level, pos, direction, new ItemStack(JNEItems.NIGHTSPORES.get(), s));
     }
 
     @SuppressWarnings("deprecation")

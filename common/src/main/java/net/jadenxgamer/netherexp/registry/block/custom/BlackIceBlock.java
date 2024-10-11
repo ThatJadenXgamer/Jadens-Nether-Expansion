@@ -31,6 +31,23 @@ public class BlackIceBlock extends Block {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean bl) {
+        super.onPlace(state, level, pos, oldState, bl);
+        if (!level.isClientSide()) {
+            for (Direction direction : Direction.values()) {
+                BlockPos adjacentPos = pos.relative(direction);
+                BlockState adjacentState = level.getBlockState(adjacentPos);
+
+                if (adjacentState.is(Blocks.SOUL_SAND)) {
+                    level.setBlock(adjacentPos, JNEBlocks.PALE_SOUL_SLATE.get().defaultBlockState(), 2);
+                    level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SLATE_SOLIDIFYING.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
+            }
+        }
+    }
+
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (JNEConfigs.ENABLE_BLACK_ICE_PARTICLES.get()) {

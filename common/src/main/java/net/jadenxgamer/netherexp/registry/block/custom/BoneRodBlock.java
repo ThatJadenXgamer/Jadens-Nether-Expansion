@@ -22,9 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class BoneRodBlock
-extends Block
-implements SimpleWaterloggedBlock {
+public class BoneRodBlock extends Block implements SimpleWaterloggedBlock {
 
     public static final IntegerProperty BONES = IntegerProperty.create("bones", 1, 4);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;

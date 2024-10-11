@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.registry.item.custom;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.DecayableWartBlock;
-import net.jadenxgamer.netherexp.registry.block.custom.SpottedWartBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.WartBlock;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
@@ -35,12 +35,12 @@ public class LightsporesItem extends Item {
         Level level = context.getLevel();
         BlockState state = level.getBlockState(pos = context.getClickedPos());
         Block block = state.getBlock();
-        SpottedWartBlock spottedWartBlock;
+        WartBlock spottedWartBlock;
         DecayableWartBlock decayableWartBlock;
         /*
           Increases Spotted Wart Block's Spots
         */
-        if (state.is(Blocks.NETHER_WART_BLOCK) && !(spottedWartBlock = (SpottedWartBlock) block).maxSpots(state)) {
+        if (state.is(Blocks.NETHER_WART_BLOCK) && !(spottedWartBlock = (WartBlock) block).maxSpots(state)) {
             level.setBlock(pos, spottedWartBlock.setSpots(state), 2);
             level.playSound(player, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.LIGHTSPORES_APPLY.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             sporeParticles(level, pos);

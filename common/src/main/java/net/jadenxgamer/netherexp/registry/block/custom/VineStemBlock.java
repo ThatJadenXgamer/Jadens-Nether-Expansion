@@ -100,12 +100,12 @@ extends GrowingPlantHeadBlock {
 
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos blockPos) {
-        BlockPos blockPos2 = blockPos.offset(this.growthDirection.getOpposite().getNormal());
-        BlockState blockState2 = level.getBlockState(blockPos2);
+        BlockPos growthOppositePos = blockPos.offset(this.growthDirection.getOpposite().getNormal());
+        BlockState growthOppositeState = level.getBlockState(growthOppositePos);
         if (!this.canAttachTo(blockState)) {
             return false;
         } else {
-            return blockState2.is(this.getHeadBlock()) || blockState2.is(this.getBodyBlock()) || blockState2.is(JNETags.Blocks.SOUL_SAND_BLOCKS);
+            return growthOppositeState.is(this.getHeadBlock()) || growthOppositeState.is(this.getBodyBlock()) || growthOppositeState.is(JNETags.Blocks.SOUL_SAND_BLOCKS) || growthOppositeState.is(JNEBlocks.SORROWEED.get());
         }
     }
 
