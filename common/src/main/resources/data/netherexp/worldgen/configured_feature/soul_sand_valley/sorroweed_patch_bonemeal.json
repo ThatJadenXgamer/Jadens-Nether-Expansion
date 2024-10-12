@@ -22,7 +22,7 @@
       }
     },
     "vegetation_feature": {
-      "feature": "netherexp:sorroweed_vegetation",
+      "feature": "netherexp:soul_sand_valley/sorroweed_vegetation",
       "placement": []
     }
   }
