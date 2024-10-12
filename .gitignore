@@ -17,3 +17,6 @@ classes/
 .vscode
 .settings
 *.launch
+common/.factorypath
+fabric/.factorypath
+forge/.factorypath
