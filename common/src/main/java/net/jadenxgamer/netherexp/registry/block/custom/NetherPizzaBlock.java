@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -32,7 +34,6 @@ public class NetherPizzaBlock extends Block {
         this.registerDefaultState(this.defaultBlockState().setValue(SLICES, 4));
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter level, BlockPos blockPos, CollisionContext context) {
         switch (blockState.getValue(SLICES)) {
@@ -50,22 +51,29 @@ public class NetherPizzaBlock extends Block {
         return ONE_SHAPE;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        ItemStack itemStack = player.getItemInHand(hand);
         int s = blockState.getValue(SLICES);
-        if (itemStack.isEmpty()) {
-            player.setItemInHand(hand, new ItemStack(JNEItems.NETHER_PIZZA_SLICE.get()));
+        if (player.addItem(new ItemStack(JNEItems.NETHER_PIZZA_SLICE.get()))) { 
             if (s == 1) {
                 level.removeBlock(blockPos, false);
-            }
-            else {
-                level.setBlock(blockPos, this.defaultBlockState().setValue(SLICES, s - 1), UPDATE_CLIENTS);
+                level.gameEvent(player, GameEvent.BLOCK_DESTROY, blockPos);
+            } else {
+                level.setBlock(blockPos, this.defaultBlockState().setValue(SLICES, s - 1), UPDATE_ALL);
             }
             return InteractionResult.SUCCESS;
         }
-        else return super.use(blockState, level, blockPos, player, hand, blockHitResult);
+        return InteractionResult.PASS;
+    }
+
+    @Override
+    public boolean hasAnalogOutputSignal(BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos blockPos) {
+        return blockState.getValue(SLICES) * 3;
     }
 
     @Override
