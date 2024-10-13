@@ -233,7 +233,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private void spawnWave(Level level, BlockPos pos) {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
-            int bonusSpawns = this.playersNearby > 1 ? playersNearby * 2 : 0;
+            int bonusSpawns = this.playersNearby > 1 ? playersNearby : 0;
             for (int i = 0; i < this.mobsPerWave + bonusSpawns; i++) {
                 BlockPos spawnPos = findValidSpawnPosition(level, pos, random);
 

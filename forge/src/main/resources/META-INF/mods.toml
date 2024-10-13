@@ -11,7 +11,7 @@ authors = "ThatJadenXgamer"
 description = '''
 Reimagines and Expands upon the Entire Nether Dimension
 '''
-credits = "AlwaysMuddy, Shroomaniac, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful"
+credits = "AlwaysMuddy, Shroomaniac, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior"
 logoFile = "icon.png"
 
 [[dependencies.netherexp]]
