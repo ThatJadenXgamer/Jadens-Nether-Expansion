@@ -99,11 +99,13 @@ public class NetherExpForge {
     }
 
     private static void addBuiltinPacks(AddPackFindersEvent event) {
+        // ResourcePacks
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             JNEBuiltinPacks.rpJNERetextures(event);
             JNEBuiltinPacks.rpConflictingRetextures(event);
             JNEBuiltinPacks.rpUniqueNetherWood(event);
         }
+        // Datapacks
         if (event.getPackType() == PackType.SERVER_DATA) {
             if (JNEConfigs.LARGER_NETHER_BIOMES.get()) {
                 JNEBuiltinPacks.dpLargerNetherBiomes(event);

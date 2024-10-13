@@ -44,7 +44,7 @@ public class CarvedSorrowsquashBlock extends HorizontalDirectionalBlock implemen
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return random.nextInt(5) == 0;
+        return true;
     }
 
     @Override

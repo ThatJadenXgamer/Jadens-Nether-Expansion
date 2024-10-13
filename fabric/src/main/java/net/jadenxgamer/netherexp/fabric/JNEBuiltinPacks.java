@@ -17,12 +17,12 @@ public class JNEBuiltinPacks {
         ResourceLocation dpNetherDelightsCompat = new ResourceLocation(NetherExp.MOD_ID, "nethers_delight_compat");
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container -> {
-            // Resource Packs
+            // ResourcePacks
             ResourceManagerHelper.registerBuiltinResourcePack(rpJNERetextures, container, Component.literal("JNE-Retextures"), ResourcePackActivationType.ALWAYS_ENABLED);
             ResourceManagerHelper.registerBuiltinResourcePack(rpConflictingRetextures, container, Component.literal("Conflicting Retextures"), ResourcePackActivationType.NORMAL);
             ResourceManagerHelper.registerBuiltinResourcePack(rpUniqueNetherWood, container, Component.literal("Unique Nether Wood"), ResourcePackActivationType.NORMAL);
 
-            // Data Packs
+            // DataPacks
             if (JNEConfigs.LARGER_NETHER_BIOMES.get()) {
                 ResourceManagerHelper.registerBuiltinResourcePack(dpLargerNetherBiomes, container, Component.literal("Larger Nether Biomes"), ResourcePackActivationType.ALWAYS_ENABLED);
             }
