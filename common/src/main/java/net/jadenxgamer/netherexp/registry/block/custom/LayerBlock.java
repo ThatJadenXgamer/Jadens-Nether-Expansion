@@ -87,7 +87,7 @@ public class LayerBlock extends Block {
     @Override
     public BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2,
             LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        return blockState.canSurvive(levelAccessor, blockPos) ? Blocks.AIR.defaultBlockState() : blockState.updateShape(direction, blockState, levelAccessor, blockPos, blockPos2);
+        return blockState.canSurvive(levelAccessor, blockPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(blockState, direction, blockState, levelAccessor, blockPos, blockPos2);
     }
     
     @Override
