@@ -6,9 +6,10 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
-import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructureKeys;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -31,7 +32,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
-import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -64,18 +64,34 @@ public class EctoSoulSandBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-        boolean salted = blockState.getValue(SALTED);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        boolean salted = state.getValue(SALTED);
         boolean wasSuccess = false;
         if (!salted) {
-            if (itemStack.is(Items.HONEYCOMB)) {
-                level.playSound(player, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-                level.setBlock(blockPos, blockState.cycle(SALTED), Block.UPDATE_CLIENTS);
+            if (itemStack.is(Items.BRUSH) && level.getBlockState(pos.above()).isAir()) {
+                level.playSound(player, pos, SoundEvents.BRUSH_SAND, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+                level.playSound(player, pos, JNESoundEvents.ENTITY_WISP_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, 0.4F);
+                if (!player.isCreative()) {
+                    itemStack.hurtAndBreak(5, player, p -> p.broadcastBreakEvent(hand));
+                }
+                if (level.random.nextInt(10) == 0 && level instanceof ServerLevel serverLevel) {
+                    this.setSusSoulSand(level, pos, level.random);
+                    this.spawnWisp(serverLevel, pos.above(), level.random);
+                }
+                blockParticle(level, pos, ParticleTypes.SOUL);
+                wasSuccess = true;
+            }
+            if (!level.isClientSide && wasSuccess) {
+                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+            }
+            else if (itemStack.is(Items.HONEYCOMB)) {
+                level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+                level.setBlock(pos, state.cycle(SALTED), Block.UPDATE_CLIENTS);
                 if (!player.isCreative()) {
                     itemStack.shrink(1);
                 }
-                blockParticle(level, blockPos);
+                blockParticle(level, pos, ParticleTypes.WAX_ON);
                 wasSuccess = true;
             }
             if (!level.isClientSide && wasSuccess) {
@@ -88,7 +104,7 @@ public class EctoSoulSandBlock extends Block {
         return InteractionResult.PASS;
     }
 
-    private static void blockParticle(Level level, BlockPos blockPos) {
+    private static void blockParticle(Level level, BlockPos blockPos, ParticleOptions particle) {
         RandomSource randomSource = level.random;
         Direction[] var5 = Direction.values();
 
@@ -99,7 +115,7 @@ public class EctoSoulSandBlock extends Block {
                 double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) randomSource.nextFloat();
                 double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) randomSource.nextFloat();
                 double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) randomSource.nextFloat();
-                level.addParticle(ParticleTypes.WAX_ON, (double) blockPos.getX() + e, (double) blockPos.getY() + f, (double) blockPos.getZ() + g, 0.0, 0.0, 0.0);
+                level.addParticle(particle, (double) blockPos.getX() + e, (double) blockPos.getY() + f, (double) blockPos.getZ() + g, 0.0, 0.0, 0.0);
             }
         }
     }

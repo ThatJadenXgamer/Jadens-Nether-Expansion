@@ -35,13 +35,13 @@ public class LightsporesItem extends Item {
         Level level = context.getLevel();
         BlockState state = level.getBlockState(pos = context.getClickedPos());
         Block block = state.getBlock();
-        WartBlock spottedWartBlock;
+        WartBlock wartBlock;
         DecayableWartBlock decayableWartBlock;
         /*
           Increases Spotted Wart Block's Spots
         */
-        if (state.is(Blocks.NETHER_WART_BLOCK) && !(spottedWartBlock = (WartBlock) block).maxSpots(state)) {
-            level.setBlock(pos, spottedWartBlock.setSpots(state), 2);
+        if (state.is(Blocks.NETHER_WART_BLOCK) && !(wartBlock = (WartBlock) block).maxSpots(state)) {
+            level.setBlock(pos, wartBlock.setSpots(state), 2);
             level.playSound(player, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.LIGHTSPORES_APPLY.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             sporeParticles(level, pos);
             if (player != null) {
