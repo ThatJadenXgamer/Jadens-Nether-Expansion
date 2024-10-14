@@ -7,6 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -30,11 +31,15 @@ public abstract class ProjectileMixin {
         // makes it so entities with phantasm hull or a specific tag are immune to all projectiles because it'll phase through it
         Entity entity = ((EntityHitResult) hitResult).getEntity();
         Level level = entity.level();
-        if (entity.getType().is(JNETags.EntityTypes.PROJECTILES_PASS_THROUGH) && ((Projectile) (Object) this).getType().is(JNETags.EntityTypes.PHANTASM_HULL_PROTECTS_AGAINST)) {
+        Projectile projectile = ((Projectile) (Object) this);
+        if (projectile instanceof AbstractArrow abstractArrow && abstractArrow.getPierceLevel() > 0) {
+            return;
+        }
+        if (entity.getType().is(JNETags.EntityTypes.PROJECTILES_PASS_THROUGH) && projectile.getType().is(JNETags.EntityTypes.PHANTASM_HULL_PROTECTS_AGAINST)) {
             level.addParticle(ParticleTypes.SOUL, entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f);
             ci.cancel();
         }
-        else if (entity instanceof LivingEntity livingEntity && EnchantmentHelper.getEnchantmentLevel(JNEEnchantments.PHANTASM_HULL.get(), livingEntity) > 0 && livingEntity.isShiftKeyDown() && ((Projectile) (Object) this).getType().is(JNETags.EntityTypes.PHANTASM_HULL_PROTECTS_AGAINST)) {
+        else if (entity instanceof LivingEntity livingEntity && EnchantmentHelper.getEnchantmentLevel(JNEEnchantments.PHANTASM_HULL.get(), livingEntity) > 0 && livingEntity.isShiftKeyDown() && projectile.getType().is(JNETags.EntityTypes.PHANTASM_HULL_PROTECTS_AGAINST)) {
             level.addParticle(ParticleTypes.SOUL, livingEntity.getRandomX(0.5), livingEntity.getRandomY() - 0.25, livingEntity.getRandomZ(0.5), Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(level.random, -1.0f, 1.0f) * 0.083333336f);
             if (level.getRandom().nextInt(2) == 0) {
                 ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);

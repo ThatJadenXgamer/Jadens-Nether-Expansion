@@ -11,12 +11,14 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class AbstractArrowMixin {
     @Shadow protected boolean inGround;
 
+    @Shadow public abstract byte getPierceLevel();
+
     @Redirect(
             method = "tick",
             at = @At(value = "FIELD", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;inGround:Z", ordinal = 0)
     )
     private void netherexp$tick(AbstractArrow instance, boolean value) {
-        if (instance.getType().is(JNETags.EntityTypes.IGNORES_BLOCK_COLLISION)) {
+        if (instance.getType().is(JNETags.EntityTypes.IGNORES_BLOCK_COLLISION) && this.getPierceLevel() <= 0) {
             inGround = false;
         }
     }
