@@ -32,25 +32,25 @@ public class SorrowsquashBlock extends StemGrownBlock implements BonemealableBlo
     }
 
     @SuppressWarnings("deprecation")
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        ItemStack itemStack = player.getItemInHand(interactionHand);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.is(Items.SHEARS)) {
             if (!level.isClientSide) {
-                Direction hitDirection = blockHitResult.getDirection();
+                Direction hitDirection = hitResult.getDirection();
                 Direction direction = hitDirection.getAxis() == Direction.Axis.Y ? player.getDirection().getOpposite() : hitDirection;
-                level.playSound(null, blockPos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.setBlock(blockPos, JNEBlocks.CARVED_SORROWSQUASH.get().defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction), 11);
-                ItemEntity itemEntity = new ItemEntity(level, (double)blockPos.getX() + 0.5 + (double)direction.getStepX() * 0.65, (double)blockPos.getY() + 0.1, (double)blockPos.getZ() + 0.5 + (double)direction.getStepZ() * 0.65, new ItemStack(Items.PUMPKIN_SEEDS, 4));
+                level.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.setBlock(pos, JNEBlocks.CARVED_SORROWSQUASH.get().defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction), 11);
+                ItemEntity itemEntity = new ItemEntity(level, (double)pos.getX() + 0.5 + (double)direction.getStepX() * 0.65, (double)pos.getY() + 0.1, (double)pos.getZ() + 0.5 + (double)direction.getStepZ() * 0.65, new ItemStack(Items.PUMPKIN_SEEDS, 4));
                 itemEntity.setDeltaMovement(0.05 * (double)direction.getStepX() + level.random.nextDouble() * 0.02, 0.05, 0.05 * (double)direction.getStepZ() + level.random.nextDouble() * 0.02);
                 level.addFreshEntity(itemEntity);
-                itemStack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(interactionHand));
-                level.gameEvent(player, GameEvent.SHEAR, blockPos);
+                itemStack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(hand));
+                level.gameEvent(player, GameEvent.SHEAR, pos);
                 player.awardStat(Stats.ITEM_USED.get(Items.SHEARS));
             }
 
             return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
+            return super.use(state, level, pos, player, hand, hitResult);
         }
     }
 

@@ -35,14 +35,14 @@ extends Block {
 
     @SuppressWarnings("all")
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(ROTATION, Mth.floor((double)(ctx.getRotation() * 16.0f / 360.0f) + 0.5) & 0xF);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(ROTATION, Mth.floor((double)(context.getRotation() * 16.0f / 360.0f) + 0.5) & 0xF);
     }
 
     @Override

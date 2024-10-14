@@ -40,8 +40,8 @@ public class WarpedWartBlock extends BushBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        switch (blockState.getValue(AGE)) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        switch (state.getValue(AGE)) {
             default: {
                 return AGE_0_TOP;
             }
@@ -53,21 +53,21 @@ public class WarpedWartBlock extends BushBlock {
             }
             case 3:
         }
-        if (blockState.getValue(HALF) == DoubleBlockHalf.LOWER) {
+        if (state.getValue(HALF) == DoubleBlockHalf.LOWER) {
             return AGE_3_BOTTOM;
         }
         return AGE_3_TOP;
     }
 
     @Override
-    public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        BlockPos upPos = blockPos.above();
-        if (blockState.getValue(HALF) != DoubleBlockHalf.LOWER) {
-            return this.canPlantDownBelow(levelReader.getBlockState(upPos));
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos upPos = pos.above();
+        if (state.getValue(HALF) != DoubleBlockHalf.LOWER) {
+            return this.canPlantDownBelow(level.getBlockState(upPos));
         }
         else {
-            BlockState upState = levelReader.getBlockState(upPos);
-            return upState.is(this) && blockState.getValue(HALF) == DoubleBlockHalf.UPPER;
+            BlockState upState = level.getBlockState(upPos);
+            return upState.is(this) && state.getValue(HALF) == DoubleBlockHalf.UPPER;
         }
     }
     protected boolean canPlantDownBelow(BlockState ceiling) {
@@ -75,38 +75,38 @@ public class WarpedWartBlock extends BushBlock {
     }
 
     @Override
-    public boolean isRandomlyTicking(BlockState blockState) {
-        return blockState.getValue(AGE) < 3;
+    public boolean isRandomlyTicking(BlockState state) {
+        return state.getValue(AGE) < 3;
     }
 
     @Override
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        DoubleBlockHalf doubleBlockHalf = blockState.getValue(HALF);
-        int i = blockState.getValue(AGE);
-        if (i == 3 && direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.UPPER == (direction == Direction.DOWN) && (!blockState2.is(this) || blockState2.getValue(HALF) == doubleBlockHalf)) {
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
+        int i = state.getValue(AGE);
+        if (i == 3 && direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.UPPER == (direction == Direction.DOWN) && (!neighborState.is(this) || neighborState.getValue(HALF) == doubleBlockHalf)) {
             return Blocks.AIR.defaultBlockState();
         }
         else {
-            return doubleBlockHalf == DoubleBlockHalf.UPPER && direction == Direction.UP && !blockState.canSurvive(levelAccessor, blockPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
+            return doubleBlockHalf == DoubleBlockHalf.UPPER && direction == Direction.UP && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
         }
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        int i = blockState.getValue(AGE);
-        BlockPos floor = blockPos.below();
-        if (i < 2 && randomSource.nextInt(10) == 0) {
-            serverLevel.setBlock(blockPos, blockState.setValue(AGE, i + 1), 2);
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        int i = state.getValue(AGE);
+        BlockPos floor = pos.below();
+        if (i < 2 && random.nextInt(10) == 0) {
+            level.setBlock(pos, state.setValue(AGE, i + 1), 2);
         }
-        else if (i == 2 && serverLevel.getBlockState(floor).isAir()) {
-            serverLevel.setBlock(blockPos, blockState.setValue(AGE, i + 1), 2);
-            serverLevel.setBlock(floor, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, 3), 2);
+        else if (i == 2 && level.getBlockState(floor).isAir()) {
+            level.setBlock(pos, state.setValue(AGE, i + 1), 2);
+            level.setBlock(floor, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, 3), 2);
         }
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
+    public @NotNull ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
         return new ItemStack(JNEItems.WARPED_WART.get());
     }
 

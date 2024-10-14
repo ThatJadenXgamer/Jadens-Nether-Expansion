@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.registry.block.custom;
+package net.jadenxgamer.netherexp.registry.block.custom.enums;
 
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;

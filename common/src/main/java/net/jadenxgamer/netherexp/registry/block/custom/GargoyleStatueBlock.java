@@ -30,29 +30,29 @@ public class GargoyleStatueBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState otherState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos otherPos) {
-        DoubleBlockHalf doubleBlockHalf = blockState.getValue(HALF);
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
         if (direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.LOWER == (direction == Direction.UP)) {
-            return otherState.is(this) && otherState.getValue(HALF) != doubleBlockHalf ? blockState.setValue(FACING, otherState.getValue(FACING)).setValue(SALTED, otherState.getValue(SALTED)) : Blocks.AIR.defaultBlockState();
+            return neighborState.is(this) && neighborState.getValue(HALF) != doubleBlockHalf ? state.setValue(FACING, neighborState.getValue(FACING)).setValue(SALTED, neighborState.getValue(SALTED)) : Blocks.AIR.defaultBlockState();
         } else {
-            return doubleBlockHalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !blockState.canSurvive(levelAccessor, blockPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(blockState, direction, otherState, levelAccessor, blockPos, otherPos);
+            return doubleBlockHalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
         }
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        BlockPos pos = blockPlaceContext.getClickedPos();
-        Level level = blockPlaceContext.getLevel();
-        if (pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced(blockPlaceContext)) {
-            return (this.defaultBlockState().setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite())).setValue(HALF, DoubleBlockHalf.LOWER);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockPos pos = context.getClickedPos();
+        Level level = context.getLevel();
+        if (pos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(pos.above()).canBeReplaced(context)) {
+            return (this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite())).setValue(HALF, DoubleBlockHalf.LOWER);
         } else {
             return null;
         }
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
-        level.setBlock(blockPos.above(), blockState.setValue(HALF, DoubleBlockHalf.UPPER), 3);
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity livingEntity, ItemStack stack) {
+        level.setBlock(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER), 3);
     }
 
     @SuppressWarnings("deprecation")
@@ -69,10 +69,10 @@ public class GargoyleStatueBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        BlockPos belowPos = blockPos.below();
-        BlockState belowState = levelReader.getBlockState(belowPos);
-        return blockState.getValue(HALF) == DoubleBlockHalf.LOWER ? belowState.isFaceSturdy(levelReader, belowPos, Direction.UP) : belowState.is(this);
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos belowPos = pos.below();
+        BlockState belowState = level.getBlockState(belowPos);
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? belowState.isFaceSturdy(level, belowPos, Direction.UP) : belowState.is(this);
     }
 
     @Override

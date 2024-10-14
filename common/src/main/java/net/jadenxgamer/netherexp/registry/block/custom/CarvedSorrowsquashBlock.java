@@ -28,8 +28,8 @@ public class CarvedSorrowsquashBlock extends HorizontalDirectionalBlock implemen
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override

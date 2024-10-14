@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.block.custom.enums.EctoplasmWaterlogged;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
@@ -85,15 +86,15 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         if (fluidState.getType() == Fluids.WATER) {
-            return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.WATER).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+            return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.WATER).setValue(FACING, context.getHorizontalDirection().getOpposite());
         }
         else if (fluidState.getType() == JNEFluids.ECTOPLASM.get()) {
-            return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.ECTOPLASM).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+            return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.ECTOPLASM).setValue(FACING, context.getHorizontalDirection().getOpposite());
         }
-        else return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        else return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @SuppressWarnings("deprecation")

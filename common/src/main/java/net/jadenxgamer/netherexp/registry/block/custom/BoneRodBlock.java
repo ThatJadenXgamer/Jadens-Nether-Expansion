@@ -37,23 +37,23 @@ public class BoneRodBlock extends Block implements SimpleWaterloggedBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean canBeReplaced(BlockState state, BlockPlaceContext blockPlaceContext) {
-        if (!blockPlaceContext.isSecondaryUseActive() && blockPlaceContext.getItemInHand().getItem() == this.asItem() && state.getValue(BONES) < 4) {
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        if (!context.isSecondaryUseActive() && context.getItemInHand().getItem() == this.asItem() && state.getValue(BONES) < 4) {
             return true;
         }
-        return super.canBeReplaced(state, blockPlaceContext);
+        return super.canBeReplaced(state, context);
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        BlockState state = ctx.getLevel().getBlockState(ctx.getClickedPos());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
         if (state.is(this)) {
             return state.cycle(BONES);
         }
-        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         boolean bl = fluidState.getTags() == Fluids.WATER;
-        return Objects.requireNonNull(super.getStateForPlacement(ctx)).setValue(WATERLOGGED, bl).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        return Objects.requireNonNull(super.getStateForPlacement(context)).setValue(WATERLOGGED, bl).setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @SuppressWarnings("deprecation")
@@ -70,11 +70,11 @@ public class BoneRodBlock extends Block implements SimpleWaterloggedBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos neighborPos) {
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos blockPos, BlockPos neighborPos) {
         if (state.getValue(WATERLOGGED)) {
-            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+            level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return super.updateShape(state, direction, neighborState, levelAccessor, blockPos, neighborPos);
+        return super.updateShape(state, direction, neighborState, level, blockPos, neighborPos);
     }
 
     @SuppressWarnings("deprecation")
@@ -98,20 +98,20 @@ public class BoneRodBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean placeLiquid(LevelAccessor levelAccessor, BlockPos pos, BlockState state, FluidState fluidState) {
+    public boolean placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState fluidState) {
         if (state.getValue(WATERLOGGED) || fluidState.getType() != Fluids.WATER) {
             return false;
         }
         BlockState blockState = state.setValue(WATERLOGGED, true);
-            levelAccessor.setBlock(pos, blockState, Block.UPDATE_ALL);
+            level.setBlock(pos, blockState, Block.UPDATE_ALL);
 
-        levelAccessor.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(levelAccessor));
+        level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
         return true;
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        return Block.canSupportCenter(levelReader, blockPos.below(), Direction.UP);
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        return Block.canSupportCenter(level, pos.below(), Direction.UP);
     }
 }

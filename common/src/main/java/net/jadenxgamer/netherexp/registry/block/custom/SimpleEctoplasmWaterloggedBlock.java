@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.registry.block.custom.enums.EctoplasmWaterlogged;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;

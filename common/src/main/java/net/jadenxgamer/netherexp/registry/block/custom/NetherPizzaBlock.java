@@ -2,7 +2,6 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -34,9 +33,10 @@ public class NetherPizzaBlock extends Block {
         this.registerDefaultState(this.defaultBlockState().setValue(SLICES, 4));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter level, BlockPos blockPos, CollisionContext context) {
-        switch (blockState.getValue(SLICES)) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos blockPos, CollisionContext context) {
+        switch (state.getValue(SLICES)) {
             default: {
                 return FOUR_SHAPE;
             }
@@ -51,29 +51,32 @@ public class NetherPizzaBlock extends Block {
         return ONE_SHAPE;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        int s = blockState.getValue(SLICES);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        int s = state.getValue(SLICES);
         if (player.addItem(new ItemStack(JNEItems.NETHER_PIZZA_SLICE.get()))) { 
             if (s == 1) {
-                level.removeBlock(blockPos, false);
-                level.gameEvent(player, GameEvent.BLOCK_DESTROY, blockPos);
+                level.removeBlock(pos, false);
+                level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
             } else {
-                level.setBlock(blockPos, this.defaultBlockState().setValue(SLICES, s - 1), UPDATE_ALL);
+                level.setBlock(pos, this.defaultBlockState().setValue(SLICES, s - 1), UPDATE_ALL);
             }
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean hasAnalogOutputSignal(BlockState blockState) {
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos blockPos) {
-        return blockState.getValue(SLICES) * 3;
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return state.getValue(SLICES) * 3;
     }
 
     @Override

@@ -47,16 +47,16 @@ implements BonemealableBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-        boolean s = blockState.getValue(SHEARED);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        boolean s = state.getValue(SHEARED);
         boolean bl = false;
         if (!s) {
             if (itemStack.is(Items.SHEARS)) {
-                level.playSound(player, blockPos, JNESoundEvents.GILDING.get(), SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-                level.setBlock(blockPos, blockState.cycle(SHEARED), Block.UPDATE_CLIENTS);
+                level.playSound(player, pos, JNESoundEvents.GILDING.get(), SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+                level.setBlock(pos, state.cycle(SHEARED), Block.UPDATE_CLIENTS);
                 if (!player.isCreative()) {
-                    itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(interactionHand));
+                    itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
                 }
                 bl = true;
                 if (!level.isClientSide) {
@@ -78,8 +78,8 @@ implements BonemealableBlock {
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(ROTATION, Mth.floor((double)(ctx.getRotation() * 16.0f / 360.0f) + 0.5) & 0xF);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(ROTATION, Mth.floor((double)(context.getRotation() * 16.0f / 360.0f) + 0.5) & 0xF);
     }
 
     @SuppressWarnings("all")
@@ -118,22 +118,22 @@ implements BonemealableBlock {
     }
 
     @Override
-    public boolean mayPlaceOn(BlockState floor, BlockGetter level, BlockPos blockPos) {
-        return floor.is(JNETags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || floor.is(BlockTags.NYLIUM) || super.mayPlaceOn(floor, level, blockPos);
+    public boolean mayPlaceOn(BlockState floor, BlockGetter level, BlockPos pos) {
+        return floor.is(JNETags.Blocks.SCALE_FUNGUS_PLANTABLE_ON) || floor.is(BlockTags.NYLIUM) || super.mayPlaceOn(floor, level, pos);
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos pos, BlockState state, boolean bl) {
         return true;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource randomSource, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         int age = state.getValue(AGE);
         if (age < 2) {
             level.setBlock(pos, state.setValue(AGE, age + 1), Block.UPDATE_CLIENTS);

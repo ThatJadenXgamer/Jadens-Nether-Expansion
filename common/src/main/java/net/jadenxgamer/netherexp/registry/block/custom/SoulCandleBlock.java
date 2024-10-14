@@ -76,24 +76,24 @@ implements SimpleWaterloggedBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-        boolean lit = blockState.getValue(LIT);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        boolean lit = state.getValue(LIT);
         boolean bl = false;
         if (player.getAbilities().mayBuild && itemStack.isEmpty() && lit) {
-            SoulCandleBlock.extinguish(player, blockState, level, blockPos);
+            SoulCandleBlock.extinguish(player, state, level, pos);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        else if (itemStack.is(Items.FLINT_AND_STEEL) && !lit && canBeLit(blockState)) {
-            level.playSound(player, blockPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-            level.setBlock(blockPos, blockState.cycle(LIT), Block.UPDATE_CLIENTS);
+        else if (itemStack.is(Items.FLINT_AND_STEEL) && !lit && canBeLit(state)) {
+            level.playSound(player, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+            level.setBlock(pos, state.cycle(LIT), Block.UPDATE_CLIENTS);
             if (!player.isCreative()) {
-                itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(interactionHand));
+                itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
             }
             bl = true;
-        } else if (itemStack.is(Items.FIRE_CHARGE) && !lit && this.canBeLit(blockState)){
-            level.playSound(player, blockPos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-            level.setBlock(blockPos, blockState.cycle(LIT), Block.UPDATE_CLIENTS);
+        } else if (itemStack.is(Items.FIRE_CHARGE) && !lit && this.canBeLit(state)){
+            level.playSound(player, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+            level.setBlock(pos, state.cycle(LIT), Block.UPDATE_CLIENTS);
             if (!player.isCreative()) {
                 itemStack.shrink(1);
             }
@@ -107,23 +107,23 @@ implements SimpleWaterloggedBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean canBeReplaced(BlockState blockState, BlockPlaceContext context) {
-        if (!context.isSecondaryUseActive() && context.getItemInHand().getItem() == this.asItem() && blockState.getValue(CANDLES) < 3) {
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        if (!context.isSecondaryUseActive() && context.getItemInHand().getItem() == this.asItem() && state.getValue(CANDLES) < 3) {
             return true;
         }
-        return super.canBeReplaced(blockState, context);
+        return super.canBeReplaced(state, context);
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        BlockState blockState = ctx.getLevel().getBlockState(ctx.getClickedPos());
-        if (blockState.is(this)) {
-            return blockState.cycle(CANDLES);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
+        if (state.is(this)) {
+            return state.cycle(CANDLES);
         }
-        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         boolean bl = fluidState.getType() == Fluids.WATER;
-        return Objects.requireNonNull(super.getStateForPlacement(ctx)).setValue(WATERLOGGED, bl).setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        return Objects.requireNonNull(super.getStateForPlacement(context)).setValue(WATERLOGGED, bl).setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @SuppressWarnings("deprecation")
@@ -140,11 +140,11 @@ implements SimpleWaterloggedBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos blockPos, BlockPos neighborPos) {
-        if (blockState.getValue(WATERLOGGED)) {
-            level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return super.updateShape(blockState, direction, neighborState, level, blockPos, neighborPos);
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
 
@@ -197,11 +197,11 @@ implements SimpleWaterloggedBlock {
         if (state.getValue(WATERLOGGED) || fluidState.getType() != Fluids.WATER) {
             return false;
         }
-        BlockState blockState = state.setValue(WATERLOGGED, true);
-        if (state.getValue(LIT)) {
-            SoulCandleBlock.extinguish(null, blockState, level, pos);
+        BlockState newState = state.setValue(WATERLOGGED, true);
+        if (newState.getValue(LIT)) {
+            SoulCandleBlock.extinguish(null, state, level, pos);
         } else {
-            level.setBlock(pos, blockState, Block.UPDATE_ALL);
+            level.setBlock(pos, state, Block.UPDATE_ALL);
         }
         level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
         return true;
@@ -220,7 +220,7 @@ implements SimpleWaterloggedBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        return Block.canSupportCenter(levelReader, blockPos.below(), Direction.UP);
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        return Block.canSupportCenter(level, pos.below(), Direction.UP);
     }
 }

@@ -50,8 +50,17 @@ public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, B
     private static final VoxelShape STANDING_SHAPE = Shapes.join(Block.box(0, 7, 0, 16, 16, 16), Block.box(5, 0, 5, 11, 8, 11), BooleanOp.OR);
     private static final VoxelShape HANGING_SHAPE = Shapes.join(Block.box(0, 0, 0, 16, 9, 16), Block.box(5, 9, 5, 11, 17, 11), BooleanOp.OR);
 
+    /**
+     * type is used to define what kind of particle it should produce
+     * 1 - Crimson
+     * 2 - Warped
+     * 3 - Umbral (mod compat)
+     */
     protected final int type;
 
+    /**
+     * the block will not produce particles if inside this biome tag
+     */
     protected final TagKey<Biome> biome;
 
     public SporeshroomBlock(Properties properties, int type, TagKey<Biome> biome) {
@@ -73,12 +82,12 @@ public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, B
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
-        boolean player = Objects.requireNonNull(ctx.getPlayer()).isShiftKeyDown();
-        for (Direction direction : ctx.getNearestLookingDirections()) {
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+        boolean player = Objects.requireNonNull(context.getPlayer()).isShiftKeyDown();
+        for (Direction direction : context.getNearestLookingDirections()) {
             BlockState blockState;
-            if (direction.getAxis() != Direction.Axis.Y || !(blockState = this.defaultBlockState().setValue(HANGING, direction == Direction.UP)).canSurvive(ctx.getLevel(), ctx.getClickedPos())) continue;
+            if (direction.getAxis() != Direction.Axis.Y || !(blockState = this.defaultBlockState().setValue(HANGING, direction == Direction.UP)).canSurvive(context.getLevel(), context.getClickedPos())) continue;
             return blockState.setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER).setValue(ACTIVE, !player);
         }
         return null;
@@ -128,47 +137,54 @@ public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, B
         int i = pos.getX();
         int j = pos.getY();
         int k = pos.getZ();
-        boolean h = state.getValue(HANGING);
-        boolean a = state.getValue(ACTIVE);
-        boolean b = level.getBiome(pos).is(this.biome);
+        boolean hanging = state.getValue(HANGING);
+        boolean active = state.getValue(ACTIVE);
+        boolean homeBiome = level.getBiome(pos).is(this.biome);
         BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
         for (int l = 0; l < 14; ++l) {
             mutable.set(i + Mth.nextInt(random, -20, 20), j + random.nextInt(20), k + Mth.nextInt(random, -20, 20));
             BlockState blockState = level.getBlockState(mutable);
             if (blockState.isSolidRender(level, mutable)) continue;
-            if (a && !b) {
-                switch (type) {
-                    default: {
-                        level.addParticle(ParticleTypes.CRIMSON_SPORE, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
-                        break;
-                    }
-                    case 2, 3: {
-                        level.addParticle(ParticleTypes.WARPED_SPORE, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
-                        break;
-                    }
-                }
+            if (active && !homeBiome) {
+                biomeParticles(level, mutable, random);
             }
         }
-        if (a) {
-            switch (type) {
-                default: {
-                    level.addParticle(JNEParticleTypes.CRIMSON_SMOG.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (h ? -0.008 : 0.008), 0.0);
-                    break;
-                }
-                case 2: {
-                    level.addParticle(JNEParticleTypes.WARPED_SMOG.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (h ? -0.008 : 0.008), 0.0);
-                    break;
-                }
-                case 3: {
-                    level.addParticle(JNEParticleTypes.UMBRAL_SMOG.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (h ? -0.008 : 0.008), 0.0);
-                    break;
-                }
+        if (active) {
+            smokeParticles(level, pos, random, hanging);
+        }
+    }
+    private void biomeParticles(Level level, BlockPos.MutableBlockPos mutable, RandomSource random)  {
+        switch (type) {
+            default: {
+                level.addParticle(ParticleTypes.CRIMSON_SPORE, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                break;
+            }
+            case 2, 3: {
+                level.addParticle(ParticleTypes.WARPED_SPORE, (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                break;
+            }
+        }
+    }
+
+    private void smokeParticles(Level level, BlockPos pos, RandomSource random, boolean hanging) {
+        switch (type) {
+            default: {
+                level.addParticle(JNEParticleTypes.CRIMSON_SMOG.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (hanging ? -0.008 : 0.008), 0.0);
+                break;
+            }
+            case 2: {
+                level.addParticle(JNEParticleTypes.WARPED_SMOG.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (hanging ? -0.008 : 0.008), 0.0);
+                break;
+            }
+            case 3: {
+                level.addParticle(JNEParticleTypes.UMBRAL_SMOG.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (hanging ? -0.008 : 0.008), 0.0);
+                break;
             }
         }
     }
 
     @Override
-    public void fallOn(Level level, BlockState blockState, BlockPos blockPos, Entity entity, float fallDistance) {
+    public void fallOn(Level level, BlockState state, BlockPos blockPos, Entity entity, float fallDistance) {
         entity.causeFallDamage(fallDistance, 0.0f, level.damageSources().fall());
     }
 
@@ -178,14 +194,12 @@ public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, B
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
-        // TODO: Add Configs
-//        return NetherExp.getConfig().blocks.renewableConfigs.bone_meal_sporeshroom_duplication;
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean bl) {
         return true;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 

@@ -67,23 +67,19 @@ public class EctoSoulSandBlock extends Block {
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack itemStack = player.getItemInHand(hand);
         boolean salted = state.getValue(SALTED);
-        boolean wasSuccess = false;
         if (!salted) {
             if (itemStack.is(Items.BRUSH) && level.getBlockState(pos.above()).isAir()) {
                 level.playSound(player, pos, SoundEvents.BRUSH_SAND, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
                 level.playSound(player, pos, JNESoundEvents.ENTITY_WISP_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, 0.4F);
                 if (!player.isCreative()) {
-                    itemStack.hurtAndBreak(5, player, p -> p.broadcastBreakEvent(hand));
+                    itemStack.hurtAndBreak(4, player, p -> p.broadcastBreakEvent(hand));
                 }
-                if (level.random.nextInt(10) == 0 && level instanceof ServerLevel serverLevel) {
+                if (level.random.nextInt(15) == 0 && level instanceof ServerLevel serverLevel) {
                     this.setSusSoulSand(level, pos, level.random);
                     this.spawnWisp(serverLevel, pos.above(), level.random);
                 }
                 blockParticle(level, pos, ParticleTypes.SOUL);
-                wasSuccess = true;
-            }
-            if (!level.isClientSide && wasSuccess) {
-                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
             else if (itemStack.is(Items.HONEYCOMB)) {
                 level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
@@ -92,30 +88,24 @@ public class EctoSoulSandBlock extends Block {
                     itemStack.shrink(1);
                 }
                 blockParticle(level, pos, ParticleTypes.WAX_ON);
-                wasSuccess = true;
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
-            if (!level.isClientSide && wasSuccess) {
-                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-            }
-        }
-        if (wasSuccess) {
-            return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;
     }
 
-    private static void blockParticle(Level level, BlockPos blockPos, ParticleOptions particle) {
+    private static void blockParticle(Level level, BlockPos pos, ParticleOptions particle) {
         RandomSource randomSource = level.random;
         Direction[] var5 = Direction.values();
 
         for (Direction direction : var5) {
-            BlockPos blockPos2 = blockPos.relative(direction);
+            BlockPos blockPos2 = pos.relative(direction);
             if (!level.getBlockState(blockPos2).isSolidRender(level, blockPos2)) {
                 Direction.Axis axis = direction.getAxis();
                 double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) randomSource.nextFloat();
                 double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) randomSource.nextFloat();
                 double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) randomSource.nextFloat();
-                level.addParticle(particle, (double) blockPos.getX() + e, (double) blockPos.getY() + f, (double) blockPos.getZ() + g, 0.0, 0.0, 0.0);
+                level.addParticle(particle, (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0, 0.0, 0.0);
             }
         }
     }

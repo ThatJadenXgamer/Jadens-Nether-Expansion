@@ -32,36 +32,36 @@ public class IvyBlock extends MultifaceBlock implements BonemealableBlock, Simpl
         builder.add(WATERLOGGED);
     }
 
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        if (blockState.getValue(WATERLOGGED)) {
-            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
-    public boolean canBeReplaced(BlockState blockState, BlockPlaceContext blockPlaceContext) {
-        return !blockPlaceContext.getItemInHand().is(this.asItem()) || super.canBeReplaced(blockState, blockPlaceContext);
+    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        return !context.getItemInHand().is(this.asItem()) || super.canBeReplaced(state, context);
     }
 
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
-        return Direction.stream().anyMatch((direction) -> this.spreader.canSpreadInAnyDirection(blockState, levelReader, blockPos, direction.getOpposite()));
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos pos, BlockState state, boolean bl) {
+        return Direction.stream().anyMatch((direction) -> this.spreader.canSpreadInAnyDirection(state, levelReader, pos, direction.getOpposite()));
     }
 
-    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
-    public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        this.spreader.spreadFromRandomFaceTowardRandomDirection(blockState, serverLevel, blockPos, randomSource);
+    public void performBonemeal(ServerLevel serverLevel, RandomSource random, BlockPos pos, BlockState state) {
+        this.spreader.spreadFromRandomFaceTowardRandomDirection(state, serverLevel, pos, random);
     }
 
-    public @NotNull FluidState getFluidState(BlockState blockState) {
-        return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
+    public @NotNull FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    public boolean propagatesSkylightDown(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-        return blockState.getFluidState().isEmpty();
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter blockGetter, BlockPos pos) {
+        return state.getFluidState().isEmpty();
     }
 
     public @NotNull MultifaceSpreader getSpreader() {

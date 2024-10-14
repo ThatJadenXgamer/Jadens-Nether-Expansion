@@ -31,8 +31,8 @@ public class SculkGrinderBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult hitResult) {
-        ItemStack stack = player.getItemInHand(interactionHand);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack stack = player.getItemInHand(hand);
         boolean bl = false;
         if (stack.is(JNEItems.TREACHEROUS_FLAME.get())) {
             level.playSound(player, pos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);

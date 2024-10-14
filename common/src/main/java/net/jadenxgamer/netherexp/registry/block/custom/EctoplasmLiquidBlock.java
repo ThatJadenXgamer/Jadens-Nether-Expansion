@@ -32,18 +32,18 @@ public class EctoplasmLiquidBlock extends ArchitecturyLiquidBlock {
     }
 
     @Override
-    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
-        super.onPlace(blockState, level, blockPos, blockState2, bl);
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean bl) {
+        super.onPlace(state, level, pos, oldState, bl);
         if (JNEConfigs.ECTOPLASM_RUSTS_NETHERITE.get()) {
-            this.checkFreeze(level, blockPos);
+            this.checkFreeze(level, pos);
         }
     }
 
     @Override
-    public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos2, boolean bl) {
-        super.neighborChanged(blockState, level, blockPos, block, blockPos2, bl);
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean bl) {
+        super.neighborChanged(state, level, pos, block, fromPos, bl);
         if (JNEConfigs.ECTOPLASM_RUSTS_NETHERITE.get()) {
-            this.checkFreeze(level, blockPos);
+            this.checkFreeze(level, pos);
         }
     }
 

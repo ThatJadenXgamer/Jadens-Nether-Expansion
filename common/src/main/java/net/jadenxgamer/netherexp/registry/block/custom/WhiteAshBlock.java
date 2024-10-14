@@ -8,25 +8,25 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class WhiteAshBlock extends SnowLayerBlock {
+public class WhiteAshBlock extends LayerBlock {
     public WhiteAshBlock(Properties properties) {
-        super(properties);
+        super(properties, 0);
     }
 
     @Override
-    public boolean isRandomlyTicking(BlockState blockState) {
+    public boolean isRandomlyTicking(BlockState state) {
         return false;
     }
 
     @Override
-    public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        BlockState blockState2 = levelReader.getBlockState(blockPos.below());
-        if (blockState2.is(JNETags.Blocks.ASH_CANNOT_SURVIVE_ON)) {
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState belowState = level.getBlockState(pos.below());
+        if (belowState.is(JNETags.Blocks.ASH_CANNOT_SURVIVE_ON)) {
             return false;
-        } else if (blockState2.is(JNETags.Blocks.ASH_CAN_SURVIVE_ON)) {
+        } else if (belowState.is(JNETags.Blocks.ASH_CAN_SURVIVE_ON)) {
             return true;
         } else {
-            return Block.isFaceFull(blockState2.getCollisionShape(levelReader, blockPos.below()), Direction.UP) || blockState2.is(this) && (Integer)blockState2.getValue(LAYERS) == 8;
+            return Block.isFaceFull(belowState.getCollisionShape(level, pos.below()), Direction.UP) || belowState.is(this) && (Integer)belowState.getValue(LAYERS) == 8;
         }
     }
 }

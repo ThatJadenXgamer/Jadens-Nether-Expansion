@@ -14,18 +14,18 @@ public class SoulSoilLayerBlock extends LayerBlock {
     }
 
     @Override
-    public boolean isRandomlyTicking(BlockState blockState) {
+    public boolean isRandomlyTicking(BlockState state) {
         return false;
     }
 
-    public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        BlockState blockState2 = levelReader.getBlockState(blockPos.below());
-        if (blockState2.is(JNETags.Blocks.SOUL_LAYER_CANNOT_SURVIVE_ON)) {
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState belowState = level.getBlockState(pos.below());
+        if (belowState.is(JNETags.Blocks.SOUL_LAYER_CANNOT_SURVIVE_ON)) {
             return false;
-        } else if (blockState2.is(JNETags.Blocks.SOUL_LAYER_CAN_SURVIVE_ON)) {
+        } else if (belowState.is(JNETags.Blocks.SOUL_LAYER_CAN_SURVIVE_ON)) {
             return true;
         } else {
-            return Block.isFaceFull(blockState2.getCollisionShape(levelReader, blockPos.below()), Direction.UP) || blockState2.is(this) && blockState2.getValue(LAYERS) == 8;
+            return Block.isFaceFull(belowState.getCollisionShape(level, pos.below()), Direction.UP) || belowState.is(this) && belowState.getValue(LAYERS) == 8;
         }
     }
 }

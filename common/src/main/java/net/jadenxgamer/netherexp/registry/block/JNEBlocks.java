@@ -660,7 +660,7 @@ public class JNEBlocks {
     // Wither Bone
     
     public static final RegistrySupplier<Block> WITHER_BONE_BLOCK = registerBlock("wither_bone_block", () ->
-            new WitherBoneBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).strength(4.5f, 9.0f)));
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).strength(4.5f, 9.0f)));
 
     public static final RegistrySupplier<Block> WITHER_SKULL_BLOCK = registerBlock("wither_skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.copy(JNEBlocks.WITHER_BONE_BLOCK.get())));

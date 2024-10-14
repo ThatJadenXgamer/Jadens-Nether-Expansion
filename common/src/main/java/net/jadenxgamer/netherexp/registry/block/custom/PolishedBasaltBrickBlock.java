@@ -34,28 +34,24 @@ extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
-    /*
-     * Sets Gilded BlockState to True
-     * when Interacted with a Gold Nugget
-     */
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        ItemStack itemStack = player.getItemInHand(interactionHand);
-        boolean gilded = blockState.getValue(GILDED);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        boolean gilded = state.getValue(GILDED);
         boolean bl = false;
         if (!gilded) {
             if (itemStack.is(Items.GOLD_NUGGET)) {
-                level.playSound(player, blockPos, JNESoundEvents.GILDING.get(), SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-                level.setBlock(blockPos, blockState.cycle(GILDED), Block.UPDATE_CLIENTS);
+                level.playSound(player, pos, JNESoundEvents.GILDING.get(), SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
+                level.setBlock(pos, state.cycle(GILDED), Block.UPDATE_CLIENTS);
                 if (!player.isCreative()) {
                     itemStack.shrink(1);
                 }
-                glimmerParticles(level, blockPos);
+                glimmerParticles(level, pos);
                 bl = true;
                 if (!level.isClientSide) {
                     player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
@@ -69,18 +65,18 @@ extends HorizontalDirectionalBlock {
     }
 
     // Particles for Gilding
-    private static void glimmerParticles(Level level, BlockPos blockPos) {
+    private static void glimmerParticles(Level level, BlockPos pos) {
         RandomSource randomSource = level.random;
         Direction[] var5 = Direction.values();
 
         for (Direction direction : var5) {
-            BlockPos blockPos2 = blockPos.relative(direction);
+            BlockPos blockPos2 = pos.relative(direction);
             if (!level.getBlockState(blockPos2).isSolidRender(level, blockPos2)) {
                 Direction.Axis axis = direction.getAxis();
                 double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) randomSource.nextFloat();
                 double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) randomSource.nextFloat();
                 double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) randomSource.nextFloat();
-                level.addParticle(JNEParticleTypes.GOLD_GLIMMER.get(), (double) blockPos.getX() + e, (double) blockPos.getY() + f, (double) blockPos.getZ() + g, 0.0, 0.0, 0.0);
+                level.addParticle(JNEParticleTypes.GOLD_GLIMMER.get(), (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0, 0.0, 0.0);
             }
         }
     }

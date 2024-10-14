@@ -27,11 +27,11 @@ public class MagmaCreamBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity) {
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity) || entity.getFeetBlockState().is(this)) {
-            if (entity.isOnFire() && entity.mayInteract(level, blockPos)) {
-                entity.makeStuckInBlock(blockState, new Vec3(0.6, 0.5, 0.6));
-                level.playSound(entity, blockPos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0f, 1.0f);
+            if (entity.isOnFire() && entity.mayInteract(level, pos)) {
+                entity.makeStuckInBlock(state, new Vec3(0.6, 0.5, 0.6));
+                level.playSound(entity, pos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (JNEConfigs.MAGMA_CREAM_BLOCK_DOUSES_FIRE.get()) {
                     entity.setSharedFlagOnFire(false);
                     entity.setRemainingFireTicks(0);
@@ -41,7 +41,7 @@ public class MagmaCreamBlock extends Block {
                 boolean bl = entity.xOld != entity.getX() || entity.zOld != entity.getZ();
                 RandomSource random = level.getRandom();
                 if (bl && random.nextBoolean()) {
-                    level.addParticle(JNEParticleTypes.MAGMA_CREAM.get(), entity.getX(), blockPos.getY() + 1, entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
+                    level.addParticle(JNEParticleTypes.MAGMA_CREAM.get(), entity.getX(), pos.getY() + 1, entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
                 }
             }
         }
@@ -49,13 +49,13 @@ public class MagmaCreamBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull VoxelShape getCollisionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    public @NotNull VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return Shapes.empty();
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull VoxelShape getVisualShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    public @NotNull VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return Shapes.empty();
     }
 }

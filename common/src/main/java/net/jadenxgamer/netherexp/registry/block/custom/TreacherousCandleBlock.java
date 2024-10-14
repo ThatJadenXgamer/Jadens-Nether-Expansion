@@ -48,8 +48,8 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
     }
 
     @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level arg, BlockState arg2, BlockEntityType<T> arg3) {
-        return createTickerHelper(arg3, JNEBlockEntityType.TREACHEROUS_CANDLE.get(), TreacherousCandleBlockEntity::tick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return createTickerHelper(blockEntityType, JNEBlockEntityType.TREACHEROUS_CANDLE.get(), TreacherousCandleBlockEntity::tick);
     }
 
     @SuppressWarnings("deprecation")
@@ -129,7 +129,7 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
             BlockPos raycast = pos.relative(facing, d);
             BlockPos raycastAbove = raycast.above();
 
-            // Checks if the block above and in the center is air
+            // Checks the center and above block to see if it's air
             if (!level.getBlockState(raycast).isAir() || !level.getBlockState(raycastAbove).isAir()) {
                 return false;
             }

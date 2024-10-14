@@ -22,14 +22,14 @@ public class BasaltBlock extends RotatedPillarBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        return direction == Direction.UP ? blockState.setValue(ASHY, isAsh(blockState2)) : super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        return direction == Direction.UP ? state.setValue(ASHY, isAsh(neighborState)) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        BlockState blockState = blockPlaceContext.getLevel().getBlockState(blockPlaceContext.getClickedPos().above());
-        return this.defaultBlockState().setValue(ASHY, isAsh(blockState)).setValue(AXIS, blockPlaceContext.getClickedFace().getAxis());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockState blockState = context.getLevel().getBlockState(context.getClickedPos().above());
+        return this.defaultBlockState().setValue(ASHY, isAsh(blockState)).setValue(AXIS, context.getClickedFace().getAxis());
     }
 
     private static boolean isAsh(BlockState state) {

@@ -22,8 +22,8 @@ public class JNEOreBlock extends DropExperienceBlock {
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
-        super.playerDestroy(level, player, blockPos, blockState, blockEntity, itemStack);
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
+        super.playerDestroy(level, player, pos, state, blockEntity, stack);
         if (type == 1) {
             JNECriteriaTriggers.BROKEN_DIAMOND_FOSSIL_ORE.trigger((ServerPlayer) player);
         }

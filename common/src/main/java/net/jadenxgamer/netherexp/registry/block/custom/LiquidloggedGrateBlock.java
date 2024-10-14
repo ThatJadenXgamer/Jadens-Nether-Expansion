@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.custom.enums.Liquidlogged;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -48,8 +49,8 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         if (fluidState.getType() == Fluids.WATER) {
             return this.defaultBlockState().setValue(LIQUIDLOGGED, Liquidlogged.WATER);
         }
@@ -68,12 +69,12 @@ public class LiquidloggedGrateBlock extends Block implements SimpleWaterloggedBl
     }
 
     @SuppressWarnings("deprecation")
-    public @NotNull VoxelShape getVisualShape(BlockState arg, BlockGetter arg2, BlockPos arg3, CollisionContext arg4) {
+    public @NotNull VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return Shapes.empty();
     }
 
     @Override
-    public boolean canPlaceLiquid(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, Fluid fluid) {
+    public boolean canPlaceLiquid(BlockGetter level, BlockPos pos, BlockState state, Fluid fluid) {
         return fluid == Fluids.WATER || fluid == Fluids.LAVA || fluid == JNEFluids.ECTOPLASM.get();
     }
 

@@ -31,24 +31,24 @@ extends CrossCollisionBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull VoxelShape getOcclusionShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-        return this.cullingShapes[this.getAABBIndex(blockState)];
+    public @NotNull VoxelShape getOcclusionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return this.cullingShapes[this.getAABBIndex(state)];
     }
 
     @SuppressWarnings("all")
-    public boolean canConnect(BlockState blockState, boolean neighborIsFullSquare, Direction dir) {
-        Block block = blockState.getBlock();
-        return this.canConnectToFence(blockState);
+    public boolean canConnect(BlockState state, boolean neighborIsFullSquare, Direction direction) {
+        Block block = state.getBlock();
+        return this.canConnectToFence(state);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull VoxelShape getVisualShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return this.getShape(blockState, blockGetter, blockPos, collisionContext);
+    public @NotNull VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return this.getShape(state, level, pos, context);
     }
 
     @Override
-    public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
+    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType pathComputationType) {
         return false;
     }
 
@@ -57,31 +57,31 @@ extends CrossCollisionBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        BlockGetter blockGetter = blockPlaceContext.getLevel();
-        BlockPos blockPos = blockPlaceContext.getClickedPos();
-        FluidState fluidState = blockPlaceContext.getLevel().getFluidState(blockPlaceContext.getClickedPos());
-        BlockPos blockPos2 = blockPos.north();
-        BlockPos blockPos3 = blockPos.east();
-        BlockPos blockPos4 = blockPos.south();
-        BlockPos blockPos5 = blockPos.west();
-        BlockState blockState = blockGetter.getBlockState(blockPos2);
-        BlockState blockState2 = blockGetter.getBlockState(blockPos3);
-        BlockState blockState3 = blockGetter.getBlockState(blockPos4);
-        BlockState blockState4 = blockGetter.getBlockState(blockPos5);
-        return Objects.requireNonNull(super.getStateForPlacement(blockPlaceContext)).setValue(NORTH, this.canConnect(blockState, blockState.isFaceSturdy(blockGetter, blockPos2, Direction.SOUTH), Direction.SOUTH)).setValue(EAST, this.canConnect(blockState2, blockState2.isFaceSturdy(blockGetter, blockPos3, Direction.WEST), Direction.WEST)).setValue(SOUTH, this.canConnect(blockState3, blockState3.isFaceSturdy(blockGetter, blockPos4, Direction.NORTH), Direction.NORTH)).setValue(WEST, this.canConnect(blockState4, blockState4.isFaceSturdy(blockGetter, blockPos5, Direction.EAST), Direction.EAST)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockGetter level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+        BlockPos northPos = pos.north();
+        BlockPos eastPos = pos.east();
+        BlockPos southPos = pos.south();
+        BlockPos westPos = pos.west();
+        BlockState northState = level.getBlockState(northPos);
+        BlockState eastState = level.getBlockState(eastPos);
+        BlockState southState = level.getBlockState(southPos);
+        BlockState westState = level.getBlockState(westPos);
+        return Objects.requireNonNull(super.getStateForPlacement(context)).setValue(NORTH, this.canConnect(northState, northState.isFaceSturdy(level, northPos, Direction.SOUTH), Direction.SOUTH)).setValue(EAST, this.canConnect(eastState, eastState.isFaceSturdy(level, eastPos, Direction.WEST), Direction.WEST)).setValue(SOUTH, this.canConnect(southState, southState.isFaceSturdy(level, southPos, Direction.NORTH), Direction.NORTH)).setValue(WEST, this.canConnect(westState, westState.isFaceSturdy(level, westPos, Direction.EAST), Direction.EAST)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull BlockState updateShape(BlockState blockState, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos neighborPos) {
-        if (blockState.getValue(WATERLOGGED)) {
-            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
         if (direction.getAxis().getPlane() == Direction.Plane.HORIZONTAL) {
-            return blockState.setValue(PROPERTY_BY_DIRECTION.get(direction), this.canConnect(neighborState, neighborState.isFaceSturdy(levelAccessor, neighborPos, direction.getOpposite()), direction.getOpposite()));
+            return state.setValue(PROPERTY_BY_DIRECTION.get(direction), this.canConnect(neighborState, neighborState.isFaceSturdy(level, neighborPos, direction.getOpposite()), direction.getOpposite()));
         }
-        return super.updateShape(blockState, direction, neighborState, levelAccessor, blockPos, neighborPos);
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override

@@ -31,47 +31,47 @@ extends Block {
     }
 
     @SuppressWarnings("deprecation")
-    public boolean useShapeForLightOcclusion(BlockState arg) {
+    public boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 
-    public BlockState getStateForPlacement(BlockPlaceContext arg) {
-        return !this.defaultBlockState().canSurvive(arg.getLevel(), arg.getClickedPos()) ? Block.pushEntitiesUp(this.defaultBlockState(), Blocks.NETHERRACK.defaultBlockState(), arg.getLevel(), arg.getClickedPos()) : super.getStateForPlacement(arg);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? Block.pushEntitiesUp(this.defaultBlockState(), Blocks.NETHERRACK.defaultBlockState(), context.getLevel(), context.getClickedPos()) : super.getStateForPlacement(context);
     }
 
     @SuppressWarnings("deprecation")
-    public @NotNull BlockState updateShape(BlockState arg, Direction arg2, BlockState arg3, LevelAccessor arg4, BlockPos arg5, BlockPos arg6) {
-        if (arg2 == Direction.UP && !arg.canSurvive(arg4, arg5)) {
-            arg4.scheduleTick(arg5, this, 1);
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (direction == Direction.UP && !state.canSurvive(level, pos)) {
+            level.scheduleTick(pos, this, 1);
         }
 
-        return super.updateShape(arg, arg2, arg3, arg4, arg5, arg6);
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @SuppressWarnings("deprecation")
-    public void tick(BlockState arg, ServerLevel arg2, BlockPos arg3, RandomSource arg4) {
-        turnToBase(null, arg, arg2, arg3);
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        turnToBase(null, state, level, pos);
     }
 
-    public static void turnToBase(@Nullable Entity entity, BlockState blockState, Level level, BlockPos blockPos) {
-        BlockState blockState2 = pushEntitiesUp(blockState, Blocks.NETHERRACK.defaultBlockState(), level, blockPos);
-        level.setBlockAndUpdate(blockPos, blockState2);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(entity, blockState2));
-    }
-
-    @SuppressWarnings("deprecation")
-    public boolean canSurvive(BlockState arg, LevelReader arg2, BlockPos arg3) {
-        BlockState blockState = arg2.getBlockState(arg3.above());
-        return !blockState.isSolid() || blockState.getBlock() instanceof FenceGateBlock;
+    public static void turnToBase(@Nullable Entity entity, BlockState state, Level level, BlockPos pos) {
+        BlockState blockState2 = pushEntitiesUp(state, Blocks.NETHERRACK.defaultBlockState(), level, pos);
+        level.setBlockAndUpdate(pos, blockState2);
+        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(entity, blockState2));
     }
 
     @SuppressWarnings("deprecation")
-    public @NotNull VoxelShape getShape(BlockState arg, BlockGetter arg2, BlockPos arg3, CollisionContext arg4) {
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState aboveState = level.getBlockState(pos.above());
+        return !aboveState.isSolid() || aboveState.getBlock() instanceof FenceGateBlock;
+    }
+
+    @SuppressWarnings("deprecation")
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @SuppressWarnings("deprecation")
-    public boolean isPathfindable(BlockState arg, BlockGetter arg2, BlockPos arg3, PathComputationType arg4) {
+    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType pathComputationType) {
         return false;
     }
 }

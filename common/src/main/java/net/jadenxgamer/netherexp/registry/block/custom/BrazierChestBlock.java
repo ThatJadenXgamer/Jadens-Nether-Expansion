@@ -140,29 +140,29 @@ public class BrazierChestBlock extends BaseEntityBlock {
         builder.add(FACING, OPEN, LOCKED);
     }
 
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         return createTickerHelper(blockEntityType, JNEBlockEntityType.BRAZIER_CHEST.get(),
                 (level1, pos, state2, blockEntity) -> blockEntity.tick(level1, pos, state2));
     }
 
-    private static void fireParticles(Level level, BlockPos blockPos) {
+    private static void fireParticles(Level level, BlockPos pos) {
         RandomSource randomSource = level.random;
         Direction[] var5 = Direction.values();
 
         for (Direction direction : var5) {
-            BlockPos blockPos2 = blockPos.relative(direction);
+            BlockPos blockPos2 = pos.relative(direction);
             if (!level.getBlockState(blockPos2).isSolidRender(level, blockPos2)) {
                 Direction.Axis axis = direction.getAxis();
                 double e = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) randomSource.nextFloat();
                 double f = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) randomSource.nextFloat();
                 double g = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) randomSource.nextFloat();
-                level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), (double) blockPos.getX() + e, (double) blockPos.getY() + f, (double) blockPos.getZ() + g, 0.0, 0.0, 0.0);
+                level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0, 0.0, 0.0);
             }
         }
     }

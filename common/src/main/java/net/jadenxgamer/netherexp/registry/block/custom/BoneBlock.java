@@ -29,8 +29,8 @@ public class BoneBlock extends RotatedPillarBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult hitResult) {
-        ItemStack itemStack = player.getItemInHand(interactionHand);
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
         boolean tethered = state.getValue(TETHERED);
         boolean bl = false;
         if (!tethered) {
@@ -52,7 +52,7 @@ public class BoneBlock extends RotatedPillarBlock {
                 level.setBlock(pos, state.cycle(TETHERED), Block.UPDATE_CLIENTS);
                 BoneBlock.popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(Items.LEATHER, 1));
                 if (!player.isCreative()) {
-                    itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(interactionHand));
+                    itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
                 }
                 bl = true;
                 if (!level.isClientSide) {
