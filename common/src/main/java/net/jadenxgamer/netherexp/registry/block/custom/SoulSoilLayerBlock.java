@@ -5,12 +5,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class SoulSoilLayerBlock extends SnowLayerBlock {
-    public SoulSoilLayerBlock (Properties properties) {
-        super(properties);
+public class SoulSoilLayerBlock extends LayerBlock {
+    
+    public SoulSoilLayerBlock(Properties properties) {
+        super(properties, 0);
     }
 
     @Override
