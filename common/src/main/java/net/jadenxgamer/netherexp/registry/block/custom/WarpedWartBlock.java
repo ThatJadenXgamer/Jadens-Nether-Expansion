@@ -94,13 +94,13 @@ public class WarpedWartBlock extends BushBlock {
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        int i = state.getValue(AGE);
+        int age = state.getValue(AGE);
         BlockPos floor = pos.below();
-        if (i < 2 && random.nextInt(10) == 0) {
-            level.setBlock(pos, state.setValue(AGE, i + 1), 2);
+        if (age < 2 && random.nextInt(10) == 0) {
+            level.setBlock(pos, state.setValue(AGE, age + 1), 2);
         }
-        else if (i == 2 && level.getBlockState(floor).isAir()) {
-            level.setBlock(pos, state.setValue(AGE, i + 1), 2);
+        else if (age == 2 && level.getBlockState(floor).isAir()) {
+            level.setBlock(pos, state.setValue(AGE, age + 1), 2);
             level.setBlock(floor, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, 3), 2);
         }
     }

@@ -10,7 +10,6 @@ import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
@@ -25,10 +24,10 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> HOGHAM = registerItem("hogham", () ->
-            new Item(new Item.Properties().food(JNEFoodProperties.HOGHAM)));
+            new Item(new Item.Properties().food(JNEFoods.HOGHAM)));
 
     public static final RegistrySupplier<Item> COOKED_HOGHAM = registerItem("cooked_hogham", () ->
-            new Item(new Item.Properties().food(JNEFoodProperties.COOKED_HOGHAM)));
+            new Item(new Item.Properties().food(JNEFoods.COOKED_HOGHAM)));
 
     public static final RegistrySupplier<Item> FOGGY_ESSENCE = registerItem("foggy_essence", () ->
             new Item(new Item.Properties()));
@@ -73,10 +72,10 @@ public class JNEItems {
             new GrenadeAntidoteItem(new Item.Properties()));
 
     public static final RegistrySupplier<Item> GLOWCHEESE = registerItem("glowcheese", () ->
-            new Item(new Item.Properties().food(JNEFoodProperties.GLOWCHEESE)));
+            new Item(new Item.Properties().food(JNEFoods.GLOWCHEESE)));
 
     public static final RegistrySupplier<Item> NETHER_PIZZA_SLICE = registerItem("nether_pizza_slice", () ->
-            new Item(new Item.Properties().food(JNEFoodProperties.PIZZA_SLICE).rarity(Rarity.RARE)));
+            new Item(new Item.Properties().food(JNEFoods.PIZZA_SLICE).rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
             new MobBottleItem(SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE)));
@@ -85,7 +84,7 @@ public class JNEItems {
             new SanctumCompassItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> WRAITHING_FLESH = registerItem("wraithing_flesh", () ->
-            new Item(new Item.Properties().food(JNEFoodProperties.WRAITHING_FLESH)));
+            new Item(new Item.Properties().food(JNEFoods.WRAITHING_FLESH)));
 
     public static final RegistrySupplier<Item> PHASMO_SHARD = registerItem("phasmo_shard", () ->
             new Item(new Item.Properties()));
@@ -181,6 +180,12 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> BOTANICAL_POTTERY_SHERD = registerItem("botanical_pottery_sherd", () ->
             new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> HEADBBAGE = registerItem("headbbage", () ->
+            new Item(new Item.Properties().food(JNEFoods.HEADBBAGE)));
+
+    public static final RegistrySupplier<Item> HEADBBAGE_SEEDS = registerItem("headbbage_seeds", () ->
+            new HeadbbageSeedItem(new Item.Properties()));
 
     // NETHERITE ARTIFACTS
 

@@ -157,21 +157,23 @@ public class JNECreativeModeTabs {
 //                            output.accept(JNEBlocks.STRANGE_ENIGMA_FLESH);
 //                        }
 
-//                        output.accept(JNEBlocks.CLARET_STEM.get());
-//                        output.accept(JNEBlocks.CLARET_HYPHAE.get());
-//                        output.accept(JNEBlocks.STRIPPED_CLARET_STEM.get());
-//                        output.accept(JNEBlocks.STRIPPED_CLARET_HYPHAE.get());
-//                        output.accept(JNEBlocks.CLARET_PLANKS.get());
-//                        output.accept(JNEBlocks.CLARET_STAIRS.get());
-//                        output.accept(JNEBlocks.CLARET_SLAB.get());
-//                        output.accept(JNEBlocks.CLARET_FENCE.get());
-//                        output.accept(JNEBlocks.CLARET_FENCE_GATE.get());
-//                        output.accept(JNEBlocks.CLARET_DOOR.get());
-//                        output.accept(JNEBlocks.CLARET_TRAPDOOR.get());
-//                        output.accept(JNEBlocks.CLARET_PRESSURE_PLATE.get());
-//                        output.accept(JNEBlocks.CLARET_BUTTON.get());
-//                        output.accept(JNEItems.CLARET_SIGN.get());
-//                        output.accept(JNEItems.CLARET_HANGING_SIGN.get());
+                        output.accept(JNEItems.HEADBBAGE_SEEDS.get());
+                        output.accept(JNEItems.HEADBBAGE.get());
+                        output.accept(JNEBlocks.CLARET_STEM.get());
+                        output.accept(JNEBlocks.CLARET_HYPHAE.get());
+                        output.accept(JNEBlocks.STRIPPED_CLARET_STEM.get());
+                        output.accept(JNEBlocks.STRIPPED_CLARET_HYPHAE.get());
+                        output.accept(JNEBlocks.CLARET_PLANKS.get());
+                        output.accept(JNEBlocks.CLARET_STAIRS.get());
+                        output.accept(JNEBlocks.CLARET_SLAB.get());
+                        output.accept(JNEBlocks.CLARET_FENCE.get());
+                        output.accept(JNEBlocks.CLARET_FENCE_GATE.get());
+                        output.accept(JNEBlocks.CLARET_DOOR.get());
+                        output.accept(JNEBlocks.CLARET_TRAPDOOR.get());
+                        output.accept(JNEBlocks.CLARET_PRESSURE_PLATE.get());
+                        output.accept(JNEBlocks.CLARET_BUTTON.get());
+                        output.accept(JNEItems.CLARET_SIGN.get());
+                        output.accept(JNEItems.CLARET_HANGING_SIGN.get());
 
                         output.accept(Items.MAGMA_CREAM);
                         output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());

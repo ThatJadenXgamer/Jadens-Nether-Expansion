@@ -574,5 +574,9 @@
   "enchantment.netherexp.barrage.desc": "Increases shots fired at once of the Shotgun-Fist.",
   "enchantment.netherexp.artemis.desc": "Increases range of the bullets and arrows for Shotgun-Fist and Bows",
 
+  "block.netherexp.headbbage_skull": "Headbbage Skull",
+  "item.netherexp.headbbage": "Headbbage",
+  "item.netherexp.headbbage_seeds": "Headbbage Seeds",
+
   "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
 }
