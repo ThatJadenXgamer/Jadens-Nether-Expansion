@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "slices=4": {
+      "model": "netherexp:block/wraithing_lesion_4"
+    },
+    "slices=3": {
+      "model": "netherexp:block/wraithing_lesion_3"
+    },
+    "slices=2": {
+      "model": "netherexp:block/wraithing_lesion_2"
+    },
+    "slices=1": {
+      "model": "netherexp:block/wraithing_lesion_1"
+    }
+  }
+}

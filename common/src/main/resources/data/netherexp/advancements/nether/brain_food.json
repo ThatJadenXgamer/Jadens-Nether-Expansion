@@ -1,0 +1,50 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:headbbage"
+    },
+    "title": {
+      "translate": "advancements.nether.brain_food.title"
+    },
+    "description": {
+      "translate": "advancements.nether.brain_food.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/explore_nether",
+  "criteria": {
+    "used_item": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "minecraft:skeleton_skull"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "netherexp:headbbage_seeds"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "used_item"
+    ]
+  ]
+}

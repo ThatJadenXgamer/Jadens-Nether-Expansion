@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:wraithing_flesh"
+    },
+    {
+      "item": "netherexp:wraithing_flesh"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    },
+    {
+      "item": "netherexp:wraithing_flesh"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    },
+    {
+      "item": "netherexp:wraithing_flesh"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    },
+    {
+      "item": "netherexp:wraithing_flesh"
+    },
+    {
+      "item": "netherexp:wraithing_flesh"
+    }
+  ],
+  "result": {
+    "item": "netherexp:wraithing_lesion",
+    "count": 1
+  }
+}

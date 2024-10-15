@@ -30,6 +30,7 @@
     "netherexp:fossil_ore",
     "netherexp:fossil_fuel_ore",
     "netherexp:sculk_grinder",
-    "netherexp:soul_path"
+    "netherexp:soul_path",
+    "netherexp:wraithing_lesion"
   ]
 }

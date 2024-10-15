@@ -64,6 +64,7 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEItems.SANCTUM_COMPASS.get());
                         output.accept(JNEItems.WRAITHING_FLESH.get());
+                        output.accept(JNEBlocks.WRAITHING_LESION.get());
                         output.accept(JNEBlocks.SOUL_CANDLE.get());
 
                         output.accept(JNEBlocks.SOUL_SWIRLS.get());
