@@ -1,0 +1,247 @@
+{
+  "variants": {
+    "rotation=0,age=0": {
+      "model": "netherexp:block/cerebrage_skull/front_1"
+    },
+    "rotation=1,age=0": {
+      "model": "netherexp:block/cerebrage_skull/1_4_1"
+    },
+    "rotation=2,age=0": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_1"
+    },
+    "rotation=3,age=0": {
+      "model": "netherexp:block/cerebrage_skull/3_4_1"
+    },
+    "rotation=4,age=0": {
+      "model": "netherexp:block/cerebrage_skull/front_1",
+      "y": 90
+    },
+    "rotation=5,age=0": {
+      "model": "netherexp:block/cerebrage_skull/1_4_1",
+      "y": 90
+    },
+    "rotation=6,age=0": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_1",
+      "y": 90
+    },
+    "rotation=7,age=0": {
+      "model": "netherexp:block/cerebrage_skull/3_4_1",
+      "y": 90
+    },
+    "rotation=8,age=0": {
+      "model": "netherexp:block/cerebrage_skull/front_1",
+      "y": 180
+    },
+    "rotation=9,age=0": {
+      "model": "netherexp:block/cerebrage_skull/1_4_1",
+      "y": 180
+    },
+    "rotation=10,age=0": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_1",
+      "y": 180
+    },
+    "rotation=11,age=0": {
+      "model": "netherexp:block/cerebrage_skull/3_4_1",
+      "y": 180
+    },
+    "rotation=12,age=0": {
+      "model": "netherexp:block/cerebrage_skull/front_1",
+      "y": 270
+    },
+    "rotation=13,age=0": {
+      "model": "netherexp:block/cerebrage_skull/1_4_1",
+      "y": 270
+    },
+    "rotation=14,age=0": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_1",
+      "y": 270
+    },
+    "rotation=15,age=0": {
+      "model": "netherexp:block/cerebrage_skull/3_4_1",
+      "y": 270
+    },
+
+    "rotation=0,age=1": {
+      "model": "netherexp:block/cerebrage_skull/front_2"
+    },
+    "rotation=1,age=1": {
+      "model": "netherexp:block/cerebrage_skull/1_4_2"
+    },
+    "rotation=2,age=1": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_2"
+    },
+    "rotation=3,age=1": {
+      "model": "netherexp:block/cerebrage_skull/3_4_2"
+    },
+    "rotation=4,age=1": {
+      "model": "netherexp:block/cerebrage_skull/front_2",
+      "y": 90
+    },
+    "rotation=5,age=1": {
+      "model": "netherexp:block/cerebrage_skull/1_4_2",
+      "y": 90
+    },
+    "rotation=6,age=1": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_2",
+      "y": 90
+    },
+    "rotation=7,age=1": {
+      "model": "netherexp:block/cerebrage_skull/3_4_2",
+      "y": 90
+    },
+    "rotation=8,age=1": {
+      "model": "netherexp:block/cerebrage_skull/front_2",
+      "y": 180
+    },
+    "rotation=9,age=1": {
+      "model": "netherexp:block/cerebrage_skull/1_4_2",
+      "y": 180
+    },
+    "rotation=10,age=1": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_2",
+      "y": 180
+    },
+    "rotation=11,age=1": {
+      "model": "netherexp:block/cerebrage_skull/3_4_2",
+      "y": 180
+    },
+    "rotation=12,age=1": {
+      "model": "netherexp:block/cerebrage_skull/front_2",
+      "y": 270
+    },
+    "rotation=13,age=1": {
+      "model": "netherexp:block/cerebrage_skull/1_4_2",
+      "y": 270
+    },
+    "rotation=14,age=1": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_2",
+      "y": 270
+    },
+    "rotation=15,age=1": {
+      "model": "netherexp:block/cerebrage_skull/3_4_2",
+      "y": 270
+    },
+
+    "rotation=0,age=2": {
+      "model": "netherexp:block/cerebrage_skull/front_3"
+    },
+    "rotation=1,age=2": {
+      "model": "netherexp:block/cerebrage_skull/1_4_3"
+    },
+    "rotation=2,age=2": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_3"
+    },
+    "rotation=3,age=2": {
+      "model": "netherexp:block/cerebrage_skull/3_4_3"
+    },
+    "rotation=4,age=2": {
+      "model": "netherexp:block/cerebrage_skull/front_3",
+      "y": 90
+    },
+    "rotation=5,age=2": {
+      "model": "netherexp:block/cerebrage_skull/1_4_3",
+      "y": 90
+    },
+    "rotation=6,age=2": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_3",
+      "y": 90
+    },
+    "rotation=7,age=2": {
+      "model": "netherexp:block/cerebrage_skull/3_4_3",
+      "y": 90
+    },
+    "rotation=8,age=2": {
+      "model": "netherexp:block/cerebrage_skull/front_3",
+      "y": 180
+    },
+    "rotation=9,age=2": {
+      "model": "netherexp:block/cerebrage_skull/1_4_3",
+      "y": 180
+    },
+    "rotation=10,age=2": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_3",
+      "y": 180
+    },
+    "rotation=11,age=2": {
+      "model": "netherexp:block/cerebrage_skull/3_4_3",
+      "y": 180
+    },
+    "rotation=12,age=2": {
+      "model": "netherexp:block/cerebrage_skull/front_3",
+      "y": 270
+    },
+    "rotation=13,age=2": {
+      "model": "netherexp:block/cerebrage_skull/1_4_3",
+      "y": 270
+    },
+    "rotation=14,age=2": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_3",
+      "y": 270
+    },
+    "rotation=15,age=2": {
+      "model": "netherexp:block/cerebrage_skull/3_4_3",
+      "y": 270
+    },
+
+    "rotation=0,age=3": {
+      "model": "netherexp:block/cerebrage_skull/front_4"
+    },
+    "rotation=1,age=3": {
+      "model": "netherexp:block/cerebrage_skull/1_4_4"
+    },
+    "rotation=2,age=3": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_4"
+    },
+    "rotation=3,age=3": {
+      "model": "netherexp:block/cerebrage_skull/3_4_4"
+    },
+    "rotation=4,age=3": {
+      "model": "netherexp:block/cerebrage_skull/front_4",
+      "y": 90
+    },
+    "rotation=5,age=3": {
+      "model": "netherexp:block/cerebrage_skull/1_4_4",
+      "y": 90
+    },
+    "rotation=6,age=3": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_4",
+      "y": 90
+    },
+    "rotation=7,age=3": {
+      "model": "netherexp:block/cerebrage_skull/3_4_4",
+      "y": 90
+    },
+    "rotation=8,age=3": {
+      "model": "netherexp:block/cerebrage_skull/front_4",
+      "y": 180
+    },
+    "rotation=9,age=3": {
+      "model": "netherexp:block/cerebrage_skull/1_4_4",
+      "y": 180
+    },
+    "rotation=10,age=3": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_4",
+      "y": 180
+    },
+    "rotation=11,age=3": {
+      "model": "netherexp:block/cerebrage_skull/3_4_4",
+      "y": 180
+    },
+    "rotation=12,age=3": {
+      "model": "netherexp:block/cerebrage_skull/front_4",
+      "y": 270
+    },
+    "rotation=13,age=3": {
+      "model": "netherexp:block/cerebrage_skull/1_4_4",
+      "y": 270
+    },
+    "rotation=14,age=3": {
+      "model": "netherexp:block/cerebrage_skull/diagonal_4",
+      "y": 270
+    },
+    "rotation=15,age=3": {
+      "model": "netherexp:block/cerebrage_skull/3_4_4",
+      "y": 270
+    }
+  }
+}

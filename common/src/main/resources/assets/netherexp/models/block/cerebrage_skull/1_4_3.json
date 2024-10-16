@@ -1,15 +1,17 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
 	"render_type": "minecraft:cutout",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "netherexp:block/headbbage",
+		"0": "netherexp:block/cerebrage",
 		"particle": "block/soul_sand"
 	},
 	"elements": [
 		{
 			"from": [4, 0, 4],
 			"to": [12, 8, 12],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [8, 4, 8]},
 			"faces": {
 				"north": {"uv": [2.008, 2.008, 3.992, 3.992], "texture": "#0"},
 				"east": {"uv": [0.008, 2.008, 1.992, 3.992], "texture": "#0"},
@@ -23,6 +25,7 @@
 			"name": "cube inverted",
 			"from": [12, 8, 12],
 			"to": [4, 0, 4],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [8, 4, 8]},
 			"faces": {
 				"north": {"uv": [6.008, 3.992, 7.992, 2.008], "texture": "#0"},
 				"east": {"uv": [4.008, 3.992, 5.992, 2.008], "texture": "#0"},
@@ -33,16 +36,15 @@
 			}
 		},
 		{
-			"from": [5, 8, 5],
-			"to": [11, 12, 11],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 8, 0]},
+			"from": [6, 8, 6],
+			"to": [10, 10, 10],
 			"faces": {
-				"north": {"uv": [1.508, 7.258, 2.992, 8.242], "texture": "#0"},
-				"east": {"uv": [0.008, 7.258, 1.492, 8.242], "texture": "#0"},
-				"south": {"uv": [4.508, 7.258, 5.992, 8.242], "texture": "#0"},
-				"west": {"uv": [3.008, 7.258, 4.492, 8.242], "texture": "#0"},
-				"up": {"uv": [2.992, 7.242, 1.508, 5.758], "texture": "#0"},
-				"down": {"uv": [4.492, 5.758, 3.008, 7.242], "texture": "#0"}
+				"north": {"uv": [1, 9.25, 2, 9.75], "texture": "#0"},
+				"east": {"uv": [0, 9.25, 1, 9.75], "texture": "#0"},
+				"south": {"uv": [3, 9.25, 4, 9.75], "texture": "#0"},
+				"west": {"uv": [2, 9.25, 3, 9.75], "texture": "#0"},
+				"up": {"uv": [2, 9.25, 1, 8.25], "texture": "#0"},
+				"down": {"uv": [3, 8.25, 2, 9.25], "texture": "#0"}
 			}
 		},
 		{

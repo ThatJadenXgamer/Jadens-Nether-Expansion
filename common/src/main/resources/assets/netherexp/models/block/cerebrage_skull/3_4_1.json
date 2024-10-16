@@ -1,9 +1,10 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
 	"render_type": "minecraft:cutout",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "netherexp:block/headbbage",
+		"0": "netherexp:block/cerebrage",
 		"particle": "block/soul_sand"
 	},
 	"elements": [

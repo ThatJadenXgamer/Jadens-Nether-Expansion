@@ -1,16 +1,17 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
 	"render_type": "minecraft:cutout",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "netherexp:block/headbbage",
+		"0": "netherexp:block/cerebrage",
 		"particle": "block/soul_sand"
 	},
 	"elements": [
 		{
 			"from": [4, 0, 4],
 			"to": [12, 8, 12],
-			"rotation": {"angle": -22.5, "axis": "y", "origin": [8, 4, 8]},
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 4, 8]},
 			"faces": {
 				"north": {"uv": [2.008, 2.008, 3.992, 3.992], "texture": "#0"},
 				"east": {"uv": [0.008, 2.008, 1.992, 3.992], "texture": "#0"},
@@ -24,7 +25,7 @@
 			"name": "cube inverted",
 			"from": [12, 8, 12],
 			"to": [4, 0, 4],
-			"rotation": {"angle": -22.5, "axis": "y", "origin": [8, 4, 8]},
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 4, 8]},
 			"faces": {
 				"north": {"uv": [6.008, 3.992, 7.992, 2.008], "texture": "#0"},
 				"east": {"uv": [4.008, 3.992, 5.992, 2.008], "texture": "#0"},

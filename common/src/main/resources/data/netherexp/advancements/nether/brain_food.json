@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:headbbage"
+      "item": "netherexp:cerebrage"
     },
     "title": {
       "translate": "advancements.nether.brain_food.title"
@@ -17,29 +17,7 @@
   "parent": "minecraft:nether/explore_nether",
   "criteria": {
     "used_item": {
-      "trigger": "minecraft:item_used_on_block",
-      "conditions": {
-        "location": [
-          {
-            "condition": "minecraft:location_check",
-            "predicate": {
-              "block": {
-                "blocks": [
-                  "minecraft:skeleton_skull"
-                ]
-              }
-            }
-          },
-          {
-            "condition": "minecraft:match_tool",
-            "predicate": {
-              "items": [
-                "netherexp:headbbage_seeds"
-              ]
-            }
-          }
-        ]
-      }
+      "trigger": "netherexp:planted_cerebrage"
     }
   },
   "requirements": [

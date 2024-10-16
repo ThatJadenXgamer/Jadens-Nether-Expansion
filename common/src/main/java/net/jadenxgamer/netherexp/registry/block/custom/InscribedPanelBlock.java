@@ -70,13 +70,13 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (player.getItemInHand(hand).isEmpty() && !state.getValue(SALTED)) {
-            level.setBlock(pos, state.cycle(INSCRIPTION), 2);
+            level.setBlock(pos, state.cycle(INSCRIPTION), UPDATE_ALL);
             spawnParticles(level, pos, ParticleTypes.SOUL);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.SUCCESS;
         }
         else if (player.getItemInHand(hand).is(Items.HONEYCOMB) && !state.getValue(SALTED)) {
-            level.setBlock(pos, state.setValue(SALTED, true), 2);
+            level.setBlock(pos, state.setValue(SALTED, true), UPDATE_ALL);
             spawnParticles(level, pos, ParticleTypes.WAX_ON);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.SUCCESS;

@@ -574,9 +574,9 @@
   "enchantment.netherexp.barrage.desc": "Increases shots fired at once of the Shotgun-Fist.",
   "enchantment.netherexp.artemis.desc": "Increases range of the bullets and arrows for Shotgun-Fist and Bows",
 
-  "block.netherexp.headbbage_skull": "Headbbage Skull",
-  "item.netherexp.headbbage": "Headbbage",
-  "item.netherexp.headbbage_seeds": "Headbbage Seeds",
+  "block.netherexp.cerebrage_skull": "Cerebrage Skull",
+  "item.netherexp.cerebrage": "Cerebrage",
+  "item.netherexp.cerebrage_seeds": "Cerebrage Seeds",
   "block.netherexp.wraithing_lesion": "Wraithing Lesion",
   "advancements.nether.brain_food.title": "Brain-Food",
   "advancements.nether.brain_food.description": "Plant Headbbage Seeds inside a skeleton skull",

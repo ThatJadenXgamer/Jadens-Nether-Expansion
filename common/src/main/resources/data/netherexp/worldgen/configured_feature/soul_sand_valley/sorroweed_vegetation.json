@@ -5,13 +5,13 @@
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {
-          "weight": 25,
+          "weight": 45,
           "data": {
-            "Name": "minecraft:crimson_fungus"
+            "Name": "minecraft:air"
           }
         },
         {
-          "weight": 50,
+          "weight": 25,
           "data": {
             "Name": "minecraft:crimson_roots"
           }

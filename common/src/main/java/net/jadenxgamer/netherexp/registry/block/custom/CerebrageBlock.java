@@ -3,6 +3,8 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,13 +28,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("deprecation")
-public class HeadbbageBlock extends Block implements BonemealableBlock {
+public class CerebrageBlock extends Block implements BonemealableBlock {
 
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     protected static final VoxelShape SHAPE = Block.box(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
 
-    public HeadbbageBlock(Properties properties){
+    public CerebrageBlock(Properties properties){
         super(properties);
     }
 
@@ -70,9 +72,10 @@ public class HeadbbageBlock extends Block implements BonemealableBlock {
             return InteractionResult.PASS;
         }
         else if (state.getValue(AGE) == 3) {
-            popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.HEADBBAGE.get(), level.random.nextInt(3, 6)));
-            popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.HEADBBAGE_SEEDS.get(), level.random.nextInt(-5, 2)));
+            popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE.get(), level.random.nextInt(3, 6)));
+            popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE_SEEDS.get(), level.random.nextInt(-5, 2)));
             level.setBlock(pos, state.setValue(AGE, 1), 2);
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;
@@ -103,6 +106,6 @@ public class HeadbbageBlock extends Block implements BonemealableBlock {
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
-        return new ItemStack(JNEItems.HEADBBAGE_SEEDS.get());
+        return new ItemStack(JNEItems.CEREBRAGE_SEEDS.get());
     }
 }

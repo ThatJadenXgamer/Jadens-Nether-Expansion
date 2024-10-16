@@ -158,8 +158,8 @@ public class JNECreativeModeTabs {
 //                            output.accept(JNEBlocks.STRANGE_ENIGMA_FLESH);
 //                        }
 
-                        output.accept(JNEItems.HEADBBAGE_SEEDS.get());
-                        output.accept(JNEItems.HEADBBAGE.get());
+                        output.accept(JNEItems.CEREBRAGE_SEEDS.get());
+                        output.accept(JNEItems.CEREBRAGE.get());
                         output.accept(JNEBlocks.CLARET_STEM.get());
                         output.accept(JNEBlocks.CLARET_HYPHAE.get());
                         output.accept(JNEBlocks.STRIPPED_CLARET_STEM.get());

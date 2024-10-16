@@ -161,8 +161,8 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> SOUL_TORCHFLOWER_CROP = registerBlockWithoutItem("soul_torchflower_crop", () ->
             new SoulTorchflowerBlock(BlockBehaviour.Properties.copy(Blocks.TORCHFLOWER_CROP)));
 
-    public static final RegistrySupplier<Block> HEADBBAGE_SKULL = registerBlockWithoutItem("headbbage_skull", () ->
-            new HeadbbageBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).randomTicks()));
+    public static final RegistrySupplier<Block> CEREBRAGE_SKULL = registerBlockWithoutItem("cerebrage_skull", () ->
+            new CerebrageBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).randomTicks()));
 
     public static final RegistrySupplier<Block> SORROWEED = registerBlock("sorroweed", () ->
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.5f).sound(SoundType.MOSS)));

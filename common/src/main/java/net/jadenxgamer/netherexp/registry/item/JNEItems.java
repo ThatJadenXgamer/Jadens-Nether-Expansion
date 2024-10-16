@@ -181,11 +181,11 @@ public class JNEItems {
     public static final RegistrySupplier<Item> BOTANICAL_POTTERY_SHERD = registerItem("botanical_pottery_sherd", () ->
             new Item(new Item.Properties()));
 
-    public static final RegistrySupplier<Item> HEADBBAGE = registerItem("headbbage", () ->
-            new Item(new Item.Properties().food(JNEFoods.HEADBBAGE)));
+    public static final RegistrySupplier<Item> CEREBRAGE = registerItem("cerebrage", () ->
+            new Item(new Item.Properties().food(JNEFoods.CEREBRAGE)));
 
-    public static final RegistrySupplier<Item> HEADBBAGE_SEEDS = registerItem("headbbage_seeds", () ->
-            new HeadbbageSeedItem(new Item.Properties()));
+    public static final RegistrySupplier<Item> CEREBRAGE_SEEDS = registerItem("cerebrage_seeds", () ->
+            new CerebrageSeedItem(new Item.Properties()));
 
     // NETHERITE ARTIFACTS
 

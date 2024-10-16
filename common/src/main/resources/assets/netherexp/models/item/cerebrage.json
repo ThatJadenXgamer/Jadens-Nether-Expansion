@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "netherexp:item/headbbage_seeds"
+    "layer0": "netherexp:item/cerebrage"
   }
 }
