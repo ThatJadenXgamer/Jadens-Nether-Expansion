@@ -14,23 +14,39 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("deprecation")
 public class WraithingLesionBlock extends Block {
 
     public static final IntegerProperty SLICES = IntegerProperty.create("slices", 1, 4);
+    protected static final VoxelShape SHAPE_4 = Block.box(0.0, 0.0, 0.0, 16.0, 16.0, 15.0);
+    protected static final VoxelShape SHAPE_3 = Block.box(0.0, 0.0, 0.0, 16.0, 12.0, 15.0);
+    protected static final VoxelShape SHAPE_2 = Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 15.0);
+    protected static final VoxelShape SHAPE_1 = Block.box(0.0, 0.0, 0.0, 16.0, 4.0, 15.0);
 
     public WraithingLesionBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(SLICES, 4));
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return switch (state.getValue(SLICES)) {
+            case 1 -> SHAPE_1;
+            case 2 -> SHAPE_2;
+            case 3 -> SHAPE_3;
+            default -> SHAPE_4;
+        };
     }
 
     @Override
@@ -39,21 +55,24 @@ public class WraithingLesionBlock extends Block {
         int slices = state.getValue(SLICES);
         if (stack.is(Items.ROTTEN_FLESH) && slices < 4) {
             stack.shrink(1);
-            level.playSound(null, pos, SoundEvents.MUD_BRICKS_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
-            if (level.random.nextInt(5) == 0) {
+            if (level.random.nextInt(10) == 0) {
                 level.setBlock(pos, state.setValue(SLICES, slices + 1), 2);
-                spawnParticles(level, pos, ParticleTypes.COMPOSTER);
+                for (int i = 0; i < 3; i++) {
+                    spawnParticles(level, pos, ParticleTypes.COMPOSTER);
+                }
+                level.playSound(null, pos, SoundEvents.COMPOSTER_FILL_SUCCESS, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return InteractionResult.SUCCESS;
             }
+            level.playSound(null, pos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.SUCCESS;
         } else {
             if (slices == 1) {
                 level.removeBlock(pos, false);
-                level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
             } else {
                 level.setBlock(pos, state.setValue(SLICES, slices - 1), 2);
             }
             popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.WRAITHING_FLESH.get(), 12));
-            level.playSound(null, pos, SoundEvents.MUD_BRICKS_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos, SoundEvents.COMPOSTER_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
             spawnParticles(level, pos, ParticleTypes.SOUL);
         }
         return InteractionResult.SUCCESS;
@@ -85,11 +104,27 @@ public class WraithingLesionBlock extends Block {
         int slices = state.getValue(SLICES);
         if (random.nextInt(10) == 0) {
             level.setBlock(pos, state.setValue(SLICES, slices + 1), 2);
+            level.playSound(null, pos, SoundEvents.COMPOSTER_FILL_SUCCESS, SoundSource.BLOCKS, 1.0f, 1.0f);
+            for (int i = 0; i < 3; i++) {
+                spawnParticles(level, pos, ParticleTypes.COMPOSTER);
+            }
         }
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SLICES);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean hasAnalogOutputSignal(BlockState blockState) {
+        return true;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return state.getValue(SLICES) * 3;
     }
 }

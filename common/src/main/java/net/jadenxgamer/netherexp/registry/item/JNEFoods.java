@@ -10,5 +10,5 @@ public class JNEFoods {
     public static final FoodProperties GLOWCHEESE = new FoodProperties.Builder().nutrition(1).saturationMod(0.1f).effect(new MobEffectInstance(MobEffects.HUNGER, 300, 5), 0.6f).build();
     public static final FoodProperties PIZZA_SLICE = new FoodProperties.Builder().nutrition(6).saturationMod(1.0f).effect(new MobEffectInstance(MobEffects.HEAL, 1, 0), 1.0f).build();
     public static final FoodProperties WRAITHING_FLESH = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.1F).effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 2), 0.8F).meat().build();
-    public static final FoodProperties HEADBBAGE = new FoodProperties.Builder().nutrition(5).saturationMod(0.2f).fast().build();
+    public static final FoodProperties HEADBBAGE = new FoodProperties.Builder().nutrition(5).saturationMod(0.6f).fast().build();
 }

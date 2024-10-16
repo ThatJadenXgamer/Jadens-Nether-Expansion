@@ -90,7 +90,7 @@ public class HeadbbageBlock extends Block implements BonemealableBlock {
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return random.nextInt(20) == 0;
+        return random.nextInt(10) == 0;
     }
 
     @Override
