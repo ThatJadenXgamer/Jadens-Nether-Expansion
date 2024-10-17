@@ -50,7 +50,6 @@ public class WraithingLesionBlock extends Block {
 
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        ItemStack stack = player.getItemInHand(hand);
         int slices = state.getValue(SLICES);
         if (slices == 1) {
             level.removeBlock(pos, false);

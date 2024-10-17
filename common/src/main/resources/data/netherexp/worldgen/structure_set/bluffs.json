@@ -1,15 +1,15 @@
 {
   "structures": [
     {
-      "structure": "netherexp:sanctum",
+      "structure": "netherexp:devils_bluff",
       "weight": 1
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "salt": 1253950950,
+    "salt": 871259369,
     "spread_type": "triangular",
-    "spacing": 85,
-    "separation": 75
+    "spacing": 30,
+    "separation": 8
   }
 }

@@ -2,11 +2,29 @@
   "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 3,
+      "weight": 15,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "netherexp:mega_fossil/ribs_camp",
+        "location": "netherexp:mega_fossil/camp_1",
+        "processors": "netherexp:mega_fossil"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:mega_fossil/camp_2",
+        "processors": "netherexp:mega_fossil"
+      }
+    },
+    {
+      "weight": 15,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:mega_fossil/camp_3",
         "processors": "netherexp:mega_fossil"
       }
     },
@@ -15,19 +33,9 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "netherexp:mega_fossil/flood_bridge_camp",
-        "processors": "netherexp:mega_fossil"
-      }
-    },
-    {
-      "weight": 2,
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "projection": "rigid",
-        "location": "netherexp:mega_fossil/ribcage_camp",
-        "processors": "netherexp:mega_fossil"
+        "location": "netherexp:mega_fossil/camp_4",
+        "processors": "netherexp:beast_skull"
       }
     }
   ]
 }
-

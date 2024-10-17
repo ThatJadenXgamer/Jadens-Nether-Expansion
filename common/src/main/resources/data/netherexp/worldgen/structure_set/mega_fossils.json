@@ -2,7 +2,7 @@
   "structures": [
     {
       "structure": "netherexp:mega_fossil",
-      "weight": 4
+      "weight": 6
     },
     {
       "structure": "netherexp:mega_fossil_campsite",
@@ -17,6 +17,6 @@
       "chunk_count": 3
     },
     "spacing": 3,
-    "separation": 2
+    "separation": 1
   }
 }
