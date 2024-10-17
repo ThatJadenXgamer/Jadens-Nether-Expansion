@@ -316,10 +316,10 @@ public class JNEBlocks {
 
     // Claret
 
-    public static final RegistrySupplier<Block> CLARET_STEM = registerBlock("claret_stem", () ->
+    public static final RegistrySupplier<Block> CEREBRAGE_CLARET_STEM = registerBlock("cerebrage_claret_stem", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_STEM).mapColor(MapColor.CRIMSON_HYPHAE)));
 
-    public static final RegistrySupplier<Block> CLARET_HYPHAE = registerBlock("claret_hyphae", () ->
+    public static final RegistrySupplier<Block> CEREBRAGE_CLARET_HYPHAE = registerBlock("cerebrage_claret_hyphae", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_HYPHAE).mapColor(MapColor.CRIMSON_HYPHAE)));
 
     public static final RegistrySupplier<Block> STRIPPED_CLARET_STEM = registerBlock("stripped_claret_stem", () ->

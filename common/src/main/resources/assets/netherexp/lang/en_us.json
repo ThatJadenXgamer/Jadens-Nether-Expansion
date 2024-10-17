@@ -242,8 +242,6 @@
   "block.netherexp.enigma_crown": "Enigma Crown",
   "block.netherexp.enigma_shelf": "Enigma Shelf",
 
-  "block.netherexp.claret_stem": "Claret Stem",
-  "block.netherexp.claret_hyphae": "Claret Hyphae",
   "block.netherexp.stripped_claret_stem": "Stripped Claret Stem",
   "block.netherexp.stripped_claret_hyphae": "Stripped Claret Hyphae",
   "block.netherexp.claret_planks": "Claret Planks",
@@ -578,6 +576,8 @@
   "item.netherexp.cerebrage": "Cerebrage",
   "item.netherexp.cerebrage_seeds": "Cerebrage Seeds",
   "block.netherexp.wraithing_lesion": "Wraithing Lesion",
+  "block.netherexp.cerebrage_claret_stem": "Cerebrage Claret Stem",
+  "block.netherexp.cerebrage_claret_hyphae": "Cerebrage Claret Hyphae",
   "advancements.nether.brain_food.title": "Brain-Food",
   "advancements.nether.brain_food.description": "Plant Headbbage Seeds inside a skeleton skull",
 

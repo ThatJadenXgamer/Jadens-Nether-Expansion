@@ -26,7 +26,7 @@ public abstract class TorchflowerCropBlockMixin extends CropBlock {
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean notify) {
         BlockState floor = level.getBlockState(pos.below());
-        if (floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS) && state.is(Blocks.TORCHFLOWER_CROP)) {
+        if (state.is(Blocks.TORCHFLOWER_CROP) && floor.is(JNETags.Blocks.SOUL_SAND_BLOCKS)) {
             level.setBlock(pos, JNEBlocks.SOUL_TORCHFLOWER_CROP.get().defaultBlockState(), UPDATE_ALL);
         }
     }

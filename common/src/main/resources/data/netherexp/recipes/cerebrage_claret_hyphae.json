@@ -3,7 +3,7 @@
   "group": "bark",
   "key": {
     "#": {
-      "item": "netherexp:claret_stem"
+      "item": "netherexp:cerebrage_claret_stem"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "netherexp:claret_hyphae"
+    "item": "netherexp:cerebrage_claret_hyphae"
   }
 }

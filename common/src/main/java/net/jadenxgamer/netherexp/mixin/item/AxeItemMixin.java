@@ -31,7 +31,7 @@ public abstract class AxeItemMixin {
         Level level = useOnContext.getLevel();
         BlockState state = level.getBlockState(useOnContext.getClickedPos());
         Player player = useOnContext.getPlayer();
-        if (state.is(JNEBlocks.CLARET_STEM.get())) {
+        if (state.is(JNEBlocks.CEREBRAGE_CLARET_STEM.get())) {
             level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(useOnContext.getClickedPos(), JNEBlocks.STRIPPED_CLARET_STEM.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS)), 2);
             if (!player.isCreative()) {
@@ -39,7 +39,7 @@ public abstract class AxeItemMixin {
             }
             cir.setReturnValue(InteractionResult.SUCCESS);
         }
-        else if (state.is(JNEBlocks.CLARET_HYPHAE.get())) {
+        else if (state.is(JNEBlocks.CEREBRAGE_CLARET_HYPHAE.get())) {
             level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(useOnContext.getClickedPos(), JNEBlocks.STRIPPED_CLARET_HYPHAE.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS)), 2);
             if (!player.isCreative()) {
