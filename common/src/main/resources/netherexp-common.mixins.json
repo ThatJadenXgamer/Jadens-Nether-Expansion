@@ -38,6 +38,7 @@
     "entity.LivingEntityMixin",
     "entity.MobMixin",
     "entity.NearestAttackableTargetGoalMixin",
+    "entity.PiglinAiMixin",
     "entity.PiglinMixin",
     "entity.PlayerMixin",
     "entity.ProjectileMixin",
