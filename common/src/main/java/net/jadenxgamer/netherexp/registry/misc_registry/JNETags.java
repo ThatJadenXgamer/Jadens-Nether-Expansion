@@ -90,12 +90,6 @@ public class JNETags {
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash"); // Prevents Souled & Ashen Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash"); // Prevents Basaltic & Blackstonic Geyser from creating Particles inside this Biome
 
-        // MOD COMPAT
-        public static final TagKey<Biome> LUMINOUS_GROVE = createBiomeTag("mod_compat/luminous_grove"); // Used to check if the biome is Luminous Grove from Cinderscapes
-        public static final TagKey<Biome> ASHY_SHOALS = createBiomeTag("mod_compat/ashy_shoals"); // Used to check if the biome is Ashy Shoals from Cinderscapes
-        public static final TagKey<Biome> BLACKSTONE_SHALES = createBiomeTag("mod_compat/blackstone_shales"); // Used to check if the biome is Blackstone Shales from Cinderscapes
-        public static final TagKey<Biome> SOULBLIGHT_FOREST = createBiomeTag("mod_compat/soulblight_forest"); // Used to check if the biome is Soulblight Forest from Gardens of The Dead
-
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(NetherExp.MOD_ID, name));
         }

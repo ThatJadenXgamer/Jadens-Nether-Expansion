@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherexp:cerebrage_claret_stem"
+    },
+    "title": {
+      "translate": "advancements.nether.big_brain_time.title"
+    },
+    "description": {
+      "translate": "advancements.nether.big_brain_time.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/brain_food",
+  "criteria": {
+    "used_item": {
+      "trigger": "netherexp:grow_cerebrage_claret"
+    }
+  },
+  "requirements": [
+    [
+      "used_item"
+    ]
+  ]
+}

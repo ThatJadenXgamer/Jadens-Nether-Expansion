@@ -579,7 +579,9 @@
   "block.netherexp.cerebrage_claret_stem": "Cerebrage Claret Stem",
   "block.netherexp.cerebrage_claret_hyphae": "Cerebrage Claret Hyphae",
   "advancements.nether.brain_food.title": "Brain-Food",
-  "advancements.nether.brain_food.description": "Plant Headbbage Seeds inside a skeleton skull",
+  "advancements.nether.brain_food.description": "Plant Cerebrage Seeds inside a skeleton skull",
+  "advancements.nether.big_brain_time.title": "Yeah, This is Big Brain Time",
+  "advancements.nether.big_brain_time.description": "Grow Cerebrage Claret Tree by overgrowing it with bone-meal",
 
   "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
 }

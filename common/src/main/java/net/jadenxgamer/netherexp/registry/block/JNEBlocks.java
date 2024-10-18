@@ -133,7 +133,7 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> WRAITHING_LESION = registerBlock("wraithing_lesion", () ->
             new WraithingLesionBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(1.5f, 1.0f).pushReaction(PushReaction.DESTROY).randomTicks().sound(SoundType.MUD)));
 
-    // CINDERSCAPES COMPATIBILITY
+
     public static final RegistrySupplier<Block> SHALE_SWIRLS = registerCompatBlock("shale_swirls", () ->
             new SwirlsBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get()), 2), "cinderscapes");
 
@@ -515,23 +515,13 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> SHROOMNIGHT = registerBlock("shroomnight", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 8)));
 
-    // CINDERSCAPES COMPATIBILITY
-    public static final RegistrySupplier<Block> SHROOMBLIGHT = registerCompatBlock("shroomblight", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 12)), "cinderscapes");
-
-    // GARDENS OF THE DEAD COMPATIBILITY
-    public static final RegistrySupplier<Block> SHROOMFRIGHT = registerCompatBlock("shroomfright", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 10)), "gardens_of_the_dead");
-
     public static final RegistrySupplier<Block> NETHER_WART_BEARD = registerBlock("nether_wart_beard", () ->
             new BeardBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).instabreak().noCollission().sound(SoundType.WART_BLOCK)));
 
     public static final RegistrySupplier<Block> WARPED_WART_BEARD = registerBlock("warped_wart_beard", () ->
             new BeardBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHER_WART_BEARD.get())));
 
-    // CINDERSCAPES COMPATIBILITY
-    public static final RegistrySupplier<Block> UMBRAL_WART_BEARD = registerCompatBlock("umbral_wart_beard", () ->
-            new BeardBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHER_WART_BEARD.get())), "cinderscapes");
+
 
     public static final RegistrySupplier<Block> WEEPING_IVY = registerBlock("weeping_ivy", () ->
             new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
@@ -539,21 +529,11 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> TWISTING_IVY = registerBlock("twisting_ivy", () ->
             new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_WART_BLOCK).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
 
-    // CINDERSCAPES COMPATIBILITY
-    public static final RegistrySupplier<Block> TWILIGHT_IVY = registerCompatBlock("twilight_ivy", () ->
-            new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).instabreak().noCollission().sound(SoundType.WEEPING_VINES)), "cinderscapes");
-
     public static final RegistrySupplier<Block> RED_SCALE_FUNGUS = registerBlock("red_scale_fungus", () ->
             new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)));
 
     public static final RegistrySupplier<Block> BLUE_SCALE_FUNGUS = registerBlock("blue_scale_fungus", () ->
             new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)));
-
-    // CINDERSCAPES COMPATIBILITY
-    public static final RegistrySupplier<Block> VIOLET_SCALE_FUNGUS = registerCompatBlock("violet_scale_fungus", () ->
-            new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)), "cinderscapes");
-
-    // GARDENS OF THE DEAD COMPATIBILITY
 
     public static final RegistrySupplier<Block> CRIMSON_SPROUTS = registerBlock("crimson_sprouts", () ->
             new NetherSproutsBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_SPROUTS)));
@@ -568,10 +548,6 @@ public class JNEBlocks {
 
     public static final RegistrySupplier<Block> WARPED_NYLIUM_PATH = registerBlock("warped_nylium_path", () ->
             new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)));
-
-    // CINDERSCAPES COMPATIBLITY
-    public static final RegistrySupplier<Block> UMBRAL_NYLIUM_PATH = registerCompatBlock("umbral_nylium_path", () ->
-            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)), "cinderscapes");
 
     // Decayable Blocks
 
@@ -595,29 +571,12 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> WARPED_SPORESHROOM = registerBlock("warped_sporeshroom", () ->
             new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 2, JNETags.Biomes.HAS_WARPED_SPORES));
 
-    // CINDERSCAPES COMPATIBILITY
-    public static final RegistrySupplier<Block> UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom", () ->
-            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 3, JNETags.Biomes.HAS_WARPED_SPORES), "cinderscapes");
-
-    // CINDERSCAPES COMPATIBILITY
-    // TODO: Add Type and Particles to Soulblight Sporeshroom
-    public static final RegistrySupplier<Block> SOULBLIGHT_SPORESHROOM = registerCompatBlock("soulblight_sporeshroom", () ->
-            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 1, JNETags.Biomes.HAS_SOULBLIGHT_SPORES), "gardens_of_the_dead");
-
     public static final RegistrySupplier<Block> SOULED_GEYSER = registerBlock("souled_geyser", () ->
             new GeyserBlock(BlockBehaviour.Properties.copy(JNEBlocks.SOUL_SLATE.get()).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 1, false, JNETags.Biomes.HAS_ASH));
 
     public static final RegistrySupplier<Block> BASALTIC_GEYSER = registerBlock("basaltic_geyser", () ->
             new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.BASALT).pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT), 2, true, JNETags.Biomes.HAS_WHITE_ASH));
-
-    // CINDERSCAPES COMPATIBILITY
-    public static final RegistrySupplier<Block> BLACKSTONIC_GEYSER = registerCompatBlock("blackstonic_geyser", () ->
-            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 2, true, JNETags.Biomes.HAS_WHITE_ASH), "cinderscapes");
-
-    // CINDERSCAPES COMPATIBILITY
-    public static final RegistrySupplier<Block> ASHEN_GEYSER = registerCompatBlock("ashen_geyser", () ->
-            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 1, true, JNETags.Biomes.HAS_ASH), "cinderscapes");
-
+    
     // White Ash
 
     public static final RegistrySupplier<Block> WHITE_ASH = registerBlock("white_ash", () ->
@@ -738,10 +697,7 @@ public class JNEBlocks {
     // Flower Pots
     public static final RegistrySupplier<Block> POTTED_SOUL_SWIRLS = registerBlockWithoutItem("potted_soul_swirls", () ->
             new FlowerPotBlock(SOUL_SWIRLS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
-
-    public static final RegistrySupplier<Block> POTTED_SHALE_SWIRLS = registerBlockWithoutItem("potted_shale_swirls", () ->
-            new FlowerPotBlock(SHALE_SWIRLS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
-
+    
     public static final RegistrySupplier<Block> POTTED_ENIGMA_CROWN = registerBlockWithoutItem("potted_enigma_crown", () ->
             new FlowerPotBlock(ENIGMA_CROWN.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
@@ -754,20 +710,54 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> POTTED_BLUE_SCALE_FUNGUS = registerBlockWithoutItem("potted_blue_scale_fungus", () ->
             new FlowerPotBlock(BLUE_SCALE_FUNGUS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
-    public static final RegistrySupplier<Block> POTTED_VIOLET_SCALE_FUNGUS = registerBlockWithoutItem("potted_violet_scale_fungus", () ->
-            new FlowerPotBlock(VIOLET_SCALE_FUNGUS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
-
     public static final RegistrySupplier<Block> POTTED_CRIMSON_SPORESHROOM = registerBlockWithoutItem("potted_crimson_sporeshroom", () ->
             new FlowerPotBlock(CRIMSON_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     public static final RegistrySupplier<Block> POTTED_WARPED_SPORESHROOM = registerBlockWithoutItem("potted_warped_sporeshroom", () ->
             new FlowerPotBlock(WARPED_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
-    public static final RegistrySupplier<Block> POTTED_UMBRAL_SPORESHROOM = registerBlockWithoutItem("potted_umbral_sporeshroom", () ->
-            new FlowerPotBlock(UMBRAL_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
-
     public static final RegistrySupplier<Block> POTTED_SOUL_TORCHFLOWER = registerBlockWithoutItem("potted_soul_torchflower", () ->
             new FlowerPotBlock(SOUL_TORCHFLOWER.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    // Mod Compatibility
+
+    /**
+     * Cinderscapes
+     */
+
+    public static final RegistrySupplier<Block> SHROOMBLIGHT = registerCompatBlock("shroomblight", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 12)), "cinderscapes");
+
+    public static final RegistrySupplier<Block> UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom", () ->
+            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 3, JNETags.Biomes.HAS_WARPED_SPORES), "cinderscapes");
+
+    public static final RegistrySupplier<Block> BLACKSTONIC_GEYSER = registerCompatBlock("blackstonic_geyser", () ->
+            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 2, true, JNETags.Biomes.HAS_WHITE_ASH), "cinderscapes");
+
+    public static final RegistrySupplier<Block> ASHEN_GEYSER = registerCompatBlock("ashen_geyser", () ->
+            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), 1, true, JNETags.Biomes.HAS_ASH), "cinderscapes");
+
+    public static final RegistrySupplier<Block> UMBRAL_WART_BEARD = registerCompatBlock("umbral_wart_beard", () ->
+            new BeardBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHER_WART_BEARD.get())), "cinderscapes");
+
+    public static final RegistrySupplier<Block> TWILIGHT_IVY = registerCompatBlock("twilight_ivy", () ->
+            new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).instabreak().noCollission().sound(SoundType.WEEPING_VINES)), "cinderscapes");
+
+    public static final RegistrySupplier<Block> VIOLET_SCALE_FUNGUS = registerCompatBlock("violet_scale_fungus", () ->
+            new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)), "cinderscapes");
+
+    public static final RegistrySupplier<Block> UMBRAL_NYLIUM_PATH = registerCompatBlock("umbral_nylium_path", () ->
+            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)), "cinderscapes");
+
+    /**
+     * Gardens of The Dead
+     */
+    public static final RegistrySupplier<Block> SHROOMFRIGHT = registerCompatBlock("shroomfright", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 10)), "gardens_of_the_dead");
+
+    public static final RegistrySupplier<Block> SOULBLIGHT_SPORESHROOM = registerCompatBlock("soulblight_sporeshroom", () ->
+            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), 1, JNETags.Biomes.HAS_SOULBLIGHT_SPORES), "gardens_of_the_dead");
+
 
     ////////////////
     // REGISTRIES //

@@ -248,22 +248,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.BLUE_NETHER_BRICK_SLAB.get());
                         output.accept(JNEBlocks.BLUE_NETHER_BRICK_WALL.get());
 
-//                        if (NetherExp.checkModCompatCinderscapes()) {
-//                            output.accept(JNEBlocks.VIOLET_MIXED_NETHER_BRICKS);
-//                            output.accept(JNEBlocks.VIOLET_NETHER_BRICKS);
-//                            output.accept(JNEBlocks.VIOLET_NETHER_BRICK_STAIRS);
-//                            output.accept(JNEBlocks.VIOLET_NETHER_BRICK_SLAB);
-//                            output.accept(JNEBlocks.VIOLET_NETHER_BRICK_WALL);
-//                        }
-//
-//                        if (NetherExp.checkModCompatGardensOfTheDead()) {
-//                            output.accept(JNEBlocks.YELLOW_MIXED_NETHER_BRICKS);
-//                            output.accept(JNEBlocks.YELLOW_NETHER_BRICKS);
-//                            output.accept(JNEBlocks.YELLOW_NETHER_BRICK_STAIRS);
-//                            output.accept(JNEBlocks.YELLOW_NETHER_BRICK_SLAB);
-//                            output.accept(JNEBlocks.YELLOW_NETHER_BRICK_WALL);
-//                        }
-
                         output.accept(JNEItems.LIGHTSPORES.get());
                         output.accept(Blocks.SHROOMLIGHT);
                         output.accept(JNEItems.NIGHTSPORES.get());
@@ -297,11 +281,6 @@ public class JNECreativeModeTabs {
 
                         output.accept(JNEItems.HOGHAM.get());
                         output.accept(JNEItems.COOKED_HOGHAM.get());
-
-//                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
-//                            output.accept(JNEItems.WARPHOPPER_FUR.get());
-//                            output.accept(JNEItems.MUSIC_DISC_CRICKET.get());
-//                        }
 
                         output.accept(JNEBlocks.CRIMSON_SPORESHROOM.get());
                         output.accept(JNEBlocks.WARPED_SPORESHROOM.get());

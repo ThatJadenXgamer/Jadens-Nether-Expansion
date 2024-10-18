@@ -105,16 +105,13 @@ public class NetherExpFabricClient implements ClientModInitializer {
 
 
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_SOUL_SWIRLS.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_SHALE_SWIRLS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_ENIGMA_CROWN.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_SMOKESTALK.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_RED_SCALE_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_BLUE_SCALE_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_SOUL_TORCHFLOWER.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_VIOLET_SCALE_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_CRIMSON_SPORESHROOM.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_WARPED_SPORESHROOM.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_UMBRAL_SPORESHROOM.get(), RenderType.cutout());
 
         // TINTS
         ColorProviderRegistry.ITEM.register((stack, tintindex) -> tintindex > 0 ? -1 : AntidoteItem.getColor(stack), JNEItems.ANTIDOTE.get());
