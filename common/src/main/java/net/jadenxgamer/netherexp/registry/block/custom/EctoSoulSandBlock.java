@@ -70,7 +70,7 @@ public class EctoSoulSandBlock extends Block {
         if (!salted) {
             if (itemStack.is(Items.BRUSH) && level.getBlockState(pos.above()).isAir()) {
                 level.playSound(player, pos, SoundEvents.BRUSH_SAND, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
-                level.playSound(player, pos, JNESoundEvents.ENTITY_WISP_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, 0.4F);
+                level.playSound(player, pos, JNESoundEvents.ENTITY_WISP_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, 1.0F);
                 if (!player.isCreative()) {
                     itemStack.hurtAndBreak(4, player, p -> p.broadcastBreakEvent(hand));
                 }
