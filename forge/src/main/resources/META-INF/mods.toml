@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/ThatJadenXgamer/Jadens-Nether-Expansion/issues"
 license = "CC-BY-NC-SA-4.0"
 
 [[mods]]

@@ -23,7 +23,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/jadens-nether-expansion",
-    "sources": "https://github.com/ThatJadenXgamer/Jadens-Nether-Expansion"
+    "sources": "https://github.com/ThatJadenXgamer/Jadens-Nether-Expansion",
+    "issues": "https://github.com/ThatJadenXgamer/Jadens-Nether-Expansion/issues"
   },
   "license": "CC-BY-NC-SA-4.0",
   "icon": "icon.png",

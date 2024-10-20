@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "netherexp:claret_stem"
+              "netherexp:cerebrage_claret_stem"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "netherexp:claret_hyphae"
+        "recipe": "netherexp:cerebrage_claret_hyphae"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "netherexp:claret_hyphae"
+      "netherexp:cerebrage_claret_hyphae"
     ]
   }
 }
