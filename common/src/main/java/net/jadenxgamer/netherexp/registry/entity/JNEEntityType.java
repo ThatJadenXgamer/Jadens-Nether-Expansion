@@ -33,8 +33,8 @@ public class JNEEntityType {
             EntityType.Builder.of(Banshee::new, MobCategory.MONSTER)
                     .sized(1.2F, 2.55F).fireImmune().build("banshee"));
 
-    public static final RegistrySupplier<EntityType<Stampede>> STAMPEDE = ENTITY_TYPES.register("stampede", () ->
-            EntityType.Builder.of(Stampede::new, MobCategory.MONSTER)
+    public static final RegistrySupplier<EntityType<OldStampede>> STAMPEDE = ENTITY_TYPES.register("stampede", () ->
+            EntityType.Builder.of(OldStampede::new, MobCategory.MONSTER)
                     .sized(1.8F, 4.0F).fireImmune().build("stampede"));
 
     public static final RegistrySupplier<EntityType<Carcass>> CARCASS = ENTITY_TYPES.register("carcass", () ->

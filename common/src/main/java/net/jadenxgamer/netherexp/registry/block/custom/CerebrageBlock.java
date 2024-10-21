@@ -75,7 +75,7 @@ public class CerebrageBlock extends Block implements BonemealableBlock {
 
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (player.getItemInHand(hand).is(Items.BONE_MEAL) && state.getValue(AGE) != 4) {
+        if (player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         }
         else if (state.getValue(AGE) == 3) {
@@ -85,7 +85,7 @@ public class CerebrageBlock extends Block implements BonemealableBlock {
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        else if (state.getValue(AGE) == 4) {
+        else if (state.getValue(AGE) == 4 && level.getBlockState(pos.above()).isAir()) {
             popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE_SEEDS.get(), level.random.nextInt(-5, 2)));
             level.setBlock(pos, state.setValue(AGE, 1), 2);
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 1.0f);

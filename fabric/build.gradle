@@ -24,13 +24,14 @@ dependencies {
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
-    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.0"
-    include "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.0"
+    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_port_version}"
+    include "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_port_version}"
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${rootProject.mixin_extras_version}")))
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
-    modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.20.1-3.0.1.7'
+    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${rootProject.terrablender_version}"
 }
 
 processResources {

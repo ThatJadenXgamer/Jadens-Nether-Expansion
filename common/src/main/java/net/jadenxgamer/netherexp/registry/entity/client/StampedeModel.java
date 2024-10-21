@@ -5,8 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.entity.animation.JNEAnimationDefinition;
-import net.jadenxgamer.netherexp.registry.entity.custom.Stampede;
-import net.jadenxgamer.netherexp.registry.entity.custom.Vessel;
+import net.jadenxgamer.netherexp.registry.entity.custom.OldStampede;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -57,10 +56,10 @@ public class StampedeModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw, headPitch);
 
-		this.animate(((Stampede) entity).idleAnimationState, JNEAnimationDefinition.STAMPEDE_IDLE, ageInTicks);
-		this.animate(((Stampede) entity).walkAnimationState, JNEAnimationDefinition.STAMPEDE_WALK, ageInTicks);
-		this.animate(((Stampede) entity).swimAnimationState, JNEAnimationDefinition.STAMPEDE_SWIMMING, ageInTicks);
-		this.animate(((Stampede) entity).runAnimationState, JNEAnimationDefinition.STAMPEDE_RUN, ageInTicks);
+		this.animate(((OldStampede) entity).idleAnimationState, JNEAnimationDefinition.STAMPEDE_IDLE, ageInTicks);
+		this.animate(((OldStampede) entity).walkAnimationState, JNEAnimationDefinition.STAMPEDE_WALK, ageInTicks);
+		this.animate(((OldStampede) entity).swimAnimationState, JNEAnimationDefinition.STAMPEDE_SWIMMING, ageInTicks);
+		this.animate(((OldStampede) entity).runAnimationState, JNEAnimationDefinition.STAMPEDE_RUN, ageInTicks);
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch) {

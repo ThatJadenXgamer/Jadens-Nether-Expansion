@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-public class Stampede extends Monster implements NeutralMob {
+public class OldStampede extends Monster implements NeutralMob {
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
     public final AnimationState swimAnimationState = new AnimationState();
@@ -47,11 +47,11 @@ public class Stampede extends Monster implements NeutralMob {
     private UUID angryAt;
     private int eating = 0;
     static final Predicate<ItemEntity> PICKABLE_DROP_FILTER = (item) -> !item.hasPickUpDelay() && item.isAlive() && item.getItem().is(Items.BONE);
-    private static final EntityDataAccessor<Boolean> ANGRY = SynchedEntityData.defineId(Stampede.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> EATING = SynchedEntityData.defineId(Stampede.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> AGITATED = SynchedEntityData.defineId(Stampede.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> ANGRY = SynchedEntityData.defineId(OldStampede.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> EATING = SynchedEntityData.defineId(OldStampede.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> AGITATED = SynchedEntityData.defineId(OldStampede.class, EntityDataSerializers.INT);
 
-    public Stampede(EntityType<? extends Monster> entityType, Level level) {
+    public OldStampede(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.LAVA, -1.0F);
@@ -243,14 +243,14 @@ public class Stampede extends Monster implements NeutralMob {
 
         @Override
         public boolean canUse() {
-            if (!Stampede.this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
+            if (!OldStampede.this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
                 return false;
-            } else if (Stampede.this.getTarget() == null) {
-                if (Stampede.this.getRandom().nextInt(reducedTickDelay(10)) != 0) {
+            } else if (OldStampede.this.getTarget() == null) {
+                if (OldStampede.this.getRandom().nextInt(reducedTickDelay(10)) != 0) {
                     return false;
                 } else {
                     List<ItemEntity> list = getItems();
-                    return !list.isEmpty() && Stampede.this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
+                    return !list.isEmpty() && OldStampede.this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
                 }
             } else {
                 return false;
@@ -260,9 +260,9 @@ public class Stampede extends Monster implements NeutralMob {
         @Override
         public void tick() {
             List<ItemEntity> list = getItems();
-            ItemStack itemStack = Stampede.this.getItemBySlot(EquipmentSlot.MAINHAND);
+            ItemStack itemStack = OldStampede.this.getItemBySlot(EquipmentSlot.MAINHAND);
             if (itemStack.isEmpty() && !list.isEmpty()) {
-                Stampede.this.getNavigation().moveTo(list.get(0), 1.2000000476837158);
+                OldStampede.this.getNavigation().moveTo(list.get(0), 1.2000000476837158);
             }
         }
 
@@ -270,12 +270,12 @@ public class Stampede extends Monster implements NeutralMob {
         public void start() {
             List<ItemEntity> list = getItems();
             if (!list.isEmpty()) {
-                Stampede.this.getNavigation().moveTo(list.get(0), 1.2000000476837158);
+                OldStampede.this.getNavigation().moveTo(list.get(0), 1.2000000476837158);
             }
         }
 
         private List<ItemEntity> getItems() {
-            return Stampede.this.level().getEntitiesOfClass(ItemEntity.class, Stampede.this.getBoundingBox().inflate(8.0, 8.0, 8.0), Stampede.PICKABLE_DROP_FILTER);
+            return OldStampede.this.level().getEntitiesOfClass(ItemEntity.class, OldStampede.this.getBoundingBox().inflate(8.0, 8.0, 8.0), OldStampede.PICKABLE_DROP_FILTER);
         }
     }
 
