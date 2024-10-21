@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "netherexp:claret_stem",
-    "netherexp:claret_hyphae",
+    "netherexp:cerebrage_claret_stem",
+    "netherexp:cerebrage_claret_hyphae",
     "netherexp:stripped_claret_stem",
     "netherexp:stripped_claret_hyphae",
     "netherexp:claret_planks",

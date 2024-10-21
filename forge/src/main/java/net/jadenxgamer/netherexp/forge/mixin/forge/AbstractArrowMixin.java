@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.mixin.entity;
+package net.jadenxgamer.netherexp.forge.mixin.forge;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;

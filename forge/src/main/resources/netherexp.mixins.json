@@ -6,6 +6,7 @@
   "client": [
   ],
   "mixins": [
+    "forge.AbstractArrowMixin"
   ],
   "injectors": {
     "defaultRequire": 1

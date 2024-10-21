@@ -30,7 +30,6 @@
     "brewing.PotionBrewingAccessor",
     "brewing.PotionBrewingMixin",
     "brewing.PotionSlotMixin",
-    "entity.AbstractArrowMixin",
     "entity.AbstractHurtingProjectileMixin",
     "entity.BlockEntityTypeMixin",
     "entity.DecoratedPotPatternsMixin",
