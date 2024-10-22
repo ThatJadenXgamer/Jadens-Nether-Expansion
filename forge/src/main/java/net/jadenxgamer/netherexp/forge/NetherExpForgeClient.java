@@ -127,5 +127,6 @@ public class NetherExpForgeClient {
         event.registerLayerDefinition(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.GHAST_FIREBALL_LAYER, GhastFireBallModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.FIREBALL_LAYER, FireballModel::createBodyLayer);
+        event.registerLayerDefinition(JNEModelLayers.STAMPEDE_SADDLE_LAYER, StampedeModel::createBodyLayer);
     }
 }

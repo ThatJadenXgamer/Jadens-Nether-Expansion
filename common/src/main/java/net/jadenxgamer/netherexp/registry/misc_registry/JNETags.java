@@ -40,7 +40,7 @@ public class JNETags {
         public static final TagKey<Block> FROGMIST = createBlockTag("frogmist"); // Tag to define all Frogmist (p.s: due to some quirks if a frogmist block isn't in this tag it may crash the game)
         public static final TagKey<Block> POSSESSABLE_GARGOYLE_STATUES = createBlockTag("possessable_gargoyle_statues"); // Gargoyle Statues defined in this tag will be sought after by Apparitions (if the specified statue doesn't have a possession hardcoded into it then the apparition will turn into a Vessel)
         public static final TagKey<Block> SANCTUM_BLOCKS = createBlockTag("sanctum_blocks"); // Prevents those pesky Basalt Deltas configured features from overriding or replacing Sanctum Blocks
-        public static final TagKey<Block> SORROWEED_REPLACEABLE = createBlockTag("sorroweed_replaceable"); // Prevents those pesky Basalt Deltas configured features from overriding or replacing Sanctum Blocks
+        public static final TagKey<Block> SORROWEED_REPLACEABLE = createBlockTag("sorroweed_replaceable"); // Sorroweed can overtake these blocks when grown
         public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone"); // Blocks in this tag produce Blackstone Sounds
         public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE = createBlockTag("sounds/polished_blackstone"); // Blocks in this tag produce Polished Blackstone Sounds
         public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createBlockTag("sounds/polished_blackstone_bricks"); // Blocks in this tag produce Polished Blackstone Brick Sounds
@@ -78,6 +78,8 @@ public class JNETags {
         public static final TagKey<Item> SMOKESTALK_FUEL = createItemTag("smokestalk_fuel"); // Smokestalk accepts these as fuel items
         public static final TagKey<Item> SHOTGUNS = createItemTag("shotguns"); // Items in this tag will be treated as Shotguns and can be Enchanted like one too
         public static final TagKey<Item> FROGMIST_VISIBLE_ITEMS = createItemTag("frogmist_visible_items"); // Frogmist's hitbox shows up only if you're holding items in this tag
+        public static final TagKey<Item> STAMPEDE_EDIBLE = createItemTag("stampede_edible"); // Stampedes eat these items to regain health
+        public static final TagKey<Item> STAMPEDE_FAVORITES = createItemTag("stampede_favorites"); // Stampedes can be tamed with these items
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(NetherExp.MOD_ID, name));

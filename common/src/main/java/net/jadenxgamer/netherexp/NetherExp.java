@@ -76,7 +76,39 @@ public class NetherExp {
         return Platform.isModLoaded("starmute");
     }
 
+    public static boolean compatFarmersDelight() {
+        return Platform.isModLoaded("farmersdelight");
+    }
+
     public static boolean compatNethersDelight() {
         return Platform.isModLoaded("mynethersdelight");
+    }
+
+    public static boolean compatOreganized() {
+        return Platform.isModLoaded("oreganized");
+    }
+
+    public static boolean compatAlexsCaves() {
+        return Platform.isModLoaded("alexscaves");
+    }
+
+    public static boolean compatAlexsMobs() {
+        return Platform.isModLoaded("alexsmobs");
+    }
+
+    public static boolean compatArtsAndCrafts() {
+        return Platform.isModLoaded("arts_and_crafts");
+    }
+
+    public static boolean compatCavernsAndChasms() {
+        return Platform.isModLoaded("caverns_and_chasms");
+    }
+
+    public static boolean compatSullysMod() {
+        return Platform.isModLoaded("sullysmod");
+    }
+
+    public static boolean compatSupplementaries() {
+        return Platform.isModLoaded("supplementaries");
     }
 }

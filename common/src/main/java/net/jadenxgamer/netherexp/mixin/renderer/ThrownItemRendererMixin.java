@@ -43,24 +43,35 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
         super(context);
     }
 
+    @Unique
+    private boolean noEntityTextureModelFeature() {
+        // turns off redesigned fireballs if either one of these mods are loaded
+        return !Platform.isModLoaded("entity_model_features") && !Platform.isModLoaded("entity_texture_features");
+    }
+
     @Inject(
             method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;)V",
             at = @At(value = "TAIL")
     )
     private void netherexp$init(EntityRendererProvider.Context context, CallbackInfo ci) {
-        if (isConfigEnabled && !isEMFOrETFLoaded()) {
+//        if (noEntityTextureModelFeature()) {
+//            return;
+//        }
+        if (isConfigEnabled) {
             this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
             this.fireballModel = new FireballModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
         }
     }
-
 
     @Inject(
             method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;FZ)V",
             at = @At(value = "TAIL")
     )
     private void netherexp$initTwo(EntityRendererProvider.Context context, float f, boolean bl, CallbackInfo ci) {
-        if (isConfigEnabled && !isEMFOrETFLoaded()) {
+//        if (noEntityTextureModelFeature()) {
+//            return;
+//        }
+        if (isConfigEnabled) {
             this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
             this.fireballModel = new FireballModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
         }
@@ -111,11 +122,5 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
                 cir.setReturnValue(new ResourceLocation(NetherExp.MOD_ID, "textures/entity/fireball.png"));
             }
         }
-    }
-
-    @Unique
-    private boolean isEMFOrETFLoaded() {
-        // turns off redesigned fireballs if either of these mods are loaded
-        return Platform.isModLoaded("entity_model_features") || Platform.isModLoaded("entity_texture_features");
     }
 }

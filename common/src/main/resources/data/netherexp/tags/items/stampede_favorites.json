@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bone_block",
+    "minecraft:skeleton_skull",
+    "netherexp:bone_cortical"
+  ]
+}

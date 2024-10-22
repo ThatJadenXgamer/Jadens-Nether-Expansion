@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.forge;
+package net.jadenxgamer.netherexp.forge.event;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.SharedConstants;

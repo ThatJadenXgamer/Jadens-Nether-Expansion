@@ -183,6 +183,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.ECTO_SLAB_LAYER, EctoSlabModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.BANSHEE_LAYER, BansheeModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.STAMPEDE_LAYER, StampedeModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.STAMPEDE_SADDLE_LAYER, StampedeModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.CARCASS_LAYER, CarcassModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.MIST_CHARGE_LAYER, MistChargeModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(JNEModelLayers.GHAST_FIREBALL_LAYER, GhastFireBallModel::createBodyLayer);

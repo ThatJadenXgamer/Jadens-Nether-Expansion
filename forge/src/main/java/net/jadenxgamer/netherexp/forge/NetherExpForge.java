@@ -1,11 +1,14 @@
 package net.jadenxgamer.netherexp.forge;
 
 import com.mojang.serialization.Codec;
+import dev.architectury.annotations.ForgeEvent;
 import dev.architectury.platform.forge.EventBuses;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
+import net.jadenxgamer.netherexp.forge.event.JNEBuiltinPacks;
+import net.jadenxgamer.netherexp.forge.event.RightClickBlockEvent;
 import net.jadenxgamer.netherexp.forge.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.forge.worldgen.SpawnCostsBiomeModifier;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
@@ -19,10 +22,12 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidInteractionRegistry;
 import net.minecraftforge.fml.DistExecutor;
@@ -32,6 +37,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -58,6 +64,7 @@ public class NetherExpForge {
         eventBus.addListener(NetherExpForge::commonSetup);
         eventBus.addListener(NetherExpForge::registerAttributes);
         eventBus.addListener(NetherExpForge::registerSpawnPlacements);
+        MinecraftForge.EVENT_BUS.addListener(NetherExpForge::onRightClickBlock);
         eventBus.addListener(NetherExpForge::loadComplete);
         eventBus.addListener(NetherExpForge::addBuiltinPacks);
     }
@@ -70,9 +77,9 @@ public class NetherExpForge {
         event.put(JNEEntityType.APPARITION.get(), Apparition.createAttributes().build());
         event.put(JNEEntityType.WISP.get(), Wisp.createAttributes().build());
         event.put(JNEEntityType.VESSEL.get(), Vessel.createAttributes().build());
-        event.put(JNEEntityType.ECTO_SLAB.get(), Vessel.createAttributes().build());
+        event.put(JNEEntityType.ECTO_SLAB.get(), EctoSlab.createAttributes().build());
         event.put(JNEEntityType.BANSHEE.get(), Banshee.createAttributes().build());
-        event.put(JNEEntityType.STAMPEDE.get(), Vessel.createAttributes().build());
+        event.put(JNEEntityType.STAMPEDE.get(), Stampede.createAttributes().build());
         event.put(JNEEntityType.CARCASS.get(), Carcass.createAttributes().build());
     }
 
@@ -96,6 +103,10 @@ public class NetherExpForge {
         FluidInteractionRegistry.addInteraction(JNEFluids.ECTOPLASM.get().getFluidType(),
             new FluidInteractionRegistry.InteractionInformation(ForgeMod.WATER_TYPE.get(),
                 fluidState -> JNEBlocks.BLACK_ICE.get().defaultBlockState()));
+    }
+
+    private static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        RightClickBlockEvent.WartBeardGrowerEvent(event);
     }
 
     private static void addBuiltinPacks(AddPackFindersEvent event) {

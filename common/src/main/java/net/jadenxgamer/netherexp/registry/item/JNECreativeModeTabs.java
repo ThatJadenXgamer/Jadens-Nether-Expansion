@@ -343,7 +343,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.VESSEL_SPAWN_EGG.get());
                         output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
                         output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
-//                        output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
+                        output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
                         output.accept(JNEItems.CARCASS_SPAWN_EGG.get());
 
                         output.accept(JNEBlocks.INSCRIBED_PANEL.get());

@@ -1,8 +1,10 @@
 package net.jadenxgamer.netherexp.fabric;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.fabric.event.WartBeardGrowerEvent;
 import net.jadenxgamer.netherexp.fabric.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.fabric.worldgen.*;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
@@ -25,18 +27,21 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
         JNELootModifiers.modifyLootTables();
 
         FabricDefaultAttributeRegistry.register(
-            JNEEntityType.APPARITION.get(), Apparition.createAttributes());
-        FabricDefaultAttributeRegistry.register(JNEEntityType.WISP.get(), Wisp.createAttributes());
+                JNEEntityType.APPARITION.get(), Apparition.createAttributes());
         FabricDefaultAttributeRegistry.register(
-            JNEEntityType.VESSEL.get(), Vessel.createAttributes());
+                JNEEntityType.WISP.get(), Wisp.createAttributes());
         FabricDefaultAttributeRegistry.register(
-            JNEEntityType.ECTO_SLAB.get(), EctoSlab.createAttributes());
+                JNEEntityType.VESSEL.get(), Vessel.createAttributes());
         FabricDefaultAttributeRegistry.register(
-            JNEEntityType.BANSHEE.get(), Banshee.createAttributes());
+                JNEEntityType.ECTO_SLAB.get(), EctoSlab.createAttributes());
         FabricDefaultAttributeRegistry.register(
-            JNEEntityType.STAMPEDE.get(), OldStampede.createAttributes());
+                JNEEntityType.BANSHEE.get(), Banshee.createAttributes());
         FabricDefaultAttributeRegistry.register(
-            JNEEntityType.CARCASS.get(), Carcass.createAttributes());
+                JNEEntityType.STAMPEDE.get(), Stampede.createAttributes());
+        FabricDefaultAttributeRegistry.register(
+                JNEEntityType.CARCASS.get(), Carcass.createAttributes());
+
+        UseBlockCallback.EVENT.register(new WartBeardGrowerEvent());
 
         JNEBuiltinPacks.init();
     }
