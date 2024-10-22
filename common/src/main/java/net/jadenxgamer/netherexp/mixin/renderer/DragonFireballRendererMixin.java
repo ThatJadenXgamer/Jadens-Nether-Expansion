@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import dev.architectury.platform.Platform;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.entity.client.GhastFireBallModel;
@@ -39,7 +40,9 @@ public abstract class DragonFireballRendererMixin extends EntityRenderer<DragonF
             at = @At("TAIL")
     )
     private void netherexp$init(EntityRendererProvider.Context context, CallbackInfo ci) {
-        this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
+        if (JNEConfigs.REDESIGNED_FIREBALLS.get() && !isEMFOrETFLoaded()) {
+            this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
+        }
     }
 
     @Inject(
@@ -48,7 +51,7 @@ public abstract class DragonFireballRendererMixin extends EntityRenderer<DragonF
             cancellable = true
     )
     private void netherexp$render(DragonFireball dragonFireball, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo cir) {
-        if (JNEConfigs.REDESIGNED_FIREBALLS.get()) {
+        if (JNEConfigs.REDESIGNED_FIREBALLS.get() && largeFireballModel != null) {
             cir.cancel();
 
             poseStack.pushPose();
@@ -70,5 +73,11 @@ public abstract class DragonFireballRendererMixin extends EntityRenderer<DragonF
         if (JNEConfigs.REDESIGNED_FIREBALLS.get()) {
             cir.setReturnValue(new ResourceLocation(NetherExp.MOD_ID, "textures/entity/dragon_fireball.png"));
         }
+    }
+
+    @Unique
+    private boolean isEMFOrETFLoaded() {
+        // turns off redesigned fireballs if either of these mods are loaded
+        return Platform.isModLoaded("entity_model_features") || Platform.isModLoaded("entity_texture_features");
     }
 }

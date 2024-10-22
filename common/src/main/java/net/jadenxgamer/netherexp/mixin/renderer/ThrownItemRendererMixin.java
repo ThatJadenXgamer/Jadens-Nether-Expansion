@@ -2,8 +2,10 @@ package net.jadenxgamer.netherexp.mixin.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import dev.architectury.platform.Platform;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.registry.entity.client.FireballModel;
 import net.jadenxgamer.netherexp.registry.entity.client.GhastFireBallModel;
 import net.jadenxgamer.netherexp.registry.entity.client.JNEModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -32,7 +34,7 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
     private GhastFireBallModel<T> largeFireballModel;
 
     @Unique
-    private GhastFireBallModel<T> fireballModel;
+    private FireballModel<T> fireballModel;
 
     @Unique
     private boolean isConfigEnabled = JNEConfigs.REDESIGNED_FIREBALLS.get();
@@ -43,21 +45,25 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
 
     @Inject(
             method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;)V",
-            at = @At("TAIL")
+            at = @At(value = "TAIL")
     )
     private void netherexp$init(EntityRendererProvider.Context context, CallbackInfo ci) {
-        this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
-        this.fireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
+        if (isConfigEnabled && !isEMFOrETFLoaded()) {
+            this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
+            this.fireballModel = new FireballModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
+        }
     }
 
 
     @Inject(
             method = "<init>(Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;FZ)V",
-            at = @At("TAIL")
+            at = @At(value = "TAIL")
     )
     private void netherexp$initTwo(EntityRendererProvider.Context context, float f, boolean bl, CallbackInfo ci) {
-        this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
-        this.fireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
+        if (isConfigEnabled && !isEMFOrETFLoaded()) {
+            this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
+            this.fireballModel = new FireballModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
+        }
     }
 
     @Inject(
@@ -67,7 +73,7 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
     )
     private void netherexp$render(T entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo cir) {
         if (isConfigEnabled) {
-            if (entity instanceof LargeFireball) {
+            if (entity instanceof LargeFireball && largeFireballModel != null) {
                 cir.cancel();
 
                 poseStack.pushPose();
@@ -78,7 +84,7 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
 
                 poseStack.popPose();
             }
-            else if (entity instanceof Fireball) {
+            else if (entity instanceof Fireball && fireballModel != null) {
                 cir.cancel();
 
                 poseStack.pushPose();
@@ -105,5 +111,11 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
                 cir.setReturnValue(new ResourceLocation(NetherExp.MOD_ID, "textures/entity/fireball.png"));
             }
         }
+    }
+
+    @Unique
+    private boolean isEMFOrETFLoaded() {
+        // turns off redesigned fireballs if either of these mods are loaded
+        return Platform.isModLoaded("entity_model_features") || Platform.isModLoaded("entity_texture_features");
     }
 }
