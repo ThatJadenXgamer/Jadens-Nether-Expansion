@@ -54,9 +54,9 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
             at = @At(value = "TAIL")
     )
     private void netherexp$init(EntityRendererProvider.Context context, CallbackInfo ci) {
-//        if (noEntityTextureModelFeature()) {
-//            return;
-//        }
+        if (!noEntityTextureModelFeature()) {
+            return;
+        }
         if (isConfigEnabled) {
             this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
             this.fireballModel = new FireballModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));
@@ -68,9 +68,9 @@ public abstract class ThrownItemRendererMixin <T extends Entity & ItemSupplier> 
             at = @At(value = "TAIL")
     )
     private void netherexp$initTwo(EntityRendererProvider.Context context, float f, boolean bl, CallbackInfo ci) {
-//        if (noEntityTextureModelFeature()) {
-//            return;
-//        }
+        if (!noEntityTextureModelFeature()) {
+            return;
+        }
         if (isConfigEnabled) {
             this.largeFireballModel = new GhastFireBallModel<>(context.bakeLayer(JNEModelLayers.GHAST_FIREBALL_LAYER));
             this.fireballModel = new FireballModel<>(context.bakeLayer(JNEModelLayers.FIREBALL_LAYER));

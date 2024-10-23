@@ -287,7 +287,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SOULED_GEYSER.get());
                         output.accept(JNEBlocks.BASALTIC_GEYSER.get());
 
-//                        output.accept(JNEItems.SKULL_ON_A_STICK);
+                        output.accept(JNEItems.SKULL_ON_A_STICK.get());
                         output.accept(Items.SKELETON_SKULL);
                         output.accept(JNEBlocks.SKELETON_SKULL_CANDLE.get());
                         output.accept(JNEBlocks.SOUL_SKELETON_SKULL_CANDLE.get());
