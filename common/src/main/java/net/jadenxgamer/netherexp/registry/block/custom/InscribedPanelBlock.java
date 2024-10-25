@@ -59,10 +59,10 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
-        case EAST -> EAST_SHAPE;
-        case SOUTH -> SOUTH_SHAPE;
-        case WEST -> WEST_SHAPE;
-            default -> NORTH_SHAPE;
+            case EAST -> EAST_SHAPE;
+            case SOUTH -> SOUTH_SHAPE;
+            case WEST -> WEST_SHAPE;
+                default -> NORTH_SHAPE;
         };
     }
 
@@ -91,11 +91,9 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
         FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         if (fluidState.getType() == Fluids.WATER) {
             return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.WATER).setValue(FACING, context.getHorizontalDirection().getOpposite());
-        }
-        else if (fluidState.getType() == JNEFluids.ECTOPLASM.get()) {
+        } else if (fluidState.getType() == JNEFluids.ECTOPLASM.get()) {
             return this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.ECTOPLASM).setValue(FACING, context.getHorizontalDirection().getOpposite());
-        }
-        else return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        } else return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
@@ -113,11 +111,9 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
     public @NotNull FluidState getFluidState(BlockState state) {
         if (state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.WATER) {
             return Fluids.WATER.getSource(true);
-        }
-        else if (state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.ECTOPLASM) {
+        } else if (state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.ECTOPLASM) {
             return JNEFluids.ECTOPLASM.get().getSource(true);
-        }
-        else {
+        } else {
             return super.getFluidState(state);
         }
     }
@@ -126,8 +122,7 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
     public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         if ((state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.WATER)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-        else if ((state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.ECTOPLASM)) {
+        } else if ((state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.ECTOPLASM)) {
             level.scheduleTick(pos, JNEFluids.ECTOPLASM.get(), JNEFluids.ECTOPLASM.get().getTickDelay(level));
         }
 
