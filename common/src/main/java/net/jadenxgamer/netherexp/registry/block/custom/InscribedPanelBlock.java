@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -55,31 +56,31 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
         this.registerDefaultState(this.defaultBlockState().setValue(LIQUIDLOGGED, EctoplasmWaterlogged.AIR).setValue(INSCRIPTION, 0).setValue(SALTED, false).setValue(FACING, Direction.NORTH));
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
-            case EAST -> EAST_SHAPE;
-            case SOUTH -> SOUTH_SHAPE;
-            case WEST -> WEST_SHAPE;
+        case EAST -> EAST_SHAPE;
+        case SOUTH -> SOUTH_SHAPE;
+        case WEST -> WEST_SHAPE;
             default -> NORTH_SHAPE;
         };
     }
 
-    @SuppressWarnings("deprecation")
+
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (player.getItemInHand(hand).isEmpty() && !state.getValue(SALTED)) {
-            level.setBlock(pos, state.cycle(INSCRIPTION), UPDATE_ALL);
-            spawnParticles(level, pos, ParticleTypes.SOUL);
-            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-            return InteractionResult.SUCCESS;
-        }
-        else if (player.getItemInHand(hand).is(Items.HONEYCOMB) && !state.getValue(SALTED)) {
-            level.setBlock(pos, state.setValue(SALTED, true), UPDATE_ALL);
-            spawnParticles(level, pos, ParticleTypes.WAX_ON);
-            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-            return InteractionResult.SUCCESS;
+        if (!state.getValue(SALTED)) {
+            if (player.getItemInHand(hand).is(Items.HONEYCOMB)) {
+                level.setBlock(pos, state.setValue(SALTED, true), UPDATE_ALL);
+                spawnParticles(level, pos, ParticleTypes.WAX_ON);
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return InteractionResult.SUCCESS;
+            } else {
+                level.setBlock(pos, state.cycle(INSCRIPTION), UPDATE_ALL);
+                spawnParticles(level, pos, ParticleTypes.SOUL);
+                level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_POLISHED_BLACKSTONE_BRICKS_HIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                return InteractionResult.SUCCESS;
+            }
         }
         return InteractionResult.PASS;
     }
@@ -97,13 +98,11 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
         else return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
@@ -123,7 +122,6 @@ public class InscribedPanelBlock extends Block implements SimpleEctoplasmWaterlo
         }
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         if ((state.getValue(LIQUIDLOGGED) == EctoplasmWaterlogged.WATER)) {
