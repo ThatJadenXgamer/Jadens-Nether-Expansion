@@ -10,6 +10,7 @@ import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -149,12 +150,17 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 80.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.30)
-                .add(Attributes.ATTACK_DAMAGE, 8.0)
-                .add(Attributes.ATTACK_KNOCKBACK, 4.0)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 3.0)
-                .add(Attributes.FOLLOW_RANGE, 32.0);
+               .add(Attributes.MAX_HEALTH, 80.0)
+               .add(Attributes.MOVEMENT_SPEED, 0.30)
+               .add(Attributes.ATTACK_DAMAGE, 8.0)
+               .add(Attributes.ATTACK_KNOCKBACK, 4.0)
+               .add(Attributes.KNOCKBACK_RESISTANCE, 3.0)
+               .add(Attributes.FOLLOW_RANGE, 32.0);
+    }
+
+    @Override
+    public int getMaxFallDistance() {
+        return 6;
     }
 
     protected void dropEquipment() {
@@ -189,8 +195,7 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
             if (getChangeType() == 0) {
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 this.discard();
-            }
-            else this.doExorcism();
+            } else this.doExorcism();
         }
         if (this.isAlive()) {
             ItemStack item = this.getItemBySlot(EquipmentSlot.MAINHAND);
@@ -241,8 +246,7 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
         if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
             if (this.isVehicle()) {
                 damageLivingEntities(this.level().getEntities(this, this.getBoundingBox(), EntitySelector.NO_CREATIVE_OR_SPECTATOR));
-            }
-            else if (this.isMoving()) {
+            } else if (this.isMoving()) {
                 damageLivingEntities(this.level().getEntities(this, this.getBoundingBox(), EntitySelector.NO_CREATIVE_OR_SPECTATOR));
             }
         }
@@ -257,14 +261,12 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
             player.level().playSound(null, player.getOnPos(), SoundEvents.STRIDER_SADDLE, SoundSource.PLAYERS, 1.0f, 1.0f);
             player.setItemInHand(hand, Items.SADDLE.getDefaultInstance());
             return InteractionResult.SUCCESS;
-        }
-        else if (this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
+        } else if (this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
             if (!this.level().isClientSide) {
                 player.startRiding(this);
             }
             return InteractionResult.sidedSuccess(this.level().isClientSide);
-        }
-        else if (this.isSaddleable() && !this.isSaddled() && stack.is(Items.SADDLE)) {
+        } else if (this.isSaddleable() && !this.isSaddled() && stack.is(Items.SADDLE)) {
             this.equipSaddle(SoundSource.NEUTRAL);
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);
