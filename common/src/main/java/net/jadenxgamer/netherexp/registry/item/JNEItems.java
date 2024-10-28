@@ -10,7 +10,9 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
+import net.jadenxgamer.netherexp.registry.item.custom.CerebrageSeedItem;
 import net.jadenxgamer.netherexp.registry.item.custom.GrenadeAntidoteItem;
+import net.jadenxgamer.netherexp.registry.item.custom.JNEFoodOnAStickItem;
 import net.jadenxgamer.netherexp.registry.item.custom.LightsporesItem;
 import net.jadenxgamer.netherexp.registry.item.custom.MistChargeItem;
 import net.jadenxgamer.netherexp.registry.item.custom.MobBottleItem;
@@ -98,7 +100,7 @@ public class JNEItems {
         new Item(new Item.Properties().food(JNEFoods.PIZZA_SLICE).rarity(Rarity.RARE)));
 
     public static final RegistrySupplier<Item> WISP_BOTTLE = registerItem("wisp_bottle", () ->
-        new MobBottleItem(() -> JNEEntityType.WISP.get(), () -> SoundEvents.BOTTLE_EMPTY, new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE)));
+        new MobBottleItem<>(JNEEntityType.WISP, new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE)));
 
     public static final RegistrySupplier<Item> SANCTUM_COMPASS = registerItem("sanctum_compass", () ->
         new SanctumCompassItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));

@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.item.custom;
 
 import com.google.common.base.Supplier;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.registry.entity.custom.Bottleable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,18 +29,18 @@ import net.minecraft.world.phys.HitResult.Type;
 /**
  * MobBottleItem
  */
-public class MobBottleItem extends Item {
+public class MobBottleItem<T extends Entity> extends Item {
 
-    private Supplier<EntityType<?>> entityTypeSupplier;
+    private RegistrySupplier<EntityType<T>> entityTypeSupplier;
     private Supplier<SoundEvent> soundEventSupplier;
 
-    public MobBottleItem(Supplier<EntityType<?>> entityTypeSupplier, Properties properties) {
+    public MobBottleItem(RegistrySupplier<EntityType<T>> entityTypeSupplier, Properties properties) {
         this(entityTypeSupplier, () -> {
             return SoundEvents.BOTTLE_EMPTY;
         }, properties);
     }
 
-    public MobBottleItem(Supplier<EntityType<?>> entityTypeSupplier, Supplier<SoundEvent> soundEventSupplier, Properties properties) {
+    public MobBottleItem(RegistrySupplier<EntityType<T>> entityTypeSupplier, Supplier<SoundEvent> soundEventSupplier, Properties properties) {
         super(properties);
         this.entityTypeSupplier = entityTypeSupplier;
         this.soundEventSupplier = soundEventSupplier;
