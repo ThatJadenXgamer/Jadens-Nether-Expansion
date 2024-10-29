@@ -13,6 +13,7 @@ import net.jadenxgamer.netherexp.fabric.client.AgitatedOverlayFabric;
 import net.jadenxgamer.netherexp.mixin.block.ItemPropertiesAccessor;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.WoodBlockType;
 import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.client.*;
@@ -36,12 +37,12 @@ public class NetherExpFabricClient implements ClientModInitializer {
     public void onInitializeClient() {
         NetherExpClient.init();
         ItemPropertiesAccessor.netherexp$invokeRegisterItemProperties(
-                JNEItems.SANCTUM_COMPASS.get(),
-                new ResourceLocation("angle"),
-                new CompassItemPropertyFunction((level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack.getOrCreateTag()))
+            JNEItems.SANCTUM_COMPASS.get(),
+            new ResourceLocation("angle"),
+            new CompassItemPropertyFunction((level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack.getOrCreateTag()))
         );
         HudRenderCallback.EVENT.register(new AgitatedOverlayFabric());
-        
+
         // BLOCK OPACITY
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.NETHERITE_GRATE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.RUSTY_NETHERITE_GRATE.get(), RenderType.cutout());
@@ -58,8 +59,8 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CRIMSON_SPROUTS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WHITE_ASH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BONE_FENCE.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CLARET_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CLARET_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.DOOR).get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.TRAPDOOR).get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.NETHER_WART_BEARD.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WARPED_WART_BEARD.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.UMBRAL_WART_BEARD.get(), RenderType.cutout());
@@ -75,8 +76,8 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.IGNEOUS_REEDS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_PLANT.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_DOOR.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_SET.getBlock(WoodBlockType.DOOR).get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_SET.getBlock(WoodBlockType.TRAPDOOR).get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SKELETON_SKULL_CANDLE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_SKELETON_SKULL_CANDLE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CRIMSON_SPORESHROOM.get(), RenderType.cutout());
@@ -103,7 +104,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.TREACHEROUS_CANDLE.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CEREBRAGE_SKULL.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(),
-                JNEFluids.ECTOPLASM.get(), JNEFluids.FLOWING_ECTOPLASM.get());
+                                               JNEFluids.ECTOPLASM.get(), JNEFluids.FLOWING_ECTOPLASM.get());
 
 
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.POTTED_SOUL_SWIRLS.get(), RenderType.cutout());

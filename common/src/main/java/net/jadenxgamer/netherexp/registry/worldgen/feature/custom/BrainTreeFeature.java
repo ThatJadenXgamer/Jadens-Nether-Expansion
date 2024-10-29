@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.worldgen.feature.custom;
 
 import com.mojang.serialization.Codec;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.WoodBlockType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
@@ -29,7 +30,7 @@ public class BrainTreeFeature extends Feature<NoneFeatureConfiguration> {
                     double distance = Math.sqrt(x * x + z * z + y * y);
                     if (distance <= radius) {
                         mutablePos.set(origin.getX() + x, origin.getY() - y, origin.getZ() + z);
-                        level.setBlock(mutablePos, JNEBlocks.CEREBRAGE_CLARET_STEM.get().defaultBlockState(), 3);
+                        level.setBlock(mutablePos, JNEBlocks.CLARET_SET.getBlock(WoodBlockType.STEM).get().defaultBlockState(), 3);
                     }
                 }
             }
@@ -43,7 +44,7 @@ public class BrainTreeFeature extends Feature<NoneFeatureConfiguration> {
                     int pillarHeight = 1 + random.nextInt(4);
                     for (int h = 0; h < pillarHeight; h++) {
                         mutablePos.set(origin.getX() + x, origin.getY() + h, origin.getZ() + z);
-                        level.setBlock(mutablePos, JNEBlocks.CEREBRAGE_CLARET_STEM.get().defaultBlockState(), 3);
+                        level.setBlock(mutablePos, JNEBlocks.CLARET_SET.getBlock(WoodBlockType.STEM).get().defaultBlockState(), 3);
                     }
                 }
             }
