@@ -91,13 +91,13 @@ public interface WoodBlockType {
             Pair.of(STRIPPED_HYPHAE, BlockTemplate.of(Blocks.STRIPPED_CRIMSON_HYPHAE)));
 
     public static WoodBlockType BAMBOO_LIKE = of(name -> name, BambooStalkBlock::new);
-    public static WoodBlockType BAMBOO_LIKE_BLOCK = of(name -> name + "_block", RotatedPillarBlock::new);
-    public static WoodBlockType STRIPPED_BAMBOO_LIKE_BLOCK = of(name -> "stripped_" + name + "_block", RotatedPillarBlock::new);
+    public static WoodBlockType BAMBOO_BLOCK_LIKE = of(name -> name + "_block", RotatedPillarBlock::new);
+    public static WoodBlockType STRIPPED_BAMBOO_BLOCK_LIKE = of(name -> "stripped_" + name + "_block", RotatedPillarBlock::new);
 
     public static List<Pair<WoodBlockType, BlockTemplate>> STALKS = ImmutableList.of(
             Pair.of(BAMBOO_LIKE, BlockTemplate.of(Blocks.BAMBOO)),
-            Pair.of(BAMBOO_LIKE_BLOCK, BlockTemplate.of(Blocks.BAMBOO_BLOCK)),
-            Pair.of(STRIPPED_BAMBOO_LIKE_BLOCK, BlockTemplate.of(Blocks.STRIPPED_BAMBOO_BLOCK))
+            Pair.of(BAMBOO_BLOCK_LIKE, BlockTemplate.of(Blocks.BAMBOO_BLOCK)),
+            Pair.of(STRIPPED_BAMBOO_BLOCK_LIKE, BlockTemplate.of(Blocks.STRIPPED_BAMBOO_BLOCK))
         );
 
     public static <T extends Block> WoodBlockType withWoodType(Function<String, String> getName, BiFunction<BlockBehaviour.Properties, WoodType, T> constructor) {

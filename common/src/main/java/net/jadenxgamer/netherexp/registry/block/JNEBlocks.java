@@ -415,14 +415,14 @@ public class JNEBlocks {
         .addTypes(List.of(
                       Pair.of(STALK_TYPE, BlockTemplate.EMPTY),
                       Pair.of(STALK_PLANT_TYPE, BlockTemplate.EMPTY),
-                      Pair.of(WoodBlockType.BAMBOO_LIKE_BLOCK, BlockTemplate.of(Blocks.WARPED_STEM)),
-                      Pair.of(WoodBlockType.STRIPPED_BAMBOO_LIKE_BLOCK, BlockTemplate.of(Blocks.STRIPPED_WARPED_STEM))
+                      Pair.of(WoodBlockType.BAMBOO_BLOCK_LIKE, BlockTemplate.of(Blocks.WARPED_STEM)),
+                      Pair.of(WoodBlockType.STRIPPED_BAMBOO_BLOCK_LIKE, BlockTemplate.of(Blocks.STRIPPED_WARPED_STEM))
                   ))
         .noItem(STALK_PLANT_TYPE)
         .withPropertiesModifier(properties -> properties.mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD))
         .withPropertiesModifier(STALK_TYPE, properties -> properties.mapColor(MapColor.TERRACOTTA_BLUE).strength(0.5f).sound(JNESoundType.SMOKESTALK))
         .withPropertiesModifier(STALK_PLANT_TYPE, properties -> properties.mapColor(MapColor.TERRACOTTA_BLUE).strength(0.5f).sound(JNESoundType.SMOKESTALK))
-        .withPropertiesModifier(WoodBlockType.BAMBOO_LIKE_BLOCK, properties -> properties.mapColor(MapColor.TERRACOTTA_CYAN))
+        .withPropertiesModifier(WoodBlockType.BAMBOO_BLOCK_LIKE, properties -> properties.mapColor(MapColor.TERRACOTTA_CYAN))
         .build();
 
     // Quartz Blocks
