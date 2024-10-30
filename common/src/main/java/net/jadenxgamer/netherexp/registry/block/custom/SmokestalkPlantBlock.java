@@ -18,6 +18,6 @@ public class SmokestalkPlantBlock extends GrowingPlantBodyBlock {
 
     @Override
     protected @NotNull GrowingPlantHeadBlock getHeadBlock() {
-        return (GrowingPlantHeadBlock) JNEBlocks.SMOKESTALK.get();
+        return (GrowingPlantHeadBlock) JNEBlocks.SMOKESTALK_SET.getBlock(JNEBlocks.STALK_TYPE).get();
     }
 }

@@ -1,7 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -12,7 +11,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import com.ibm.icu.impl.Pair;
+import com.mojang.datafixers.util.Pair;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
@@ -58,25 +57,10 @@ public class WoodSet {
     }
 
     public static Builder overworldBuilder(String name, WoodType woodType) {
-        return Builder.forWood(name, woodType).addTypes(List.of(
-                    Pair.of(WoodBlockType.LOG, Blocks.OAK_LOG),
-                    Pair.of(WoodBlockType.WOOD, Blocks.OAK_WOOD),
-                    Pair.of(WoodBlockType.STRIPPED_LOG, Blocks.STRIPPED_OAK_LOG),
-                    Pair.of(WoodBlockType.STRIPPED_WOOD, Blocks.STRIPPED_OAK_WOOD),
-                    Pair.of(WoodBlockType.PLANKS, Blocks.OAK_PLANKS),
-                    Pair.of(WoodBlockType.SLAB, Blocks.OAK_SLAB),
-                    Pair.of(WoodBlockType.STAIRS, Blocks.OAK_STAIRS),
-                    Pair.of(WoodBlockType.FENCE, Blocks.OAK_FENCE),
-                    Pair.of(WoodBlockType.FENCE_GATE, Blocks.OAK_FENCE_GATE),
-                    Pair.of(WoodBlockType.DOOR, Blocks.OAK_DOOR),
-                    Pair.of(WoodBlockType.TRAPDOOR, Blocks.OAK_TRAPDOOR),
-                    Pair.of(WoodBlockType.BUTTON, Blocks.OAK_BUTTON),
-                    Pair.of(WoodBlockType.PRESSURE_PLATE, Blocks.OAK_PRESSURE_PLATE),
-                    Pair.of(WoodBlockType.SIGN, Blocks.OAK_SIGN),
-                    Pair.of(WoodBlockType.WALL_SIGN, Blocks.OAK_WALL_SIGN),
-                    Pair.of(WoodBlockType.HANGING_SIGN, Blocks.OAK_HANGING_SIGN),
-                    Pair.of(WoodBlockType.WALL_HANGING_SIGN, Blocks.OAK_WALL_HANGING_SIGN)
-                )).noItem(
+        return Builder.forWood(name, woodType)
+               .addTypes(WoodBlockType.DEFAULT)
+               .addTypes(WoodBlockType.LOGS)
+               .noItem(
                    WoodBlockType.SIGN,
                    WoodBlockType.WALL_SIGN,
                    WoodBlockType.HANGING_SIGN,
@@ -85,25 +69,10 @@ public class WoodSet {
     }
 
     public static Builder netherBuilder(String name, WoodType woodType) {
-        return Builder.forWood(name, woodType).addTypes(List.of(
-                    Pair.of(WoodBlockType.STEM, Blocks.CRIMSON_STEM),
-                    Pair.of(WoodBlockType.HYPHAE, Blocks.CRIMSON_HYPHAE),
-                    Pair.of(WoodBlockType.STRIPPED_STEM, Blocks.STRIPPED_CRIMSON_STEM),
-                    Pair.of(WoodBlockType.STRIPPED_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE),
-                    Pair.of(WoodBlockType.PLANKS, Blocks.CRIMSON_PLANKS),
-                    Pair.of(WoodBlockType.SLAB, Blocks.CRIMSON_SLAB),
-                    Pair.of(WoodBlockType.STAIRS, Blocks.CRIMSON_STAIRS),
-                    Pair.of(WoodBlockType.FENCE, Blocks.CRIMSON_FENCE),
-                    Pair.of(WoodBlockType.FENCE_GATE, Blocks.CRIMSON_FENCE_GATE),
-                    Pair.of(WoodBlockType.DOOR, Blocks.CRIMSON_DOOR),
-                    Pair.of(WoodBlockType.TRAPDOOR, Blocks.CRIMSON_TRAPDOOR),
-                    Pair.of(WoodBlockType.BUTTON, Blocks.CRIMSON_BUTTON),
-                    Pair.of(WoodBlockType.PRESSURE_PLATE, Blocks.CRIMSON_PRESSURE_PLATE),
-                    Pair.of(WoodBlockType.SIGN, Blocks.CRIMSON_SIGN),
-                    Pair.of(WoodBlockType.WALL_SIGN, Blocks.CRIMSON_WALL_SIGN),
-                    Pair.of(WoodBlockType.HANGING_SIGN, Blocks.CRIMSON_HANGING_SIGN),
-                    Pair.of(WoodBlockType.WALL_HANGING_SIGN, Blocks.CRIMSON_WALL_HANGING_SIGN)
-                )).noItem(
+        return Builder.forWood(name, woodType)
+               .addTypes(WoodBlockType.DEFAULT)
+               .addTypes(WoodBlockType.STEMS)
+               .noItem(
                    WoodBlockType.SIGN,
                    WoodBlockType.WALL_SIGN,
                    WoodBlockType.HANGING_SIGN,
@@ -116,7 +85,7 @@ public class WoodSet {
         private String name;
 
         private final List<WoodBlockType> types = new ArrayList<>();
-        private final Map<WoodBlockType, Block> templates = new HashMap<>();
+        private final Map<WoodBlockType, BlockTemplate> templates = new HashMap<>();
         private final Map<WoodBlockType, Function<String, String>> nameModifiers = new HashMap<>();
         private final Map<WoodBlockType, Consumer<BlockBehaviour.Properties>> propertiesModifiers = new HashMap<>();
         private final Set<WoodBlockType> noItem = new HashSet<>();
@@ -134,10 +103,10 @@ public class WoodSet {
             return new Builder(name, type);
         }
 
-        public Builder addTypes(List<Pair<WoodBlockType, Block>> types) {
+        public Builder addTypes(List<Pair<WoodBlockType, BlockTemplate>> types) {
             types.forEach(type -> {
-                this.types.add(type.first);
-                this.templates.put(type.first, type.second);
+                this.types.add(type.getFirst());
+                this.templates.put(type.getFirst(), type.getSecond());
             });
             return this;
         }
@@ -181,7 +150,7 @@ public class WoodSet {
             types.forEach(type -> {
                 String id = nameModifiers.getOrDefault(type, s -> s).apply(type.getName(name));
                 RegistrySupplier<Block> block = JNEBlocks.BLOCKS.register(id, () -> {
-                    BlockBehaviour.Properties properties = BlockBehaviour.Properties.copy(templates.get(type));
+                    BlockBehaviour.Properties properties = templates.get(type).getProperties();
                     propertiesModifier.accept(properties);
                     propertiesModifiers.getOrDefault(type, t -> {}).accept(properties);
                     return type.make(properties, woodType, woodSet.getBlockSafe(WoodBlockType.PLANKS));

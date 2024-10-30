@@ -1,13 +1,74 @@
 package net.jadenxgamer.netherexp.registry.block;
 
+import java.util.List;
+import java.util.Properties;
+import java.util.function.Supplier;
+
+import com.mojang.datafixers.util.Pair;
+
 import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.custom.*;
+import net.jadenxgamer.netherexp.registry.block.custom.BeardBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.BlackIceBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.BoneBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.BoneFenceBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.BoneRodBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.BrazierChestBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.CarvedSorrowsquashBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.CerebrageBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.DecayableShroomBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.DecayableWartBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.EctoSoulSandBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.EnigmaCrownBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.FossilOreBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.FrogmistBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.GargoyleStatueBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.GeyserBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.IgneousReeds;
+import net.jadenxgamer.netherexp.registry.block.custom.InscribedPanelBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.IvyBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.JNEBrushableBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.JNEDirectionalBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.JNEHorizontalDirectionalBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.JNEOreBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.JNEStairBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.LightAbleBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.LiquidloggedGrateBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.MagmaCreamBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.NetherFlowerBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.NetherPizzaBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.NyliumPathBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.PolishedBasaltBrickBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.ScaleFungusBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SculkGrinderBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.ShotgunBarrelBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SkullCandleBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SmokestalkBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SmokestalkPlantBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SorrowsquashBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SoulCandleBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SoulGlassBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SoulMagmaBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SoulPathBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SoulSoilLayerBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SoulTorchflowerBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SporeshroomBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.StrangeEnigmaFleshBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.SwirlsBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.TreacherousCandleBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.VineStemBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.VineStemPlantBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.WarpedWartBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.WhiteAshBlock;
+import net.jadenxgamer.netherexp.registry.block.custom.WraithingLesionBlock;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.GargoyleStatueItem;
-import net.jadenxgamer.netherexp.registry.misc_registry.*;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundType;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEWoodType;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -17,14 +78,24 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.AmethystClusterBlock;
+import net.minecraft.world.level.block.BaseCoralWallFanBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CarvedPumpkinBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.NetherSproutsBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SandBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.StemGrownBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-
-import java.util.function.Supplier;
 
 @SuppressWarnings({"unused", "deprecation"})
 public class JNEBlocks {
@@ -334,69 +405,25 @@ public class JNEBlocks {
     public static final RegistrySupplier<Block> IGNEOUS_REEDS = registerBlock("igneous_reeds", () ->
         new IgneousReeds(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLUE).noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ).sound(JNESoundType.SMOKESTALK)));
 
-    public static final RegistrySupplier<Block> SMOKESTALK = registerBlock("smokestalk", () ->
-        new SmokestalkBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLUE).randomTicks().strength(0.5f).sound(JNESoundType.SMOKESTALK)));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_PLANT = registerBlockWithoutItem("smokestalk_plant", () ->
-        new SmokestalkPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLUE).strength(0.5f).sound(JNESoundType.SMOKESTALK)));
-
     // Smokestalk
 
+    public static final WoodBlockType STALK_TYPE = WoodBlockType.of(name -> name, SmokestalkBlock::new);
+    public static final WoodBlockType STALK_PLANT_TYPE = WoodBlockType.of(name -> name + "_plant", SmokestalkPlantBlock::new);
+
     public static final WoodSet SMOKESTALK_SET = WoodSet.netherBuilder("smokestalk", JNEWoodType.SMOKESTALK)
-        .removeTypes(WoodBlockType.HYPHAE, WoodBlockType.STRIPPED_HYPHAE)
-        .withNameModifier(WoodBlockType.STEM, name -> "smokestalk_block")
-        .withNameModifier(WoodBlockType.STRIPPED_STEM, name -> "stripped_smokestalk_block")
+        .removeTypes(WoodBlockType.HYPHAE, WoodBlockType.STRIPPED_HYPHAE, WoodBlockType.STEM, WoodBlockType.STRIPPED_STEM)
+        .addTypes(List.of(
+                      Pair.of(STALK_TYPE, BlockTemplate.EMPTY),
+                      Pair.of(STALK_PLANT_TYPE, BlockTemplate.EMPTY),
+                      Pair.of(WoodBlockType.BAMBOO_LIKE_BLOCK, BlockTemplate.of(Blocks.WARPED_STEM)),
+                      Pair.of(WoodBlockType.STRIPPED_BAMBOO_LIKE_BLOCK, BlockTemplate.of(Blocks.STRIPPED_WARPED_STEM))
+                  ))
+        .noItem(STALK_PLANT_TYPE)
         .withPropertiesModifier(properties -> properties.mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD))
-        .withPropertiesModifier(WoodBlockType.STEM, properties -> properties.mapColor(MapColor.TERRACOTTA_CYAN))
+        .withPropertiesModifier(STALK_TYPE, properties -> properties.mapColor(MapColor.TERRACOTTA_BLUE).strength(0.5f).sound(JNESoundType.SMOKESTALK))
+        .withPropertiesModifier(STALK_PLANT_TYPE, properties -> properties.mapColor(MapColor.TERRACOTTA_BLUE).strength(0.5f).sound(JNESoundType.SMOKESTALK))
+        .withPropertiesModifier(WoodBlockType.BAMBOO_LIKE_BLOCK, properties -> properties.mapColor(MapColor.TERRACOTTA_CYAN))
         .build();
-
-    /*
-    public static final RegistrySupplier<Block> SMOKESTALK_BLOCK = registerBlock("smokestalk_block", () ->
-        new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_STEM).mapColor(MapColor.TERRACOTTA_CYAN).sound(JNESoundType.SMOKESTALK_WOOD)));
-
-    public static final RegistrySupplier<Block> STRIPPED_SMOKESTALK_BLOCK = registerBlock("stripped_smokestalk_block", () ->
-        new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_WARPED_STEM).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD)));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_PLANKS = registerBlock("smokestalk_planks", () ->
-        new Block(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD)));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_SLAB = registerBlock("smokestalk_slab", () ->
-        new SlabBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_SLAB).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD)));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_STAIRS = registerBlock("smokestalk_stairs", () ->
-        new StairBlock(JNEBlocks.SMOKESTALK_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.WARPED_STAIRS).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD)));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_FENCE = registerBlock("smokestalk_fence", () ->
-        new FenceBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FENCE).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD)));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_FENCE_GATE = registerBlock("smokestalk_fence_gate", () ->
-        new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_FENCE_GATE).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_DOOR = registerBlock("smokestalk_door", () ->
-        new DoorBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_DOOR).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD), JNEBlockSetType.SMOKESTALK));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_TRAPDOOR = registerBlock("smokestalk_trapdoor", () ->
-        new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_TRAPDOOR).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD), JNEBlockSetType.SMOKESTALK));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_BUTTON = registerBlock("smokestalk_button", () ->
-        new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_BUTTON).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD), JNEBlockSetType.SMOKESTALK, 30, true));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_PRESSURE_PLATE = registerBlock("smokestalk_pressure_plate", () ->
-        new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.WARPED_PRESSURE_PLATE).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD), JNEBlockSetType.SMOKESTALK));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_SIGN = registerBlockWithoutItem("smokestalk_sign", () ->
-        new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_SIGN).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_WALL_SIGN = registerBlockWithoutItem("smokestalk_wall_sign", () ->
-        new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.TERRACOTTA_GRAY).dropsLike(JNEBlocks.SMOKESTALK_SIGN.get()).sound(JNESoundType.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_HANGING_SIGN = registerBlockWithoutItem("smokestalk_hanging_sign", () ->
-        new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_GRAY).sound(JNESoundType.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
-
-    public static final RegistrySupplier<Block> SMOKESTALK_WALL_HANGING_SIGN = registerBlockWithoutItem("smokestalk_wall_hanging_sign", () ->
-        new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_WALL_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_GRAY).dropsLike(JNEBlocks.SMOKESTALK_HANGING_SIGN.get()).sound(JNESoundType.SMOKESTALK_WOOD), JNEWoodType.SMOKESTALK));
-
-    */
 
     // Quartz Blocks
 
@@ -672,7 +699,7 @@ public class JNEBlocks {
         new FlowerPotBlock(ENIGMA_CROWN.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     public static final RegistrySupplier<Block> POTTED_SMOKESTALK = registerBlockWithoutItem("potted_smokestalk", () ->
-        new FlowerPotBlock(SMOKESTALK.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+        new FlowerPotBlock(SMOKESTALK_SET.getBlock(STALK_TYPE).get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     public static final RegistrySupplier<Block> POTTED_RED_SCALE_FUNGUS = registerBlockWithoutItem("potted_red_scale_fungus", () ->
         new FlowerPotBlock(RED_SCALE_FUNGUS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));

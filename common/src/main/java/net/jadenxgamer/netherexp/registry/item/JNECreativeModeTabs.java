@@ -163,21 +163,9 @@ public class JNECreativeModeTabs {
         output.accept(JNEItems.CEREBRAGE.get());
 
         JNEBlocks.CLARET_SET.getItemSuppliers().forEach(supplier -> output.accept(supplier.get()));
-        /*
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.STEM).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.HYPHAE).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.STRIPPED_STEM).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.STRIPPED_HYPHAE).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.PLANKS).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.STAIRS).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.SLAB).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.FENCE).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.FENCE_GATE).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.DOOR).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.TRAPDOOR).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.PRESSURE_PLATE).get());
-        output.accept(JNEBlocks.CLARET_SET.getBlock(WoodBlockType.BUTTON).get());
-            */
+
+        /* For Testing */ JNEBlocks.SMOKESTALK_SET.getItemSuppliers().forEach(supplier -> output.accept(supplier.get()));
+
         output.accept(JNEItems.CLARET_SIGN.get());
         output.accept(JNEItems.CLARET_HANGING_SIGN.get());
 

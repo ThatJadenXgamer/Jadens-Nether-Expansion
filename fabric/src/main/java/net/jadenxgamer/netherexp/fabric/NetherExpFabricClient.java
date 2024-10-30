@@ -74,8 +74,8 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BLUE_SCALE_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.VIOLET_SCALE_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.IGNEOUS_REEDS.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_PLANT.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_SET.getBlock(JNEBlocks.STALK_TYPE).get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_SET.getBlock(JNEBlocks.STALK_PLANT_TYPE).get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_SET.getBlock(WoodBlockType.DOOR).get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SMOKESTALK_SET.getBlock(WoodBlockType.TRAPDOOR).get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SKELETON_SKULL_CANDLE.get(), RenderType.cutout());

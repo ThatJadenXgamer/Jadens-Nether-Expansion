@@ -100,7 +100,7 @@ public class SmokestalkBlock extends GrowingPlantHeadBlock {
 
     @Override
     protected @NotNull Block getBodyBlock() {
-        return JNEBlocks.SMOKESTALK_PLANT.get();
+        return JNEBlocks.SMOKESTALK_SET.getBlock(JNEBlocks.STALK_PLANT_TYPE).get();
     }
 
     @Override
