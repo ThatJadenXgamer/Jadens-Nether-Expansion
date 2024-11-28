@@ -180,7 +180,7 @@
   "block.netherexp.suspicious_soul_sand": "Suspicious Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
 
-  "fluid.netherexp.ectoplasm": "Ectoplasm",
+  "fluid_type.netherexp.ectoplasm": "Ectoplasm",
   "block.netherexp.ectoplasm": "Ectoplasm",
   "item.netherexp.ectoplasm_bucket": "Ectoplasm Bucket",
   "block.netherexp.black_ice": "Black Ice",

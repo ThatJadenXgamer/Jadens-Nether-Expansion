@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "net.jadenxgamer.netherexp.mixin",
-  "refmap": "untitled_ben10.refmap.json",
+  "refmap": "mixins.netherexp.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "plugin": "net.jadenxgamer.netherexp.mixin.JNEMixinPluginForge",

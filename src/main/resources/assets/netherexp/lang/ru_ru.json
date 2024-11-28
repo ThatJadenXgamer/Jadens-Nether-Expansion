@@ -178,7 +178,7 @@
   "block.netherexp.suspicious_soul_sand": "Подозрительный песок душ",
   "block.netherexp.soul_magma_block": "Магма душ",
 
-  "fluid.netherexp.ectoplasm": "Эктоплазма",
+  "fluid_type.netherexp.ectoplasm": "Эктоплазма",
   "block.netherexp.ectoplasm": "Эктоплазма",
   "item.netherexp.ectoplasm_bucket": "Ведро эктоплазмы",
   "block.netherexp.black_ice": "Чёрный лёд",
