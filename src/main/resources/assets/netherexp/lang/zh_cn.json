@@ -551,5 +551,17 @@
   "subtitles.entity.stampede.attack": "重踏兽：践踏",
   "subtitles.entity.stampede.eat": "重踏兽：咀嚼",
   "subtitles.entity.stampede.agitated": "重踏兽：焦躁",
+  "block.netherexp.black_icicle": "黑冰冰锥",
+  "block.netherexp.thin_black_ice": "黑冰薄冰",
+  "block.netherexp.soul_permafrost": "灵魂冻土",
+  "advancements.nether.fright_before_xmas.title": "圣诞前夕的恐惧",
+  "advancements.nether.fright_before_xmas.description": "探索所有灵魂沙峡谷子群系",
+  "advancements.nether.witwicky.title": "我没事，伙计们",
+  "advancements.nether.witwicky.description": "从高处穿过黑冰薄冰坠落并存活",
+  "advancements.nether.black_ice_black_everything_black.title": "黑冰中归来",
+  "advancements.nether.black_ice_black_everything_black.description": "使用弩射出一根黑冰冰锥",
+  "subtitles.block.thin_black_ice.cracking": "黑冰薄冰：碎裂",
+  "subtitles.entity.vessel.warn": "容器：装填",
+  "subtitles.entity.vessel.fire": "容器：开火",
   "itemGroup.netherexp.netherexp_tab": "Jaden的下界扩展"
 }
