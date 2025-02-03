@@ -1,8 +1,9 @@
 {
   "biome.netherexp.exhaust_mire": "Истощающее болото",
-  "biome.netherexp.quartz_chasm": "Кварщевая расщелина",
+  "biome.netherexp.quartz_chasm": "Кварцевая расщелина",
   "biome.netherexp.plume_bowels": "Шлейфовые недра",
   "biome.netherexp.grieving_grove": "Скорбный сад",
+
   "item.netherexp.warphopper_fur": "Мех искажённого прыгуна",
   "item.netherexp.hogham": "Сырая хоглинина",
   "item.netherexp.cooked_hogham": "Жареная хоглинина",
@@ -23,7 +24,7 @@
   "trim_pattern.netherexp.spirit": "Отделка «Дух»",
   "item.netherexp.valor_armor_trim_smithing_template": "Кузнечный шаблон",
   "trim_pattern.netherexp.valor": "Отделка «Отвага»",
-  "item.netherexp.pump_charge_upgrade_smithing_template": "Кузнечный шаблон",
+  "item.netherexp.pump_charge_upgrade_smithing_template": "Кузнечный шаблон" ,
   "upgrade.netherexp.pump_charge_upgrade": "Насосное улучшение",
   "item.netherexp.smithing_template.pump_charge_upgrade.additions_slot_description": "Поместите предательское пламя",
   "item.netherexp.smithing_template.pump_charge_upgrade.applies_to": "Ручному дробовику",
@@ -51,8 +52,10 @@
   "item.netherexp.music_disc_cricket.desc": "LudoCrypt - cricket",
   "item.netherexp.music_disc_buckshot_wonderland": "Пластинка",
   "item.netherexp.music_disc_buckshot_wonderland.desc": "Shroomaniac - Buckshot Wonderland",
+
   "item.netherexp.antidote.inactive_tooltip": "Для активации необходимо проварить с:",
-  "item.netherexp.non_consumable.tooltip": "Незеритовый артифакт",
+  "item.netherexp.netherite_artifact.tooltip": "Незеритовый артифакт",
+
   "item.netherexp.antidote": "Антидот",
   "item.netherexp.antidote.effect.": "Несоздаваемый антидот",
   "item.netherexp.antidote.effect.awkward": "Мутный антидот",
@@ -76,7 +79,7 @@
   "item.netherexp.antidote.effect.decay": "Антидот от иссушения",
   "item.netherexp.antidote.effect.luck": "Антидот от везения",
   "item.netherexp.antidote.effect.unluck": "Антидот от невезения",
-  "item.netherexp.antidote.effect.brain_damage": "Антидот от повреждения мозга",
+
   "item.netherexp.grenade_antidote": "Взрывной антидот",
   "item.netherexp.grenade_antidote.effect.": "Несоздаваемый взрывной антидот",
   "item.netherexp.grenade_antidote.effect.awkward": "Мутный взрывной антидот",
@@ -100,21 +103,24 @@
   "item.netherexp.grenade_antidote.effect.decay": "Взрывной антидот от иссушения",
   "item.netherexp.grenade_antidote.effect.luck": "Взрывной антидот от везения",
   "item.netherexp.grenade_antidote.effect.unluck": "Взрывной антидот от невезения",
-  "item.netherexp.grenade_antidote.effect.brain_damage": "Взрывной антидот от повреждения мозга",
+
   "shotgun_fist.ammo": "Боезапас:",
   "shotgun_fist.heat": "Температура:",
   "sanctum_compass.to_activate": "Для актитвации необходима:",
   "sanctum_compass.tracking": "Привязан к святилищу",
+
   "item.netherexp.glowcheese": "Сыросвет",
   "block.netherexp.nether_pizza": "Незерская пицца",
   "item.netherexp.nether_pizza": "Незерская пицца",
   "item.netherexp.nether_pizza_slice": "Кусочек незерской пиццы",
+
   "enchantment.netherexp.phantasm_hull": "Духовность",
   "enchantment.netherexp.bloodshed": "Кровопролитие",
   "enchantment.netherexp.cartridge": "Патронник",
   "enchantment.netherexp.recoil": "Отдача",
   "enchantment.netherexp.barrage": "Залп",
   "enchantment.netherexp.artemis": "Размах",
+
   "block.netherexp.soul_slate": "Сланец душ",
   "block.netherexp.pale_soul_slate": "Бледный сланец душ",
   "block.netherexp.soul_slate_slab": "Сланцевая плита душ",
@@ -128,18 +134,22 @@
   "block.netherexp.cracked_soul_slate_bricks": "Потрескавшиеся сланцевые кирпичи душ",
   "block.netherexp.soul_slate_brick_pillar": "Колонна из сланцевого кирпича душ",
   "block.netherexp.chiseled_soul_slate_bricks": "Резные сланцевые кирпичи душ",
+
   "block.netherexp.soul_slate_tiles": "Сланцевый плитняк душ",
   "block.netherexp.soul_slate_tile_stairs": "Ступеньки из сланцевого плитняка душ",
   "block.netherexp.soul_slate_tile_slab": "Плита из сланцевого плитняка душ",
   "block.netherexp.soul_slate_tile_wall": "Ограда из сланцевого плитняка душ",
   "block.netherexp.etched_soul_slate_tiles": "Гравированный сланцевый плитняк душ",
   "block.netherexp.chiseled_soul_slate_tiles": "Резной сланцевый плитняк душ",
+
   "block.netherexp.brazier_chest": "Сундук-жаровня",
   "block.netherexp.brazier_chest.locked": "Сундук-жаровня заперт, чтобы открыть необходимо предательское пламя",
   "block.netherexp.treacherous_candle": "Предательская свеча",
   "treacherous_candle.health": "Предательская свеча",
   "block.netherexp.sculk_grinder": "Скалковый дробитель",
+
   "block.netherexp.inscribed_panel": "Гравированная плитка",
+
   "block.netherexp.gargoyle_statue": "Статуя горгульи",
   "block.netherexp.ossified_gargoyle_statue": "Окостенение",
   "block.netherexp.trample_gargoyle_statue": "Топот",
@@ -151,24 +161,31 @@
   "block.netherexp.occult_gargoyle_statue": "Оккультность",
   "block.netherexp.sealed_gargoyle_statue": "Запечатанность",
   "block.netherexp.obfuscated_gargoyle_statue": "Затмение",
+
   "block.netherexp.soul_candle": "Свеча душ",
+
   "block.netherexp.fossil_ore": "Ископаемая руда",
   "block.netherexp.fossil_fuel_ore": "Ископаемая топливная руда",
+
   "block.netherexp.soul_glass": "Стекло душ",
   "block.netherexp.ochre_frogmist": "Охристая жабопыль",
   "block.netherexp.verdant_frogmist": "Малахитовая жабопыль",
   "block.netherexp.pearlescent_frogmist": "Перламутровая жабопыль",
   "block.netherexp.carmine_frogmist": "Карминовая жабопыль",
+
   "block.netherexp.soul_swirls": "Спирали душ",
   "block.netherexp.ecto_soul_sand": "Эктоплазменный песок душ",
   "block.netherexp.suspicious_soul_sand": "Подозрительный песок душ",
   "block.netherexp.soul_magma_block": "Магма душ",
-  "fluid_type.netherexp.ectoplasm": "Эктоплазма",
+
+  "fluid.netherexp.ectoplasm": "Эктоплазма",
   "block.netherexp.ectoplasm": "Эктоплазма",
   "item.netherexp.ectoplasm_bucket": "Ведро эктоплазмы",
   "block.netherexp.black_ice": "Чёрный лёд",
+
   "block.netherexp.soul_torchflower": "Факельник душ",
   "block.netherexp.soul_torchflower_crop": "Семена факельника душ",
+
   "block.netherexp.sorroweed": "Скорбняк",
   "block.netherexp.sorrowsquash": "Скорбачок",
   "block.netherexp.carved_sorrowsquash": "Вырезанный скорбачок",
@@ -177,7 +194,9 @@
   "block.netherexp.soul_jack_o_lantern": "Светильник Джека душ",
   "block.netherexp.sorrowsquash_stem": "Стебель скорбачка",
   "block.netherexp.sorrowsquash_stem_plant": "Стебель скорбачка",
+
   "block.netherexp.shotgun_barrel": "Барабан дробовика",
+
   "block.netherexp.smooth_netherrack": "Гладкий незерак",
   "block.netherexp.smooth_netherrack_slab": "Плита из гладкого незерака",
   "block.netherexp.smooth_netherrack_stairs": "Ступеньки из гладкого незерака",
@@ -188,6 +207,7 @@
   "block.netherexp.netherrack_brick_wall": "Ограда из незеракового кирпича",
   "block.netherexp.netherrack_tiles": "Незераковый плитняк",
   "block.netherexp.netherrack_pillar": "Незераковая колонна",
+
   "block.netherexp.basalt_slab": "Базальтовая плита",
   "block.netherexp.basalt_stairs": "Базальтовые ступеньки",
   "block.netherexp.basalt_wall": "Базальтовая ограда",
@@ -198,6 +218,7 @@
   "block.netherexp.polished_basalt_brick_slab": "Плита из полированно-базальтового кирпича",
   "block.netherexp.polished_basalt_brick_stairs": "Ступеньки из полированно-базальтового кирпича",
   "block.netherexp.polished_basalt_brick_wall": "Ограда из полированно-базальтового кирпича",
+
   "block.netherexp.netherite_plated_block": "Блок незеритовой обшивки",
   "block.netherexp.netherite_grate": "Незеритовая решётка",
   "block.netherexp.cut_netherite_block": "Резной незеритовый блок",
@@ -205,19 +226,23 @@
   "block.netherexp.cut_netherite_stairs": "Резные незеритовые ступеньки",
   "block.netherexp.cut_netherite_pillar": "Резная незеритовая колонна",
   "block.netherexp.netherite_bars": "Незеритовые прутья",
+
   "block.netherexp.rusty_netherite_plated_block": "Ржавый блок незеритовой обшивки",
   "block.netherexp.rusty_netherite_grate": "Ржавая незеритовая решётка",
   "block.netherexp.rusty_cut_netherite_block": "Ржавый резной незеритовый блок",
   "block.netherexp.rusty_cut_netherite_slab": "Ржавая резная незеритовая плита",
   "block.netherexp.rusty_cut_netherite_stairs": "Ржавые резные незеритовые ступеньки",
   "block.netherexp.rusty_cut_netherite_pillar": "Ржавая резная незеритовая колонна",
-  "block.netherexp.rusty_netherite_bars": "Ржавые резеритовые прутья",
+  "block.netherexp.rusty_netherite_bars": "Ржавые незеритовые прутья",
+
   "item.netherexp.warped_wart": "Искажённый нарост",
   "block.netherexp.warped_wart": "Искажённый нарост",
+
   "block.netherexp.enigma_flesh": "Загадочная плоть",
   "block.netherexp.strange_enigma_flesh": "Странная загадочная плоть",
   "block.netherexp.enigma_crown": "Загадочная крона",
   "block.netherexp.enigma_shelf": "Загадочный шельф",
+
   "block.netherexp.stripped_claret_stem": "Очищенный бордовый стебель",
   "block.netherexp.stripped_claret_hyphae": "Очищенные бордовые гифы",
   "block.netherexp.claret_planks": "Бордовые доски",
@@ -235,11 +260,14 @@
   "item.netherexp.claret_hanging_sign": "Бордовая подвесная табличка",
   "block.netherexp.claret_hanging_sign": "Бордовая подвесная табличка",
   "block.netherexp.claret_wall_hanging_sign": "Бордовая настенная подвесная табличка",
+
   "block.netherexp.magma_cream_block": "Густая магма",
+
   "block.netherexp.explosive_scoria": "Взрывоопасный шлак",
   "block.netherexp.igneous_reeds": "Пламенный тростник",
   "block.netherexp.smokestalk": "Дымоножка",
   "block.netherexp.smokestalk_plant": "Стебель дымоножки",
+
   "block.netherexp.smokestalk_block": "Блок дымоножки",
   "block.netherexp.stripped_smokestalk_block": "Очищенный блок дымоножки",
   "block.netherexp.smokestalk_planks": "Дымные доски",
@@ -257,21 +285,26 @@
   "item.netherexp.smokestalk_hanging_sign": "Дымная подвесная табличка",
   "block.netherexp.smokestalk_hanging_sign": "Дымная подвесная табличка",
   "block.netherexp.smokestalk_wall_hanging_sign": "Дымная настенная подвесная табличка",
+
   "block.netherexp.quartz_crystal_block": "Блок кварцевых кристаллов",
   "block.netherexp.quartz_crystal": "Кварцевый кристалл",
   "block.netherexp.cracked_quartz_bricks": "Потрескавшиеся кварцевые кирпичи",
   "block.netherexp.chiseled_quartz_pillar": "Резные кварцевые кирпичи",
+
   "block.netherexp.silica_sand": "Кварцевый песок",
   "block.netherexp.silica_sandstone": "Кварцевый песчаник",
   "block.netherexp.silica_sandstone_slab": "Плита из кварцевого песчаника",
   "block.netherexp.silica_sandstone_stairs": "Ступеньки из кварцевого песчаника",
   "block.netherexp.silica_sandstone_wall": "Ограда из кварцевого песчаника",
+
   "block.netherexp.cut_silica_sandstone": "Пиленый кварцевый песчаник",
   "block.netherexp.cut_silica_sandstone_slab": "Плита из пиленого кварцевого песчаника",
   "block.netherexp.chiseled_silica_sandstone": "Резной кварцевый песчаник",
+
   "block.netherexp.smooth_silica_sandstone": "Гладкий кварцевый песчаник",
   "block.netherexp.smooth_silica_sandstone_slab": "Плита из гладкого кварцевого песчаника",
   "block.netherexp.smooth_silica_sandstone_stairs": "Ступеньки из гладкого кварцевого песчаника",
+
   "block.netherexp.nether_brick_pillar": "Колонна из незерского кирпича",
   "block.netherexp.red_mixed_nether_bricks": "Красные смешанные незерские кирпичи",
   "block.netherexp.blue_mixed_nether_bricks": "Синие смешанные незерские кирпичи",
@@ -279,24 +312,33 @@
   "block.netherexp.blue_nether_brick_slab": "Плита из синего незерского кирпича",
   "block.netherexp.blue_nether_brick_stairs": "Ступеньки из синего незерского кирпича",
   "block.netherexp.blue_nether_brick_wall": "Ограда из синего незерского кирпича",
+
   "block.netherexp.shroomnight": "Грибомрак",
+
   "block.netherexp.nether_wart_beard": "Свисающий незерский нарост",
   "block.netherexp.warped_wart_beard": "Свисающий искажённый нарост",
   "block.netherexp.weeping_ivy": "Плакучий плющ",
   "block.netherexp.twisting_ivy": "Вьющийся плющ",
+
   "block.netherexp.red_scale_fungus": "Красный чешуйчатый гриб",
   "block.netherexp.blue_scale_fungus": "Синий чешуйчатый гриб",
+
   "block.netherexp.crimson_sprouts": "Багровые ростки",
+
   "block.netherexp.soul_soil_layer": "Слой почвы душ",
+
   "block.netherexp.soul_path": "Тропинка душ",
   "block.netherexp.crimson_nylium_path": "Тропинка из багрового нилия",
   "block.netherexp.warped_nylium_path": "Тропинка из искажённого нилия",
+
   "block.netherexp.crimson_sporeshroom": "Багровый спорогриб",
   "block.netherexp.warped_sporeshroom": "Искажённый спорогриб",
   "block.netherexp.basaltic_geyser": "Базальтовый гейзер",
   "block.netherexp.souled_geyser": "Гейзер душ",
+
   "block.netherexp.white_ash": "Белый пепел",
   "block.netherexp.white_ash_block": "Блок белого пепла",
+
   "block.netherexp.bone_cortical": "Кортикальная кость",
   "block.netherexp.bone_rod": "Стержневая кость",
   "block.netherexp.bone_fence": "Заборная кость",
@@ -308,6 +350,7 @@
   "block.netherexp.skull_block": "Огромный череп",
   "block.netherexp.burning_skull_block": "Пылающий огромный череп",
   "block.netherexp.soul_burning_skull_block": "Пылающий огромный череп душ",
+
   "block.netherexp.wither_bone_block": "Блок визерских костей",
   "block.netherexp.stacked_wither_bone_slab": "Плита из спрессованных визерских костей",
   "block.netherexp.stacked_wither_bone_stairs": "Ступеньки из спрессованных визерских костей",
@@ -315,10 +358,12 @@
   "block.netherexp.wither_skull_block": "Огромный череп визер-скелета",
   "block.netherexp.burning_wither_skull_block": "Пылающий огромный череп визер-скелета",
   "block.netherexp.soul_burning_wither_skull_block": "Пылающий огромный череп визер-скелета душ",
+
   "block.netherexp.weeping_polished_blackstone_bricks": "Плакучие полированно-чернитные кирпичи",
   "block.netherexp.twisting_polished_blackstone_bricks": "Вьющиеся полированно-чернитные кирпичи",
   "block.netherexp.polished_blackstone_pillar": "Колонна из полированного чернита",
   "block.netherexp.polished_blackstone_fence": "Забор из полированного чернита",
+
   "block.netherexp.potted_soul_swirls": "Спирали душ в горшке",
   "block.netherexp.potted_enigma_crown": "Загадочная крона в горшке",
   "block.netherexp.potted_smokestalk": "Дымоножка в горшке",
@@ -327,6 +372,7 @@
   "block.netherexp.potted_crimson_sporeshroom": "Багровый спорогриб в горшке",
   "block.netherexp.potted_warped_sporeshroom": "Искажённый спорогриб в горшке",
   "block.netherexp.potted_soul_torchflower": "Факельник душ в горшке",
+
   "subtitles.item.gold_ingot.gilding": "Блок позолочен",
   "subtitles.block.ectoplasm.freeze": "Эктоплазма оледеняет",
   "subtitles.block.ectoplasm.whispering": "Эктоплазма шушукается",
@@ -347,6 +393,7 @@
   "subtitles.block.brazier_chest.lit": "Предательский скрежет",
   "subtitles.block.treacherous_candle.victory": "Предательская свеча играет песнь победы",
   "subtitles.block.treacherous_candle.defeat": "Предательская свеча играет песнь поражения",
+
   "subtitles.entity.warphopper.ambient": "Искажённый прыгун щебечет",
   "subtitles.entity.warphopper.hurt": "Искажённый прыгун ранен",
   "subtitles.entity.warphopper.death": "Искажённый прыгун погибает",
@@ -371,7 +418,9 @@
   "subtitles.entity.banshee.death": "Банши погибает",
   "subtitles.entity.banshee.teleport": "Банши телепортируется",
   "subtitles.entity.banshee.shoot": "Выстрел волей виспа",
+
   "container.brazier_chest": "Сундук-жаровня",
+
   "death.attack.graveMistSuffocation": "%1$s бул задушен душами",
   "death.attack.stampedeCrush": "%1$s был растоптан %2$s",
   "death.attack.soulBullet": "%1$s был застрелен из смертоносного орудия",
@@ -380,6 +429,7 @@
   "death.attack.will_o_wisp.player": "%1$s погиб от неупокоившейся воли виспа",
   "death.attack.volatileScoriaExplosion": "%1$s попал под нестабильный разряд редстоуна",
   "death.attack.shotgunExplosion": "%1$s был убит взрывом чересчур заряженного дробовика",
+
   "entity.netherexp.wisp": "Висп",
   "entity.netherexp.apparition": "Видение",
   "entity.netherexp.vessel": "Фиал",
@@ -394,8 +444,10 @@
   "entity.netherexp.antidote": "Антидот",
   "entity.netherexp.grenade_effect_cloud": "Взрывное облако эффекта",
   "entity.netherexp.warphopper": "Искажённый прыгун",
+
   "painting.netherexp.house.author": "Navidson Realty",
   "painting.netherexp.house.title": "Дом",
+
   "advancements.nether.add_spores_to_block.title": "Спорное решение",
   "advancements.nether.add_spores_to_block.description": "Посадите светоспоры или мракоспоры на соответствующий блок нароста",
   "advancements.nether.overkill.title": "В лепёшку!",
@@ -452,9 +504,11 @@
   "advancements.nether.tower_defense.description": "Создайте собственную предательскую свечу из древнего воска",
   "advancements.nether.emf_raider.title": "Продвинутый расхититель",
   "advancements.nether.emf_raider.description": "Активируйте компас искателя святилища и последуйте по указанному пути",
+
   "effect.netherexp.fogsight": "Туманность",
   "effect.netherexp.unbounded_speed": "Необузданная скорость",
   "effect.netherexp.betrayed": "Предательство",
+
   "effect.netherexp.speed_immunity": "Иммунитет к скорости",
   "effect.netherexp.slowness_immunity": "Иммунитет к медлительности",
   "effect.netherexp.strength_immunity": "Иммунитет к силе",
@@ -475,9 +529,9 @@
   "effect.netherexp.wither_immunity": "Иммунитет к иссушению",
   "effect.netherexp.luck_immunity": "Иммунитет к везению",
   "effect.netherexp.unluck_immunity": "Иммунитет к невезению",
-  "effect.netherexp.brain_damage_immunity": "Иммунитет к повреждению мозга",
-  "item.netherexp.blightspores": "Мороспоры",
-  "block.netherexp.shroomblight": "Грибомор",
+
+  "item.netherexp.brightspores": "Блескоспоры",
+  "block.netherexp.shroombright": "Грибоблеск",
   "block.netherexp.shale_swirls": "Сланцевые спирали",
   "block.netherexp.violet_mixed_nether_bricks": "Лиловые смешанные незерские кирпичи",
   "block.netherexp.violet_nether_bricks": "Лиловые незерские кирпичи",
@@ -495,13 +549,25 @@
   "block.netherexp.potted_violet_scale_fungus": "Лиловый чешуйчатый гриб в горшке",
   "block.netherexp.potted_umbral_sporeshroom": "Умбральный спорогриб в горшке",
   "block.netherexp.umbral_nylium_path": "Тропинка из умбрального нилия",
-  "item.netherexp.frightspores": "Страхоспоры",
-  "block.netherexp.shroomfright": "Грибострах",
+
+  "item.netherexp.blightspores": "Смертоспоры",
+  "block.netherexp.shroomblight": "Грибосмерт",
+  "block.netherexp.blight_swirls": "Смертные спирали",
+  "block.netherexp.blightwart": "Смертный нарост",
+  "item.netherexp.blightwart": "Смертный нарост",
+  "block.netherexp.blightwart_beard": "Свисающий смертный нарост",
+  "block.netherexp.soulblight_sporeshroom": "Душесмертный спорогриб",
   "block.netherexp.yellow_mixed_nether_bricks": "Жёлтые смешанные незерские кирпичи",
   "block.netherexp.yellow_nether_bricks": "Жёлтые незерские кирпичи",
   "block.netherexp.yellow_nether_brick_slab": "Плита из жёлтого незерского кирпича",
   "block.netherexp.yellow_nether_brick_stairs": "Ступеньки из жёлтого незерского кирпича",
   "block.netherexp.yellow_nether_brick_wall": "Ограда из жёлтого незерского кирпича",
+
+  "item.netherexp.frightspores": "Страхоспоры",
+  "block.netherexp.shroomfright": "Грибострах",
+
+  "block.netherexp.soul_ruby_ore": "Рубиновая руда душ",
+
   "item.netherexp.necromium_plating": "Некромиевая обшивка",
   "block.netherexp.necromium_plated_block": "Блок некромиевой обшивки",
   "block.netherexp.necromium_grate": "Некромиевая решётка",
@@ -509,6 +575,7 @@
   "block.netherexp.cut_necromium_slab": "Резная некромиевая плита",
   "block.netherexp.cut_necromium_stairs": "Резные некромиевые ступеньки",
   "block.netherexp.cut_necromium_pillar": "Резная некромиевая колонна",
+
   "item.netherexp.sealed_pottery_sherd": "Глиняный черепок «Печать»",
   "item.netherexp.spectre_pottery_sherd": "Глиняный черепок «Призрак»",
   "item.netherexp.marionette_pottery_sherd": "Глиняный черепок «Марионетка»",
@@ -516,13 +583,16 @@
   "item.netherexp.deception_pottery_sherd": "Глиняный черепок «Обман»",
   "item.netherexp.firearm_pottery_sherd": "Глиняный черепок «Огнестрел»",
   "item.netherexp.botanical_pottery_sherd": "Глиняный черепок «Ботаника»",
-  "item.netherexp.jackhammer_fist": "Отбойный молот-кулак",
+
+  "item.netherexp.jackhammer_fist": "Ручной отбойный молоток",
+
   "enchantment.netherexp.phantasm_hull.desc": "Во время приседания позволяет большинству снарядов пролетать насквозь, не нанося урона.",
   "enchantment.netherexp.bloodshed.desc": "Позволяет дробовику дробить врагов в целебную кровь после их смерти.",
   "enchantment.netherexp.cartridge.desc": "Позволяет дробовику хранить внутри себя снаряды и стрелять несколько раз подряд.",
   "enchantment.netherexp.recoil.desc": "Увеличивает отдачу дробовика.",
   "enchantment.netherexp.barrage.desc": "Увеличивает число снарядов, выпускаемых дробовиком.",
   "enchantment.netherexp.artemis.desc": "Увеличивает дальность полёта снарядов, выпускаемых дробовиком или луком.",
+
   "item.netherexp.roasted_bone": "Запечённая кость",
   "block.netherexp.cerebrage_skull": "Мозгневник в черепе",
   "item.netherexp.cerebrage": "Мозгневник",
@@ -536,7 +606,6 @@
   "advancements.nether.big_brain_time.description": "Вырастите огромный мозгневник, несколько раз удобрив обычный",
   "advancements.nether.rodeo_stampede.title": "Родео",
   "advancements.nether.rodeo_stampede.description": "Подружитесь с паникёршей, накормив её запечёнными костями",
-
   "subtitles.entity.stampede.ambient": "Паникёрша булькает",
   "subtitles.entity.stampede.hurt": "Паникёрша ранена",
   "subtitles.entity.stampede.death": "Паникёрша погибает",
@@ -547,16 +616,25 @@
 
   "block.netherexp.black_icicle": "Чёрная сосулька",
   "block.netherexp.thin_black_ice": "Тонкий чёрный лёд",
-  "block.netherexp.soul_permafrost": "Замёршая почва душ",
-  "advancements.nether.fright_before_xmas.title": "Прогулка с душой",
-  "advancements.nether.fright_before_xmas.description": "Посетите все под-биомы долины песка душ",
-  "advancements.nether.witwicky.title": "Всё в норме",
-  "advancements.nether.witwicky.description": "Пройдите большое расстояние по тонкому чёрному льду и выживете",
-  "advancements.nether.black_ice_black_everything_black.title": "Холодная расчётливость",
-  "advancements.nether.black_ice_black_everything_black.description": "Выстрелите чёрной сосулькой из арбалета",
-  "subtitles.block.thin_black_ice.cracking": "Тонкий чёрный лёд трескается",
-  "subtitles.entity.vessel.warn": "Фиал заряжается",
+  "block.netherexp.soul_permafrost": "Вечномёрзлые души",
+  "advancements.nether.fright_before_xmas.title": "Кошмар перед Душдеством",
+  "advancements.nether.fright_before_xmas.description": "Посетите все подбиомы долины песка душ",
+  "advancements.nether.witwicky.title": "Полёт нормальный",
+  "advancements.nether.witwicky.description": "Переживите длительное падение на тонкий чёрный лёд",
+  "advancements.nether.black_ice_black_everything_black.title": "Четыре чёрненьких чертёнка",
+  "advancements.nether.black_ice_black_everything_black.description": "Попадите в чёрную сосульку из арбалета",
+  "subtitles.block.thin_black_ice.cracking": "Треск тонкого чёрного льда",
+  "subtitles.entity.vessel.warn": "Фиал заряжает барабан",
   "subtitles.entity.vessel.fire": "Фиал стреляет",
+
+  "effect.netherexp.brain_damage_immunity": "Иммунитет к повреждению мозга",
+  "item.netherexp.antidote.effect.brain_damage": "Антидот от повреждения мозга",
+  "item.netherexp.grenade_antidote.effect.brain_damage": "Взрывной антидот от повреждения мозга",
+
+  "block.netherexp.grooved_black_ice": "Рифлёный чёрный лёд",
+  "block.netherexp.discernment_glass": "Проницательное стекло",
+  "subtitles.block.discernment_glass.add": "Предмет добавлен в проницательное стекло",
+  "subtitles.block.discernment_glass.remove": "Предмет убран из проницательного стекла",
 
   "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
 }
