@@ -4,6 +4,7 @@ import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.registry.block.custom.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.GargoyleStatueItem;
@@ -11,6 +12,7 @@ import net.jadenxgamer.netherexp.registry.misc_registry.*;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
@@ -131,7 +133,7 @@ public class JNEBlocks {
 
     public static final RegistrySupplier<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
             new SwirlsBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
-                    .lightLevel(state -> state.getValue(SwirlsBlock.COOLDOWN) ? 5 : 0).sound(SoundType.NETHER_SPROUTS), JNEParticleTypes.SWIRL_POP));
+                    .lightLevel(state -> state.getValue(SwirlsBlock.COOLDOWN) ? 6 : 0).sound(SoundType.NETHER_SPROUTS), JNEParticleTypes.SWIRL_POP));
 
     public static final RegistrySupplier<Block> WRAITHING_LESION = registerBlock("wraithing_lesion", () ->
             new WraithingLesionBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(1.5f, 1.0f).pushReaction(PushReaction.DESTROY).randomTicks().sound(SoundType.MUD)));
@@ -261,43 +263,43 @@ public class JNEBlocks {
 
     // Netherite
 
-    public static final RegistrySupplier<Block> NETHERITE_PLATED_BLOCK = registerFireProofBlock("netherite_plated_block", () ->
-            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.5f, 0.5f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK)));
+    public static final RegistrySupplier<Block> NETHERITE_PLATED_BLOCK = registerItemPropertiesBlock("netherite_plated_block", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.5f, 0.5f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK)), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> CUT_NETHERITE_BLOCK = registerFireProofBlock("cut_netherite_block", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.NETHERITE_PLATED_BLOCK.get())));
+    public static final RegistrySupplier<Block> CUT_NETHERITE_BLOCK = registerItemPropertiesBlock("cut_netherite_block", () ->
+            new Block(BlockBehaviour.Properties.copy(JNEBlocks.NETHERITE_PLATED_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> CUT_NETHERITE_SLAB = registerFireProofBlock("cut_netherite_slab", () ->
-            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
+    public static final RegistrySupplier<Block> CUT_NETHERITE_SLAB = registerItemPropertiesBlock("cut_netherite_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> CUT_NETHERITE_STAIRS = registerFireProofBlock("cut_netherite_stairs", () ->
-            new JNEStairBlock(JNEBlocks.CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
+    public static final RegistrySupplier<Block> CUT_NETHERITE_STAIRS = registerItemPropertiesBlock("cut_netherite_stairs", () ->
+            new JNEStairBlock(JNEBlocks.CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> CUT_NETHERITE_PILLAR = registerFireProofBlock("cut_netherite_pillar", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
+    public static final RegistrySupplier<Block> CUT_NETHERITE_PILLAR = registerItemPropertiesBlock("cut_netherite_pillar", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> NETHERITE_GRATE = registerFireProofBlock("netherite_grate", () ->
-            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)));
+    public static final RegistrySupplier<Block> NETHERITE_GRATE = registerItemPropertiesBlock("netherite_grate", () ->
+            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)), new Item.Properties().fireResistant());
 
     // Rusty Netherite
 
-    public static final RegistrySupplier<Block> RUSTY_NETHERITE_PLATED_BLOCK = registerFireProofBlock("rusty_netherite_plated_block", () ->
-            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.5f, 0.5f).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS)));
+    public static final RegistrySupplier<Block> RUSTY_NETHERITE_PLATED_BLOCK = registerItemPropertiesBlock("rusty_netherite_plated_block", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.5f, 0.5f).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS)), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_BLOCK = registerFireProofBlock("rusty_cut_netherite_block", () ->
-            new Block(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK.get())));
+    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_BLOCK = registerItemPropertiesBlock("rusty_cut_netherite_block", () ->
+            new Block(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_SLAB = registerFireProofBlock("rusty_cut_netherite_slab", () ->
-            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
+    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_SLAB = registerItemPropertiesBlock("rusty_cut_netherite_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_STAIRS = registerFireProofBlock("rusty_cut_netherite_stairs", () ->
-            new JNEStairBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())));
+    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_STAIRS = registerItemPropertiesBlock("rusty_cut_netherite_stairs", () ->
+            new JNEStairBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_PILLAR = registerFireProofBlock("rusty_cut_netherite_pillar", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())));
+    public static final RegistrySupplier<Block> RUSTY_CUT_NETHERITE_PILLAR = registerItemPropertiesBlock("rusty_cut_netherite_pillar", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
-    public static final RegistrySupplier<Block> RUSTY_NETHERITE_GRATE = registerFireProofBlock("rusty_netherite_grate", () ->
-            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)));
+    public static final RegistrySupplier<Block> RUSTY_NETHERITE_GRATE = registerItemPropertiesBlock("rusty_netherite_grate", () ->
+            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)), new Item.Properties().fireResistant());
 
     // Enigma
 
@@ -724,64 +726,116 @@ public class JNEBlocks {
      * Cinderscapes
      */
 
-    public static final RegistrySupplier<Block> SHROOMBLIGHT = registerCompatBlock("shroomblight", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 12)), "cinderscapes");
+    public static final RegistrySupplier<Block> SHROOMBRIGHT = registerCompatBlock("shroombright", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 14)), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> UMBRAL_SPORESHROOM = registerCompatBlock("umbral_sporeshroom", () ->
-            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), () -> ParticleTypes.WARPED_SPORE, JNEParticleTypes.UMBRAL_SMOG, JNETags.Biomes.HAS_WARPED_SPORES), "cinderscapes");
+            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), () -> ParticleTypes.WARPED_SPORE, JNEParticleTypes.UMBRAL_SMOG, JNETags.Biomes.HAS_WARPED_SPORES), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> BLACKSTONIC_GEYSER = registerCompatBlock("blackstonic_geyser", () ->
-            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), () -> ParticleTypes.WHITE_ASH, JNEParticleTypes.WHITE_SMOKE, true, JNETags.Biomes.HAS_WHITE_ASH), "cinderscapes");
+            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), () -> ParticleTypes.WHITE_ASH, JNEParticleTypes.WHITE_SMOKE, true, JNETags.Biomes.HAS_WHITE_ASH), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> ASHEN_GEYSER = registerCompatBlock("ashen_geyser", () ->
-            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), () -> ParticleTypes.ASH, JNEParticleTypes.BLACK_SMOKE, true, JNETags.Biomes.HAS_ASH), "cinderscapes");
+            new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SOUL_SLATE), () -> ParticleTypes.ASH, JNEParticleTypes.BLACK_SMOKE, true, JNETags.Biomes.HAS_ASH), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> UMBRAL_WART_BEARD = registerCompatBlock("umbral_wart_beard", () ->
-            new BeardBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHER_WART_BEARD.get())), "cinderscapes");
+            new BeardBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHER_WART_BEARD.get())), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> TWILIGHT_IVY = registerCompatBlock("twilight_ivy", () ->
-            new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).instabreak().noCollission().sound(SoundType.WEEPING_VINES)), "cinderscapes");
+            new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).instabreak().noCollission().sound(SoundType.WEEPING_VINES)), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> VIOLET_SCALE_FUNGUS = registerCompatBlock("violet_scale_fungus", () ->
-            new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)), "cinderscapes");
+            new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> UMBRAL_NYLIUM_PATH = registerCompatBlock("umbral_nylium_path", () ->
-            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)), "cinderscapes");
+            new NyliumPathBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.NYLIUM)), CompatUtil.CINDERSCAPES);
 
     public static final RegistrySupplier<Block> SHALE_SWIRLS = registerCompatBlock("shale_swirls", () ->
-            new SwirlsBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get()), JNEParticleTypes.SHALE_SWIRL_POP), "cinderscapes");
+            new SwirlsBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get()), JNEParticleTypes.SHALE_SWIRL_POP), CompatUtil.CINDERSCAPES);
 
     /**
      * Gardens of The Dead
      */
-    public static final RegistrySupplier<Block> SHROOMFRIGHT = registerCompatBlock("shroomfright", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 10)), "gardens_of_the_dead");
+    public static final RegistrySupplier<Block> SHROOMBLIGHT = registerCompatBlock("shroomblight", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).lightLevel((state) -> 10)), CompatUtil.GARDENS_OF_THE_DEAD);
 
     public static final RegistrySupplier<Block> SOULBLIGHT_SPORESHROOM = registerCompatBlock("soulblight_sporeshroom", () ->
-            new SporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), JNEParticleTypes.GOLD_GLIMMER, JNEParticleTypes.CRIMSON_SMOG, JNETags.Biomes.HAS_SOULBLIGHT_SPORES), "gardens_of_the_dead");
+            new CompatSporeshroomBlock(BlockBehaviour.Properties.of().strength(0.5f).pushReaction(PushReaction.DESTROY).sound(SoundType.FUNGUS), new ResourceLocation(CompatUtil.GARDENS_OF_THE_DEAD, "soulblight_spore"), JNEParticleTypes.SOULBLIGHT_SMOG, JNETags.Biomes.HAS_SOULBLIGHT_SPORES), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    public static final RegistrySupplier<Block> BLIGHT_SWIRLS = registerCompatBlock("blight_swirls", () ->
+            new SwirlsBlock(7, 3, BlockBehaviour.Properties.copy(SOUL_SWIRLS.get()), JNEParticleTypes.BLIGHT_SWIRL_POP), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    public static final RegistrySupplier<Block> BLIGHTWART = registerBlockWithoutItem("blightwart", () ->
+            new WallGrowingWartBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_WART), JNEItems.BLIGHTWART));
+
+    public static final RegistrySupplier<Block> BLIGHTWART_BEARD = registerCompatBlock("blightwart_beard", () ->
+            new BeardBlock(BlockBehaviour.Properties.copy(WARPED_WART_BEARD.get())), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    public static final RegistrySupplier<Block> YELLOW_MIXED_NETHER_BRICKS = registerCompatBlock("yellow_mixed_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICKS)), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    public static final RegistrySupplier<Block> YELLOW_NETHER_BRICKS = registerCompatBlock("yellow_nether_bricks", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.RED_NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_YELLOW)), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    public static final RegistrySupplier<Block> YELLOW_NETHER_BRICK_SLAB = registerCompatBlock("yellow_nether_brick_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.YELLOW_NETHER_BRICKS.get())), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    public static final RegistrySupplier<Block> YELLOW_NETHER_BRICK_STAIRS = registerCompatBlock("yellow_nether_brick_stairs", () ->
+            new JNEStairBlock(JNEBlocks.YELLOW_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.YELLOW_NETHER_BRICKS.get())), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    public static final RegistrySupplier<Block> YELLOW_NETHER_BRICK_WALL = registerCompatBlock("yellow_nether_brick_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.copy(JNEBlocks.YELLOW_NETHER_BRICKS.get())), CompatUtil.GARDENS_OF_THE_DEAD);
+
+    /**
+     * Rubinated Nether
+     */
+    public static final RegistrySupplier<Block> SOUL_RUBY_ORE = registerCompatBlock("soul_ruby_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(JNEBlocks.SOUL_MAGMA_BLOCK.get()).requiresCorrectToolForDrops(), UniformInt.of(3, 6)), CompatUtil.RUBINATED_NETHER);
+
+
+    /**
+     * CAVERNS_&_CHASMS
+     */
+
+    public static final RegistrySupplier<Block> NECROMIUM_PLATED_BLOCK = registerItemPropertiesCompatBlock("necromium_plated_block", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(0.5f, 0.5f).requiresCorrectToolForDrops()), new Item.Properties().fireResistant(), CompatUtil.CAVERNS_AND_CHASMS);
+
+    public static final RegistrySupplier<Block> CUT_NECROMIUM_BLOCK = registerItemPropertiesCompatBlock("cut_necromium_block", () ->
+            new Block(BlockBehaviour.Properties.copy(JNEBlocks.NETHERITE_PLATED_BLOCK.get())), new Item.Properties().fireResistant(), CompatUtil.CAVERNS_AND_CHASMS);
+
+    public static final RegistrySupplier<Block> CUT_NECROMIUM_SLAB = registerItemPropertiesCompatBlock("cut_necromium_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NECROMIUM_BLOCK.get())), new Item.Properties().fireResistant(), CompatUtil.CAVERNS_AND_CHASMS);
+
+    public static final RegistrySupplier<Block> CUT_NECROMIUM_STAIRS = registerItemPropertiesCompatBlock("cut_necromium_stairs", () ->
+            new JNEStairBlock(JNEBlocks.CUT_NECROMIUM_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NECROMIUM_BLOCK.get())), new Item.Properties().fireResistant(), CompatUtil.CAVERNS_AND_CHASMS);
+
+    public static final RegistrySupplier<Block> CUT_NECROMIUM_PILLAR = registerItemPropertiesCompatBlock("cut_necromium_pillar", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NECROMIUM_BLOCK.get())), new Item.Properties().fireResistant(), CompatUtil.CAVERNS_AND_CHASMS);
+
+    public static final RegistrySupplier<Block> NECROMIUM_GRATE = registerItemPropertiesCompatBlock("necromium_grate", () ->
+            new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NECROMIUM_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)), new Item.Properties().fireResistant(), CompatUtil.CAVERNS_AND_CHASMS);
 
 
     ////////////////
     // REGISTRIES //
     ////////////////
 
-    private static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block) {
+    public static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
         JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
-    private static <T extends Block> RegistrySupplier<T> registerGargoyleBlock(String name, Supplier<T> block) {
+    public static <T extends Block> RegistrySupplier<T> registerGargoyleBlock(String name, Supplier<T> block) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
         JNEItems.ITEMS.register(name, () -> new GargoyleStatueItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
 
-    private static <T extends Block> RegistrySupplier<T> registerBlockWithoutItem(String name, Supplier<T> block) {
+    public static <T extends Block> RegistrySupplier<T> registerBlockWithoutItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
     }
 
-
-    private static <T extends Block> RegistrySupplier<T> registerCompatBlock(String name, Supplier<T> block, String modId) {
+    public static <T extends Block> RegistrySupplier<T> registerCompatBlock(String name, Supplier<T> block, String modId) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
         // If The Specified ModId is not found, then the Block Item won't be registered
         if (Platform.isModLoaded(modId)) {
@@ -790,9 +844,18 @@ public class JNEBlocks {
         return toReturn;
     }
 
-    private static <T extends Block> RegistrySupplier<T> registerFireProofBlock(String name, Supplier<T> block) {
+    private static <T extends Block> RegistrySupplier<T> registerItemPropertiesBlock(String name, Supplier<T> block, Item.Properties properties) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
-        JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties().fireResistant()));
+        JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), properties));
+        return toReturn;
+    }
+
+    public static <T extends Block> RegistrySupplier<T> registerItemPropertiesCompatBlock(String name, Supplier<T> block, Item.Properties properties, String modId) {
+        RegistrySupplier<T> toReturn = BLOCKS.register(name, block);
+        // If The Specified ModId is not found, then the Block Item won't be registered
+        if (Platform.isModLoaded(modId)) {
+            JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), properties));
+        }
         return toReturn;
     }
 

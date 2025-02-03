@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:yellow_nether_bricks"
+    }
+  },
+  "result": {
+    "item": "netherexp:yellow_nether_brick_slab",
+    "count": 6
+  }
+}

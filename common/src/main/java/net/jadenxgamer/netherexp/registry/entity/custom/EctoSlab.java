@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
@@ -194,7 +195,6 @@ public class EctoSlab extends Slime {
         }
     }
 
-
     @Override
     public void refreshDimensions() {
         super.refreshDimensions();
@@ -259,6 +259,7 @@ public class EctoSlab extends Slime {
     @Override
     public void playerTouch(Player player) {
         if (!this.getIsUnderground()) {
+            checkSilver(player);
             super.playerTouch(player);
         }
     }
@@ -324,6 +325,7 @@ public class EctoSlab extends Slime {
     private void damageLivingEntities(List<LivingEntity> allEntities) {
         for (LivingEntity entity : allEntities) {
             if (entity instanceof LivingEntity) {
+                checkSilver(entity);
                 entity.hurt(this.damageSources().mobAttack(this), this.getAttackDamage() * 2);
             }
         }
@@ -365,6 +367,19 @@ public class EctoSlab extends Slime {
         Potion potion = PotionUtils.getPotion(itemStack);
         List<MobEffectInstance> list = PotionUtils.getMobEffects(itemStack);
         return potion == Potions.WATER && list.isEmpty();
+    }
+
+    private void checkSilver(Entity entity) {
+        if (CompatUtil.checkAnySilverMod()) {
+            if (entity instanceof Player player) {
+                boolean isWearingSilverArmor = player.getInventory().armor.stream().anyMatch(itemStack -> itemStack.is(JNETags.Items.SILVER_ARMORS));
+
+                if (isWearingSilverArmor) {
+                    this.hurt(level().damageSources().playerAttack(player), 2);
+                    this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 2));
+                }
+            }
+        }
     }
 
     ////////
@@ -545,8 +560,7 @@ public class EctoSlab extends Slime {
             MoveControl var3 = this.ectoSlab.getMoveControl();
             if (var3 instanceof EctoSlabMoveControl ectoSlabMoveControl) {
                 ectoSlabMoveControl.setDirection(this.ectoSlab.getYRot(), this.ectoSlab.isDealsDamage());
-                assert livingEntity != null;
-                if (undergroundTime > 20) {
+                if (undergroundTime > 20 && livingEntity != null) {
                     ectoSlabMoveControl.setWantedPosition(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ectoSlab.getAttributeValue(Attributes.MOVEMENT_SPEED));
                 }
             }

@@ -3,7 +3,7 @@
   "biomes": "minecraft:soul_sand_valley",
   "spawners": {
     "type": "netherexp:apparition",
-    "weight": 20,
+    "weight": 30,
     "minCount": 1,
     "maxCount": 1
   }

@@ -1,7 +1,0 @@
-{
-  "type": "netherexp:spawn_costs",
-  "biomes": "#netherexp:has_structure/sanctum",
-  "entity_type": "netherexp:banshee",
-  "energy_budget": 0.15,
-  "charge": 7
-}

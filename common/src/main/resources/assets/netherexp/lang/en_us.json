@@ -79,6 +79,7 @@
   "item.netherexp.antidote.effect.decay": "Antidote for Decay",
   "item.netherexp.antidote.effect.luck": "Antidote for Luck",
   "item.netherexp.antidote.effect.unluck": "Antidote for Unluck",
+  "item.netherexp.antidote.effect.brain_damage": "Antidote for Brain Damage",
 
   "item.netherexp.grenade_antidote": "Grenade Antidote",
   "item.netherexp.grenade_antidote.effect.": "Uncraftable Grenade Antidote",
@@ -103,6 +104,7 @@
   "item.netherexp.grenade_antidote.effect.decay": "Grenade Antidote for Decay",
   "item.netherexp.grenade_antidote.effect.luck": "Grenade Antidote for Luck",
   "item.netherexp.grenade_antidote.effect.unluck": "Grenade Antidote for Unluck",
+  "item.netherexp.grenade_antidote.effect.brain_damage": "Grenade Antidote for Brain Damage",
 
   "shotgun_fist.ammo": "Ammo:",
   "shotgun_fist.heat": "Temperature:",
@@ -529,9 +531,10 @@
   "effect.netherexp.wither_immunity": "Wither Immunity",
   "effect.netherexp.luck_immunity": "Luck Immunity",
   "effect.netherexp.unluck_immunity": "Unluck Immunity",
+  "effect.netherexp.brain_damage_immunity": "Brain Damage Immunity",
 
-  "item.netherexp.blightspores": "Blightspores",
-  "block.netherexp.shroomblight": "Shroomblight",
+  "item.netherexp.brightspores": "Brightspores",
+  "block.netherexp.shroombright": "Shroombright",
   "block.netherexp.shale_swirls": "Shale Swirls",
   "block.netherexp.violet_mixed_nether_bricks": "Violet Mixed Nether Bricks",
   "block.netherexp.violet_nether_bricks": "Violet Nether Bricks",
@@ -550,13 +553,31 @@
   "block.netherexp.potted_umbral_sporeshroom": "Potted Umbral Sporeshroom",
   "block.netherexp.umbral_nylium_path": "Umbral Nylium Path",
 
-  "item.netherexp.frightspores": "Frightspores",
-  "block.netherexp.shroomfright": "Shroomfright",
+  "item.netherexp.blightspores": "Blightspores",
+  "block.netherexp.shroomblight": "Shroomblight",
+  "block.netherexp.blight_swirls": "Blight Swirls",
+  "block.netherexp.blightwart": "Blightwart",
+  "item.netherexp.blightwart": "Blightwart",
+  "block.netherexp.blightwart_beard": "Blightwart Beard",
+  "block.netherexp.soulblight_sporeshroom": "Soulblight Sporeshroom",
   "block.netherexp.yellow_mixed_nether_bricks": "Yellow Mixed Nether Bricks",
   "block.netherexp.yellow_nether_bricks": "Yellow Nether Bricks",
   "block.netherexp.yellow_nether_brick_slab": "Yellow Nether Brick Slab",
   "block.netherexp.yellow_nether_brick_stairs": "Yellow Nether Brick Stairs",
   "block.netherexp.yellow_nether_brick_wall": "Yellow Nether Brick Wall",
+
+  "item.netherexp.frightspores": "Frightspores",
+  "block.netherexp.shroomfright": "Shroomfright",
+
+  "block.netherexp.soul_ruby_ore": "Soul Ruby Ore",
+
+  "item.netherexp.necromium_plating": "Necromium Plating",
+  "block.netherexp.necromium_plated_block": "Necromium Plated Block",
+  "block.netherexp.necromium_grate": "Necromium Grate",
+  "block.netherexp.cut_necromium_block": "Cut Necromium Block",
+  "block.netherexp.cut_necromium_slab": "Cut Necromium Slab",
+  "block.netherexp.cut_necromium_stairs": "Cut Necromium Stairs",
+  "block.netherexp.cut_necromium_pillar": "Cut Necromium Pillar",
 
   "item.netherexp.sealed_pottery_sherd": "Sealed Pottery Sherd",
   "item.netherexp.spectre_pottery_sherd": "Spectre Pottery Sherd",

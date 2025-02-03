@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:magma_block"
+    "minecraft:magma_block",
+    {
+      "id": "rubinated_nether:molten_ruby_ore",
+      "required": false
+    }
   ]
 }

@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp;
 
 import dev.architectury.platform.Platform;
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
@@ -40,75 +41,5 @@ public class NetherExp {
         JNEBlockEntityType.init();
         JNEItems.init();
         JNEPotions.init();
-    }
-
-    // MOD COMPATIBILITY CHECKS
-
-    public static boolean compatCinderscapes() {
-        return Platform.isModLoaded("cinderscapes");
-    }
-
-    public static boolean compatGardensOfTheDead() {
-        return Platform.isModLoaded("gardens_of_the_dead");
-    }
-
-    public static boolean compatInfernalExpansion() {
-        return Platform.isModLoaded("infernalexp");
-    }
-
-    public static boolean compatGreedAndBleed() {
-        return Platform.isModLoaded("greedandbleed");
-    }
-
-    public static boolean compatBiomesOPlenty() {
-        return Platform.isModLoaded("biomesoplenty");
-    }
-
-    public static boolean compatQuark() {
-        return Platform.isModLoaded("quark");
-    }
-
-    public static boolean compatDiceyVentures() {
-        return Platform.isModLoaded("dicey_ventures");
-    }
-
-    public static boolean compatAmplifiedNether() {
-        return Platform.isModLoaded("starmute");
-    }
-
-    public static boolean compatFarmersDelight() {
-        return Platform.isModLoaded("farmersdelight");
-    }
-
-    public static boolean compatNethersDelight() {
-        return Platform.isModLoaded("mynethersdelight");
-    }
-
-    public static boolean compatOreganized() {
-        return Platform.isModLoaded("oreganized");
-    }
-
-    public static boolean compatAlexsCaves() {
-        return Platform.isModLoaded("alexscaves");
-    }
-
-    public static boolean compatAlexsMobs() {
-        return Platform.isModLoaded("alexsmobs");
-    }
-
-    public static boolean compatArtsAndCrafts() {
-        return Platform.isModLoaded("arts_and_crafts");
-    }
-
-    public static boolean compatCavernsAndChasms() {
-        return Platform.isModLoaded("caverns_and_chasms");
-    }
-
-    public static boolean compatSullysMod() {
-        return Platform.isModLoaded("sullysmod");
-    }
-
-    public static boolean compatSupplementaries() {
-        return Platform.isModLoaded("supplementaries");
     }
 }

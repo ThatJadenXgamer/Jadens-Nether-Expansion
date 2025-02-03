@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "caverns_and_chasms:tether_potion",
+      "required": false
+    }
+  ]
+}

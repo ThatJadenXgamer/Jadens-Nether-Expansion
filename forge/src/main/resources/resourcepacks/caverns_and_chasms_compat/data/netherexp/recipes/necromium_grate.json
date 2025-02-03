@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:necromium_plated_block"
+    }
+  },
+  "result": {
+    "item": "netherexp:necromium_grate",
+    "count": 4
+  }
+}

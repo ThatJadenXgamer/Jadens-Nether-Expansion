@@ -24,6 +24,14 @@ public class JNELootModifiers {
 
                 tableBuilder.pool(poolBuilder.build());
             }
+            if (id.equals(new ResourceLocation("minecraft", "chests/nether_bridge"))) {
+                LootPool.Builder poolBuilder = LootPool.lootPool()
+                        .when(LootItemRandomChanceCondition.randomChance(0.35f))
+                        .add(LootItem.lootTableItem(JNEItems.SANCTUM_COMPASS.get()))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)).build());
+
+                tableBuilder.pool(poolBuilder.build());
+            }
         });
     }
 }

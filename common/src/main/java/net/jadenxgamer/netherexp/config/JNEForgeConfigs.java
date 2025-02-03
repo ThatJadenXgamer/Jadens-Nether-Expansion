@@ -109,7 +109,7 @@ public class JNEForgeConfigs {
                 .define("ecto_slab_emerging_chance", 40);
         ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED = BUILDER
                 .comment("Defines 1 in specified chance for how often Ecto Slabs emerge from soul swirls if the player has Unbounded Speed")
-                .define("ecto_slab_emerging_with_unbounded_speed", 5);
+                .define("ecto_slab_emerging_with_unbounded_speed", 10);
     }
 
     private static void registerGameMechanicConfigs(ForgeConfigSpec.Builder BUILDER) {
@@ -125,6 +125,9 @@ public class JNEForgeConfigs {
         ECTOPLASM_RUSTS_NETHERITE = BUILDER
                 .comment("Ectoplasm will rust all nearby plated netherite blocks it comes in contact with")
                 .define("ectoplasm_rusts_netherite", true);
+        ECTOPLASM_SOURCE_CONVERSION = BUILDER
+                .comment("When Flowing Ectoplasm is surrounded on two sides by sources it converts to source")
+                .define("ectoplasm_source_conversion", true);
         REDUCE_SOUL_SAND_SLOWNESS = BUILDER
                 .comment("Soul Sand movement speed reduction will be less intrusive when enabled")
                 .define("reduce_soul_sand_slowness", false);

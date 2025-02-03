@@ -79,7 +79,7 @@ public class JNEBuiltinPacks {
         event.addRepositorySource((packConsumer) ->
                 packConsumer.accept(
                         Pack.create("nethers_delight_compat",
-                                Component.literal("JNE + My Nether's Delight Compatibility"),
+                                Component.literal("JNE + My Nether's Delight"),
                                 true,
                                 (path) -> new PathPackResources(path, file, true),
                                 new Pack.Info(Component.literal("Compatibility for My Nether's Delight"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
@@ -93,10 +93,52 @@ public class JNEBuiltinPacks {
         event.addRepositorySource((packConsumer) ->
                 packConsumer.accept(
                         Pack.create("alexscaves_compat",
-                                Component.literal("JNE + Alex's Caves Compatibility"),
+                                Component.literal("JNE + Alex's Caves"),
                                 true,
                                 (path) -> new PathPackResources(path, file, true),
                                 new Pack.Info(Component.literal("Compatibility for Alex's Caves"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
+                                PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
+    }
+
+    // Compatibility for Gardens of The Dead
+    public static void dpGardensOfTheDeadCompat(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/gardens_of_the_dead_compat");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(
+                        Pack.create("gardens_of_the_dead_compat",
+                                Component.literal("JNE + Gardens of The Dead"),
+                                true,
+                                (path) -> new PathPackResources(path, file, true),
+                                new Pack.Info(Component.literal("Compatibility for Gardens of The Dead"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
+                                PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
+    }
+
+    // Compatibility for Rubinated Nether
+    public static void dpRubinatedNetherCompat(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/rubinated_nether_compat");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(
+                        Pack.create("rubinated_nether_compat",
+                                Component.literal("JNE + Rubinated Nether"),
+                                true,
+                                (path) -> new PathPackResources(path, file, true),
+                                new Pack.Info(Component.literal("Compatibility for Rubinated Nether"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
+                                PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
+    }
+
+    // Compatibility for Caverns & Chasms
+    public static void dpCavernsAndChasmsCompat(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/caverns_and_chasms_compat");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(
+                        Pack.create("caverns_and_chasms_compat",
+                                Component.literal("JNE + Caverns & Chasms"),
+                                true,
+                                (path) -> new PathPackResources(path, file, true),
+                                new Pack.Info(Component.literal("Compatibility for Caverns & Chasms"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
                                 PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
     }
 }

@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.misc_registry;
 
+import dev.architectury.platform.Platform;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -83,9 +84,18 @@ public class JNETags {
         public static final TagKey<Item> STAMPEDE_EDIBLE = createItemTag("stampede_edible"); // Stampedes eat these items to regain health
         public static final TagKey<Item> STAMPEDE_FAVORITES = createItemTag("stampede_favorites"); // Stampedes can be tamed with these items
         public static final TagKey<Item> DOESNT_MODIFY_POTION_STACK_SIZE = createItemTag("doesnt_modify_potion_stack_size"); // Items in this tag override the potion stacksize change config, incase modpack devs might need it
+        public static final TagKey<Item> DOESNT_SLOWDOWN_WHEN_USING = createItemTag("doesnt_slowdown_when_using"); // Items in this tag do not reduce the player's movement speed if they are moving while using said item
+        public static final TagKey<Item> SILVER_ARMORS = createItemTag("silver_armors"); // Armors made from silver of some kind, used for possessed mobs weakening
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(NetherExp.MOD_ID, name));
+        }
+        private static TagKey<Item> createCommonItemTag(String forge, String fabric) {
+            if (Platform.isForge()) {
+                return TagKey.create(Registries.ITEM, new ResourceLocation("forge", forge));
+            } else {
+                return TagKey.create(Registries.ITEM, new ResourceLocation("c", fabric));
+            }
         }
     }
     public static class Biomes {
@@ -94,6 +104,7 @@ public class JNETags {
         public static final TagKey<Biome> HAS_SOULBLIGHT_SPORES = createBiomeTag("particles/has_soulblight_spores"); // Prevents Soulblight Sporeshroom from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash"); // Prevents Souled & Ashen Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash"); // Prevents Basaltic & Blackstonic Geyser from creating Particles inside this Biome
+        public static final TagKey<Biome> SOUL_RUBY_ORE_GENERATES = createBiomeTag("soul_ruby_ore_generates"); // Soul Ruby Ores can generate in these biomes if Rubinated Nether is installed
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(NetherExp.MOD_ID, name));

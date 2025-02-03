@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:blightspores"
+    }
+  },
+  "result": {
+    "item": "netherexp:shroomblight",
+    "count": 1
+  }
+}

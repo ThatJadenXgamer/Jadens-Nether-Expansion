@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#netherexp:soul_ruby_ore_generates",
+  "features": "netherexp:soul_ruby_ore",
+  "step": "underground_decoration"
+}

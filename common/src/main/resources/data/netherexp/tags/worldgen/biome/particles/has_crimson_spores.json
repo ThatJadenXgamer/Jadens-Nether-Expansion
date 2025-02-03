@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:crimson_forest"
+    "minecraft:crimson_forest",
+    {
+      "id": "gardens_of_the_dead:whistling_woods",
+      "required": false
+    }
   ]
 }

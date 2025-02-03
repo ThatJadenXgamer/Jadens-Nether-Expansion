@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.registry.item.brewing;
 
-import net.jadenxgamer.netherexp.mixin.brewing.PotionBrewingAccessor;
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
@@ -35,9 +35,12 @@ public class JNEPotionRecipe {
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.PRISMARINE_SHARD)), JNEItems.ANTIDOTE.get(), Antidotes.HASTE()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.CLOCK)), JNEItems.ANTIDOTE.get(), Antidotes.MINING_FATIGUE()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.ECHO_SHARD)), JNEItems.ANTIDOTE.get(), Antidotes.DARKNESS()));
-        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.CHORUS_FRUIT)), JNEItems.ANTIDOTE.get(), Antidotes.LEVITATION()));
+        ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.SHULKER_SHELL)), JNEItems.ANTIDOTE.get(), Antidotes.LEVITATION()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.ROTTEN_FLESH)), JNEItems.ANTIDOTE.get(), Antidotes.HUNGER()));
         ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(Items.DIAMOND)), JNEItems.ANTIDOTE.get(), Antidotes.WITHER()));
+        if (CompatUtil.checkOreganized()) {
+            ANTIDOTE_RECIPES.add(convert(Pair.of(new BrewingIngredientItem(JNEItems.ANTIDOTE.get()), Antidotes.AWKWARD()), (new BrewingIngredientItem(JNEItems.CEREBRAGE.get())), JNEItems.ANTIDOTE.get(), Antidotes.BRAIN_DAMAGE()));
+        }
     }
 
     public static List<Triple<Pair<BrewingIngredient, CompoundTag>, BrewingIngredient, Pair<ItemStack, CompoundTag>>> getRecipes() {

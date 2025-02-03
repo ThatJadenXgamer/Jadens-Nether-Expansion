@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -15,6 +16,8 @@ public class JNEBuiltinPacks {
         ResourceLocation rpUniqueNetherWood = new ResourceLocation(NetherExp.MOD_ID, "unique_nether_wood");
         ResourceLocation dpLargerNetherBiomes = new ResourceLocation(NetherExp.MOD_ID, "larger_nether_biomes");
         ResourceLocation dpNetherDelightsCompat = new ResourceLocation(NetherExp.MOD_ID, "nethers_delight_compat");
+        ResourceLocation dpGardensOfTheDeadCompat = new ResourceLocation(NetherExp.MOD_ID, "gardens_of_the_dead_compat");
+        ResourceLocation dpRubinatedNetherCompat = new ResourceLocation(NetherExp.MOD_ID, "rubinated_nether_compat");
 
         FabricLoader.getInstance().getModContainer(NetherExp.MOD_ID).ifPresent(container -> {
             // ResourcePacks
@@ -26,8 +29,14 @@ public class JNEBuiltinPacks {
             if (JNEConfigs.LARGER_NETHER_BIOMES.get()) {
                 ResourceManagerHelper.registerBuiltinResourcePack(dpLargerNetherBiomes, container, Component.literal("Larger Nether Biomes"), ResourcePackActivationType.ALWAYS_ENABLED);
             }
-            if (NetherExp.compatNethersDelight()) {
-                ResourceManagerHelper.registerBuiltinResourcePack(dpNetherDelightsCompat, container, Component.literal("JNE + My Nethers Delight Compat"), ResourcePackActivationType.ALWAYS_ENABLED);
+            if (CompatUtil.checkNethersDelight()) {
+                ResourceManagerHelper.registerBuiltinResourcePack(dpNetherDelightsCompat, container, Component.literal("JNE + My Nethers Delight Compatibility"), ResourcePackActivationType.ALWAYS_ENABLED);
+            }
+            if (CompatUtil.checkGardensOfTheDead()) {
+                ResourceManagerHelper.registerBuiltinResourcePack(dpGardensOfTheDeadCompat, container, Component.literal("JNE + Gardens of The Dead Compatibility"), ResourcePackActivationType.ALWAYS_ENABLED);
+            }
+            if (CompatUtil.checkRubinatedNether()) {
+                ResourceManagerHelper.registerBuiltinResourcePack(dpRubinatedNetherCompat, container, Component.literal("JNE + Rubinated Nether Compatibility"), ResourcePackActivationType.ALWAYS_ENABLED);
             }
         });
     }

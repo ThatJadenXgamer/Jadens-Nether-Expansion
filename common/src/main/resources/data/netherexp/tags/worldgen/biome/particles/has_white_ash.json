@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:basalt_deltas"
+    "minecraft:basalt_deltas",
+    {
+      "id": "cinderscapes:blackstone_shales",
+      "required": false
+    }
   ]
 }

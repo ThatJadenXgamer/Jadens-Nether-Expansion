@@ -60,8 +60,10 @@ public class SoulBullet extends AbstractArrow {
     protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         entity.hurt(this.damageSources().source(JNEDamageSources.SOUL_BULLET), 1);
-        if (entity instanceof Monster monster && monster.getTarget() == null) {
-            monster.setTarget((LivingEntity) this.getOwner());
+        if (this.getOwner() != null && entity instanceof Monster monster && monster.getTarget() == null) {
+            if (this.getOwner() instanceof Player player && player.getAbilities().instabuild) {
+                monster.setTarget(player);
+            }
         }
         if (!this.level().isClientSide) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);

@@ -3,9 +3,11 @@
   "package": "net.jadenxgamer.netherexp.forge.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
+  "plugin": "net.jadenxgamer.netherexp.forge.mixin.JNEMixinPluginForge",
   "client": [
   ],
   "mixins": [
+    "compat.HugeFlatFungusFeatureMixin",
     "forge.AbstractArrowMixin",
     "forge.BowItemMixin"
   ],

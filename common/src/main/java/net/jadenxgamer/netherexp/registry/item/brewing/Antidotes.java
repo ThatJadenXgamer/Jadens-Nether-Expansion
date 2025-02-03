@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.item.brewing;
 
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.minecraft.nbt.CompoundTag;
 
 import java.util.ArrayList;
@@ -28,8 +29,13 @@ public class Antidotes {
         ANTIDOTES.add(Antidotes.LEVITATION());
         ANTIDOTES.add(Antidotes.HUNGER());
         ANTIDOTES.add(Antidotes.WITHER());
-        ANTIDOTES.add(Antidotes.LUCK());
-        ANTIDOTES.add(Antidotes.UNLUCK());
+        if (CompatUtil.checkDiceyVentures()) {
+            ANTIDOTES.add(Antidotes.LUCK());
+            ANTIDOTES.add(Antidotes.UNLUCK());
+        }
+        if (CompatUtil.checkOreganized()) {
+            ANTIDOTES.add(Antidotes.BRAIN_DAMAGE());
+        }
     }
 
     /*
@@ -190,6 +196,10 @@ public class Antidotes {
         return nbt;
     }
 
+    /**
+     * MOD COMPAT
+     */
+
     public static CompoundTag LUCK() {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "luck");
@@ -202,6 +212,14 @@ public class Antidotes {
         CompoundTag nbt = new CompoundTag();
         nbt.putString("Antidote", "unluck");
         nbt.putString("AntidoteEffect", "netherexp:unluck_immunity");
+        nbt.putInt("Duration", 900);
+        return nbt;
+    }
+
+    public static CompoundTag BRAIN_DAMAGE() {
+        CompoundTag nbt = new CompoundTag();
+        nbt.putString("Antidote", "brain_damage");
+        nbt.putString("AntidoteEffect", "netherexp:brain_damage_immunity");
         nbt.putInt("Duration", 900);
         return nbt;
     }

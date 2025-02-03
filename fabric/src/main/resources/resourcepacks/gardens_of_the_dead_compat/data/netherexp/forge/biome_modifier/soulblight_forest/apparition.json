@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "gardens_of_the_dead:soulblight_forest",
+  "spawners": {
+    "type": "netherexp:apparition",
+    "weight": 20,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

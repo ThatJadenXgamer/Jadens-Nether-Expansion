@@ -144,11 +144,11 @@ public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, B
             BlockState blockState = level.getBlockState(mutable);
             if (blockState.isSolidRender(level, mutable)) continue;
             if (active && !homeBiome) {
-                level.addParticle(this.sporeParticle.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                level.addParticle(getSporeParticle(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
-        if (active) {
-            level.addParticle(this.smogParticle.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (hanging ? -0.008 : 0.008), 0.0);
+        if (active && random.nextInt(2) == 0) {
+            level.addParticle(getSmogParticle(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, (hanging ? -0.008 : 0.008), 0.0);
         }
     }
 
@@ -181,5 +181,13 @@ public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, B
         if (level.getBlockState(blockPos2).isAir() && (blockState2.is(BlockTags.NYLIUM)) && !h) {
             level.setBlock(blockPos2, this.defaultBlockState().setValue(HANGING, false).setValue(ACTIVE, true), UPDATE_CLIENTS);
         }
+    }
+
+    public SimpleParticleType getSporeParticle() {
+        return sporeParticle.get();
+    }
+
+    public SimpleParticleType getSmogParticle() {
+        return smogParticle.get();
     }
 }

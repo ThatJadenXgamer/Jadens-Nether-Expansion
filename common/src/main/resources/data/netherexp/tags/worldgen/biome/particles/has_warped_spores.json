@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:warped_forest"
+    "minecraft:warped_forest",
+    {
+      "id": "cinderscapes:luminous_grove",
+      "required": false
+    }
   ]
 }

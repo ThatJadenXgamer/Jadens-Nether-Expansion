@@ -8,6 +8,7 @@ import net.jadenxgamer.netherexp.fabric.event.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.fabric.event.WartBeardGrowerEvent;
 import net.jadenxgamer.netherexp.fabric.loot.JNELootModifiers;
 import net.jadenxgamer.netherexp.fabric.worldgen.*;
+import net.jadenxgamer.netherexp.fabric.worldgen.biomes.*;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.*;
 import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotionRecipe;
@@ -18,11 +19,7 @@ public class NetherExpFabric implements ModInitializer, TerraBlenderApi {
     public void onInitialize() {
         NetherExp.init();
         JNEConfigHelperFabric.registerConfigs();
-        NetherWastesFeatures.generateFeatures();
-        SoulSandValleyFeatures.generateFeatures();
-        CrimsonForestFeatures.generateFeatures();
-        WarpedForestFeatures.generateFeatures();
-        BasaltDeltasFeatures.generateFeatures();
+        FeatureGeneration.generateFeatures();
         EntityGeneration.generateEntities();
         JNEPotionRecipe.addInvokerPotionRecipes();
         JNELootModifiers.modifyLootTables();

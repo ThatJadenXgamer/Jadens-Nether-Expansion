@@ -1,6 +1,8 @@
 {
   "replace": false,
   "entries": [
-    "netherexp:rift_armor_trim"
+    "netherexp:rift_armor_trim",
+    "netherexp:artemis_enchantment",
+    "netherexp:sanctum_compass_in_fortress"
   ]
 }

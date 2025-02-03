@@ -1,12 +1,13 @@
 package net.jadenxgamer.netherexp.fabric.event;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
-import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -36,6 +37,10 @@ public class WartBeardGrowerEvent implements UseBlockCallback {
             }
             else if (state.is(JNETags.Blocks.WARPED_WART_BLOCKS) && bottomState.isAir()) {
                 level.setBlock(hitResult.getBlockPos().below(), JNEBlocks.WARPED_WART_BEARD.get().defaultBlockState(), Block.UPDATE_ALL);
+                success = true;
+            }
+            else if (CompatUtil.checkGardensOfTheDead() && state.is(CompatUtil.Registry.getBlock(new ResourceLocation(CompatUtil.GARDENS_OF_THE_DEAD, "blightwart_block"))) && bottomState.isAir()) {
+                level.setBlock(hitResult.getBlockPos().below(), JNEBlocks.BLIGHTWART_BEARD.get().defaultBlockState(), Block.UPDATE_ALL);
                 success = true;
             }
         }

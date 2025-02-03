@@ -3,10 +3,12 @@
   "values": [
     "netherexp:sorroweed",
     "netherexp:shroomnight",
+    "netherexp:shroombright",
     "netherexp:shroomblight",
     "netherexp:crimson_sporeshroom",
     "netherexp:warped_sporeshroom",
     "netherexp:umbral_sporeshroom",
+    "netherexp:soulblight_sporeshroom",
     "netherexp:decayable_nether_wart_block",
     "netherexp:decayable_warped_wart_block",
     "netherexp:decayable_shroomlight",

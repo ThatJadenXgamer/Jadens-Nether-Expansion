@@ -1,10 +1,10 @@
 package net.jadenxgamer.netherexp.forge;
 
 import com.mojang.serialization.Codec;
-import dev.architectury.annotations.ForgeEvent;
 import dev.architectury.platform.forge.EventBuses;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
 import net.jadenxgamer.netherexp.forge.event.JNEBuiltinPacks;
@@ -37,7 +37,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -121,11 +120,17 @@ public class NetherExpForge {
             if (JNEConfigs.LARGER_NETHER_BIOMES.get()) {
                 JNEBuiltinPacks.dpLargerNetherBiomes(event);
             }
-            if (NetherExp.compatNethersDelight()) {
+            if (CompatUtil.checkNethersDelight()) {
                 JNEBuiltinPacks.dpNethersDelightCompat(event);
             }
-            if (NetherExp.compatAlexsCaves()) {
+            if (CompatUtil.checkAlexsCaves()) {
                 JNEBuiltinPacks.dpAlexCavesCompat(event);
+            }
+            if (CompatUtil.checkGardensOfTheDead()) {
+                JNEBuiltinPacks.dpGardensOfTheDeadCompat(event);
+            }
+            if (CompatUtil.checkCavernsAndChasms()) {
+                JNEBuiltinPacks.dpCavernsAndChasmsCompat(event);
             }
         }
     }

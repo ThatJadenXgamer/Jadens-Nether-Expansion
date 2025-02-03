@@ -1,0 +1,18 @@
+{
+  "type": "netherexp:add_enchanted_item",
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.5
+    },
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/nether_bridge"
+    }
+  ],
+  "item": "minecraft:enchanted_book",
+  "enchantment": "netherexp:artemis",
+  "min_level": 1,
+  "max_level": 2
+}
+

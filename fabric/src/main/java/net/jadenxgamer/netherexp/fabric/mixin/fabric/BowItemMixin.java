@@ -21,7 +21,7 @@ public abstract class BowItemMixin {
     )
     private void netherexp$modifyArrowVelocity(AbstractArrow instance, Entity entity, float x, float y, float z, float v, float a, Operation<Void> original) {
         // makes it so arrows travel further if you have the artemis enchantment
-        if (entity instanceof Player player) {
+        if (entity instanceof Player player && EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), player.getMainHandItem()) > 0) {
             int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), player.getMainHandItem());
             instance.shootFromRotation(entity, x, y, z, v + artemis, a);
         } else {

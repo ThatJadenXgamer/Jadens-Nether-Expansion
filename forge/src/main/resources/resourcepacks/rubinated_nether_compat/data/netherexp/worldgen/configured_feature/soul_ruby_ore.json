@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 8,
+    "discard_chance_on_air_exposure": 0.5,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "netherexp:soul_magma_block"
+        },
+        "state": {
+          "Name": "netherexp:soul_ruby_ore"
+        }
+      }
+    ]
+  }
+}
+
+

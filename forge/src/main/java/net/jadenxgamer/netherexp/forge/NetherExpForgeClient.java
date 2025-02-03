@@ -111,11 +111,12 @@ public class NetherExpForgeClient {
         event.registerSpriteSet(JNEParticleTypes.DRAGON_FIREBALL_TRAIL.get(), GlimmerParticle.GhastFireballFactory::new);
 
         // MOD COMPAT
-        event.registerSpriteSet(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.UMBRAL_SMOG.get(), SmogParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.FALLING_SHROOMBRIGHT.get(), FallingParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SHALE_SWIRL_POP.get(), RisingParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BLIGHT_SWIRL_POP.get(), RisingParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.UMBRAL_SMOG.get(), SmogParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SOULBLIGHT_SMOG.get(), SmogParticle.Factory::new);
     }
-
 
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(JNEModelLayers.APPARITION_LAYER, ApparitionModel::createBodyLayer);

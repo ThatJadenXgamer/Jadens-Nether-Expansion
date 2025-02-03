@@ -13,6 +13,11 @@
     "netherexp:smooth_silica_sandstone_stairs",
     "netherexp:basalt_stairs",
     "netherexp:polished_basalt_stairs",
-    "netherexp:polished_basalt_brick_stairs"
+    "netherexp:polished_basalt_brick_stairs",
+    "netherexp:cut_netherite_stairs",
+    "netherexp:rusty_cut_netherite_stairs",
+
+    "netherexp:yellow_nether_brick_stairs",
+    "netherexp:cut_necromium_stairs"
   ]
 }

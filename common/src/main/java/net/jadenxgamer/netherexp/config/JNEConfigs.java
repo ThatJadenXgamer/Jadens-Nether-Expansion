@@ -29,7 +29,7 @@ public class JNEConfigs {
     public static Supplier<Integer> POTION_STACK_SIZE = () -> 16;
 
     // Entities
-    public static Supplier<Boolean> THREED_FIREBALLS = () -> true;
+    public static Supplier<Boolean> THREED_FIREBALLS = () -> false;
     public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;
     public static Supplier<Boolean> PIXEL_CONSISTENT_MAGMA_CUBES = () -> true;
     public static Supplier<Boolean> SKELETON_FOSSILIZATION = () -> true;
@@ -41,13 +41,14 @@ public class JNEConfigs {
     public static Supplier<Boolean> SUSPICIOUS_SOUL_SAND_FROM_WISP_EMERGING = () -> true;
     public static Supplier<EctoSlabEmerging> ECTO_SLAB_EMERGING_BEHAVIOR = () -> EctoSlabEmerging.UNBOUNDED_SPEED_ONLY;
     public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE = () -> 40;
-    public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED = () -> 5;
+    public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED = () -> 10;
 
     // Game Mechanics
     public static Supplier<NetherFogDistance> NETHER_FOG_DISTANCE = () -> NetherFogDistance.MEDIUM;
     public static Supplier<Boolean> LARGER_NETHER_BIOMES = () -> false;
     public static Supplier<Boolean> AMPLIFIER_IMMUNITY_REDUCTION = () -> false;
     public static Supplier<Boolean> ECTOPLASM_RUSTS_NETHERITE = () -> true;
+    public static Supplier<Boolean> ECTOPLASM_SOURCE_CONVERSION = () -> true;
     public static Supplier<Boolean> REDUCE_SOUL_SAND_SLOWNESS = () -> false;
     public static Supplier<Boolean> REMOVE_SOUL_SPEED_DURABILITY_PENALTY = () -> false;
     public static Supplier<Boolean> ENABLE_SUB_BIOMES = () -> true;

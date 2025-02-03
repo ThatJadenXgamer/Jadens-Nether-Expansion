@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "netherexp:block/mod_compat/gardens_of_the_dead/blight_swirls_cooldown"
+  }
+}

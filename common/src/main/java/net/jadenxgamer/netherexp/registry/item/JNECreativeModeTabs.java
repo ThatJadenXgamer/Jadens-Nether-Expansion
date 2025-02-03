@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.item;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.compat.CompatUtil;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
 import net.jadenxgamer.netherexp.registry.item.brewing.Antidotes;
@@ -151,13 +152,6 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_SLAB.get());
                         output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_PILLAR.get());
 
-//                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
-//                            output.accept(JNEBlocks.ENIGMA_CROWN);
-//                            output.accept(JNEBlocks.ENIGMA_SHELF);
-//                            output.accept(JNEBlocks.ENIGMA_FLESH);
-//                            output.accept(JNEBlocks.STRANGE_ENIGMA_FLESH);
-//                        }
-
                         output.accept(JNEItems.CEREBRAGE_SEEDS.get());
                         output.accept(JNEItems.CEREBRAGE.get());
                         output.accept(JNEBlocks.CEREBRAGE_CLARET_STEM.get());
@@ -194,11 +188,6 @@ public class JNECreativeModeTabs {
 //                        output.accept(JNEBlocks.SMOKESTALK_BUTTON.get());
 //                        output.accept(JNEItems.SMOKESTALK_SIGN.get());
 //                        output.accept(JNEItems.SMOKESTALK_HANGING_SIGN.get());
-//                        if (NetherExp.getConfig().gamemechanics.enable_unfinished_items) {
-//
-////                            output.accept(JNEBlocks.EXPLOSIVE_SCORIA);
-//                            output.accept(JNEItems.IRON_SCRAP.get());
-//                        }
 
                         output.accept(Items.QUARTZ);
                         output.accept(JNEBlocks.QUARTZ_CRYSTAL.get());
@@ -368,6 +357,28 @@ public class JNECreativeModeTabs {
                         addAntidotes(output);
                         addGrenadeAntidotes(output);
 
+                    }).build());
+
+    public static final RegistrySupplier<CreativeModeTab> NETHEREXP_COMPAT = CREATIVE_MODE_TABS.register("netherexp_compat",
+            () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 2).icon(() -> new ItemStack(JNEItems.BLIGHTSPORES.get()))
+                    .title(Component.literal("JNE - Mod Compat"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        if (CompatUtil.checkGardensOfTheDead()) {
+                            output.accept(JNEBlocks.SHROOMBLIGHT.get());
+                            output.accept(JNEItems.BLIGHTSPORES.get());
+                            output.accept(JNEBlocks.BLIGHT_SWIRLS.get());
+                            output.accept(JNEBlocks.SOULBLIGHT_SPORESHROOM.get());
+                            output.accept(JNEItems.BLIGHTWART.get());
+                            output.accept(JNEBlocks.BLIGHTWART_BEARD.get());
+                            output.accept(JNEBlocks.YELLOW_MIXED_NETHER_BRICKS.get());
+                            output.accept(JNEBlocks.YELLOW_NETHER_BRICKS.get());
+                            output.accept(JNEBlocks.YELLOW_NETHER_BRICK_STAIRS.get());
+                            output.accept(JNEBlocks.YELLOW_NETHER_BRICK_SLAB.get());
+                            output.accept(JNEBlocks.YELLOW_NETHER_BRICK_WALL.get());
+                        }
+                        if (CompatUtil.checkRubinatedNether()) {
+                            output.accept(JNEBlocks.SOUL_RUBY_ORE.get());
+                        }
                     }).build());
 
     private static void addAntidotes(CreativeModeTab.Output output) {

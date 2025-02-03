@@ -125,6 +125,19 @@
 
     "minecraft:glowstone",
     "minecraft:redstone_lamp",
-    "#netherexp:mob_heads"
+    "#netherexp:mob_heads",
+
+    "netherexp:yellow_mixed_nether_bricks",
+    "netherexp:yellow_nether_bricks",
+    "netherexp:yellow_nether_brick_slab",
+    "netherexp:yellow_nether_brick_stairs",
+    "netherexp:yellow_nether_brick_wall",
+
+    "netherexp:necromium_plated_block",
+    "netherexp:necromium_grate",
+    "netherexp:cut_necromium_block",
+    "netherexp:cut_necromium_slab",
+    "netherexp:cut_necromium_stairs",
+    "netherexp:cut_necromium_pillar"
   ]
 }

@@ -1,7 +1,5 @@
 package net.jadenxgamer.netherexp.registry.item;
 
-import java.util.function.Supplier;
-
 import dev.architectury.core.item.ArchitecturySpawnEggItem;
 import dev.architectury.registry.fuel.FuelRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -9,34 +7,13 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
-import net.jadenxgamer.netherexp.registry.item.custom.CerebrageSeedItem;
-import net.jadenxgamer.netherexp.registry.item.custom.GrenadeAntidoteItem;
-import net.jadenxgamer.netherexp.registry.item.custom.JNEFoodOnAStickItem;
-import net.jadenxgamer.netherexp.registry.item.custom.LightsporesItem;
-import net.jadenxgamer.netherexp.registry.item.custom.MistChargeItem;
-import net.jadenxgamer.netherexp.registry.item.custom.MobBottleItem;
-import net.jadenxgamer.netherexp.registry.item.custom.NetheriteArtifactItem;
-import net.jadenxgamer.netherexp.registry.item.custom.NightsporesItem;
-import net.jadenxgamer.netherexp.registry.item.custom.PhasmoArrowItem;
-import net.jadenxgamer.netherexp.registry.item.custom.PumpChargeShotgunItem;
-import net.jadenxgamer.netherexp.registry.item.custom.PumpChargeSmithingTemplateItem;
-import net.jadenxgamer.netherexp.registry.item.custom.SanctumCompassItem;
-import net.jadenxgamer.netherexp.registry.item.custom.ShotgunFistItem;
-import net.jadenxgamer.netherexp.registry.item.custom.TreacherousFlameItem;
-import net.jadenxgamer.netherexp.registry.item.custom.WillOWispItem;
+import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
-import net.minecraft.world.item.SignItem;
-import net.minecraft.world.item.SmithingTemplateItem;
+import net.minecraft.world.item.*;
+
+import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public class JNEItems {
@@ -80,12 +57,6 @@ public class JNEItems {
 
     public static final RegistrySupplier<Item> NIGHTSPORES = registerItem("nightspores", () ->
         new NightsporesItem(new Item.Properties()));
-
-    public static final RegistrySupplier<Item> BLIGHTSPORES = registerItem("blightspores", () ->
-        new Item(new Item.Properties()));
-
-    public static final RegistrySupplier<Item> FRIGHTSPORES = registerItem("frightspores", () ->
-        new Item(new Item.Properties()));
 
     public static final RegistrySupplier<Item> ANTIDOTE = registerItem("antidote", () ->
         new AntidoteItem(new Item.Properties()));
@@ -216,10 +187,27 @@ public class JNEItems {
     public static final RegistrySupplier<Item> ROASTED_BONE = registerItem("roasted_bone", () ->
         new Item(new Item.Properties().food(JNEFoods.ROASTED_BONE).stacksTo(16)));
 
+
     // NETHERITE ARTIFACTS
 
     public static final RegistrySupplier<Item> SHOTGUN_CORE = registerItem("shotgun_core", () ->
-        new NetheriteArtifactItem(new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.RARE)));
+            new NetheriteArtifactItem(new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.RARE)));
+
+    /**
+     * Mod Compat
+     */
+
+    public static final RegistrySupplier<Item> BRIGHTSPORES = registerItem("brightspores", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> BLIGHTSPORES = registerItem("blightspores", () ->
+            new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> BLIGHTWART = registerItem("blightwart", () ->
+            new BlockItem(JNEBlocks.BLIGHTWART.get(), new Item.Properties()));
+
+    public static final RegistrySupplier<Item> NECROMIUM_PLATING = registerItem("necromium_plating", () ->
+            new Item(new Item.Properties().fireResistant()));
 
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);

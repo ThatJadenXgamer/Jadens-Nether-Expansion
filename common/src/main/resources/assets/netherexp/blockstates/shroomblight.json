@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "netherexp:block/mod_compat/cinderscapes/shroomblight"
+      "model": "netherexp:block/mod_compat/gardens_of_the_dead/shroomblight"
     }
   }
 }

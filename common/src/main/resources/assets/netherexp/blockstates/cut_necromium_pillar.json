@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "netherexp:block/mod_compat/caverns_and_chasms/cut_necromium_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "netherexp:block/mod_compat/caverns_and_chasms/cut_necromium_pillar"
+    },
+    "axis=z": {
+      "model": "netherexp:block/mod_compat/caverns_and_chasms/cut_necromium_pillar",
+      "x": 90
+    }
+  }
+}

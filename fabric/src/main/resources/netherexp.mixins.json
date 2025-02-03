@@ -3,9 +3,11 @@
   "package": "net.jadenxgamer.netherexp.fabric.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
+  "plugin": "net.jadenxgamer.netherexp.fabric.mixin.JNEMixinPluginFabric",
   "client": [
   ],
   "mixins": [
+    "compat.HugeFlatFungusFeatureMixin",
     "fabric.AbstractArrowMixin",
     "fabric.BowItemMixin",
     "fabric.LiquidBlockMixin"

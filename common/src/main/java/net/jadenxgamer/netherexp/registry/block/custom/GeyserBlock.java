@@ -95,7 +95,7 @@ public class GeyserBlock extends Block {
                 level.addParticle(this.ashParticle.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
-        if (active) {
+        if (active && random.nextInt(2) == 0) {
             level.addParticle(this.smokeParticle.get(), (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.5, (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1), 0.0, 0.012, 0.0);
         }
         if (!cooldown && this.spark && f < 0.3f) {

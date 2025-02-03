@@ -53,6 +53,7 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.MAGMA_CREAM_BLOCK.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SOUL_SWIRLS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SHALE_SWIRLS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BLIGHT_SWIRLS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SORROWSQUASH_STEM.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.SORROWSQUASH_STEM_PLANT.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.CRIMSON_SPROUTS.get(), RenderType.cutout());
@@ -63,6 +64,8 @@ public class NetherExpFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.NETHER_WART_BEARD.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.WARPED_WART_BEARD.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.UMBRAL_WART_BEARD.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BLIGHTWART_BEARD.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.BLIGHTWART.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.QUARTZ_CRYSTAL.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.ENIGMA_CROWN.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JNEBlocks.ENIGMA_SHELF.get(), RenderType.cutout());
@@ -156,9 +159,11 @@ public class NetherExpFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.DRAGON_FIREBALL_TRAIL.get(), GlimmerParticle.GhastFireballFactory::new);
 
         // MOD COMPAT
-        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_SHROOMBLIGHT.get(), FallingParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.UMBRAL_SMOG.get(), SmogParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.FALLING_SHROOMBRIGHT.get(), FallingParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.SHALE_SWIRL_POP.get(), RisingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.BLIGHT_SWIRL_POP.get(), RisingParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.UMBRAL_SMOG.get(), SmogParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(JNEParticleTypes.SOULBLIGHT_SMOG.get(), SmogParticle.Factory::new);
 
         // ENTITY
         EntityRendererRegistry.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);

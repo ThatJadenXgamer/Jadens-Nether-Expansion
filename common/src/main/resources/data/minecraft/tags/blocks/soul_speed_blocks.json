@@ -30,6 +30,8 @@
     "netherexp:black_ice",
     "netherexp:fossil_ore",
     "netherexp:fossil_fuel_ore",
-    "netherexp:wraithing_lesion"
+    "netherexp:wraithing_lesion",
+    "netherexp:shroomblight",
+    "netherexp:soul_ruby_ore"
   ]
 }

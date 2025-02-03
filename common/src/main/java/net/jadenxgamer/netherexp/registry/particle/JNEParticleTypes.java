@@ -46,10 +46,14 @@ public class JNEParticleTypes {
     public static final RegistrySupplier<SimpleParticleType> SMALL_FIREBALL_TRAIL = PARTICLE_TYPES.register("small_fireball_trail", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> DRAGON_FIREBALL_TRAIL = PARTICLE_TYPES.register("dragon_fireball_trail", () -> new SimpleParticleType(false){});
 
-    // MOD COMPAT
-    public static final RegistrySupplier<SimpleParticleType> FALLING_SHROOMBLIGHT = PARTICLE_TYPES.register("falling_shroomblight", () -> new SimpleParticleType(false){});
-    public static final RegistrySupplier<SimpleParticleType> UMBRAL_SMOG = PARTICLE_TYPES.register("umbral_smog", () -> new SimpleParticleType(false){});
+    /**
+     * MOD COMPAT
+     */
+    public static final RegistrySupplier<SimpleParticleType> FALLING_SHROOMBRIGHT = PARTICLE_TYPES.register("falling_shroombright", () -> new SimpleParticleType(false){});
     public static final RegistrySupplier<SimpleParticleType> SHALE_SWIRL_POP = PARTICLE_TYPES.register("shale_swirl_pop", () -> new SimpleParticleType(false){});
+    public static final RegistrySupplier<SimpleParticleType> BLIGHT_SWIRL_POP = PARTICLE_TYPES.register("blight_swirl_pop", () -> new SimpleParticleType(false){});
+    public static final RegistrySupplier<SimpleParticleType> UMBRAL_SMOG = PARTICLE_TYPES.register("umbral_smog", () -> new SimpleParticleType(false){});
+    public static final RegistrySupplier<SimpleParticleType> SOULBLIGHT_SMOG = PARTICLE_TYPES.register("soulblight_smog", () -> new SimpleParticleType(false){});
 
     public static void init() {
         PARTICLE_TYPES.register();

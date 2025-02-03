@@ -45,6 +45,8 @@ public class JNEPlacedFeatures {
     // MOD COMPATIBILITY //
     ///////////////////////
 
+    public static final ResourceKey<PlacedFeature> SOUL_MAGMA_ORE = registerKey("soul_magma_ore");
+
     // LUMINOUS GROVE
 
     public static final ResourceKey<PlacedFeature> UMBRAL_SPORESHROOM = registerKey("luminous_grove/umbral_sporeshroom");
@@ -64,6 +66,12 @@ public class JNEPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BLACKSTONIC_GEYSER = registerKey("blackstone_shales/blackstonic_geyser");
     public static final ResourceKey<PlacedFeature> BLACKSTONE_SHALES_SHALE_SWIRLS_CEILING = registerKey("blackstone_shales/shale_swirls_ceiling");
     public static final ResourceKey<PlacedFeature> BLACKSTONE_SHALES_SHALE_SWIRLS_FLOOR = registerKey("blackstone_shales/shale_swirls_floor");
+
+    // SOULBLIGHT FOREST
+
+    public static final ResourceKey<PlacedFeature> SOULBLIGHT_SPORESHROOM = registerKey("soulblight_forest/soulblight_sporeshroom");
+    public static final ResourceKey<PlacedFeature> BLIGHT_SWIRLS_CEILING = registerKey("soulblight_forest/blight_swirls_ceiling");
+    public static final ResourceKey<PlacedFeature> BLIGHT_SWIRLS_FLOOR = registerKey("soulblight_forest/blight_swirls_floor");
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(NetherExp.MOD_ID, name));

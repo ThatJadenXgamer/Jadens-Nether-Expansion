@@ -1,0 +1,37 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "caverns_and_chasms:necromium_helmet",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:necromium_chestplate",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:necromium_leggings",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:necromium_boots",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_helmet",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_chestplate",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_leggings",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_boots",
+      "required": false
+    }
+  ]
+}
