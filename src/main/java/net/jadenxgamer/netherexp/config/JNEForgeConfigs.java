@@ -53,6 +53,21 @@ public class JNEForgeConfigs {
         SCULK_GRINDER_EXPERIENCE = BUILDER
                 .comment("How much experience is dropped when treacherous flames are grinded down")
                 .define("sculk_grinder_experience", 450);
+        SHOULD_SORROWSQUASH_FALL = BUILDER
+                .comment("Sorrowsquash will fall down if the vine stem holding it is broken")
+                .define("should_sorrowsquash_fall", true);
+        SORROWSQUASH_GROWTH_CHANCE = BUILDER
+                .comment("Percentage chance for Sorrowsquash to grow from vine stems \nif the growth chance fails then the stem will grow upwards if possible")
+                .defineInRange("sorrowsquash_growth_chance", 0.2, 0.0, 1.0);
+        SORROWSQUISHED_DAMAGE_MULTIPLIER = BUILDER
+                .comment("Defines damage multipler for a falling sorrowsquash for every block it falls")
+                .define("sorrowsquished_damage_multiplier", 1.5);
+        SORROWSQUISHED_MAX_DAMAGE = BUILDER
+                .comment("Defines the maximum damage a falling sorrowsquash can inflict")
+                .define("sorrowsquished_max_damage", 30);
+        HAZE_BLOCK_COOLDOWN = BUILDER
+                .comment("How many seconds a haze block will stay before breaking")
+                .define("haze_block_cooldown", 8);
     }
 
     private static void registerItemConfigs(ForgeConfigSpec.Builder BUILDER) {
@@ -148,15 +163,15 @@ public class JNEForgeConfigs {
                 .define("black_ice_glaciers_size", 64);
     }
 
-    private static void registerParticlesAndSoundsConfigs(ForgeConfigSpec.Builder BUILDER) {
+    private static void registerVisualsAndSoundsConfigs(ForgeConfigSpec.Builder BUILDER) {
         IMPROVED_FIREBALL_PARTICLES = BUILDER
-                .comment("Fireballs will leave a trail of fire behind")
+                .comment("Fireballs will leave a trail of fire and smoke behind")
                 .define("improved_fireball_particles", true);
         IMPROVED_SOUL_FIRE_PARTICLES = BUILDER
                 .comment("Soul Fire will emit unique particles instead of smoke")
                 .define("improved_soul_fire_particles", true);
         ENABLE_BLACK_ICE_PARTICLES = BUILDER
-                .comment("Black will produce aerosol particles")
+                .comment("Black Ice will produce snowflake particles")
                 .define("enable_black_ice_particles", true);
         ENABLE_ECTOPLASM_PARTICLES = BUILDER
                 .comment("Ectoplasm will produce light rays and rising particles")
@@ -164,6 +179,15 @@ public class JNEForgeConfigs {
         ENABLE_ECTOPLASM_SOUNDS = BUILDER
                 .comment("Ectoplasm will occasionally produce whispering sounds")
                 .define("enable_ectoplasm_sounds", true);
+        TREACHEROUS_CANDLE_RED_LIGHTS = BUILDER
+                .comment("When Betrayed effect is active it'll turn all lighting red")
+                .define("treacherous_candle_red_lights", true);
+        TREACHEROUS_CANDLE_FOG = BUILDER
+                .comment("When Betrayed effect is active a dense red fog will appear")
+                .define("treacherous_candle_fog", true);
+        TREACHEROUS_CANDLE_PARTICLES = BUILDER
+                .comment("Treacherous Candle will produce red haze and sparkle particles")
+                .define("treacherous_candle_particles", true);
     }
 
     static {
@@ -188,8 +212,8 @@ public class JNEForgeConfigs {
         registerSubBiomeConfigs(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("Particle & Sound Settings").push("particles_and_sounds");
-        registerParticlesAndSoundsConfigs(BUILDER);
+        BUILDER.comment("Visuals & Sound Settings").push("visuals_and_sounds");
+        registerVisualsAndSoundsConfigs(BUILDER);
         BUILDER.pop();
 
         COMMON = BUILDER.build();

@@ -21,12 +21,17 @@ public class JNEConfigs {
     public static Supplier<Integer> UNBOUNDED_SPEED_DURATION = () -> 10;
     public static Supplier<SoulSwirlsBoneMeal> SOUL_SWIRLS_BONE_MEAL_BEHAVIOR = () -> SoulSwirlsBoneMeal.DUPLICATES;
     public static Supplier<Integer> SCULK_GRINDER_EXPERIENCE = () -> 450;
+    public static Supplier<Boolean> SHOULD_SORROWSQUASH_FALL = () -> true;
+    public static Supplier<Double> SORROWSQUASH_GROWTH_CHANCE = () -> 0.2;
+    public static Supplier<Double> SORROWSQUISHED_DAMAGE_MULTIPLIER = () -> 1.5;
+    public static Supplier<Integer> SORROWSQUISHED_MAX_DAMAGE = () -> 30;
 
     // Items
     public static Supplier<Integer> WILL_O_WISP_STACK_SIZE = () -> 16;
     public static Supplier<Integer> POTION_STACK_SIZE = () -> 16;
     public static Supplier<Double> JACKHAMMER_FIST_MAX_DAMAGE = () -> 40.0;
     public static Supplier<Integer> BLACK_ICICLE_FREEZE_TICKS = () -> 500;
+    public static Supplier<Integer> HAZE_BLOCK_COOLDOWN = () -> 8;
 
     // Entities
     public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;
@@ -58,10 +63,13 @@ public class JNEConfigs {
     public static Supplier<Double> BLACK_ICE_GLACIERS_RARITY = () -> 0.075;
     public static Supplier<Integer> BLACK_ICE_GLACIERS_SIZE = () -> 64;
 
-    // Particles & Sounds
+    // Visuals & Sounds
     public static Supplier<Boolean> IMPROVED_FIREBALL_PARTICLES = () -> true;
     public static Supplier<Boolean> IMPROVED_SOUL_FIRE_PARTICLES = () -> true;
     public static Supplier<Boolean> ENABLE_BLACK_ICE_PARTICLES = () -> true;
     public static Supplier<Boolean> ENABLE_ECTOPLASM_PARTICLES = () -> true;
     public static Supplier<Boolean> ENABLE_ECTOPLASM_SOUNDS = () -> true;
+    public static Supplier<Boolean> TREACHEROUS_CANDLE_RED_LIGHTS = () -> true;
+    public static Supplier<Boolean> TREACHEROUS_CANDLE_FOG = () -> true;
+    public static Supplier<Boolean> TREACHEROUS_CANDLE_PARTICLES = () -> true;
 }

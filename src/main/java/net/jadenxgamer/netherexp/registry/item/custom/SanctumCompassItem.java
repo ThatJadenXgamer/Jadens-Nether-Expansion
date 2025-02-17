@@ -4,6 +4,7 @@ import com.mojang.serialization.DataResult;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -69,6 +70,9 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
                 nbt.remove("CustomModelData");
                 nbt.putBoolean(IS_ACTIVE, false);
                 this.cooldown = 4800;
+            }
+            else if (entity.tickCount % 40 == 0 && isSelected) {
+                level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), JNESoundEvents.COMPASS_TICK.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
             }
         }
     }

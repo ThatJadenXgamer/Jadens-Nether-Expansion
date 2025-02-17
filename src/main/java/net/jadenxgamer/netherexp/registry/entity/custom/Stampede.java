@@ -186,12 +186,15 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
         if (this.stepSoundCooldown > 0) {
             this.stepSoundCooldown--;
         }
-        if (this.isInWaterOrRain()) {
+        if (this.isInWaterOrRain() && !level().isClientSide) {
             if (getChangeType() == 0) {
+                sendCloudParticles(this);
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 this.discard();
-            } else this.doExorcism();
+            }
+            else this.doExorcism();
         }
+        super.aiStep();
         if (this.isAlive()) {
             ItemStack item = this.getItemBySlot(EquipmentSlot.MAINHAND);
             int eating = this.getEatingTime();
@@ -252,6 +255,12 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
         }
 
         super.aiStep();
+    }
+
+    private void sendCloudParticles(LivingEntity entity) {
+        for (int i = 0; i < 12; i++) {
+            ((ServerLevel) this.level()).sendParticles(JNEParticleTypes.SOUL_CLOUD.get(), entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), 1, 0.0, 0.0, 0.0, 0.0);
+        }
     }
 
     public @NotNull InteractionResult mobInteract(Player player, InteractionHand hand) {
@@ -316,6 +325,7 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
     private void doExorcism() {
         Strider strider = this.convertTo(EntityType.STRIDER, false);
         if (strider != null && this.level() instanceof ServerLevel serverLevel) {
+            sendCloudParticles(strider);
             strider.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(strider.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
             strider.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
             strider.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));

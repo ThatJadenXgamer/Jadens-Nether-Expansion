@@ -61,15 +61,13 @@ public class WarpedWartBlock extends BushBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos upPos = pos.above();
-        if (state.getValue(HALF) != DoubleBlockHalf.LOWER) {
-            return this.canPlantDownBelow(level.getBlockState(upPos));
+        if (state.getValue(HALF) == DoubleBlockHalf.LOWER) {
+            BlockState above = level.getBlockState(pos.above());
+            return above.is(this) && above.getValue(HALF) == DoubleBlockHalf.UPPER;
         }
-        else {
-            BlockState upState = level.getBlockState(upPos);
-            return upState.is(this) && state.getValue(HALF) == DoubleBlockHalf.UPPER;
-        }
+        return this.canPlantDownBelow(level.getBlockState(pos.above()));
     }
+
     protected boolean canPlantDownBelow(BlockState ceiling) {
         return ceiling.is(Blocks.SOUL_SAND);
     }
@@ -81,27 +79,31 @@ public class WarpedWartBlock extends BushBlock {
 
     @Override
     public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
-        int i = state.getValue(AGE);
-        if (i == 3 && direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.UPPER == (direction == Direction.DOWN) && (!neighborState.is(this) || neighborState.getValue(HALF) == doubleBlockHalf)) {
-            return Blocks.AIR.defaultBlockState();
+        DoubleBlockHalf half = state.getValue(HALF);
+        if (half == DoubleBlockHalf.LOWER && direction == Direction.UP) {
+            if (!neighborState.is(this) || neighborState.getValue(HALF) != DoubleBlockHalf.UPPER) {
+                return Blocks.AIR.defaultBlockState();
+            }
         }
-        else {
-            return doubleBlockHalf == DoubleBlockHalf.UPPER && direction == Direction.UP && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+        else if (half == DoubleBlockHalf.UPPER && direction == Direction.DOWN) {
+            if (!neighborState.is(this) || neighborState.getValue(HALF) != DoubleBlockHalf.LOWER) {
+                return Blocks.AIR.defaultBlockState();
+            }
         }
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         int age = state.getValue(AGE);
-        BlockPos floor = pos.below();
+        BlockPos below = pos.below();
         if (age < 2 && random.nextInt(10) == 0) {
             level.setBlock(pos, state.setValue(AGE, age + 1), 2);
         }
-        else if (age == 2 && level.getBlockState(floor).isAir()) {
-            level.setBlock(pos, state.setValue(AGE, age + 1), 2);
-            level.setBlock(floor, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, 3), 2);
+        else if (age == 2 && level.getBlockState(below).isAir()) {
+            level.setBlock(pos, state.setValue(AGE, 3), 2);
+            level.setBlock(below, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, 3), 2);
         }
     }
 

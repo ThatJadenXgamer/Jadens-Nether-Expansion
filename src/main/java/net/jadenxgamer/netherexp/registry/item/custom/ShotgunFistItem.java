@@ -89,7 +89,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable,
         int quickCharge = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.QUICK_CHARGE, stack);
         int cooldown = barrage > 0 ? 40 + (barrage * 15) : 40 - (quickCharge * 8);
         if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
-            if (cartridge > 0 && level.random.nextInt(1 + cartridge) == 0) {
+            if (cartridge > 0 && level.random.nextInt((cartridge * 2)) == 0) {
                 useProjectile(stack, player);
             } else {
                 useProjectile(stack, player);
@@ -110,7 +110,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable,
         int barrage = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BARRAGE.get(), stack);
         int quickCharge = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.QUICK_CHARGE, stack);
         // Bonuses
-        int recoilBulletDistanceBonus = artemis / 5;
+        int artemisBulletDistanceBonus = artemis / 5;
         double recoilPushBonus = (double) recoil / 16;
         // Vectors
         Vec3 look = user.getLookAngle();
@@ -122,7 +122,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable,
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, user);
-                soulBullet.shoot(look.x, look.y, look.z, 1.0F + recoilBulletDistanceBonus, 20);
+                soulBullet.shoot(look.x, look.y, look.z, 1.5F + artemisBulletDistanceBonus, 20);
                 level.addFreshEntity(soulBullet);
             }
         }

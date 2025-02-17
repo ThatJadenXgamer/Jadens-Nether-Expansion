@@ -4,6 +4,9 @@
     "netherexp:ochre_frogmist",
     "netherexp:verdant_frogmist",
     "netherexp:pearlescent_frogmist",
-    "netherexp:carmine_frogmist"
+    {
+      "id": "netherexp:carmine_frogmist",
+      "required": false
+    }
   ]
 }

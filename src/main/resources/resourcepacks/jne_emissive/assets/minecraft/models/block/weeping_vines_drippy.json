@@ -1,0 +1,8 @@
+{
+  "parent": "elysium:block/emissive_cross_12",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "block/weeping_vines_drippy",
+    "glow": "block/weeping_vines_drippy_glow"
+  }
+}

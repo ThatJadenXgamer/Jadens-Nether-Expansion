@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.block;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.block.custom.VineStemBlock;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -36,7 +37,7 @@ public abstract class StemBlockMixin extends BushBlock {
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean notify) {
         BlockState floor = level.getBlockState(pos.below());
         if (state.is(Blocks.PUMPKIN_STEM) && floor.is(JNETags.Blocks.SOUL_CROP_MUTATION_BLOCKS)) {
-            level.setBlock(pos, JNEBlocks.SORROWSQUASH_STEM.get().defaultBlockState(), UPDATE_ALL);
+            level.setBlock(pos, JNEBlocks.SORROWSQUASH_STEM.get().defaultBlockState().setValue(VineStemBlock.AGE, level.random.nextInt(8, 18)), UPDATE_ALL);
         }
     }
 }

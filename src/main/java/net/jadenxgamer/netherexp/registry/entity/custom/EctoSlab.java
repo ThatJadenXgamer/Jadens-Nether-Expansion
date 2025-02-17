@@ -107,15 +107,21 @@ public class EctoSlab extends Slime {
 
     @Override
     public void aiStep() {
-        if (this.isInWaterOrRain()) {
+        if (this.isInWaterOrRain() && !level().isClientSide) {
             if (getChangeType() == 0) {
+                sendCloudParticles(this);
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 this.discard();
             }
             else this.doExorcism();
         }
-        refreshDimensions();
         super.aiStep();
+    }
+
+    private void sendCloudParticles(LivingEntity entity) {
+        for (int i = 0; i < 12; i++) {
+            ((ServerLevel) this.level()).sendParticles(JNEParticleTypes.SOUL_CLOUD.get(), entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), 1, 0.0, 0.0, 0.0, 0.0);
+        }
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -170,11 +176,6 @@ public class EctoSlab extends Slime {
 
     public boolean isInvulnerableTo(DamageSource damageSource) {
         return this.isRemoved() || this.isInvulnerable() || this.getIsUnderground() && !damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && !damageSource.is(JNETags.DamageTypes.CAN_DISRUPT_UNDERGROUND_ECTO_SLABS) && !damageSource.isCreativePlayer() || damageSource.is(DamageTypeTags.IS_FIRE) && this.fireImmune() || damageSource.is(DamageTypeTags.IS_FALL) && this.getType().is(EntityTypeTags.FALL_DAMAGE_IMMUNE);
-    }
-
-    @Override
-    public boolean ignoreExplosion() {
-        return this.getIsUnderground();
     }
 
     @Override
@@ -342,7 +343,7 @@ public class EctoSlab extends Slime {
                 JNECriteriaTriggers.EXORCISM.trigger((ServerPlayer) player);
             }
         }
-        else if (damageSource.is(JNETags.DamageTypes.CAN_DISRUPT_UNDERGROUND_ECTO_SLABS)) {
+        else if (this.getIsUnderground() && this.undergroundTime > 20 && damageSource.is(JNETags.DamageTypes.CAN_DISRUPT_UNDERGROUND_ECTO_SLABS)) {
             this.undergroundTime = 20;
             return false;
         }
@@ -352,6 +353,7 @@ public class EctoSlab extends Slime {
     private void doExorcism() {
         MagmaCube magmaCube = this.convertTo(EntityType.MAGMA_CUBE, false);
         if (magmaCube != null && this.level() instanceof ServerLevel serverLevel) {
+            sendCloudParticles(magmaCube);
             magmaCube.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(magmaCube.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
             magmaCube.setSize(getSize(), true);
             magmaCube.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));

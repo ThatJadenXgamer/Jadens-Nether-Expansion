@@ -69,7 +69,7 @@ public class JNEBlocks {
 
     public static final RegistryObject<Block> ETCHED_SOUL_SLATE_BRICKS = registerBlock("etched_soul_slate_bricks", () ->
             new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get()).lightLevel(
-                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 7 : 0)));
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 4 : 0)));
 
     public static final RegistryObject<Block> CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks", () ->
             new Block(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get())));
@@ -79,7 +79,7 @@ public class JNEBlocks {
 
     public static final RegistryObject<Block> CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks", () ->
             new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_BRICKS.get()).lightLevel(
-                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 12 : 0)));
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 7 : 0)));
 
     public static final RegistryObject<Block> SOUL_SLATE_TILES = registerBlock("soul_slate_tiles", () ->
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(2.0f).requiresCorrectToolForDrops().sound(JNESoundType.SOUL_SLATE_BRICKS)));
@@ -95,11 +95,11 @@ public class JNEBlocks {
 
     public static final RegistryObject<Block> ETCHED_SOUL_SLATE_TILES = registerBlock("etched_soul_slate_tiles", () ->
             new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get()).lightLevel(
-                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 7 : 0)));
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 4 : 0)));
 
     public static final RegistryObject<Block> CHISELED_SOUL_SLATE_TILES = registerBlock("chiseled_soul_slate_tiles", () ->
             new LightAbleBlock(BlockBehaviour.Properties.copy(SOUL_SLATE_TILES.get()).lightLevel(
-                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 12 : 0)));
+                    blockState -> blockState.getValue(LightAbleBlock.LIT) ? 7 : 0)));
 
     // Sanctum
 
@@ -110,6 +110,9 @@ public class JNEBlocks {
     public static final RegistryObject<Block> TREACHEROUS_CANDLE = registerBlock("treacherous_candle", () ->
             new TreacherousCandleBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().lightLevel(
                     blockState -> blockState.getValue(TreacherousCandleBlock.LIT) ? 10 : 0).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final RegistryObject<Block> HAZE_BLOCK = registerBlockWithoutItem("haze_block", () ->
+            new HazeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(SoundType.SAND)));
 
     public static final RegistryObject<Block> SCULK_GRINDER = registerBlock("sculk_grinder", () ->
             new SculkGrinderBlock(BlockBehaviour.Properties.of().strength(80.0f, 1200.0f).lightLevel(state -> 13).sound(SoundType.SCULK_CATALYST)));
@@ -149,7 +152,7 @@ public class JNEBlocks {
             new JNEBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).speedFactor(0.2f).strength(0.25f).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND), SoundEvents.BRUSH_SAND, JNESoundEvents.BRUSH_BRUSHING_SOUL_SAND_COMPLETE.get()));
 
     public static final RegistryObject<Block> SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block", () ->
-            new SoulMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).lightLevel((state) -> 4).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
+            new SoulMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).lightLevel((state) -> 3).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
 
     public static final RegistryObject<Block> BLACK_ICE = registerBlock("black_ice", () ->
             new BlackIceBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(0.3f).lightLevel((state) -> 2).sound(JNESoundType.BLACK_ICE)));
@@ -306,7 +309,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final RegistryObject<Block> RUSTY_CUT_NETHERITE_STAIRS = registerItemPropertiesBlock("rusty_cut_netherite_stairs", () ->
-            new JNEStairBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
+            new JNEStairBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final RegistryObject<Block> RUSTY_CUT_NETHERITE_PILLAR = registerItemPropertiesBlock("rusty_cut_netherite_pillar", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.copy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
@@ -535,13 +538,11 @@ public class JNEBlocks {
     public static final RegistryObject<Block> WARPED_WART_BEARD = registerBlock("warped_wart_beard", () ->
             new BeardBlock(BlockBehaviour.Properties.copy(JNEBlocks.NETHER_WART_BEARD.get())));
 
-
-
     public static final RegistryObject<Block> WEEPING_IVY = registerBlock("weeping_ivy", () ->
-            new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
+            new HelixIvyBlock(JNEItems.LIGHTSPORES, JNEParticleTypes.FALLING_SHROOMLIGHT, JNEItems.WEEPING_HELIX, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
 
     public static final RegistryObject<Block> TWISTING_IVY = registerBlock("twisting_ivy", () ->
-            new IvyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_WART_BLOCK).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
+            new HelixIvyBlock(JNEItems.NIGHTSPORES, JNEParticleTypes.FALLING_SHROOMNIGHT, JNEItems.TWISTING_HELIX, BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_WART_BLOCK).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
 
     public static final RegistryObject<Block> RED_SCALE_FUNGUS = registerBlock("red_scale_fungus", () ->
             new ScaleFungusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).randomTicks().instabreak().noCollission().sound(SoundType.FUNGUS)));
@@ -797,7 +798,7 @@ public class JNEBlocks {
 
 
     /**
-     * CAVERNS_&_CHASMS
+     * Caverns & Chasms
      */
 
     public static final RegistryObject<Block> NECROMIUM_PLATED_BLOCK = registerItemPropertiesCompatBlock("necromium_plated_block", () ->
@@ -819,14 +820,14 @@ public class JNEBlocks {
             new LiquidloggedGrateBlock(BlockBehaviour.Properties.copy(JNEBlocks.CUT_NECROMIUM_BLOCK.get()).noOcclusion().lightLevel(LiquidloggedGrateBlock::getLuminance)), new Item.Properties().fireResistant(), CompatUtil.CAVERNS_AND_CHASMS);
 
     /**
-     * ALEX'S CAVES
+     * Alex's Caves
      */
 
     public static final RegistryObject<Block> CARMINE_FROGMIST = registerCompatBlock("carmine_frogmist", () ->
             new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)), CompatUtil.ALEXS_CAVES);
 
     /**
-     * OREGANIZED
+     * Oreganized
      */
 
     public static final RegistryObject<Block> GROOVED_BLACK_ICE = registerCompatBlock("grooved_black_ice", () ->

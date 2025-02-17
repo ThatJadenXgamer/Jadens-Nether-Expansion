@@ -10,12 +10,14 @@ import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,7 +46,7 @@ import java.util.List;
 public class TreacherousCandleBlockEntity extends BlockEntity {
     private int fireRewarded = 1;
     private int maximumWaves = 5;
-    private int currentWave = 1;
+    private int currentWave = 0;
     private int maximumWaveDelay = 650;
     private int currentWaveDelay = 80;
     private int spawnRadius = 8;
@@ -143,9 +145,10 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
             updateBossBarPlayers(blockEntity, playersInRadius, level);
 
             blockEntity.currentWaveDelay--;
-            if (blockEntity.currentWave <= blockEntity.maximumWaves) {
+            if (blockEntity.currentWave < blockEntity.maximumWaves) {
                 prepareWaves(level, pos, blockEntity);
-            } else if (blockEntity.currentWaveDelay <= 0) {
+            }
+            else if (blockEntity.currentWaveDelay <= 0) {
                 dropFire(level, pos.above(), blockEntity);
                 level.playSound(null, pos, JNESoundEvents.TREACHEROUS_CANDLE_VICTORY.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
                 level.setBlock(pos, state.cycle(TreacherousCandleBlock.COMPLETED), 2);
@@ -161,6 +164,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         // We make a list before clearing the players otherwise it causes a ConcurrentModificationException
         List<ServerPlayer> playersToRemove = new ArrayList<>(blockEntity.bossEvent.getPlayers());
         for (ServerPlayer player : playersToRemove) {
+            player.removeEffect(JNEMobEffects.BETRAYED.get());
             blockEntity.bossEvent.removePlayer(player);
         }
     }
@@ -187,14 +191,17 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         List<ServerPlayer> playersToRemove = new ArrayList<>(blockEntity.bossEvent.getPlayers());
         for (ServerPlayer player : playersToRemove) {
             if (!playersInRadius.contains(player) || !player.isAlive() || player.level() != level) {
+                if (player.isAlive()) {
+                    player.removeEffect(JNEMobEffects.BETRAYED.get());
+                }
                 blockEntity.bossEvent.removePlayer(player);
             }
         }
     }
 
     private static void prepareWaves(Level level, BlockPos pos, TreacherousCandleBlockEntity blockEntity) {
-        if (blockEntity.currentWaveDelay == 40) {
-            level.playSound(null, pos, SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.BLOCKS, 0.50f, 0.60f);
+        if (blockEntity.currentWaveDelay == 60) {
+            level.playSound(null, pos, JNESoundEvents.TREACHEROUS_CANDLE_ROUND.get(), SoundSource.BLOCKS, 0.7f, 1.0f);
         }
         // for some reason causes a weird desync if in the (<= 0) check??
         if (blockEntity.currentWaveDelay == 1) {
@@ -202,6 +209,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         }
         if (blockEntity.currentWaveDelay <= 0) {
             blockEntity.currentWave++;
+            blockEntity.bossEvent.setName(Component.translatable("treacherous_candle.health").append(blockEntity.currentWave >= blockEntity.maximumWaves ? " - FINAL WAVE" : " - WAVE " + blockEntity.currentWave));
             blockEntity.spawnWave(level, pos);
             blockEntity.mobsPerWave += blockEntity.increaseInMobsPerWave;
             blockEntity.currentWaveDelay = blockEntity.maximumWaveDelay;
@@ -218,7 +226,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
 
     public static void resetValues(TreacherousCandleBlockEntity blockEntity) {
         blockEntity.completionCooldown = JNEConfigs.TREACHEROUS_CANDLE_COMPLETION_COOLDOWN.get() * 20;
-        blockEntity.currentWave = 1;
+        blockEntity.currentWave = 0;
         blockEntity.health = blockEntity.maximumHealth;
         blockEntity.mobsPerWave = blockEntity.resetMobsPerWave;
         blockEntity.currentWaveDelay = 80;
@@ -236,13 +244,13 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
             int bonusSpawns = this.playersNearby > 1 ? playersNearby * 2 : 0;
+            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.TREACHEROUS_CANDLE_SPAWN.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
             for (int i = 0; i < this.mobsPerWave + bonusSpawns; i++) {
                 BlockPos spawnPos = findValidSpawnPosition(level, pos, random);
 
                 EntityType<?> entityType = spawnableMobs.get(random.nextInt(spawnableMobs.size()));
                 Mob mob = (Mob) entityType.create(level);
                 if (mob != null) {
-                    level.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.3f, 1.0f);
                     if (level instanceof ServerLevel serverLevel) {
                         mob.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
                         mob.finalizeSpawn(serverLevel, level.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
@@ -262,18 +270,23 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         }
     }
 
+
     private BlockPos findValidSpawnPosition(Level level, BlockPos pos, RandomSource random) {
-        double x = pos.getX() + random.nextInt(spawnRadius);
+        double angle = random.nextDouble() * 2 * Math.PI;
+        double radius = 5 + (random.nextDouble() * (7 - 5));
+
+        double x = pos.getX() + Math.cos(angle) * radius;
+        double z = pos.getZ() + Math.sin(angle) * radius;
         double y = pos.getY();
-        double z = pos.getZ() + random.nextInt(spawnRadius);
-        int retries = 0;
+
         BlockPos currentPos = new BlockPos((int)x, (int)y, (int)z);
+        int retries = 0;
+
         // Checks if the current position is a valid one, otherwise moves the entity up if space is available
         while (retries < 10) {
             if (level.getBlockState(currentPos).isAir()) {
                 return currentPos;
-            }
-            else {
+            } else {
                 y++;
                 currentPos = new BlockPos((int)x, (int)y, (int)z);
                 retries++;

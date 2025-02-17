@@ -31,7 +31,6 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.monster.Monster;
@@ -147,6 +146,7 @@ public class NetherExp {
     private static void addBuiltinPacks(AddPackFindersEvent event) {
         // ResourcePacks
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            JNEBuiltinPacks.rpJNEEmissives(event);
             JNEBuiltinPacks.rpJNERetextures(event);
             JNEBuiltinPacks.rpConflictingRetextures(event);
             JNEBuiltinPacks.rpUniqueNetherWood(event);
@@ -160,7 +160,10 @@ public class NetherExp {
                 JNEBuiltinPacks.dpNethersDelightCompat(event);
             }
             if (CompatUtil.checkAlexsCaves()) {
-                JNEBuiltinPacks.dpAlexCavesCompat(event);
+                JNEBuiltinPacks.dpAlexsCavesCompat(event);
+            }
+            if (CompatUtil.checkAlexsMobs()) {
+                JNEBuiltinPacks.dpAlexsMobsCompat(event);
             }
             if (CompatUtil.checkGardensOfTheDead()) {
                 JNEBuiltinPacks.dpGardensOfTheDeadCompat(event);

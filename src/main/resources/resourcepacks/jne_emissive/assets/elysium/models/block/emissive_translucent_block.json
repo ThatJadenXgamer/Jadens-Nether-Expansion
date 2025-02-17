@@ -1,0 +1,25 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"render_type": "minecraft:translucent",
+  	"textures": {
+	    "particle": "#glow"
+  	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "down"}
+			},
+			"forge_data": {"block_light": 15}
+		}
+	]
+}

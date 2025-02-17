@@ -50,7 +50,7 @@ public class SoulBullet extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level().isClientSide && tickCount > 600) {
+        if (!this.level().isClientSide && tickCount > 10) {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.5f, 1.0f);
             this.discard();
         }
@@ -83,5 +83,10 @@ public class SoulBullet extends AbstractArrow {
             this.playSound(getDefaultHitGroundSoundEvent(), 0.3f, 1.0f);
             this.discard();
         }
+    }
+
+    @Override
+    public boolean isNoGravity() {
+        return true;
     }
 }

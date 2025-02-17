@@ -1,0 +1,8 @@
+{
+  "parent": "elysium:block/emissive_block",
+  "textures": {
+    "base": "netherexp:block/soul_glass_lit",
+    "glow": "netherexp:block/soul_glass_lit_glow",
+    "particle": "netherexp:block/soul_glass_lit"
+  }
+}

@@ -22,7 +22,7 @@ extends TextureSheetParticle {
             this.remove();
             return;
         }
-        if (this.age<= this.lifetime / 2 && this.alpha < 1.0f) {
+        if (this.age <= this.lifetime / 2 && this.alpha < 1.0f) {
             this.alpha += 0.015f;
         }
         if (this.age >= this.lifetime / 2 && this.alpha > 0.01f) {

@@ -16,6 +16,20 @@ import java.nio.file.Path;
 
 public class JNEBuiltinPacks {
 
+    // Adds emissive textures to JNE Blocks
+    public static void rpJNEEmissives(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/jne_emissive");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(Pack.create(
+                        "netherexp:jne_emissive",
+                        Component.literal("JNE-Emissive"),
+                        true,
+                        (path) -> new PathPackResources(path, file, true),
+                        new Pack.Info(Component.literal("Emissive Textures for JNE \nmove down to disable"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
+                        PackType.CLIENT_RESOURCES, Pack.Position.TOP, false, PackSource.BUILT_IN)));
+    }
+
     // Adds vanilla retextures, it is separated because forge for some reason has mod resources below vanilla
     public static void rpJNERetextures(AddPackFindersEvent event) {
         IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
@@ -26,7 +40,7 @@ public class JNEBuiltinPacks {
                         Component.literal("JNE-Retextures"),
                         true,
                         (path) -> new PathPackResources(path, file, true),
-                        new Pack.Info(Component.literal("Built-in JNE Vanilla Retextures"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
+                        new Pack.Info(Component.literal("Built-in JNE Vanilla Retextures \nmove down to disable"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
                         PackType.CLIENT_RESOURCES, Pack.Position.TOP, false, PackSource.BUILT_IN)));
     }
 
@@ -41,7 +55,7 @@ public class JNEBuiltinPacks {
                         false,
                         (path) -> new PathPackResources(path, file, true),
                         new Pack.Info(Component.literal("Adds Retextures which may cause Mod Conflicts"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
-                        PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, false, PackSource.BUILT_IN)));
+                        PackType.CLIENT_RESOURCES, Pack.Position.TOP, false, PackSource.BUILT_IN)));
     }
 
     // Gives all Nether Woodsets a unique design
@@ -55,7 +69,7 @@ public class JNEBuiltinPacks {
                         false,
                         (path) -> new PathPackResources(path, file, true),
                         new Pack.Info(Component.literal("Gives All Nether Woodsets Unique Designs"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), FeatureFlagSet.of()),
-                        PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, false, PackSource.BUILT_IN)));
+                        PackType.CLIENT_RESOURCES, Pack.Position.TOP, false, PackSource.BUILT_IN)));
     }
 
     // Increases the size of all nether biomes
@@ -87,7 +101,7 @@ public class JNEBuiltinPacks {
     }
 
     // Compatibility for Alex's Caves
-    public static void dpAlexCavesCompat(AddPackFindersEvent event) {
+    public static void dpAlexsCavesCompat(AddPackFindersEvent event) {
         IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
         Path file = mod.getFile().findResource("resourcepacks/alexscaves_compat");
         event.addRepositorySource((packConsumer) ->
@@ -97,6 +111,20 @@ public class JNEBuiltinPacks {
                                 true,
                                 (path) -> new PathPackResources(path, file, true),
                                 new Pack.Info(Component.literal("Compatibility for Alex's Caves"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
+                                PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
+    }
+
+    // Compatibility for Alex's Mobs
+    public static void dpAlexsMobsCompat(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/alexsmobs_compat");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(
+                        Pack.create("alexsmobs_compat",
+                                Component.literal("JNE + Alex's Mobs"),
+                                true,
+                                (path) -> new PathPackResources(path, file, true),
+                                new Pack.Info(Component.literal("Compatibility for Alex's Mobs"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
                                 PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
     }
 

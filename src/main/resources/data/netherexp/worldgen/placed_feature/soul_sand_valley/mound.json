@@ -2,6 +2,10 @@
   "feature": "netherexp:soul_sand_valley/mound",
   "placement": [
     {
+      "type": "minecraft:rarity_filter",
+      "chance": 2
+    },
+    {
       "type": "minecraft:count_on_every_layer",
       "count": 1
     },

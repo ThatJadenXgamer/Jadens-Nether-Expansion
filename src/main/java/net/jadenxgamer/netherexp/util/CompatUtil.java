@@ -98,12 +98,4 @@ public class CompatUtil {
     public static boolean checkAnySilverMod() {
         return checkOreganized() || checkCavernsAndChasms() || FMLLoader.getLoadingModList().getModFileById(GALOSPHERE) != null;
     }
-
-    public static class BiomeKeys {
-        public static final ResourceKey<Biome> SOULBLIGHT_FOREST = register(CompatUtil.GARDENS_OF_THE_DEAD, "soulblight_forest");
-
-        private static ResourceKey<Biome> register(String namespace, String id) {
-            return ResourceKey.create(Registries.BIOME, new ResourceLocation(namespace, id));
-        }
-    }
 }

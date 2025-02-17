@@ -48,6 +48,9 @@ public class JNEParticleTypes {
     public static final RegistryObject<SimpleParticleType> SMALL_FIREBALL_TRAIL = PARTICLE_TYPES.register("small_fireball_trail", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> DRAGON_FIREBALL_TRAIL = PARTICLE_TYPES.register("dragon_fireball_trail", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> SOUL_CLOUD = PARTICLE_TYPES.register("soul_cloud", () -> new SimpleParticleType(false){});
+    public static final RegistryObject<SimpleParticleType> HAZE = PARTICLE_TYPES.register("haze", () -> new SimpleParticleType(false){});
+    public static final RegistryObject<SimpleParticleType> RED_HAZE = PARTICLE_TYPES.register("red_haze", () -> new SimpleParticleType(false){});
+    public static final RegistryObject<SimpleParticleType> RED_SPARKLE = PARTICLE_TYPES.register("red_sparkle", () -> new SimpleParticleType(false){});
 
     /**
      * MOD COMPAT

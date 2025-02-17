@@ -3,10 +3,12 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -30,6 +32,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
+
+import static net.jadenxgamer.netherexp.config.JNEConfigs.ENABLE_BLACK_ICE_PARTICLES;
 
 public class BlackIcicleBlock extends PointedDripstoneBlock {
 
@@ -69,6 +73,19 @@ public class BlackIcicleBlock extends PointedDripstoneBlock {
                 boolean merged = pState.getValue(THICKNESS) == DripstoneThickness.TIP_MERGE;
                 DripstoneThickness thickness = calculateIcicleThickness(pLevel, pCurrentPos, tipDir, merged);
                 return pState.setValue(THICKNESS, thickness);
+            }
+        }
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        super.animateTick(state, level, pos, random);
+        if (state.getValue(THICKNESS) != DripstoneThickness.TIP) return;
+        if (ENABLE_BLACK_ICE_PARTICLES.get() && random.nextInt(10) == 0) {
+            BlockPos belowPos = pos.below();
+            BlockState belowState = level.getBlockState(belowPos);
+            if (!isFaceFull(belowState.getCollisionShape(level, belowPos), Direction.UP)) {
+                ParticleUtils.spawnParticleBelow(level, pos, random, JNEParticleTypes.BLACK_FLAKE.get());
             }
         }
     }

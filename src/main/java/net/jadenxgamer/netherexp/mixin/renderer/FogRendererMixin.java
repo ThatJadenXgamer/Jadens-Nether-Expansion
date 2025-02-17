@@ -59,9 +59,9 @@ public abstract class FogRendererMixin {
              */
             if (livingEntity.hasEffect(JNEMobEffects.BETRAYED.get())) {
                 if (fogType == FogType.NONE) {
-                    RenderSystem.setShaderFogStart(0.0f);
+                    RenderSystem.setShaderFogStart(1.5f);
                     RenderSystem.setShaderFogEnd(viewDistance / 2);
-                    RenderSystem.setShaderFogColor(0.69f, 0.067f, 0.067f);
+                    RenderSystem.setShaderFogColor(0.639f, 0.0f, 0.0f);
                 }
             }
             /*

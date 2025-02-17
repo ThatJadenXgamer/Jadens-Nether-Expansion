@@ -1,0 +1,10 @@
+{
+  "parent": "elysium:block/emissive_cube_column",
+  "textures": {
+    "end": "netherexp:block/ecto_soul_sand",
+    "side": "netherexp:block/ecto_soul_sand_side",
+    "endglow": "netherexp:block/ecto_soul_sand_glow",
+    "sideglow": "netherexp:block/ecto_soul_sand_side_glow",
+    "particle": "netherexp:block/ecto_soul_sand_side"
+  }
+}

@@ -10,6 +10,15 @@
     },
     {
       "apply": {
+        "model": "netherexp:block/weeping_helix"
+      },
+      "when": {
+        "north": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
         "model": "netherexp:block/weeping_ivy"
       },
       "when": {
@@ -29,6 +38,16 @@
       },
       "when": {
         "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/weeping_helix",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "helix": "true"
       }
     },
     {
@@ -58,6 +77,16 @@
     },
     {
       "apply": {
+        "model": "netherexp:block/weeping_helix",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
         "model": "netherexp:block/weeping_ivy",
         "uvlock": true,
         "y": 180
@@ -83,6 +112,16 @@
     },
     {
       "apply": {
+        "model": "netherexp:block/weeping_helix",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
         "model": "netherexp:block/weeping_ivy",
         "uvlock": true,
         "y": 270
@@ -94,6 +133,16 @@
         "south": "false",
         "up": "false",
         "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/weeping_helix_updown",
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "helix": "true"
       }
     },
     {
@@ -129,6 +178,16 @@
       },
       "when": {
         "down": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/weeping_helix_updown",
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "helix": "true"
       }
     },
     {

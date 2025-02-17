@@ -14,6 +14,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
+import static net.jadenxgamer.netherexp.config.JNEConfigs.ENABLE_BLACK_ICE_PARTICLES;
+
 public class BlackIceBlock extends Block {
 
     public BlackIceBlock(BlockBehaviour.Properties settings) {
@@ -51,7 +53,7 @@ public class BlackIceBlock extends Block {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         super.animateTick(state, level, pos, random);
-        if (random.nextInt(10) == 0) {
+        if (ENABLE_BLACK_ICE_PARTICLES.get() && random.nextInt(10) == 0) {
             BlockPos belowPos = pos.below();
             BlockState belowState = level.getBlockState(belowPos);
             if (!isFaceFull(belowState.getCollisionShape(level, belowPos), Direction.UP)) {

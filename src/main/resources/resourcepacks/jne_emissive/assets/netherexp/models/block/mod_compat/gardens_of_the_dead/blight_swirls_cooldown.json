@@ -1,0 +1,8 @@
+{
+  "parent": "elysium:block/emissive_cross_12",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "netherexp:block/mod_compat/gardens_of_the_dead/blight_swirls_cooldown",
+    "glow": "netherexp:block/mod_compat/gardens_of_the_dead/blight_swirls_cooldown_glow"
+  }
+}

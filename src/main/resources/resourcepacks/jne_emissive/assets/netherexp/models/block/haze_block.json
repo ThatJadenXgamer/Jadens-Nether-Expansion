@@ -1,0 +1,8 @@
+{
+  "parent": "elysium:block/emissive_translucent_block",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "glow": "netherexp:block/haze_block",
+    "particle": "netherexp:block/haze_block"
+  }
+}

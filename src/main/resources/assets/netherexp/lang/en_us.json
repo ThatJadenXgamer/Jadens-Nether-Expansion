@@ -115,7 +115,6 @@
   "item.netherexp.nether_pizza_slice": "Nether Pizza Slice",
 
   "enchantment.netherexp.phantasm_hull": "Phantasm Hull",
-  "enchantment.netherexp.bloodshed": "Bloodshed",
   "enchantment.netherexp.cartridge": "Cartridge",
   "enchantment.netherexp.recoil": "Recoil",
   "enchantment.netherexp.barrage": "Barrage",
@@ -439,7 +438,6 @@
   "entity.netherexp.carcass": "Carcass",
   "entity.netherexp.soul_bullet": "Shotgun Pellet",
   "entity.netherexp.will_o_wisp": "Will O' Wisp",
-  "entity.netherexp.blood_drop": "Blood Drop",
   "entity.netherexp.phasmo_arrow": "Phasmo Arrow",
   "entity.netherexp.antidote": "Antidote",
   "entity.netherexp.grenade_effect_cloud": "Grenade Effect Cloud",
@@ -482,7 +480,7 @@
   "advancements.nether.soul_sand_valley.description": "Where frights and paranormal are plentiful",
   "advancements.nether.angel_with_a_shotgun.title": "Angel with a Shotgun",
   "advancements.nether.angel_with_a_shotgun.description": "Craft a Shotgun Fist with your Shotgun Core Artifact",
-  "advancements.nether.the_nether_is_full.title": "The Nether is Full, Blood is Fuel",
+  "advancements.nether.the_nether_is_full.title": "Blood is Fuel, The Nether is Full",
   "advancements.nether.the_nether_is_full.description": "Upgrade your Shotgun with a Pump-Charge Smithing Template",
   "advancements.nether.ultrakill.title": "ULTRA-OVERKILL",
   "advancements.nether.ultrakill.description": "Kill 10 Mobs with a single over-pumped explosion",
@@ -587,10 +585,9 @@
   "item.netherexp.jackhammer_fist": "Jackhammer-Fist",
 
   "enchantment.netherexp.phantasm_hull.desc": "Most projectiles will phase through you when sneaking.",
-  "enchantment.netherexp.bloodshed.desc": "Mobs burst into healing blood upon death.",
   "enchantment.netherexp.cartridge.desc": "Has a chance to conserve ammo when using shotguns.",
   "enchantment.netherexp.recoil.desc": "Increases self pushback of shotguns.",
-  "enchantment.netherexp.barrage.desc": "Increases bullets fired by Shotguns but gets a longer cooldown.",
+  "enchantment.netherexp.barrage.desc": "Increases pellets fired by Shotguns but gets a longer cooldown.",
   "enchantment.netherexp.artemis.desc": "Increases the range of projectiles for many ranged weapons.",
 
   "item.netherexp.roasted_bone": "Roasted Bone",
@@ -633,8 +630,16 @@
 
   "block.netherexp.grooved_black_ice": "Grooved Black Ice",
   "block.netherexp.discernment_glass": "Discernment Glass",
+  "block.netherexp.haze_block": "Haze Block",
+  "item.netherexp.weeping_helix": "Weeping Helix",
+  "item.netherexp.twisting_helix": "Twisting Helix",
   "subtitles.block.discernment_glass.add": "Item added to discernment glass",
   "subtitles.block.discernment_glass.remove": "Item removed from discernment glass",
+  "subtitles.item.pump_charge_shotgun.alarm": "Pump-Charge Shotgun about to f*!$ing explode",
+  "subtitles.item.compass.tick": "Compass ticks",
+
+  "death.attack.jackhammer": "%1$s was hit with a lethal piston-arm",
+  "death.attack.sorrowsquished": "%1$s was sorrowsquished",
 
   "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
 }

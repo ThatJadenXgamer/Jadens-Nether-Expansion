@@ -79,14 +79,21 @@ public class Banshee extends Monster {
 
     @Override
     public void aiStep() {
-        if (this.isInWaterOrRain()) {
+        if (this.isInWaterOrRain() && !level().isClientSide) {
             if (getChangeType() == 0) {
+                sendCloudParticles(this);
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 this.discard();
             }
             else this.doExorcism();
         }
         super.aiStep();
+    }
+
+    private void sendCloudParticles(LivingEntity entity) {
+        for (int i = 0; i < 12; i++) {
+            ((ServerLevel) this.level()).sendParticles(JNEParticleTypes.SOUL_CLOUD.get(), entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), 1, 0.0, 0.0, 0.0, 0.0);
+        }
     }
 
     @Override
@@ -127,6 +134,7 @@ public class Banshee extends Monster {
     private void doExorcism() {
         Blaze blaze = this.convertTo(EntityType.BLAZE, false);
         if (blaze != null && this.level() instanceof ServerLevel serverLevel) {
+            sendCloudParticles(blaze);
             blaze.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(blaze.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
             blaze.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
             blaze.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));

@@ -122,13 +122,20 @@ public class Vessel extends Monster implements RangedAttackMob {
     @Override
     public void aiStep() {
         if (this.isInWaterOrRain()) {
-            if (getChangeType() == 0) {
+            if (getChangeType() == 0 && !level().isClientSide) {
+                sendCloudParticles(this);
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 this.discard();
             }
             else this.doExorcism();
         }
         super.aiStep();
+    }
+
+    private void sendCloudParticles(LivingEntity entity) {
+        for (int i = 0; i < 12; i++) {
+            ((ServerLevel) this.level()).sendParticles(JNEParticleTypes.SOUL_CLOUD.get(), entity.getRandomX(0.5), entity.getRandomY() - 0.25, entity.getRandomZ(0.5), 1, 0.0, 0.0, 0.0, 0.0);
+        }
     }
 
     @Override
@@ -189,6 +196,7 @@ public class Vessel extends Monster implements RangedAttackMob {
     private void doExorcism() {
         Skeleton skeleton = this.convertTo(EntityType.SKELETON, false);
         if (skeleton != null && this.level() instanceof ServerLevel serverLevel) {
+            sendCloudParticles(skeleton);
             skeleton.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(skeleton.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, false), null);
             skeleton.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
             skeleton.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 2));

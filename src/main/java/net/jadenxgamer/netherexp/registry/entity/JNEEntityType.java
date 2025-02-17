@@ -52,10 +52,6 @@ public class JNEEntityType {
             EntityType.Builder.<BlackIcicle>of(BlackIcicle::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("black_icicle"));
 
-    public static final RegistryObject<EntityType<BloodDrop>> BLOOD_DROP = ENTITY_TYPES.register("blood_drop", () ->
-            EntityType.Builder.<BloodDrop>of(BloodDrop::new, MobCategory.MISC)
-                    .sized(0.8f, 0.8f).build("blood_drop"));
-
     public static final RegistryObject<EntityType<PhasmoArrow>> PHASMO_ARROW = ENTITY_TYPES.register("phasmo_arrow", () ->
             EntityType.Builder.<PhasmoArrow>of(PhasmoArrow::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("phasmo_arrow"));

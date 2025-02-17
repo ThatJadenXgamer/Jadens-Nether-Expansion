@@ -1,10 +1,7 @@
 {
-  "parent": "netherexp:block/emissive_cube_column",
+  "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "netherexp:block/ecto_soul_sand",
-    "side": "netherexp:block/ecto_soul_sand_side",
-    "glowend": "netherexp:block/ecto_soul_sand_glow",
-    "glowside": "netherexp:block/ecto_soul_sand_side_glow",
-    "particle": "netherexp:block/ecto_soul_sand_side"
+    "side": "netherexp:block/ecto_soul_sand_side"
   }
 }

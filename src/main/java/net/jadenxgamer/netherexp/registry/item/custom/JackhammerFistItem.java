@@ -103,17 +103,22 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int useCount) {
         int ticksUsed = stack.getUseDuration() - useCount;
+        int cartridge = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack);
 
         if (ticksUsed < 30) {
-//            pullFlag = false;
-//            pullTimeOut = 20;
-//            pullAnimationState.stop(user);
+            pullFlag = false;
+            pullTimeOut = 20;
+            pullAnimationState.stop(user);
         } else {
             int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
 
             setPulled(stack, false);
             this.punchFlag = true;
-            useProjectile(stack, user);
+            if (cartridge > 0 && level.random.nextInt((cartridge * 2)) == 0) {
+                useProjectile(stack, user);
+            } else {
+                useProjectile(stack, user);
+            }
             Vec3 look = user.getLookAngle();
             Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
             double recoilPushBonus = (double) recoil / 16;
@@ -222,7 +227,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
 
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        return !oldStack.is(JNEItems.JACKHAMMER_FIST.get()) || !newStack.is(JNEItems.JACKHAMMER_FIST.get());
+        return !oldStack.is(JNEItems.JACKHAMMER_FIST.get()) && !newStack.is(JNEItems.JACKHAMMER_FIST.get());
     }
 
     @Override

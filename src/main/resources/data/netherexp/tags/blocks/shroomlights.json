@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:shroomlight",
+    "netherexp:shroomnight",
+    {
+      "id": "netherexp:shroomblight",
+      "required": false
+    }
+  ]
+}

@@ -188,6 +188,11 @@ public class Apparition extends Monster implements FlyingAnimal {
         if (this.random.nextInt(30) == 0) {
             this.playSound(JNESoundEvents.ENTITY_APPARITION_FLY.get(), 0.15F, 1.0F);
         }
+        if (this.isInWaterOrRain() && !level().isClientSide) {
+            sendCloudParticles(this);
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+            this.discard();
+        }
         super.aiStep();
     }
 
@@ -250,6 +255,7 @@ public class Apparition extends Monster implements FlyingAnimal {
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
         if (damageSource.getDirectEntity() instanceof ThrownPotion thrownPotion && hurtWithCleanWater(thrownPotion)) {
+            sendCloudParticles(this);
             this.level().playSound(null, this.getX(), this.getY(), this.getZ(), JNESoundEvents.ENTITY_APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
             this.discard();
         }

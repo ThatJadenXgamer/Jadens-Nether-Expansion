@@ -260,6 +260,18 @@
       "netherexp:block/treacherous_candle/defeat"
     ]
   },
+  "block.treacherous_candle.spawn": {
+    "subtitle": "subtitles.block.treacherous_candle.spawn",
+    "sounds": [
+      "netherexp:block/treacherous_candle/spawn"
+    ]
+  },
+  "block.treacherous_candle.round": {
+    "subtitle": "subtitles.block.treacherous_candle.round",
+    "sounds": [
+      "netherexp:block/treacherous_candle/round"
+    ]
+  },
   "block.white_ash.step": {
     "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
@@ -1035,6 +1047,18 @@
     "subtitle": "subtitles.item.shotgun.load",
     "sounds": [
       "netherexp:item/shotgun/load"
+    ]
+  },
+  "item.pump_charge_shotgun.alarm": {
+    "subtitle": "subtitles.item.pump_charge_shotgun.alarm",
+    "sounds": [
+      "netherexp:item/shotgun/alarm"
+    ]
+  },
+  "item.compass.tick": {
+    "subtitle": "subtitles.item.compass.tick",
+    "sounds": [
+      "netherexp:item/compass/tick"
     ]
   },
   "block.explosive_scoria.ambient": {

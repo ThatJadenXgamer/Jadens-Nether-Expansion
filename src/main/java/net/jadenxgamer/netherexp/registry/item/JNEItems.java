@@ -189,6 +189,12 @@ public class JNEItems {
     public static final RegistryObject<Item> ROASTED_BONE = registerItem("roasted_bone", () ->
         new Item(new Item.Properties().food(JNEFoods.ROASTED_BONE).stacksTo(16)));
 
+    public static final RegistryObject<Item> WEEPING_HELIX = registerItem("weeping_helix", () ->
+        new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TWISTING_HELIX = registerItem("twisting_helix", () ->
+        new Item(new Item.Properties()));
+
 
     // ARTIFACTS
 

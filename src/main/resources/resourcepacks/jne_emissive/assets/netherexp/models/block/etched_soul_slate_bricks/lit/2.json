@@ -1,0 +1,7 @@
+{
+  "parent": "elysium:block/emissive_block_12",
+  "textures": {
+    "base": "netherexp:block/etched_soul_slate_bricks/lit/2",
+    "glow": "netherexp:block/etched_soul_slate_bricks/lit/2_glow"
+  }
+}

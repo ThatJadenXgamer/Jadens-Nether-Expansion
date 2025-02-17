@@ -1,0 +1,11 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": [
+      {
+        "text": "Enables Emissive Textures for JNE",
+        "color": "gray"
+      }
+    ]
+  }
+}

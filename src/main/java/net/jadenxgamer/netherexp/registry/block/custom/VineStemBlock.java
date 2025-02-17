@@ -2,15 +2,18 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
@@ -27,8 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class VineStemBlock
-extends GrowingPlantHeadBlock {
+public class VineStemBlock extends GrowingPlantHeadBlock {
 
     public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -57,33 +59,50 @@ extends GrowingPlantHeadBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        int i = state.getValue(AGE);
-        boolean a = state.getValue(ATTACHED);
-        BlockPos blockPos;
-        if (!a && i < 25 && random.nextDouble() < 0.5 && this.canGrowInto(level.getBlockState(blockPos = pos.offset(this.growthDirection.getNormal())))) {
-            level.setBlock(blockPos, this.getGrowIntoState(state, level.random), UPDATE_ALL);
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        boolean attached = pState.getValue(ATTACHED);
+        if (!JNEConfigs.SHOULD_SORROWSQUASH_FALL.get()) return;
+        if (attached) {
+            BlockPos squashDirection = pPos.relative(pState.getValue(FACING));
+            if (pLevel.getBlockState(squashDirection).is(JNEBlocks.SORROWSQUASH.get())) {
+                double damage = JNEConfigs.SORROWSQUISHED_DAMAGE_MULTIPLIER.get();
+                FallingBlockEntity fallingBlock = FallingBlockEntity.fall(pLevel, squashDirection, pLevel.getBlockState(squashDirection));
+                fallingBlock.setHurtsEntities((float) damage, JNEConfigs.SORROWSQUISHED_MAX_DAMAGE.get());
+            }
         }
-        else if (!a && i == 25) {
-            Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-            BlockPos blockPos2 = pos.offset(direction.getNormal());
-            if (level.getBlockState(blockPos2).isAir()) {
-                level.setBlock(blockPos2, this.stemGrownBlock.defaultBlockState(), UPDATE_ALL);
-                level.setBlock(pos, state.setValue(ATTACHED, true).setValue(HorizontalDirectionalBlock.FACING, direction), UPDATE_ALL);
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        int age = state.getValue(AGE);
+        boolean attached = state.getValue(ATTACHED);
+        BlockPos blockPos;
+        if (random.nextDouble() < JNEConfigs.SORROWSQUASH_GROWTH_CHANCE.get()) {
+            if (!attached) {
+                Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+                BlockPos squashDirection = pos.offset(direction.getNormal());
+                if (level.getBlockState(squashDirection).isAir()) {
+                    level.setBlock(squashDirection, this.stemGrownBlock.defaultBlockState(), UPDATE_ALL);
+                    level.setBlock(pos, state.setValue(ATTACHED, true).setValue(HorizontalDirectionalBlock.FACING, direction), UPDATE_ALL);
+                }
+            }
+        } else {
+            if (!attached && age < 25 && random.nextDouble() < 0.5 && this.canGrowInto(level.getBlockState(blockPos = pos.offset(this.growthDirection.getNormal())))) {
+                level.setBlock(blockPos, this.getGrowIntoState(state, level.random), UPDATE_ALL);
             }
         }
     }
 
     @Override
     public boolean isRandomlyTicking(BlockState blockState) {
-        boolean a = blockState.getValue(ATTACHED);
-        return !a;
+        return !blockState.getValue(ATTACHED);
     }
 
     @Override
     public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        boolean a = state.getValue(ATTACHED);
-        if (a && !neighborState.is(this.stemGrownBlock) && direction == state.getValue(FACING)) {
+        boolean attached = state.getValue(ATTACHED);
+        if (attached && !neighborState.is(this.stemGrownBlock) && direction == state.getValue(FACING)) {
             return state.setValue(ATTACHED, false);
         }
         if (direction == this.growthDirection.getOpposite() && !state.canSurvive(level, pos)) {
@@ -139,6 +158,19 @@ extends GrowingPlantHeadBlock {
     @Override
     protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
         return NetherVines.getBlocksToGrowWhenBonemealed(random);
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
+        BlockPos blockpos = pPos.relative(this.growthDirection);
+        int i = Math.min(pState.getValue(AGE) + 1, 25);
+        int j = this.getBlocksToGrowWhenBonemealed(pRandom);
+
+        for(int k = 0; k < j && this.canGrowInto(pLevel.getBlockState(blockpos)); ++k) {
+            pLevel.setBlockAndUpdate(blockpos, pState.setValue(AGE, i).setValue(ATTACHED, false));
+            blockpos = blockpos.relative(this.growthDirection);
+            i = Math.min(i + 1, 25);
+        }
     }
 
     @Override

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "netherexp:grave_cloud_suffocation"
+    "minecraft:explosion",
+    "minecraft:arrow",
+    "minecraft:trident"
   ]
 }

@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:explosion",
-    "minecraft:arrow",
-    "minecraft:trident"
+    "minecraft:player_attack"
   ]
 }

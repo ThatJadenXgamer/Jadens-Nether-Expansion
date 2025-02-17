@@ -1,11 +1,14 @@
 package net.jadenxgamer.netherexp;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.client.DiscernmentGlassBlockRenderer;
 import net.jadenxgamer.netherexp.registry.block.entity.client.JNEBrushableBlockRenderer;
 import net.jadenxgamer.netherexp.registry.client.AgitatedOverlay;
+import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.entity.client.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.client.JackhammerFistModel;
 import net.jadenxgamer.netherexp.registry.item.client.PumpChargeShotgunModel;
@@ -13,9 +16,12 @@ import net.jadenxgamer.netherexp.registry.item.client.ShotgunFistModel;
 import net.jadenxgamer.netherexp.registry.item.custom.AntidoteItem;
 import net.jadenxgamer.netherexp.registry.item.custom.SanctumCompassItem;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
+import net.jadenxgamer.netherexp.registry.particle.custom.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -23,23 +29,24 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.client.event.*;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.jadenxgamer.netherexp.registry.entity.client.*;
-import net.jadenxgamer.netherexp.registry.particle.custom.*;
 
 public class NetherExpClient {
 
     public static boolean INSIDE_SOUL_GLASS = false;
     public static boolean INSIDE_MAGMA_CREAM_BLOCK = false;
     public static boolean INSIDE_ECTOPLASM = false;
+
+    private static final ResourceLocation BETRAYED_SHADER = new ResourceLocation(NetherExp.MOD_ID, "shaders/post/betrayed.json");
+    private static float betrayedFadeFactor = 0.0f;
 
     public static void init() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -49,6 +56,7 @@ public class NetherExpClient {
         eventBus.addListener(NetherExpClient::itemTints);
         eventBus.addListener(NetherExpClient::registerGuiOverlays);
         eventBus.addListener(NetherExpClient::registerLayer);
+        MinecraftForge.EVENT_BUS.addListener(NetherExpClient::postEffectRender);
     }
 
     public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
@@ -65,7 +73,6 @@ public class NetherExpClient {
         EntityRenderers.register(JNEEntityType.CARCASS.get(), CarcassRenderer::new);
         EntityRenderers.register(JNEEntityType.SOUL_BULLET.get(), SoulBulletRenderer::new);
         EntityRenderers.register(JNEEntityType.BLACK_ICICLE.get(), BlackIcicleRenderer::new);
-        EntityRenderers.register(JNEEntityType.BLOOD_DROP.get(), NoopRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.MIST_CHARGE.get(), MistChargeRenderer::new);
         EntityRenderers.register(JNEEntityType.GRAVE_CLOUD.get(), NoopRenderer::new);
@@ -129,6 +136,9 @@ public class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.SMALL_FIREBALL_TRAIL.get(), GlimmerParticle.FireballFactory::new);
         event.registerSpriteSet(JNEParticleTypes.DRAGON_FIREBALL_TRAIL.get(), GlimmerParticle.GhastFireballFactory::new);
         event.registerSpriteSet(JNEParticleTypes.SOUL_CLOUD.get(), JNEExplodeParticle.SoulProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.HAZE.get(), SmogParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.RED_HAZE.get(), RedHazeParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.RED_SPARKLE.get(), FallingParticle.Factory::new);
 
         // MOD COMPAT
         event.registerSpriteSet(JNEParticleTypes.FALLING_SHROOMBRIGHT.get(), FallingParticle.Factory::new);
@@ -153,5 +163,20 @@ public class NetherExpClient {
         event.registerLayerDefinition(JNEModelLayers.SHOTGUN_FIST_LAYER, ShotgunFistModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.PUMP_CHARGE_SHOTGUN_LAYER, PumpChargeShotgunModel::createBodyLayer);
         event.registerLayerDefinition(JNEModelLayers.JACKHAMMER_FIST_LAYER, JackhammerFistModel::createBodyLayer);
+    }
+
+    public static void postEffectRender(RenderLevelStageEvent event) {
+        Entity player = Minecraft.getInstance().getCameraEntity();
+        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_SKY) {
+            GameRenderer renderer = Minecraft.getInstance().gameRenderer;
+            if (player instanceof LivingEntity livingEntity && livingEntity.hasEffect(JNEMobEffects.BETRAYED.get()) && JNEConfigs.TREACHEROUS_CANDLE_RED_LIGHTS.get()) {
+                if (renderer.currentEffect() == null || !BETRAYED_SHADER.toString().equals(renderer.currentEffect().getName())) {
+                    renderer.loadEffect(BETRAYED_SHADER);
+                }
+            }
+            else if (renderer.currentEffect() != null && BETRAYED_SHADER.toString().equals(renderer.currentEffect().getName())) {
+                renderer.checkEntityPostEffect(null);
+            }
+        }
     }
 }

@@ -37,11 +37,12 @@ public class JNEFluids {
     }
 
     public static final RegistryObject<FluidType> ECTOPLASM_TYPE = FLUID_TYPES.register("ectoplasm", () ->
-        new EctoplasmFluidType(FluidType.Properties.create().lightLevel(7).density(0).viscosity(0)
+        new EctoplasmFluidType(FluidType.Properties.create().lightLevel(10).density(1).viscosity(0)
                 .canPushEntity(false).canSwim(false).canConvertToSource(true).canDrown(false)
-                .pathType(BlockPathTypes.WATER).supportsBoating(false).temperature(-196)
-                .canExtinguish(false).adjacentPathType(BlockPathTypes.DANGER_OTHER)
+                .pathType(BlockPathTypes.WATER).supportsBoating(true).temperature(-196)
+                .canExtinguish(false).pathType(BlockPathTypes.DANGER_POWDER_SNOW).adjacentPathType(BlockPathTypes.DANGER_OTHER)
                 .canHydrate(false)));
+
     public static final RegistryObject<FlowingFluid> ECTOPLASM_SOURCE = FLUIDS.register("ectoplasm", () ->
             new ForgeFlowingFluid.Source(ectoplasmProperties()));
     public static final RegistryObject<FlowingFluid> ECTOPLASM_FLOWING = FLUIDS.register("flowing_ectoplasm", () ->

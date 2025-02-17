@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEConfiguredFeatures;
 import net.minecraft.core.BlockPos;
@@ -13,11 +14,15 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -26,7 +31,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class SorrowsquashBlock extends StemGrownBlock implements BonemealableBlock {
+public class SorrowsquashBlock extends StemGrownBlock implements BonemealableBlock, Fallable {
     public SorrowsquashBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
@@ -76,5 +81,10 @@ public class SorrowsquashBlock extends StemGrownBlock implements BonemealableBlo
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         level.registryAccess().registry(Registries.CONFIGURED_FEATURE).flatMap((registry) -> registry.getHolder(JNEConfiguredFeatures.SORROWEED_PATCH_BONEMEAL)).ifPresent((reference) ->
                 reference.value().place(level, level.getChunkSource().getGenerator(), random, pos));
+    }
+
+    @Override
+    public DamageSource getFallDamageSource(Entity pEntity) {
+        return pEntity.damageSources().source(JNEDamageSources.SORROWSQUISHED, pEntity);
     }
 }

@@ -8,8 +8,10 @@ import net.jadenxgamer.netherexp.registry.item.JNEItemRenderer;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -38,6 +40,7 @@ import java.util.function.Predicate;
 
 public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanishable, IShotgun {
     public final NonEntityAnimationState fireAnimationState = new NonEntityAnimationState();
+    public final NonEntityAnimationState explodeAnimationState = new NonEntityAnimationState();
     public final NonEntityAnimationState pumpAnimationState = new NonEntityAnimationState();
     public final NonEntityAnimationState overpumpAnimationState = new NonEntityAnimationState();
 
@@ -46,6 +49,9 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
 
     private int fireTimeOut;
     private boolean fireFlag;
+
+    private int explodeTimeOut;
+    private boolean explodeFlag;
 
     public PumpChargeShotgunItem(Properties properties) {
         super(properties);
@@ -71,11 +77,21 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
             if (this.fireFlag) {
                 playFireAnimation(player, player.tickCount);
             }
+            if (this.explodeFlag) {
+                playExplodeAnimation(player, player.tickCount);
+            }
             if (getCharge(stack) >= 4) {
                 overpumpAnimationState.startIfStopped(player.tickCount, player);
             } else {
                 overpumpAnimationState.stop(player);
             }
+        }
+    }
+
+    @Override
+    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if (!pLevel.isClientSide() && pEntity.tickCount % 14 == 0 && pIsSelected && getCharge(pStack) == 4) {
+            pLevel.playSound(null, pEntity.getX(), pEntity.getY(), pEntity.getZ(), JNESoundEvents.PUMP_CHARGE_SHOTGUN_ALARM.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
         }
     }
 
@@ -103,10 +119,14 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack stack = player.getItemInHand(interactionHand);
         int cartridge = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack);
+        int barrage = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BARRAGE.get(), stack);
+        int quickCharge = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.QUICK_CHARGE, stack);
+        int cooldown = barrage > 0 ? 15 + (barrage * 10) : 15 - (quickCharge * 4);
         if (player.isShiftKeyDown()) {
             if (getCharge(stack) <= 3) {
                 setCharge(stack, getCharge(stack) + 1);
             }
+            this.pumpFlag = true;
             level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_LOAD.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         }
         else {
@@ -115,33 +135,30 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
                     performShooting(level, player, stack);
                     stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-                    player.getCooldowns().addCooldown(this, 15);
-                    if (cartridge > 0 && level.random.nextInt(1 + cartridge) == 0) {
+                    player.getCooldowns().addCooldown(this, cooldown);
+                    if (cartridge > 0 && level.random.nextInt((cartridge * 2)) == 0) {
                         useProjectile(stack, player);
                     } else {
                         useProjectile(stack, player);
                     }
-                    setCharge(stack, 0);
+                    setCharge(stack, 1);
                     this.fireFlag = true;
 
                     return InteractionResultHolder.pass(stack);
                 }
-            }
-            else {
+            } else {
                 if (!player.getProjectile(stack).isEmpty() || player.getAbilities().instabuild) {
-                    performShooting(level, player, stack);
-                    level.explode(player, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.NONE);
-                    player.getCooldowns().addCooldown(this, 100);
+                    level.explode(player, null, null, player.getX(), player.getY(), player.getZ(), 3, false, Level.ExplosionInteraction.NONE, false);
+                    if (!level.isClientSide()) {
+                        ((ServerLevel)level).sendParticles(JNEParticleTypes.REDSTONE_EXPLOSION_EMITTER.get(), player.getX(), player.getY(), player.getZ(), 1, 0.0, 0.0, 0.0, 0);
+                    }
+                    player.getCooldowns().addCooldown(this, 100 - (quickCharge * 20));
                     player.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, player), 10);
                     stack.hurtAndBreak(5, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-                    if (cartridge > 0 && level.random.nextInt(cartridge) == 0) {
-                        useProjectile(stack, player);
-                    } else {
-                        useProjectile(stack, player);
-                    }
+                    useProjectile(stack, player);
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                    setCharge(stack, 0);
-                    this.fireFlag = true;
+                    setCharge(stack, 1);
+                    this.explodeFlag = true;
 
                     Vec3 look = player.getLookAngle();
                     Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
@@ -158,10 +175,12 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
     }
 
     public void performShooting(Level level, LivingEntity user, ItemStack stack) {
-        int chargeCount = getCharge(stack) * 6;
-        int chargeInaccuracy = getCharge(stack) * 8;
+        int chargeCount = getCharge(stack) * 10;
+        int chargeInaccuracy = getCharge(stack) * 5;
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
         int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), stack);
+        int barrage = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.BARRAGE.get(), stack);
+        int quickCharge = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.QUICK_CHARGE, stack);
         // Bonuses
         int aBulletDistanceBonus = artemis / 5;
         double recoilPushBonus = (double) recoil / 16;
@@ -169,13 +188,11 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
 
         Vec3 look = user.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
-        int maxCount = 4 + chargeCount;
-        int minCount = Math.max(1, (4 + (getCharge(stack) / 2)));
-        int count = Math.max(minCount, maxCount);
+        int count = barrage > 0 ? chargeCount + (barrage * 2) : chargeCount - (quickCharge * 2);
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
                 SoulBullet soulBullet = new SoulBullet(level, user);
-                soulBullet.shoot(look.x, look.y, look.z, (1.0F + aBulletDistanceBonus), (5 + chargeInaccuracy));
+                soulBullet.shoot(look.x, look.y, look.z, (1.5F + aBulletDistanceBonus), (7 + chargeInaccuracy));
                 level.addFreshEntity(soulBullet);
             }
         }
@@ -211,7 +228,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
     }
 
     private void playPumpAnimation(Player player, int tickCount) {
-        if (this.pumpTimeOut == 20) {
+        if (this.pumpTimeOut == 5) {
             this.pumpAnimationState.startIfStopped(tickCount, player);
         }
         if (this.pumpTimeOut > 0) {
@@ -219,7 +236,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         }
         if (this.pumpTimeOut <= 0) {
             this.pumpAnimationState.stop(player);
-            this.pumpTimeOut = 20;
+            this.pumpTimeOut = 5;
             this.pumpFlag = false;
         }
     }
@@ -235,6 +252,20 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
             this.fireAnimationState.stop(player);
             this.fireTimeOut = 20;
             this.fireFlag = false;
+        }
+    }
+
+    private void playExplodeAnimation(Player player, int tickCount) {
+        if (this.explodeTimeOut == 60) {
+            this.explodeAnimationState.startIfStopped(tickCount, player);
+        }
+        if (this.explodeTimeOut > 0) {
+            --this.explodeTimeOut;
+        }
+        if (this.explodeTimeOut <= 0) {
+            this.explodeAnimationState.stop(player);
+            this.explodeTimeOut = 60;
+            this.explodeFlag = false;
         }
     }
 

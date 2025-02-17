@@ -147,13 +147,17 @@ public class JNESoundEvents {
     public static RegistryObject<SoundEvent> GRENADE_ANTIDOTE_EXPLODE = registerSoundEvents("item.grenade_antidote.explode");
     public static RegistryObject<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
     public static RegistryObject<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
+    public static RegistryObject<SoundEvent> PUMP_CHARGE_SHOTGUN_ALARM = registerSoundEvents("item.pump_charge_shotgun.alarm");
     public static RegistryObject<SoundEvent> BRAZIER_CHEST_OPEN = registerSoundEvents("block.brazier_chest.open");
     public static RegistryObject<SoundEvent> BRAZIER_CHEST_CLOSE = registerSoundEvents("block.brazier_chest.close");
     public static RegistryObject<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
     public static RegistryObject<SoundEvent> TREACHEROUS_CANDLE_VICTORY = registerSoundEvents("block.treacherous_candle.victory");
     public static RegistryObject<SoundEvent> TREACHEROUS_CANDLE_DEFEAT = registerSoundEvents("block.treacherous_candle.defeat");
+    public static RegistryObject<SoundEvent> TREACHEROUS_CANDLE_ROUND = registerSoundEvents("block.treacherous_candle.round");
+    public static RegistryObject<SoundEvent> TREACHEROUS_CANDLE_SPAWN = registerSoundEvents("block.treacherous_candle.spawn");
     public static RegistryObject<SoundEvent> DISCERNMENT_GLASS_ADD = registerSoundEvents("block.discernment_glass.add");
     public static RegistryObject<SoundEvent> DISCERNMENT_GLASS_REMOVE = registerSoundEvents("block.discernment_glass.remove");
+    public static RegistryObject<SoundEvent> COMPASS_TICK = registerSoundEvents("item.compass.tick");
 
     // ENTITIES:
 

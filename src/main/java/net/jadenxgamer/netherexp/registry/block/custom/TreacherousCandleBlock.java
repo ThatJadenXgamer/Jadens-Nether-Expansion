@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -148,8 +149,27 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
+        boolean lit = state.getValue(LIT);
+        boolean completed = state.getValue(COMPLETED);
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+        for (int l = 0; l < 14; ++l) {
+            mutable.set(x + Mth.nextInt(random, -20, 20), y + random.nextInt(20), z + Mth.nextInt(random, -20, 20));
+            BlockState blockState = level.getBlockState(mutable);
+            if (blockState.isSolidRender(level, mutable)) continue;
+            if (lit && !completed) {
+                level.addParticle(JNEParticleTypes.RED_SPARKLE.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                int u = random.nextInt(6);
+                if (u == 0) {
+                    level.addParticle(JNEParticleTypes.RED_HAZE.get(), (double)mutable.getX() + random.nextDouble(), (double)mutable.getY() + random.nextDouble(), (double)mutable.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                }
+            }
+        }
+
         int i = random.nextInt(1);
-        if (i == 0 && state.getValue(LIT)) {
+        if (i == 0 && lit) {
             level.addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), (double)pos.getX() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), (double)pos.getY() + 1.1, (double)pos.getZ() + 0.5 + level.random.nextDouble() / 4.0 * (double)(level.random.nextBoolean() ? 1 : -1), 0.0, 0.07, 0.0);
         }
     }

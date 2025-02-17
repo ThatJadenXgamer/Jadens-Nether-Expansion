@@ -260,6 +260,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.RED_SCALE_FUNGUS.get());
                         output.accept(Blocks.WEEPING_VINES);
                         output.accept(JNEBlocks.WEEPING_IVY.get());
+                        output.accept(JNEItems.WEEPING_HELIX.get());
                         output.accept(JNEBlocks.CRIMSON_SPROUTS.get());
 
                         output.accept(Blocks.WARPED_NYLIUM);
@@ -270,6 +271,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.BLUE_SCALE_FUNGUS.get());
                         output.accept(Blocks.TWISTING_VINES);
                         output.accept(JNEBlocks.TWISTING_IVY.get());
+                        output.accept(JNEItems.TWISTING_HELIX.get());
                         output.accept(Blocks.NETHER_SPROUTS);
 
                         output.accept(JNEItems.WISP_BOTTLE.get());

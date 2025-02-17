@@ -1,0 +1,59 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"1": "netherexp:block/twisting_helix",
+		"particle": "netherexp:block/twisting_helix"
+	},
+	"elements": [
+		{
+			"from": [0, 9, 0],
+			"to": [16, 9, 16],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 9, 0]},
+			"faces": {
+				"up": {"uv": [0, 16, 16, 0], "texture": "#1"},
+				"down": {"uv": [16, 16, 0, 0], "rotation": 180, "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 7, 0],
+			"to": [16, 7, 16],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 7, 0]},
+			"faces": {
+				"up": {"uv": [0, 16, 16, 0], "texture": "#1"},
+				"down": {"uv": [16, 16, 0, 0], "rotation": 180, "texture": "#1"}
+			}
+		},
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 16],
+			"shade": false,
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 0]},
+			"faces": {
+				"east": {"uv": [0, 16, 16, 0], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [16, 16, 0, 0], "rotation": 270, "texture": "#1"}
+			}
+		},
+		{
+			"from": [8, 0, 0],
+			"to": [24, 16, 0],
+			"shade": false,
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 0]},
+			"faces": {
+				"north": {"uv": [0, 16, 16, 0], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [16, 16, 0, 0], "rotation": 270, "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [8, 8, 0],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

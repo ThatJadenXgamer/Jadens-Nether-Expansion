@@ -19,7 +19,7 @@
       "height": {
         "type": "minecraft:constant",
         "value": {
-          "absolute": 31
+          "absolute": 32
         }
       }
     },

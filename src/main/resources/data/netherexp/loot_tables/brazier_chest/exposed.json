@@ -197,7 +197,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:book",
-          "weight": 8,
+          "weight": 4,
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
@@ -215,7 +215,6 @@
             {
               "function": "minecraft:enchant_randomly",
               "enchantments": [
-                "netherexp:bloodshed",
                 "netherexp:phantasm_hull"
               ]
             }
@@ -231,7 +230,6 @@
               "enchantments": [
                 "minecraft:silk_touch",
                 "minecraft:efficiency",
-                "netherexp:bloodshed",
                 "minecraft:fortune",
                 "minecraft:sweeping"
               ]

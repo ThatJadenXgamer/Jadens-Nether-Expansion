@@ -3,19 +3,15 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"render_type": "cutout",
-	"textures": {
-		"particle": "#side",
-		"glow": "#sideglow"
-	},
 	"elements": [
 		{
 			"from": [0, 0, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "north"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "south"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "west"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "west"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "up"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "down"}
 			}
@@ -25,12 +21,12 @@
 			"to": [16, 16, 16],
 			"shade": false,
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "north"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "south"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "up"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "down"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#endglow", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#endglow", "cullface": "down"}
 			}
 		}
 	]
