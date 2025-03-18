@@ -6,23 +6,22 @@ import net.jadenxgamer.netherexp.registry.block.entity.TreacherousCandleBlockEnt
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 
 public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
-    PathfinderMob entity;
-    int attackDelay = 60;
+    private final PathfinderMob entity;
+    private int attackDelay = 60;
+    private static final SoundEvent WITHER_BREAK_BLOCK = SoundEvents.WITHER_BREAK_BLOCK;
+    private static final SoundEvent TREACHEROUS_CANDLE_DEFEAT = JNESoundEvents.TREACHEROUS_CANDLE_DEFEAT.get();
 
-    public AttackTreacherousCandleGoal(PathfinderMob pathfinderMob, int range) {
-        super(pathfinderMob, 1.0F, range, range);
-        entity = pathfinderMob;
+    public AttackTreacherousCandleGoal(PathfinderMob pathfinderMob) {
+        super(pathfinderMob, 1.0F, 6, 6);
+        this.entity = pathfinderMob;
     }
 
     @Override
@@ -31,14 +30,9 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
     }
 
     @Override
-    protected boolean isValidTarget(LevelReader level, BlockPos pos) {
+    protected boolean isValidTarget(Level level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.is(JNEBlocks.TREACHEROUS_CANDLE.get());
-    }
-
-    @Override
-    protected @NotNull BlockPos getMoveToTarget() {
-        return this.blockPos;
+        return JNEBlocks.TREACHEROUS_CANDLE.get().is(state);
     }
 
     @Override
@@ -47,23 +41,22 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
         Level level = entity.level();
         BlockPos target = getMoveToTarget();
         BlockState state = level.getBlockState(target);
+
         if (this.isReachedTarget()) {
-            BlockEntity blockEntity = level.getBlockEntity(target);
-            if (blockEntity instanceof TreacherousCandleBlockEntity treacherousCandle && !state.getValue(TreacherousCandleBlock.COMPLETED) && state.getValue(TreacherousCandleBlock.LIT)) {
-                int health = treacherousCandle.getHealth();
+            TreacherousCandleBlockEntity candle = getCandleBlockEntity(state);
+            if (candle != null && !state.getValue(TreacherousCandleBlock.COMPLETED) && state.getValue(TreacherousCandleBlock.LIT)) {
+                int health = candle.getHealth();
                 if (attackDelay <= 0 && !state.getValue(TreacherousCandleBlock.BROKEN)) {
                     if (health > 0) {
-                        treacherousCandle.setHealth(health - 1);
-                        level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 1.0f, 1.0f);
-                    }
-                    else {
+                        candle.setHealth(health - 1);
+                        level.playSound(null, target.getX(), target.getY(), target.getZ(), WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 1.0f, 1.0f);
+                    } else {
                         level.setBlock(target, level.getBlockState(target).setValue(TreacherousCandleBlock.LIT, false).setValue(TreacherousCandleBlock.BROKEN, true), 2);
-                        level.playSound(null, target.getX(), target.getY(), target.getZ(), JNESoundEvents.TREACHEROUS_CANDLE_DEFEAT.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-                        level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 0.5f, 1.0f);
+                        level.playSound(null, target.getX(), target.getY(), target.getZ(), TREACHEROUS_CANDLE_DEFEAT, SoundSource.PLAYERS, 1.0f, 1.0f);
+                        level.playSound(null, target.getX(), target.getY(), target.getZ(), WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 0.5f, 1.0f);
                     }
                     attackDelay = 60;
-                }
-                else {
+                } else {
                     --attackDelay;
                 }
             }
@@ -82,13 +75,7 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
         return targetState.is(JNEBlocks.TREACHEROUS_CANDLE.get()) && !targetState.getValue(TreacherousCandleBlock.COMPLETED) && targetState.getValue(TreacherousCandleBlock.LIT) && super.canContinueToUse();
     }
 
-    @Override
-    public void start() {
-        super.start();
-    }
-
-    @Override
-    public void stop() {
-        super.stop();
+    private TreacherousCandleBlockEntity getCandleBlockEntity(BlockState state) {
+        return (TreacherousCandleBlockEntity) state.getBlockEntity();
     }
 }
