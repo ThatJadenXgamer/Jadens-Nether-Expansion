@@ -1,12 +1,12 @@
 package net.jadenxgamer.netherexp.registry.block;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.jadenxgamer.netherexp.registry.block.custom.*;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.item.custom.GargoyleStatueItem;
 import net.jadenxgamer.netherexp.registry.misc_registry.*;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -149,7 +149,7 @@ public class JNEBlocks {
             new EctoSoulSandBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).lightLevel((state) -> 4).randomTicks()));
 
     public static final RegistryObject<Block> SUSPICIOUS_SOUL_SAND = registerBlock("suspicious_soul_sand", () ->
-            new JNEBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).speedFactor(0.2f).strength(0.25f).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND), SoundEvents.BRUSH_SAND, JNESoundEvents.BRUSH_BRUSHING_SOUL_SAND_COMPLETE.get()));
+            new JNEBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).speedFactor(0.2f).strength(0.25f).randomTicks().pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND), SoundEvents.BRUSH_SAND, JNESoundEvents.BRUSH_BRUSHING_SOUL_SAND_COMPLETE.get()));
 
     public static final RegistryObject<Block> SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block", () ->
             new SoulMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).lightLevel((state) -> 3).sound(JNESoundType.SOUL_MAGMA_BLOCK)));

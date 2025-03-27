@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import net.jadenxgamer.elysium_api.impl.misc_registry.ElysiumTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -53,7 +54,7 @@ public class WallGrowingWartBlock extends Block {
         Direction direction = state.getValue(FACING);
         BlockPos supportPos = pos.relative(direction.getOpposite());
         BlockState supportState = level.getBlockState(supportPos);
-        return supportState.is(Blocks.SOUL_SAND);
+        return supportState.is(Blocks.SOUL_SAND) || supportState.is(ElysiumTags.Blocks.NETHER_WART_PLANTABLE_ON);
     }
 
     public boolean isRandomlyTicking(BlockState state) {

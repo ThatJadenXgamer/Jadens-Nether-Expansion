@@ -34,24 +34,24 @@ public class BlackIceClusterFeature extends Feature<DripstoneClusterConfiguratio
     }
 
     public boolean place(FeaturePlaceContext<DripstoneClusterConfiguration> pContext) {
-        WorldGenLevel $$1 = pContext.level();
-        BlockPos $$2 = pContext.origin();
-        DripstoneClusterConfiguration $$3 = pContext.config();
-        RandomSource $$4 = pContext.random();
-        if (!isEmptyOrWater($$1, $$2)) {
+        WorldGenLevel level = pContext.level();
+        BlockPos origin = pContext.origin();
+        DripstoneClusterConfiguration config = pContext.config();
+        RandomSource random = pContext.random();
+        if (!isEmptyOrWater(level, origin)) {
             return false;
         } else {
-            int $$5 = $$3.height.sample($$4);
-            float $$6 = $$3.wetness.sample($$4);
-            float $$7 = $$3.density.sample($$4);
-            int $$8 = $$3.radius.sample($$4);
-            int $$9 = $$3.radius.sample($$4);
+            int clusterHeight = config.height.sample(random);
+            float wetness = config.wetness.sample(random);
+            float density = config.density.sample(random);
+            int radiusX = config.radius.sample(random);
+            int radiusZ = config.radius.sample(random);
 
-            for(int $$10 = -$$8; $$10 <= $$8; ++$$10) {
-                for(int $$11 = -$$9; $$11 <= $$9; ++$$11) {
-                    double $$12 = this.getChanceOfStalagmiteOrStalactite($$8, $$9, $$10, $$11, $$3);
-                    BlockPos $$13 = $$2.offset($$10, 0, $$11);
-                    this.placeColumn($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
+            for(int dx = -radiusX; dx <= radiusX; ++dx) {
+                for(int dz = -radiusZ; dz <= radiusZ; ++dz) {
+                    double stalagmiteStalactiteChance = this.getChanceOfStalagmiteOrStalactite(radiusX, radiusZ, dx, dz, config);
+                    BlockPos columnPos = origin.offset(dx, 0, dz);
+                    this.placeColumn(level, random, columnPos, dx, dz, wetness, stalagmiteStalactiteChance, clusterHeight, density, config);
                 }
             }
 
@@ -60,78 +60,83 @@ public class BlackIceClusterFeature extends Feature<DripstoneClusterConfiguratio
     }
 
     private void placeColumn(WorldGenLevel pLevel, RandomSource pRandom, BlockPos pPos, int pX, int pZ, float pWetness, double pChance, int pHeight, float pDensity, DripstoneClusterConfiguration pConfig) {
-        Optional<Column> $$10 = Column.scan(pLevel, pPos, pConfig.floorToCeilingSearchRange, DripstoneUtils::isEmptyOrWater, DripstoneUtils::isNeitherEmptyNorWater);
-        if ($$10.isPresent()) {
-            OptionalInt $$11 = ((Column)$$10.get()).getCeiling();
-            OptionalInt $$12 = ((Column)$$10.get()).getFloor();
-            if ($$11.isPresent() || $$12.isPresent()) {
-                boolean $$13 = pRandom.nextFloat() < pWetness;
-                Column $$16;
-                if ($$13 && $$12.isPresent() && this.canPlacePool(pLevel, pPos.atY($$12.getAsInt()))) {
-                    int $$14 = $$12.getAsInt();
-                    $$16 = ((Column)$$10.get()).withFloor(OptionalInt.of($$14 - 1));
-                    pLevel.setBlock(pPos.atY($$14), Blocks.WATER.defaultBlockState(), 2);
+        Optional<Column> column = Column.scan(pLevel, pPos, pConfig.floorToCeilingSearchRange, DripstoneUtils::isEmptyOrWater, DripstoneUtils::isNeitherEmptyNorWater);
+        if (column.isPresent()) {
+            OptionalInt ceilingOptional = column.get().getCeiling();
+            OptionalInt floorOptional = column.get().getFloor();
+            if (ceilingOptional.isPresent() || floorOptional.isPresent()) {
+                boolean shouldPlaceWater = pRandom.nextFloat() < pWetness;
+                Column adjustedColumn;
+                if (shouldPlaceWater && floorOptional.isPresent() && this.canPlacePool(pLevel, pPos.atY(floorOptional.getAsInt()))) {
+                    int floorY = floorOptional.getAsInt();
+                    adjustedColumn = column.get().withFloor(OptionalInt.of(floorY - 1));
+                    pLevel.setBlock(pPos.atY(floorY), Blocks.WATER.defaultBlockState(), 2);
                 } else {
-                    $$16 = (Column)$$10.get();
+                    adjustedColumn = column.get();
                 }
 
-                OptionalInt $$17 = $$16.getFloor();
-                boolean $$18 = pRandom.nextDouble() < pChance;
-                int $$23;
-                int $$28;
-                if ($$11.isPresent() && $$18 && !this.isLava(pLevel, pPos.atY($$11.getAsInt()))) {
-                    $$28 = pConfig.dripstoneBlockLayerThickness.sample(pRandom);
-                    this.replaceBlocksWithDripstoneBlocks(pLevel, pPos.atY($$11.getAsInt()), $$28, Direction.UP);
-                    int $$21;
-                    if ($$17.isPresent()) {
-                        $$21 = Math.min(pHeight, $$11.getAsInt() - $$17.getAsInt());
+                OptionalInt newFloorOptional = adjustedColumn.getFloor();
+                boolean shouldPlaceCeilingStalactite = pRandom.nextDouble() < pChance;
+                int stalactiteHeight;
+                int stalagmiteHeight;
+                if (ceilingOptional.isPresent() && shouldPlaceCeilingStalactite && !this.isLava(pLevel, pPos.atY(ceilingOptional.getAsInt()))) {
+                    int thickness = pConfig.dripstoneBlockLayerThickness.sample(pRandom);
+                    //this.replaceBlocksWithBlackIceBlocks(pLevel, pPos.atY(ceilingOptional.getAsInt()), thickness, Direction.UP);
+                    int maxIcicleHeight;
+                    if (newFloorOptional.isPresent()) {
+                        maxIcicleHeight = Math.min(pHeight, ceilingOptional.getAsInt() - newFloorOptional.getAsInt());
                     } else {
-                        $$21 = pHeight;
+                        maxIcicleHeight = pHeight;
                     }
 
-                    $$23 = this.getDripstoneHeight(pRandom, pX, pZ, pDensity, $$21, pConfig);
+                    stalactiteHeight = this.getDripstoneHeight(pRandom, pX, pZ, pDensity, maxIcicleHeight, pConfig);
                 } else {
-                    $$23 = 0;
+                    stalactiteHeight = 0;
                 }
 
-                boolean $$24 = pRandom.nextDouble() < pChance;
-                int $$37;
-                if ($$17.isPresent() && $$24 && !this.isLava(pLevel, pPos.atY($$17.getAsInt()))) {
-                    $$37 = pConfig.dripstoneBlockLayerThickness.sample(pRandom);
-                    this.replaceBlocksWithDripstoneBlocks(pLevel, pPos.atY($$17.getAsInt()), $$37, Direction.DOWN);
-                    if ($$11.isPresent()) {
-                        $$28 = Math.max(0, $$23 + Mth.randomBetweenInclusive(pRandom, -pConfig.maxStalagmiteStalactiteHeightDiff, pConfig.maxStalagmiteStalactiteHeightDiff));
+                boolean shouldPlaceFloorStalagmite = pRandom.nextDouble() < pChance;
+                if (newFloorOptional.isPresent() && shouldPlaceFloorStalagmite && !this.isLava(pLevel, pPos.atY(newFloorOptional.getAsInt()))) {
+                    int thickness = pConfig.dripstoneBlockLayerThickness.sample(pRandom);
+                    //this.replaceBlocksWithBlackIceBlocks(pLevel, pPos.atY(newFloorOptional.getAsInt()), thickness, Direction.DOWN);
+                    if (ceilingOptional.isPresent()) {
+                        stalagmiteHeight = Math.max(0, stalactiteHeight + Mth.randomBetweenInclusive(pRandom, -pConfig.maxStalagmiteStalactiteHeightDiff, pConfig.maxStalagmiteStalactiteHeightDiff));
                     } else {
-                        $$28 = this.getDripstoneHeight(pRandom, pX, pZ, pDensity, pHeight, pConfig);
+                        stalagmiteHeight = this.getDripstoneHeight(pRandom, pX, pZ, pDensity, pHeight, pConfig);
                     }
                 } else {
-                    $$28 = 0;
+                    stalagmiteHeight = 0;
                 }
 
-                int $$38;
-                if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$23 <= $$17.getAsInt() + $$28) {
-                    int $$29 = $$17.getAsInt();
-                    int $$30 = $$11.getAsInt();
-                    int $$31 = Math.max($$30 - $$23, $$29 + 1);
-                    int $$32 = Math.min($$29 + $$28, $$30 - 1);
-                    int $$33 = Mth.randomBetweenInclusive(pRandom, $$31, $$32 + 1);
-                    int $$34 = $$33 - 1;
-                    $$37 = $$30 - $$33;
-                    $$38 = $$34 - $$29;
+                int finalStalactiteHeight;
+                int finalStalagmiteHeight;
+                if (ceilingOptional.isPresent() && newFloorOptional.isPresent() && ceilingOptional.getAsInt() - stalactiteHeight <= newFloorOptional.getAsInt() + stalagmiteHeight) {
+                    int floorYPosition = newFloorOptional.getAsInt();
+                    int ceilingYPosition = ceilingOptional.getAsInt();
+                    int stalactiteBase = Math.max(ceilingYPosition - stalactiteHeight, floorYPosition + 1);
+                    int stalagmiteBase = Math.min(floorYPosition + stalagmiteHeight, ceilingYPosition - 1);
+                    int midPoint = Mth.randomBetweenInclusive(pRandom, stalactiteBase, stalagmiteBase + 1);
+                    int stalagmiteTipY = midPoint - 1;
+                    finalStalactiteHeight = ceilingYPosition - midPoint;
+                    finalStalagmiteHeight = stalagmiteTipY - floorYPosition;
                 } else {
-                    $$37 = $$23;
-                    $$38 = $$28;
+                    finalStalactiteHeight = stalactiteHeight;
+                    finalStalagmiteHeight = stalagmiteHeight;
                 }
 
-                boolean $$39 = pRandom.nextBoolean() && $$37 > 0 && $$38 > 0 && $$16.getHeight().isPresent() && $$37 + $$38 == $$16.getHeight().getAsInt();
-                if ($$11.isPresent()) {
-                    growBlackIcicle(pLevel, pPos.atY($$11.getAsInt() - 1), Direction.DOWN, $$37, $$39);
+                boolean mergeTips = pRandom.nextBoolean() && finalStalactiteHeight > 0 && finalStalagmiteHeight > 0 && adjustedColumn.getHeight().isPresent() && finalStalactiteHeight + finalStalagmiteHeight == adjustedColumn.getHeight().getAsInt();
+                if (ceilingOptional.isPresent()) {
+                    if (finalStalactiteHeight > 0) {
+                        placeBlackIceIfPossible(pLevel, pPos.atY(ceilingOptional.getAsInt()));
+                    }
+                    growBlackIcicle(pLevel, pPos.atY(ceilingOptional.getAsInt() - 1), Direction.DOWN, finalStalactiteHeight, mergeTips);
                 }
 
-                if ($$17.isPresent()) {
-                    growBlackIcicle(pLevel, pPos.atY($$17.getAsInt() + 1), Direction.UP, $$38, $$39);
+                if (newFloorOptional.isPresent()) {
+                    if (finalStalagmiteHeight > 0) {
+                        placeBlackIceIfPossible(pLevel, pPos.atY(newFloorOptional.getAsInt()));
+                    }
+                    growBlackIcicle(pLevel, pPos.atY(newFloorOptional.getAsInt() + 1), Direction.UP, finalStalagmiteHeight, mergeTips);
                 }
-
             }
         }
     }
@@ -175,7 +180,7 @@ public class BlackIceClusterFeature extends Feature<DripstoneClusterConfiguratio
         return $$2.is(BlockTags.BASE_STONE_OVERWORLD) || $$2.getFluidState().is(FluidTags.WATER);
     }
 
-    private void replaceBlocksWithDripstoneBlocks(WorldGenLevel pLevel, BlockPos pPos, int pThickness, Direction pDirection) {
+    private void replaceBlocksWithBlackIceBlocks(WorldGenLevel pLevel, BlockPos pPos, int pThickness, Direction pDirection) {
         BlockPos.MutableBlockPos $$4 = pPos.mutable();
 
         for(int $$5 = 0; $$5 < pThickness; ++$$5) {
@@ -189,8 +194,8 @@ public class BlackIceClusterFeature extends Feature<DripstoneClusterConfiguratio
     }
 
     protected static boolean placeBlackIceIfPossible(LevelAccessor pLevel, BlockPos pPos) {
-        BlockState $$2 = pLevel.getBlockState(pPos);
-        if ($$2.is(JNETags.Blocks.BLACK_ICE_REPLACEABLE)) {
+        BlockState state = pLevel.getBlockState(pPos);
+        if (state.is(JNETags.Blocks.BLACK_ICE_REPLACEABLE)) {
             pLevel.setBlock(pPos, JNEBlocks.BLACK_ICE.get().defaultBlockState(), 2);
             return true;
         } else {

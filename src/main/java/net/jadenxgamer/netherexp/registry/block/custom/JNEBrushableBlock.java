@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
@@ -30,10 +31,15 @@ public class JNEBrushableBlock extends BrushableBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
-        if (!state.getValue(PERSISTENT) && random.nextInt(1) == 0) {
+        if (!state.getValue(PERSISTENT) && random.nextInt(JNEConfigs.SUSPICIOUS_SOUL_SAND_DECAY_ODDS.get()) == 0) {
             level.setBlock(pos, Blocks.SOUL_SAND.defaultBlockState(), 2);
             level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_SUSPICIOUS_SOUL_SAND_BREAK.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
+    }
+
+    @Override
+    public boolean isRandomlyTicking(BlockState pState) {
+        return JNEConfigs.SUSPICIOUS_SOUL_SAND_DECAYS.get();
     }
 
     @Override

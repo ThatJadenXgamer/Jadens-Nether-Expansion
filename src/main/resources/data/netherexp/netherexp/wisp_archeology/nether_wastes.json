@@ -1,0 +1,4 @@
+{
+  "biomes": "minecraft:nether_wastes",
+  "loot_table": "netherexp:archaeology/nether_wastes"
+}

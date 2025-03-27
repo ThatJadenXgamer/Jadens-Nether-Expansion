@@ -27,6 +27,7 @@ extends TextureSheetParticle {
         this.hasPhysics = false;
     }
 
+
     @Override
     public void render(VertexConsumer buffer, Camera camera, float ticks) {
 
@@ -38,11 +39,9 @@ extends TextureSheetParticle {
         Vector3f offsetPos = new Vector3f(x,0,z);
 
         // Get the y rotation to face the camera
-        @SuppressWarnings("unused")
         float faceRot = offsetPos.angleSigned(camera.getPosition().toVector3f(), new Vector3f(0, 1, 0));
         
         // Get the opposite y rotation of the camera
-        @SuppressWarnings("unused")
         float cameraRot = (float) -Math.toRadians(camera.getYRot())-45;
 
         // Create the face of the particle

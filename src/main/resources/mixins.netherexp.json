@@ -8,7 +8,6 @@
   "client": [
     "entity.LocalPlayerMixin",
     "renderer.BlazeRendererMixin",
-    "renderer.CameraMixin",
     "renderer.FogRendererMixin",
     "renderer.MagmaCubeRendererMixin",
     "renderer.ParticleEngineMixin",
@@ -16,9 +15,8 @@
     "renderer.StrayRendererMixin"
   ],
   "mixins": [
+    "block.BaseFireBlockMixin",
     "block.BlocksMixin",
-    "block.RootsBlockMixin",
-    "block.SoulFireBlockMixin",
     "block.StemBlockMixin",
     "block.TorchflowerCropBlockMixin",
     "block.TwistingVinesMixin",
@@ -35,7 +33,6 @@
     "entity.LivingEntityMixin",
     "entity.MobMixin",
     "entity.NearestAttackableTargetGoalMixin",
-    "entity.PiglinAiMixin",
     "entity.PlayerMixin",
     "entity.ProjectileMixin",
     "entity.StrayMixin",

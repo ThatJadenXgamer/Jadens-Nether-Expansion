@@ -1,0 +1,4 @@
+{
+  "biomes": "minecraft:warped_forest",
+  "loot_table": "netherexp:archaeology/warped_forest"
+}

@@ -33,6 +33,8 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(TwistingVinesBlock.class)
 public abstract class TwistingVinesMixin extends GrowingPlantHeadBlock {
 
+    //TODO: clean up this atrocious mixin, what the fuck is this
+
     @Unique
     private static final BooleanProperty BUDDING = BooleanProperty.create("budding");
 

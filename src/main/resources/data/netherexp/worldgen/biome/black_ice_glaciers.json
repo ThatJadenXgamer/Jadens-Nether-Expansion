@@ -11,7 +11,7 @@
     "ambient_sound": {
       "sound_id": "netherexp:ambient.soul_sand_valley.black_ice_glaciers.loop"
     },
-    "fog_color": 1185564,
+    "fog_color": 1645602,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2,
@@ -30,7 +30,7 @@
       "options": {
         "type": "netherexp:black_flake"
       },
-      "probability": 0.0091
+      "probability": 0.0191
     },
     "sky_color": 7254527,
     "water_color": 4159204,
@@ -47,14 +47,11 @@
     [],
     [],
     [
-      "minecraft:spring_open",
       "minecraft:patch_fire",
       "minecraft:patch_soul_fire",
       "minecraft:glowstone_extra",
       "minecraft:glowstone",
-      "netherexp:soul_sand_valley/black_ice_glaciers/patch_warped_roots",
       "minecraft:ore_magma",
-      "minecraft:spring_closed",
       "minecraft:ore_soul_sand",
       "minecraft:ore_gravel_nether",
       "minecraft:ore_blackstone",
@@ -64,9 +61,7 @@
       "minecraft:ore_debris_small"
     ],
     [],
-    [
-      "minecraft:spring_lava"
-    ]
+    []
   ],
   "has_precipitation": false,
   "spawn_costs": {

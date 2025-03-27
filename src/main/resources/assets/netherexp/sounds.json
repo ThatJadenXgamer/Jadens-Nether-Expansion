@@ -13,7 +13,7 @@
       {
         "name": "netherexp:ambient/nether/soul_sand_valley/black_ice_glaciers/ambience",
         "stream": true,
-        "volume": 0.95
+        "volume": 0.85
       }
     ]
   },
@@ -1187,14 +1187,24 @@
       "netherexp:mob/apparition/attack2"
     ]
   },
-  "entity.carcass.ambient": {
-    "subtitle": "subtitles.entity.carcass.ambient",
+  "entity.carcass.hurt": {
+    "subtitle": "subtitles.entity.carcass.hurt",
     "sounds": [
-      "netherexp:mob/carcass/idle1",
-      "netherexp:mob/carcass/idle2",
-      "netherexp:mob/carcass/idle3",
-      "netherexp:mob/carcass/idle4",
-      "netherexp:mob/carcass/idle5"
+      "netherexp:mob/carcass/hurt1",
+      "netherexp:mob/carcass/hurt2",
+      "netherexp:mob/carcass/hurt3"
+    ]
+  },
+  "entity.carcass.death": {
+    "subtitle": "subtitles.entity.carcass.death",
+    "sounds": [
+      "netherexp:mob/carcass/death"
+    ]
+  },
+  "entity.carcass.reanimate": {
+    "subtitle": "subtitles.entity.carcass.reanimate",
+    "sounds": [
+      "netherexp:mob/carcass/reanimate"
     ]
   },
   "entity.vessel.ambient": {

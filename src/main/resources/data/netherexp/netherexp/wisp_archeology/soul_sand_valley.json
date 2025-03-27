@@ -1,0 +1,4 @@
+{
+  "biomes": "minecraft:soul_sand_valley",
+  "loot_table": "netherexp:archaeology/soul_sand_valley"
+}

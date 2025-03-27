@@ -72,17 +72,26 @@ public class JNEForgeConfigs {
 
     private static void registerItemConfigs(ForgeConfigSpec.Builder BUILDER) {
         POTION_STACK_SIZE = BUILDER
-                .comment("The stack size for all Potions & Antidotes \nVanilla value is \"1\"")
+                .comment("The stack size for all Potions & Antidotes")
                 .defineInRange("potion_stack_size", 16, 1, 64);
+        FORCE_DISABLE_POTION_STACK_SIZE = BUILDER
+                .comment("Forcefully disables stack size changes on Potions & Antidotes \nTurn this on in-case you want the vanilla stack sizes for potions")
+                .define("force_disable_potion_stack_size", false);
         WILL_O_WISP_STACK_SIZE = BUILDER
                 .comment("The stack size for Will O' Wisps")
                 .defineInRange("will_o_wisp_stack_size", 16, 1, 64);
-        JACKHAMMER_FIST_MAX_DAMAGE = BUILDER
-                .comment("Caps the Maximum Damage of the Jackhammer-Fist to this value")
-                .define("will_o_wisp_stack_size", 40.0);
         BLACK_ICICLE_FREEZE_TICKS = BUILDER
                 .comment("The amount of time Black Icicle deal Freezing Damage when shot or skewered")
-                .define("black_icicle_freeze_ticks", 500);
+                .define("black_icicle_freeze_ticks", 100);
+        SHOTGUN_FIST_BULLETS = BUILDER
+                .comment("How many bullets will be shot when a Shotgun Fist is fired")
+                .define("shotgun_fist_bullets", 25);
+        PUMP_CHARGE_SHOTGUN_BULLETS = BUILDER
+                .comment("How many bullets will be shot when a Pump-Charge Shotgun is fired")
+                .define("pump_charge_shotgun_bullets", 10);
+        JACKHAMMER_FIST_MAX_DAMAGE = BUILDER
+                .comment("Caps the Maximum Damage of the Jackhammer-Fist to this value")
+                .define("jackhammer_fist_max_damage", 40.0);
     }
 
     private static void registerEntityConfigs(ForgeConfigSpec.Builder BUILDER) {
@@ -113,6 +122,15 @@ public class JNEForgeConfigs {
         SUSPICIOUS_SOUL_SAND_FROM_WISP_EMERGING = BUILDER
                 .comment("Wisps will turn the soul sand they emerged from into Suspicious Soul Sand")
                 .define("suspicious_soul_sand_from_wisp_emerging", true);
+        SUSPICIOUS_SOUL_SAND_FROM_WISP_EMERGING = BUILDER
+                .comment("Suspicious Soul Sand made by wisps will randomly decay into regular soul sand")
+                .define("suspicious_soul_sand_decays", true);
+        SUSPICIOUS_SOUL_SAND_FROM_WISP_EMERGING = BUILDER
+                .comment("Defines 1 in specified chance for wisp-made Suspicious Soul Sand to decay back to regular soul sand")
+                .define("suspicious_soul_sand_decay_odds", true);
+        SUSPICIOUS_SOUL_SAND_DEFAULT_LOOT_TABLE = BUILDER
+                .comment("The default loot table of a wisp-made Suspicious Soul Sand if both the biome and structure checks failed")
+                .define("suspicious_soul_sand_decay_default_loot_table", "archaeology/wisp_arch_default");
         ECTO_SLAB_EMERGING_BEHAVIOR = BUILDER
                 .comment("Defines how ecto slabs will emerge from soul swirls \nALWAYS - has a chance to emerge whenever passed through \nUNBOUNDED_SPEED_ONLY - can emerge only if inflicted with unbounded speed \nNEVER - never emerges from soul swirls \n ")
                 .defineEnum("ecto_slab_emerging_behavior", EctoSlabEmerging.UNBOUNDED_SPEED_ONLY);
@@ -155,12 +173,15 @@ public class JNEForgeConfigs {
         ENABLE_SUB_BIOMES = BUILDER
                 .comment("Enables Secondary & Tertiary Sub-Biomes")
                 .define("enable_sub_biomes", true);
+        BLACK_ICE_GLACIERS = BUILDER
+                .comment("Enables Black Ice Glaciers, Tertiary Sub-Biome of the Soul Sand Valley")
+                .define("black_ice_glaciers", true);
         BLACK_ICE_GLACIERS_RARITY = BUILDER
                 .comment("How often Black Ice Glaciers should replace Soul Sand Valley")
-                .defineInRange("black_ice_glaciers_rarity", 0.075, 0, 1);
+                .defineInRange("black_ice_glaciers_rarity", 0.085, 0, 1);
         BLACK_ICE_GLACIERS_SIZE = BUILDER
                 .comment("How big Black Ice Glaciers should be")
-                .define("black_ice_glaciers_size", 64);
+                .define("black_ice_glaciers_size", 128);
     }
 
     private static void registerVisualsAndSoundsConfigs(ForgeConfigSpec.Builder BUILDER) {

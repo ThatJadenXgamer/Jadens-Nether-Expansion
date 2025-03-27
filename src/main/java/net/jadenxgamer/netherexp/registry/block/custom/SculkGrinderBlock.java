@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,8 +34,9 @@ public class SculkGrinderBlock extends Block {
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack stack = player.getItemInHand(hand);
+
         boolean bl = false;
-        if (stack.is(JNEItems.TREACHEROUS_FLAME.get())) {
+        if (stack.is(JNETags.Items.SCULK_GRINDABLES)) {
             level.playSound(player, pos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
             if (level instanceof ServerLevel serverLevel) {
                 ExperienceOrb.award(serverLevel, hitResult.getLocation(), JNEConfigs.SCULK_GRINDER_EXPERIENCE.get());

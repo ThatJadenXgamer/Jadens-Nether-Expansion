@@ -1,0 +1,16 @@
+{
+  "feature": "netherexp:soul_sand_valley/black_ice_glaciers/ice_ribs",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 2
+    },
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 1
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

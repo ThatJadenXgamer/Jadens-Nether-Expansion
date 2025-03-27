@@ -40,13 +40,17 @@ public class JNEEntityType {
 
     public static final RegistryObject<EntityType<Carcass>> CARCASS = ENTITY_TYPES.register("carcass", () ->
             EntityType.Builder.of(Carcass::new, MobCategory.MISC)
-                    .sized(1.4F, 1.4F).fireImmune().build("carcass"));
+                    .sized(1.4F, 1.3F).fireImmune().build("carcass"));
+
+    public static final RegistryObject<EntityType<FalseCarcass>> FALSE_CARCASS = ENTITY_TYPES.register("false_carcass", () ->
+            EntityType.Builder.of(FalseCarcass::new, MobCategory.MISC)
+                    .sized(1.4F, 1.0F).fireImmune().build("false_carcass"));
 
     // OTHER
 
-    public static final RegistryObject<EntityType<SoulBullet>> SOUL_BULLET = ENTITY_TYPES.register("soul_bullet", () ->
-            EntityType.Builder.<SoulBullet>of(SoulBullet::new, MobCategory.MISC)
-                    .sized(0.5f, 0.5f).build("soul_bullet"));
+    public static final RegistryObject<EntityType<ShotgunPellet>> SHOTGUN_PELLET = ENTITY_TYPES.register("shotgun_pellet", () ->
+            EntityType.Builder.<ShotgunPellet>of(ShotgunPellet::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("shotgun_pellet"));
 
     public static final RegistryObject<EntityType<BlackIcicle>> BLACK_ICICLE = ENTITY_TYPES.register("black_icicle", () ->
             EntityType.Builder.<BlackIcicle>of(BlackIcicle::new, MobCategory.MISC)

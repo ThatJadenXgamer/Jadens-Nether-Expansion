@@ -2,13 +2,16 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
+import net.jadenxgamer.netherexp.registry.data_driven.wisp_archeology.WispArcheology;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -16,7 +19,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,12 +28,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -39,18 +40,12 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 public class EctoSoulSandBlock extends Block {
     protected static final VoxelShape COLLISION_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
     public static final BooleanProperty SALTED = BooleanProperty.create("salted");
-
-    public static final ResourceLocation ARCHAEOLOGY_NETHER_WASTES = new ResourceLocation(NetherExp.MOD_ID, "archaeology/nether_wastes");
-    public static final ResourceLocation ARCHAEOLOGY_SOUL_SAND_VALLEY = new ResourceLocation(NetherExp.MOD_ID, "archaeology/soul_sand_valley");
-    public static final ResourceLocation ARCHAEOLOGY_CRIMSON_FOREST = new ResourceLocation(NetherExp.MOD_ID, "archaeology/crimson_forest");
-    public static final ResourceLocation ARCHAEOLOGY_WARPED_FOREST = new ResourceLocation(NetherExp.MOD_ID, "archaeology/warped_forest");
-    public static final ResourceLocation ARCHAEOLOGY_BASALT_DELTAS = new ResourceLocation(NetherExp.MOD_ID, "archaeology/basalt_deltas");
-    public static final ResourceLocation ARCHAEOLOGY_FORTRESS = new ResourceLocation(NetherExp.MOD_ID, "archaeology/fortress");
-    public static final ResourceLocation ARCHAEOLOGY_BASTION_REMNANT = new ResourceLocation(NetherExp.MOD_ID, "archaeology/bastion_remnant");
 
     public EctoSoulSandBlock(Properties properties) {
         super(properties);
@@ -137,26 +132,21 @@ public class EctoSoulSandBlock extends Block {
     }
 
     private void setSusSoulSand(Level level, BlockPos pos, RandomSource random) {
-        ResourceLocation lootTable = ARCHAEOLOGY_NETHER_WASTES;
-        if (level instanceof ServerLevel serverLevel) {
+        ResourceLocation lootTable = new ResourceLocation(NetherExp.MOD_ID, JNEConfigs.SUSPICIOUS_SOUL_SAND_DEFAULT_LOOT_TABLE.get());
+        if (level instanceof ServerLevel serverLevel && NetherExp.registryAccess != null) {
             StructureManager structureManager = serverLevel.structureManager();
-            if (structureManager.getStructureAt(pos, serverLevel.registryAccess().registryOrThrow(Registries.STRUCTURE).get(BuiltinStructures.FORTRESS)).isValid()) {
-                lootTable = ARCHAEOLOGY_FORTRESS;
-            }
-            else if (structureManager.getStructureAt(pos, serverLevel.registryAccess().registryOrThrow(Registries.STRUCTURE).get(BuiltinStructures.BASTION_REMNANT)).isValid()) {
-                lootTable = ARCHAEOLOGY_BASTION_REMNANT;
-            }
-            else if (serverLevel.getBiome(pos).is(Biomes.SOUL_SAND_VALLEY)) {
-                lootTable = ARCHAEOLOGY_SOUL_SAND_VALLEY;
-            }
-            else if (serverLevel.getBiome(pos).is(Biomes.CRIMSON_FOREST)) {
-                lootTable = ARCHAEOLOGY_CRIMSON_FOREST;
-            }
-            else if (serverLevel.getBiome(pos).is(Biomes.WARPED_FOREST)) {
-                lootTable = ARCHAEOLOGY_WARPED_FOREST;
-            }
-            else if (serverLevel.getBiome(pos).is(Biomes.BASALT_DELTAS)) {
-                lootTable = ARCHAEOLOGY_BASALT_DELTAS;
+            Holder<Biome> biomeAt = serverLevel.getBiome(pos);
+
+            Optional<WispArcheology> wispArcheology = NetherExp.registryAccess.registryOrThrow(JNERegistries.WISP_ARCHEOLOGY).stream()
+                    .filter(s -> {
+                        boolean matchesStructure = s.structure().isPresent() && structureManager.getStructureWithPieceAt(pos, NetherExp.registryAccess.registryOrThrow(Registries.STRUCTURE).get(s.structure().get())).isValid();
+                        if (matchesStructure) return true;
+                        return s.biomes().isPresent() && s.biomes().get().contains(biomeAt);
+                    })
+                    .findFirst();
+
+            if (wispArcheology.isPresent()) {
+                lootTable = wispArcheology.get().lootTable();
             }
         }
         level.setBlock(pos, JNEBlocks.SUSPICIOUS_SOUL_SAND.get().defaultBlockState().setValue(JNEBrushableBlock.PERSISTENT, false), UPDATE_CLIENTS);

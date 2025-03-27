@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "budding=true": {
+      "model": "minecraft:block/weeping_vines"
+    },
+    "budding=false": {
+      "model": "minecraft:block/weeping_vines_drippy"
+    }
+  }
+}

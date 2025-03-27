@@ -1,11 +1,13 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -35,17 +37,20 @@ public class Carcass extends PathfinderMob {
     private static final EntityDataAccessor<Boolean> IS_REANIMATED = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> REANIMATION_COOLDOWN = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> REANIMATION_FLAG = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDimensions DEACTIVE_DIMENSIONS = new EntityDimensions(2.2F, 1.0F, true);
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState moveAnimationState = new AnimationState();
     public final AnimationState reanimateAnimationState = new AnimationState();
     public final AnimationState deactivateAnimationState = new AnimationState();
+    public final AnimationState attackAnimationState = new AnimationState();
 
     private int deactivationAnimationTimer;
     private int reanimationAnimationTimer;
 
     public Carcass(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
+        this.fixupDimensions();
         this.reanimationAnimationTimer = 22;
         this.deactivationAnimationTimer = 25;
     }
@@ -72,6 +77,7 @@ public class Carcass extends PathfinderMob {
                 }
             }
             else if (!this.getIsReanimated() && !this.getReanimationFlag() && deactivationAnimationTimer == 25) {
+                this.playSound(JNESoundEvents.ENTITY_CARCASS_DEATH.get(), 1.0f, 1.0f);
                 deactivateAnimationState.startIfStopped(this.tickCount);
                 idleAnimationState.stop();
                 moveAnimationState.stop();
@@ -88,7 +94,8 @@ public class Carcass extends PathfinderMob {
                 .add(Attributes.MAX_HEALTH, 30.0)
                 .add(Attributes.ATTACK_DAMAGE, 5.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.21000000417232513)
-                .add(Attributes.FOLLOW_RANGE, 16.0);
+                .add(Attributes.FOLLOW_RANGE, 16.0)
+                .add(Attributes.ATTACK_SPEED, 1.67);
     }
 
     protected void registerGoals() {
@@ -116,6 +123,11 @@ public class Carcass extends PathfinderMob {
     }
 
     @Override
+    public EntityDimensions getDimensions(Pose pPose) {
+        return !getIsReanimated() ? DEACTIVE_DIMENSIONS : super.getDimensions(pPose);
+    }
+
+    @Override
     public boolean hurt(DamageSource damageSource, float f) {
         if (!this.getIsReanimated()) {
             if (damageSource.isCreativePlayer() || damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
@@ -128,6 +140,20 @@ public class Carcass extends PathfinderMob {
             else return false;
         }
         return super.hurt(damageSource, f);
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity pEntity) {
+        if (!this.level().isClientSide()) {
+            this.level().broadcastEntityEvent(this, (byte) 40);
+        }
+        return super.doHurtTarget(pEntity);
+    }
+
+    @Override
+    public void handleEntityEvent(byte pId) {
+        if (pId == 40) this.attackAnimationState.start(this.tickCount);
+        else super.handleEntityEvent(pId);
     }
 
     @Nullable
@@ -151,6 +177,7 @@ public class Carcass extends PathfinderMob {
         if (this.reanimationAnimationTimer == 22) {
             reanimateAnimationState.startIfStopped(this.tickCount);
             deactivateAnimationState.stop();
+            this.playSound(JNESoundEvents.ENTITY_CARCASS_REANIMATE.get(), 1.0f, 1.0f);
         }
         if (this.reanimationAnimationTimer > 0) {
             --this.reanimationAnimationTimer;
@@ -159,6 +186,7 @@ public class Carcass extends PathfinderMob {
             reanimateAnimationState.stop();
             this.setIsReanimated(true);
             this.setReanimationFlag(false);
+            this.refreshDimensions();
             this.reanimationAnimationTimer = 22;
         }
     }
@@ -167,6 +195,9 @@ public class Carcass extends PathfinderMob {
         idleAnimationState.stop();
         moveAnimationState.stop();
         reanimateAnimationState.stop();
+        if (this.deactivationAnimationTimer == 25) {
+            this.playSound(JNESoundEvents.ENTITY_CARCASS_DEATH.get(), 1.0f, 1.0f);
+        }
         if (this.deactivationAnimationTimer > 0) {
             --this.deactivationAnimationTimer;
         }
@@ -175,6 +206,7 @@ public class Carcass extends PathfinderMob {
             this.setHealth(this.getMaxHealth());
             this.setReanimationCooldown(36000);
             this.deactivationAnimationTimer = 25;
+            this.refreshDimensions();
             idleAnimationState.stop();
             moveAnimationState.stop();
         }
@@ -378,5 +410,22 @@ public class Carcass extends PathfinderMob {
             }
             return super.canContinueToUse();
         }
+    }
+
+    ////////////
+    // SOUNDS //
+    ////////////
+
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return JNESoundEvents.ENTITY_CARCASS_HURT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return null;
     }
 }

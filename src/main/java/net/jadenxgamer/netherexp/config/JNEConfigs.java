@@ -25,13 +25,16 @@ public class JNEConfigs {
     public static Supplier<Double> SORROWSQUASH_GROWTH_CHANCE = () -> 0.2;
     public static Supplier<Double> SORROWSQUISHED_DAMAGE_MULTIPLIER = () -> 1.5;
     public static Supplier<Integer> SORROWSQUISHED_MAX_DAMAGE = () -> 30;
+    public static Supplier<Integer> HAZE_BLOCK_COOLDOWN = () -> 8;
 
     // Items
     public static Supplier<Integer> WILL_O_WISP_STACK_SIZE = () -> 16;
     public static Supplier<Integer> POTION_STACK_SIZE = () -> 16;
+    public static Supplier<Boolean> FORCE_DISABLE_POTION_STACK_SIZE = () -> false;
     public static Supplier<Double> JACKHAMMER_FIST_MAX_DAMAGE = () -> 40.0;
-    public static Supplier<Integer> BLACK_ICICLE_FREEZE_TICKS = () -> 500;
-    public static Supplier<Integer> HAZE_BLOCK_COOLDOWN = () -> 8;
+    public static Supplier<Integer> BLACK_ICICLE_FREEZE_TICKS = () -> 100;
+    public static Supplier<Integer> SHOTGUN_FIST_BULLETS = () -> 25;
+    public static Supplier<Integer> PUMP_CHARGE_SHOTGUN_BULLETS = () -> 10;
 
     // Entities
     public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;
@@ -43,6 +46,9 @@ public class JNEConfigs {
     public static Supplier<Boolean> WITHER_SKELETON_DROPS_FOSSIL_FUEL = () -> false;
     public static Supplier<Integer> WISP_EMERGING_CHANCE = () -> 50;
     public static Supplier<Boolean> SUSPICIOUS_SOUL_SAND_FROM_WISP_EMERGING = () -> true;
+    public static Supplier<Boolean> SUSPICIOUS_SOUL_SAND_DECAYS = () -> true;
+    public static Supplier<Integer> SUSPICIOUS_SOUL_SAND_DECAY_ODDS = () -> 2;
+    public static Supplier<String> SUSPICIOUS_SOUL_SAND_DEFAULT_LOOT_TABLE = () -> "archaeology/wisp_arch_default";
     public static Supplier<EctoSlabEmerging> ECTO_SLAB_EMERGING_BEHAVIOR = () -> EctoSlabEmerging.UNBOUNDED_SPEED_ONLY;
     public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE = () -> 40;
     public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED = () -> 10;
@@ -60,8 +66,9 @@ public class JNEConfigs {
     // Sub Biomes
 
     public static Supplier<Boolean> ENABLE_SUB_BIOMES = () -> true;
-    public static Supplier<Double> BLACK_ICE_GLACIERS_RARITY = () -> 0.075;
-    public static Supplier<Integer> BLACK_ICE_GLACIERS_SIZE = () -> 64;
+    public static Supplier<Boolean> BLACK_ICE_GLACIERS = () -> true;
+    public static Supplier<Double> BLACK_ICE_GLACIERS_RARITY = () -> 0.085;
+    public static Supplier<Integer> BLACK_ICE_GLACIERS_SIZE = () -> 128;
 
     // Visuals & Sounds
     public static Supplier<Boolean> IMPROVED_FIREBALL_PARTICLES = () -> true;

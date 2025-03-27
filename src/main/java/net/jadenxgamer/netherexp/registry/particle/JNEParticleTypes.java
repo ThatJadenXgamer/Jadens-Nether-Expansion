@@ -41,13 +41,12 @@ public class JNEParticleTypes {
     public static final RegistryObject<SimpleParticleType> COLORED_WISP = PARTICLE_TYPES.register("colored_wisp", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> MAGMA_CREAM = PARTICLE_TYPES.register("magma_cream", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> IMMUNITY_EFFECT = PARTICLE_TYPES.register("immunity_effect", () -> new SimpleParticleType(false){});
-    public static final RegistryObject<SimpleParticleType> FALLING_BLOOD = PARTICLE_TYPES.register("falling_blood", () -> new SimpleParticleType(false){});
-    public static final RegistryObject<SimpleParticleType> LANDING_BLOOD = PARTICLE_TYPES.register("landing_blood", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> CANDLE_BURST = PARTICLE_TYPES.register("candle_burst", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> FIREBALL_TRAIL = PARTICLE_TYPES.register("fireball_trail", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> SMALL_FIREBALL_TRAIL = PARTICLE_TYPES.register("small_fireball_trail", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> DRAGON_FIREBALL_TRAIL = PARTICLE_TYPES.register("dragon_fireball_trail", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> SOUL_CLOUD = PARTICLE_TYPES.register("soul_cloud", () -> new SimpleParticleType(false){});
+    public static final RegistryObject<SimpleParticleType> ANCIENT_WAX_CLOUD = PARTICLE_TYPES.register("ancient_wax_cloud", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> HAZE = PARTICLE_TYPES.register("haze", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> RED_HAZE = PARTICLE_TYPES.register("red_haze", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> RED_SPARKLE = PARTICLE_TYPES.register("red_sparkle", () -> new SimpleParticleType(false){});
@@ -60,6 +59,7 @@ public class JNEParticleTypes {
     public static final RegistryObject<SimpleParticleType> BLIGHT_SWIRL_POP = PARTICLE_TYPES.register("blight_swirl_pop", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> UMBRAL_SMOG = PARTICLE_TYPES.register("umbral_smog", () -> new SimpleParticleType(false){});
     public static final RegistryObject<SimpleParticleType> SOULBLIGHT_SMOG = PARTICLE_TYPES.register("soulblight_smog", () -> new SimpleParticleType(false){});
+    public static final RegistryObject<SimpleParticleType> JACKHAMMER = PARTICLE_TYPES.register("jackhammer", () -> new SimpleParticleType(false){});
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

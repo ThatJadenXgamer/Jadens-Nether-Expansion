@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
+import net.jadenxgamer.elysium_api.impl.misc_registry.ElysiumTags;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -69,7 +70,7 @@ public class WarpedWartBlock extends BushBlock {
     }
 
     protected boolean canPlantDownBelow(BlockState ceiling) {
-        return ceiling.is(Blocks.SOUL_SAND);
+        return ceiling.is(Blocks.SOUL_SAND) || ceiling.is(ElysiumTags.Blocks.NETHER_WART_PLANTABLE_ON);
     }
 
     @Override

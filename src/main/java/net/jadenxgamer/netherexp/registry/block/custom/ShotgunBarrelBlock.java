@@ -1,14 +1,12 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
+import net.jadenxgamer.netherexp.registry.entity.custom.ShotgunPellet;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -44,7 +42,7 @@ public class ShotgunBarrelBlock extends JNEHorizontalDirectionalBlock {
         level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         int count = JNEConfigs.SHOTGUN_BARREL_BULLETS.get();
         for (int i = 0; i < count; i++) {
-            SoulBullet soulBullet = new SoulBullet(pos.offset(direction.getNormal()).getX() + 0.5, pos.offset(direction.getNormal()).getY() + 0.5, pos.offset(direction.getNormal()).getZ() + 0.5, level);
+            ShotgunPellet soulBullet = new ShotgunPellet(pos.offset(direction.getNormal()).getX() + 0.5, pos.offset(direction.getNormal()).getY() + 0.5, pos.offset(direction.getNormal()).getZ() + 0.5, level);
             soulBullet.shoot(direction.getStepX(), direction.getStepY(), direction.getStepZ(), 1.0F, 16);
             level.addFreshEntity(soulBullet);
         }

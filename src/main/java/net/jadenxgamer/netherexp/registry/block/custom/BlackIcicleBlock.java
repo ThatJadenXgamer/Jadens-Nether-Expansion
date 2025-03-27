@@ -120,6 +120,14 @@ public class BlackIcicleBlock extends PointedDripstoneBlock {
     }
 
     @Override
+    public void fallOn(Level pLevel, BlockState pState, BlockPos pPos, Entity pEntity, float pFallDistance) {
+        if (pFallDistance >= 1.0f) {
+            pLevel.destroyBlock(pPos, false);
+        }
+        super.fallOn(pLevel, pState, pPos, pEntity, pFallDistance);
+    }
+
+    @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (isStalagmite(pState) && !this.canSurvive(pState, pLevel, pPos)) {
             pLevel.destroyBlock(pPos, true);

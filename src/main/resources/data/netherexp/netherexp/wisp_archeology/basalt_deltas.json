@@ -1,0 +1,4 @@
+{
+  "biomes": "minecraft:basalt_deltas",
+  "loot_table": "netherexp:archaeology/basalt_deltas"
+}

@@ -59,6 +59,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEItems.TREACHEROUS_FLAME.get());
                         output.accept(JNEBlocks.TREACHEROUS_CANDLE.get());
                         output.accept(JNEBlocks.BRAZIER_CHEST.get());
+                        output.accept(JNEItems.ANCIENT_WAX.get());
                         output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
                         output.accept(JNEBlocks.SCULK_GRINDER.get());

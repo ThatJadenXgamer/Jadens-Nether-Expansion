@@ -94,10 +94,12 @@ dependencies {
         jarJar.ranged(it, "[0.4.1,)")
     }
     //implementation fg.deobf("curse.maven:elysium-api-1158628:${elysium_version}")
-    implementation fg.deobf("libs:elysium_api:1.1.0")
+    implementation fg.deobf("libs:elysium_api:1.1.0b")
 
     // For Dev Testing
-    //runtimeOnly fg.deobf("curse.maven:jade-324717:5876199")
+    runtimeOnly fg.deobf("curse.maven:configured-457570:5180900") // Configured
+    runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725") // Embeddium
+    //runtimeOnly fg.deobf("curse.maven:jade-324717:5876199") // Jade
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

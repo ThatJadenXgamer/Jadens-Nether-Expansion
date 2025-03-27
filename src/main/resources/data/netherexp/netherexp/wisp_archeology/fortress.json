@@ -1,0 +1,4 @@
+{
+  "structure": "minecraft:fortress",
+  "loot_table": "netherexp:archaeology/fortress"
+}

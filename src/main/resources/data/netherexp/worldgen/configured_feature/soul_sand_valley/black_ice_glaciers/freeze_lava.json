@@ -1,19 +1,13 @@
 {
   "type": "minecraft:disk",
   "config": {
-    "half_height": 2,
-    "radius": {
-      "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 6,
-        "min_inclusive": 4
-      }
-    },
+    "half_height": 1,
+    "radius": 8,
     "state_provider": {
       "fallback": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:magma_block"
+          "Name": "netherexp:thin_black_ice"
         }
       },
       "rules": []

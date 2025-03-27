@@ -30,6 +30,11 @@ public abstract class ItemStackMixin {
     private void netherexp$setCustomMaxStackSize(CallbackInfoReturnable<Integer> cir) {
         ItemStack stack = ((ItemStack) (Object) this);
         // changes the stack size of vanilla and some of our modded items to dynamically change stack sizes with configs
+        if (this.getItem() instanceof WillOWispItem) {
+            cir.setReturnValue(JNEConfigs.WILL_O_WISP_STACK_SIZE.get());
+        }
+
+        if (JNEConfigs.FORCE_DISABLE_POTION_STACK_SIZE.get()) return;
         if (this.getItem() instanceof PotionItem && !stack.is(JNETags.Items.DOESNT_MODIFY_POTION_STACK_SIZE)) {
             cir.setReturnValue(JNEConfigs.POTION_STACK_SIZE.get());
         }
@@ -38,9 +43,6 @@ public abstract class ItemStackMixin {
         }
         if (this.getItem() instanceof GrenadeAntidoteItem && !stack.is(JNETags.Items.DOESNT_MODIFY_POTION_STACK_SIZE)) {
             cir.setReturnValue(JNEConfigs.POTION_STACK_SIZE.get());
-        }
-        if (this.getItem() instanceof WillOWispItem) {
-            cir.setReturnValue(JNEConfigs.WILL_O_WISP_STACK_SIZE.get());
         }
     }
 }

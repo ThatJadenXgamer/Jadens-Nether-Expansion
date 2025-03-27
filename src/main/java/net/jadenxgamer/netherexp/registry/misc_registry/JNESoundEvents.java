@@ -175,7 +175,9 @@ public class JNESoundEvents {
     public static RegistryObject<SoundEvent> ENTITY_APPARITION_FLY = registerSoundEvents("entity.apparition.fly");
     public static RegistryObject<SoundEvent> ENTITY_APPARITION_ATTACK = registerSoundEvents("entity.apparition.attack");
 
-    public static RegistryObject<SoundEvent> ENTITY_CARCASS_AMBIENT = registerSoundEvents("entity.carcass.ambient");
+    public static RegistryObject<SoundEvent> ENTITY_CARCASS_HURT = registerSoundEvents("entity.carcass.hurt");
+    public static RegistryObject<SoundEvent> ENTITY_CARCASS_DEATH = registerSoundEvents("entity.carcass.death");
+    public static RegistryObject<SoundEvent> ENTITY_CARCASS_REANIMATE = registerSoundEvents("entity.carcass.reanimate");
 
     public static RegistryObject<SoundEvent> ENTITY_VESSEL_AMBIENT = registerSoundEvents("entity.vessel.ambient");
     public static RegistryObject<SoundEvent> ENTITY_VESSEL_WARN = registerSoundEvents("entity.vessel.warn");

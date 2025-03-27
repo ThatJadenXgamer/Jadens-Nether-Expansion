@@ -1,0 +1,4 @@
+{
+  "structure": "minecraft:bastion_remnant",
+  "loot_table": "netherexp:archaeology/bastion_remnant"
+}

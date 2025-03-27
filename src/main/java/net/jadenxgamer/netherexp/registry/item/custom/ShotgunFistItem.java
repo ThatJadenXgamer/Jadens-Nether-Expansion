@@ -1,8 +1,9 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
 import net.jadenxgamer.elysium_api.api.keyframe.NonEntityAnimationState;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
-import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
+import net.jadenxgamer.netherexp.registry.entity.custom.ShotgunPellet;
 import net.jadenxgamer.netherexp.registry.item.JNEItemRenderer;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
@@ -115,13 +116,13 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable,
         // Vectors
         Vec3 look = user.getLookAngle();
         Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
-        int count = barrage > 0 ? 25 + (barrage * 5) : 25 - (quickCharge * 5);
+        int count = barrage > 0 ? JNEConfigs.SHOTGUN_FIST_BULLETS.get() + (barrage * 5) : JNEConfigs.SHOTGUN_FIST_BULLETS.get() - (quickCharge * 5);
         if (EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack) > 0) {
             count = Mth.nextInt(level.random, 8, 12);
         }
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
-                SoulBullet soulBullet = new SoulBullet(level, user);
+                ShotgunPellet soulBullet = new ShotgunPellet(level, user);
                 soulBullet.shoot(look.x, look.y, look.z, 1.5F + artemisBulletDistanceBonus, 20);
                 level.addFreshEntity(soulBullet);
             }

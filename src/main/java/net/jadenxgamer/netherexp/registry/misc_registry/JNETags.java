@@ -21,31 +21,18 @@ public class JNETags {
         public static final TagKey<Block> SCALE_FUNGUS_PLANTABLE_ON = createBlockTag("scale_fungus_plantable_on"); // Scale Fungus are Plantable on these Blocks
         public static final TagKey<Block> BONE_FENCES = createBlockTag("bone_fences"); // Makes Bone Fences connect with Blocks in this tag, it's technically unused but exists if for whatever reason you may need it
         public static final TagKey<Block> IGNEOUS_REEDS_PLANTABLE_ON = createBlockTag("igneous_reeds_plantable_on"); // Igneous Reeds are Plantable on these Blocks
-        public static final TagKey<Block> ZOMBIFIED_PIGLIN_CANNOT_SPAWN_ON = createBlockTag("zombified_piglin_cannot_spawn_on"); // Zombified Piglins cannot spawn on these Blocks
-        public static final TagKey<Block> PIGLIN_CANNOT_SPAWN_ON = createBlockTag("piglin_cannot_spawn_on"); // Piglins cannot spawn on these Blocks
-        public static final TagKey<Block> HOGLIN_CANNOT_SPAWN_ON = createBlockTag("hoglin_cannot_spawn_on"); // Hoglins cannot spawn on these Blocks
         public static final TagKey<Block> SOUL_SAND_BLOCKS = createBlockTag("soul_sand_blocks"); // Blocks in this tag are considered Soul Sand
         public static final TagKey<Block> MOUND_BLOCKS = createBlockTag("mound_blocks"); // Mounds can have terrain variation on top of these blocks
         public static final TagKey<Block> SOUL_CROP_MUTATION_BLOCKS = createBlockTag("soul_crop_mutation_blocks"); // Blocks in this tag can change certain crops that are planned on it
-        public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createBlockTag("weeping_vines_feature_valid"); // Weeping Vines can generate on these Blocks
         public static final TagKey<Block> WART_BEARD_FEATURE_VALID = createBlockTag("wart_beard_feature_valid"); // Warped Wart Beard can generate on these Blocks
-        public static final TagKey<Block> ROOTS_PLANTABLE_ON = createBlockTag("roots_plantable_on"); // Nether Roots are Plantable on these Blocks
-        public static final TagKey<Block> HUGE_FUNGUS_GENERATES_VINES = createBlockTag("huge_fungus_generates_vines"); // Huge Fungus Will Generate Weeping Vines below these Blocks
         public static final TagKey<Block> NETHER_WART_BLOCKS = createBlockTag("nether_wart_blocks"); // Blocks in this tag will be considered as Nether Wart Block
         public static final TagKey<Block> WARPED_WART_BLOCKS = createBlockTag("warped_wart_blocks"); // Blocks in this tag will be considered as Warped Wart Block
         public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createBlockTag("fossil_ore_convertible"); // Killing Skeletons on these blocks Converts it to Fossil Ore
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createBlockTag("unbounded_speed_blocks"); // Blocks in this tag will no longer slow you down if inflicted with Unbounded Speed or the Entity is in the IGNORES_SOUL_SAND_SLOWNESS tag
-        public static final TagKey<Block> NETHERITE_GRATES = createBlockTag("netherite_grates"); // Blocks in this tag are treated as Netherite Grates
         public static final TagKey<Block> FROGMIST = createBlockTag("frogmist"); // Tag to define all Frogmist (p.s: due to some quirks if a frogmist block isn't in this tag it may crash the game)
         public static final TagKey<Block> POSSESSABLE_GARGOYLE_STATUES = createBlockTag("possessable_gargoyle_statues"); // Gargoyle Statues defined in this tag will be sought after by Apparitions (if the specified statue doesn't have a possession hardcoded into it then the apparition will turn into a Vessel)
         public static final TagKey<Block> SANCTUM_BLOCKS = createBlockTag("sanctum_blocks"); // Prevents those pesky Basalt Deltas configured features from overriding or replacing Sanctum Blocks
-        public static final TagKey<Block> SORROWEED_REPLACEABLE = createBlockTag("sorroweed_replaceable"); // Sorroweed can overtake these blocks when grown
-        public static final TagKey<Block> SOUNDS_BLACKSTONE = createBlockTag("sounds/blackstone"); // Blocks in this tag produce Blackstone Sounds
-        public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE = createBlockTag("sounds/polished_blackstone"); // Blocks in this tag produce Polished Blackstone Sounds
-        public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createBlockTag("sounds/polished_blackstone_bricks"); // Blocks in this tag produce Polished Blackstone Brick Sounds
-        public static final TagKey<Block> SOUNDS_MAGMA_BLOCK = createBlockTag("sounds/magma_block"); // Blocks in this tag produce Magma Block Sounds
-        public static final TagKey<Block> SOUNDS_GLOWSTONE = createBlockTag("sounds/glowstone"); // Blocks in this tag produce Glowstone Sounds
-        public static final TagKey<Block> SOUNDS_QUARTZ_BLOCK = createBlockTag("sounds/quartz_block"); // Blocks in this tag produce Quartz Block Sounds
+        public static final TagKey<Block> SORROWEED_REPLACEABLE = createBlockTag("sorroweed_replaceable"); // Sorroweed can overtake these blocks when grownpublic static final TagKey<Block> BLACK_ICE_REPLACEABLE = createBlockTag("black_ice_replaceable");
         public static final TagKey<Block> BLACK_ICE_REPLACEABLE = createBlockTag("black_ice_replaceable");
 
         private static TagKey<Block> createBlockTag(String name) {
@@ -64,8 +51,6 @@ public class JNETags {
         public static final TagKey<EntityType<?>> IGNORES_BLOCK_COLLISION = createEntityTypeTag("ignores_block_collision"); // Entities in this tag will ignore all block collision
         public static final TagKey<EntityType<?>> IGNORES_TREACHEROUS_CANDLE = createEntityTypeTag("ignores_treacherous_candle"); // Mobs in this do not care about the Treacherous Candle if the opportunity to break it is available
         public static final TagKey<EntityType<?>> TARGETS_REGARDLESS_OF_BETRAYED = createEntityTypeTag("targets_regardless_of_betrayed"); // Mobs in this tag find and attack targets even if they have the Betrayed Effect
-        public static final TagKey<EntityType<?>> DOES_NOT_BLEED = createEntityTypeTag("does_not_bleed"); // Does not bleed when killed with Bloodshed Enchantment
-        public static final TagKey<EntityType<?>> PIGLINS_AFRAID_OF = createEntityTypeTag("piglins_afraid_of"); // Piglins will flee from mobs in this tag (this use to be in vanilla but mojang removed it for some reason????)
 
         private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(NetherExp.MOD_ID, name));
@@ -80,6 +65,7 @@ public class JNETags {
         public static final TagKey<Item> DOESNT_MODIFY_POTION_STACK_SIZE = createItemTag("doesnt_modify_potion_stack_size"); // Items in this tag override the potion stacksize change config, incase modpack devs might need it
         public static final TagKey<Item> DOESNT_SLOWDOWN_WHEN_USING = createItemTag("doesnt_slowdown_when_using"); // Items in this tag do not reduce the player's movement speed if they are moving while using said item
         public static final TagKey<Item> SILVER_ARMORS = createItemTag("silver_armors"); // Armors made from silver of some kind, used for possessed mobs weakening
+        public static final TagKey<Item> SCULK_GRINDABLES = createItemTag("sculk_grindables"); // Sculk Grinders can grind down these items in experience
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(NetherExp.MOD_ID, name));
@@ -94,7 +80,6 @@ public class JNETags {
         public static final TagKey<Biome> HAS_SOULBLIGHT_SPORES = createBiomeTag("particles/has_soulblight_spores"); // Prevents Soulblight Sporeshroom from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash"); // Prevents Souled & Ashen Geyser from creating Particles inside this Biome
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash"); // Prevents Basaltic & Blackstonic Geyser from creating Particles inside this Biome
-        public static final TagKey<Biome> SOUL_RUBY_ORE_GENERATES = createBiomeTag("soul_ruby_ore_generates"); // Soul Ruby Ores can generate in these biomes if Rubinated Nether is installed
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(NetherExp.MOD_ID, name));
@@ -117,7 +102,6 @@ public class JNETags {
 
     public static class DamageTypes {
         public static final TagKey<DamageType> IS_SUFFOCATION = createDamageTypeTag("is_suffocation"); // Produces Suffocation Sounds
-        public static final TagKey<DamageType> CANT_DAMAGE_ARMOR = createDamageTypeTag("cant_damage_armor"); // Damage Types in this tag won't take durability away from armor
         public static final TagKey<DamageType> CAN_DISRUPT_UNDERGROUND_ECTO_SLABS = createDamageTypeTag("can_disrupt_underground_ecto_slabs"); // these damage sources can disrupt an underground ecto slab forcing them out
 
         private static TagKey<DamageType> createDamageTypeTag(String name) {

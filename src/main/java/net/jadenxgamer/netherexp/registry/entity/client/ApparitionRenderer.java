@@ -5,12 +5,14 @@ import net.jadenxgamer.netherexp.registry.entity.client.layer.ApparitionGlowlaye
 import net.jadenxgamer.netherexp.registry.entity.client.layer.VesselGlowlayer;
 import net.jadenxgamer.netherexp.registry.entity.custom.Apparition;
 import net.jadenxgamer.netherexp.registry.entity.custom.Wisp;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.MagmaCube;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionModel<Apparition>> {
 
@@ -22,6 +24,12 @@ public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionModel<
     @Override
     public @NotNull ResourceLocation getTextureLocation(Apparition entity) {
         return new ResourceLocation(NetherExp.MOD_ID, "textures/entity/apparition.png");
+    }
+
+    @Nullable
+    @Override
+    protected RenderType getRenderType(Apparition pLivingEntity, boolean pBodyVisible, boolean pTranslucent, boolean pGlowing) {
+        return super.getRenderType(pLivingEntity, pBodyVisible, pTranslucent, pGlowing);
     }
 
     @Override

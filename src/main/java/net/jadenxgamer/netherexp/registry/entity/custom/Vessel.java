@@ -176,7 +176,7 @@ public class Vessel extends Monster implements RangedAttackMob {
         double d0 = livingEntity.getX() - this.getX();
         double d2 = livingEntity.getZ() - this.getZ();
         for (int i = 0; i < count; i++) {
-            SoulBullet soulBullet = new SoulBullet(this.getX(), this.getY() + 1.5, this.getZ(), this.level(), this);
+            ShotgunPellet soulBullet = new ShotgunPellet(this.getX(), this.getY() + 1.5, this.getZ(), this.level(), this);
             soulBullet.shoot(d0, look.y, d2, 1.0F, 16);
             this.level().addFreshEntity(soulBullet);
         }

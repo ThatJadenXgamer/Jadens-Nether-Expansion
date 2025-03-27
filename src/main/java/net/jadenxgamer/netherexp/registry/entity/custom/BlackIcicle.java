@@ -5,7 +5,6 @@ import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.BlackIcicleBlock;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -30,7 +29,7 @@ public class BlackIcicle extends AbstractArrow {
     public void tick() {
         super.tick();
         if (this.level().isClientSide && !this.inGround) {
-            this.level().addParticle(JNEParticleTypes.BLACK_FLAKE.get(), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            this.level().addParticle(JNEParticleTypes.TRAIL_BLACK_FLAKE.get(), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         }
     }
 

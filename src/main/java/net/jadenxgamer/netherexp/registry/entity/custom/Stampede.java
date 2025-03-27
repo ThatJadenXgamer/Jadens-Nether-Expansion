@@ -265,11 +265,12 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
 
     public @NotNull InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (!this.getIsTamed() && stack.is(JNETags.Items.STAMPEDE_FAVORITES)) {
+        if (!this.getIsTamed() && stack.is(JNETags.Items.STAMPEDE_FAVORITES) && !this.level().isClientSide) {
             this.setItemSlot(EquipmentSlot.MAINHAND, stack.copyWithCount(1));
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);
             }
+            return InteractionResult.SUCCESS;
         }
         if (this.isSaddled() && stack.isEmpty() && player.isShiftKeyDown()) {
             this.steering.setSaddle(false);

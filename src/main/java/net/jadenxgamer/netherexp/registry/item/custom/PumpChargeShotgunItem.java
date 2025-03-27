@@ -1,9 +1,10 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
 import net.jadenxgamer.elysium_api.api.keyframe.NonEntityAnimationState;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
-import net.jadenxgamer.netherexp.registry.entity.custom.SoulBullet;
+import net.jadenxgamer.netherexp.registry.entity.custom.ShotgunPellet;
 import net.jadenxgamer.netherexp.registry.item.JNEItemRenderer;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
@@ -175,7 +176,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
     }
 
     public void performShooting(Level level, LivingEntity user, ItemStack stack) {
-        int chargeCount = getCharge(stack) * 10;
+        int chargeCount = getCharge(stack) * JNEConfigs.PUMP_CHARGE_SHOTGUN_BULLETS.get();
         int chargeInaccuracy = getCharge(stack) * 5;
         int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
         int artemis = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.ARTEMIS.get(), stack);
@@ -191,7 +192,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         int count = barrage > 0 ? chargeCount + (barrage * 2) : chargeCount - (quickCharge * 2);
         if (!level.isClientSide) {
             for (int i = 0; i < count; i++) {
-                SoulBullet soulBullet = new SoulBullet(level, user);
+                ShotgunPellet soulBullet = new ShotgunPellet(level, user);
                 soulBullet.shoot(look.x, look.y, look.z, (1.5F + aBulletDistanceBonus), (7 + chargeInaccuracy));
                 level.addFreshEntity(soulBullet);
             }

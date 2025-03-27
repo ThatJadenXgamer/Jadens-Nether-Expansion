@@ -9,15 +9,16 @@ import net.jadenxgamer.netherexp.registry.item.JNEItemRenderer;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNEDamageSources;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -47,6 +48,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
     private boolean pullFlag;
     private int punchTimeOut;
     private boolean punchFlag;
+
 
     public JackhammerFistItem(Properties properties) {
         super(properties);
@@ -132,7 +134,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
             }
 
             Vec3 raycastStart = user.getEyePosition(1.0F);
-            Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(5));
+            Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(4));
             AABB aabb = new AABB(raycastStart, raycastEnd).inflate(1.3, 1.3, 0);
             List<Entity> entities = level.getEntities(user, aabb, EntitySelector.NO_CREATIVE_OR_SPECTATOR);
             for (Entity entity : entities) {
@@ -146,6 +148,9 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
                         level.addParticle(simpleParticleType, entity.getRandomX(0.75), entity.getRandomY(), entity.getRandomZ(0.75), level.random.nextGaussian() * 0.02D, level.random.nextGaussian() * 0.02D, level.random.nextGaussian() * 0.02D);
                     }
                 }
+            }
+            if (!level.isClientSide()) {
+                ((ServerLevel) level).sendParticles(JNEParticleTypes.JACKHAMMER.get(), raycastEnd.x, raycastEnd.y, raycastEnd.z, 1, 0.0, 0.0, 0.0, 0.0);
             }
             user.push(pushBack.x * (0.5 + recoilPushBonus + speedPushBonus), pushBack.y * (0.5 + recoilPushBonus + speedPushBonus), pushBack.z * (0.5 + recoilPushBonus + speedPushBonus));
             level.playSound(null, user.getX(), user.getY(), user.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);

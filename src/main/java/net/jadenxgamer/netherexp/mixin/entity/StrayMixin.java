@@ -26,6 +26,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Stray.class)
 public abstract class StrayMixin extends AbstractSkeleton implements VariantHolder<StrayType> {
+    //TODO: clean up this atrocious mixin, this is honestly vile
+
     private static final EntityDataAccessor<Integer> DATA_TYPE_ID = SynchedEntityData.defineId(Stray.class, EntityDataSerializers.INT);;
 
     protected StrayMixin(EntityType<? extends AbstractSkeleton> pEntityType, Level pLevel) {
