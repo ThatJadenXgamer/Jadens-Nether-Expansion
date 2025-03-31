@@ -36,10 +36,10 @@ public class NetherExp {
     public static RegistryAccess registryAccess;
 
     public NetherExp() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JNEForgeConfigs.COMMON);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpClient::init);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JNEForgeConfigs.COMMON);
         MinecraftForge.EVENT_BUS.register(this);
 
         JNECriteriaTriggers.init();

@@ -60,6 +60,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.TREACHEROUS_CANDLE.get());
                         output.accept(JNEBlocks.BRAZIER_CHEST.get());
                         output.accept(JNEItems.ANCIENT_WAX.get());
+                        output.accept(JNEBlocks.ANCIENT_WAX_BLOCK.get());
                         output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
                         output.accept(JNEBlocks.SCULK_GRINDER.get());
@@ -100,13 +101,11 @@ public class JNECreativeModeTabs {
                         output.accept(Blocks.SOUL_TORCH);
                         output.accept(Blocks.SOUL_LANTERN);
                         output.accept(Blocks.SOUL_CAMPFIRE);
-                        output.accept(JNEBlocks.SOUL_JACK_O_LANTERN.get());
 
                         output.accept(Items.PUMPKIN_SEEDS);
                         output.accept(JNEBlocks.SORROWSQUASH.get());
                         output.accept(JNEBlocks.CARVED_SORROWSQUASH.get());
                         output.accept(JNEBlocks.GHOUL_O_LANTERN.get());
-                        output.accept(JNEBlocks.SOUL_GHOUL_O_LANTERN.get());
                         output.accept(JNEBlocks.SORROWEED.get());
                         output.accept(JNEBlocks.SOUL_TORCHFLOWER.get());
 

@@ -11,8 +11,6 @@
     "renderer.FogRendererMixin",
     "renderer.MagmaCubeRendererMixin",
     "renderer.ParticleEngineMixin",
-    "renderer.StrayClothingLayerMixin",
-    "renderer.StrayRendererMixin"
   ],
   "mixins": [
     "block.BaseFireBlockMixin",
@@ -35,7 +33,6 @@
     "entity.NearestAttackableTargetGoalMixin",
     "entity.PlayerMixin",
     "entity.ProjectileMixin",
-    "entity.StrayMixin",
     "entity.StriderMixin",
     "item.BlockItemMixin",
     "item.BowItemMixin",

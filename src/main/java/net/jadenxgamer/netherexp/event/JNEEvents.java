@@ -23,6 +23,7 @@ import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -34,10 +35,22 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.registries.DataPackRegistryEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.MissingMappingsEvent;
 
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = NetherExp.MOD_ID)
 public class JNEEvents {
+
+    @SubscribeEvent
+    public static void fixMissingMappings(MissingMappingsEvent event) {
+        event.getAllMappings(ForgeRegistries.Keys.BLOCKS).forEach(missingMapping -> {
+            switch (missingMapping.getKey().toString()) {
+                case "netherexp:soul_jack_o_lantern" -> missingMapping.remap(Blocks.JACK_O_LANTERN);
+                case "netherexp:soul_ghoul_o_lantern" -> missingMapping.remap(JNEBlocks.GHOUL_O_LANTERN.get());
+            }
+        });
+    }
 
     @SubscribeEvent
     public static void onServerStart(ServerAboutToStartEvent event) {

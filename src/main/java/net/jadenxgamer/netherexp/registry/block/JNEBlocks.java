@@ -112,10 +112,16 @@ public class JNEBlocks {
                     blockState -> blockState.getValue(TreacherousCandleBlock.LIT) ? 10 : 0).sound(JNESoundType.SOUL_SLATE)));
 
     public static final RegistryObject<Block> HAZE_BLOCK = registerBlockWithoutItem("haze_block", () ->
-            new HazeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(SoundType.SAND)));
+            new HazeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(JNESoundType.HAZE_BLOCK)));
 
     public static final RegistryObject<Block> SCULK_GRINDER = registerBlock("sculk_grinder", () ->
             new SculkGrinderBlock(BlockBehaviour.Properties.of().strength(80.0f, 1200.0f).lightLevel(state -> 13).sound(SoundType.SCULK_CATALYST)));
+
+    public static final RegistryObject<Block> ANCIENT_WAX_BLOCK = registerBlock("ancient_wax_block", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.HONEYCOMB_BLOCK)));
+
+    public static final RegistryObject<Block> ANCIENT_FIRE = registerBlockWithoutItem("ancient_fire", () ->
+            new AncientFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13), 0));
 
     // Soul Decorations
 
@@ -130,13 +136,13 @@ public class JNEBlocks {
             new DiscernmentGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.3f, 1200.0f).sound(SoundType.GLASS)));
 
     public static final RegistryObject<Block> OCHRE_FROGMIST = registerBlock("ochre_frogmist", () ->
-            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)));
+            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(JNESoundType.FROGMIST)));
 
     public static final RegistryObject<Block> VERDANT_FROGMIST = registerBlock("verdant_frogmist", () ->
-            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)));
+            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(JNESoundType.FROGMIST)));
 
     public static final RegistryObject<Block> PEARLESCENT_FROGMIST = registerBlock("pearlescent_frogmist", () ->
-            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)));
+            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(JNESoundType.FROGMIST)));
 
     public static final RegistryObject<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
             new SwirlsBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
@@ -152,7 +158,7 @@ public class JNEBlocks {
             new JNEBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).speedFactor(0.2f).strength(0.25f).randomTicks().pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND), SoundEvents.BRUSH_SAND, JNESoundEvents.BRUSH_BRUSHING_SOUL_SAND_COMPLETE.get()));
 
     public static final RegistryObject<Block> SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block", () ->
-            new SoulMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).lightLevel((state) -> 3).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
+            new SoulMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
 
     public static final RegistryObject<Block> BLACK_ICE = registerBlock("black_ice", () ->
             new BlackIceBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(0.3f).lightLevel((state) -> 2).sound(JNESoundType.BLACK_ICE)));
@@ -192,12 +198,6 @@ public class JNEBlocks {
 
     public static final RegistryObject<Block> GHOUL_O_LANTERN = registerBlock("ghoul_o_lantern", () ->
         new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_ORANGE).strength(1.0f).lightLevel((state) -> 15).sound(SoundType.NETHER_WOOD)));
-
-    public static final RegistryObject<Block> SOUL_GHOUL_O_LANTERN = registerBlock("soul_ghoul_o_lantern", () ->
-        new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.0f).lightLevel((state) -> 10).sound(SoundType.NETHER_WOOD)));
-
-    public static final RegistryObject<Block> SOUL_JACK_O_LANTERN = registerBlock("soul_jack_o_lantern", () ->
-        new CarvedPumpkinBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.0f).lightLevel((state) -> 10)));
 
     public static final RegistryObject<Block> SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem", () ->
             new VineStemBlock((StemGrownBlock) JNEBlocks.SORROWSQUASH.get(), () -> Items.PUMPKIN_SEEDS, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().randomTicks().sound(SoundType.NETHER_WOOD)));
@@ -334,16 +334,16 @@ public class JNEBlocks {
     // Claret
 
     public static final RegistryObject<Block> CEREBRAGE_CLARET_STEM = registerBlock("cerebrage_claret_stem", () ->
-            new LogBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_STEM).mapColor(MapColor.CRIMSON_HYPHAE), JNEBlocks.STRIPPED_CLARET_STEM));
+            new LogBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_STEM).mapColor(MapColor.CRIMSON_HYPHAE).sound(JNESoundType.CEREBRAGE_STEM), JNEBlocks.STRIPPED_CLARET_STEM));
 
     public static final RegistryObject<Block> CEREBRAGE_CLARET_HYPHAE = registerBlock("cerebrage_claret_hyphae", () ->
-            new LogBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_HYPHAE).mapColor(MapColor.CRIMSON_HYPHAE), JNEBlocks.STRIPPED_CLARET_HYPHAE));
+            new LogBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_HYPHAE).mapColor(MapColor.CRIMSON_HYPHAE).sound(JNESoundType.CEREBRAGE_STEM), JNEBlocks.STRIPPED_CLARET_HYPHAE));
 
     public static final RegistryObject<Block> STRIPPED_CLARET_STEM = registerBlock("stripped_claret_stem", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_WARPED_STEM).mapColor(MapColor.NETHER)));
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_WARPED_STEM).mapColor(MapColor.NETHER).sound(JNESoundType.CEREBRAGE_STEM)));
 
     public static final RegistryObject<Block> STRIPPED_CLARET_HYPHAE = registerBlock("stripped_claret_hyphae", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_WARPED_HYPHAE).mapColor(MapColor.NETHER)));
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_WARPED_HYPHAE).mapColor(MapColor.NETHER).sound(JNESoundType.CEREBRAGE_STEM)));
 
     public static final RegistryObject<Block> CLARET_PLANKS = registerBlock("claret_planks", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS).mapColor(MapColor.NETHER)));
@@ -824,7 +824,7 @@ public class JNEBlocks {
      */
 
     public static final RegistryObject<Block> CARMINE_FROGMIST = registerCompatBlock("carmine_frogmist", () ->
-            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(SoundType.SAND)), CompatUtil.ALEXS_CAVES);
+            new FrogmistBlock(BlockBehaviour.Properties.of().noCollission().pushReaction(PushReaction.DESTROY).instabreak().requiresCorrectToolForDrops().noOcclusion().noParticlesOnBreak().sound(JNESoundType.FROGMIST)), CompatUtil.ALEXS_CAVES);
 
     /**
      * Oreganized

@@ -25,6 +25,7 @@ public class JNEConfigs {
     public static Supplier<Double> SORROWSQUASH_GROWTH_CHANCE = () -> 0.2;
     public static Supplier<Double> SORROWSQUISHED_DAMAGE_MULTIPLIER = () -> 1.5;
     public static Supplier<Integer> SORROWSQUISHED_MAX_DAMAGE = () -> 30;
+    public static Supplier<Double> BLACK_ICICLE_GROWTH_CHANCE = () -> 0.28;
     public static Supplier<Integer> HAZE_BLOCK_COOLDOWN = () -> 8;
 
     // Items

@@ -37,10 +37,11 @@ public class NetherExpClient {
     public static final ResourceLocation BETRAYED_SHADER = new ResourceLocation(NetherExp.MOD_ID, "shaders/post/betrayed.json");
     public static int loadShaderAttempt = 0;
 
+    public static boolean CARCASS_TUTORIAL_SEEN = false;
+
     public static void init() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
     }
-
     public static void registerEntityRenderers() {
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);

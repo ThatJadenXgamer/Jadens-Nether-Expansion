@@ -19,7 +19,10 @@ public class CarcassRenderer extends MobRenderer<Carcass, CarcassModel<Carcass>>
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(Carcass entity) {
-        if (entity.getIsReanimated()) {
+        if (entity.getIsImmortal()) {
+            return new ResourceLocation(NetherExp.MOD_ID, "textures/entity/carcass/carcass_immortal.png");
+        }
+        else if (entity.getIsReanimated()) {
             return new ResourceLocation(NetherExp.MOD_ID, "textures/entity/carcass/carcass_reanimated.png");
         }
         return new ResourceLocation(NetherExp.MOD_ID, "textures/entity/carcass/carcass.png");

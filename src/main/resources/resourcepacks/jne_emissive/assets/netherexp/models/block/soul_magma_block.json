@@ -1,5 +1,5 @@
 {
-  "parent": "elysium:block/emissive_block",
+  "parent": "elysium:block/emissive_block_2",
   "textures": {
     "base": "netherexp:block/soul_magma",
     "glow": "netherexp:block/soul_magma_glow",

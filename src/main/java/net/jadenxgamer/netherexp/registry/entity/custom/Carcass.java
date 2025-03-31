@@ -1,8 +1,12 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
+import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
+import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -35,6 +39,7 @@ import org.jetbrains.annotations.Nullable;
 public class Carcass extends PathfinderMob {
 
     private static final EntityDataAccessor<Boolean> IS_REANIMATED = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_IMMORTAL = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> REANIMATION_COOLDOWN = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> REANIMATION_FLAG = SynchedEntityData.defineId(Carcass.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDimensions DEACTIVE_DIMENSIONS = new EntityDimensions(2.2F, 1.0F, true);
@@ -139,6 +144,9 @@ public class Carcass extends PathfinderMob {
             }
             else return false;
         }
+        if (this.getIsImmortal()) {
+            return false;
+        }
         return super.hurt(damageSource, f);
     }
 
@@ -165,6 +173,9 @@ public class Carcass extends PathfinderMob {
 
     @Override
     public void aiStep() {
+        if (this.level().isClientSide && this.getIsImmortal()) {
+            this.level().addParticle(JNEParticleTypes.TREACHEROUS_FLAME.get(), this.getRandomX(0.7), this.getRandomY() - 0.25, this.getRandomZ(0.7), 0.0, 0.07, 0.0);
+        }
         super.aiStep();
     }
 
@@ -234,6 +245,29 @@ public class Carcass extends PathfinderMob {
             }
             return InteractionResult.SUCCESS;
         }
+        if (this.getIsReanimated()) {
+            if (stack.is(JNEItems.TREACHEROUS_FLAME.get()) && !this.getIsImmortal()) {
+                this.level().playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+                this.setIsImmortal(true);
+                if (this.level().isClientSide && !NetherExpClient.CARCASS_TUTORIAL_SEEN) {
+                    player.displayClientMessage(Component.translatable("entity.netherexp.carcass.flame_tutorial"), true);
+                    NetherExpClient.CARCASS_TUTORIAL_SEEN = true;
+                }
+                if (player instanceof ServerPlayer serverPlayer) {
+                    JNECriteriaTriggers.IMMORTAL_CARCASS.trigger(serverPlayer);
+                }
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+                return InteractionResult.SUCCESS;
+            }
+            else if (stack.isEmpty() && this.getIsImmortal()) {
+                player.level().playSound(null, player.getOnPos(), JNESoundEvents.TREACHEROUS_CANDLE_SPAWN.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+                this.setIsImmortal(false);
+                player.setItemInHand(hand, JNEItems.TREACHEROUS_FLAME.get().getDefaultInstance());
+                return InteractionResult.SUCCESS;
+            }
+        }
         return InteractionResult.PASS;
     }
 
@@ -241,6 +275,7 @@ public class Carcass extends PathfinderMob {
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(IS_REANIMATED, false);
+        this.entityData.define(IS_IMMORTAL, false);
         this.entityData.define(REANIMATION_COOLDOWN, 0);
         this.entityData.define(REANIMATION_FLAG, false);
     }
@@ -249,6 +284,7 @@ public class Carcass extends PathfinderMob {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("IsReanimated", this.getIsReanimated());
+        nbt.putBoolean("IsImmortal", this.getIsImmortal());
         nbt.putInt("ReanimationCooldown", this.getReanimationCooldown());
     }
 
@@ -256,6 +292,7 @@ public class Carcass extends PathfinderMob {
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setIsReanimated(nbt.getBoolean("IsReanimated"));
+        this.setIsImmortal(nbt.getBoolean("IsImmortal"));
         this.setReanimationCooldown(nbt.getInt("ReanimationCooldown"));
     }
 
@@ -265,6 +302,14 @@ public class Carcass extends PathfinderMob {
 
     public void setIsReanimated(boolean reanimated) {
         this.entityData.set(IS_REANIMATED, reanimated);
+    }
+
+    public boolean getIsImmortal() {
+        return this.entityData.get(IS_IMMORTAL);
+    }
+
+    public void setIsImmortal(boolean immortal) {
+        this.entityData.set(IS_IMMORTAL, immortal);
     }
 
     public int getReanimationCooldown() {

@@ -34,6 +34,7 @@ public class JNETags {
         public static final TagKey<Block> SANCTUM_BLOCKS = createBlockTag("sanctum_blocks"); // Prevents those pesky Basalt Deltas configured features from overriding or replacing Sanctum Blocks
         public static final TagKey<Block> SORROWEED_REPLACEABLE = createBlockTag("sorroweed_replaceable"); // Sorroweed can overtake these blocks when grownpublic static final TagKey<Block> BLACK_ICE_REPLACEABLE = createBlockTag("black_ice_replaceable");
         public static final TagKey<Block> BLACK_ICE_REPLACEABLE = createBlockTag("black_ice_replaceable");
+        public static final TagKey<Block> ANCIENT_FIRE_BASE_BLOCKS = createBlockTag("ancient_fire_base_blocks");
 
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.create(Registries.BLOCK, new ResourceLocation(NetherExp.MOD_ID, name));

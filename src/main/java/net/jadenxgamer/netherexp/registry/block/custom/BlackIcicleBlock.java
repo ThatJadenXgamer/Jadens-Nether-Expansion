@@ -159,7 +159,7 @@ public class BlackIcicleBlock extends PointedDripstoneBlock {
     }
 
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (pRandom.nextFloat() < 0.011377778F) {
+        if (pRandom.nextDouble() < JNEConfigs.BLACK_ICICLE_GROWTH_CHANCE.get()) {
             if (isStalactiteStartPos(pState, pLevel, pPos)) {
                 growIcicleIfPossible(pState, pLevel, pPos, Direction.DOWN);
             } else if (isStalagmiteStartPos(pState, pLevel, pPos)) {
@@ -186,6 +186,7 @@ public class BlackIcicleBlock extends PointedDripstoneBlock {
         } else if (relativeState.isAir() || relativeState.is(Blocks.WATER)) {
             crateIcicle(pServer, relative, pDirection, DripstoneThickness.TIP);
         }
+        pServer.playSound(null, pPos, JNESoundEvents.SOUL_SLATE_SOLIDIFYING.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     private static void crateIcicle(LevelAccessor pLevel, BlockPos pPos, Direction pDirection, DripstoneThickness pThickness) {
@@ -223,11 +224,7 @@ public class BlackIcicleBlock extends PointedDripstoneBlock {
         Direction direction = pState.getValue(TIP_DIRECTION);
         BlockPos relative = pPos.relative(direction);
         BlockState relativeState = pLevel.getBlockState(relative);
-        if (!relativeState.getFluidState().isEmpty()) {
-            return false;
-        } else {
-            return relativeState.isAir() || relativeState.getFluidState().is(Fluids.WATER) || isUnmergedTipWithDirection(relativeState, direction.getOpposite());
-        }
+        return relativeState.isAir() || relativeState.getFluidState().is(Fluids.WATER) || isUnmergedTipWithDirection(relativeState, direction.getOpposite());
     }
 
     private static Optional<BlockPos> findBlockVertical(LevelAccessor pLevel, BlockPos pPos, Direction.AxisDirection pAxis, BiPredicate<BlockPos, BlockState> pPositionalStatePredicate, Predicate<BlockState> pStatePredicate, int pMaxIterations) {

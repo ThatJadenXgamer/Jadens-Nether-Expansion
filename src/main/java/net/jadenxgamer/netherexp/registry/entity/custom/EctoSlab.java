@@ -1,11 +1,10 @@
 package net.jadenxgamer.netherexp.registry.entity.custom;
 
-import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETags;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
-import net.minecraft.core.BlockPos;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -23,8 +22,6 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -47,7 +44,6 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -125,11 +121,7 @@ public class EctoSlab extends Slime {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.4);
-    }
-
-    public static boolean checkEctoSlabSpawnRules(EntityType<MagmaCube> entityType, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
-        return levelAccessor.getDifficulty() != Difficulty.PEACEFUL;
+        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.3);
     }
 
     @Override
@@ -288,7 +280,7 @@ public class EctoSlab extends Slime {
 
     @Override
     protected @NotNull SoundEvent getSquishSound() {
-        return this.isTiny() ? SoundEvents.MAGMA_CUBE_SQUISH_SMALL : JNESoundEvents.ENTITY_ECTO_SLAB_SQUISH.get();
+        return this.isTiny() ? JNESoundEvents.ENTITY_ECTO_SLAB_SQUISH_SMALL.get() : JNESoundEvents.ENTITY_ECTO_SLAB_SQUISH.get();
     }
 
     @Override
@@ -307,6 +299,10 @@ public class EctoSlab extends Slime {
 
     private void setIsUnderground(boolean bl) {
         this.getEntityData().set(IS_UNDERGROUND, bl);
+    }
+
+    public void setUndergroundTimer(int time) {
+        this.undergroundTime = time;
     }
 
     public boolean getAttack() {
@@ -344,7 +340,8 @@ public class EctoSlab extends Slime {
             }
         }
         else if (this.getIsUnderground() && this.undergroundTime > 20 && damageSource.is(JNETags.DamageTypes.CAN_DISRUPT_UNDERGROUND_ECTO_SLABS)) {
-            this.undergroundTime = 20;
+            this.undergroundTime = 40;
+            this.playSound(this.isTiny() ? JNESoundEvents.ENTITY_ECTO_SLAB_WARN_SMALL.get() : JNESoundEvents.ENTITY_ECTO_SLAB_WARN.get());
             return false;
         }
         return super.hurt(damageSource, f);
@@ -518,6 +515,7 @@ public class EctoSlab extends Slime {
         }
 
         public void start() {
+            ectoSlab.playSound(ectoSlab.isTiny() ? JNESoundEvents.ENTITY_ECTO_SLAB_SQUISH_SMALL.get() : JNESoundEvents.ENTITY_ECTO_SLAB_SQUISH.get());
             ectoSlab.undergroundTime = reducedTickDelay(180 + ectoSlab.random.nextInt(50));
             super.start();
         }
@@ -545,18 +543,17 @@ public class EctoSlab extends Slime {
 
         public void tick() {
             --ectoSlab.undergroundTime;
+            if (ectoSlab.undergroundTime == 40) {
+                ectoSlab.playSound(ectoSlab.isTiny() ? JNESoundEvents.ENTITY_ECTO_SLAB_WARN_SMALL.get() : JNESoundEvents.ENTITY_ECTO_SLAB_WARN.get());
+            }
             if (ectoSlab.undergroundTime > 0) {
                 ectoSlab.setIsUnderground(true);
                 ectoSlab.refreshDimensions();
-            }
-            else {
+            } else {
                 ectoSlab.setIsUnderground(false);
                 ectoSlab.refreshDimensions();
                 ectoSlab.setAttack(true);
                 ectoSlab.damageLivingEntities(ectoSlab.level().getEntitiesOfClass(LivingEntity.class, this.ectoSlab.getBoundingBox(), ECTO_SLAB_CAN_DAMAGE));
-                for (int i = 0; i < 10; ++i) {
-                    ectoSlab.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, ectoSlab.getBlockStateOn()), ectoSlab.getRandomX(0.3 * ectoSlab.getSize()), ectoSlab.getY(), ectoSlab.getRandomZ(0.3 * ectoSlab.getSize()), 0.0, 0.5, 0.0);
-                }
             }
             LivingEntity livingEntity = this.ectoSlab.getTarget();
             if (livingEntity != null) {
@@ -566,7 +563,7 @@ public class EctoSlab extends Slime {
             MoveControl var3 = this.ectoSlab.getMoveControl();
             if (var3 instanceof EctoSlabMoveControl ectoSlabMoveControl) {
                 ectoSlabMoveControl.setDirection(this.ectoSlab.getYRot(), this.ectoSlab.isDealsDamage());
-                if (ectoSlab.undergroundTime > 20 && livingEntity != null) {
+                if (ectoSlab.undergroundTime > 40 && livingEntity != null) {
                     ectoSlabMoveControl.setWantedPosition(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ectoSlab.getAttributeValue(Attributes.MOVEMENT_SPEED));
                 }
             }

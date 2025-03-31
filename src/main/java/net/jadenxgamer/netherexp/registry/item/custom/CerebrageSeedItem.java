@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry.item.custom;
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.block.custom.CerebrageBlock;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -32,7 +33,7 @@ public class CerebrageSeedItem extends Item {
         if (state.is(Blocks.SKELETON_SKULL)) {
             int rotation = level.getBlockState(pos).getValue(CerebrageBlock.ROTATION);
             level.setBlock(pos, JNEBlocks.CEREBRAGE_SKULL.get().defaultBlockState().setValue(CerebrageBlock.ROTATION, rotation), 2);
-            level.playSound(player, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(player, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BLOCK_CEREBRAGE_PLANT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             if (player != null && !player.getAbilities().instabuild) {
                 stack.shrink(1);
             }

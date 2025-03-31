@@ -32,6 +32,18 @@ public class JNESoundType {
             JNESoundEvents.BLOCK_SMOKESTALK_WOOD_BREAK.get(), JNESoundEvents.BLOCK_SMOKESTALK_WOOD_STEP.get(), JNESoundEvents.BLOCK_SMOKESTALK_WOOD_PLACE.get(),
             JNESoundEvents.BLOCK_SMOKESTALK_WOOD_HIT.get(), JNESoundEvents.BLOCK_SMOKESTALK_WOOD_FALL.get());
 
+    public static final SoundType CEREBRAGE_STEM = new SoundType(1f, 1f,
+            JNESoundEvents.BLOCK_CEREBRAGE_STEM_BREAK.get(), SoundEvents.STEM_STEP, JNESoundEvents.BLOCK_CEREBRAGE_STEM_BREAK.get(),
+            SoundEvents.STEM_HIT, SoundEvents.STEM_FALL);
+
+    public static final SoundType HAZE_BLOCK = new SoundType(1f, 1f,
+            JNESoundEvents.BLOCK_HAZE_BLOCK_BREAK.get(), SoundEvents.SAND_STEP, JNESoundEvents.BLOCK_HAZE_BLOCK_BREAK.get(),
+            SoundEvents.SAND_HIT, SoundEvents.SAND_FALL);
+
+    public static final SoundType FROGMIST = new SoundType(1f, 1f,
+            JNESoundEvents.BLOCK_FROGMIST_BREAK.get(), SoundEvents.SAND_STEP, JNESoundEvents.BLOCK_FROGMIST_BREAK.get(),
+            SoundEvents.SAND_HIT, SoundEvents.SAND_FALL);
+
     public static final SoundType SOUL_CANDLE = new SoundType(1f, 1f,
             JNESoundEvents.BLOCK_SOUL_CANDLE_BREAK.get(), JNESoundEvents.BLOCK_SOUL_CANDLE_STEP.get(), JNESoundEvents.BLOCK_SOUL_CANDLE_PLACE.get(),
             JNESoundEvents.BLOCK_SOUL_CANDLE_HIT.get(), JNESoundEvents.BLOCK_SOUL_CANDLE_FALL.get());

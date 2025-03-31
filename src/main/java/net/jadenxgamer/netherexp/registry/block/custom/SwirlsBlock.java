@@ -87,13 +87,14 @@ implements BonemealableBlock {
         int size = Mth.nextInt(random, 1, 2);
         if (ectoSlab != null) {
             ectoSlab.setSize(size, true);
+            ectoSlab.setUndergroundTimer(20);
             ectoSlab.push(ectoSlab.getX(), 0.4, ectoSlab.getZ());
             if (entity !=  null) {
                 ectoSlab.setTarget(entity);
             }
             ectoSlab.setPos(pos.getX(), pos.getY(), pos.getZ());
             level.addFreshEntity(ectoSlab);
-            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MAGMA_CUBE_SQUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), size > 1 ? JNESoundEvents.ENTITY_ECTO_SLAB_WARN.get() : JNESoundEvents.ENTITY_ECTO_SLAB_WARN_SMALL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }
 

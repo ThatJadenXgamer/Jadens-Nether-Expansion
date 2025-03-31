@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -46,6 +47,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
 
     private int pullTimeOut;
     private boolean pullFlag;
+    private boolean stopPullFlag;
     private int punchTimeOut;
     private boolean punchFlag;
 
@@ -60,6 +62,12 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
         if (level.isClientSide()) {
             if (this.pullFlag) {
                 playPullAnimation(player, player.tickCount);
+            }
+            if (this.stopPullFlag) {
+                pullFlag = false;
+                pullTimeOut = 30;
+                this.pullAnimationState.stop(player);
+                stopPullFlag = false;
             }
             if (this.punchFlag) {
                 playFireAnimation(player, player.tickCount);
@@ -89,6 +97,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
             pullFlag = true;
             pullTimeOut = 30;
             player.startUsingItem(hand);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.JACKHAMMER_FIST_PULL.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
             return InteractionResultHolder.consume(stack);
         }
         return super.use(level, player, hand);
@@ -97,7 +106,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
     @Override
     public void onUseTick(Level pLevel, LivingEntity pLivingEntity, ItemStack pStack, int count) {
         int ticksUsed = pStack.getUseDuration() - count;
-        if (ticksUsed >= 30 && !getPulled(pStack)) {
+        if (ticksUsed >= 31 && !getPulled(pStack)) {
             setPulled(pStack, true);
         }
     }
@@ -108,9 +117,11 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
         int cartridge = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.CARTRIDGE.get(), stack);
 
         if (ticksUsed < 30) {
-            pullFlag = false;
-            pullTimeOut = 20;
-            pullAnimationState.stop(user);
+            stopPullFlag = true;
+            if (level instanceof ServerLevel serverLevel) {
+                serverLevel.getServer().getPlayerList().broadcast(null, user.getX(), user.getY(), user.getZ(), 8, level.dimension(),
+                        new ClientboundStopSoundPacket(JNESoundEvents.JACKHAMMER_FIST_PULL.get().getLocation(), SoundSource.PLAYERS));
+            }
         } else {
             int recoil = EnchantmentHelper.getItemEnchantmentLevel(JNEEnchantments.RECOIL.get(), stack);
 
@@ -123,11 +134,15 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
             }
             Vec3 look = user.getLookAngle();
             Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
+            Vec3 knockBack = new Vec3(look.x, look.y, look.z).normalize();
             double recoilPushBonus = (double) recoil / 16;
 
             Vec3 velocity = user.getDeltaMovement();
             double horizontalSpeed = Math.sqrt(velocity.x * velocity.x + velocity.z * velocity.z);
-            float damage = (float) Math.min((8.0f + horizontalSpeed * 64), JNEConfigs.JACKHAMMER_FIST_MAX_DAMAGE.get());
+            float damage = (float) Math.min((8.0f + horizontalSpeed * 80), JNEConfigs.JACKHAMMER_FIST_MAX_DAMAGE.get());
+            if (damage >= JNEConfigs.JACKHAMMER_FIST_MAX_DAMAGE.get() / 2 && user instanceof Player player) {
+                player.getCooldowns().addCooldown(this, damage == JNEConfigs.JACKHAMMER_FIST_MAX_DAMAGE.get() ? (int) damage * 2 : (int) damage);
+            }
             double speedPushBonus = 0.1 + horizontalSpeed;
             if (JNEConfigs.DEV_TEST_MODE.get()) {
                 NetherExp.LOGGER.info("Jackhammer-Fist Calculated Damage: {} for Velocity: {}", damage, horizontalSpeed);
@@ -139,6 +154,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
             List<Entity> entities = level.getEntities(user, aabb, EntitySelector.NO_CREATIVE_OR_SPECTATOR);
             for (Entity entity : entities) {
                 if (entity instanceof LivingEntity livingEntity && !level.isClientSide()) {
+                    livingEntity.push(knockBack.x * (1.2 + speedPushBonus), pushBack.y * (1.2 + speedPushBonus), pushBack.z * (1.2 + speedPushBonus));
                     livingEntity.hurt(user.level().damageSources().source(JNEDamageSources.JACKHAMMER, user), damage);
                 }
                 int particleCount = (int) (1 + horizontalSpeed * 16);
@@ -152,8 +168,8 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
             if (!level.isClientSide()) {
                 ((ServerLevel) level).sendParticles(JNEParticleTypes.JACKHAMMER.get(), raycastEnd.x, raycastEnd.y, raycastEnd.z, 1, 0.0, 0.0, 0.0, 0.0);
             }
-            user.push(pushBack.x * (0.5 + recoilPushBonus + speedPushBonus), pushBack.y * (0.5 + recoilPushBonus + speedPushBonus), pushBack.z * (0.5 + recoilPushBonus + speedPushBonus));
-            level.playSound(null, user.getX(), user.getY(), user.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+            user.push(pushBack.x * (0.8 + recoilPushBonus + speedPushBonus), pushBack.y * (0.8 + recoilPushBonus + speedPushBonus), pushBack.z * (0.8 + recoilPushBonus + speedPushBonus));
+            level.playSound(null, user.getX(), user.getY(), user.getZ(), JNESoundEvents.JACKHAMMER_FIST_HIT.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
         }
     }
 

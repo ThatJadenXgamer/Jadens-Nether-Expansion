@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry.block.custom;
 
 import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
+import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEConfiguredFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -82,13 +83,13 @@ public class CerebrageBlock extends Block implements BonemealableBlock {
             popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE.get(), level.random.nextInt(3, 6)));
             popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE_SEEDS.get(), level.random.nextInt(-5, 2)));
             level.setBlock(pos, state.setValue(AGE, 1), 2);
-            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos, JNESoundEvents.BLOCK_CEREBRAGE_PLANT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         else if (state.getValue(AGE) == 4 && level.getBlockState(pos.above()).isAir()) {
             popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE_SEEDS.get(), level.random.nextInt(-5, 2)));
             level.setBlock(pos, state.setValue(AGE, 1), 2);
-            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos, JNESoundEvents.BLOCK_CEREBRAGE_PLANT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return InteractionResult.PASS;

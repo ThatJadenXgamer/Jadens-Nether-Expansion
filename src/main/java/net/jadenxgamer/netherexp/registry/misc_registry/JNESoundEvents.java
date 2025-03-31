@@ -123,10 +123,17 @@ public class JNESoundEvents {
     // SUSPICIOUS SOUL SAND
 
     public static RegistryObject<SoundEvent> BLOCK_SUSPICIOUS_SOUL_SAND_BREAK = registerSoundEvents("block.suspicious_soul_sand.break");
-    public static RegistryObject<SoundEvent> BLOCK_SUSPICIOUS_SOUL_SAND_STEP = registerSoundEvents("block.suspicious_soul_sand.step");
-    public static RegistryObject<SoundEvent> BLOCK_SUSPICIOUS_SOUL_SAND_PLACE = registerSoundEvents("block.suspicious_soul_sand.place");
-    public static RegistryObject<SoundEvent> BLOCK_SUSPICIOUS_SOUL_SAND_HIT = registerSoundEvents("block.suspicious_soul_sand.hit");
-    public static RegistryObject<SoundEvent> BLOCK_SUSPICIOUS_SOUL_SAND_FALL = registerSoundEvents("block.suspicious_soul_sand.fall");
+
+    // HAZE BLOCK
+    public static RegistryObject<SoundEvent> BLOCK_HAZE_BLOCK_BREAK = registerSoundEvents("block.haze_block.break");
+
+    // FROGMIST
+    public static RegistryObject<SoundEvent> BLOCK_FROGMIST_BREAK = registerSoundEvents("block.frogmist.break");
+
+    // CEREBRAGE
+    public static RegistryObject<SoundEvent> BLOCK_CEREBRAGE_STEM_BREAK = registerSoundEvents("block.cerebrage_stem.break");
+    public static RegistryObject<SoundEvent> BLOCK_CEREBRAGE_PLANT = registerSoundEvents("block.cerebrage.plant");
+
 
     // ITEMS & EVENTS:
 
@@ -148,6 +155,9 @@ public class JNESoundEvents {
     public static RegistryObject<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
     public static RegistryObject<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
     public static RegistryObject<SoundEvent> PUMP_CHARGE_SHOTGUN_ALARM = registerSoundEvents("item.pump_charge_shotgun.alarm");
+    public static RegistryObject<SoundEvent> JACKHAMMER_FIST_HIT = registerSoundEvents("item.jackhammer_fist.hit");
+    public static RegistryObject<SoundEvent> JACKHAMMER_FIST_PULL = registerSoundEvents("item.jackhammer_fist.pull");
+    public static RegistryObject<SoundEvent> JACKHAMMER_FIST_LOOP = registerSoundEvents("item.jackhammer_fist.loop");
     public static RegistryObject<SoundEvent> BRAZIER_CHEST_OPEN = registerSoundEvents("block.brazier_chest.open");
     public static RegistryObject<SoundEvent> BRAZIER_CHEST_CLOSE = registerSoundEvents("block.brazier_chest.close");
     public static RegistryObject<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
@@ -192,6 +202,9 @@ public class JNESoundEvents {
 
     public static RegistryObject<SoundEvent> ENTITY_ECTO_SLAB_JUMP = registerSoundEvents("entity.ecto_slab.jump");
     public static RegistryObject<SoundEvent> ENTITY_ECTO_SLAB_SQUISH = registerSoundEvents("entity.ecto_slab.squish");
+    public static RegistryObject<SoundEvent> ENTITY_ECTO_SLAB_SQUISH_SMALL = registerSoundEvents("entity.ecto_slab.squish_small");
+    public static RegistryObject<SoundEvent> ENTITY_ECTO_SLAB_WARN = registerSoundEvents("entity.ecto_slab.warn");
+    public static RegistryObject<SoundEvent> ENTITY_ECTO_SLAB_WARN_SMALL = registerSoundEvents("entity.ecto_slab.warn_small");
 
     public static RegistryObject<SoundEvent> ENTITY_BANSHEE_AMBIENT = registerSoundEvents("entity.banshee.ambient");
     public static RegistryObject<SoundEvent> ENTITY_BANSHEE_HURT = registerSoundEvents("entity.banshee.hurt");

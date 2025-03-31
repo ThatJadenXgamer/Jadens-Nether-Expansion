@@ -37,7 +37,7 @@ public class JNEFluids {
     }
 
     public static final RegistryObject<FluidType> ECTOPLASM_TYPE = FLUID_TYPES.register("ectoplasm", () ->
-        new EctoplasmFluidType(FluidType.Properties.create().lightLevel(13).density(1).viscosity(0)
+        new EctoplasmFluidType(FluidType.Properties.create().lightLevel(12).density(1).viscosity(0)
                 .canPushEntity(false).canSwim(false).canConvertToSource(true).canDrown(false)
                 .pathType(BlockPathTypes.WATER).supportsBoating(true).temperature(-196)
                 .canExtinguish(false).pathType(BlockPathTypes.DANGER_POWDER_SNOW).adjacentPathType(BlockPathTypes.DANGER_OTHER)
@@ -50,7 +50,7 @@ public class JNEFluids {
     public static final RegistryObject<Item> ECTOPLASM_BUCKET = JNEItems.ITEMS.register("ectoplasm_bucket", () ->
             new BucketItem(JNEFluids.ECTOPLASM_SOURCE, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
     public static final RegistryObject<LiquidBlock> ECTOPLASM = JNEBlocks.BLOCKS.register("ectoplasm", () ->
-            new EctoplasmLiquidBlock(ECTOPLASM_SOURCE, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 7).noLootTable().liquid().sound(SoundType.EMPTY)));
+            new EctoplasmLiquidBlock(ECTOPLASM_SOURCE, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 12).noLootTable().liquid().sound(SoundType.EMPTY)));
 
 
     public static void init(IEventBus eventBus) {

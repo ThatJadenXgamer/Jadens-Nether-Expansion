@@ -68,6 +68,9 @@ public class JNEForgeConfigs {
         HAZE_BLOCK_COOLDOWN = BUILDER
                 .comment("How many seconds a haze block will stay before breaking")
                 .define("haze_block_cooldown", 8);
+        BLACK_ICICLE_GROWTH_CHANCE = BUILDER
+                .comment("Percentage chance for Black Icicles to grow when submerged underwater")
+                .define("black_icicle_growth_chance", 0.28);
     }
 
     private static void registerItemConfigs(ForgeConfigSpec.Builder BUILDER) {
@@ -229,7 +232,7 @@ public class JNEForgeConfigs {
         registerGameMechanicConfigs(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("Sub-Biome Settings").push("sub_biome");
+        BUILDER.comment("Sub-Biomes Settings").push("sub_biomes");
         registerSubBiomeConfigs(BUILDER);
         BUILDER.pop();
 

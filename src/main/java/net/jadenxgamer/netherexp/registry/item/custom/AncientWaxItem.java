@@ -1,11 +1,13 @@
 package net.jadenxgamer.netherexp.registry.item.custom;
 
+import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.entity.custom.FalseCarcass;
 import net.jadenxgamer.netherexp.registry.entity.custom.WillOWisp;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -60,6 +62,9 @@ public class AncientWaxItem extends Item {
             }
             level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.SKELETON_DEATH, SoundSource.NEUTRAL, 2.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
             user.awardStat(Stats.ITEM_USED.get(this));
+            if (user instanceof ServerPlayer player) {
+                JNECriteriaTriggers.MAKE_FAKE_CARCASS.trigger(player);
+            }
             if (!user.getAbilities().instabuild) {
                 itemStack.shrink(1);
             }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#A#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:honeycomb_block"
+    },
+    "A": {
+      "item": "netherexp:ancient_wax"
+    }
+  },
+  "result": {
+    "item": "netherexp:ancient_wax_block",
+    "count": 12
+  }
+}

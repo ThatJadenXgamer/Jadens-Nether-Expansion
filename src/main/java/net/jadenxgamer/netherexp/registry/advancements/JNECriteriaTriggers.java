@@ -13,8 +13,10 @@ public class JNECriteriaTriggers extends CriteriaTriggers {
     public static PlayerTrigger BROKEN_DIAMOND_FOSSIL_ORE;
     public static PlayerTrigger EXORCISM;
     public static PlayerTrigger REVIVE_CARCASS;
+    public static PlayerTrigger IMMORTAL_CARCASS;
     public static PlayerTrigger ACTIVATE_SANCTUM_COMPASS;
     public static PlayerTrigger KILLED_WITH_PUMP_CHARGE;
+    public static PlayerTrigger MAKE_FAKE_CARCASS;
 
     public static void init() {
         TAME_STAMPEDE = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "tame_stampede")));
@@ -24,7 +26,9 @@ public class JNECriteriaTriggers extends CriteriaTriggers {
         BROKEN_DIAMOND_FOSSIL_ORE = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "broken_diamond_fossil_ore")));
         EXORCISM = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "exorcism")));
         REVIVE_CARCASS = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "revive_carcass")));
+        IMMORTAL_CARCASS = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "immortal_carcass")));
         ACTIVATE_SANCTUM_COMPASS = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "activate_sanctum_compass")));
         KILLED_WITH_PUMP_CHARGE = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "killed_with_pump_charge")));
+        MAKE_FAKE_CARCASS = JNECriteriaTriggers.register(new PlayerTrigger(new ResourceLocation(NetherExp.MOD_ID, "make_fake_carcass")));
     }
 }

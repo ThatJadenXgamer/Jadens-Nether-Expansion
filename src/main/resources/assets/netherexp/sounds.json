@@ -962,6 +962,43 @@
       "netherexp:block/suspicious_soul_sand/break6"
     ]
   },
+  "block.haze_block.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/haze_block/break1",
+      "netherexp:block/haze_block/break2"
+    ]
+  },
+  "block.frogmist.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/frogmist/break1",
+      "netherexp:block/frogmist/break2"
+    ]
+  },
+  "block.cerebrage_stem.break": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/cerebrage/stembreak1",
+      "netherexp:block/cerebrage/stembreak2",
+      "netherexp:block/cerebrage/stembreak3",
+      "netherexp:block/cerebrage/stembreak4",
+      "netherexp:block/cerebrage/stembreak5"
+    ]
+  },
+  "block.cerebrage.plant": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      {
+        "name": "netherexp:block/cerebrage/plant1",
+        "volume": 0.75
+      },
+      {
+        "name": "netherexp:block/cerebrage/plant2",
+        "volume": 0.75
+      }
+    ]
+  },
   "item.gold_ingot.gilding": {
     "subtitle": "subtitles.item.gold_ingot.gilding",
     "sounds": [
@@ -1053,6 +1090,25 @@
     "subtitle": "subtitles.item.pump_charge_shotgun.alarm",
     "sounds": [
       "netherexp:item/shotgun/alarm"
+    ]
+  },
+  "item.jackhammer_fist.hit": {
+    "subtitle": "subtitles.item.jackhammer_fist.hit",
+    "sounds": [
+      "netherexp:item/jackhammer/hit1",
+      "netherexp:item/jackhammer/hit2"
+    ]
+  },
+  "item.jackhammer_fist.loop": {
+    "subtitle": "subtitles.item.jackhammer_fist.loop",
+    "sounds": [
+      "netherexp:item/jackhammer/loop"
+    ]
+  },
+  "item.jackhammer_fist.pull": {
+    "subtitle": "subtitles.item.jackhammer_fist.pull",
+    "sounds": [
+      "netherexp:item/jackhammer/pull"
     ]
   },
   "item.compass.tick": {
@@ -1373,6 +1429,28 @@
       "netherexp:mob/ecto_slab/big4"
     ],
     "subtitle": "subtitles.entity.ecto_slab.squish"
+  },
+  "entity.ecto_slab.squish_small": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/small1",
+      "netherexp:mob/ecto_slab/small2",
+      "netherexp:mob/ecto_slab/small3",
+      "netherexp:mob/ecto_slab/small4"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.squish"
+  },
+  "entity.ecto_slab.warn": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/warn1",
+      "netherexp:mob/ecto_slab/warn2"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.warn"
+  },
+  "entity.ecto_slab.warn_small": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/small_warn"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.warn"
   },
   "entity.player.hurt_igneous_thorns": {
     "subtitle": "subtitles.entity.player.hurt",
