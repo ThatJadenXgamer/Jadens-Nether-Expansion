@@ -61,6 +61,10 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.BRAZIER_CHEST.get());
                         output.accept(JNEItems.ANCIENT_WAX.get());
                         output.accept(JNEBlocks.ANCIENT_WAX_BLOCK.get());
+                        output.accept(JNEBlocks.ANCIENT_TORCH.get());
+                        output.accept(JNEBlocks.ANCIENT_LANTERN.get());
+                        output.accept(JNEBlocks.ANCIENT_CAMPFIRE.get());
+                        output.accept(JNEBlocks.ANCIENT_CANDLE.get());
                         output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
                         output.accept(JNEBlocks.SCULK_GRINDER.get());
@@ -289,6 +293,7 @@ public class JNECreativeModeTabs {
                         output.accept(Items.SKELETON_SKULL);
                         output.accept(JNEBlocks.SKELETON_SKULL_CANDLE.get());
                         output.accept(JNEBlocks.SOUL_SKELETON_SKULL_CANDLE.get());
+                        output.accept(JNEBlocks.ANCIENT_SKELETON_SKULL_CANDLE.get());
 
                         output.accept(Items.BONE);
                         output.accept(JNEBlocks.BONE_ROD.get());
@@ -301,6 +306,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.SKULL_BLOCK.get());
                         output.accept(JNEBlocks.BURNING_SKULL_BLOCK.get());
                         output.accept(JNEBlocks.SOUL_BURNING_SKULL_BLOCK.get());
+                        output.accept(JNEBlocks.ANCIENT_BURNING_SKULL_BLOCK.get());
 
                         output.accept(JNEBlocks.WITHER_BONE_BLOCK.get());
                         output.accept(JNEBlocks.STACKED_WITHER_BONES.get());
@@ -309,6 +315,7 @@ public class JNECreativeModeTabs {
                         output.accept(JNEBlocks.WITHER_SKULL_BLOCK.get());
                         output.accept(JNEBlocks.BURNING_WITHER_SKULL_BLOCK.get());
                         output.accept(JNEBlocks.SOUL_BURNING_WITHER_SKULL_BLOCK.get());
+                        output.accept(JNEBlocks.ANCIENT_BURNING_WITHER_SKULL_BLOCK.get());
 
                         output.accept(Blocks.GILDED_BLACKSTONE);
                         output.accept(Blocks.BLACKSTONE);

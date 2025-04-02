@@ -8,6 +8,7 @@ import net.jadenxgamer.netherexp.registry.item.custom.*;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNETrimPatterns;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -197,6 +198,9 @@ public class JNEItems {
 
     public static final RegistryObject<Item> ANCIENT_WAX = registerItem("ancient_wax", () ->
             new AncientWaxItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> ANCIENT_TORCH = registerItem("ancient_torch", () ->
+            new StandingAndWallBlockItem(JNEBlocks.ANCIENT_TORCH.get(), JNEBlocks.ANCIENT_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN));
 
     // ARTIFACTS
 

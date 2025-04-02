@@ -104,6 +104,7 @@
     "netherexp:skull_block",
     "netherexp:burning_skull_block",
     "netherexp:soul_burning_skull_block",
+    "netherexp:ancient_burning_skull_block",
     "netherexp:wither_bone_block",
     "netherexp:stacked_wither_bones",
     "netherexp:stacked_wither_bone_slab",
@@ -111,6 +112,7 @@
     "netherexp:wither_skull_block",
     "netherexp:burning_wither_skull_block",
     "netherexp:soul_burning_wither_skull_block",
+    "netherexp:ancient_burning_wither_skull_block",
 
     "netherexp:crimson_nylium_path",
     "netherexp:warped_nylium_path",
@@ -141,6 +143,7 @@
     "netherexp:cut_necromium_block",
     "netherexp:cut_necromium_slab",
     "netherexp:cut_necromium_stairs",
-    "netherexp:cut_necromium_pillar"
+    "netherexp:cut_necromium_pillar",
+    "netherexp:ancient_lantern"
   ]
 }

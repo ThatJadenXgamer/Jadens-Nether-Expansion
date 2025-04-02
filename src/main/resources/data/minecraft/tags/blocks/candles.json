@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:soul_candle"
+    "netherexp:soul_candle",
+    "netherexp:ancient_candle"
   ]
 }

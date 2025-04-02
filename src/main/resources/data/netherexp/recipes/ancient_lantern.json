@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#A#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_nugget"
+    },
+    "A": {
+      "item": "netherexp:ancient_torch"
+    }
+  },
+  "result": {
+    "item": "netherexp:ancient_lantern"
+  }
+}

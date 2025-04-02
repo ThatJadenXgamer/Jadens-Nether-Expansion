@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "A"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "A": {
+      "item": "netherexp:ancient_wax"
+    },
+    "X": {
+      "item": "netherexp:fossil_fuel"
+    }
+  },
+  "result": {
+    "item": "netherexp:ancient_torch",
+    "count": 4
+  }
+}

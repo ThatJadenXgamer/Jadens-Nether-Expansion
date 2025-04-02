@@ -1,10 +1,7 @@
 package net.jadenxgamer.netherexp.registry.block;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.block.entity.BrazierChestBlockEntity;
-import net.jadenxgamer.netherexp.registry.block.entity.DiscernmentGlassBlockEntity;
-import net.jadenxgamer.netherexp.registry.block.entity.JNEBrushableBlockEntity;
-import net.jadenxgamer.netherexp.registry.block.entity.TreacherousCandleBlockEntity;
+import net.jadenxgamer.netherexp.registry.block.entity.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,6 +23,9 @@ public class JNEBlockEntityType {
 
     public static final RegistryObject<BlockEntityType<DiscernmentGlassBlockEntity>> DISCERNMENT_GLASS = BLOCK_ENTITY_TYPES.register("discernment_glass", () ->
             BlockEntityType.Builder.of(DiscernmentGlassBlockEntity::new, JNEBlocks.DISCERNMENT_GLASS.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<AncientCampfireBlockEntity>> ANCIENT_CAMPFIRE = BLOCK_ENTITY_TYPES.register("ancient_campfire", () ->
+            BlockEntityType.Builder.of(AncientCampfireBlockEntity::new, JNEBlocks.ANCIENT_CAMPFIRE.get()).build(null));
 
     public static void init(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);

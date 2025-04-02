@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "netherexp:block/ancient_lantern"
+    },
+    "hanging=true": {
+      "model": "netherexp:block/ancient_lantern_hanging"
+    }
+  }
+}

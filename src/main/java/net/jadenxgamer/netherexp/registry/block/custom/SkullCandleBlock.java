@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.registry.block.custom;
 
-import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -21,16 +21,19 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Supplier;
+
 public class SkullCandleBlock
 extends Block {
 
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
     protected static final VoxelShape SHAPE = Block.box(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-    protected final int type;
 
-    public SkullCandleBlock(Properties properties, int type){
+    private final Supplier<SimpleParticleType> particle;
+
+    public SkullCandleBlock(Properties properties, Supplier<SimpleParticleType> particle){
         super(properties);
-        this.type = type;
+        this.particle = particle;
     }
 
     @SuppressWarnings("all")
@@ -57,16 +60,7 @@ extends Block {
                 level.playLocalSound(x + 0.5, y + 0.5, z + 0.5, SoundEvents.CANDLE_AMBIENT, SoundSource.BLOCKS, 1.0F + random.nextFloat(), random.nextFloat() * 0.7F + 0.3F, false);
             }
         }
-        switch (type) {
-            default: {
-                level.addParticle(ParticleTypes.SMALL_FLAME, x, y, z, 0.0, 0.0, 0.0);
-                break;
-            }
-            case 2: {
-                level.addParticle(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get(), x, y, z, 0.0, 0.0, 0.0);
-                break;
-            }
-        }
+        level.addParticle(this.particle.get(), x, y, z, 0.0, 0.0, 0.0);
     }
 
 

@@ -117,12 +117,6 @@ public class JNEBlocks {
     public static final RegistryObject<Block> SCULK_GRINDER = registerBlock("sculk_grinder", () ->
             new SculkGrinderBlock(BlockBehaviour.Properties.of().strength(80.0f, 1200.0f).lightLevel(state -> 13).sound(SoundType.SCULK_CATALYST)));
 
-    public static final RegistryObject<Block> ANCIENT_WAX_BLOCK = registerBlock("ancient_wax_block", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.HONEYCOMB_BLOCK)));
-
-    public static final RegistryObject<Block> ANCIENT_FIRE = registerBlockWithoutItem("ancient_fire", () ->
-            new AncientFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13), 0));
-
     // Soul Decorations
 
     public static final RegistryObject<Block> SOUL_CANDLE = registerBlock("soul_candle", () ->
@@ -197,7 +191,7 @@ public class JNEBlocks {
         new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.CARVED_PUMPKIN).mapColor(MapColor.COLOR_LIGHT_GRAY).strength(1.0f).sound(SoundType.NETHER_WOOD)));
 
     public static final RegistryObject<Block> GHOUL_O_LANTERN = registerBlock("ghoul_o_lantern", () ->
-        new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_ORANGE).strength(1.0f).lightLevel((state) -> 15).sound(SoundType.NETHER_WOOD)));
+        new CarvedSorrowsquashBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_ORANGE).strength(1.0f).lightLevel((state) -> 10).sound(SoundType.NETHER_WOOD)));
 
     public static final RegistryObject<Block> SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem", () ->
             new VineStemBlock((StemGrownBlock) JNEBlocks.SORROWSQUASH.get(), () -> Items.PUMPKIN_SEEDS, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().randomTicks().sound(SoundType.NETHER_WOOD)));
@@ -212,6 +206,28 @@ public class JNEBlocks {
 
     public static final RegistryObject<Block> SHOTGUN_BARREL = registerBlock("shotgun_barrel", () ->
         new ShotgunBarrelBlock(BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.COPPER)));
+
+    // Ancient Fire
+    public static final RegistryObject<Block> ANCIENT_WAX_BLOCK = registerBlock("ancient_wax_block", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.HONEYCOMB_BLOCK)));
+
+    public static final RegistryObject<Block> ANCIENT_FIRE = registerBlockWithoutItem("ancient_fire", () ->
+            new AncientFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13), 0));
+
+    public static final RegistryObject<Block> ANCIENT_TORCH = registerBlockWithoutItem("ancient_torch", () ->
+            new JNETorchBlock(BlockBehaviour.Properties.copy(Blocks.TORCH).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13), JNEParticleTypes.TREACHEROUS_FLAME));
+
+    public static final RegistryObject<Block> ANCIENT_WALL_TORCH = registerBlockWithoutItem("ancient_wall_torch", () ->
+            new JNEWallTorchBlock(BlockBehaviour.Properties.copy(Blocks.WALL_TORCH).mapColor(MapColor.COLOR_RED).dropsLike(JNEBlocks.ANCIENT_TORCH.get()).lightLevel(state -> 13), JNEParticleTypes.TREACHEROUS_FLAME));
+
+    public static final RegistryObject<Block> ANCIENT_LANTERN = registerBlock("ancient_lantern", () ->
+            new LanternBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_LANTERN).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13)));
+
+    public static final RegistryObject<Block> ANCIENT_CAMPFIRE = registerBlock("ancient_campfire", () ->
+            new AncientCampfireBlock(false, 0, BlockBehaviour.Properties.copy(Blocks.SOUL_CAMPFIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13)));
+
+    public static final RegistryObject<Block> ANCIENT_CANDLE = registerBlock("ancient_candle", () ->
+            new AncientCandleBlock(BlockBehaviour.Properties.copy(JNEBlocks.SOUL_CANDLE.get()).mapColor(MapColor.COLOR_RED).lightLevel(state -> 7)));
 
     // Netherrack
 
@@ -595,10 +611,13 @@ public class JNEBlocks {
     // Bones
 
     public static final RegistryObject<Block> SKELETON_SKULL_CANDLE = registerBlock("skeleton_skull_candle", () ->
-            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 14), 1));
+            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 14), () -> ParticleTypes.SMALL_FLAME));
 
     public static final RegistryObject<Block> SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle", () ->
-            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 10), 2));
+            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 10), JNEParticleTypes.SMALL_SOUL_FIRE_FLAME));
+
+    public static final RegistryObject<Block> ANCIENT_SKELETON_SKULL_CANDLE = registerBlock("ancient_skeleton_skull_candle", () ->
+            new SkullCandleBlock(BlockBehaviour.Properties.copy(Blocks.SKELETON_SKULL).lightLevel((state) -> 13), JNEParticleTypes.TREACHEROUS_FLAME));
 
     public static final RegistryObject<Block> BONE_CORTICAL = registerBlock("bone_cortical", () ->
             new BoneBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)));
@@ -617,6 +636,9 @@ public class JNEBlocks {
 
     public static final RegistryObject<Block> SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).lightLevel((state) -> 10)));
+
+    public static final RegistryObject<Block> ANCIENT_BURNING_SKULL_BLOCK = registerBlock("ancient_burning_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).lightLevel((state) -> 13)));
 
     public static final RegistryObject<Block> STACKED_BONES = registerBlock("stacked_bones", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)));
@@ -640,6 +662,9 @@ public class JNEBlocks {
 
     public static final RegistryObject<Block> SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.copy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 10)));
+
+    public static final RegistryObject<Block> ANCIENT_BURNING_WITHER_SKULL_BLOCK = registerBlock("ancient_burning_wither_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.copy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 13)));
 
     public static final RegistryObject<Block> STACKED_WITHER_BONES = registerBlock("stacked_wither_bones", () ->
             new Block(BlockBehaviour.Properties.copy(JNEBlocks.WITHER_BONE_BLOCK.get())));
