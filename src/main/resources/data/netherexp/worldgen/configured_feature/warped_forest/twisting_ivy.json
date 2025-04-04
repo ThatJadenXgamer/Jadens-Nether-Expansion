@@ -3,13 +3,29 @@
   "config": {
     "state_provider": {
       "fallback": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "netherexp:twisting_ivy",
-          "Properties": {
-            "down": "true"
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "weight": 20,
+            "data": {
+              "Name": "netherexp:twisting_ivy",
+              "Properties": {
+                "down": "true",
+                "helix": "true"
+              }
+            }
+          },
+          {
+            "weight": 25,
+            "data": {
+              "Name": "netherexp:twisting_ivy",
+              "Properties": {
+                "down": "true",
+                "helix": "false"
+              }
+            }
           }
-        }
+        ]
       },
       "rules": []
     },
@@ -24,7 +40,7 @@
           "type": "minecraft:matching_blocks",
           "offset": [
             0,
-            -1,
+            1,
             0
           ],
           "blocks": [

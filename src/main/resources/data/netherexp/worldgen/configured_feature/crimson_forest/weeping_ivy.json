@@ -3,13 +3,29 @@
   "config": {
     "state_provider": {
       "fallback": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "netherexp:weeping_ivy",
-          "Properties": {
-            "up": "true"
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "weight": 10,
+            "data": {
+              "Name": "netherexp:weeping_ivy",
+              "Properties": {
+                "up": "true",
+                "helix": "true"
+              }
+            }
+          },
+          {
+            "weight": 30,
+            "data": {
+              "Name": "netherexp:weeping_ivy",
+              "Properties": {
+                "up": "true",
+                "helix": "false"
+              }
+            }
           }
-        }
+        ]
       },
       "rules": []
     },
