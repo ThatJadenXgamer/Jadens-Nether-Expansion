@@ -4,7 +4,7 @@
       "model": "netherexp:block/ancient_lantern"
     },
     "hanging=true": {
-      "model": "netherexp:block/ancient_lantern_hanging"
+      "model": "netherexp:block/ancient_hanging_lantern"
     }
   }
 }

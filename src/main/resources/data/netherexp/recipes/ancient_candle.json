@@ -10,11 +10,11 @@
       "item": "minecraft:string"
     },
     "A": {
-      "tag": "netherexp:ancient_wax"
+      "item": "netherexp:ancient_wax"
     }
   },
   "result": {
     "item": "netherexp:ancient_candle",
-    "count": 4
+    "count": 6
   }
 }

@@ -4,7 +4,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"2": "netherexp:block/ancient_skeleton_skull_candle",
-		"particle": "minecraft:block/ancient_sand"
+		"particle": "minecraft:block/soul_sand"
 	},
 	"elements": [
 		{

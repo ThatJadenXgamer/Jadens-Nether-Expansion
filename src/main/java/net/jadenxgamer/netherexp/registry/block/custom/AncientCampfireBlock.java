@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,9 +25,9 @@ public class AncientCampfireBlock extends CampfireBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         if (pLevel.isClientSide) {
-            return pState.getValue(LIT) ? createTickerHelper(pBlockEntityType, BlockEntityType.CAMPFIRE, AncientCampfireBlockEntity::particleTick) : null;
+            return pState.getValue(LIT) ? createTickerHelper(pBlockEntityType, JNEBlockEntityType.ANCIENT_CAMPFIRE.get(), AncientCampfireBlockEntity::particleTick) : null;
         } else {
-            return pState.getValue(LIT) ? createTickerHelper(pBlockEntityType, BlockEntityType.CAMPFIRE, AncientCampfireBlockEntity::cookTick) : createTickerHelper(pBlockEntityType, JNEBlockEntityType.ANCIENT_CAMPFIRE.get(), AncientCampfireBlockEntity::cooldownTick);
+            return pState.getValue(LIT) ? createTickerHelper(pBlockEntityType, JNEBlockEntityType.ANCIENT_CAMPFIRE.get(), AncientCampfireBlockEntity::cookTick) : createTickerHelper(pBlockEntityType, JNEBlockEntityType.ANCIENT_CAMPFIRE.get(), AncientCampfireBlockEntity::cooldownTick);
         }
     }
 }

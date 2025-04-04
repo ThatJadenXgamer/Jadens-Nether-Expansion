@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.item.JNEItems;
 import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -250,7 +251,7 @@ public class Carcass extends PathfinderMob {
                 this.level().playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
                 this.setIsImmortal(true);
                 if (this.level().isClientSide && !NetherExpClient.CARCASS_TUTORIAL_SEEN) {
-                    player.displayClientMessage(Component.translatable("entity.netherexp.carcass.flame_tutorial"), true);
+                    player.displayClientMessage(Component.translatable("entity.netherexp.carcass.flame_tutorial").withStyle(ChatFormatting.DARK_GRAY), true);
                     NetherExpClient.CARCASS_TUTORIAL_SEEN = true;
                 }
                 if (player instanceof ServerPlayer serverPlayer) {

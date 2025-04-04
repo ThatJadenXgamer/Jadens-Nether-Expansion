@@ -11,7 +11,7 @@
       "item": "netherexp:soul_glass"
     },
     "Q": {
-      "tag": "minecraft:quartz"
+      "item": "minecraft:quartz"
     }
   },
   "result": {

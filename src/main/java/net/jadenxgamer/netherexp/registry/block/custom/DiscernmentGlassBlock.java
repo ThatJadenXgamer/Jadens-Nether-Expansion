@@ -93,20 +93,13 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
     public @NotNull VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         if (context instanceof EntityCollisionContext entityCollisionContext && level.getBlockEntity(pos) instanceof DiscernmentGlassBlockEntity blockEntity) {
             if (entityCollisionContext.getEntity() instanceof ItemEntity item) {
-                if (state.getValue(POWERED)) {
-                    if (item.getItem().getItem() == blockEntity.getFilterItem().getItem()) {
-                        return super.getCollisionShape(state, level, pos, context);
-                    }
-                } else {
-                    if (item.getItem().getItem() != blockEntity.getFilterItem().getItem()) {
-                        return super.getCollisionShape(state, level, pos, context);
-                    }
+                boolean isFilterItem = item.getItem().getItem() == blockEntity.getFilterItem().getItem();
+                if ((state.getValue(POWERED) && !isFilterItem) || (!state.getValue(POWERED) && isFilterItem)) {
+                    return Shapes.empty();
                 }
-            } else {
-                return super.getCollisionShape(state, level, pos, context);
             }
         }
-        return Shapes.empty();
+        return super.getCollisionShape(state, level, pos, context);
     }
 
     public @NotNull RenderShape getRenderShape(BlockState arg) {
