@@ -193,8 +193,8 @@ public class Carcass extends PathfinderMob {
     }
 
     @Override
-    public boolean isEffectiveAi() {
-        return super.isEffectiveAi();
+    public boolean canBeLeashed(Player pPlayer) {
+        return false;
     }
 
     private void reanimateCarcass() {

@@ -161,13 +161,8 @@ public class FalseCarcass extends PathfinderMob {
     }
 
     @Override
-    public void aiStep() {
-        super.aiStep();
-    }
-
-    @Override
-    public boolean isEffectiveAi() {
-        return super.isEffectiveAi();
+    public boolean canBeLeashed(Player pPlayer) {
+        return false;
     }
 
     private void reanimateCarcass() {
@@ -245,52 +240,6 @@ public class FalseCarcass extends PathfinderMob {
 
     private void dropAncientWax() {
         this.spawnAtLocation(JNEItems.ANCIENT_WAX.get());
-    }
-
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(IS_REANIMATED, false);
-        this.entityData.define(REANIMATION_COOLDOWN, 0);
-        this.entityData.define(REANIMATION_FLAG, false);
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("IsReanimated", this.getIsReanimated());
-        nbt.putInt("ReanimationCooldown", this.getReanimationCooldown());
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
-        this.setIsReanimated(nbt.getBoolean("IsReanimated"));
-        this.setReanimationCooldown(nbt.getInt("ReanimationCooldown"));
-    }
-
-    public boolean getIsReanimated() {
-        return this.entityData.get(IS_REANIMATED);
-    }
-
-    public void setIsReanimated(boolean reanimated) {
-        this.entityData.set(IS_REANIMATED, reanimated);
-    }
-
-    public int getReanimationCooldown() {
-        return this.entityData.get(REANIMATION_COOLDOWN);
-    }
-
-    public void setReanimationCooldown(int cooldown) {
-        this.entityData.set(REANIMATION_COOLDOWN, cooldown);
-    }
-
-    public boolean getReanimationFlag() {
-        return this.entityData.get(REANIMATION_FLAG);
-    }
-
-    public void setReanimationFlag(boolean flag) {
-        this.entityData.set(REANIMATION_FLAG, flag);
     }
 
     ////////
@@ -437,6 +386,57 @@ public class FalseCarcass extends PathfinderMob {
     @Override
     protected SoundEvent getDeathSound() {
         return null;
+    }
+
+    ///////////////////
+    // DATA HANDLING //
+    ///////////////////
+
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(IS_REANIMATED, false);
+        this.entityData.define(REANIMATION_COOLDOWN, 0);
+        this.entityData.define(REANIMATION_FLAG, false);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag nbt) {
+        super.addAdditionalSaveData(nbt);
+        nbt.putBoolean("IsReanimated", this.getIsReanimated());
+        nbt.putInt("ReanimationCooldown", this.getReanimationCooldown());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag nbt) {
+        super.readAdditionalSaveData(nbt);
+        this.setIsReanimated(nbt.getBoolean("IsReanimated"));
+        this.setReanimationCooldown(nbt.getInt("ReanimationCooldown"));
+    }
+
+    public boolean getIsReanimated() {
+        return this.entityData.get(IS_REANIMATED);
+    }
+
+    public void setIsReanimated(boolean reanimated) {
+        this.entityData.set(IS_REANIMATED, reanimated);
+    }
+
+    public int getReanimationCooldown() {
+        return this.entityData.get(REANIMATION_COOLDOWN);
+    }
+
+    public void setReanimationCooldown(int cooldown) {
+        this.entityData.set(REANIMATION_COOLDOWN, cooldown);
+    }
+
+    public boolean getReanimationFlag() {
+        return this.entityData.get(REANIMATION_FLAG);
+    }
+
+    public void setReanimationFlag(boolean flag) {
+        this.entityData.set(REANIMATION_FLAG, flag);
     }
 }
 

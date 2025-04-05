@@ -21,8 +21,6 @@ public abstract class BlockItemMixin {
 
     @Shadow protected abstract boolean canPlace(BlockPlaceContext pContext, BlockState pState);
 
-    @Shadow @Nullable public abstract BlockPlaceContext updatePlacementContext(BlockPlaceContext pContext);
-
     @Inject(
             method = "getPlacementState",
             at = @At(value = "HEAD"),
@@ -43,8 +41,8 @@ public abstract class BlockItemMixin {
             cancellable = true
     )
     private void netherexp$preventShrinkWithBetrayed(BlockPlaceContext pContext, CallbackInfoReturnable<InteractionResult> cir) {
-        Player player = this.updatePlacementContext(pContext).getPlayer();
-        Level level = this.updatePlacementContext(pContext).getLevel();
+        Player player = pContext.getPlayer();
+        Level level = pContext.getLevel();
         if (player != null && player.hasEffect(JNEMobEffects.BETRAYED.get())) {
             cir.setReturnValue(InteractionResult.sidedSuccess(level.isClientSide));
         }

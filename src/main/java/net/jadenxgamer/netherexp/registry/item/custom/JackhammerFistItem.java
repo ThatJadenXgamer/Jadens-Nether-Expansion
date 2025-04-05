@@ -168,7 +168,7 @@ public class JackhammerFistItem extends ProjectileWeaponItem implements Vanishab
             if (!level.isClientSide()) {
                 ((ServerLevel) level).sendParticles(JNEParticleTypes.JACKHAMMER.get(), raycastEnd.x, raycastEnd.y, raycastEnd.z, 1, 0.0, 0.0, 0.0, 0.0);
             }
-            user.push(pushBack.x * (0.8 + recoilPushBonus + speedPushBonus), pushBack.y * (0.8 + recoilPushBonus + speedPushBonus), pushBack.z * (0.8 + recoilPushBonus + speedPushBonus));
+            user.push(pushBack.x * (0.6 + recoilPushBonus + speedPushBonus), pushBack.y * (0.6 + recoilPushBonus + speedPushBonus), pushBack.z * (0.6 + recoilPushBonus + speedPushBonus));
             level.playSound(null, user.getX(), user.getY(), user.getZ(), JNESoundEvents.JACKHAMMER_FIST_HIT.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
         }
     }
