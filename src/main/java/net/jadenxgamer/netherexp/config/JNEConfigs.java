@@ -53,6 +53,7 @@ public class JNEConfigs {
     public static Supplier<EctoSlabEmerging> ECTO_SLAB_EMERGING_BEHAVIOR = () -> EctoSlabEmerging.UNBOUNDED_SPEED_ONLY;
     public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE = () -> 40;
     public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED = () -> 10;
+    public static Supplier<Integer> CARCASS_IMMORTAL_COOLDOWN = () -> 1800;
 
     // Game Mechanics
     public static Supplier<NetherFogDistance> NETHER_FOG_DISTANCE = () -> NetherFogDistance.MEDIUM;

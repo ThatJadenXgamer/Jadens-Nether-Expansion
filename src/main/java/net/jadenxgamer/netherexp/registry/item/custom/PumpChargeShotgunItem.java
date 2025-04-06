@@ -163,7 +163,6 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
 
                     Vec3 look = player.getLookAngle();
                     Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
-                    player.push(pushBack.x * (1.75), pushBack.y * (1.75), pushBack.z * (1.75));
 
                     List<Entity> nearbyEntities = level.getEntities(player, new AABB(player.getOnPos()).inflate(5.0, 5.0, 5.0));
                     if (nearbyEntities.stream().filter(entity -> entity instanceof Mob).filter(entity -> ((Mob) entity).isDeadOrDying()).count() >= 10 && player instanceof ServerPlayer serverPlayer) {
@@ -202,9 +201,9 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         AABB aabb = new AABB(raycastStart, raycastEnd);
         EntityHitResult entityHitResult = ProjectileUtil.getEntityHitResult(level, user, raycastStart, raycastEnd, aabb, (entity) -> entity instanceof LivingEntity && entity != user);
         if (entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity livingEntity && livingEntity.isAlive()) {
-            user.push(pushBack.x * (0.75 + recoilPushBonus + chargePushBonus), pushBack.y * (0.75 + recoilPushBonus + chargePushBonus), pushBack.z * (0.75 + recoilPushBonus + chargePushBonus));
+            user.push(pushBack.x * (0.75 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.y * (0.75 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.z * (0.75 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)));
         } else {
-            user.push(pushBack.x * (0.3 + recoilPushBonus + chargePushBonus), pushBack.y * (0.3 + recoilPushBonus + chargePushBonus), pushBack.z * (0.3 + recoilPushBonus + chargePushBonus));
+            user.push(pushBack.x * (0.3 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.y * (0.3 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.z * (0.3 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)));
         }
     }
 

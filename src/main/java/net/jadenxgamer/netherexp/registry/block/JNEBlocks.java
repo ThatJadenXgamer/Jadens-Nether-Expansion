@@ -224,7 +224,7 @@ public class JNEBlocks {
             new LanternBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_LANTERN).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13)));
 
     public static final RegistryObject<Block> ANCIENT_CAMPFIRE = registerBlock("ancient_campfire", () ->
-            new AncientCampfireBlock(false, 0, BlockBehaviour.Properties.copy(Blocks.SOUL_CAMPFIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 13)));
+            new AncientCampfireBlock(false, 0, BlockBehaviour.Properties.copy(Blocks.SOUL_CAMPFIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(AncientCampfireBlock.LIT) ? 13 : 0)));
 
     public static final RegistryObject<Block> ANCIENT_CANDLE = registerBlock("ancient_candle", () ->
             new AncientCandleBlock(BlockBehaviour.Properties.copy(JNEBlocks.SOUL_CANDLE.get()).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(AncientCandleBlock.LIT) ? 7 : 0)));

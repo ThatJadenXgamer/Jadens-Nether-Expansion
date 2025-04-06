@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.config;
 
 import net.jadenxgamer.netherexp.config.enums.*;
+import net.jadenxgamer.netherexp.registry.entity.custom.Carcass;
 import net.minecraftforge.common.ForgeConfigSpec;
 import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
 
@@ -143,6 +144,9 @@ public class JNEForgeConfigs {
         ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED = BUILDER
                 .comment("Defines 1 in specified chance for how often Ecto Slabs emerge from soul swirls if the player has Unbounded Speed")
                 .define("ecto_slab_emerging_with_unbounded_speed", 10);
+        CARCASS_IMMORTAL_COOLDOWN = BUILDER
+                .comment("Immortal Carcasses turn back normal after the specified time in seconds has elapsed")
+                .defineInRange("carcass_immortal_cooldown", 1800, 0, 86400);
     }
 
     private static void registerGameMechanicConfigs(ForgeConfigSpec.Builder BUILDER) {

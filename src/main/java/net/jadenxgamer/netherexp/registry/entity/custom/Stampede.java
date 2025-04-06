@@ -194,7 +194,6 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
             }
             else this.doExorcism();
         }
-        super.aiStep();
         if (this.isAlive()) {
             ItemStack item = this.getItemBySlot(EquipmentSlot.MAINHAND);
             int eating = this.getEatingTime();
@@ -265,7 +264,7 @@ public class Stampede extends Monster implements NeutralMob, ItemSteerable, Sadd
 
     public @NotNull InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (!this.getIsTamed() && stack.is(JNETags.Items.STAMPEDE_FAVORITES) && !this.level().isClientSide) {
+        if (!this.getIsTamed() && stack.is(JNETags.Items.STAMPEDE_FAVORITES) && this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty() && !this.level().isClientSide) {
             this.setItemSlot(EquipmentSlot.MAINHAND, stack.copyWithCount(1));
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);
