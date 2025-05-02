@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "netherexp:ectoplasm_bucket", "required": false },
+    { "id": "netherexp:soul_magma_block", "required": false },
+    { "id": "netherexp:black_ice", "required": false },
+    { "id": "netherexp:thin_black_ice", "required": false },
+    { "id": "netherexp:black_icicle", "required": false },
+    { "id": "netherexp:banshee_powder", "required": false },
+    { "id": "netherexp:banshee_rod", "required": false }
+  	]
+}
