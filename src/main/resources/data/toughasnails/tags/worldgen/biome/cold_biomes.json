@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    { "id": "netherexp:black_ice_glaciers", "required": false }
+    { "id": "minecraft:soul_sand_valley", "required": false }
   	]
 }
