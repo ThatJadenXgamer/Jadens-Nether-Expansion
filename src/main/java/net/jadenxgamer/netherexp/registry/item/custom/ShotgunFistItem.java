@@ -131,11 +131,8 @@ public class ShotgunFistItem extends ProjectileWeaponItem implements Vanishable,
         Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(5));
         AABB aabb = new AABB(raycastStart, raycastEnd);
         EntityHitResult entityHitResult = ProjectileUtil.getEntityHitResult(level, user, raycastStart, raycastEnd, aabb, (entity) -> entity instanceof LivingEntity && entity != user);
-        if (entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity livingEntity && livingEntity.isAlive()) {
-            user.push(pushBack.x * (0.75 + recoilPushBonus), pushBack.y * (0.75 + recoilPushBonus), pushBack.z * (0.75 + recoilPushBonus));
-        } else {
-            user.push(pushBack.x * (0.3 + recoilPushBonus), pushBack.y * (0.3 + recoilPushBonus), pushBack.z * (0.3 + recoilPushBonus));
-        }
+        double basePushBack = entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity livingEntity && livingEntity.isAlive() ? 0.75 : 0.3;
+        user.push(pushBack.x * (basePushBack + recoilPushBonus), pushBack.y * (basePushBack + recoilPushBonus), pushBack.z * (basePushBack + recoilPushBonus));
     }
 
     @Override

@@ -95,7 +95,7 @@ public class JNEEvents {
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
             event.enqueueWork(() -> {
-                SurfaceRulesRegistry.registerSurfaceRule(JNESurfaceRules.init());
+                SurfaceRulesRegistry.registerNetherSurfaceRule(JNESurfaceRules.init(), NetherExp.MOD_ID);
                 JNEPotionRecipe.addInvokerPotionRecipes();
             });
         }
