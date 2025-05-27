@@ -302,10 +302,10 @@
   "block.netherexp.chiseled_quartz_pillar": "雕纹石英柱",
 
   "block.netherexp.silica_sand": "石英砂",
-  "block.netherexp.silica_sandstone": "石英砂石",
-  "block.netherexp.silica_sandstone_slab": "石英砂石台阶",
-  "block.netherexp.silica_sandstone_stairs": "石英砂石楼梯",
-  "block.netherexp.silica_sandstone_wall": "石英砂石墙",
+  "block.netherexp.silica_sandstone": "石英砂岩",
+  "block.netherexp.silica_sandstone_slab": "石英砂岩台阶",
+  "block.netherexp.silica_sandstone_stairs": "石英砂岩楼梯",
+  "block.netherexp.silica_sandstone_wall": "石英砂岩墙",
 
   "block.netherexp.cut_silica_sandstone": "切制石英砂岩",
   "block.netherexp.cut_silica_sandstone_slab": "切制石英砂岩台阶",
