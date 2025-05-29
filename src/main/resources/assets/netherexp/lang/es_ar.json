@@ -188,7 +188,7 @@
   "block.netherexp.sorroweed": "Yerba penosa",
   "block.netherexp.sorrowsquash": "Zapallo penoso",
   "block.netherexp.carved_sorrowsquash": "Zapallo penoso esculpido",
-  "block.netherexp.soul_ghoul_o_lantern": "Zapallo penoso de Halloween",
+  "block.netherexp.ghoul_o_lantern": "Zapallo penoso de Halloween",
   "block.netherexp.sorrowsquash_stem": "Tallo de zapallo penoso",
   "block.netherexp.sorrowsquash_stem_plant": "Planta de tallo de zapallo penoso",
  
@@ -473,7 +473,7 @@
   "advancements.nether.plague_doctor.title": "Pesticida",
   "advancements.nether.plague_doctor.description": "Conseguí todos los efectos de antídoto al mismo tiempo.",
   "advancements.nether.soul_sand_valley.title": "Valle de almas",
-  "advancements.nether.soul_sand_valley.description": "Donde los sustos dan gusto!",
+  "advancements.nether.soul_sand_valley.description": "¡Donde los sustos dan gusto!",
   "advancements.nether.angel_with_a_shotgun.title": "Ángel arcabucero",
   "advancements.nether.angel_with_a_shotgun.description": "Creá una guante-escopeta con un nucleo de escopeta.",
   "advancements.nether.the_nether_is_full.title": "La sangre es combustible, el Nether está lleno",
@@ -661,4 +661,4 @@
   "entity.netherexp.shotgun_pellet": "Perdigón de escopeta",
 
   "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
- }
+}
