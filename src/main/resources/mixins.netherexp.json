@@ -8,9 +8,8 @@
   "client": [
     "entity.LocalPlayerMixin",
     "renderer.BlazeRendererMixin",
-    "renderer.FogRendererMixin",
     "renderer.MagmaCubeRendererMixin",
-    "renderer.ParticleEngineMixin",
+    "renderer.ParticleEngineMixin"
   ],
   "mixins": [
     "block.BaseFireBlockMixin",

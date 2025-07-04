@@ -153,6 +153,9 @@ public class JNEEvents {
                 if (CompatUtil.checkOreganized()) {
                     JNEBuiltinPacks.dpOreganizedCompat(event);
                 }
+                if (CompatUtil.checkAnyTemperatureMod()) {
+                    JNEBuiltinPacks.dpTemperatureModsCompat(event);
+                }
             }
         }
     }
