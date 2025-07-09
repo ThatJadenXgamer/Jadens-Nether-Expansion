@@ -1,9 +1,6 @@
 {
   "replace": false,
   "values": [
-    "netherexp:basaltic_geyser",
-    "netherexp:souled_geyser",
-    "netherexp:blackstonic_geyser",
-    "netherexp:ashen_geyser"
+    "#netherexp:geysers"
   ]
 }

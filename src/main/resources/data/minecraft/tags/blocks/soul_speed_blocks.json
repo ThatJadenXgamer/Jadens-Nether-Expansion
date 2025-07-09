@@ -32,8 +32,6 @@
     "netherexp:fossil_ore",
     "netherexp:fossil_fuel_ore",
     "netherexp:wraithing_lesion",
-    "netherexp:shroomblight",
-    "netherexp:soul_permafrost",
-    "netherexp:soul_ruby_ore"
+    "netherexp:soul_permafrost"
   ]
 }

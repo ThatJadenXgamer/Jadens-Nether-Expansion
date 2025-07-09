@@ -7,7 +7,17 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:soul_swirls"
+          "name": "netherexp:soul_swirls",
+          "functions": [],
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "netherexp:soul_swirls",
+              "properties": {
+                "active": "false"
+              }
+            }
+          ]
         }
       ],
       "conditions": [
@@ -23,4 +33,3 @@
     }
   ]
 }
-

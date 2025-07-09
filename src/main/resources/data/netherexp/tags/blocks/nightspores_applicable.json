@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:twisting_vines",
-    "minecraft:warped_wart_block",
-    "netherexp:decayable_warped_wart_block"
+    "minecraft:warped_wart_block"
   ]
 }

@@ -1,6 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    { "id": "netherexp:antidote", "required": false }
-  	]
-}

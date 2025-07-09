@@ -1,0 +1,11 @@
+{
+  "blocks": "#netherexp:sounds/blackstone",
+
+  "break_sound": "netherexp:block.blackstone.break",
+  "step_sound": "netherexp:block.blackstone.step",
+  "place_sound": "netherexp:block.blackstone.place",
+  "hit_sound": "netherexp:block.blackstone.hit",
+  "fall_sound": "netherexp:block.blackstone.fall",
+  "volume": 1.0,
+  "pitch": 1.0
+}

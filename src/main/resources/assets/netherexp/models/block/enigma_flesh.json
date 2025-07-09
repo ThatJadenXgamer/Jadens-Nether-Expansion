@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "netherexp:block/enigma_flesh_top",
-    "side": "netherexp:block/enigma_flesh"
-  }
-}

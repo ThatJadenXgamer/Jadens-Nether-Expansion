@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "netherexp:black_ice_glaciers",
+  "spawners": {
+    "type": "netherexp:apparition",
+    "weight": 30,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

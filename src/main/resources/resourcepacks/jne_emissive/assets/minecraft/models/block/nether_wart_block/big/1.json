@@ -1,7 +1,0 @@
-{
-  "parent": "elysium:block/emissive_block_12",
-  "textures": {
-    "base": "minecraft:block/nether_wart_block/big/1",
-    "glow": "minecraft:block/nether_wart_block/big/1_glow"
-  }
-}

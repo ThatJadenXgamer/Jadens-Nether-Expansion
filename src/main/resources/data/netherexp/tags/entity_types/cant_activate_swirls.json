@@ -3,10 +3,7 @@
   "values": [
     "netherexp:wisp",
     "netherexp:apparition",
-    "netherexp:vessel",
-    "netherexp:ecto_slab",
-    "netherexp:banshee",
-    "netherexp:stampede",
+    "#netherexp:possessed",
     "netherexp:carcass"
   ]
 }

@@ -388,8 +388,8 @@
   "subtitles.block.brazier_chest.open": "Brazier Chest opens",
   "subtitles.block.brazier_chest.close": "Brazier Chest closes",
   "subtitles.block.brazier_chest.lit": "Treacherous screeches",
-  "subtitles.block.treacherous_candle.victory": "Treacherous Candle victory choir",
-  "subtitles.block.treacherous_candle.defeat": "Treacherous Candle defeat choir",
+  "subtitles.block.treacherous_candle.victory": "Treacherous Candle choirs victory",
+  "subtitles.block.treacherous_candle.defeat": "Treacherous Candle humiliates your defeat",
 
   "subtitles.entity.warphopper.ambient": "Warphopper chirps",
   "subtitles.entity.warphopper.hurt": "Warphopper hurts",
@@ -659,5 +659,16 @@
   "subtitles.item.jackhammer_fist.pull": "Jackhammer-Fist winding-up",
   "entity.netherexp.shotgun_pellet": "Shotgun Pellet",
 
-  "itemGroup.netherexp.netherexp_tab": "Jaden's Nether Expansion"
+  "subtitles.block.treacherous_candle.spawn": "Treacherous Candle spawns mob",
+  "subtitles.block.treacherous_candle.round": "Treacherous Candle warns next wave",
+
+  "itemGroup.netherexp.jne_grieving_grove": "Jaden's Nether Expansion - Grieving Grove",
+  "itemGroup.netherexp.jne_plume_bowels": "Jaden's Nether Expansion - Plume Bowels",
+  "itemGroup.netherexp.jne_quartz_chasm": "Jaden's Nether Expansion - Quartz Chasm",
+  "itemGroup.netherexp.jne_exhaust_mire": "Jaden's Nether Expansion - Exhaust Mire",
+  "itemGroup.netherexp.jne_basalt_deltas": "Jaden's Nether Expansion - Basalt Deltas",
+  "itemGroup.netherexp.jne_warped_forest": "Jaden's Nether Expansion - Crimson Forest",
+  "itemGroup.netherexp.jne_crimson_forest": "Jaden's Nether Expansion - Warped Forest",
+  "itemGroup.netherexp.jne_soul_sand_valley": "Jaden's Nether Expansion - Soul Sand Valley",
+  "itemGroup.netherexp.jne_nether_wastes": "Jaden's Nether Expansion - Nether Wastes"
 }

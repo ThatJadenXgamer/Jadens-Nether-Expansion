@@ -6,52 +6,43 @@
     "minecraft:crimson_forest",
     "minecraft:warped_forest",
     {
-      "id": "netherexp:black_ice_glaciers",
-      "required": false
+      "id": "netherexp:black_ice_glaciers", "required": false
     },
     {
-      "id": "cinderscapes:ashy_shoals",
-      "required": false
+      "id": "netherexp:sorrowsquash_pastures", "required": false
     },
     {
-      "id": "cinderscapes:blackstone_shales",
-      "required": false
+      "id": "cinderscapes:ashy_shoals", "required": false
     },
     {
-      "id": "cinderscapes:luminous_grove",
-      "required": false
+      "id": "cinderscapes:blackstone_shales", "required": false
     },
     {
-      "id": "gardens_of_the_dead:soulblight_forest",
-      "required": false
+      "id": "cinderscapes:luminous_grove", "required": false
     },
     {
-      "id": "soulfulnether:fright_forest",
-      "required": false
+      "id": "gardens_of_the_dead:soulblight_forest", "required": false
     },
     {
-      "id": "regions_unexplored:mycotoxic_undergrowth",
-      "required": false
+      "id": "soulfulnether:fright_forest", "required": false
     },
     {
-      "id": "regions_unexplored:glistering_meadow",
-      "required": false
+      "id": "regions_unexplored:mycotoxic_undergrowth", "required": false
     },
     {
-      "id": "regions_unexplored:infernal_holt",
-      "required": false
+      "id": "regions_unexplored:glistering_meadow", "required": false
     },
     {
-      "id": "regions_unexplored:blackstone_basin",
-      "required": false
+      "id": "regions_unexplored:infernal_holt", "required": false
     },
     {
-      "id": "biomesoplenty:crystalline_chasm",
-      "required": false
+      "id": "regions_unexplored:blackstone_basin", "required": false
     },
     {
-      "id": "biomesoplenty:undergrowth",
-      "required": false
+      "id": "biomesoplenty:crystalline_chasm", "required": false
+    },
+    {
+      "id": "biomesoplenty:undergrowth", "required": false
     }
   ]
 }

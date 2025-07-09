@@ -3,8 +3,7 @@
   "values": [
     "minecraft:soul_sand_valley",
     {
-      "id": "cinderscapes:ashy_shales",
-      "required": false
+      "id": "cinderscapes:ashy_shales", "required": false
     }
   ]
 }

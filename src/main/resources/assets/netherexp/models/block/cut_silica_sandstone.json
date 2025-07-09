@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "netherexp:block/silica_sandstone_top",
-    "side": "netherexp:block/cut_silica_sandstone"
-  }
-}

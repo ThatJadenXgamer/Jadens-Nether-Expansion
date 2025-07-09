@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "netherexp:claret_slab",
-    "netherexp:smokestalk_slab"
+    "netherexp:claret_slab"
   ]
 }

@@ -3,8 +3,7 @@
   "values": [
     "minecraft:basalt_deltas",
     {
-      "id": "cinderscapes:blackstone_shales",
-      "required": false
+      "id": "cinderscapes:blackstone_shales", "required": false
     }
   ]
 }

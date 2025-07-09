@@ -1,7 +1,0 @@
-{
-  "type": "netherexp:spawn_costs",
-  "biomes": "gardens_of_the_dead:soulblight_forest",
-  "entity_type": "netherexp:vessel",
-  "energy_budget": 0.8,
-  "charge": 1.0
-}
