@@ -22,6 +22,12 @@ public class RegistryHelper {
         return toReturn;
     }
 
+    public static <T extends Block> Supplier<T> registerItemPropertiesBlock(String name, Supplier<T> block, Item.Properties properties) {
+        Supplier<T> toReturn = JNEBlocks.BLOCKS.register(name, block);
+        JNEItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), properties));
+        return toReturn;
+    }
+
     public static <T extends Block> Supplier<T> registerBlockWithoutItem(String name, Supplier<T> block) {
         return JNEBlocks.BLOCKS.register(name, block);
     }

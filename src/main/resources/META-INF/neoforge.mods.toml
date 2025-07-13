@@ -12,6 +12,7 @@ description = '''
 JNE is a large-scale nether mod which reimagines and expands upon every single aspect of the nether dimension.
 '''
 logoFile = "netherexp.png"
+#enumExtensions="META-INF/enumextensions.json"
 
 [[dependencies.netherexp]]
 modId = "neoforge"

@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "netherexp:artifact",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": {
+        "class": "net/jadenxgamer/netherexp/core/misc/JNEEnumExtensions",
+        "field": "ARTIFACT_ENUM_PROXY"
+      }
+    }
+  ]
+}

@@ -8,11 +8,11 @@
 -JNE was rewritten from the ground-up for this port. expect many performance improvements! -X
 
 ### Changes
--Soul Magma Block texture has received a glow-up, it now tiles much better -X
+-Soul Magma Block texture has received a glow-up, it now tiles much better
 
 -Soul Magma also emits new particles if you sprint on it to convey that is what's damaging you -X
 
--Ancient Wax Block texture has recieved a glow-up, no longer looks like bricks -X
+-Ancient Wax Block texture has received a glow-up, no longer looks like bricks -X
 
 -Shotgun-Fist now no longer uses wraithing flesh as ammo but rather the new Shotgun-Shells instead -X
 

@@ -3,13 +3,11 @@ package net.jadenxgamer.netherexp.core.block;
 import com.google.common.collect.ImmutableList;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
-import net.jadenxgamer.netherexp.util.ParticleHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -56,7 +54,7 @@ public class SoulCandleBlock extends AbstractJNECandleBlock {
     public static final ToIntFunction<BlockState> STATE_TO_LUMINANCE = state -> state.getValue(LIT) ? 3 * state.getValue(CANDLES) : 0;
 
     public SoulCandleBlock(Properties properties) {
-        super(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME, JNESoundEvents.Blocks.SOUL_CANDLE_AMBIENT, properties);
+        super(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME, JNESoundEvents.SOUL_CANDLE_AMBIENT, properties);
         this.registerDefaultState(this.defaultBlockState().setValue(CANDLES, 1).setValue(LIT, false).setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH));
         CANDLE_PARTICLE_OFFSETS.put(1, ImmutableList.of(new Vec3(0.5, 0.75, 0.5)));
         CANDLE_PARTICLE_OFFSETS.put(2, ImmutableList.of(new Vec3(0.3125, 0.625, 0.3125), new Vec3(0.6875, 0.75, 0.6875)));
@@ -131,7 +129,7 @@ public class SoulCandleBlock extends AbstractJNECandleBlock {
 
     @Override
     protected boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
-        if (context.isSecondaryUseActive() && context.getItemInHand().is(this.asItem()) && state.getValue(CANDLES) < 3) {
+        if (!context.isSecondaryUseActive() && context.getItemInHand().is(this.asItem()) && state.getValue(CANDLES) < 3) {
             return true;
         }
         return super.canBeReplaced(state, context);

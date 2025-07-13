@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.core.block;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.misc.JNETags;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.minecraft.core.BlockPos;
@@ -32,7 +33,8 @@ public class SoulGlassBlock extends LightableBlock {
         if (entity instanceof LivingEntity living) {
 
             if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(living.level(), Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
-            entity.makeStuckInBlock(state, new Vec3(0.6, 0.5, 0.6));
+            double slowdown = JNEConfigs.SOUL_GLASS_MOVEMENT_SLOWDOWN.get();
+            entity.makeStuckInBlock(state, new Vec3(slowdown, slowdown, slowdown));
 
             if (level.isClientSide()) {
                 RandomSource random = level.random;

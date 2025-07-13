@@ -1,8 +1,8 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"textures": {
-		"0": "netherexp:block/bone_rod",
-		"particle": "netherexp:block/bone_rod"
+		"0": "netherexp:block/bone_spike",
+		"particle": "netherexp:block/bone_spike"
 	},
 	"elements": [
 		{

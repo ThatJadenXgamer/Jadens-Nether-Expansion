@@ -1,12 +1,18 @@
 package net.jadenxgamer.netherexp.event;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
+import net.jadenxgamer.netherexp.registry.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID)
@@ -28,6 +34,21 @@ public class JNEEvents {
         @SubscribeEvent
         public static void buildTabContents(BuildCreativeModeTabContentsEvent event) {
             JNECreativeModeTabs.addToExistingTabs(event);
+        }
+
+        @SubscribeEvent
+        public static void datapackRegistry(DataPackRegistryEvent.NewRegistry event) {
+            event.dataPackRegistry(JNERegistries.WISP_ARCHAEOLOGY, WispArchaeology.CODEC);
+        }
+
+        @SubscribeEvent
+        public static void registerAttributes(EntityAttributeCreationEvent event) {
+            JNEEntityType.registerAttributes(event);
+        }
+
+        @SubscribeEvent
+        public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+            JNEEntityType.registerSpawnPlacements(event);
         }
     }
 }

@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "netherexp:black_ice_glaciers",
-  "features": "netherexp:soul_sand_valley/ecto_soul_sand",
-  "step": "vegetal_decoration"
-}

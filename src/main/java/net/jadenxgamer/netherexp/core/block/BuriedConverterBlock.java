@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.core.block;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -17,16 +16,17 @@ import java.util.function.Supplier;
 public class BuriedConverterBlock extends DropExperienceBlock {
 
     private final Supplier<Block> convertsTo;
+    private final Supplier<Double> conversionOdds;
 
-    public BuriedConverterBlock(IntProvider xpRange, Supplier<Block> convertsTo, Properties properties) {
+    public BuriedConverterBlock(IntProvider xpRange, Supplier<Block> convertsTo, Supplier<Double> conversionOdds, Properties properties) {
         super(xpRange, properties);
         this.convertsTo = convertsTo;
+        this.conversionOdds = conversionOdds;
     }
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        int conversionOdds = random.nextInt(50);
-        if (conversionOdds != 0) return;
+        if (random.nextDouble() > conversionOdds.get()) return;
 
         int buried = 0;
         Direction[] directions = Direction.values();
@@ -37,7 +37,7 @@ public class BuriedConverterBlock extends DropExperienceBlock {
         }
         if (buried >= 6) {
             level.setBlock(pos, convertsTo.get().defaultBlockState(), Block.UPDATE_ALL);
-            level.playSound(null, pos, JNESoundEvents.Interactions.FOSSILIZATION.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, pos, JNESoundEvents.FOSSILIZATION.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }
 }

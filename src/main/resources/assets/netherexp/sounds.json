@@ -59,7 +59,7 @@
     ]
   },
 
-  "block.basalt_bricks.break": {
+  "block.polished_basalt_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
       "netherexp:block/basalt_bricks/break1",
@@ -69,17 +69,7 @@
       "netherexp:block/basalt_bricks/break5"
     ]
   },
-  "block.basalt_bricks.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
-    ]
-  },
-  "block.basalt_bricks.place": {
+  "block.polished_basalt_bricks.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
       "netherexp:block/basalt_bricks/break1",
@@ -87,25 +77,6 @@
       "netherexp:block/basalt_bricks/break3",
       "netherexp:block/basalt_bricks/break4",
       "netherexp:block/basalt_bricks/break5"
-    ]
-  },
-  "block.basalt_bricks.hit": {
-    "subtitle": "subtitles.block.generic.hit",
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
-    ]
-  },
-  "block.basalt_bricks.fall": {
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
     ]
   },
 
@@ -180,6 +151,24 @@
       "netherexp:block/soul_slate_bricks/step5"
     ]
   },
+  "block.soul_swirls.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/soul_swirls/break1",
+      "netherexp:block/soul_swirls/break2",
+      "netherexp:block/soul_swirls/break3",
+      "netherexp:block/soul_swirls/break4"
+    ]
+  },
+  "block.soul_swirls.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/soul_swirls/break1",
+      "netherexp:block/soul_swirls/break2",
+      "netherexp:block/soul_swirls/break3",
+      "netherexp:block/soul_swirls/break4"
+    ]
+  },
 
   "block.netherrack_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
@@ -210,16 +199,6 @@
       }
     ]
   },
-  "block.netherrack_bricks.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
-    ]
-  },
   "block.netherrack_bricks.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
@@ -247,27 +226,6 @@
         "name": "netherexp:block/netherrack_bricks/break6",
         "volume": 0.85
       }
-    ]
-  },
-  "block.netherrack_bricks.hit": {
-    "subtitle": "subtitles.block.generic.hit",
-    "sounds": [
-      "block/netherrack/step1",
-      "block/netherrack/step2",
-      "block/netherrack/step3",
-      "block/netherrack/step4",
-      "block/netherrack/step5",
-      "block/netherrack/step6"
-    ]
-  },
-  "block.netherrack_bricks.fall": {
-    "sounds": [
-      "block/netherrack/step1",
-      "block/netherrack/step2",
-      "block/netherrack/step3",
-      "block/netherrack/step4",
-      "block/netherrack/step5",
-      "block/netherrack/step6"
     ]
   },
 
@@ -642,8 +600,19 @@
     ]
   },
 
-  "block.cerebrage_stem.break": {
+  "block.cerebrage_stem.place": {
     "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/cerebrage/stembreak1",
+      "netherexp:block/cerebrage/stembreak2",
+      "netherexp:block/cerebrage/stembreak3",
+      "netherexp:block/cerebrage/stembreak4",
+      "netherexp:block/cerebrage/stembreak5"
+    ]
+  },
+
+  "block.cerebrage_stem.break": {
+    "subtitle": "subtitles.block.generic.break",
     "sounds": [
       "netherexp:block/cerebrage/stembreak1",
       "netherexp:block/cerebrage/stembreak2",
@@ -684,13 +653,33 @@
     ]
   },
 
-
-
-  "item.gold_ingot.gilding": {
-    "subtitle": "subtitles.item.gold_ingot.gilding",
+  "block.fossil_ore.break": {
+    "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "netherexp:block/gilding/gilding1",
-      "netherexp:block/gilding/gilding2"
+      "netherexp:block/fossil_ore/break1",
+      "netherexp:block/fossil_ore/break2",
+      "netherexp:block/fossil_ore/break3",
+      "netherexp:block/fossil_ore/break4",
+      "netherexp:block/fossil_ore/break5"
+    ]
+  },
+  "block.fossil_ore.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/fossil_ore/break1",
+      "netherexp:block/fossil_ore/break2",
+      "netherexp:block/fossil_ore/break3",
+      "netherexp:block/fossil_ore/break4",
+      "netherexp:block/fossil_ore/break5"
+    ]
+  },
+
+
+  "item.gold.gilding": {
+    "subtitle": "subtitles.item.gold.gilding",
+    "sounds": [
+      "netherexp:item/gilding/gilding1",
+      "netherexp:item/gilding/gilding2"
     ]
   },
   "block.soul_slate.solidifying": {
@@ -788,6 +777,13 @@
       "netherexp:block/soul_swirls/boost3"
     ]
   },
+  "block.soul_swirls.deactivate": {
+    "subtitle": "subtitles.block.soul_swirls.deactivate",
+    "sounds": [
+      "netherexp:block/soul_swirls/unboost1",
+      "netherexp:block/soul_swirls/unboost2"
+    ]
+  },
 
   "block.brazier_chest.open": {
     "subtitle": "subtitles.block.brazier_chest.open",
@@ -872,6 +868,27 @@
     "sounds": [
       "netherexp:mob/wisp/hurt1",
       "netherexp:mob/wisp/hurt2"
+    ]
+  },
+  "entity.wisp.death": {
+    "subtitle": "subtitles.entity.wisp.death",
+    "sounds": [
+      "netherexp:mob/wisp/hurt1",
+      "netherexp:mob/wisp/hurt2"
+    ]
+  },
+  "entity.wisp.bottle_fill": {
+    "subtitle": "subtitles.item.bottle.fill_wisp",
+    "sounds": [
+      "netherexp:mob/wisp/bottle_fill1",
+      "netherexp:mob/wisp/bottle_fill2"
+    ]
+  },
+  "entity.wisp.bottle_empty": {
+    "subtitle": "subtitles.item.bottle.empty",
+    "sounds": [
+      "netherexp:mob/wisp/bottle_empty1",
+      "netherexp:mob/wisp/bottle_empty2"
     ]
   },
 

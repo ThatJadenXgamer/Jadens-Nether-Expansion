@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "netherexp:black_ice_glaciers",
-  "features": "netherexp:soul_sand_valley/black_ice_glaciers/thin_black_ice",
-  "step": "lakes"
-}

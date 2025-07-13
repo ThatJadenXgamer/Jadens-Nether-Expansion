@@ -54,7 +54,7 @@
   "item.netherexp.music_disc_buckshot_wonderland.desc": "Shroomaniac - Buckshot Wonderland",
 
   "item.netherexp.antidote.inactive_tooltip": "To Activate needs to be Brewed With:",
-  "item.netherexp.non_consumable.tooltip": "Non-consumable Artifact",
+  "item.netherexp.non_consumable.tooltip": "Non-consumable Item",
 
   "item.netherexp.antidote": "Antidote",
   "item.netherexp.antidote.effect.": "Uncraftable Antidote",
@@ -337,7 +337,7 @@
   "block.netherexp.white_ash_block": "White Ash Block",
 
   "block.netherexp.bone_cortical": "Bone Cortical",
-  "block.netherexp.bone_rod": "Bone Rod",
+  "block.netherexp.bone_spike": "Bone Rod",
   "block.netherexp.bone_fence": "Bone Fence",
   "block.netherexp.skeleton_skull_candle": "Skeleton Skull Candle",
   "block.netherexp.soul_skeleton_skull_candle": "Soul Skeleton Skull Candle",
@@ -370,7 +370,6 @@
   "block.netherexp.potted_warped_sporeshroom": "Potted Warped Sporeshroom",
   "block.netherexp.potted_soul_torchflower": "Potted Soul Torchflower",
 
-  "subtitles.item.gold_ingot.gilding": "Block gilded",
   "subtitles.block.ectoplasm.freeze": "Ectoplasm Freezes",
   "subtitles.block.ectoplasm.whispering": "Ectoplasm whispering gibberish",
   "subtitles.block.soul_slate.solidifying": "Soul Sand Solidifies to Soul Slate",
@@ -661,6 +660,9 @@
 
   "subtitles.block.treacherous_candle.spawn": "Treacherous Candle spawns mob",
   "subtitles.block.treacherous_candle.round": "Treacherous Candle warns next wave",
+  "subtitles.block.soul_swirls.deactivate": "Soul Swirls deactivate",
+  "subtitles.item.bottle.fill_wisp": "Wisp captured",
+  "subtitles.item.gold.gilding": "Gold gilding",
 
   "itemGroup.netherexp.jne_grieving_grove": "Jaden's Nether Expansion - Grieving Grove",
   "itemGroup.netherexp.jne_plume_bowels": "Jaden's Nether Expansion - Plume Bowels",

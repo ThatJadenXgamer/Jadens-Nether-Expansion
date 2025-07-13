@@ -30,6 +30,7 @@ public class LightableBlock extends Block {
     public LightableBlock(Supplier<SimpleParticleType> particle, Properties properties) {
         super(properties);
         this.particle = particle;
+        this.registerDefaultState(this.defaultBlockState().setValue(LIT, false));
     }
 
     @Override

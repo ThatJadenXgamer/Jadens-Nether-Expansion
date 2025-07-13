@@ -44,7 +44,7 @@ public class ImmunityEffect extends IncurableEffect {
         if (entity.hasEffect(getEffectImmuneTo())) {
             int otherDuration = entity.getEffect(Holder.direct(this)).getDuration();
             int otherAmplifier = entity.getEffect(Holder.direct(this)).getAmplifier();
-            entity.level().playSound(null, entity.blockPosition(), JNESoundEvents.Items.ANTIDOTE_NEGATE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+            entity.level().playSound(null, entity.blockPosition(), JNESoundEvents.ANTIDOTE_NEGATE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
             entity.removeEffect(getEffectImmuneTo());
             entity.removeEffect(Holder.direct(this));
             entity.addEffect(new MobEffectInstance(Holder.direct(this), (otherDuration - (600 * otherAmplifier)), amplifier));
