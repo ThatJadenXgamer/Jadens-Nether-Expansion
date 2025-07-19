@@ -109,7 +109,7 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
         } else {
             if (!canGetBored()) return;
 
-            if (random.nextDouble() < JNEConfigs.WISP_BOREDOM_ODDS.get() && this.getBored() < 6) {
+            if (random.nextDouble() < JNEConfigs.WISP_BOREDOM_CHANCE.get() && this.getBored() < 6) {
                 ++boredCounter;
             }
         }

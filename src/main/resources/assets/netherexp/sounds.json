@@ -639,8 +639,8 @@
   "block.ectoplasm.freeze": {
     "subtitle": "subtitles.block.ectoplasm.freeze",
     "sounds": [
-      "netherexp:block/soul_slate/solidify1",
-      "netherexp:block/soul_slate/solidify2"
+      "netherexp:block/ectoplasm/freeze1",
+      "netherexp:block/ectoplasm/freeze2"
     ]
   },
   "block.ectoplasm.whispering": {
@@ -671,6 +671,23 @@
       "netherexp:block/fossil_ore/break3",
       "netherexp:block/fossil_ore/break4",
       "netherexp:block/fossil_ore/break5"
+    ]
+  },
+
+  "block.lesion_block.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/lesion_block/break1",
+      "netherexp:block/lesion_block/break2",
+      "netherexp:block/lesion_block/break3"
+    ]
+  },
+  "block.lesion_block.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/lesion_block/break1",
+      "netherexp:block/lesion_block/break2",
+      "netherexp:block/lesion_block/break3"
     ]
   },
 
@@ -782,6 +799,21 @@
     "sounds": [
       "netherexp:block/soul_swirls/unboost1",
       "netherexp:block/soul_swirls/unboost2"
+    ]
+  },
+  "block.lesion_block.harvest": {
+    "subtitle": "subtitles.block.lesion_block.harvest",
+    "sounds": [
+      "netherexp:block/lesion_block/harvest1",
+      "netherexp:block/lesion_block/harvest2"
+    ]
+  },
+  "block.lesion_block.grows": {
+    "subtitle": "subtitles.block.lesion_block.grows",
+    "sounds": [
+      "netherexp:block/lesion_block/break1",
+      "netherexp:block/lesion_block/break2",
+      "netherexp:block/lesion_block/break3"
     ]
   },
 

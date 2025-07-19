@@ -16,6 +16,11 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> FOSSILIZATION = registerSoundEvents("block.fossilization");
     public static final Supplier<SoundEvent> SOUL_SWIRLS_BOOST = registerSoundEvents("block.soul_swirls.boost");
     public static final Supplier<SoundEvent> SOUL_SWIRLS_DEACTIVATE = registerSoundEvents("block.soul_swirls.deactivate");
+    public static final Supplier<SoundEvent> LESION_BLOCK_HARVEST = registerSoundEvents("block.lesion_block.harvest");
+    public static final Supplier<SoundEvent> LESION_BLOCK_GROWS = registerSoundEvents("block.lesion_block.grows");
+    public static final Supplier<SoundEvent> SPORESHROOM_TRAMPOLINED = registerSoundEvents("block.sporeshroom.trampolined");
+    public static final Supplier<SoundEvent> ECTOPLASM_FREEZE = registerSoundEvents("block.ectoplasm.freeze");
+    public static final Supplier<SoundEvent> THIN_BLACK_ICE_CRACKING = registerSoundEvents("block.thin_black_ice.cracking");
 
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
 
@@ -49,13 +54,13 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> SOUL_CANDLE_FALL = registerSoundEvents("block.soul_candle.fall");
     public static final Supplier<SoundEvent> SOUL_CANDLE_AMBIENT = registerSoundEvents("block.soul_candle.ambient");
 
-    public static final Supplier<SoundEvent> SUSPICIOUS_SOUL_SAND_PLACE = registerSoundEvents("block.suspicious_soul_sand.break");
+    public static final Supplier<SoundEvent> SUSPICIOUS_SOUL_SAND_PLACE = registerSoundEvents("block.suspicious_soul_sand.place");
     public static final Supplier<SoundEvent> SUSPICIOUS_SOUL_SAND_BREAK = registerSoundEvents("block.suspicious_soul_sand.break");
 
-    public static final Supplier<SoundEvent> FOSSIL_ORE_PLACE = registerSoundEvents("block.fossil_ore.break");
+    public static final Supplier<SoundEvent> FOSSIL_ORE_PLACE = registerSoundEvents("block.fossil_ore.place");
     public static final Supplier<SoundEvent> FOSSIL_ORE_BREAK = registerSoundEvents("block.fossil_ore.break");
 
-    public static final Supplier<SoundEvent> SOUL_MAGMA_BLOCK_PLACE = registerSoundEvents("block.soul_magma_block.break");
+    public static final Supplier<SoundEvent> SOUL_MAGMA_BLOCK_PLACE = registerSoundEvents("block.soul_magma_block.place");
     public static final Supplier<SoundEvent> SOUL_MAGMA_BLOCK_BREAK = registerSoundEvents("block.soul_magma_block.break");
 
     public static final Supplier<SoundEvent> NETHERRACK_BRICKS_PLACE = registerSoundEvents("block.netherrack_bricks.place");
@@ -66,6 +71,18 @@ public class JNESoundEvents {
 
     public static final Supplier<SoundEvent> CEREBRAGE_STEM_PLACE = registerSoundEvents("block.cerebrage_stem.place");
     public static final Supplier<SoundEvent> CEREBRAGE_STEM_BREAK = registerSoundEvents("block.cerebrage_stem.break");
+
+    public static final Supplier<SoundEvent> LESION_BLOCK_PLACE = registerSoundEvents("block.lesion_block.place");
+    public static final Supplier<SoundEvent> LESION_BLOCK_BREAK = registerSoundEvents("block.lesion_block.break");
+
+    public static final Supplier<SoundEvent> QUARTZ_BLOCK_PLACE = registerSoundEvents("block.quartz_block.place");
+    public static final Supplier<SoundEvent> QUARTZ_BLOCK_BREAK = registerSoundEvents("block.quartz_block.break");
+
+    public static final Supplier<SoundEvent> BLACK_ICE_PLACE = registerSoundEvents("block.black_ice.place");
+    public static final Supplier<SoundEvent> BLACK_ICE_BREAK = registerSoundEvents("block.black_ice.break");
+    public static final Supplier<SoundEvent> BLACK_ICE_STEP = registerSoundEvents("block.black_ice.step");
+    public static final Supplier<SoundEvent> BLACK_ICE_HIT = registerSoundEvents("block.black_ice.hit");
+    public static final Supplier<SoundEvent> BLACK_ICE_FALL = registerSoundEvents("block.black_ice.fall");
 
     private static Supplier<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(NetherExp.id(name)));

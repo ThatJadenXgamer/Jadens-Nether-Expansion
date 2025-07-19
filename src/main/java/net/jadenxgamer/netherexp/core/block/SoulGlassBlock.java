@@ -32,7 +32,7 @@ public class SoulGlassBlock extends LightableBlock {
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity living) {
 
-            if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(living.level(), Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
+            if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
             double slowdown = JNEConfigs.SOUL_GLASS_MOVEMENT_SLOWDOWN.get();
             entity.makeStuckInBlock(state, new Vec3(slowdown, slowdown, slowdown));
 

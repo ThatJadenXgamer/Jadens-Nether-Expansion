@@ -45,4 +45,16 @@ public class JNESoundType {
     public static final SoundType CEREBRAGE_STEM = new SoundType(1.0f, 1.0f,
             JNESoundEvents.CEREBRAGE_STEM_BREAK.get(), SoundEvents.NETHER_WOOD_STEP, JNESoundEvents.CEREBRAGE_STEM_PLACE.get(),
             SoundEvents.NETHER_WOOD_HIT, SoundEvents.NETHER_WOOD_FALL);
+
+    public static final SoundType LESION_BLOCK = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.LESION_BLOCK_BREAK.get(), SoundEvents.MUD_STEP, JNESoundEvents.LESION_BLOCK_PLACE.get(),
+            SoundEvents.MUD_HIT, SoundEvents.MUD_FALL);
+
+    public static final SoundType QUARTZ_BLOCK = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.QUARTZ_BLOCK_BREAK.get(), SoundEvents.NETHER_ORE_STEP, JNESoundEvents.QUARTZ_BLOCK_PLACE.get(),
+            SoundEvents.NETHER_ORE_HIT, SoundEvents.NETHER_ORE_FALL);
+
+    public static final SoundType BLACK_ICE = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.BLACK_ICE_BREAK.get(), JNESoundEvents.BLACK_ICE_STEP.get(), JNESoundEvents.BLACK_ICE_PLACE.get(),
+            JNESoundEvents.BLACK_ICE_HIT.get(), JNESoundEvents.BLACK_ICE_FALL.get());
 }

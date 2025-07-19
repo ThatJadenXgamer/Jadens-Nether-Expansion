@@ -21,6 +21,11 @@ public class JNEParticleTypes {
     public static final Supplier<SimpleParticleType> SMALL_SOUL_FIRE_FLAME = PARTICLE_TYPES.register("small_soul_fire_flame", () -> new SimpleParticleType(false));
     public static final Supplier<ParticleType<ColorParticleOption>> IMMUNITY_EFFECT = RegistryHelper.registerColorParticle("immunity_effect", false);
     public static final Supplier<LodestoneWorldParticleType> SOUL_MAGMA = PARTICLE_TYPES.register("soul_magma", LodestoneWorldParticleType::new);
+    public static final Supplier<SimpleParticleType> CRIMSON_SMOG = PARTICLE_TYPES.register("crimson_smog", () -> new SimpleParticleType(false));
+    public static final Supplier<SimpleParticleType> WARPED_SMOG = PARTICLE_TYPES.register("warped_smog", () -> new SimpleParticleType(false));
+    public static final Supplier<SimpleParticleType> BLACK_SMOKE = PARTICLE_TYPES.register("black_smoke", () -> new SimpleParticleType(false));
+    public static final Supplier<SimpleParticleType> WHITE_SMOKE = PARTICLE_TYPES.register("white_smoke", () -> new SimpleParticleType(false));
+    public static final Supplier<SimpleParticleType> BLACK_FLAKE = PARTICLE_TYPES.register("black_flake", () -> new SimpleParticleType(false));
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

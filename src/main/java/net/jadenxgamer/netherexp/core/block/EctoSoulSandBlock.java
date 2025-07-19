@@ -62,7 +62,7 @@ public class EctoSoulSandBlock extends SoulSandBlock {
             if (!player.getAbilities().instabuild) stack.hurtAndBreak(JNEConfigs.ECTO_SOUL_SAND_BRUSH_DAMAGE.get(), player, LivingEntity.getSlotForHand(hand));
             ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
 
-            if (level instanceof ServerLevel serverLevel && level.random.nextDouble() < JNEConfigs.WISP_EMERGING_ODDS_BRUSH.get()) {
+            if (level instanceof ServerLevel serverLevel && level.random.nextDouble() < JNEConfigs.WISP_EMERGING_CHANCE_BRUSH.get()) {
                 spawnWisp(serverLevel, findAirNeighbor(serverLevel, pos), level.random);
                 setSusSoulSand(serverLevel, pos);
             }
@@ -81,7 +81,7 @@ public class EctoSoulSandBlock extends SoulSandBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextDouble() > JNEConfigs.WISP_EMERGING_ODDS.get() || !level.getBlockState(pos.below()).isFaceSturdy(level, pos, Direction.UP)) return;
+        if (random.nextDouble() > JNEConfigs.WISP_EMERGING_CHANCE.get() || !level.getBlockState(pos.below()).isFaceSturdy(level, pos, Direction.UP)) return;
         spawnWisp(level, findAirNeighbor(level, pos), level.random);
         setSusSoulSand(level, pos);
     }

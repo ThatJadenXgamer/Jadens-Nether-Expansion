@@ -11,10 +11,13 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BrushableBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
+
+import javax.annotation.Nullable;
 
 public class SuspiciousSoulSandBlock extends BrushableBlock {
 
@@ -24,10 +27,15 @@ public class SuspiciousSoulSandBlock extends BrushableBlock {
         super(Blocks.SOUL_SAND, SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED, properties);
     }
 
+    @Nullable
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new SuspiciousSoulSandBlockEntity(pos, state);
+    }
+
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
-        if (state.getValue(PERSISTENT) && random.nextDouble() > JNEConfigs.SUSPICIOUS_SOUL_SAND_DECAY_ODDS.get()) return;
+        if (state.getValue(PERSISTENT) && random.nextDouble() > JNEConfigs.SUSPICIOUS_SOUL_SAND_DECAY_CHANCE.get()) return;
 
         SuspiciousSoulSandBlockEntity blockEntity = (SuspiciousSoulSandBlockEntity) level.getBlockEntity(pos);
         if (blockEntity.getDecayCounter() >= JNEConfigs.SUSPICIOUS_SOUL_SAND_MAX_DECAY.get()) {
@@ -36,11 +44,6 @@ public class SuspiciousSoulSandBlock extends BrushableBlock {
         } else {
             blockEntity.setDecayCounter(blockEntity.getDecayCounter() + 1);
         }
-    }
-
-    @Override
-    public boolean isRandomlyTicking(BlockState state) {
-        return JNEConfigs.SUSPICIOUS_SOUL_SAND_DECAY_ODDS.get() > 0.0;
     }
 
     @Override

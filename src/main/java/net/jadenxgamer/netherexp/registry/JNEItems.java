@@ -78,9 +78,6 @@ public class JNEItems {
     public static final Supplier<Item> PHASMO_ARROW = ITEMS.register("phasmo_arrow", () ->
             new Item(new Item.Properties()));
 
-    public static final Supplier<Item> WARPED_WART = ITEMS.register("warped_wart", () ->
-            new Item(new Item.Properties()));
-
     public static final Supplier<Item> BANSHEE_ROD = ITEMS.register("banshee_rod", () ->
             new Item(new Item.Properties()));
 

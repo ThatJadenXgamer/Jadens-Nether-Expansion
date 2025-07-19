@@ -1,12 +1,14 @@
 package net.jadenxgamer.netherexp.core.effect;
 
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.FastColor;
@@ -17,6 +19,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 public class ImmunityEffect extends IncurableEffect {
@@ -40,16 +43,18 @@ public class ImmunityEffect extends IncurableEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        getEffectImmuneTo().value();
-        if (entity.hasEffect(getEffectImmuneTo())) {
-            int otherDuration = entity.getEffect(Holder.direct(this)).getDuration();
-            int otherAmplifier = entity.getEffect(Holder.direct(this)).getAmplifier();
-            entity.level().playSound(null, entity.blockPosition(), JNESoundEvents.ANTIDOTE_NEGATE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-            entity.removeEffect(getEffectImmuneTo());
-            entity.removeEffect(Holder.direct(this));
-            entity.addEffect(new MobEffectInstance(Holder.direct(this), (otherDuration - (600 * otherAmplifier)), amplifier));
-        }
+        Holder<MobEffect> immuneTo = getEffectImmuneTo();
+        Holder<MobEffect> itself = getAsHolder(this);
+        if (entity.hasEffect(immuneTo)) {
+            int currentDuration = entity.getEffect(itself).getDuration();
+            int otherAmplifier = entity.getEffect(immuneTo).getAmplifier() + 1;
+            int duration = (currentDuration - (JNEConfigs.IMMUNITY_CONSUMPTION.get() * (JNEConfigs.AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION.get() ? otherAmplifier : 1)));
 
+            entity.level().playSound(null, entity.blockPosition(), JNESoundEvents.ANTIDOTE_NEGATE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+            entity.removeEffect(immuneTo);
+            entity.removeEffect(itself);
+            entity.addEffect(new MobEffectInstance(itself, duration, amplifier));
+        }
         return true;
     }
 
@@ -65,6 +70,11 @@ public class ImmunityEffect extends IncurableEffect {
     }
 
     private Holder<MobEffect> getEffectImmuneTo() {
-        return Holder.direct(LookupRegistryHelper.getMobEffect(this.immunityOf));
+        return getAsHolder(LookupRegistryHelper.getMobEffect(immunityOf));
+    }
+
+    private Holder<MobEffect> getAsHolder(MobEffect effect) {
+        Optional<ResourceKey<MobEffect>> key = BuiltInRegistries.MOB_EFFECT.getResourceKey(effect);
+        return key.map(BuiltInRegistries.MOB_EFFECT::getHolderOrThrow).orElse(null);
     }
 }

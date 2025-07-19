@@ -16,7 +16,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.AmethystClusterBlock;
@@ -94,7 +93,7 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
     }
 
     private boolean canActivateSwirls(LivingEntity entity) {
-        return !entity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(entity.level(), Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
+        return !entity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
     }
 
     @Override
@@ -135,5 +134,15 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
                 .setGravityStrength(0.05f)
                 .setMotion(0.0, 0.04, 0.0)
                 .spawn(level, x, y, z);
+    }
+
+    @Override
+    public boolean hasAnalogOutputSignal(BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return state.getValue(ACTIVE) ? 15 : 0;
     }
 }

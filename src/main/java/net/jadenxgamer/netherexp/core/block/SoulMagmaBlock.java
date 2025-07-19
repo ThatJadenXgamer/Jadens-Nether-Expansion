@@ -28,20 +28,25 @@ public class SoulMagmaBlock extends Block {
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if (entity instanceof LivingEntity livingEntity && canHurtEntity(livingEntity)) {
             livingEntity.hurt(level.damageSources().hotFloor(), 2.0f);
-            particle(level, level.random, livingEntity.getRandomX(0.5), entity.blockPosition().getY(), livingEntity.getRandomZ(0.5));
         }
         super.stepOn(level, pos, state, entity);
     }
 
+    @Override
+    public boolean addRunningEffects(BlockState state, Level level, BlockPos pos, Entity entity) {
+        particle(level, level.random, entity.getRandomX(0.5), entity.blockPosition().getY(), entity.getRandomZ(0.5));
+        return true;
+    }
+
     private boolean canHurtEntity(LivingEntity entity) {
-        return entity.isSprinting() && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(entity.level(), Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
+        return entity.isSprinting() && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
     }
 
     private void particle(Level level, RandomSource random, double x, double y, double z) {
         WorldParticleBuilder.create(JNEParticleTypes.SOUL_MAGMA.get())
                 .setFullBrightLighting()
                 .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                .setScaleData(GenericParticleData.create(0.13f).build())
+                .setScaleData(GenericParticleData.create(0.17f).build())
                 .setTransparencyData(GenericParticleData.create(1).build())
                 .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
