@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp;
 
 import net.jadenxgamer.netherexp.client.particle.BlackFlakeParticle;
 import net.jadenxgamer.netherexp.client.particle.SmogParticle;
+import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.entity.WispRenderer;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
@@ -31,6 +32,7 @@ public final class NetherExpClient {
     public static void registerEntityRenderers() {
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.SUSPICIOUS_SOUL_SAND.get(), SuspiciousSoulSandBlockRenderer::new);
+        BlockEntityRenderers.register(JNEBlockEntityType.DISCERNMENT_GLASS.get(), DiscernmentGlassBlockRenderer::new);
     }
 
     public static void registerParticles(RegisterParticleProvidersEvent event) {

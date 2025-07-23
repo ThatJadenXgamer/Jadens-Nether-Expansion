@@ -726,6 +726,12 @@
       "netherexp:item/antidote/negate"
     ]
   },
+  "item.antidote.expired": {
+    "subtitle": "subtitles.item.antidote.expired",
+    "sounds": [
+      "netherexp:item/antidote/expired"
+    ]
+  },
   "item.grenade_antidote.tick": {
     "subtitle": "subtitles.item.grenade_antidote.tick",
     "sounds": [
@@ -769,6 +775,19 @@
       "netherexp:block/sporeshroom/boing1",
       "netherexp:block/sporeshroom/boing2",
       "netherexp:block/sporeshroom/boing3"
+    ]
+  },
+  "block.geyser.steam": {
+    "subtitle": "subtitles.block.geyser.steam",
+    "sounds": [
+      {
+        "name": "netherexp:block/geyser/steam1",
+        "stream": true
+      },
+      {
+        "name": "netherexp:block/geyser/steam2",
+        "stream": true
+      }
     ]
   },
   "block.lightspores.apply": {

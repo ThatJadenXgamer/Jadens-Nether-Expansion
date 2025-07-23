@@ -80,6 +80,12 @@ public class JNEMobEffects {
     public static final Holder<MobEffect> WITHER_IMMUNITY = MOB_EFFECTS.register("wither_immunity", () ->
             new ImmunityEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("minecraft", "wither")));
 
+    public static final Holder<MobEffect> SLOW_FALLING_IMMUNITY = MOB_EFFECTS.register("slow_falling_immunity", () ->
+            new ImmunityEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("minecraft", "slow_falling")));
+
+    public static final Holder<MobEffect> INFESTING_IMMUNITY = MOB_EFFECTS.register("infesting_immunity", () ->
+            new ImmunityEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("minecraft", "infesting")));
+
     public static final Holder<MobEffect> LUCK_IMMUNITY = MOB_EFFECTS.register("luck_immunity", () ->
             new ImmunityEffect(MobEffectCategory.HARMFUL, NetherExp.idPath("minecraft", "luck")));
 

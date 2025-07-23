@@ -1,0 +1,17 @@
+{
+  "comparator_output": 10,
+  "description": {
+    "translate": "jukebox_song.minecraft.tears"
+  },
+  "length_in_seconds": 175,
+  "sound_event": {
+    "sound_id": "minecraft:music_disc.tears"
+  },
+
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "Item Settings.backportTearsMusicDisc"
+    }
+  ]
+}

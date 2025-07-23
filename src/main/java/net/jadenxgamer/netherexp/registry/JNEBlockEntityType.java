@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.block.entity.DiscernmentGlassBlockEntity;
 import net.jadenxgamer.netherexp.core.block.entity.SuspiciousSoulSandBlockEntity;
 import net.jadenxgamer.netherexp.core.entity.Wisp;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,6 +19,9 @@ public class JNEBlockEntityType {
 
     public static final Supplier<BlockEntityType<SuspiciousSoulSandBlockEntity>> SUSPICIOUS_SOUL_SAND = ENTITY_TYPES.register("suspicious_soul_sand", () ->
             BlockEntityType.Builder.of(SuspiciousSoulSandBlockEntity::new, JNEBlocks.SUSPICIOUS_SOUL_SAND.get()).build(null));
+
+    public static final Supplier<BlockEntityType<DiscernmentGlassBlockEntity>> DISCERNMENT_GLASS = ENTITY_TYPES.register("discernment_glass", () ->
+            BlockEntityType.Builder.of(DiscernmentGlassBlockEntity::new, JNEBlocks.DISCERNMENT_GLASS.get()).build(null));
 
     public static void init(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

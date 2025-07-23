@@ -100,7 +100,7 @@ public class JNEConfigImpl {
                     .defineInRange("blackIcicleGrowthChance", 0.28, 0.0, 1.0);
             THIN_ICE_BREAKING_CHANCE = builder
                     .comment("Chance for thin black ice to break when stood on")
-                    .defineInRange("thinIceBreakingChance", 0.065, 0.0, 1.0);
+                    .defineInRange("thinIceBreakingChance", 0.015, 0.0, 1.0);
             THIN_ICE_BREAKING_CHANCE_SPRINTING = builder
                     .comment("Chance for thin black ice to break when sprinting on")
                     .defineInRange("thinIceBreakingChanceSprinting", 0.2, 0.0, 1.0);
@@ -110,6 +110,36 @@ public class JNEConfigImpl {
             BLACK_ICE_TAINTING = builder
                     .comment("Black ice will taint netherrack into pale soul slate")
                     .define("blackIceTainting", true);
+            SORROWSQUASH_TAINTING = builder
+                    .comment("Sorrowsquash taints nearby soul ground blocks into sorroweed when bone-mealed")
+                    .define("sorrowsquashTainting", true);
+            SHOULD_SORROWSQUASH_FALL = builder
+                    .comment("Weather sorrowsquashes fall if the it's attached to breaks")
+                    .define("shouldSorrowsquashFall", true);
+            SORROWSQUISHED_DAMAGE_MULTIPLIER = builder
+                    .comment("Damage multiplier per block fallen for being sorrowsquished")
+                    .defineInRange("sorrowsquishedDamageMultiplier", 1.5, 0.0, Double.MAX_VALUE);
+            SORROWSQUISHED_MAX_DAMAGE = builder
+                    .comment("Maximum damage that can be accumulated for being sorrowsquished")
+                    .defineInRange("sorrowsquishedMaxDamage", 30, 0, Integer.MAX_VALUE);
+            SORROWSQUASH_GROWTH_CHANCE = builder
+                    .comment("Chance for sorrowsquashes to grow from a sorrowsquash stem \nIf sorrowsquash fails to grow then the stem will attempt to grow upwards instead")
+                    .defineInRange("sorrowsquashGrowthChance", 0.2, 0.0, 1.0);
+            CEREBRAGE_GROWTH_CHANCE = builder
+                    .comment("Chance for cerebrage skulls to grow to their next stage")
+                    .defineInRange("cerebrageGrowthChance", 0.1, 0.0, 1.0);
+            MIN_CEREBRAGE_DROPPED = builder
+                    .comment("Minimum amount of cerebrage dropped when harvesting a cerebrage skull")
+                    .defineInRange("minCerebrageDropped", 3, 0, Integer.MAX_VALUE);
+            MAX_CEREBRAGE_DROPPED = builder
+                    .comment("Maximum amount of cerebrage dropped when harvesting a cerebrage skull")
+                    .defineInRange("maxCerebrageDropped", 6, 0, Integer.MAX_VALUE);
+            CEREBRAGE_SEEDS_DROP_CHANCE = builder
+                    .comment("Chance for cerebrage skulls to drop an additional seed upon harvesting")
+                    .defineInRange("cerebrageSeedsDropChance", 0.05, 0.0, 1.0);
+            CEREBRAGE_GROWS_BRAIN_TREES = builder
+                    .comment("If cerebrage skulls are bone-mealed past their last growth stage then a brain tree can grow from it")
+                    .define("cerebrageGrowsBrainTrees", true);
         }
     }
 
@@ -122,6 +152,15 @@ public class JNEConfigImpl {
             AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION = builder
                     .comment("Weather the amount of duration depleted multiplies with the infliction's amplifier")
                     .define("amplifierScalesImmunityConsumption", true);
+            BACKPORT_TEARS_MUSIC_DISC = builder
+                    .comment("Backports the tears music disc from 1.21.6+")
+                    .worldRestart()
+                    .define("backportTearsMusicDisc", true);
+            TWEAK_OBTAINING_TEARS_MUSIC_DISC = builder
+                    .comment("Makes obtaining the tears music disc harder, as now it requires you to slay a ghast in the overworld \n" +
+                            "If disabled then the disc is obtained by redirecting a fireball into a ghast like in vanilla")
+                    .worldRestart()
+                    .define("tweakObtainingTearsMusicDisc", true);
         }
     }
 

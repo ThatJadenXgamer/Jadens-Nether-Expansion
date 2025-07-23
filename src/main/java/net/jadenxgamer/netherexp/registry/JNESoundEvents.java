@@ -19,10 +19,15 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> LESION_BLOCK_HARVEST = registerSoundEvents("block.lesion_block.harvest");
     public static final Supplier<SoundEvent> LESION_BLOCK_GROWS = registerSoundEvents("block.lesion_block.grows");
     public static final Supplier<SoundEvent> SPORESHROOM_TRAMPOLINED = registerSoundEvents("block.sporeshroom.trampolined");
+    public static final Supplier<SoundEvent> GEYSER_STEAM = registerSoundEvents("block.geyser.steam");
     public static final Supplier<SoundEvent> ECTOPLASM_FREEZE = registerSoundEvents("block.ectoplasm.freeze");
     public static final Supplier<SoundEvent> THIN_BLACK_ICE_CRACKING = registerSoundEvents("block.thin_black_ice.cracking");
+    public static final Supplier<SoundEvent> DISCERNMENT_GLASS_ADD = registerSoundEvents("block.discernment_glass.add");
+    public static final Supplier<SoundEvent> DISCERNMENT_GLASS_REMOVE = registerSoundEvents("block.discernment_glass.remove");
+    public static final Supplier<SoundEvent> CEREBRAGE_PLANT = registerSoundEvents("block.cerebrage.plant");
 
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
+    public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");
 
     public static final Supplier<SoundEvent> GOLD_GILDING = registerSoundEvents("item.gold.gilding");
 

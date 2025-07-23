@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.core.misc;
+package net.jadenxgamer.netherexp.core.keys;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;

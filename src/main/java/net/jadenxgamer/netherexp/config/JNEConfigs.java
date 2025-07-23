@@ -29,11 +29,23 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue THIN_ICE_BREAKING_CHANCE_SPRINTING;
     public static ModConfigSpec.DoubleValue NEARBY_THIN_ICE_BREAKING_CHANCE;
     public static ModConfigSpec.BooleanValue BLACK_ICE_TAINTING;
+    public static ModConfigSpec.BooleanValue SORROWSQUASH_TAINTING;
+    public static ModConfigSpec.BooleanValue SHOULD_SORROWSQUASH_FALL;
+    public static ModConfigSpec.DoubleValue SORROWSQUISHED_DAMAGE_MULTIPLIER;
+    public static ModConfigSpec.IntValue SORROWSQUISHED_MAX_DAMAGE;
+    public static ModConfigSpec.DoubleValue SORROWSQUASH_GROWTH_CHANCE;
+    public static ModConfigSpec.DoubleValue CEREBRAGE_GROWTH_CHANCE;
+    public static ModConfigSpec.IntValue MIN_CEREBRAGE_DROPPED;
+    public static ModConfigSpec.IntValue MAX_CEREBRAGE_DROPPED;
+    public static ModConfigSpec.DoubleValue CEREBRAGE_SEEDS_DROP_CHANCE;
+    public static ModConfigSpec.BooleanValue CEREBRAGE_GROWS_BRAIN_TREES;
 
     // ITEM
 
     public static ModConfigSpec.IntValue IMMUNITY_CONSUMPTION;
     public static ModConfigSpec.BooleanValue AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION;
+    public static ModConfigSpec.BooleanValue BACKPORT_TEARS_MUSIC_DISC;
+    public static ModConfigSpec.BooleanValue TWEAK_OBTAINING_TEARS_MUSIC_DISC;
 
     // ENTITY
 

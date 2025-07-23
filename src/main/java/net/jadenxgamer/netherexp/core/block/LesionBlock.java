@@ -9,7 +9,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -51,18 +53,20 @@ public class LesionBlock extends Block {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        int slices = state.getValue(SLICES);
-        if (slices == 1) {
-            level.removeBlock(pos, false);
-        } else {
-            level.setBlock(pos, state.setValue(SLICES, slices - 1), Block.UPDATE_ALL);
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (stack.isEmpty()) {
+            int slices = state.getValue(SLICES);
+            if (slices == 1) {
+                level.removeBlock(pos, false);
+            } else {
+                level.setBlock(pos, state.setValue(SLICES, slices - 1), Block.UPDATE_ALL);
+            }
+            popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(lesionOf.get(), JNEConfigs.LESION_DROPS_PER_HARVEST.get()));
+            level.playSound(null, pos, JNESoundEvents.LESION_BLOCK_HARVEST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+            ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
         }
-        popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(lesionOf.get(), JNEConfigs.LESION_DROPS_PER_HARVEST.get()));
-        level.playSound(null, pos, JNESoundEvents.LESION_BLOCK_HARVEST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-        ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
 
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override

@@ -1,7 +1,7 @@
 {
   "render_type": "minecraft:translucent",
-  "parent": "minecraft:block/cube_all",
+  "parent": "elysium_api:emissive_translucent_block",
   "textures": {
-    "all": "netherexp:block/soul_glass_lit"
+    "glow": "netherexp:block/soul_glass_lit"
   }
 }

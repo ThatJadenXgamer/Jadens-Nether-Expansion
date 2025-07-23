@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.core.block;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.misc.JNETags;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.util.HolderHelper;

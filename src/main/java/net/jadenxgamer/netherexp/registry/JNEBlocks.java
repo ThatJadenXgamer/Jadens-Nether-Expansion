@@ -3,13 +3,15 @@ package net.jadenxgamer.netherexp.registry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.block.*;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
-import net.jadenxgamer.netherexp.core.misc.JNETags;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -125,6 +127,9 @@ public class JNEBlocks {
     public static final Supplier<Block> SOUL_GLASS = registerBlock("soul_glass", () ->
             new SoulGlassBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).lightLevel(
                     state -> state.getValue(SoulGlassBlock.LIT) ? 12 : 0).strength(0.3f, 1200.0f).sound(SoundType.GLASS)));
+
+    public static final Supplier<Block> DISCERNMENT_GLASS = registerBlock("discernment_glass", () ->
+            new DiscernmentGlassBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.3f, 1200.0f).sound(SoundType.GLASS)));
 
     public static final Supplier<Block> ECTO_SOUL_SAND = registerBlock("ecto_soul_sand", () ->
             new EctoSoulSandBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_SAND).lightLevel((state) -> 4).randomTicks()));
@@ -400,11 +405,41 @@ public class JNEBlocks {
      * Farming & Food
      */
 
+//    public static final Supplier<Block> NETHER_PIZZA = registerBlock("nether_pizza", () ->
+//            new NetherPizzaBlock(BlockBehaviour.Properties.of().strength(0.5f).noLootTable().noOcclusion().sound(SoundType.WOOL)));
+
     public static final Supplier<Block> WARPED_WART = registerBlock("warped_wart", () ->
             new WarpedWartBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_WART_BLOCK).instabreak().noCollission().noOcclusion().randomTicks().pushReaction(PushReaction.DESTROY).sound(SoundType.NETHER_WART)));
 
     public static final Supplier<Block> WRAITHING_LESION = registerBlock("wraithing_lesion", () ->
             new LesionBlock(JNEItems.WRAITHING_FLESH, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(1.5f, 1.0f).pushReaction(PushReaction.DESTROY).randomTicks().sound(JNESoundType.LESION_BLOCK)));
+
+    public static final Supplier<Block> SOUL_TORCHFLOWER = registerBlock("soul_torchflower", () ->
+            new NetherFlowerBlock(MobEffects.DIG_SPEED, 12, BlockBehaviour.Properties.ofLegacyCopy(Blocks.TORCHFLOWER)));
+
+    public static final Supplier<Block> SOUL_TORCHFLOWER_CROP = registerBlockWithoutItem("soul_torchflower_crop", () ->
+            new SoulTorchflowerCropBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.TORCHFLOWER_CROP)));
+
+    public static final Supplier<Block> SORROWEED = registerBlock("sorroweed", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.5f).sound(SoundType.MOSS)));
+
+    public static final Supplier<Block> SORROWSQUASH = registerBlock("sorrowsquash", () ->
+            new SorrowsquashBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.PUMPKIN).mapColor(MapColor.COLOR_LIGHT_GRAY).strength(1.0f).sound(SoundType.NETHER_WOOD)));
+
+    public static final Supplier<Block> CARVED_SORROWSQUASH = registerBlock("carved_sorrowsquash", () ->
+            new CarvedSorrowsquashBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.CARVED_PUMPKIN).mapColor(MapColor.COLOR_LIGHT_GRAY).strength(1.0f).sound(SoundType.NETHER_WOOD)));
+
+    public static final Supplier<Block> GHOUL_O_LANTERN = registerBlock("ghoul_o_lantern", () ->
+            new CarvedSorrowsquashBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.JACK_O_LANTERN).mapColor(MapColor.COLOR_ORANGE).strength(1.0f).lightLevel((state) -> 10).sound(SoundType.NETHER_WOOD)));
+
+    public static final Supplier<Block> SORROWSQUASH_STEM = registerBlockWithoutItem("sorrowsquash_stem", () ->
+            new VineStemHeadBlock(JNEBlocks.SORROWSQUASH, () -> Items.PUMPKIN_SEEDS, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().randomTicks().sound(SoundType.NETHER_WOOD)));
+
+    public static final Supplier<Block> SORROWSQUASH_STEM_PLANT = registerBlockWithoutItem("sorrowsquash_stem_plant", () ->
+            new VineStemBodyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().sound(SoundType.NETHER_WOOD)));
+
+    public static final Supplier<Block> CEREBRAGE_SKULL = registerBlockWithoutItem("cerebrage_skull", () ->
+            new CerebrageSkullBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SKELETON_SKULL).randomTicks()));
 
     /**
      * Shroomlight

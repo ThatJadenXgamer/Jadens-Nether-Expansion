@@ -1,0 +1,10 @@
+{
+  "music_disc.tears": {
+    "sounds": [
+      {
+        "name": "minecraft:records/tears",
+        "stream": true
+      }
+    ]
+  }
+}

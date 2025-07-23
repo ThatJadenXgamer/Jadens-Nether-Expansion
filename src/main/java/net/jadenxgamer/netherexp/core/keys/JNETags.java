@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.core.misc;
+package net.jadenxgamer.netherexp.core.keys;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
@@ -12,6 +12,8 @@ public class JNETags {
     public static class Blocks {
 
         public static final TagKey<Block> SOUL_SANDS = createTag("soul_sands"); // Soul Sand blocks
+        public static final TagKey<Block> SOUL_CROP_MUTATION_BLOCKS = createTag("soul_crop_mutation_blocks"); // Blocks which mutate crops into soul variants when planted on
+        public static final TagKey<Block> SORROWEED_REPLACEABLE = createTag("sorroweed_replaceable"); // Blocks that can be tainted by sorroweed
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));

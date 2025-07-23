@@ -50,7 +50,7 @@ public class MobBottleItem<T extends Entity> extends Item {
         if (level.mayInteract(player, hitResult.getBlockPos()) && player.mayUseItemAt(pos, direction, stack)) {
             level.playSound(null, pos, getEmptySound(), SoundSource.NEUTRAL, 1.0f, 1.0f);
             if (level instanceof ServerLevel serverLevel) {
-                Entity entity = getEntityType().spawn(serverLevel, stack, null, pos, MobSpawnType.BUCKET, true, false);
+                T entity = getEntityType().spawn(serverLevel, stack, null, pos, MobSpawnType.BUCKET, true, false);
                 if (entity instanceof Bottleable bottleable) {
                     CustomData component = stack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY);
                     bottleable.loadFromBottleTag(component.copyTag());
@@ -63,7 +63,7 @@ public class MobBottleItem<T extends Entity> extends Item {
         return InteractionResultHolder.fail(stack);
     }
 
-    public EntityType<?> getEntityType() {
+    public EntityType<T> getEntityType() {
         return type.get();
     }
 

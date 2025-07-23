@@ -15,8 +15,13 @@ public class NonConsumableItem extends Item {
     }
 
     @Override
-    public boolean hasCraftingRemainingItem() {
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
+        return new ItemStack(this);
     }
 
     @Override

@@ -2,13 +2,13 @@ package net.jadenxgamer.netherexp.core.block;
 
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -72,7 +72,7 @@ public class GeyserBlock extends Block {
 
         Vec3 velocity = entity.getDeltaMovement();
         entity.push(velocity.x, JNEConfigs.GEYSER_HEIGHT_VELOCITY.get(), velocity.z);
-        level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
+        level.playSound(null, pos, JNESoundEvents.GEYSER_STEAM.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         level.setBlock(pos, state.setValue(COOLDOWN, true), Block.UPDATE_ALL);
         level.scheduleTick(pos, this, JNEConfigs.GEYSER_COOLDOWN.get() * 20);
     }
@@ -103,7 +103,7 @@ public class GeyserBlock extends Block {
         double z = pos.getZ();
         if (state.getValue(COOLDOWN)) {
             for (int i = 0; i < 3; ++i) {
-                level.addParticle(smokeParticle.get(), x + 0.5, y + 1.4, z + 0.5, 0.0, JNEConfigs.GEYSER_HEIGHT_VELOCITY.get(), 0.0);
+                level.addParticle(smokeParticle.get(), true, x + 0.5, y + 1.4, z + 0.5, 0.0, 0.15, 0.0);
             }
         }
 

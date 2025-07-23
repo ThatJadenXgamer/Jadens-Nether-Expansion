@@ -1,18 +1,20 @@
 # 2.4.0 - NeoForge 1.21.1 Port
 
-### Technical Changes
+### Major Changes
 -Updated to NeoForge 1.21.1
 
 -Now requires Elysium API 1.2.0+ to run this mod
 
--JNE was rewritten from the ground-up for this port. expect many performance improvements! -X
+-JNE codebase was rewritten from the ground-up for this port. expect many performance improvements and bug fixes!
 
 ### Changes
--Soul Magma Block texture has received a glow-up, it now tiles much better
+-Geysers have received new sounds and shoot out particles at high velocity when stepped on
 
--Soul Magma also emits new particles if you sprint on it to convey that is what's damaging you -X
+-Soul Magma Block texture has received a glow-up, it now tiles much better with its surroundings
 
--Ancient Wax Block texture has received a glow-up, no longer looks like bricks -X
+-Soul Magma also emits new particles if you sprint on it to convey that is what's damaging you
+
+-Ancient Wax Block texture has received a glow-up, no longer looks like bricks
 
 -Shotgun-Fist now no longer uses wraithing flesh as ammo but rather the new Shotgun-Shells instead -X
 
@@ -22,7 +24,19 @@
 
 -Phasmo-Shells are another variant of shotgun-shells crafted with phasmo shards. It can phase through blocks -X
 
--Ecto Slabs now produce distinct sparkling particles when they are phased underground and about to pounce -X
+-Ecto Slabs now produce obvious rays of light when they are underground
+
+-Ecto Slabs now rarely spawn naturally in the soul sand valley, to accommodate their detection radius has been greatly reduced -X
+
+-Ecto Slabs can however still detect entities inflicted with unbounded speed from as far as 64 blocks away and B-line towards them if possible -X
+
+-Stampedes can now naturally spawn very rarely in the soul sand valley -X
+
+-Stampedes' hunger meter UI has also received a redesign to make it more obvious as to what it is
+
+-Thin Black Ice can now shatter in a chain reaction if one breaks
+
+-Certain mobs (usually lit ones) have also been made to support standing on thin black ice without shattering it 
 
 -Banshees now produce new breathing particles from their mouths -X
 
@@ -32,9 +46,7 @@
 
 -Striders now have new Damp, Moist and Dry variants depending on which biome they're found in -X
 
--Soul Swirls no longer drop themselves if sheared during a cooldown -X
-
--Ecto Slabs now covertly spawn in when too many soul swirls are disturbed opposed to right on top of you -X
+-Soul Swirls no longer drop themselves if sheared during a cooldown
 
 -Bone Rod has been renamed to "Bone Spike"
 
@@ -42,7 +54,7 @@
 
 -New Advancement "Guns for Hands" obtained when killing a vessel with a shotgun-fist -X
 
--New Advancement "Ghosts Busted" kill one of each new soul sand valley mob in JNE -X
+-New Advancement "Ghosts Busted" kill one of each new hostile soul sand valley mob -X
 
 -Soul Glass & Discernment Glass has received new sounds -X
 
@@ -52,6 +64,12 @@
 
 -Snow Golems no longer melt in the Soul Sand Valley or its sub-biomes either
 
+-Immunity Effects have a distinct new sound effect for when they run out
+
+-2 New Immunities were added, Slow Falling Immunity and Infesting Immunity brewed with Wind Charge and Magma Block respectively
+
+-Sorrowsquash stem hitboxes now extend to encompasses the entire thing
+
 ### Fixes
 
 -Ecto Slabs can now be exorcised with water, this was bugged prior -X
@@ -59,3 +77,10 @@
 -Treacherous Candle spawn and round sounds didn't have subtitles, this has now been fixed
 
 -Claret was missing from the #minecraft:log and #minecraft:non_flammable_wood tags, this has now been fixed
+
+-Sporeshrooms can now be duplicated with bone meal even when hanging upside-down
+
+-Suspicious Soul Sand had a chance to immediately decay upon being created, now there is an actual decay counter to prevent immediate decay
+
+-Immunity Effect particles now show up on other entities and not just yourself
+

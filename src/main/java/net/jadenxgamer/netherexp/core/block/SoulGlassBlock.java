@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.core.block;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.misc.JNETags;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -57,18 +57,22 @@ public class SoulGlassBlock extends LightableBlock {
 
     // Glass Stuff
 
+    @Override
     protected boolean skipRendering(BlockState state, BlockState adjacentState, Direction direction) {
         return adjacentState.is(this) || super.skipRendering(state, adjacentState, direction);
     }
 
+    @Override
     protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return Shapes.empty();
     }
 
+    @Override
     protected float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
         return 1.0F;
     }
 
+    @Override
     protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
         return true;
     }

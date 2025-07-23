@@ -20,9 +20,11 @@ public final class NetherExp {
     public NetherExp(IEventBus modEventBus, ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.COMMON, JNEConfigImpl.CONFIG);
 
+        JNERegistries.init(modEventBus);
         JNEParticleTypes.init(modEventBus);
         JNESoundEvents.init(modEventBus);
         JNECreativeModeTabs.init(modEventBus);
+        JNECriteriaTriggers.init(modEventBus);
 
         JNEEntityType.init(modEventBus);
         JNEMobEffects.init(modEventBus);
@@ -33,6 +35,10 @@ public final class NetherExp {
 
     public static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    }
+
+    public static ResourceLocation idVanilla(String path) {
+        return ResourceLocation.fromNamespaceAndPath("minecraft", path);
     }
 
     public static ResourceLocation idPath(String namespace, String path) {

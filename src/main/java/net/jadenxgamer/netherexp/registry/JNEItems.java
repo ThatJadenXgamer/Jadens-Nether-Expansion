@@ -2,13 +2,15 @@ package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.entity.Wisp;
+import net.jadenxgamer.netherexp.core.item.CerebrageSeedItem;
 import net.jadenxgamer.netherexp.core.item.MobBottleItem;
 import net.jadenxgamer.netherexp.core.item.NonConsumableItem;
+import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
+import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEFoods;
-import net.jadenxgamer.netherexp.core.misc.JNEEnumExtensions;
-import net.jadenxgamer.netherexp.core.misc.JNETrimPatterns;
+import net.jadenxgamer.netherexp.util.RegistryHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
@@ -16,6 +18,7 @@ import net.minecraft.world.item.SmithingTemplateItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.Supplier;
 
@@ -163,7 +166,7 @@ public class JNEItems {
             new Item(new Item.Properties().food(JNEFoods.CEREBRAGE)));
 
     public static final Supplier<Item> CEREBRAGE_SEEDS = ITEMS.register("cerebrage_seeds", () ->
-            new Item(new Item.Properties()));
+            new CerebrageSeedItem(new Item.Properties()));
 
     public static final Supplier<Item> ROASTED_BONE = ITEMS.register("roasted_bone", () ->
             new Item(new Item.Properties().food(JNEFoods.ROASTED_BONE).stacksTo(16)));
@@ -189,5 +192,13 @@ public class JNEItems {
     
     public static void init(IEventBus eventBus) {
         ITEMS.register(eventBus);
+    }
+
+    public static void backportRegistries(RegisterEvent event) {
+        event.register(Registries.ITEM,
+                registry -> {
+                    if (!BuiltInRegistries.ITEM.containsKey(NetherExp.idVanilla("music_disc_tears"))) RegistryHelper.vanillaRegister(registry, "music_disc_tears", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(JNEJukeboxSongs.TEARS)));
+                }
+        );
     }
 }

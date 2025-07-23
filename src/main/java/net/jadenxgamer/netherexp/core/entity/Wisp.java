@@ -119,12 +119,11 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (!this.isSalted() && stack.is(Items.HONEYCOMB)) {
-            if (!this.level().isClientSide) {
+            if (this.level() instanceof ServerLevel serverLevel) {
                 this.setSalted(true);
                 stack.shrink(1);
-            } else {
                 for(int i = 0; i < 4; ++i) {
-                    this.level().addParticle(ParticleTypes.WAX_ON, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), 0.0, 0.0, 0.0);
+                    serverLevel.sendParticles(ParticleTypes.WAX_ON, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), 1, 0.0, 0.0, 0.0, 0.0);
                 }
             }
             return InteractionResult.SUCCESS;
@@ -169,6 +168,8 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     @Override
     protected PathNavigation createNavigation(Level level) {
         FlyingPathNavigation navigation = new FlyingPathNavigation(this, level) {
+
+            @Override
             public boolean isStableDestination(BlockPos pos) {
                 return !this.level.getBlockState(pos.below()).isAir();
             }

@@ -8,9 +8,11 @@ import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.Supplier;
 
@@ -32,7 +34,7 @@ public class RegistryHelper {
         return JNEBlocks.BLOCKS.register(name, block);
     }
 
-    // Dear mojang, I hope your soup is cold for this. It was actual torture figuring out your spaghetti of a "code" that was registering ColorParticleOptions.
+    // Dear mojang, I hope your soup is cold for this. It was actual torture figuring out registering ColorParticleOptions.
     public static Supplier<ParticleType<ColorParticleOption>> registerColorParticle(String name, boolean overrideLimitter) {
         return JNEParticleTypes.PARTICLE_TYPES.register(name, () ->
                 new ParticleType<ColorParticleOption>(overrideLimitter) {
@@ -47,5 +49,9 @@ public class RegistryHelper {
                     }
                 }
         );
+    }
+
+    public static <T> void vanillaRegister(RegisterEvent.RegisterHelper<T> registry, String name, Supplier<T> object) {
+        registry.register(ResourceLocation.fromNamespaceAndPath("minecraft", name), object.get());
     }
 }
