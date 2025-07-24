@@ -142,7 +142,7 @@
   "block.netherexp.chiseled_soul_slate_tiles": "雕纹魂板岩瓦",
 
   "block.netherexp.brazier_chest": "火盆匣",
-  "block.netherexp.brazier_chest.locked": "火盆匣已上锁，需要狡诈烛焰以开启",
+  "block.netherexp.brazier_chest.locked": "火盆匣已上锁，需要狡诈烛焰开启",
   "block.netherexp.treacherous_candle": "狡诈蜡烛",
   "treacherous_candle.health": "狡诈蜡烛",
   "block.netherexp.sculk_grinder": "幽匿碾磨体",
