@@ -6,6 +6,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 public class JNETags {
 
@@ -39,6 +40,14 @@ public class JNETags {
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, NetherExp.id(name));
+        }
+    }
+
+    public static class Fluids {
+        public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createBiomeTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice
+
+        private static TagKey<Fluid> createBiomeTag(String name) {
+            return TagKey.create(Registries.FLUID, NetherExp.id(name));
         }
     }
 }

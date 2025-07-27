@@ -699,13 +699,6 @@
       "netherexp:item/gilding/gilding2"
     ]
   },
-  "block.soul_slate.solidifying": {
-    "subtitle": "subtitles.block.soul_slate.solidifying",
-    "sounds": [
-      "netherexp:block/soul_slate/solidify1",
-      "netherexp:block/soul_slate/solidify2"
-    ]
-  },
   "item.bucket.empty_ectoplasm": {
     "subtitle": "subtitles.item.bucket.empty",
     "sounds": [

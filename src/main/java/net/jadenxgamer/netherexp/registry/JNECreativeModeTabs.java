@@ -1,9 +1,12 @@
 package net.jadenxgamer.netherexp.registry;
 
+import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.util.RegistryHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -12,6 +15,8 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
+
+import static net.jadenxgamer.netherexp.util.RegistryHelper.*;
 
 public class JNECreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, NetherExp.MOD_ID);
@@ -51,6 +56,9 @@ public class JNECreativeModeTabs {
 
                 output.accept(JNEBlocks.SOUL_SWIRLS.get());
 
+                output.accept(JNEBlocks.SOUL_GLASS.get());
+                output.accept(JNEBlocks.DISCERNMENT_GLASS.get());
+
                 output.accept(Blocks.SOUL_TORCH);
                 output.accept(Blocks.SOUL_LANTERN);
                 output.accept(Blocks.SOUL_CAMPFIRE);
@@ -75,21 +83,19 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.NETHERITE_PLATING.get());
                 output.accept(JNEItems.PHASMO_SHARD.get());
                 output.accept(JNEItems.PHASMO_ARROW.get());
-                output.accept(JNEBlocks.SOUL_GLASS.get());
-                output.accept(JNEBlocks.DISCERNMENT_GLASS.get());
                 output.accept(JNEItems.BANSHEE_ROD.get());
                 output.accept(JNEItems.BANSHEE_POWDER.get());
 
                 output.accept(JNEBlocks.SOUL_TORCHFLOWER.get());
 
                 output.accept(Items.SKELETON_SPAWN_EGG);
+                output.accept(Items.GHAST_SPAWN_EGG);
                 output.accept(JNEItems.WISP_SPAWN_EGG.get());
                 output.accept(JNEItems.APPARITION_SPAWN_EGG.get());
                 output.accept(JNEItems.VESSEL_SPAWN_EGG.get());
                 output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
                 output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
                 output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
-                output.accept(Items.GHAST_SPAWN_EGG);
             })
             .build());
 
@@ -221,9 +227,11 @@ public class JNECreativeModeTabs {
                 output.accept(Blocks.BLACKSTONE_WALL);
                 output.accept(Blocks.CHISELED_POLISHED_BLACKSTONE);
                 output.accept(Blocks.POLISHED_BLACKSTONE);
+                output.accept(JNEBlocks.POLISHED_BLACKSTONE_PILLAR.get());
                 output.accept(Blocks.POLISHED_BLACKSTONE_STAIRS);
                 output.accept(Blocks.POLISHED_BLACKSTONE_SLAB);
                 output.accept(Blocks.POLISHED_BLACKSTONE_WALL);
+                output.accept(JNEBlocks.POLISHED_BLACKSTONE_FENCE.get());
                 output.accept(Blocks.POLISHED_BLACKSTONE_PRESSURE_PLATE);
                 output.accept(Blocks.POLISHED_BLACKSTONE_BUTTON);
                 output.accept(Blocks.POLISHED_BLACKSTONE_BRICKS);
@@ -231,6 +239,14 @@ public class JNECreativeModeTabs {
                 output.accept(Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS);
                 output.accept(Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
                 output.accept(Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
+                output.accept(JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get());
+                output.accept(JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_SLAB.get());
+                output.accept(JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_STAIRS.get());
+                output.accept(JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_WALL.get());
+                output.accept(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get());
+                output.accept(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_SLAB.get());
+                output.accept(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_STAIRS.get());
+                output.accept(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_WALL.get());
 
                 output.accept(JNEBlocks.BASALTIC_GEYSER.get());
 
@@ -269,13 +285,13 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.QUARTZ_CRYSTAL.get());
                 output.accept(JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get());
                 output.accept(Blocks.QUARTZ_BLOCK);
+                output.accept(Blocks.QUARTZ_PILLAR);
+                output.accept(JNEBlocks.CHISELED_QUARTZ_PILLAR.get());
                 output.accept(Blocks.QUARTZ_STAIRS);
                 output.accept(Blocks.QUARTZ_SLAB);
                 output.accept(Blocks.SMOOTH_QUARTZ);
                 output.accept(Blocks.SMOOTH_QUARTZ_STAIRS);
                 output.accept(Blocks.SMOOTH_QUARTZ_SLAB);
-                output.accept(Blocks.QUARTZ_PILLAR);
-                output.accept(JNEBlocks.CHISELED_QUARTZ_PILLAR.get());
                 output.accept(Blocks.QUARTZ_BRICKS);
                 output.accept(JNEBlocks.CRACKED_QUARTZ_BRICKS.get());
 
@@ -349,13 +365,68 @@ public class JNECreativeModeTabs {
                 output.accept(Items.MAGMA_CUBE_SPAWN_EGG);
                 output.accept(Items.BLAZE_SPAWN_EGG);
                 output.accept(Items.WITHER_SKELETON_SPAWN_EGG);
+
+                output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
             })
             .build());
 
     public static void addToExistingTabs(BuildCreativeModeTabContentsEvent event) {
-//        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-//            event.insertAfter(Items.OAK_WOOD.getDefaultInstance(), OKSBlocks.OAK_TWIGS.get().asItem().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-//        }
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            insertToTab(event, Items.POLISHED_BLACKSTONE, JNEBlocks.POLISHED_BLACKSTONE_PILLAR.get(), false);
+            insertToTab(event, Items.POLISHED_BLACKSTONE_WALL, JNEBlocks.POLISHED_BLACKSTONE_FENCE.get(), false);
+            insertToTab(event, Items.POLISHED_BLACKSTONE_BRICKS, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get(), false);
+            insertToTab(event, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_WALL.get(), false);
+            insertToTab(event, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_SLAB.get(), false);
+            insertToTab(event, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), false);
+            insertToTab(event, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_WALL.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get(), false);
+            insertToTab(event, JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_WALL.get(), false);
+            insertToTab(event, JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_SLAB.get(), false);
+            insertToTab(event, JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), false);
+
+            insertToTab(event, Items.BASALT, JNEBlocks.BASALT_WALL.get(), false);
+            insertToTab(event, Items.BASALT, JNEBlocks.BASALT_SLAB.get(), false);
+            insertToTab(event, Items.BASALT, JNEBlocks.BASALT_STAIRS.get(), false);
+
+            insertToTab(event, Items.POLISHED_BASALT, JNEBlocks.POLISHED_BASALT_WALL.get(), false);
+            insertToTab(event, Items.POLISHED_BASALT, JNEBlocks.POLISHED_BASALT_SLAB.get(), false);
+            insertToTab(event, Items.POLISHED_BASALT, JNEBlocks.POLISHED_BASALT_STAIRS.get(), false);
+
+            insertToTab(event, JNEBlocks.POLISHED_BASALT_WALL.get(), JNEBlocks.POLISHED_BASALT_BRICKS.get(), false);
+            insertToTab(event, JNEBlocks.POLISHED_BASALT_BRICKS.get(), JNEBlocks.POLISHED_BASALT_BRICK_WALL.get(), false);
+            insertToTab(event, JNEBlocks.POLISHED_BASALT_BRICKS.get(), JNEBlocks.POLISHED_BASALT_BRICK_SLAB.get(), false);
+            insertToTab(event, JNEBlocks.POLISHED_BASALT_BRICKS.get(), JNEBlocks.POLISHED_BASALT_BRICK_STAIRS.get(), false);
+
+            insertToTab(event, Items.CRACKED_NETHER_BRICKS, JNEBlocks.NETHER_BRICK_PILLAR.get(), false);
+            insertToTab(event, Items.RED_NETHER_BRICK_WALL, JNEBlocks.BLUE_NETHER_BRICKS.get(), false);
+            insertToTab(event, JNEBlocks.BLUE_NETHER_BRICKS.get(), JNEBlocks.BLUE_NETHER_BRICK_WALL.get(), false);
+            insertToTab(event, JNEBlocks.BLUE_NETHER_BRICKS.get(), JNEBlocks.BLUE_NETHER_BRICK_SLAB.get(), false);
+            insertToTab(event, JNEBlocks.BLUE_NETHER_BRICKS.get(), JNEBlocks.BLUE_NETHER_BRICK_STAIRS.get(), false);
+            insertToTab(event, Items.RED_NETHER_BRICKS, JNEBlocks.RED_MIXED_NETHER_BRICKS.get(), true);
+            insertToTab(event, JNEBlocks.BLUE_NETHER_BRICKS.get(), JNEBlocks.BLUE_MIXED_NETHER_BRICKS.get(), true);
+            
+            insertToTab(event, Items.QUARTZ_PILLAR, JNEBlocks.CHISELED_QUARTZ_PILLAR.get(), false);
+            insertToTab(event, Items.QUARTZ_BRICKS, JNEBlocks.CRACKED_QUARTZ_BRICKS.get(), false);
+            insertToTab(event, Items.QUARTZ_BLOCK, JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get(), true);
+        }
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            insertToTab(event, Items.NETHER_QUARTZ_ORE, JNEBlocks.QUARTZ_CRYSTAL.get(), false);
+            insertToTab(event, Items.NETHER_QUARTZ_ORE, JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get(), false);
+
+            insertToTab(event, Items.SHROOMLIGHT, JNEBlocks.SHROOMNIGHT.get(), false);
+            insertToTab(event, Items.SHROOMLIGHT, JNEItems.LIGHTSPORES.get(), false);
+            insertToTab(event, JNEBlocks.SHROOMNIGHT.get(), JNEItems.NIGHTSPORES.get(), false);
+
+            insertToTab(event, Items.NETHER_WART_BLOCK, JNEBlocks.NETHER_WART_BEARD.get(), false);
+            insertToTab(event, Items.WARPED_WART_BLOCK, JNEBlocks.WARPED_WART_BEARD.get(), false);
+
+            insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
+        }
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            insertToTab(event, Items.SHROOMLIGHT, JNEBlocks.SHROOMNIGHT.get(), false);
+        }
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
+        }
     }
 
     public static void init(IEventBus eventBus) {

@@ -1,0 +1,46 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minecraft:block/twisting_vines/plant",
+        "weight": 50
+      },
+      {
+        "model": "minecraft:block/twisting_vines/branch_ne",
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/twisting_vines/branch_nw",
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/twisting_vines/branch_se",
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/twisting_vines/branch_sw",
+        "weight": 30
+      },
+      {
+        "model": "minecraft:block/twisting_vines/glow/plant",
+        "weight": 35
+      },
+      {
+        "model": "minecraft:block/twisting_vines/glow/branch_ne",
+        "weight": 25
+      },
+      {
+        "model": "minecraft:block/twisting_vines/glow/branch_nw",
+        "weight": 25
+      },
+      {
+        "model": "minecraft:block/twisting_vines/glow/branch_se",
+        "weight": 25
+      },
+      {
+        "model": "minecraft:block/twisting_vines/glow/branch_sw",
+        "weight": 25
+      }
+    ]
+  }
+}

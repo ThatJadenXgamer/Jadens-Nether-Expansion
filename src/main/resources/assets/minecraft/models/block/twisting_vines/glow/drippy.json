@@ -1,0 +1,8 @@
+{
+	"parent": "netherexp:block/emissive_cross_12",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"cross": "block/twisting_vines/glow/drippy",
+		"glow": "block/twisting_vines/glow/drippy_glow"
+	}
+}

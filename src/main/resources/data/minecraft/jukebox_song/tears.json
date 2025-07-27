@@ -11,7 +11,7 @@
   "neoforge:conditions": [
     {
       "type": "netherexp:config",
-      "path": "Item Settings.backportTearsMusicDisc"
+      "path": "itemSettings.backportTearsMusicDisc"
     }
   ]
 }

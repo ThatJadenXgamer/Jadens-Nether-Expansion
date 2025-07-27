@@ -6,6 +6,9 @@
 		"0": "netherexp:block/brazier_chest_front",
 		"1": "netherexp:block/brazier_chest_side",
 		"2": "netherexp:block/brazier_chest_top",
+		"glow0": "netherexp:block/brazier_chest_front_glow",
+		"glow1": "netherexp:block/brazier_chest_side_glow",
+		"glow2": "netherexp:block/brazier_chest_top_glow",
 		"3": "netherexp:block/brazier_chest_bars",
 		"4": "netherexp:block/chiseled_soul_slate_tiles_top",
 		"particle": "netherexp:block/brazier_chest_side"
@@ -21,6 +24,19 @@
 				"west": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "up"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#4", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"neoforge_data": {"block_light": 10},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#glow0", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#glow1", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#glow1", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#glow1", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#glow2", "cullface": "up"}
 			}
 		},
 		{

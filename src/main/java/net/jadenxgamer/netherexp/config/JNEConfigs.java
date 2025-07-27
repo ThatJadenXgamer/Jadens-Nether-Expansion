@@ -28,6 +28,7 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue THIN_ICE_BREAKING_CHANCE;
     public static ModConfigSpec.DoubleValue THIN_ICE_BREAKING_CHANCE_SPRINTING;
     public static ModConfigSpec.DoubleValue NEARBY_THIN_ICE_BREAKING_CHANCE;
+    public static ModConfigSpec.DoubleValue BLACK_ICE_FROSTS_WATER_CHANCE;
     public static ModConfigSpec.BooleanValue BLACK_ICE_TAINTING;
     public static ModConfigSpec.BooleanValue SORROWSQUASH_TAINTING;
     public static ModConfigSpec.BooleanValue SHOULD_SORROWSQUASH_FALL;

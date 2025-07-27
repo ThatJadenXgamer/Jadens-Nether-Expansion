@@ -44,7 +44,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE.get())));
 
     public static final Supplier<Block> SOUL_SLATE_STAIRS = registerBlock("soul_slate_stairs", () ->
-            new StairBlock(JNEBlocks.SOUL_SLATE.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE.get())));
+            new StairBlock(SOUL_SLATE.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE.get())));
 
     public static final Supplier<Block> SOUL_SLATE_WALL = registerBlock("soul_slate_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE.get())));
@@ -60,7 +60,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())));
 
     public static final Supplier<Block> SOUL_SLATE_BRICK_STAIRS = registerBlock("soul_slate_brick_stairs", () ->
-            new StairBlock(JNEBlocks.SOUL_SLATE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())));
+            new StairBlock(SOUL_SLATE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())));
 
     public static final Supplier<Block> SOUL_SLATE_BRICK_WALL = registerBlock("soul_slate_brick_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())));
@@ -90,7 +90,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get())));
 
     public static final Supplier<Block> SOUL_SLATE_TILE_STAIRS = registerBlock("soul_slate_tile_stairs", () ->
-            new StairBlock(JNEBlocks.SOUL_SLATE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get())));
+            new StairBlock(SOUL_SLATE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get())));
 
     public static final Supplier<Block> SOUL_SLATE_TILE_WALL = registerBlock("soul_slate_tile_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get())));
@@ -154,7 +154,10 @@ public class JNEBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).sound(JNESoundType.BLACK_ICE)));
 
     public static final Supplier<Block> THIN_BLACK_ICE = registerBlock("thin_black_ice", () ->
-            new ThinBlackIceBlock(BlockBehaviour.Properties.ofLegacyCopy(BLACK_ICE.get()).strength(0.05f).noOcclusion()));
+            new ThinBlackIceBlock(BlockBehaviour.Properties.ofLegacyCopy(BLACK_ICE.get()).strength(0.05f).randomTicks().noOcclusion()));
+
+    public static final Supplier<Block> SOUL_PERMAFROST = registerBlock("soul_permafrost", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_SOIL).speedFactor(0.9F).friction(0.98F)));
 
     /**
      * Path Blocks
@@ -180,7 +183,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SMOOTH_NETHERRACK.get())));
 
     public static final Supplier<Block> SMOOTH_NETHERRACK_STAIRS = registerBlock("smooth_netherrack_stairs", () ->
-            new StairBlock(JNEBlocks.SMOOTH_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SMOOTH_NETHERRACK.get())));
+            new StairBlock(SMOOTH_NETHERRACK.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SMOOTH_NETHERRACK.get())));
 
     public static final Supplier<Block> SMOOTH_NETHERRACK_WALL = registerBlock("smooth_netherrack_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SMOOTH_NETHERRACK.get())));
@@ -196,7 +199,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.NETHERRACK_BRICKS.get())));
 
     public static final Supplier<Block> NETHERRACK_BRICK_STAIRS = registerBlock("netherrack_brick_stairs", () ->
-            new StairBlock(JNEBlocks.NETHERRACK_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.NETHERRACK_BRICKS.get())));
+            new StairBlock(NETHERRACK_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.NETHERRACK_BRICKS.get())));
 
     public static final Supplier<Block> NETHERRACK_BRICK_WALL = registerBlock("netherrack_brick_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.NETHERRACK_BRICKS.get())));
@@ -244,7 +247,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.POLISHED_BASALT_BRICKS.get())));
 
     public static final Supplier<Block> POLISHED_BASALT_BRICK_STAIRS = registerBlock("polished_basalt_brick_stairs", () ->
-            new StairBlock(JNEBlocks.POLISHED_BASALT_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.POLISHED_BASALT_BRICKS.get())));
+            new StairBlock(POLISHED_BASALT_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.POLISHED_BASALT_BRICKS.get())));
 
     public static final Supplier<Block> POLISHED_BASALT_BRICK_WALL = registerBlock("polished_basalt_brick_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.POLISHED_BASALT_BRICKS.get())));
@@ -264,7 +267,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final Supplier<Block> CUT_NETHERITE_STAIRS = registerItemPropertiesBlock("cut_netherite_stairs", () ->
-            new StairBlock(JNEBlocks.CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
+            new StairBlock(CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final Supplier<Block> CUT_NETHERITE_PILLAR = registerItemPropertiesBlock("cut_netherite_pillar", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
@@ -286,7 +289,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final Supplier<Block> RUSTY_CUT_NETHERITE_STAIRS = registerItemPropertiesBlock("rusty_cut_netherite_stairs", () ->
-            new StairBlock(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
+            new StairBlock(RUSTY_CUT_NETHERITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final Supplier<Block> RUSTY_CUT_NETHERITE_PILLAR = registerItemPropertiesBlock("rusty_cut_netherite_pillar", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
@@ -396,7 +399,7 @@ public class JNEBlocks {
             new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.BLUE_NETHER_BRICKS.get())));
 
     public static final Supplier<Block> BLUE_NETHER_BRICK_STAIRS = registerBlock("blue_nether_brick_stairs", () ->
-            new StairBlock(JNEBlocks.BLUE_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.BLUE_NETHER_BRICKS.get())));
+            new StairBlock(BLUE_NETHER_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.BLUE_NETHER_BRICKS.get())));
 
     public static final Supplier<Block> BLUE_NETHER_BRICK_WALL = registerBlock("blue_nether_brick_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.BLUE_NETHER_BRICKS.get())));
@@ -405,8 +408,8 @@ public class JNEBlocks {
      * Farming & Food
      */
 
-//    public static final Supplier<Block> NETHER_PIZZA = registerBlock("nether_pizza", () ->
-//            new NetherPizzaBlock(BlockBehaviour.Properties.of().strength(0.5f).noLootTable().noOcclusion().sound(SoundType.WOOL)));
+    public static final Supplier<Block> NETHER_PIZZA = registerBlock("nether_pizza", () ->
+            new NetherPizzaBlock(BlockBehaviour.Properties.of().strength(0.5f).noLootTable().noOcclusion().sound(SoundType.WOOL)));
 
     public static final Supplier<Block> WARPED_WART = registerBlock("warped_wart", () ->
             new WarpedWartBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_WART_BLOCK).instabreak().noCollission().noOcclusion().randomTicks().pushReaction(PushReaction.DESTROY).sound(SoundType.NETHER_WART)));
@@ -490,6 +493,56 @@ public class JNEBlocks {
 
     public static final Supplier<Block> BASALTIC_GEYSER = registerBlock("basaltic_geyser", () ->
             new GeyserBlock(JNETags.Biomes.HAS_WHITE_ASH, () -> ParticleTypes.WHITE_ASH, JNEParticleTypes.WHITE_SMOKE, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BASALT).sound(SoundType.BASALT)));
+
+    /**
+     * Potted Blocks
+     */
+
+    public static final Supplier<Block> POTTED_SOUL_SWIRLS = registerBlockWithoutItem("potted_soul_swirls", () ->
+            new FlowerPotBlock(SOUL_SWIRLS.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final Supplier<Block> POTTED_CRIMSON_SPORESHROOM = registerBlockWithoutItem("potted_crimson_sporeshroom", () ->
+            new FlowerPotBlock(CRIMSON_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final Supplier<Block> POTTED_WARPED_SPORESHROOM = registerBlockWithoutItem("potted_warped_sporeshroom", () ->
+            new FlowerPotBlock(WARPED_SPORESHROOM.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    public static final Supplier<Block> POTTED_SOUL_TORCHFLOWER = registerBlockWithoutItem("potted_soul_torchflower", () ->
+            new FlowerPotBlock(SOUL_TORCHFLOWER.get(), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
+    /**
+     * Blackstone
+     */
+
+    public static final Supplier<Block> POLISHED_BLACKSTONE_PILLAR = registerBlock("polished_blackstone_pillar", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE)));
+
+    public static final Supplier<Block> POLISHED_BLACKSTONE_FENCE = registerBlock("polished_blackstone_fence", () ->
+            new FenceBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE)));
+
+    public static final Supplier<Block> WEEPING_POLISHED_BLACKSTONE_BRICKS = registerBlock("weeping_polished_blackstone_bricks", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    public static final Supplier<Block> WEEPING_POLISHED_BLACKSTONE_BRICK_SLAB = registerBlock("weeping_polished_blackstone_brick_slab", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    public static final Supplier<Block> WEEPING_POLISHED_BLACKSTONE_BRICK_STAIRS = registerBlock("weeping_polished_blackstone_brick_stairs", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    public static final Supplier<Block> WEEPING_POLISHED_BLACKSTONE_BRICK_WALL = registerBlock("weeping_polished_blackstone_brick_wall", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    public static final Supplier<Block> TWISTING_POLISHED_BLACKSTONE_BRICKS = registerBlock("twisting_polished_blackstone_bricks", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    public static final Supplier<Block> TWISTING_POLISHED_BLACKSTONE_BRICK_SLAB = registerBlock("twisting_polished_blackstone_brick_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    public static final Supplier<Block> TWISTING_POLISHED_BLACKSTONE_BRICK_STAIRS = registerBlock("twisting_polished_blackstone_brick_stairs", () ->
+            new StairBlock(TWISTING_POLISHED_BLACKSTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    public static final Supplier<Block> TWISTING_POLISHED_BLACKSTONE_BRICK_WALL = registerBlock("twisting_polished_blackstone_brick_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
 
     public static void init(IEventBus eventBus) {
         BLOCKS.register(eventBus);

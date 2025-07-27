@@ -1,11 +1,13 @@
 package net.jadenxgamer.netherexp.core.block;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
@@ -13,8 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-
-import static net.jadenxgamer.netherexp.config.JNEConfigs.BLACK_ICE_TAINTING;
 
 public class BlackIceBlock extends Block {
     public BlackIceBlock(Properties properties) {
@@ -52,6 +52,17 @@ public class BlackIceBlock extends Block {
             if (!isFaceFull(belowState.getCollisionShape(level, belowPos), Direction.UP)) {
                 ParticleUtils.spawnParticleBelow(level, pos, random, JNEParticleTypes.BLACK_FLAKE.get());
             }
+        }
+    }
+
+    @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (random.nextDouble() > JNEConfigs.BLACK_ICE_FREEZING_TICKS.get()) return;
+
+        Direction freezeDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+        BlockPos freezePos = pos.relative(freezeDirection);
+        if (level.getFluidState(freezePos).is(JNETags.Fluids.TURNS_TO_BLACK_ICE)) {
+            level.setBlock(freezePos, JNEBlocks.THIN_BLACK_ICE.get().defaultBlockState(), Block.UPDATE_ALL);
         }
     }
 }

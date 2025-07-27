@@ -1,13 +1,14 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
 	"parent": "minecraft:block/cube_column",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"end": "netherexp:block/ecto_soul_sand",
-		"endblend": "netherexp:block/emissive/ecto_soul_sand_blend",
-		"endglow": "netherexp:block/emissive/ecto_soul_sand_glow",
-		"sideblend": "netherexp:block/emissive/ecto_soul_sand_side_blend",
-		"sideglow": "netherexp:block/emissive/ecto_soul_sand_side_glow",
+		"endblend": "netherexp:block/ecto_soul_sand_blend",
+		"endglow": "netherexp:block/ecto_soul_sand_glow",
 		"side": "netherexp:block/ecto_soul_sand_side",
+		"sideblend": "netherexp:block/ecto_soul_sand_side_blend",
+		"sideglow": "netherexp:block/ecto_soul_sand_side_glow",
 		"particle": "netherexp:block/ecto_soul_sand"
 	},
 	"elements": [

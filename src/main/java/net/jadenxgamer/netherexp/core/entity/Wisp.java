@@ -194,7 +194,7 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("FromBottle", this.fromBottle());
-        nbt.putInt("BoredDelay", getBored());
+        nbt.putInt("BoredCounter", getBored());
         nbt.putBoolean("Salted", this.isSalted());
     }
 
@@ -254,10 +254,10 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     }
 
     @Override
-    protected void updateWalkAnimation(float v) {
+    protected void updateWalkAnimation(float partialTick) {
         float f;
         if (this.getPose() == Pose.STANDING) {
-            f = Math.min(v * 6.0F, 1.0F);
+            f = Math.min(partialTick * 6.0F, 1.0F);
         } else {
             f = 0.0F;
         }
@@ -272,7 +272,7 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
                 .setTransparencyData(GenericParticleData.create(1).build())
                 .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(random.nextInt(60, 80))
+                .setLifetime(random.nextInt(40, 60))
                 .enableNoClip()
                 .spawn(level, x, y, z);
     }

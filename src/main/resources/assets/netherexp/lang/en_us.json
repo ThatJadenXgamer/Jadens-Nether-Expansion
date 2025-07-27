@@ -611,21 +611,19 @@
   "subtitles.block.geyser.steam": "Geyser erupts",
   "effect.netherexp.slow_falling_immunity": "Slow Falling Immunity",
   "effect.netherexp.infesting_immunity": "Infesting Immunity",
+  "block.netherexp.weeping_polished_blackstone_brick_slab": "Weeping Polished Blackstone Brick Slab",
+  "block.netherexp.weeping_polished_blackstone_brick_stairs": "Weeping Polished Blackstone Brick Stairs",
+  "block.netherexp.weeping_polished_blackstone_brick_wall": "Weeping Polished Blackstone Brick Wall",
+  "block.netherexp.twisting_polished_blackstone_brick_slab": "Twisting Polished Blackstone Brick Slab",
+  "block.netherexp.twisting_polished_blackstone_brick_stairs": "Twisting Polished Blackstone Brick Stairs",
+  "block.netherexp.twisting_polished_blackstone_brick_wall": "Twisting Polished Blackstone Brick Wall",
 
-  "itemGroup.netherexp.jne_grieving_grove": "JNE - Grieving Grove",
-  "itemGroup.netherexp.jne_plume_bowels": "JNE - Plume Bowels",
-  "itemGroup.netherexp.jne_quartz_chasm": "JNE - Quartz Chasm",
-  "itemGroup.netherexp.jne_exhaust_mire": "JNE - Exhaust Mire",
-  "itemGroup.netherexp.jne_basalt_deltas": "JNE - Basalt Deltas",
-  "itemGroup.netherexp.jne_warped_forest": "JNE - Warped Forest",
-  "itemGroup.netherexp.jne_crimson_forest": "JNE - Crimson Forest",
-  "itemGroup.netherexp.jne_soul_sand_valley": "JNE - Soul Sand Valley",
-  "itemGroup.netherexp.jne_nether_wastes": "JNE - Nether Wastes",
-
-  "netherexp.configuration.Block Settings": "Block Settings",
-  "netherexp.configuration.Item Settings": "Item Settings",
-  "netherexp.configuration.Entity Settings": "Entity Settings",
-  "netherexp.configuration.Visual Settings": "Visual Settings",
+  "netherexp.configuration.blockSettings": "Block Settings",
+  "netherexp.configuration.itemSettings": "Item Settings",
+  "netherexp.configuration.entitySettings": "Entity Settings",
+  "netherexp.configuration.worldSettings": "World Settings",
+  "netherexp.configuration.visualSettings": "Visual Settings",
+  "netherexp.configuration.gameMechanicSettings": "Game Mechanic Settings",
 
   "netherexp.configuration.fossilOreConversionChance": "Fossil Ore Conversion Chance",
   "netherexp.configuration.soulGlassMovementSlowdown": "Soul Glass Movement Slowdown",
@@ -649,6 +647,7 @@
   "netherexp.configuration.thinIceBreakingChance": "Thin Ice Breaking Chance",
   "netherexp.configuration.thinIceBreakingChanceSprinting": "Thin Ice Breaking Chance (Sprinting)",
   "netherexp.configuration.nearbyThinIceBreakingChance": "Nearby Thin Ice Breaking Chance",
+  "netherexp.configuration.blackIceFrostsWaterChance": "Black Ice Frosts Water Chance",
   "netherexp.configuration.blackIceTainting": "Black Ice Tainting",
   "netherexp.configuration.sorrowsquashTainting": "Sorrowsquash Tainting",
   "netherexp.configuration.shouldSorrowsquashFall": "Should Sorrowsquash Fall",
@@ -669,5 +668,15 @@
   "netherexp.configuration.wispBoredomChance": "Wisp Boredom Chance",
   "netherexp.configuration.blackIceFreezingTicks": "Black Ice Freezing Ticks",
 
-  "netherexp.configuration.blackIceParticles": "Black Ice Particles"
+  "netherexp.configuration.blackIceParticles": "Black Ice Particles",
+
+  "itemGroup.netherexp.jne_grieving_grove": "JNE - Grieving Grove",
+  "itemGroup.netherexp.jne_plume_bowels": "JNE - Plume Bowels",
+  "itemGroup.netherexp.jne_quartz_chasm": "JNE - Quartz Chasm",
+  "itemGroup.netherexp.jne_exhaust_mire": "JNE - Exhaust Mire",
+  "itemGroup.netherexp.jne_basalt_deltas": "JNE - Basalt Deltas",
+  "itemGroup.netherexp.jne_warped_forest": "JNE - Warped Forest",
+  "itemGroup.netherexp.jne_crimson_forest": "JNE - Crimson Forest",
+  "itemGroup.netherexp.jne_soul_sand_valley": "JNE - Soul Sand Valley",
+  "itemGroup.netherexp.jne_nether_wastes": "JNE - Nether Wastes"
 }

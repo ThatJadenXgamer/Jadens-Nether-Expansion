@@ -37,7 +37,7 @@ public class ThinBlackIceBlock extends BlackIceBlock {
         double breakingOdds = entity.isSprinting() ? JNEConfigs.THIN_ICE_BREAKING_CHANCE_SPRINTING.get() : JNEConfigs.THIN_ICE_BREAKING_CHANCE.get();
 
         if (entity instanceof LivingEntity living) {
-            if (!canBreakThinIce(living)) return;
+            if (cantBreakThinIce(living)) return;
 
             if (level.random.nextDouble() < breakingOdds) {
                 level.scheduleTick(pos, JNEBlocks.THIN_BLACK_ICE.get(), 0);
@@ -70,8 +70,8 @@ public class ThinBlackIceBlock extends BlackIceBlock {
     }
 
     @SuppressWarnings("deprecation")
-    private boolean canBreakThinIce(LivingEntity entity) {
-        return !entity.getType().is(JNETags.EntityTypes.CANT_SHATTER_THIN_BLACK_ICE) && !entity.isShiftKeyDown() && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
+    private boolean cantBreakThinIce(LivingEntity entity) {
+        return entity.getType().is(JNETags.EntityTypes.CANT_SHATTER_THIN_BLACK_ICE) || entity.isShiftKeyDown() || EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) > 0;
     }
 
     @Override

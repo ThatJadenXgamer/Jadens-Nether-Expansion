@@ -11,27 +11,27 @@ public class JNEConfigImpl {
     static {
         ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-        BUILDER.comment("Block Settings").push("Block Settings");
+        BUILDER.comment("Block Settings").push("blockSettings");
         JNEConfigImpl.BlockSettings.init(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("Item Settings").push("Item Settings");
+        BUILDER.comment("Item Settings").push("itemSettings");
         JNEConfigImpl.ItemSettings.init(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("Entity Settings").push("Entity Settings");
+        BUILDER.comment("Entity Settings").push("entitySettings");
         JNEConfigImpl.EntitySettings.init(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("World Settings").push("World Settings");
+        BUILDER.comment("World Settings").push("worldSettings");
         JNEConfigImpl.WorldSettings.init(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("Visual Settings").push("Visual Settings");
+        BUILDER.comment("Visual Settings").push("visualSettings");
         JNEConfigImpl.VisualSettings.init(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("Overhaul Settings").push("Overhaul Settings");
+        BUILDER.comment("Game Mechanic Settings").push("gameMechanicSettings");
         JNEConfigImpl.OverhaulSettings.init(BUILDER);
         BUILDER.pop();
 
@@ -107,6 +107,9 @@ public class JNEConfigImpl {
             NEARBY_THIN_ICE_BREAKING_CHANCE = builder
                     .comment("Chance for nearby thin black ice to shatter")
                     .defineInRange("nearbyThinIceBreakingChance", 0.4, 0.0, 1.0);
+            BLACK_ICE_FROSTS_WATER_CHANCE = builder
+                    .comment("Chance for black ice or thin black ice to freeze water into more thin black ice")
+                    .defineInRange("blackIceFrostsWaterChance", 0.6, 0.0, 1.0);
             BLACK_ICE_TAINTING = builder
                     .comment("Black ice will taint netherrack into pale soul slate")
                     .define("blackIceTainting", true);

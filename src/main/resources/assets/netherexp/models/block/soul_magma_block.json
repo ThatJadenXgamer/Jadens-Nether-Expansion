@@ -5,9 +5,9 @@
 	"render_type": "cutout",
 	"textures": {
 		"particle": "netherexp:block/soul_magma",
-		"blend": "netherexp:block/emissive/soul_magma_blend",
 		"base": "netherexp:block/soul_magma",
-		"glow": "netherexp:block/emissive/soul_magma"
+		"blend": "netherexp:block/soul_magma_blend",
+		"glow": "netherexp:block/soul_magma_glow"
 	},
 	"elements": [
 		{

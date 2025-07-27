@@ -77,6 +77,7 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) stack.shrink(1);
                 ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
                 level.playSound(null, pos, JNESoundEvents.DISCERNMENT_GLASS_ADD.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.blockUpdated(pos, this);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             } else if (stack.isEmpty() && !blockEntity.getFilterItem().isEmpty()) {
                 if (!player.getAbilities().instabuild) {
@@ -88,6 +89,7 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
                 }
                 ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
                 level.playSound(null, pos, JNESoundEvents.DISCERNMENT_GLASS_REMOVE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.blockUpdated(pos, this);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }
@@ -112,8 +114,6 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-        if (level.isClientSide) return;
-
         if (state.getValue(POWERED) != level.hasNeighborSignal(pos)) {
             if (state.getValue(POWERED)) {
                 level.scheduleTick(pos, this, 4);
@@ -133,6 +133,19 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(POWERED);
+    }
+
+    @Override
+    public boolean hasAnalogOutputSignal(BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        if (level.getBlockEntity(pos) instanceof DiscernmentGlassBlockEntity blockEntity) {
+            return blockEntity.getFilterItem().isEmpty() ? 0 : 15;
+        }
+        return 0;
     }
 
     // Glass Stuff

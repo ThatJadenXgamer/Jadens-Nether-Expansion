@@ -8,6 +8,8 @@
 -JNE codebase was rewritten from the ground-up for this port. expect many performance improvements and bug fixes!
 
 ### Changes
+-Removed emissive built-in resource pack. all emissives are now part of the mod resources and always active
+
 -Geysers have received new sounds and shoot out particles at high velocity when stepped on
 
 -Soul Magma Block texture has received a glow-up, it now tiles much better with its surroundings
@@ -69,6 +71,20 @@
 -2 New Immunities were added, Slow Falling Immunity and Infesting Immunity brewed with Wind Charge and Magma Block respectively
 
 -Sorrowsquash stem hitboxes now extend to encompasses the entire thing
+
+-Beacon glass texture has been updated with better shading
+
+-Breeze Rod texture has been redesigned to be consistent with the new blaze rod and banshee rod
+
+-Apparitions can now also turn into a banshee if they happen to possess a breeze -X
+
+-Apparition possession conversions are now data-driven and allows you to define what they turn into upon killing a certain mob -X
+
+-Similarly what mobs the Apparition attacks is too data-driven now -X
+
+-Discernment Glass now emits a comparator output if it has a filter item
+
+-Weeping and Twisting Blackstone Bricks were missing slabs, stairs and wall variants due to an oversight. this has now been fixed
 
 ### Fixes
 

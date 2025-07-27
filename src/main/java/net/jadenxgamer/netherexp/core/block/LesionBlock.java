@@ -64,6 +64,7 @@ public class LesionBlock extends Block {
             popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(lesionOf.get(), JNEConfigs.LESION_DROPS_PER_HARVEST.get()));
             level.playSound(null, pos, JNESoundEvents.LESION_BLOCK_HARVEST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
 
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

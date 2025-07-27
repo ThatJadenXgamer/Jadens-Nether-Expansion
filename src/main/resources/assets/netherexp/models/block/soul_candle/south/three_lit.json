@@ -3,6 +3,7 @@
 	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/soul_candle_lit",
+		"glow": "netherexp:block/soul_candle_lit_glow",
 		"particle": "netherexp:block/soul_candle_lit"
 	},
 	"elements": [
@@ -17,6 +18,21 @@
 				"west": {"uv": [5, 6, 10, 14], "texture": "#0"},
 				"up": {"uv": [0, 1, 5, 6], "texture": "#0"},
 				"down": {"uv": [0, 1, 5, 6], "texture": "#0"}
+			}
+		},
+		{
+			"from": [1.5, 0, 3.5],
+			"to": [6.5, 8, 8.5],
+			"neoforge_data": {"block_light": 12},
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [-1.5, -2, 3.5]},
+			"faces": {
+				"north": {"uv": [5, 6, 10, 14], "texture": "#glow"},
+				"east": {"uv": [5, 6, 10, 14], "texture": "#glow"},
+				"south": {"uv": [0, 6, 5, 14], "texture": "#glow"},
+				"west": {"uv": [5, 6, 10, 14], "texture": "#glow"},
+				"up": {"uv": [0, 1, 5, 6], "texture": "#glow"},
+				"down": {"uv": [0, 1, 5, 6], "texture": "#glow"}
 			}
 		},
 		{
@@ -59,6 +75,21 @@
 			}
 		},
 		{
+			"from": [5.5, 0, 9.5],
+			"to": [10.5, 10, 14.5],
+			"neoforge_data": {"block_light": 12},
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 0, 9.5]},
+			"faces": {
+				"north": {"uv": [5, 6, 10, 16], "texture": "#glow"},
+				"east": {"uv": [5, 6, 10, 16], "texture": "#glow"},
+				"south": {"uv": [0, 6, 5, 16], "texture": "#glow"},
+				"west": {"uv": [5, 6, 10, 16], "texture": "#glow"},
+				"up": {"uv": [0, 1, 5, 6], "texture": "#glow"},
+				"down": {"uv": [0, 1, 5, 6], "texture": "#glow"}
+			}
+		},
+		{
 			"from": [7.5, 10, 12],
 			"to": [8.5, 11.5, 12],
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 10, 12]},
@@ -95,6 +126,21 @@
 				"west": {"uv": [5, 6, 10, 12], "texture": "#0"},
 				"up": {"uv": [0, 1, 5, 6], "texture": "#0"},
 				"down": {"uv": [0, 1, 5, 6], "texture": "#0"}
+			}
+		},
+		{
+			"from": [9.5, 0, 2.5],
+			"to": [14.5, 6, 7.5],
+			"neoforge_data": {"block_light": 12},
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [-0.5, -2, 2.5]},
+			"faces": {
+				"north": {"uv": [5, 6, 10, 12], "texture": "#glow"},
+				"east": {"uv": [5, 6, 10, 12], "texture": "#glow"},
+				"south": {"uv": [0, 6, 5, 12], "texture": "#glow"},
+				"west": {"uv": [5, 6, 10, 12], "texture": "#glow"},
+				"up": {"uv": [0, 1, 5, 6], "texture": "#glow"},
+				"down": {"uv": [0, 1, 5, 6], "texture": "#glow"}
 			}
 		},
 		{

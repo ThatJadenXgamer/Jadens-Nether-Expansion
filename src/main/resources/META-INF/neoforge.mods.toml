@@ -8,8 +8,9 @@ modId = "netherexp"
 version = "${version}"
 displayName = "Jaden's Nether Expansion"
 authors = "ThatJadenXgamer"
+credits = "AlwaysMuddy, Shroomaniac, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior"
 description = '''
-JNE is a large-scale nether mod which reimagines and expands upon every single aspect of the nether dimension.
+JNE is a large-scale nether mod which reimagines and expands upon every single aspect of the nether dimension!
 '''
 logoFile = "netherexp.png"
 #enumExtensions="META-INF/enumextensions.json"

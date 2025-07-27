@@ -1,0 +1,7 @@
+{
+  "parent": "elysium:block/emissive_block_12",
+  "textures": {
+    "base": "minecraft:block/warped_wart_block/medium/2",
+    "glow": "minecraft:block/warped_wart_block/medium/2_glow"
+  }
+}

@@ -10,8 +10,10 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.Supplier;
@@ -53,5 +55,25 @@ public class RegistryHelper {
 
     public static <T> void vanillaRegister(RegisterEvent.RegisterHelper<T> registry, String name, Supplier<T> object) {
         registry.register(ResourceLocation.fromNamespaceAndPath("minecraft", name), object.get());
+    }
+
+    public static void insertToTab(BuildCreativeModeTabContentsEvent event, Item after, Block toAdd, boolean before) {
+        insertToTab(event, after, toAdd.asItem(), before);
+    }
+
+    public static void insertToTab(BuildCreativeModeTabContentsEvent event, Block after, Block toAdd, boolean before) {
+        insertToTab(event, after.asItem(), toAdd.asItem(), before);
+    }
+
+    public static void insertToTab(BuildCreativeModeTabContentsEvent event, Block after, Item toAdd, boolean before) {
+        insertToTab(event, after.asItem(), toAdd, before);
+    }
+
+    public static void insertToTab(BuildCreativeModeTabContentsEvent event, Item after, Item toAdd, boolean before) {
+        if (before) {
+            event.insertBefore(after.getDefaultInstance(), toAdd.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        } else {
+            event.insertAfter(after.getDefaultInstance(), toAdd.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
     }
 }
