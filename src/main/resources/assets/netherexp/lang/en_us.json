@@ -174,7 +174,7 @@
   "block.netherexp.suspicious_soul_sand": "Suspicious Soul Sand",
   "block.netherexp.soul_magma_block": "Soul Magma Block",
 
-  "fluid_type.netherexp.ectoplasm": "Ectoplasm",
+  "fluid.netherexp.ectoplasm": "Ectoplasm",
   "block.netherexp.ectoplasm": "Ectoplasm",
   "item.netherexp.ectoplasm_bucket": "Ectoplasm Bucket",
   "block.netherexp.black_ice": "Black Ice",
@@ -622,7 +622,7 @@
   "netherexp.configuration.itemSettings": "Item Settings",
   "netherexp.configuration.entitySettings": "Entity Settings",
   "netherexp.configuration.worldSettings": "World Settings",
-  "netherexp.configuration.visualSettings": "Visual Settings",
+  "netherexp.configuration.visualAndSoundSettings": "Visual & Sound Settings",
   "netherexp.configuration.gameMechanicSettings": "Game Mechanic Settings",
 
   "netherexp.configuration.fossilOreConversionChance": "Fossil Ore Conversion Chance",
@@ -667,8 +667,15 @@
 
   "netherexp.configuration.wispBoredomChance": "Wisp Boredom Chance",
   "netherexp.configuration.blackIceFreezingTicks": "Black Ice Freezing Ticks",
+  "netherexp.configuration.skeletonFossilization": "Skeleton Fossilization",
+  "netherexp.configuration.witherSkeletonFossilization": "Wither Skeleton Fossilization",
 
   "netherexp.configuration.blackIceParticles": "Black Ice Particles",
+  "netherexp.configuration.ectoplasmParticles": "Ectoplasm Particles",
+  "netherexp.configuration.ectoplasmSounds": "Ectoplasm Sounds",
+
+  "netherexp.configuration.ectoplasmFreezes": "Ectoplasm Freezes",
+  "netherexp.configuration.ectoplasmRustsNetherite": "Ectoplasm Rusts Netherite",
 
   "itemGroup.netherexp.jne_grieving_grove": "JNE - Grieving Grove",
   "itemGroup.netherexp.jne_plume_bowels": "JNE - Plume Bowels",

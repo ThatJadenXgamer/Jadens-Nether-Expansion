@@ -652,6 +652,15 @@
       "netherexp:block/ectoplasm/whispering4"
     ]
   },
+  "block.pointed_dripstone.drip_ectoplasm_into_cauldron": {
+    "subtitle": "subtitles.block.pointed_dripstone.drip_ectoplasm_into_cauldron",
+    "sounds": [
+      "netherexp:block/ectoplasm/drip1",
+      "netherexp:block/ectoplasm/drip2",
+      "netherexp:block/ectoplasm/drip3",
+      "netherexp:block/ectoplasm/drip4"
+    ]
+  },
 
   "block.fossil_ore.break": {
     "subtitle": "subtitles.block.generic.break",

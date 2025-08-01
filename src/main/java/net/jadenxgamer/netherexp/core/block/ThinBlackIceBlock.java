@@ -77,7 +77,7 @@ public class ThinBlackIceBlock extends BlackIceBlock {
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         entity.causeFallDamage(fallDistance, 0.8f, entity.damageSources().fall());
-        if (level.isClientSide()) return;
+        if (level.isClientSide() || fallDistance < 1.0f) return;
         level.scheduleTick(pos, JNEBlocks.THIN_BLACK_ICE.get(), 0);
     }
 

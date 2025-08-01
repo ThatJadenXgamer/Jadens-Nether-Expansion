@@ -57,12 +57,13 @@ public class BlackIceBlock extends Block {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextDouble() > JNEConfigs.BLACK_ICE_FREEZING_TICKS.get()) return;
+        if (random.nextDouble() > JNEConfigs.BLACK_ICE_FROSTS_WATER_CHANCE.get()) return;
 
         Direction freezeDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
         BlockPos freezePos = pos.relative(freezeDirection);
         if (level.getFluidState(freezePos).is(JNETags.Fluids.TURNS_TO_BLACK_ICE)) {
             level.setBlock(freezePos, JNEBlocks.THIN_BLACK_ICE.get().defaultBlockState(), Block.UPDATE_ALL);
+            level.playSound(null, pos, JNESoundEvents.ECTOPLASM_FREEZE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
     }
 }

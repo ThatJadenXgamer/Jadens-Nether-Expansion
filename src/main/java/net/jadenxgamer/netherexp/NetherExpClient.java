@@ -1,15 +1,21 @@
 package net.jadenxgamer.netherexp;
 
 import net.jadenxgamer.netherexp.client.particle.BlackFlakeParticle;
+import net.jadenxgamer.netherexp.client.particle.JNEDripHangParticle;
+import net.jadenxgamer.netherexp.client.particle.JNEFallAndLandParticle;
 import net.jadenxgamer.netherexp.client.particle.SmogParticle;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.entity.WispRenderer;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.SpellParticle;
+import net.minecraft.client.particle.SplashParticle;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
@@ -33,6 +39,8 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.SUSPICIOUS_SOUL_SAND.get(), SuspiciousSoulSandBlockRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.DISCERNMENT_GLASS.get(), DiscernmentGlassBlockRenderer::new);
+        ItemBlockRenderTypes.setRenderLayer(JNEFluids.ECTOPLASM_SOURCE.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(JNEFluids.ECTOPLASM_FLOWING.get(), RenderType.translucent());
     }
 
     public static void registerParticles(RegisterParticleProvidersEvent event) {
@@ -46,6 +54,11 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.BLACK_SMOKE.get(), SmogParticle.Provider::new);
         event.registerSpriteSet(JNEParticleTypes.WHITE_SMOKE.get(), SmogParticle.Provider::new);
         event.registerSpriteSet(JNEParticleTypes.BLACK_FLAKE.get(), BlackFlakeParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.DRIPPING_ECTOPLASM.get(), JNEDripHangParticle.EctoplasmProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.FALLING_ECTOPLASM.get(), JNEFallAndLandParticle.EctoplasmProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.ECTOSPLASH.get(), SplashParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.ECTOPLASM_RAYS.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.ECTOPLASM.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.event;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
+import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -34,7 +35,9 @@ public class JNEEvents {
 
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
-
+            event.enqueueWork(() -> {
+                JNECauldronInteractions.register();
+            });
         }
 
         @SubscribeEvent

@@ -21,6 +21,8 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> SPORESHROOM_TRAMPOLINED = registerSoundEvents("block.sporeshroom.trampolined");
     public static final Supplier<SoundEvent> GEYSER_STEAM = registerSoundEvents("block.geyser.steam");
     public static final Supplier<SoundEvent> ECTOPLASM_FREEZE = registerSoundEvents("block.ectoplasm.freeze");
+    public static final Supplier<SoundEvent> ECTOPLASM_WHISPERING = registerSoundEvents("block.ectoplasm.whispering");
+    public static final Supplier<SoundEvent> DRIP_ECTOPLASM_INTO_CAULDRON = registerSoundEvents("block.pointed_dripstone.drip_ectoplasm_into_cauldron");
     public static final Supplier<SoundEvent> THIN_BLACK_ICE_CRACKING = registerSoundEvents("block.thin_black_ice.cracking");
     public static final Supplier<SoundEvent> DISCERNMENT_GLASS_ADD = registerSoundEvents("block.discernment_glass.add");
     public static final Supplier<SoundEvent> DISCERNMENT_GLASS_REMOVE = registerSoundEvents("block.discernment_glass.remove");
@@ -28,6 +30,8 @@ public class JNESoundEvents {
 
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
     public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");
+    public static final Supplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");
+    public static final Supplier<SoundEvent> BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
 
     public static final Supplier<SoundEvent> GOLD_GILDING = registerSoundEvents("item.gold.gilding");
 

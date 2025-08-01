@@ -15,6 +15,8 @@ public class JNETags {
         public static final TagKey<Block> SOUL_SANDS = createTag("soul_sands"); // Soul Sand blocks
         public static final TagKey<Block> SOUL_CROP_MUTATION_BLOCKS = createTag("soul_crop_mutation_blocks"); // Blocks which mutate crops into soul variants when planted on
         public static final TagKey<Block> SORROWEED_REPLACEABLE = createTag("sorroweed_replaceable"); // Blocks that can be tainted by sorroweed
+        public static final TagKey<Block> SOUL_LAYER_CAN_SURVIVE_ON = createTag("soul_layer_can_survive_on"); // self-explanatory
+        public static final TagKey<Block> SOUL_LAYER_CANNOT_SURVIVE_ON = createTag("soul_layer_cannot_survive_on"); // also self-explanatory
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));

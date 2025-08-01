@@ -28,6 +28,7 @@ public final class NetherExp {
 
         JNEEntityType.init(modEventBus);
         JNEMobEffects.init(modEventBus);
+        JNEFluids.init(modEventBus);
         JNEBlocks.init(modEventBus);
         JNEItems.init(modEventBus);
         JNEBlockEntityType.init(modEventBus);

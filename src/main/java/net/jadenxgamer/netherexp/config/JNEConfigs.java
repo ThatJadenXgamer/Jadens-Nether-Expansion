@@ -52,9 +52,17 @@ public class JNEConfigs {
 
     public static ModConfigSpec.DoubleValue WISP_BOREDOM_CHANCE;
     public static ModConfigSpec.IntValue BLACK_ICE_FREEZING_TICKS;
+    public static ModConfigSpec.BooleanValue SKELETON_FOSSILIZATION;
+    public static ModConfigSpec.BooleanValue WITHER_SKELETON_FOSSILIZATION;
 
-    // VISUAL
+    // VISUAL AND SOUND
 
     public static ModConfigSpec.BooleanValue BLACK_ICE_PARTICLES;
+    public static ModConfigSpec.BooleanValue ECTOPLASM_PARTICLES;
+    public static ModConfigSpec.BooleanValue ECTOPLASM_SOUNDS;
 
+    // GAME MECHANICS
+
+    public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;
+    public static ModConfigSpec.BooleanValue ECTOPLASM_RUSTS_NETHERITE;
 }

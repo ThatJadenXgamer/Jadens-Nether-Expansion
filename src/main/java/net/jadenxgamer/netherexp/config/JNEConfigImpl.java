@@ -27,12 +27,12 @@ public class JNEConfigImpl {
         JNEConfigImpl.WorldSettings.init(BUILDER);
         BUILDER.pop();
 
-        BUILDER.comment("Visual Settings").push("visualSettings");
-        JNEConfigImpl.VisualSettings.init(BUILDER);
+        BUILDER.comment("Visual & Sound Settings").push("visualAndSoundSettings");
+        JNEConfigImpl.VisualAndSoundSettings.init(BUILDER);
         BUILDER.pop();
 
         BUILDER.comment("Game Mechanic Settings").push("gameMechanicSettings");
-        JNEConfigImpl.OverhaulSettings.init(BUILDER);
+        JNEConfigImpl.GameMechanicSettings.init(BUILDER);
         BUILDER.pop();
 
         CONFIG = BUILDER.build();
@@ -108,7 +108,7 @@ public class JNEConfigImpl {
                     .comment("Chance for nearby thin black ice to shatter")
                     .defineInRange("nearbyThinIceBreakingChance", 0.4, 0.0, 1.0);
             BLACK_ICE_FROSTS_WATER_CHANCE = builder
-                    .comment("Chance for black ice or thin black ice to freeze water into more thin black ice")
+                    .comment("Chance for black ice or thin black ice to freeze nearby water into more thin black ice")
                     .defineInRange("blackIceFrostsWaterChance", 0.6, 0.0, 1.0);
             BLACK_ICE_TAINTING = builder
                     .comment("Black ice will taint netherrack into pale soul slate")
@@ -117,16 +117,17 @@ public class JNEConfigImpl {
                     .comment("Sorrowsquash taints nearby soul ground blocks into sorroweed when bone-mealed")
                     .define("sorrowsquashTainting", true);
             SHOULD_SORROWSQUASH_FALL = builder
-                    .comment("Weather sorrowsquashes fall if the it's attached to breaks")
+                    .comment("Weather sorrowsquashes fall if the stem it's attached to breaks")
                     .define("shouldSorrowsquashFall", true);
             SORROWSQUISHED_DAMAGE_MULTIPLIER = builder
-                    .comment("Damage multiplier per block fallen for being sorrowsquished")
+                    .comment("Damage multiplier per block the sorrowsquash falls to inflict as sorrowsquished")
                     .defineInRange("sorrowsquishedDamageMultiplier", 1.5, 0.0, Double.MAX_VALUE);
             SORROWSQUISHED_MAX_DAMAGE = builder
-                    .comment("Maximum damage that can be accumulated for being sorrowsquished")
+                    .comment("Maximum damage that can be accumulated form sorrowsquash to be inflicted as sorrowsquished")
                     .defineInRange("sorrowsquishedMaxDamage", 30, 0, Integer.MAX_VALUE);
             SORROWSQUASH_GROWTH_CHANCE = builder
-                    .comment("Chance for sorrowsquashes to grow from a sorrowsquash stem \nIf sorrowsquash fails to grow then the stem will attempt to grow upwards instead")
+                    .comment("Chance for sorrowsquashes to grow from a sorrowsquash stem \n" +
+                             "If sorrowsquash fails to grow then the stem will attempt to grow upwards instead")
                     .defineInRange("sorrowsquashGrowthChance", 0.2, 0.0, 1.0);
             CEREBRAGE_GROWTH_CHANCE = builder
                     .comment("Chance for cerebrage skulls to grow to their next stage")
@@ -161,7 +162,7 @@ public class JNEConfigImpl {
                     .define("backportTearsMusicDisc", true);
             TWEAK_OBTAINING_TEARS_MUSIC_DISC = builder
                     .comment("Makes obtaining the tears music disc harder, as now it requires you to slay a ghast in the overworld \n" +
-                            "If disabled then the disc is obtained by redirecting a fireball into a ghast like in vanilla")
+                             "If disabled then the disc is obtained by redirecting a fireball into a ghast like in vanilla")
                     .worldRestart()
                     .define("tweakObtainingTearsMusicDisc", true);
         }
@@ -171,11 +172,19 @@ public class JNEConfigImpl {
 
         public static void init(ModConfigSpec.Builder builder) {
             WISP_BOREDOM_CHANCE = builder
-                    .comment("The chance for a wisp's boredom counter to increase each tick")
-                    .defineInRange("wispBoredomChance", 0.2, 0.0, 1.0);
+                    .comment("The chance for a wisp's boredom counter to increase each second")
+                    .defineInRange("wispBoredomChance", 0.02, 0.0, 1.0);
             BLACK_ICE_FREEZING_TICKS = builder
                     .comment("The amount of freezing in ticks that all black ices can inflict")
                     .defineInRange("blackIceFreezingTicks", 100, 0, Integer.MAX_VALUE);
+            SKELETON_FOSSILIZATION = builder
+                    .comment("Upon death skeletons will fossilize soul soil blocks they are standing on into fossil ore")
+                    .worldRestart()
+                    .define("skeletonFossilization", true);
+            WITHER_SKELETON_FOSSILIZATION = builder
+                    .comment("Upon death wither skeletons will fossilize soul soil blocks they are standing on into fossil fuel ore")
+                    .worldRestart()
+                    .define("witherSkeletonFossilization", true);
         }
     }
 
@@ -188,20 +197,31 @@ public class JNEConfigImpl {
     }
 
 
-    public static class VisualSettings {
+    public static class VisualAndSoundSettings {
 
         public static void init(ModConfigSpec.Builder builder) {
             BLACK_ICE_PARTICLES = builder
                     .comment("Black ice blocks will produce black flake particles underneath")
                     .define("blackIceParticles", true);
+            ECTOPLASM_PARTICLES = builder
+                    .comment("Ectoplasm will produce rays of light and rising particles from its surface")
+                    .define("ectoplasmParticles", true);
+            ECTOPLASM_SOUNDS = builder
+                    .comment("Ectoplasm will whisper incomprehensible gibberish to players")
+                    .define("ectoplasmSounds", true);
         }
     }
 
 
-    public static class OverhaulSettings {
+    public static class GameMechanicSettings {
 
         public static void init(ModConfigSpec.Builder builder) {
-
+            ECTOPLASM_FREEZES = builder
+                    .comment("Ectoplasm will slowly start to deal freezing damage when submerged")
+                    .define("ectoplasmFreezes", true);
+            ECTOPLASM_RUSTS_NETHERITE = builder
+                    .comment("Ectoplasm will rust all netherite upon contact")
+                    .define("ectoplasmRustsNetherite", true);
         }
     }
 }

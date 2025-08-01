@@ -139,15 +139,21 @@ public class JNEBlocks {
 
     public static final Supplier<Block> SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block", () ->
             new SoulMagmaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
-                    .isValidSpawn((state, level, pos, entity) -> entity.fireImmune())
-                    .sound(JNESoundType.SOUL_MAGMA_BLOCK)));
+                    .isValidSpawn((state, level, pos, entity) -> entity.fireImmune()).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
+
+    public static final Supplier<Block> SOUL_SOIL_LAYER = registerBlock("soul_soil_layer", () ->
+            new JNELayerBlock(JNETags.Blocks.SOUL_LAYER_CAN_SURVIVE_ON, JNETags.Blocks.SOUL_LAYER_CANNOT_SURVIVE_ON, BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_SOIL).strength(0.1f).requiresCorrectToolForDrops().replaceable().forceSolidOff()
+                    .isViewBlocking(((state, world, pos) -> state.getValue(JNELayerBlock.LAYERS) >= 8))));
+
+    public static final Supplier<Block> ECTOPLASM_CAULDRON = registerBlockWithoutItem("ectoplasm_cauldron", () ->
+            new EctoplasmCauldronBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.CAULDRON).lightLevel((state) -> 12)));
 
     /**
      * Black Ice
      */
 
     public static final Supplier<Block> BLACK_ICE = registerBlock("black_ice", () ->
-            new BlackIceBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.PACKED_ICE).mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(0.3f).lightLevel((state) -> 2).sound(JNESoundType.BLACK_ICE)));
+            new BlackIceBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.PACKED_ICE).mapColor(MapColor.COLOR_BLACK).randomTicks().requiresCorrectToolForDrops().strength(0.3f).lightLevel((state) -> 2).sound(JNESoundType.BLACK_ICE)));
 
     public static final Supplier<Block> BLACK_ICICLE = registerBlock("black_icicle", () ->
             new BlackIcicleBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().forceSolidOn().noOcclusion().randomTicks().strength(0.1F, 3.0F).dynamicShape()

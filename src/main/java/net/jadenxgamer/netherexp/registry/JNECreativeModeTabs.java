@@ -54,39 +54,62 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.FOSSIL_ORE.get());
                 output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
 
-                output.accept(JNEBlocks.SOUL_SWIRLS.get());
-
                 output.accept(JNEBlocks.SOUL_GLASS.get());
                 output.accept(JNEBlocks.DISCERNMENT_GLASS.get());
 
-                output.accept(Blocks.SOUL_TORCH);
-                output.accept(Blocks.SOUL_LANTERN);
-                output.accept(Blocks.SOUL_CAMPFIRE);
-                output.accept(JNEBlocks.SOUL_CANDLE.get());
-                output.accept(JNEBlocks.SOUL_MAGMA_BLOCK.get());
+                output.accept(JNEBlocks.WRAITHING_LESION.get());
                 output.accept(JNEBlocks.SOULED_GEYSER.get());
 
+                output.accept(JNEBlocks.SOUL_SWIRLS.get());
+
                 output.accept(JNEBlocks.BLACK_ICE.get());
-                output.accept(JNEBlocks.BLACK_ICICLE.get());
                 output.accept(JNEBlocks.THIN_BLACK_ICE.get());
+                output.accept(JNEBlocks.BLACK_ICICLE.get());
 
                 output.accept(JNEBlocks.SORROWEED.get());
                 output.accept(JNEBlocks.SORROWSQUASH.get());
                 output.accept(JNEBlocks.CARVED_SORROWSQUASH.get());
                 output.accept(JNEBlocks.GHOUL_O_LANTERN.get());
-                output.accept(Items.PUMPKIN_SEEDS);
+                output.accept(JNEBlocks.SOUL_TORCHFLOWER.get());
+
+                output.accept(Items.NETHERITE_BLOCK);
+                output.accept(JNEBlocks.NETHERITE_PLATED_BLOCK.get());
+                output.accept(JNEBlocks.NETHERITE_GRATE.get());
+                output.accept(JNEBlocks.CUT_NETHERITE_BLOCK.get());
+                output.accept(JNEBlocks.CUT_NETHERITE_STAIRS.get());
+                output.accept(JNEBlocks.CUT_NETHERITE_SLAB.get());
+                output.accept(JNEBlocks.CUT_NETHERITE_PILLAR.get());
+                output.accept(JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK.get());
+                output.accept(JNEBlocks.RUSTY_NETHERITE_GRATE.get());
+                output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get());
+                output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_STAIRS.get());
+                output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_SLAB.get());
+                output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_PILLAR.get());
+
+                output.accept(JNEFluids.ECTOPLASM_BUCKET.get());
+                output.accept(Blocks.SOUL_TORCH);
+                output.accept(Blocks.SOUL_LANTERN);
+                output.accept(Blocks.SOUL_CAMPFIRE);
+                output.accept(JNEBlocks.SOUL_CANDLE.get());
+                output.accept(JNEBlocks.SOUL_MAGMA_BLOCK.get());
+
+                output.accept(JNEItems.SHOTGUN_CORE.get());
+                output.accept(JNEItems.SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
+                output.accept(JNEItems.VALOR_ARMOR_TRIM_SMITHING_TEMPLATE.get());
+                output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
+                output.accept(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get());
 
                 output.accept(JNEItems.WISP_BOTTLE.get());
                 output.accept(JNEItems.WRAITHING_FLESH.get());
-                output.accept(JNEBlocks.WRAITHING_LESION.get());
                 output.accept(JNEItems.STRIDITE.get());
                 output.accept(JNEItems.NETHERITE_PLATING.get());
                 output.accept(JNEItems.PHASMO_SHARD.get());
                 output.accept(JNEItems.PHASMO_ARROW.get());
                 output.accept(JNEItems.BANSHEE_ROD.get());
                 output.accept(JNEItems.BANSHEE_POWDER.get());
-
-                output.accept(JNEBlocks.SOUL_TORCHFLOWER.get());
+                output.accept(JNEItems.WILL_O_WISP.get());
+                output.accept(Items.GHAST_TEAR);
+                output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
 
                 output.accept(Items.SKELETON_SPAWN_EGG);
                 output.accept(Items.GHAST_SPAWN_EGG);
@@ -101,7 +124,7 @@ public class JNECreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> CRIMSON_FOREST = CREATIVE_MODE_TABS.register("crimson_forest", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.netherexp.jne_crimson_forest"))
-            .icon(() -> new ItemStack(JNEItems.WEEPING_HELIX.get()))
+            .icon(() -> new ItemStack(Items.NETHER_WART_BLOCK))
             .displayItems((params, output) -> {
                 output.accept(Blocks.CRIMSON_NYLIUM);
                 output.accept(JNEBlocks.CRIMSON_NYLIUM_PATH.get());
@@ -156,7 +179,7 @@ public class JNECreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> WARPED_FOREST = CREATIVE_MODE_TABS.register("warped_forest", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.netherexp.jne_warped_forest"))
-            .icon(() -> new ItemStack(JNEItems.TWISTING_HELIX.get()))
+            .icon(() -> new ItemStack(Items.WARPED_WART_BLOCK))
             .displayItems((params, output) -> {
                 output.accept(Blocks.WARPED_NYLIUM);
                 output.accept(JNEBlocks.WARPED_NYLIUM_PATH.get());
@@ -276,6 +299,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.NETHERRACK_PILLAR.get());
 
                 output.accept(Items.MAGMA_BLOCK);
+                output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
                 output.accept(Blocks.SOUL_SAND);
                 output.accept(Blocks.GLOWSTONE);
                 output.accept(Blocks.NETHER_QUARTZ_ORE);
@@ -356,7 +380,11 @@ public class JNECreativeModeTabs {
                 output.accept(Items.NETHERITE_INGOT);
                 output.accept(JNEItems.NETHERITE_PLATING.get());
                 output.accept(Items.MAGMA_CREAM);
-                output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
+                output.accept(Items.GHAST_TEAR);
+                output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
+                output.accept(Items.BLAZE_ROD);
+                output.accept(Items.BLAZE_POWDER);
+                output.accept(Items.FIRE_CHARGE);
 
                 output.accept(Items.PIGLIN_SPAWN_EGG);
                 output.accept(Items.PIGLIN_BRUTE_SPAWN_EGG);
@@ -365,10 +393,12 @@ public class JNECreativeModeTabs {
                 output.accept(Items.MAGMA_CUBE_SPAWN_EGG);
                 output.accept(Items.BLAZE_SPAWN_EGG);
                 output.accept(Items.WITHER_SKELETON_SPAWN_EGG);
-
-                output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
             })
             .build());
+
+    public static void init(IEventBus eventBus) {
+        CREATIVE_MODE_TABS.register(eventBus);
+    }
 
     public static void addToExistingTabs(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -403,7 +433,7 @@ public class JNECreativeModeTabs {
             insertToTab(event, JNEBlocks.BLUE_NETHER_BRICKS.get(), JNEBlocks.BLUE_NETHER_BRICK_STAIRS.get(), false);
             insertToTab(event, Items.RED_NETHER_BRICKS, JNEBlocks.RED_MIXED_NETHER_BRICKS.get(), true);
             insertToTab(event, JNEBlocks.BLUE_NETHER_BRICKS.get(), JNEBlocks.BLUE_MIXED_NETHER_BRICKS.get(), true);
-            
+
             insertToTab(event, Items.QUARTZ_PILLAR, JNEBlocks.CHISELED_QUARTZ_PILLAR.get(), false);
             insertToTab(event, Items.QUARTZ_BRICKS, JNEBlocks.CRACKED_QUARTZ_BRICKS.get(), false);
             insertToTab(event, Items.QUARTZ_BLOCK, JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get(), true);
@@ -420,16 +450,21 @@ public class JNECreativeModeTabs {
             insertToTab(event, Items.WARPED_WART_BLOCK, JNEBlocks.WARPED_WART_BEARD.get(), false);
 
             insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
+            insertToTab(event, Items.MAGMA_BLOCK, JNEBlocks.SOUL_MAGMA_BLOCK.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             insertToTab(event, Items.SHROOMLIGHT, JNEBlocks.SHROOMNIGHT.get(), false);
+            insertToTab(event, Items.MAGMA_BLOCK, JNEBlocks.SOUL_MAGMA_BLOCK.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
+            insertToTab(event, Items.BREEZE_ROD, JNEItems.BANSHEE_ROD.get(), false);
         }
-    }
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            insertToTab(event, Items.LAVA_BUCKET, JNEFluids.ECTOPLASM_BUCKET.get(), false);
 
-    public static void init(IEventBus eventBus) {
-        CREATIVE_MODE_TABS.register(eventBus);
+            insertToTab(event, Items.MUSIC_DISC_PIGSTEP, JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), false);
+            insertToTab(event, Items.MUSIC_DISC_PIGSTEP, LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")), false);
+        }
     }
 }

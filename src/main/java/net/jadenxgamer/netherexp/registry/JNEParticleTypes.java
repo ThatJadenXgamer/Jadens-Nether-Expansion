@@ -26,7 +26,11 @@ public class JNEParticleTypes {
     public static final Supplier<SimpleParticleType> BLACK_SMOKE = PARTICLE_TYPES.register("black_smoke", () -> new SimpleParticleType(false));
     public static final Supplier<SimpleParticleType> WHITE_SMOKE = PARTICLE_TYPES.register("white_smoke", () -> new SimpleParticleType(false));
     public static final Supplier<SimpleParticleType> BLACK_FLAKE = PARTICLE_TYPES.register("black_flake", () -> new SimpleParticleType(false));
-
+    public static final Supplier<SimpleParticleType> DRIPPING_ECTOPLASM = PARTICLE_TYPES.register("dripping_ectoplasm", () -> new SimpleParticleType(false));
+    public static final Supplier<SimpleParticleType> FALLING_ECTOPLASM = PARTICLE_TYPES.register("falling_ectoplasm", () -> new SimpleParticleType(false));
+    public static final Supplier<SimpleParticleType> ECTOSPLASH = PARTICLE_TYPES.register("ectosplash", () -> new SimpleParticleType(false));
+    public static final Supplier<LodestoneWorldParticleType> ECTOPLASM_RAYS = PARTICLE_TYPES.register("ectoplasm_rays", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> ECTOPLASM = PARTICLE_TYPES.register("ectoplasm", LodestoneWorldParticleType::new);
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

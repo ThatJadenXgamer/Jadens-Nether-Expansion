@@ -4,6 +4,8 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderStateShard;
+import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
+import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,6 +15,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 
 import java.io.IOException;
 
@@ -56,6 +59,11 @@ public class JNEClientEvents {
             } catch (IOException exception) {
                 NetherExp.LOGGER.error("Failed to load Shader Instances, {}", exception);
             }
+        }
+
+        @SubscribeEvent
+        private static void clientExtensions(RegisterClientExtensionsEvent event) {
+            event.registerFluidType(JNEFluidExtensions.ectoplasmExt, JNEFluids.ECTOPLASM_TYPE.get());
         }
     }
 }
