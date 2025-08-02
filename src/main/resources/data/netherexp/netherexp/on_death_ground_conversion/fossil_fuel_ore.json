@@ -1,7 +1,9 @@
 {
   "entity_types": "#netherexp:fossil_fuel_ore_converting_skeletons",
   "ground_block": "minecraft:soul_soil",
-  "conversion_block": "netherexp:fossil_fuel_ore",
+  "conversion_block": {
+    "Name": "netherexp:fossil_fuel_ore"
+  },
 
   "neoforge:conditions": [
     {

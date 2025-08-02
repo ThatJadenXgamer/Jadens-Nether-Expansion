@@ -13,8 +13,4 @@ public class HolderHelper {
     public static Holder<Enchantment> getEnchantmentHolder(ResourceKey<Enchantment> enchantment) {
         return NetherExp.registryAccess.registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(enchantment);
     }
-
-    public static Holder<MobEffect> getEffectHolder(ResourceKey<MobEffect> effect) {
-        return NetherExp.registryAccess.registryOrThrow(Registries.MOB_EFFECT).getHolderOrThrow(effect);
-    }
 }

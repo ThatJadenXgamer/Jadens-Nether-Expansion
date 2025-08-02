@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.event;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
@@ -17,6 +18,7 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
@@ -28,6 +30,11 @@ public class JNEEvents {
     @SubscribeEvent
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {
         NetherExp.registryAccess = event.getServer().registryAccess();
+    }
+
+    @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        OnDeathGroundConversion.onLivingDeath(event);
     }
 
     @EventBusSubscriber(modid = NetherExp.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
@@ -47,7 +54,7 @@ public class JNEEvents {
 
         @SubscribeEvent
         public static void datapackRegistry(DataPackRegistryEvent.NewRegistry event) {
-            event.dataPackRegistry(JNERegistries.WISP_ARCHAEOLOGY, WispArchaeology.CODEC);
+            JNERegistries.datapackInit(event);
         }
 
         @SubscribeEvent
