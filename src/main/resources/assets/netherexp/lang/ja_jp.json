@@ -54,7 +54,7 @@
   "item.netherexp.music_disc_buckshot_wonderland.desc": "Shroomaniac - Buckshot Wonderland",
 
   "item.netherexp.antidote.inactive_tooltip": "有効化するには以下と醸造する必要がある：",
-  "item.netherexp.non_consumable.tooltip": "使っても消費されない遺物",
+  "item.netherexp.non_consumable.tooltip": "何度でも使える",
 
   "item.netherexp.antidote": "抗体薬",
   "item.netherexp.antidote.effect": "クラフト不可の抗体薬",
