@@ -8,9 +8,9 @@
   "item.netherexp.hogham": "生のホグハム",
   "item.netherexp.cooked_hogham": "調理したホグハム",
   "item.netherexp.white_ash_powder": "塵灰の粉",
-  "item.netherexp.lightspores": "光の胞子",
-  "item.netherexp.nightspores": "闇の胞子",
-  "item.netherexp.wraithing_flesh": "うごめく肉塊",
+  "item.netherexp.lightspores": "まばゆく胞子",
+  "item.netherexp.nightspores": "暗がりの胞子",
+  "item.netherexp.wraithing_flesh": "彷徨う死肉",
   "item.netherexp.sanctum_compass": "聖域のコンパス",
   "item.netherexp.banshee_rod": "バンシィの棒きれ",
   "item.netherexp.banshee_powder": "バンシィの粉",
@@ -142,7 +142,7 @@
   "block.netherexp.chiseled_soul_slate_tiles": "模様入りソウルスレートタイル",
 
   "block.netherexp.brazier_chest": "火鉢のチェスト",
-  "block.netherexp.brazier_chest.locked": "火鉢のチェストは施錠されている。「不実の炎」が必要だ",
+  "block.netherexp.brazier_chest.locked": "火鉢のチェストは施錠されている。不実の炎が必要だ",
   "block.netherexp.treacherous_candle": "不実のロウソク",
   "treacherous_candle.health": "不実のロウソク",
   "block.netherexp.sculk_grinder": "スカルクグラインダー",
@@ -322,7 +322,7 @@
 
   "block.netherexp.crimson_sprouts": "真紅の芽",
 
-  "block.netherexp.soul_soil_layer": "ソウルソイルの地層",
+  "block.netherexp.soul_soil_layer": "ソウルソイルの層",
 
   "block.netherexp.soul_path": "ソウルソイルの道",
   "block.netherexp.crimson_nylium_path": "真紅のナイリウムの道",
@@ -388,8 +388,8 @@
   "subtitles.block.brazier_chest.open": "火鉢チェストが開く",
   "subtitles.block.brazier_chest.close": "火鉢チェストが閉じる",
   "subtitles.block.brazier_chest.lit": "裏切りの悲鳴",
-  "subtitles.block.treacherous_candle.victory": "不実のろうそくの勝利の合唱",
-  "subtitles.block.treacherous_candle.defeat": "不実のろうそくの敗北の合唱",
+  "subtitles.block.treacherous_candle.victory": "不実のロウソクがあなたの勝利を讃える",
+  "subtitles.block.treacherous_candle.defeat": "不実のロウソクがあなたの敗北を嘲笑う",
 
   "subtitles.entity.warphopper.ambient": "ワープホッパーが鳴く",
   "subtitles.entity.warphopper.hurt": "ワープホッパーがダメージを受ける",
@@ -495,7 +495,7 @@
   "advancements.nether.back_with_a_vengeance.title": "復讐を誓った帰還",
   "advancements.nether.back_with_a_vengeance.description": "ハニカムで壊れた不実のキャンドルを修復する",
   "advancements.nether.tower_defense.title": "キャンドル・タワーディフェンス6",
-  "advancements.nether.tower_defense.description": "古代の蝋を使って自分だけの不実のろうそくをクラフトする",
+  "advancements.nether.tower_defense.description": "古代の蝋を使って自分だけの不実のロウソクをクラフトする",
   "advancements.nether.emf_raider.title": "EMFレーダー",
   "advancements.nether.emf_raider.description": "聖域のコンパスを起動してその発信源へ向かう",
 
@@ -573,7 +573,7 @@
   "item.netherexp.sealed_pottery_sherd": "封印の壺の欠片",
   "item.netherexp.spectre_pottery_sherd": "亡き魂の壺の欠片",
   "item.netherexp.marionette_pottery_sherd": "傀儡の壺の欠片",
-  "item.netherexp.eldritch_pottery_sherd": "畏怖の壺の欠片",
+  "item.netherexp.eldritch_pottery_sherd": "異形の壺の欠片",
   "item.netherexp.deception_pottery_sherd": "欺瞞の壺の欠片",
   "item.netherexp.firearm_pottery_sherd": "火器の壺の欠片",
   "item.netherexp.botanical_pottery_sherd": "植生学の壺の欠片",
@@ -649,7 +649,7 @@
   "block.netherexp.ancient_candle": "古代のろうそく",
   "block.netherexp.ancient_burning_skull_block": "いにしえ灯るスカルブロック",
   "block.netherexp.ancient_burning_wither_skull_block": "いにしえ灯るウィザースカルブロック",
-  "block.netherexp.ancient_skeleton_skull_candle": "古代のろうそく灯るスケルトンの頭蓋",
+  "block.netherexp.ancient_skeleton_skull_candle": "いにしえ灯るスケルトンの頭蓋",
   "subtitles.entity.carcass.hurt": "カーカスがガラガラと鳴る",
   "subtitles.entity.carcass.death": "カーカスが死ぬ",
   "subtitles.entity.carcass.reanimate": "カーカスが蘇る",
