@@ -38,13 +38,13 @@ public record OnDeathGroundConversion(HolderSet<EntityType<?>> entityTypes,
         Holder<EntityType<?>> holderEntity = getAsHolder(entity.getType());
         BlockPos pos = entity.getOnPos();
         BlockState conversionBlock = entity.getBlockStateOn();
-        Optional<OnDeathGroundConversion> registry = level.registryAccess().registryOrThrow(JNERegistries.ON_DEATH_GROUND_CONVERSION).stream()
-                .filter(p -> p.entityTypes.contains(holderEntity) && p.groundBlock.contains(conversionBlock.getBlockHolder())).findFirst();
+        Optional<OnDeathGroundConversion> onDeathGroundConversion = level.registryAccess().registryOrThrow(JNERegistries.ON_DEATH_GROUND_CONVERSION).stream()
+                .filter(json -> json.entityTypes.contains(holderEntity) && json.groundBlock.contains(conversionBlock.getBlockHolder())).findFirst();
 
-        if (registry.isEmpty()) return;
+        if (onDeathGroundConversion.isEmpty()) return;
 
         level.playSound(null, pos, conversionBlock.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
-        level.setBlock(pos, registry.get().conversionBlock(), Block.UPDATE_ALL);
+        level.setBlock(pos, onDeathGroundConversion.get().conversionBlock(), Block.UPDATE_ALL);
     }
 
     private static Holder<EntityType<?>> getAsHolder(EntityType<?> entity) {

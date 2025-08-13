@@ -19,14 +19,30 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
+import static net.jadenxgamer.netherexp.config.JNEConfigs.NETHER_WORLDGEN_OVERHAUL;
+
 public class JNEBuiltinPacks {
 
-    // Enables Retextures for JNE
+    // Retextures for JNE
     public static void rpJNERetextures(AddPackFindersEvent event) {
         Path path = ModList.get().getModFileById(NetherExp.MOD_ID).getFile().findResource("resourcepacks/jne_retextures");
-        PackMetadataSection metadata = new PackMetadataSection(Component.literal("Built-in JNE Vanilla Retextures"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+        PackMetadataSection metadata = new PackMetadataSection(Component.literal("Improves various vanilla textures to fit with JNE"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
         event.addRepositorySource(source -> source.accept(new Pack(
                 new PackLocationInfo("netherexp:jne_retextures", Component.literal("JNE Retextures"), PackSource.BUILT_IN, Optional.empty()),
+                new PathPackResources.PathResourcesSupplier(path),
+                new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                new PackSelectionConfig(true, Pack.Position.TOP, false)
+        )));
+    }
+
+    // Nether WorldGen Overhaul
+    public static void dpNetherWorldgenOverhaul(AddPackFindersEvent event) {
+        if (ModList.get().isLoaded("amplified_nether") || !NETHER_WORLDGEN_OVERHAUL.get()) return;
+
+        Path path = ModList.get().getModFileById(NetherExp.MOD_ID).getFile().findResource("resourcepacks/nether_worldgen_overhaul");
+        PackMetadataSection metadata = new PackMetadataSection(Component.literal("Overhauls the nether world generation"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+        event.addRepositorySource(source -> source.accept(new Pack(
+                new PackLocationInfo("netherexp:nether_worldgen_overhaul", Component.literal("JNE Nether Worldgen Overhaul"), PackSource.BUILT_IN, Optional.empty()),
                 new PathPackResources.PathResourcesSupplier(path),
                 new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
                 new PackSelectionConfig(true, Pack.Position.TOP, false)

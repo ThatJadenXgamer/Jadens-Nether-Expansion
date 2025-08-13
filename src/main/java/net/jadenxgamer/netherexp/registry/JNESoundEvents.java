@@ -38,6 +38,13 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> WISP_AMBIENT = registerSoundEvents("entity.wisp.ambient");
     public static final Supplier<SoundEvent> WISP_HURT = registerSoundEvents("entity.wisp.hurt");
     public static final Supplier<SoundEvent> WISP_DEATH = registerSoundEvents("entity.wisp.death");
+
+    public static final Supplier<SoundEvent> APPARITION_AMBIENT = registerSoundEvents("entity.apparition.ambient");
+    public static final Supplier<SoundEvent> APPARITION_HURT = registerSoundEvents("entity.apparition.hurt");
+    public static final Supplier<SoundEvent> APPARITION_DEATH = registerSoundEvents("entity.apparition.death");
+    public static final Supplier<SoundEvent> APPARITION_FLY = registerSoundEvents("entity.apparition.fly");
+    public static final Supplier<SoundEvent> APPARITION_ATTACK = registerSoundEvents("entity.apparition.attack");
+
     public static final Supplier<SoundEvent> WISP_BOTTLE_FILL = registerSoundEvents("entity.wisp.bottle_fill");
     public static final Supplier<SoundEvent> WISP_BOTTLE_EMPTY = registerSoundEvents("entity.wisp.bottle_empty");
 

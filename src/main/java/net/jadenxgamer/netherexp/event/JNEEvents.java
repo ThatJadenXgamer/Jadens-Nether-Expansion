@@ -12,6 +12,8 @@ import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.minecraft.server.packs.PackType;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.ModLoader;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -22,6 +24,8 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
+
+import static net.jadenxgamer.netherexp.config.JNEConfigs.NETHER_WORLDGEN_OVERHAUL;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID)
@@ -78,7 +82,7 @@ public class JNEEvents {
                 JNEBuiltinPacks.rpJNERetextures(event);
             }
             if (event.getPackType() == PackType.SERVER_DATA) { // Datapacks
-
+                JNEBuiltinPacks.dpNetherWorldgenOverhaul(event);
             }
         }
     }

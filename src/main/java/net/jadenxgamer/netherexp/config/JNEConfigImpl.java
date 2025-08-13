@@ -185,14 +185,41 @@ public class JNEConfigImpl {
                     .comment("Upon death wither skeletons will fossilize soul soil blocks they are standing on into fossil fuel ore")
                     .worldRestart()
                     .define("witherSkeletonFossilization", true);
+            WISPS_DROPPED_BY_APPARITION = builder
+                    .comment("The amount of wisps which disperse out of an apparition upon its death")
+                    .defineInRange("wispsDroppedByApparition", 2, 0, Integer.MAX_VALUE);
+            APPARITION_POSSESSION_COOLDOWN = builder
+                    .comment("Cooldown in ticks for how long an apparition needs to wait before re-possessing a mob \n" +
+                            "If set to -1 then apparitions unleashed from a possessed mob cannot repossess anything")
+                    .defineInRange("apparitionPossessionCooldown", 300, -1, Integer.MAX_VALUE);
+            APPARITIONS_CAN_BE_SALTED = builder
+                    .comment("Apparitions can be salted... or erm, \"waxed\" until actual salt is added in the future \n" +
+                            "Salted apparitions cannot possess any mobs, although will still attack them")
+                    .define("apparitionsCanBeSalted", true);
+            POSSESSED_MOBS_UNLEASH_APPARITION = builder
+                    .comment("Upon death possessed mobs have a chance to unleash an apparition out into the world")
+                    .define("possessedMobsUnleashApparition", true);
+            DIMINISHING_BLAZES = builder
+                    .comment("Blazes will visibly become dimmer the lower their health is much like Minecraft: Dungeons")
+                    .define("diminishingBlazes", true);
         }
     }
-
 
     public static class WorldSettings {
 
         public static void init(ModConfigSpec.Builder builder) {
-
+            NETHER_WORLDGEN_OVERHAUL = builder
+                    .comment("""
+                            Improves the vanilla nether terrain generation\s
+                            Heights changes:\s
+                            The base nether is now 192 blocks tall\s
+                            Underelava is now -32 blocks deep\s
+                            The area above the roof will be 64 blocks tall\s
+                            \s
+                            §cNOTE: If Amplified Nether is installed then that mod's generation will take priority
+                            """)
+                    .gameRestart()
+                    .define("netherWorldGenOverhaul", true);
         }
     }
 
@@ -222,6 +249,19 @@ public class JNEConfigImpl {
             ECTOPLASM_RUSTS_NETHERITE = builder
                     .comment("Ectoplasm will rust all netherite upon contact")
                     .define("ectoplasmRustsNetherite", true);
+            SILVER_PARANORMAL_DAMAGE_MULTIPLIER = builder
+                    .comment("Silver weapons will deal multiplied damage to possessed and ghost mobs")
+                    .defineInRange("silverParanormalDamageMultiplier", 1.5, Double.MIN_VALUE, Double.MAX_VALUE);
+            SILVER_PARANORMAL_PROTECTION_DAMAGE = builder
+                    .comment("Silver armor will damage possessed and ghost mobs which damaged you in melee")
+                    .defineInRange("silverParanormalProtectionDamage", 5, 0, Double.MAX_VALUE);
+            SILVER_PARANORMAL_INFLICTS_SLOWNESS = builder
+                    .comment("Silver armor and weapons will inflict possessed and ghost mobs with slowness")
+                    .define("silverInflictsParanormalSlowness", true);
+            DEVELOPER_MODE = builder
+                    .comment("Turns on various developer loggers, technical information and such for debugging purposes \n" +
+                            "I suggest you keep this disabled if you're just a casual player")
+                    .define("developerMode", false);
         }
     }
 }

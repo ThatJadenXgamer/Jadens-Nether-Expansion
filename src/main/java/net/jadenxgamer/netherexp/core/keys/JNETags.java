@@ -2,8 +2,10 @@ package net.jadenxgamer.netherexp.core.keys;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -20,6 +22,20 @@ public class JNETags {
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));
+        }
+    }
+
+    public static class Items {
+
+        public static final TagKey<Item> SILVER_ARMORS = createTag("c", "silver_armors"); // Silver Armors
+        public static final TagKey<Item> SILVER_WEAPONS = createTag("c", "silver_weapons"); // Silver Weapons
+
+        private static TagKey<Item> createTag(String name) {
+            return TagKey.create(Registries.ITEM, NetherExp.id(name));
+        }
+
+        private static TagKey<Item> createTag(String namespace, String name) {
+            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(namespace, name));
         }
     }
 

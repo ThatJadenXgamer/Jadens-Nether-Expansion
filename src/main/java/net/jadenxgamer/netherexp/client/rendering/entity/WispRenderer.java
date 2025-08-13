@@ -77,8 +77,8 @@ public class WispRenderer extends MobRenderer<Wisp, WispRenderer.WispModel<Wisp>
         public void setupAnim(Wisp entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
             this.root().getAllParts().forEach(ModelPart::resetPose);
 
-            this.animate(entity.idleAnimation, WispAnimation.IDLE, ageInTicks);
-            this.animateWalk(WispAnimation.MOVE, limbSwing, limbSwingAmount, 2.0f, 2.5f);
+            this.animate(entity.idleAnimation, Animation.IDLE, ageInTicks);
+            this.animateWalk(Animation.MOVE, limbSwing, limbSwingAmount, 2.0f, 2.5f);
         }
 
         @Override
@@ -104,7 +104,7 @@ public class WispRenderer extends MobRenderer<Wisp, WispRenderer.WispModel<Wisp>
         }
     }
 
-    private static class WispAnimation {
+    private static class Animation {
 
         public static final AnimationDefinition IDLE = AnimationDefinition.Builder.withLength(4f).looping()
                 .addAnimation("body",

@@ -669,6 +669,13 @@
   "netherexp.configuration.blackIceFreezingTicks": "Black Ice Freezing Ticks",
   "netherexp.configuration.skeletonFossilization": "Skeleton Fossilization",
   "netherexp.configuration.witherSkeletonFossilization": "Wither Skeleton Fossilization",
+  "netherexp.configuration.wispsDroppedByApparition": "Wisps Dropped by Apparition",
+  "netherexp.configuration.apparitionPossessionCooldown": "Apparition Possession Cooldown",
+  "netherexp.configuration.apparitionsCanBeSalted": "Apparition Can Be Salted",
+  "netherexp.configuration.possessedMobsUnleashApparition": "Possessed Mobs Unleash Apparition",
+  "netherexp.configuration.diminishingBlazes": "Diminishing Blazes",
+
+  "netherexp.configuration.netherWorldGenOverhaul": "Nether WorldGen Overhaul",
 
   "netherexp.configuration.blackIceParticles": "Black Ice Particles",
   "netherexp.configuration.ectoplasmParticles": "Ectoplasm Particles",
@@ -676,6 +683,10 @@
 
   "netherexp.configuration.ectoplasmFreezes": "Ectoplasm Freezes",
   "netherexp.configuration.ectoplasmRustsNetherite": "Ectoplasm Rusts Netherite",
+  "netherexp.configuration.silverParanormalDamageMultiplier": "Silver Paranormal Damage Multiplier",
+  "netherexp.configuration.silverParanormalProtectionDamage": "Silver Paranormal Protection Damage",
+  "netherexp.configuration.silverInflictsParanormalSlowness": "Silver Inflicts Paranormal Slowness",
+  "netherexp.configuration.developerMode": "§oDeveloper Mode",
 
   "itemGroup.netherexp.jne_grieving_grove": "JNE - Grieving Grove",
   "itemGroup.netherexp.jne_plume_bowels": "JNE - Plume Bowels",

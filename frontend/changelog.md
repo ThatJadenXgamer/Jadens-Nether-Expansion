@@ -10,11 +10,13 @@
 ### Changes
 -Removed emissive built-in resource pack. all emissives are now part of the mod resources and always active
 
+-Entirely Overhauled every single configuration in the mod and added several new ones
+
 -Geysers have received new sounds and shoot out particles at high velocity when stepped on
 
 -Soul Magma Block texture has received a glow-up, it now tiles much better with its surroundings
 
--Soul Magma also emits new particles if you sprint on it to convey that is what's damaging you
+-Soul Magma also emits new particles if you sprint on it to better convey that is what's damaging you
 
 -Ancient Wax Block texture has received a glow-up, no longer looks like bricks
 
@@ -22,13 +24,13 @@
 
 -Shotgun-Shells are crafted with wraithing flesh and any coal-like item. It is the new ammunition for shotguns -X
 
--Slug-Shells are a variant of shotgun-shells crafted with gunpowder. It can destroy weak blocks and easily create openings -X
+-Slug-Shells are a variant of shotgun-shells crafted with gunpowder. It can destroy weak blocks and easily create new openings -X
 
 -Phasmo-Shells are another variant of shotgun-shells crafted with phasmo shards. It can phase through blocks -X
 
--Ecto Slabs now produce obvious rays of light when they are underground
+-Ecto Slabs now produce obvious rays of light when they are underground to make them less annoying
 
--Ecto Slabs now rarely spawn naturally in the soul sand valley, to accommodate their detection radius has been greatly reduced -X
+-Ecto Slabs now rarely spawn naturally in the soul sand valley instead of soul swirls. To accommodate this, their detection radius has been greatly reduced -X
 
 -Ecto Slabs can however still detect entities inflicted with unbounded speed from as far as 64 blocks away and B-line towards them if possible -X
 
@@ -38,13 +40,13 @@
 
 -Thin Black Ice can now shatter in a chain reaction if one breaks
 
--Certain mobs (usually lit ones) have also been made to support standing on thin black ice without shattering it 
+-Certain mobs (usually light ones) have also been made to support standing on thin black ice without shattering it 
 
 -Banshees now produce new breathing particles from their mouths -X
 
--Apparitions, Wisps, Banshees and Blazes no longer have shade and look similar to bedrock edition emissive mobs -X
+-Apparitions, Wisps, Banshees and Blazes no longer have shade and look similar to bedrock edition emissive mobs
 
--New Particles have been given to the soul sand valley to make it appear more windy -X
+-New Particles and Fog Color have been given to the soul sand valley to make it appear more windy and ethereal -X
 
 -Striders now have new Damp, Moist and Dry variants depending on which biome they're found in -X
 
@@ -76,15 +78,31 @@
 
 -Breeze Rod texture has been redesigned to be consistent with the new blaze rod and banshee rod
 
--Apparitions can now also turn into a banshee if they happen to possess a breeze -X
+-Apparitions can now also turn into a banshee if they happen to possess a breeze
 
--Apparition possession conversions are now data-driven and allows you to define what they turn into upon killing a certain mob -X
+-Apparition Aggressions is a new data-driven registry which allows you to define custom hostility towards certain mobs depending on the apparition's personality 
 
--Similarly what mobs the Apparition attacks is too data-driven now -X
+-Apparition now has a new attack animation
+
+-Apparitions can now be salted with wax to prevent it from possessing mobs or gargoyle statues
+
+-The above-mentioned registry also optionally lets you define custom possessions for certain mobs the apparition kills 
 
 -Discernment Glass now emits a comparator output if it has a filter item
 
--Weeping and Twisting Blackstone Bricks were missing slabs, stairs and wall variants due to an oversight. this has now been fixed
+-Weeping and Twisting Blackstone Bricks were missing slabs, stairs and wall variants due to an oversight. these have now been implemented
+
+### Mod Compatibility
+
+-Possessed and Ghost mobs take 1.5x modifier of damage if hurt with any modded silver weapon
+
+-To further reflect the possessed and ghost's their weakness to silver, new particles show up when they are damaged with it
+
+-Item Tags defining Silver Armors and Weapons are now located under the `c:` common tags namespace shared across NeoForge and Fabric
+
+-To make it easier for people to make possessions, apparitions can be "transported" with leashes. although unless it's docile it'll still fight back
+
+-Galosphere's Sterling armor pieces are now counted as silver armor and thus are effective against ghosts and possessions
 
 ### Fixes
 

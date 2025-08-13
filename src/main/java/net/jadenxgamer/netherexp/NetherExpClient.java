@@ -1,11 +1,10 @@
 package net.jadenxgamer.netherexp;
 
-import net.jadenxgamer.netherexp.client.particle.BlackFlakeParticle;
-import net.jadenxgamer.netherexp.client.particle.JNEDripHangParticle;
-import net.jadenxgamer.netherexp.client.particle.JNEFallAndLandParticle;
-import net.jadenxgamer.netherexp.client.particle.SmogParticle;
+import net.jadenxgamer.netherexp.client.particle.*;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
+import net.jadenxgamer.netherexp.client.rendering.entity.ApparitionRenderer;
+import net.jadenxgamer.netherexp.client.rendering.entity.JNEBlazeRenderer;
 import net.jadenxgamer.netherexp.client.rendering.entity.WispRenderer;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
@@ -18,6 +17,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -37,6 +37,8 @@ public final class NetherExpClient {
 
     public static void registerEntityRenderers() {
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
+        EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
+        EntityRenderers.register(EntityType.BLAZE, JNEBlazeRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.SUSPICIOUS_SOUL_SAND.get(), SuspiciousSoulSandBlockRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.DISCERNMENT_GLASS.get(), DiscernmentGlassBlockRenderer::new);
         ItemBlockRenderTypes.setRenderLayer(JNEFluids.ECTOPLASM_SOURCE.get(), RenderType.translucent());
@@ -59,9 +61,12 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.ECTOSPLASH.get(), SplashParticle.Provider::new);
         event.registerSpriteSet(JNEParticleTypes.ECTOPLASM_RAYS.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.ECTOPLASM.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SOUL_CLOUD.get(), JNEPoofParticle.SoulProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.SILVER_GLIMMER.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(WispRenderer.WispModel.LAYER, WispRenderer.WispModel::createBodyLayer);
+        event.registerLayerDefinition(ApparitionRenderer.ApparitionModel.LAYER, ApparitionRenderer.ApparitionModel::createBodyLayer);
     }
 }

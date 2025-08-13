@@ -54,6 +54,15 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue BLACK_ICE_FREEZING_TICKS;
     public static ModConfigSpec.BooleanValue SKELETON_FOSSILIZATION;
     public static ModConfigSpec.BooleanValue WITHER_SKELETON_FOSSILIZATION;
+    public static ModConfigSpec.IntValue WISPS_DROPPED_BY_APPARITION;
+    public static ModConfigSpec.IntValue APPARITION_POSSESSION_COOLDOWN;
+    public static ModConfigSpec.BooleanValue APPARITIONS_CAN_BE_SALTED;
+    public static ModConfigSpec.BooleanValue POSSESSED_MOBS_UNLEASH_APPARITION;
+    public static ModConfigSpec.BooleanValue DIMINISHING_BLAZES;
+
+    // WORLD SETTINGS
+
+    public static ModConfigSpec.BooleanValue NETHER_WORLDGEN_OVERHAUL;
 
     // VISUAL AND SOUND
 
@@ -62,7 +71,10 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue ECTOPLASM_SOUNDS;
 
     // GAME MECHANICS
-
     public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;
     public static ModConfigSpec.BooleanValue ECTOPLASM_RUSTS_NETHERITE;
+    public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_DAMAGE_MULTIPLIER;
+    public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_PROTECTION_DAMAGE;
+    public static ModConfigSpec.BooleanValue SILVER_PARANORMAL_INFLICTS_SLOWNESS;
+    public static ModConfigSpec.BooleanValue DEVELOPER_MODE;
 }

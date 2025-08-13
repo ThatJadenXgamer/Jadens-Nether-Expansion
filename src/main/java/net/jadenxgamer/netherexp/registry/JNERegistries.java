@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry;
 
 import com.mojang.serialization.MapCodec;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.datadriven.ApparitionAggression;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.core.misc.neoforge.ConfigCondition;
@@ -30,6 +31,7 @@ public class JNERegistries {
 
     public static final ResourceKey<Registry<WispArchaeology>> WISP_ARCHAEOLOGY = key("wisp_archaeology");
     public static final ResourceKey<Registry<OnDeathGroundConversion>> ON_DEATH_GROUND_CONVERSION = key("on_death_ground_conversion");
+    public static final ResourceKey<Registry<ApparitionAggression>> APPARITION_AGGRESSION = key("apparition_aggression");
 
     private static <T> ResourceKey<Registry<T>> key(String name) {
         return ResourceKey.createRegistryKey(NetherExp.id(name));
@@ -42,5 +44,6 @@ public class JNERegistries {
     public static void datapackInit(DataPackRegistryEvent.NewRegistry event) {
         event.dataPackRegistry(JNERegistries.WISP_ARCHAEOLOGY, WispArchaeology.CODEC);
         event.dataPackRegistry(JNERegistries.ON_DEATH_GROUND_CONVERSION, OnDeathGroundConversion.CODEC);
+        event.dataPackRegistry(JNERegistries.APPARITION_AGGRESSION, ApparitionAggression.CODEC);
     }
 }

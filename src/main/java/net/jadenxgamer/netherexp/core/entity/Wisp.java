@@ -54,7 +54,7 @@ import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticl
 
 import java.util.EnumSet;
 
-public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
+public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
 
     public final AnimationState idleAnimation = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -116,6 +116,11 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     }
 
     @Override
+    public boolean canBeLeashed() {
+        return true;
+    }
+
+    @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (!this.isSalted() && stack.is(Items.HONEYCOMB)) {
@@ -148,16 +153,11 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     }
 
     private boolean canGetBored() {
-        return !this.hasCustomName() && !isSalted();
+        return !this.hasCustomName() && !isSalted() && !isLeashed();
     }
 
     @Override
     public boolean isFlying() {
-        return true;
-    }
-
-    @Override
-    public boolean isSensitiveToWater() {
         return true;
     }
 
@@ -194,7 +194,7 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("FromBottle", this.fromBottle());
-        nbt.putInt("BoredCounter", getBored());
+        nbt.putInt("BoredCounter", this.getBored());
         nbt.putBoolean("Salted", this.isSalted());
     }
 
@@ -278,7 +278,7 @@ public class Wisp extends PathfinderMob implements FlyingAnimal, Bottleable {
     }
 
     ///////////////////////
-    // SETTERS & GETTERS //
+    // GETTERS & SETTERS //
     ///////////////////////
 
     public int getBored() {

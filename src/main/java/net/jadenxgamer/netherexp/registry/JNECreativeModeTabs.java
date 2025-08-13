@@ -151,6 +151,7 @@ public class JNECreativeModeTabs {
                 output.accept(Blocks.CRIMSON_FENCE);
                 output.accept(Blocks.CRIMSON_FENCE_GATE);
                 output.accept(Blocks.CRIMSON_DOOR);
+                output.accept(Blocks.CRIMSON_TRAPDOOR);
                 output.accept(Blocks.CRIMSON_PRESSURE_PLATE);
                 output.accept(Blocks.CRIMSON_BUTTON);
 
@@ -206,6 +207,7 @@ public class JNECreativeModeTabs {
                 output.accept(Blocks.WARPED_FENCE);
                 output.accept(Blocks.WARPED_FENCE_GATE);
                 output.accept(Blocks.WARPED_DOOR);
+                output.accept(Blocks.WARPED_TRAPDOOR);
                 output.accept(Blocks.WARPED_PRESSURE_PLATE);
                 output.accept(Blocks.WARPED_BUTTON);
 
@@ -331,6 +333,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.CLARET_FENCE.get());
                 output.accept(JNEBlocks.CLARET_FENCE_GATE.get());
                 output.accept(JNEBlocks.CLARET_DOOR.get());
+                output.accept(JNEBlocks.CLARET_TRAPDOOR.get());
                 output.accept(JNEBlocks.CLARET_PRESSURE_PLATE.get());
                 output.accept(JNEBlocks.CLARET_BUTTON.get());
 
