@@ -1,0 +1,6 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "minecraft:soul_sand_valley", "required": false }
+  	]
+}

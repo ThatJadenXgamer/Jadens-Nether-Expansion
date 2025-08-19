@@ -163,6 +163,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
 
                     Vec3 look = player.getLookAngle();
                     Vec3 pushBack = new Vec3(-look.x, -look.y, -look.z).normalize();
+                    player.push(pushBack.x * 1.5, pushBack.y * 1.5, pushBack.z * 1.5);
 
                     List<Entity> nearbyEntities = level.getEntities(player, new AABB(player.getOnPos()).inflate(5.0, 5.0, 5.0));
                     if (nearbyEntities.stream().filter(entity -> entity instanceof Mob).filter(entity -> ((Mob) entity).isDeadOrDying()).count() >= 10 && player instanceof ServerPlayer serverPlayer) {
@@ -200,11 +201,9 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem implements Vanis
         Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(5));
         AABB aabb = new AABB(raycastStart, raycastEnd);
         EntityHitResult entityHitResult = ProjectileUtil.getEntityHitResult(level, user, raycastStart, raycastEnd, aabb, (entity) -> entity instanceof LivingEntity && entity != user);
-        if (entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity livingEntity && livingEntity.isAlive()) {
-            user.push(pushBack.x * (0.75 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.y * (0.75 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.z * (0.75 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)));
-        } else {
-            user.push(pushBack.x * (0.3 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.y * (0.3 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)), pushBack.z * (0.3 + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2)));
-        }
+        double basePushBack = entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity livingEntity && livingEntity.isAlive() ? 0.75 : 0.3;
+        double calculatedPushBack = Math.max(0, basePushBack + recoilPushBonus + chargePushBonus - ((double) quickCharge / 2));
+        user.push(pushBack.x * calculatedPushBack, pushBack.y * calculatedPushBack, pushBack.z * calculatedPushBack);
     }
 
     @Override

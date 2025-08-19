@@ -183,4 +183,18 @@ public class JNEBuiltinPacks {
                                 new Pack.Info(Component.literal("Compatibility for Oreganized"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
                                 PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
     }
+
+    // Compatibility for Temperature Mods
+    public static void dpTemperatureModsCompat(AddPackFindersEvent event) {
+        IModFileInfo mod = ModList.get().getModFileById(NetherExp.MOD_ID);
+        Path file = mod.getFile().findResource("resourcepacks/temperature_mods_compat");
+        event.addRepositorySource((packConsumer) ->
+                packConsumer.accept(
+                        Pack.create("temperature_mods_compat",
+                                Component.literal("JNE + Temprature Mods"),
+                                true,
+                                (path) -> new PathPackResources(path, file, true),
+                                new Pack.Info(Component.literal("Compatibility for Various Temperature Mods"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA), FeatureFlagSet.of()),
+                                PackType.SERVER_DATA, Pack.Position.TOP, true, PackSource.BUILT_IN)));
+    }
 }

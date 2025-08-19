@@ -26,6 +26,9 @@ public class CompatUtil {
     public static final String SUPPLEMENTARIES = "supplementaries";
     public static final String RUBINATED_NETHER = "rubinated_nether";
     public static final String GALOSPHERE = "galosphere";
+    public static final String SERENESEASONS = "sereneseasons";
+    public static final String THINAIR = "thinair";
+    public static final String THOUGHASNAILS = "thoughasnails";
 
     public static boolean checkCinderscapes() {
         return FMLLoader.getLoadingModList().getModFileById(CINDERSCAPES) != null;
@@ -97,5 +100,9 @@ public class CompatUtil {
 
     public static boolean checkAnySilverMod() {
         return checkOreganized() || checkCavernsAndChasms() || FMLLoader.getLoadingModList().getModFileById(GALOSPHERE) != null;
+    }
+
+    public static boolean checkAnyTemperatureMod() {
+        return FMLLoader.getLoadingModList().getModFileById(SERENESEASONS) != null || FMLLoader.getLoadingModList().getModFileById(THINAIR) != null || FMLLoader.getLoadingModList().getModFileById(SERENESEASONS) != null;
     }
 }
