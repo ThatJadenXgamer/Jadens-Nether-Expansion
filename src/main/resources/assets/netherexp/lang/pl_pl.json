@@ -149,7 +149,7 @@
 
   "block.netherexp.inscribed_panel": "Opisany Panel",
 
-  "block.netherexp.gargoyle_statue": "Rzezba Gargulca",
+  "block.netherexp.gargoyle_statue": "Rzeźba Gargulca",
   "block.netherexp.ossified_gargoyle_statue": "Kościany",
   "block.netherexp.trample_gargoyle_statue": "Zgniot",
   "block.netherexp.phase_gargoyle_statue": "Faza",
@@ -491,12 +491,12 @@
   "advancements.nether.hp_minecraftian.title": "H.P Minecraftowy",
   "advancements.nether.hp_minecraftian.description": "Wzkrześ szczątka używając Krzesiwa",
   "advancements.nether.lorekeeper.title": "Strażnik Wiedzy",
-  "advancements.nether.lorekeeper.description": "Zdobądz każdy rodzaj Rzezby Gargulca",
+  "advancements.nether.lorekeeper.description": "Zdobądz każdy rodzaj Rzeźby Gargulca",
   "advancements.nether.back_with_a_vengeance.title": "Powrót z Zemstą",
   "advancements.nether.back_with_a_vengeance.description": "Napraw zepsute Zdradzieckie Świece używając Plastrów Miodu",
   "advancements.nether.tower_defense.title": "Świecowy Tower Defence",
   "advancements.nether.tower_defense.description": "Stwórz własną Zdradziecką Świecę używając Starożytnego Wosku",
-  "advancements.nether.emf_raider.title": "Najezdzca po szlaku",
+  "advancements.nether.emf_raider.title": "Najeźdzca po szlaku",
   "advancements.nether.emf_raider.description": "Aktywój Kompas Lokacji Sanktuarium i podążaj do jego celu",
 
   "effect.netherexp.fogsight": "Mgłowizja",
