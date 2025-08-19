@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "elysium:block/emissive_block_12",
   "textures": {
-    "all": "minecraft:block/warped_wart_block/small/1"
+    "base": "minecraft:block/warped_wart_block/small/1",
+    "glow": "minecraft:block/warped_wart_block/small/1_glow"
   }
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "netherexp:block/pyrite_block",
-    "side": "netherexp:block/pyrite_block",
-    "top": "netherexp:block/pyrite_block"
-  }
-}

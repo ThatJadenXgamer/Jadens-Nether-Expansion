@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "netherexp:claret_sign",
-    "netherexp:smokestalk_sign"
+    "netherexp:claret_sign"
   ]
 }

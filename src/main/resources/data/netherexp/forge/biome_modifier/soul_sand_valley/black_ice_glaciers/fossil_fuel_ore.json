@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "netherexp:black_ice_glaciers",
-  "features": "netherexp:soul_sand_valley/fossil_fuel_ore",
-  "step": "underground_decoration"
-}

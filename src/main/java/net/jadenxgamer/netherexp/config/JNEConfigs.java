@@ -1,84 +1,80 @@
 package net.jadenxgamer.netherexp.config;
 
-import net.jadenxgamer.netherexp.config.enums.*;
-
-import java.util.function.Supplier;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class JNEConfigs {
-    // Blocks
-    public static Supplier<Boolean> SHOULD_NETHER_VINES_GROW_SPORES = () -> true;
-    public static Supplier<Boolean> RENEWABLE_FOSSIL_FUEL = () -> true;
-    public static Supplier<Integer> GEYSER_COOLDOWN = () -> 5;
-    public static Supplier<Double> GEYSER_PUSH_VELOCITY = () -> 1.2;
-    public static Supplier<Double> SPORESHROOM_PUSH_VELOCITY = () -> 1.0;
-    public static Supplier<Integer> BRAZIER_CHEST_REFILL_COOLDOWN = () -> 3600;
-    public static Supplier<Integer> TREACHEROUS_CANDLE_COMPLETION_COOLDOWN = () -> 1800;
-    public static Supplier<Boolean> FROGMIST_BREAKABLE_BY_FIST = () -> false;
-    public static Supplier<Boolean> MAGMA_CREAM_BLOCK_DOUSES_FIRE = () -> true;
-    public static Supplier<Integer> SHOTGUN_BARREL_BULLETS = () -> 10;
-    public static Supplier<SoulMagmaDamageType> SOUL_MAGMA_DAMAGE_TYPE = () -> SoulMagmaDamageType.SPRINTING;
-    public static Supplier<Integer> SOUL_SWIRLS_COOLDOWN = () -> 50;
-    public static Supplier<Integer> UNBOUNDED_SPEED_DURATION = () -> 10;
-    public static Supplier<SoulSwirlsBoneMeal> SOUL_SWIRLS_BONE_MEAL_BEHAVIOR = () -> SoulSwirlsBoneMeal.DUPLICATES;
-    public static Supplier<Integer> SCULK_GRINDER_EXPERIENCE = () -> 450;
-    public static Supplier<Boolean> SHOULD_SORROWSQUASH_FALL = () -> true;
-    public static Supplier<Double> SORROWSQUASH_GROWTH_CHANCE = () -> 0.2;
-    public static Supplier<Double> SORROWSQUISHED_DAMAGE_MULTIPLIER = () -> 1.5;
-    public static Supplier<Integer> SORROWSQUISHED_MAX_DAMAGE = () -> 30;
-    public static Supplier<Double> BLACK_ICICLE_GROWTH_CHANCE = () -> 0.28;
-    public static Supplier<Integer> HAZE_BLOCK_COOLDOWN = () -> 8;
 
-    // Items
-    public static Supplier<Integer> WILL_O_WISP_STACK_SIZE = () -> 16;
-    public static Supplier<Integer> POTION_STACK_SIZE = () -> 16;
-    public static Supplier<Boolean> FORCE_DISABLE_POTION_STACK_SIZE = () -> false;
-    public static Supplier<Double> JACKHAMMER_FIST_MAX_DAMAGE = () -> 40.0;
-    public static Supplier<Integer> BLACK_ICICLE_FREEZE_TICKS = () -> 100;
-    public static Supplier<Integer> SHOTGUN_FIST_BULLETS = () -> 25;
-    public static Supplier<Integer> PUMP_CHARGE_SHOTGUN_BULLETS = () -> 10;
+    // BLOCK
 
-    // Entities
-    public static Supplier<Boolean> DIMINISHING_BLAZES = () -> true;
-    public static Supplier<Boolean> PIXEL_CONSISTENT_MAGMA_CUBES = () -> true;
-    public static Supplier<Boolean> SKELETON_FOSSILIZATION = () -> true;
-    public static Supplier<Boolean> WITHER_SKELETON_FOSSILIZATION = () -> true;
-    public static Supplier<Boolean> PHASMOPHOBIC_MOBS = () -> true;
-    public static Supplier<Boolean> HOGLIN_DROPS_HOGHAM = () -> true;
-    public static Supplier<Boolean> WITHER_SKELETON_DROPS_FOSSIL_FUEL = () -> false;
-    public static Supplier<Integer> WISP_EMERGING_CHANCE = () -> 50;
-    public static Supplier<Boolean> SUSPICIOUS_SOUL_SAND_FROM_WISP_EMERGING = () -> true;
-    public static Supplier<Boolean> SUSPICIOUS_SOUL_SAND_DECAYS = () -> true;
-    public static Supplier<Integer> SUSPICIOUS_SOUL_SAND_DECAY_ODDS = () -> 2;
-    public static Supplier<String> SUSPICIOUS_SOUL_SAND_DEFAULT_LOOT_TABLE = () -> "archaeology/wisp_arch_default";
-    public static Supplier<EctoSlabEmerging> ECTO_SLAB_EMERGING_BEHAVIOR = () -> EctoSlabEmerging.UNBOUNDED_SPEED_ONLY;
-    public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE = () -> 40;
-    public static Supplier<Integer> ECTO_SLAB_EMERGING_CHANCE_WITH_UNBOUNDED_SPEED = () -> 10;
-    public static Supplier<Integer> CARCASS_IMMORTAL_COOLDOWN = () -> 1800;
+    public static ModConfigSpec.DoubleValue FOSSIL_ORE_CONVERSION_CHANCE;
+    public static ModConfigSpec.DoubleValue SOUL_GLASS_MOVEMENT_SLOWDOWN;
+    public static ModConfigSpec.IntValue SOUL_SWIRLS_COOLDOWN;
+    public static ModConfigSpec.IntValue UNBOUNDED_SPEED_DURATION;
+    public static ModConfigSpec.BooleanValue BONE_MEAL_SOUL_SWIRLS;
+    public static ModConfigSpec.BooleanValue BRUSH_WISPS_OUT;
+    public static ModConfigSpec.DoubleValue WISP_EMERGING_CHANCE;
+    public static ModConfigSpec.DoubleValue WISP_EMERGING_CHANCE_BRUSH;
+    public static ModConfigSpec.IntValue ECTO_SOUL_SAND_BRUSH_DAMAGE;
+    public static ModConfigSpec.BooleanValue CONVERTS_TO_SUSPICIOUS_SOUL_SAND;
+    public static ModConfigSpec.ConfigValue<String> WISP_ARCHAEOLOGY_DEFAULT_LOOT_TABLE;
+    public static ModConfigSpec.DoubleValue SUSPICIOUS_SOUL_SAND_DECAY_CHANCE;
+    public static ModConfigSpec.IntValue SUSPICIOUS_SOUL_SAND_MAX_DECAY;
+    public static ModConfigSpec.DoubleValue LESION_GROWTH_CHANCE;
+    public static ModConfigSpec.IntValue LESION_DROPS_PER_HARVEST;
+    public static ModConfigSpec.DoubleValue SPORESHROOM_HEIGHT_VELOCITY;
+    public static ModConfigSpec.DoubleValue GEYSER_HEIGHT_VELOCITY;
+    public static ModConfigSpec.IntValue GEYSER_COOLDOWN;
+    public static ModConfigSpec.DoubleValue BLACK_ICICLE_GROWTH_CHANCE;
+    public static ModConfigSpec.DoubleValue THIN_ICE_BREAKING_CHANCE;
+    public static ModConfigSpec.DoubleValue THIN_ICE_BREAKING_CHANCE_SPRINTING;
+    public static ModConfigSpec.DoubleValue NEARBY_THIN_ICE_BREAKING_CHANCE;
+    public static ModConfigSpec.DoubleValue BLACK_ICE_FROSTS_WATER_CHANCE;
+    public static ModConfigSpec.BooleanValue BLACK_ICE_TAINTING;
+    public static ModConfigSpec.BooleanValue SORROWSQUASH_TAINTING;
+    public static ModConfigSpec.BooleanValue SHOULD_SORROWSQUASH_FALL;
+    public static ModConfigSpec.DoubleValue SORROWSQUISHED_DAMAGE_MULTIPLIER;
+    public static ModConfigSpec.IntValue SORROWSQUISHED_MAX_DAMAGE;
+    public static ModConfigSpec.DoubleValue SORROWSQUASH_GROWTH_CHANCE;
+    public static ModConfigSpec.DoubleValue CEREBRAGE_GROWTH_CHANCE;
+    public static ModConfigSpec.IntValue MIN_CEREBRAGE_DROPPED;
+    public static ModConfigSpec.IntValue MAX_CEREBRAGE_DROPPED;
+    public static ModConfigSpec.DoubleValue CEREBRAGE_SEEDS_DROP_CHANCE;
+    public static ModConfigSpec.BooleanValue CEREBRAGE_GROWS_BRAIN_TREES;
 
-    // Game Mechanics
-    public static Supplier<NetherFogDistance> NETHER_FOG_DISTANCE = () -> NetherFogDistance.MEDIUM;
-    public static Supplier<Boolean> LARGER_NETHER_BIOMES = () -> false;
-    public static Supplier<Boolean> AMPLIFIER_IMMUNITY_REDUCTION = () -> false;
-    public static Supplier<Boolean> ECTOPLASM_RUSTS_NETHERITE = () -> true;
-    public static Supplier<Boolean> ECTOPLASM_FREEZING_DAMAGE = () -> true;
-    public static Supplier<Boolean> REDUCE_SOUL_SAND_SLOWNESS = () -> false;
-    public static Supplier<Boolean> REMOVE_SOUL_SPEED_DURABILITY_PENALTY = () -> false;
-    public static Supplier<Boolean> DEV_TEST_MODE = () -> false;
+    // ITEM
 
-    // Sub Biomes
+    public static ModConfigSpec.IntValue IMMUNITY_CONSUMPTION;
+    public static ModConfigSpec.BooleanValue AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION;
+    public static ModConfigSpec.BooleanValue BACKPORT_TEARS_MUSIC_DISC;
+    public static ModConfigSpec.BooleanValue TWEAK_OBTAINING_TEARS_MUSIC_DISC;
 
-    public static Supplier<Boolean> ENABLE_SUB_BIOMES = () -> true;
-    public static Supplier<Boolean> BLACK_ICE_GLACIERS = () -> true;
-    public static Supplier<Double> BLACK_ICE_GLACIERS_RARITY = () -> 0.085;
-    public static Supplier<Integer> BLACK_ICE_GLACIERS_SIZE = () -> 128;
+    // ENTITY
 
-    // Visuals & Sounds
-    public static Supplier<Boolean> IMPROVED_FIREBALL_PARTICLES = () -> true;
-    public static Supplier<Boolean> IMPROVED_SOUL_FIRE_PARTICLES = () -> true;
-    public static Supplier<Boolean> ENABLE_BLACK_ICE_PARTICLES = () -> true;
-    public static Supplier<Boolean> ENABLE_ECTOPLASM_PARTICLES = () -> true;
-    public static Supplier<Boolean> ENABLE_ECTOPLASM_SOUNDS = () -> true;
-    public static Supplier<Boolean> TREACHEROUS_CANDLE_RED_LIGHTS = () -> true;
-    public static Supplier<Boolean> TREACHEROUS_CANDLE_FOG = () -> true;
-    public static Supplier<Boolean> TREACHEROUS_CANDLE_PARTICLES = () -> true;
+    public static ModConfigSpec.DoubleValue WISP_BOREDOM_CHANCE;
+    public static ModConfigSpec.IntValue BLACK_ICE_FREEZING_TICKS;
+    public static ModConfigSpec.BooleanValue SKELETON_FOSSILIZATION;
+    public static ModConfigSpec.BooleanValue WITHER_SKELETON_FOSSILIZATION;
+    public static ModConfigSpec.IntValue WISPS_DROPPED_BY_APPARITION;
+    public static ModConfigSpec.IntValue APPARITION_POSSESSION_COOLDOWN;
+    public static ModConfigSpec.BooleanValue APPARITIONS_CAN_BE_SALTED;
+    public static ModConfigSpec.BooleanValue POSSESSED_MOBS_UNLEASH_APPARITION;
+    public static ModConfigSpec.BooleanValue DIMINISHING_BLAZES;
+
+    // WORLD SETTINGS
+
+    public static ModConfigSpec.BooleanValue NETHER_WORLDGEN_OVERHAUL;
+
+    // VISUAL AND SOUND
+
+    public static ModConfigSpec.BooleanValue BLACK_ICE_PARTICLES;
+    public static ModConfigSpec.BooleanValue ECTOPLASM_PARTICLES;
+    public static ModConfigSpec.BooleanValue ECTOPLASM_SOUNDS;
+
+    // GAME MECHANICS
+    public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;
+    public static ModConfigSpec.BooleanValue ECTOPLASM_RUSTS_NETHERITE;
+    public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_DAMAGE_MULTIPLIER;
+    public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_PROTECTION_DAMAGE;
+    public static ModConfigSpec.BooleanValue SILVER_PARANORMAL_INFLICTS_SLOWNESS;
+    public static ModConfigSpec.BooleanValue DEVELOPER_MODE;
 }

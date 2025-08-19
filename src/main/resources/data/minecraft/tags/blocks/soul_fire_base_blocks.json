@@ -28,14 +28,11 @@
     "netherexp:souled_geyser",
     "netherexp:black_ice",
     "netherexp:thin_black_ice",
-    "netherexp:grooved_black_ice",
     "netherexp:fossil_ore",
     "netherexp:fossil_fuel_ore",
     "netherexp:sculk_grinder",
     "netherexp:soul_path",
     "netherexp:wraithing_lesion",
-    "netherexp:shroomblight",
-    "netherexp:soul_permafrost",
-    "netherexp:soul_ruby_ore"
+    "netherexp:soul_permafrost"
   ]
 }

@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
-    "netherexp:black_ice_glaciers"
+    {
+      "id": "netherexp:exhaust_mire", "required": false
+    },
+    {
+      "id": "netherexp:black_ice_glaciers", "required": false
+    }
   ]
 }

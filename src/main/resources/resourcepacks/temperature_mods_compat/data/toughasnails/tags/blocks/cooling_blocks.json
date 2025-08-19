@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    { "id": "netherexp:ectoplasm", "required": false },
-    { "id": "netherexp:soul_magma_block", "required": false },
-    { "id": "netherexp:souled_geyser", "required": false },
-    { "id": "netherexp:black_ice", "required": false }
-  	]
-}

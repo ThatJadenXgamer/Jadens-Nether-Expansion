@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "netherexp:claret_door",
-    "netherexp:smokestalk_door"
+    "netherexp:claret_door"
   ]
 }

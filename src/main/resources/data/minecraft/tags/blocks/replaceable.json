@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "netherexp:soul_swirls",
-    "netherexp:shale_swirls",
-    "netherexp:blight_swirls"
+    "netherexp:soul_swirls"
   ]
 }

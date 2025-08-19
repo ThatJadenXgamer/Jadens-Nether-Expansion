@@ -1,0 +1,6 @@
+{
+  "preferred_by_personalities": [1, 3, 4],
+  "has_possession": false,
+  "target_priority": 2,
+  "target_mob": "minecraft:piglin"
+}

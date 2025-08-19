@@ -7,11 +7,8 @@
     "netherexp:blue_nether_brick_wall",
     "netherexp:smooth_netherrack_wall",
     "netherexp:netherrack_brick_wall",
-    "netherexp:silica_sandstone_wall",
     "netherexp:basalt_wall",
     "netherexp:polished_basalt_wall",
-    "netherexp:polished_basalt_brick_wall",
-
-    "netherexp:yellow_nether_brick_wall"
+    "netherexp:polished_basalt_brick_wall"
   ]
 }

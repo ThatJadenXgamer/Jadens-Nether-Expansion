@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "netherexp:block/emissive_block_12",
   "textures": {
-    "all": "netherexp:block/etched_soul_slate_bricks/lit/4"
+    "base": "netherexp:block/etched_soul_slate_bricks/lit/4",
+    "glow": "netherexp:block/etched_soul_slate_bricks/lit/4_glow"
   }
 }

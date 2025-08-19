@@ -1,7 +1,57 @@
 {
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "netherexp:block/ecto_soul_sand",
-    "side": "netherexp:block/ecto_soul_sand_side"
-  }
+	"credit": "Made by @ThatJadenXgamer",
+	"parent": "minecraft:block/cube_column",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"end": "netherexp:block/ecto_soul_sand",
+		"endblend": "netherexp:block/ecto_soul_sand_blend",
+		"endglow": "netherexp:block/ecto_soul_sand_glow",
+		"side": "netherexp:block/ecto_soul_sand_side",
+		"sideblend": "netherexp:block/ecto_soul_sand_side_blend",
+		"sideglow": "netherexp:block/ecto_soul_sand_side_glow",
+		"particle": "netherexp:block/ecto_soul_sand"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#end", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#sideblend", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#sideblend", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#sideblend", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#sideblend", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#endblend", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#endblend", "cullface": "down"}
+			},
+			"neoforge_data": {"block_light": 5}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#sideglow", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#endglow", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#endglow", "cullface": "down"}
+			},
+			"neoforge_data": {"block_light": 10}
+		}
+	],
+	"display": {}
 }

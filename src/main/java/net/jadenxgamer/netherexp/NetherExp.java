@@ -1,64 +1,48 @@
 package net.jadenxgamer.netherexp;
 
 import com.mojang.logging.LogUtils;
-import net.jadenxgamer.netherexp.config.JNEForgeConfigs;
-import net.jadenxgamer.netherexp.registry.advancements.JNECriteriaTriggers;
-import net.jadenxgamer.netherexp.registry.block.JNEBlockEntityType;
-import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.effect.JNEMobEffects;
-import net.jadenxgamer.netherexp.registry.enchantment.JNEEnchantments;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
-import net.jadenxgamer.netherexp.registry.item.JNECreativeModeTabs;
-import net.jadenxgamer.netherexp.registry.item.JNEItems;
-import net.jadenxgamer.netherexp.registry.loot.JNELootModifiers;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNEPaintings;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNESoundEvents;
-import net.jadenxgamer.netherexp.registry.particle.JNEParticleTypes;
-import net.jadenxgamer.netherexp.registry.worldgen.JNEBiomeModifiers;
-import net.jadenxgamer.netherexp.registry.worldgen.feature.JNEFeature;
-import net.jadenxgamer.netherexp.registry.worldgen.structure.JNEStructureType;
+import net.jadenxgamer.netherexp.config.JNEConfigImpl;
+import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.core.RegistryAccess;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 
 @Mod(NetherExp.MOD_ID)
-public class NetherExp {
+public final class NetherExp {
     public static final String MOD_ID = "netherexp";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static RegistryAccess registryAccess;
 
-    public NetherExp() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JNEForgeConfigs.COMMON);
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> NetherExpClient::init);
+    public NetherExp(IEventBus modEventBus, ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.COMMON, JNEConfigImpl.CONFIG);
 
-        MinecraftForge.EVENT_BUS.register(this);
-
-        JNECriteriaTriggers.init();
-        JNECreativeModeTabs.init(modEventBus);
-        JNESoundEvents.init(modEventBus);
+        JNERegistries.init(modEventBus);
         JNEParticleTypes.init(modEventBus);
-        JNEEnchantments.init(modEventBus);
-        JNEMobEffects.init(modEventBus);
+        JNESoundEvents.init(modEventBus);
+        JNECreativeModeTabs.init(modEventBus);
+        JNECriteriaTriggers.init(modEventBus);
 
         JNEEntityType.init(modEventBus);
-        JNEStructureType.init(modEventBus);
+        JNEMobEffects.init(modEventBus);
         JNEFluids.init(modEventBus);
-        JNEPaintings.init(modEventBus);
         JNEBlocks.init(modEventBus);
-        JNEFeature.init(modEventBus);
-        JNEBlockEntityType.init(modEventBus);
         JNEItems.init(modEventBus);
+        JNEBlockEntityType.init(modEventBus);
+    }
 
-        JNEBiomeModifiers.init(modEventBus);
-        JNELootModifiers.init(modEventBus);
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    }
+
+    public static ResourceLocation idVanilla(String path) {
+        return ResourceLocation.fromNamespaceAndPath("minecraft", path);
+    }
+
+    public static ResourceLocation idPath(String namespace, String path) {
+        return ResourceLocation.fromNamespaceAndPath(namespace, path);
     }
 }

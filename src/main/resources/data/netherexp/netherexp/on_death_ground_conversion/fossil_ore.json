@@ -1,0 +1,14 @@
+{
+  "entity_types": "#netherexp:fossil_ore_converting_skeletons",
+  "ground_block": "minecraft:soul_soil",
+  "conversion_block": {
+    "Name": "netherexp:fossil_ore"
+  },
+
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "entitySettings.skeletonFossilization"
+    }
+  ]
+}

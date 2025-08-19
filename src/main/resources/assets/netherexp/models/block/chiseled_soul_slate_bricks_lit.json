@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "netherexp:block/emissive_block_12",
   "textures": {
-    "all": "netherexp:block/chiseled_soul_slate_bricks_lit"
+    "base": "netherexp:block/chiseled_soul_slate_bricks_lit",
+    "glow": "netherexp:block/chiseled_soul_slate_bricks_lit_glow"
   }
 }

@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    { "id": "netherexp:warped_wart", "required": false },
-    { "id": "netherexp:red_scale_fungus", "required": false },
-    { "id": "netherexp:blue_scale_fungus", "required": false },
-    { "id": "netherexp:cerebrage_seeds", "required": false }
-  ]
-}

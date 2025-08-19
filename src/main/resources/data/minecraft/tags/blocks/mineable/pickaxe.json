@@ -71,21 +71,6 @@
     "netherexp:cracked_quartz_bricks",
     "netherexp:chiseled_quartz_pillar",
 
-    "netherexp:silica_sandstone",
-    "netherexp:silica_sandstone_slab",
-    "netherexp:silica_sandstone_stairs",
-    "netherexp:silica_sandstone_wall",
-    "netherexp:smooth_silica_sandstone",
-    "netherexp:smooth_silica_sandstone_slab",
-    "netherexp:smooth_silica_sandstone_stairs",
-    "netherexp:cut_silica_sandstone",
-    "netherexp:cut_silica_sandstone_slab",
-    "netherexp:chiseled_silica_sandstone",
-
-    "netherexp:enigma_flesh",
-    "netherexp:strange_enigma_flesh",
-    "netherexp:enigma_crown",
-
     "netherexp:nether_brick_pillar",
     "netherexp:red_mixed_nether_bricks",
 
@@ -96,7 +81,7 @@
     "netherexp:blue_nether_brick_wall",
 
     "netherexp:bone_cortical",
-    "netherexp:bone_rod",
+    "netherexp:bone_spike",
     "netherexp:bone_fence",
     "netherexp:stacked_bones",
     "netherexp:stacked_bone_slab",
@@ -120,7 +105,6 @@
 
     "netherexp:souled_geyser",
     "netherexp:basaltic_geyser",
-    "netherexp:blackstonic_geyser",
     "netherexp:ashen_geyser",
 
     "netherexp:polished_blackstone_pillar",
@@ -132,18 +116,6 @@
     "minecraft:redstone_lamp",
     "#netherexp:mob_heads",
 
-    "netherexp:yellow_mixed_nether_bricks",
-    "netherexp:yellow_nether_bricks",
-    "netherexp:yellow_nether_brick_slab",
-    "netherexp:yellow_nether_brick_stairs",
-    "netherexp:yellow_nether_brick_wall",
-
-    "netherexp:necromium_plated_block",
-    "netherexp:necromium_grate",
-    "netherexp:cut_necromium_block",
-    "netherexp:cut_necromium_slab",
-    "netherexp:cut_necromium_stairs",
-    "netherexp:cut_necromium_pillar",
     "netherexp:ancient_lantern"
   ]
 }

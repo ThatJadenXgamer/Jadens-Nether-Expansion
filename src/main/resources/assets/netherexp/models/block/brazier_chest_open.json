@@ -5,10 +5,13 @@
 	"textures": {
 		"1": "netherexp:block/brazier_chest_side_lit",
 		"2": "netherexp:block/brazier_chest_top_lit",
+		"glow1": "netherexp:block/brazier_chest_side_lit_glow",
+		"glow2": "netherexp:block/brazier_chest_top_lit_glow",
 		"3": "netherexp:block/brazier_chest_bars_lit",
 		"4": "netherexp:block/chiseled_soul_slate_tiles_top",
+		"5": "netherexp:block/brazier_chest_front_open",
+		"glow5": "netherexp:block/brazier_chest_front_open_glow",
 		"6": "netherexp:block/brazier_chest_flame",
-		"7": "netherexp:block/brazier_chest_front_open",
 		"particle": "netherexp:block/brazier_chest_side_lit"
 	},
 	"elements": [
@@ -16,12 +19,25 @@
 			"from": [0, 0, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#7", "cullface": "north"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#5", "cullface": "north"},
 				"east": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "east"},
 				"south": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "south"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "up"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#4", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"neoforge_data": {"block_light": 15},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#glow5", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#glow1", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#glow1", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#glow1", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#glow2", "cullface": "up"}
 			}
 		},
 		{
@@ -48,6 +64,8 @@
 		{
 			"from": [8, 16, -0.25],
 			"to": [8, 32, 16],
+			"neoforge_data": {"block_light": 15},
+			"shade": false,
 			"rotation": {"angle": -45, "axis": "y", "origin": [8, 24, 8]},
 			"faces": {
 				"north": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},
@@ -59,6 +77,8 @@
 		{
 			"from": [8, 16, 0],
 			"to": [8, 32, 16.25],
+			"neoforge_data": {"block_light": 15},
+			"shade": false,
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 24, 8]},
 			"faces": {
 				"north": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},

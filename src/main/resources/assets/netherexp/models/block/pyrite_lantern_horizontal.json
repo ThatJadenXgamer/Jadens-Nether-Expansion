@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column_horizontal",
-  "textures": {
-    "end": "netherexp:block/pyrite_lantern_top",
-    "side": "netherexp:block/pyrite_lantern"
-  }
-}

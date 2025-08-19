@@ -1,13 +1,4 @@
 {
-  "ambient.vent_mire.loop": {
-    "sounds": [
-      {
-        "name": "netherexp:ambient/nether/vent_mire/ambience",
-        "stream": true,
-        "volume": 0.86
-      }
-    ]
-  },
   "ambient.soul_sand_valley.black_ice_glaciers.loop": {
     "sounds": [
       {
@@ -17,44 +8,9 @@
       }
     ]
   },
-  "ambient.vent_mire.mood": {
-    "sounds": [
-      {
-        "name": "netherexp:ambient/nether/vent_mire/mood1",
-        "volume": 0.45
-      },
-      {
-        "name": "netherexp:ambient/nether/vent_mire/mood2",
-        "volume": 0.5
-      },
-      {
-        "name": "netherexp:ambient/nether/vent_mire/mood3",
-        "volume": 0.4
-      }
-    ]
-  },
-  "music.nether.vent_mire": {
-    "sounds": [
-      {
-        "name": "music/game/nether/nether1",
-        "stream": true
-      },
-      {
-        "name": "music/game/nether/nether2",
-        "stream": true
-      },
-      {
-        "name": "music/game/nether/nether3",
-        "stream": true,
-        "weight": 7
-      },
-      {
-        "name": "music/game/nether/nether4",
-        "stream": true,
-        "weight": 4
-      }
-    ]
-  },
+
+
+
   "block.soul_slate.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -102,7 +58,8 @@
       "netherexp:block/soul_slate/step5"
     ]
   },
-  "block.basalt_bricks.break": {
+
+  "block.polished_basalt_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
       "netherexp:block/basalt_bricks/break1",
@@ -112,17 +69,7 @@
       "netherexp:block/basalt_bricks/break5"
     ]
   },
-  "block.basalt_bricks.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
-    ]
-  },
-  "block.basalt_bricks.place": {
+  "block.polished_basalt_bricks.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
       "netherexp:block/basalt_bricks/break1",
@@ -132,25 +79,7 @@
       "netherexp:block/basalt_bricks/break5"
     ]
   },
-  "block.basalt_bricks.hit": {
-    "subtitle": "subtitles.block.generic.hit",
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
-    ]
-  },
-  "block.basalt_bricks.fall": {
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
-    ]
-  },
+
   "block.soul_slate_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -222,228 +151,25 @@
       "netherexp:block/soul_slate_bricks/step5"
     ]
   },
-  "block.white_ash.break": {
+  "block.soul_swirls.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "netherexp:block/white_ash/break1",
-      "netherexp:block/white_ash/break2",
-      "netherexp:block/white_ash/break3"
+      "netherexp:block/soul_swirls/break1",
+      "netherexp:block/soul_swirls/break2",
+      "netherexp:block/soul_swirls/break3",
+      "netherexp:block/soul_swirls/break4"
     ]
   },
-  "block.brazier_chest.open": {
-    "subtitle": "subtitles.block.brazier_chest.open",
-    "sounds": [
-      "netherexp:block/brazier_chest/open"
-    ]
-  },
-  "block.brazier_chest.close": {
-    "subtitle": "subtitles.block.brazier_chest.close",
-    "sounds": [
-      "netherexp:block/brazier_chest/close"
-    ]
-  },
-  "block.brazier_chest.lit": {
-    "subtitle": "subtitles.block.brazier_chest.lit",
-    "sounds": [
-      "netherexp:block/brazier_chest/lit"
-    ]
-  },
-  "block.treacherous_candle.victory": {
-    "subtitle": "subtitles.block.treacherous_candle.victory",
-    "sounds": [
-      "netherexp:block/treacherous_candle/victory"
-    ]
-  },
-  "block.treacherous_candle.defeat": {
-    "subtitle": "subtitles.block.treacherous_candle.defeat",
-    "sounds": [
-      "netherexp:block/treacherous_candle/defeat"
-    ]
-  },
-  "block.treacherous_candle.spawn": {
-    "subtitle": "subtitles.block.treacherous_candle.spawn",
-    "sounds": [
-      "netherexp:block/treacherous_candle/spawn"
-    ]
-  },
-  "block.treacherous_candle.round": {
-    "subtitle": "subtitles.block.treacherous_candle.round",
-    "sounds": [
-      "netherexp:block/treacherous_candle/round"
-    ]
-  },
-  "block.white_ash.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      {
-        "name": "block/powder_snow/step1",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step2",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step3",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step4",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step5",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step6",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step7",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step8",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step9",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step10",
-        "pitch": 1.3,
-        "volume": 0.83
-      }
-    ]
-  },
-  "block.white_ash.place": {
+  "block.soul_swirls.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
-      "netherexp:block/white_ash/break1",
-      "netherexp:block/white_ash/break2",
-      "netherexp:block/white_ash/break3"
+      "netherexp:block/soul_swirls/break1",
+      "netherexp:block/soul_swirls/break2",
+      "netherexp:block/soul_swirls/break3",
+      "netherexp:block/soul_swirls/break4"
     ]
   },
-  "block.white_ash.hit": {
-    "subtitle": "subtitles.block.generic.hit",
-    "sounds": [
-      {
-        "name": "block/powder_snow/step1",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step2",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step3",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step4",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step5",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step6",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step7",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step8",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step9",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step10",
-        "pitch": 1.3,
-        "volume": 0.83
-      }
-    ]
-  },
-  "block.white_ash.fall": {
-    "sounds": [
-      {
-        "name": "block/powder_snow/step1",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step2",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step3",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step4",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step5",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step6",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step7",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step8",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step9",
-        "pitch": 1.3,
-        "volume": 0.83
-      },
-      {
-        "name": "block/powder_snow/step10",
-        "pitch": 1.3,
-        "volume": 0.83
-      }
-    ]
-  },
+
   "block.netherrack_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -471,16 +197,6 @@
         "name": "netherexp:block/netherrack_bricks/break6",
         "volume": 0.85
       }
-    ]
-  },
-  "block.netherrack_bricks.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "block/deepslate_bricks/step1",
-      "block/deepslate_bricks/step2",
-      "block/deepslate_bricks/step3",
-      "block/deepslate_bricks/step4",
-      "block/deepslate_bricks/step5"
     ]
   },
   "block.netherrack_bricks.place": {
@@ -512,99 +228,7 @@
       }
     ]
   },
-  "block.netherrack_bricks.hit": {
-    "subtitle": "subtitles.block.generic.hit",
-    "sounds": [
-      "block/netherrack/step1",
-      "block/netherrack/step2",
-      "block/netherrack/step3",
-      "block/netherrack/step4",
-      "block/netherrack/step5",
-      "block/netherrack/step6"
-    ]
-  },
-  "block.netherrack_bricks.fall": {
-    "sounds": [
-      "block/netherrack/step1",
-      "block/netherrack/step2",
-      "block/netherrack/step3",
-      "block/netherrack/step4",
-      "block/netherrack/step5",
-      "block/netherrack/step6"
-    ]
-  },
-  "block.smokestalk.break": {
-    "subtitle": "subtitles.block.generic.break",
-    "sounds": [
-      "netherexp:block/smokestalk/place1",
-      "netherexp:block/smokestalk/place2",
-      "netherexp:block/smokestalk/place3",
-      "netherexp:block/smokestalk/place4",
-      "netherexp:block/smokestalk/place5"
-    ]
-  },
-  "block.smokestalk.place": {
-    "subtitle": "subtitles.block.generic.place",
-    "sounds": [
-      "netherexp:block/smokestalk/place1",
-      "netherexp:block/smokestalk/place2",
-      "netherexp:block/smokestalk/place3",
-      "netherexp:block/smokestalk/place4",
-      "netherexp:block/smokestalk/place5"
-    ]
-  },
-  "block.smokestalk_wood.break": {
-    "subtitle": "subtitles.block.generic.break",
-    "sounds": [
-      "netherexp:block/smokestalk_wood/break1",
-      "netherexp:block/smokestalk_wood/break2",
-      "netherexp:block/smokestalk_wood/break3",
-      "netherexp:block/smokestalk_wood/break4",
-      "netherexp:block/smokestalk_wood/break5"
-    ]
-  },
-  "block.smokestalk_wood.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "netherexp:block/smokestalk_wood/step1",
-      "netherexp:block/smokestalk_wood/step2",
-      "netherexp:block/smokestalk_wood/step3",
-      "netherexp:block/smokestalk_wood/step4",
-      "netherexp:block/smokestalk_wood/step5",
-      "netherexp:block/smokestalk_wood/step6"
-    ]
-  },
-  "block.smokestalk_wood.place": {
-    "subtitle": "subtitles.block.generic.place",
-    "sounds": [
-      "netherexp:block/smokestalk_wood/break1",
-      "netherexp:block/smokestalk_wood/break2",
-      "netherexp:block/smokestalk_wood/break3",
-      "netherexp:block/smokestalk_wood/break4",
-      "netherexp:block/smokestalk_wood/break5"
-    ]
-  },
-  "block.smokestalk_wood.hit": {
-    "subtitle": "subtitles.block.generic.hit",
-    "sounds": [
-      "netherexp:block/smokestalk_wood/step1",
-      "netherexp:block/smokestalk_wood/step2",
-      "netherexp:block/smokestalk_wood/step3",
-      "netherexp:block/smokestalk_wood/step4",
-      "netherexp:block/smokestalk_wood/step5",
-      "netherexp:block/smokestalk_wood/step6"
-    ]
-  },
-  "block.smokestalk_wood.fall": {
-    "sounds": [
-      "netherexp:block/smokestalk_wood/step1",
-      "netherexp:block/smokestalk_wood/step2",
-      "netherexp:block/smokestalk_wood/step3",
-      "netherexp:block/smokestalk_wood/step4",
-      "netherexp:block/smokestalk_wood/step5",
-      "netherexp:block/smokestalk_wood/step6"
-    ]
-  },
+
   "block.soul_candle.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -668,6 +292,7 @@
       "netherexp:block/soul_candle/ambient9"
     ]
   },
+
   "block.blackstone.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -739,6 +364,7 @@
       "netherexp:block/blackstone/step5"
     ]
   },
+
   "block.polished_blackstone_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -810,6 +436,7 @@
       "netherexp:block/polished_blackstone_bricks/step5"
     ]
   },
+
   "block.magma_block.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
@@ -850,6 +477,7 @@
       "netherexp:block/soul_magma_block/break5"
     ]
   },
+
   "block.glowstone.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
@@ -867,6 +495,7 @@
       "netherexp:block/glowstone/break3"
     ]
   },
+
   "block.quartz_block.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -885,6 +514,7 @@
       "netherexp:block/quartz_block/place4"
     ]
   },
+
   "block.black_ice.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -930,16 +560,7 @@
       "netherexp:block/black_ice/step5"
     ]
   },
-  "block.thin_black_ice.cracking": {
-    "subtitle": "subtitles.block.thin_black_ice.cracking",
-    "sounds": [
-      "netherexp:block/thin_black_ice/cracking1",
-      "netherexp:block/thin_black_ice/cracking2",
-      "netherexp:block/thin_black_ice/cracking3",
-      "netherexp:block/thin_black_ice/cracking4",
-      "netherexp:block/thin_black_ice/cracking5"
-    ]
-  },
+
   "block.suspicious_soul_sand.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -962,6 +583,7 @@
       "netherexp:block/suspicious_soul_sand/break6"
     ]
   },
+
   "block.haze_block.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -969,6 +591,7 @@
       "netherexp:block/haze_block/break2"
     ]
   },
+
   "block.frogmist.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -976,7 +599,8 @@
       "netherexp:block/frogmist/break2"
     ]
   },
-  "block.cerebrage_stem.break": {
+
+  "block.cerebrage_stem.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
       "netherexp:block/cerebrage/stembreak1",
@@ -986,6 +610,18 @@
       "netherexp:block/cerebrage/stembreak5"
     ]
   },
+
+  "block.cerebrage_stem.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/cerebrage/stembreak1",
+      "netherexp:block/cerebrage/stembreak2",
+      "netherexp:block/cerebrage/stembreak3",
+      "netherexp:block/cerebrage/stembreak4",
+      "netherexp:block/cerebrage/stembreak5"
+    ]
+  },
+
   "block.cerebrage.plant": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
@@ -999,30 +635,12 @@
       }
     ]
   },
-  "item.gold_ingot.gilding": {
-    "subtitle": "subtitles.item.gold_ingot.gilding",
-    "sounds": [
-      "netherexp:block/gilding/gilding1",
-      "netherexp:block/gilding/gilding2"
-    ]
-  },
-  "block.discernment_glass.add": {
-    "subtitle": "subtitles.block.discernment_glass.add",
-    "sounds": [
-      "netherexp:block/discernment_glass/add_item"
-    ]
-  },
-  "block.discernment_glass.remove": {
-    "subtitle": "subtitles.block.discernment_glass.remove",
-    "sounds": [
-      "netherexp:block/discernment_glass/remove_item"
-    ]
-  },
+
   "block.ectoplasm.freeze": {
     "subtitle": "subtitles.block.ectoplasm.freeze",
     "sounds": [
-      "netherexp:block/soul_slate/solidify1",
-      "netherexp:block/soul_slate/solidify2"
+      "netherexp:block/ectoplasm/freeze1",
+      "netherexp:block/ectoplasm/freeze2"
     ]
   },
   "block.ectoplasm.whispering": {
@@ -1034,11 +652,60 @@
       "netherexp:block/ectoplasm/whispering4"
     ]
   },
-  "block.soul_slate.solidifying": {
-    "subtitle": "subtitles.block.soul_slate.solidifying",
+  "block.pointed_dripstone.drip_ectoplasm_into_cauldron": {
+    "subtitle": "subtitles.block.pointed_dripstone.drip_ectoplasm_into_cauldron",
     "sounds": [
-      "netherexp:block/soul_slate/solidify1",
-      "netherexp:block/soul_slate/solidify2"
+      "netherexp:block/ectoplasm/drip1",
+      "netherexp:block/ectoplasm/drip2",
+      "netherexp:block/ectoplasm/drip3",
+      "netherexp:block/ectoplasm/drip4"
+    ]
+  },
+
+  "block.fossil_ore.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/fossil_ore/break1",
+      "netherexp:block/fossil_ore/break2",
+      "netherexp:block/fossil_ore/break3",
+      "netherexp:block/fossil_ore/break4",
+      "netherexp:block/fossil_ore/break5"
+    ]
+  },
+  "block.fossil_ore.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/fossil_ore/break1",
+      "netherexp:block/fossil_ore/break2",
+      "netherexp:block/fossil_ore/break3",
+      "netherexp:block/fossil_ore/break4",
+      "netherexp:block/fossil_ore/break5"
+    ]
+  },
+
+  "block.lesion_block.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "netherexp:block/lesion_block/break1",
+      "netherexp:block/lesion_block/break2",
+      "netherexp:block/lesion_block/break3"
+    ]
+  },
+  "block.lesion_block.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "netherexp:block/lesion_block/break1",
+      "netherexp:block/lesion_block/break2",
+      "netherexp:block/lesion_block/break3"
+    ]
+  },
+
+
+  "item.gold.gilding": {
+    "subtitle": "subtitles.item.gold.gilding",
+    "sounds": [
+      "netherexp:item/gilding/gilding1",
+      "netherexp:item/gilding/gilding2"
     ]
   },
   "item.bucket.empty_ectoplasm": {
@@ -1059,6 +726,12 @@
     "subtitle": "subtitles.item.antidote.negate",
     "sounds": [
       "netherexp:item/antidote/negate"
+    ]
+  },
+  "item.antidote.expired": {
+    "subtitle": "subtitles.item.antidote.expired",
+    "sounds": [
+      "netherexp:item/antidote/expired"
     ]
   },
   "item.grenade_antidote.tick": {
@@ -1092,40 +765,10 @@
       "netherexp:item/shotgun/alarm"
     ]
   },
-  "item.jackhammer_fist.hit": {
-    "subtitle": "subtitles.item.jackhammer_fist.hit",
-    "sounds": [
-      "netherexp:item/jackhammer/hit1",
-      "netherexp:item/jackhammer/hit2"
-    ]
-  },
-  "item.jackhammer_fist.loop": {
-    "subtitle": "subtitles.item.jackhammer_fist.loop",
-    "sounds": [
-      "netherexp:item/jackhammer/loop"
-    ]
-  },
-  "item.jackhammer_fist.pull": {
-    "subtitle": "subtitles.item.jackhammer_fist.pull",
-    "sounds": [
-      "netherexp:item/jackhammer/pull"
-    ]
-  },
   "item.compass.tick": {
     "subtitle": "subtitles.item.compass.tick",
     "sounds": [
       "netherexp:item/compass/tick"
-    ]
-  },
-  "block.explosive_scoria.ambient": {
-    "subtitle": "subtitles.block.explosive_scoria.ambient",
-    "sounds": [
-      "netherexp:block/explosive_scoria/ambient1",
-      "netherexp:block/explosive_scoria/ambient2",
-      "netherexp:block/explosive_scoria/ambient3",
-      "netherexp:block/explosive_scoria/ambient4",
-      "netherexp:block/explosive_scoria/ambient5",
-      "netherexp:block/explosive_scoria/ambient6"
     ]
   },
   "block.sporeshroom.trampolined": {
@@ -1134,6 +777,19 @@
       "netherexp:block/sporeshroom/boing1",
       "netherexp:block/sporeshroom/boing2",
       "netherexp:block/sporeshroom/boing3"
+    ]
+  },
+  "block.geyser.steam": {
+    "subtitle": "subtitles.block.geyser.steam",
+    "sounds": [
+      {
+        "name": "netherexp:block/geyser/steam1",
+        "stream": true
+      },
+      {
+        "name": "netherexp:block/geyser/steam2",
+        "stream": true
+      }
     ]
   },
   "block.lightspores.apply": {
@@ -1159,35 +815,98 @@
       "netherexp:block/soul_swirls/boost3"
     ]
   },
-  "entity.warphopper.ambient": {
-    "subtitle": "subtitles.entity.warphopper.ambient",
+  "block.soul_swirls.deactivate": {
+    "subtitle": "subtitles.block.soul_swirls.deactivate",
     "sounds": [
-      "netherexp:mob/warphopper/idle1",
-      "netherexp:mob/warphopper/idle2",
-      "netherexp:mob/warphopper/idle3",
-      "netherexp:mob/warphopper/idle4"
+      "netherexp:block/soul_swirls/unboost1",
+      "netherexp:block/soul_swirls/unboost2"
     ]
   },
-  "entity.warphopper.hurt": {
-    "subtitle": "subtitles.entity.warphopper.hurt",
+  "block.lesion_block.harvest": {
+    "subtitle": "subtitles.block.lesion_block.harvest",
     "sounds": [
-      "netherexp:mob/warphopper/hurt1",
-      "netherexp:mob/warphopper/hurt2",
-      "netherexp:mob/warphopper/hurt3"
+      "netherexp:block/lesion_block/harvest1",
+      "netherexp:block/lesion_block/harvest2"
     ]
   },
-  "entity.warphopper.death": {
-    "subtitle": "subtitles.entity.warphopper.death",
+  "block.lesion_block.grows": {
+    "subtitle": "subtitles.block.lesion_block.grows",
     "sounds": [
-      "netherexp:mob/warphopper/death"
+      "netherexp:block/lesion_block/break1",
+      "netherexp:block/lesion_block/break2",
+      "netherexp:block/lesion_block/break3"
     ]
   },
-  "entity.warphopper.cloak": {
-    "subtitle": "subtitles.entity.warphopper.cloak",
+
+  "block.brazier_chest.open": {
+    "subtitle": "subtitles.block.brazier_chest.open",
     "sounds": [
-      "netherexp:mob/warphopper/cloak"
+      "netherexp:block/brazier_chest/open"
     ]
   },
+  "block.brazier_chest.close": {
+    "subtitle": "subtitles.block.brazier_chest.close",
+    "sounds": [
+      "netherexp:block/brazier_chest/close"
+    ]
+  },
+  "block.brazier_chest.lit": {
+    "subtitle": "subtitles.block.brazier_chest.lit",
+    "sounds": [
+      "netherexp:block/brazier_chest/lit"
+    ]
+  },
+
+  "block.treacherous_candle.victory": {
+    "subtitle": "subtitles.block.treacherous_candle.victory",
+    "sounds": [
+      "netherexp:block/treacherous_candle/victory"
+    ]
+  },
+  "block.treacherous_candle.defeat": {
+    "subtitle": "subtitles.block.treacherous_candle.defeat",
+    "sounds": [
+      "netherexp:block/treacherous_candle/defeat"
+    ]
+  },
+  "block.treacherous_candle.spawn": {
+    "subtitle": "subtitles.block.treacherous_candle.spawn",
+    "sounds": [
+      "netherexp:block/treacherous_candle/spawn"
+    ]
+  },
+  "block.treacherous_candle.round": {
+    "subtitle": "subtitles.block.treacherous_candle.round",
+    "sounds": [
+      "netherexp:block/treacherous_candle/round"
+    ]
+  },
+
+  "block.thin_black_ice.cracking": {
+    "subtitle": "subtitles.block.thin_black_ice.cracking",
+    "sounds": [
+      "netherexp:block/thin_black_ice/cracking1",
+      "netherexp:block/thin_black_ice/cracking2",
+      "netherexp:block/thin_black_ice/cracking3",
+      "netherexp:block/thin_black_ice/cracking4",
+      "netherexp:block/thin_black_ice/cracking5"
+    ]
+  },
+
+  "block.discernment_glass.add": {
+    "subtitle": "subtitles.block.discernment_glass.add",
+    "sounds": [
+      "netherexp:block/discernment_glass/add_item"
+    ]
+  },
+  "block.discernment_glass.remove": {
+    "subtitle": "subtitles.block.discernment_glass.remove",
+    "sounds": [
+      "netherexp:block/discernment_glass/remove_item"
+    ]
+  },
+
+
   "entity.wisp.ambient": {
     "subtitle": "subtitles.entity.wisp.ambient",
     "sounds": [
@@ -1204,6 +923,28 @@
       "netherexp:mob/wisp/hurt2"
     ]
   },
+  "entity.wisp.death": {
+    "subtitle": "subtitles.entity.wisp.death",
+    "sounds": [
+      "netherexp:mob/wisp/hurt1",
+      "netherexp:mob/wisp/hurt2"
+    ]
+  },
+  "entity.wisp.bottle_fill": {
+    "subtitle": "subtitles.item.bottle.fill_wisp",
+    "sounds": [
+      "netherexp:mob/wisp/bottle_fill1",
+      "netherexp:mob/wisp/bottle_fill2"
+    ]
+  },
+  "entity.wisp.bottle_empty": {
+    "subtitle": "subtitles.item.bottle.empty",
+    "sounds": [
+      "netherexp:mob/wisp/bottle_empty1",
+      "netherexp:mob/wisp/bottle_empty2"
+    ]
+  },
+
   "entity.apparition.ambient": {
     "subtitle": "subtitles.entity.apparition.ambient",
     "sounds": [
@@ -1243,6 +984,7 @@
       "netherexp:mob/apparition/attack2"
     ]
   },
+
   "entity.carcass.hurt": {
     "subtitle": "subtitles.entity.carcass.hurt",
     "sounds": [
@@ -1263,6 +1005,7 @@
       "netherexp:mob/carcass/reanimate"
     ]
   },
+
   "entity.vessel.ambient": {
     "subtitle": "subtitles.entity.vessel.ambient",
     "sounds": [
@@ -1298,6 +1041,7 @@
       "netherexp:mob/vessel/fire"
     ]
   },
+
   "entity.shotgun_guy.ambient": {
     "subtitle": "subtitles.entity.vessel.ambient",
     "sounds": [
@@ -1325,6 +1069,7 @@
       "netherexp:mob/shotgun_guy/fire"
     ]
   },
+
   "entity.banshee.ambient": {
     "subtitle": "subtitles.entity.banshee.ambient",
     "sounds": [
@@ -1361,6 +1106,7 @@
       "netherexp:mob/banshee/shoot"
     ]
   },
+
   "entity.stampede.ambient": {
     "subtitle": "subtitles.entity.stampede.ambient",
     "sounds": [
@@ -1412,6 +1158,7 @@
       "netherexp:mob/stampede/agitated2"
     ]
   },
+
   "entity.ecto_slab.jump": {
     "sounds": [
       "netherexp:mob/ecto_slab/jump1",
@@ -1452,21 +1199,9 @@
     ],
     "subtitle": "subtitles.entity.ecto_slab.warn"
   },
-  "entity.player.hurt_igneous_thorns": {
-    "subtitle": "subtitles.entity.player.hurt",
-    "sounds": [
-      "netherexp:mob/player/hurt/igneous_thorns_hurt1",
-      "netherexp:mob/player/hurt/igneous_thorns_hurt2"
-    ]
-  },
-  "entity.player.hurt_suffocation": {
-    "subtitle": "subtitles.entity.player.hurt",
-    "sounds": [
-      "netherexp:mob/player/hurt/suffocation_hurt1",
-      "netherexp:mob/player/hurt/suffocation_hurt2",
-      "netherexp:mob/player/hurt/suffocation_hurt3"
-    ]
-  },
+
+
+
   "music_disc.cricket": {
     "sounds": [
       {

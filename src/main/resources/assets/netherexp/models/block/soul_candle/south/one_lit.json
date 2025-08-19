@@ -3,6 +3,7 @@
 	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/soul_candle_lit",
+		"glow": "netherexp:block/soul_candle_lit_glow",
 		"particle": "netherexp:block/soul_candle_lit"
 	},
 	"elements": [
@@ -17,6 +18,21 @@
 				"west": {"uv": [5, 6, 10, 16], "texture": "#0"},
 				"up": {"uv": [0, 1, 5, 6], "texture": "#0"},
 				"down": {"uv": [0, 1, 5, 6], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, 0, 5.5],
+			"to": [10.5, 10, 10.5],
+			"neoforge_data": {"block_light": 12},
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [2.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [5, 6, 10, 16], "texture": "#glow"},
+				"east": {"uv": [5, 6, 10, 16], "texture": "#glow"},
+				"south": {"uv": [0, 6, 5, 16], "texture": "#glow"},
+				"west": {"uv": [5, 6, 10, 16], "texture": "#glow"},
+				"up": {"uv": [0, 1, 5, 6], "texture": "#glow"},
+				"down": {"uv": [0, 1, 5, 6], "texture": "#glow"}
 			}
 		},
 		{

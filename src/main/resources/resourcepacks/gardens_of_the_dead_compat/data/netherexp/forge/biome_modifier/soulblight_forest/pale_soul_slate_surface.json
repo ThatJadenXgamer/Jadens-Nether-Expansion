@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "gardens_of_the_dead:soulblight_forest",
-  "features": "netherexp:soulblight_forest/pale_soul_slate_surface",
-  "step": "raw_generation"
-}

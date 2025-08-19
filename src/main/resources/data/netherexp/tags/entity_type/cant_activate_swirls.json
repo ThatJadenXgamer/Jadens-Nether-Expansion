@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:wisp",
+    "netherexp:apparition",
+    "#netherexp:possessed",
+    "netherexp:carcass"
+  ]
+}

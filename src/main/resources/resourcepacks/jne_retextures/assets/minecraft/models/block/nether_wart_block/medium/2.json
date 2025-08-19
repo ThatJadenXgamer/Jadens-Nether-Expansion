@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "elysium:block/emissive_block_12",
   "textures": {
-    "all": "minecraft:block/nether_wart_block/medium/2"
+    "base": "minecraft:block/nether_wart_block/medium/2",
+    "glow": "minecraft:block/nether_wart_block/medium/2_glow"
   }
 }

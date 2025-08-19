@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "gardens_of_the_dead:soulblight_forest",
-  "features": "netherexp:soulblight_forest/ecto_soul_sand",
-  "step": "vegetal_decoration"
-}

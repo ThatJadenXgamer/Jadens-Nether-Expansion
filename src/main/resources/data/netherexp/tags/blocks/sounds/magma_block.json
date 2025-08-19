@@ -3,8 +3,7 @@
   "values": [
     "minecraft:magma_block",
     {
-      "id": "rubinated_nether:molten_ruby_ore",
-      "required": false
+      "id": "rubinated_nether:molten_ruby_ore", "required": false
     }
   ]
 }

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "netherexp:block/explosive_scoria_unstable"
-  }
-}

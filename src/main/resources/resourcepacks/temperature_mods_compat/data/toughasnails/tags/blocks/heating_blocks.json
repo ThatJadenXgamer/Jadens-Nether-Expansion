@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-	{ "id": "netherexp:ancient_campfire", "required": false },
-	{ "id": "netherexp:ancient_lantern", "required": false },
-	{ "id": "netherexp:basaltic_geyser", "required": false }
-  	]
-}

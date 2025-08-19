@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:player",
+    "netherexp:wisp",
+    "netherexp:apparition",
+    "minecraft:enderman",
+    "minecraft:endermite",
+    "#minecraft:projectiles"
+  ]
+}

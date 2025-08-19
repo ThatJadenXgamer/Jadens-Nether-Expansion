@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:nether_brick_wall",
-    "minecraft:red_nether_brick_wall",
-    "netherexp:blue_nether_brick_wall"
-  ]
-}

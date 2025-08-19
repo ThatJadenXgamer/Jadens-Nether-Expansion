@@ -1,24 +1,17 @@
 {
-  "type": "netherexp:warped_huge_fungus",
+  "type": "minecraft:huge_fungus",
   "config": {
-    "hat_state": {
-      "Name": "minecraft:warped_wart_block"
-    },
     "decor_state": {
       "Name": "netherexp:shroomnight"
     },
-    "stem_state": {
-      "Name": "minecraft:warped_stem",
-      "Properties": {
-        "axis": "y"
-      }
+    "hat_state": {
+      "Name": "minecraft:warped_wart_block"
     },
-    "valid_base_block": {
-      "Name": "minecraft:warped_nylium"
-    },
+    "planted": true,
     "replaceable_blocks": {
       "type": "minecraft:matching_blocks",
       "blocks": [
+        "minecraft:oak_sapling",
         "minecraft:spruce_sapling",
         "minecraft:birch_sapling",
         "minecraft:jungle_sapling",
@@ -77,6 +70,14 @@
         "minecraft:small_dripleaf"
       ]
     },
-    "planted": true
+    "stem_state": {
+      "Name": "minecraft:warped_stem",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "valid_base_block": {
+      "Name": "minecraft:warped_nylium"
+    }
   }
 }

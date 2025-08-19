@@ -1,0 +1,209 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy"
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_helix"
+      },
+      "when": {
+        "north": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_helix",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_helix",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_helix",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_helix_updown",
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_helix_updown",
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "helix": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/twisting_ivy",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    }
+  ]
+}

@@ -3,12 +3,15 @@
 	"ambientocclusion": false,
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"1": "netherexp:block/brazier_chest_side_lit",
-		"2": "netherexp:block/brazier_chest_top_lit",
-		"3": "netherexp:block/brazier_chest_bars_lit",
-		"4": "netherexp:block/chiseled_soul_slate_tiles_top",
-		"5": "netherexp:block/brazier_chest_front_lit",
-		"6": "netherexp:block/brazier_chest_flame",
+		"side": "netherexp:block/brazier_chest_side_lit",
+		"top": "netherexp:block/brazier_chest_top_lit",
+		"side_glow": "netherexp:block/brazier_chest_side_lit_glow",
+		"up_glow": "netherexp:block/brazier_chest_top_lit_glow",
+		"bars": "netherexp:block/brazier_chest_bars_lit",
+		"bottom": "netherexp:block/chiseled_soul_slate_tiles_top",
+		"front": "netherexp:block/brazier_chest_front_lit",
+		"front_glow": "netherexp:block/brazier_chest_front_lit_glow",
+		"flame": "netherexp:block/brazier_chest_flame",
 		"particle": "netherexp:block/brazier_chest_side_lit"
 	},
 	"elements": [
@@ -16,22 +19,35 @@
 			"from": [0, 0, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#5", "cullface": "north"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "east"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "south"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "west"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "up"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#4", "cullface": "down"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#front", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#top", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom", "cullface": "down"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"neoforge_data": {"block_light": 15},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#front_glow", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#side_glow", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#side_glow", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#side_glow", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#up_glow", "cullface": "up"}
 			}
 		},
 		{
 			"from": [1, 16, 1],
 			"to": [15, 21, 15],
 			"faces": {
-				"north": {"uv": [1, 11, 15, 16], "texture": "#3", "cullface": "up"},
-				"east": {"uv": [1, 11, 15, 16], "texture": "#3", "cullface": "up"},
-				"south": {"uv": [1, 11, 15, 16], "texture": "#3", "cullface": "up"},
-				"west": {"uv": [1, 11, 15, 16], "texture": "#3", "cullface": "up"}
+				"north": {"uv": [1, 11, 15, 16], "texture": "#bars", "cullface": "up"},
+				"east": {"uv": [1, 11, 15, 16], "texture": "#bars", "cullface": "up"},
+				"south": {"uv": [1, 11, 15, 16], "texture": "#bars", "cullface": "up"},
+				"west": {"uv": [1, 11, 15, 16], "texture": "#bars", "cullface": "up"}
 			}
 		},
 		{
@@ -39,32 +55,36 @@
 			"from": [15, 21, 15],
 			"to": [1, 16, 1],
 			"faces": {
-				"north": {"uv": [1, 16, 15, 11], "texture": "#3", "cullface": "up"},
-				"east": {"uv": [1, 16, 15, 11], "texture": "#3", "cullface": "up"},
-				"south": {"uv": [1, 16, 15, 11], "texture": "#3", "cullface": "up"},
-				"west": {"uv": [1, 16, 15, 11], "texture": "#3", "cullface": "up"}
+				"north": {"uv": [1, 16, 15, 11], "texture": "#bars", "cullface": "up"},
+				"east": {"uv": [1, 16, 15, 11], "texture": "#bars", "cullface": "up"},
+				"south": {"uv": [1, 16, 15, 11], "texture": "#bars", "cullface": "up"},
+				"west": {"uv": [1, 16, 15, 11], "texture": "#bars", "cullface": "up"}
 			}
 		},
 		{
 			"from": [8, 16, -0.25],
 			"to": [8, 32, 16],
+			"neoforge_data": {"block_light": 15},
+			"shade": false,
 			"rotation": {"angle": -45, "axis": "y", "origin": [8, 24, 8]},
 			"faces": {
-				"north": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},
-				"east": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},
-				"south": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},
-				"west": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"}
+				"north": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"},
+				"east": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"},
+				"south": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"},
+				"west": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"}
 			}
 		},
 		{
 			"from": [8, 16, 0],
 			"to": [8, 32, 16.25],
+			"neoforge_data": {"block_light": 15},
+			"shade": false,
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 24, 8]},
 			"faces": {
-				"north": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},
-				"east": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},
-				"south": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"},
-				"west": {"uv": [1, 0, 15, 16], "texture": "#6", "cullface": "up"}
+				"north": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"},
+				"east": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"},
+				"south": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"},
+				"west": {"uv": [1, 0, 15, 16], "texture": "#flame", "cullface": "up"}
 			}
 		}
 	],

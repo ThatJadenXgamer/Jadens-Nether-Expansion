@@ -5,8 +5,12 @@
 		"1": "block/twisting_vines/glow/left_branch",
 		"2": "block/twisting_vines/glow/right_branch",
 		"3": "block/twisting_vines/glow/branch",
+		"1glow": "block/twisting_vines/glow/left_branch_glow",
+		"2glow": "block/twisting_vines/glow/right_branch_glow",
+		"3glow": "block/twisting_vines/glow/branch_glow",
 		"particle": "block/twisting_vines/glow/plant",
-		"cross": "block/twisting_vines/glow/plant"
+		"cross": "block/twisting_vines/glow/plant",
+		"glow": "block/twisting_vines/glow/plant_glow"
 	},
 	"elements": [
 		{
@@ -42,6 +46,44 @@
 				"east": {"uv": [0, 0, 16, 16], "texture": "#cross"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#cross"}
 			}
+		},
+
+		{
+			"from": [0.8, 0, 8],
+			"to": [15.2, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1glow"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#2glow"}
+			},
+			"neoforge_data": {"block_light": 10}
+		},
+		{
+			"from": [14.8, 0, 8],
+			"to": [29.2, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#3glow"},
+				"east": {"uv": [0, 0, 0, 0], "texture": "#3glow"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#3glow"},
+				"west": {"uv": [0, 0, 0, 0], "texture": "#3glow"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#3glow"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#3glow"}
+			},
+			"neoforge_data": {"block_light": 10}
+		},
+		{
+			"from": [8, 0, 0.8],
+			"to": [8, 16, 15.2],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#glow"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#glow"}
+			},
+			"neoforge_data": {"block_light": 10}
 		}
 	],
 	"display": {}

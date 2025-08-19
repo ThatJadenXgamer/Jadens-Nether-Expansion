@@ -1,161 +1,88 @@
 package net.jadenxgamer.netherexp.event;
 
-import net.jadenxgamer.elysium_api.api.biome.ElysiumBiomeRegistry;
-import net.jadenxgamer.elysium_api.api.surface_rules.SurfaceRulesRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
+import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
+import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
+import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
+import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
+import net.jadenxgamer.netherexp.registry.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNERegistries;
-import net.jadenxgamer.netherexp.registry.block.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.data_driven.wisp_archeology.WispArcheology;
-import net.jadenxgamer.netherexp.registry.entity.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.entity.custom.*;
-import net.jadenxgamer.netherexp.registry.fluid.JNEFluids;
-import net.jadenxgamer.netherexp.registry.item.brewing.JNEPotionRecipe;
-import net.jadenxgamer.netherexp.registry.misc_registry.JNEBuiltinPacks;
-import net.jadenxgamer.netherexp.registry.worldgen.JNEBiomes;
-import net.jadenxgamer.netherexp.registry.worldgen.JNESurfaceRules;
-import net.jadenxgamer.netherexp.util.CompatUtil;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.event.AddPackFindersEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.server.ServerAboutToStartEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
-import net.minecraftforge.registries.DataPackRegistryEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.MissingMappingsEvent;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.ModLoader;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
+
+import static net.jadenxgamer.netherexp.config.JNEConfigs.NETHER_WORLDGEN_OVERHAUL;
 
 @SuppressWarnings("unused")
-@Mod.EventBusSubscriber(modid = NetherExp.MOD_ID)
+@EventBusSubscriber(modid = NetherExp.MOD_ID)
 public class JNEEvents {
 
     @SubscribeEvent
-    public static void fixMissingMappings(MissingMappingsEvent event) {
-        event.getAllMappings(ForgeRegistries.Keys.BLOCKS).forEach(missingMapping -> {
-            switch (missingMapping.getKey().toString()) {
-                case "netherexp:soul_jack_o_lantern" -> missingMapping.remap(Blocks.JACK_O_LANTERN);
-                case "netherexp:soul_ghoul_o_lantern" -> missingMapping.remap(JNEBlocks.GHOUL_O_LANTERN.get());
-            }
-        });
-    }
-
-    @SubscribeEvent
-    public static void onServerStart(ServerAboutToStartEvent event) {
+    public static void onServerAboutToStart(ServerAboutToStartEvent event) {
         NetherExp.registryAccess = event.getServer().registryAccess();
-        if (JNEConfigs.ENABLE_SUB_BIOMES.get()) {
-            //ElysiumBiomeRegistry.replaceNetherBiome(Biomes.SOUL_SAND_VALLEY, JNEBiomes.SORROWSQUASH_PASTURES, 0.15, 64, new ResourceLocation(NetherExp.MOD_ID, "ssv_2"), NetherExp.registryAccess);
-            if (JNEConfigs.BLACK_ICE_GLACIERS.get()) {
-                ElysiumBiomeRegistry.replaceNetherBiome(Biomes.SOUL_SAND_VALLEY, JNEBiomes.BLACK_ICE_GLACIERS, JNEConfigs.BLACK_ICE_GLACIERS_RARITY.get(), JNEConfigs.BLACK_ICE_GLACIERS_SIZE.get(), new ResourceLocation(NetherExp.MOD_ID, "ssv_3"), NetherExp.registryAccess);
-            }
-        }
     }
 
     @SubscribeEvent
-    public static void livingDie(LivingDeathEvent event) {
-        if (CompatUtil.checkAlexsCaves() && event.getEntity().getType() == JNEEntityType.ECTO_SLAB.get() && event.getSource() != null && event.getSource().getEntity() instanceof Frog frog) {
-            if (frog.getVariant() == BuiltInRegistries.FROG_VARIANT.get(new ResourceLocation("alexscaves", "primordial"))) {
-                event.getEntity().spawnAtLocation(new ItemStack(JNEBlocks.CARMINE_FROGMIST.get()));
-            }
-        }
+    public static void onLivingDeath(LivingDeathEvent event) {
+        OnDeathGroundConversion.onLivingDeath(event);
     }
 
-    @Mod.EventBusSubscriber(modid = NetherExp.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = NetherExp.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
     public static class ModBusEvents {
-
-        @SubscribeEvent
-        public static void dataDrivenRegistries(DataPackRegistryEvent.NewRegistry event) {
-            event.dataPackRegistry(JNERegistries.WISP_ARCHEOLOGY, WispArcheology.CODEC);
-        }
-
-        @SubscribeEvent
-        public static void registerAttributes(EntityAttributeCreationEvent event) {
-            event.put(JNEEntityType.APPARITION.get(), Apparition.createAttributes().build());
-            event.put(JNEEntityType.WISP.get(), Wisp.createAttributes().build());
-            event.put(JNEEntityType.VESSEL.get(), Vessel.createAttributes().build());
-            event.put(JNEEntityType.ECTO_SLAB.get(), EctoSlab.createAttributes().build());
-            event.put(JNEEntityType.BANSHEE.get(), Banshee.createAttributes().build());
-            event.put(JNEEntityType.STAMPEDE.get(), Stampede.createAttributes().build());
-            event.put(JNEEntityType.CARCASS.get(), Carcass.createAttributes().build());
-            event.put(JNEEntityType.FALSE_CARCASS.get(), FalseCarcass.createAttributes().build());
-        }
 
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
             event.enqueueWork(() -> {
-                SurfaceRulesRegistry.registerNetherSurfaceRule(JNESurfaceRules.init(), NetherExp.MOD_ID);
-                JNEPotionRecipe.addInvokerPotionRecipes();
+                JNECauldronInteractions.register();
             });
         }
 
         @SubscribeEvent
-        public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-            event.register(JNEEntityType.VESSEL.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules,
-                    SpawnPlacementRegisterEvent.Operation.REPLACE);
-            event.register(JNEEntityType.APPARITION.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules,
-                    SpawnPlacementRegisterEvent.Operation.REPLACE);
-            event.register(JNEEntityType.BANSHEE.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules,
-                    SpawnPlacementRegisterEvent.Operation.REPLACE);
+        public static void buildTabContents(BuildCreativeModeTabContentsEvent event) {
+            JNECreativeModeTabs.addToExistingTabs(event);
         }
 
         @SubscribeEvent
-        public static void loadComplete(FMLLoadCompleteEvent event) {
-            event.enqueueWork(JNEFluids::initFluidInteractions);
+        public static void datapackRegistry(DataPackRegistryEvent.NewRegistry event) {
+            JNERegistries.datapackInit(event);
+        }
+
+        @SubscribeEvent
+        public static void registerAttributes(EntityAttributeCreationEvent event) {
+            JNEEntityType.registerAttributes(event);
+        }
+
+        @SubscribeEvent
+        public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+            JNEEntityType.registerSpawnPlacements(event);
+        }
+
+        @SubscribeEvent(priority = EventPriority.LOW)
+        public static void registerEvent(RegisterEvent event) {
+            JNEItems.backportRegistries(event);
         }
 
         @SubscribeEvent
         public static void addBuiltinPacks(AddPackFindersEvent event) {
-            // ResourcePacks
-            if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-                JNEBuiltinPacks.rpJNEEmissives(event);
+            if (event.getPackType() == PackType.CLIENT_RESOURCES) { // Resource Packs
                 JNEBuiltinPacks.rpJNERetextures(event);
-                JNEBuiltinPacks.rpConflictingRetextures(event);
-                JNEBuiltinPacks.rpUniqueNetherWood(event);
             }
-            // Datapacks
-            if (event.getPackType() == PackType.SERVER_DATA) {
-                if (JNEConfigs.LARGER_NETHER_BIOMES.get()) {
-                    JNEBuiltinPacks.dpLargerNetherBiomes(event);
-                }
-                if (CompatUtil.checkNethersDelight()) {
-                    JNEBuiltinPacks.dpNethersDelightCompat(event);
-                }
-                if (CompatUtil.checkAlexsCaves()) {
-                    JNEBuiltinPacks.dpAlexsCavesCompat(event);
-                }
-                if (CompatUtil.checkAlexsMobs()) {
-                    JNEBuiltinPacks.dpAlexsMobsCompat(event);
-                }
-                if (CompatUtil.checkGardensOfTheDead()) {
-                    JNEBuiltinPacks.dpGardensOfTheDeadCompat(event);
-                }
-                if (CompatUtil.checkRubinatedNether()) {
-                    JNEBuiltinPacks.dpRubinatedNetherCompat(event);
-                }
-                if (CompatUtil.checkCavernsAndChasms()) {
-                    JNEBuiltinPacks.dpCavernsAndChasmsCompat(event);
-                }
-                if (CompatUtil.checkOreganized()) {
-                    JNEBuiltinPacks.dpOreganizedCompat(event);
-                }
-                if (CompatUtil.checkAnyTemperatureMod()) {
-                    JNEBuiltinPacks.dpTemperatureModsCompat(event);
-                }
+            if (event.getPackType() == PackType.SERVER_DATA) { // Datapacks
+                JNEBuiltinPacks.dpNetherWorldgenOverhaul(event);
             }
         }
     }

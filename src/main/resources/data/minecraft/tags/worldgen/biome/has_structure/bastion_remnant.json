@@ -1,8 +1,11 @@
 {
   "replace": false,
   "values": [
-    "netherexp:exhaust_mire",
-    "netherexp:black_ice_glaciers",
-    "netherexp:sorrowsquash_pastures"
+    {
+      "id": "netherexp:exhaust_mire", "required": false
+    },
+    {
+      "id": "netherexp:black_ice_glaciers", "required": false
+    }
   ]
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "elysium:block/emissive_cross_12",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "netherexp:block/soul_swirls_wall_cooldown",
-    "glow": "netherexp:block/soul_swirls_wall_cooldown_glow"
-  }
-}
