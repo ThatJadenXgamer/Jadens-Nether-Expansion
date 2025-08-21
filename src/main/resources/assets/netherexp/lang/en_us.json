@@ -52,7 +52,6 @@
   "jukebox_song.netherexp.buckshot_wonderland": "Shroomaniac - Buckshot Wonderland",
   "jukebox_song.minecraft.tears": "Amos Roddy - Tears",
 
-  "item.netherexp.antidote.inactive_tooltip": "To Activate needs to be Brewed With:",
   "item.netherexp.non_consumable.tooltip": "Non-consumable Item",
 
   "item.netherexp.antidote": "Antidote",
@@ -285,8 +284,7 @@
   "block.netherexp.white_ash": "White Ash",
   "block.netherexp.white_ash_block": "White Ash Block",
 
-  "block.netherexp.bone_cortical": "Bone Cortical",
-  "block.netherexp.bone_spike": "Bone Spike",
+  "block.netherexp.bone_pike": "Bone Pike",
   "block.netherexp.bone_fence": "Bone Fence",
   "block.netherexp.skeleton_skull_candle": "Skeleton Skull Candle",
   "block.netherexp.soul_skeleton_skull_candle": "Soul Skeleton Skull Candle",
@@ -441,7 +439,6 @@
   "advancements.nether.emf_raider.title": "EMF-Raider",
   "advancements.nether.emf_raider.description": "Activate a Sanctum Locator Compass and follow it to it's origin",
 
-  "effect.netherexp.fogsight": "Fogsight",
   "effect.netherexp.unbounded_speed": "Unbounded Speed",
   "effect.netherexp.betrayed": "Betrayed",
 
@@ -474,7 +471,6 @@
   "block.netherexp.violet_nether_brick_slab": "Violet Nether Brick Slab",
   "block.netherexp.violet_nether_brick_stairs": "Violet Nether Brick Stairs",
   "block.netherexp.violet_nether_brick_wall": "Violet Nether Brick Wall",
-  "block.netherexp.violet_scale_fungus": "Violet Scale Fungus",
   "block.netherexp.umbral_sporeshroom": "Umbral Sporeshroom",
   "block.netherexp.umbral_wart_beard": "Umbral Wart Beard",
   "block.netherexp.ashen_geyser": "Ashen Geyser",
@@ -482,15 +478,12 @@
   "block.netherexp.twilight_vines": "Twilight Vines",
   "block.netherexp.twilight_vines_plant": "Twilight Vines Plant",
   "block.netherexp.twilight_ivy": "Twilight Ivy",
-  "block.netherexp.potted_violet_scale_fungus": "Potted Violet Scale Fungus",
-  "block.netherexp.potted_umbral_sporeshroom": "Potted Umbral Sporeshroom",
   "block.netherexp.umbral_nylium_path": "Umbral Nylium Path",
 
   "item.netherexp.blightspores": "Blightspores",
   "block.netherexp.shroomblight": "Shroomblight",
   "block.netherexp.blight_swirls": "Blight Swirls",
   "block.netherexp.blightwart": "Blightwart",
-  "item.netherexp.blightwart": "Blightwart",
   "block.netherexp.blightwart_beard": "Blightwart Beard",
   "block.netherexp.soulblight_sporeshroom": "Soulblight Sporeshroom",
   "block.netherexp.yellow_mixed_nether_bricks": "Yellow Mixed Nether Bricks",
@@ -677,6 +670,7 @@
 
   "netherexp.configuration.netherWorldGenOverhaul": "Nether WorldGen Overhaul",
 
+  "netherexp.configuration.uncappedNetherFogDistance": "Uncapped Nether Fog Distance",
   "netherexp.configuration.blackIceParticles": "Black Ice Particles",
   "netherexp.configuration.ectoplasmParticles": "Ectoplasm Particles",
   "netherexp.configuration.ectoplasmSounds": "Ectoplasm Sounds",

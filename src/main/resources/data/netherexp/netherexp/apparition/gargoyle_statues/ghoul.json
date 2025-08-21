@@ -1,0 +1,5 @@
+{
+  "gargoyle_statue": "netherexp:ghoul_gargoyle_statue",
+  "preferred_by_personalities": [4],
+  "possessed_mob": "minecraft:blaze"
+}

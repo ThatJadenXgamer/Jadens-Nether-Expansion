@@ -1,66 +1,66 @@
 {
   "variants": {
     "bones=1,facing=north": {
-      "model": "netherexp:block/bone_spike1"
+      "model": "netherexp:block/bone_pike1"
     },
     "bones=2,facing=north": {
-      "model": "netherexp:block/bone_spike2"
+      "model": "netherexp:block/bone_pike2"
     },
     "bones=3,facing=north": {
-      "model": "netherexp:block/bone_spike3"
+      "model": "netherexp:block/bone_pike3"
     },
     "bones=4,facing=north": {
-      "model": "netherexp:block/bone_spike4"
+      "model": "netherexp:block/bone_pike4"
     },
 
     "bones=1,facing=east": {
-      "model": "netherexp:block/bone_spike1",
+      "model": "netherexp:block/bone_pike1",
       "y": 90
     },
     "bones=2,facing=east": {
-      "model": "netherexp:block/bone_spike2",
+      "model": "netherexp:block/bone_pike2",
       "y": 90
     },
     "bones=3,facing=east": {
-      "model": "netherexp:block/bone_spike3",
+      "model": "netherexp:block/bone_pike3",
       "y": 90
     },
     "bones=4,facing=east": {
-      "model": "netherexp:block/bone_spike4",
+      "model": "netherexp:block/bone_pike4",
       "y": 90
     },
 
     "bones=1,facing=south": {
-      "model": "netherexp:block/bone_spike1",
+      "model": "netherexp:block/bone_pike1",
       "y": 180
     },
     "bones=2,facing=south": {
-      "model": "netherexp:block/bone_spike2",
+      "model": "netherexp:block/bone_pike2",
       "y": 180
     },
     "bones=3,facing=south": {
-      "model": "netherexp:block/bone_spike3",
+      "model": "netherexp:block/bone_pike3",
       "y": 180
     },
     "bones=4,facing=south": {
-      "model": "netherexp:block/bone_spike4",
+      "model": "netherexp:block/bone_pike4",
       "y": 180
     },
 
     "bones=1,facing=west": {
-      "model": "netherexp:block/bone_spike1",
+      "model": "netherexp:block/bone_pike1",
       "y": 270
     },
     "bones=2,facing=west": {
-      "model": "netherexp:block/bone_spike2",
+      "model": "netherexp:block/bone_pike2",
       "y": 270
     },
     "bones=3,facing=west": {
-      "model": "netherexp:block/bone_spike3",
+      "model": "netherexp:block/bone_pike3",
       "y": 270
     },
     "bones=4,facing=west": {
-      "model": "netherexp:block/bone_spike4",
+      "model": "netherexp:block/bone_pike4",
       "y": 270
     }
   }

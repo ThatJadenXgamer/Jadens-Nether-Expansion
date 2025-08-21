@@ -118,7 +118,7 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
             if (state.getValue(POWERED)) {
                 level.scheduleTick(pos, this, 4);
             } else {
-                level.setBlock(pos, state.cycle(POWERED), Block.UPDATE_ALL);
+                level.setBlock(pos, state.cycle(POWERED), Block.UPDATE_CLIENTS);
             }
         }
     }
@@ -126,7 +126,7 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (state.getValue(POWERED) && !level.hasNeighborSignal(pos)) {
-            level.setBlock(pos, state.cycle(POWERED), Block.UPDATE_ALL);
+            level.setBlock(pos, state.cycle(POWERED), Block.UPDATE_CLIENTS);
         }
     }
 

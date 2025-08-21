@@ -16,7 +16,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "netherexp:bone_spike"
+        "recipe": "netherexp:bone_pike"
       }
     }
   },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "netherexp:bone_spike"
+      "netherexp:bone_pike"
     ]
   }
 }

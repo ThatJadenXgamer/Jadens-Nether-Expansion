@@ -213,7 +213,7 @@ public class JNEConfigImpl {
                             Improves the vanilla nether terrain generation\s
                             Heights changes:\s
                             The base nether is now 192 blocks tall\s
-                            Underelava is now -32 blocks deep\s
+                            Underlava sections are now -32 blocks deep\s
                             The area above the roof will be 64 blocks tall\s
                             \s
                             §cNOTE: If Amplified Nether is installed then that mod's generation will take priority
@@ -227,6 +227,9 @@ public class JNEConfigImpl {
     public static class VisualAndSoundSettings {
 
         public static void init(ModConfigSpec.Builder builder) {
+            UNCAPPED_NETHER_FOG_DISTANCE = builder
+                    .comment("Usually in vanilla the nether fog cannot exceed past 12 chunks, this config removes that limiter")
+                    .define("uncappedNetherFogDistance", true);
             BLACK_ICE_PARTICLES = builder
                     .comment("Black ice blocks will produce black flake particles underneath")
                     .define("blackIceParticles", true);

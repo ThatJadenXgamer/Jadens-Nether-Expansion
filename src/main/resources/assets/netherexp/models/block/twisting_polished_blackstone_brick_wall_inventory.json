@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "wall": "netherexp:block/twisting_blackstone_bricks"
+    "wall": "netherexp:block/twisting_polished_blackstone_bricks"
   }
 }

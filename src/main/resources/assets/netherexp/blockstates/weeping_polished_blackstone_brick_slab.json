@@ -1,13 +1,13 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "netherexp:block/weeping_blackstone_brick_slab"
+      "model": "netherexp:block/weeping_polished_blackstone_brick_slab"
     },
     "type=double": {
-      "model": "minecraft:block/weeping_blackstone_bricks"
+      "model": "minecraft:block/weeping_polished_blackstone_bricks"
     },
     "type=top": {
-      "model": "netherexp:block/weeping_blackstone_brick_slab_top"
+      "model": "netherexp:block/weeping_polished_blackstone_brick_slab_top"
     }
   }
 }

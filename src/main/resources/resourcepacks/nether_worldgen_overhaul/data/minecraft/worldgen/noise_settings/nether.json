@@ -12,10 +12,10 @@
   "disable_mob_generation": false,
   "legacy_random_source": false,
   "noise": {
-    "height": 192,
+    "height": 224,
     "min_y": -32,
-    "size_horizontal": 2,
-    "size_vertical": 1
+    "size_horizontal": 4,
+    "size_vertical": 2
   },
   "noise_router": {
     "barrier": 0,
@@ -53,7 +53,7 @@
                       "type": "minecraft:mul",
                       "argument1": {
                         "type": "minecraft:y_clamped_gradient",
-                        "from_y": 130,
+                        "from_y": 175,
                         "from_value": 1,
                         "to_value": 0,
                         "to_y": 192
@@ -75,7 +75,7 @@
     "fluid_level_floodedness": 0,
     "fluid_level_spread": 0,
     "initial_density_without_jaggedness": 0,
-    "lava": 1,
+    "lava": 0,
     "ridges": 0,
     "temperature": {
       "type": "minecraft:shifted_noise",

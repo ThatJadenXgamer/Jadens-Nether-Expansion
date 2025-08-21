@@ -12,6 +12,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -530,13 +531,13 @@ public class JNEBlocks {
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
 
     public static final Supplier<Block> WEEPING_POLISHED_BLACKSTONE_BRICK_SLAB = registerBlock("weeping_polished_blackstone_brick_slab", () ->
-            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+            new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
 
     public static final Supplier<Block> WEEPING_POLISHED_BLACKSTONE_BRICK_STAIRS = registerBlock("weeping_polished_blackstone_brick_stairs", () ->
-            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+            new StairBlock(WEEPING_POLISHED_BLACKSTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
 
     public static final Supplier<Block> WEEPING_POLISHED_BLACKSTONE_BRICK_WALL = registerBlock("weeping_polished_blackstone_brick_wall", () ->
-            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+            new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
 
     public static final Supplier<Block> TWISTING_POLISHED_BLACKSTONE_BRICKS = registerBlock("twisting_polished_blackstone_bricks", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
@@ -549,6 +550,125 @@ public class JNEBlocks {
 
     public static final Supplier<Block> TWISTING_POLISHED_BLACKSTONE_BRICK_WALL = registerBlock("twisting_polished_blackstone_brick_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.POLISHED_BLACKSTONE_BRICKS)));
+
+    /**
+     * Bones
+     */
+
+    public static final Supplier<Block> BONE_PIKE = registerBlock("bone_pike", () ->
+            new BonePikeBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5f).sound(SoundType.BONE_BLOCK)));
+
+    public static final Supplier<Block> BONE_FENCE = registerBlock("bone_fence", () ->
+            new BoneFenceBlock(BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.BONE_BLOCK)));
+
+    public static final Supplier<Block> SKULL_BLOCK = registerBlock("skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
+
+    public static final Supplier<Block> BURNING_SKULL_BLOCK = registerBlock("burning_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 15)));
+
+    public static final Supplier<Block> SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 10)));
+
+    public static final Supplier<Block> ANCIENT_BURNING_SKULL_BLOCK = registerBlock("ancient_burning_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 8)));
+
+    public static final Supplier<Block> STACKED_BONES = registerBlock("stacked_bones", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
+
+    public static final Supplier<Block> STACKED_BONE_SLAB = registerBlock("stacked_bone_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
+
+    public static final Supplier<Block> STACKED_BONE_STAIRS = registerBlock("stacked_bone_stairs", () ->
+            new StairBlock(STACKED_BONES.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
+
+
+
+    public static final Supplier<Block> WITHER_BONE_BLOCK = registerBlock("wither_bone_block", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).strength(4.5f, 9.0f)));
+
+    public static final Supplier<Block> WITHER_SKULL_BLOCK = registerBlock("wither_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));
+
+    public static final Supplier<Block> BURNING_WITHER_SKULL_BLOCK = registerBlock("burning_wither_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 15)));
+
+    public static final Supplier<Block> SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 10)));
+
+    public static final Supplier<Block> ANCIENT_BURNING_WITHER_SKULL_BLOCK = registerBlock("ancient_burning_wither_skull_block", () ->
+            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 8)));
+
+    public static final Supplier<Block> STACKED_WITHER_BONES = registerBlock("stacked_wither_bones", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));
+
+    public static final Supplier<Block> STACKED_WITHER_BONE_SLAB = registerBlock("stacked_wither_bone_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));
+
+    public static final Supplier<Block> STACKED_WITHER_BONE_STAIRS = registerBlock("stacked_wither_bone_stairs", () ->
+            new StairBlock(STACKED_WITHER_BONES.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));
+
+    /**
+     * Sanctum Decorations
+     */
+
+    public static final Supplier<Block> OSSIFIED_GARGOYLE_STATUE = registerGargoyleStatue("ossified_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+
+    public static final Supplier<Block> TRAMPLE_GARGOYLE_STATUE = registerGargoyleStatue("trample_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+
+    public static final Supplier<Block> PHASE_GARGOYLE_STATUE = registerGargoyleStatue("phase_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+
+    public static final Supplier<Block> GHOUL_GARGOYLE_STATUE = registerGargoyleStatue("ghoul_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+
+    public static final Supplier<Block> WRETCHED_GARGOYLE_STATUE = registerGargoyleStatue("wretched_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+
+    public static final Supplier<Block> TREACHEROUS_GARGOYLE_STATUE = registerGargoyleStatue("treacherous_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+
+    public static final Supplier<Block> CIRRIPEDIA_GARGOYLE_STATUE = registerGargoyleStatue("cirripedia_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+
+    public static final Supplier<Block> OCCULT_GARGOYLE_STATUE = registerGargoyleStatue("occult_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+
+    public static final Supplier<Block> SEALED_GARGOYLE_STATUE = registerGargoyleStatue("sealed_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+
+    public static final Supplier<Block> OBFUSCATED_GARGOYLE_STATUE = registerGargoyleStatue("obfuscated_gargoyle_statue", () ->
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));
+
+    public static final Supplier<Block> INSCRIBED_PANEL = registerBlock("inscribed_panel", () ->
+            new InscribedPanelBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE).lightLevel(InscribedPanelBlock.STATE_TO_LUMINANCE)));
+
+    /**
+     * Ancient Fire
+     */
+    
+    public static final Supplier<Block> ANCIENT_WAX_BLOCK = registerBlock("ancient_wax_block", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.HONEYCOMB_BLOCK)));
+
+    public static final Supplier<Block> ANCIENT_FIRE = registerBlockWithoutItem("ancient_fire", () ->
+            new AncientFireBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 10)));
+
+    public static final Supplier<Block> ANCIENT_TORCH = registerBlockWithoutItem("ancient_torch", () ->
+            new JNETorchBlock.Standing(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.TORCH).mapColor(MapColor.COLOR_RED).lightLevel(state -> 10)));
+
+    public static final Supplier<Block> ANCIENT_WALL_TORCH = registerBlockWithoutItem("ancient_wall_torch", () ->
+            new JNETorchBlock.Wall(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.WALL_TORCH).mapColor(MapColor.COLOR_RED).dropsLike(JNEBlocks.ANCIENT_TORCH.get()).lightLevel(state -> 10)));
+
+    public static final Supplier<Block> ANCIENT_LANTERN = registerBlock("ancient_lantern", () ->
+            new LanternBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_LANTERN).mapColor(MapColor.COLOR_RED).lightLevel(state -> 10)));
+
+//    public static final Supplier<Block> ANCIENT_CAMPFIRE = registerBlock("ancient_campfire", () ->
+//            new AncientCampfireBlock(false, 0, BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_CAMPFIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(AncientCampfireBlock.LIT) ? 10 : 0)));
+
+//    public static final Supplier<Block> ANCIENT_CANDLE = registerBlock("ancient_candle", () ->
+//            new AncientCandleBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SOUL_CANDLE.get()).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(AncientCandleBlock.LIT) ? 5 : 0)));
 
     public static void init(IEventBus eventBus) {
         BLOCKS.register(eventBus);

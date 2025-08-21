@@ -1,0 +1,7 @@
+{
+  "preferred_by_personalities": [4],
+  "has_possession": true,
+  "target_priority": 4,
+  "target_mob": "minecraft:blaze",
+  "possessed_mob": "minecraft:wither_skeleton"
+}

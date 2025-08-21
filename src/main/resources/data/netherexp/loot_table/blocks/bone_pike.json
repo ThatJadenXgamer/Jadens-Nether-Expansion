@@ -16,7 +16,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:bone_spike",
+                  "block": "netherexp:bone_pike",
                   "properties": {
                     "bones": "1"
                   }
@@ -30,7 +30,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:bone_spike",
+                  "block": "netherexp:bone_pike",
                   "properties": {
                     "bones": "2"
                   }
@@ -44,7 +44,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:bone_spike",
+                  "block": "netherexp:bone_pike",
                   "properties": {
                     "bones": "3"
                   }
@@ -58,7 +58,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:bone_spike",
+                  "block": "netherexp:bone_pike",
                   "properties": {
                     "bones": "4"
                   }
@@ -90,7 +90,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "netherexp:bone_spike",
+          "name": "netherexp:bone_pike",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -99,7 +99,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:bone_spike",
+                  "block": "netherexp:bone_pike",
                   "properties": {
                     "bones": "2"
                   }
@@ -113,7 +113,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:bone_spike",
+                  "block": "netherexp:bone_pike",
                   "properties": {
                     "bones": "3"
                   }
@@ -127,7 +127,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "netherexp:bone_spike",
+                  "block": "netherexp:bone_pike",
                   "properties": {
                     "bones": "4"
                   }

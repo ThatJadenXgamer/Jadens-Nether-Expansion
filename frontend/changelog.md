@@ -8,6 +8,13 @@
 -JNE codebase was rewritten from the ground-up for this port. expect many performance improvements and bug fixes!
 
 ### Changes
+
+-The Nether world generation has been entirely overhauled from the ground up
+
+-The Nether is now 192 blocks tall, with an additional -32 blocks for the future underlava expansion
+
+-The dimension is also much more multilayered and less floaty overall
+
 -Removed emissive built-in resource pack. all emissives are now part of the mod resources and always active
 
 -Entirely Overhauled every single configuration in the mod and added several new ones
@@ -52,7 +59,7 @@
 
 -Soul Swirls no longer drop themselves if sheared during a cooldown
 
--Bone Rod has been renamed to "Bone Spike"
+-Bone Rod has been renamed to "Bone Pike"
 
 -Wretched Gargoyle Statue has received a new model -X
 
@@ -91,6 +98,8 @@
 -Discernment Glass now emits a comparator output if it has a filter item
 
 -Weeping and Twisting Blackstone Bricks were missing slabs, stairs and wall variants due to an oversight. these have now been implemented
+
+-Warped Forests now have slightly denser fog
 
 ### Mod Compatibility
 

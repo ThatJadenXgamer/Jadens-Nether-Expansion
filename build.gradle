@@ -50,13 +50,15 @@ dependencies {
         parchment("org.parchmentmc.data:parchment-1.21.1:2024.11.17@zip")
     }
     neoForge "net.neoforged:neoforge:$project.neoforge_version"
-    modImplementation "lib:elysium_api:1.2.0c"
+    modImplementation "lib:elysium_api:1.2.0e"
 
-    modImplementation "team.lodestar.lodestone:lodestone:1.21.1-1.7.0.268"
-    include "team.lodestar.lodestone:lodestone:1.21.1-1.7.0.268"
+    modImplementation "team.lodestar.lodestone:lodestone:$project.lodestone_version"
+    include "team.lodestar.lodestone:lodestone:$project.lodestone_version"
 
-    compileOnly "top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api"
-    runtimeOnly "top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1"
+    compileOnly "top.theillusivec4.curios:curios-neoforge:$project.curios_version:api"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:$project.curios_version"
+
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-neoforge:0.5.0")))
 }
 
 processResources {

@@ -3,7 +3,9 @@ package net.jadenxgamer.netherexp.core.entity;
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.datadriven.ApparitionAggression;
+import net.jadenxgamer.netherexp.core.block.GargoyleStatueBlock;
+import net.jadenxgamer.netherexp.core.datadriven.ApparitionAggressions;
+import net.jadenxgamer.netherexp.core.datadriven.ApparitionGargoyleStatues;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
@@ -24,10 +26,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
@@ -42,6 +41,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
@@ -113,19 +113,41 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
     }
 
     private void initPreferredTargetGoals() {
-        List<ApparitionAggression> apparitionAggression = this.level().registryAccess().registryOrThrow(JNERegistries.APPARITION_AGGRESSION).stream()
+        List<ApparitionAggressions> apparitionAggressions = this.level().registryAccess().registryOrThrow(JNERegistries.APPARITION_AGGRESSIONS).stream()
                 .filter(json -> json.preferredByPersonalities().contains(this.getPersonality())).toList();
-        if (JNEConfigs.DEVELOPER_MODE.get()) NetherExp.LOGGER.info("Found {} apparition aggressions for personality {}", apparitionAggression.size(), this.getPersonality());
 
-        for (ApparitionAggression entry : apparitionAggression) {
+        List<ApparitionGargoyleStatues> apparitionGargoyleStatues = this.level().registryAccess().registryOrThrow(JNERegistries.APPARITION_GARGOYLE_STATUES).stream()
+                .filter(json -> json.preferredByPersonalities().contains(this.getPersonality())).toList();
+
+        registerApparitionAggressionGoals(apparitionAggressions);
+        registerGargoyleStatueGoals(apparitionGargoyleStatues);
+        if (this.getPersonality() != 2) this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    private void registerApparitionAggressionGoals(List<ApparitionAggressions> registry) {
+        if (JNEConfigs.DEVELOPER_MODE.get()) NetherExp.LOGGER.info("Found {} apparition aggressions for personality {}", registry.size(), this.getPersonality());
+
+        for (ApparitionAggressions entry : registry) {
             EntityType<?> type = LookupRegistryHelper.getEntityType(entry.targetMob());
             if (type != null) {
                 this.targetSelector.addGoal(entry.targetPriority(), new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType() == type));
                 if (JNEConfigs.DEVELOPER_MODE.get()) NetherExp.LOGGER.info("Added {} as target for apparition", type);
             }
         }
+    }
 
-        if (this.getPersonality() != 2) this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    private void registerGargoyleStatueGoals(List<ApparitionGargoyleStatues> registry) {
+        if (JNEConfigs.DEVELOPER_MODE.get()) NetherExp.LOGGER.info("Found {} valid gargoyle statue targets for personality {}", registry.size(), this.getPersonality());
+
+        for (ApparitionGargoyleStatues entry : registry) {
+            Block gargoyleStatue = LookupRegistryHelper.getBlock(entry.gargoyleStatue());
+            EntityType<?> possessionType = LookupRegistryHelper.getEntityType(entry.possessedMob());
+            EntityType<? extends Mob> mobType = (EntityType<? extends Mob>) possessionType;
+            if (gargoyleStatue != null && mobType != null) {
+                this.goalSelector.addGoal(1, new PossessGargoyleStatueGoal(this, gargoyleStatue, mobType));
+                if (JNEConfigs.DEVELOPER_MODE.get()) NetherExp.LOGGER.info("Added {} and associated possession {} as valid gargoyle possession for apparition", entry.gargoyleStatue(), entry.possessedMob());
+            }
+        }
     }
 
     @Override
@@ -197,8 +219,8 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
 
     @Override
     public boolean killedEntity(ServerLevel level, LivingEntity entity) {
-        if (this.isSalted()) return super.killedEntity(level, entity);
-        Optional<ApparitionAggression> apparitionAggression = level.registryAccess().registryOrThrow(JNERegistries.APPARITION_AGGRESSION).stream()
+        if (!this.canPossess()) return super.killedEntity(level, entity);
+        Optional<ApparitionAggressions> apparitionAggression = level.registryAccess().registryOrThrow(JNERegistries.APPARITION_AGGRESSIONS).stream()
                 .filter(json -> {
                     EntityType<?> type = LookupRegistryHelper.getEntityType(json.targetMob());
                     return json.hasPossession() && entity.getType() == type;
@@ -351,9 +373,54 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
         this.entityData.set(PERSONALITY, personality);
     }
 
+    public boolean canPossess() {
+        return !this.salted && possessionCooldown == 0;
+    }
+
     ////////
     // AI //
     ////////
+
+    class PossessGargoyleStatueGoal extends MoveToBlockGoal {
+
+        private final Block gargoyleStatue;
+        private final EntityType<? extends Mob> possession;
+        private final Apparition apparition = Apparition.this;
+
+        public PossessGargoyleStatueGoal(PathfinderMob mob, Block gargoyleStatue, EntityType<? extends Mob> possession) {
+            super(mob, 1.0, 8);
+            this.gargoyleStatue = gargoyleStatue;
+            this.possession = possession;
+        }
+
+        @Override
+        public boolean canUse() {
+            return super.canUse() && apparition.canPossess();
+        }
+
+        @Override
+        public double acceptedDistance() {
+            return 1.35;
+        }
+
+        @Override
+        protected boolean isValidTarget(LevelReader level, BlockPos pos) {
+            BlockState state = level.getBlockState(pos);
+            return state.is(this.gargoyleStatue) && !state.getValue(GargoyleStatueBlock.SALTED);
+        }
+
+        @Override
+        public void tick() {
+            super.tick();
+            if (this.isReachedTarget()) {
+                var convertTo = apparition.convertTo(this.possession, false);
+                if (convertTo != null && apparition.level() instanceof ServerLevel serverLevel) {
+                    convertTo.finalizeSpawn(serverLevel, apparition.level().getCurrentDifficultyAt(apparition.blockPosition()), MobSpawnType.CONVERSION, null);
+                    if (apparition.hasCustomName()) convertTo.setCustomName(apparition.getCustomName());
+                }
+            }
+        }
+    }
 
     class ApparitionWanderAroundGoal extends Goal {
         ApparitionWanderAroundGoal() {

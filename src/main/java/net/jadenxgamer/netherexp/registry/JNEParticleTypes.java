@@ -33,6 +33,7 @@ public class JNEParticleTypes {
     public static final Supplier<LodestoneWorldParticleType> ECTOPLASM = PARTICLE_TYPES.register("ectoplasm", LodestoneWorldParticleType::new);
     public static final Supplier<SimpleParticleType> SOUL_CLOUD = PARTICLE_TYPES.register("soul_cloud", () -> new SimpleParticleType(false));
     public static final Supplier<LodestoneWorldParticleType> SILVER_GLIMMER = PARTICLE_TYPES.register("silver_glimmer", LodestoneWorldParticleType::new);
+    public static final Supplier<SimpleParticleType> TREACHEROUS_FLAME = PARTICLE_TYPES.register("treacherous_flame", () -> new SimpleParticleType(false));
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

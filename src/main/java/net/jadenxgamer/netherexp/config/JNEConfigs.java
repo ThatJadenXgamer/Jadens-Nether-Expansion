@@ -66,6 +66,7 @@ public class JNEConfigs {
 
     // VISUAL AND SOUND
 
+    public static ModConfigSpec.BooleanValue UNCAPPED_NETHER_FOG_DISTANCE;
     public static ModConfigSpec.BooleanValue BLACK_ICE_PARTICLES;
     public static ModConfigSpec.BooleanValue ECTOPLASM_PARTICLES;
     public static ModConfigSpec.BooleanValue ECTOPLASM_SOUNDS;

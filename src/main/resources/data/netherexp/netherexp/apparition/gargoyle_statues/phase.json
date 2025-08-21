@@ -1,0 +1,5 @@
+{
+  "gargoyle_statue": "netherexp:phase_gargoyle_statue",
+  "preferred_by_personalities": [3],
+  "possessed_mob": "minecraft:magma_cube"
+}

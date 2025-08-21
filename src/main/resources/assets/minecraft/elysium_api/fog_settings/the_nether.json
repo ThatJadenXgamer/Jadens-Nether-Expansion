@@ -1,0 +1,5 @@
+{
+  "dimensions": "minecraft:the_nether",
+  "fog_start_multiplier": 0.35,
+  "fog_end_multiplier": 1.0
+}

@@ -20,6 +20,7 @@ import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
+import team.lodestar.lodestone.systems.particle.world.behaviors.components.LodestoneBehaviorComponent;
 
 import java.util.Optional;
 
@@ -79,9 +80,9 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
                 .setFullBrightLighting()
                 .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
                 .setScaleData(GenericParticleData.create(0.18f).build())
-                .setTransparencyData(GenericParticleData.create(1, 0).setEasing(Easing.BOUNCE_OUT).build())
+                .setTransparencyData(GenericParticleData.create(1, 0).build())
                 .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setLifetime(random.nextInt(60, 80))
+                .setLifetime(random.nextInt(60, 90))
                 .disableNoClip()
                 .setGravityStrength(0f)
                 .setMotion(0.0, 0.04, 0.0)
