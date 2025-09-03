@@ -32,6 +32,8 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");
     public static final Supplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");
     public static final Supplier<SoundEvent> BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
+    public static final Supplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
+    public static final Supplier<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
 
     public static final Supplier<SoundEvent> GOLD_GILDING = registerSoundEvents("item.gold.gilding");
 
@@ -44,6 +46,18 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> APPARITION_DEATH = registerSoundEvents("entity.apparition.death");
     public static final Supplier<SoundEvent> APPARITION_FLY = registerSoundEvents("entity.apparition.fly");
     public static final Supplier<SoundEvent> APPARITION_ATTACK = registerSoundEvents("entity.apparition.attack");
+    public static final Supplier<SoundEvent> APPARITION_POSSESSION = registerSoundEvents("entity.apparition.possession");
+    
+    public static final Supplier<SoundEvent> VESSEL_AMBIENT = registerSoundEvents("entity.vessel.ambient");
+    public static final Supplier<SoundEvent> VESSEL_HURT = registerSoundEvents("entity.vessel.hurt");
+    public static final Supplier<SoundEvent> VESSEL_DEATH = registerSoundEvents("entity.vessel.death");
+    public static final Supplier<SoundEvent> VESSEL_WARN = registerSoundEvents("entity.vessel.warn");
+    public static final Supplier<SoundEvent> VESSEL_FIRE = registerSoundEvents("entity.vessel.fire");
+    
+    public static final Supplier<SoundEvent> SHOTGUN_GUY_AMBIENT = registerSoundEvents("entity.shotgun_guy.ambient");
+    public static final Supplier<SoundEvent> SHOTGUN_GUY_HURT = registerSoundEvents("entity.shotgun_guy.hurt");
+    public static final Supplier<SoundEvent> SHOTGUN_GUY_DEATH = registerSoundEvents("entity.shotgun_guy.death");
+    public static final Supplier<SoundEvent> SHOTGUN_GUY_FIRE = registerSoundEvents("entity.shotgun_guy.fire");
 
     public static final Supplier<SoundEvent> WISP_BOTTLE_FILL = registerSoundEvents("entity.wisp.bottle_fill");
     public static final Supplier<SoundEvent> WISP_BOTTLE_EMPTY = registerSoundEvents("entity.wisp.bottle_empty");
@@ -91,6 +105,12 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> LESION_BLOCK_PLACE = registerSoundEvents("block.lesion_block.place");
     public static final Supplier<SoundEvent> LESION_BLOCK_BREAK = registerSoundEvents("block.lesion_block.break");
 
+    public static final Supplier<SoundEvent> SHOTGUN_BARREL_PLACE = registerSoundEvents("block.shotgun_barrel.place");
+    public static final Supplier<SoundEvent> SHOTGUN_BARREL_BREAK = registerSoundEvents("block.shotgun_barrel.break");
+
+    public static final Supplier<SoundEvent> FROGMIST_PLACE = registerSoundEvents("block.frogmist.place");
+    public static final Supplier<SoundEvent> FROGMIST_BREAK = registerSoundEvents("block.frogmist.break");
+
     public static final Supplier<SoundEvent> QUARTZ_BLOCK_PLACE = registerSoundEvents("block.quartz_block.place");
     public static final Supplier<SoundEvent> QUARTZ_BLOCK_BREAK = registerSoundEvents("block.quartz_block.break");
 
@@ -99,6 +119,49 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> BLACK_ICE_STEP = registerSoundEvents("block.black_ice.step");
     public static final Supplier<SoundEvent> BLACK_ICE_HIT = registerSoundEvents("block.black_ice.hit");
     public static final Supplier<SoundEvent> BLACK_ICE_FALL = registerSoundEvents("block.black_ice.fall");
+
+    public static final Supplier<SoundEvent> WITHER_BONE_BLOCK_PLACE = registerSoundEvents("block.wither_bone_block.place");
+    public static final Supplier<SoundEvent> WITHER_BONE_BLOCK_BREAK = registerSoundEvents("block.wither_bone_block.break");
+    public static final Supplier<SoundEvent> WITHER_BONE_BLOCK_STEP = registerSoundEvents("block.wither_bone_block.step");
+    public static final Supplier<SoundEvent> WITHER_BONE_BLOCK_HIT = registerSoundEvents("block.wither_bone_block.hit");
+    public static final Supplier<SoundEvent> WITHER_BONE_BLOCK_FALL = registerSoundEvents("block.wither_bone_block.fall");
+
+    public static final Supplier<SoundEvent> BONE_PIKE_PLACE = registerSoundEvents("block.bone_pike.place");
+    public static final Supplier<SoundEvent> BONE_PIKE_BREAK = registerSoundEvents("block.bone_pike.break");
+
+    public static final Supplier<SoundEvent> ANCIENT_CANDLE_PLACE = registerSoundEvents("block.ancient_candle.place");
+    public static final Supplier<SoundEvent> ANCIENT_CANDLE_BREAK = registerSoundEvents("block.ancient_candle.break");
+
+    public static final Supplier<SoundEvent> ANCIENT_WAX_PLACE = registerSoundEvents("block.ancient_wax.place");
+    public static final Supplier<SoundEvent> ANCIENT_WAX_BREAK = registerSoundEvents("block.ancient_wax.break");
+
+    public static final Supplier<SoundEvent> NETHERITE_GRATE_PLACE = registerSoundEvents("block.netherite_grate.place");
+    public static final Supplier<SoundEvent> NETHERITE_GRATE_BREAK = registerSoundEvents("block.netherite_grate.break");
+    public static final Supplier<SoundEvent> NETHERITE_GRATE_STEP = registerSoundEvents("block.netherite_grate.step");
+    public static final Supplier<SoundEvent> NETHERITE_GRATE_HIT = registerSoundEvents("block.netherite_grate.hit");
+    public static final Supplier<SoundEvent> NETHERITE_GRATE_FALL = registerSoundEvents("block.netherite_grate.fall");
+
+    public static final Supplier<SoundEvent> RUSTY_NETHERITE_GRATE_PLACE = registerSoundEvents("block.rusty_netherite_grate.place");
+    public static final Supplier<SoundEvent> RUSTY_NETHERITE_GRATE_BREAK = registerSoundEvents("block.rusty_netherite_grate.break");
+    public static final Supplier<SoundEvent> SOUL_GLASS_BREAK = registerSoundEvents("block.soul_glass.break");
+
+    public static final Supplier<SoundEvent> BLACKSTONE_PLACE = registerSoundEvents("block.blackstone.place");
+    public static final Supplier<SoundEvent> BLACKSTONE_BREAK = registerSoundEvents("block.blackstone.break");
+    public static final Supplier<SoundEvent> BLACKSTONE_STEP = registerSoundEvents("block.blackstone.step");
+    public static final Supplier<SoundEvent> BLACKSTONE_HIT = registerSoundEvents("block.blackstone.hit");
+    public static final Supplier<SoundEvent> BLACKSTONE_FALL = registerSoundEvents("block.blackstone.fall");
+
+    public static final Supplier<SoundEvent> POLISHED_BLACKSTONE_PLACE = registerSoundEvents("block.polished_blackstone_bricks.place");
+    public static final Supplier<SoundEvent> POLISHED_BLACKSTONE_BREAK = registerSoundEvents("block.polished_blackstone_bricks.break");
+    public static final Supplier<SoundEvent> POLISHED_BLACKSTONE_STEP = registerSoundEvents("block.polished_blackstone_bricks.step");
+    public static final Supplier<SoundEvent> POLISHED_BLACKSTONE_HIT = registerSoundEvents("block.polished_blackstone_bricks.hit");
+    public static final Supplier<SoundEvent> POLISHED_BLACKSTONE_FALL = registerSoundEvents("block.polished_blackstone_bricks.fall");
+
+    public static final Supplier<SoundEvent> GLOWSTONE_PLACE = registerSoundEvents("block.glowstone.place");
+    public static final Supplier<SoundEvent> GLOWSTONE_BREAK = registerSoundEvents("block.glowstone.break");
+
+    public static final Supplier<SoundEvent> MAGMA_BLOCK_PLACE = registerSoundEvents("block.magma_block.place");
+    public static final Supplier<SoundEvent> MAGMA_BLOCK_BREAK = registerSoundEvents("block.magma_block.break");
 
     private static Supplier<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(NetherExp.id(name)));

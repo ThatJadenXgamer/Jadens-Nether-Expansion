@@ -49,14 +49,30 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.SOUL_SLATE_TILE_WALL.get());
                 output.accept(JNEBlocks.CHISELED_SOUL_SLATE_TILES.get());
 
+                output.accept(Blocks.BONE_BLOCK);
+                output.accept(JNEBlocks.STACKED_BONES.get());
+                output.accept(JNEBlocks.STACKED_BONE_STAIRS.get());
+                output.accept(JNEBlocks.STACKED_BONE_SLAB.get());
+                output.accept(JNEBlocks.SKULL_BLOCK.get());
+                output.accept(JNEBlocks.BURNING_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.SOUL_BURNING_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.ANCIENT_BURNING_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.BONE_PIKE.get());
+                output.accept(JNEBlocks.BONE_FENCE.get());
+
                 output.accept(JNEBlocks.SOUL_PATH.get());
 
+                output.accept(Items.BONE);
+                output.accept(JNEItems.FOSSIL_FUEL.get());
                 output.accept(JNEBlocks.FOSSIL_ORE.get());
                 output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
 
+                output.accept(JNEItems.PHASMO_SHARD.get());
+                output.accept(JNEItems.PHASMO_ARROW.get());
                 output.accept(JNEBlocks.SOUL_GLASS.get());
                 output.accept(JNEBlocks.DISCERNMENT_GLASS.get());
 
+                output.accept(JNEItems.WRAITHING_FLESH.get());
                 output.accept(JNEBlocks.WRAITHING_LESION.get());
                 output.accept(JNEBlocks.SOULED_GEYSER.get());
 
@@ -72,7 +88,12 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.GHOUL_O_LANTERN.get());
                 output.accept(JNEBlocks.SOUL_TORCHFLOWER.get());
 
+                output.accept(Items.NETHERITE_SCRAP);
+                output.accept(Items.ANCIENT_DEBRIS);
+                output.accept(Items.NETHERITE_INGOT);
                 output.accept(Items.NETHERITE_BLOCK);
+                output.accept(JNEItems.STRIDITE.get());
+                output.accept(JNEItems.NETHERITE_PLATING.get());
                 output.accept(JNEBlocks.NETHERITE_PLATED_BLOCK.get());
                 output.accept(JNEBlocks.NETHERITE_GRATE.get());
                 output.accept(JNEBlocks.CUT_NETHERITE_BLOCK.get());
@@ -86,28 +107,45 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_SLAB.get());
                 output.accept(JNEBlocks.RUSTY_CUT_NETHERITE_PILLAR.get());
 
+                output.accept(JNEItems.WISP_BOTTLE.get());
                 output.accept(JNEFluids.ECTOPLASM_BUCKET.get());
                 output.accept(Blocks.SOUL_TORCH);
                 output.accept(Blocks.SOUL_LANTERN);
                 output.accept(Blocks.SOUL_CAMPFIRE);
                 output.accept(JNEBlocks.SOUL_CANDLE.get());
                 output.accept(JNEBlocks.SOUL_MAGMA_BLOCK.get());
+                output.accept(JNEItems.BANSHEE_ROD.get());
+                output.accept(JNEItems.BANSHEE_POWDER.get());
+                output.accept(JNEItems.WILL_O_WISP.get());
 
                 output.accept(JNEItems.SHOTGUN_CORE.get());
+                output.accept(JNEItems.SHOTGUN_FIST.get());
+                output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
                 output.accept(JNEItems.SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
                 output.accept(JNEItems.VALOR_ARMOR_TRIM_SMITHING_TEMPLATE.get());
                 output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                 output.accept(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get());
 
-                output.accept(JNEItems.WISP_BOTTLE.get());
-                output.accept(JNEItems.WRAITHING_FLESH.get());
-                output.accept(JNEItems.STRIDITE.get());
-                output.accept(JNEItems.NETHERITE_PLATING.get());
-                output.accept(JNEItems.PHASMO_SHARD.get());
-                output.accept(JNEItems.PHASMO_ARROW.get());
-                output.accept(JNEItems.BANSHEE_ROD.get());
-                output.accept(JNEItems.BANSHEE_POWDER.get());
-                output.accept(JNEItems.WILL_O_WISP.get());
+                output.accept(JNEItems.TREACHEROUS_FLAME.get());
+                output.accept(JNEItems.ANCIENT_WAX.get());
+                output.accept(JNEBlocks.ANCIENT_WAX_BLOCK.get());
+                output.accept(JNEItems.ANCIENT_TORCH.get());
+                output.accept(JNEBlocks.ANCIENT_LANTERN.get());
+                output.accept(JNEBlocks.ANCIENT_CAMPFIRE.get());
+                output.accept(JNEBlocks.ANCIENT_CANDLE.get());
+
+                output.accept(JNEBlocks.OSSIFIED_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.TRAMPLE_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.PHASE_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.GHOUL_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.WRETCHED_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.TREACHEROUS_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.CIRRIPEDIA_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.OCCULT_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.SEALED_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.OBFUSCATED_GARGOYLE_STATUE.get());
+                output.accept(JNEBlocks.INSCRIBED_PANEL.get());
+
                 output.accept(Items.GHAST_TEAR);
                 output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
 
@@ -119,6 +157,8 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.STAMPEDE_SPAWN_EGG.get());
                 output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
                 output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
+                output.accept(JNEItems.CARCASS_SPAWN_EGG.get());
+                output.accept(JNEItems.FALSE_CARCASS_SPAWN_EGG.get());
             })
             .build());
 
@@ -154,6 +194,8 @@ public class JNECreativeModeTabs {
                 output.accept(Blocks.CRIMSON_TRAPDOOR);
                 output.accept(Blocks.CRIMSON_PRESSURE_PLATE);
                 output.accept(Blocks.CRIMSON_BUTTON);
+                output.accept(Items.CRIMSON_SIGN);
+                output.accept(Items.CRIMSON_HANGING_SIGN);
 
                 output.accept(JNEItems.HOGHAM.get());
                 output.accept(JNEItems.COOKED_HOGHAM.get());
@@ -210,6 +252,8 @@ public class JNECreativeModeTabs {
                 output.accept(Blocks.WARPED_TRAPDOOR);
                 output.accept(Blocks.WARPED_PRESSURE_PLATE);
                 output.accept(Blocks.WARPED_BUTTON);
+                output.accept(Items.WARPED_SIGN);
+                output.accept(Items.WARPED_HANGING_SIGN);
 
                 output.accept(Blocks.NETHERRACK);
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK.get());
@@ -273,11 +317,11 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_STAIRS.get());
                 output.accept(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_WALL.get());
 
+                output.accept(Blocks.MAGMA_BLOCK);
                 output.accept(JNEBlocks.BASALTIC_GEYSER.get());
 
                 output.accept(Items.MAGMA_CREAM);
                 output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
-                output.accept(Blocks.MAGMA_BLOCK);
 
                 output.accept(Items.MAGMA_CUBE_SPAWN_EGG);
                 output.accept(Items.GHAST_SPAWN_EGG);
@@ -301,13 +345,13 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.NETHERRACK_PILLAR.get());
 
                 output.accept(Items.MAGMA_BLOCK);
-                output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
                 output.accept(Blocks.SOUL_SAND);
                 output.accept(Blocks.GLOWSTONE);
                 output.accept(Blocks.NETHER_QUARTZ_ORE);
                 output.accept(Blocks.NETHER_GOLD_ORE);
                 output.accept(Blocks.ANCIENT_DEBRIS);
 
+                output.accept(Items.QUARTZ);
                 output.accept(JNEBlocks.QUARTZ_CRYSTAL.get());
                 output.accept(JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get());
                 output.accept(Blocks.QUARTZ_BLOCK);
@@ -336,6 +380,8 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.CLARET_TRAPDOOR.get());
                 output.accept(JNEBlocks.CLARET_PRESSURE_PLATE.get());
                 output.accept(JNEBlocks.CLARET_BUTTON.get());
+                output.accept(JNEItems.CLARET_SIGN.get());
+                output.accept(JNEItems.CLARET_HANGING_SIGN.get());
 
                 output.accept(Items.NETHER_BRICK);
                 output.accept(Blocks.NETHER_BRICKS);
@@ -359,6 +405,21 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.BLUE_NETHER_BRICK_SLAB.get());
                 output.accept(JNEBlocks.BLUE_NETHER_BRICK_WALL.get());
 
+                output.accept(JNEBlocks.WITHER_BONE_BLOCK.get());
+                output.accept(JNEBlocks.STACKED_WITHER_BONES.get());
+                output.accept(JNEBlocks.STACKED_WITHER_BONE_STAIRS.get());
+                output.accept(JNEBlocks.STACKED_WITHER_BONE_SLAB.get());
+                output.accept(JNEBlocks.WITHER_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.BURNING_WITHER_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.SOUL_BURNING_WITHER_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.ANCIENT_BURNING_WITHER_SKULL_BLOCK.get());
+
+                output.accept(Items.NETHERITE_SCRAP);
+                output.accept(Items.ANCIENT_DEBRIS);
+                output.accept(Items.NETHERITE_INGOT);
+                output.accept(Items.NETHERITE_BLOCK);
+                output.accept(JNEItems.STRIDITE.get());
+                output.accept(JNEItems.NETHERITE_PLATING.get());
                 output.accept(Items.NETHERITE_BLOCK);
                 output.accept(JNEBlocks.NETHERITE_PLATED_BLOCK.get());
                 output.accept(JNEBlocks.NETHERITE_GRATE.get());
@@ -378,16 +439,13 @@ public class JNECreativeModeTabs {
                 output.accept(Items.BROWN_MUSHROOM);
 
                 output.accept(Items.GOLD_INGOT);
-                output.accept(Items.QUARTZ);
-                output.accept(Items.NETHERITE_SCRAP);
-                output.accept(Items.NETHERITE_INGOT);
-                output.accept(JNEItems.NETHERITE_PLATING.get());
-                output.accept(Items.MAGMA_CREAM);
                 output.accept(Items.GHAST_TEAR);
                 output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
                 output.accept(Items.BLAZE_ROD);
                 output.accept(Items.BLAZE_POWDER);
                 output.accept(Items.FIRE_CHARGE);
+                output.accept(Items.MAGMA_CREAM);
+                output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
 
                 output.accept(Items.PIGLIN_SPAWN_EGG);
                 output.accept(Items.PIGLIN_BRUTE_SPAWN_EGG);
@@ -454,14 +512,28 @@ public class JNECreativeModeTabs {
 
             insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
             insertToTab(event, Items.MAGMA_BLOCK, JNEBlocks.SOUL_MAGMA_BLOCK.get(), false);
+            insertToTab(event, Items.HONEYCOMB_BLOCK, JNEBlocks.ANCIENT_WAX_BLOCK.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             insertToTab(event, Items.SHROOMLIGHT, JNEBlocks.SHROOMNIGHT.get(), false);
             insertToTab(event, Items.MAGMA_BLOCK, JNEBlocks.SOUL_MAGMA_BLOCK.get(), false);
+            insertToTab(event, Items.SOUL_TORCH, JNEBlocks.ANCIENT_TORCH.get(), false);
+            insertToTab(event, Items.SOUL_LANTERN, JNEBlocks.ANCIENT_LANTERN.get(), false);
+            insertToTab(event, Items.SOUL_CAMPFIRE, JNEBlocks.ANCIENT_CAMPFIRE.get(), false);
+            insertToTab(event, Items.CANDLE, JNEBlocks.ANCIENT_CANDLE.get(), false);
+            insertToTab(event, Items.CANDLE, JNEBlocks.SOUL_CANDLE.get(), false);
+            insertToTab(event, Items.TINTED_GLASS, JNEBlocks.DISCERNMENT_GLASS.get(), false);
+            insertToTab(event, Items.TINTED_GLASS, JNEBlocks.SOUL_GLASS.get(), false);
+        }
+        if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
+            insertToTab(event, Items.CANDLE, JNEBlocks.ANCIENT_CANDLE.get(), false);
+            insertToTab(event, Items.CANDLE, JNEBlocks.SOUL_CANDLE.get(), false);
+            insertToTab(event, Items.TINTED_GLASS, JNEBlocks.SOUL_GLASS.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
             insertToTab(event, Items.BREEZE_ROD, JNEItems.BANSHEE_ROD.get(), false);
+            insertToTab(event, Items.HONEYCOMB, JNEItems.ANCIENT_WAX.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             insertToTab(event, Items.LAVA_BUCKET, JNEFluids.ECTOPLASM_BUCKET.get(), false);

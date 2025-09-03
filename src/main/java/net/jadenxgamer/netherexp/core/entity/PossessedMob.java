@@ -1,14 +1,15 @@
 package net.jadenxgamer.netherexp.core.entity;
 
+import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,32 +17,30 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.projectile.ThrownPotion;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
-public abstract class PossessedMob<T extends Mob> extends ExorcismMob {
+public abstract class PossessedMob extends ExorcismMob {
 
-    private final Supplier<EntityType<T>> possessionOf;
+    private String possessionOf;
 
-    protected PossessedMob(EntityType<? extends PathfinderMob> entityType, Level level, Supplier<EntityType<T>> possessionOf) {
+    protected PossessedMob(EntityType<? extends PathfinderMob> entityType, Level level, ResourceLocation defaultPossessionOf) {
         super(entityType, level);
-        this.possessionOf = possessionOf;
+        this.possessionOf = defaultPossessionOf.toString();
     }
 
     @Override
     public void doExorcism() {
         BlockPos pos = this.blockPosition();
         this.level().playSound(null, pos, JNESoundEvents.APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+        this.level().broadcastEntityEvent(this, (byte) 77);
 
-        Mob convertTo = this.convertTo(possessionOf.get(), true);
+        var possessionOf = getPossessionOf() == null ? null : LookupRegistryHelper.getEntityType(ResourceLocation.parse(getPossessionOf()));
+        if (possessionOf == null) return;
+        EntityType<? extends Mob> possessionType = (EntityType<? extends Mob>) possessionOf;
+        Mob convertTo = this.convertTo(possessionType, true);
         if (convertTo != null && this.level() instanceof ServerLevel serverLevel) {
             convertTo.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(pos), MobSpawnType.CONVERSION, null);
             convertTo.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
@@ -52,7 +51,8 @@ public abstract class PossessedMob<T extends Mob> extends ExorcismMob {
     @Override
     public void die(DamageSource damageSource) {
         super.die(damageSource);
-        if (!JNEConfigs.POSSESSED_MOBS_UNLEASH_APPARITION.get()) return;
+        var unleashingOdds = this.random.nextInt(apparitionUnleashingOdds(this.level().getDifficulty()));
+        if (unleashingOdds == 0 && !JNEConfigs.POSSESSED_MOBS_UNLEASH_APPARITION.get()) return;
 
         Apparition apparition = JNEEntityType.APPARITION.get().create(this.level());
         if (apparition != null) {
@@ -63,7 +63,39 @@ public abstract class PossessedMob<T extends Mob> extends ExorcismMob {
         }
     }
 
+    protected int apparitionUnleashingOdds(Difficulty difficulty) {
+        return difficulty == Difficulty.HARD ? 1 : 3;
+    }
+
     public int apparitionPersonality() {
         return 0;
+    }
+
+    //////////
+    // DATA //
+    //////////
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag nbt) {
+        super.addAdditionalSaveData(nbt);
+        nbt.putString("PossessionOf", this.getPossessionOf());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag nbt) {
+        super.readAdditionalSaveData(nbt);
+        this.setPossessionOf(nbt.getString("PossessionOf"));
+    }
+
+    ///////////////////////
+    // GETTERS & SETTERS //
+    ///////////////////////
+
+    public String getPossessionOf() {
+        return possessionOf;
+    }
+
+    public void setPossessionOf(String possessionOf) {
+        this.possessionOf = possessionOf;
     }
 }

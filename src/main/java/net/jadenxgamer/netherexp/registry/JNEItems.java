@@ -104,10 +104,10 @@ public class JNEItems {
             new Item(new Item.Properties().stacksTo(1).durability(640).fireResistant().rarity(Rarity.EPIC)));
 
     public static final Supplier<Item> CLARET_SIGN = ITEMS.register("claret_sign", () ->
-            new Item(new Item.Properties().stacksTo(16)));
+            new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));
 
     public static final Supplier<Item> CLARET_HANGING_SIGN = ITEMS.register("claret_hanging_sign", () ->
-            new Item(new Item.Properties().stacksTo(16)));
+            new HangingSignItem(JNEBlocks.CLARET_HANGING_SIGN.get(), JNEBlocks.CLARET_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
     public static final Supplier<Item> MUSIC_DISC_CRICKET  = ITEMS.register("music_disc_cricket", () ->
             new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
@@ -138,6 +138,9 @@ public class JNEItems {
 
     public static final Supplier<Item> CARCASS_SPAWN_EGG = ITEMS.register("carcass_spawn_egg", () ->
             new DeferredSpawnEggItem(JNEEntityType.WISP, 8263192, 4066060, new Item.Properties()));
+
+    public static final Supplier<Item> FALSE_CARCASS_SPAWN_EGG = ITEMS.register("false_carcass_spawn_egg", () ->
+            new DeferredSpawnEggItem(JNEEntityType.WISP, 4066060, 8263192, new Item.Properties()));
 
     public static final Supplier<Item> SEALED_POTTERY_SHERD = ITEMS.register("sealed_pottery_sherd", () ->
             new Item(new Item.Properties()));
@@ -181,6 +184,15 @@ public class JNEItems {
     public static final Supplier<Item> ANCIENT_TORCH = ITEMS.register("ancient_torch", () ->
             new StandingAndWallBlockItem(JNEBlocks.ANCIENT_TORCH.get(), JNEBlocks.ANCIENT_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN));
 
+    public static final Supplier<Item> OCHRE_FROGMIST = ITEMS.register("ochre_frogmist", () ->
+            new PlaceOnWaterBlockItem(JNEBlocks.OCHRE_FROGMIST.get(), new Item.Properties()));
+
+    public static final Supplier<Item> PEARLESCENT_FROGMIST = ITEMS.register("pearlescent_frogmist", () ->
+            new PlaceOnWaterBlockItem(JNEBlocks.PEARLESCENT_FROGMIST.get(), new Item.Properties()));
+
+    public static final Supplier<Item> VERDANT_FROGMIST = ITEMS.register("verdant_frogmist", () ->
+            new PlaceOnWaterBlockItem(JNEBlocks.VERDANT_FROGMIST.get(), new Item.Properties()));
+    
     /**
      * Artifacts
      */

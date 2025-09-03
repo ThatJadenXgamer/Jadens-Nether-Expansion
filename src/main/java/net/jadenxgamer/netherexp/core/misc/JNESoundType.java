@@ -57,4 +57,40 @@ public class JNESoundType {
     public static final SoundType BLACK_ICE = new SoundType(1.0f, 1.0f,
             JNESoundEvents.BLACK_ICE_BREAK.get(), JNESoundEvents.BLACK_ICE_STEP.get(), JNESoundEvents.BLACK_ICE_PLACE.get(),
             JNESoundEvents.BLACK_ICE_HIT.get(), JNESoundEvents.BLACK_ICE_FALL.get());
+
+    public static final SoundType SHOTGUN_BARREL = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.SHOTGUN_BARREL_BREAK.get(), SoundEvents.COPPER_STEP, JNESoundEvents.SHOTGUN_BARREL_PLACE.get(),
+            SoundEvents.COPPER_HIT, SoundEvents.COPPER_FALL);
+
+    public static final SoundType FROGMIST = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.FROGMIST_BREAK.get(), SoundEvents.SAND_STEP, JNESoundEvents.FROGMIST_PLACE.get(),
+            SoundEvents.SAND_HIT, SoundEvents.SAND_FALL);
+
+    public static final SoundType WITHER_BONE_BLOCK = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.WITHER_BONE_BLOCK_BREAK.get(), JNESoundEvents.WITHER_BONE_BLOCK_STEP.get(), JNESoundEvents.WITHER_BONE_BLOCK_PLACE.get(),
+            JNESoundEvents.WITHER_BONE_BLOCK_HIT.get(), JNESoundEvents.WITHER_BONE_BLOCK_FALL.get());
+
+    public static final SoundType BONE_PIKE = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.BONE_PIKE_BREAK.get(), SoundEvents.BONE_BLOCK_STEP, JNESoundEvents.BONE_PIKE_PLACE.get(),
+            SoundEvents.BONE_BLOCK_HIT, SoundEvents.BONE_BLOCK_FALL);
+
+    public static final SoundType ANCIENT_CANDLE = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.ANCIENT_CANDLE_BREAK.get(), SoundEvents.CANDLE_STEP, JNESoundEvents.ANCIENT_CANDLE_PLACE.get(),
+            SoundEvents.CANDLE_HIT, SoundEvents.CANDLE_FALL);
+
+    public static final SoundType ANCIENT_WAX = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.ANCIENT_WAX_BREAK.get(), SoundEvents.CORAL_BLOCK_STEP, JNESoundEvents.ANCIENT_WAX_PLACE.get(),
+            SoundEvents.CORAL_BLOCK_HIT, SoundEvents.CORAL_BLOCK_FALL);
+
+    public static final SoundType NETHERITE_GRATE = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.NETHERITE_GRATE_BREAK.get(), JNESoundEvents.NETHERITE_GRATE_STEP.get(), JNESoundEvents.NETHERITE_GRATE_PLACE.get(),
+            JNESoundEvents.NETHERITE_GRATE_HIT.get(), JNESoundEvents.NETHERITE_GRATE_FALL.get());
+
+    public static final SoundType RUSTY_NETHERITE_GRATE = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.RUSTY_NETHERITE_GRATE_BREAK.get(), JNESoundEvents.NETHERITE_GRATE_STEP.get(), JNESoundEvents.RUSTY_NETHERITE_GRATE_PLACE.get(),
+            JNESoundEvents.NETHERITE_GRATE_HIT.get(), JNESoundEvents.NETHERITE_GRATE_FALL.get());
+
+    public static final SoundType SOUL_GLASS = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.SOUL_GLASS_BREAK.get(), SoundEvents.GLASS_STEP, SoundEvents.GLASS_PLACE,
+            SoundEvents.GLASS_HIT, SoundEvents.GLASS_FALL);
 }

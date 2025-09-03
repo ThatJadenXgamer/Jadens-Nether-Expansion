@@ -50,7 +50,7 @@ dependencies {
         parchment("org.parchmentmc.data:parchment-1.21.1:2024.11.17@zip")
     }
     neoForge "net.neoforged:neoforge:$project.neoforge_version"
-    modImplementation "lib:elysium_api:1.2.0e"
+    modImplementation "lib:elysium_api:1.2.0f"
 
     modImplementation "team.lodestar.lodestone:lodestone:$project.lodestone_version"
     include "team.lodestar.lodestone:lodestone:$project.lodestone_version"

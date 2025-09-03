@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -130,9 +131,29 @@ public abstract class ExorcismMob extends PathfinderMob {
         }
     }
 
+    private void possessionParticle(Level level, RandomSource random) {
+        for (int i = 0; i < 12; i++) {
+            double x = this.getRandomX(0.5);
+            double y = this.getRandomY();
+            double z = this.getRandomZ(0.5);
+            WorldParticleBuilder.create(JNEParticleTypes.POSSESSION.get())
+                    .setFullBrightLighting()
+                    .setSpinData(SpinParticleData.create(0).build())
+                    .setScaleData(GenericParticleData.create(0.595f).build())
+                    .setTransparencyData(GenericParticleData.create(1).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(random.nextInt(10, 28))
+                    .enableNoClip()
+                    .setMotion(random.nextDouble() * 0.02, random.nextDouble() * 0.02, random.nextDouble() * 0.02)
+                    .spawn(level, x, y, z);
+        }
+    }
+
     @Override
     public void handleEntityEvent(byte id) {
-        if (id == 47) this.silverParticle(this.level(), this.random, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5));
+        if (id == 47) this.silverParticle(this.level(), this.random, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5));
+        if (id == 77) this.possessionParticle(this.level(), this.random);
         super.handleEntityEvent(id);
     }
 

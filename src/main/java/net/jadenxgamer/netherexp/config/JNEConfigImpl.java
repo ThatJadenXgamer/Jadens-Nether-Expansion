@@ -144,6 +144,13 @@ public class JNEConfigImpl {
             CEREBRAGE_GROWS_BRAIN_TREES = builder
                     .comment("If cerebrage skulls are bone-mealed past their last growth stage then a brain tree can grow from it")
                     .define("cerebrageGrowsBrainTrees", true);
+            SHOTGUN_BARREL_BULLETS = builder
+                    .comment("The amount of shotgun pellets fired from a shotgun barrel")
+                    .defineInRange("shotgunBarrelBullets", 10, 0, Integer.MAX_VALUE);
+            CAN_ANYTHING_BREAK_FROGMIST = builder
+                    .comment("Normally frogmists can only be broken when other frogmist or a hoe is held in hand \n" +
+                            "This config makes it breakable with anything regardless of what's in your hand")
+                    .define("canAnythingBreakFrogmist", false);
         }
     }
 
@@ -161,10 +168,18 @@ public class JNEConfigImpl {
                     .worldRestart()
                     .define("backportTearsMusicDisc", true);
             TWEAK_OBTAINING_TEARS_MUSIC_DISC = builder
-                    .comment("Makes obtaining the tears music disc harder, as now it requires you to slay a ghast in the overworld \n" +
+                    .comment("Makes obtaining the tears music disc harder, when enabled requires you to slay a ghast in the overworld \n" +
                              "If disabled then the disc is obtained by redirecting a fireball into a ghast like in vanilla")
                     .worldRestart()
                     .define("tweakObtainingTearsMusicDisc", true);
+            SHOTGUN_FIST_BULLETS = builder
+                    .comment("The base amount of shotgun pellets fired from a shotgun-fist\n" +
+                            "Enchantments can influence the final total of bullets fired")
+                    .defineInRange("shotgunFistBullets", 25, 0, Integer.MAX_VALUE);
+            PUMP_CHARGE_SHOTGUN_BULLETS = builder
+                    .comment("The base amount of shotgun pellets fired from a pump-charge shotgun\n" +
+                            "Enchantments and pumps can influence the final total of bullets fired")
+                    .defineInRange("pumpChargeShotgunBullets", 10, 0, Integer.MAX_VALUE);
         }
     }
 
@@ -196,12 +211,36 @@ public class JNEConfigImpl {
                     .comment("Apparitions can be salted... or erm, \"waxed\" until actual salt is added in the future \n" +
                             "Salted apparitions cannot possess any mobs, although will still attack them")
                     .define("apparitionsCanBeSalted", true);
+            APPARITIONS_CAN_POSSESS_MOBS = builder
+                    .comment("Apparitions can take control of certain mobs they kill and turn into possessed variants")
+                    .define("apparitionsCanPossessMobs", true);
+            APPARITIONS_CAN_POSSESS_GARGOYLES = builder
+                    .comment("Apparitions can use certain gargoyle statues to turn themselves into their possessed variants")
+                    .define("apparitionsCanPossessGargoyles", true);
             POSSESSED_MOBS_UNLEASH_APPARITION = builder
                     .comment("Upon death possessed mobs have a chance to unleash an apparition out into the world")
                     .define("possessedMobsUnleashApparition", true);
+            PROJECTILES_PHASE_THROUGH_GHOSTS = builder
+                    .comment("Most projectiles will phase through apparitions and wisps except for a few specific kinds \n" +
+                            "Projectiles specified in the \"phantasm_hull_protects_blacklist\" tag still hit these entities regardless")
+                    .define("projectilesPhaseThroughGhosts", true);
             DIMINISHING_BLAZES = builder
                     .comment("Blazes will visibly become dimmer the lower their health is much like Minecraft: Dungeons")
                     .define("diminishingBlazes", true);
+            MIN_VESSEL_BULLETS = builder
+                    .comment("The minimum amount of shotgun pellets fired from a vessel")
+                    .defineInRange("minVesselBullets", 16, 0, Integer.MAX_VALUE);
+            MAX_VESSEL_BULLETS = builder
+                    .comment("The maximum amount of shotgun pellets fired from a vessel")
+                    .defineInRange("maxVesselBullets", 20, 0, Integer.MAX_VALUE);
+            VESSEL_ATTACK_TIME = builder
+                    .comment("Attack timer is a value that decrements when a vessel is aggroed \n" +
+                            "It dictates the wait-time between each shotgun blast the vessel does")
+                    .defineInRange("vesselAttackTime", 110, 0, Integer.MAX_VALUE);
+            VESSEL_SHOOTS_AT_ATTACK_TIME = builder
+                    .comment("At the specified attack time the vessel will take aim preparing to fire \n" +
+                            "This value cannot go any lower than 50 to prevent animation issues")
+                    .defineInRange("vesselShootsAtAttackTime", 100, 50, Integer.MAX_VALUE);
         }
     }
 
@@ -216,7 +255,7 @@ public class JNEConfigImpl {
                             Underlava sections are now -32 blocks deep\s
                             The area above the roof will be 64 blocks tall\s
                             \s
-                            §cNOTE: If Amplified Nether is installed then that mod's generation will take priority
+                            §cNOTE: If Amplified Nether is installed then that mod's generation will take priority regardless of config value
                             """)
                     .gameRestart()
                     .define("netherWorldGenOverhaul", true);
@@ -239,6 +278,27 @@ public class JNEConfigImpl {
             ECTOPLASM_SOUNDS = builder
                     .comment("Ectoplasm will whisper incomprehensible gibberish to players")
                     .define("ectoplasmSounds", true);
+            NETHER_MIST_PARTICLES = builder
+                    .comment("Periodically misty particles will form around the distance fog")
+                    .define("netherMistParticles", true);
+            NETHER_MIST_SPAWN_RATE = builder
+                    .comment("Controls the tick intervals of nether mist spawning")
+                    .defineInRange("netherMistSpawnRate", 10, 0, Integer.MAX_VALUE);
+            NETHER_MIST_MIN_DISTANCE = builder
+                    .comment("Minimum distance at which the nether mist particles spawn")
+                    .defineInRange("netherMistMinDistance", 32.0, 0, Double.MAX_VALUE);
+            NETHER_MIST_MAX_DISTANCE = builder
+                    .comment("Maximum distance at which the nether mist particles spawn")
+                    .defineInRange("netherMistMaxDistance", 64.0, 0, Double.MAX_VALUE);
+            NETHER_MIST_SCALE = builder
+                    .comment("The size of nether mist particles")
+                    .defineInRange("netherMistScale", 39.0f, 0, Double.MAX_VALUE);
+            NETHER_MIST_OPACITY = builder
+                    .comment("The opacity of nether mist particles")
+                    .defineInRange("netherMistOpacity", 0.6f, 0.0, 1.0);
+            NETHER_MIST_MOTION_MULTIPLIER = builder
+                    .comment("Influences the nether mist particle to go off in random directions at the defined speed")
+                    .defineInRange("netherMistMotionMultiplier", 0.03, 0, Double.MAX_VALUE);
         }
     }
 

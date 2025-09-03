@@ -3,6 +3,8 @@ package net.jadenxgamer.netherexp.core.fluid;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -14,13 +16,16 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.Vec3;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
+import team.lodestar.lodestone.systems.particle.world.behaviors.components.DirectionalBehaviorComponent;
 import team.lodestar.lodestone.systems.particle.world.behaviors.components.LodestoneBehaviorComponent;
+import team.lodestar.lodestone.systems.particle.world.behaviors.components.SparkBehaviorComponent;
 
 import java.util.Optional;
 
@@ -65,9 +70,13 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
     }
 
     private void rayParticle(Level level, RandomSource random, double x, double y,double z) {
+        Minecraft client = Minecraft.getInstance();
+        Camera camera = client.gameRenderer.getMainCamera();
+        Vec3 direction = new Vec3(0.0, 1.0, 0.0);
         WorldParticleBuilder.create(JNEParticleTypes.ECTOPLASM_RAYS.get())
                 .setFullBrightLighting()
                 .setScaleData(GenericParticleData.create(4.8f).build())
+                .setBehavior(new SparkBehaviorComponent().setForcedDirection(direction))
                 .setTransparencyData(GenericParticleData.create(0.02f, 1f, 0f).build())
                 .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
                 .setLifetime(random.nextInt(120, 180))

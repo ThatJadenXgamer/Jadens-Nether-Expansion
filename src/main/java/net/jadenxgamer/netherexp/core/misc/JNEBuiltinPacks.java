@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.core.misc;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.SharedConstants;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackLocationInfo;
@@ -37,7 +38,7 @@ public class JNEBuiltinPacks {
 
     // Nether WorldGen Overhaul
     public static void dpNetherWorldgenOverhaul(AddPackFindersEvent event) {
-        if (ModList.get().isLoaded("amplified_nether") || !NETHER_WORLDGEN_OVERHAUL.get()) return;
+        if (CompatUtil.AMPLIFIED_NETHER || !NETHER_WORLDGEN_OVERHAUL.get()) return;
 
         Path path = ModList.get().getModFileById(NetherExp.MOD_ID).getFile().findResource("resourcepacks/nether_worldgen_overhaul");
         PackMetadataSection metadata = new PackMetadataSection(Component.literal("Overhauls the nether world generation"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));

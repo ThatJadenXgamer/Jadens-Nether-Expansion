@@ -1,8 +1,9 @@
 package net.jadenxgamer.netherexp;
 
-import com.mojang.logging.LogUtils;
+import net.jadenxgamer.netherexp.compat.registry.SupplementariesCompat;
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.registry.*;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -10,11 +11,12 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Mod(NetherExp.MOD_ID)
 public final class NetherExp {
     public static final String MOD_ID = "netherexp";
-    public static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LoggerFactory.getLogger("Jaden's Nether Expansion");
     public static RegistryAccess registryAccess;
 
     public NetherExp(IEventBus modEventBus, ModContainer modContainer) {
@@ -32,6 +34,11 @@ public final class NetherExp {
         JNEBlocks.init(modEventBus);
         JNEItems.init(modEventBus);
         JNEBlockEntityType.init(modEventBus);
+        initModCompat();
+    }
+
+    private static void initModCompat() {
+        if (CompatUtil.SUPPLEMENTARIES) SupplementariesCompat.init();
     }
 
     public static ResourceLocation id(String path) {

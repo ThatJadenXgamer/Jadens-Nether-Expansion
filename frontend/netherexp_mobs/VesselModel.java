@@ -1,4 +1,4 @@
-// Made with Blockbench 4.9.3
+// Made with Blockbench 4.12.4
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
@@ -7,9 +7,27 @@ public class VesselModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "vesselmodel"), "main");
 	private final ModelPart vessel;
+	private final ModelPart head;
+	private final ModelPart body;
+	private final ModelPart waist;
+	private final ModelPart collar;
+	private final ModelPart eyes;
+	private final ModelPart left_arm;
+	private final ModelPart right_arm;
+	private final ModelPart left_leg;
+	private final ModelPart right_leg;
 
 	public VesselModel(ModelPart root) {
 		this.vessel = root.getChild("vessel");
+		this.head = this.vessel.getChild("head");
+		this.body = this.vessel.getChild("body");
+		this.waist = this.body.getChild("waist");
+		this.collar = this.waist.getChild("collar");
+		this.eyes = this.collar.getChild("eyes");
+		this.left_arm = this.waist.getChild("left_arm");
+		this.right_arm = this.waist.getChild("right_arm");
+		this.left_leg = this.vessel.getChild("left_leg");
+		this.right_leg = this.vessel.getChild("right_leg");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -44,7 +62,7 @@ public class VesselModel<T extends Entity> extends EntityModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
 	}
 

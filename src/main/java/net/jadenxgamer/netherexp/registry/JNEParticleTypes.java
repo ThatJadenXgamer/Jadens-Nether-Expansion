@@ -34,6 +34,9 @@ public class JNEParticleTypes {
     public static final Supplier<SimpleParticleType> SOUL_CLOUD = PARTICLE_TYPES.register("soul_cloud", () -> new SimpleParticleType(false));
     public static final Supplier<LodestoneWorldParticleType> SILVER_GLIMMER = PARTICLE_TYPES.register("silver_glimmer", LodestoneWorldParticleType::new);
     public static final Supplier<SimpleParticleType> TREACHEROUS_FLAME = PARTICLE_TYPES.register("treacherous_flame", () -> new SimpleParticleType(false));
+    public static final Supplier<LodestoneWorldParticleType> POSSESSION = PARTICLE_TYPES.register("possession", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> SHOTGUN_SPARK = PARTICLE_TYPES.register("shotgun_spark", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> NETHER_FOG = PARTICLE_TYPES.register("nether_fog", LodestoneWorldParticleType::new);
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

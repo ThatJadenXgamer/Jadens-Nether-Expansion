@@ -4,7 +4,7 @@
       "model": "netherexp:block/twisting_polished_blackstone_brick_slab"
     },
     "type=double": {
-      "model": "minecraft:block/twisting_polished_blackstone_bricks"
+      "model": "netherexp:block/twisting_polished_blackstone_bricks"
     },
     "type=top": {
       "model": "netherexp:block/twisting_polished_blackstone_brick_slab_top"

@@ -1,0 +1,17 @@
+{
+  "blocks": "minecraft:crimson_nylium",
+  "item_condition": "#minecraft:shovels",
+  "behaviors": {
+    "type": "place",
+    "blockstate": {
+      "Name": "netherexp:crimson_nylium_path"
+    },
+    "after_use_item": "damage",
+    "can_replace_solids": true,
+    "sounds": {
+      "sound_event": "minecraft:item.shovel.flatten",
+      "volume": 1.0,
+      "pitch": 1.0
+    }
+  }
+}

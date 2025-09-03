@@ -40,6 +40,8 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue MAX_CEREBRAGE_DROPPED;
     public static ModConfigSpec.DoubleValue CEREBRAGE_SEEDS_DROP_CHANCE;
     public static ModConfigSpec.BooleanValue CEREBRAGE_GROWS_BRAIN_TREES;
+    public static ModConfigSpec.IntValue SHOTGUN_BARREL_BULLETS;
+    public static ModConfigSpec.BooleanValue CAN_ANYTHING_BREAK_FROGMIST;
 
     // ITEM
 
@@ -47,6 +49,8 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION;
     public static ModConfigSpec.BooleanValue BACKPORT_TEARS_MUSIC_DISC;
     public static ModConfigSpec.BooleanValue TWEAK_OBTAINING_TEARS_MUSIC_DISC;
+    public static ModConfigSpec.IntValue SHOTGUN_FIST_BULLETS;
+    public static ModConfigSpec.IntValue PUMP_CHARGE_SHOTGUN_BULLETS;
 
     // ENTITY
 
@@ -57,8 +61,15 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue WISPS_DROPPED_BY_APPARITION;
     public static ModConfigSpec.IntValue APPARITION_POSSESSION_COOLDOWN;
     public static ModConfigSpec.BooleanValue APPARITIONS_CAN_BE_SALTED;
+    public static ModConfigSpec.BooleanValue APPARITIONS_CAN_POSSESS_MOBS;
+    public static ModConfigSpec.BooleanValue APPARITIONS_CAN_POSSESS_GARGOYLES;
     public static ModConfigSpec.BooleanValue POSSESSED_MOBS_UNLEASH_APPARITION;
+    public static ModConfigSpec.BooleanValue PROJECTILES_PHASE_THROUGH_GHOSTS;
     public static ModConfigSpec.BooleanValue DIMINISHING_BLAZES;
+    public static ModConfigSpec.IntValue MIN_VESSEL_BULLETS;
+    public static ModConfigSpec.IntValue MAX_VESSEL_BULLETS;
+    public static ModConfigSpec.IntValue VESSEL_ATTACK_TIME;
+    public static ModConfigSpec.IntValue VESSEL_SHOOTS_AT_ATTACK_TIME;
 
     // WORLD SETTINGS
 
@@ -70,6 +81,13 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue BLACK_ICE_PARTICLES;
     public static ModConfigSpec.BooleanValue ECTOPLASM_PARTICLES;
     public static ModConfigSpec.BooleanValue ECTOPLASM_SOUNDS;
+    public static ModConfigSpec.BooleanValue NETHER_MIST_PARTICLES;
+    public static ModConfigSpec.IntValue NETHER_MIST_SPAWN_RATE;
+    public static ModConfigSpec.DoubleValue NETHER_MIST_MIN_DISTANCE;
+    public static ModConfigSpec.DoubleValue NETHER_MIST_MAX_DISTANCE;
+    public static ModConfigSpec.DoubleValue NETHER_MIST_SCALE;
+    public static ModConfigSpec.DoubleValue NETHER_MIST_OPACITY;
+    public static ModConfigSpec.DoubleValue NETHER_MIST_MOTION_MULTIPLIER;
 
     // GAME MECHANICS
     public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;

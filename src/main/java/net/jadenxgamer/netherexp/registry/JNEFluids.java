@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.core.fluid.EctoplasmLiquidBlock;
 import net.jadenxgamer.netherexp.core.fluid.EctoplasmFluidType;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -35,10 +36,16 @@ public class JNEFluids {
      */
 
     public static final Supplier<FluidType> ECTOPLASM_TYPE = FLUID_TYPES.register("ectoplasm", () ->
-            new EctoplasmFluidType(FluidType.Properties.create().lightLevel(12).temperature(-196).viscosity(0).canConvertToSource(true)
+            new EctoplasmFluidType(FluidType.Properties.create().motionScale(1).lightLevel(12).temperature(-196).viscosity(0).canConvertToSource(true)
                     .canPushEntity(false).supportsBoating(true).canDrown(false).fallDistanceModifier(1.0f).canSwim(false)
                     .canExtinguish(true).addDripstoneDripping(0.3f, JNEParticleTypes.DRIPPING_ECTOPLASM.get(), JNEBlocks.ECTOPLASM_CAULDRON.get(), JNESoundEvents.DRIP_ECTOPLASM_INTO_CAULDRON.get())
-                    .descriptionId("fluid.netherexp.ectoplasm").pathType(PathType.DAMAGE_OTHER)));
+                    .descriptionId("fluid.netherexp.ectoplasm").pathType(PathType.DAMAGE_OTHER))
+            {
+                @Override
+                public void setItemMovement(ItemEntity entity) {
+                    if (!entity.isNoGravity()) entity.setDeltaMovement(entity.getDeltaMovement().add(0.0d, -0.04d, 0.0d));
+                }
+            });
 
     public static final DeferredHolder<Fluid, FlowingFluid> ECTOPLASM_SOURCE = FLUIDS.register("ectoplasm_source", () -> new BaseFlowingFluid.Source(ectoplasmProperties()));
     public static final DeferredHolder<Fluid, FlowingFluid> ECTOPLASM_FLOWING = FLUIDS.register("ectoplasm_flowing", () -> new BaseFlowingFluid.Flowing(ectoplasmProperties()));

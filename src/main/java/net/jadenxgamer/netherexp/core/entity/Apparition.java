@@ -17,6 +17,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -227,12 +228,15 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
                 }).findFirst();
 
         if (apparitionAggression.isPresent() && entity instanceof Mob mob) {
-            EntityType<?> possessionType = LookupRegistryHelper.getEntityType(apparitionAggression.get().possessedMob());
-            EntityType<? extends Mob> mobType = (EntityType<? extends Mob>) possessionType;
-            var possession = mob.convertTo(mobType, true);
-            if (possession != null) {
-                possession.finalizeSpawn(level, this.level().getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.CONVERSION, null);
-                if (entity.hasCustomName()) possession.setCustomName(entity.getCustomName());
+            EntityType<? extends Mob> possessionType = (EntityType<? extends Mob>) LookupRegistryHelper.getEntityType(apparitionAggression.get().possessedMob());
+            var convertTo = mob.convertTo(possessionType, true);
+            if (convertTo != null) {
+                convertTo.finalizeSpawn(level, this.level().getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.CONVERSION, null);
+                if (entity.hasCustomName()) convertTo.setCustomName(entity.getCustomName());
+                if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf(entity.getType().toString());
+                this.level().broadcastEntityEvent(this, (byte) 77);
+                this.level().broadcastEntityEvent(convertTo, (byte) 77);
+                level().playSound(null, convertTo.blockPosition(), JNESoundEvents.APPARITION_POSSESSION.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
                 this.discard();
 
                 return false;
@@ -413,10 +417,14 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
         public void tick() {
             super.tick();
             if (this.isReachedTarget()) {
+                this.apparition.level().broadcastEntityEvent(apparition, (byte) 77);
+                this.apparition.level().playSound(null, apparition.blockPosition(), JNESoundEvents.APPARITION_POSSESSION.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
                 var convertTo = apparition.convertTo(this.possession, false);
                 if (convertTo != null && apparition.level() instanceof ServerLevel serverLevel) {
                     convertTo.finalizeSpawn(serverLevel, apparition.level().getCurrentDifficultyAt(apparition.blockPosition()), MobSpawnType.CONVERSION, null);
                     if (apparition.hasCustomName()) convertTo.setCustomName(apparition.getCustomName());
+                    if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf(null);
+                    this.apparition.level().broadcastEntityEvent(convertTo, (byte) 77);
                 }
             }
         }

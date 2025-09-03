@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "netherexp:block/mod_compat/supplementaries/sconce_ancient"
+    },
+    "lit=false": {
+      "model": "netherexp:block/mod_compat/supplementaries/sconce_ancient_off"
+    }
+  }
+}
