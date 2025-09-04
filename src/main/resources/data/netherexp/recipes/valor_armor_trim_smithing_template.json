@@ -19,7 +19,7 @@
   ],
   "result": {
     "count": 2,
-    "item": "netherexp:valor_armor_trim_smithing_template"
+    "id": "netherexp:valor_armor_trim_smithing_template"
   },
   "show_notification": true
 }

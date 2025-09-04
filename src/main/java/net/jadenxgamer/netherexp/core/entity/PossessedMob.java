@@ -55,10 +55,12 @@ public abstract class PossessedMob extends ExorcismMob {
         if (unleashingOdds == 0 && !JNEConfigs.POSSESSED_MOBS_UNLEASH_APPARITION.get()) return;
 
         Apparition apparition = JNEEntityType.APPARITION.get().create(this.level());
-        if (apparition != null) {
+        if (apparition != null && this.level() instanceof ServerLevel serverLevel) {
             apparition.setPossessionCooldown(JNEConfigs.APPARITION_POSSESSION_COOLDOWN.get());
             apparition.setPersonality(apparitionPersonality());
             apparition.setPos(this.getX(), this.getY(), this.getZ());
+            apparition.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.CONVERSION, null);
+            if (this.getTarget() != null) apparition.setTarget(this.getTarget());
             this.level().addFreshEntity(apparition);
         }
     }
@@ -84,7 +86,9 @@ public abstract class PossessedMob extends ExorcismMob {
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setPossessionOf(nbt.getString("PossessionOf"));
+        if (nbt.contains("PossessionOf")) {
+            this.setPossessionOf(nbt.getString("PossessionOf"));
+        }
     }
 
     ///////////////////////

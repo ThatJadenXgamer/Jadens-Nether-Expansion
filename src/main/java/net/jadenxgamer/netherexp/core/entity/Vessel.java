@@ -161,6 +161,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
                 prepareAimAnimation.stop();
                 aimAnimation.stop();
                 prepareAimAnimationTimeout = 20;
+                isAiming = false;
             }
             case 53 -> isShooting = true;
             case 54 -> {
@@ -180,15 +181,16 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         }
 
         if (isAiming) {
-            if (prepareAimAnimationTimeout == 20) prepareAimAnimation.start(this.tickCount);
+            if (prepareAimAnimationTimeout == 20) prepareAimAnimation.startIfStopped(this.tickCount);
             else if (prepareAimAnimationTimeout == 0) {
+                prepareAimAnimation.stop();
                 aimAnimation.startIfStopped(this.tickCount);
             }
             if (prepareAimAnimationTimeout > 0) --prepareAimAnimationTimeout;
         }
 
         if (isShooting) {
-            shootAnimation.start(tickCount);
+            shootAnimation.startIfStopped(tickCount);
         } else if (this.random.nextInt(8) == 0) blinkAnimation.startIfStopped(this.tickCount);
     }
 
@@ -279,7 +281,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         public void stop() {
             this.attackTime = ATTACK_INTERVAL;
             vessel.level().broadcastEntityEvent(vessel, (byte) 52); // Stop Aim
-            vessel.level().broadcastEntityEvent(vessel, (byte) 54); // Stop Shooting
+            vessel.level().broadcastEntityEvent(vessel, (byte) 54); // Stop Shoot
             this.finished = false;
             this.seeTime = 0;
         }
@@ -337,7 +339,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
                 } else --this.attackTime;
 
                 // switch cases cannot be used since the constant is a runtime-evaluated expression 🥀 🥀 🥀
-                if (this.attackTime == SHOOT_AT_TICK) vessel.level().broadcastEntityEvent(vessel, (byte) 51); // Start Aim
+                if (this.attackTime == START_AIM_AT_TICK) vessel.level().broadcastEntityEvent(vessel, (byte) 51); // Start Aim
                 if (this.attackTime == WARN_AT_TICK) vessel.level().playSound(null, vessel.blockPosition(), JNESoundEvents.VESSEL_WARN.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
                 if (this.attackTime == SHOOT_AT_TICK) {
                     vessel.level().broadcastEntityEvent(vessel, (byte) 52); // Stop Aim

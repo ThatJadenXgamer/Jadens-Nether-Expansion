@@ -23,7 +23,7 @@
     }
   },
   "result": {
-    "item": "netherexp:roasted_bone",
+    "id": "netherexp:roasted_bone",
     "count": 3
   }
 }

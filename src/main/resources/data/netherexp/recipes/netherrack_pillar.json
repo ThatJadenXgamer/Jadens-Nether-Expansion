@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:netherrack_pillar",
+    "id": "netherexp:netherrack_pillar",
     "count": 2
   }
 }

@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:skull_block",
+    "id": "netherexp:skull_block",
     "count": 1
   }
 }

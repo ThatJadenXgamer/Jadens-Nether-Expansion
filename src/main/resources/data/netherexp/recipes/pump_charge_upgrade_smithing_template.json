@@ -19,7 +19,7 @@
   ],
   "result": {
     "count": 2,
-    "item": "netherexp:pump_charge_upgrade_smithing_template"
+    "id": "netherexp:pump_charge_upgrade_smithing_template"
   },
   "show_notification": true
 }

@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "netherexp:stacked_wither_bone_stairs",
+    "id": "netherexp:stacked_wither_bone_stairs",
     "count": 4
   }
 }

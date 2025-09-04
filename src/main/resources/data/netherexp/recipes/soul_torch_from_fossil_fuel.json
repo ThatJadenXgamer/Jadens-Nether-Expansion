@@ -17,7 +17,7 @@
     }
   },
   "result": {
-    "item": "minecraft:soul_torch",
+    "id": "minecraft:soul_torch",
     "count": 4
   }
 }

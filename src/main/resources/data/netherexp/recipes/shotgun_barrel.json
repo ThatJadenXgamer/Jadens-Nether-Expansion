@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "netherexp:shotgun_barrel",
+    "id": "netherexp:shotgun_barrel",
     "count": 2
   }
 }

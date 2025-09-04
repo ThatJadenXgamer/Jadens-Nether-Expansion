@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:nether_brick_pillar",
+    "id": "netherexp:nether_brick_pillar",
     "count": 2
   }
 }

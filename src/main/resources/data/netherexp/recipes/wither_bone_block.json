@@ -13,7 +13,7 @@
     }
   },
   "result": {
-    "item": "netherexp:wither_bone_block",
+    "id": "netherexp:wither_bone_block",
     "count": 2
   }
 }

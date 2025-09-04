@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "netherexp:cut_netherite_block",
+    "id": "netherexp:cut_netherite_block",
     "count": 4
   }
 }

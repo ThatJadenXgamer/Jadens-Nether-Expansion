@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "netherexp:phase_gargoyle_statue",
+    "id": "netherexp:phase_gargoyle_statue",
     "count": 2
   }
 }

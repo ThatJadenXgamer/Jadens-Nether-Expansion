@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "netherexp:netherite_plated_block",
+    "id": "netherexp:netherite_plated_block",
     "count": 8
   }
 }

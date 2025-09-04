@@ -12,7 +12,7 @@
     }
   },
   "result": {
-    "item": "netherexp:netherite_grate",
+    "id": "netherexp:netherite_grate",
     "count": 4
   }
 }

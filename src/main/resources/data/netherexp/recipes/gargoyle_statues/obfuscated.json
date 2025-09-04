@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "netherexp:obfuscated_gargoyle_statue",
+    "id": "netherexp:obfuscated_gargoyle_statue",
     "count": 2
   }
 }

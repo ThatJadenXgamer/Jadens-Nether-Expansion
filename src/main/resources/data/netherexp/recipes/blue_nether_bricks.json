@@ -15,7 +15,7 @@
     }
   },
   "result": {
-    "item": "netherexp:blue_nether_bricks",
+    "id": "netherexp:blue_nether_bricks",
     "count": 8
   }
 }

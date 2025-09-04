@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "netherexp:smooth_netherrack_stairs",
+    "id": "netherexp:smooth_netherrack_stairs",
     "count": 4
   }
 }

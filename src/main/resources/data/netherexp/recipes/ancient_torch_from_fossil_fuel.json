@@ -17,7 +17,7 @@
     }
   },
   "result": {
-    "item": "netherexp:ancient_torch",
+    "id": "netherexp:ancient_torch",
     "count": 4
   }
 }

@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:quartz_crystal_block",
+    "id": "netherexp:quartz_crystal_block",
     "count": 1
   }
 }

@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:netherrack_brick_wall",
+    "id": "netherexp:netherrack_brick_wall",
     "count": 6
   }
 }

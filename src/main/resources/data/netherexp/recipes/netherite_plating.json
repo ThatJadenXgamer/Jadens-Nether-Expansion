@@ -16,7 +16,7 @@
     }
   },
   "result": {
-    "item": "netherexp:netherite_plating",
+    "id": "netherexp:netherite_plating",
     "count": 64
   }
 }

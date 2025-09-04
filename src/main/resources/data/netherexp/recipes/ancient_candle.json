@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "netherexp:ancient_candle",
+    "id": "netherexp:ancient_candle",
     "count": 6
   }
 }

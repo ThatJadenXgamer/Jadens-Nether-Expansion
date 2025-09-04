@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "netherexp:inscribed_panel",
+    "id": "netherexp:inscribed_panel",
     "count": 4
   }
 }

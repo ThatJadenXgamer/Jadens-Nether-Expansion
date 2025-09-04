@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:netherrack_tiles",
+    "id": "netherexp:netherrack_tiles",
     "count": 4
   }
 }

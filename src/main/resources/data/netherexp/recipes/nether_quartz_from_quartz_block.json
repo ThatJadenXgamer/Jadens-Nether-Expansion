@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:quartz",
+    "id": "minecraft:quartz",
     "count": 4
   }
 }

@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:stacked_wither_bones",
+    "id": "netherexp:stacked_wither_bones",
     "count": 4
   }
 }

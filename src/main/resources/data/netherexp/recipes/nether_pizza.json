@@ -23,7 +23,7 @@
     }
   },
   "result": {
-    "item": "netherexp:nether_pizza",
+    "id": "netherexp:nether_pizza",
     "count": 1
   }
 }

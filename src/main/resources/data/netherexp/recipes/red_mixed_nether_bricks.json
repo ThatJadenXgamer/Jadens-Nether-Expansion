@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "netherexp:red_mixed_nether_bricks",
+    "id": "netherexp:red_mixed_nether_bricks",
     "count": 4
   }
 }

@@ -10,7 +10,7 @@
     }
   },
   "result": {
-    "item": "netherexp:smooth_netherrack_wall",
+    "id": "netherexp:smooth_netherrack_wall",
     "count": 6
   }
 }
