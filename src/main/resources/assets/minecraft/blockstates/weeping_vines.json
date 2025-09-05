@@ -1,9 +1,9 @@
 {
   "variants": {
-    "budding=true": {
+    "sporing=false": {
       "model": "minecraft:block/weeping_vines"
     },
-    "budding=false": {
+    "sporing=true": {
       "model": "minecraft:block/weeping_vines_drippy"
     }
   }

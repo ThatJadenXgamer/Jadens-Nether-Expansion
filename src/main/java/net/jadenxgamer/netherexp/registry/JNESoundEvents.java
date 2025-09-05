@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.registry;
 
-import io.netty.util.Attribute;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
@@ -27,6 +26,8 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> DISCERNMENT_GLASS_ADD = registerSoundEvents("block.discernment_glass.add");
     public static final Supplier<SoundEvent> DISCERNMENT_GLASS_REMOVE = registerSoundEvents("block.discernment_glass.remove");
     public static final Supplier<SoundEvent> CEREBRAGE_PLANT = registerSoundEvents("block.cerebrage.plant");
+    public static final Supplier<SoundEvent> GLOWSPORES_APPLY = registerSoundEvents("block.glowspores.apply");
+    public static final Supplier<SoundEvent> GLOWSPORES_SHEAR = registerSoundEvents("block.glowspores.shear");
 
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
     public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");

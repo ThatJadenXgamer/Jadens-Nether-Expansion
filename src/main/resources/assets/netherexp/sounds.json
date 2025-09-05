@@ -1037,19 +1037,19 @@
       }
     ]
   },
-  "block.lightspores.apply": {
-    "subtitle": "subtitles.block.lightspores.apply",
+  "block.glowspores.apply": {
+    "subtitle": "subtitles.block.glowspores.apply",
     "sounds": [
-      "netherexp:block/lightspores/apply1",
-      "netherexp:block/lightspores/apply2",
-      "netherexp:block/lightspores/apply3",
-      "netherexp:block/lightspores/apply4"
+      "netherexp:block/glowspores/apply1",
+      "netherexp:block/glowspores/apply2",
+      "netherexp:block/glowspores/apply3",
+      "netherexp:block/glowspores/apply4"
     ]
   },
-  "block.lightspores.shear": {
-    "subtitle": "subtitles.block.lightspores.shear",
+  "block.glowspores.shear": {
+    "subtitle": "subtitles.block.glowspores.shear",
     "sounds": [
-      "netherexp:block/lightspores/shear"
+      "netherexp:block/glowspores/shear"
     ]
   },
   "block.soul_swirls.boost": {

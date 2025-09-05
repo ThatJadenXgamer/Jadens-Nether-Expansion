@@ -37,6 +37,8 @@ public class JNEParticleTypes {
     public static final Supplier<LodestoneWorldParticleType> POSSESSION = PARTICLE_TYPES.register("possession", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> SHOTGUN_SPARK = PARTICLE_TYPES.register("shotgun_spark", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> NETHER_FOG = PARTICLE_TYPES.register("nether_fog", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> LIGHTSPORE = PARTICLE_TYPES.register("lightspore", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> NIGHTSPORE = PARTICLE_TYPES.register("nightspore", LodestoneWorldParticleType::new);
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

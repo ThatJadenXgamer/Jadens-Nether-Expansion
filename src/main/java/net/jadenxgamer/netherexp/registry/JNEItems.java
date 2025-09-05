@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.entity.Wisp;
 import net.jadenxgamer.netherexp.core.item.CerebrageSeedItem;
+import net.jadenxgamer.netherexp.core.item.GlowsporesItem;
 import net.jadenxgamer.netherexp.core.item.MobBottleItem;
 import net.jadenxgamer.netherexp.core.item.NonConsumableItem;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
@@ -47,10 +48,10 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final Supplier<Item> LIGHTSPORES = ITEMS.register("lightspores", () ->
-            new Item(new Item.Properties()));
+            new GlowsporesItem(JNEParticleTypes.LIGHTSPORE, new Item.Properties()));
 
     public static final Supplier<Item> NIGHTSPORES = ITEMS.register("nightspores", () ->
-            new Item(new Item.Properties()));
+            new GlowsporesItem(JNEParticleTypes.NIGHTSPORE, new Item.Properties()));
 
     public static final Supplier<Item> ANTIDOTE = ITEMS.register("antidote", () ->
             new Item(new Item.Properties()));

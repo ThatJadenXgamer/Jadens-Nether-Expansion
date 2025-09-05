@@ -220,6 +220,9 @@ public class JNEConfigImpl {
             POSSESSED_MOBS_UNLEASH_APPARITION = builder
                     .comment("Upon death possessed mobs have a chance to unleash an apparition out into the world")
                     .define("possessedMobsUnleashApparition", true);
+            HARD_DIFFICULTY_UNLEASHING_MULTIPLIER = builder
+                    .comment("Multiplies the individual unleashing odds of a possessed mob by the specified amount")
+                    .defineInRange("hardDifficultyUnleashingMultiplier", 2.0, 0.0, Double.MAX_VALUE);
             PROJECTILES_PHASE_THROUGH_GHOSTS = builder
                     .comment("Most projectiles will phase through apparitions and wisps except for a few specific kinds \n" +
                             "Projectiles specified in the \"phantasm_hull_protects_blacklist\" tag still hit these entities regardless")
@@ -241,6 +244,9 @@ public class JNEConfigImpl {
                     .comment("At the specified attack time the vessel will take aim preparing to fire \n" +
                             "This value cannot go any lower than 50 to prevent animation issues")
                     .defineInRange("vesselShootsAtAttackTime", 100, 50, Integer.MAX_VALUE);
+            VESSEL_UNLEASHING_ODDS = builder
+                    .comment("The chance for vessels to unleash apparitions upon death")
+                    .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
         }
     }
 

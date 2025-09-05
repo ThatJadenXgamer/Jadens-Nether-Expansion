@@ -9,6 +9,8 @@
     "client.ParticleEngineMixin"
   ],
   "mixins": [
+    "block.TwistingVinesBlockMixin",
+    "block.WeepingVinesBlockMixin",
     "entity.AbstractArrowMixin",
     "entity.BlockEntityTypeMixin",
     "entity.ProjectileMixin"

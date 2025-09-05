@@ -11,6 +11,7 @@ import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -233,7 +234,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
             if (convertTo != null) {
                 convertTo.finalizeSpawn(level, this.level().getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.CONVERSION, null);
                 if (entity.hasCustomName()) convertTo.setCustomName(entity.getCustomName());
-                if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf(entity.getType().toString());
+                if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()));
                 this.level().broadcastEntityEvent(this, (byte) 77);
                 this.level().broadcastEntityEvent(convertTo, (byte) 77);
                 level().playSound(null, convertTo.blockPosition(), JNESoundEvents.APPARITION_POSSESSION.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
@@ -423,7 +424,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
                 if (convertTo != null && apparition.level() instanceof ServerLevel serverLevel) {
                     convertTo.finalizeSpawn(serverLevel, apparition.level().getCurrentDifficultyAt(apparition.blockPosition()), MobSpawnType.CONVERSION, null);
                     if (apparition.hasCustomName()) convertTo.setCustomName(apparition.getCustomName());
-                    if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf(null);
+                    if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf((String) null);
                     this.apparition.level().broadcastEntityEvent(convertTo, (byte) 77);
                 }
             }

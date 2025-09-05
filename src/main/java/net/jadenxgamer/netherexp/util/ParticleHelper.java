@@ -13,8 +13,8 @@ public class ParticleHelper {
         Direction[] directions = Direction.values();
 
         for (Direction direction : directions) {
-            BlockPos blockPos2 = pos.relative(direction);
-            if (!level.getBlockState(blockPos2).isSolidRender(level, blockPos2)) {
+            BlockPos relativePos = pos.relative(direction);
+            if (!level.getBlockState(relativePos).isSolidRender(level, relativePos)) {
                 Direction.Axis axis = direction.getAxis();
                 double x = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) random.nextFloat();
                 double y = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) random.nextFloat();

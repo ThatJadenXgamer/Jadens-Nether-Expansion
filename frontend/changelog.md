@@ -93,6 +93,8 @@
 
 -Apparitions can now be waxed to prevent it from possessing mobs or gargoyle statues
 
+-Possessed mobs made from an apparition possessing an entity now retain the information of what EntityType they use to be for reverting in exorcisms
+
 -To make it easier for people to make possessions, apparitions can be "transported" with leashes. although unless it's docile it'll still fight back
 
 -Discernment Glass now emits a comparator output if it has a filter item

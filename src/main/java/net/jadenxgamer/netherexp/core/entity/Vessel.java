@@ -128,10 +128,8 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     }
 
     @Override
-    public void setCustomName(@Nullable Component name) {
-        super.setCustomName(name);
-        var doomValidNames = name != null && (name.getString().equals("ShotgunGuy") || name.getString().equals("Shotgun Guy") || name.getString().equals("DOOM"));
-        if (!this.isDoom() && doomValidNames) setDoom(true);
+    protected double apparitionUnleashingOdds() {
+        return JNEConfigs.VESSEL_UNLEASHING_ODDS.get();
     }
 
     ///////////////////////
@@ -144,6 +142,13 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
 
     public void setDoom(boolean doom) {
         this.entityData.set(IS_DOOM, doom);
+    }
+
+    @Override
+    public void setCustomName(@Nullable Component name) {
+        super.setCustomName(name);
+        var doomValidNames = name != null && (name.getString().equals("ShotgunGuy") || name.getString().equals("Shotgun Guy") || name.getString().equals("DOOM"));
+        if (!this.isDoom() && doomValidNames) setDoom(true);
     }
 
     ////////////////

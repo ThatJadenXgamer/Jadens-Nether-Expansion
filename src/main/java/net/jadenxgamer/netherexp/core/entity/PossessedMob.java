@@ -18,9 +18,6 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Supplier;
 
 public abstract class PossessedMob extends ExorcismMob {
 
@@ -37,8 +34,11 @@ public abstract class PossessedMob extends ExorcismMob {
         this.level().playSound(null, pos, JNESoundEvents.APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
         this.level().broadcastEntityEvent(this, (byte) 77);
 
-        var possessionOf = getPossessionOf() == null ? null : LookupRegistryHelper.getEntityType(ResourceLocation.parse(getPossessionOf()));
-        if (possessionOf == null) return;
+        EntityType<?> possessionOf = getPossessionOf() == null ? null : LookupRegistryHelper.getEntityType(ResourceLocation.parse(getPossessionOf()));
+        if (possessionOf == null) {
+            this.discard();
+            return;
+        }
         EntityType<? extends Mob> possessionType = (EntityType<? extends Mob>) possessionOf;
         Mob convertTo = this.convertTo(possessionType, true);
         if (convertTo != null && this.level() instanceof ServerLevel serverLevel) {
@@ -51,8 +51,9 @@ public abstract class PossessedMob extends ExorcismMob {
     @Override
     public void die(DamageSource damageSource) {
         super.die(damageSource);
-        var unleashingOdds = this.random.nextInt(apparitionUnleashingOdds(this.level().getDifficulty()));
-        if (unleashingOdds == 0 && !JNEConfigs.POSSESSED_MOBS_UNLEASH_APPARITION.get()) return;
+        var multiplier = level().getDifficulty() == Difficulty.HARD ? JNEConfigs.HARD_DIFFICULTY_UNLEASHING_MULTIPLIER.get() : 1.0;
+        var unleashingOdds = this.apparitionUnleashingOdds() * multiplier;
+        if (random.nextDouble() > unleashingOdds || !JNEConfigs.POSSESSED_MOBS_UNLEASH_APPARITION.get()) return;
 
         Apparition apparition = JNEEntityType.APPARITION.get().create(this.level());
         if (apparition != null && this.level() instanceof ServerLevel serverLevel) {
@@ -65,8 +66,8 @@ public abstract class PossessedMob extends ExorcismMob {
         }
     }
 
-    protected int apparitionUnleashingOdds(Difficulty difficulty) {
-        return difficulty == Difficulty.HARD ? 1 : 3;
+    protected double apparitionUnleashingOdds() {
+        return 0.25;
     }
 
     public int apparitionPersonality() {
@@ -101,5 +102,9 @@ public abstract class PossessedMob extends ExorcismMob {
 
     public void setPossessionOf(String possessionOf) {
         this.possessionOf = possessionOf;
+    }
+
+    public void setPossessionOf(ResourceLocation possessionOf) {
+        this.possessionOf = possessionOf.toString();
     }
 }
