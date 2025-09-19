@@ -94,10 +94,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     @Override
     public void tick() {
         super.tick();
-
-        if (this.level().isClientSide) {
-            this.setupAnimationStates();
-        }
+        if (this.level().isClientSide) this.setupAnimationStates();
     }
 
     //////////

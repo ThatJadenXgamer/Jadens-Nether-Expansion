@@ -1,0 +1,64 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:translucent",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "netherexp:block/drifting_soul",
+		"1": "netherexp:block/drifting_soul_niblet_1",
+		"2": "netherexp:block/drifting_soul_niblet_3",
+		"3": "netherexp:block/drifting_soul_niblet_2",
+		"particle": "netherexp:block/drifting_soul"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 8],
+			"to": [16, 14, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-1.66165, 0, 14.72835],
+			"to": [11.33835, 9, 14.72835],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [6.83835, 3, 11.72835]},
+			"faces": {
+				"north": {"uv": [2, 6, 14, 16], "texture": "#2"},
+				"south": {"uv": [2, 6, 14, 16], "texture": "#2"}
+			}
+		},
+		{
+			"from": [4.46088, 0, 4.31703],
+			"to": [16.46088, 11, 4.31703],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [12.46088, 5, 8.31703]},
+			"faces": {
+				"north": {"uv": [2, 6, 14, 16], "texture": "#3"},
+				"south": {"uv": [2, 6, 14, 16], "texture": "#3"}
+			}
+		},
+		{
+			"from": [-2.70179, 0, 4.47346],
+			"to": [9.29821, 7, 4.47346],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [2.29821, 5, 3.47346]},
+			"faces": {
+				"north": {"uv": [2, 6, 14, 16], "texture": "#2"},
+				"south": {"uv": [2, 6, 14, 16], "texture": "#2"}
+			}
+		},
+		{
+			"from": [7.58593, 0, 14.02928],
+			"to": [15.58593, 10, 14.02928],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [10.58593, 3.5, 13.02928]},
+			"faces": {
+				"north": {"uv": [2, 6, 14, 16], "texture": "#2"},
+				"south": {"uv": [2, 6, 14, 16], "texture": "#1"}
+			}
+		}
+	]
+}

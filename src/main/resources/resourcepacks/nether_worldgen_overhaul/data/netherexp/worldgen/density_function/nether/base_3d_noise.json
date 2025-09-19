@@ -1,24 +1,15 @@
 {
-  "type": "minecraft:add",
+  "type": "minecraft:mul",
   "argument1": {
-    "type": "minecraft:old_blended_noise",
-    "xz_scale": 0.25,
-    "y_scale": 0.375,
-    "xz_factor": 100,
-    "y_factor": 80,
-    "smear_scale_multiplier": 8
-  },
-  "argument2": {
-    "type": "minecraft:mul",
-    "argument1": 0.6,
-    "argument2": {
-      "type": "minecraft:squeeze",
-      "argument": {
-        "type": "minecraft:noise",
-        "noise": "minecraft:cave_cheese",
-        "xz_scale": 1,
-        "y_scale": 7.6
-      }
+    "type": "minecraft:abs",
+    "argument": {
+      "type": "minecraft:old_blended_noise",
+      "xz_scale": 0.25,
+      "y_scale": 0.375,
+      "xz_factor": 100,
+      "y_factor": 80,
+      "smear_scale_multiplier": 8
     }
-  }
+  },
+  "argument2": "netherexp:nether/multiplied_base_3d"
 }

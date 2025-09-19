@@ -93,22 +93,16 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
     @Override
     public void tick() {
         super.tick();
-
-        if (this.level().isClientSide) {
-            this.setupAnimationStates();
-        }
+        if (this.level().isClientSide) this.setupAnimationStates();
     }
 
     @Override
     public void aiStep() {
         super.aiStep();
         if (this.level().isClientSide()) {
-            for(int i = 0; i < 2; ++i) {
-                this.particle(JNEParticleTypes.WISP.get(), level(), random, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5));
-            }
+            for (int i = 0; i < 2; ++i) trailParticle(JNEParticleTypes.WISP.get(), level(), random, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5));
         } else {
             if (!canGetBored()) return;
-
             if (this.tickCount % 20 == 0 && random.nextDouble() < JNEConfigs.WISP_BOREDOM_CHANCE.get() && this.getBored() < 6) {
                 ++boredCounter;
             }
@@ -265,7 +259,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         this.walkAnimation.update(f, 0.2F);
     }
 
-    private void particle(LodestoneWorldParticleType particle, Level level, RandomSource random, double x, double y, double z) {
+    public static void trailParticle(LodestoneWorldParticleType particle, Level level, RandomSource random, double x, double y, double z) {
         WorldParticleBuilder.create(particle)
                 .setFullBrightLighting()
                 .setScaleData(GenericParticleData.create(0.13f).build())

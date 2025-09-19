@@ -42,16 +42,21 @@ public class GlowsporesItem extends Item {
         ItemStack stack = context.getItemInHand();
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
+        boolean passed = false;
         if (player != null && state.getBlock() instanceof GlowsporesApplicable glowsporesApplicable && stack.is(glowsporesApplicable.glowsporeOfBlock())) {
             if (glowsporesApplicable.affectedProperty() instanceof IntegerProperty integerProperty) {
                 int currentValue = state.getValue(integerProperty);
                 int maxValue = integerProperty.getPossibleValues().size();
                 if (currentValue < maxValue) level.setBlock(pos, state.setValue(integerProperty, currentValue + 1), Block.UPDATE_ALL);
+                passed = true;
             } else if (glowsporesApplicable.affectedProperty() instanceof BooleanProperty booleanProperty) {
                 boolean currentValue = state.getValue(booleanProperty);
                 if (!currentValue) level.setBlock(pos, state.cycle(booleanProperty), Block.UPDATE_ALL);
+                passed = true;
             }
+        }
 
+        if (passed) {
             if (!player.getAbilities().instabuild) stack.shrink(1);
             glowsporeSorroundedParticle(level, pos, this.particle.get());
             level.playSound(null, pos, JNESoundEvents.GLOWSPORES_APPLY.get(), SoundSource.BLOCKS, 1.0f, 1.0f);

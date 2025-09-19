@@ -6,8 +6,10 @@ import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -23,6 +25,15 @@ public class LiquidloggedTransparentBlock extends TransparentBlock implements Li
     public LiquidloggedTransparentBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(LIQUIDLOGGED, Liquidlogged.AllFluids.AIR));
+    }
+
+    @Override
+    public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
+        return switch (state.getValue(LIQUIDLOGGED)) {
+            case LAVA -> Blocks.LAVA.getLightEmission(state, level, pos);
+            case ECTOPLASM -> JNEFluids.ECTOPLASM.get().getLightEmission(state, level, pos);
+            default -> super.getLightEmission(state, level, pos);
+        };
     }
 
     @Nullable

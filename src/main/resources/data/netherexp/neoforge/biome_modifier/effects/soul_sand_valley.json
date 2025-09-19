@@ -1,0 +1,11 @@
+{
+  "type": "elysium_api:effects_modifier",
+  "biomes": "minecraft:soul_sand_valley",
+  "fog_color": 1202517,
+  "particle": {
+    "options": {
+      "type": "netherexp:windy_ash"
+    },
+    "probability": 0.01025
+  }
+}

@@ -91,10 +91,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
     @Override
     public void tick() {
         super.tick();
-
-        if (this.level().isClientSide) {
-            this.setupAnimationStates();
-        }
+        if (this.level().isClientSide) this.setupAnimationStates();
     }
 
     @Override

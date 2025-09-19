@@ -47,7 +47,7 @@ public class JNEClientEvents {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            NetherExpClient.registerEntityRenderers();
+            NetherExpClient.registerRenderers();
         }
 
         @SubscribeEvent

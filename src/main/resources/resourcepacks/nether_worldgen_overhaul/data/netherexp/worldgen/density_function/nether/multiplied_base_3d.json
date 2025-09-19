@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:squeeze",
+  "argument": {
+    "type": "minecraft:interpolated",
+    "argument": {
+      "type": "minecraft:clamp",
+      "input": {
+        "type": "minecraft:noise",
+        "noise": "netherexp:nether_cheese",
+        "xz_scale": 2,
+        "y_scale": 12
+      },
+      "min": -0.2,
+      "max": 0.356
+    }
+  }
+}

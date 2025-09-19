@@ -71,7 +71,14 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue MAX_VESSEL_BULLETS;
     public static ModConfigSpec.IntValue VESSEL_ATTACK_TIME;
     public static ModConfigSpec.IntValue VESSEL_SHOOTS_AT_ATTACK_TIME;
+    public static ModConfigSpec.BooleanValue BANSHEE_TELEPORTS_AFTER_HIT;
+    public static ModConfigSpec.IntValue BANSHEE_ANCHOR_INTERVAL;
+    public static ModConfigSpec.IntValue BANSHEE_STUN_TIMER;
+    public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL;
+    public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL_BONUS;
     public static ModConfigSpec.DoubleValue VESSEL_UNLEASHING_ODDS;
+    public static ModConfigSpec.DoubleValue STAMPEDE_UNLEASHING_ODDS;
+    public static ModConfigSpec.DoubleValue BANSHEE_UNLEASHING_ODDS;
 
     // WORLD SETTINGS
 
@@ -90,6 +97,9 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue NETHER_MIST_SCALE;
     public static ModConfigSpec.DoubleValue NETHER_MIST_OPACITY;
     public static ModConfigSpec.DoubleValue NETHER_MIST_MOTION_MULTIPLIER;
+    public static ModConfigSpec.DoubleValue SOUL_SAND_VALLEY_WIND_SPEED;
+    public static ModConfigSpec.DoubleValue WINDY_ASH_SCALE_MULTIPLIER;
+    public static ModConfigSpec.IntValue DRIFTING_SOULS_SPAWN_QUANTITY;
 
     // GAME MECHANICS
     public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;

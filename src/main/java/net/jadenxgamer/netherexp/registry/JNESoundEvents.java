@@ -54,7 +54,13 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> VESSEL_DEATH = registerSoundEvents("entity.vessel.death");
     public static final Supplier<SoundEvent> VESSEL_WARN = registerSoundEvents("entity.vessel.warn");
     public static final Supplier<SoundEvent> VESSEL_FIRE = registerSoundEvents("entity.vessel.fire");
-    
+
+    public static final Supplier<SoundEvent> BANSHEE_AMBIENT = registerSoundEvents("entity.banshee.ambient");
+    public static final Supplier<SoundEvent> BANSHEE_HURT = registerSoundEvents("entity.banshee.hurt");
+    public static final Supplier<SoundEvent> BANSHEE_DEATH = registerSoundEvents("entity.banshee.death");
+    public static final Supplier<SoundEvent> BANSHEE_SHOOT = registerSoundEvents("entity.banshee.shoot");
+    public static final Supplier<SoundEvent> BANSHEE_TELEPORT = registerSoundEvents("entity.banshee.teleport");
+
     public static final Supplier<SoundEvent> SHOTGUN_GUY_AMBIENT = registerSoundEvents("entity.shotgun_guy.ambient");
     public static final Supplier<SoundEvent> SHOTGUN_GUY_HURT = registerSoundEvents("entity.shotgun_guy.hurt");
     public static final Supplier<SoundEvent> SHOTGUN_GUY_DEATH = registerSoundEvents("entity.shotgun_guy.death");
@@ -163,6 +169,9 @@ public class JNESoundEvents {
 
     public static final Supplier<SoundEvent> MAGMA_BLOCK_PLACE = registerSoundEvents("block.magma_block.place");
     public static final Supplier<SoundEvent> MAGMA_BLOCK_BREAK = registerSoundEvents("block.magma_block.break");
+
+    public static final Supplier<SoundEvent> HAZE_BLOCK_PLACE = registerSoundEvents("block.haze_block.place");
+    public static final Supplier<SoundEvent> HAZE_BLOCK_BREAK = registerSoundEvents("block.haze_block.break");
 
     private static Supplier<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(NetherExp.id(name)));

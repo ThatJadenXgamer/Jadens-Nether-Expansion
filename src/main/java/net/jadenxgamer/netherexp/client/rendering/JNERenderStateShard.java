@@ -14,7 +14,6 @@ public class JNERenderStateShard {
     public static ShaderInstance getRenderTypeNoShadeEntityCutout() {
         return renderTypeNoShadeEntityCutout;
     }
-
     public static ShaderInstance getRenderTypeNoShadeEntityCutoutNoCull() {
         return renderTypeNoShadeEntityCutoutNoCull;
     }
@@ -26,7 +25,6 @@ public class JNERenderStateShard {
     public static void setRenderTypeNoShadeEntityCutout(ShaderInstance instance) {
         JNERenderStateShard.renderTypeNoShadeEntityCutout = instance;
     }
-
     public static void setRenderTypeNoShadeEntityCutoutNoCull(ShaderInstance instance) {
         JNERenderStateShard.renderTypeNoShadeEntityCutoutNoCull = instance;
     }

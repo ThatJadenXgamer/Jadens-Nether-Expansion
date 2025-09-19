@@ -1,8 +1,11 @@
 {
 	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/wraithing_lesion",
 		"1": "netherexp:block/wraithing_lesion_inside",
+		"2": "netherexp:block/wraithing_lesion_inside_glow",
+		"3": "netherexp:block/wraithing_lesion_glow",
 		"particle": "netherexp:block/wraithing_lesion"
 	},
 	"elements": [
@@ -17,6 +20,20 @@
 				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
 			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 12, 16],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 4, 16, 16], "texture": "#3"},
+				"east": {"uv": [0, 4, 16, 16], "texture": "#3"},
+				"south": {"uv": [0, 4, 16, 16], "texture": "#3"},
+				"west": {"uv": [0, 4, 16, 16], "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#3"}
+			},
+			"neoforge_data": {"block_light": 5}
 		}
 	],
 	"display": {

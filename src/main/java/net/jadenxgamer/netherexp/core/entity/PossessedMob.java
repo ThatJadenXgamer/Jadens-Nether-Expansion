@@ -66,10 +66,18 @@ public abstract class PossessedMob extends ExorcismMob {
         }
     }
 
+    /**
+     * @return unleashing odds for an apparition upon the possession's death
+     */
     protected double apparitionUnleashingOdds() {
-        return 0.25;
+        return 0.0;
     }
 
+    /**
+     * @return sets the unleashed apparition to the specified personality
+     * <p>
+     * If set to "0" the personality will be randomized between 1-4
+     */
     public int apparitionPersonality() {
         return 0;
     }

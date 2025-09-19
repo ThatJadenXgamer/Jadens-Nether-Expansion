@@ -149,6 +149,9 @@ public class JNEBlocks {
     public static final Supplier<Block> ECTOPLASM_CAULDRON = registerBlockWithoutItem("ectoplasm_cauldron", () ->
             new EctoplasmCauldronBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.CAULDRON).lightLevel((state) -> 12)));
 
+    public static final Supplier<Block> DRIFTING_SOULS = registerBlock("drifting_souls", () ->
+            new DriftingSoulsBlock(BlockBehaviour.Properties.of().noCollission().noOcclusion().replaceable().instabreak().lightLevel((state) -> 1).pushReaction(PushReaction.DESTROY).sound(JNESoundType.HAZE_BLOCK)));
+
     /**
      * Black Ice
      */
@@ -698,6 +701,13 @@ public class JNEBlocks {
             new FrogmistBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.OCHRE_FROGMIST.get())));
 
     public static void init(IEventBus eventBus) {
+        registerAliases();
         BLOCKS.register(eventBus);
+    }
+
+    private static void registerAliases() {
+        BLOCKS.addAlias(NetherExp.id("soul_jack_o_lantern"), NetherExp.idVanilla("jack_o_lantern")); // Removed 2.3.0
+        BLOCKS.addAlias(NetherExp.id("soul_ghoul_o_lantern"), NetherExp.idVanilla("ghoul_o_lantern")); // Removed 2.3.0
+        BLOCKS.addAlias(NetherExp.id("bone_cortical"), NetherExp.idVanilla("bone_block")); // Removed 2.4.0
     }
 }

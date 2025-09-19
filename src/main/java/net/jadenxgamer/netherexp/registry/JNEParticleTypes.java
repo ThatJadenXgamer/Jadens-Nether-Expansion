@@ -39,6 +39,11 @@ public class JNEParticleTypes {
     public static final Supplier<LodestoneWorldParticleType> NETHER_FOG = PARTICLE_TYPES.register("nether_fog", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> LIGHTSPORE = PARTICLE_TYPES.register("lightspore", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> NIGHTSPORE = PARTICLE_TYPES.register("nightspore", LodestoneWorldParticleType::new);
+    public static final Supplier<SimpleParticleType> WINDY_ASH = PARTICLE_TYPES.register("windy_ash", () -> new SimpleParticleType(false));
+    public static final Supplier<LodestoneWorldParticleType> DRIFTING_SOUL = PARTICLE_TYPES.register("drifting_soul", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> WILL_O_WISP_IMPACT = PARTICLE_TYPES.register("will_o_wisp_impact", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> REDUX_DUST_BLOB = PARTICLE_TYPES.register("redux_dust_blob", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> REDUX_DUST_STAR = PARTICLE_TYPES.register("redux_dust_star", LodestoneWorldParticleType::new);
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
