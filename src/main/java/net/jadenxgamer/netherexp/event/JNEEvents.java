@@ -6,6 +6,7 @@ import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.data.JNEAdvancementProvider;
+import net.jadenxgamer.netherexp.data.JNELootTableProvider;
 import net.jadenxgamer.netherexp.data.JNERecipeProvider;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
@@ -110,6 +111,10 @@ public class JNEEvents {
             generator.addProvider(
                     event.includeServer(),
                     new JNEAdvancementProvider(output, lookupProvider, fileHelper)
+            );
+            generator.addProvider(
+                    event.includeServer(),
+                    new JNELootTableProvider(output, lookupProvider)
             );
         }
     }
