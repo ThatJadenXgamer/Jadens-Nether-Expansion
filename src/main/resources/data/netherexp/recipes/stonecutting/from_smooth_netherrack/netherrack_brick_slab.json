@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "netherexp:smooth_netherrack"
-  },
-  "result": "netherexp:netherrack_brick_slab",
-  "count": 2
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "netherexp:soul_slate"
-  },
-  "result": "netherexp:soul_slate_slab",
-  "count": 2
-}

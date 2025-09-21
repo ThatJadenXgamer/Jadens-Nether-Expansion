@@ -6,6 +6,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -33,6 +35,9 @@ public class JNETags {
         public static final TagKey<Item> SILVER_ARMORS = createTag("c", "silver_armors"); // Silver Armors
         public static final TagKey<Item> SILVER_WEAPONS = createTag("c", "silver_weapons"); // Silver Weapons
         public static final TagKey<Item> FROGMIST_VISIBLE_ITEMS = createTag("frogmist_visible_items"); // Frogmist can be broken when items in this tag are held in hand
+        public static final TagKey<Item> CLARET_STEMS = createTag("claret_stems");
+        public static final TagKey<Item> GLOWSPORES = createTag("glowspores");
+        public static final TagKey<Item> COOKED_HOGHAM = createTag("cooked_hogham");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, NetherExp.id(name));
