@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
+import net.jadenxgamer.netherexp.data.JNEAdvancementProvider;
 import net.jadenxgamer.netherexp.data.JNERecipeProvider;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
@@ -31,6 +32,7 @@ import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.NETHER_WORLDGEN_OVERHAUL;
@@ -104,6 +106,10 @@ public class JNEEvents {
             generator.addProvider(
                     event.includeServer(),
                     new JNERecipeProvider(output, lookupProvider)
+            );
+            generator.addProvider(
+                    event.includeServer(),
+                    new JNEAdvancementProvider(output, lookupProvider, fileHelper)
             );
         }
     }

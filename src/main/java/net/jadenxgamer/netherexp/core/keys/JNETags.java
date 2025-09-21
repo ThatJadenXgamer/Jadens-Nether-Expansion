@@ -3,7 +3,9 @@ package net.jadenxgamer.netherexp.core.keys;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -11,6 +13,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+
+import java.util.Collection;
 
 public class JNETags {
 
@@ -24,6 +28,9 @@ public class JNETags {
         public static final TagKey<Block> BONE_FENCES = createTag("bone_fences"); // Bone fences will only connect to blocks in this tag
         public static final TagKey<Block> ANCIENT_FIRE_BASE_BLOCKS = createTag("ancient_fire_base_blocks"); // Blocks will burn ancient fire on top of 'em
         public static final TagKey<Block> FROGMIST = createTag("frogmist"); // Frogmists
+        public static final TagKey<Block> NIGHTSPORES_APPLICABLE = createTag("nightspores_applicable"); // Blocks that nightspores can be used on
+        public static final TagKey<Block> LIGHTSPORES_APPLICABLE = createTag("lightspores_applicable"); // Blocks that lightspores can be used on
+        public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createTag("fossil_ore_convertible"); // Blocks that convert to fossil ore when skeletons die on it
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));
@@ -38,6 +45,7 @@ public class JNETags {
         public static final TagKey<Item> CLARET_STEMS = createTag("claret_stems");
         public static final TagKey<Item> GLOWSPORES = createTag("glowspores");
         public static final TagKey<Item> COOKED_HOGHAM = createTag("cooked_hogham");
+        public static final TagKey<Item> SHOTGUNS = createTag("shotguns");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, NetherExp.id(name));
@@ -78,6 +86,14 @@ public class JNETags {
 
         private static TagKey<Fluid> createBiomeTag(String name) {
             return TagKey.create(Registries.FLUID, NetherExp.id(name));
+        }
+    }
+
+    public static class DamageTypes {
+        public static final TagKey<DamageType> OVERKILL_VALID = createDamageTypeTag("overkill_valid");
+
+        protected static TagKey<DamageType> createDamageTypeTag(String name) {
+            return TagKey.create(Registries.DAMAGE_TYPE, NetherExp.id(name));
         }
     }
 }
