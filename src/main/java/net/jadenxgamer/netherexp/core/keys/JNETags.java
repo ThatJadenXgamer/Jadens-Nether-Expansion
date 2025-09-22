@@ -61,6 +61,10 @@ public class JNETags {
         public static final TagKey<Item> GLOWSPORES = createTag("glowspores");
         public static final TagKey<Item> COOKED_HOGHAM = createTag("cooked_hogham");
         public static final TagKey<Item> SHOTGUNS = createTag("shotguns");
+        public static final TagKey<Item> ARTIFACTS = createTag("artifacts");
+        public static final TagKey<Item> DOESNT_MODIFY_POTION_STACK_SIZE = createTag("doesnt_modify_potion_stack_size");
+        public static final TagKey<Item> FROGMISTS = createTag("frogmists");
+        public static final TagKey<Item> SHROOMLIGHTS = createTag("shroomlights");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, NetherExp.id(name));

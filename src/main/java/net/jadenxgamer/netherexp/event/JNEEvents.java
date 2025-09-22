@@ -17,11 +17,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -37,6 +41,8 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID)
@@ -118,12 +124,16 @@ public class JNEEvents {
                     new JNEAdvancementProvider(output, lookupProvider, fileHelper),
                     new JNELootTableProvider(output, lookupProvider),
                     new JNERecipeProvider(output, lookupProvider),
-                    new JNETagProviders.BlockTagProvider(output, lookupProvider, fileHelper),
                     new JNETagProviders.DamageTypeTagProvider(output, lookupProvider, fileHelper),
                     new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNEDataMapProvider(output, lookupProvider)
+                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper)
             ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
+
+            // We need this for the ItemTagProvider
+            TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new JNETagProviders.BlockTagProvider(output, lookupProvider,fileHelper));
+
+            generator.addProvider(event.includeServer(), new JNETagProviders.ItemTagProvider(output, lookupProvider, blockTagsProvider.contentsGetter()));
+            generator.addProvider(event.includeServer(), new JNEDataMapProvider(output, lookupProvider));
         }
     }
 }
