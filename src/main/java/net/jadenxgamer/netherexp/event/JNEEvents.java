@@ -110,7 +110,8 @@ public class JNEEvents {
             // Datapack DataGen
             event.createDatapackRegistryObjects(
                     new RegistrySetBuilder()
-                            .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap),
+                            .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap)
+                            .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap),
                     Set.of(NetherExp.MOD_ID)
             );
 
