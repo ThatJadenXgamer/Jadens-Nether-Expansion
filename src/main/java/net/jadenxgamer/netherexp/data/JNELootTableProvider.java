@@ -258,7 +258,7 @@ public class JNELootTableProvider extends LootTableProvider {
                                                                            LootItem.lootTableItem(block)
                                                                                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(JNELayerBlock.LAYERS, layers)))
                                                                                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) layers)))))));
-            add(JNEBlocks.ECTOPLASM_CAULDRON.get(), noDrop());
+            dropOther(JNEBlocks.ECTOPLASM_CAULDRON.get(), Items.CAULDRON);
 
             // Black Ice
             dropSelf(JNEBlocks.BLACK_ICE.get());
@@ -357,7 +357,7 @@ public class JNELootTableProvider extends LootTableProvider {
             // Farming & Food
             // TODO: CHECK THIS (seems good though)
             add(JNEBlocks.WARPED_WART.get(), (block) -> LootTable.lootTable().withPool(applyExplosionDecay(block, LootPool.lootPool().add(LootItem.lootTableItem(JNEBlocks.WARPED_WART.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(WarpedWartBlock.AGE, 3).hasProperty(WarpedWartBlock.HALF, DoubleBlockHalf.LOWER)))).apply(ApplyBonusCount.addUniformBonusCount(registries.holderOrThrow(Enchantments.FORTUNE)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(WarpedWartBlock.AGE, 3).hasProperty(WarpedWartBlock.HALF, DoubleBlockHalf.LOWER))))))));
-            
+
             add(JNEBlocks.WRAITHING_LESION.get(), noDrop());
             dropSelf(JNEBlocks.SOUL_TORCHFLOWER.get());
             dropOther(JNEBlocks.SOUL_TORCHFLOWER_CROP.get(), Items.TORCHFLOWER_SEEDS);
