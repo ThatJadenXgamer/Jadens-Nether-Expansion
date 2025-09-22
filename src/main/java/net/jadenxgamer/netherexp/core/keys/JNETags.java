@@ -94,30 +94,31 @@ public class JNETags {
     }
 
     public static class Biomes {
-        public static final TagKey<Biome> HAS_CRIMSON_SPORES = createBiomeTag("particles/has_crimson_spores"); // Prevents sporeshrooms from producing crimson spores here
-        public static final TagKey<Biome> HAS_WARPED_SPORES = createBiomeTag("particles/has_warped_spores"); // Prevents sporeshrooms from producing warped spores here
-        public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash"); // Prevents geysers from producing ash particles here
-        public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash"); // Prevents geysers from producing white ash particles here
+        public static final TagKey<Biome> HAS_CRIMSON_SPORES = createTag("particles/has_crimson_spores"); // Prevents sporeshrooms from producing crimson spores here
+        public static final TagKey<Biome> HAS_WARPED_SPORES = createTag("particles/has_warped_spores"); // Prevents sporeshrooms from producing warped spores here
+        public static final TagKey<Biome> HAS_ASH = createTag("particles/has_ash"); // Prevents geysers from producing ash particles here
+        public static final TagKey<Biome> HAS_WHITE_ASH = createTag("particles/has_white_ash"); // Prevents geysers from producing white ash particles here
 
-        private static TagKey<Biome> createBiomeTag(String name) {
+        private static TagKey<Biome> createTag(String name) {
             return TagKey.create(Registries.BIOME, NetherExp.id(name));
         }
     }
 
     public static class Fluids {
-        public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createBiomeTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice
+        public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice
+        public static final TagKey<Fluid> ECTOPLASM = createTag("ectoplasm");
 
-        private static TagKey<Fluid> createBiomeTag(String name) {
+        private static TagKey<Fluid> createTag(String name) {
             return TagKey.create(Registries.FLUID, NetherExp.id(name));
         }
     }
 
     public static class DamageTypes {
-        public static final TagKey<DamageType> OVERKILL_VALID = createDamageTypeTag("overkill_valid");
-        public static final TagKey<DamageType> CAN_DISRUPT_UNDERGROUND_ECTO_SLABS = createDamageTypeTag("can_disrupt_underground_ecto_slabs");
-        public static final TagKey<DamageType> IS_SUFFOCATION = createDamageTypeTag("is_suffocation");
+        public static final TagKey<DamageType> OVERKILL_VALID = createTag("overkill_valid");
+        public static final TagKey<DamageType> CAN_DISRUPT_UNDERGROUND_ECTO_SLABS = createTag("can_disrupt_underground_ecto_slabs");
+        public static final TagKey<DamageType> IS_SUFFOCATION = createTag("is_suffocation");
 
-        protected static TagKey<DamageType> createDamageTypeTag(String name) {
+        protected static TagKey<DamageType> createTag(String name) {
             return TagKey.create(Registries.DAMAGE_TYPE, NetherExp.id(name));
         }
     }

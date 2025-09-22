@@ -5,10 +5,12 @@ import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
+import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.DamageTypeTagsProvider;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
+import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
@@ -16,6 +18,7 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -191,6 +194,19 @@ public interface JNETagProviders {
             // tag(EntityTypeTags.FROG_FOOD).addTag(JNEEntityType.ECTO_SLAB.get())
             tag(EntityTypeTags.SKELETONS).add(JNEEntityType.VESSEL.get());
             tag(EntityTypeTags.UNDEAD).add(JNEEntityType.WISP.get(), JNEEntityType.APPARITION.get());
+        }
+    }
+
+    final class FluidTypeTagProvider extends FluidTagsProvider {
+
+        public FluidTypeTagProvider(PackOutput arg, CompletableFuture<HolderLookup.Provider> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
+            super(arg, completableFuture, NetherExp.MOD_ID, existingFileHelper);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider provider) {
+            tag(JNETags.Fluids.ECTOPLASM).add(JNEFluids.ECTOPLASM_SOURCE.get(), JNEFluids.ECTOPLASM_FLOWING.get());
+            tag(JNETags.Fluids.TURNS_TO_BLACK_ICE).add(Fluids.WATER, Fluids.FLOWING_WATER);
         }
     }
 }

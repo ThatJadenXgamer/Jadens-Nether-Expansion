@@ -112,8 +112,7 @@ public class JNEEvents {
                     new RegistrySetBuilder()
                             .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap)
                             .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap),
-                    Set.of(NetherExp.MOD_ID)
-            );
+                    Set.of(NetherExp.MOD_ID));
 
             lookupProvider = event.getLookupProvider();
 
@@ -124,7 +123,8 @@ public class JNEEvents {
                     new JNERecipeProvider(output, lookupProvider),
                     new JNETagProviders.BlockTagProvider(output, lookupProvider, fileHelper),
                     new JNETagProviders.DamageTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper)
+                    new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper),
+                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper)
             ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
         }
     }
