@@ -79,6 +79,14 @@ public class JNETags {
         public static final TagKey<EntityType<?>> PROJECTILES_PASS_THROUGH = createTag("projectiles_pass_through"); // All projectiles absent from the blacklist below can phase through these entities
         public static final TagKey<EntityType<?>> PHANTASM_HULL_PROTECTS_BLACKLIST = createTag("phantasm_hull_protects_blacklist"); // Prevents projectiles from being phased through mobs in the above tag
         public static final TagKey<EntityType<?>> IGNORES_BLOCK_COLLISION = createTag("ignores_block_collision"); // Projectiles in this tag will go through blocks
+        public static final TagKey<EntityType<?>> POSSESSED = createTag("possessed");
+        public static final TagKey<EntityType<?>> ECTO_SLAB_POUNCE_DAMAGES = createTag("ecto_slab_pounce_damages");
+        public static final TagKey<EntityType<?>> FOSSIL_FUEL_ORE_CONVERTING_SKELETONS = createTag("fossil_fuel_ore_converting_skeletons");
+        public static final TagKey<EntityType<?>> FOSSIL_ORE_CONVERTING_SKELETONS = createTag("fossil_ore_converting_skeletons");
+        public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createTag("ignores_soul_sand_slowness");
+        public static final TagKey<EntityType<?>> INGORES_TREACHEROUS_CANDLE = createTag("ignores_treacherous_candle");
+        public static final TagKey<EntityType<?>> STAMPEDE_CANNOT_RUN_OVER = createTag("stampede_cannot_run_over");
+        public static final TagKey<EntityType<?>> TARGET_REGARDLESS_OF_BETRAYED = createTag("target_regardless_of_betrayed");
 
         private static TagKey<EntityType<?>> createTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, NetherExp.id(name));
