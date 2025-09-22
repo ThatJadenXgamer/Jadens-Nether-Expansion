@@ -3,11 +3,13 @@ package net.jadenxgamer.netherexp.event;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.data.JNEAdvancementProvider;
 import net.jadenxgamer.netherexp.data.JNELootTableProvider;
 import net.jadenxgamer.netherexp.data.JNERecipeProvider;
+import net.jadenxgamer.netherexp.data.JNETagProviders;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -104,18 +106,13 @@ public class JNEEvents {
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
             CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-            generator.addProvider(
-                    event.includeServer(),
-                    new JNERecipeProvider(output, lookupProvider)
-            );
-            generator.addProvider(
-                    event.includeServer(),
-                    new JNEAdvancementProvider(output, lookupProvider, fileHelper)
-            );
-            generator.addProvider(
-                    event.includeServer(),
-                    new JNELootTableProvider(output, lookupProvider)
-            );
+            // Server DataGen
+            List.of(
+                    new JNEAdvancementProvider(output, lookupProvider, fileHelper),
+                    new JNELootTableProvider(output, lookupProvider),
+                    new JNERecipeProvider(output, lookupProvider),
+                    new JNETagProviders.BlockTags(output, lookupProvider, fileHelper)
+            ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
         }
     }
 }

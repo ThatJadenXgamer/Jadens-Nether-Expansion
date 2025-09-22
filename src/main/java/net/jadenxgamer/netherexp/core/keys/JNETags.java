@@ -3,22 +3,25 @@ package net.jadenxgamer.netherexp.core.keys;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
-import java.util.Collection;
-
 public class JNETags {
 
     public static class Blocks {
+
+        public static class Sounds {
+            public static final TagKey<Block> BLACKSTONE = createTag("sounds/blackstone");
+            public static final TagKey<Block> GLOWSTONE = createTag("sounds/glowstone");
+            public static final TagKey<Block> MAGMA_BLOCK = createTag("sounds/magma_block");
+            public static final TagKey<Block> POLISHED_BLACKSTONE_BRICKS = createTag("sounds/polished_blackstone_bricks");
+            public static final TagKey<Block> QUARTZ_BLOCK = createTag("sounds/quartz_block");
+        }
 
         public static final TagKey<Block> SOUL_SANDS = createTag("soul_sands"); // Soul Sand blocks
         public static final TagKey<Block> SOUL_CROP_MUTATION_BLOCKS = createTag("soul_crop_mutation_blocks"); // Blocks which mutate crops into soul variants when planted on
@@ -27,10 +30,21 @@ public class JNETags {
         public static final TagKey<Block> SOUL_LAYER_CANNOT_SURVIVE_ON = createTag("soul_layer_cannot_survive_on"); // also self-explanatory
         public static final TagKey<Block> BONE_FENCES = createTag("bone_fences"); // Bone fences will only connect to blocks in this tag
         public static final TagKey<Block> ANCIENT_FIRE_BASE_BLOCKS = createTag("ancient_fire_base_blocks"); // Blocks will burn ancient fire on top of 'em
-        public static final TagKey<Block> FROGMIST = createTag("frogmist"); // Frogmists
+        public static final TagKey<Block> FROGMISTS = createTag("frogmists"); // Frogmists
         public static final TagKey<Block> NIGHTSPORES_APPLICABLE = createTag("nightspores_applicable"); // Blocks that nightspores can be used on
         public static final TagKey<Block> LIGHTSPORES_APPLICABLE = createTag("lightspores_applicable"); // Blocks that lightspores can be used on
         public static final TagKey<Block> FOSSIL_ORE_CONVERTIBLE = createTag("fossil_ore_convertible"); // Blocks that convert to fossil ore when skeletons die on it
+        public static final TagKey<Block> BLACK_ICE_REPLACEABLE = createTag("black_ice_replaceable");
+        public static final TagKey<Block> BLACK_ICES = createTag("black_ices");
+        public static final TagKey<Block> CLARET_STEMS = createTag("claret_stems");
+        public static final TagKey<Block> MAGMA_BLOCKS = createTag("magma_blocks");
+        public static final TagKey<Block> MOB_HEADS = createTag("mob_heads");
+        public static final TagKey<Block> MOUND_BLOCKS = createTag("mound_blocks");
+        public static final TagKey<Block> SHROOMLIGHTS = createTag("shroomlights");
+        public static final TagKey<Block> SOUL_SLATE_REPLACEABLE = createTag("soul_slate_replaceable");
+        public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createTag("unbounded_speed_blocks");
+        public static final TagKey<Block> WART_BEARD_FEATURE_VALID = createTag("wart_beard_feature_valid");
+        public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createTag("weeping_vines_feature_valid");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));
