@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.event;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
+import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.data.JNEAdvancementProvider;
@@ -17,6 +18,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.server.packs.PackType;
 import net.neoforged.bus.api.EventPriority;
@@ -105,6 +107,15 @@ public class JNEEvents {
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
             CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
+            // Datapack DataGen
+            event.createDatapackRegistryObjects(
+                    new RegistrySetBuilder()
+                            .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap),
+                    Set.of(NetherExp.MOD_ID)
+            );
+
+            lookupProvider = event.getLookupProvider();
+
             // Server DataGen
             List.of(
                     new JNEAdvancementProvider(output, lookupProvider, fileHelper),
@@ -112,14 +123,7 @@ public class JNEEvents {
                     new JNERecipeProvider(output, lookupProvider),
                     new JNETagProviders.BlockTagProvider(output, lookupProvider, fileHelper),
                     new JNETagProviders.DamageTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper),
-                    new DatapackBuiltinEntriesProvider(
-                            output,
-                            lookupProvider,
-                            new RegistrySetBuilder()
-                                    .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap),
-                            Set.of(NetherExp.MOD_ID)
-                    )
+                    new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper)
             ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
         }
     }
