@@ -105,7 +105,8 @@ public class JNEEvents {
                     new JNEAdvancementProvider(output, lookupProvider, fileHelper),
                     new JNELootTableProvider(output, lookupProvider),
                     new JNERecipeProvider(output, lookupProvider),
-                    new JNETagProviders.Block(output, lookupProvider, fileHelper)
+                    new JNETagProviders.Block(output, lookupProvider, fileHelper),
+                    new JNETagProviders.DamageType(output, lookupProvider, fileHelper)
             ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
         }
     }

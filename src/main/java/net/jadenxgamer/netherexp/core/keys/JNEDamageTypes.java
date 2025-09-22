@@ -5,7 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
 
-public class JNEDamageSources {
+public class JNEDamageTypes {
     public static final ResourceKey<DamageType> STAMPEDE_CRUSH = register("stampede_crush");
     public static final ResourceKey<DamageType> SORROWSQUISHED = register("sorrowsquished");
     public static final ResourceKey<DamageType> SHOTGUN_PELLET = register("shotgun_pellet");
