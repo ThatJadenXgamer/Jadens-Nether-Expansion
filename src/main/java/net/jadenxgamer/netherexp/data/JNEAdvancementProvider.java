@@ -182,15 +182,10 @@ public class JNEAdvancementProvider extends AdvancementProvider {
                     .addCriterion("soul_glass_entered", EnterBlockTrigger.TriggerInstance.entersBlock(JNEBlocks.SOUL_GLASS.get()))
                     .save(saver, NetherExp.id("nether/enter_soul_glass"), existingFileHelper);
 
-            /*
 
-            TODO: IMPLEMENT ECTOPLASM
-
-            AdvancementHolder ghost_mucus = announcedTaskBuilder(JNEItems.ECTOPLASM_BUCKET.get(), "ghost_mucus", soul_sand_valley)
-                    .addCriterion("has_ectoplasm_bucket", InventoryChangeTrigger.TriggerInstance.hasItems(JNEItems.ECTOPLASM_BUCKET.get()))
-                    .save(saver, NetherExp.id("nether/ghost_mucus"));
-            */
-            AdvancementHolder ghost_mucus = AdvancementSubProvider.createPlaceholder("netherexp:nether/ghost_mucus");
+            AdvancementHolder ghost_mucus = taskBuilder(JNEFluids.ECTOPLASM_BUCKET.get(), "ghost_mucus", soul_sand_valley)
+                    .addCriterion("has_ectoplasm_bucket", InventoryChangeTrigger.TriggerInstance.hasItems(JNEFluids.ECTOPLASM_BUCKET.get()))
+                    .save(saver, NetherExp.id("nether/ghost_mucus"), existingFileHelper);
 
             AdvancementHolder exorcism = goalBuilder(JNEItems.WISP_BOTTLE.get(), "exorcism", ghost_mucus)
                     .addCriterion("exorcism", JNECriteriaTriggers.EXORCISM.get().createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty())))
