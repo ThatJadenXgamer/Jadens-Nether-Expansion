@@ -6,10 +6,7 @@ import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
-import net.jadenxgamer.netherexp.data.JNEAdvancementProvider;
-import net.jadenxgamer.netherexp.data.JNELootTableProvider;
-import net.jadenxgamer.netherexp.data.JNERecipeProvider;
-import net.jadenxgamer.netherexp.data.JNETagProviders;
+import net.jadenxgamer.netherexp.data.*;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -124,7 +121,8 @@ public class JNEEvents {
                     new JNETagProviders.BlockTagProvider(output, lookupProvider, fileHelper),
                     new JNETagProviders.DamageTypeTagProvider(output, lookupProvider, fileHelper),
                     new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper)
+                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper),
+                    new JNEDataMapProvider(output, lookupProvider)
             ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
         }
     }
