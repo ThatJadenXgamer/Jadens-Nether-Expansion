@@ -5,7 +5,8 @@ import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.minecraft.advancements.critereon.*;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
@@ -17,7 +18,6 @@ import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
@@ -26,7 +26,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
@@ -35,7 +34,10 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.predicates.*;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -52,9 +54,10 @@ public class JNELootTableProvider extends LootTableProvider {
     public JNELootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, Set.of(), List.of(
                 new SubProviderEntry(ArchaeologyLoot::new, LootContextParamSets.ARCHAEOLOGY),
+                new SubProviderEntry(BrazierChestLoot::new, LootContextParamSets.EMPTY),
                 new SubProviderEntry(BlockLoot::new, LootContextParamSets.BLOCK),
-                new SubProviderEntry(EntityLoot::new, LootContextParamSets.ENTITY),
-                new SubProviderEntry(BrazierChestLoot::new, LootContextParamSets.EMPTY)
+                new SubProviderEntry(ChestLoot::new, LootContextParamSets.CHEST),
+                new SubProviderEntry(EntityLoot::new, LootContextParamSets.ENTITY)
         ), registries);
     }
 
@@ -507,6 +510,49 @@ public class JNELootTableProvider extends LootTableProvider {
 
         private ResourceKey<LootTable> key(String name) {
             return ResourceKey.create(Registries.LOOT_TABLE, NetherExp.id("brazier_chest/" + name));
+        }
+    }
+
+    private record ChestLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
+
+        @Override
+        public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
+            output.accept(key("chapel"), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                                      .setRolls(ConstantValue.exactly(5))
+                                      .add(item(Items.BONE, 3, 2, 3))
+                                      .add(item(Items.SOUL_SOIL, 4, 3)))
+                    .withPool(LootPool.lootPool()
+                                      .add(item(JNEItems.SANCTUM_COMPASS.get(), 1)))
+                    .withPool(LootPool.lootPool()
+                                      .add(item(Items.PUMPKIN_SEEDS, 1, 7)))
+                    .withPool(LootPool.lootPool()
+                                      .add(item(Items.SPLASH_POTION, 1, 2).apply(SetPotionFunction.setPotion(Potions.WATER))))
+                    .withPool(LootPool.lootPool()
+                                      .add(item(Items.FLINT, 1, 4))));
+            output.accept(key("sanctum_food"), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                                      .add(item(Items.MUTTON, 1, 3, 4))
+                                      .add(item(JNEItems.HOGHAM.get(), 1, 3, 4)))
+                    .withPool(LootPool.lootPool()
+                                      .add(item(JNEBlocks.BLACK_ICE.get(), 1, 19, 27))));
+            output.accept(key("sanctum_supply"), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                                      .add(item(Items.FLINT, 1, 1, 3)))
+                    .withPool(LootPool.lootPool()
+                                      .add(item(Items.IRON_NUGGET, 1, 9, 15)))
+                    .withPool(LootPool.lootPool()
+                                      .add(item(Items.HONEYCOMB, 1, 1, 2)))
+                    .withPool(LootPool.lootPool()
+                                      .setRolls(ConstantValue.exactly(3))
+                                      .add(item(JNEBlocks.SOUL_SLATE.get(), 1, 7, 12))
+                                      .add(item(JNEItems.WRAITHING_FLESH.get(), 1, 5, 12))
+                    )
+            );
+        }
+
+        private ResourceKey<LootTable> key(String name) {
+            return ResourceKey.create(Registries.LOOT_TABLE, NetherExp.id("chests/" + name));
         }
     }
 
