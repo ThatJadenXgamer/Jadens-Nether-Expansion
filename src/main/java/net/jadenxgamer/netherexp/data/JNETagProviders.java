@@ -1,32 +1,28 @@
 package net.jadenxgamer.netherexp.data;
 
+import net.jadenxgamer.elysium_api.api.tags.ElysiumTags;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
+import net.minecraft.data.tags.DamageTypeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import org.apache.commons.lang3.function.TriFunction;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public interface JNETagProviders {
 
-    static List<TriFunction<PackOutput, CompletableFuture<HolderLookup.Provider>, ExistingFileHelper, IntrinsicHolderTagsProvider<?>>> getProviderFactories() {
-        return List.of(
-                BlockTags::new
-        );
-    }
+    final class Block extends BlockTagsProvider {
 
-    final class BlockTags extends BlockTagsProvider {
-
-        public BlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        public Block(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
             super(output, lookupProvider, NetherExp.MOD_ID, existingFileHelper);
         }
 
@@ -56,7 +52,56 @@ public interface JNETagProviders {
             tag(JNETags.Blocks.UNBOUNDED_SPEED_BLOCKS).add(Blocks.SOUL_SAND, JNEBlocks.ECTO_SOUL_SAND.get(), JNEBlocks.SOUL_PERMAFROST.get());
             tag(JNETags.Blocks.WART_BEARD_FEATURE_VALID).add(Blocks.WARPED_WART_BLOCK);
             tag(JNETags.Blocks.WEEPING_VINES_FEATURE_VALID).add(Blocks.NETHERRACK, Blocks.NETHER_WART_BLOCK);
+            tag(JNETags.Blocks.GEYSERS).add(JNEBlocks.BASALTIC_GEYSER.get(), JNEBlocks.SOULED_GEYSER.get());
+
+            // Minecraft Tags
+            tag(BlockTags.MINEABLE_WITH_AXE).add(JNEBlocks.CEREBRAGE_CLARET_STEM.get(), JNEBlocks.CEREBRAGE_CLARET_HYPHAE.get(), JNEBlocks.STRIPPED_CLARET_STEM.get(), JNEBlocks.STRIPPED_CLARET_HYPHAE.get(), JNEBlocks.CLARET_PLANKS.get(), JNEBlocks.CLARET_SLAB.get(), JNEBlocks.CLARET_STAIRS.get(), JNEBlocks.CLARET_FENCE.get(), JNEBlocks.CLARET_FENCE_GATE.get(), JNEBlocks.CLARET_DOOR.get(), JNEBlocks.CLARET_TRAPDOOR.get(), JNEBlocks.CLARET_BUTTON.get(), JNEBlocks.CLARET_PRESSURE_PLATE.get(), JNEBlocks.SORROWSQUASH.get(), JNEBlocks.CARVED_SORROWSQUASH.get(), JNEBlocks.GHOUL_O_LANTERN.get(), JNEBlocks.ANCIENT_CAMPFIRE.get());
+            tag(BlockTags.MINEABLE_WITH_HOE).add(JNEBlocks.SORROWEED.get(), JNEBlocks.SHROOMNIGHT.get(), JNEBlocks.CRIMSON_SPORESHROOM.get(), JNEBlocks.WARPED_SPORESHROOM.get(), JNEBlocks.OCHRE_FROGMIST.get(), JNEBlocks.VERDANT_FROGMIST.get(), JNEBlocks.PEARLESCENT_FROGMIST.get());
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(JNEBlocks.SOUL_SLATE.get(), JNEBlocks.PALE_SOUL_SLATE.get(), JNEBlocks.SOUL_SLATE_SLAB.get(), JNEBlocks.SOUL_SLATE_STAIRS.get(), JNEBlocks.SOUL_SLATE_WALL.get(), JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICK_SLAB.get(), JNEBlocks.SOUL_SLATE_BRICK_STAIRS.get(), JNEBlocks.SOUL_SLATE_BRICK_WALL.get(), JNEBlocks.ETCHED_SOUL_SLATE_BRICKS.get(), JNEBlocks.CRACKED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICK_PILLAR.get(), JNEBlocks.CHISELED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_SLATE_TILE_SLAB.get(), JNEBlocks.SOUL_SLATE_TILE_STAIRS.get(), JNEBlocks.SOUL_SLATE_TILE_WALL.get(), JNEBlocks.ETCHED_SOUL_SLATE_TILES.get(), JNEBlocks.CHISELED_SOUL_SLATE_TILES.get(), JNEBlocks.INSCRIBED_PANEL.get(), JNEBlocks.SHOTGUN_BARREL.get(), JNEBlocks.BLACK_ICE.get(), JNEBlocks.BLACK_ICICLE.get(), JNEBlocks.THIN_BLACK_ICE.get(), JNEBlocks.SOUL_PERMAFROST.get(), JNEBlocks.SMOOTH_NETHERRACK.get(), JNEBlocks.SMOOTH_NETHERRACK_SLAB.get(), JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get(), JNEBlocks.SMOOTH_NETHERRACK_WALL.get(), JNEBlocks.NETHERRACK_BRICKS.get(), JNEBlocks.NETHERRACK_BRICK_SLAB.get(), JNEBlocks.NETHERRACK_BRICK_STAIRS.get(), JNEBlocks.NETHERRACK_BRICK_WALL.get(), JNEBlocks.NETHERRACK_TILES.get(), JNEBlocks.NETHERRACK_PILLAR.get(), JNEBlocks.BASALT_SLAB.get(), JNEBlocks.BASALT_STAIRS.get(), JNEBlocks.BASALT_WALL.get(), JNEBlocks.POLISHED_BASALT_SLAB.get(), JNEBlocks.POLISHED_BASALT_STAIRS.get(), JNEBlocks.POLISHED_BASALT_WALL.get(), JNEBlocks.POLISHED_BASALT_BRICKS.get(), JNEBlocks.POLISHED_BASALT_BRICK_SLAB.get(), JNEBlocks.POLISHED_BASALT_BRICK_STAIRS.get(), JNEBlocks.POLISHED_BASALT_BRICK_WALL.get(), JNEBlocks.NETHERITE_PLATED_BLOCK.get(), JNEBlocks.NETHERITE_GRATE.get(), JNEBlocks.CUT_NETHERITE_BLOCK.get(), JNEBlocks.CUT_NETHERITE_SLAB.get(), JNEBlocks.CUT_NETHERITE_STAIRS.get(), JNEBlocks.CUT_NETHERITE_PILLAR.get(), JNEBlocks.RUSTY_NETHERITE_PLATED_BLOCK.get(), JNEBlocks.RUSTY_NETHERITE_GRATE.get(), JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get(), JNEBlocks.RUSTY_CUT_NETHERITE_SLAB.get(), JNEBlocks.RUSTY_CUT_NETHERITE_STAIRS.get(), JNEBlocks.RUSTY_CUT_NETHERITE_PILLAR.get(), JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get(), JNEBlocks.QUARTZ_CRYSTAL.get(), JNEBlocks.CRACKED_QUARTZ_BRICKS.get(), JNEBlocks.CHISELED_QUARTZ_PILLAR.get(), JNEBlocks.NETHER_BRICK_PILLAR.get(), JNEBlocks.RED_MIXED_NETHER_BRICKS.get(), JNEBlocks.BLUE_MIXED_NETHER_BRICKS.get(), JNEBlocks.BLUE_NETHER_BRICKS.get(), JNEBlocks.BLUE_NETHER_BRICK_SLAB.get(), JNEBlocks.BLUE_NETHER_BRICK_STAIRS.get(), JNEBlocks.BLUE_NETHER_BRICK_WALL.get(), JNEBlocks.BONE_PIKE.get(), JNEBlocks.BONE_FENCE.get(), JNEBlocks.STACKED_BONES.get(), JNEBlocks.STACKED_BONE_SLAB.get(), JNEBlocks.STACKED_BONE_STAIRS.get(), JNEBlocks.SKULL_BLOCK.get(), JNEBlocks.BURNING_SKULL_BLOCK.get(), JNEBlocks.SOUL_BURNING_SKULL_BLOCK.get(), JNEBlocks.ANCIENT_BURNING_SKULL_BLOCK.get(), JNEBlocks.WITHER_BONE_BLOCK.get(), JNEBlocks.STACKED_WITHER_BONES.get(), JNEBlocks.STACKED_WITHER_BONE_SLAB.get(), JNEBlocks.STACKED_WITHER_BONE_STAIRS.get(), JNEBlocks.WITHER_SKULL_BLOCK.get(), JNEBlocks.BURNING_WITHER_SKULL_BLOCK.get(), JNEBlocks.SOUL_BURNING_WITHER_SKULL_BLOCK.get(), JNEBlocks.ANCIENT_BURNING_WITHER_SKULL_BLOCK.get(), JNEBlocks.CRIMSON_NYLIUM_PATH.get(), JNEBlocks.WARPED_NYLIUM_PATH.get(), JNEBlocks.SOULED_GEYSER.get(), JNEBlocks.BASALTIC_GEYSER.get(), JNEBlocks.POLISHED_BLACKSTONE_PILLAR.get(), JNEBlocks.POLISHED_BLACKSTONE_FENCE.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_SLAB.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_WALL.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_SLAB.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_WALL.get(), Blocks.GLOWSTONE, Blocks.REDSTONE_LAMP, JNEBlocks.ANCIENT_LANTERN.get()).addTag(JNETags.Blocks.MOB_HEADS);
+            tag(BlockTags.MINEABLE_WITH_SHOVEL).add(JNEBlocks.ECTO_SOUL_SAND.get(), JNEBlocks.SOUL_MAGMA_BLOCK.get(), JNEBlocks.SOUL_SOIL_LAYER.get(), JNEBlocks.SOUL_PATH.get(), JNEBlocks.FOSSIL_ORE.get(), JNEBlocks.FOSSIL_FUEL_ORE.get(), JNEBlocks.SUSPICIOUS_SOUL_SAND.get(), JNEBlocks.SOUL_PERMAFROST.get());
+            tag(BlockTags.BASE_STONE_NETHER).add(JNEBlocks.SOUL_SLATE.get(), JNEBlocks.PALE_SOUL_SLATE.get());
+            tag(BlockTags.CAMPFIRES).add(JNEBlocks.ANCIENT_CAMPFIRE.get());
+            tag(BlockTags.CANDLES).add(JNEBlocks.SOUL_CANDLE.get(), JNEBlocks.ANCIENT_CANDLE.get());
+            tag(BlockTags.CEILING_HANGING_SIGNS).add(JNEBlocks.CLARET_HANGING_SIGN.get());
+            tag(BlockTags.CLIMBABLE).add(JNEBlocks.SORROWSQUASH_STEM.get(), JNEBlocks.SORROWSQUASH_STEM_PLANT.get());
+            tag(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(JNEBlocks.CRIMSON_SPROUTS.get(), JNEBlocks.BONE_PIKE.get(), JNEBlocks.SOUL_SWIRLS.get(), JNEBlocks.SOUL_SOIL_LAYER.get());
+            tag(BlockTags.CROPS).add(JNEBlocks.SORROWSQUASH_STEM.get(), JNEBlocks.SORROWSQUASH_STEM_PLANT.get(), JNEBlocks.SOUL_TORCHFLOWER_CROP.get());
+            tag(BlockTags.FENCE_GATES).add(JNEBlocks.CLARET_FENCE_GATE.get());
+            tag(BlockTags.FENCES).add(JNEBlocks.CLARET_FENCE.get());
+            tag(BlockTags.FLOWER_POTS).add(JNEBlocks.POTTED_SOUL_SWIRLS.get(), JNEBlocks.POTTED_CRIMSON_SPORESHROOM.get(), JNEBlocks.POTTED_WARPED_SPORESHROOM.get(), JNEBlocks.POTTED_SOUL_TORCHFLOWER.get());
+            tag(BlockTags.HOGLIN_REPELLENTS).add(JNEBlocks.WARPED_SPORESHROOM.get());
+            tag(BlockTags.ICE).addTag(JNETags.Blocks.BLACK_ICES);
+            tag(BlockTags.INFINIBURN_END).add(JNEBlocks.SMOOTH_NETHERRACK.get(), JNEBlocks.SMOOTH_NETHERRACK_SLAB.get(), JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get(), JNEBlocks.SMOOTH_NETHERRACK_WALL.get(), JNEBlocks.NETHERRACK_BRICKS.get(), JNEBlocks.NETHERRACK_BRICK_SLAB.get(), JNEBlocks.NETHERRACK_BRICK_STAIRS.get(), JNEBlocks.NETHERRACK_BRICK_WALL.get(), JNEBlocks.NETHERRACK_TILES.get(), JNEBlocks.NETHERRACK_PILLAR.get());
+            tag(BlockTags.INFINIBURN_NETHER).add(JNEBlocks.SMOOTH_NETHERRACK.get(), JNEBlocks.SMOOTH_NETHERRACK_SLAB.get(), JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get(), JNEBlocks.SMOOTH_NETHERRACK_WALL.get(), JNEBlocks.NETHERRACK_BRICKS.get(), JNEBlocks.NETHERRACK_BRICK_SLAB.get(), JNEBlocks.NETHERRACK_BRICK_STAIRS.get(), JNEBlocks.NETHERRACK_BRICK_WALL.get(), JNEBlocks.NETHERRACK_TILES.get(), JNEBlocks.NETHERRACK_PILLAR.get());
+            tag(BlockTags.INFINIBURN_OVERWORLD).add(JNEBlocks.SMOOTH_NETHERRACK.get(), JNEBlocks.SMOOTH_NETHERRACK_SLAB.get(), JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get(), JNEBlocks.SMOOTH_NETHERRACK_WALL.get(), JNEBlocks.NETHERRACK_BRICKS.get(), JNEBlocks.NETHERRACK_BRICK_SLAB.get(), JNEBlocks.NETHERRACK_BRICK_STAIRS.get(), JNEBlocks.NETHERRACK_BRICK_WALL.get(), JNEBlocks.NETHERRACK_TILES.get(), JNEBlocks.NETHERRACK_PILLAR.get());
+            tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(JNEBlocks.CRIMSON_SPROUTS.get(), JNEBlocks.BONE_PIKE.get(), JNEBlocks.SOUL_SWIRLS.get(), JNEBlocks.SOUL_SOIL_LAYER.get());
+            tag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE).add(JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICK_SLAB.get(), JNEBlocks.SOUL_SLATE_BRICK_STAIRS.get(), JNEBlocks.SOUL_SLATE_BRICK_WALL.get(), JNEBlocks.SOUL_SLATE_BRICK_PILLAR.get(), JNEBlocks.CHISELED_SOUL_SLATE_BRICKS.get(), JNEBlocks.CRACKED_SOUL_SLATE_BRICKS.get(), JNEBlocks.ETCHED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_SLATE_TILE_SLAB.get(), JNEBlocks.SOUL_SLATE_TILE_STAIRS.get(), JNEBlocks.SOUL_SLATE_TILE_WALL.get(), JNEBlocks.CHISELED_SOUL_SLATE_TILES.get(), JNEBlocks.ETCHED_SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_CANDLE.get(), JNEBlocks.SOUL_PATH.get());
+            tag(BlockTags.LOGS).addTag(JNETags.Blocks.CLARET_STEMS);
+            tag(BlockTags.NEEDS_IRON_TOOL).add(JNEBlocks.PALE_SOUL_SLATE.get(), JNEBlocks.SOUL_SLATE.get(), JNEBlocks.SOUL_SLATE_SLAB.get(), JNEBlocks.SOUL_SLATE_STAIRS.get(), JNEBlocks.SOUL_SLATE_WALL.get(), JNEBlocks.SOULED_GEYSER.get(), JNEBlocks.WITHER_BONE_BLOCK.get());
+            tag(BlockTags.NETHER_CARVER_REPLACEABLES).add(JNEBlocks.SORROWEED.get(), JNEBlocks.SOUL_SLATE.get(), JNEBlocks.PALE_SOUL_SLATE.get(), JNEBlocks.ECTO_SOUL_SAND.get(), JNEBlocks.SOUL_MAGMA_BLOCK.get(), JNEBlocks.SOULED_GEYSER.get());
+            tag(BlockTags.PIGLIN_REPELLENTS).add(JNEBlocks.SOUL_CANDLE.get(), JNEBlocks.SOUL_SKELETON_SKULL_CANDLE.get(), JNEBlocks.GHOUL_O_LANTERN.get());
+            tag(BlockTags.PLANKS).add(JNEBlocks.CLARET_PLANKS.get());
+            tag(BlockTags.REPLACEABLE).add(JNEBlocks.SOUL_SWIRLS.get());
+            tag(BlockTags.SLABS).add(JNEBlocks.SOUL_SLATE_SLAB.get(), JNEBlocks.SOUL_SLATE_BRICK_SLAB.get(), JNEBlocks.SOUL_SLATE_TILE_SLAB.get(), JNEBlocks.SMOOTH_NETHERRACK_SLAB.get(), JNEBlocks.NETHERRACK_BRICK_SLAB.get(), JNEBlocks.BASALT_SLAB.get(), JNEBlocks.POLISHED_BASALT_SLAB.get(), JNEBlocks.POLISHED_BASALT_BRICK_SLAB.get(), JNEBlocks.BLUE_NETHER_BRICK_SLAB.get(), JNEBlocks.STACKED_BONE_SLAB.get(), JNEBlocks.STACKED_WITHER_BONE_SLAB.get(), JNEBlocks.CUT_NETHERITE_SLAB.get(), JNEBlocks.RUSTY_CUT_NETHERITE_SLAB.get());
+            tag(BlockTags.SMALL_FLOWERS).add(JNEBlocks.SOUL_TORCHFLOWER.get());
+            tag(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON).add(JNEBlocks.ECTO_SOUL_SAND.get());
+            tag(BlockTags.SNOW_LAYER_CANNOT_SURVIVE_ON).addTag(JNETags.Blocks.GEYSERS);
+            tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(JNEBlocks.SORROWEED.get(), JNEBlocks.SOUL_SOIL_LAYER.get(), JNEBlocks.SOUL_SLATE.get(), JNEBlocks.SOUL_SLATE_SLAB.get(), JNEBlocks.SOUL_SLATE_STAIRS.get(), JNEBlocks.SOUL_SLATE_WALL.get(), JNEBlocks.PALE_SOUL_SLATE.get(), JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICK_SLAB.get(), JNEBlocks.SOUL_SLATE_BRICK_STAIRS.get(), JNEBlocks.SOUL_SLATE_BRICK_WALL.get(), JNEBlocks.ETCHED_SOUL_SLATE_BRICKS.get(), JNEBlocks.CRACKED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICK_PILLAR.get(), JNEBlocks.CHISELED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_SLATE_TILE_SLAB.get(), JNEBlocks.SOUL_SLATE_TILE_STAIRS.get(), JNEBlocks.SOUL_SLATE_TILE_WALL.get(), JNEBlocks.ETCHED_SOUL_SLATE_TILES.get(), JNEBlocks.CHISELED_SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_GLASS.get(), JNEBlocks.ECTO_SOUL_SAND.get(), JNEBlocks.SOUL_MAGMA_BLOCK.get(), JNEBlocks.SOULED_GEYSER.get(), JNEBlocks.BLACK_ICE.get(), JNEBlocks.THIN_BLACK_ICE.get(), JNEBlocks.FOSSIL_ORE.get(), JNEBlocks.FOSSIL_FUEL_ORE.get(), JNEBlocks.SOUL_PATH.get(), JNEBlocks.WRAITHING_LESION.get(), JNEBlocks.SOUL_PERMAFROST.get());
+            tag(BlockTags.SOUL_SPEED_BLOCKS).add(JNEBlocks.SORROWEED.get(), JNEBlocks.SOUL_SOIL_LAYER.get(), JNEBlocks.SOUL_SLATE.get(), JNEBlocks.SOUL_SLATE_SLAB.get(), JNEBlocks.SOUL_SLATE_STAIRS.get(), JNEBlocks.SOUL_SLATE_WALL.get(), JNEBlocks.PALE_SOUL_SLATE.get(), JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICK_SLAB.get(), JNEBlocks.SOUL_SLATE_BRICK_STAIRS.get(), JNEBlocks.SOUL_SLATE_BRICK_WALL.get(), JNEBlocks.ETCHED_SOUL_SLATE_BRICKS.get(), JNEBlocks.CRACKED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICK_PILLAR.get(), JNEBlocks.CHISELED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_SLATE_TILE_SLAB.get(), JNEBlocks.SOUL_SLATE_TILE_STAIRS.get(), JNEBlocks.SOUL_SLATE_TILE_WALL.get(), JNEBlocks.ETCHED_SOUL_SLATE_TILES.get(), JNEBlocks.CHISELED_SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_GLASS.get(), JNEBlocks.ECTO_SOUL_SAND.get(), JNEBlocks.SOUL_MAGMA_BLOCK.get(), JNEBlocks.SOULED_GEYSER.get(), JNEBlocks.BLACK_ICE.get(), JNEBlocks.THIN_BLACK_ICE.get(), JNEBlocks.FOSSIL_ORE.get(), JNEBlocks.FOSSIL_FUEL_ORE.get(), JNEBlocks.SOUL_PATH.get(), JNEBlocks.WRAITHING_LESION.get(), JNEBlocks.SOUL_PERMAFROST.get());
+            tag(BlockTags.STAIRS).add(JNEBlocks.SOUL_SLATE_STAIRS.get(), JNEBlocks.SOUL_SLATE_BRICK_STAIRS.get(), JNEBlocks.SOUL_SLATE_TILE_STAIRS.get(), JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get(), JNEBlocks.NETHERRACK_BRICK_STAIRS.get(), JNEBlocks.BLUE_NETHER_BRICK_STAIRS.get(), JNEBlocks.STACKED_BONE_STAIRS.get(), JNEBlocks.STACKED_WITHER_BONE_STAIRS.get(), JNEBlocks.BASALT_STAIRS.get(), JNEBlocks.POLISHED_BASALT_STAIRS.get(), JNEBlocks.POLISHED_BASALT_BRICK_STAIRS.get(), JNEBlocks.CUT_NETHERITE_STAIRS.get(), JNEBlocks.RUSTY_CUT_NETHERITE_STAIRS.get());
+            tag(BlockTags.STANDING_SIGNS).add(JNEBlocks.CLARET_SIGN.get());
+            tag(BlockTags.SWORD_EFFICIENT).add(JNEBlocks.SORROWSQUASH_STEM.get(), JNEBlocks.SORROWSQUASH_STEM_PLANT.get(), JNEBlocks.SORROWSQUASH.get(), JNEBlocks.CARVED_SORROWSQUASH.get(), JNEBlocks.GHOUL_O_LANTERN.get());
+            tag(BlockTags.WALL_HANGING_SIGNS).add(JNEBlocks.CLARET_WALL_HANGING_SIGN.get());
+            tag(BlockTags.WALL_SIGNS).add(JNEBlocks.CLARET_WALL_SIGN.get());
+            tag(BlockTags.WALLS).add(JNEBlocks.SOUL_SLATE_WALL.get(), JNEBlocks.SOUL_SLATE_BRICK_WALL.get(), JNEBlocks.SOUL_SLATE_TILE_WALL.get(), JNEBlocks.BLUE_NETHER_BRICK_WALL.get(), JNEBlocks.SMOOTH_NETHERRACK_WALL.get(), JNEBlocks.NETHERRACK_BRICK_WALL.get(), JNEBlocks.BASALT_WALL.get(), JNEBlocks.POLISHED_BASALT_WALL.get(), JNEBlocks.POLISHED_BASALT_BRICK_WALL.get());
+            tag(BlockTags.WITHER_SUMMON_BASE_BLOCKS).add(JNEBlocks.SORROWEED.get(), JNEBlocks.ECTO_SOUL_SAND.get(), JNEBlocks.SOUL_PERMAFROST.get());
+            tag(BlockTags.WOODEN_BUTTONS).add(JNEBlocks.CLARET_BUTTON.get());
+            tag(BlockTags.WOODEN_DOORS).add(JNEBlocks.CLARET_DOOR.get());
+            tag(BlockTags.WOODEN_FENCES).add(JNEBlocks.CLARET_FENCE.get());
+            tag(BlockTags.WOODEN_PRESSURE_PLATES).add(JNEBlocks.CLARET_PRESSURE_PLATE.get());
+            tag(BlockTags.WOODEN_SLABS).add(JNEBlocks.CLARET_SLAB.get());
+            tag(BlockTags.WOODEN_STAIRS).add(JNEBlocks.CLARET_STAIRS.get());
+            tag(BlockTags.WOODEN_TRAPDOORS).add(JNEBlocks.CLARET_TRAPDOOR.get());
         }
     }
-
 }

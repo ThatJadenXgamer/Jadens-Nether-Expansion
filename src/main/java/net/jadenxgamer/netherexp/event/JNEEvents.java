@@ -2,8 +2,6 @@ package net.jadenxgamer.netherexp.event;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
-import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
-import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.data.JNEAdvancementProvider;
@@ -20,8 +18,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.server.packs.PackType;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoader;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -37,8 +33,6 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
-import static net.jadenxgamer.netherexp.config.JNEConfigs.NETHER_WORLDGEN_OVERHAUL;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID)
@@ -111,7 +105,7 @@ public class JNEEvents {
                     new JNEAdvancementProvider(output, lookupProvider, fileHelper),
                     new JNELootTableProvider(output, lookupProvider),
                     new JNERecipeProvider(output, lookupProvider),
-                    new JNETagProviders.BlockTags(output, lookupProvider, fileHelper)
+                    new JNETagProviders.Block(output, lookupProvider, fileHelper)
             ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
         }
     }

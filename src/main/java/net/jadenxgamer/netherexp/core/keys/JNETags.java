@@ -45,6 +45,7 @@ public class JNETags {
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createTag("unbounded_speed_blocks");
         public static final TagKey<Block> WART_BEARD_FEATURE_VALID = createTag("wart_beard_feature_valid");
         public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createTag("weeping_vines_feature_valid");
+        public static final TagKey<Block> GEYSERS = createTag("geysers");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));
@@ -105,6 +106,8 @@ public class JNETags {
 
     public static class DamageTypes {
         public static final TagKey<DamageType> OVERKILL_VALID = createDamageTypeTag("overkill_valid");
+        public static final TagKey<DamageType> CAN_DISRUPT_UNDERGROUND_ECTO_SLABS = createDamageTypeTag("can_disrupt_underground_ecto_slabs");
+        public static final TagKey<DamageType> IS_SUFFOCATION = createDamageTypeTag("is_suffocation");
 
         protected static TagKey<DamageType> createDamageTypeTag(String name) {
             return TagKey.create(Registries.DAMAGE_TYPE, NetherExp.id(name));
