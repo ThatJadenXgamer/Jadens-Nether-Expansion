@@ -104,14 +104,14 @@ public class JNEEvents {
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
             CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-//            generator.addProvider(
-//                    event.includeServer(),
-//                    new JNERecipeProvider(output, lookupProvider)
-//            );
-//            generator.addProvider(
-//                    event.includeServer(),
-//                    new JNEAdvancementProvider(output, lookupProvider, fileHelper)
-//            );
+            generator.addProvider(
+                    event.includeServer(),
+                    new JNERecipeProvider(output, lookupProvider)
+            );
+            generator.addProvider(
+                    event.includeServer(),
+                    new JNEAdvancementProvider(output, lookupProvider, fileHelper)
+            );
             generator.addProvider(
                     event.includeServer(),
                     new JNELootTableProvider(output, lookupProvider)
