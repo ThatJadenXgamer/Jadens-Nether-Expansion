@@ -667,7 +667,7 @@ public class JNEBlocks {
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.HONEYCOMB_BLOCK).sound(JNESoundType.ANCIENT_WAX)));
 
     public static final Supplier<Block> ANCIENT_FIRE = registerBlockWithoutItem("ancient_fire", () ->
-            new AncientFireBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 9)));
+            new AncientFireBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 9).noLootTable()));
 
     public static final Supplier<Block> ANCIENT_TORCH = registerBlockWithoutItem("ancient_torch", () ->
             new JNETorchBlock.Standing(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.TORCH).mapColor(MapColor.COLOR_RED).lightLevel(state -> 9)));
