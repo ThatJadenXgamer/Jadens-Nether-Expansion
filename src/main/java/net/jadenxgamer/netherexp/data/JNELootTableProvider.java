@@ -3,17 +3,21 @@ package net.jadenxgamer.netherexp.data;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.FrogVariant;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
@@ -22,14 +26,16 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.*;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -39,13 +45,16 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class JNELootTableProvider extends LootTableProvider {
 
     public JNELootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, Set.of(), List.of(
                 new SubProviderEntry(ArchaeologyLoot::new, LootContextParamSets.ARCHAEOLOGY),
-                new SubProviderEntry(BlockLoot::new, LootContextParamSets.BLOCK)
+                new SubProviderEntry(BlockLoot::new, LootContextParamSets.BLOCK),
+                new SubProviderEntry(EntityLoot::new, LootContextParamSets.ENTITY),
+                new SubProviderEntry(BrazierChestLoot::new, LootContextParamSets.EMPTY)
         ), registries);
     }
 
@@ -456,6 +465,88 @@ public class JNELootTableProvider extends LootTableProvider {
             dropSelf(JNEBlocks.PEARLESCENT_FROGMIST.get());
             dropSelf(JNEBlocks.VERDANT_FROGMIST.get());
         }
+    }
+
+    private record BrazierChestLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
+
+        @Override
+        public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
+            output.accept(key("exposed"), LootTable.lootTable()
+                    .withPool(LootPool.lootPool().add(item(JNEItems.SEALED_POTTERY_SHERD.get(), 2)).add(item(JNEItems.ELDRITCH_POTTERY_SHERD.get(), 2)).add(item(JNEItems.DECEPTION_POTTERY_SHERD.get(), 2)).add(item(JNEItems.BOTANICAL_POTTERY_SHERD.get(), 1)).add(item(JNEItems.FIREARM_POTTERY_SHERD.get(), 1)))
+                    .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2, 5)).add(item(Items.SKELETON_SKULL, 1)).add(item(JNEItems.STRIDITE.get(), 8, 1, 2)).add(item(JNEItems.WRAITHING_FLESH.get(), 10, 5, 7)).add(item(JNEItems.PHASMO_ARROW.get(), 10, 3, 18)).add(item(Items.IRON_INGOT, 15, 2, 4)).add(item(Items.DIAMOND, 7, 1, 5)).add(item(Items.IRON_BLOCK, 3, 1, 2)).add(item(JNEItems.WILL_O_WISP.get(), 5, 2, 6)))
+                    .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(2)).add(item(Items.EXPERIENCE_BOTTLE, 15, 4, 7)).add(item(Items.IRON_NUGGET, 10, 1, 3)))
+                    .withPool(LootPool.lootPool()
+                                      .setRolls(ConstantValue.exactly(2))
+                                      .add(item(Items.BOOK, 15).apply(EnchantRandomlyFunction.randomEnchantment()))
+                                      .add(item(Items.BOOK, 4).apply(EnchantRandomlyFunction.randomEnchantment().withEnchantment(registries.holderOrThrow(Enchantments.MENDING))))
+                                      // TODO: IMPLEMENT ENCHANTMENTS
+                                      // .add(item(Items.BOOK, 4).apply(EnchantRandomlyFunction.randomEnchantment().withEnchantment(registries.holderOrThrow(JNEEnchantments.PHANTASM_HULL))))
+                                      .add(item(Items.BOOK, 6).apply(EnchantRandomlyFunction.randomEnchantment().withOneOf(HolderSet.direct(registries::holderOrThrow, Enchantments.SILK_TOUCH, Enchantments.EFFICIENCY, Enchantments.FORTUNE, Enchantments.SWEEPING_EDGE))))
+                                      // TODO: IMPLEMENT ENCHANTMENTS
+                                      // .add(item(Items.BOOK, 8).apply(EnchantRandomlyFunction.randomEnchantment().withOneOf(HolderSet.direct(registries::holderOrThrow, JNEEnchantments.RECOIL, JNEEnchantments.BARRAGE, JNEEnchantments.CARTRIDGE))))
+                    )
+                    .withPool(LootPool.lootPool().add(EmptyLootItem.emptyItem().setWeight(65)).add(item(JNEItems.ANCIENT_WAX.get(), 45, 1, 2)).add(item(JNEItems.VALOR_ARMOR_TRIM_SMITHING_TEMPLATE.get(), 25)).add(item(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), 5)).add(item(JNEItems.SHOTGUN_CORE.get(), 8)).add(item(Items.ANCIENT_DEBRIS, 25, 1, 2)))
+                    .withPool(LootPool.lootPool().add(item(Items.BRUSH, 1).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(5, 32))).when(LootItemRandomChanceCondition.randomChance(0.15f)))));
+            output.accept(key("hidden"), LootTable.lootTable()
+                    .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2, 5)).add(item(Items.SKELETON_SKULL, 1)).add(item(JNEItems.STRIDITE.get(), 8, 1, 2)).add(item(JNEItems.WRAITHING_FLESH.get(), 10, 5, 7)).add(item(JNEItems.PHASMO_ARROW.get(), 10, 3, 18)).add(item(Items.IRON_INGOT, 15, 2, 4)).add(item(Items.DIAMOND, 7, 1, 5)).add(item(Items.IRON_BLOCK, 3, 1, 2)).add(item(JNEItems.WILL_O_WISP.get(), 5, 2, 6)))
+                    .withPool(LootPool.lootPool().add(item(JNEItems.SEALED_POTTERY_SHERD.get(), 2)).add(item(JNEItems.ELDRITCH_POTTERY_SHERD.get(), 2)).add(item(JNEItems.DECEPTION_POTTERY_SHERD.get(), 2)).add(item(JNEItems.BOTANICAL_POTTERY_SHERD.get(), 1)).add(item(JNEItems.FIREARM_POTTERY_SHERD.get(), 1)))
+                    .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(2)).add(item(Items.EXPERIENCE_BOTTLE, 15, 4, 7)))
+                    .withPool(LootPool.lootPool()
+                                      .setRolls(ConstantValue.exactly(2))
+                                      .add(item(Items.BOOK, 5).apply(EnchantRandomlyFunction.randomEnchantment().withOneOf(HolderSet.direct(registries::holderOrThrow, Enchantments.SHARPNESS, Enchantments.SWEEPING_EDGE, Enchantments.PROTECTION, Enchantments.LOOTING))))
+                                      .add(item(Items.BOOK, 15).apply(EnchantRandomlyFunction.randomEnchantment()))
+                                      .add(item(Items.BOOK, 4).apply(EnchantRandomlyFunction.randomEnchantment().withEnchantment(registries.holderOrThrow(Enchantments.MENDING))))
+                                      // TODO: IMPLEMENT ENCHANTMENTS
+                                      // .add(item(Items.BOOK, 5).apply(EnchantRandomlyFunction.randomEnchantment().withEnchantment(registries.holderOrThrow(JNEEnchantments.PHANTASM_HULL))))
+                                      .add(item(Items.BOOK, 6).apply(EnchantRandomlyFunction.randomEnchantment().withOneOf(HolderSet.direct(registries::holderOrThrow, Enchantments.SILK_TOUCH, Enchantments.EFFICIENCY, Enchantments.FORTUNE, Enchantments.SWEEPING_EDGE))))
+                                      // TODO: IMPLEMENT ENCHANTMENTS
+                                      // .add(item(Items.BOOK, 6).apply(EnchantRandomlyFunction.randomEnchantment().withOneOf(HolderSet.direct(registries::holderOrThrow, JNEEnchantments.RECOIL, JNEEnchantments.BARRAGE, JNEEnchantments.CARTRIDGE, Enchantments.QUICK_CHARGE))))
+                    )
+                    .withPool(LootPool.lootPool().add(EmptyLootItem.emptyItem().setWeight(50)).add(item(JNEItems.ANCIENT_WAX.get(), 45, 1, 2)).add(item(JNEItems.VALOR_ARMOR_TRIM_SMITHING_TEMPLATE.get(), 25)).add(item(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), 15)).add(item(JNEItems.SHOTGUN_CORE.get(), 10)).add(item(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get(), 8)).add(item(Items.ANCIENT_DEBRIS, 25, 1, 4))).withPool(LootPool.lootPool().add(EmptyLootItem.emptyItem().setWeight(5)).add(item(Items.POTION, 1).apply(SetPotionFunction.setPotion(Potions.STRENGTH))).add(item(Items.POTION, 1, 2).apply(SetPotionFunction.setPotion(Potions.REGENERATION))).add(item(Items.POTION, 1).apply(SetPotionFunction.setPotion(Potions.INVISIBILITY)))).withPool(LootPool.lootPool().add(item(Items.BRUSH, 1).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(5, 32))).when(LootItemRandomChanceCondition.randomChance(0.15f)))));
+        }
+
+        private ResourceKey<LootTable> key(String name) {
+            return ResourceKey.create(Registries.LOOT_TABLE, NetherExp.id("brazier_chest/" + name));
+        }
+    }
+
+    private static final class EntityLoot extends EntityLootSubProvider {
+
+        EntityLoot(HolderLookup.Provider registries) {
+            super(FeatureFlags.DEFAULT_FLAGS, registries);
+        }
+
+        @Override
+        protected Stream<EntityType<?>> getKnownEntityTypes() {
+            return JNEEntityType.ENTITY_TYPES.getEntries().stream().map(Supplier::get);
+        }
+
+        @Override
+        public void generate() {
+            add(JNEEntityType.WISP.get(), noDrop());
+            add(JNEEntityType.APPARITION.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(item(Items.CHAIN, 1, 0, 2).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, 1))))));
+            add(JNEEntityType.VESSEL.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.WRAITHING_FLESH.get(), 1, 2, 4))))
+                    .withPool(LootPool.lootPool().add(applyLooting(registries, item(Items.BONE, 1, 0, 2)))));
+            // TODO: IMPLEMENT BANSHEE
+            // add(JNEEntityType.BANSHEE.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.BANSHEE_ROD.get(), 1, 0, 1))).when(LootItemKilledByPlayerCondition.killedByPlayer())));
+            // TODO: IMPLEMENT ECTO SLAB
+            // add(JNEEntityType.ECTO_SLAB.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.PHASMO_SHARD.get(), 1, 0, 2)).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG))).invert()).when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(SlimePredicate.sized(MinMaxBounds.Ints.atLeast(2)))))).add(item(JNEBlocks.PEARLESCENT_FROGMIST.get(), 1, 1, 8).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG).subPredicate(EntitySubPredicates.frogVariant(registries.holderOrThrow(FrogVariant.WARM))))))).add(item(JNEBlocks.VERDANT_FROGMIST.get(), 1, 1, 8).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG).subPredicate(EntitySubPredicates.frogVariant(registries.holderOrThrow(FrogVariant.COLD))))))).add(item(JNEBlocks.OCHRE_FROGMIST.get(), 1, 1, 8).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG).subPredicate(EntitySubPredicates.frogVariant(registries.holderOrThrow(FrogVariant.TEMPERATE)))))))));
+            // TODO: IMPLEMENT WARPHOPPER
+            // add(JNEEntityType.WARPHOPPER.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(applyLooting(registries, item(Items.MUTTON, 1, 5, 7), 2).apply(SmeltItemFunction.smelted().when(shouldSmeltLoot())))).withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.WARPHOPPER_FUR, 1, 3, 5), 2))));
+        }
+    }
+
+    private static LootTable.Builder noDrop() {
+        return LootTable.lootTable();
+    }
+
+    private static <T extends FunctionUserBuilder<T>> T applyLooting(HolderLookup.Provider registries, FunctionUserBuilder<T> builder) {
+        return applyLooting(registries, builder, 1);
+    }
+
+    private static <T extends FunctionUserBuilder<T>> T applyLooting(HolderLookup.Provider registries, FunctionUserBuilder<T> builder, float level) {
+        return builder.apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, level)));
     }
 
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight) {
