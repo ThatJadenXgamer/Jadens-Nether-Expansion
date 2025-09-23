@@ -15,15 +15,12 @@ public class JNETags {
 
     public static class Blocks {
 
-        // Do this like Biomes or do Biomes like this?
-        public static class Sounds {
-            public static final TagKey<Block> BLACKSTONE = createTag("sounds/blackstone");
-            public static final TagKey<Block> GLOWSTONE = createTag("sounds/glowstone");
-            public static final TagKey<Block> MAGMA_BLOCK = createTag("sounds/magma_block");
-            public static final TagKey<Block> POLISHED_BLACKSTONE_BRICKS = createTag("sounds/polished_blackstone_bricks");
-            public static final TagKey<Block> QUARTZ_BLOCK = createTag("sounds/quartz_block");
-        }
 
+        public static final TagKey<Block> SOUNDS_BLACKSTONE = createTag("sounds/blackstone");
+        public static final TagKey<Block> SOUNDS_GLOWSTONE = createTag("sounds/glowstone");
+        public static final TagKey<Block> SOUNDS_MAGMA_BLOCK = createTag("sounds/magma_block");
+        public static final TagKey<Block> SOUNDS_POLISHED_BLACKSTONE_BRICKS = createTag("sounds/polished_blackstone_bricks");
+        public static final TagKey<Block> SOUNDS_QUARTZ_BLOCK = createTag("sounds/quartz_block");
         public static final TagKey<Block> SOUL_SANDS = createTag("soul_sands"); // Soul Sand blocks
         public static final TagKey<Block> SOUL_CROP_MUTATION_BLOCKS = createTag("soul_crop_mutation_blocks"); // Blocks which mutate crops into soul variants when planted on
         public static final TagKey<Block> SORROWEED_REPLACEABLE = createTag("sorroweed_replaceable"); // Blocks that can be tainted by sorroweed
@@ -103,13 +100,13 @@ public class JNETags {
         public static final TagKey<Biome> HAS_WARPED_SPORES = createTag("particles/has_warped_spores"); // Prevents sporeshrooms from producing warped spores here
         public static final TagKey<Biome> HAS_ASH = createTag("particles/has_ash"); // Prevents geysers from producing ash particles here
         public static final TagKey<Biome> HAS_WHITE_ASH = createTag("particles/has_white_ash"); // Prevents geysers from producing white ash particles here
-        public static final TagKey<Biome> SOUL_SAND_VALLEYS = createTag("soul_sand_valleys");
         public static final TagKey<Biome> HAS_CHAPEL = createTag("has_structure/chapel");
         public static final TagKey<Biome> HAS_DEVILS_BLUFF = createTag("has_structure/devils_bluff");
         public static final TagKey<Biome> HAS_ICE_RIBS = createTag("has_structure/ice_ribs");
         public static final TagKey<Biome> HAS_MEGA_FOSSIL = createTag("has_structure/mega_fossil");
         public static final TagKey<Biome> HAS_QUARTZ_SPELEOTHEM = createTag("has_structure/quartz_speleothem");
         public static final TagKey<Biome> HAS_SANCTUM = createTag("has_structure/sanctum");
+        public static final TagKey<Biome> SOUL_SAND_VALLEYS = createTag("soul_sand_valleys");
 
         private static TagKey<Biome> createTag(String name) {
             return TagKey.create(Registries.BIOME, NetherExp.id(name));
