@@ -30,7 +30,8 @@ public class JNEDataGen {
                 JNEEntityTypeTagsProvider::new,
                 JNEFluidTypeTagsProvider::new,
                 JNEBiomeTagsProvider::new,
-                JNEPaintingVariantTagsProvider::new
+                JNEPaintingVariantTagsProvider::new,
+                JNEStructureTagsProvider::new
         );
 
         factories.forEach(factory -> event.addProvider(
