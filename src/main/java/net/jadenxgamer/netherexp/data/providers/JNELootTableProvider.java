@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.data;
+package net.jadenxgamer.netherexp.data.providers;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.block.*;
@@ -40,6 +40,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,7 @@ import java.util.stream.Stream;
 
 public class JNELootTableProvider extends LootTableProvider {
 
-    public JNELootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public JNELootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper fileHelper) {
         super(output, Set.of(), List.of(
                 new SubProviderEntry(ArchaeologyLoot::new, LootContextParamSets.ARCHAEOLOGY),
                 new SubProviderEntry(BrazierChestLoot::new, LootContextParamSets.EMPTY),

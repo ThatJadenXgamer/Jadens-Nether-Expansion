@@ -105,10 +105,8 @@ public class JNEEvents {
 
         @SubscribeEvent
         public static void gatherData(GatherDataEvent event) {
-            DataGenerator generator = event.getGenerator();
-            PackOutput output = generator.getPackOutput();
+            PackOutput output = event.getGenerator().getPackOutput();
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
-            CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
             // Datapack DataGen
             event.createDatapackRegistryObjects(
@@ -117,24 +115,7 @@ public class JNEEvents {
                             .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap),
                     Set.of(NetherExp.MOD_ID));
 
-            lookupProvider = event.getLookupProvider();
-
-            // Server DataGen
-            List.of(
-                    new JNEAdvancementProvider(output, lookupProvider, fileHelper),
-                    new JNELootTableProvider(output, lookupProvider),
-                    new JNERecipeProvider(output, lookupProvider),
-                    new JNETagProviders.DamageTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.BiomeTagProvider(output, lookupProvider, fileHelper)
-            ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
-
-            // We need this for the ItemTagProvider
-            TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new JNETagProviders.BlockTagProvider(output, lookupProvider,fileHelper));
-
-            generator.addProvider(event.includeServer(), new JNETagProviders.ItemTagProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), fileHelper));
-            generator.addProvider(event.includeServer(), new JNEDataMapProvider(output, lookupProvider));
+            if (event.includeServer()) JNEDataGen.serverData(event, output, fileHelper);
         }
     }
 }

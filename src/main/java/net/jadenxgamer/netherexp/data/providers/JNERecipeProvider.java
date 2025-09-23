@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.data;
+package net.jadenxgamer.netherexp.data.providers;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class JNERecipeProvider extends RecipeProvider {
 
-    public JNERecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public JNERecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper fileHelper) {
         super(output, registries);
     }
 
@@ -211,7 +212,6 @@ public class JNERecipeProvider extends RecipeProvider {
 
         // ## Ancient Fire
         transformEight(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.ANCIENT_WAX_BLOCK.get(), Blocks.HONEYCOMB_BLOCK, JNEItems.ANCIENT_WAX.get());
-        //TODO: MOVE
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, JNEItems.ANCIENT_TORCH.get(), 4).define('X', Ingredient.of(Items.COAL, Items.CHARCOAL, JNEItems.FOSSIL_FUEL.get())).define('#', Items.STICK).define('A', JNEItems.ANCIENT_WAX.get()).pattern("X").pattern("#").pattern("A").unlockedBy("has_ancient_wax", has(JNEItems.ANCIENT_WAX.get())).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, JNEBlocks.ANCIENT_LANTERN.get()).define('#', JNEItems.ANCIENT_TORCH.get()).define('X', Items.IRON_NUGGET).pattern("XXX").pattern("X#X").pattern("XXX").unlockedBy("has_ancient_wax", has(JNEItems.ANCIENT_WAX.get())).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, JNEBlocks.ANCIENT_CAMPFIRE.get()).define('L', ItemTags.LOGS).define('S', Items.STICK).define('#', JNEItems.ANCIENT_WAX.get()).pattern(" S ").pattern("S#S").pattern("LLL").unlockedBy("has_ancient_wax", has(JNEItems.ANCIENT_WAX.get())).save(output);
