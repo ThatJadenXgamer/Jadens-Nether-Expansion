@@ -126,7 +126,8 @@ public class JNEEvents {
                     new JNERecipeProvider(output, lookupProvider),
                     new JNETagProviders.DamageTypeTagProvider(output, lookupProvider, fileHelper),
                     new JNETagProviders.EntityTypeTagProvider(output, lookupProvider, fileHelper),
-                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper)
+                    new JNETagProviders.FluidTypeTagProvider(output, lookupProvider, fileHelper),
+                    new JNETagProviders.BiomeTagProvider(output, lookupProvider, fileHelper)
             ).forEach(provider -> generator.addProvider(event.includeServer(), provider));
 
             // We need this for the ItemTagProvider

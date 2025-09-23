@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "remove": [
-    "minecraft:soul_sand_valley",
-    "netherexp:black_ice_glaciers"
-  ]
-}
