@@ -292,6 +292,11 @@ public interface JNETagProviders {
                     // TODO: IMPLEMENT BLACK ICE GLACIERS
                     // .add(JNEBiomes.BLACK_ICE_GLACIERS)
             ;
+            tag(JNETags.Biomes.HAS_MEGA_FOSSIL)
+                    .add(Biomes.SOUL_SAND_VALLEY)
+                    // TODO: IMPLEMENT BLACK ICE GLACIERS
+                    // .add(JNEBiomes.BLACK_ICE_GLACIERS)
+            ;
             tag(JNETags.Biomes.HAS_QUARTZ_SPELEOTHEM).add(Biomes.NETHER_WASTES);
             tag(JNETags.Biomes.HAS_SANCTUM)
                     .add(Biomes.SOUL_SAND_VALLEY)
