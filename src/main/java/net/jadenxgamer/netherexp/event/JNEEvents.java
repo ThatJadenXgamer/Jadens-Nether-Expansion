@@ -132,7 +132,7 @@ public class JNEEvents {
             // We need this for the ItemTagProvider
             TagsProvider<Block> blockTagsProvider = generator.addProvider(event.includeServer(), new JNETagProviders.BlockTagProvider(output, lookupProvider,fileHelper));
 
-            generator.addProvider(event.includeServer(), new JNETagProviders.ItemTagProvider(output, lookupProvider, blockTagsProvider.contentsGetter()));
+            generator.addProvider(event.includeServer(), new JNETagProviders.ItemTagProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), fileHelper));
             generator.addProvider(event.includeServer(), new JNEDataMapProvider(output, lookupProvider));
         }
     }

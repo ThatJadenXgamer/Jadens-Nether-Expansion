@@ -14,10 +14,7 @@ import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.*;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -27,9 +24,11 @@ import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.checkerframework.checker.units.qual.Force;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 
 public interface JNETagProviders {
 
@@ -218,8 +217,8 @@ public interface JNETagProviders {
 
     final class ItemTagProvider extends ItemTagsProvider {
 
-        public ItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags) {
-            super(output, lookupProvider, blockTags);
+        public ItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, ExistingFileHelper existingFileHelper) {
+            super(output, lookupProvider, blockTags, NetherExp.MOD_ID, existingFileHelper);
         }
 
         @Override
@@ -228,8 +227,9 @@ public interface JNETagProviders {
             copy(JNETags.Blocks.CLARET_STEMS, JNETags.Items.CLARET_STEMS);
             tag(JNETags.Items.COOKED_HOGHAM).add(JNEItems.COOKED_HOGHAM.get());
             tag(JNETags.Items.DOESNT_MODIFY_POTION_STACK_SIZE).addOptional(ResourceLocation.fromNamespaceAndPath("caverns_and_chasms", "tether_potion"));
-            // Having to use addOptional for specifically vanilla tags is a workaround for either a bug or my own incompetence.
-            tag(JNETags.Items.FROGMIST_VISIBLE_ITEMS).addOptionalTag(ItemTags.HOES).addTag(JNETags.Items.FROGMISTS);
+
+            tag(JNETags.Items.FROGMIST_VISIBLE_ITEMS).addTag(JNETags.Items.FROGMISTS).addTag(ItemTags.HOES);
+
             copy(JNETags.Blocks.FROGMISTS, JNETags.Items.FROGMISTS);
             tag(JNETags.Items.GLOWSPORES).add(JNEItems.NIGHTSPORES.get(), JNEItems.LIGHTSPORES.get());
             tag(JNETags.Items.SHOTGUNS).add(JNEItems.SHOTGUN_FIST.get(), JNEItems.PUMP_CHARGE_SHOTGUN.get());
