@@ -29,7 +29,8 @@ public class JNEDataGen {
                 JNEDamageTypeTagsProvider::new,
                 JNEEntityTypeTagsProvider::new,
                 JNEFluidTypeTagsProvider::new,
-                JNEBiomeTagsProvider::new
+                JNEBiomeTagsProvider::new,
+                JNEPaintingVariantTagsProvider::new
         );
 
         factories.forEach(factory -> event.addProvider(
