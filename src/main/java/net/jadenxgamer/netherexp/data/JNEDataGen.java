@@ -36,7 +36,8 @@ public class JNEDataGen {
                 new RegistrySetBuilder()
                         .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap)
                         .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap)
-                        .add(Registries.CONFIGURED_FEATURE, JNEConfiguredFeatures::bootstrap),
+                        .add(Registries.CONFIGURED_FEATURE, JNEConfiguredFeatures::bootstrap)
+                        .add(Registries.JUKEBOX_SONG, JNEJukeboxSongs::bootstrap),
                 Set.of(NetherExp.MOD_ID, "minecraft"));
     }
 
