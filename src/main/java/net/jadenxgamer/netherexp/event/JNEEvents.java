@@ -6,27 +6,20 @@ import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
+import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.jadenxgamer.netherexp.data.*;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNERegistries;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.data.DataMapProvider;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -38,11 +31,7 @@ import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
-import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID)
@@ -108,14 +97,12 @@ public class JNEEvents {
             PackOutput output = event.getGenerator().getPackOutput();
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
-            // Datapack DataGen
-            event.createDatapackRegistryObjects(
-                    new RegistrySetBuilder()
-                            .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap)
-                            .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap),
-                    Set.of(NetherExp.MOD_ID));
 
-            if (event.includeServer()) JNEDataGen.serverData(event, output, fileHelper);
+            if (event.includeServer() || event.includeClient() || event.includeDev())
+                JNEDataGen.registryData(event);
+
+            if (event.includeServer())
+                JNEDataGen.serverData(event, output, fileHelper);
         }
     }
 }
