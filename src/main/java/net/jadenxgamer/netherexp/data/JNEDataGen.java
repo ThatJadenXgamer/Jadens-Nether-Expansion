@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.data;
 
 import net.jadenxgamer.netherexp.data.providers.JNEAdvancementProvider;
 import net.jadenxgamer.netherexp.data.providers.JNEDataMapProvider;
-import net.jadenxgamer.netherexp.data.providers.JNELootTableProvider;
+import net.jadenxgamer.netherexp.data.providers.loot.JNELootTableProvider;
 import net.jadenxgamer.netherexp.data.providers.JNERecipeProvider;
 import net.jadenxgamer.netherexp.data.providers.tags.*;
 import net.minecraft.core.HolderLookup;
