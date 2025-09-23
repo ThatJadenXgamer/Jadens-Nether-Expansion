@@ -35,7 +35,8 @@ public class JNEDataGen {
         event.createDatapackRegistryObjects(
                 new RegistrySetBuilder()
                         .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap)
-                        .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap),
+                        .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap)
+                        .add(Registries.CONFIGURED_FEATURE, JNEConfiguredFeatures::bootstrap),
                 Set.of(NetherExp.MOD_ID, "minecraft"));
     }
 
