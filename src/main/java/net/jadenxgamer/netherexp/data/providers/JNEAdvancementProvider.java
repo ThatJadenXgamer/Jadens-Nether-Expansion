@@ -40,10 +40,6 @@ public class JNEAdvancementProvider extends AdvancementProvider {
         @Override
         public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver, ExistingFileHelper existingFileHelper) {
 
-            HolderGetter<Biome> biomeGetter = registries.lookupOrThrow(Registries.BIOME);
-            HolderGetter<Structure> structureGetter = registries.lookupOrThrow(Registries.STRUCTURE);
-            HolderGetter<MobEffect> effectGetter = registries.lookupOrThrow(Registries.MOB_EFFECT);
-
             AdvancementHolder root = AdvancementSubProvider.createPlaceholder("nether/root");
 
             AdvancementHolder add_spores_to_block = taskBuilder(JNEItems.NIGHTSPORES.get(), "add_spores_to_block", root)
@@ -59,7 +55,7 @@ public class JNEAdvancementProvider extends AdvancementProvider {
 
             AdvancementHolder soul_sand_valley = unannouncedTaskBuilder(Items.SOUL_SAND, "soul_sand_valley", root)
                     .addCriterion("soul_sand_valley_entered", PlayerTrigger.TriggerInstance.located(
-                            LocationPredicate.Builder.inBiome(biomeGetter.getOrThrow(Biomes.SOUL_SAND_VALLEY))
+                            LocationPredicate.Builder.inBiome(registries.holderOrThrow(Biomes.SOUL_SAND_VALLEY))
                     )).save(saver, NetherExp.id("nether/soul_sand_valley"), existingFileHelper);
 
             AdvancementHolder emf_raider = goalBuilder(JNEItems.SANCTUM_COMPASS.get(), "emf_raider", soul_sand_valley)
@@ -72,7 +68,7 @@ public class JNEAdvancementProvider extends AdvancementProvider {
 
             AdvancementHolder occult_manor = announcedTaskBuilder(JNEBlocks.CHISELED_SOUL_SLATE_TILES.get(), "castlemania", emf_raider)
                     .addCriterion("sanctum_entered", PlayerTrigger.TriggerInstance.located(
-                            LocationPredicate.Builder.inStructure(structureGetter.getOrThrow(ResourceKey.create(Registries.STRUCTURE, NetherExp.id("sanctum"))))
+                            LocationPredicate.Builder.inStructure(registries.holderOrThrow(JNEStructures.SANCTUM))
                     )).save(saver, NetherExp.id("nether/occult_manor"), existingFileHelper);
             */
             AdvancementHolder occult_manor = AdvancementSubProvider.createPlaceholder("netherexp:nether/occult_manor");
@@ -145,7 +141,7 @@ public class JNEAdvancementProvider extends AdvancementProvider {
 
             AdvancementHolder ssv_sub_biomes = goalBuilder(JNEBlocks.NETHERITE_PLATED_BLOCK.get(), "fright_before_xmas", soul_sand_valley)
                     .addCriterion("black_ice_glaciers_entered", PlayerTrigger.TriggerInstance.located(
-                            LocationPredicate.Builder.inBiome(biomeGetter.getOrThrow(ResourceKey.create(Registries.BIOME, NetherExp.id("black_ice_glaciers"))))
+                            LocationPredicate.Builder.inBiome(registries.holderOrThrow(JNEBiomes.BLACK_ICE_GLACIERS))
                     )).requirements(AdvancementRequirements.Strategy.AND)
                     .rewards(AdvancementRewards.Builder.experience(200))
                     .save(saver, NetherExp.id("nether/ssv_sub_biomes"), existingFileHelper);
@@ -197,7 +193,7 @@ public class JNEAdvancementProvider extends AdvancementProvider {
 
             AdvancementHolder rattling_remnants = announcedTaskBuilder(Blocks.BONE_BLOCK, "rattling_remnants", soul_sand_valley)
                     .addCriterion("mega_fossil_campsite_entered", PlayerTrigger.TriggerInstance.located(
-                            LocationPredicate.Builder.inStructure(structureGetter.getOrThrow(ResourceKey.create(Registries.STRUCTURE, NetherExp.id("mega_fossil_campsite"))))
+                            LocationPredicate.Builder.inStructure(structureGetter.getOrThrow(JNEStructures.MEGA_FOSSIL_CAMPSITE))
                     )).save(saver, NetherExp.id("nether/rattling_remnants"), existingFileHelper);
             */
             AdvancementHolder rattling_remnants = AdvancementSubProvider.createPlaceholder("netherexp:nether/rattling_remnants");
