@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fossil_fuel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "netherexp:fossil_fuel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:soul_torch_from_fossil_fuel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fossil_fuel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:soul_torch_from_fossil_fuel"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "values": [
+    "netherexp:soul_slate_slab",
+    "netherexp:soul_slate_brick_slab",
+    "netherexp:soul_slate_tile_slab",
+    "netherexp:smooth_netherrack_slab",
+    "netherexp:netherrack_brick_slab",
+    "netherexp:basalt_slab",
+    "netherexp:polished_basalt_slab",
+    "netherexp:polished_basalt_brick_slab",
+    "netherexp:blue_nether_brick_slab",
+    "netherexp:stacked_bone_slab",
+    "netherexp:stacked_wither_bone_slab",
+    "netherexp:cut_netherite_slab",
+    "netherexp:rusty_cut_netherite_slab"
+  ]
+}

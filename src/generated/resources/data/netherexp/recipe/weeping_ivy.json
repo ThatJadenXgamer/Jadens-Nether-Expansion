@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "ivy_blocks",
+  "ingredients": [
+    {
+      "item": "minecraft:weeping_vines"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "netherexp:weeping_ivy"
+  }
+}

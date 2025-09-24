@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:skeleton_skull"
+    },
+    {
+      "item": "netherexp:ancient_candle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "netherexp:ancient_skeleton_skull_candle"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "pumpkin_seeds",
+  "ingredients": [
+    {
+      "item": "netherexp:sorrowsquash"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:pumpkin_seeds"
+  }
+}

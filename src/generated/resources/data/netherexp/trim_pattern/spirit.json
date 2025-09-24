@@ -1,0 +1,8 @@
+{
+  "asset_id": "netherexp:spirit",
+  "decal": false,
+  "description": {
+    "translate": "trim_pattern.netherexp.spirit"
+  },
+  "template_item": "netherexp:spirit_armor_trim_smithing_template"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "netherexp:soul_slate_bricks"
+    },
+    "W": {
+      "item": "netherexp:wraithing_flesh"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SWS",
+    " S "
+  ],
+  "result": {
+    "count": 4,
+    "id": "netherexp:inscribed_panel"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "netherexp:skull_block"
+    },
+    "T": {
+      "item": "minecraft:soul_torch"
+    }
+  },
+  "pattern": [
+    "#",
+    "T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "netherexp:soul_burning_skull_block"
+  }
+}

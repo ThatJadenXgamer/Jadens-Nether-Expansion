@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:bone"
+    },
+    "C": {
+      "item": "netherexp:cerebrage"
+    },
+    "F": {
+      "item": "minecraft:fire_charge"
+    },
+    "H": {
+      "tag": "netherexp:cooked_hogham"
+    },
+    "W": {
+      "item": "minecraft:warped_fungus"
+    }
+  },
+  "pattern": [
+    "CWH",
+    "###",
+    " F "
+  ],
+  "result": {
+    "count": 3,
+    "id": "netherexp:roasted_bone"
+  }
+}

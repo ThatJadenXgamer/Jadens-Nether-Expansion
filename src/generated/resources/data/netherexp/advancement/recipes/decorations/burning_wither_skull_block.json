@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "netherexp:burning_wither_skull_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wither_skull_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "netherexp:wither_skull_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wither_skull_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "netherexp:burning_wither_skull_block"
+    ]
+  }
+}

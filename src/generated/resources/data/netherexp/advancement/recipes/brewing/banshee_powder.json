@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_banshee_rod": {
+      "conditions": {
+        "items": [
+          {
+            "items": "netherexp:banshee_rod"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "netherexp:banshee_powder"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_banshee_rod"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "netherexp:banshee_powder"
+    ]
+  }
+}

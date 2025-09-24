@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:blackstone"
+    },
+    "C": {
+      "item": "netherexp:netherite_plating"
+    }
+  },
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "netherexp:netherite_plated_block"
+  }
+}

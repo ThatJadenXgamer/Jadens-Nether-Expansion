@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "netherexp:wraithing_flesh"
+    },
+    "W": {
+      "item": "minecraft:soul_sand"
+    }
+  },
+  "pattern": [
+    "WS",
+    "SW"
+  ],
+  "result": {
+    "count": 2,
+    "id": "netherexp:ecto_soul_sand"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "netherexp:wretched_gargoyle_statue"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wretched_gargoyle_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "netherexp:wretched_gargoyle_statue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wretched_gargoyle_statue"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "netherexp:wretched_gargoyle_statue"
+    ]
+  }
+}

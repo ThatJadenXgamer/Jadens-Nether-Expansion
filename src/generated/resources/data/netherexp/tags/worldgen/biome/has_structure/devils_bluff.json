@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:nether_wastes",
+    {
+      "id": "biomesoplenty:crystalline_chasm",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:visceral_heap",
+      "required": false
+    }
+  ]
+}

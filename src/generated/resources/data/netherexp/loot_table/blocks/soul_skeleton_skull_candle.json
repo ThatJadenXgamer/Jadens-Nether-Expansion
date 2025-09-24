@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "netherexp:soul_skeleton_skull_candle"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "netherexp:blocks/soul_skeleton_skull_candle"
+}

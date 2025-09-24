@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "minecraft:netherrack"
+    },
+    "S": {
+      "item": "netherexp:soul_slate"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SNS",
+    " S "
+  ],
+  "result": {
+    "count": 4,
+    "id": "netherexp:pale_soul_slate"
+  }
+}

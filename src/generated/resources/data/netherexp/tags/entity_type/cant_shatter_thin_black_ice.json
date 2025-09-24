@@ -1,0 +1,26 @@
+{
+  "values": [
+    "minecraft:stray",
+    "minecraft:rabbit",
+    "minecraft:silverfish",
+    "minecraft:endermite",
+    "minecraft:cod",
+    "minecraft:salmon",
+    "minecraft:pufferfish",
+    "minecraft:tropical_fish",
+    "minecraft:tadpole",
+    "minecraft:armadillo",
+    "minecraft:allay",
+    "minecraft:vex",
+    "minecraft:cat",
+    "minecraft:chicken",
+    "minecraft:parrot",
+    "minecraft:frog",
+    "minecraft:shulker",
+    "minecraft:blaze",
+    "minecraft:breeze",
+    "minecraft:wither",
+    "minecraft:ender_dragon",
+    "netherexp:wisp"
+  ]
+}

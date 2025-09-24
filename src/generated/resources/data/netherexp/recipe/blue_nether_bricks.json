@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "colored_nether_bricks",
+  "key": {
+    "#": {
+      "item": "minecraft:nether_bricks"
+    },
+    "C": {
+      "item": "minecraft:warped_wart_block"
+    }
+  },
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "netherexp:blue_nether_bricks"
+  }
+}

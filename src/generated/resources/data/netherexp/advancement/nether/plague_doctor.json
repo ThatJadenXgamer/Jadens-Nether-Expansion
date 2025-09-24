@@ -1,0 +1,51 @@
+{
+  "parent": "netherexp:nether/the_caduceus",
+  "criteria": {
+    "has_all_immunities": {
+      "conditions": {
+        "effects": {
+          "netherexp:absorption_immunity": {},
+          "netherexp:darkness_immunity": {},
+          "netherexp:fire_resistance_immunity": {},
+          "netherexp:haste_immunity": {},
+          "netherexp:hunger_immunity": {},
+          "netherexp:invisibility_immunity": {},
+          "netherexp:jump_boost_immunity": {},
+          "netherexp:levitation_immunity": {},
+          "netherexp:mining_fatigue_immunity": {},
+          "netherexp:poison_immunity": {},
+          "netherexp:regeneration_immunity": {},
+          "netherexp:resistance_immunity": {},
+          "netherexp:slowness_immunity": {},
+          "netherexp:speed_immunity": {},
+          "netherexp:strength_immunity": {},
+          "netherexp:water_breathing_immunity": {},
+          "netherexp:weakness_immunity": {},
+          "netherexp:wither_immunity": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nether.plague_doctor.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "netherexp:grenade_antidote"
+    },
+    "title": {
+      "translate": "advancements.nether.plague_doctor.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_all_immunities"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

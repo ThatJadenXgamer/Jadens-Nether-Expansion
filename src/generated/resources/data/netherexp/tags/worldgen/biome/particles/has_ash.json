@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:soul_sand_valley",
+    {
+      "id": "cinderscapes:ashy_shoals",
+      "required": false
+    }
+  ]
+}

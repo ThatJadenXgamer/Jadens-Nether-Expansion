@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "netherexp:carved_sorrowsquash"
+    },
+    "T": {
+      "item": "minecraft:soul_torch"
+    }
+  },
+  "pattern": [
+    "S",
+    "T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "netherexp:ghoul_o_lantern"
+  }
+}

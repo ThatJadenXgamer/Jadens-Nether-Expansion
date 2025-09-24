@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "netherexp:soul_slate_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "netherexp:soul_slate_brick_stairs"
+  }
+}

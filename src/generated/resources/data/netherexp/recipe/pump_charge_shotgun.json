@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "netherexp:treacherous_flame"
+  },
+  "base": {
+    "item": "netherexp:shotgun_fist"
+  },
+  "result": {
+    "count": 1,
+    "id": "netherexp:pump_charge_shotgun"
+  },
+  "template": {
+    "item": "netherexp:pump_charge_upgrade_smithing_template"
+  }
+}

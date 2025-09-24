@@ -1,0 +1,40 @@
+{
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "soul_sand_valley_entered": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "minecraft:soul_sand_valley"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.nether.soul_sand_valley.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:soul_sand"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.nether.soul_sand_valley.title"
+    }
+  },
+  "requirements": [
+    [
+      "soul_sand_valley_entered"
+    ]
+  ]
+}

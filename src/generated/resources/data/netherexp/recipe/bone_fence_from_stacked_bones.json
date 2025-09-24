@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "netherexp:stacked_bones"
+  },
+  "result": {
+    "count": 4,
+    "id": "netherexp:bone_fence"
+  }
+}

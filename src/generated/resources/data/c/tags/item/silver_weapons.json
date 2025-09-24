@@ -1,0 +1,64 @@
+{
+  "values": [
+    {
+      "id": "caverns_and_chasms:necromium_sword",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:necromium_axe",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:necromium_pickaxe",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:necromium_shovel",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:necromium_hoe",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_sword",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_axe",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_pickaxe",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_shovel",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:silver_hoe",
+      "required": false
+    },
+    {
+      "id": "oreganized:electrum_sword",
+      "required": false
+    },
+    {
+      "id": "oreganized:electrum_axe",
+      "required": false
+    },
+    {
+      "id": "oreganized:electrum_pickaxe",
+      "required": false
+    },
+    {
+      "id": "oreganized:electrum_shovel",
+      "required": false
+    },
+    {
+      "id": "oreganized:electrum_hoe",
+      "required": false
+    }
+  ]
+}

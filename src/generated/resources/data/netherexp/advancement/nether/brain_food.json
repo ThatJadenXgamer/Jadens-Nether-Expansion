@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:nether/explore_nether",
+  "criteria": {
+    "planted_cerebrage": {
+      "trigger": "netherexp:planted_cerebrage"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nether.brain_food.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "netherexp:cerebrage"
+    },
+    "title": {
+      "translate": "advancements.nether.brain_food.title"
+    }
+  },
+  "requirements": [
+    [
+      "planted_cerebrage"
+    ]
+  ]
+}

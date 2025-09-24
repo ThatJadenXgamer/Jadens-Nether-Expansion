@@ -1,0 +1,33 @@
+{
+  "parent": "netherexp:nether/angel_with_a_shotgun",
+  "criteria": {
+    "has_pump_charge_shotgun": {
+      "conditions": {
+        "items": [
+          {
+            "items": "netherexp:pump_charge_shotgun"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nether.the_nether_is_full.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "netherexp:pump_charge_shotgun"
+    },
+    "title": {
+      "translate": "advancements.nether.the_nether_is_full.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_pump_charge_shotgun"
+    ]
+  ]
+}

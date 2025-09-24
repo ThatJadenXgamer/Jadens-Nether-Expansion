@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "netherexp:wraithing_flesh"
+    },
+    "S": {
+      "item": "netherexp:phase_gargoyle_statue"
+    }
+  },
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "netherexp:phase_gargoyle_statue"
+  }
+}

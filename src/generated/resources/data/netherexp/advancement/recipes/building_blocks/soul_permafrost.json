@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_ice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "netherexp:black_ice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "netherexp:soul_permafrost"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_ice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "netherexp:soul_permafrost"
+    ]
+  }
+}

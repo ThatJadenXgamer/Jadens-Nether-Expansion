@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "netherite_grate",
+  "key": {
+    "M": {
+      "item": "netherexp:rusty_netherite_plated_block"
+    }
+  },
+  "pattern": [
+    " M ",
+    "M M",
+    " M "
+  ],
+  "result": {
+    "count": 4,
+    "id": "netherexp:rusty_netherite_grate"
+  }
+}
