@@ -47,6 +47,9 @@ public final class JNEBlockTagsProvider extends BlockTagsProvider {
         tag(JNETags.Blocks.WART_BEARD_FEATURE_VALID).add(Blocks.WARPED_WART_BLOCK);
         tag(JNETags.Blocks.WEEPING_VINES_FEATURE_VALID).add(Blocks.NETHERRACK, Blocks.NETHER_WART_BLOCK);
         tag(JNETags.Blocks.GEYSERS).add(JNEBlocks.BASALTIC_GEYSER.get(), JNEBlocks.SOULED_GEYSER.get());
+        tag(JNETags.Blocks.FOSSIL_ORE_CONVERTIBLE);
+        tag(JNETags.Blocks.LIGHTSPORES_APPLICABLE);
+        tag(JNETags.Blocks.NIGHTSPORES_APPLICABLE);
 
         // Minecraft Tags
         tag(BlockTags.MINEABLE_WITH_AXE).add(JNEBlocks.CEREBRAGE_CLARET_STEM.get(), JNEBlocks.CEREBRAGE_CLARET_HYPHAE.get(), JNEBlocks.STRIPPED_CLARET_STEM.get(), JNEBlocks.STRIPPED_CLARET_HYPHAE.get(), JNEBlocks.CLARET_PLANKS.get(), JNEBlocks.CLARET_SLAB.get(), JNEBlocks.CLARET_STAIRS.get(), JNEBlocks.CLARET_FENCE.get(), JNEBlocks.CLARET_FENCE_GATE.get(), JNEBlocks.CLARET_DOOR.get(), JNEBlocks.CLARET_TRAPDOOR.get(), JNEBlocks.CLARET_BUTTON.get(), JNEBlocks.CLARET_PRESSURE_PLATE.get(), JNEBlocks.SORROWSQUASH.get(), JNEBlocks.CARVED_SORROWSQUASH.get(), JNEBlocks.GHOUL_O_LANTERN.get(), JNEBlocks.ANCIENT_CAMPFIRE.get());
