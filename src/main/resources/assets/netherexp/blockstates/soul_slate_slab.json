@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "netherexp:block/soul_slate_slab"
+    },
+    "type=double": {
+      "model": "netherexp:block/soul_slate"
+    },
+    "type=top": {
+      "model": "netherexp:block/soul_slate_slab_top"
+    }
+  }
+}

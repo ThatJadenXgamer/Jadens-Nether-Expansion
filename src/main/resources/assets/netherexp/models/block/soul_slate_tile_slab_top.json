@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "netherexp:block/soul_slate_tiles",
+    "side": "netherexp:block/soul_slate_tiles",
+    "top": "netherexp:block/soul_slate_tiles"
+  }
+}

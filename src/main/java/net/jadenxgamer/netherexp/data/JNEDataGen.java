@@ -6,7 +6,6 @@ import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.jadenxgamer.netherexp.data.providers.JNEAdvancementProvider;
-import net.jadenxgamer.netherexp.data.providers.JNEBlockStateProvider;
 import net.jadenxgamer.netherexp.data.providers.JNEDataMapProvider;
 import net.jadenxgamer.netherexp.data.providers.loot.JNELootTableProvider;
 import net.jadenxgamer.netherexp.data.providers.JNERecipeProvider;
@@ -42,24 +41,6 @@ public class JNEDataGen {
                 Set.of(NetherExp.MOD_ID, "minecraft"));
     }
 
-    /**
-     * Generates Client Data.
-     * Called if {@link GatherDataEvent#includeClient()} ()} is true.
-     * @param event propagated
-     * @param output the generators output
-     * @param fileHelper the events file helper
-     */
-    public static void clientData(GatherDataEvent event, PackOutput output, ExistingFileHelper fileHelper) {
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-
-        List<DataProviderFactory> factories = List.of(
-                JNEBlockStateProvider::new
-        );
-
-        factories.forEach(factory -> event.addProvider(
-                factory.makeDataProvider(output, lookupProvider, fileHelper)
-        ));
-    }
 
     /**
      * Generates Server Data.

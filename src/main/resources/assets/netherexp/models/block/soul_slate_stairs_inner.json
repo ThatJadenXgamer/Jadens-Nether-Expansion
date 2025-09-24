@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "netherexp:block/soul_slate",
+    "side": "netherexp:block/soul_slate",
+    "top": "netherexp:block/soul_slate"
+  }
+}
