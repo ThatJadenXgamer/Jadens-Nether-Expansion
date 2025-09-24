@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "netherexp:block/stacked_wither_bones",
-    "side": "netherexp:block/stacked_wither_bones",
-    "top": "netherexp:block/stacked_wither_bones"
-  }
-}

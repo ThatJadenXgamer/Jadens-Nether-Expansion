@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "netherexp:block/chiseled_soul_slate_bricks"
-  }
-}

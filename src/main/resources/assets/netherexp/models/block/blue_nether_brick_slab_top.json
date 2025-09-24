@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "netherexp:block/blue_nether_bricks",
-    "side": "netherexp:block/blue_nether_bricks",
-    "top": "netherexp:block/blue_nether_bricks"
-  }
-}

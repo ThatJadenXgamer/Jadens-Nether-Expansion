@@ -98,8 +98,11 @@ public class JNEEvents {
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
 
-            if (event.includeServer() || event.includeClient() || event.includeDev())
+            if (event.includeClient() || event.includeServer() || event.includeDev())
                 JNEDataGen.registryData(event);
+
+            if (event.includeClient())
+                JNEDataGen.clientData(event, output, fileHelper);
 
             if (event.includeServer())
                 JNEDataGen.serverData(event, output, fileHelper);

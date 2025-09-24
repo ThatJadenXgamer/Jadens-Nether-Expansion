@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "netherexp:block/smooth_netherrack",
-    "side": "netherexp:block/smooth_netherrack",
-    "top": "netherexp:block/smooth_netherrack"
-  }
-}
