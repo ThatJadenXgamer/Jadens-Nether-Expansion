@@ -47,28 +47,74 @@ public final class JNEEntityLoot extends EntityLootSubProvider {
         // add(JNEEntityType.WARPHOPPER.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(applyLooting(registries, item(Items.MUTTON, 1, 5, 7), 2).apply(SmeltItemFunction.smelted().when(shouldSmeltLoot())))).withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.WARPHOPPER_FUR, 1, 3, 5), 2))));
     }
 
+    /**
+     * Get a loot table with no drops
+     *
+     * @return {@code LootTable.lootTable();}
+     */
     private static LootTable.Builder noDrop() {
         return LootTable.lootTable();
     }
 
+    /**
+     * Applies the {@linkplain EnchantedCountIncreaseFunction} for looting to the given {@linkplain FunctionUserBuilder<T>}
+     *
+     * @param registries propagated {@linkplain HolderLookup.Provider}
+     * @param builder the builder
+     * @return the builder with looting applied
+     * @param <T> type param to avoid casting
+     */
     private static <T extends FunctionUserBuilder<T>> T applyLooting(HolderLookup.Provider registries, FunctionUserBuilder<T> builder) {
         return applyLooting(registries, builder, 1);
     }
 
+    /**
+     * Applies the {@linkplain EnchantedCountIncreaseFunction} for looting to the given {@linkplain FunctionUserBuilder<T>}
+     *
+     * @param registries propagated {@linkplain HolderLookup.Provider}
+     * @param builder the builder
+     * @param level the level at which looting caps out
+     * @return the builder with looting applied
+     * @param <T> type param to avoid casting
+     */
     private static <T extends FunctionUserBuilder<T>> T applyLooting(HolderLookup.Provider registries, FunctionUserBuilder<T> builder, float level) {
         return builder.apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, level)));
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set
+     *
+     * @param item the item
+     * @param weight the weight
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight) {
         return LootItem.lootTableItem(item)
                 .setWeight(weight);
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a constant value
+     *
+     * @param item the item
+     * @param weight the weight
+     * @param count the count
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float count) {
         return item(item, weight)
                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(count)));
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a uniform random value
+     *
+     * @param item the item
+     * @param weight the weight
+     * @param min the minimum count
+     * @param max the maximum count
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float min, float max) {
         return item(item, weight)
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)));

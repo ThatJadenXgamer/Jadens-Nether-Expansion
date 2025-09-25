@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.data.providers;
 
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEItems;
+import net.jadenxgamer.netherexp.registry.JNEWoodType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -13,6 +14,12 @@ import java.util.concurrent.CompletableFuture;
 
 public class JNEDataMapProvider extends DataMapProvider {
 
+    /**
+     * Create a new data map provider.
+     *
+     * @param packOutput     the output location
+     * @param lookupProvider a {@linkplain CompletableFuture} supplying the registries
+     */
     public JNEDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
     }

@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.data.providers.tags;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.data.JNEDataGen;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.minecraft.core.HolderLookup;
@@ -16,12 +17,19 @@ import java.util.concurrent.CompletableFuture;
 
 public final class JNEItemTagsProvider extends ItemTagsProvider {
 
-    public JNEItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, blockTags, NetherExp.MOD_ID, existingFileHelper);
+    /**
+     * Create a new item tags provider.
+     *
+     * @param output             the output location
+     * @param registries         a {@linkplain CompletableFuture} supplying the registries
+     * @param existingFileHelper a {@linkplain ExistingFileHelper} to find existing files
+     */
+    public JNEItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, CompletableFuture<TagLookup<Block>> blockTags, ExistingFileHelper existingFileHelper) {
+        super(output, registries, blockTags, NetherExp.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider registries) {
         tag(JNETags.Items.ARTIFACTS).add(JNEItems.SHOTGUN_CORE.get());
         copy(JNETags.Blocks.CLARET_STEMS, JNETags.Items.CLARET_STEMS);
         tag(JNETags.Items.COOKED_HOGHAM).add(JNEItems.COOKED_HOGHAM.get());

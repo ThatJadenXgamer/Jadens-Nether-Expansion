@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.data.providers.tags;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.data.JNEDataGen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.DamageTypeTagsProvider;
@@ -15,8 +16,15 @@ import java.util.concurrent.CompletableFuture;
 
 public final class JNEDamageTypeTagsProvider extends DamageTypeTagsProvider {
 
-    public JNEDamageTypeTagsProvider(PackOutput arg, CompletableFuture<HolderLookup.Provider> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
-        super(arg, completableFuture, NetherExp.MOD_ID, existingFileHelper);
+    /**
+     * Create a new damage type tags provider.
+     *
+     * @param output             the output location
+     * @param registries         a {@linkplain CompletableFuture} supplying the registries
+     * @param existingFileHelper a {@linkplain ExistingFileHelper} to find existing files
+     */
+    public JNEDamageTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, registries, NetherExp.MOD_ID, existingFileHelper);
     }
 
     @Override

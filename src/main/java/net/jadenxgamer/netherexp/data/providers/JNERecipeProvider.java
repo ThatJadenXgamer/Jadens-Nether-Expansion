@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.data.providers;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.data.JNEDataGen.DataProviderFactory;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.minecraft.core.HolderLookup;
@@ -21,7 +22,14 @@ import java.util.concurrent.CompletableFuture;
 
 public class JNERecipeProvider extends RecipeProvider {
 
-    public JNERecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper fileHelper) {
+    /**
+     * Create a new recipe provider.
+     *
+     * @param output             the output location
+     * @param registries         a {@linkplain CompletableFuture} supplying the registries
+     * @param existingFileHelper to confirm with {@linkplain DataProviderFactory}
+     */
+    public JNERecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
         super(output, registries);
     }
 
@@ -37,8 +45,8 @@ public class JNERecipeProvider extends RecipeProvider {
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.SOUL_SLATE_WALL.get(), JNEBlocks.SOUL_SLATE.get());
 
         // ## Soul Slate Bricks
-        bricks(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE.get());
-        bricksBuilder(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.ETCHED_SOUL_SLATE_BRICKS.get()).unlockedBy("has_soul_slate", has(JNEBlocks.SOUL_SLATE.get())).save(output, "netherexp:soul_slate_bricks_from_etched");
+        bricks(output, JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE.get());
+        bricksBuilder(JNEBlocks.SOUL_SLATE_BRICKS.get(), JNEBlocks.ETCHED_SOUL_SLATE_BRICKS.get()).unlockedBy("has_soul_slate", has(JNEBlocks.SOUL_SLATE.get())).save(output, "netherexp:soul_slate_bricks_from_etched");
         slab(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_SLATE_BRICK_SLAB.get(), JNEBlocks.SOUL_SLATE_BRICKS.get());
         stairBuilder(JNEBlocks.SOUL_SLATE_BRICK_STAIRS.get(), Ingredient.of(JNEBlocks.SOUL_SLATE_BRICKS.get())).unlockedBy("has_soul_slate_bricks", has(JNEBlocks.SOUL_SLATE_BRICKS.get())).save(output);
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.SOUL_SLATE_BRICK_WALL.get(), JNEBlocks.SOUL_SLATE_BRICKS.get());
@@ -47,8 +55,8 @@ public class JNERecipeProvider extends RecipeProvider {
         chiseled(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.CHISELED_SOUL_SLATE_BRICKS.get(), JNEBlocks.SOUL_SLATE_BRICKS.get());
 
         // ## Soul Slate Tile
-        tiles(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_SLATE.get());
-        bricksBuilder(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.ETCHED_SOUL_SLATE_TILES.get()).unlockedBy("has_soul_slate", has(JNEBlocks.SOUL_SLATE.get())).save(output, "netherexp:soul_slate_tiles_from_etched");
+        tiles(output, JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.SOUL_SLATE.get());
+        bricksBuilder(JNEBlocks.SOUL_SLATE_TILES.get(), JNEBlocks.ETCHED_SOUL_SLATE_TILES.get()).unlockedBy("has_soul_slate", has(JNEBlocks.SOUL_SLATE.get())).save(output, "netherexp:soul_slate_tiles_from_etched");
         slab(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_SLATE_TILE_SLAB.get(), JNEBlocks.SOUL_SLATE_TILES.get());
         stairBuilder(JNEBlocks.SOUL_SLATE_TILE_STAIRS.get(), Ingredient.of(JNEBlocks.SOUL_SLATE_TILES.get())).unlockedBy("has_soul_slate_tiles", has(JNEBlocks.SOUL_SLATE_TILES.get())).save(output);
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.SOUL_SLATE_TILE_WALL.get(), JNEBlocks.SOUL_SLATE_TILES.get());
@@ -63,7 +71,7 @@ public class JNERecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_MAGMA_BLOCK.get(), 4).define('A', Items.MAGMA_CREAM).define('B', ItemTags.SOUL_FIRE_BASE_BLOCKS).pattern("AB").pattern("BA").unlockedBy("has_magma_cream", has(Items.MAGMA_CREAM)).unlockedBy("has_soul_fire_base_block", has(ItemTags.SOUL_FIRE_BASE_BLOCKS)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_SOIL_LAYER.get(), 24).define('#', Blocks.SOUL_SOIL).pattern("###").unlockedBy("has_soul_soil", has(Blocks.SOUL_SOIL)).save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.SOUL_SOIL).requires(JNEBlocks.SOUL_SOIL_LAYER.get(), 9).unlockedBy("has_soul_soil", has(Blocks.SOUL_SOIL)).save(output, "netherexp:soul_soil_from_soul_soil_layer");
-        twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.BLACK_ICE.get(), JNEBlocks.BLACK_ICICLE.get(), 2);
+        twoByTwoPacker(output, JNEBlocks.BLACK_ICE.get(), JNEBlocks.BLACK_ICICLE.get(), 2);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.SOUL_PERMAFROST.get(), 4).define('A', JNEBlocks.BLACK_ICE.get()).define('B', Blocks.SOUL_SOIL).pattern("AB").pattern("BA").unlockedBy("has_black_ice", has(JNEBlocks.BLACK_ICE.get())).save(output);
 
         // ## Smooth Netherrack
@@ -73,11 +81,11 @@ public class JNERecipeProvider extends RecipeProvider {
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.SMOOTH_NETHERRACK_WALL.get(), JNEBlocks.SMOOTH_NETHERRACK.get());
 
         // ## Netherrack Bricks
-        bricks(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.NETHERRACK_BRICKS.get(), JNEBlocks.SMOOTH_NETHERRACK.get());
+        bricks(output, JNEBlocks.NETHERRACK_BRICKS.get(), JNEBlocks.SMOOTH_NETHERRACK.get());
         slab(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.NETHERRACK_BRICK_SLAB.get(), JNEBlocks.NETHERRACK_BRICKS.get());
         stairBuilder(JNEBlocks.NETHERRACK_BRICK_STAIRS.get(), Ingredient.of(JNEBlocks.NETHERRACK_BRICKS.get())).unlockedBy("has_netherrack_bricks", has(JNEBlocks.NETHERRACK_BRICKS.get())).save(output);
         wall(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.NETHERRACK_BRICK_WALL.get(), JNEBlocks.NETHERRACK_BRICKS.get());
-        tiles(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.NETHERRACK_TILES.get(), JNEBlocks.NETHERRACK_BRICKS.get());
+        tiles(output, JNEBlocks.NETHERRACK_TILES.get(), JNEBlocks.NETHERRACK_BRICKS.get());
         pillar(output, JNEBlocks.NETHERRACK_PILLAR.get(), JNEBlocks.NETHERRACK_BRICKS.get());
 
         // ## Basalt
@@ -91,13 +99,13 @@ public class JNERecipeProvider extends RecipeProvider {
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.POLISHED_BASALT_WALL.get(), Blocks.POLISHED_BASALT);
 
         // ## Polished Basalt Bricks
-        bricks(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.POLISHED_BASALT_BRICKS.get(), Blocks.POLISHED_BASALT);
+        bricks(output, JNEBlocks.POLISHED_BASALT_BRICKS.get(), Blocks.POLISHED_BASALT);
         slab(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.POLISHED_BASALT_BRICK_SLAB.get(), JNEBlocks.POLISHED_BASALT_BRICKS.get());
         stairBuilder(JNEBlocks.POLISHED_BASALT_BRICK_STAIRS.get(), Ingredient.of(JNEBlocks.POLISHED_BASALT_BRICKS.get())).unlockedBy("has_polished_basalt_bricks", has(JNEBlocks.POLISHED_BASALT_BRICKS.get())).save(output);
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.POLISHED_BASALT_BRICK_WALL.get(), JNEBlocks.POLISHED_BASALT_BRICKS.get());
 
         // ## Netherite
-        transformEight(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.NETHERITE_PLATED_BLOCK.get(), Blocks.BLACKSTONE, JNEItems.NETHERITE_PLATING.get());
+        transformEight(output, JNEBlocks.NETHERITE_PLATED_BLOCK.get(), Blocks.BLACKSTONE, JNEItems.NETHERITE_PLATING.get());
         cutBuilder(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.CUT_NETHERITE_BLOCK.get(), Ingredient.of(JNEBlocks.NETHERITE_PLATED_BLOCK.get())).group("cut_netherite_block").unlockedBy("has_netherite_plated_block", has(JNEBlocks.NETHERITE_PLATED_BLOCK.get())).save(output);
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.CUT_NETHERITE_SLAB.get(), Ingredient.of(JNEBlocks.CUT_NETHERITE_BLOCK.get())).group("cut_netherite_slab").unlockedBy("has_netherite_plated_block", has(JNEBlocks.NETHERITE_PLATED_BLOCK.get())).save(output);
         stairBuilder(JNEBlocks.CUT_NETHERITE_STAIRS.get(), Ingredient.of(JNEBlocks.CUT_NETHERITE_BLOCK.get())).group("cut_netherite_stairs").unlockedBy("has_netherite_plated_block", has(JNEBlocks.NETHERITE_PLATED_BLOCK.get())).save(output);
@@ -136,13 +144,13 @@ public class JNERecipeProvider extends RecipeProvider {
         chiseled(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.CHISELED_QUARTZ_PILLAR.get(), Blocks.QUARTZ_PILLAR);
 
         // ## Nether Bricks
-        transformEightBuilder(RecipeCategory.BUILDING_BLOCKS, Blocks.RED_NETHER_BRICKS, Blocks.NETHER_BRICKS, Blocks.NETHER_WART_BLOCK).group("colored_nether_bricks").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(output);
+        transformEightBuilder(Blocks.RED_NETHER_BRICKS, Blocks.NETHER_BRICKS, Blocks.NETHER_WART_BLOCK).group("colored_nether_bricks").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(output);
         pillar(output, JNEBlocks.NETHER_BRICK_PILLAR.get(), Blocks.NETHER_BRICKS);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.RED_MIXED_NETHER_BRICKS.get(), 4).define('A', Blocks.NETHER_BRICKS).define('B', Blocks.RED_NETHER_BRICKS).pattern("AB").pattern("BA").unlockedBy("has_red_nether_bricks", has(Blocks.RED_NETHER_BRICKS)).save(output);
 
         // ## Blue Nether Bricks
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.BLUE_MIXED_NETHER_BRICKS.get(), 4).define('A', Blocks.NETHER_BRICKS).define('B', JNEBlocks.BLUE_NETHER_BRICKS.get()).pattern("AB").pattern("BA").unlockedBy("has_blue_nether_bricks", has(JNEBlocks.BLUE_NETHER_BRICKS.get())).save(output);
-        transformEightBuilder(RecipeCategory.BUILDING_BLOCKS, JNEBlocks.BLUE_NETHER_BRICKS.get(), Blocks.NETHER_BRICKS, Blocks.WARPED_WART_BLOCK).group("colored_nether_bricks").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(output);
+        transformEightBuilder(JNEBlocks.BLUE_NETHER_BRICKS.get(), Blocks.NETHER_BRICKS, Blocks.WARPED_WART_BLOCK).group("colored_nether_bricks").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(output);
         slab(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.BLUE_NETHER_BRICK_SLAB.get(), JNEBlocks.BLUE_NETHER_BRICKS.get());
         stairBuilder(JNEBlocks.BLUE_NETHER_BRICK_STAIRS.get(), Ingredient.of(JNEBlocks.BLUE_NETHER_BRICKS.get())).unlockedBy("has_blue_nether_bricks", has(JNEBlocks.BLUE_NETHER_BRICKS.get())).save(output);
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.BLUE_NETHER_BRICK_WALL.get(), JNEBlocks.BLUE_NETHER_BRICKS.get());
@@ -163,11 +171,11 @@ public class JNERecipeProvider extends RecipeProvider {
         // ## Blackstone
         pillar(output, JNEBlocks.POLISHED_BLACKSTONE_PILLAR.get(), Blocks.POLISHED_BLACKSTONE);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, JNEBlocks.POLISHED_BLACKSTONE_FENCE.get(), 6).define('#', Blocks.POLISHED_BLACKSTONE).define('=', Blocks.POLISHED_BLACKSTONE_SLAB).pattern("#=#").pattern("#=#").unlockedBy("has_polished_blackstone", has(Blocks.POLISHED_BLACKSTONE));
-        transformEight(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get(), Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.WEEPING_VINES);
+        transformEight(output, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get(), Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.WEEPING_VINES);
         slab(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_SLAB.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get());
         stairBuilder(JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), Ingredient.of(JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get())).unlockedBy("has_weeping_polished_blackstone_bricks", has(JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get())).save(output);
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICK_WALL.get(), JNEBlocks.WEEPING_POLISHED_BLACKSTONE_BRICKS.get());
-        transformEight(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get(), Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.TWISTING_VINES);
+        transformEight(output, JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get(), Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.TWISTING_VINES);
         slab(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_SLAB.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get());
         stairBuilder(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_STAIRS.get(), Ingredient.of(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get())).unlockedBy("has_twisting_polished_blackstone_bricks", has(JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get())).save(output);
         wall(output, RecipeCategory.DECORATIONS, JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICK_WALL.get(), JNEBlocks.TWISTING_POLISHED_BLACKSTONE_BRICKS.get());
@@ -211,7 +219,7 @@ public class JNERecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, JNEBlocks.SHOTGUN_BARREL.get(), 2).define('B', Blocks.BONE_BLOCK).define('R', Items.REDSTONE).define('S', JNEItems.SHOTGUN_CORE.get()).define('N', JNEItems.STRIDITE.get()).pattern("BBB").pattern("RSR").pattern("NNN").unlockedBy("has_shotgun_core", has(JNEItems.SHOTGUN_CORE.get())).save(output);
 
         // ## Ancient Fire
-        transformEight(output, RecipeCategory.BUILDING_BLOCKS, JNEBlocks.ANCIENT_WAX_BLOCK.get(), Blocks.HONEYCOMB_BLOCK, JNEItems.ANCIENT_WAX.get());
+        transformEight(output, JNEBlocks.ANCIENT_WAX_BLOCK.get(), Blocks.HONEYCOMB_BLOCK, JNEItems.ANCIENT_WAX.get());
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, JNEItems.ANCIENT_TORCH.get(), 4).define('X', Ingredient.of(Items.COAL, Items.CHARCOAL, JNEItems.FOSSIL_FUEL.get())).define('#', Items.STICK).define('A', JNEItems.ANCIENT_WAX.get()).pattern("X").pattern("#").pattern("A").unlockedBy("has_ancient_wax", has(JNEItems.ANCIENT_WAX.get())).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, JNEBlocks.ANCIENT_LANTERN.get()).define('#', JNEItems.ANCIENT_TORCH.get()).define('X', Items.IRON_NUGGET).pattern("XXX").pattern("X#X").pattern("XXX").unlockedBy("has_ancient_wax", has(JNEItems.ANCIENT_WAX.get())).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, JNEBlocks.ANCIENT_CAMPFIRE.get()).define('L', ItemTags.LOGS).define('S', Items.STICK).define('#', JNEItems.ANCIENT_WAX.get()).pattern(" S ").pattern("S#S").pattern("LLL").unlockedBy("has_ancient_wax", has(JNEItems.ANCIENT_WAX.get())).save(output);
@@ -384,16 +392,37 @@ public class JNERecipeProvider extends RecipeProvider {
                 .save(output);
     }
 
-    protected static RecipeBuilder grateBuilder(ItemLike grateBlock, ItemLike material) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, grateBlock, 4).define('M', material).pattern(" M ").pattern("M M").pattern(" M ");
+    /**
+     * Get a builder for a grate recipe, to configure advancements manually
+     *
+     * @param grate the resulting grate block
+     * @param block the base block
+     * @return the builder
+     */
+    protected static RecipeBuilder grateBuilder(ItemLike grate, ItemLike block) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, grate, 4).define('M', block).pattern(" M ").pattern("M M").pattern(" M ");
     }
 
+    /**
+     * Generates a pillar recipe preconfigured with advancement requirements
+     *
+     * @param output propagated recipe output
+     * @param pillar the resulting pillar
+     * @param block the base block
+     */
     protected static void pillar(RecipeOutput output, ItemLike pillar, ItemLike block) {
         pillarBuilder(pillar, block)
                 .unlockedBy(getHasName(block), has(block))
                 .save(output);
     }
 
+    /**
+     * Get a builder for a pillar recipe, to configure advancements manually
+     *
+     * @param pillar the resulting pillar
+     * @param block the base block
+     * @return the builder
+     */
     protected static RecipeBuilder pillarBuilder(ItemLike pillar, ItemLike block) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, pillar, 2)
                 .define('#', block)
@@ -401,37 +430,74 @@ public class JNERecipeProvider extends RecipeProvider {
                 .pattern("#");
     }
 
-    protected static void bricks(RecipeOutput recipeOutput, RecipeCategory category, ItemLike bricks, ItemLike block) {
-        bricksBuilder(category, bricks, block)
+
+    /**
+     * Generates a bricks recipe preconfigured with advancement requirements
+     *
+     * @param output propagated recipe output
+     * @param bricks the resulting bricks
+     * @param block the base block
+     */
+    protected static void bricks(RecipeOutput output, ItemLike bricks, ItemLike block) {
+        bricksBuilder(bricks, block)
                 .unlockedBy(getHasName(block), has(block))
-                .save(recipeOutput);
+                .save(output);
     }
 
-    protected static RecipeBuilder bricksBuilder(RecipeCategory category, ItemLike bricks, ItemLike block) {
-        return ShapedRecipeBuilder.shaped(category, bricks, 4)
+    /**
+     * Get a builder for a bricks recipe, to configure advancements manually
+     *
+     * @param bricks the resulting bricks
+     * @param block  the base block
+     * @return the builder
+     */
+    protected static RecipeBuilder bricksBuilder(ItemLike bricks, ItemLike block) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, bricks, 4)
                 .define('#', block)
                 .pattern("##")
                 .pattern("##");
     }
 
-    protected static void tiles(RecipeOutput recipeOutput, RecipeCategory category, ItemLike tiles, ItemLike block) {
-        ShapedRecipeBuilder.shaped(category, tiles, 4)
+    /**
+     * Generates a tiles recipe preconfigured with advancement requirements
+     *
+     * @param output propagated recipe output
+     * @param tiles the resulting tiles
+     * @param block the base block
+     */
+    protected static void tiles(RecipeOutput output, ItemLike tiles, ItemLike block) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tiles, 4)
                 .define('#', block)
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy(getHasName(block), has(block))
-                .save(recipeOutput);
+                .save(output);
     }
 
-    protected static void twoByTwoPacker(RecipeOutput recipeOutput, RecipeCategory category, ItemLike packed, ItemLike unpacked, int count) {
-        ShapedRecipeBuilder.shaped(category, packed, count)
+    /**
+     * Generates a recipe to pack items 2x2 preconfigured with advancement requirements
+     *
+     * @param output propagated recipe output
+     * @param packed the resulting item
+     * @param unpacked the base item
+     * @param count the count of resulting items
+     */
+    protected static void twoByTwoPacker(RecipeOutput output, ItemLike packed, ItemLike unpacked, int count) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, packed, count)
                 .define('#', unpacked)
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy(getHasName(unpacked), has(unpacked))
-                .save(recipeOutput);
+                .save(output);
     }
 
+    /**
+     * Generates a etched block recipe preconfigured with advancement requirements
+     *
+     * @param output propagated recipe output
+     * @param etched the etched block
+     * @param block the base block
+     */
     protected static void etched(RecipeOutput output, ItemLike etched, ItemLike block) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, etched, 8)
                 .define('#', block)
@@ -442,15 +508,31 @@ public class JNERecipeProvider extends RecipeProvider {
                 .save(output);
     }
 
-    protected static void transformEight(RecipeOutput output, RecipeCategory category, ItemLike result, ItemLike item, ItemLike catalyst) {
-        transformEightBuilder(category, result, item, catalyst)
+    /**
+     * Generates a recipe to transform 8 blocks with a consumed catalyst with advancement requirements
+     *
+     * @param output propagated recipe output
+     * @param result the transformed blocks
+     * @param block the base blocks
+     * @param catalyst the catalyst item
+     */
+    protected static void transformEight(RecipeOutput output, ItemLike result, ItemLike block, ItemLike catalyst) {
+        transformEightBuilder(result, block, catalyst)
                 .unlockedBy(getHasName(catalyst), has(catalyst))
                 .save(output);
     }
 
-    protected static RecipeBuilder transformEightBuilder(RecipeCategory category, ItemLike result, ItemLike item, ItemLike catalyst) {
-        return ShapedRecipeBuilder.shaped(category, result, 8)
-                .define('#', item)
+    /**
+     * Get a builder for a recipe to transform 8 blocks, to configure advancements manually
+     *
+     * @param output propagated recipe output
+     * @param block the transformed blocks
+     * @param catalyst the catalyst item
+     * @return the builder
+     */
+    protected static RecipeBuilder transformEightBuilder(ItemLike output, ItemLike block, ItemLike catalyst) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 8)
+                .define('#', block)
                 .define('C', catalyst)
                 .pattern("###")
                 .pattern("#C#")
@@ -469,13 +551,21 @@ public class JNERecipeProvider extends RecipeProvider {
         burningSkull(output, result, block, Items.TORCH);
     }
 
-    protected static void burningSkull(RecipeOutput output, ItemLike result, ItemLike block, ItemLike fire) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
-                .define('#', block)
-                .define('T', fire)
+    /**
+     * Generates a burning skull recipe with advancement requirements
+     *
+     * @param output propagated recipe output
+     * @param burningSkull burning skull block
+     * @param skullBlock skull block
+     * @param torch torch item
+     */
+    protected static void burningSkull(RecipeOutput output, ItemLike burningSkull, ItemLike skullBlock, ItemLike torch) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, burningSkull)
+                .define('#', skullBlock)
+                .define('T', torch)
                 .pattern("#")
                 .pattern("T")
-                .unlockedBy(getHasName(block), has(block))
+                .unlockedBy(getHasName(skullBlock), has(skullBlock))
                 .save(output);
     }
 }

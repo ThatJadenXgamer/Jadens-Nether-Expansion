@@ -27,21 +27,31 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.Supplier;
 
 public final class JNEBlockLoot extends BlockLootSubProvider {
+
+    /**
+     * Create a new block loot sub provider
+     *
+     * @param registries a {@linkplain HolderLookup.Provider} supplying the registries
+     */
     public JNEBlockLoot(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.DEFAULT_FLAGS, registries);
     }
 
+    /**
+     * Get all blocks we want to generate loot for, used for verification so we don't miss any.
+     *
+     * @return an {@linkplain Iterable} of blocks
+     */
     @Override
-    protected Iterable<Block> getKnownBlocks() {
-        ArrayList<Block> iterableBlocks = new ArrayList<>();
-        JNEBlocks.BLOCKS.getEntries().stream().map(Supplier::get).forEach(iterableBlocks::add);
-        return iterableBlocks;
+    protected @NotNull Iterable<Block> getKnownBlocks() {
+        return JNEBlocks.BLOCKS.getRegistry().get();
     }
 
     @Override
@@ -294,16 +304,40 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         dropSelf(JNEBlocks.VERDANT_FROGMIST.get());
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set
+     *
+     * @param item the item
+     * @param weight the weight
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight) {
         return LootItem.lootTableItem(item)
                 .setWeight(weight);
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a constant value
+     *
+     * @param item the item
+     * @param weight the weight
+     * @param count the count
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float count) {
         return item(item, weight)
                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(count)));
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a uniform random value
+     *
+     * @param item the item
+     * @param weight the weight
+     * @param min the minimum count
+     * @param max the maximum count
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float min, float max) {
         return item(item, weight)
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)));

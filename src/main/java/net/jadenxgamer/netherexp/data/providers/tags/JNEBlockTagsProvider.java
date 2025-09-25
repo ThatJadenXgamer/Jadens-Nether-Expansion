@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.data.providers.tags;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.data.JNEDataGen;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -16,8 +17,15 @@ import java.util.concurrent.CompletableFuture;
 
 public final class JNEBlockTagsProvider extends BlockTagsProvider {
 
-    public JNEBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, NetherExp.MOD_ID, existingFileHelper);
+    /**
+     * Create a new biome tags provider.
+     *
+     * @param output             the output location
+     * @param registries         a {@linkplain CompletableFuture} supplying the registries
+     * @param existingFileHelper a {@linkplain ExistingFileHelper} to find existing files
+     */
+    public JNEBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, registries, NetherExp.MOD_ID, existingFileHelper);
     }
 
     @Override

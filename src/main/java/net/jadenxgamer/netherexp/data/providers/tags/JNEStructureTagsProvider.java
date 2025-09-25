@@ -12,12 +12,19 @@ import java.util.concurrent.CompletableFuture;
 
 public class JNEStructureTagsProvider extends StructureTagsProvider {
 
-    public JNEStructureTagsProvider(PackOutput arg, CompletableFuture<HolderLookup.Provider> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
-        super(arg, completableFuture, NetherExp.MOD_ID, existingFileHelper);
+    /**
+     * Create a new structure tags provider.
+     *
+     * @param output             the output location
+     * @param registries         a {@linkplain CompletableFuture} supplying the registries
+     * @param existingFileHelper a {@linkplain ExistingFileHelper} to find existing files
+     */
+    public JNEStructureTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, registries, NetherExp.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider registries) {
         tag(JNETags.Structures.SANCTUM_COMPASS_LOCATED)
                 // TODO: IMPLEMENT SANCTUM
                 // .add(JNEStructures.SANCTUM)

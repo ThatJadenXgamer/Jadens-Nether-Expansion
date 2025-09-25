@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.data.providers.tags;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.data.JNEDataGen;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -14,12 +15,19 @@ import java.util.concurrent.CompletableFuture;
 
 public final class JNEFluidTypeTagsProvider extends FluidTagsProvider {
 
-    public JNEFluidTypeTagsProvider(PackOutput arg, CompletableFuture<HolderLookup.Provider> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
-        super(arg, completableFuture, NetherExp.MOD_ID, existingFileHelper);
+    /**
+     * Create a new fluid type tags provider.
+     *
+     * @param output             the output location
+     * @param registries         a {@linkplain CompletableFuture} supplying the registries
+     * @param existingFileHelper a {@linkplain ExistingFileHelper} to find existing files
+     */
+    public JNEFluidTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, registries, NetherExp.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider registries) {
         tag(JNETags.Fluids.ECTOPLASM).add(JNEFluids.ECTOPLASM_SOURCE.get(), JNEFluids.ECTOPLASM_FLOWING.get());
         tag(JNETags.Fluids.TURNS_TO_BLACK_ICE).add(Fluids.WATER, Fluids.FLOWING_WATER);
     }

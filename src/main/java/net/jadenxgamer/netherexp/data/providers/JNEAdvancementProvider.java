@@ -5,22 +5,17 @@ import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.structure.Structure;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -31,7 +26,16 @@ import java.util.function.Consumer;
 
 public class JNEAdvancementProvider extends AdvancementProvider {
 
+    /**
+     * Constructs an advancement provider using the generators to write the
+     * advancements to a file.
+     *
+     * @param output             the target directory of the data generator
+     * @param registries         a future of a lookup for registries and their objects
+     * @param existingFileHelper a helper used to find whether a file exists
+     */
     public JNEAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
+        // we pass all advancement generators to the super constructor
         super(output, registries, existingFileHelper, List.of(new NetherAdvancementGenerator()));
     }
 
@@ -40,6 +44,7 @@ public class JNEAdvancementProvider extends AdvancementProvider {
         @Override
         public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver, ExistingFileHelper existingFileHelper) {
 
+            // get the root advancement for nether advancements
             AdvancementHolder root = AdvancementSubProvider.createPlaceholder("nether/root");
 
             AdvancementHolder add_spores_to_block = taskBuilder(JNEItems.NIGHTSPORES.get(), "add_spores_to_block", root)
@@ -289,6 +294,14 @@ public class JNEAdvancementProvider extends AdvancementProvider {
                     )).save(saver, NetherExp.id("nether/froghorn"), existingFileHelper);
         }
 
+        /**
+         * Gets a builder for a challenge advancement
+         *
+         * @param icon the advancement icon
+         * @param name the internal advancement name
+         * @param parent the parent
+         * @return the builder
+         */
         private static Advancement.Builder challengeBuilder(ItemLike icon, String name, AdvancementHolder parent) {
             // #recipeAdvancement() does nothing but disable telemetry
             return Advancement.Builder.recipeAdvancement()
@@ -305,6 +318,14 @@ public class JNEAdvancementProvider extends AdvancementProvider {
                     );
         }
 
+        /**
+         * Gets a builder for a goal advancement
+         *
+         * @param icon the advancement icon
+         * @param name the internal advancement name
+         * @param parent the parent
+         * @return the builder
+         */
         private static Advancement.Builder goalBuilder(ItemLike icon, String name, AdvancementHolder parent) {
             // #recipeAdvancement() does nothing but disable telemetry
             return Advancement.Builder.recipeAdvancement()
@@ -321,6 +342,14 @@ public class JNEAdvancementProvider extends AdvancementProvider {
                     );
         }
 
+        /**
+         * Gets a builder for a task advancement
+         *
+         * @param icon the advancement icon
+         * @param name the internal advancement name
+         * @param parent the parent
+         * @return the builder
+         */
         private static Advancement.Builder taskBuilder(ItemLike icon, String name, AdvancementHolder parent) {
             // #recipeAdvancement() does nothing but disable telemetry
             return Advancement.Builder.recipeAdvancement()
@@ -337,6 +366,14 @@ public class JNEAdvancementProvider extends AdvancementProvider {
                     );
         }
 
+        /**
+         * Gets a builder for a task advancement that doesn't send chat messages or toasts
+         *
+         * @param icon the advancement icon
+         * @param name the internal advancement name
+         * @param parent the parent
+         * @return the builder
+         */
         private static Advancement.Builder unannouncedTaskBuilder(ItemLike icon, String name, AdvancementHolder parent) {
             // #recipeAdvancement() does nothing but disable telemetry
             return Advancement.Builder.recipeAdvancement()

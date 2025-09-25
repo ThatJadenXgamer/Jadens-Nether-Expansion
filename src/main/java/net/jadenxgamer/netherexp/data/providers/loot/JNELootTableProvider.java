@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.data.providers.loot;
 
+import net.jadenxgamer.netherexp.data.JNEDataGen;
 import net.jadenxgamer.netherexp.data.providers.loot.packs.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -13,8 +14,16 @@ import java.util.concurrent.CompletableFuture;
 
 public class JNELootTableProvider extends LootTableProvider {
 
-    public JNELootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper fileHelper) {
+    /**
+     * Create a new loot table provider.
+     *
+     * @param output             the output location
+     * @param registries         a {@linkplain CompletableFuture} supplying the registries
+     * @param existingFileHelper to confirm with {@linkplain JNEDataGen.DataProviderFactory}
+     */
+    public JNELootTableProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
         super(output, Set.of(), List.of(
+                // we pass all sub providers to the super constructor, with the type of loot tables they generate
                 new SubProviderEntry(JNEArchaeologyLoot::new, LootContextParamSets.ARCHAEOLOGY),
                 new SubProviderEntry(JNEBrazierChestLoot::new, LootContextParamSets.EMPTY),
                 new SubProviderEntry(JNEBlockLoot::new, LootContextParamSets.BLOCK),

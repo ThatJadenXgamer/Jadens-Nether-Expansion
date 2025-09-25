@@ -64,24 +64,59 @@ public record JNEBrazierChestLoot(HolderLookup.Provider registries) implements L
                 .withPool(LootPool.lootPool().add(EmptyLootItem.emptyItem().setWeight(50)).add(item(JNEItems.ANCIENT_WAX.get(), 45, 1, 2)).add(item(JNEItems.VALOR_ARMOR_TRIM_SMITHING_TEMPLATE.get(), 25)).add(item(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), 15)).add(item(JNEItems.SHOTGUN_CORE.get(), 10)).add(item(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get(), 8)).add(item(Items.ANCIENT_DEBRIS, 25, 1, 4))).withPool(LootPool.lootPool().add(EmptyLootItem.emptyItem().setWeight(5)).add(item(Items.POTION, 1).apply(SetPotionFunction.setPotion(Potions.STRENGTH))).add(item(Items.POTION, 1, 2).apply(SetPotionFunction.setPotion(Potions.REGENERATION))).add(item(Items.POTION, 1).apply(SetPotionFunction.setPotion(Potions.INVISIBILITY)))).withPool(LootPool.lootPool().add(item(Items.BRUSH, 1).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(5, 32))).when(LootItemRandomChanceCondition.randomChance(0.15f)))));
     }
 
+    /**
+     * Get a {@linkplain ResourceKey<LootTable>} for a loot table in netherexp/loot_table/brazier_chest
+     *
+     * @param name the internal name of the loot table
+     * @return a new {@linkplain ResourceKey<LootTable>}
+     */
     private ResourceKey<LootTable> key(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, NetherExp.id("brazier_chest/" + name));
     }
 
+    /**
+     * Get a loot table with no drops
+     *
+     * @return {@code LootTable.lootTable();}
+     */
     private static LootTable.Builder noDrop() {
         return LootTable.lootTable();
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set
+     *
+     * @param item the item
+     * @param weight the weight
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight) {
         return LootItem.lootTableItem(item)
                 .setWeight(weight);
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a constant value
+     *
+     * @param item the item
+     * @param weight the weight
+     * @param count the count
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float count) {
         return item(item, weight)
                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(count)));
     }
 
+    /**
+     * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a uniform random value
+     *
+     * @param item the item
+     * @param weight the weight
+     * @param min the minimum count
+     * @param max the maximum count
+     * @return the builder
+     */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float min, float max) {
         return item(item, weight)
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)));

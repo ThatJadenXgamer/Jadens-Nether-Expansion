@@ -78,7 +78,7 @@ public class JNEDataGen {
     /**
      * Helper Interface
      */
-    private interface DataProviderFactory {
+    public interface DataProviderFactory {
         DataProvider makeDataProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper fileHelper);
     }
 
