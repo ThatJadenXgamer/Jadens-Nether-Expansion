@@ -25,9 +25,32 @@ public record JNEChestLoot(HolderLookup.Provider registries) implements LootTabl
 
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
-        output.accept(key("chapel"), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(5)).add(item(Items.BONE, 3, 2, 3)).add(item(Items.SOUL_SOIL, 4, 3))).withPool(LootPool.lootPool().add(item(JNEItems.SANCTUM_COMPASS.get(), 1))).withPool(LootPool.lootPool().add(item(Items.PUMPKIN_SEEDS, 1, 7))).withPool(LootPool.lootPool().add(item(Items.SPLASH_POTION, 1, 2).apply(SetPotionFunction.setPotion(Potions.WATER)))).withPool(LootPool.lootPool().add(item(Items.FLINT, 1, 4))));
-        output.accept(key("sanctum_food"), LootTable.lootTable().withPool(LootPool.lootPool().add(item(Items.MUTTON, 1, 3, 4)).add(item(JNEItems.HOGHAM.get(), 1, 3, 4))).withPool(LootPool.lootPool().add(item(JNEBlocks.BLACK_ICE.get(), 1, 19, 27))));
-        output.accept(key("sanctum_supply"), LootTable.lootTable().withPool(LootPool.lootPool().add(item(Items.FLINT, 1, 1, 3))).withPool(LootPool.lootPool().add(item(Items.IRON_NUGGET, 1, 9, 15))).withPool(LootPool.lootPool().add(item(Items.HONEYCOMB, 1, 1, 2))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(3)).add(item(JNEBlocks.SOUL_SLATE.get(), 1, 7, 12)).add(item(JNEItems.WRAITHING_FLESH.get(), 1, 5, 12))));
+        output.accept(key("chapel"),
+                LootTable
+                        .lootTable()
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(5)).add(item(Items.BONE, 3, 2, 3)).add(item(Items.SOUL_SOIL, 4, 3)))
+                        .withPool(LootPool.lootPool().add(item(JNEItems.SANCTUM_COMPASS.get(), 1)))
+                        .withPool(LootPool.lootPool().add(item(Items.PUMPKIN_SEEDS, 1, 7)))
+                        .withPool(LootPool.lootPool().add(item(Items.SPLASH_POTION, 1, 2).apply(SetPotionFunction.setPotion(Potions.WATER))))
+                        .withPool(LootPool.lootPool().add(item(Items.FLINT, 1, 4))));
+
+        output.accept(key("sanctum_food"),
+                LootTable
+                        .lootTable()
+                        .withPool(LootPool.lootPool().add(item(Items.MUTTON, 1, 3, 4)).add(item(JNEItems.HOGHAM.get(), 1, 3, 4)))
+                        .withPool(LootPool.lootPool().add(item(JNEBlocks.BLACK_ICE.get(), 1, 19, 27))));
+
+        output.accept(key("sanctum_supply"),
+                LootTable
+                        .lootTable()
+                        .withPool(LootPool.lootPool().add(item(Items.FLINT, 1, 1, 3)))
+                        .withPool(LootPool.lootPool().add(item(Items.IRON_NUGGET, 1, 9, 15)))
+                        .withPool(LootPool.lootPool().add(item(Items.HONEYCOMB, 1, 1, 2)))
+                        .withPool(LootPool
+                                .lootPool()
+                                .setRolls(ConstantValue.exactly(3))
+                                .add(item(JNEBlocks.SOUL_SLATE.get(), 1, 7, 12))
+                                .add(item(JNEItems.WRAITHING_FLESH.get(), 1, 5, 12))));
     }
 
     /**
@@ -52,7 +75,7 @@ public record JNEChestLoot(HolderLookup.Provider registries) implements LootTabl
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
      * @return the builder
      */
@@ -64,9 +87,9 @@ public record JNEChestLoot(HolderLookup.Provider registries) implements LootTabl
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a constant value
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
-     * @param count the count
+     * @param count  the count
      * @return the builder
      */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float count) {
@@ -77,10 +100,10 @@ public record JNEChestLoot(HolderLookup.Provider registries) implements LootTabl
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a uniform random value
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
-     * @param min the minimum count
-     * @param max the maximum count
+     * @param min    the minimum count
+     * @param max    the maximum count
      * @return the builder
      */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float min, float max) {

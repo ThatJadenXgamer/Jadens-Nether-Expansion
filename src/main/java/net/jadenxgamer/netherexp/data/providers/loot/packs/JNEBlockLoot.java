@@ -29,9 +29,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Set;
-import java.util.function.Supplier;
 
 public final class JNEBlockLoot extends BlockLootSubProvider {
 
@@ -96,22 +94,38 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         add(JNEBlocks.SUSPICIOUS_SOUL_SAND.get(), noDrop());
         dropSelf(JNEBlocks.SOUL_MAGMA_BLOCK.get());
         // TODO: FIX THIS
-        add(JNEBlocks.SOUL_SOIL_LAYER.get(), (block) ->
-                LootTable.lootTable().withPool(LootPool.lootPool()
-                                                       .add(AlternativesEntry.alternatives(
-                                                               JNELayerBlock.LAYERS.getPossibleValues(),
-                                                               (layers) -> layers == 8 ?
-                                                                       LootItem.lootTableItem(Blocks.SOUL_SOIL) :
-                                                                       LootItem.lootTableItem(block)
-                                                                               .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(JNELayerBlock.LAYERS, layers)))
-                                                                               .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) layers)))))));
+        add(
+                JNEBlocks.SOUL_SOIL_LAYER.get(), (block) ->
+                        LootTable.lootTable().withPool(LootPool.lootPool()
+                                .add(AlternativesEntry.alternatives(
+                                        JNELayerBlock.LAYERS.getPossibleValues(),
+                                        (layers) -> layers == 8 ?
+                                                LootItem.lootTableItem(Blocks.SOUL_SOIL) :
+                                                LootItem.lootTableItem(block)
+                                                        .when(LootItemBlockStatePropertyCondition
+                                                                .hasBlockStateProperties(block)
+                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(JNELayerBlock.LAYERS, layers)))
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) layers)))))));
+
         dropOther(JNEBlocks.ECTOPLASM_CAULDRON.get(), Items.CAULDRON);
 
         // Black Ice
         dropSelf(JNEBlocks.BLACK_ICE.get());
         dropSelf(JNEBlocks.BLACK_ICICLE.get());
         dropWhenSilkTouch(JNEBlocks.THIN_BLACK_ICE.get());
-        add(JNEBlocks.SOUL_PERMAFROST.get(), block -> createSilkTouchOnlyTable(block).withPool(LootPool.lootPool().add(item(Items.SOUL_SOIL, 1)).when(doesNotHaveSilkTouch()).when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.SHOVELS)))).withPool(LootPool.lootPool().add(item(JNEBlocks.BLACK_ICICLE.get(), 1, 2, 4)).when(doesNotHaveSilkTouch()).when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES)))));
+        add(
+                JNEBlocks.SOUL_PERMAFROST.get(),
+                block -> createSilkTouchOnlyTable(block)
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(item(Items.SOUL_SOIL, 1))
+                                .when(doesNotHaveSilkTouch())
+                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.SHOVELS))))
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(item(JNEBlocks.BLACK_ICICLE.get(), 1, 2, 4))
+                                .when(doesNotHaveSilkTouch())
+                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.PICKAXES)))));
 
         // Path Blocks
         dropOther(JNEBlocks.SOUL_PATH.get(), Items.SOUL_SOIL);
@@ -185,7 +199,17 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         add(JNEBlocks.MAGMA_CREAM_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(block, Items.MAGMA_CREAM, UniformGenerator.between(1, 3)));
 
         // Quartz Blocks
-        add(JNEBlocks.QUARTZ_CRYSTAL.get(), block -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(Items.QUARTZ).apply(SetItemCountFunction.setCount(UniformGenerator.between((float) 1, (float) 3))).apply(ApplyBonusCount.addOreBonusCount(registries.holderOrThrow(Enchantments.FORTUNE))))));
+        add(
+                JNEBlocks.QUARTZ_CRYSTAL.get(),
+                block -> createSilkTouchDispatchTable(
+                        block,
+                        applyExplosionDecay(
+                                block,
+                                LootItem
+                                        .lootTableItem(Items.QUARTZ)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between((float) 1, (float) 3)))
+                                        .apply(ApplyBonusCount.addOreBonusCount(registries.holderOrThrow(Enchantments.FORTUNE))))));
+
         dropSelf(JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get());
         dropSelf(JNEBlocks.CRACKED_QUARTZ_BRICKS.get());
         dropSelf(JNEBlocks.CHISELED_QUARTZ_PILLAR.get());
@@ -203,7 +227,32 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
 
         // Farming & Food
         // TODO: CHECK THIS (seems good though)
-        add(JNEBlocks.WARPED_WART.get(), (block) -> LootTable.lootTable().withPool(applyExplosionDecay(block, LootPool.lootPool().add(LootItem.lootTableItem(JNEBlocks.WARPED_WART.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(WarpedWartBlock.AGE, 3).hasProperty(WarpedWartBlock.HALF, DoubleBlockHalf.LOWER)))).apply(ApplyBonusCount.addUniformBonusCount(registries.holderOrThrow(Enchantments.FORTUNE)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(WarpedWartBlock.AGE, 3).hasProperty(WarpedWartBlock.HALF, DoubleBlockHalf.LOWER))))))));
+        add(
+                JNEBlocks.WARPED_WART.get(),
+                (block) -> LootTable
+                        .lootTable()
+                        .withPool(applyExplosionDecay(
+                                block,
+                                LootPool
+                                        .lootPool()
+                                        .add(LootItem
+                                                .lootTableItem(JNEBlocks.WARPED_WART.get())
+                                                .apply(SetItemCountFunction
+                                                        .setCount(UniformGenerator.between(2.0F, 4.0F))
+                                                        .when(LootItemBlockStatePropertyCondition
+                                                                .hasBlockStateProperties(block)
+                                                                .setProperties(StatePropertiesPredicate.Builder
+                                                                        .properties()
+                                                                        .hasProperty(WarpedWartBlock.AGE, 3)
+                                                                        .hasProperty(WarpedWartBlock.HALF, DoubleBlockHalf.LOWER))))
+                                                .apply(ApplyBonusCount
+                                                        .addUniformBonusCount(registries.holderOrThrow(Enchantments.FORTUNE))
+                                                        .when(LootItemBlockStatePropertyCondition
+                                                                .hasBlockStateProperties(block)
+                                                                .setProperties(StatePropertiesPredicate.Builder
+                                                                        .properties()
+                                                                        .hasProperty(WarpedWartBlock.AGE, 3)
+                                                                        .hasProperty(WarpedWartBlock.HALF, DoubleBlockHalf.LOWER))))))));
 
         add(JNEBlocks.WRAITHING_LESION.get(), noDrop());
         dropSelf(JNEBlocks.SOUL_TORCHFLOWER.get());
@@ -212,9 +261,36 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         dropSelf(JNEBlocks.SORROWSQUASH.get());
         dropSelf(JNEBlocks.CARVED_SORROWSQUASH.get());
         dropSelf(JNEBlocks.GHOUL_O_LANTERN.get());
-        add(JNEBlocks.SORROWSQUASH_STEM.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().add(item(Items.PUMPKIN_SEEDS, 1)).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33f, 0.55f, 0.77f, 1f))));
-        add(JNEBlocks.SORROWSQUASH_STEM_PLANT.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().add(item(Items.PUMPKIN_SEEDS, 1)).when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33f, 0.55f, 0.77f, 1f))));
-        add(JNEBlocks.CEREBRAGE_SKULL.get(), block -> LootTable.lootTable().withPool(applyExplosionDecay(block, LootPool.lootPool().add(item(Items.SKELETON_SKULL, 1)))).withPool(LootPool.lootPool().add(item(JNEItems.CEREBRAGE_SEEDS.get(), 1))).withPool(LootPool.lootPool().add(item(JNEItems.CEREBRAGE.get(), 1, 3, 6)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CerebrageSkullBlock.AGE, 3)))));
+        add(
+                JNEBlocks.SORROWSQUASH_STEM.get(),
+                block -> LootTable
+                        .lootTable()
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(item(Items.PUMPKIN_SEEDS, 1))
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33f, 0.55f, 0.77f, 1f))));
+
+        add(
+                JNEBlocks.SORROWSQUASH_STEM_PLANT.get(),
+                block -> LootTable
+                        .lootTable()
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(item(Items.PUMPKIN_SEEDS, 1))
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(registries.holderOrThrow(Enchantments.FORTUNE), 0.33f, 0.55f, 0.77f, 1f))));
+
+        add(
+                JNEBlocks.CEREBRAGE_SKULL.get(),
+                block -> LootTable
+                        .lootTable()
+                        .withPool(applyExplosionDecay(block, LootPool.lootPool().add(item(Items.SKELETON_SKULL, 1))))
+                        .withPool(LootPool.lootPool().add(item(JNEItems.CEREBRAGE_SEEDS.get(), 1)))
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(item(JNEItems.CEREBRAGE.get(), 1, 3, 6))
+                                .when(LootItemBlockStatePropertyCondition
+                                        .hasBlockStateProperties(block)
+                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CerebrageSkullBlock.AGE, 3)))));
 
         // Shroomlight
         dropSelf(JNEBlocks.SHROOMNIGHT.get());
@@ -224,8 +300,21 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         add(JNEBlocks.WARPED_WART_BEARD.get(), BlockLootSubProvider::createShearsOnlyDrop);
 
         // Ivy
-        add(JNEBlocks.WEEPING_IVY.get(), block -> createMultifaceBlockDrops(block, HAS_SHEARS).withPool(LootPool.lootPool().add(item(JNEItems.WEEPING_HELIX.get(), 1).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IvyBlock.HELIX, true))))));
-        add(JNEBlocks.TWISTING_IVY.get(), block -> createMultifaceBlockDrops(block, HAS_SHEARS).withPool(LootPool.lootPool().add(item(JNEItems.TWISTING_HELIX.get(), 1).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IvyBlock.HELIX, true))))));
+        add(
+                JNEBlocks.WEEPING_IVY.get(),
+                block -> createMultifaceBlockDrops(block, HAS_SHEARS).withPool(LootPool
+                        .lootPool()
+                        .add(item(JNEItems.WEEPING_HELIX.get(), 1).when(LootItemBlockStatePropertyCondition
+                                .hasBlockStateProperties(block)
+                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IvyBlock.HELIX, true))))));
+
+        add(
+                JNEBlocks.TWISTING_IVY.get(),
+                block -> createMultifaceBlockDrops(block, HAS_SHEARS).withPool(LootPool
+                        .lootPool()
+                        .add(item(JNEItems.TWISTING_HELIX.get(), 1).when(LootItemBlockStatePropertyCondition
+                                .hasBlockStateProperties(block)
+                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IvyBlock.HELIX, true))))));
 
         // Sprouts
         add(JNEBlocks.CRIMSON_SPROUTS.get(), BlockLootSubProvider::createShearsOnlyDrop);
@@ -258,7 +347,38 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         dropSelf(JNEBlocks.SKELETON_SKULL_CANDLE.get());
         dropSelf(JNEBlocks.SOUL_SKELETON_SKULL_CANDLE.get());
         dropSelf(JNEBlocks.ANCIENT_SKELETON_SKULL_CANDLE.get());
-        add(JNEBlocks.BONE_PIKE.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool().add(AlternativesEntry.alternatives(AlternativesEntry.alternatives(BonePikeBlock.BONES.getPossibleValues(), bones -> LootItem.lootTableItem(block).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BonePikeBlock.BONES, bones))).apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) bones)))).when(hasSilkTouch()), AlternativesEntry.alternatives(BonePikeBlock.BONES.getPossibleValues(), bones -> LootItem.lootTableItem(Items.BONE).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BonePikeBlock.BONES, bones))).apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) bones)))).when(doesNotHaveSilkTouch())))));
+        add(
+                JNEBlocks.BONE_PIKE.get(),
+                block -> LootTable
+                        .lootTable()
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(AlternativesEntry.alternatives(
+                                        AlternativesEntry
+                                                .alternatives(
+                                                        BonePikeBlock.BONES.getPossibleValues(),
+                                                        bones -> LootItem
+                                                                .lootTableItem(block)
+                                                                .when(LootItemBlockStatePropertyCondition
+                                                                        .hasBlockStateProperties(block)
+                                                                        .setProperties(StatePropertiesPredicate.Builder
+                                                                                .properties()
+                                                                                .hasProperty(BonePikeBlock.BONES, bones)))
+                                                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) bones))))
+                                                .when(hasSilkTouch()),
+                                        AlternativesEntry
+                                                .alternatives(
+                                                        BonePikeBlock.BONES.getPossibleValues(),
+                                                        bones -> LootItem
+                                                                .lootTableItem(Items.BONE)
+                                                                .when(LootItemBlockStatePropertyCondition
+                                                                        .hasBlockStateProperties(block)
+                                                                        .setProperties(StatePropertiesPredicate.Builder
+                                                                                .properties()
+                                                                                .hasProperty(BonePikeBlock.BONES, bones)))
+                                                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) bones))))
+                                                .when(doesNotHaveSilkTouch())))));
+
         dropSelf(JNEBlocks.BONE_FENCE.get());
         dropSelf(JNEBlocks.SKULL_BLOCK.get());
         dropSelf(JNEBlocks.BURNING_SKULL_BLOCK.get());
@@ -296,7 +416,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         dropSelf(JNEBlocks.ANCIENT_WAX_BLOCK.get());
         dropSelf(JNEBlocks.ANCIENT_TORCH.get());
         dropSelf(JNEBlocks.ANCIENT_LANTERN.get());
-        add(JNEBlocks.ANCIENT_CAMPFIRE.get(), (block) -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(JNEItems.ANCIENT_WAX.get()))));
+        add(JNEBlocks.ANCIENT_CAMPFIRE.get(), block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(JNEItems.ANCIENT_WAX.get()))));
         dropSelf(JNEBlocks.ANCIENT_CANDLE.get());
 
         dropSelf(JNEBlocks.OCHRE_FROGMIST.get());
@@ -307,7 +427,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
      * @return the builder
      */
@@ -319,9 +439,9 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a constant value
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
-     * @param count the count
+     * @param count  the count
      * @return the builder
      */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float count) {
@@ -332,10 +452,10 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a uniform random value
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
-     * @param min the minimum count
-     * @param max the maximum count
+     * @param min    the minimum count
+     * @param max    the maximum count
      * @return the builder
      */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float min, float max) {

@@ -35,10 +35,19 @@ public final class JNEEntityLoot extends EntityLootSubProvider {
     @Override
     public void generate() {
         add(JNEEntityType.WISP.get(), noDrop());
-        add(JNEEntityType.APPARITION.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(item(Items.CHAIN, 1, 0, 2).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, 1))))));
-        add(JNEEntityType.VESSEL.get(), LootTable.lootTable()
-                .withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.WRAITHING_FLESH.get(), 1, 2, 4))))
-                .withPool(LootPool.lootPool().add(applyLooting(registries, item(Items.BONE, 1, 0, 2)))));
+        add(JNEEntityType.APPARITION.get(),
+                LootTable
+                        .lootTable()
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(item(Items.CHAIN, 1, 0, 2).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, 1))))));
+
+        add(JNEEntityType.VESSEL.get(),
+                LootTable
+                        .lootTable()
+                        .withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.WRAITHING_FLESH.get(), 1, 2, 4))))
+                        .withPool(LootPool.lootPool().add(applyLooting(registries, item(Items.BONE, 1, 0, 2)))));
+
         // TODO: IMPLEMENT BANSHEE
         // add(JNEEntityType.BANSHEE.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.BANSHEE_ROD.get(), 1, 0, 1))).when(LootItemKilledByPlayerCondition.killedByPlayer())));
         // TODO: IMPLEMENT ECTO SLAB
@@ -60,9 +69,9 @@ public final class JNEEntityLoot extends EntityLootSubProvider {
      * Applies the {@linkplain EnchantedCountIncreaseFunction} for looting to the given {@linkplain FunctionUserBuilder<T>}
      *
      * @param registries propagated {@linkplain HolderLookup.Provider}
-     * @param builder the builder
+     * @param builder    the builder
+     * @param <T>        type param to avoid casting
      * @return the builder with looting applied
-     * @param <T> type param to avoid casting
      */
     private static <T extends FunctionUserBuilder<T>> T applyLooting(HolderLookup.Provider registries, FunctionUserBuilder<T> builder) {
         return applyLooting(registries, builder, 1);
@@ -72,19 +81,19 @@ public final class JNEEntityLoot extends EntityLootSubProvider {
      * Applies the {@linkplain EnchantedCountIncreaseFunction} for looting to the given {@linkplain FunctionUserBuilder<T>}
      *
      * @param registries propagated {@linkplain HolderLookup.Provider}
-     * @param builder the builder
-     * @param level the level at which looting caps out
+     * @param builder    the builder
+     * @param count      the max extra amount
+     * @param <T>        type param to avoid casting
      * @return the builder with looting applied
-     * @param <T> type param to avoid casting
      */
-    private static <T extends FunctionUserBuilder<T>> T applyLooting(HolderLookup.Provider registries, FunctionUserBuilder<T> builder, float level) {
-        return builder.apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, level)));
+    private static <T extends FunctionUserBuilder<T>> T applyLooting(HolderLookup.Provider registries, FunctionUserBuilder<T> builder, float count) {
+        return builder.apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, count)));
     }
 
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
      * @return the builder
      */
@@ -96,9 +105,9 @@ public final class JNEEntityLoot extends EntityLootSubProvider {
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a constant value
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
-     * @param count the count
+     * @param count  the count
      * @return the builder
      */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float count) {
@@ -109,10 +118,10 @@ public final class JNEEntityLoot extends EntityLootSubProvider {
     /**
      * Get a {@linkplain LootPoolSingletonContainer.Builder} with the item and weight set, also applies a {@linkplain SetItemCountFunction} with a uniform random value
      *
-     * @param item the item
+     * @param item   the item
      * @param weight the weight
-     * @param min the minimum count
-     * @param max the maximum count
+     * @param min    the minimum count
+     * @param max    the maximum count
      * @return the builder
      */
     private static LootPoolSingletonContainer.Builder<?> item(ItemLike item, int weight, float min, float max) {

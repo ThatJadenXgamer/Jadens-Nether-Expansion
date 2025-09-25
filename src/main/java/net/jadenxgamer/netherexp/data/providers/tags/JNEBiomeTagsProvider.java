@@ -2,7 +2,6 @@ package net.jadenxgamer.netherexp.data.providers.tags;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
-import net.jadenxgamer.netherexp.data.JNEDataGen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
@@ -60,7 +59,10 @@ public final class JNEBiomeTagsProvider extends BiomeTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath("regions_unexplored", "blackstone_basin"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "crystalline_chasm"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "undergrowth"));
-        tag(JNETags.Biomes.HAS_DEVILS_BLUFF).add(Biomes.NETHER_WASTES).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "crystalline_chasm")).addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "visceral_heap"));
+        tag(JNETags.Biomes.HAS_DEVILS_BLUFF)
+                .add(Biomes.NETHER_WASTES)
+                .addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "crystalline_chasm"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("biomesoplenty", "visceral_heap"));
         // TODO: IMPLEMENT BLACK ICE GLACIERS
         // tag(JNETags.Biomes.HAS_ICE_RIBS).add(JNEBiomes.BLACK_ICE_GLACIERS);
         tag(JNETags.Biomes.HAS_ICE_RIBS)
