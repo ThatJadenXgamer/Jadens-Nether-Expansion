@@ -8,13 +8,14 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
@@ -22,13 +23,13 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.plaf.nimbus.State;
 import java.util.Set;
 
 public final class JNEBlockLoot extends BlockLootSubProvider {
@@ -49,7 +50,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
      */
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks() {
-        return JNEBlocks.BLOCKS.getRegistry().get();
+        return JNEBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get).map(b -> (Block) b).toList();
     }
 
     @Override
@@ -102,9 +103,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
                                         (layers) -> layers == 8 ?
                                                 LootItem.lootTableItem(Blocks.SOUL_SOIL) :
                                                 LootItem.lootTableItem(block)
-                                                        .when(LootItemBlockStatePropertyCondition
-                                                                .hasBlockStateProperties(block)
-                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(JNELayerBlock.LAYERS, layers)))
+                                                        .when(hasProperty(block, JNELayerBlock.LAYERS, layers))
                                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) layers)))))));
 
         dropOther(JNEBlocks.ECTOPLASM_CAULDRON.get(), Items.CAULDRON);
@@ -288,9 +287,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
                         .withPool(LootPool
                                 .lootPool()
                                 .add(item(JNEItems.CEREBRAGE.get(), 1, 3, 6))
-                                .when(LootItemBlockStatePropertyCondition
-                                        .hasBlockStateProperties(block)
-                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CerebrageSkullBlock.AGE, 3)))));
+                                .when(hasProperty(block, CerebrageSkullBlock.AGE, 3))));
 
         // Shroomlight
         dropSelf(JNEBlocks.SHROOMNIGHT.get());
@@ -304,17 +301,13 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
                 JNEBlocks.WEEPING_IVY.get(),
                 block -> createMultifaceBlockDrops(block, HAS_SHEARS).withPool(LootPool
                         .lootPool()
-                        .add(item(JNEItems.WEEPING_HELIX.get(), 1).when(LootItemBlockStatePropertyCondition
-                                .hasBlockStateProperties(block)
-                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IvyBlock.HELIX, true))))));
+                        .add(item(JNEItems.WEEPING_HELIX.get(), 1).when(hasProperty(block, IvyBlock.HELIX, true)))));
 
         add(
                 JNEBlocks.TWISTING_IVY.get(),
                 block -> createMultifaceBlockDrops(block, HAS_SHEARS).withPool(LootPool
                         .lootPool()
-                        .add(item(JNEItems.TWISTING_HELIX.get(), 1).when(LootItemBlockStatePropertyCondition
-                                .hasBlockStateProperties(block)
-                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IvyBlock.HELIX, true))))));
+                        .add(item(JNEItems.TWISTING_HELIX.get(), 1).when(hasProperty(block, IvyBlock.HELIX, true)))));
 
         // Sprouts
         add(JNEBlocks.CRIMSON_SPROUTS.get(), BlockLootSubProvider::createShearsOnlyDrop);
@@ -359,11 +352,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
                                                         BonePikeBlock.BONES.getPossibleValues(),
                                                         bones -> LootItem
                                                                 .lootTableItem(block)
-                                                                .when(LootItemBlockStatePropertyCondition
-                                                                        .hasBlockStateProperties(block)
-                                                                        .setProperties(StatePropertiesPredicate.Builder
-                                                                                .properties()
-                                                                                .hasProperty(BonePikeBlock.BONES, bones)))
+                                                                .when(hasProperty(block, BonePikeBlock.BONES, bones))
                                                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) bones))))
                                                 .when(hasSilkTouch()),
                                         AlternativesEntry
@@ -371,11 +360,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
                                                         BonePikeBlock.BONES.getPossibleValues(),
                                                         bones -> LootItem
                                                                 .lootTableItem(Items.BONE)
-                                                                .when(LootItemBlockStatePropertyCondition
-                                                                        .hasBlockStateProperties(block)
-                                                                        .setProperties(StatePropertiesPredicate.Builder
-                                                                                .properties()
-                                                                                .hasProperty(BonePikeBlock.BONES, bones)))
+                                                                .when(hasProperty(block, BonePikeBlock.BONES, bones))
                                                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) bones))))
                                                 .when(doesNotHaveSilkTouch())))));
 
@@ -422,6 +407,18 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         dropSelf(JNEBlocks.OCHRE_FROGMIST.get());
         dropSelf(JNEBlocks.PEARLESCENT_FROGMIST.get());
         dropSelf(JNEBlocks.VERDANT_FROGMIST.get());
+    }
+
+    private static <T extends Comparable<T> & StringRepresentable> LootItemCondition.Builder hasProperty(Block block, Property<T> property, T value) {
+        return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(property, value));
+    }
+
+    private static LootItemCondition.Builder hasProperty(Block block, IntegerProperty property, int value) {
+        return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(property, value));
+    }
+
+    private static LootItemCondition.Builder hasProperty(Block block, BooleanProperty property, boolean value) {
+        return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(property, value));
     }
 
     /**
