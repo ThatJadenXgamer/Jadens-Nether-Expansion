@@ -1,0 +1,18 @@
+{
+  "feature": "netherexp:soul_sand_valley/mound",
+  "placement": [
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 2,
+      "noise_factor": 1,
+      "noise_offset": -0.3
+    },
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 1
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

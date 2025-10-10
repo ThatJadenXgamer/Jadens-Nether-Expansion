@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
+import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -434,7 +435,7 @@ public class JNEBlocks {
             new SoulTorchflowerCropBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.TORCHFLOWER_CROP)));
 
     public static final Supplier<Block> SORROWEED = registerBlock("sorroweed", () ->
-            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.5f).sound(SoundType.MOSS)));
+            new BonemealSpreadBlock(JNEConfiguredFeatures.SORROWEED_PATCH_BONEMEAL, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.5f).sound(SoundType.MOSS)));
 
     public static final Supplier<Block> SORROWSQUASH = registerBlock("sorrowsquash", () ->
             new SorrowsquashBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.PUMPKIN).mapColor(MapColor.COLOR_LIGHT_GRAY).strength(1.0f).sound(SoundType.NETHER_WOOD)));
@@ -499,7 +500,7 @@ public class JNEBlocks {
             new SporeshroomBlock(JNETags.Biomes.HAS_WARPED_SPORES, () -> ParticleTypes.WARPED_SPORE, JNEParticleTypes.WARPED_SMOG, BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.FUNGUS)));
 
     public static final Supplier<Block> SOULED_GEYSER = registerBlock("souled_geyser", () ->
-            new GeyserBlock(JNETags.Biomes.HAS_ASH, () -> ParticleTypes.ASH, JNEParticleTypes.BLACK_SMOKE, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SOUL_SLATE.get()).sound(JNESoundType.SOUL_SLATE)));
+            new GeyserBlock(JNETags.Biomes.HAS_ASH, JNEParticleTypes.WINDY_ASH, JNEParticleTypes.BLACK_SMOKE, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SOUL_SLATE.get()).sound(JNESoundType.SOUL_SLATE)));
 
     public static final Supplier<Block> BASALTIC_GEYSER = registerBlock("basaltic_geyser", () ->
             new GeyserBlock(JNETags.Biomes.HAS_WHITE_ASH, () -> ParticleTypes.WHITE_ASH, JNEParticleTypes.WHITE_SMOKE, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BASALT).sound(SoundType.BASALT)));
@@ -627,34 +628,34 @@ public class JNEBlocks {
      */
 
     public static final Supplier<Block> OSSIFIED_GARGOYLE_STATUE = registerGargoyleStatue("ossified_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.COMMON));
 
     public static final Supplier<Block> TRAMPLE_GARGOYLE_STATUE = registerGargoyleStatue("trample_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.COMMON));
 
     public static final Supplier<Block> PHASE_GARGOYLE_STATUE = registerGargoyleStatue("phase_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.COMMON));
 
     public static final Supplier<Block> GHOUL_GARGOYLE_STATUE = registerGargoyleStatue("ghoul_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.COMMON));
 
     public static final Supplier<Block> WRETCHED_GARGOYLE_STATUE = registerGargoyleStatue("wretched_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final Supplier<Block> TREACHEROUS_GARGOYLE_STATUE = registerGargoyleStatue("treacherous_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final Supplier<Block> CIRRIPEDIA_GARGOYLE_STATUE = registerGargoyleStatue("cirripedia_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.RARE));
 
     public static final Supplier<Block> OCCULT_GARGOYLE_STATUE = registerGargoyleStatue("occult_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.COMMON));
 
     public static final Supplier<Block> SEALED_GARGOYLE_STATUE = registerGargoyleStatue("sealed_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final Supplier<Block> OBFUSCATED_GARGOYLE_STATUE = registerGargoyleStatue("obfuscated_gargoyle_statue", () ->
-            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));
+            new GargoyleStatueBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE)), new Item.Properties().rarity(Rarity.EPIC));
 
     public static final Supplier<Block> INSCRIBED_PANEL = registerBlock("inscribed_panel", () ->
             new InscribedPanelBlock(BlockBehaviour.Properties.of().noOcclusion().strength(1.0f, 5.0f).sound(JNESoundType.SOUL_SLATE).lightLevel(InscribedPanelBlock.STATE_TO_LUMINANCE)));

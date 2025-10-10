@@ -27,6 +27,7 @@ public final class NetherExp {
         JNESoundEvents.init(modEventBus);
         JNECreativeModeTabs.init(modEventBus);
         JNECriteriaTriggers.init(modEventBus);
+        JNEFeatureTypes.init(modEventBus);
 
         JNEEntityType.init(modEventBus);
         JNEMobEffects.init(modEventBus);

@@ -61,7 +61,7 @@
                       "argument2": {
                         "type": "minecraft:add",
                         "argument1": -0.9375,
-                        "argument2": "netherexp:nether/base_3d_noise"
+                        "argument2": "netherexp:nether/multiplied_base_3d"
                       }
                     }
                   }

@@ -1,0 +1,12 @@
+{
+  "type": "elysium_api:effects_modifier",
+  "biomes": "minecraft:warped_forest",
+  "fog_color": 2689577,
+
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "worldSettings.brighterNetherFog"
+    }
+  ]
+}

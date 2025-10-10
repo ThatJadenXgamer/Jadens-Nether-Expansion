@@ -34,7 +34,7 @@
 				"up": {"uv": [0, 0, 16, 16], "texture": "#blend", "cullface": "up"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#blend", "cullface": "down"}
 			},
-			"neoforge_data": {"block_light": 5}
+			"neoforge_data": {"block_light": 4}
 		},
 		{
 			"from": [0, 0, 0],
@@ -48,7 +48,7 @@
 				"up": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "up"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#glow", "cullface": "down"}
 			},
-			"neoforge_data": {"block_light": 10}
+			"neoforge_data": {"block_light": 7}
 		}
 	]
 }

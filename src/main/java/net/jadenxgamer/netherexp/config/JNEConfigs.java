@@ -5,7 +5,6 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class JNEConfigs {
 
     // BLOCK
-
     public static ModConfigSpec.DoubleValue FOSSIL_ORE_CONVERSION_CHANCE;
     public static ModConfigSpec.DoubleValue SOUL_GLASS_MOVEMENT_SLOWDOWN;
     public static ModConfigSpec.IntValue SOUL_SWIRLS_COOLDOWN;
@@ -44,7 +43,6 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue CAN_ANYTHING_BREAK_FROGMIST;
 
     // ITEM
-
     public static ModConfigSpec.IntValue IMMUNITY_CONSUMPTION;
     public static ModConfigSpec.BooleanValue AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION;
     public static ModConfigSpec.BooleanValue BACKPORT_TEARS_MUSIC_DISC;
@@ -53,7 +51,6 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue PUMP_CHARGE_SHOTGUN_BULLETS;
 
     // ENTITY
-
     public static ModConfigSpec.DoubleValue WISP_BOREDOM_CHANCE;
     public static ModConfigSpec.IntValue BLACK_ICE_FREEZING_TICKS;
     public static ModConfigSpec.BooleanValue SKELETON_FOSSILIZATION;
@@ -81,11 +78,12 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue BANSHEE_UNLEASHING_ODDS;
 
     // WORLD SETTINGS
-
     public static ModConfigSpec.BooleanValue NETHER_WORLDGEN_OVERHAUL;
+    public static ModConfigSpec.BooleanValue BRIGHTER_NETHER_FOG;
+    public static ModConfigSpec.BooleanValue RED_NETHER_WASTES_FOG;
+    public static ModConfigSpec.BooleanValue BETTER_SOUL_SAND_VALLEY_PARTICLES;
 
     // VISUAL AND SOUND
-
     public static ModConfigSpec.BooleanValue UNCAPPED_NETHER_FOG_DISTANCE;
     public static ModConfigSpec.BooleanValue BLACK_ICE_PARTICLES;
     public static ModConfigSpec.BooleanValue ECTOPLASM_PARTICLES;

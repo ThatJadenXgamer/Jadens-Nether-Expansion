@@ -282,16 +282,29 @@ public class JNEConfigImpl {
         public static void init(ModConfigSpec.Builder builder) {
             NETHER_WORLDGEN_OVERHAUL = builder
                     .comment("""
-                            Improves the vanilla nether terrain generation\s
-                            Heights changes:\s
+                            Improves the vanilla nether terrain generation with better multilayered-ness and height changes\s
+                            Heights changes include:\s
                             The base nether is now 192 blocks tall\s
-                            Underlava sections are now -32 blocks deep\s
-                            The area above the roof will be 64 blocks tall\s
+                            Underlava sections have an additional -32 blocks of depth\s
+                            And the area above the roof will be 64 blocks tall instead\s
                             \s
                             §cNOTE: If Amplified Nether is installed then that mod's generation will take priority regardless of config value
                             """)
                     .gameRestart()
                     .define("netherWorldGenOverhaul", true);
+            BRIGHTER_NETHER_FOG = builder
+                    .comment("Brightens up the nether fog of most vanilla and modded biomes to compliment their environments better \n" +
+                            "It overall makes the nether feel more warmer and helps make out shapes in the distance like actual fog")
+                    .worldRestart()
+                    .define("brighterNetherFog", true);
+            RED_NETHER_WASTES_FOG = builder
+                    .comment("Changes the nether wastes fog back to being red like in vanilla")
+                    .worldRestart()
+                    .define("redNetherWastesFog", false);
+            BETTER_SOUL_SAND_VALLEY_PARTICLES = builder
+                    .comment("Dust like particles will blow in the soul sand valley instead of the occasional falling ash")
+                    .worldRestart()
+                    .define("betterSoulSandValleyParticles", true);
         }
     }
 
@@ -334,13 +347,10 @@ public class JNEConfigImpl {
                     .defineInRange("netherMistMotionMultiplier", 0.05, 0, Double.MAX_VALUE);
             SOUL_SAND_VALLEY_WIND_SPEED = builder
                     .comment("Influences the wind speed of ash particles in the soul sand valley")
-                    .defineInRange("soulSandValleyWindSpeed", 0.3, 0.0, Double.MAX_VALUE);
+                    .defineInRange("soulSandValleyWindSpeed", 0.2, 0.0, Double.MAX_VALUE);
             WINDY_ASH_SCALE_MULTIPLIER = builder
                     .comment("Multiplies the size of windy ash particles")
-                    .defineInRange("windyAshScaleMultiplier", 1.1, 0.0, Double.MAX_VALUE);
-            DRIFTING_SOULS_SPAWN_QUANTITY = builder
-                    .comment("Number of drifting soul particles which can spawn from a single block")
-                    .defineInRange("driftingSoulsSpawnQuantity", 4, 0, Integer.MAX_VALUE);
+                    .defineInRange("windyAshScaleMultiplier", 1.3, 0.0, Double.MAX_VALUE);
         }
     }
 

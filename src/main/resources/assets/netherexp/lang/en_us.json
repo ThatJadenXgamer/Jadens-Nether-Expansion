@@ -696,6 +696,9 @@
   "netherexp.configuration.vesselUnleashingOdds": "Vessel Unleashing Odds",
 
   "netherexp.configuration.netherWorldGenOverhaul": "Nether WorldGen Overhaul",
+  "netherexp.configuration.brighterNetherFog": "Brighter Nether Fog",
+  "netherexp.configuration.redNetherWastesFog": "Red Nether Wastes Fog",
+  "netherexp.configuration.betterSoulSandValleyParticles": "Better Soul Sand Valley Particles",
 
   "netherexp.configuration.uncappedNetherFogDistance": "Uncapped Nether Fog Distance",
   "netherexp.configuration.blackIceParticles": "Black Ice Particles",
@@ -709,6 +712,8 @@
   "netherexp.configuration.netherMistOpacity": "Nether Mist Opacity",
   "netherexp.configuration.netherMistMotionMultiplier": "Nether Mist Motion Multiplier",
   "netherexp.configuration.soulSandValleyWindSpeed": "Soul Sand Valley Wind Speed",
+  "netherexp.configuration.windyAshScaleMultiplier": "Windy Ash Scale Multiplier",
+  "netherexp.configuration.driftingSoulsSpawnQuantity": "Drifting Souls Spawn Quantity",
 
   "netherexp.configuration.ectoplasmFreezes": "Ectoplasm Freezes",
   "netherexp.configuration.ectoplasmRustsNetherite": "Ectoplasm Rusts Netherite",

@@ -36,7 +36,7 @@ public class RegistryHelper {
 
     public static <T extends Block> Supplier<T> registerGargoyleStatue(String name, Supplier<T> block, Item.Properties properties) {
         Supplier<T> toReturn = JNEBlocks.BLOCKS.register(name, block);
-        JNEItems.ITEMS.register(name, () -> new GargoyleStatueItem(toReturn.get(), properties));
+        JNEItems.ITEMS.register(name, () -> new GargoyleStatueItem(toReturn.get(), properties.stacksTo(16)));
         return toReturn;
     }
 
