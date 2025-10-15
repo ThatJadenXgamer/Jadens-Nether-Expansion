@@ -1,9 +1,0 @@
-{
-  "values": [
-    "minecraft:warped_forest",
-    {
-      "id": "cinderscapes:luminous_grove",
-      "required": false
-    }
-  ]
-}
