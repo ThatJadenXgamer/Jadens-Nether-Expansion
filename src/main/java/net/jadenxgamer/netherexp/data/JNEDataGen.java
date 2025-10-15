@@ -4,6 +4,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
+import net.jadenxgamer.netherexp.core.worldgen.feature.JNEPlacedFeatures;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.jadenxgamer.netherexp.data.providers.JNEAdvancementProvider;
 import net.jadenxgamer.netherexp.data.providers.JNEDataMapProvider;
@@ -37,6 +38,7 @@ public class JNEDataGen {
                         .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap)
                         .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap)
                         .add(Registries.CONFIGURED_FEATURE, JNEConfiguredFeatures::bootstrap)
+                        .add(Registries.PLACED_FEATURE, JNEPlacedFeatures::bootstrap)
                         .add(Registries.JUKEBOX_SONG, JNEJukeboxSongs::bootstrap),
                 Set.of(NetherExp.MOD_ID, "minecraft"));
     }
