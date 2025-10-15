@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.data.loot.packs;
+package net.jadenxgamer.netherexp.data.providers.loot.packs;
 
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;

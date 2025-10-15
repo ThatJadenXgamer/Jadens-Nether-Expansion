@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.data.loot.packs;
+package net.jadenxgamer.netherexp.data.providers.loot.packs;
 
 import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
@@ -29,6 +29,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.plaf.nimbus.State;
 import java.util.Set;
 
 public final class JNEBlockLoot extends BlockLootSubProvider {

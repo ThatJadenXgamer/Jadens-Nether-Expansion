@@ -1,7 +1,7 @@
-package net.jadenxgamer.netherexp.data.loot;
+package net.jadenxgamer.netherexp.data.providers.loot;
 
 import net.jadenxgamer.netherexp.data.JNEDataGen;
-import net.jadenxgamer.netherexp.data.loot.packs.*;
+import net.jadenxgamer.netherexp.data.providers.loot.packs.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;

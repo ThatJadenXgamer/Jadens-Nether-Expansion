@@ -1,6 +1,7 @@
-package net.jadenxgamer.netherexp.data.tags;
+package net.jadenxgamer.netherexp.data.providers.tags;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.data.JNEDataGen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.PaintingVariantTagsProvider;
