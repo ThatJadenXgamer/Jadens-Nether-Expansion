@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.data.providers.tags;
+package net.jadenxgamer.netherexp.data.tags;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;

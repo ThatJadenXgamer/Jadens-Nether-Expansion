@@ -1,8 +1,7 @@
-package net.jadenxgamer.netherexp.data.providers;
+package net.jadenxgamer.netherexp.data;
 
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.jadenxgamer.netherexp.registry.JNEWoodType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
