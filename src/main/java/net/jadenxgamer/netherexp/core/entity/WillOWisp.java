@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.core.entity;
 
-import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
+import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
@@ -54,7 +54,7 @@ public class WillOWisp extends ThrowableItemProjectile {
         if (entity instanceof LivingEntity livingEntity) {
             if (livingEntity.isBlocking()) {
                 this.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.SHIELD_BLOCK, SoundSource.NEUTRAL, 1f, 1f);
-            } else entity.hurt(this.damageSources().source(JNEDamageSources.WILL_O_WISP, this.getOwner()), damage);
+            } else entity.hurt(this.damageSources().source(JNEDamageTypes.WILL_O_WISP, this.getOwner()), damage);
         }
 
         this.impact();

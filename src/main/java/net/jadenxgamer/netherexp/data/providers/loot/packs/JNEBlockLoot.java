@@ -107,6 +107,7 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
                                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) layers)))))));
 
         dropOther(JNEBlocks.ECTOPLASM_CAULDRON.get(), Items.CAULDRON);
+        dropSelf(JNEBlocks.DRIFTING_SOULS.get());
 
         // Black Ice
         dropSelf(JNEBlocks.BLACK_ICE.get());

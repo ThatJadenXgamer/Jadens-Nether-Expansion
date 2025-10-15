@@ -15,6 +15,7 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.FunctionUserBuilder;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -48,8 +49,13 @@ public final class JNEEntityLoot extends EntityLootSubProvider {
                         .withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.WRAITHING_FLESH.get(), 1, 2, 4))))
                         .withPool(LootPool.lootPool().add(applyLooting(registries, item(Items.BONE, 1, 0, 2)))));
 
-        // TODO: IMPLEMENT BANSHEE
-        // add(JNEEntityType.BANSHEE.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.BANSHEE_ROD.get(), 1, 0, 1))).when(LootItemKilledByPlayerCondition.killedByPlayer())));
+        add(JNEEntityType.BANSHEE.get(),
+                LootTable
+                        .lootTable()
+                        .withPool(LootPool
+                                .lootPool()
+                                .add(applyLooting(registries, item(JNEItems.BANSHEE_ROD.get(), 1, 0, 1)))
+                                .when(LootItemKilledByPlayerCondition.killedByPlayer())));
         // TODO: IMPLEMENT ECTO SLAB
         // add(JNEEntityType.ECTO_SLAB.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(applyLooting(registries, item(JNEItems.PHASMO_SHARD.get(), 1, 0, 2)).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG))).invert()).when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(SlimePredicate.sized(MinMaxBounds.Ints.atLeast(2)))))).add(item(JNEBlocks.PEARLESCENT_FROGMIST.get(), 1, 1, 8).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG).subPredicate(EntitySubPredicates.frogVariant(registries.holderOrThrow(FrogVariant.WARM))))))).add(item(JNEBlocks.VERDANT_FROGMIST.get(), 1, 1, 8).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG).subPredicate(EntitySubPredicates.frogVariant(registries.holderOrThrow(FrogVariant.COLD))))))).add(item(JNEBlocks.OCHRE_FROGMIST.get(), 1, 1, 8).when(DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(EntityType.FROG).subPredicate(EntitySubPredicates.frogVariant(registries.holderOrThrow(FrogVariant.TEMPERATE)))))))));
         // TODO: IMPLEMENT WARPHOPPER
