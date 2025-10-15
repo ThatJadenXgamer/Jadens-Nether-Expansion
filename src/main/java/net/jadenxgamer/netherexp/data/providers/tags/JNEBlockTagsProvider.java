@@ -4,9 +4,12 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -125,6 +128,8 @@ public final class JNEBlockTagsProvider extends BlockTagsProvider {
         tag(JNETags.Blocks.FOSSIL_ORE_CONVERTIBLE);
         tag(JNETags.Blocks.LIGHTSPORES_APPLICABLE);
         tag(JNETags.Blocks.NIGHTSPORES_APPLICABLE);
+        tag(JNETags.Blocks.NETHERRACK_NYLIUM).addTag(BlockTags.NYLIUM);
+        tag(JNETags.Blocks.SOUL_MAGMA_REPLACEABLE).add(Blocks.SOUL_SAND, Blocks.SOUL_SOIL, JNEBlocks.ECTO_SOUL_SAND.get());
 
         // Minecraft Tags
         tag(BlockTags.MINEABLE_WITH_AXE).add(
@@ -502,5 +507,12 @@ public final class JNEBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WOODEN_SLABS).add(JNEBlocks.CLARET_SLAB.get());
         tag(BlockTags.WOODEN_STAIRS).add(JNEBlocks.CLARET_STAIRS.get());
         tag(BlockTags.WOODEN_TRAPDOORS).add(JNEBlocks.CLARET_TRAPDOOR.get());
+
+        // Compat Tags
+        tag(tagKey("create", "fan_transparent")).add(JNEBlocks.NETHERITE_GRATE.get(), JNEBlocks.RUSTY_NETHERITE_GRATE.get());
+    }
+
+    private static TagKey<Block> tagKey(String modid, String location) {
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(modid, location));
     }
 }

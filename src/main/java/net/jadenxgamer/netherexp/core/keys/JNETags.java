@@ -45,6 +45,8 @@ public class JNETags {
         public static final TagKey<Block> WART_BEARD_FEATURE_VALID = createTag("wart_beard_feature_valid");
         public static final TagKey<Block> WEEPING_VINES_FEATURE_VALID = createTag("weeping_vines_feature_valid");
         public static final TagKey<Block> GEYSERS = createTag("geysers");
+        public static final TagKey<Block> NETHERRACK_NYLIUM = createTag("netherrack_nylium");
+        public static final TagKey<Block> SOUL_MAGMA_REPLACEABLE = createTag("soul_magma_replaceable");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));

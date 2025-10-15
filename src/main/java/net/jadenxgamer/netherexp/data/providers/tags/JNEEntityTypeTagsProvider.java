@@ -29,7 +29,7 @@ public final class JNEEntityTypeTagsProvider extends EntityTypeTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(JNETags.EntityTypes.CAN_PHASE_THROUGH_SOUL_GLASS)
-                .add(EntityType.PLAYER, JNEEntityType.WISP.get(), JNEEntityType.APPARITION.get(), EntityType.ENDERMAN, EntityType.ENDERMITE)
+                .add(EntityType.ITEM, EntityType.PLAYER, JNEEntityType.WISP.get(), JNEEntityType.APPARITION.get(), EntityType.ENDERMAN, EntityType.ENDERMITE)
                 .addTag(EntityTypeTags.IMPACT_PROJECTILES);
 
         tag(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS).add(JNEEntityType.WISP.get(), JNEEntityType.APPARITION.get()).addTag(JNETags.EntityTypes.POSSESSED);
