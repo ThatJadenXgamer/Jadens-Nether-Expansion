@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.core.block;
 
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
+import net.jadenxgamer.netherexp.data.worldgen.features.JNENetherWastesFeatures;
 import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
@@ -86,7 +86,7 @@ public class CerebrageSkullBlock extends AbstractHeadBlock implements Bonemealab
             level.setBlock(pos, state.setValue(AGE, age + 1), Block.UPDATE_CLIENTS);
         } else if (CEREBRAGE_GROWS_BRAIN_TREES.get()) {
             level.setBlock(pos, state.setValue(AGE, 4), Block.UPDATE_CLIENTS);
-            level.registryAccess().registry(Registries.CONFIGURED_FEATURE).flatMap((registry) -> registry.getHolder(JNEConfiguredFeatures.BRAIN_TREE)).ifPresent((reference) ->
+            level.registryAccess().registry(Registries.CONFIGURED_FEATURE).flatMap((registry) -> registry.getHolder(JNENetherWastesFeatures.BRAIN_TREE)).ifPresent((reference) ->
                     reference.value().place(level, level.getChunkSource().getGenerator(), random, pos));
             AdvancementGranter.grantPlayersInRadius(level, pos, JNECriteriaTriggers.GROW_CEREBRAGE_CLARET);
         }

@@ -5,7 +5,7 @@ import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
+import net.jadenxgamer.netherexp.data.worldgen.features.JNESorrowsquashPasturesFeatures;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -435,7 +435,7 @@ public class JNEBlocks {
             new SoulTorchflowerCropBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.TORCHFLOWER_CROP)));
 
     public static final Supplier<Block> SORROWEED = registerBlock("sorroweed", () ->
-            new BonemealSpreadBlock(JNEConfiguredFeatures.SORROWEED_PATCH_BONEMEAL, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.5f).sound(SoundType.MOSS)));
+            new BonemealSpreadBlock(JNESorrowsquashPasturesFeatures.SORROWEED_PATCH_BONEMEAL, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.5f).sound(SoundType.MOSS)));
 
     public static final Supplier<Block> SORROWSQUASH = registerBlock("sorrowsquash", () ->
             new SorrowsquashBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.PUMPKIN).mapColor(MapColor.COLOR_LIGHT_GRAY).strength(1.0f).sound(SoundType.NETHER_WOOD)));

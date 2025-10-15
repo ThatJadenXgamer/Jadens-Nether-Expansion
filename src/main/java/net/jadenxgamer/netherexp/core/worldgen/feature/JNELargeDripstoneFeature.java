@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.core.worldgen.feature;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.NotGarbageLargeDripstoneFeatureConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.feature.config.JNELargeDripstoneConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -22,19 +22,19 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nullable;
 import java.util.Optional;
 
-public class NotGarbageLargeDripstoneFeature extends Feature<NotGarbageLargeDripstoneFeatureConfiguration> {
+public class JNELargeDripstoneFeature extends Feature<JNELargeDripstoneConfiguration> {
     
     // Literally just a copy and paste of LargeDripstoneFeature.java but with a config to change the block it places
     // I would clean this up, but also I cannot be bothered to
     
-    public NotGarbageLargeDripstoneFeature(Codec<NotGarbageLargeDripstoneFeatureConfiguration> codec) {
+    public JNELargeDripstoneFeature(Codec<JNELargeDripstoneConfiguration> codec) {
         super(codec);
     }
 
-    public boolean place(FeaturePlaceContext<NotGarbageLargeDripstoneFeatureConfiguration> context) {
+    public boolean place(FeaturePlaceContext<JNELargeDripstoneConfiguration> context) {
         WorldGenLevel worldGenLevel = context.level();
         BlockPos blockPos = context.origin();
-        NotGarbageLargeDripstoneFeatureConfiguration configuration = context.config();
+        JNELargeDripstoneConfiguration configuration = context.config();
         RandomSource randomSource = context.random();
         if (!isEmptyOrWater(worldGenLevel, blockPos)) {
             return false;
@@ -147,7 +147,7 @@ public class NotGarbageLargeDripstoneFeature extends Feature<NotGarbageLargeDrip
             return (int)getDripstoneHeight((double)radius, (double)this.radius, this.scale, this.bluntness);
         }
 
-        void placeBlocks(WorldGenLevel level, RandomSource random, WindOffsetter windOffsetter, NotGarbageLargeDripstoneFeatureConfiguration largeDripstoneConfiguration) {
+        void placeBlocks(WorldGenLevel level, RandomSource random, WindOffsetter windOffsetter, JNELargeDripstoneConfiguration largeDripstoneConfiguration) {
             for(int i = -this.radius; i <= this.radius; ++i) {
                 for(int j = -this.radius; j <= this.radius; ++j) {
                     float f = Mth.sqrt((float)(i * i + j * j));
@@ -180,7 +180,7 @@ public class NotGarbageLargeDripstoneFeature extends Feature<NotGarbageLargeDrip
 
         }
 
-        boolean isSuitableForWind(NotGarbageLargeDripstoneFeatureConfiguration config) {
+        boolean isSuitableForWind(JNELargeDripstoneConfiguration config) {
             return this.radius >= config.minRadiusForWind() && this.bluntness >= (double)config.minBluntnessForWind();
         }
     }
@@ -259,11 +259,11 @@ public class NotGarbageLargeDripstoneFeature extends Feature<NotGarbageLargeDrip
         return level.isStateAtPosition(pos, DripstoneUtils::isEmptyOrWater);
     }
 
-    public static boolean isBaseOrLava(BlockState state, NotGarbageLargeDripstoneFeatureConfiguration config) {
+    public static boolean isBaseOrLava(BlockState state, JNELargeDripstoneConfiguration config) {
         return isBase(state, config) || state.is(Blocks.LAVA);
     }
 
-    public static boolean isBase(BlockState state, NotGarbageLargeDripstoneFeatureConfiguration config) {
+    public static boolean isBase(BlockState state, JNELargeDripstoneConfiguration config) {
         return config.baseBlocks().contains(state.getBlockHolder());
     }
 }

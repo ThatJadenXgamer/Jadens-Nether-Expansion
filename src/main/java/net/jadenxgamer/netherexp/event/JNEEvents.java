@@ -2,18 +2,13 @@ package net.jadenxgamer.netherexp.event;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
-import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
-import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.jadenxgamer.netherexp.data.*;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNERegistries;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.server.packs.PackType;
 import net.neoforged.bus.api.EventPriority;
@@ -30,8 +25,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
-
-import java.util.Set;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID)

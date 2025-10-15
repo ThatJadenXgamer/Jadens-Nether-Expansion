@@ -4,10 +4,10 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNEPlacedFeatures;
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.jadenxgamer.netherexp.data.loot.JNELootTableProvider;
 import net.jadenxgamer.netherexp.data.tags.*;
+import net.jadenxgamer.netherexp.data.worldgen.JNEFeatures;
+import net.jadenxgamer.netherexp.data.worldgen.JNEPlacement;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -34,8 +34,8 @@ public class JNEDataGen {
                 new RegistrySetBuilder()
                         .add(Registries.DAMAGE_TYPE, JNEDamageTypes::bootstrap)
                         .add(Registries.TRIM_PATTERN, JNETrimPatterns::bootstrap)
-                        .add(Registries.CONFIGURED_FEATURE, JNEConfiguredFeatures::bootstrap)
-                        .add(Registries.PLACED_FEATURE, JNEPlacedFeatures::bootstrap)
+                        .add(Registries.CONFIGURED_FEATURE, JNEFeatures::bootstrap)
+                        .add(Registries.PLACED_FEATURE, JNEPlacement::bootstrap)
                         .add(Registries.JUKEBOX_SONG, JNEJukeboxSongs::bootstrap),
                 Set.of(NetherExp.MOD_ID, "minecraft"));
     }

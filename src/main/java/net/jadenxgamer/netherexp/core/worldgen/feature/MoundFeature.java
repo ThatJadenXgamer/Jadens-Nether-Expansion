@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.core.worldgen.feature;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.MoundFeatureConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.feature.config.MoundConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -11,16 +11,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
-public class MoundFeature extends Feature<MoundFeatureConfiguration> {
+public class MoundFeature extends Feature<MoundConfiguration> {
 
-    public MoundFeature(Codec<MoundFeatureConfiguration> codec) {
+    public MoundFeature(Codec<MoundConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<MoundFeatureConfiguration> context) {
+    public boolean place(FeaturePlaceContext<MoundConfiguration> context) {
         WorldGenLevel level = context.level();
-        MoundFeatureConfiguration config = context.config();
+        MoundConfiguration config = context.config();
         RandomSource random = context.random();
         BlockPos origin = config.hanging() ? context.origin().above(2) : context.origin().below(2);
         BlockState state = level.getBlockState(config.hanging() ? context.origin().above() : context.origin().below());
@@ -41,7 +41,7 @@ public class MoundFeature extends Feature<MoundFeatureConfiguration> {
         } else return false;
     }
 
-    private void placeMound(MoundFeatureConfiguration config, WorldGenLevel level, BlockPos origin, int height, BlockState state, RandomSource random) {
+    private void placeMound(MoundConfiguration config, WorldGenLevel level, BlockPos origin, int height, BlockState state, RandomSource random) {
         int radius = config.radius();
         boolean hanging = config.hanging();
 
