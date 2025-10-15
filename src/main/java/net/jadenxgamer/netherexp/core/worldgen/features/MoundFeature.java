@@ -1,7 +1,7 @@
-package net.jadenxgamer.netherexp.core.worldgen.feature;
+package net.jadenxgamer.netherexp.core.worldgen.features;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.MoundConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.features.configuration.MoundConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;

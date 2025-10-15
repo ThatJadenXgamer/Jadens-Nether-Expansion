@@ -1,13 +1,13 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.worldgen.feature.BrainTreeFeature;
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNEHugeFungusFeature;
-import net.jadenxgamer.netherexp.core.worldgen.feature.MoundFeature;
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNELargeDripstoneFeature;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.JNEHugeFungusConfiguration;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.MoundConfiguration;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.JNELargeDripstoneConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.features.BrainTreeFeature;
+import net.jadenxgamer.netherexp.core.worldgen.features.JNEHugeFungusFeature;
+import net.jadenxgamer.netherexp.core.worldgen.features.MoundFeature;
+import net.jadenxgamer.netherexp.core.worldgen.features.JNELargeDripstoneFeature;
+import net.jadenxgamer.netherexp.core.worldgen.features.configuration.JNEHugeFungusConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.features.configuration.MoundConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.features.configuration.JNELargeDripstoneConfiguration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;

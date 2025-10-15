@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.core.worldgen.feature.config;
+package net.jadenxgamer.netherexp.core.worldgen.features.configuration;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

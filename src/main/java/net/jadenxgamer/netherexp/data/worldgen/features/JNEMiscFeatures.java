@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.data.worldgen.features;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.JNELargeDripstoneConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.features.configuration.JNELargeDripstoneConfiguration;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEFeatureTypes;
 import net.minecraft.core.Holder;

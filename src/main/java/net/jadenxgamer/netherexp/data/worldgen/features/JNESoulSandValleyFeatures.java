@@ -4,7 +4,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.block.BonePikeBlock;
 import net.jadenxgamer.netherexp.core.block.SwirlsBlock;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.MoundConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.features.configuration.MoundConfiguration;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEFeatureTypes;
 import net.jadenxgamer.netherexp.registry.JNEFluids;

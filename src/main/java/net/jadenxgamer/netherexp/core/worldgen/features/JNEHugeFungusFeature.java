@@ -1,7 +1,7 @@
-package net.jadenxgamer.netherexp.core.worldgen.feature;
+package net.jadenxgamer.netherexp.core.worldgen.features;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.JNEHugeFungusConfiguration;
+import net.jadenxgamer.netherexp.core.worldgen.features.configuration.JNEHugeFungusConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;

@@ -1,9 +1,0 @@
-{
-  "type": "neoforge:add_spawn_costs",
-  "biomes": "minecraft:soul_sand_valley",
-  "entity_types": "netherexp:vessel",
-  "spawn_cost": {
-    "energy_budget": 0.15,
-    "charge": 0.7
-  }
-}
