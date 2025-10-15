@@ -1,0 +1,21 @@
+{
+  "type": "elysium_api:effects_modifier",
+  "biomes": "minecraft:nether_wastes",
+  "fog_color": 4919569,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "netherexp:config",
+          "path": "worldSettings.redNetherWastesFog"
+        },
+        {
+          "type": "netherexp:config",
+          "path": "worldSettings.brighterNetherFog"
+        }
+      ]
+    }
+  ]
+}

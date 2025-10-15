@@ -244,9 +244,36 @@ public class JNEConfigImpl {
                     .comment("At the specified attack time the vessel will take aim preparing to fire \n" +
                             "This value cannot go any lower than 50 to prevent animation issues")
                     .defineInRange("vesselShootsAtAttackTime", 100, 50, Integer.MAX_VALUE);
+            BANSHEE_TELEPORTS_AFTER_HIT = builder
+                    .comment("Banshees hurt by an entity will teleport away to a random spot or their anchor")
+                    .define("bansheeTeleportsAfterHit", true);
+            BANSHEE_ANCHOR_INTERVAL = builder
+                    .comment("""
+                             The number of teleports a banshee can do before returning to its anchor point\s
+                             This config value is influenced by the world difficulty adding:\s
+                             -1 on Easy\s
+                             +1 on Hard
+                             """)
+                    .defineInRange("bansheeAnchorInterval", 3, 1, Integer.MAX_VALUE);
+            BANSHEE_STUN_TIMER = builder
+                    .comment("When hurt the banshee can no longer attack for the specified duration in ticks")
+                    .defineInRange("bansheeStunTimer", 80, 0, Integer.MAX_VALUE);
+            BANSHEE_ATTACK_INTERVAL = builder
+                    .comment("The base attack interval of a banshee, which constantly ticks down. when the value reaches \"0\" it'll fire a will o' wisp \n" +
+                            "After which the specified value will be added to the attack interval for it to continue ticking down")
+                    .defineInRange("bansheeAttackInterval", 40, 0, Integer.MAX_VALUE);
+            BANSHEE_ATTACK_INTERVAL_BONUS = builder
+                    .comment("This value gets added on top of the base attack interval adding to further randomization in its attack patterns")
+                    .defineInRange("bansheeAttackIntervalBonus", 30, 0, Integer.MAX_VALUE);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
+            STAMPEDE_UNLEASHING_ODDS = builder
+                    .comment("The chance for stampedes to unleash apparitions upon death")
+                    .defineInRange("stampedeUnleashingOdds", 0.5, 0.0, 1.0);
+            BANSHEE_UNLEASHING_ODDS = builder
+                    .comment("The chance for banshees to unleash apparitions upon death")
+                    .defineInRange("bansheeUnleashingOdds", 0.15, 0.0, 1.0);
         }
     }
 
@@ -255,16 +282,29 @@ public class JNEConfigImpl {
         public static void init(ModConfigSpec.Builder builder) {
             NETHER_WORLDGEN_OVERHAUL = builder
                     .comment("""
-                            Improves the vanilla nether terrain generation\s
-                            Heights changes:\s
+                            Improves the vanilla nether terrain generation with better multilayered-ness and height changes\s
+                            Heights changes include:\s
                             The base nether is now 192 blocks tall\s
-                            Underlava sections are now -32 blocks deep\s
-                            The area above the roof will be 64 blocks tall\s
+                            Underlava sections have an additional -32 blocks of depth\s
+                            And the area above the roof will be 64 blocks tall instead\s
                             \s
                             §cNOTE: If Amplified Nether is installed then that mod's generation will take priority regardless of config value
                             """)
                     .gameRestart()
                     .define("netherWorldGenOverhaul", true);
+            BRIGHTER_NETHER_FOG = builder
+                    .comment("Brightens up the nether fog of most vanilla and modded biomes to compliment their environments better \n" +
+                            "It overall makes the nether feel more warmer and helps make out shapes in the distance like actual fog")
+                    .worldRestart()
+                    .define("brighterNetherFog", true);
+            RED_NETHER_WASTES_FOG = builder
+                    .comment("Changes the nether wastes fog back to being red like in vanilla")
+                    .worldRestart()
+                    .define("redNetherWastesFog", false);
+            BETTER_SOUL_SAND_VALLEY_PARTICLES = builder
+                    .comment("Dust like particles will blow in the soul sand valley instead of the occasional falling ash")
+                    .worldRestart()
+                    .define("betterSoulSandValleyParticles", true);
         }
     }
 
@@ -289,22 +329,28 @@ public class JNEConfigImpl {
                     .define("netherMistParticles", true);
             NETHER_MIST_SPAWN_RATE = builder
                     .comment("Controls the tick intervals of nether mist spawning")
-                    .defineInRange("netherMistSpawnRate", 10, 0, Integer.MAX_VALUE);
+                    .defineInRange("netherMistSpawnRate", 8, 0, Integer.MAX_VALUE);
             NETHER_MIST_MIN_DISTANCE = builder
                     .comment("Minimum distance at which the nether mist particles spawn")
-                    .defineInRange("netherMistMinDistance", 32.0, 0, Double.MAX_VALUE);
+                    .defineInRange("netherMistMinDistance", 24.0, 0, Double.MAX_VALUE);
             NETHER_MIST_MAX_DISTANCE = builder
                     .comment("Maximum distance at which the nether mist particles spawn")
-                    .defineInRange("netherMistMaxDistance", 64.0, 0, Double.MAX_VALUE);
+                    .defineInRange("netherMistMaxDistance", 80.0, 0, Double.MAX_VALUE);
             NETHER_MIST_SCALE = builder
                     .comment("The size of nether mist particles")
-                    .defineInRange("netherMistScale", 39.0f, 0, Double.MAX_VALUE);
+                    .defineInRange("netherMistScale", 60.0, 0, Double.MAX_VALUE);
             NETHER_MIST_OPACITY = builder
                     .comment("The opacity of nether mist particles")
-                    .defineInRange("netherMistOpacity", 0.6f, 0.0, 1.0);
+                    .defineInRange("netherMistOpacity", 0.8, 0.0, 1.0);
             NETHER_MIST_MOTION_MULTIPLIER = builder
                     .comment("Influences the nether mist particle to go off in random directions at the defined speed")
-                    .defineInRange("netherMistMotionMultiplier", 0.03, 0, Double.MAX_VALUE);
+                    .defineInRange("netherMistMotionMultiplier", 0.05, 0, Double.MAX_VALUE);
+            SOUL_SAND_VALLEY_WIND_SPEED = builder
+                    .comment("Influences the wind speed of ash particles in the soul sand valley")
+                    .defineInRange("soulSandValleyWindSpeed", 0.2, 0.0, Double.MAX_VALUE);
+            WINDY_ASH_SCALE_MULTIPLIER = builder
+                    .comment("Multiplies the size of windy ash particles")
+                    .defineInRange("windyAshScaleMultiplier", 1.3, 0.0, Double.MAX_VALUE);
         }
     }
 

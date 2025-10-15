@@ -132,7 +132,7 @@ public class JNEItems {
             new DeferredSpawnEggItem(JNEEntityType.WISP, 4864303, 1788232, new Item.Properties()));
 
     public static final Supplier<Item> BANSHEE_SPAWN_EGG = ITEMS.register("banshee_spawn_egg", () ->
-            new DeferredSpawnEggItem(JNEEntityType.WISP, 1985382, 1788232, new Item.Properties()));
+            new DeferredSpawnEggItem(JNEEntityType.BANSHEE, 1985382, 1788232, new Item.Properties()));
 
     public static final Supplier<Item> STAMPEDE_SPAWN_EGG = ITEMS.register("stampede_spawn_egg", () ->
             new DeferredSpawnEggItem(JNEEntityType.WISP, 4864303, 10236982, new Item.Properties()));

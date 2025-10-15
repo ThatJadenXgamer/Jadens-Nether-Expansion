@@ -93,4 +93,8 @@ public class JNESoundType {
     public static final SoundType SOUL_GLASS = new SoundType(1.0f, 1.0f,
             JNESoundEvents.SOUL_GLASS_BREAK.get(), SoundEvents.GLASS_STEP, SoundEvents.GLASS_PLACE,
             SoundEvents.GLASS_HIT, SoundEvents.GLASS_FALL);
+
+    public static final SoundType HAZE_BLOCK = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.HAZE_BLOCK_BREAK.get(), SoundEvents.SAND_STEP, JNESoundEvents.HAZE_BLOCK_PLACE.get(),
+            SoundEvents.SAND_HIT, SoundEvents.SAND_FALL);
 }

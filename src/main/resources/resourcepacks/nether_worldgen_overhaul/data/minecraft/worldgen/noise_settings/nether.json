@@ -26,7 +26,7 @@
       "type": "minecraft:squeeze",
       "argument": {
         "type": "minecraft:mul",
-        "argument1": 0.64,
+        "argument1": 0.6,
         "argument2": {
           "type": "minecraft:interpolated",
           "argument": {
@@ -38,8 +38,8 @@
                 "type": "minecraft:mul",
                 "argument1": {
                   "type": "minecraft:y_clamped_gradient",
-                  "from_value": 0,
                   "from_y": -30,
+                  "from_value": 0.5,
                   "to_value": 1,
                   "to_y": -16
                 },
@@ -61,7 +61,7 @@
                       "argument2": {
                         "type": "minecraft:add",
                         "argument1": -0.9375,
-                        "argument2": "netherexp:nether/base_3d_noise"
+                        "argument2": "netherexp:nether/multiplied_base_3d"
                       }
                     }
                   }

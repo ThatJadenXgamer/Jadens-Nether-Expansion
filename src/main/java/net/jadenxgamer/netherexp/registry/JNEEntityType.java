@@ -31,6 +31,9 @@ public class JNEEntityType {
     public static final Supplier<EntityType<Vessel>> VESSEL = ENTITY_TYPES.register("vessel", () ->
             EntityType.Builder.of(Vessel::new, MobCategory.MONSTER)
                     .sized(0.8f, 2.6f).fireImmune().build("vessel"));
+    public static final Supplier<EntityType<Banshee>> BANSHEE = ENTITY_TYPES.register("banshee", () ->
+            EntityType.Builder.of(Banshee::new, MobCategory.MONSTER)
+                    .sized(1.25f, 2.375f).fireImmune().build("banshee"));
 
     /**
      * Non-Living Entities
@@ -40,6 +43,10 @@ public class JNEEntityType {
             EntityType.Builder.<ShotgunPellet>of(ShotgunPellet::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("shotgun_pellet"));
 
+    public static final Supplier<EntityType<WillOWisp>> WILL_O_WISP = ENTITY_TYPES.register("will_o_wisp", () ->
+            EntityType.Builder.<WillOWisp>of(WillOWisp::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("will_o_wisp"));
+
     public static void init(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
@@ -48,6 +55,7 @@ public class JNEEntityType {
         event.put(WISP.get(), Wisp.createAttributes().build());
         event.put(APPARITION.get(), Apparition.createAttributes().build());
         event.put(VESSEL.get(), Vessel.createAttributes().build());
+        event.put(BANSHEE.get(), Banshee.createAttributes().build());
     }
 
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
@@ -55,6 +63,9 @@ public class JNEEntityType {
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ExorcismMob::checkSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(JNEEntityType.VESSEL.get(), SpawnPlacementTypes.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ExorcismMob::checkSpawnRules,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(JNEEntityType.BANSHEE.get(), SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ExorcismMob::checkSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }

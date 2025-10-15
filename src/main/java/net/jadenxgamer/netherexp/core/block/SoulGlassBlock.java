@@ -31,28 +31,27 @@ public class SoulGlassBlock extends LightableBlock {
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity living) {
-
+            if (level.isClientSide()) {
+                RandomSource random = level.random;
+                if (random.nextInt(2) == 0) level.addParticle(ParticleTypes.SOUL, entity.getX(), pos.getY() + 1, entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
+            }
             if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
             double slowdown = JNEConfigs.SOUL_GLASS_MOVEMENT_SLOWDOWN.get();
             entity.makeStuckInBlock(state, new Vec3(slowdown, slowdown, slowdown));
-
-            if (level.isClientSide()) {
-                RandomSource random = level.random;
-                if (random.nextInt(2) == 0) {
-                    level.addParticle(ParticleTypes.SOUL, entity.getX(), pos.getY() + 1, entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
-                }
-            }
         }
     }
 
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         if (context instanceof EntityCollisionContext collisionContext) {
-            if (context.isAbove(Shapes.block(), pos, false) && !context.isDescending()) return state.getShape(level, pos);
-            if (collisionContext.getEntity() != null && !collisionContext.getEntity().getType().is(JNETags.EntityTypes.CAN_PHASE_THROUGH_SOUL_GLASS)) return state.getShape(level, pos);
-        }
+            Entity entity = collisionContext.getEntity();
 
-        return Shapes.empty();
+            if (entity != null && entity.getType().is(JNETags.EntityTypes.CAN_PHASE_THROUGH_SOUL_GLASS)) {
+                if (context.isAbove(Shapes.block(), pos, true) && !context.isDescending()) return Shapes.block();
+                return Shapes.empty();
+            }
+        }
+        return state.getShape(level, pos);
     }
 
     // Glass Stuff

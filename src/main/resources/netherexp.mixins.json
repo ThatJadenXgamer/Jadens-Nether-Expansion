@@ -13,7 +13,8 @@
     "block.WeepingVinesBlockMixin",
     "entity.AbstractArrowMixin",
     "entity.BlockEntityTypeMixin",
-    "entity.ProjectileMixin"
+    "entity.ProjectileMixin",
+    "worldgen.NetherWorldCarverMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,12 @@
+{
+  "type": "elysium_api:effects_modifier",
+  "biomes": "minecraft:crimson_forest",
+  "fog_color": 5507080,
+
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "worldSettings.brighterNetherFog"
+    }
+  ]
+}

@@ -59,13 +59,19 @@
 
 -Bone Rod has been renamed to "Bone Pike"
 
--Bone Corticals have been removed. all instances of this block from older worlds will automatically convert to regular bone blocks
+-Bone Corticals have been removed. all instances of this block from older worlds will automatically convert to regular vanilla bone blocks
 
 -Wretched Gargoyle Statue has received a new model -X
 
--New Advancement "Guns for Hands" obtained when killing a vessel with a shotgun-fist -X
+-New Advancement "Why are you hitting yourself?" juke a will o' wisp into hitting the banshee which shot it
 
--New Advancement "Ghosts Busted" kill one of each new hostile soul sand valley mob -X
+-New Advancement "Guns for Hands" duel a vessel with your very own shotgun
+
+-New Advancement "Ghosts Busted" kill one of each possessed and ghost mob
+
+-New Advancement "Involuntary Eviction" forcefully remove a wisp out of ecto soul sand by brushing it
+
+-New Advancement "99 Blue Balloons" leash an apparition and have fun with your new sentient balloon
 
 -Buckshot Wonderland Music Disc is now much rarer in brazier chests and has an alternative obtaining method when a vessel kills a creeper -X
 
@@ -77,7 +83,7 @@
 
 -Sorrowsquash stem hitboxes now extend to encompasses the entire thing when attached
 
--Beacon glass texture has been updated to incorperate better shading
+-Beacon glass texture has been updated to incorporate better shading
 
 -Breeze Rod texture has been redesigned to be consistent with the new blaze rod and banshee rod
 
@@ -115,7 +121,7 @@
 
 -Bone Pike and Bone Fence have received new sounds
 
--Immunity Effects have a distinct new sound effect for when they run out
+-Immunity Effects now have a distinct new sound effect for when they run out
 
 -Geysers have received new sounds and shoot out particles at high velocity when stepped on
 
@@ -127,9 +133,9 @@
 
 -Sconces from Supplementaries now has an ancient fire variant
 
--Possessed and Ghost mobs now take 1.5x modifier damage if hurt with any modded silver weapon
+-Possessed and Ghost mobs now take 1.5x damage modifier if hurt with any modded silver weapon
 
--To further convey that possessed and ghost mobs' are weak to silver, new particles show up when they are damaged with it
+-To further convey that possessions and ghost mobs are weak to silver, new particles show up when they are damaged with it
 
 -Item Tags defining Silver Armors and Weapons are now located under the `c:` common tags namespace shared across NeoForge and Fabric for better compatibility
 
@@ -143,11 +149,13 @@
 
 -Claret was missing from the #minecraft:log and #minecraft:non_flammable_wood tags, this has now been fixed
 
--Sporeshrooms can now be duplicated with bone meal even when hanging upside-down
+-Sporeshrooms were unable to be duplicated with bone meal when hanging upside-down, this has now been fixed
 
 -Suspicious Soul Sand had a chance to immediately decay upon being created, now there is an actual decay counter for tracking and preventing immediate decay
 
--Immunity Effect particles now show up on other entities and not just yourself
+-Immunity Effect particles now show up on other entities inflicted with immunities and not just yourself
 
 -Items cooking on an ancient campfire now display properly
+
+-Banshees now instantly die if they are hit with their own will o wisp
 

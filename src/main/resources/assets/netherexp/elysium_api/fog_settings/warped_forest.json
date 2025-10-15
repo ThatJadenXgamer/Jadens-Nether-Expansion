@@ -2,6 +2,6 @@
   "biomes": [
     "minecraft:warped_forest"
   ],
-  "fog_start_multiplier": -10.0,
-  "fog_end_multiplier": 0.85
+  "fog_start_multiplier": -6.2,
+  "fog_end_multiplier": 0.9
 }
