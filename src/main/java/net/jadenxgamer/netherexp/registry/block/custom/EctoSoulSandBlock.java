@@ -23,6 +23,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
@@ -63,7 +64,7 @@ public class EctoSoulSandBlock extends Block {
         ItemStack itemStack = player.getItemInHand(hand);
         boolean salted = state.getValue(SALTED);
         if (!salted) {
-            if (itemStack.is(Items.BRUSH) && level.getBlockState(pos.above()).isAir()) {
+            if (itemStack.getItem() instanceof BrushItem && level.getBlockState(pos.above()).isAir()) {
                 level.playSound(player, pos, SoundEvents.BRUSH_SAND, SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
                 level.playSound(player, pos, JNESoundEvents.ENTITY_WISP_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, 1.0F);
                 if (!player.isCreative()) {

@@ -99,7 +99,10 @@ dependencies {
     // For Dev Testing
     runtimeOnly fg.deobf("curse.maven:configured-457570:5180900") // Configured
     runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725") // Embeddium
-    //runtimeOnly fg.deobf("curse.maven:jade-324717:5876199") // Jade
+    // runtimeOnly fg.deobf("curse.maven:jade-324717:5876199") // Jade
+    // runtimeOnly fg.deobf("curse.maven:supermartijn642s-config-lib-438332:4715408") // SuperMartijn642's Config Lib
+    // runtimeOnly fg.deobf("curse.maven:yungs-api-421850:5769971") // YUNG's API
+    // runtimeOnly fg.deobf("curse.maven:better-archeology-835687:5693368") // Better Archeology
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
