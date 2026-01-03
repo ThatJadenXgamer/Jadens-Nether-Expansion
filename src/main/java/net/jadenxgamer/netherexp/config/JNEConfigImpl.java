@@ -341,7 +341,7 @@ public class JNEConfigImpl {
                     .defineInRange("netherMistSpawnRate", 8, 0, Integer.MAX_VALUE);
             NETHER_MIST_MIN_DISTANCE = builder
                     .comment("Minimum distance at which the nether mist particles spawn")
-                    .defineInRange("netherMistMinDistance", 24.0, 0, Double.MAX_VALUE);
+                    .defineInRange("netherMistMinDistance", 32.0, 0, Double.MAX_VALUE);
             NETHER_MIST_MAX_DISTANCE = builder
                     .comment("Maximum distance at which the nether mist particles spawn")
                     .defineInRange("netherMistMaxDistance", 80.0, 0, Double.MAX_VALUE);
@@ -350,7 +350,7 @@ public class JNEConfigImpl {
                     .defineInRange("netherMistScale", 60.0, 0, Double.MAX_VALUE);
             NETHER_MIST_OPACITY = builder
                     .comment("The opacity of nether mist particles")
-                    .defineInRange("netherMistOpacity", 0.8, 0.0, 1.0);
+                    .defineInRange("netherMistOpacity", 0.5, 0.0, 1.0);
             NETHER_MIST_MOTION_MULTIPLIER = builder
                     .comment("Influences the nether mist particle to go off in random directions at the defined speed")
                     .defineInRange("netherMistMotionMultiplier", 0.05, 0, Double.MAX_VALUE);
@@ -359,10 +359,13 @@ public class JNEConfigImpl {
                     .defineInRange("soulSandValleyWindSpeed", 0.2, 0.0, Double.MAX_VALUE);
             WINDY_ASH_SCALE_MULTIPLIER = builder
                     .comment("Multiplies the size of windy ash particles")
-                    .defineInRange("windyAshScaleMultiplier", 1.3, 0.0, Double.MAX_VALUE);
+                    .defineInRange("windyAshScaleMultiplier", 1.6, 0.0, Double.MAX_VALUE);
             ENABLE_JNE_SPLASH_TEXTS = builder
                     .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
                     .define("enableJNESplashTexts", true);
+            DRIFTING_SOULS_SPAWN_QUANTITY = builder
+                    .comment("Number of drifting soul particles which can spawn from a single block")
+                    .defineInRange("driftingSoulsSpawnQuantity", 4, 0, Integer.MAX_VALUE);
             RED_SPLASH_TEXT = builder
                     .comment("Splash texts added by JNE will be red opposed to the usual yellow")
                     .define("redSplashText", true);

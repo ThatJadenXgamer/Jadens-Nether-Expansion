@@ -30,6 +30,9 @@ public abstract class LevelRendererMixin {
 
     @Shadow @Nullable private ClientLevel level;
 
+    @Unique
+    private long netherexp$lastMistTime = 0;
+
     @Inject(
             method = "renderSnowAndRain",
             at = @At(value = "HEAD")
@@ -37,16 +40,23 @@ public abstract class LevelRendererMixin {
     private void netherexp$renderNetherFog(LightTexture lightTexture, float partialTick, double camX, double camY, double camZ, CallbackInfo ci) {
         if (!JNEConfigImpl.CONFIG.isLoaded()) return;
         if (!NETHER_MIST_PARTICLES.get() || level.dimension() != Level.NETHER) return;
+
         Minecraft client = Minecraft.getInstance();
-        var player = client.player;
-        var random = level.random;
-        if (player.tickCount % NETHER_MIST_SPAWN_RATE.get() == 0) {
+        long currentTime = client.level.getGameTime();
+
+        // Check if enough ticks have passed since last spawn
+        if (currentTime - netherexp$lastMistTime >= NETHER_MIST_SPAWN_RATE.get()) {
+            netherexp$lastMistTime = currentTime;
+
+            var player = client.player;
+            var random = level.random;
             double angle = random.nextDouble() * Math.PI * 2;
             double distance = Mth.nextDouble(random, NETHER_MIST_MIN_DISTANCE.get(), NETHER_MIST_MAX_DISTANCE.get());
 
             double x = player.getX() + Math.cos(angle) * distance;
             double y = player.getY() + Mth.nextDouble(random, -8.0, 8.0);
             double z = player.getZ() + Math.sin(angle) * distance;
+
             fogParticle(level, level.random, x, y, z);
         }
     }
