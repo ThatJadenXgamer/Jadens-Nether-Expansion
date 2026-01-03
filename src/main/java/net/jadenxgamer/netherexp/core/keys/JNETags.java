@@ -33,6 +33,8 @@ public class JNETags {
         public static final TagKey<Item> SILVER_ARMORS = createTag("c", "silver_armors"); // Silver Armors
         public static final TagKey<Item> SILVER_WEAPONS = createTag("c", "silver_weapons"); // Silver Weapons
         public static final TagKey<Item> FROGMIST_VISIBLE_ITEMS = createTag("frogmist_visible_items"); // Frogmist can be broken when items in this tag are held in hand
+        public static final TagKey<Item> STAMPEDE_EDIBLE = createTag("stampede_edible"); // Stampedes can eat or be fed these items to replenish health and hunger
+        public static final TagKey<Item> STAMPEDE_FAVORITES = createTag("stampede_favorites"); // Stampedes replenish more health, hunger and can be tamed with these items
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, NetherExp.id(name));

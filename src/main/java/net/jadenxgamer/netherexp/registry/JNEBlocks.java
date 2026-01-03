@@ -710,5 +710,6 @@ public class JNEBlocks {
         BLOCKS.addAlias(NetherExp.id("soul_jack_o_lantern"), NetherExp.idVanilla("jack_o_lantern")); // Removed 2.3.0
         BLOCKS.addAlias(NetherExp.id("soul_ghoul_o_lantern"), NetherExp.idVanilla("ghoul_o_lantern")); // Removed 2.3.0
         BLOCKS.addAlias(NetherExp.id("bone_cortical"), NetherExp.idVanilla("bone_block")); // Removed 2.4.0
+        BLOCKS.addAlias(NetherExp.id("bone_rod"), NetherExp.id("bone_pike")); // Renamed 2.4.0
     }
 }

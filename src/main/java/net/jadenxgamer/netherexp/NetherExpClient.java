@@ -1,7 +1,9 @@
 package net.jadenxgamer.netherexp;
 
 import net.jadenxgamer.netherexp.client.particle.*;
-import net.jadenxgamer.netherexp.client.rendering.block_entity.*;
+import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassBlockRenderer;
+import net.jadenxgamer.netherexp.client.rendering.block_entity.JNECampfireRenderer;
+import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.entity.*;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
@@ -38,6 +40,7 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
+        EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.SHOTGUN_PELLET.get(), ShotgunPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.WILL_O_WISP.get(), ThrownItemRenderer::new);
         EntityRenderers.register(EntityType.BLAZE, JNEBlazeRenderer::new);

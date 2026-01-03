@@ -714,6 +714,8 @@
   "netherexp.configuration.soulSandValleyWindSpeed": "Soul Sand Valley Wind Speed",
   "netherexp.configuration.windyAshScaleMultiplier": "Windy Ash Scale Multiplier",
   "netherexp.configuration.driftingSoulsSpawnQuantity": "Drifting Souls Spawn Quantity",
+  "netherexp.configuration.enableJNESplashTexts": "Enable JNE Splash Texts",
+  "netherexp.configuration.redSplashText": "Red Splash Text",
 
   "netherexp.configuration.ectoplasmFreezes": "Ectoplasm Freezes",
   "netherexp.configuration.ectoplasmRustsNetherite": "Ectoplasm Rusts Netherite",

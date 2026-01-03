@@ -72,7 +72,7 @@ public class JNEConfigImpl {
                     .comment("Weather ecto soul sand converts to suspicious soul sand by exiting wisps")
                     .define("convertsToSuspiciousSoulSand", true);
             WISP_ARCHAEOLOGY_DEFAULT_LOOT_TABLE = builder
-                    .comment("Weather soul swirls can be bone-mealed to duplicate or not")
+                    .comment("Defines the loot table which the game will use when no registry is found for that particular biome or structure context")
                     .define("wispArchaeologyDefaultLootTable", "netherexp:archaeology/wisp_arch_default");
             SUSPICIOUS_SOUL_SAND_DECAY_CHANCE = builder
                     .comment("The chance for non-persistent suspicious soul sand block to decay")
@@ -84,7 +84,7 @@ public class JNEConfigImpl {
                     .comment("The chance for lesion blocks to grow a layer back")
                     .defineInRange("lesionGrowthChance", 0.1, 0.0, 1.0);
             LESION_DROPS_PER_HARVEST = builder
-                    .comment("The amount of decay required for suspicious soul sand to revert back to soul sand")
+                    .comment("The amount of wraithing flesh dropped by a lesion upon harvesting")
                     .defineInRange("lesionDropsPerHarvest", 12, 0, Integer.MAX_VALUE);
             SPORESHROOM_HEIGHT_VELOCITY = builder
                     .comment("Vertical velocity gained from bouncing on a sporeshroom block")
@@ -120,7 +120,7 @@ public class JNEConfigImpl {
                     .comment("Weather sorrowsquashes fall if the stem it's attached to breaks")
                     .define("shouldSorrowsquashFall", true);
             SORROWSQUISHED_DAMAGE_MULTIPLIER = builder
-                    .comment("Damage multiplier per block the sorrowsquash falls to inflict as sorrowsquished")
+                    .comment("Damage multiplier per block the sorrowsquash falls to be inflicted as sorrowsquished")
                     .defineInRange("sorrowsquishedDamageMultiplier", 1.5, 0.0, Double.MAX_VALUE);
             SORROWSQUISHED_MAX_DAMAGE = builder
                     .comment("Maximum damage that can be accumulated form sorrowsquash to be inflicted as sorrowsquished")
@@ -274,6 +274,15 @@ public class JNEConfigImpl {
             BANSHEE_UNLEASHING_ODDS = builder
                     .comment("The chance for banshees to unleash apparitions upon death")
                     .defineInRange("bansheeUnleashingOdds", 0.15, 0.0, 1.0);
+            STAMPEDE_STRIDITE_SHEDDING_CHANCE = builder
+                    .comment("Stampedes will shed stridite upon running over any entity")
+                    .defineInRange("stampedeStriditeSheddingChance", 0.1, 0.0, 1.0);
+            MIN_STAMPEDE_STRIDITE_DROPS = builder
+                    .comment("The minimum number of stridite that can be shed by a stampede")
+                    .defineInRange("minStampedeStriditeDrops", 1, 0, Integer.MAX_VALUE);
+            MAX_STAMPEDE_STRIDITE_DROPS = builder
+                    .comment("The maximum number of stridite that can be shed by a stampede")
+                    .defineInRange("maxStampedeStriditeDrops", 5, 0, Integer.MAX_VALUE);
         }
     }
 
@@ -283,10 +292,10 @@ public class JNEConfigImpl {
             NETHER_WORLDGEN_OVERHAUL = builder
                     .comment("""
                             Improves the vanilla nether terrain generation with better multilayered-ness and height changes\s
-                            Heights changes include:\s
-                            The base nether is now 192 blocks tall\s
-                            Underlava sections have an additional -32 blocks of depth\s
-                            And the area above the roof will be 64 blocks tall instead\s
+                            The Height changes include:\s
+                            -Base Nether being extended to 192 blocks tall\s
+                            -Underlava sections extended by -32 blocks of depth\s
+                            -And the area above the roof will be 64 blocks tall instead\s
                             \s
                             §cNOTE: If Amplified Nether is installed then that mod's generation will take priority regardless of config value
                             """)
@@ -351,6 +360,12 @@ public class JNEConfigImpl {
             WINDY_ASH_SCALE_MULTIPLIER = builder
                     .comment("Multiplies the size of windy ash particles")
                     .defineInRange("windyAshScaleMultiplier", 1.3, 0.0, Double.MAX_VALUE);
+            ENABLE_JNE_SPLASH_TEXTS = builder
+                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
+                    .define("enableJNESplashTexts", true);
+            RED_SPLASH_TEXT = builder
+                    .comment("Splash texts added by JNE will be red opposed to the usual yellow")
+                    .define("redSplashText", true);
         }
     }
 

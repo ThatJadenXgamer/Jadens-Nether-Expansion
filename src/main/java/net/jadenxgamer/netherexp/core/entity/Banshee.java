@@ -165,7 +165,6 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     // DATA //
     //////////
 
-
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 53) shootAnimation.startIfStopped(this.tickCount);

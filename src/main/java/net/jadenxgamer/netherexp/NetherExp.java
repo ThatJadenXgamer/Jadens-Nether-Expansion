@@ -1,9 +1,7 @@
 package net.jadenxgamer.netherexp;
 
-import net.jadenxgamer.netherexp.compat.registry.SupplementariesCompat;
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.registry.*;
-import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -35,11 +33,9 @@ public final class NetherExp {
         JNEBlocks.init(modEventBus);
         JNEItems.init(modEventBus);
         JNEBlockEntityType.init(modEventBus);
-        initModCompat();
     }
 
     private static void initModCompat() {
-        if (CompatUtil.SUPPLEMENTARIES) SupplementariesCompat.init();
     }
 
     public static ResourceLocation id(String path) {

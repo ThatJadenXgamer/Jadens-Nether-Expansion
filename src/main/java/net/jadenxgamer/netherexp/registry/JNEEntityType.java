@@ -43,6 +43,10 @@ public class JNEEntityType {
             EntityType.Builder.<ShotgunPellet>of(ShotgunPellet::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("shotgun_pellet"));
 
+    public static final Supplier<EntityType<PhasmoArrow>> PHASMO_ARROW = ENTITY_TYPES.register("phasmo_arrow", () ->
+            EntityType.Builder.<PhasmoArrow>of(PhasmoArrow::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("phasmo_arrow"));
+
     public static final Supplier<EntityType<WillOWisp>> WILL_O_WISP = ENTITY_TYPES.register("will_o_wisp", () ->
             EntityType.Builder.<WillOWisp>of(WillOWisp::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("will_o_wisp"));

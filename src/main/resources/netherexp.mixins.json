@@ -6,7 +6,9 @@
   "client": [
     "client.FogRendererMixin",
     "client.LevelRendererMixin",
-    "client.ParticleEngineMixin"
+    "client.ParticleEngineMixin",
+    "client.SplashManagerMixin",
+    "client.SplashRendererMixin"
   ],
   "mixins": [
     "block.TwistingVinesBlockMixin",
