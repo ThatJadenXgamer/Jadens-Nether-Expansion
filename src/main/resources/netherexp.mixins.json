@@ -11,6 +11,7 @@
     "client.SplashRendererMixin"
   ],
   "mixins": [
+    "block.BaseFireBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "entity.AbstractArrowMixin",

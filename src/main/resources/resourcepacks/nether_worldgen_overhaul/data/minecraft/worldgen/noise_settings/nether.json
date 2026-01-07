@@ -14,8 +14,8 @@
   "noise": {
     "height": 224,
     "min_y": -32,
-    "size_horizontal": 4,
-    "size_vertical": 2
+    "size_horizontal": 2,
+    "size_vertical": 1
   },
   "noise_router": {
     "barrier": 0,
@@ -26,7 +26,7 @@
       "type": "minecraft:squeeze",
       "argument": {
         "type": "minecraft:mul",
-        "argument1": 0.6,
+        "argument1": 0.64,
         "argument2": {
           "type": "minecraft:interpolated",
           "argument": {
@@ -38,8 +38,8 @@
                 "type": "minecraft:mul",
                 "argument1": {
                   "type": "minecraft:y_clamped_gradient",
+                  "from_value": 0,
                   "from_y": -30,
-                  "from_value": 0.5,
                   "to_value": 1,
                   "to_y": -16
                 },
@@ -53,15 +53,15 @@
                       "type": "minecraft:mul",
                       "argument1": {
                         "type": "minecraft:y_clamped_gradient",
-                        "from_y": 175,
+                        "from_y": 170,
+                        "to_y": 192,
                         "from_value": 1,
-                        "to_value": 0,
-                        "to_y": 192
+                        "to_value": 0
                       },
                       "argument2": {
                         "type": "minecraft:add",
                         "argument1": -0.9375,
-                        "argument2": "netherexp:nether/multiplied_base_3d"
+                        "argument2": "netherexp:nether/base_3d_noise"
                       }
                     }
                   }
@@ -75,7 +75,7 @@
     "fluid_level_floodedness": 0,
     "fluid_level_spread": 0,
     "initial_density_without_jaggedness": 0,
-    "lava": 0,
+    "lava": 1,
     "ridges": 0,
     "temperature": {
       "type": "minecraft:shifted_noise",

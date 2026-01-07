@@ -5,10 +5,10 @@
     "input": {
       "type": "minecraft:noise",
       "noise": "netherexp:nether_cheese",
-      "xz_scale": 1.6,
-      "y_scale": 5.5
+      "xz_scale": 1.1,
+      "y_scale": 8.2
     },
-    "min": -0.2,
+    "min": -1,
     "max": 0.6
   }
 }

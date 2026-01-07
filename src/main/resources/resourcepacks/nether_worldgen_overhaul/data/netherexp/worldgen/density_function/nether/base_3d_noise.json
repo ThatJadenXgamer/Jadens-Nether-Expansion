@@ -1,15 +1,37 @@
 {
   "type": "minecraft:mul",
   "argument1": {
-    "type": "minecraft:abs",
-    "argument": {
-      "type": "minecraft:old_blended_noise",
-      "xz_scale": 0.25,
-      "y_scale": 0.375,
-      "xz_factor": 100,
-      "y_factor": 80,
-      "smear_scale_multiplier": 8
+    "type": "minecraft:mul",
+    "argument1": -0.6,
+    "argument2": {
+      "type": "minecraft:squeeze",
+      "argument": {
+        "type": "minecraft:clamp",
+        "input": {
+          "type": "minecraft:noise",
+          "noise": "minecraft:gravel_layer",
+          "xz_scale": 3.5,
+          "y_scale": 10.6
+        },
+        "min": -1,
+        "max": 0.6
+      }
     }
   },
-  "argument2": "netherexp:nether/multiplied_base_3d"
+  "argument2": {
+    "type": "minecraft:half_negative",
+    "argument": {
+      "type": "minecraft:clamp",
+      "input": {
+        "type": "minecraft:old_blended_noise",
+        "xz_scale": 0.285,
+        "y_scale": 0.275,
+        "xz_factor": 100,
+        "y_factor": 80,
+        "smear_scale_multiplier": 8
+      },
+      "min": -1,
+      "max": -0.6
+    }
+  }
 }
