@@ -1,12 +1,15 @@
 package net.jadenxgamer.netherexp.core.item;
 
 import net.jadenxgamer.netherexp.core.block.interfaces.GlowsporesApplicable;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +19,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
@@ -44,6 +49,8 @@ public class GlowsporesItem extends Item {
         BlockState state = level.getBlockState(pos);
         boolean passed = false;
         if (player != null && state.getBlock() instanceof GlowsporesApplicable glowsporesApplicable && stack.is(glowsporesApplicable.glowsporeOfBlock())) {
+            if (!glowsporesApplicable.canSporesBeApplied(state)) return InteractionResult.FAIL;
+
             if (glowsporesApplicable.affectedProperty() instanceof IntegerProperty integerProperty) {
                 int currentValue = state.getValue(integerProperty);
                 int maxValue = integerProperty.getPossibleValues().size();
@@ -89,9 +96,9 @@ public class GlowsporesItem extends Item {
             BlockPos relativePos = pos.relative(direction);
             if (!level.getBlockState(relativePos).isSolidRender(level, relativePos)) {
                 Direction.Axis axis = direction.getAxis();
-                double x = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) random.nextFloat();
-                double y = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) random.nextFloat();
-                double z = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) random.nextFloat();
+                double x = pos.getX() + (axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) random.nextFloat());
+                double y = pos.getY() + (axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) random.nextFloat());
+                double z = pos.getZ() + (axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) random.nextFloat());
 
                 WorldParticleBuilder.create(particle)
                         .setFullBrightLighting()
@@ -103,7 +110,7 @@ public class GlowsporesItem extends Item {
                         .setLifetime(random.nextInt(30, 40))
                         .disableNoClip()
                         .setGravityStrength(0.05f)
-                        .setMotion(0.0, 0.04, 0.0)
+                        .setMotion(0.0, 0.0, 0.0)
                         .spawn(level, x, y, z);
             }
         }
