@@ -84,7 +84,7 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final Supplier<Item> WILL_O_WISP = ITEMS.register("will_o_wisp", () ->
-            new Item(new Item.Properties()));
+            new WillOWispItem(new Item.Properties()));
 
     public static final Supplier<Item> STRIDITE = ITEMS.register("stridite", () ->
             new Item(new Item.Properties().fireResistant()));

@@ -16,10 +16,6 @@ public class Liquidlogged {
             this.name = name;
         }
 
-        public String toString() {
-            return this.name;
-        }
-
         @Override
         public @NotNull String getSerializedName() {
             return this.name;
@@ -36,10 +32,6 @@ public class Liquidlogged {
 
         AllFluids(String name) {
             this.name = name;
-        }
-
-        public String toString() {
-            return this.name;
         }
 
         @Override

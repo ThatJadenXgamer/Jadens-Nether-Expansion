@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.config;
 
+import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
@@ -245,7 +246,7 @@ public class JNEConfigImpl {
                             "This value cannot go any lower than 50 to prevent animation issues")
                     .defineInRange("vesselShootsAtAttackTime", 100, 50, Integer.MAX_VALUE);
             BANSHEE_TELEPORTS_AFTER_HIT = builder
-                    .comment("Banshees hurt by an entity will teleport away to a random spot or their anchor")
+                    .comment("Banshees hurt by an entity will try to teleport away to a random spot or their anchor")
                     .define("bansheeTeleportsAfterHit", true);
             BANSHEE_ANCHOR_INTERVAL = builder
                     .comment("""
@@ -255,9 +256,6 @@ public class JNEConfigImpl {
                              +1 on Hard
                              """)
                     .defineInRange("bansheeAnchorInterval", 3, 1, Integer.MAX_VALUE);
-            BANSHEE_STUN_TIMER = builder
-                    .comment("When hurt the banshee can no longer attack for the specified duration in ticks")
-                    .defineInRange("bansheeStunTimer", 80, 0, Integer.MAX_VALUE);
             BANSHEE_ATTACK_INTERVAL = builder
                     .comment("The base attack interval of a banshee, which constantly ticks down. when the value reaches \"0\" it'll fire a will o' wisp \n" +
                             "After which the specified value will be added to the attack interval for it to continue ticking down")
@@ -265,6 +263,19 @@ public class JNEConfigImpl {
             BANSHEE_ATTACK_INTERVAL_BONUS = builder
                     .comment("This value gets added on top of the base attack interval adding to further randomization in its attack patterns")
                     .defineInRange("bansheeAttackIntervalBonus", 30, 0, Integer.MAX_VALUE);
+            BANSHEE_ATTACK_INTERVAL_STAGGER = builder
+                    .comment("When hurt the banshee's attack interval can be staggered by the specified amount in ticks")
+                    .defineInRange("bansheeAttackIntervalStagger", 10, 0, Integer.MAX_VALUE);
+            BANSHEE_REDIRECT_STUNS = builder
+                    .comment("If a banshee's own will o' wisp circles back around and hits it then the entity gets stunned")
+                    .define("bansheeRedirectStuns", true);
+            BANSHEE_STUN_TIMER = builder
+                    .comment("Defines how long a banshee hit with its own projectile will be stunned for \n" +
+                            "During this it is unable to fire will o' wisps")
+                    .defineInRange("bansheeStunTimer", 100, 0, Integer.MAX_VALUE);
+            BANSHEE_REDIRECT_INSTAKILLS = builder
+                    .comment("If a banshee's own will o' wisp circles back around and hits it then the entity instantly dies")
+                    .define("bansheeRedirectInstakills", false);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
@@ -367,8 +378,12 @@ public class JNEConfigImpl {
                     .comment("Number of drifting soul particles which can spawn from a single block")
                     .defineInRange("driftingSoulsSpawnQuantity", 4, 0, Integer.MAX_VALUE);
             RED_SPLASH_TEXT = builder
-                    .comment("Splash texts added by JNE will be red opposed to the usual yellow")
+                    .comment("Splash texts added by JNE will be a wonderful red color opposed to the usual yellow")
                     .define("redSplashText", true);
+            PROFANITY = builder
+                    .comment("JNE has swearing, and lots of it too but is normally censored \n" +
+                            "If you'd like to disable profanity entirely or uncensor it you may do so with this config")
+                    .defineEnum("profanity", ProfanityConfig.CENSORED);
         }
     }
 

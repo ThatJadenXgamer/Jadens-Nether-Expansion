@@ -5,6 +5,7 @@
   "minVersion": "0.8",
   "client": [
     "client.FogRendererMixin",
+    "client.HumanoidModelMixin",
     "client.LevelRendererMixin",
     "client.ParticleEngineMixin",
     "client.SplashManagerMixin",

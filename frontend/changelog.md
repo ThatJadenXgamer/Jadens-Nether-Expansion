@@ -11,6 +11,8 @@
 
 -The Nether world generation has been entirely overhauled from the ground up
 
+-Speleothems can now generate in the nether to make it look more cavernous
+
 -The Nether is now 192 blocks tall, with an additional -32 blocks for the future underlava expansion
 
 -The dimension is also much more multilayered and less floaty overall
@@ -47,7 +49,11 @@
 
 -Certain mobs (usually light ones) can now stand on thin black ice without shattering it 
 
--Banshees now produce new breathing particles from their mouths -X
+-Banshees now produce smoke particles behind their orbit
+
+-Will O' Wisps seeking logic has been overhauled, it now gradually gets faster overtime and less accurate with sharp turns
+
+-Will O' Wisps now also have a 3D model with new and improved particles!
 
 -Apparitions, Wisps, Banshees and Blazes no longer have shade and look similar to bedrock edition emissive mobs
 

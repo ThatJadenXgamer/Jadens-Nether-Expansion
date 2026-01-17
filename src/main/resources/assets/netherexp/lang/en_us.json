@@ -613,6 +613,8 @@
   "block.netherexp.sconce_ancient": "Ancient Sconce",
   "block.netherexp.sconce_ancient_wall": "Ancient Sconce",
   "subtitles.entity.apparition.possession": "Apparition possesses a mob",
+  "subtitles.entity.willowisp.ambient": "Will O' Wisp weeps",
+  "subtitles.entity.banshee.stun": "Banshee dazed",
   "block.netherexp.drifting_souls": "Drifting Souls",
   "advancements.nether.why_are_you_hitting_yourself.title": "Why are you hitting yourself?",
   "advancements.nether.why_are_you_hitting_yourself.description": "Juke a Will O' Wisp into hitting the banshee which shot it",
@@ -716,6 +718,7 @@
   "netherexp.configuration.driftingSoulsSpawnQuantity": "Drifting Souls Spawn Quantity",
   "netherexp.configuration.enableJNESplashTexts": "Enable JNE Splash Texts",
   "netherexp.configuration.redSplashText": "Red Splash Text",
+  "netherexp.configuration.profanity": "Profanity",
 
   "netherexp.configuration.ectoplasmFreezes": "Ectoplasm Freezes",
   "netherexp.configuration.ectoplasmRustsNetherite": "Ectoplasm Rusts Netherite",
