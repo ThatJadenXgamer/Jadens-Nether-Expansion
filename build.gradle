@@ -3,7 +3,6 @@ plugins {
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.124'
     id 'idea'
-    id "org.jetbrains.kotlin.jvm" version "2.0.21"
 }
 
 tasks.named('wrapper', Wrapper).configure {
