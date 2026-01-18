@@ -1,14 +1,17 @@
 plugins {
-    id 'dev.architectury.loom' version '1.7-SNAPSHOT'
+    id 'java-library'
     id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.124'
+    id 'idea'
+    id "org.jetbrains.kotlin.jvm" version "2.0.21"
 }
 
-group = project.maven_group
-version = project.mod_version
-
-base {
-    archivesName = project.archives_name
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
 }
+
+group = mod_group_id
+version = mod_version
 
 repositories {
     // Add NeoForged repository.
@@ -45,63 +48,104 @@ repositories {
     // for more information about repositories.
 }
 
-loom {
-    silentMojangMappingsLicense()
+base {
+    archivesName = mod_id
 }
 
-dependencies {
-    minecraft "net.minecraft:minecraft:$project.minecraft_version"
-    mappings loom.layered() {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-1.21.1:2024.11.17@zip")
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    enable {
+        version = neoforge_version
+        disableRecompilation = true
     }
-    neoForge "net.neoforged:neoforge:$project.neoforge_version"
-    modImplementation "com.github.thatjadenxgamer:elysium:${project.elysium_version}"
+    // Validate AT files and raise errors when they have invalid targets
+    // validateAccessTransformers = true
 
-    modImplementation "team.lodestar.lodestone:lodestone:$project.lodestone_version"
-    include "team.lodestar.lodestone:lodestone:$project.lodestone_version"
-
-    compileOnly "top.theillusivec4.curios:curios-neoforge:$project.curios_version:api"
-    runtimeOnly "top.theillusivec4.curios:curios-neoforge:$project.curios_version"
-
-    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-neoforge:0.5.0")))
-}
-
-processResources {
-    inputs.property 'version', project.version
-
-    filesMatching('META-INF/neoforge.mods.toml') {
-        expand version: project.version
+    parchment {
+        mappingsVersion = parchment_mappings_version
+        minecraftVersion = parchment_minecraft_version
     }
-}
 
-java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
-    withSourcesJar()
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
 
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
-}
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
 
-tasks.withType(JavaCompile).configureEach {
-    it.options.release = 21
-}
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
 
-// Configure Maven publishing.
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+            logLevel = org.slf4j.event.Level.DEBUG
         }
     }
 
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    implementation "com.github.thatjadenxgamer:elysium:${elysium_version}"
+
+    jarJar(implementation("team.lodestar.lodestone:lodestone")) {
+        version {
+            prefer lodestone_version
+        }
+    }
+
+    compileOnly "top.theillusivec4.curios:curios-neoforge:$curios_version:api"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:$curios_version"
+}
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neoforge_version       : neoforge_version,
+            elysium_version        : elysium_version,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+publishing {
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
     }
 }
