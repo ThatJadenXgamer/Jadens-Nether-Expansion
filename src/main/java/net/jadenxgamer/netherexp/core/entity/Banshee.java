@@ -136,8 +136,12 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     protected void teleport() {
         if (!this.isAlive() || this.level().isClientSide()) return;
         BlockPos targetPos = null;
+        var difficulty = level().getDifficulty();
+        var teleportInterval = BANSHEE_ANCHOR_INTERVAL.get();
+        if (difficulty.equals(Difficulty.EASY)) teleportInterval -= 1;
+        else if (difficulty.equals(Difficulty.HARD)) teleportInterval += 1;
 
-        if (teleportCount % 3 == 0) {
+        if (teleportCount % teleportInterval == 0) {
             targetPos = teleportAnchor;
         } else {
             int x = teleportAnchor.getX() + this.random.nextInt(13) - 6;
@@ -162,11 +166,18 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     public void performRangedAttack(LivingEntity target, float velocity) {
         this.level().broadcastEntityEvent(this, (byte) 58);
         var difficulty = level().getDifficulty();
+        float manoeuvrability = (float) BANSHEE_WILL_O_WISP_MANEUVERABILITY.getAsDouble();
+        if (MANEUVERABILITY_AFFECTED_BY_DIFFICULTY.get()) {
+            if (difficulty.equals(Difficulty.EASY)) manoeuvrability -= 0.05f;
+            else if (difficulty.equals(Difficulty.HARD)) manoeuvrability += 0.04f;
+        }
+
         WillOWisp willOWisp = new WillOWisp(this, this.level(), target, this.getX(), this.getY() + 0.5, this.getZ(), 6);
         willOWisp.setOwner(this);
+        willOWisp.setManoeuvrability(manoeuvrability);
+
         this.playSound(JNESoundEvents.BANSHEE_SHOOT.get(), 2.0f,
                 (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
-
         this.level().addFreshEntity(willOWisp);
     }
 

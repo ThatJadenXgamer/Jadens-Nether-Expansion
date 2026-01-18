@@ -18,6 +18,8 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.Supplier;
 
+import static net.jadenxgamer.netherexp.config.JNEConfigs.WILL_O_WISP_STACK_SIZE;
+
 @SuppressWarnings("unused")
 public class JNEItems {
 

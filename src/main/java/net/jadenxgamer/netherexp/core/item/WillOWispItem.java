@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.core.item;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemAnimationState;
 import net.jadenxgamer.netherexp.core.entity.WillOWisp;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -21,6 +22,8 @@ import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.Optional;
 import java.util.function.Consumer;
+
+import static net.jadenxgamer.netherexp.config.JNEConfigs.WILL_O_WISP_STACK_SIZE;
 
 public class WillOWispItem extends Item {
 
@@ -74,7 +77,12 @@ public class WillOWispItem extends Item {
     }
 
     @Override
+    public int getMaxStackSize(ItemStack stack) {
+        return stack.getOrDefault(DataComponents.MAX_STACK_SIZE, WILL_O_WISP_STACK_SIZE.get());
+    }
+
+    @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
+        return UseAnim.SPEAR;
     }
 }

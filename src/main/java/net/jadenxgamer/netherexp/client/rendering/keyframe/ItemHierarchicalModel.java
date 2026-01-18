@@ -61,7 +61,6 @@ public abstract class ItemHierarchicalModel<I extends Item> extends Model {
     }
 
     protected void animate(Entity entity, ItemAnimationState animationState, AnimationDefinition animationDefinition, float ageInTicks, float speed) {
-        if (!animationState.matchesViewingEntity(entity)) return;
         animationState.updateTime(ageInTicks, speed);
         animationState.ifStarted((arg2) -> ItemKeyframeAnimations.animate(this, animationDefinition, arg2.getAccumulatedTime(), 1.0F, ANIMATION_VECTOR_CACHE));
     }
