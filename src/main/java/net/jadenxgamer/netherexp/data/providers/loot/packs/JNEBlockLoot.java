@@ -109,6 +109,12 @@ public final class JNEBlockLoot extends BlockLootSubProvider {
         dropOther(JNEBlocks.ECTOPLASM_CAULDRON.get(), Items.CAULDRON);
         dropSelf(JNEBlocks.DRIFTING_SOULS.get());
 
+        // Sanctum
+        dropSelf(JNEBlocks.BRAZIER_CHEST.get());
+        dropSelf(JNEBlocks.TREACHEROUS_CANDLE.get());
+        add(JNEBlocks.HAZE_BLOCK.get(), noDrop());
+        dropSelf(JNEBlocks.SCULK_GRINDER.get());
+
         // Black Ice
         dropSelf(JNEBlocks.BLACK_ICE.get());
         dropSelf(JNEBlocks.BLACK_ICICLE.get());

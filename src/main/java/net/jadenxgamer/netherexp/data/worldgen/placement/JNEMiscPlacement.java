@@ -38,7 +38,7 @@ public class JNEMiscPlacement {
         PlacementUtils.register(context,
                 NETHERRACK_SPELEOTHEM,
                 holderGetter.getOrThrow(JNEMiscFeatures.NETHERRACK_SPELEOTHEM),
-                RarityFilter.onAverageOnceEvery(7),
+                RarityFilter.onAverageOnceEvery(2),
                 CountPlacement.of(1),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.uniform(

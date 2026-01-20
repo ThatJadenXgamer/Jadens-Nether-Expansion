@@ -16,6 +16,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class JNEMiscFeatures {
 
@@ -29,42 +30,10 @@ public class JNEMiscFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
         FeatureUtils.register(
-                context, NETHERRACK_SPELEOTHEM, JNEFeatureTypes.NOT_GARBAGE_LARGE_DRIPSTONE.get(), new JNELargeDripstoneConfiguration(
-                        100,
-                        Blocks.NETHERRACK.defaultBlockState(),
-                        HolderSet.direct(
-                                holder(Blocks.NETHERRACK),
-                                holder(Blocks.CRIMSON_NYLIUM),
-                                holder(Blocks.WARPED_NYLIUM)
-                        ),
-                        ConstantInt.of(12),
-                        ConstantFloat.of(2),
-                        1.0f,
-                        ConstantFloat.of(0.3f),
-                        ConstantFloat.of(0.3f),
-                        ConstantFloat.of(0.0f),
-                        7,
-                        0.27f
-                ));
+                context, NETHERRACK_SPELEOTHEM, JNEFeatureTypes.NETHER_SPELEOTHEM.get(), new NoneFeatureConfiguration());
 
         FeatureUtils.register(
-                context, SOUL_SOIL_SPELEOTHEM, JNEFeatureTypes.NOT_GARBAGE_LARGE_DRIPSTONE.get(), new JNELargeDripstoneConfiguration(
-                        100,
-                        Blocks.SOUL_SOIL.defaultBlockState(),
-                        HolderSet.direct(
-                                holder(Blocks.SOUL_SAND),
-                                holder(Blocks.SOUL_SOIL),
-                                holder(JNEBlocks.PALE_SOUL_SLATE.get())
-                        ),
-                        ConstantInt.of(12),
-                        ConstantFloat.of(2),
-                        1.0f,
-                        ConstantFloat.of(0.3f),
-                        ConstantFloat.of(0.3f),
-                        ConstantFloat.of(0.0f),
-                        7,
-                        0.27f
-                ));
+                context, SOUL_SOIL_SPELEOTHEM, JNEFeatureTypes.NETHER_SPELEOTHEM.get(), new NoneFeatureConfiguration());
     }
 
     private static Holder<Block> holder(Block block) {

@@ -1,10 +1,7 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.worldgen.features.BrainTreeFeature;
-import net.jadenxgamer.netherexp.core.worldgen.features.JNEHugeFungusFeature;
-import net.jadenxgamer.netherexp.core.worldgen.features.MoundFeature;
-import net.jadenxgamer.netherexp.core.worldgen.features.JNELargeDripstoneFeature;
+import net.jadenxgamer.netherexp.core.worldgen.features.*;
 import net.jadenxgamer.netherexp.core.worldgen.features.configuration.JNEHugeFungusConfiguration;
 import net.jadenxgamer.netherexp.core.worldgen.features.configuration.MoundConfiguration;
 import net.jadenxgamer.netherexp.core.worldgen.features.configuration.JNELargeDripstoneConfiguration;
@@ -32,7 +29,7 @@ public class JNEFeatureTypes {
     public static final Supplier<Feature<MoundConfiguration>> MOUND = FEATURES.register("mound", () ->
             new MoundFeature(MoundConfiguration.CODEC));
 
-    public static final Supplier<Feature<?>> NETHER_SPELEOTHEM = FEATURES.register("nether_speleothem", () ->
+    public static final Supplier<Feature<NoneFeatureConfiguration>> NETHER_SPELEOTHEM = FEATURES.register("nether_speleothem", () ->
             new NetherSpeleothemFeature(NoneFeatureConfiguration.CODEC));
 
     public static void init(IEventBus eventBus) {
