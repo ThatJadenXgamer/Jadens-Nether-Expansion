@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "gui_light": "front",
+  "textures": {
+    "layer0": "netherexp:item/will_o_wisp"
+  }
+}

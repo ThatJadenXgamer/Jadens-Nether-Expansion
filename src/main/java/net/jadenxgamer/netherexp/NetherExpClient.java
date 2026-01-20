@@ -1,7 +1,9 @@
 package net.jadenxgamer.netherexp;
 
 import net.jadenxgamer.netherexp.client.particle.*;
-import net.jadenxgamer.netherexp.client.rendering.block_entity.*;
+import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassBlockRenderer;
+import net.jadenxgamer.netherexp.client.rendering.block_entity.JNECampfireRenderer;
+import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.entity.*;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
@@ -14,7 +16,6 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -38,8 +39,9 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
+        EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.SHOTGUN_PELLET.get(), ShotgunPelletRenderer::new);
-        EntityRenderers.register(JNEEntityType.WILL_O_WISP.get(), ThrownItemRenderer::new);
+        EntityRenderers.register(JNEEntityType.WILL_O_WISP.get(), WillOWispRenderer::new);
         EntityRenderers.register(EntityType.BLAZE, JNEBlazeRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.SUSPICIOUS_SOUL_SAND.get(), SuspiciousSoulSandBlockRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.DISCERNMENT_GLASS.get(), DiscernmentGlassBlockRenderer::new);
@@ -84,5 +86,8 @@ public final class NetherExpClient {
         event.registerLayerDefinition(ApparitionRenderer.ApparitionModel.LAYER, ApparitionRenderer.ApparitionModel::createBodyLayer);
         event.registerLayerDefinition(VesselRenderer.VesselModel.LAYER, VesselRenderer.VesselModel::createBodyLayer);
         event.registerLayerDefinition(BansheeRenderer.BansheeModel.LAYER, BansheeRenderer.BansheeModel::createBodyLayer);
+        event.registerLayerDefinition(WillOWispRenderer.WillOWispModel.LAYER, WillOWispRenderer.WillOWispModel::createBodyLayer);
+        event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);
+        event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER_HAND, WillOWispRenderer.WillOWispItemModel::createHandLayer);
     }
 }

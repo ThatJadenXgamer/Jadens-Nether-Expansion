@@ -1,0 +1,5 @@
+{
+  "type": "neoforge:remove_carvers",
+  "biomes": "#minecraft:is_nether",
+  "carvers": "minecraft:nether_cave"
+}

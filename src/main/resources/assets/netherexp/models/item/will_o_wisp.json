@@ -1,6 +1,18 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "netherexp:item/will_o_wisp"
-  }
+	"loader": "neoforge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"parent": "netherexp:item/will_o_wisp_held"
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "netherexp:item/will_o_wisp_gui"
+		},
+		"ground": {
+			"parent": "netherexp:item/will_o_wisp_gui"
+		},
+		"fixed": {
+			"parent": "netherexp:item/will_o_wisp_gui"
+		}
+	}
 }

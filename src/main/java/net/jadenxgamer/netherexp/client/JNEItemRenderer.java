@@ -1,0 +1,47 @@
+package net.jadenxgamer.netherexp.client;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
+import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.client.rendering.JNERenderType;
+import net.jadenxgamer.netherexp.client.rendering.entity.WillOWispRenderer;
+import net.jadenxgamer.netherexp.core.item.WillOWispItem;
+import net.jadenxgamer.netherexp.registry.JNEItems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+
+public class JNEItemRenderer extends BlockEntityWithoutLevelRenderer {
+
+    public static final WillOWispRenderer.WillOWispItemModel WILL_O_WISP_MODEL = new WillOWispRenderer.WillOWispItemModel(Minecraft.getInstance().getEntityModels().bakeLayer(WillOWispRenderer.WillOWispItemModel.LAYER));
+
+    public JNEItemRenderer() {
+        super(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
+    }
+
+    @Override
+    public void renderByItem(ItemStack stack, ItemDisplayContext displayContext, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+        super.renderByItem(stack, displayContext, poseStack, buffer, packedLight, packedOverlay);
+        float partialTick = Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
+        LocalPlayer player = Minecraft.getInstance().player;
+        float ageInTicks = player == null ? 0f : player.tickCount + partialTick;
+        if (stack.is(JNEItems.WILL_O_WISP.get())) {
+            poseStack.pushPose();
+            poseStack.translate(0.5f, 0.2f, 0.5f);
+            poseStack.mulPose(Axis.XP.rotationDegrees(-180));
+            poseStack.mulPose(Axis.YP.rotationDegrees(180));
+            poseStack.scale(1.0F, 1.0F, 1.0F);
+            ResourceLocation texture = NetherExp.id("textures/entity/will_o_wisp.png");
+            VertexConsumer orb = buffer.getBuffer(JNERenderType.noShadeEntityCutoutNoCull(texture));
+            WILL_O_WISP_MODEL.setupAnim(player, (WillOWispItem) stack.getItem(), stack, displayContext, ageInTicks);
+            WILL_O_WISP_MODEL.renderToBuffer(poseStack, orb, LightTexture.FULL_BRIGHT, packedOverlay, 0xFFFFFF);
+            poseStack.popPose();
+        }
+    }
+}

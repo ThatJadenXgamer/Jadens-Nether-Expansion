@@ -5,10 +5,14 @@
   "minVersion": "0.8",
   "client": [
     "client.FogRendererMixin",
+    "client.HumanoidModelMixin",
     "client.LevelRendererMixin",
-    "client.ParticleEngineMixin"
+    "client.ParticleEngineMixin",
+    "client.SplashManagerMixin",
+    "client.SplashRendererMixin"
   ],
   "mixins": [
+    "block.BaseFireBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "entity.AbstractArrowMixin",

@@ -3,12 +3,19 @@ package net.jadenxgamer.netherexp.core.entity;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.EntityBoundSoundInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -40,6 +47,7 @@ import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
 public class Banshee extends PossessedMob implements RangedAttackMob {
     public final AnimationState idleAnimation = new AnimationState();
     public final AnimationState shootAnimation = new AnimationState();
+    private static final EntityDataAccessor<Integer> STUN_TIME = SynchedEntityData.defineId(Banshee.class, EntityDataSerializers.INT);
     private int attackTime = 0;
     private int idleAnimationTimeout = 0;
     private BlockPos teleportAnchor;
@@ -83,6 +91,8 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     @Override
     public void aiStep() {
         super.aiStep();
+        var stunTime = getStunTime();
+        if (stunTime > 0) setStunTime(--stunTime);
 
         float yawRot = this.getYHeadRot() * ((float)Math.PI / 180F);
         double forwardX = -Math.sin(yawRot);
@@ -116,12 +126,8 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (source.getDirectEntity() instanceof WillOWisp willOWisp && willOWisp.getOwner() == this) {
-            this.kill();
-            return true;
-        }
         if (source.getEntity() instanceof LivingEntity) {
-            this.attackTime = BANSHEE_STUN_TIMER.get();
+            this.attackTime += BANSHEE_ATTACK_INTERVAL_STAGGER.get();
             if (BANSHEE_TELEPORTS_AFTER_HIT.get()) this.teleport();
         }
         return super.hurt(source, amount);
@@ -154,10 +160,13 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
 
     @Override
     public void performRangedAttack(LivingEntity target, float velocity) {
-        this.level().broadcastEntityEvent(this, (byte) 53);
-        WillOWisp willOWisp = new WillOWisp(this, this.level(), target, this.getX(), this.getY() + 0.5, this.getZ(), 0.2f, 6);
+        this.level().broadcastEntityEvent(this, (byte) 58);
+        var difficulty = level().getDifficulty();
+        WillOWisp willOWisp = new WillOWisp(this, this.level(), target, this.getX(), this.getY() + 0.5, this.getZ(), 6);
         willOWisp.setOwner(this);
-        this.playSound(JNESoundEvents.BANSHEE_SHOOT.get(), 2.0f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
+        this.playSound(JNESoundEvents.BANSHEE_SHOOT.get(), 2.0f,
+                (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
+
         this.level().addFreshEntity(willOWisp);
     }
 
@@ -165,10 +174,15 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     // DATA //
     //////////
 
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(STUN_TIME, 0);
+    }
 
     @Override
     public void handleEntityEvent(byte id) {
-        if (id == 53) shootAnimation.startIfStopped(this.tickCount);
+        if (id == 58) shootAnimation.start(this.tickCount);
         super.handleEntityEvent(id);
     }
 
@@ -180,6 +194,20 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     @Override
     protected double apparitionUnleashingOdds() {
         return BANSHEE_UNLEASHING_ODDS.get();
+    }
+
+    public int getStunTime() {
+        return this.entityData.get(STUN_TIME);
+    }
+
+    public void setStunTime(int stunTime) {
+        var stunSound = new EntityBoundSoundInstance(JNESoundEvents.BANSHEE_STUN.get(), SoundSource.HOSTILE, 1.0f, 1.0f, this, 0);
+        if (this.getStunTime() == 0 && stunTime > 0) Minecraft.getInstance().getSoundManager().play(stunSound);
+        this.entityData.set(STUN_TIME, stunTime);
+    }
+
+    public boolean isStunned() {
+        return getStunTime() > 0;
     }
 
     ////////////////
@@ -264,7 +292,7 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
         @Override
         public boolean canUse() {
             LivingEntity target = this.banshee.getTarget();
-            return target != null && target.isAlive();
+            return target != null && target.isAlive() && banshee.getStunTime() <= 0;
         }
 
         public void start() {
@@ -284,7 +312,7 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
             if (target == null) return;
             this.banshee.getLookControl().setLookAt(target, 10.0f, 10.0f);
             double distanceFromTarget = this.banshee.distanceToSqr(target);
-            if (distanceFromTarget < 300.0) {
+            if (distanceFromTarget < 600.0) {
                 if (banshee.attackTime == 0) this.banshee.performRangedAttack(target, 0.0f);
                 if (banshee.attackTime <= -20) {
                     banshee.attackTime = (int) (BANSHEE_ATTACK_INTERVAL.get() + Mth.randomBetween(this.banshee.random, 0, BANSHEE_ATTACK_INTERVAL_BONUS.get()));

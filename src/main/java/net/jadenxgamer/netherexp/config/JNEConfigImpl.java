@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.config;
 
+import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
@@ -72,7 +73,7 @@ public class JNEConfigImpl {
                     .comment("Weather ecto soul sand converts to suspicious soul sand by exiting wisps")
                     .define("convertsToSuspiciousSoulSand", true);
             WISP_ARCHAEOLOGY_DEFAULT_LOOT_TABLE = builder
-                    .comment("Weather soul swirls can be bone-mealed to duplicate or not")
+                    .comment("Defines the loot table which the game will use when no registry is found for that particular biome or structure context")
                     .define("wispArchaeologyDefaultLootTable", "netherexp:archaeology/wisp_arch_default");
             SUSPICIOUS_SOUL_SAND_DECAY_CHANCE = builder
                     .comment("The chance for non-persistent suspicious soul sand block to decay")
@@ -84,7 +85,7 @@ public class JNEConfigImpl {
                     .comment("The chance for lesion blocks to grow a layer back")
                     .defineInRange("lesionGrowthChance", 0.1, 0.0, 1.0);
             LESION_DROPS_PER_HARVEST = builder
-                    .comment("The amount of decay required for suspicious soul sand to revert back to soul sand")
+                    .comment("The amount of wraithing flesh dropped by a lesion upon harvesting")
                     .defineInRange("lesionDropsPerHarvest", 12, 0, Integer.MAX_VALUE);
             SPORESHROOM_HEIGHT_VELOCITY = builder
                     .comment("Vertical velocity gained from bouncing on a sporeshroom block")
@@ -120,7 +121,7 @@ public class JNEConfigImpl {
                     .comment("Weather sorrowsquashes fall if the stem it's attached to breaks")
                     .define("shouldSorrowsquashFall", true);
             SORROWSQUISHED_DAMAGE_MULTIPLIER = builder
-                    .comment("Damage multiplier per block the sorrowsquash falls to inflict as sorrowsquished")
+                    .comment("Damage multiplier per block the sorrowsquash falls to be inflicted as sorrowsquished")
                     .defineInRange("sorrowsquishedDamageMultiplier", 1.5, 0.0, Double.MAX_VALUE);
             SORROWSQUISHED_MAX_DAMAGE = builder
                     .comment("Maximum damage that can be accumulated form sorrowsquash to be inflicted as sorrowsquished")
@@ -245,7 +246,7 @@ public class JNEConfigImpl {
                             "This value cannot go any lower than 50 to prevent animation issues")
                     .defineInRange("vesselShootsAtAttackTime", 100, 50, Integer.MAX_VALUE);
             BANSHEE_TELEPORTS_AFTER_HIT = builder
-                    .comment("Banshees hurt by an entity will teleport away to a random spot or their anchor")
+                    .comment("Banshees hurt by an entity will try to teleport away to a random spot or their anchor")
                     .define("bansheeTeleportsAfterHit", true);
             BANSHEE_ANCHOR_INTERVAL = builder
                     .comment("""
@@ -255,9 +256,6 @@ public class JNEConfigImpl {
                              +1 on Hard
                              """)
                     .defineInRange("bansheeAnchorInterval", 3, 1, Integer.MAX_VALUE);
-            BANSHEE_STUN_TIMER = builder
-                    .comment("When hurt the banshee can no longer attack for the specified duration in ticks")
-                    .defineInRange("bansheeStunTimer", 80, 0, Integer.MAX_VALUE);
             BANSHEE_ATTACK_INTERVAL = builder
                     .comment("The base attack interval of a banshee, which constantly ticks down. when the value reaches \"0\" it'll fire a will o' wisp \n" +
                             "After which the specified value will be added to the attack interval for it to continue ticking down")
@@ -265,6 +263,19 @@ public class JNEConfigImpl {
             BANSHEE_ATTACK_INTERVAL_BONUS = builder
                     .comment("This value gets added on top of the base attack interval adding to further randomization in its attack patterns")
                     .defineInRange("bansheeAttackIntervalBonus", 30, 0, Integer.MAX_VALUE);
+            BANSHEE_ATTACK_INTERVAL_STAGGER = builder
+                    .comment("When hurt the banshee's attack interval can be staggered by the specified amount in ticks")
+                    .defineInRange("bansheeAttackIntervalStagger", 10, 0, Integer.MAX_VALUE);
+            BANSHEE_REDIRECT_STUNS = builder
+                    .comment("If a banshee's own will o' wisp circles back around and hits it then the entity gets stunned")
+                    .define("bansheeRedirectStuns", true);
+            BANSHEE_STUN_TIMER = builder
+                    .comment("Defines how long a banshee hit with its own projectile will be stunned for \n" +
+                            "During this it is unable to fire will o' wisps")
+                    .defineInRange("bansheeStunTimer", 100, 0, Integer.MAX_VALUE);
+            BANSHEE_REDIRECT_INSTAKILLS = builder
+                    .comment("If a banshee's own will o' wisp circles back around and hits it then the entity instantly dies")
+                    .define("bansheeRedirectInstakills", false);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
@@ -274,6 +285,15 @@ public class JNEConfigImpl {
             BANSHEE_UNLEASHING_ODDS = builder
                     .comment("The chance for banshees to unleash apparitions upon death")
                     .defineInRange("bansheeUnleashingOdds", 0.15, 0.0, 1.0);
+            STAMPEDE_STRIDITE_SHEDDING_CHANCE = builder
+                    .comment("Stampedes will shed stridite upon running over any entity")
+                    .defineInRange("stampedeStriditeSheddingChance", 0.1, 0.0, 1.0);
+            MIN_STAMPEDE_STRIDITE_DROPS = builder
+                    .comment("The minimum number of stridite that can be shed by a stampede")
+                    .defineInRange("minStampedeStriditeDrops", 1, 0, Integer.MAX_VALUE);
+            MAX_STAMPEDE_STRIDITE_DROPS = builder
+                    .comment("The maximum number of stridite that can be shed by a stampede")
+                    .defineInRange("maxStampedeStriditeDrops", 5, 0, Integer.MAX_VALUE);
         }
     }
 
@@ -283,10 +303,10 @@ public class JNEConfigImpl {
             NETHER_WORLDGEN_OVERHAUL = builder
                     .comment("""
                             Improves the vanilla nether terrain generation with better multilayered-ness and height changes\s
-                            Heights changes include:\s
-                            The base nether is now 192 blocks tall\s
-                            Underlava sections have an additional -32 blocks of depth\s
-                            And the area above the roof will be 64 blocks tall instead\s
+                            The Height changes include:\s
+                            -Base Nether being extended to 192 blocks tall\s
+                            -Underlava sections extended by -32 blocks of depth\s
+                            -And the area above the roof will be 64 blocks tall instead\s
                             \s
                             §cNOTE: If Amplified Nether is installed then that mod's generation will take priority regardless of config value
                             """)
@@ -332,7 +352,7 @@ public class JNEConfigImpl {
                     .defineInRange("netherMistSpawnRate", 8, 0, Integer.MAX_VALUE);
             NETHER_MIST_MIN_DISTANCE = builder
                     .comment("Minimum distance at which the nether mist particles spawn")
-                    .defineInRange("netherMistMinDistance", 24.0, 0, Double.MAX_VALUE);
+                    .defineInRange("netherMistMinDistance", 32.0, 0, Double.MAX_VALUE);
             NETHER_MIST_MAX_DISTANCE = builder
                     .comment("Maximum distance at which the nether mist particles spawn")
                     .defineInRange("netherMistMaxDistance", 80.0, 0, Double.MAX_VALUE);
@@ -341,7 +361,7 @@ public class JNEConfigImpl {
                     .defineInRange("netherMistScale", 60.0, 0, Double.MAX_VALUE);
             NETHER_MIST_OPACITY = builder
                     .comment("The opacity of nether mist particles")
-                    .defineInRange("netherMistOpacity", 0.8, 0.0, 1.0);
+                    .defineInRange("netherMistOpacity", 0.5, 0.0, 1.0);
             NETHER_MIST_MOTION_MULTIPLIER = builder
                     .comment("Influences the nether mist particle to go off in random directions at the defined speed")
                     .defineInRange("netherMistMotionMultiplier", 0.05, 0, Double.MAX_VALUE);
@@ -350,7 +370,20 @@ public class JNEConfigImpl {
                     .defineInRange("soulSandValleyWindSpeed", 0.2, 0.0, Double.MAX_VALUE);
             WINDY_ASH_SCALE_MULTIPLIER = builder
                     .comment("Multiplies the size of windy ash particles")
-                    .defineInRange("windyAshScaleMultiplier", 1.3, 0.0, Double.MAX_VALUE);
+                    .defineInRange("windyAshScaleMultiplier", 1.6, 0.0, Double.MAX_VALUE);
+            ENABLE_JNE_SPLASH_TEXTS = builder
+                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
+                    .define("enableJNESplashTexts", true);
+            DRIFTING_SOULS_SPAWN_QUANTITY = builder
+                    .comment("Number of drifting soul particles which can spawn from a single block")
+                    .defineInRange("driftingSoulsSpawnQuantity", 4, 0, Integer.MAX_VALUE);
+            RED_SPLASH_TEXT = builder
+                    .comment("Splash texts added by JNE will be a wonderful red color opposed to the usual yellow")
+                    .define("redSplashText", true);
+            PROFANITY = builder
+                    .comment("JNE has swearing, and lots of it too but is normally censored \n" +
+                            "If you'd like to disable profanity entirely or uncensor it you may do so with this config")
+                    .defineEnum("profanity", ProfanityConfig.CENSORED);
         }
     }
 

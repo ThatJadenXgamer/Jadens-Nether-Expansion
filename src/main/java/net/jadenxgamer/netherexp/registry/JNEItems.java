@@ -2,10 +2,7 @@ package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.entity.Wisp;
-import net.jadenxgamer.netherexp.core.item.CerebrageSeedItem;
-import net.jadenxgamer.netherexp.core.item.GlowsporesItem;
-import net.jadenxgamer.netherexp.core.item.MobBottleItem;
-import net.jadenxgamer.netherexp.core.item.NonConsumableItem;
+import net.jadenxgamer.netherexp.core.item.*;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEFoods;
@@ -87,7 +84,7 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final Supplier<Item> WILL_O_WISP = ITEMS.register("will_o_wisp", () ->
-            new Item(new Item.Properties()));
+            new WillOWispItem(new Item.Properties()));
 
     public static final Supplier<Item> STRIDITE = ITEMS.register("stridite", () ->
             new Item(new Item.Properties().fireResistant()));
@@ -184,6 +181,9 @@ public class JNEItems {
 
     public static final Supplier<Item> ANCIENT_TORCH = ITEMS.register("ancient_torch", () ->
             new StandingAndWallBlockItem(JNEBlocks.ANCIENT_TORCH.get(), JNEBlocks.ANCIENT_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final Supplier<Item> ANCIENT_CANDLE = ITEMS.register("ancient_candle", () ->
+            new UpwardsStackingBlockItem(JNEBlocks.ANCIENT_CANDLE.get(), new Item.Properties()));
 
     public static final Supplier<Item> OCHRE_FROGMIST = ITEMS.register("ochre_frogmist", () ->
             new PlaceOnWaterBlockItem(JNEBlocks.OCHRE_FROGMIST.get(), new Item.Properties()));

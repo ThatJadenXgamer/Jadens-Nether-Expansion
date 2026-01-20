@@ -154,6 +154,24 @@ public class JNEBlocks {
             new DriftingSoulsBlock(BlockBehaviour.Properties.of().noCollission().noOcclusion().replaceable().instabreak().lightLevel((state) -> 1).pushReaction(PushReaction.DESTROY).sound(JNESoundType.HAZE_BLOCK)));
 
     /**
+     * Sanctum
+     */
+
+
+    public static final Supplier<Block> BRAZIER_CHEST = registerBlock("brazier_chest", () ->
+            new Block(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).isRedstoneConductor((a, b, c) -> false).sound(JNESoundType.SOUL_SLATE)));
+
+    public static final Supplier<Block> TREACHEROUS_CANDLE = registerBlock("treacherous_candle", () ->
+            new Block(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().sound(JNESoundType.SOUL_SLATE)));
+
+    public static final Supplier<Block> HAZE_BLOCK = registerBlockWithoutItem("haze_block", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(JNESoundType.HAZE_BLOCK)));
+
+    public static final Supplier<Block> SCULK_GRINDER = registerBlock("sculk_grinder", () ->
+            new Block(BlockBehaviour.Properties.of().strength(80.0f, 1200.0f).lightLevel(state -> 13).sound(SoundType.SCULK_CATALYST)));
+
+
+    /**
      * Black Ice
      */
 
@@ -685,7 +703,7 @@ public class JNEBlocks {
     public static final Supplier<Block> ANCIENT_CAMPFIRE = registerBlock("ancient_campfire", () ->
             new JNECampfireBlock(false, 0, BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_CAMPFIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(JNECampfireBlock.LIT) ? 9 : 0)));
 
-    public static final Supplier<Block> ANCIENT_CANDLE = registerBlock("ancient_candle", () ->
+    public static final Supplier<Block> ANCIENT_CANDLE = registerBlockWithoutItem("ancient_candle", () ->
             new AncientCandleBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SOUL_CANDLE.get()).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(AncientCandleBlock.LIT) ? 4 : 0).sound(JNESoundType.ANCIENT_CANDLE)));
 
     /**
@@ -710,5 +728,6 @@ public class JNEBlocks {
         BLOCKS.addAlias(NetherExp.id("soul_jack_o_lantern"), NetherExp.idVanilla("jack_o_lantern")); // Removed 2.3.0
         BLOCKS.addAlias(NetherExp.id("soul_ghoul_o_lantern"), NetherExp.idVanilla("ghoul_o_lantern")); // Removed 2.3.0
         BLOCKS.addAlias(NetherExp.id("bone_cortical"), NetherExp.idVanilla("bone_block")); // Removed 2.4.0
+        BLOCKS.addAlias(NetherExp.id("bone_rod"), NetherExp.id("bone_pike")); // Renamed 2.4.0
     }
 }

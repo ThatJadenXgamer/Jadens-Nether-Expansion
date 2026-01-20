@@ -124,10 +124,10 @@ public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionRender
 
         public static AnimationDefinition animationForPersonality(Apparition entity) {
             return switch (entity.getPersonality()) {
-                default -> Animation.IDLE1;
                 case 2 -> Animation.IDLE2;
                 case 3 -> Animation.IDLE3;
                 case 4 -> Animation.IDLE4;
+                default -> Animation.IDLE1;
             };
         }
     }

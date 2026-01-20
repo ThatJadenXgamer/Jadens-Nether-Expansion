@@ -141,13 +141,13 @@ public class SporeshroomBlock extends Block implements SimpleWaterloggedBlock, B
         double y = pos.getY();
         double z = pos.getZ();
         boolean inHomeBiome = level.getBiome(pos).is(this.homeBiome);
-        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+        BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
         if (!inHomeBiome) {
             for (int i = 0; i < 14; ++i) {
-                mutablePos.set(x + Mth.nextInt(random, -20, 20), y + random.nextInt(20), z + Mth.nextInt(random, -20, 20));
-                BlockState mutableState = level.getBlockState(mutablePos);
-                if (mutableState.isSolidRender(level, mutablePos)) continue;
-                level.addParticle(sporeParticle.get(), mutablePos.getX() + random.nextDouble(), mutablePos.getY() + random.nextDouble(), mutablePos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                mPos.set(x + Mth.nextInt(random, -20, 20), y + random.nextInt(20), z + Mth.nextInt(random, -20, 20));
+                BlockState mutableState = level.getBlockState(mPos);
+                if (mutableState.isSolidRender(level, mPos)) continue;
+                level.addParticle(sporeParticle.get(), mPos.getX() + random.nextDouble(), mPos.getY() + random.nextDouble(), mPos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
         }
 

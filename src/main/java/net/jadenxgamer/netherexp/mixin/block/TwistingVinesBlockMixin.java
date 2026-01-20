@@ -91,4 +91,9 @@ public abstract class TwistingVinesBlockMixin extends GrowingPlantHeadBlock impl
     public Property<?> affectedProperty() {
         return SPORING;
     }
+
+    @Override
+    public boolean canSporesBeApplied(BlockState state) {
+        return !state.getValue(SPORING);
+    }
 }

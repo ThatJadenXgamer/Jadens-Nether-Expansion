@@ -20,6 +20,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
 public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselModel<Vessel>> {
@@ -99,6 +100,7 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
         @Override
         public void setupAnim(Vessel entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
             this.root().getAllParts().forEach(ModelPart::resetPose);
+            this.applyHeadRotation(netHeadYaw, headPitch);
 
             this.animate(entity.idleAnimation, Animation.IDLE, ageInTicks);
             this.animate(entity.prepareAimAnimation, Animation.PREPARE_AIM, ageInTicks);
@@ -106,6 +108,14 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
             this.animate(entity.shootAnimation, Animation.SHOOT, ageInTicks);
             this.animate(entity.blinkAnimation, Animation.BLINK, ageInTicks);
             this.animateWalk(Animation.MOVE, limbSwing, limbSwingAmount, 2.0f, 2.5f);
+        }
+
+        private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch) {
+            pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30.0F, 30.0F);
+            pHeadPitch = Mth.clamp(pHeadPitch, -25.0F, 45.0F);
+
+            this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
+            this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
         }
 
         @Override

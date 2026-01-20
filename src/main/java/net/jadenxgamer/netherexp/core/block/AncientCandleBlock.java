@@ -96,6 +96,12 @@ public class AncientCandleBlock extends AbstractJNECandleBlock {
     }
 
     @Override
+    protected boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+        if (!context.isSecondaryUseActive() && context.getItemInHand().is(this.asItem())) return true;
+        return super.canBeReplaced(state, context);
+    }
+
+    @Override
     protected Iterable<Vec3> getParticleOffsets(BlockState state) {
         return PARTICLE_OFFSET;
     }

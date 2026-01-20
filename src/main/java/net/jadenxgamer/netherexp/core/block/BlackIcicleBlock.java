@@ -139,18 +139,18 @@ public class BlackIcicleBlock extends PointedDripstoneBlock {
     }
 
     private static void spawnFallingIcicle(BlockState state, ServerLevel level, BlockPos pos) {
-        BlockPos.MutableBlockPos mutablePos = pos.mutable();
+        BlockPos.MutableBlockPos mPos = pos.mutable();
 
-        for(BlockState icicle = state; isStalactite(icicle); icicle = level.getBlockState(mutablePos)) {
-            FallingBlockEntity fallingBlock = FallingBlockEntity.fall(level, mutablePos, icicle);
+        for(BlockState icicle = state; isStalactite(icicle); icicle = level.getBlockState(mPos)) {
+            FallingBlockEntity fallingBlock = FallingBlockEntity.fall(level, mPos, icicle);
             if (isTip(icicle, true)) {
-                int max = Math.max(1 + pos.getY() - mutablePos.getY(), 6);
+                int max = Math.max(1 + pos.getY() - mPos.getY(), 6);
                 float fallDamagePerDistance = (float) max;
                 fallingBlock.setHurtsEntities(fallDamagePerDistance, 15);
                 break;
             }
 
-            mutablePos.move(Direction.DOWN);
+            mPos.move(Direction.DOWN);
         }
     }
 
@@ -225,16 +225,16 @@ public class BlackIcicleBlock extends PointedDripstoneBlock {
 
     private static Optional<BlockPos> findBlockVertical(LevelAccessor level, BlockPos pos, Direction.AxisDirection axis, BiPredicate<BlockPos, BlockState> positionalStatePredicate, Predicate<BlockState> statePredicate, int maxIterations) {
         Direction direction = Direction.get(axis, Direction.Axis.Y);
-        BlockPos.MutableBlockPos mutablePos = pos.mutable();
+        BlockPos.MutableBlockPos mPos = pos.mutable();
 
         for(int i = 1; i < maxIterations; ++i) {
-            mutablePos.move(direction);
-            BlockState mutableState = level.getBlockState(mutablePos);
+            mPos.move(direction);
+            BlockState mutableState = level.getBlockState(mPos);
             if (statePredicate.test(mutableState)) {
-                return Optional.of(mutablePos.immutable());
+                return Optional.of(mPos.immutable());
             }
 
-            if (level.isOutsideBuildHeight(mutablePos.getY()) || !positionalStatePredicate.test(mutablePos, mutableState)) {
+            if (level.isOutsideBuildHeight(mPos.getY()) || !positionalStatePredicate.test(mPos, mutableState)) {
                 return Optional.empty();
             }
         }

@@ -1,0 +1,31 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made by @ThatJadenXgamer",
+	"parent": "builtin/entity",
+	"gui_light": "front",
+	"texture_size": [32, 32],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 5.75, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 5.75, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"firstperson_righthand": {
+			"rotation": [172.5, 57, -172.75],
+			"translation": [2, 5.25, 0],
+			"scale": [0.55664, 0.55664, 0.55664]
+		},
+		"firstperson_lefthand": {
+			"rotation": [172.5, 57, -172.75],
+			"translation": [2, 5.25, 0],
+			"scale": [0.55664, 0.55664, 0.55664]
+		},
+		"head": {
+			"translation": [0, 8.25, 0],
+			"scale": [1.84, 1.84, 1.84]
+		}
+	}
+}

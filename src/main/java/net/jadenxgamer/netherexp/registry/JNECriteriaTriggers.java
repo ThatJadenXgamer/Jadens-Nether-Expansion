@@ -23,6 +23,7 @@ public class JNECriteriaTriggers {
     public static final Supplier<PlayerTrigger> ACTIVATE_SANCTUM_COMPASS = CRITERIA_TRIGGERS.register("activate_sanctum_compass", PlayerTrigger::new);
     public static final Supplier<PlayerTrigger> KILLED_WITH_PUMP_CHARGE = CRITERIA_TRIGGERS.register("killed_with_pump_charge", PlayerTrigger::new);
     public static final Supplier<PlayerTrigger> MAKE_FAKE_CARCASS = CRITERIA_TRIGGERS.register("make_fake_carcass", PlayerTrigger::new);
+    public static final Supplier<PlayerTrigger> BANSHEE_REDIRECT = CRITERIA_TRIGGERS.register("banshee_redirect", PlayerTrigger::new);
 
     public static void init(IEventBus eventBus) {
         CRITERIA_TRIGGERS.register(eventBus);

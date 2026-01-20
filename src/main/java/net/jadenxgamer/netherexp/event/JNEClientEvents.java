@@ -6,8 +6,13 @@ import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.client.JNEFogRenderer;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderStateShard;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
+import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
+import net.jadenxgamer.netherexp.registry.JNEItems;
+import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -42,6 +47,7 @@ public class JNEClientEvents {
         JNEFogRenderer.fogColor(event);
     }
 
+
     @EventBusSubscriber(modid = NetherExp.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ModBusClientEvents {
 
@@ -73,6 +79,7 @@ public class JNEClientEvents {
         @SubscribeEvent
         private static void clientExtensions(RegisterClientExtensionsEvent event) {
             event.registerFluidType(JNEFluidExtensions.ectoplasmExt, JNEFluids.ECTOPLASM_TYPE.get());
+            event.registerItem(JNEItemExtensions.willOWispExt, JNEItems.WILL_O_WISP.get());
         }
     }
 }

@@ -71,7 +71,7 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusConfiguration> {
     }
 
     private void placeStem(WorldGenLevel level, RandomSource random, JNEHugeFungusConfiguration config, BlockPos pos, int height, boolean largeStem) {
-        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+        BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
         BlockState stemState = config.stemState();
         int stemRadius = largeStem ? 1 : 0;
 
@@ -80,19 +80,19 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusConfiguration> {
                 boolean isCorner = largeStem && Mth.abs(x) == stemRadius && Mth.abs(z) == stemRadius;
 
                 for (int y = 0; y < height; ++y) {
-                    mutableBlockPos.setWithOffset(pos, x, y, z);
-                    if (isReplaceable(level, mutableBlockPos, config, true)) {
+                    mPos.setWithOffset(pos, x, y, z);
+                    if (isReplaceable(level, mPos, config, true)) {
                         if (config.planted()) {
-                            if (!level.getBlockState(mutableBlockPos.below()).isAir()) {
-                                level.destroyBlock(mutableBlockPos, true);
+                            if (!level.getBlockState(mPos.below()).isAir()) {
+                                level.destroyBlock(mPos, true);
                             }
-                            level.setBlock(mutableBlockPos, stemState, Block.UPDATE_ALL);
+                            level.setBlock(mPos, stemState, Block.UPDATE_ALL);
                         } else if (isCorner) {
                             if (random.nextFloat() < 0.1F) {
-                                this.setBlock(level, mutableBlockPos, stemState);
+                                this.setBlock(level, mPos, stemState);
                             }
                         } else {
-                            this.setBlock(level, mutableBlockPos, stemState);
+                            this.setBlock(level, mPos, stemState);
                         }
                     }
                 }
@@ -101,7 +101,7 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusConfiguration> {
     }
 
     private void placeHat(WorldGenLevel level, RandomSource random, JNEHugeFungusConfiguration config, BlockPos pos, int height, boolean largeStem) {
-        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+        BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
         int hatHeight = Math.min(random.nextInt(1 + height / 3) + 5, height);
         int stemHeight = height - hatHeight;
 
@@ -122,22 +122,22 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusConfiguration> {
                     boolean isCenter = !isEdgeX && !isEdgeZ && y != height;
                     boolean isCorner = isEdgeX && isEdgeZ;
                     boolean lowHat = y < stemHeight + 3;
-                    mutableBlockPos.setWithOffset(pos, x, y, z);
-                    if (isReplaceable(level, mutableBlockPos, config, false)) {
-                        if (config.planted() && !level.getBlockState(mutableBlockPos.below()).isAir()) {
-                            level.destroyBlock(mutableBlockPos, true);
+                    mPos.setWithOffset(pos, x, y, z);
+                    if (isReplaceable(level, mPos, config, false)) {
+                        if (config.planted() && !level.getBlockState(mPos.below()).isAir()) {
+                            level.destroyBlock(mPos, true);
                         }
 
                         if (lowHat) {
                             if (!isCenter) {
-                                this.placeHatDropBlock(level, random, config, mutableBlockPos, config.hatState());
+                                this.placeHatDropBlock(level, random, config, mPos, config.hatState());
                             }
                         } else if (isCenter) {
-                            this.placeHatBlock(level, random, config, mutableBlockPos, 0.1F, 0.2F);
+                            this.placeHatBlock(level, random, config, mPos, 0.1F, 0.2F);
                         } else if (isCorner) {
-                            this.placeHatBlock(level, random, config, mutableBlockPos, 0.01F, 0.7F);
+                            this.placeHatBlock(level, random, config, mPos, 0.01F, 0.7F);
                         } else {
-                            this.placeHatBlock(level, random, config, mutableBlockPos, 5.0E-4F, 0.98F);
+                            this.placeHatBlock(level, random, config, mPos, 5.0E-4F, 0.98F);
                         }
                     }
                 }

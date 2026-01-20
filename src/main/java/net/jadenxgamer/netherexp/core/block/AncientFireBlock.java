@@ -45,7 +45,7 @@ public class AncientFireBlock extends BaseFireBlock {
         } else return canSurviveOnBlock(belowState) && belowState.isFaceSturdy(level, belowPos, Direction.UP);
     }
 
-    public boolean canSurviveOnBlock(BlockState state) {
+    public static boolean canSurviveOnBlock(BlockState state) {
         return state.is(JNETags.Blocks.ANCIENT_FIRE_BASE_BLOCKS);
     }
 

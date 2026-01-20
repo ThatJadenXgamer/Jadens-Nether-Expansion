@@ -121,20 +121,20 @@ public class JNELargeDripstoneFeature extends Feature<JNELargeDripstoneConfigura
 
         boolean moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(WorldGenLevel level, WindOffsetter windOffsetter) {
             while(this.radius > 1) {
-                BlockPos.MutableBlockPos mutableBlockPos = this.root.mutable();
+                BlockPos.MutableBlockPos mPos = this.root.mutable();
                 int i = Math.min(10, this.getHeight());
 
                 for(int j = 0; j < i; ++j) {
-                    if (level.getBlockState(mutableBlockPos).is(Blocks.LAVA)) {
+                    if (level.getBlockState(mPos).is(Blocks.LAVA)) {
                         return false;
                     }
 
-                    if (isCircleMostlyEmbeddedInStone(level, windOffsetter.offset(mutableBlockPos), this.radius)) {
-                        this.root = mutableBlockPos;
+                    if (isCircleMostlyEmbeddedInStone(level, windOffsetter.offset(mPos), this.radius)) {
+                        this.root = mPos;
                         return true;
                     }
 
-                    mutableBlockPos.move(this.pointingUp ? Direction.DOWN : Direction.UP);
+                    mPos.move(this.pointingUp ? Direction.DOWN : Direction.UP);
                 }
 
                 this.radius /= 2;

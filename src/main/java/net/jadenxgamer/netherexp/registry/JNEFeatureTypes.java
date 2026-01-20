@@ -32,6 +32,9 @@ public class JNEFeatureTypes {
     public static final Supplier<Feature<MoundConfiguration>> MOUND = FEATURES.register("mound", () ->
             new MoundFeature(MoundConfiguration.CODEC));
 
+    public static final Supplier<Feature<?>> NETHER_SPELEOTHEM = FEATURES.register("nether_speleothem", () ->
+            new NetherSpeleothemFeature(NoneFeatureConfiguration.CODEC));
+
     public static void init(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }

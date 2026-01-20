@@ -66,6 +66,8 @@ public class JNETags {
         public static final TagKey<Item> DOESNT_MODIFY_POTION_STACK_SIZE = createTag("doesnt_modify_potion_stack_size");
         public static final TagKey<Item> FROGMISTS = createTag("frogmists");
         public static final TagKey<Item> SHROOMLIGHTS = createTag("shroomlights");
+        public static final TagKey<Item> STAMPEDE_EDIBLE = createTag("stampede_edible"); // Stampedes can eat or be fed these items to replenish health and hunger
+        public static final TagKey<Item> STAMPEDE_FAVORITES = createTag("stampede_favorites"); // Stampedes replenish more health, hunger and can be tamed with these items
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, NetherExp.id(name));

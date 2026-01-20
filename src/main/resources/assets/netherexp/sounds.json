@@ -1358,6 +1358,18 @@
       "netherexp:mob/banshee/shoot"
     ]
   },
+  "entity.banshee.stun": {
+    "subtitle": "subtitles.entity.banshee.stun",
+    "sounds": [
+      "netherexp:mob/banshee/stun"
+    ]
+  },
+  "entity.willowisp.ambient": {
+    "subtitle": "subtitles.entity.willowisp.ambient",
+    "sounds": [
+      "netherexp:mob/banshee/willowisp"
+    ]
+  },
 
   "entity.stampede.ambient": {
     "subtitle": "subtitles.entity.stampede.ambient",

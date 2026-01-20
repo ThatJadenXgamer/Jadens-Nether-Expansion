@@ -4,8 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderType;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.entity.Banshee;
-import net.jadenxgamer.netherexp.core.entity.Wisp;
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
@@ -20,6 +20,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -101,10 +102,27 @@ public class BansheeRenderer extends MobRenderer<Banshee, BansheeRenderer.Banshe
         @Override
         public void setupAnim(Banshee entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
             this.root().getAllParts().forEach(ModelPart::resetPose);
+            this.applyHeadRotation(netHeadYaw, headPitch);
+            this.applyStunRotation(entity, ageInTicks);
 
             this.animate(entity.idleAnimation, Animation.IDLE, ageInTicks);
             this.animate(entity.shootAnimation, Animation.SHOOT, ageInTicks);
             this.animateWalk(Animation.MOVE, limbSwing, limbSwingAmount, 2.0f, 2.5f);
+        }
+
+        private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch) {
+            pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30.0F, 30.0F);
+            pHeadPitch = Mth.clamp(pHeadPitch, -25.0F, 45.0F);
+
+            this.body.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
+            this.body.xRot = pHeadPitch * ((float)Math.PI / 180F);
+        }
+
+        private void applyStunRotation(Banshee entity, float ageInTicks) {
+            if (entity.isStunned()) {
+                float spinSpeed = 0.5f;
+                this.body.yRot = (ageInTicks * spinSpeed) % (2 * (float)Math.PI);
+            }
         }
 
         @Override

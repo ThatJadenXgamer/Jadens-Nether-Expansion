@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.config;
 
+import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class JNEConfigs {
@@ -70,12 +71,18 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue VESSEL_SHOOTS_AT_ATTACK_TIME;
     public static ModConfigSpec.BooleanValue BANSHEE_TELEPORTS_AFTER_HIT;
     public static ModConfigSpec.IntValue BANSHEE_ANCHOR_INTERVAL;
-    public static ModConfigSpec.IntValue BANSHEE_STUN_TIMER;
     public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL;
     public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL_BONUS;
+    public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL_STAGGER;
+    public static ModConfigSpec.IntValue BANSHEE_STUN_TIMER;
+    public static ModConfigSpec.BooleanValue BANSHEE_REDIRECT_STUNS;
+    public static ModConfigSpec.BooleanValue BANSHEE_REDIRECT_INSTAKILLS;
     public static ModConfigSpec.DoubleValue VESSEL_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue STAMPEDE_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue BANSHEE_UNLEASHING_ODDS;
+    public static ModConfigSpec.DoubleValue STAMPEDE_STRIDITE_SHEDDING_CHANCE;
+    public static ModConfigSpec.IntValue MIN_STAMPEDE_STRIDITE_DROPS;
+    public static ModConfigSpec.IntValue MAX_STAMPEDE_STRIDITE_DROPS;
 
     // WORLD SETTINGS
     public static ModConfigSpec.BooleanValue NETHER_WORLDGEN_OVERHAUL;
@@ -98,6 +105,9 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue SOUL_SAND_VALLEY_WIND_SPEED;
     public static ModConfigSpec.DoubleValue WINDY_ASH_SCALE_MULTIPLIER;
     public static ModConfigSpec.IntValue DRIFTING_SOULS_SPAWN_QUANTITY;
+    public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
+    public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
+    public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;
 
     // GAME MECHANICS
     public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;
