@@ -27,7 +27,7 @@ public abstract class ParticleEngineMixin {
         // for some reason the game does not like it when a model render block without a collision is broken
         // because it tries to crack it for some reason??? even though frogmist is insta-mineable
         BlockState state = level.getBlockState(pos);
-        if (state.is(JNETags.Blocks.FROGMIST)) {
+        if (state.is(JNETags.Blocks.FROGMISTS)) {
             cir.cancel();
         }
     }

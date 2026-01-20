@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:player",
-    "minecraft:piglin",
-    "minecraft:iron_golem"
-  ]
-}

@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "minecraft:soul_sand_valley",
-  "features": "netherexp:soul_sand_valley/hanging_mound",
-  "step": "raw_generation"
-}

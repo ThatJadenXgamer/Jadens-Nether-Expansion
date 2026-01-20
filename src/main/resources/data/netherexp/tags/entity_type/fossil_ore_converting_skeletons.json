@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#minecraft:skeletons"
-  ],
-  "remove": [
-    "minecraft:wither_skeleton"
-  ]
-}

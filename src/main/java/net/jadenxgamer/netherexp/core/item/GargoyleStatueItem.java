@@ -26,4 +26,11 @@ public class GargoyleStatueItem extends BlockItem {
         tooltip.add(Component.translatable(this.getBlock().getDescriptionId()).withStyle(ChatFormatting.DARK_AQUA));
         super.appendHoverText(stack, context, tooltip, tooltipFlag);
     }
+
+    // Instead of crafting above max stack size, we make the block itself its remainder.
+    // The other option would be to change the max stack size.
+    @Override
+    public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
+        return itemStack;
+    }
 }

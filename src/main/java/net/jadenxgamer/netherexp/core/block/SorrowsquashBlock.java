@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.core.block;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
+import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
-import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
+import net.jadenxgamer.netherexp.data.worldgen.features.JNESorrowsquashPasturesFeatures;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -56,12 +56,12 @@ public class SorrowsquashBlock extends Block implements BonemealableBlock, Falla
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        level.registryAccess().registry(Registries.CONFIGURED_FEATURE).flatMap((registry) -> registry.getHolder(JNEConfiguredFeatures.SORROWEED_PATCH_BONEMEAL)).ifPresent((reference) ->
+        level.registryAccess().registry(Registries.CONFIGURED_FEATURE).flatMap((registry) -> registry.getHolder(JNESorrowsquashPasturesFeatures.SORROWEED_PATCH_BONEMEAL)).ifPresent((reference) ->
                 reference.value().place(level, level.getChunkSource().getGenerator(), random, pos));
     }
 
     @Override
     public DamageSource getFallDamageSource(Entity entity) {
-        return entity.damageSources().source(JNEDamageSources.SORROWSQUISHED, entity);
+        return entity.damageSources().source(JNEDamageTypes.SORROWSQUISHED, entity);
     }
 }

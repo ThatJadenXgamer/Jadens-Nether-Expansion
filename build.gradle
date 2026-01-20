@@ -45,8 +45,27 @@ repositories {
     // for more information about repositories.
 }
 
+def generatedResources = file("src/generated/resources")
+def existingResources = file("src/main/resources")
+
+sourceSets {
+    main {
+        resources.srcDir generatedResources
+    }
+}
+
 loom {
     silentMojangMappingsLicense()
+
+    runs {
+        data {
+            programArg "--all"
+            programArgs "--mod", "netherexp"
+            programArgs "--existing", existingResources.absolutePath
+            programArgs "--output", generatedResources.absolutePath
+            data()
+        }
+    }
 }
 
 dependencies {

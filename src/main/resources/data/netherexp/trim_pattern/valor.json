@@ -1,7 +1,0 @@
-{
-  "asset_id": "netherexp:valor",
-  "description": {
-    "translate": "trim_pattern.netherexp.valor"
-  },
-  "template_item": "netherexp:valor_armor_trim_smithing_template"
-}

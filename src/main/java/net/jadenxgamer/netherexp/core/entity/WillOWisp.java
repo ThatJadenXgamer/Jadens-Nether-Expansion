@@ -2,7 +2,7 @@ package net.jadenxgamer.netherexp.core.entity;
 
 import net.jadenxgamer.netherexp.client.sound.LoopedEntityBoundSoundInstance;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
+import net.jadenxgamer.netherexp.core.keys.JNEDamageTypes;
 import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.AdvancementGranter;
 import net.minecraft.client.Minecraft;
@@ -245,7 +245,7 @@ public class WillOWisp extends ThrowableItemProjectile {
                 this.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                         SoundEvents.SHIELD_BLOCK, SoundSource.NEUTRAL, 1f, 1f);
                 living.getUseItem().hurtAndBreak(5, living, LivingEntity.getSlotForHand(living.getUsedItemHand()));
-            } else entity.hurt(this.damageSources().source(JNEDamageSources.WILL_O_WISP, this.getOwner()), damage);
+            } else entity.hurt(this.damageSources().source(JNEDamageTypes.WILL_O_WISP, this.getOwner()), damage);
         }
         this.impact(this.position());
         super.onHitEntity(result);
