@@ -392,6 +392,9 @@ public class JNEConfigImpl {
             DRIFTING_SOULS_SPAWN_QUANTITY = builder
                     .comment("Number of drifting soul particles which can spawn from a single block")
                     .defineInRange("driftingSoulsSpawnQuantity", 4, 0, Integer.MAX_VALUE);
+            DRIFTING_SOULS_SPAWN_RADIUS = builder
+                    .comment("The radius of particles a single drifting souls block can spawn around in each direction")
+                    .defineInRange("driftingSoulsSpawnRadius", 32, 0, Integer.MAX_VALUE);
             WILL_O_WISP_PARTICLES = builder
                     .comment("Fired will o' wisps will produce wisp-like trail particles behind them")
                     .define("willOWispParticles", true);
@@ -401,6 +404,9 @@ public class JNEConfigImpl {
             RED_SPLASH_TEXT = builder
                     .comment("Splash texts added by JNE will be a wonderful red color opposed to the usual yellow")
                     .define("redSplashText", true);
+            IMPROVED_FIRE_SMOKE = builder
+                    .comment("Adds more dynamic and animated smoke particles to fire blocks")
+                    .define("improvedFireSmoke", true);
             PROFANITY = builder
                     .comment("JNE has swearing, and lots of it too but is normally censored \n" +
                             "If you'd like to disable profanity entirely or uncensor it you may do so with this config")

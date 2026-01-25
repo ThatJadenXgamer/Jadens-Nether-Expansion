@@ -35,8 +35,7 @@ public class JNECampfireBlock extends CampfireBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if (level.isClientSide) {
             return state.getValue(LIT) ? createTickerHelper(blockEntityType, JNEBlockEntityType.JNE_CAMPFIRE.get(), JNECampfireBlockEntity::particleTick) : null;
-        } else {
-            return state.getValue(LIT) ? createTickerHelper(blockEntityType, JNEBlockEntityType.JNE_CAMPFIRE.get(), JNECampfireBlockEntity::cookTick) : createTickerHelper(blockEntityType, JNEBlockEntityType.JNE_CAMPFIRE.get(), JNECampfireBlockEntity::cooldownTick);
-        }
+        } else return state.getValue(LIT) ? createTickerHelper(blockEntityType, JNEBlockEntityType.JNE_CAMPFIRE.get(), JNECampfireBlockEntity::cookTick) :
+                createTickerHelper(blockEntityType, JNEBlockEntityType.JNE_CAMPFIRE.get(), JNECampfireBlockEntity::cooldownTick);
     }
 }

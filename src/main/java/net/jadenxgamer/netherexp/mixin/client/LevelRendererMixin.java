@@ -43,8 +43,6 @@ public abstract class LevelRendererMixin {
 
         Minecraft client = Minecraft.getInstance();
         long currentTime = client.level.getGameTime();
-
-        // Check if enough ticks have passed since last spawn
         if (currentTime - netherexp$lastMistTime >= NETHER_MIST_SPAWN_RATE.get()) {
             netherexp$lastMistTime = currentTime;
 

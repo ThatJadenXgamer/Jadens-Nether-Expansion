@@ -18,15 +18,14 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
 import team.lodestar.lodestone.systems.easing.Easing;
-import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
-import team.lodestar.lodestone.systems.particle.world.behaviors.components.DirectionalBehaviorComponent;
-import team.lodestar.lodestone.systems.particle.world.behaviors.components.LodestoneBehaviorComponent;
 import team.lodestar.lodestone.systems.particle.world.behaviors.components.SparkBehaviorComponent;
 
+import java.awt.*;
 import java.util.Optional;
 
 public class EctoplasmLiquidBlock extends LiquidBlock {
@@ -85,7 +84,7 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
     }
 
     private void ectoplasmParticle(Level level, RandomSource random, double x, double y,double z) {
-        WorldParticleBuilder.create(JNEParticleTypes.ECTOPLASM.get())
+        WorldParticleBuilder.create(JNEParticleTypes.GLOWING_DOT.get())
                 .setFullBrightLighting()
                 .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
                 .setScaleData(GenericParticleData.create(0.18f).build())
@@ -94,6 +93,7 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
                 .setLifetime(random.nextInt(60, 90))
                 .disableNoClip()
                 .setGravityStrength(0f)
+                .setColorData(ColorParticleData.create(new Color(0x3EFCFF)).build())
                 .setMotion(0.0, 0.04, 0.0)
                 .spawn(level, x, y, z);
     }
