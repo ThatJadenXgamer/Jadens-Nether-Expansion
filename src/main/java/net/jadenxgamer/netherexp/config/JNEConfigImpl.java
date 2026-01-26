@@ -386,9 +386,6 @@ public class JNEConfigImpl {
             WINDY_ASH_SCALE_MULTIPLIER = builder
                     .comment("Multiplies the size of windy ash particles")
                     .defineInRange("windyAshScaleMultiplier", 1.6, 0.0, Double.MAX_VALUE);
-            ENABLE_JNE_SPLASH_TEXTS = builder
-                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
-                    .define("enableJNESplashTexts", true);
             DRIFTING_SOULS_SPAWN_QUANTITY = builder
                     .comment("Number of drifting soul particles which can spawn from a single block")
                     .defineInRange("driftingSoulsSpawnQuantity", 4, 0, Integer.MAX_VALUE);
@@ -401,12 +398,21 @@ public class JNEConfigImpl {
             WILL_O_WISP_SOUNDS = builder
                     .comment("Fired will o' wisps will make a weeping sound that helps with knowing if one is homing in on you")
                     .define("willOWispSounds", true);
+            IMPROVED_FIRE_PARTICLES = builder
+                    .comment("Adds more dynamic and animated particles to all fire blocks")
+                    .define("improvedFireParticles", true);
+            FIRE_SMOKE_PARTICLES = builder
+                    .comment("Enables new smoke particles for fire")
+                    .define("fireSmokeParticles", true);
+            FIRE_EMBER_PARTICLES = builder
+                    .comment("Enables new ember particles for fire")
+                    .define("fireEmberParticles", true);
+            ENABLE_JNE_SPLASH_TEXTS = builder
+                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
+                    .define("enableJNESplashTexts", true);
             RED_SPLASH_TEXT = builder
                     .comment("Splash texts added by JNE will be a wonderful red color opposed to the usual yellow")
                     .define("redSplashText", true);
-            IMPROVED_FIRE_SMOKE = builder
-                    .comment("Adds more dynamic and animated smoke particles to fire blocks")
-                    .define("improvedFireSmoke", true);
             PROFANITY = builder
                     .comment("JNE has swearing, and lots of it too but is normally censored \n" +
                             "If you'd like to disable profanity entirely or uncensor it you may do so with this config")

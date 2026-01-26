@@ -19,6 +19,6 @@ public abstract class FireBlockMixin implements JNEFireParticle {
 
     @Override
     public Optional<Color> emberColor(BlockState state, RandomSource random) {
-        return Optional.of(new Color(0xF2A56E));
+        return Optional.of(new Color(0xFF9913));
     }
 }

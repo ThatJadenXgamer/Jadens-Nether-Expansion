@@ -112,7 +112,9 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue DRIFTING_SOULS_SPAWN_RADIUS;
     public static ModConfigSpec.BooleanValue WILL_O_WISP_PARTICLES;
     public static ModConfigSpec.BooleanValue WILL_O_WISP_SOUNDS;
-    public static ModConfigSpec.BooleanValue IMPROVED_FIRE_SMOKE;
+    public static ModConfigSpec.BooleanValue IMPROVED_FIRE_PARTICLES;
+    public static ModConfigSpec.BooleanValue FIRE_SMOKE_PARTICLES;
+    public static ModConfigSpec.BooleanValue FIRE_EMBER_PARTICLES;
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
     public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;

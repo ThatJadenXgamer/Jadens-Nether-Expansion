@@ -48,38 +48,34 @@ public class JNEClientEvents {
     }
 
 
-    @EventBusSubscriber(modid = NetherExp.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ModBusClientEvents {
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        NetherExpClient.registerRenderers();
+    }
 
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            NetherExpClient.registerRenderers();
-        }
+    @SubscribeEvent
+    public static void renderParticles(RegisterParticleProvidersEvent event) {
+        NetherExpClient.registerParticles(event);
+    }
 
-        @SubscribeEvent
-        public static void renderParticles(RegisterParticleProvidersEvent event) {
-            NetherExpClient.registerParticles(event);
-        }
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        NetherExpClient.registerLayerDefinitions(event);
+    }
 
-        @SubscribeEvent
-        public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-            NetherExpClient.registerLayerDefinitions(event);
+    @SubscribeEvent
+    public static void registerShaders(RegisterShadersEvent event) {
+        try {
+            event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutout);
+            event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout_no_cull"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutoutNoCull);
+        } catch (IOException exception) {
+            NetherExp.LOGGER.error("Failed to load Shader Instances, {}", exception.getMessage());
         }
+    }
 
-        @SubscribeEvent
-        public static void registerShaders(RegisterShadersEvent event) {
-            try {
-                event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutout);
-                event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout_no_cull"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutoutNoCull);
-            } catch (IOException exception) {
-                NetherExp.LOGGER.error("Failed to load Shader Instances, {}", exception.getMessage());
-            }
-        }
-
-        @SubscribeEvent
-        private static void clientExtensions(RegisterClientExtensionsEvent event) {
-            event.registerFluidType(JNEFluidExtensions.ectoplasmExt, JNEFluids.ECTOPLASM_TYPE.get());
-            event.registerItem(JNEItemExtensions.willOWispExt, JNEItems.WILL_O_WISP.get());
-        }
+    @SubscribeEvent
+    private static void clientExtensions(RegisterClientExtensionsEvent event) {
+        event.registerFluidType(JNEFluidExtensions.ectoplasmExt, JNEFluids.ECTOPLASM_TYPE.get());
+        event.registerItem(JNEItemExtensions.willOWispExt, JNEItems.WILL_O_WISP.get());
     }
 }

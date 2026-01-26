@@ -41,49 +41,45 @@ public class JNEEvents {
         OnDeathGroundConversion.onLivingDeath(event);
     }
 
-    @EventBusSubscriber(modid = NetherExp.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-    public static class ModBusEvents {
+    @SubscribeEvent
+    public static void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            JNECauldronInteractions.register();
+        });
+    }
 
-        @SubscribeEvent
-        public static void commonSetup(final FMLCommonSetupEvent event) {
-            event.enqueueWork(() -> {
-                JNECauldronInteractions.register();
-            });
+    @SubscribeEvent
+    public static void buildTabContents(BuildCreativeModeTabContentsEvent event) {
+        JNECreativeModeTabs.addToExistingTabs(event);
+    }
+
+    @SubscribeEvent
+    public static void datapackRegistry(DataPackRegistryEvent.NewRegistry event) {
+        JNERegistries.datapackInit(event);
+    }
+
+    @SubscribeEvent
+    public static void registerAttributes(EntityAttributeCreationEvent event) {
+        JNEEntityType.registerAttributes(event);
+    }
+
+    @SubscribeEvent
+    public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+        JNEEntityType.registerSpawnPlacements(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void registerEvent(RegisterEvent event) {
+        JNEItems.backportRegistries(event);
+    }
+
+    @SubscribeEvent
+    public static void addBuiltinPacks(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) { // Resource Packs
+            JNEBuiltinPacks.rpJNERetextures(event);
         }
-
-        @SubscribeEvent
-        public static void buildTabContents(BuildCreativeModeTabContentsEvent event) {
-            JNECreativeModeTabs.addToExistingTabs(event);
-        }
-
-        @SubscribeEvent
-        public static void datapackRegistry(DataPackRegistryEvent.NewRegistry event) {
-            JNERegistries.datapackInit(event);
-        }
-
-        @SubscribeEvent
-        public static void registerAttributes(EntityAttributeCreationEvent event) {
-            JNEEntityType.registerAttributes(event);
-        }
-
-        @SubscribeEvent
-        public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
-            JNEEntityType.registerSpawnPlacements(event);
-        }
-
-        @SubscribeEvent(priority = EventPriority.LOW)
-        public static void registerEvent(RegisterEvent event) {
-            JNEItems.backportRegistries(event);
-        }
-
-        @SubscribeEvent
-        public static void addBuiltinPacks(AddPackFindersEvent event) {
-            if (event.getPackType() == PackType.CLIENT_RESOURCES) { // Resource Packs
-                JNEBuiltinPacks.rpJNERetextures(event);
-            }
-            if (event.getPackType() == PackType.SERVER_DATA) { // Datapacks
-                JNEBuiltinPacks.dpNetherWorldgenOverhaul(event);
-            }
+        if (event.getPackType() == PackType.SERVER_DATA) { // Datapacks
+            JNEBuiltinPacks.dpNetherWorldgenOverhaul(event);
         }
     }
 }

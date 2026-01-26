@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.block;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.core.block.AncientFireBlock;
 import net.jadenxgamer.netherexp.core.block.interfaces.JNEFireParticle;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
@@ -52,12 +53,12 @@ public abstract class BaseFireBlockMixin extends Block implements JNEFireParticl
             method = "animateTick"
     )
     private void netherexp$betterFireParticles(BlockState state, Level level, BlockPos pos, RandomSource random, Operation<Void> original) {
-        if (IMPROVED_FIRE_SMOKE.get()) {
+        if (IMPROVED_FIRE_PARTICLES.get()) {
             if (random.nextInt(24) == 0) level.playLocalSound(
                     (double)pos.getX() + (double)0.5F, (double)pos.getY() + (double)0.5F, (double)pos.getZ() + (double)0.5F,
                     SoundEvents.FIRE_AMBIENT, SoundSource.BLOCKS, 1.0F + random.nextFloat(), random.nextFloat() * 0.7F + 0.3F, false);
-            smokeParticle(level, random, pos.getX(), pos.getY(), pos.getZ(), smokeStartColor(state, random), smokeEndColor(state, random));
-            if (emberColor(state, random).isPresent()) emberParticle(level, random, pos.getX(), pos.getY(), pos.getZ(), emberColor(state, random).get());
+            if (FIRE_SMOKE_PARTICLES.get()) smokeParticle(level, random, pos.getX(), pos.getY(), pos.getZ(), smokeStartColor(state, random), smokeEndColor(state, random));
+            if (FIRE_EMBER_PARTICLES.get() && emberColor(state, random).isPresent()) emberParticle(level, random, pos.getX(), pos.getY(), pos.getZ(), emberColor(state, random).get());
         } else original.call(state, level, pos, random);
     }
 

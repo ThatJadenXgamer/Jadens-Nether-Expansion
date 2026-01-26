@@ -47,6 +47,7 @@ public abstract class LevelRendererMixin {
             netherexp$lastMistTime = currentTime;
 
             var player = client.player;
+            if (player == null) return;
             var random = level.random;
             double angle = random.nextDouble() * Math.PI * 2;
             double distance = Mth.nextDouble(random, NETHER_MIST_MIN_DISTANCE.get(), NETHER_MIST_MAX_DISTANCE.get());
