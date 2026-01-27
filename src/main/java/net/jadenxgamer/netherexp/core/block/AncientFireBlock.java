@@ -2,31 +2,21 @@ package net.jadenxgamer.netherexp.core.block;
 
 import com.mojang.serialization.MapCodec;
 import net.jadenxgamer.elysium_api.api.tags.ElysiumTags;
-import net.jadenxgamer.netherexp.core.block.interfaces.JNEFireParticle;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoulFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.awt.*;
-import java.util.Optional;
-
-public class AncientFireBlock extends BaseFireBlock implements JNEFireParticle {
+public class AncientFireBlock extends BaseFireBlock {
     public static final MapCodec<AncientFireBlock> CODEC = simpleCodec(AncientFireBlock::new);
-
-    private static final Color[] ANCIENT_SMOKE_COLORS = {
-            new Color(0x230303),
-            new Color(0x290404),
-            new Color(0x370505),
-            new Color(0x420707)
-    };
 
     public AncientFireBlock(Properties properties) {
         super(properties, 0.0f);
@@ -70,20 +60,5 @@ public class AncientFireBlock extends BaseFireBlock implements JNEFireParticle {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-    }
-
-    @Override
-    public Color smokeStartColor(BlockState state, RandomSource random) {
-        return new Color(0xFF0000);
-    }
-
-    @Override
-    public Color smokeEndColor(BlockState state, RandomSource random) {
-        return ANCIENT_SMOKE_COLORS[random.nextInt(ANCIENT_SMOKE_COLORS.length)];
-    }
-
-    @Override
-    public Optional<Color> emberColor(BlockState state, RandomSource random) {
-        return Optional.of(new Color(0xFF2E35));
     }
 }

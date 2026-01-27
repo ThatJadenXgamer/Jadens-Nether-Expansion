@@ -1,8 +1,8 @@
 package net.jadenxgamer.netherexp.event;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManager;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
-import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
@@ -12,10 +12,9 @@ import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.minecraft.server.packs.PackType;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoader;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -24,8 +23,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
-
-import static net.jadenxgamer.netherexp.config.JNEConfigs.NETHER_WORLDGEN_OVERHAUL;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID)
@@ -81,5 +78,10 @@ public class JNEEvents {
         if (event.getPackType() == PackType.SERVER_DATA) { // Datapacks
             JNEBuiltinPacks.dpNetherWorldgenOverhaul(event);
         }
+    }
+
+    @SubscribeEvent
+    public static void registerReloadListener(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(new FireParticlesManager());
     }
 }

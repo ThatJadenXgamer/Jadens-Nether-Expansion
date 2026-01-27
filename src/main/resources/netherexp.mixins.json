@@ -13,8 +13,6 @@
   ],
   "mixins": [
     "block.BaseFireBlockMixin",
-    "block.FireBlockMixin",
-    "block.SoulFireBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "entity.AbstractArrowMixin",
