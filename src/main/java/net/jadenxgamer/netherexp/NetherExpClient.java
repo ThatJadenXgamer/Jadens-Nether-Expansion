@@ -65,7 +65,8 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.FALLING_ECTOPLASM.get(), JNEFallAndLandParticle.EctoplasmProvider::new);
         event.registerSpriteSet(JNEParticleTypes.ECTOSPLASH.get(), SplashParticle.Provider::new);
         event.registerSpriteSet(JNEParticleTypes.ECTOPLASM_RAYS.get(), LodestoneWorldParticleType.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.ECTOPLASM.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GLOWING_DOT.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GLOWING_DOT_COIL.get(), CoilParticleEffect.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SOUL_CLOUD.get(), JNEPoofParticle.SoulProvider::new);
         event.registerSpriteSet(JNEParticleTypes.SILVER_GLIMMER.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.TREACHEROUS_FLAME.get(), FlameParticle.Provider::new);
@@ -79,6 +80,10 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.WILL_O_WISP_IMPACT.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.REDUX_DUST_BLOB.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.REDUX_DUST_STAR.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_POOF.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_POOF_BLOB.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_POOF_STAR.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GENERIC_GLOW.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {

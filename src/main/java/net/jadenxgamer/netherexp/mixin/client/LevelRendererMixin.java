@@ -43,12 +43,11 @@ public abstract class LevelRendererMixin {
 
         Minecraft client = Minecraft.getInstance();
         long currentTime = client.level.getGameTime();
-
-        // Check if enough ticks have passed since last spawn
         if (currentTime - netherexp$lastMistTime >= NETHER_MIST_SPAWN_RATE.get()) {
             netherexp$lastMistTime = currentTime;
 
             var player = client.player;
+            if (player == null) return;
             var random = level.random;
             double angle = random.nextDouble() * Math.PI * 2;
             double distance = Mth.nextDouble(random, NETHER_MIST_MIN_DISTANCE.get(), NETHER_MIST_MAX_DISTANCE.get());

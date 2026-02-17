@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.config;
 
+import net.jadenxgamer.netherexp.config.enums.BansheeRedirectConfig;
 import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -181,6 +182,9 @@ public class JNEConfigImpl {
                     .comment("The base amount of shotgun pellets fired from a pump-charge shotgun\n" +
                             "Enchantments and pumps can influence the final total of bullets fired")
                     .defineInRange("pumpChargeShotgunBullets", 10, 0, Integer.MAX_VALUE);
+            WILL_O_WISP_STACK_SIZE = builder
+                    .comment("The number of will o' wisps that can be stored in a single stack")
+                    .defineInRange("willOWispStackSize", 64, 1, 99);
         }
     }
 
@@ -267,15 +271,26 @@ public class JNEConfigImpl {
                     .comment("When hurt the banshee's attack interval can be staggered by the specified amount in ticks")
                     .defineInRange("bansheeAttackIntervalStagger", 10, 0, Integer.MAX_VALUE);
             BANSHEE_REDIRECT_STUNS = builder
-                    .comment("If a banshee's own will o' wisp circles back around and hits it then the entity gets stunned")
-                    .define("bansheeRedirectStuns", true);
+                    .comment("Specify what behavior should take place if a banshee gets hit with its own will o' wisp projectile")
+                    .defineEnum("bansheeRedirectBehavior", BansheeRedirectConfig.STUN);
             BANSHEE_STUN_TIMER = builder
                     .comment("Defines how long a banshee hit with its own projectile will be stunned for \n" +
                             "During this it is unable to fire will o' wisps")
                     .defineInRange("bansheeStunTimer", 100, 0, Integer.MAX_VALUE);
-            BANSHEE_REDIRECT_INSTAKILLS = builder
-                    .comment("If a banshee's own will o' wisp circles back around and hits it then the entity instantly dies")
-                    .define("bansheeRedirectInstakills", false);
+            GENERIC_WILL_O_WISP_MANEUVERABILITY = builder
+                    .comment("How well a will o' wisp shot by a player or dispenser can turn sharp corners")
+                    .defineInRange("genericWillOWispManoeuvrability", 0.22, 0, Double.MAX_VALUE);
+            BANSHEE_WILL_O_WISP_MANEUVERABILITY = builder
+                    .comment("How well a will o' wisp shot by a banshee can turn sharp corners")
+                    .defineInRange("bansheeWillOWispManoeuvrability", 0.2, 0, Double.MAX_VALUE);
+            MANEUVERABILITY_AFFECTED_BY_DIFFICULTY = builder
+                    .comment("""
+                            Weather world difficulty will have any affect on a banshee will o' wisps' manoeuvrability\s
+                            The values below are added onto whatever is specifed in "bansheeWillOWispManoeuvrability"\s
+                            -0.05 on Easy\s
+                            +0.04 on Hard
+                            """)
+                    .define("manoeuvrabilityAffectedByDifficulty", true);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
@@ -349,7 +364,7 @@ public class JNEConfigImpl {
                     .define("netherMistParticles", true);
             NETHER_MIST_SPAWN_RATE = builder
                     .comment("Controls the tick intervals of nether mist spawning")
-                    .defineInRange("netherMistSpawnRate", 8, 0, Integer.MAX_VALUE);
+                    .defineInRange("netherMistSpawnRate", 6, 0, Integer.MAX_VALUE);
             NETHER_MIST_MIN_DISTANCE = builder
                     .comment("Minimum distance at which the nether mist particles spawn")
                     .defineInRange("netherMistMinDistance", 32.0, 0, Double.MAX_VALUE);
@@ -371,12 +386,30 @@ public class JNEConfigImpl {
             WINDY_ASH_SCALE_MULTIPLIER = builder
                     .comment("Multiplies the size of windy ash particles")
                     .defineInRange("windyAshScaleMultiplier", 1.6, 0.0, Double.MAX_VALUE);
-            ENABLE_JNE_SPLASH_TEXTS = builder
-                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
-                    .define("enableJNESplashTexts", true);
             DRIFTING_SOULS_SPAWN_QUANTITY = builder
                     .comment("Number of drifting soul particles which can spawn from a single block")
                     .defineInRange("driftingSoulsSpawnQuantity", 4, 0, Integer.MAX_VALUE);
+            DRIFTING_SOULS_SPAWN_RADIUS = builder
+                    .comment("The radius of particles a single drifting souls block can spawn around in each direction")
+                    .defineInRange("driftingSoulsSpawnRadius", 32, 0, Integer.MAX_VALUE);
+            WILL_O_WISP_PARTICLES = builder
+                    .comment("Fired will o' wisps will produce wisp-like trail particles behind them")
+                    .define("willOWispParticles", true);
+            WILL_O_WISP_SOUNDS = builder
+                    .comment("Fired will o' wisps will make a weeping sound that helps with knowing if one is homing in on you")
+                    .define("willOWispSounds", true);
+            IMPROVED_FIRE_PARTICLES = builder
+                    .comment("Adds more dynamic and animated particles to all fire blocks")
+                    .define("improvedFireParticles", true);
+            FIRE_SMOKE_PARTICLES = builder
+                    .comment("Enables new smoke particles for fire")
+                    .define("fireSmokeParticles", true);
+            FIRE_EMBER_PARTICLES = builder
+                    .comment("Enables new ember particles for fire")
+                    .define("fireEmberParticles", true);
+            ENABLE_JNE_SPLASH_TEXTS = builder
+                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
+                    .define("enableJNESplashTexts", true);
             RED_SPLASH_TEXT = builder
                     .comment("Splash texts added by JNE will be a wonderful red color opposed to the usual yellow")
                     .define("redSplashText", true);

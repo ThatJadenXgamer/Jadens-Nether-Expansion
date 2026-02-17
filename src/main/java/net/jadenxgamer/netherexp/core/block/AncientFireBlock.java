@@ -3,17 +3,16 @@ package net.jadenxgamer.netherexp.core.block;
 import com.mojang.serialization.MapCodec;
 import net.jadenxgamer.elysium_api.api.tags.ElysiumTags;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
-import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoulFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class AncientFireBlock extends BaseFireBlock {

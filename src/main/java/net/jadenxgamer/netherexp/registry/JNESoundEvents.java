@@ -60,7 +60,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> BANSHEE_DEATH = registerSoundEvents("entity.banshee.death");
     public static final Supplier<SoundEvent> BANSHEE_SHOOT = registerSoundEvents("entity.banshee.shoot");
     public static final Supplier<SoundEvent> BANSHEE_STUN = registerSoundEvents("entity.banshee.stun");
-    public static final Supplier<SoundEvent> WILL_O_WISP = registerSoundEvents("entity.willowisp.ambient");
+    public static final Supplier<SoundEvent> WILL_O_WISP_AMBIENT = registerSoundEvents("entity.willowisp.ambient");
     public static final Supplier<SoundEvent> BANSHEE_TELEPORT = registerSoundEvents("entity.banshee.teleport");
 
     public static final Supplier<SoundEvent> SHOTGUN_GUY_AMBIENT = registerSoundEvents("entity.shotgun_guy.ambient");

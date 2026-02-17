@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.config;
 
+import net.jadenxgamer.netherexp.config.enums.BansheeRedirectConfig;
 import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -50,6 +51,7 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue TWEAK_OBTAINING_TEARS_MUSIC_DISC;
     public static ModConfigSpec.IntValue SHOTGUN_FIST_BULLETS;
     public static ModConfigSpec.IntValue PUMP_CHARGE_SHOTGUN_BULLETS;
+    public static ModConfigSpec.IntValue WILL_O_WISP_STACK_SIZE;
 
     // ENTITY
     public static ModConfigSpec.DoubleValue WISP_BOREDOM_CHANCE;
@@ -75,8 +77,10 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL_BONUS;
     public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL_STAGGER;
     public static ModConfigSpec.IntValue BANSHEE_STUN_TIMER;
-    public static ModConfigSpec.BooleanValue BANSHEE_REDIRECT_STUNS;
-    public static ModConfigSpec.BooleanValue BANSHEE_REDIRECT_INSTAKILLS;
+    public static ModConfigSpec.EnumValue<BansheeRedirectConfig> BANSHEE_REDIRECT_STUNS;
+    public static ModConfigSpec.DoubleValue GENERIC_WILL_O_WISP_MANEUVERABILITY;
+    public static ModConfigSpec.DoubleValue BANSHEE_WILL_O_WISP_MANEUVERABILITY;
+    public static ModConfigSpec.BooleanValue MANEUVERABILITY_AFFECTED_BY_DIFFICULTY;
     public static ModConfigSpec.DoubleValue VESSEL_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue STAMPEDE_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue BANSHEE_UNLEASHING_ODDS;
@@ -105,6 +109,12 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue SOUL_SAND_VALLEY_WIND_SPEED;
     public static ModConfigSpec.DoubleValue WINDY_ASH_SCALE_MULTIPLIER;
     public static ModConfigSpec.IntValue DRIFTING_SOULS_SPAWN_QUANTITY;
+    public static ModConfigSpec.IntValue DRIFTING_SOULS_SPAWN_RADIUS;
+    public static ModConfigSpec.BooleanValue WILL_O_WISP_PARTICLES;
+    public static ModConfigSpec.BooleanValue WILL_O_WISP_SOUNDS;
+    public static ModConfigSpec.BooleanValue IMPROVED_FIRE_PARTICLES;
+    public static ModConfigSpec.BooleanValue FIRE_SMOKE_PARTICLES;
+    public static ModConfigSpec.BooleanValue FIRE_EMBER_PARTICLES;
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
     public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;

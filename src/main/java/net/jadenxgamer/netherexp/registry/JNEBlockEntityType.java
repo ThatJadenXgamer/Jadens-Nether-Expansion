@@ -1,7 +1,9 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.block.DriftingSoulsBlock;
 import net.jadenxgamer.netherexp.core.block.entity.DiscernmentGlassBlockEntity;
+import net.jadenxgamer.netherexp.core.block.entity.DriftingSoulsBlockEntity;
 import net.jadenxgamer.netherexp.core.block.entity.JNECampfireBlockEntity;
 import net.jadenxgamer.netherexp.core.block.entity.SuspiciousSoulSandBlockEntity;
 import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
@@ -27,6 +29,9 @@ public class JNEBlockEntityType {
 
     public static final Supplier<BlockEntityType<JNECampfireBlockEntity>> JNE_CAMPFIRE = ENTITY_TYPES.register("jne_campfire", () ->
             BlockEntityType.Builder.of(JNECampfireBlockEntity::new, JNEBlocks.ANCIENT_CAMPFIRE.get()).build(null));
+
+    public static final Supplier<BlockEntityType<DriftingSoulsBlockEntity>> DRIFTING_SOULS = ENTITY_TYPES.register("drifting_souls", () ->
+            BlockEntityType.Builder.of(DriftingSoulsBlockEntity::new, JNEBlocks.DRIFTING_SOULS.get()).build(null));
 
     public static void init(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

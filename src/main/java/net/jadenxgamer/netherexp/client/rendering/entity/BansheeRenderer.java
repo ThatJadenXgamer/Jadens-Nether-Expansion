@@ -104,6 +104,7 @@ public class BansheeRenderer extends MobRenderer<Banshee, BansheeRenderer.Banshe
             this.root().getAllParts().forEach(ModelPart::resetPose);
             this.applyHeadRotation(netHeadYaw, headPitch);
             this.applyStunRotation(entity, ageInTicks);
+            this.applyRodRotation(entity, ageInTicks);
 
             this.animate(entity.idleAnimation, Animation.IDLE, ageInTicks);
             this.animate(entity.shootAnimation, Animation.SHOOT, ageInTicks);
@@ -125,6 +126,12 @@ public class BansheeRenderer extends MobRenderer<Banshee, BansheeRenderer.Banshe
             }
         }
 
+
+        private void applyRodRotation(Banshee entity, float ageInTicks) {
+            float spinSpeed = entity.isLeftHanded() ? -0.25f : 0.25f;
+            this.rod_orbit.zRot = (ageInTicks * spinSpeed) % (2 * (float)Math.PI);
+        }
+
         @Override
         public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
             banshee.render(poseStack, buffer, packedLight, packedOverlay, color);
@@ -139,12 +146,6 @@ public class BansheeRenderer extends MobRenderer<Banshee, BansheeRenderer.Banshe
     private static class Animation {
 
         public static final AnimationDefinition IDLE = AnimationDefinition.Builder.withLength(2f).looping()
-                .addAnimation("rod_orbit",
-                        new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                                new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f),
-                                        AnimationChannel.Interpolations.LINEAR),
-                                new Keyframe(2f, KeyframeAnimations.degreeVec(0f, 0f, 360f),
-                                        AnimationChannel.Interpolations.LINEAR)))
                 .addAnimation("banshee",
                         new AnimationChannel(AnimationChannel.Targets.POSITION,
                                 new Keyframe(0f, KeyframeAnimations.posVec(0f, 0f, 0f),
@@ -326,12 +327,6 @@ public class BansheeRenderer extends MobRenderer<Banshee, BansheeRenderer.Banshe
                                         AnimationChannel.Interpolations.CATMULLROM),
                                 new Keyframe(2f, KeyframeAnimations.posVec(0f, 0f, 0f),
                                         AnimationChannel.Interpolations.CATMULLROM)))
-                .addAnimation("rod_orbit",
-                        new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                                new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f),
-                                        AnimationChannel.Interpolations.LINEAR),
-                                new Keyframe(2f, KeyframeAnimations.degreeVec(0f, 0f, 360f),
-                                        AnimationChannel.Interpolations.LINEAR)))
                 .addAnimation("rod1",
                         new AnimationChannel(AnimationChannel.Targets.POSITION,
                                 new Keyframe(0f, KeyframeAnimations.posVec(0f, 0f, 0f),

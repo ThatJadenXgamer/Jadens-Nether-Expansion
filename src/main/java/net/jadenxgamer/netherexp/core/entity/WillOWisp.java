@@ -29,12 +29,13 @@ import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParti
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
+
 public class WillOWisp extends ThrowableItemProjectile {
     private static final float INITIAL_SPEED_BPS = 0.1f; // the blocks per second it starts at
     private static final float MAX_SPEED_BPS = 16.0f; // the maximum blocks pet second it can speed up to
     private static final float ACCELERATION_TIME = 5.0f; // the rate of acceleration for it to go from initial -> max
     private static final float VELOCITY_SMOOTHING = 0.3f; // smoothing of movement velocity
-    private static final float DIRECTION_SMOOTHING = 0.15f; // basically defines how smoothly it turns, higher values make it turns harper corners
     private static final int MAX_LIFETIME_TICKS = 300; // pretty self-explanatory
 
     private static final float INITIAL_SPEED_PER_TICK = INITIAL_SPEED_BPS / 20.0f;
@@ -71,6 +72,7 @@ public class WillOWisp extends ThrowableItemProjectile {
     private Vec3 lastParticlePos;
     private double distanceSinceLastParticle = 0.0;
     private boolean particleTrailInitialized = false;
+    private float manoeuvrability = ((float) JNEConfigs.GENERIC_WILL_O_WISP_MANEUVERABILITY.getAsDouble());
 
     public WillOWisp(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
         super(entityType, level);
@@ -140,6 +142,8 @@ public class WillOWisp extends ThrowableItemProjectile {
     @Override
     public void tick() {
         super.tick();
+        if (this.getOwner() != null && !this.getOwner().isAlive()) this.impact(this.position());
+
         float ageInSeconds = tickCount / 20.0f;
         float accelerationRate = (MAX_SPEED_PER_TICK - INITIAL_SPEED_PER_TICK) / (ACCELERATION_TIME * 20);
 
@@ -155,8 +159,8 @@ public class WillOWisp extends ThrowableItemProjectile {
         updateProjectileRotation();
 
         if (this.level().isClientSide()) {
-            updateParticleTrail();
-            updateSound();
+            if (WILL_O_WISP_PARTICLES.get()) updateParticleTrail();
+            if (WILL_O_WISP_SOUNDS.get()) updateSound();
             loopAnimation.startIfStopped(this.tickCount);
         } else if (tickCount > MAX_LIFETIME_TICKS) this.impact(this.position());
     }
@@ -185,7 +189,7 @@ public class WillOWisp extends ThrowableItemProjectile {
     private void updateSound() {
         if (this.soundInstance == null) {
             this.soundInstance = new LoopedEntityBoundSoundInstance(
-                    JNESoundEvents.WILL_O_WISP.get(), SoundSource.NEUTRAL,
+                    JNESoundEvents.WILL_O_WISP_AMBIENT.get(), SoundSource.NEUTRAL,
                     0.5f, 1.0f, this, 0);
             Minecraft.getInstance().getSoundManager().play(this.soundInstance);
         }
@@ -205,8 +209,8 @@ public class WillOWisp extends ThrowableItemProjectile {
 
         this.currentDirection = currentDirection.scale(1.0f - turnFactor)
                 .add(desiredDirection.scale(turnFactor)).normalize();
-        this.smoothedDirection = smoothedDirection.scale(1.0f - DIRECTION_SMOOTHING)
-                .add(currentDirection.scale(DIRECTION_SMOOTHING)).normalize();
+        this.smoothedDirection = smoothedDirection.scale(1.0f - manoeuvrability)
+                .add(currentDirection.scale(manoeuvrability)).normalize();
     }
 
     private float calculateTurnFactor(float time) {
@@ -230,9 +234,9 @@ public class WillOWisp extends ThrowableItemProjectile {
         Entity entity = result.getEntity();
         if (entity instanceof LivingEntity living) {
             if (wasRedirected(living)) {
-                if (JNEConfigs.BANSHEE_REDIRECT_INSTAKILLS.get()) living.kill();
-                else if (JNEConfigs.BANSHEE_REDIRECT_STUNS.get() && living instanceof Banshee) {
-                    ((Banshee) living).setStunTime(JNEConfigs.BANSHEE_STUN_TIMER.get());
+                switch (BANSHEE_REDIRECT_STUNS.get()) {
+                    case STUN -> ((Banshee) living).setStunTime(JNEConfigs.BANSHEE_STUN_TIMER.get());
+                    case INSTAKILL -> living.kill();
                 }
                 AdvancementGranter.grantPlayersInRadius(level(), this.blockPosition(), JNECriteriaTriggers.BANSHEE_REDIRECT);
             }
@@ -354,6 +358,14 @@ public class WillOWisp extends ThrowableItemProjectile {
     private boolean wasRedirected(LivingEntity hitEntity) {
         Entity owner = this.getOwner();
         return owner != null && hitEntity == owner && hitEntity.getType() == JNEEntityType.BANSHEE.get();
+    }
+
+    public float getManoeuvrability() {
+        return manoeuvrability;
+    }
+
+    public void setManoeuvrability(float manoeuvrability) {
+        this.manoeuvrability = manoeuvrability;
     }
 
     private record TurnPoint(float time, float turnFactor) {}

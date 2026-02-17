@@ -1,0 +1,15 @@
+{
+  "blocks": "minecraft:fire",
+  "smoke_start_colors": [
+    "#FF8300"
+  ],
+  "smoke_end_colors": [
+    "#515151",
+    "#575757",
+    "#676767",
+    "#717171"
+  ],
+  "ember_colors": [
+    "#FF9913"
+  ]
+}
