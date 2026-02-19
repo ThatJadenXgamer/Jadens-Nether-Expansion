@@ -15,6 +15,7 @@
     "block.BaseFireBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
+    "client.IClientFluidTypeExtensionsMixin",
     "entity.AbstractArrowMixin",
     "entity.BlockEntityTypeMixin",
     "entity.ProjectileMixin",

@@ -1,12 +1,15 @@
 package net.jadenxgamer.netherexp.core.worldgen.feature;
 
 import com.mojang.serialization.Codec;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -16,7 +19,7 @@ import java.util.List;
 
 public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
 
-    private static final int MAX_VERTICAL_DEVIATION = 12;
+    private static final int MAX_VERTICAL_DEVIATION = 8;
 
     public NetherSpeleothemFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
@@ -28,7 +31,7 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos origin = context.origin();
         RandomSource random = context.random();
 
-        int maxScan = 64; //todo: make this a json config later
+        int maxScan = 64;
         BlockPos centerCeiling = findSurface(level, origin, Direction.UP, maxScan);
         BlockPos centerFloor = findSurface(level, origin, Direction.DOWN, maxScan);
 
@@ -38,7 +41,7 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
         int maxY = centerCeiling.getY();
         int totalHeight = maxY - minY;
 
-        if (totalHeight < 4) return false; //todo: json config
+        if (totalHeight < 4) return false;
 
         float baseRadius = Mth.clamp((totalHeight / 10.0f) + 1.0f, 1.5f, 7.0f);
         int scanRadius = Mth.ceil(baseRadius * 2.5f);
@@ -46,7 +49,6 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
         List<ColumnData> validColumns = new ArrayList<>();
         BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
         boolean anyColumnOutOfRange = false;
-
         for (int x = -scanRadius; x <= scanRadius; x++) {
             for (int z = -scanRadius; z <= scanRadius; z++) {
                 double distSq = x * x + z * z;
@@ -57,27 +59,35 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
 
                 BlockPos localCeiling = findSurface(level, cursor, Direction.UP, maxScan);
                 BlockPos localFloor = findSurface(level, cursor, Direction.DOWN, maxScan);
-                if (localCeiling == null || localFloor == null) continue;
+
+                //If we hit a ledge/void (null), we must FAIL the feature
+                if (localCeiling == null || localFloor == null) {
+                    anyColumnOutOfRange = true;
+                    break;
+                }
 
                 int localMinY = localFloor.getY();
                 int localMaxY = localCeiling.getY();
 
-                // This was added to stop a weird cascading effect, but I have no fucking clue if that solves it properly
-                // and yes there is profanity in JNE's codebase <3
                 boolean floorTooLow = localMinY < minY - MAX_VERTICAL_DEVIATION;
                 boolean ceilingTooHigh = localMaxY > maxY + MAX_VERTICAL_DEVIATION;
 
-                if (floorTooLow || ceilingTooHigh) anyColumnOutOfRange = true;
-                validColumns.add(new ColumnData(x, z, localMinY, localMaxY, dist, floorTooLow || ceilingTooHigh));
+                //If the surface is too far away, fail immediately.
+                if (floorTooLow || ceilingTooHigh) {
+                    anyColumnOutOfRange = true;
+                    break;
+                }
+
+                // We no longer need to store the boolean 'isOutOfRange' since we abort on failure
+                validColumns.add(new ColumnData(x, z, localMinY, localMaxY, dist));
             }
+            if (anyColumnOutOfRange) break;
         }
 
-        if (validColumns.isEmpty()) return false; // this might be too lenient? idk might change it later
-        if (anyColumnOutOfRange) return false;
+        // If we found any bad terrain, abort the entire feature here.
+        if (anyColumnOutOfRange || validColumns.isEmpty()) return false;
 
         for (ColumnData column : validColumns) {
-            if (column.isOutOfRange) continue;
-
             int x = column.x;
             int z = column.z;
             int localMinY = column.localMinY;
@@ -85,9 +95,9 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
             double distance = column.distance;
 
             for (int y = localMinY; y <= localMaxY; y++) {
-                // DIE DENSITY FUNCTION
-                float relativeY = (float)(y - minY) / totalHeight; // 0.0 to 1.0
-                float taperFactor = 2.0f * (relativeY - 0.5f); // -1.0 to 1.0
+                // DIE DENSITY FUNCTION (untouched)
+                float relativeY = (float)(y - minY) / totalHeight;
+                float taperFactor = 2.0f * (relativeY - 0.5f);
                 float hourglassMultiplier = 1.0f + (taperFactor * taperFactor * 0.8f);
 
                 int distToSurface = Math.min(y - localMinY, localMaxY - y);
@@ -104,7 +114,7 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
                 if (distance < maxRadiusHere) {
                     cursor.set(origin.getX() + x, y, origin.getZ() + z);
                     if (canReplace(level, cursor)) {
-                        level.setBlock(cursor, Blocks.NETHERRACK.defaultBlockState(), 2);
+                        this.setBlock(level, cursor, Blocks.NETHERRACK.defaultBlockState());
                     }
                 }
             }
@@ -113,17 +123,28 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    private record ColumnData(int x, int z, int localMinY, int localMaxY, double distance, boolean isOutOfRange) {}
+    private record ColumnData(int x, int z, int localMinY, int localMaxY, double distance) {}
 
     private BlockPos findSurface(WorldGenLevel level, BlockPos start, Direction direction, int maxDistance) {
         BlockPos.MutableBlockPos mPos = start.mutable();
         for (int i = 0; i < maxDistance; i++) {
-            if (!level.isEmptyBlock(mPos) && level.getBlockState(mPos).isSolid()) {
+            BlockState state = level.getBlockState(mPos);
+            if (state.is(BlockTags.BASE_STONE_NETHER) || state.is(JNETags.Blocks.SPELEOTHEM_BASE_BLOCKS)) {
                 return mPos.immutable();
             }
             mPos.move(direction);
         }
         return null;
+    }
+
+    private boolean canReplace(WorldGenLevel level, BlockPos pos) {
+        return true;
+    }
+
+    private double getImperfectionNoise(int x, int y, int z) {
+        double n1 = Mth.sin(x * 0.3f) * Mth.cos(y * 0.3f) * Mth.sin(z * 0.3f);
+        double n2 = Mth.cos(x * 0.1f + y * 0.05f) * Mth.sin(z * 0.1f);
+        return n1 + n2;
     }
 
 //    private BlockPos findSurfaceWithConstraint(WorldGenLevel level, BlockPos start, Direction direction, int maxDistance, int referenceY, int maxDeviation) {
@@ -136,14 +157,4 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
 //        }
 //        return null;
 //    }
-
-    private boolean canReplace(WorldGenLevel level, BlockPos pos) {
-        return level.isEmptyBlock(pos) || !level.getBlockState(pos).isSolid();
-    }
-
-    private double getImperfectionNoise(int x, int y, int z) {
-        double n1 = Mth.sin(x * 0.3f) * Mth.cos(y * 0.3f) * Mth.sin(z * 0.3f);
-        double n2 = Mth.cos(x * 0.1f + y * 0.05f) * Mth.sin(z * 0.1f);
-        return n1 + n2;
-    }
 }

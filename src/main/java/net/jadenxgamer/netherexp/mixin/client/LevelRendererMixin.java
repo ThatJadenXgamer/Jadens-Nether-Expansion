@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
@@ -18,10 +19,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
 import team.lodestar.lodestone.systems.particle.world.behaviors.components.SparkBehaviorComponent;
 
 import javax.annotation.Nullable;
+
+import java.awt.*;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
 
@@ -55,13 +59,14 @@ public abstract class LevelRendererMixin {
             double x = player.getX() + Math.cos(angle) * distance;
             double y = player.getY() + Mth.nextDouble(random, -8.0, 8.0);
             double z = player.getZ() + Math.sin(angle) * distance;
+            Color color = new Color(level.getBiome(new BlockPos((int) x, (int) y, (int) z)).value().getFogColor());
 
-            fogParticle(level, level.random, x, y, z);
+            fogParticle(level, level.random, x, y, z, color);
         }
     }
 
     @Unique
-    private void fogParticle(Level level, RandomSource random, double x, double y, double z) {
+    private void fogParticle(Level level, RandomSource random, double x, double y, double z, Color color) {
         double motion = NETHER_MIST_MOTION_MULTIPLIER.get();
         float scale = (float) NETHER_MIST_SCALE.getAsDouble();
         float opacity = (float) NETHER_MIST_SCALE.getAsDouble();
@@ -79,6 +84,7 @@ public abstract class LevelRendererMixin {
                 .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE.withDepthFade())
                 .setLifetime(random.nextInt(120, 180))
                 .setMotion(random.nextDouble() * motion, random.nextDouble() * motion, random.nextDouble() * motion)
+                .setColorData(ColorParticleData.create(color.brighter().brighter()).build())
                 .spawn(level, x, y, z);
     }
 }

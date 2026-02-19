@@ -9,11 +9,13 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
@@ -33,6 +35,12 @@ public class ShotgunPellet extends AbstractArrow {
     public ShotgunPellet(double x, double y, double z, Level level, Entity owner) {
         this(JNEEntityType.SHOTGUN_PELLET.get(), level);
         this.setPos(x, y, z);
+        this.setOwner(owner);
+    }
+
+    public ShotgunPellet(Vec3 look, Level level, LivingEntity owner) {
+        this(JNEEntityType.SHOTGUN_PELLET.get(), level);
+        this.setPos(look.x, look.y, look.z);
         this.setOwner(owner);
     }
 

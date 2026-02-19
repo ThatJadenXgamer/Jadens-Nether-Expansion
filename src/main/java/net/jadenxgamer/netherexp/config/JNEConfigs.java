@@ -115,6 +115,10 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue IMPROVED_FIRE_PARTICLES;
     public static ModConfigSpec.BooleanValue FIRE_SMOKE_PARTICLES;
     public static ModConfigSpec.BooleanValue FIRE_EMBER_PARTICLES;
+    public static ModConfigSpec.BooleanValue LAVA_PERLIN_NOISE_GRADIENT;
+    public static ModConfigSpec.ConfigValue<String> LAVA_GRADIENT_COLOR_A;
+    public static ModConfigSpec.ConfigValue<String> LAVA_GRADIENT_COLOR_B;
+    public static ModConfigSpec.DoubleValue LAVA_GRADIENT_NOISE_SCALE;
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
     public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;

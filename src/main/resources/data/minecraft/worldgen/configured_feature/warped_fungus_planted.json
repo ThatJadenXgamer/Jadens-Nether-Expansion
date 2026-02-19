@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:huge_fungus",
+  "type": "netherexp:jne_huge_fungus",
   "config": {
     "decor_state": {
       "Name": "netherexp:shroomnight"
@@ -7,6 +7,12 @@
     "hat_state": {
       "Name": "minecraft:warped_wart_block"
     },
+    "beard_state": {
+      "Name": "netherexp:warped_wart_beard"
+    },
+    "min_height": 9,
+    "max_height": 13,
+    "bonus_height": 2,
     "planted": true,
     "replaceable_blocks": {
       "type": "minecraft:matching_blocks",

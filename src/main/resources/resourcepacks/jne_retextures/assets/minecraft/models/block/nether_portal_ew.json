@@ -1,0 +1,61 @@
+{
+	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "lodestone:additive_block",
+	"textures": {
+		"1": "netherexp:block/nether_portal_glow",
+		"particle": "block/nether_portal",
+		"portal": "block/nether_portal"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 0],
+			"to": [10, 16, 16],
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#portal"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#portal"}
+			}
+		},
+		{
+			"from": [10.025, 0.025, 0.025],
+			"to": [25.975, 15.975, 15.975],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "north"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#1", "cullface": "south"},
+				"up": {"uv": [16, 0, 0, 16], "texture": "#1", "cullface": "up"},
+				"down": {"uv": [16, 0, 0, 16], "texture": "#1", "cullface": "down"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [25.975, 15.975, 15.975],
+			"to": [10.025, 0.025, 0.025],
+			"faces": {
+				"north": {"uv": [16, 16, 0, 0], "texture": "#1", "cullface": "south"},
+				"south": {"uv": [0, 16, 16, 0], "texture": "#1", "cullface": "north"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "down"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "up"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [5.975, 15.975, 15.975],
+			"to": [-9.975, 0.025, 0.025],
+			"faces": {
+				"north": {"uv": [0, 16, 16, 0], "texture": "#1", "cullface": "south"},
+				"south": {"uv": [16, 16, 0, 0], "texture": "#1", "cullface": "north"},
+				"up": {"uv": [16, 0, 0, 16], "texture": "#1", "cullface": "down"},
+				"down": {"uv": [16, 0, 0, 16], "texture": "#1", "cullface": "up"}
+			}
+		},
+		{
+			"from": [-10.025, -0.025, -0.025],
+			"to": [6.025, 16.025, 16.025],
+			"faces": {
+				"north": {"uv": [16, 0, 0, 16], "texture": "#1", "cullface": "north"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "south"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "down"}
+			}
+		}
+	]
+}

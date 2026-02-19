@@ -22,6 +22,7 @@ public class JNETags {
         public static final TagKey<Block> BONE_FENCES = createTag("bone_fences"); // Bone fences will only connect to blocks in this tag
         public static final TagKey<Block> ANCIENT_FIRE_BASE_BLOCKS = createTag("ancient_fire_base_blocks"); // Blocks will burn ancient fire on top of 'em
         public static final TagKey<Block> FROGMIST = createTag("frogmist"); // Frogmists
+        public static final TagKey<Block> SPELEOTHEM_BASE_BLOCKS = createTag("speleothem_base_blocks"); // Blocks which speleothems can be placed on
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.id(name));
@@ -35,6 +36,7 @@ public class JNETags {
         public static final TagKey<Item> FROGMIST_VISIBLE_ITEMS = createTag("frogmist_visible_items"); // Frogmist can be broken when items in this tag are held in hand
         public static final TagKey<Item> STAMPEDE_EDIBLE = createTag("stampede_edible"); // Stampedes can eat or be fed these items to replenish health and hunger
         public static final TagKey<Item> STAMPEDE_FAVORITES = createTag("stampede_favorites"); // Stampedes replenish more health, hunger and can be tamed with these items
+        public static final TagKey<Item> SHOTGUN_SHELLS = createTag("shotgun_shells"); // Shotguns can load these items as shells
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, NetherExp.id(name));

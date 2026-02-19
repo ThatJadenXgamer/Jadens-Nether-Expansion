@@ -407,6 +407,23 @@ public class JNEConfigImpl {
             FIRE_EMBER_PARTICLES = builder
                     .comment("Enables new ember particles for fire")
                     .define("fireEmberParticles", true);
+            LAVA_PERLIN_NOISE_GRADIENT = builder
+                    .comment("Adds slight color variation gradients to lava to break up the repetitive texture in large areas")
+                    .define("lavaPerlinNoiseGradient", true);
+            LAVA_GRADIENT_COLOR_A = builder
+                    .comment("The first color that is applied to the lava perlin noise gradient\n" +
+                            "Color §cMUST§r be in #RRGGBB or #AARRGGBB format")
+                    .worldRestart()
+                    .define("lavaGradientColorA", "#FFFFFFFF");
+            LAVA_GRADIENT_COLOR_B = builder
+                    .comment("The second color that is applied to the lava perlin noise gradient\n" +
+                            "Color §cMUST§r be in #RRGGBB or #AARRGGBB format")
+                    .worldRestart()
+                    .define("LavaGradientColorB", "#FFE28001");
+            LAVA_GRADIENT_NOISE_SCALE = builder
+                    .comment("Scale factor that determines how big the perlin noise streaks are")
+                    .worldRestart()
+                    .defineInRange("LavaGradientNoiseScale", 14.0, Double.MIN_VALUE, Double.MAX_VALUE);
             ENABLE_JNE_SPLASH_TEXTS = builder
                     .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
                     .define("enableJNESplashTexts", true);
