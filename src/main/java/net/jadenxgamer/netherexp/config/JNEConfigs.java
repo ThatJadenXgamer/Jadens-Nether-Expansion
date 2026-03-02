@@ -81,6 +81,7 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue GENERIC_WILL_O_WISP_MANEUVERABILITY;
     public static ModConfigSpec.DoubleValue BANSHEE_WILL_O_WISP_MANEUVERABILITY;
     public static ModConfigSpec.BooleanValue MANEUVERABILITY_AFFECTED_BY_DIFFICULTY;
+    public static ModConfigSpec.BooleanValue WILL_O_WISP_WIND_PROPULSION;
     public static ModConfigSpec.DoubleValue VESSEL_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue STAMPEDE_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue BANSHEE_UNLEASHING_ODDS;

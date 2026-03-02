@@ -30,6 +30,7 @@ public class JNEParticleTypes {
     public static final Supplier<SimpleParticleType> FALLING_ECTOPLASM = PARTICLE_TYPES.register("falling_ectoplasm", () -> new SimpleParticleType(false));
     public static final Supplier<SimpleParticleType> ECTOSPLASH = PARTICLE_TYPES.register("ectosplash", () -> new SimpleParticleType(false));
     public static final Supplier<LodestoneWorldParticleType> ECTOPLASM_RAYS = PARTICLE_TYPES.register("ectoplasm_rays", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> WIND_TRAIL = PARTICLE_TYPES.register("wind_trail", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> GLOWING_DOT = PARTICLE_TYPES.register("glowing_dot", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> GLOWING_DOT_COIL = PARTICLE_TYPES.register("glowing_dot_coil", LodestoneWorldParticleType::new);
     public static final Supplier<SimpleParticleType> SOUL_CLOUD = PARTICLE_TYPES.register("soul_cloud", () -> new SimpleParticleType(false));

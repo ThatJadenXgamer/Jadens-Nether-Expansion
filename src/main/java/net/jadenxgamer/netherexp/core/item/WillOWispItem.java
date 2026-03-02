@@ -42,7 +42,7 @@ public class WillOWispItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         Vec3 raycastStart = user.getEyePosition(1.0F);
-        Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(35));
+        Vec3 raycastEnd = raycastStart.add(user.getViewVector(1.0F).scale(64));
         AABB aabb = new AABB(raycastStart, raycastEnd);
         EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(level, user, raycastStart, raycastEnd, aabb,
                 entity -> entity instanceof LivingEntity && entity != user);

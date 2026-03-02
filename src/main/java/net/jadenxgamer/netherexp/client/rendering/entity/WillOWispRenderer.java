@@ -107,7 +107,7 @@ public class WillOWispRenderer extends EntityRenderer<WillOWisp> {
     }
 
     public static class WillOWispItemModel extends ItemHierarchicalModel<WillOWispItem> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("will_o_wisp_item"), "main");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("will_o_wisp"), "main");
         public static final ModelLayerLocation LAYER_HAND = new ModelLayerLocation(NetherExp.id("will_o_wisp_item"), "hand");
         private final ModelPart main;
         private final ModelPart wisp;

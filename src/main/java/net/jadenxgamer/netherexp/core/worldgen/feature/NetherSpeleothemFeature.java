@@ -25,6 +25,8 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
         super(codec);
     }
 
+    //todo: RAHHHHH I'M LOSING MY MIND, WHY IS IT BLEEDING INTO TREES AHHHH, FUCK ME
+
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         WorldGenLevel level = context.level();
@@ -41,6 +43,7 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
         int maxY = centerCeiling.getY();
         int totalHeight = maxY - minY;
 
+        // Maybe this is too harsh.
         if (totalHeight < 4) return false;
 
         float baseRadius = Mth.clamp((totalHeight / 10.0f) + 1.0f, 1.5f, 7.0f);
@@ -60,7 +63,6 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
                 BlockPos localCeiling = findSurface(level, cursor, Direction.UP, maxScan);
                 BlockPos localFloor = findSurface(level, cursor, Direction.DOWN, maxScan);
 
-                //If we hit a ledge/void (null), we must FAIL the feature
                 if (localCeiling == null || localFloor == null) {
                     anyColumnOutOfRange = true;
                     break;
@@ -72,19 +74,16 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
                 boolean floorTooLow = localMinY < minY - MAX_VERTICAL_DEVIATION;
                 boolean ceilingTooHigh = localMaxY > maxY + MAX_VERTICAL_DEVIATION;
 
-                //If the surface is too far away, fail immediately.
                 if (floorTooLow || ceilingTooHigh) {
                     anyColumnOutOfRange = true;
                     break;
                 }
 
-                // We no longer need to store the boolean 'isOutOfRange' since we abort on failure
                 validColumns.add(new ColumnData(x, z, localMinY, localMaxY, dist));
             }
             if (anyColumnOutOfRange) break;
         }
 
-        // If we found any bad terrain, abort the entire feature here.
         if (anyColumnOutOfRange || validColumns.isEmpty()) return false;
 
         for (ColumnData column : validColumns) {
@@ -95,7 +94,6 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
             double distance = column.distance;
 
             for (int y = localMinY; y <= localMaxY; y++) {
-                // DIE DENSITY FUNCTION (untouched)
                 float relativeY = (float)(y - minY) / totalHeight;
                 float taperFactor = 2.0f * (relativeY - 0.5f);
                 float hourglassMultiplier = 1.0f + (taperFactor * taperFactor * 0.8f);
@@ -111,6 +109,7 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
 
                 double maxRadiusHere = targetRadius + blendBonus + noiseBonus;
 
+                // Look into making it so speleothems can have different block placers.
                 if (distance < maxRadiusHere) {
                     cursor.set(origin.getX() + x, y, origin.getZ() + z);
                     if (canReplace(level, cursor)) {
@@ -138,7 +137,7 @@ public class NetherSpeleothemFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     private boolean canReplace(WorldGenLevel level, BlockPos pos) {
-        return true;
+        return true; // This has not really caused any issues at the moment, but it also sounds like a terrible idea to replace everything.
     }
 
     private double getImperfectionNoise(int x, int y, int z) {

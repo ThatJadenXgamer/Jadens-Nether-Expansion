@@ -75,7 +75,7 @@ public abstract class ExorcismMob extends PathfinderMob {
             if (player.getMainHandItem().is(JNETags.Items.SILVER_WEAPONS)) {
                 amount *= SILVER_PARANORMAL_DAMAGE_MULTIPLIER.get();
                 if (SILVER_PARANORMAL_INFLICTS_SLOWNESS.get()) this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 2));
-                this.level().broadcastEntityEvent(this, (byte) 47);
+                this.level().broadcastEntityEvent(this, (byte) 91);
             }
         }
         return super.hurt(source, amount);
@@ -89,7 +89,7 @@ public abstract class ExorcismMob extends PathfinderMob {
             if (isWearingSilverArmor) {
                 this.hurt(level().damageSources().playerAttack(player), (float) SILVER_PARANORMAL_PROTECTION_DAMAGE.getAsDouble());
                 if (SILVER_PARANORMAL_INFLICTS_SLOWNESS.get()) this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 2));
-                this.level().broadcastEntityEvent(this, (byte) 47);
+                this.level().broadcastEntityEvent(this, (byte) 91);
             }
         }
         return super.doHurtTarget(target);
@@ -101,9 +101,7 @@ public abstract class ExorcismMob extends PathfinderMob {
     public void doExorcism() {
         BlockPos pos = this.blockPosition();
         if (getExorcismSound() != null) this.level().playSound(null, pos, getExorcismSound(), SoundSource.NEUTRAL, 1.0f, 1.0f);
-        for (int i = 0; i < 12; i++) {
-            ((ServerLevel) this.level()).sendParticles(JNEParticleTypes.SOUL_CLOUD.get(), this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), 1, 0.0, 0.0, 0.0, 0.0);
-        }
+        this.level().broadcastEntityEvent(this, (byte) 92);
         this.discard();
     }
 
@@ -152,8 +150,8 @@ public abstract class ExorcismMob extends PathfinderMob {
 
     @Override
     public void handleEntityEvent(byte id) {
-        if (id == 47) this.silverParticle(this.level(), this.random, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5));
-        if (id == 77) this.possessionParticle(this.level(), this.random);
+        if (id == 91) this.silverParticle(this.level(), this.random, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5));
+        if (id == 92) this.possessionParticle(this.level(), this.random);
         super.handleEntityEvent(id);
     }
 

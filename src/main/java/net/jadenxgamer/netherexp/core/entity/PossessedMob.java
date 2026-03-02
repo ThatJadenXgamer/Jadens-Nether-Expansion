@@ -30,9 +30,10 @@ public abstract class PossessedMob extends ExorcismMob {
 
     @Override
     public void doExorcism() {
+        if (this.isDeadOrDying()) return;
         BlockPos pos = this.blockPosition();
         this.level().playSound(null, pos, JNESoundEvents.APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
-        this.level().broadcastEntityEvent(this, (byte) 77);
+        this.level().broadcastEntityEvent(this, (byte) 92);
 
         EntityType<?> possessionOf = getPossessionOf() == null ? null : LookupRegistryHelper.getEntityType(ResourceLocation.parse(getPossessionOf()));
         if (possessionOf == null) {

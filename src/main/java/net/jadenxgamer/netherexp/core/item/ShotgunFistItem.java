@@ -11,15 +11,25 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import team.lodestar.lodestone.handlers.ScreenshakeHandler;
+import team.lodestar.lodestone.systems.easing.Easing;
+import team.lodestar.lodestone.systems.screenshake.PositionedScreenshakeInstance;
+import team.lodestar.lodestone.systems.screenshake.ScreenshakeInstance;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -39,28 +49,25 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
         ItemStack shotgun = player.getItemInHand(hand);
         ItemStack projectileStack = player.getProjectile(shotgun);
         if (projectileStack.isEmpty() && !player.getAbilities().instabuild) return InteractionResultHolder.pass(shotgun);
-        if (level instanceof ServerLevel serverLevel) {
-            List<ItemStack> draw = draw(shotgun, projectileStack, player);
-            var baseVelocity = 1.5f;
-            var baseInaccuracy = 20;
-            this.shoot(serverLevel, player, hand, shotgun, draw, baseVelocity, baseInaccuracy, false, null);
-        }
+
+        List<ItemStack> draw = draw(shotgun, projectileStack, player);
+        var baseVelocity = 1.5f;
+        var baseInaccuracy = 20;
+        this.shoot(level, player, hand, shotgun, draw, baseVelocity, baseInaccuracy, false, null);
+
         if (!player.getAbilities().instabuild) shotgun.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
         return InteractionResultHolder.success(shotgun);
     }
 
-    @Override
-    protected void shoot(ServerLevel level, LivingEntity shooter, InteractionHand hand, ItemStack shotgun, List<ItemStack> projectileItems, float velocity, float inaccuracy, boolean isCrit, @Nullable LivingEntity target) {
-        super.shoot(level, shooter, hand, shotgun, projectileItems, velocity, inaccuracy, isCrit, target);
+    protected void shoot(Level level, LivingEntity shooter, InteractionHand hand, ItemStack shotgun, List<ItemStack> projectileItems, float velocity, float inaccuracy, boolean isCrit, @Nullable LivingEntity target) {
         int count = calculateCount(shotgun);
-
-        if (level.isClientSide) {
+        if (level.isClientSide()) {
         } else {
             for (int i = 0; i < count; i++) {
                 Vec3 look = shooter.getLookAngle();
-                ShotgunPellet pellet = new ShotgunPellet(look, level, shooter);
+                ShotgunPellet pellet = new ShotgunPellet(shooter.getX(), shooter.getY() + 1.0, shooter.getZ(), level, shooter);
                 pellet.shoot(look.x, look.y, look.z, velocity, inaccuracy);
                 level.addFreshEntity(pellet);
             }

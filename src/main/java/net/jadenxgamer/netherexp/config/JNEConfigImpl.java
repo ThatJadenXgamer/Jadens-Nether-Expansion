@@ -291,6 +291,9 @@ public class JNEConfigImpl {
                             +0.04 on Hard
                             """)
                     .define("manoeuvrabilityAffectedByDifficulty", true);
+            WILL_O_WISP_WIND_PROPULSION = builder
+                    .comment("When a will o' wisp is hit with a wind charge it'll accelerate the its speed and manoeuvrability greatly")
+                    .define("willOWispWindPropulsion", true);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);

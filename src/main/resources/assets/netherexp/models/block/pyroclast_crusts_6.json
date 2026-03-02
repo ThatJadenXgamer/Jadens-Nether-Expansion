@@ -1,0 +1,20 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "netherexp:block/pyroclast_crusts",
+		"particle": "netherexp:block/pyroclast"
+	},
+	"elements": [
+		{
+			"from": [-1, 0, -1],
+			"to": [17, 0, 17],
+			"faces": {
+				"up": {"uv": [10.3125, 5.3125, 14.75, 9.75], "texture": "#0"},
+				"down": {"uv": [0, 0, 4, 4], "rotation": 270, "texture": "#0", "cullface": "down"}
+			}
+		}
+	]
+}

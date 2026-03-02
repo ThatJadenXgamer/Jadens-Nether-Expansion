@@ -111,10 +111,7 @@
   "item.netherexp.nether_pizza_slice": "Nether Pizza Slice",
 
   "enchantment.netherexp.phantasm_hull": "Phantasm Hull",
-  "enchantment.netherexp.cartridge": "Cartridge",
   "enchantment.netherexp.recoil": "Recoil",
-  "enchantment.netherexp.barrage": "Barrage",
-  "enchantment.netherexp.artemis": "Artemis",
 
   "block.netherexp.soul_slate": "Soul Slate",
   "block.netherexp.pale_soul_slate": "Pale Soul Slate",
@@ -626,6 +623,14 @@
   "advancements.nether.involuntary_eviction.description": "Forcefully remove a wisp out of ecto soul sand by brushing it",
   "advancements.nether.99_blue_balloons.title": "99 Blue Balloons",
   "advancements.nether.99_blue_balloons.description": "Leash an apparition and have fun with your new sentient balloon",
+  "block.netherexp.pyroclast_crusts": "Pyroclast Crusts",
+  "block.netherexp.pyroclast": "Pyroclast",
+  "block.netherexp.pyroclast_slab": "Pyroclast Slab",
+  "block.netherexp.pyroclast_stairs": "Pyroclast Stairs",
+  "block.netherexp.pyroclast_wall": "Pyroclast Wall",
+  "enchantment.netherexp.volley": "Volley",
+  "enchantment.netherexp.longshot": "Longshot",
+  "enchantment.netherexp.counterforce": "Counterforce",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",
@@ -706,6 +711,7 @@
   "netherexp.configuration.genericWillOWispManoeuvrability": "Generic Will O' Wisp Manoeuvrability",
   "netherexp.configuration.bansheeWillOWispManoeuvrability": "Banshee Will O' Wisp Manoeuvrability",
   "netherexp.configuration.manoeuvrabilityAffectedByDifficulty": "Manoeuvrability Affected By Difficulty",
+  "netherexp.configuration.willOWispWindPropulsion": "Will O' Wisp Wind Propulsion",
   "netherexp.configuration.vesselUnleashingOdds": "Vessel Unleashing Odds",
   "netherexp.configuration.stampedeUnleashingOdds": "Stampede Unleashing Odds",
   "netherexp.configuration.bansheeUnleashingOdds": "Banshee Unleashing Odds",

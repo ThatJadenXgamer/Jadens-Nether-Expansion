@@ -140,7 +140,7 @@ public class JNEBlocks {
             new SuspiciousSoulSandBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_SAND).randomTicks().speedFactor(0.2f).strength(0.25f).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND)));
 
     public static final Supplier<Block> SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block", () ->
-            new SoulMagmaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+            new SoulMagmaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(0.5f).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
                     .isValidSpawn((state, level, pos, entity) -> entity.fireImmune()).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
 
     public static final Supplier<Block> SOUL_SOIL_LAYER = registerBlock("soul_soil_layer", () ->
@@ -718,6 +718,9 @@ public class JNEBlocks {
 
     public static final Supplier<Block> VERDANT_FROGMIST = registerBlockWithoutItem("verdant_frogmist", () ->
             new FrogmistBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.OCHRE_FROGMIST.get())));
+
+    public static final Supplier<Block> PYROCLAST_CRUSTS = registerBlockWithoutItem("pyroclast_crusts", () ->
+            new PyroclastCrustsBlock(BlockBehaviour.Properties.of().strength(0.5f, 1.5f).noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT)));
 
     public static void init(IEventBus eventBus) {
         registerAliases();

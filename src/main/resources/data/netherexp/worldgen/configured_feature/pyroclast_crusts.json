@@ -1,0 +1,279 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 96,
+    "xz_spread": 3,
+    "y_spread": 3,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "1",
+                    "facing": "north"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "1",
+                    "facing": "east"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "1",
+                    "facing": "south"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "1",
+                    "facing": "west"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "2",
+                    "facing": "north"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "2",
+                    "facing": "east"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "2",
+                    "facing": "south"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "2",
+                    "facing": "west"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "3",
+                    "facing": "north"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "3",
+                    "facing": "east"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "3",
+                    "facing": "south"
+                  }
+                }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "3",
+                    "facing": "west"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "4",
+                    "facing": "north"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "4",
+                    "facing": "east"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "4",
+                    "facing": "south"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "4",
+                    "facing": "west"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "5",
+                    "facing": "north"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "5",
+                    "facing": "east"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "5",
+                    "facing": "south"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "5",
+                    "facing": "west"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "6",
+                    "facing": "north"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "6",
+                    "facing": "east"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "6",
+                    "facing": "south"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "netherexp:pyroclast_crusts",
+                  "Properties": {
+                    "crusts": "6",
+                    "facing": "west"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:air"
+              },
+              {
+                "type": "minecraft:matching_fluids",
+                "offset": [0, -1, 0],
+                "fluids": "minecraft:lava"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

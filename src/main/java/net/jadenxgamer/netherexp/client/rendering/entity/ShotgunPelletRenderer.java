@@ -6,17 +6,30 @@ import com.mojang.math.Axis;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderType;
 import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
+import net.jadenxgamer.netherexp.core.entity.WillOWisp;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-public class ShotgunPelletRenderer extends ArrowRenderer<ShotgunPellet> {
+public class ShotgunPelletRenderer extends EntityRenderer<ShotgunPellet> {
+    private final ShotgunPelletModel<ShotgunPellet> model;
+
     public ShotgunPelletRenderer(EntityRendererProvider.Context context) {
         super(context);
+        this.model = new ShotgunPelletModel<>(context.bakeLayer(ShotgunPelletModel.LAYER));
     }
 
     @Override
@@ -24,44 +37,69 @@ public class ShotgunPelletRenderer extends ArrowRenderer<ShotgunPellet> {
         return NetherExp.id("textures/entity/projectiles/shotgun_pellet.png");
     }
 
+    @Override
     public void render(ShotgunPellet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot()) - 90.0F));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, entity.xRotO, entity.getXRot())));
-        float p = (float)entity.shakeTime - partialTicks;
-        if (p > 0.0F) {
-            float q = -Mth.sin(p * 3.0F) * p;
-            poseStack.mulPose(Axis.ZP.rotationDegrees(q));
-        }
+        poseStack.translate(0.0f, 1.65f, 0.0f);
 
-        poseStack.mulPose(Axis.XP.rotationDegrees(45.0F));
-        poseStack.scale(0.05625F, 0.05625F, 0.05625F);
-        poseStack.translate(-4.0F, 0.0F, 0.0F);
-        VertexConsumer vertexConsumer = buffer.getBuffer(JNERenderType.noShadeEntityCutout(this.getTextureLocation(entity)));
-        PoseStack.Pose pose = poseStack.last();
-        this.vertex(pose, vertexConsumer, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, packedLight);
-        this.vertex(pose, vertexConsumer, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, packedLight);
-        this.vertex(pose, vertexConsumer, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, packedLight);
-        this.vertex(pose, vertexConsumer, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, packedLight);
-        this.vertex(pose, vertexConsumer, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, packedLight);
-        this.vertex(pose, vertexConsumer, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, packedLight);
-        this.vertex(pose, vertexConsumer, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, packedLight);
-        this.vertex(pose, vertexConsumer, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, packedLight);
+        poseStack.mulPose(Axis.XP.rotationDegrees(-180));
 
-        for(int r = 0; r < 4; ++r) {
-            poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-            this.vertex(pose, vertexConsumer, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, packedLight);
-            this.vertex(pose, vertexConsumer, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, packedLight);
-            this.vertex(pose, vertexConsumer, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, packedLight);
-            this.vertex(pose, vertexConsumer, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, packedLight);
+        Vec3 velocity = entity.getDeltaMovement();
+        float yaw, pitch;
+        if (velocity.lengthSqr() < 1.0e-4) {
+            yaw = entity.getYRot();
+            pitch = entity.getXRot();
+        } else {
+            double vx = velocity.x;
+            double vy = velocity.y;
+            double vz = velocity.z;
+            double horizontal = Math.sqrt(vx * vx + vz * vz);
+
+            if (horizontal < 1.0e-7) yaw = 0.0f;
+            else yaw = (float) Math.toDegrees(Math.atan2(-vx, vz));
+
+            pitch = (float) -Math.toDegrees(Math.atan2(vy, horizontal));
         }
+        poseStack.mulPose(Axis.YP.rotationDegrees(yaw));
+        poseStack.mulPose(Axis.XP.rotationDegrees(pitch));
+
+        VertexConsumer vertexConsumer = buffer.getBuffer(JNERenderType.noShadeEntityCutoutNoCull(this.getTextureLocation(entity)));
+        this.model.renderToBuffer(poseStack, vertexConsumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
 
         poseStack.popPose();
-        super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 
     @Override
     protected int getBlockLightLevel(ShotgunPellet entity, BlockPos pos) {
         return 15;
+    }
+
+    public static class ShotgunPelletModel<T extends ShotgunPellet> extends EntityModel<T> {
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("shotgun_pellet"), "main");
+        private final ModelPart main;
+
+        public ShotgunPelletModel(ModelPart root) {
+            this.main = root.getChild("main");
+        }
+
+        public static LayerDefinition createBodyLayer() {
+            MeshDefinition meshdefinition = new MeshDefinition();
+            PartDefinition partdefinition = meshdefinition.getRoot();
+
+            PartDefinition main = partdefinition.addOrReplaceChild("main", CubeListBuilder.create().texOffs(0, 0).addBox(-1.5F, -1.5F, -8.0F, 3.0F, 3.0F, 12.0F, new CubeDeformation(0.0F))
+                    .texOffs(0, 15).addBox(-1.5F, -1.5F, 4.0F, 3.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.5F, 0.0F));
+
+            return LayerDefinition.create(meshdefinition, 64, 64);
+        }
+
+        @Override
+        public void setupAnim(ShotgunPellet entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+
+        }
+
+        @Override
+        public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
+            main.render(poseStack, buffer, packedLight, packedOverlay);
+        }
     }
 }

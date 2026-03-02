@@ -18,6 +18,7 @@
     "client.IClientFluidTypeExtensionsMixin",
     "entity.AbstractArrowMixin",
     "entity.BlockEntityTypeMixin",
+    "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
     "worldgen.NetherWorldCarverMixin"
   ],

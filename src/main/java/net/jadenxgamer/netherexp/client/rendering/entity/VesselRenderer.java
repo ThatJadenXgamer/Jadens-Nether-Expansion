@@ -2,8 +2,10 @@ package net.jadenxgamer.netherexp.client.rendering.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.entity.Vessel;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
@@ -21,6 +23,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselModel<Vessel>> {
@@ -32,7 +35,17 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
 
     @Override
     public void render(Vessel entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        if (entity.isDoom()) {
+            Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
+            double dx = cameraPos.x - entity.getX();
+            double dz = cameraPos.z - entity.getZ();
+            float yRot = (float) (Math.atan2(dx, dz) * 180.0 / Math.PI);
+            poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
+            poseStack.scale(1.0F, 1.0F, 0.01F);
+            super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        } else {
+            super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        }
     }
 
     @Override

@@ -35,6 +35,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.Set;
 
 public class Vessel extends PossessedMob implements RangedAttackMob {
     public final AnimationState idleAnimation = new AnimationState();
@@ -44,6 +45,11 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     public final AnimationState blinkAnimation = new AnimationState();
 
     private static final EntityDataAccessor<Boolean> IS_DOOM = SynchedEntityData.defineId(Vessel.class, EntityDataSerializers.BOOLEAN);
+    private static final Set<String> DOOM_VALID_NAMES = Set.of(
+            "DOOM",
+            "ShotgunGuy",
+            "Shotgun Guy"
+    );
     private int idleAnimationTimeout = 0;
     private int prepareAimAnimationTimeout = 20;
     private boolean isAiming = false;
@@ -76,20 +82,26 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
     }
 
+    // don't use this method :goog:
     @Override
     public void performRangedAttack(LivingEntity target, float velocity) {
+        performRangedAttack(target.position());
+    }
+
+    public void performRangedAttack(Vec3 fireDirection) {
         SoundEvent fireSound = getFireSound();
         this.level().playSound(null, this.getX(), this.getY(), this.getZ(), fireSound, this.getSoundSource(), 1.0F, 1.0F);
         int count = Mth.nextInt(this.level().random, JNEConfigs.MIN_VESSEL_BULLETS.get(), JNEConfigs.MAX_VESSEL_BULLETS.get());
         Vec3 lookVector = this.getLookAngle();
-        double xVector = target.getX() - this.getX();
-        double zVector = target.getZ() - this.getZ();
+        double xVector = fireDirection.x - this.getX();
+        double zVector = fireDirection.z - this.getZ();
         for (int i = 0; i < count; i++) {
             ShotgunPellet soulBullet = new ShotgunPellet(this.getX(), this.getY() + 1.5, this.getZ(), this.level(), this);
             soulBullet.shoot(xVector, lookVector.y, zVector, 1.0F, 16);
             this.level().addFreshEntity(soulBullet);
         }
     }
+
 
     @Override
     public void tick() {
@@ -144,7 +156,8 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     @Override
     public void setCustomName(@Nullable Component name) {
         super.setCustomName(name);
-        var doomValidNames = name != null && (name.getString().equals("ShotgunGuy") || name.getString().equals("Shotgun Guy") || name.getString().equals("DOOM"));
+        var doomValidNames = name != null && DOOM_VALID_NAMES.stream()
+                .anyMatch(validName -> validName.equalsIgnoreCase(name.getString()));
         if (!this.isDoom() && doomValidNames) setDoom(true);
     }
 
@@ -155,18 +168,18 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     @Override
     public void handleEntityEvent(byte id) {
         switch (id) {
-            case 51 -> {
+            case 81 -> {
                 prepareAimAnimationTimeout = 20;
                 isAiming = true;
             }
-            case 52 -> {
+            case 82 -> {
                 prepareAimAnimation.stop();
                 aimAnimation.stop();
                 prepareAimAnimationTimeout = 20;
                 isAiming = false;
             }
-            case 53 -> isShooting = true;
-            case 54 -> {
+            case 83 -> isShooting = true;
+            case 84 -> {
                 isShooting = false;
                 shootAnimation.stop();
             }
@@ -217,6 +230,11 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         return this.isDoom() ? JNESoundEvents.SHOTGUN_GUY_AMBIENT.get() : JNESoundEvents.VESSEL_AMBIENT.get();
     }
 
+    protected void playWarnSound() {
+        if (this.isDoom()) return;
+        level().playSound(null, this.blockPosition(), JNESoundEvents.VESSEL_WARN.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
+    }
+
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
@@ -249,6 +267,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         private boolean strafingClockwise;
         private boolean strafingBackwards;
         private int strafingTime;
+        private Vec3 targetPos;
 
         private static int ATTACK_INTERVAL = JNEConfigs.VESSEL_ATTACK_TIME.get();
         private static int START_AIM_AT_TICK = JNEConfigs.VESSEL_SHOOTS_AT_ATTACK_TIME.get();
@@ -282,8 +301,8 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         @Override
         public void stop() {
             this.attackTime = ATTACK_INTERVAL;
-            vessel.level().broadcastEntityEvent(vessel, (byte) 52); // Stop Aim
-            vessel.level().broadcastEntityEvent(vessel, (byte) 54); // Stop Shoot
+            vessel.level().broadcastEntityEvent(vessel, (byte) 82); // Stop Aim
+            vessel.level().broadcastEntityEvent(vessel, (byte) 84); // Stop Shoot
             this.finished = false;
             this.seeTime = 0;
         }
@@ -308,30 +327,36 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
                 ++this.seeTime;
             } else --this.seeTime;
 
-            if (!(distanceFromTarget > getFollowDistance()) && this.seeTime >= 20) {
+            if (this.attackTime > SHOOT_AT_TICK) {
+                if (!(distanceFromTarget > getFollowDistance()) && this.seeTime >= 20) {
+                    this.vessel.getNavigation().stop();
+                    ++this.strafingTime;
+                } else {
+                    this.vessel.getNavigation().moveTo(target, 1.0);
+                    this.strafingTime = -1;
+                }
+
+                if (this.strafingTime >= 20) {
+                    if (this.vessel.getRandom().nextFloat() < 0.3) this.strafingClockwise = !this.strafingClockwise;
+                    if (this.vessel.getRandom().nextFloat() < 0.3) this.strafingBackwards = !this.strafingBackwards;
+                    this.strafingTime = 0;
+                }
+
+                if (this.strafingTime > -1) {
+                    if (distanceFromTarget > attackRadius * 0.75F) this.strafingBackwards = false;
+                    else if (distanceFromTarget < attackRadius * 0.25F) this.strafingBackwards = true;
+
+                    this.vessel.getMoveControl().strafe(this.strafingBackwards ? -0.5F : 0.5F, this.strafingClockwise ? 0.5F : -0.5F);
+                    Entity vehicle = this.vessel.getControlledVehicle();
+                    if (vehicle instanceof Mob vehicleMob) vehicleMob.lookAt(target, 30.0F, 30.0F);
+
+                    this.vessel.lookAt(target, 30.0F, 30.0F);
+                } else {
+                    this.vessel.getLookControl().setLookAt(target, 30.0F, 30.0F);
+                }
+            } else {
                 this.vessel.getNavigation().stop();
-                ++this.strafingTime;
-            } else {
-                this.vessel.getNavigation().moveTo(target, 1.0);
-                this.strafingTime = -1;
-            }
-
-            if (this.strafingTime >= 20) {
-                if (this.vessel.getRandom().nextFloat() < 0.3) this.strafingClockwise = !this.strafingClockwise;
-                if (this.vessel.getRandom().nextFloat() < 0.3) this.strafingBackwards = !this.strafingBackwards;
-                this.strafingTime = 0;
-            }
-
-            if (this.strafingTime > -1) {
-                if (distanceFromTarget > attackRadius * 0.75F) this.strafingBackwards = false;
-                else if (distanceFromTarget < attackRadius * 0.25F) this.strafingBackwards = true;
-
-                this.vessel.getMoveControl().strafe(this.strafingBackwards ? -0.5F : 0.5F, this.strafingClockwise ? 0.5F : -0.5F);
-                Entity vehicle = this.vessel.getControlledVehicle();
-                if (vehicle instanceof Mob vehicleMob) vehicleMob.lookAt(target, 30.0F, 30.0F);
-
-                this.vessel.lookAt(target, 30.0F, 30.0F);
-            } else {
+                this.vessel.stopInPlace();
                 this.vessel.getLookControl().setLookAt(target, 30.0F, 30.0F);
             }
 
@@ -339,14 +364,15 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
                 if (this.attackTime > (SHOOT_AT_TICK + 10)) {
                     if (hasSight) --this.attackTime;
                 } else --this.attackTime;
+                if (this.attackTime > (SHOOT_AT_TICK + 2)) targetPos = target.position();
 
                 // switch cases cannot be used since the constant is a runtime-evaluated expression 🥀 🥀 🥀
-                if (this.attackTime == START_AIM_AT_TICK) vessel.level().broadcastEntityEvent(vessel, (byte) 51); // Start Aim
-                if (this.attackTime == WARN_AT_TICK) vessel.level().playSound(null, vessel.blockPosition(), JNESoundEvents.VESSEL_WARN.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
+                if (this.attackTime == START_AIM_AT_TICK) vessel.level().broadcastEntityEvent(vessel, (byte) 81); // Start Aim
+                if (this.attackTime == WARN_AT_TICK) vessel.playWarnSound();
                 if (this.attackTime == SHOOT_AT_TICK) {
-                    vessel.level().broadcastEntityEvent(vessel, (byte) 52); // Stop Aim
-                    vessel.level().broadcastEntityEvent(vessel, (byte) 53); // Start Shoot
-                    vessel.performRangedAttack(target, 1.0f);
+                    vessel.level().broadcastEntityEvent(vessel, (byte) 82); // Stop Aim
+                    vessel.level().broadcastEntityEvent(vessel, (byte) 83); // Start Shoot
+                    vessel.performRangedAttack(targetPos);
                 }
                 if (this.attackTime == 0) this.finished = true;
             }

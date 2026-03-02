@@ -1,0 +1,99 @@
+{
+  "variants": {
+    "crusts=1,facing=north": {
+      "model": "netherexp:block/pyroclast_crusts_1"
+    },
+    "crusts=1,facing=east": {
+      "model": "netherexp:block/pyroclast_crusts_1",
+      "y": 90
+    },
+    "crusts=1,facing=south": {
+      "model": "netherexp:block/pyroclast_crusts_1",
+      "y": 180
+    },
+    "crusts=1,facing=west": {
+      "model": "netherexp:block/pyroclast_crusts_1",
+      "y": 270
+    },
+
+    "crusts=2,facing=north": {
+      "model": "netherexp:block/pyroclast_crusts_2"
+    },
+    "crusts=2,facing=east": {
+      "model": "netherexp:block/pyroclast_crusts_2",
+      "y": 90
+    },
+    "crusts=2,facing=south": {
+      "model": "netherexp:block/pyroclast_crusts_2",
+      "y": 180
+    },
+    "crusts=2,facing=west": {
+      "model": "netherexp:block/pyroclast_crusts_2",
+      "y": 270
+    },
+
+    "crusts=3,facing=north": {
+      "model": "netherexp:block/pyroclast_crusts_3"
+    },
+    "crusts=3,facing=east": {
+      "model": "netherexp:block/pyroclast_crusts_3",
+      "y": 90
+    },
+    "crusts=3,facing=south": {
+      "model": "netherexp:block/pyroclast_crusts_3",
+      "y": 180
+    },
+    "crusts=3,facing=west": {
+      "model": "netherexp:block/pyroclast_crusts_3",
+      "y": 270
+    },
+
+    "crusts=4,facing=north": {
+      "model": "netherexp:block/pyroclast_crusts_4"
+    },
+    "crusts=4,facing=east": {
+      "model": "netherexp:block/pyroclast_crusts_4",
+      "y": 90
+    },
+    "crusts=4,facing=south": {
+      "model": "netherexp:block/pyroclast_crusts_4",
+      "y": 180
+    },
+    "crusts=4,facing=west": {
+      "model": "netherexp:block/pyroclast_crusts_4",
+      "y": 270
+    },
+    
+    "crusts=5,facing=north": {
+      "model": "netherexp:block/pyroclast_crusts_5"
+    },
+    "crusts=5,facing=east": {
+      "model": "netherexp:block/pyroclast_crusts_5",
+      "y": 90
+    },
+    "crusts=5,facing=south": {
+      "model": "netherexp:block/pyroclast_crusts_5",
+      "y": 180
+    },
+    "crusts=5,facing=west": {
+      "model": "netherexp:block/pyroclast_crusts_5",
+      "y": 270
+    },
+    
+    "crusts=6,facing=north": {
+      "model": "netherexp:block/pyroclast_crusts_6"
+    },
+    "crusts=6,facing=east": {
+      "model": "netherexp:block/pyroclast_crusts_6",
+      "y": 90
+    },
+    "crusts=6,facing=south": {
+      "model": "netherexp:block/pyroclast_crusts_6",
+      "y": 180
+    },
+    "crusts=6,facing=west": {
+      "model": "netherexp:block/pyroclast_crusts_6",
+      "y": 270
+    }
+  }
+}

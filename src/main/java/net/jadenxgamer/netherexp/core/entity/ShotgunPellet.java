@@ -38,12 +38,6 @@ public class ShotgunPellet extends AbstractArrow {
         this.setOwner(owner);
     }
 
-    public ShotgunPellet(Vec3 look, Level level, LivingEntity owner) {
-        this(JNEEntityType.SHOTGUN_PELLET.get(), level);
-        this.setPos(look.x, look.y, look.z);
-        this.setOwner(owner);
-    }
-
     @Override
     protected ItemStack getDefaultPickupItem() {
         return ItemStack.EMPTY;

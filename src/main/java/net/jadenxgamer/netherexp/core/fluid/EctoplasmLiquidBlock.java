@@ -70,7 +70,6 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
 
     private void rayParticle(Level level, RandomSource random, double x, double y,double z) {
         Minecraft client = Minecraft.getInstance();
-        Camera camera = client.gameRenderer.getMainCamera();
         Vec3 direction = new Vec3(0.0, 1.0, 0.0);
         WorldParticleBuilder.create(JNEParticleTypes.ECTOPLASM_RAYS.get())
                 .setFullBrightLighting()

@@ -96,7 +96,7 @@ public class JNEItems {
             new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
 
     public static final Supplier<Item> SHOTGUN_FIST = ITEMS.register("shotgun_fist", () ->
-            new Item(new Item.Properties().stacksTo(1).durability(512).fireResistant().rarity(Rarity.RARE)));
+            new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(512).fireResistant().rarity(Rarity.RARE)));
 
     public static final Supplier<Item> PUMP_CHARGE_SHOTGUN = ITEMS.register("pump_charge_shotgun", () ->
             new Item(new Item.Properties().stacksTo(1).durability(640).fireResistant().rarity(Rarity.EPIC)));
@@ -193,6 +193,9 @@ public class JNEItems {
 
     public static final Supplier<Item> VERDANT_FROGMIST = ITEMS.register("verdant_frogmist", () ->
             new PlaceOnWaterBlockItem(JNEBlocks.VERDANT_FROGMIST.get(), new Item.Properties()));
+
+    public static final Supplier<Item> PYROCLAST_CRUSTS = ITEMS.register("pyroclast_crusts", () ->
+            new PlaceOnWaterBlockItem(JNEBlocks.PYROCLAST_CRUSTS.get(), new Item.Properties()));
     
     /**
      * Artifacts

@@ -232,8 +232,8 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
                 convertTo.finalizeSpawn(level, this.level().getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.CONVERSION, null);
                 if (entity.hasCustomName()) convertTo.setCustomName(entity.getCustomName());
                 if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()));
-                this.level().broadcastEntityEvent(this, (byte) 77);
-                this.level().broadcastEntityEvent(convertTo, (byte) 77);
+                this.level().broadcastEntityEvent(this, (byte) 92);
+                this.level().broadcastEntityEvent(convertTo, (byte) 92);
                 level().playSound(null, convertTo.blockPosition(), JNESoundEvents.APPARITION_POSSESSION.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
                 this.discard();
 
@@ -415,14 +415,14 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
         public void tick() {
             super.tick();
             if (this.isReachedTarget()) {
-                this.apparition.level().broadcastEntityEvent(apparition, (byte) 77);
+                this.apparition.level().broadcastEntityEvent(apparition, (byte) 92);
                 this.apparition.level().playSound(null, apparition.blockPosition(), JNESoundEvents.APPARITION_POSSESSION.get(), SoundSource.HOSTILE, 1.0f, 1.0f);
                 var convertTo = apparition.convertTo(this.possession, false);
                 if (convertTo != null && apparition.level() instanceof ServerLevel serverLevel) {
                     convertTo.finalizeSpawn(serverLevel, apparition.level().getCurrentDifficultyAt(apparition.blockPosition()), MobSpawnType.CONVERSION, null);
                     if (apparition.hasCustomName()) convertTo.setCustomName(apparition.getCustomName());
                     if (convertTo instanceof PossessedMob) ((PossessedMob) convertTo).setPossessionOf((String) null);
-                    this.apparition.level().broadcastEntityEvent(convertTo, (byte) 77);
+                    this.apparition.level().broadcastEntityEvent(convertTo, (byte) 92);
                 }
             }
         }

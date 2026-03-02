@@ -7,6 +7,10 @@ import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.AdvancementGranter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SoundInstance;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.AnimationState;
@@ -14,12 +18,15 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
@@ -33,13 +40,11 @@ import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
 
 public class WillOWisp extends ThrowableItemProjectile {
     private static final float INITIAL_SPEED_BPS = 0.1f; // the blocks per second it starts at
-    private static final float MAX_SPEED_BPS = 16.0f; // the maximum blocks pet second it can speed up to
+    private static final float MAX_SPEED_BPS = 16.0f; // the maximum blocks per second it can speed up to
+    private static final float WIND_PROPELLED_SPEED_BPS = 26.0f; // the maximum blocks per second when hit with a wind charge
     private static final float ACCELERATION_TIME = 5.0f; // the rate of acceleration for it to go from initial -> max
     private static final float VELOCITY_SMOOTHING = 0.3f; // smoothing of movement velocity
     private static final int MAX_LIFETIME_TICKS = 300; // pretty self-explanatory
-
-    private static final float INITIAL_SPEED_PER_TICK = INITIAL_SPEED_BPS / 20.0f;
-    private static final float MAX_SPEED_PER_TICK = MAX_SPEED_BPS / 20.0f;
 
     // the turn curve changes depending on acceleration time to ensure the particle is still like somewhat accurate regardless of speed
     private static final float[][] BASE_TURN_CURVE = {
@@ -73,6 +78,8 @@ public class WillOWisp extends ThrowableItemProjectile {
     private double distanceSinceLastParticle = 0.0;
     private boolean particleTrailInitialized = false;
     private float manoeuvrability = ((float) JNEConfigs.GENERIC_WILL_O_WISP_MANEUVERABILITY.getAsDouble());
+    private static final EntityDataAccessor<Boolean> WIND_PROPELLED = SynchedEntityData.defineId(WillOWisp.class, EntityDataSerializers.BOOLEAN);
+
 
     public WillOWisp(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
         super(entityType, level);
@@ -81,7 +88,7 @@ public class WillOWisp extends ThrowableItemProjectile {
     }
 
     public WillOWisp(LivingEntity shooter, Level level, LivingEntity target) {
-        this(shooter, level, target, shooter.getX(), shooter.getY(), shooter.getZ(), 3);
+        this(shooter, level, target, shooter.getX(), shooter.getY() + 1, shooter.getZ(), 3);
     }
 
     public WillOWisp(LivingEntity shooter, Level level, LivingEntity target, double x, double y, double z, int damage) {
@@ -97,14 +104,21 @@ public class WillOWisp extends ThrowableItemProjectile {
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 40) impactParticle(this.level(), this.position());
+        if (id == 41) level().addParticle(ParticleTypes.GUST, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         super.handleEntityEvent(id);
     }
 
     private void initialize() {
-        this.currentSpeed = INITIAL_SPEED_PER_TICK;
+        this.currentSpeed = (INITIAL_SPEED_BPS / 20.0f);
         this.currentDirection = new Vec3(1, 0, 0);
         this.smoothedDirection = this.currentDirection;
         this.particleTrailInitialized = false;
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WIND_PROPELLED, false);
     }
 
     private void initializeDirection(LivingEntity shooter) {
@@ -144,10 +158,16 @@ public class WillOWisp extends ThrowableItemProjectile {
         super.tick();
         if (this.getOwner() != null && !this.getOwner().isAlive()) this.impact(this.position());
 
-        float ageInSeconds = tickCount / 20.0f;
-        float accelerationRate = (MAX_SPEED_PER_TICK - INITIAL_SPEED_PER_TICK) / (ACCELERATION_TIME * 20);
+        if (this.entityData.get(WIND_PROPELLED)) {
+            this.currentSpeed = (WIND_PROPELLED_SPEED_BPS / 20.0f);
+            if (this.tickCount % 4 == 0) windTrailParticle(level(), this.getX(), this.getY(), this.getZ());
+        } else {
+            checkWindChargeCollision();
+            float ageInSeconds = tickCount / 20.0f;
+            float accelerationRate = ((MAX_SPEED_BPS / 20.0f) - (INITIAL_SPEED_BPS / 20)) / (ACCELERATION_TIME * 20);
+            if (ageInSeconds < ACCELERATION_TIME) currentSpeed = Math.min(currentSpeed + accelerationRate, (MAX_SPEED_BPS / 20.0f));
+        }
 
-        if (ageInSeconds < ACCELERATION_TIME) currentSpeed = Math.min(currentSpeed + accelerationRate, MAX_SPEED_PER_TICK);
         if (this.target != null && this.target.isAlive()) updateDirection();
 
         Vec3 targetVelocity = this.smoothedDirection.scale(this.currentSpeed);
@@ -163,6 +183,22 @@ public class WillOWisp extends ThrowableItemProjectile {
             if (WILL_O_WISP_SOUNDS.get()) updateSound();
             loopAnimation.startIfStopped(this.tickCount);
         } else if (tickCount > MAX_LIFETIME_TICKS) this.impact(this.position());
+    }
+
+    private void checkWindChargeCollision() {
+        if (this.level().isClientSide()) return;
+        AABB box = this.getBoundingBox().inflate(0.1);
+        List<WindCharge> windCharges = this.level().getEntitiesOfClass(WindCharge.class, box);
+        for (WindCharge windCharge : windCharges) {
+            if (windCharge.isAlive()) {
+                this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
+                        SoundEvents.WIND_CHARGE_BURST, SoundSource.NEUTRAL, 1f, 1f);
+                this.level().broadcastEntityEvent(this, (byte) 41);
+                this.entityData.set(WIND_PROPELLED, true);
+                windCharge.discard();
+                break;
+            }
+        }
     }
 
     private void updateProjectileRotation() {
@@ -205,12 +241,21 @@ public class WillOWisp extends ThrowableItemProjectile {
         if (desiredDirection.lengthSqr() < 0.001) return;
 
         desiredDirection = desiredDirection.normalize();
-        float turnFactor = calculateTurnFactor(tickCount / 20.0f);
+
+        float turnFactor;
+        float effectiveManoeuvrability;
+        if (this.entityData.get(WIND_PROPELLED)) {
+            turnFactor = 0.95f;
+            effectiveManoeuvrability = 1.0f;
+        } else {
+            turnFactor = calculateTurnFactor(tickCount / 20.0f);
+            effectiveManoeuvrability = this.manoeuvrability;
+        }
 
         this.currentDirection = currentDirection.scale(1.0f - turnFactor)
                 .add(desiredDirection.scale(turnFactor)).normalize();
-        this.smoothedDirection = smoothedDirection.scale(1.0f - manoeuvrability)
-                .add(currentDirection.scale(manoeuvrability)).normalize();
+        this.smoothedDirection = smoothedDirection.scale(1.0f - effectiveManoeuvrability)
+                .add(currentDirection.scale(effectiveManoeuvrability)).normalize();
     }
 
     private float calculateTurnFactor(float time) {
@@ -232,6 +277,7 @@ public class WillOWisp extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         Entity entity = result.getEntity();
+        if (entity instanceof WindCharge) return; // Sometimes the wind-charge if hit just right breaks the will o' wisp. this prevents that
         if (entity instanceof LivingEntity living) {
             if (wasRedirected(living)) {
                 switch (BANSHEE_REDIRECT_STUNS.get()) {
@@ -279,6 +325,18 @@ public class WillOWisp extends ThrowableItemProjectile {
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
                 .setLifetime(10)
                 .enableNoClip()
+                .spawn(level, x, y, z);
+    }
+
+    private void windTrailParticle(Level level, double x, double y, double z) {
+        if (!level.isClientSide()) return;
+        WorldParticleBuilder.create(JNEParticleTypes.WIND_TRAIL.get())
+                .setFullBrightLighting()
+                .setScaleData(GenericParticleData.create(0.2f, 0.6f).setEasing(Easing.SINE_OUT).build())
+                .setTransparencyData(GenericParticleData.create(0.3f, 0.0f).build())
+                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                .setLifetime(20)
+                .disableNoClip()
                 .spawn(level, x, y, z);
     }
 

@@ -1,0 +1,22 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.netherexp.longshot"
+  },
+  "min_cost": {
+    "base": 12,
+    "per_level_above_first": 8
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 8
+  },
+  "max_level": 2,
+  "slots": [
+    "mainhand",
+    "offhand"
+  ],
+  "primary_items": "#netherexp:enchantable/shotgun",
+  "supported_items": "#netherexp:enchantable/shotgun",
+  "weight": 5
+}
