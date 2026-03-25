@@ -174,14 +174,32 @@ public class JNEConfigImpl {
                              "If disabled then the disc is obtained by redirecting a fireball into a ghast like in vanilla")
                     .worldRestart()
                     .define("tweakObtainingTearsMusicDisc", true);
+            SHOTGUN_SELF_RECOIL = builder
+                    .comment("The amount of self-pushback experienced upon firing a shotgun\n" +
+                            "Enchantments can influence the final total of bullets fired")
+                    .defineInRange("shotgunSelfRecoil", 0.3, 0.0, Double.MAX_VALUE);
+            POINT_BLANK_SELF_RECOIL_BONUS = builder
+                    .comment("The amount of additional self-recoil gained from hitting a target point-blank")
+                    .defineInRange("pointBlankSelfRecoilBonus", 0.45, 0.0, Double.MAX_VALUE);
+            POINT_BLANK_SELF_RECOIL_DISTANCE = builder
+                    .comment("How close you need to be to a target in blocks to get a point-blank self recoil bonus")
+                    .defineInRange("pointBlankSelfRecoilDistance", 2.5, 0.0, Double.MAX_VALUE);
             SHOTGUN_FIST_BULLETS = builder
                     .comment("The base amount of shotgun pellets fired from a shotgun-fist\n" +
                             "Enchantments can influence the final total of bullets fired")
                     .defineInRange("shotgunFistBullets", 25, 0, Integer.MAX_VALUE);
+            SHOTGUN_FIST_COOLDOWN = builder
+                    .comment("The base amount of ticks the shotgun-fist will go into cooldown upon firing\n" +
+                            "Enchantments can influence the final total of cooldown")
+                    .defineInRange("shotgunFistCooldown", 40, 0, Integer.MAX_VALUE);
             PUMP_CHARGE_SHOTGUN_BULLETS = builder
                     .comment("The base amount of shotgun pellets fired from a pump-charge shotgun\n" +
                             "Enchantments and pumps can influence the final total of bullets fired")
                     .defineInRange("pumpChargeShotgunBullets", 10, 0, Integer.MAX_VALUE);
+            PUMP_CHARGE_SHOTGUN_COOLDOWN = builder
+                    .comment("The base amount of ticks the pump-charge shotgun will go into cooldown upon firing\n" +
+                            "Enchantments can influence the final total of cooldown")
+                    .defineInRange("pumpChargeShotgunCooldown", 40, 0, Integer.MAX_VALUE);
             WILL_O_WISP_STACK_SIZE = builder
                     .comment("The number of will o' wisps that can be stored in a single stack")
                     .defineInRange("willOWispStackSize", 64, 1, 99);
@@ -249,6 +267,9 @@ public class JNEConfigImpl {
                     .comment("At the specified attack time the vessel will take aim preparing to fire \n" +
                             "This value cannot go any lower than 50 to prevent animation issues")
                     .defineInRange("vesselShootsAtAttackTime", 100, 50, Integer.MAX_VALUE);
+            VESSEL_ACCURATE_DISTANCE = builder
+                    .comment("When a target is at or closer to the specified distance in blocks the vessel's aim will be more accurate and will almost always hit a perfect point-blank")
+                    .defineInRange("vesselAccurateDistance", 5, 0, Integer.MAX_VALUE);
             BANSHEE_TELEPORTS_AFTER_HIT = builder
                     .comment("Banshees hurt by an entity will try to teleport away to a random spot or their anchor")
                     .define("bansheeTeleportsAfterHit", true);
@@ -427,6 +448,9 @@ public class JNEConfigImpl {
                     .comment("Scale factor that determines how big the perlin noise streaks are")
                     .worldRestart()
                     .defineInRange("LavaGradientNoiseScale", 14.0, Double.MIN_VALUE, Double.MAX_VALUE);
+            SHOTGUN_SCREENSHAKE = builder
+                    .comment("Toggle the screenshake when a shotgun is fired")
+                    .define("shotgunScreenshake", true);
             ENABLE_JNE_SPLASH_TEXTS = builder
                     .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
                     .define("enableJNESplashTexts", true);

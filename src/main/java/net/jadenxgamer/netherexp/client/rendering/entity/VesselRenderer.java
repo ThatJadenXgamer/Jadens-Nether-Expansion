@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.entity.Vessel;
+import net.jadenxgamer.netherexp.util.ParticleHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;
@@ -35,6 +36,7 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
 
     @Override
     public void render(Vessel entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        poseStack.pushPose();
         if (entity.isDoom()) {
             Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
             double dx = cameraPos.x - entity.getX();
@@ -42,10 +44,36 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
             float yRot = (float) (Math.atan2(dx, dz) * 180.0 / Math.PI);
             poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
             poseStack.scale(1.0F, 1.0F, 0.01F);
-            super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        } else {
-            super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
         }
+        super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        poseStack.popPose();
+
+        if (entity.armSmoke && !entity.isDoom()) renderSmokeParticles(entity, partialTicks);
+        if (entity.armFlash && !entity.isDoom()) renderFlashParticles(entity, partialTicks);
+    }
+
+    private void renderSmokeParticles(Vessel entity, float partialTicks) {
+        if (entity.tickCount % 2 != 0) return;
+
+        VesselModel<Vessel> model = this.getModel();
+
+        Vec3 leftPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.left_arm, model.left_arm_anchor);
+        Vessel.cooldownParticle(entity.level(), entity.getRandom(), leftPos.x, leftPos.y, leftPos.z);
+
+        Vec3 rightPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.right_arm, model.right_arm_anchor);
+        Vessel.cooldownParticle(entity.level(), entity.getRandom(), rightPos.x, rightPos.y, rightPos.z);
+    }
+
+    private void renderFlashParticles(Vessel entity, float partialTicks) {
+        VesselModel<Vessel> model = this.getModel();
+
+        Vec3 leftPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.left_arm, model.left_arm_anchor);
+        Vessel.shotgunFlashParticle(entity.level(), entity.getRandom(), leftPos.x, leftPos.y, leftPos.z);
+
+        Vec3 rightPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.right_arm, model.right_arm_anchor);
+        Vessel.shotgunFlashParticle(entity.level(), entity.getRandom(), rightPos.x, rightPos.y, rightPos.z);
+
+        entity.armFlash = false;
     }
 
     @Override
@@ -62,7 +90,9 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
         private final ModelPart collar;
         private final ModelPart eyes;
         private final ModelPart left_arm;
+        private final ModelPart left_arm_anchor;
         private final ModelPart right_arm;
+        private final ModelPart right_arm_anchor;
         private final ModelPart left_leg;
         private final ModelPart right_leg;
 
@@ -74,7 +104,9 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
             this.collar = this.waist.getChild("collar");
             this.eyes = this.collar.getChild("eyes");
             this.left_arm = this.waist.getChild("left_arm");
+            this.left_arm_anchor = this.left_arm.getChild("left_arm_anchor");
             this.right_arm = this.waist.getChild("right_arm");
+            this.right_arm_anchor = this.right_arm.getChild("right_arm_anchor");
             this.left_leg = this.vessel.getChild("left_leg");
             this.right_leg = this.vessel.getChild("right_leg");
         }
@@ -100,8 +132,12 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
             PartDefinition left_arm = waist.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(44, 35).addBox(-1.0F, 6.0F, -2.0F, 4.0F, 11.0F, 4.0F, new CubeDeformation(0.0F))
                     .texOffs(36, 27).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(5.0F, -13.0F, 0.0F));
 
+            PartDefinition left_arm_anchor = left_arm.addOrReplaceChild("left_arm_anchor", CubeListBuilder.create(), PartPose.offset(1.0F, 17.0F, 0.0F));
+
             PartDefinition right_arm = waist.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(28, 35).addBox(-3.0F, 6.0F, -2.0F, 4.0F, 11.0F, 4.0F, new CubeDeformation(0.0F))
                     .texOffs(28, 27).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-5.0F, -13.0F, 0.0F));
+
+            PartDefinition right_arm_anchor = right_arm.addOrReplaceChild("right_arm_anchor", CubeListBuilder.create(), PartPose.offset(-1.0F, 17.0F, 0.0F));
 
             PartDefinition left_leg = vessel.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(8, 60).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 15.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, -14.5F, 0.0F));
 

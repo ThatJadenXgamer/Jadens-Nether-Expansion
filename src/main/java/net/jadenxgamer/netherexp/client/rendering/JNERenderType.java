@@ -15,32 +15,32 @@ public class JNERenderType {
     protected static final RenderStateShard.ShaderStateShard RENDERTYPE_NO_SHADE_ENTITY_CUTOUT_NO_CULL = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeNoShadeEntityCutoutNoCull);
 
     public static final RenderTypeProvider NO_SHADE_ENTITY_CUTOUT = new RenderTypeProvider(token ->
-            LodestoneRenderTypes.createGenericRenderType("no_shade_entity_cutout", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, LodestoneRenderTypes.builder()
+            LodestoneRenderTypes.createGenericRenderType(token, "no_shade_entity_cutout", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, LodestoneRenderTypes.builder()
                     .setShaderState(RENDERTYPE_NO_SHADE_ENTITY_CUTOUT)
                     .setCullState(RenderStateShard.CULL)
                     .setLightmapState(RenderStateShard.LIGHTMAP)
                     .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
-                    .setTextureState(token.get())
+                    .setTextureState(token)
                     .setOverlayState(RenderStateShard.OVERLAY)
             )
     );
 
     public static final RenderTypeProvider NO_SHADE_ENTITY_CUTOUT_NO_CULL = new RenderTypeProvider(token ->
-            LodestoneRenderTypes.createGenericRenderType("no_shade_entity_cutout_no_cull", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, LodestoneRenderTypes.builder()
+            LodestoneRenderTypes.createGenericRenderType(token, "no_shade_entity_cutout_no_cull", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, LodestoneRenderTypes.builder()
                     .setShaderState(RENDERTYPE_NO_SHADE_ENTITY_CUTOUT_NO_CULL)
                     .setCullState(RenderStateShard.NO_CULL)
                     .setLightmapState(RenderStateShard.LIGHTMAP)
                     .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
-                    .setTextureState(token.get())
+                    .setTextureState(token)
                     .setOverlayState(RenderStateShard.OVERLAY)
             )
     );
 
     public static LodestoneRenderType noShadeEntityCutout(ResourceLocation texture) {
-        return NO_SHADE_ENTITY_CUTOUT.apply(RenderTypeToken.createToken(texture));
+        return NO_SHADE_ENTITY_CUTOUT.apply(RenderTypeToken.createToken(texture)).getRenderType();
     }
 
     public static LodestoneRenderType noShadeEntityCutoutNoCull(ResourceLocation texture) {
-        return NO_SHADE_ENTITY_CUTOUT_NO_CULL.apply(RenderTypeToken.createToken(texture));
+        return NO_SHADE_ENTITY_CUTOUT_NO_CULL.apply(RenderTypeToken.createToken(texture)).getRenderType();
     }
 }

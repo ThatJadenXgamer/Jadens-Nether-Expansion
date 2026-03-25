@@ -52,7 +52,7 @@ public class SoulMagmaBlock extends Block {
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
                 .setLifetime(random.nextInt(20, 30))
                 .disableNoClip()
-                .setGravityStrength(0.05f)
+                .setGravity(0.05f)
                 .setMotion(random.nextDouble() * 0.1, 0.04, random.nextDouble() * 0.1)
                 .spawn(level, x, y, z);
     }

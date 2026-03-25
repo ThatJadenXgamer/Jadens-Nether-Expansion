@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.entity.Wisp;
+import net.jadenxgamer.netherexp.core.entity.*;
 import net.jadenxgamer.netherexp.core.item.*;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
@@ -10,7 +10,9 @@ import net.jadenxgamer.netherexp.util.RegistryHelper;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -75,7 +77,7 @@ public class JNEItems {
             new Item(new Item.Properties()));
 
     public static final Supplier<Item> PHASMO_ARROW = ITEMS.register("phasmo_arrow", () ->
-            new Item(new Item.Properties()));
+            new ElysiumArrowItem(PhasmoArrow.class, AbstractArrow.Pickup.ALLOWED, new Item.Properties()));
 
     public static final Supplier<Item> BANSHEE_ROD = ITEMS.register("banshee_rod", () ->
             new Item(new Item.Properties()));
@@ -196,6 +198,15 @@ public class JNEItems {
 
     public static final Supplier<Item> PYROCLAST_CRUSTS = ITEMS.register("pyroclast_crusts", () ->
             new PlaceOnWaterBlockItem(JNEBlocks.PYROCLAST_CRUSTS.get(), new Item.Properties()));
+
+    public static final Supplier<Item> SHOTGUN_SHELL = ITEMS.register("shotgun_shell", () ->
+            new ShotgunShellItem(ShotgunPellet.class, new Item.Properties()));
+
+    public static final Supplier<Item> SLUG_SHOTGUN_SHELL = ITEMS.register("slug_shotgun_shell", () ->
+            new ShotgunShellItem(SlugPellet.class, new Item.Properties()));
+
+    public static final Supplier<Item> PHASMO_SHOTGUN_SHELL = ITEMS.register("phasmo_shotgun_shell", () ->
+            new ShotgunShellItem(PhasmoPellet.class, new Item.Properties()));
     
     /**
      * Artifacts
@@ -215,5 +226,9 @@ public class JNEItems {
                         RegistryHelper.vanillaRegister(registry, "music_disc_tears", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(JNEJukeboxSongs.TEARS)));
                 }
         );
+    }
+
+    public static void setup() {
+        DispenserBlock.registerProjectileBehavior(PHASMO_ARROW.get());
     }
 }

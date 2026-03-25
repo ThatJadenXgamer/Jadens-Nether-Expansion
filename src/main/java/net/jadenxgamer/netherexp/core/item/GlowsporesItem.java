@@ -83,7 +83,7 @@ public class GlowsporesItem extends Item {
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
                 .setLifetime(random.nextInt(30, 40))
                 .disableNoClip()
-                .setGravityStrength(goingUp ? 0.0f : 0.05f)
+                .setGravity(goingUp ? 0.0f : 0.05f)
                 .setMotion(0.0, goingUp ? 0.04 : 0.0, 0.0)
                 .spawn(level, x, y, z);
     }
@@ -109,7 +109,7 @@ public class GlowsporesItem extends Item {
                         .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
                         .setLifetime(random.nextInt(30, 40))
                         .disableNoClip()
-                        .setGravityStrength(0.05f)
+                        .setGravity(0.05f)
                         .setMotion(0.0, 0.0, 0.0)
                         .spawn(level, x, y, z);
             }

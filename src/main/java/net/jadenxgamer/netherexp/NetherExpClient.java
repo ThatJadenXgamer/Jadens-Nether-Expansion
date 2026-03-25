@@ -41,6 +41,8 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.SHOTGUN_PELLET.get(), ShotgunPelletRenderer::new);
+        EntityRenderers.register(JNEEntityType.SLUG_PELLET.get(), SlugPelletRenderer::new);
+        EntityRenderers.register(JNEEntityType.PHASMO_PELLET.get(), PhasmoPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.WILL_O_WISP.get(), WillOWispRenderer::new);
         EntityRenderers.register(EntityType.BLAZE, JNEBlazeRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.SUSPICIOUS_SOUL_SAND.get(), SuspiciousSoulSandBlockRenderer::new);
@@ -85,6 +87,8 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.REDUX_POOF_BLOB.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.REDUX_POOF_STAR.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.GENERIC_GLOW.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SPARKLE.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SHOTGUN_FLASH.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -95,6 +99,6 @@ public final class NetherExpClient {
         event.registerLayerDefinition(WillOWispRenderer.WillOWispModel.LAYER, WillOWispRenderer.WillOWispModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER_HAND, WillOWispRenderer.WillOWispItemModel::createHandLayer);
-        event.registerLayerDefinition(ShotgunPelletRenderer.ShotgunPelletModel.LAYER, ShotgunPelletRenderer.ShotgunPelletModel::createBodyLayer);
+        event.registerLayerDefinition(PelletRenderer.ShotgunPelletModel.LAYER, PelletRenderer.ShotgunPelletModel::createBodyLayer);
     }
 }

@@ -2,7 +2,9 @@ package net.jadenxgamer.netherexp.core.entity;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -13,6 +15,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -33,9 +36,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import team.lodestar.lodestone.systems.easing.Easing;
+import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
+import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
+import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
+import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
+import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
+import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticleType;
 
+import java.awt.*;
 import java.util.EnumSet;
 import java.util.Set;
+
+import static net.jadenxgamer.netherexp.util.ParticleHelper.SMOKE_VARIANTS;
 
 public class Vessel extends PossessedMob implements RangedAttackMob {
     public final AnimationState idleAnimation = new AnimationState();
@@ -54,6 +68,8 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     private int prepareAimAnimationTimeout = 20;
     private boolean isAiming = false;
     private boolean isShooting = false;
+    public boolean armSmoke = false;
+    public boolean armFlash = false;
 
     public Vessel(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level, NetherExp.idVanilla("skeleton"));
@@ -100,6 +116,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
             soulBullet.shoot(xVector, lookVector.y, zVector, 1.0F, 16);
             this.level().addFreshEntity(soulBullet);
         }
+
     }
 
 
@@ -178,10 +195,20 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
                 prepareAimAnimationTimeout = 20;
                 isAiming = false;
             }
-            case 83 -> isShooting = true;
+            case 83 -> {
+                isShooting = true;
+                armSmoke = true;
+                armFlash = true;
+                VFXHelper.shotgunScreenShake(this.position(), 8.0f, Easing.LINEAR);
+            }
             case 84 -> {
                 isShooting = false;
+                armSmoke = false;
                 shootAnimation.stop();
+            }
+            case 85 -> {
+                this.accurateShotParticle(this.level(), this.random, 0.35f, 1.0f, 2.0f, new Color(0xFFFFFF), true);
+                this.accurateShotParticle(this.level(), this.random, 0.65f, 1.0f, 1.5f, new Color(0xFDD843), true);
             }
         }
         super.handleEntityEvent(id);
@@ -219,6 +246,74 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         }
 
         this.walkAnimation.update(f, 0.2F);
+    }
+
+    public static void cooldownParticle(Level level, RandomSource random, double x, double y, double z) {
+        LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
+        var startColor = new Color(0x1BA9B2);
+        var endColor = new Color(0x112321);
+        WorldParticleBuilder.create(particle)
+                .setFullBrightLighting()
+                .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.33f, 0.43f), 0.75f).build())
+                .setTransparencyData(GenericParticleData.create(0.9f, 0.4f, 0.0f).setEasing(Easing.BOUNCE_OUT).build())
+                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
+                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                .setLifetime(Mth.randomBetweenInclusive(random, 10, 15))
+                .enableNoClip()
+                .addMotion(0.0 + random.nextDouble() / 10, 0.0 + random.nextDouble() / 64, 0.0 + random.nextDouble() / 10)
+                .spawn(level, x, y, z);
+    }
+
+    public static void shotgunFlashParticle(Level level, RandomSource random, double x, double y, double z) {
+        LodestoneWorldParticleType particle = JNEParticleTypes.SHOTGUN_FLASH.get();
+        WorldParticleBuilder.create(particle)
+                .setFullBrightLighting()
+                .setScaleData(GenericParticleData.create(0.01f, 1.45f, 0.0f).build())
+                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
+                        .setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                .setTransparencyData(GenericParticleData.create(1.0f).build())
+                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                .setLifetime(5)
+                .enableNoClip()
+                .addMotion(0.0f, 0.0f, 0.0f)
+                .spawn(level, x, y + 0.75, z);
+    }
+
+    public void accurateShotParticle(Level level, RandomSource random, float scale, float translucency, float spinCoefficient, Color color, boolean additive) {
+        final double[] offsets = {0.25, -0.22, 0.2};
+        Vec3 eyePos = this.getEyePosition();
+        Vec3 lookAngle = this.getLookAngle();
+        Vec3 startPos = eyePos
+                .add(0, offsets[2], 0)
+                .add(lookAngle.normalize().scale(offsets[0]))
+                .add(new Vec3(0, 1, 0).cross(lookAngle).normalize().scale(offsets[1]));
+
+        WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
+                .setFullBrightLighting()
+                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
+                        .setCoefficient(spinCoefficient).setEasing(Easing.SINE_IN).build())
+                .setScaleData(GenericParticleData.create(0.01f, scale, 0.0f)
+                        .setCoefficient(1.4f).setEasing(Easing.SINE_IN_OUT).build())
+                .setTransparencyData(GenericParticleData.create(translucency).build())
+                .setRenderType(additive ? LodestoneWorldParticleRenderType.ADDITIVE : LodestoneWorldParticleRenderType.TRANSPARENT)
+                .setColorData(ColorParticleData.create(color).build())
+                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                .setLifetime(20)
+                .enableNoClip()
+                .setForceSpawn(true)
+                .addMotion(0.0, 0.0, 0.0)
+                .addTickActor(actor -> {
+                    Vec3 currentEyePos = Vessel.this.getEyePosition();
+                    Vec3 currentLookAngle = Vessel.this.getLookAngle();
+                    Vec3 offsetPos = currentEyePos
+                            .add(0, offsets[2], 0)
+                            .add(currentLookAngle.normalize().scale(offsets[0]))
+                            .add(new Vec3(0, 1, 0).cross(currentLookAngle).normalize().scale(offsets[1]));
+                    actor.setPos(offsetPos.x, offsetPos.y, offsetPos.z);
+                })
+                .spawn(level, startPos.x, startPos.y, startPos.z);
     }
 
     ////////////
@@ -361,10 +456,15 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
             }
 
             if (distanceFromTarget < attackRadius) {
+                boolean accurateHitDistance = distanceFromTarget <= (JNEConfigs.VESSEL_ACCURATE_DISTANCE.get() * JNEConfigs.VESSEL_ACCURATE_DISTANCE.get());
                 if (this.attackTime > (SHOOT_AT_TICK + 10)) {
                     if (hasSight) --this.attackTime;
                 } else --this.attackTime;
                 if (this.attackTime > (SHOOT_AT_TICK + 2)) targetPos = target.position();
+                if (this.attackTime == (SHOOT_AT_TICK + 10) && accurateHitDistance) {
+                    vessel.level().broadcastEntityEvent(vessel, (byte) 85); // Eye Flash
+                    vessel.level().playSound(null, vessel.blockPosition(), SoundEvents.FIRECHARGE_USE, vessel.getSoundSource(), 1.0F, 2.0F);
+                }
 
                 // switch cases cannot be used since the constant is a runtime-evaluated expression 🥀 🥀 🥀
                 if (this.attackTime == START_AIM_AT_TICK) vessel.level().broadcastEntityEvent(vessel, (byte) 81); // Start Aim
@@ -372,7 +472,9 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
                 if (this.attackTime == SHOOT_AT_TICK) {
                     vessel.level().broadcastEntityEvent(vessel, (byte) 82); // Stop Aim
                     vessel.level().broadcastEntityEvent(vessel, (byte) 83); // Start Shoot
-                    vessel.performRangedAttack(targetPos);
+                    if (accurateHitDistance) {
+                        vessel.performRangedAttack(target.position());
+                    } else vessel.performRangedAttack(targetPos);
                 }
                 if (this.attackTime == 0) this.finished = true;
             }

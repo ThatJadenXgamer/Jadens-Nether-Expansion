@@ -21,10 +21,9 @@ import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
 import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
-import team.lodestar.lodestone.systems.particle.world.behaviors.components.SparkBehaviorComponent;
+import team.lodestar.lodestone.systems.particle.world.behaviors.SparkParticleBehavior;
 
 import javax.annotation.Nullable;
-
 import java.awt.*;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
@@ -77,7 +76,7 @@ public abstract class LevelRendererMixin {
         WorldParticleBuilder.create(JNEParticleTypes.NETHER_FOG.get())
                 .setFullBrightLighting()
                 .enableNoClip()
-                .setBehavior(new SparkBehaviorComponent().setForcedDirection(direction))
+                .setBehavior(SparkParticleBehavior.sparkBehavior().setForcedDirection(direction))
                 .setForceSpawn(true)
                 .setScaleData(GenericParticleData.create(startSize, endSize).build())
                 .setTransparencyData(GenericParticleData.create(0.002f, transparency, 0f).build())

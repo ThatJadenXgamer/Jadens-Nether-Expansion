@@ -16,7 +16,7 @@ import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
-import team.lodestar.lodestone.systems.particle.world.behaviors.components.DirectionalBehaviorComponent;
+import team.lodestar.lodestone.systems.particle.world.behaviors.DirectionalParticleBehavior;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.SOUL_SAND_VALLEY_WIND_SPEED;
 
@@ -55,10 +55,9 @@ public class DriftingSoulsBlockEntity extends BlockEntity {
                 .setTransparencyData(GenericParticleData.create(0.1f, 0.25f, 0.0f).build())
                 .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.RANDOM_SPRITE)
-                .setBehavior(new DirectionalBehaviorComponent(direction))
+                .setBehavior(DirectionalParticleBehavior.directional(direction))
                 .setLifetime(random.nextInt(40, 50))
                 .enableForcedSpawn()
-                .enableCull()
                 .enableNoClip()
                 .setMotion(SOUL_SAND_VALLEY_WIND_SPEED.get() + (random.nextDouble() * 0.2), (Mth.randomBetween(level.random, 0.1f, 0.5f)) * 0.1, SOUL_SAND_VALLEY_WIND_SPEED.get() + (random.nextDouble() * 0.2))
                 .spawn(level, x, y, z);

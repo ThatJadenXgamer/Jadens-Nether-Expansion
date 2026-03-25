@@ -50,6 +50,8 @@ public class JNEParticleTypes {
     public static final Supplier<LodestoneWorldParticleType> REDUX_POOF_BLOB = PARTICLE_TYPES.register("redux_poof_blob", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> REDUX_POOF_STAR = PARTICLE_TYPES.register("redux_poof_star", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> GENERIC_GLOW = PARTICLE_TYPES.register("generic_glow", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> SPARKLE = PARTICLE_TYPES.register("sparkle", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> SHOTGUN_FLASH = PARTICLE_TYPES.register("shotgun_flash", LodestoneWorldParticleType::new);
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

@@ -1,4 +1,4 @@
-// Made with Blockbench 4.12.4
+// Made with Blockbench 5.0.7
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
@@ -13,7 +13,9 @@ public class VesselModel<T extends Entity> extends EntityModel<T> {
 	private final ModelPart collar;
 	private final ModelPart eyes;
 	private final ModelPart left_arm;
+	private final ModelPart left_arm_anchor;
 	private final ModelPart right_arm;
+	private final ModelPart right_arm_anchor;
 	private final ModelPart left_leg;
 	private final ModelPart right_leg;
 
@@ -25,7 +27,9 @@ public class VesselModel<T extends Entity> extends EntityModel<T> {
 		this.collar = this.waist.getChild("collar");
 		this.eyes = this.collar.getChild("eyes");
 		this.left_arm = this.waist.getChild("left_arm");
+		this.left_arm_anchor = this.left_arm.getChild("left_arm_anchor");
 		this.right_arm = this.waist.getChild("right_arm");
+		this.right_arm_anchor = this.right_arm.getChild("right_arm_anchor");
 		this.left_leg = this.vessel.getChild("left_leg");
 		this.right_leg = this.vessel.getChild("right_leg");
 	}
@@ -51,8 +55,12 @@ public class VesselModel<T extends Entity> extends EntityModel<T> {
 		PartDefinition left_arm = waist.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(44, 35).addBox(-1.0F, 6.0F, -2.0F, 4.0F, 11.0F, 4.0F, new CubeDeformation(0.0F))
 		.texOffs(36, 27).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(5.0F, -13.0F, 0.0F));
 
+		PartDefinition left_arm_anchor = left_arm.addOrReplaceChild("left_arm_anchor", CubeListBuilder.create(), PartPose.offset(1.0F, 17.0F, 0.0F));
+
 		PartDefinition right_arm = waist.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(28, 35).addBox(-3.0F, 6.0F, -2.0F, 4.0F, 11.0F, 4.0F, new CubeDeformation(0.0F))
 		.texOffs(28, 27).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-5.0F, -13.0F, 0.0F));
+
+		PartDefinition right_arm_anchor = right_arm.addOrReplaceChild("right_arm_anchor", CubeListBuilder.create(), PartPose.offset(-1.0F, 17.0F, 0.0F));
 
 		PartDefinition left_leg = vessel.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(8, 60).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 15.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, -14.5F, 0.0F));
 

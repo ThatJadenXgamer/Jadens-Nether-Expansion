@@ -42,6 +42,7 @@ public class JNEEvents {
     public static void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             JNECauldronInteractions.register();
+            JNEItems.setup();
         });
     }
 

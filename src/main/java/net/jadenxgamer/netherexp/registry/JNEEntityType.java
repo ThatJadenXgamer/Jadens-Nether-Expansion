@@ -43,6 +43,14 @@ public class JNEEntityType {
             EntityType.Builder.<ShotgunPellet>of(ShotgunPellet::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("shotgun_pellet"));
 
+    public static final Supplier<EntityType<SlugPellet>> SLUG_PELLET = ENTITY_TYPES.register("slug_pellet", () ->
+            EntityType.Builder.<SlugPellet>of(SlugPellet::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("slug_pellet"));
+
+    public static final Supplier<EntityType<PhasmoPellet>> PHASMO_PELLET = ENTITY_TYPES.register("phasmo_pellet", () ->
+            EntityType.Builder.<PhasmoPellet>of(PhasmoPellet::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("phasmo_pellet"));
+
     public static final Supplier<EntityType<PhasmoArrow>> PHASMO_ARROW = ENTITY_TYPES.register("phasmo_arrow", () ->
             EntityType.Builder.<PhasmoArrow>of(PhasmoArrow::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("phasmo_arrow"));

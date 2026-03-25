@@ -131,7 +131,7 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
                 .setLifetime(random.nextInt(20, 30))
                 .disableNoClip()
-                .setGravityStrength(0.05f)
+                .setGravity(0.05f)
                 .setMotion(0.0, 0.04, 0.0)
                 .spawn(level, x, y, z);
     }

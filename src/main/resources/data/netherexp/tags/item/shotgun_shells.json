@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:shotgun_shell",
+    "netherexp:slug_shotgun_shell",
+    "netherexp:phasmo_shotgun_shell"
+  ]
+}

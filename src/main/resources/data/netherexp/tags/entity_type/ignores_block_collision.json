@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "netherexp:phasmo_arrow"
+    "netherexp:phasmo_arrow",
+    "netherexp:phasmo_pellet"
   ]
 }

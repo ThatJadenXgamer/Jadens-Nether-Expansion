@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.core.fluid;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
-import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
@@ -23,7 +22,7 @@ import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
 import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
-import team.lodestar.lodestone.systems.particle.world.behaviors.components.SparkBehaviorComponent;
+import team.lodestar.lodestone.systems.particle.world.behaviors.SparkParticleBehavior;
 
 import java.awt.*;
 import java.util.Optional;
@@ -74,7 +73,7 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
         WorldParticleBuilder.create(JNEParticleTypes.ECTOPLASM_RAYS.get())
                 .setFullBrightLighting()
                 .setScaleData(GenericParticleData.create(4.8f).build())
-                .setBehavior(new SparkBehaviorComponent().setForcedDirection(direction))
+                .setBehavior(SparkParticleBehavior.sparkBehavior().setForcedDirection(direction))
                 .setTransparencyData(GenericParticleData.create(0.02f, 1f, 0f).build())
                 .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
                 .setLifetime(random.nextInt(120, 180))
@@ -91,7 +90,7 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
                 .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
                 .setLifetime(random.nextInt(60, 90))
                 .disableNoClip()
-                .setGravityStrength(0f)
+                .setGravity(0f)
                 .setColorData(ColorParticleData.create(new Color(0x3EFCFF)).build())
                 .setMotion(0.0, 0.04, 0.0)
                 .spawn(level, x, y, z);

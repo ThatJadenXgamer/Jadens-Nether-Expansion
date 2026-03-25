@@ -9,6 +9,7 @@ public class JNEDamageSources {
     public static final ResourceKey<DamageType> STAMPEDE_CRUSH = register("stampede_crush");
     public static final ResourceKey<DamageType> SORROWSQUISHED = register("sorrowsquished");
     public static final ResourceKey<DamageType> SHOTGUN_PELLET = register("shotgun_pellet");
+    public static final ResourceKey<DamageType> SLUG_PELLET = register("slug_pellet");
     public static final ResourceKey<DamageType> WILL_O_WISP = register("will_o_wisp");
     public static final ResourceKey<DamageType> SHOTGUN_EXPLOSION = register("shotgun_explosion");
     public static final ResourceKey<DamageType> JACKHAMMER = register("jackhammer");

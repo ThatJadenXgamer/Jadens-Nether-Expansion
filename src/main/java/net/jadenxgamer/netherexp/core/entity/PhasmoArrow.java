@@ -32,6 +32,7 @@ public class PhasmoArrow extends AbstractArrow {
             this.level().addParticle(ParticleTypes.SOUL, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         }
     }
+
     @Override
     protected void onHitBlock(BlockHitResult blockHitResult) {
     }

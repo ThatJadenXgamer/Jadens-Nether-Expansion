@@ -5,32 +5,33 @@ import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
 import net.jadenxgamer.netherexp.core.keys.JNEEnchantments;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEItems;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.util.HolderHelper;
-import net.minecraft.server.level.ServerLevel;
+import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import team.lodestar.lodestone.handlers.ScreenshakeHandler;
 import team.lodestar.lodestone.systems.easing.Easing;
-import team.lodestar.lodestone.systems.screenshake.PositionedScreenshakeInstance;
-import team.lodestar.lodestone.systems.screenshake.ScreenshakeInstance;
+import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
+import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
+import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
 
+import java.awt.*;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -63,15 +64,53 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
     protected void shoot(Level level, LivingEntity shooter, InteractionHand hand, ItemStack shotgun, List<ItemStack> projectileItems, float velocity, float inaccuracy, boolean isCrit, @Nullable LivingEntity target) {
         int count = calculateCount(shotgun);
+        int cooldown = calculateCooldown(shotgun);
+        double selfRecoil = calculateSelfRecoil(shooter, shotgun);
+
         if (level.isClientSide()) {
+            VFXHelper.shotgunScreenShake(shooter.position(), 8.0f, Easing.LINEAR);
         } else {
-            for (int i = 0; i < count; i++) {
-                Vec3 look = shooter.getLookAngle();
-                ShotgunPellet pellet = new ShotgunPellet(shooter.getX(), shooter.getY() + 1.0, shooter.getZ(), level, shooter);
-                pellet.shoot(look.x, look.y, look.z, velocity, inaccuracy);
-                level.addFreshEntity(pellet);
+            if (shooter instanceof Player player) player.getCooldowns().addCooldown(this, cooldown);
+            if (!projectileItems.isEmpty()) {
+                ItemStack shellStack = projectileItems.getFirst();
+                Item shellItem = shellStack.getItem();
+                for (int i = 0; i < count; i++) {
+                    Vec3 look = shooter.getLookAngle();
+                    Projectile pellet;
+
+                    if (shellItem instanceof ShotgunShellItem shotgunShellItem) {
+                        pellet = shotgunShellItem.createPellet(level, shooter,
+                                shooter.getX(), shooter.getY() + 1.0, shooter.getZ());
+                    } else pellet = new ShotgunPellet(shooter.getX(), shooter.getY() + 1.0, shooter.getZ(), level, shooter);
+
+                    pellet.shoot(look.x, look.y, look.z, velocity, inaccuracy);
+                    level.addFreshEntity(pellet);
+                }
             }
         }
+
+        Vec3 pushBack = new Vec3(-shooter.getLookAngle().x, -shooter.getLookAngle().y, -shooter.getLookAngle().z).normalize();
+        shooter.push(pushBack.scale(selfRecoil));
+    }
+
+    private double calculateSelfRecoil(LivingEntity shooter, ItemStack shotgun) {
+        double base = JNEConfigs.SHOTGUN_SELF_RECOIL.get();
+        var recoil = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.RECOIL));
+        if (recoil > 0) base += ((double) recoil / 12);
+
+        Vec3 raycastStart = shooter.getEyePosition(1.0F);
+        Vec3 raycastEnd = raycastStart.add(shooter.getViewVector(1.0F).scale(JNEConfigs.POINT_BLANK_SELF_RECOIL_DISTANCE.get()));
+        AABB pointBlankBoundingBox = new AABB(raycastStart, raycastEnd);
+
+        EntityHitResult entityHitResult = ProjectileUtil.getEntityHitResult(
+                shooter.level(), shooter, raycastStart, raycastEnd, pointBlankBoundingBox,
+                victim -> victim instanceof LivingEntity && victim != shooter);
+        if (entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity living && living.isAlive()) {
+            base += JNEConfigs.POINT_BLANK_SELF_RECOIL_BONUS.get();
+            pointBlankParticle(shooter.level(), raycastStart.add(shooter.getViewVector(1.0F).scale(1)));
+        }
+
+        return base;
     }
 
     private int calculateCount(ItemStack shotgun) {
@@ -81,6 +120,16 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
         if (volley > 0) base += (volley * 5);
         else if (quickCharge > 0) base -= (quickCharge * 5);
+        return base;
+    }
+
+    private int calculateCooldown(ItemStack shotgun) {
+        int base = JNEConfigs.SHOTGUN_FIST_COOLDOWN.get();
+        var volley = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.VOLLEY));
+        var quickCharge = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.QUICK_CHARGE));
+
+        if (volley > 0) base += (volley * 15);
+        else if (quickCharge > 0) base -= (quickCharge * 8);
         return base;
     }
 
@@ -100,5 +149,18 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
     @Override
     public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
         return super.isValidRepairItem(stack, repairCandidate);
+    }
+
+    private void pointBlankParticle(Level level, Vec3 pos) {
+        if (!level.isClientSide()) return;
+        WorldParticleBuilder.create(JNEParticleTypes.WIND_TRAIL.get())
+                .setFullBrightLighting()
+                .setColorData(ColorParticleData.create(new Color(0x00FFFF)).build())
+                .setScaleData(GenericParticleData.create(0.1f, 1.5f).setEasing(Easing.SINE_OUT).build())
+                .setTransparencyData(GenericParticleData.create(1.0f, 0.0f).build())
+                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                .setLifetime(10)
+                .disableNoClip()
+                .spawn(level, pos.x, pos.y, pos.z);
     }
 }

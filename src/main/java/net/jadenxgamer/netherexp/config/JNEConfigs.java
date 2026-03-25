@@ -49,8 +49,13 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION;
     public static ModConfigSpec.BooleanValue BACKPORT_TEARS_MUSIC_DISC;
     public static ModConfigSpec.BooleanValue TWEAK_OBTAINING_TEARS_MUSIC_DISC;
+    public static ModConfigSpec.DoubleValue SHOTGUN_SELF_RECOIL;
+    public static ModConfigSpec.DoubleValue POINT_BLANK_SELF_RECOIL_BONUS;
+    public static ModConfigSpec.DoubleValue POINT_BLANK_SELF_RECOIL_DISTANCE;
     public static ModConfigSpec.IntValue SHOTGUN_FIST_BULLETS;
+    public static ModConfigSpec.IntValue SHOTGUN_FIST_COOLDOWN;
     public static ModConfigSpec.IntValue PUMP_CHARGE_SHOTGUN_BULLETS;
+    public static ModConfigSpec.IntValue PUMP_CHARGE_SHOTGUN_COOLDOWN;
     public static ModConfigSpec.IntValue WILL_O_WISP_STACK_SIZE;
 
     // ENTITY
@@ -71,6 +76,7 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue MAX_VESSEL_BULLETS;
     public static ModConfigSpec.IntValue VESSEL_ATTACK_TIME;
     public static ModConfigSpec.IntValue VESSEL_SHOOTS_AT_ATTACK_TIME;
+    public static ModConfigSpec.IntValue VESSEL_ACCURATE_DISTANCE;
     public static ModConfigSpec.BooleanValue BANSHEE_TELEPORTS_AFTER_HIT;
     public static ModConfigSpec.IntValue BANSHEE_ANCHOR_INTERVAL;
     public static ModConfigSpec.IntValue BANSHEE_ATTACK_INTERVAL;
@@ -120,6 +126,7 @@ public class JNEConfigs {
     public static ModConfigSpec.ConfigValue<String> LAVA_GRADIENT_COLOR_A;
     public static ModConfigSpec.ConfigValue<String> LAVA_GRADIENT_COLOR_B;
     public static ModConfigSpec.DoubleValue LAVA_GRADIENT_NOISE_SCALE;
+    public static ModConfigSpec.BooleanValue SHOTGUN_SCREENSHAKE;
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
     public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;

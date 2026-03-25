@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -16,7 +17,9 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import team.lodestar.lodestone.systems.easing.Easing;
 
 public class ShotgunBarrelBlock extends HorizontalDirectionalBlock {
 
@@ -52,6 +55,7 @@ public class ShotgunBarrelBlock extends HorizontalDirectionalBlock {
         Direction direction = state.getValue(FACING);
         level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SHOTGUN_USE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         int count = JNEConfigs.SHOTGUN_BARREL_BULLETS.get();
+        VFXHelper.shotgunScreenShake(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 8.0f, Easing.LINEAR);
         for (int i = 0; i < count; i++) {
             ShotgunPellet pellet = new ShotgunPellet(pos.relative(direction).getX() + 0.5, pos.relative(direction).getY() + 0.5, pos.relative(direction).getZ() + 0.5, level);
             pellet.shoot(direction.getStepX(), direction.getStepY(), direction.getStepZ(), 1.0F, 16);
