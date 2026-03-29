@@ -1,0 +1,9 @@
+{
+  "textures": [
+    "netherexp:pellet_hit_0",
+    "netherexp:pellet_hit_1",
+    "netherexp:pellet_hit_2",
+    "netherexp:pellet_hit_3",
+    "netherexp:pellet_hit_4"
+  ]
+}

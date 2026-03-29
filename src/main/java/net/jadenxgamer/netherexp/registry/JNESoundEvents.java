@@ -34,6 +34,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");
     public static final Supplier<SoundEvent> BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
     public static final Supplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
+    public static final Supplier<SoundEvent> SHOTGUN_IMPACT = registerSoundEvents("item.shotgun.impact");
     public static final Supplier<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
 
     public static final Supplier<SoundEvent> GOLD_GILDING = registerSoundEvents("item.gold.gilding");

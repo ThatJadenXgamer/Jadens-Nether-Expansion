@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:nether_pizza_slice"
+      "id": "netherexp:nether_pizza_slice"
     },
     "title": {
       "translate": "advancements.nether.pizza_hunt.title"
@@ -19,7 +19,7 @@
     "term": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "item": {
+        "id": {
           "items": [
             "netherexp:nether_pizza_slice"
           ]

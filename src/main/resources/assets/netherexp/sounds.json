@@ -992,6 +992,12 @@
       "netherexp:item/antidote/grenade_explode2"
     ]
   },
+  "item.shotgun.impact": {
+    "subtitle": "subtitles.item.shotgun.impact",
+    "sounds": [
+      "netherexp:item/shotgun/impact3"
+    ]
+  },
   "item.shotgun.use": {
     "subtitle": "subtitles.item.shotgun.use",
     "sounds": [

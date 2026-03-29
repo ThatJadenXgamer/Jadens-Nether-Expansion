@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:flint_and_steel"
+    },
+    "title": {
+      "translate": "advancements.nether.hp_minecraftian.title"
+    },
+    "description": {
+      "translate": "advancements.nether.hp_minecraftian.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley/occult_manor",
+  "criteria": {
+    "has_item": {
+      "trigger": "netherexp:revive_carcass"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

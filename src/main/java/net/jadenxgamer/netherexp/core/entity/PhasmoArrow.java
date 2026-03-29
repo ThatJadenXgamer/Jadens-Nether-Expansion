@@ -9,6 +9,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 
@@ -31,6 +32,16 @@ public class PhasmoArrow extends AbstractArrow {
         if (this.level().isClientSide && !this.inGround) {
             this.level().addParticle(ParticleTypes.SOUL, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         }
+
+        if (!this.level().getBlockState(this.blockPosition()).isAir()) {
+            Vec3 delta = this.getDeltaMovement();
+            this.setDeltaMovement(delta.x, delta.y, delta.z);
+        }
+    }
+
+    @Override
+    public boolean isNoGravity() {
+        return !this.level().getBlockState(this.blockPosition()).isAir();
     }
 
     @Override

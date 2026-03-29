@@ -7,6 +7,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderType;
 import net.jadenxgamer.netherexp.core.entity.AbstractPellet;
 import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
+import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -18,9 +19,11 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
+import team.lodestar.lodestone.registry.client.LodestoneRenderTypes;
+import team.lodestar.lodestone.systems.rendering.VFXBuilders;
+import team.lodestar.lodestone.systems.rendering.rendeertype.LodestoneRenderTypeBuilder;
+import team.lodestar.lodestone.systems.rendering.rendeertype.RenderTypeToken;
 
 public abstract class PelletRenderer<T extends AbstractPellet> extends EntityRenderer<T> {
     private final ShotgunPelletModel<ShotgunPellet> model;
@@ -36,6 +39,7 @@ public abstract class PelletRenderer<T extends AbstractPellet> extends EntityRen
         poseStack.translate(0.0f, 1.65f, 0.0f);
 
         poseStack.mulPose(Axis.XP.rotationDegrees(-180));
+
 
         Vec3 velocity = entity.getDeltaMovement();
         float yaw, pitch;
@@ -60,6 +64,9 @@ public abstract class PelletRenderer<T extends AbstractPellet> extends EntityRen
         this.model.renderToBuffer(poseStack, vertexConsumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
 
         poseStack.popPose();
+        var trail = LodestoneRenderTypes.TRANSPARENT_TEXTURE_TRIANGLE.apply(RenderTypeToken.createToken(NetherExp.id("textures/particle/trail_solid_transparent.png")));
+        VFXBuilders.WorldVFXBuilder builder = VFXBuilders.createWorld().setRenderType(trail);
+        VFXHelper.renderEntityTrail(poseStack, builder, entity.trailPointBuilder, entity, entity.getTrailColor(), 0.7f, 0.2f, partialTicks);
     }
 
     @Override

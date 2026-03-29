@@ -52,6 +52,7 @@ public class JNEParticleTypes {
     public static final Supplier<LodestoneWorldParticleType> GENERIC_GLOW = PARTICLE_TYPES.register("generic_glow", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> SPARKLE = PARTICLE_TYPES.register("sparkle", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> SHOTGUN_FLASH = PARTICLE_TYPES.register("shotgun_flash", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> PELLET_HIT = PARTICLE_TYPES.register("pellet_hit", LodestoneWorldParticleType::new);
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

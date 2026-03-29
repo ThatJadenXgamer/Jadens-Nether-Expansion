@@ -1,11 +1,12 @@
 package net.jadenxgamer.netherexp.core.entity;
 
 import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -13,9 +14,24 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
+import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
+import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
+import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
+import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
+import team.lodestar.lodestone.systems.rendering.trail.TrailPointBuilder;
+
+import java.awt.*;
+
+import static net.jadenxgamer.netherexp.registry.JNESoundEvents.SHOTGUN_IMPACT;
 
 public abstract class AbstractPellet extends AbstractArrow {
+
+    public final TrailPointBuilder trailPointBuilder = TrailPointBuilder.create(4);
+    private boolean projectileBoost = false;
 
     protected AbstractPellet(EntityType<? extends AbstractArrow> entityType, Level level) {
         super(entityType, level);
@@ -28,6 +44,10 @@ public abstract class AbstractPellet extends AbstractArrow {
             this.hitGroundSound();
             this.discard();
         }
+        if (this.level().isClientSide) {
+            trailPointBuilder.addTrailPoint(this.position().add(0.0, 0.15, 0.0));
+        }
+        trailPointBuilder.tickTrailPoints();
     }
 
     @Override
@@ -36,8 +56,8 @@ public abstract class AbstractPellet extends AbstractArrow {
         if (getOwner() != null) {
             target.hurt(this.damageSources().source(getDamageSource(), getOwner()), getDamage());
         } else target.hurt(this.damageSources().source(getDamageSource()), getDamage());
-        spawnHitParticle();
         if (!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte) 40);
             this.hitGroundSound();
             this.discard();
         }
@@ -45,21 +65,24 @@ public abstract class AbstractPellet extends AbstractArrow {
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-        spawnHitParticle();
         if (!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte) 40);
             this.hitGroundSound();
             this.discard();
         }
     }
 
-    protected void spawnHitParticle() {
-        this.level().addParticle(getHitParticle(),
-                true, this.getX(), this.getY(), this.getZ(),
-                0.0f, 0.0f, 0.0f);
+    @Override
+    public float getPickRadius() {
+        return super.getPickRadius();
+    }
+
+    private void triggerExplosion() {
+        this.level().explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), 2.0f, Level.ExplosionInteraction.NONE);
     }
 
     protected void hitGroundSound() {
-        this.playSound(getHitSound(), 0.3f, 1.0f);
+        this.playSound(getHitSound(), 0.15f, 1.0f);
     }
 
     @Override
@@ -72,12 +95,18 @@ public abstract class AbstractPellet extends AbstractArrow {
         return true;
     }
 
+    @Override
+    public void handleEntityEvent(byte id) {
+        if (id == 40) hitParticle(this.level(), this.position());
+        super.handleEntityEvent(id);
+    }
+
     ///////////////////
     // PELLET STUFFS //
     ///////////////////
 
     protected SoundEvent getHitSound() {
-        return SoundEvents.SOUL_ESCAPE.value();
+        return SHOTGUN_IMPACT.get();
     }
 
     protected float getDamage() {
@@ -85,14 +114,36 @@ public abstract class AbstractPellet extends AbstractArrow {
     }
 
     protected int getMaxLife() {
-        return 10;
-    }
-
-    protected ParticleOptions getHitParticle() {
-        return ParticleTypes.SOUL_FIRE_FLAME;
+        return 40;
     }
 
     protected ResourceKey<DamageType> getDamageSource() {
         return JNEDamageSources.SHOTGUN_PELLET;
+    }
+
+    public Color getTrailColor() {
+        return new Color(0xFFFFFF);
+    }
+
+    public Color getHitColor() {
+        return new Color(0xFFFFFF);
+    }
+
+    private void hitParticle(Level level, Vec3 pos) {
+        hitParticle(level, pos.x, pos.y, pos.z);
+    }
+
+    private void hitParticle(Level level, double x, double y, double z) {
+        WorldParticleBuilder.create(JNEParticleTypes.PELLET_HIT.get())
+                .setFullBrightLighting()
+                .setSpinData(SpinParticleData.create(0).build())
+                .setScaleData(GenericParticleData.create(0.195f).build())
+                .setColorData(ColorParticleData.create(getHitColor()).build())
+                .setTransparencyData(GenericParticleData.create(1).build())
+                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                .setLifetime(Mth.randomBetweenInclusive(level.random, 3, 7))
+                .enableNoClip()
+                .spawn(level, x, y, z);
     }
 }
