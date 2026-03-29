@@ -79,6 +79,11 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
+        data {
+            data()
+            programArguments.addAll'--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').absolutePath, '--existing', file('src/main/resources/').absolutePath
+        }
+
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
 

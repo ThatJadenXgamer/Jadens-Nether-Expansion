@@ -8,6 +8,7 @@ import net.jadenxgamer.netherexp.core.misc.JNESoundType;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
@@ -23,6 +24,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import team.lodestar.lodestone.systems.block.LodestoneLogBlock;
 
+import java.awt.*;
 import java.util.function.Supplier;
 
 import static net.jadenxgamer.netherexp.util.RegistryHelper.*;
@@ -684,7 +686,7 @@ public class JNEBlocks {
     /**
      * Ancient Fire
      */
-    
+
     public static final Supplier<Block> ANCIENT_WAX_BLOCK = registerBlock("ancient_wax_block", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.HONEYCOMB_BLOCK).sound(JNESoundType.ANCIENT_WAX)));
 
@@ -721,6 +723,24 @@ public class JNEBlocks {
 
     public static final Supplier<Block> PYROCLAST_CRUSTS = registerBlockWithoutItem("pyroclast_crusts", () ->
             new PyroclastCrustsBlock(BlockBehaviour.Properties.of().strength(0.5f, 1.5f).noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT)));
+
+    public static final Supplier<Block> PYROCLAST = registerBlock("pyroclast", () ->
+            new Block(BlockBehaviour.Properties.of().strength(0.8f, 1.5f).noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT)));
+
+    public static final Supplier<Block> PYROCLAST_SLAB = registerBlock("pyroclast_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.ofLegacyCopy(PYROCLAST.get())));
+
+    public static final Supplier<Block> PYROCLAST_STAIRS = registerBlock("pyroclast_stairs", () ->
+            new StairBlock(PYROCLAST.get().defaultBlockState(), BlockBehaviour.Properties.ofLegacyCopy(PYROCLAST.get())));
+
+    public static final Supplier<Block> PYROCLAST_WALL = registerBlock("pyroclast_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(PYROCLAST.get())));
+
+    public static final Supplier<Block> SILT = registerBlock("silt", () ->
+            new ColoredFallingBlock(new ColorRGBA(10581094), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.4f).sound(SoundType.GRAVEL)));
+
+    public static final Supplier<Block> SILT_FLINT_ORE = registerBlock("silt_flint_ore", () ->
+            new OreFallingBlock(UniformInt.of(0, 2), new ColorRGBA(10581094), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.4f).sound(SoundType.GRAVEL)));
 
     public static void init(IEventBus eventBus) {
         registerAliases();

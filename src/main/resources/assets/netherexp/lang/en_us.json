@@ -653,6 +653,8 @@
   "advancements.nether.plume_bowels.description": "Glutton till nothing is left...",
   "advancements.nether.grieving_grove.title": "???",
   "advancements.nether.grieving_grove.description": "Envious to see me...?",
+  "block.netherexp.silt": "Silt",
+  "block.netherexp.silt_flint_ore": "Silt Flint Ore",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",
