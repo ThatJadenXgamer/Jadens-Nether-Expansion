@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:ectoplasm_bucket"
+      "id": "netherexp:ectoplasm_bucket"
     },
     "title": {
       "translate": "advancements.nether.ghost_mucus.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/soul_sand_valley",
+  "parent": "netherexp:nether/soul_sand_valley/soul_sand_valley",
   "criteria": {
     "has_item": {
       "trigger": "minecraft:inventory_changed",

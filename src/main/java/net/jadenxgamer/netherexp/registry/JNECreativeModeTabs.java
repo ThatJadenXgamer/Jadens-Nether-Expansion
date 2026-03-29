@@ -124,6 +124,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.PHASMO_SHOTGUN_SHELL.get());
                 output.accept(JNEItems.SHOTGUN_FIST.get());
                 output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
+                output.accept(JNEBlocks.SHOTGUN_BARREL.get());
                 output.accept(JNEItems.SPIRIT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
                 output.accept(JNEItems.VALOR_ARMOR_TRIM_SMITHING_TEMPLATE.get());
                 output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());

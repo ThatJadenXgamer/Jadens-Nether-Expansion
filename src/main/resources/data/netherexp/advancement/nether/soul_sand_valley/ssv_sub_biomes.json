@@ -1,5 +1,5 @@
 {
-  "parent": "netherexp:nether/soul_sand_valley",
+  "parent": "netherexp:nether/soul_sand_valley/soul_sand_valley",
   "criteria": {
     "netherexp:black_ice_glaciers": {
       "conditions": {
@@ -26,7 +26,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "netherexp:netherite_plated_block",
+      "id": "netherexp:netherite_plated_block",
       "nbt": "{CustomModelData:1}"
     },
     "show_toast": true,

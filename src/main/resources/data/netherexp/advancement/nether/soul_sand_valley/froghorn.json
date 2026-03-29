@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:verdant_frogmist"
+      "id": "netherexp:verdant_frogmist"
     },
     "title": {
       "translate": "advancements.nether.froghorn.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/blind_shot",
+  "parent": "netherexp:nether/soul_sand_valley/blind_shot",
   "criteria": {
     "froglights": {
       "trigger": "minecraft:inventory_changed",

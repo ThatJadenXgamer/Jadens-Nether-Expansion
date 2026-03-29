@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:shotgun_core"
+      "id": "netherexp:shotgun_core"
     },
     "title": {
       "translate": "advancements.nether.ultrakill.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/the_nether_is_full",
+  "parent": "netherexp:nether/soul_sand_valley/the_nether_is_full",
   "criteria": {
     "has_item": {
       "trigger": "netherexp:killed_with_pump_charge"

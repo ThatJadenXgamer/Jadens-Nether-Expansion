@@ -1,20 +1,20 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:brazier_chest"
+      "id": "netherexp:treacherous_candle"
     },
     "title": {
-      "translate": "advancements.nether.eldritch_manipulation.title"
+      "translate": "advancements.nether.back_with_a_vengeance.title"
     },
     "description": {
-      "translate": "advancements.nether.eldritch_manipulation.description"
+      "translate": "advancements.nether.back_with_a_vengeance.description"
     },
-    "frame": "goal",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/rekindled_betrayal",
+  "parent": "netherexp:nether/soul_sand_valley/rekindled_betrayal",
   "criteria": {
     "used_item": {
       "trigger": "minecraft:item_used_on_block",
@@ -25,7 +25,7 @@
             "predicate": {
               "block": {
                 "blocks": [
-                  "netherexp:brazier_chest"
+                  "netherexp:treacherous_candle"
                 ]
               }
             }
@@ -34,7 +34,7 @@
             "condition": "minecraft:match_tool",
             "predicate": {
               "items": [
-                "netherexp:treacherous_flame"
+                "minecraft:honeycomb"
               ]
             }
           }

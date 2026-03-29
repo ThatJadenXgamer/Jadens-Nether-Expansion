@@ -1,20 +1,20 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:treacherous_flame"
+      "id": "netherexp:brazier_chest"
     },
     "title": {
-      "translate": "advancements.nether.rekindled_betrayal.title"
+      "translate": "advancements.nether.eldritch_manipulation.title"
     },
     "description": {
-      "translate": "advancements.nether.rekindled_betrayal.description"
+      "translate": "advancements.nether.eldritch_manipulation.description"
     },
     "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/occult_manor",
+  "parent": "netherexp:nether/soul_sand_valley/rekindled_betrayal",
   "criteria": {
     "used_item": {
       "trigger": "minecraft:item_used_on_block",
@@ -25,7 +25,7 @@
             "predicate": {
               "block": {
                 "blocks": [
-                  "netherexp:treacherous_candle"
+                  "netherexp:brazier_chest"
                 ]
               }
             }
@@ -34,7 +34,7 @@
             "condition": "minecraft:match_tool",
             "predicate": {
               "items": [
-                "minecraft:flint_and_steel"
+                "netherexp:treacherous_flame"
               ]
             }
           }

@@ -23,11 +23,13 @@ public class SlugPellet extends AbstractPellet {
         super(entityType, level);
     }
 
+    @SuppressWarnings("unused")
     public SlugPellet(double x, double y, double z, Level level) {
         this(JNEEntityType.SLUG_PELLET.get(), level);
         this.setPos(x, y, z);
     }
 
+    @SuppressWarnings("unused")
     public SlugPellet(double x, double y, double z, Level level, Entity owner) {
         this(JNEEntityType.SLUG_PELLET.get(), level);
         this.setPos(x, y, z);

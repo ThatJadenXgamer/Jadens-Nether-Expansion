@@ -20,6 +20,7 @@ public class ShotgunPellet extends AbstractPellet {
         this(JNEEntityType.SHOTGUN_PELLET.get(), level);
         this.setPos(x, y, z);
     }
+
     public ShotgunPellet(double x, double y, double z, Level level, Entity owner) {
         this(JNEEntityType.SHOTGUN_PELLET.get(), level);
         this.setPos(x, y, z);

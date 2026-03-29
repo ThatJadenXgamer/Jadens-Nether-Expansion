@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:golden_sword"
+      "id": "minecraft:golden_sword"
     },
     "title": {
       "translate": "advancements.nether.overkill.title"

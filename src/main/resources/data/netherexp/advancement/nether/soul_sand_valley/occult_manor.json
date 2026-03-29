@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:chiseled_soul_slate_tiles"
+      "id": "netherexp:chiseled_soul_slate_tiles"
     },
     "title": {
       "translate": "advancements.nether.castlemania.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/emf_raider",
+  "parent": "netherexp:nether/soul_sand_valley/emf_raider",
   "criteria": {
     "structure": {
       "trigger": "minecraft:location",

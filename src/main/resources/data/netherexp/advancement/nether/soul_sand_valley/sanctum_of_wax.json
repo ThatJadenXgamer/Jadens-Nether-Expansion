@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:ancient_wax"
+      "id": "netherexp:ancient_wax"
     },
     "title": {
       "translate": "advancements.nether.sanctum_of_wax.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/hp_minecraftian",
+  "parent": "netherexp:nether/soul_sand_valley/hp_minecraftian",
   "criteria": {
     "has_item": {
       "trigger": "netherexp:make_fake_carcass"

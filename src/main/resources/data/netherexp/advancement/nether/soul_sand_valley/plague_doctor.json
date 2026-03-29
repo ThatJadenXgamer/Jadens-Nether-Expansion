@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:grenade_antidote"
+      "id": "netherexp:grenade_antidote"
     },
     "title": {
       "translate": "advancements.nether.plague_doctor.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/the_caduceus",
+  "parent": "netherexp:nether/soul_sand_valley/the_caduceus",
   "criteria": {
     "all_effects": {
       "trigger": "minecraft:effects_changed",

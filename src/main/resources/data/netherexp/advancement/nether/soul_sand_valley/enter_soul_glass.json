@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:phasmo_shard"
+      "id": "netherexp:phasmo_shard"
     },
     "title": {
       "translate": "advancements.nether.phasmophobic.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/frightening_rush",
+  "parent": "netherexp:nether/soul_sand_valley/frightening_rush",
   "criteria": {
     "condition": {
       "trigger": "minecraft:enter_block",

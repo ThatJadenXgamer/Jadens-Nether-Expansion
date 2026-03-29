@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:shotgun_fist",
+      "id": "netherexp:shotgun_fist",
       "nbt": "{Damage:0}"
     },
     "title": {
@@ -15,7 +15,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/eldritch_manipulation",
+  "parent": "netherexp:nether/soul_sand_valley/eldritch_manipulation",
   "criteria": {
     "shot_trident": {
       "trigger": "minecraft:inventory_changed",

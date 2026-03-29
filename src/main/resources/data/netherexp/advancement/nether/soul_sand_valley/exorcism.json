@@ -1,23 +1,23 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:sanctum_compass"
+      "id": "netherexp:wisp_bottle"
     },
     "title": {
-      "translate": "advancements.nether.emf_raider.title"
+      "translate": "advancements.nether.exorcism.title"
     },
     "description": {
-      "translate": "advancements.nether.emf_raider.description"
+      "translate": "advancements.nether.exorcism.description"
     },
     "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/soul_sand_valley",
+  "parent": "netherexp:nether/soul_sand_valley/ghost_mucus",
   "criteria": {
     "has_item": {
-      "trigger": "netherexp:activate_sanctum_compass"
+      "trigger": "netherexp:exorcism"
     }
   },
   "requirements": [

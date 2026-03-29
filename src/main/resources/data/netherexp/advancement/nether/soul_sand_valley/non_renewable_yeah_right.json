@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:skeleton_skull"
+      "id": "minecraft:skeleton_skull"
     },
     "title": {
       "translate": "advancements.nether.non_renewable_yeah_right.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/gravedigger",
+  "parent": "netherexp:nether/soul_sand_valley/gravedigger",
   "criteria": {
     "killed_entity": {
       "trigger": "minecraft:player_killed_entity",

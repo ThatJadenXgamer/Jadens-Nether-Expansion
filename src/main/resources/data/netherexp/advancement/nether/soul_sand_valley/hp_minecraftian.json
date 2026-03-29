@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:flint_and_steel"
+      "id": "minecraft:flint_and_steel"
     },
     "title": {
       "translate": "advancements.nether.hp_minecraftian.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/occult_manor",
+  "parent": "netherexp:nether/soul_sand_valley/occult_manor",
   "criteria": {
     "has_item": {
       "trigger": "netherexp:revive_carcass"

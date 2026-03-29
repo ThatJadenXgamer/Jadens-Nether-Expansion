@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:antidote"
+      "id": "netherexp:antidote"
     },
     "title": {
       "translate": "advancements.nether.the_caduceus.title"
@@ -10,7 +10,7 @@
       "translate": "advancements.nether.the_caduceus.description"
     }
   },
-  "parent": "netherexp:nether/occult_manor",
+  "parent": "netherexp:nether/soul_sand_valley/occult_manor",
   "criteria": {
     "c1": {
       "trigger": "minecraft:inventory_changed",

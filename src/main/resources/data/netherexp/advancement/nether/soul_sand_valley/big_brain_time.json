@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:cerebrage_claret_stem"
+      "id": "netherexp:cerebrage_claret_stem"
     },
     "title": {
       "translate": "advancements.nether.big_brain_time.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/brain_food",
+  "parent": "netherexp:nether/soul_sand_valley/brain_food",
   "criteria": {
     "used_item": {
       "trigger": "netherexp:grow_cerebrage_claret"

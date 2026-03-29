@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:soul_swirls"
+      "id": "netherexp:soul_swirls"
     },
     "title": {
       "translate": "advancements.nether.frightening_rush.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/soul_sand_valley",
+  "parent": "netherexp:nether/soul_sand_valley/soul_sand_valley",
   "criteria": {
     "condition": {
       "trigger": "minecraft:enter_block",

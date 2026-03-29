@@ -1,20 +1,20 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:black_icicle"
+      "id": "netherexp:phasmo_arrow"
     },
     "title": {
-      "translate": "advancements.nether.black_ice_black_everything_black.title"
+      "translate": "advancements.nether.blind_shot.title"
     },
     "description": {
-      "translate": "advancements.nether.black_ice_black_everything_black.description"
+      "translate": "advancements.nether.blind_shot.description"
     },
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/ssv_sub_biomes",
+  "parent": "netherexp:nether/soul_sand_valley/frightening_rush",
   "criteria": {
     "shot_arrow": {
       "trigger": "minecraft:player_hurt_entity",
@@ -28,7 +28,7 @@
               }
             ],
             "direct_entity": {
-              "type": "netherexp:black_icicle"
+              "type": "netherexp:phasmo_arrow"
             }
           }
         }

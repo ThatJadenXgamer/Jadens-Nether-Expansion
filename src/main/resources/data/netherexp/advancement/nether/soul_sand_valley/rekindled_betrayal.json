@@ -1,20 +1,20 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:treacherous_candle"
+      "id": "netherexp:treacherous_flame"
     },
     "title": {
-      "translate": "advancements.nether.back_with_a_vengeance.title"
+      "translate": "advancements.nether.rekindled_betrayal.title"
     },
     "description": {
-      "translate": "advancements.nether.back_with_a_vengeance.description"
+      "translate": "advancements.nether.rekindled_betrayal.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/rekindled_betrayal",
+  "parent": "netherexp:nether/soul_sand_valley/occult_manor",
   "criteria": {
     "used_item": {
       "trigger": "minecraft:item_used_on_block",
@@ -34,7 +34,7 @@
             "condition": "minecraft:match_tool",
             "predicate": {
               "items": [
-                "minecraft:honeycomb"
+                "minecraft:flint_and_steel"
               ]
             }
           }

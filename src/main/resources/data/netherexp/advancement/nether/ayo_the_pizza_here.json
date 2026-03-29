@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:nether_pizza"
+      "id": "netherexp:nether_pizza"
     },
     "title": {
       "translate": "advancements.nether.ayo_the_pizza_here.title"
@@ -28,7 +28,7 @@
             }
           }
         ],
-        "item": {
+        "id": {
           "items": [
             "netherexp:nether_pizza"
           ]

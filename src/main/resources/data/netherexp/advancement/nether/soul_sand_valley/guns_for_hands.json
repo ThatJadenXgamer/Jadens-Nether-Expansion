@@ -1,0 +1,48 @@
+{
+  "display": {
+    "icon": {
+      "id": "netherexp:shotgun_shell",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.nether.guns_for_hands.title"
+    },
+    "description": {
+      "translate": "advancements.nether.guns_for_hands.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley/angel_with_a_shotgun",
+  "criteria": {
+    "task": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "netherexp:vessel"
+            }
+          }
+        ],
+        "killing_blow": {
+          "tags": [
+            {
+              "id": "netherexp:shotgun_pellets",
+              "expected": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "task"
+    ]
+  ]
+}

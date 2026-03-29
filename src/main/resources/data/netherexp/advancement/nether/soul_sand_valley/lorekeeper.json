@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "netherexp:ossified_gargoyle_statue"
+      "id": "netherexp:ossified_gargoyle_statue"
     },
     "title": {
       "translate": "advancements.nether.lorekeeper.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/hp_minecraftian",
+  "parent": "netherexp:nether/soul_sand_valley/hp_minecraftian",
   "criteria": {
     "froglights": {
       "trigger": "minecraft:inventory_changed",

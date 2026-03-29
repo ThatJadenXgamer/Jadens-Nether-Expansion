@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:bone_block"
+      "id": "minecraft:bone_block"
     },
     "title": {
       "translate": "advancements.nether.rattling_remnants.title"
@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/soul_sand_valley",
+  "parent": "netherexp:nether/soul_sand_valley/soul_sand_valley",
   "criteria": {
     "structure": {
       "trigger": "minecraft:location",
