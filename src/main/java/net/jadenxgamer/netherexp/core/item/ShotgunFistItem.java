@@ -155,9 +155,9 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
         if (!level.isClientSide()) return;
         WorldParticleBuilder.create(JNEParticleTypes.WIND_TRAIL.get())
                 .setFullBrightLighting()
-                .setColorData(ColorParticleData.create(new Color(0x00FFFF)).build())
+                .setColorData(ColorParticleData.create(new Color(0xFFFFFF)).build())
                 .setScaleData(GenericParticleData.create(0.1f, 1.5f).setEasing(Easing.SINE_OUT).build())
-                .setTransparencyData(GenericParticleData.create(1.0f, 0.0f).build())
+                .setTransparencyData(GenericParticleData.create(0.7f, 0.0f).build())
                 .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
                 .setLifetime(10)
                 .disableNoClip()

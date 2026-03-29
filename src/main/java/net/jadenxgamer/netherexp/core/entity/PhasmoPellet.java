@@ -11,6 +11,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.awt.*;
+
 public class PhasmoPellet extends AbstractPellet {
 
     public PhasmoPellet(EntityType<? extends AbstractArrow> entityType, Level level) {
@@ -28,16 +30,21 @@ public class PhasmoPellet extends AbstractPellet {
     }
 
     @Override
+    public Color getTrailColor() {
+        return new Color(0x132A34);
+    }
+
+    @Override
+    public Color getHitColor() {
+        return new Color(0x256261);
+    }
+
+    @Override
     protected ItemStack getDefaultPickupItem() {
         return JNEItems.PHASMO_SHOTGUN_SHELL.get().getDefaultInstance();
     }
 
     @Override
     protected void onHitBlock(BlockHitResult blockHitResult) {
-    }
-
-    @Override
-    protected ParticleOptions getHitParticle() {
-        return ParticleTypes.SOUL;
     }
 }

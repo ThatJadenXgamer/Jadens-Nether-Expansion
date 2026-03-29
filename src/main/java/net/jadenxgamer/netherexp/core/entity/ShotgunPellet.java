@@ -8,6 +8,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import java.awt.*;
+
 public class ShotgunPellet extends AbstractPellet {
 
     public ShotgunPellet(EntityType<? extends AbstractArrow> entityType, Level level) {
@@ -22,6 +24,16 @@ public class ShotgunPellet extends AbstractPellet {
         this(JNEEntityType.SHOTGUN_PELLET.get(), level);
         this.setPos(x, y, z);
         this.setOwner(owner);
+    }
+
+    @Override
+    public Color getTrailColor() {
+        return new Color(0x0BD5D5);
+    }
+
+    @Override
+    public Color getHitColor() {
+        return new Color(0x0BD5D5);
     }
 
     @Override

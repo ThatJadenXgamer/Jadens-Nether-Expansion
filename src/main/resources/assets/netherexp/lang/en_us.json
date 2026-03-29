@@ -612,6 +612,7 @@
   "subtitles.entity.apparition.possession": "Apparition possesses a mob",
   "subtitles.entity.willowisp.ambient": "Will O' Wisp weeps",
   "subtitles.entity.banshee.stun": "Banshee dazed",
+  "subtitles.item.shotgun.impact": "Pellet impact",
   "block.netherexp.drifting_souls": "Drifting Souls",
   "advancements.nether.why_are_you_hitting_yourself.title": "Why are you hitting yourself?",
   "advancements.nether.why_are_you_hitting_yourself.description": "Juke a Will O' Wisp into hitting the banshee which shot it",
@@ -634,6 +635,8 @@
   "enchantment.netherexp.volley": "Volley",
   "enchantment.netherexp.longshot": "Longshot",
   "enchantment.netherexp.counterforce": "Counterforce",
+  "entity.netherexp.slug_pellet": "Slug Pellet",
+  "entity.netherexp.phasmo_pellet": "Phasmo Pellet",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",
