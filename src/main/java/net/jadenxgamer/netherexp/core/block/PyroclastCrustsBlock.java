@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -55,13 +56,38 @@ public class PyroclastCrustsBlock extends Block {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (state.getValue(CRUSTS) < 6 && stack.is(this.asItem())) {
-            level.playSound(player, pos, state.getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
-            if (!player.getAbilities().instabuild) stack.shrink(1);
-            level.setBlock(pos, state.cycle(CRUSTS), Block.UPDATE_ALL);
-            return ItemInteractionResult.sidedSuccess(level.isClientSide());
+        if (!player.isSecondaryUseActive()) {
+            int crusts = state.getValue(CRUSTS);
+            if (crusts < 6 && stack.is(this.asItem())) {
+                level.playSound(player, pos, state.getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                if (!player.getAbilities().instabuild) stack.shrink(1);
+                level.setBlock(pos, state.cycle(CRUSTS), Block.UPDATE_ALL);
+                return ItemInteractionResult.sidedSuccess(level.isClientSide());
+            }
+            else if (stack.isEmpty()) {
+                if (player.getAbilities().instabuild) {
+                    consumeCrust(level, pos, state, player, crusts);
+                    return ItemInteractionResult.sidedSuccess(level.isClientSide());
+                } else {
+                    if (player.addItem(new ItemStack(this.asItem()))) {
+                        consumeCrust(level, pos, state, player, crusts);
+                        return ItemInteractionResult.sidedSuccess(level.isClientSide());
+                    } else return ItemInteractionResult.FAIL;
+                }
+            }
         }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    }
+
+    private void consumeCrust(Level level, BlockPos pos, BlockState state, Player player, int crusts) {
+        if (crusts == 1) {
+            level.removeBlock(pos, false);
+            level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+        } else {
+            level.setBlock(pos, state.setValue(CRUSTS, crusts - 1), Block.UPDATE_ALL);
+            level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+        }
+        level.playSound(null, pos, state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     @Override

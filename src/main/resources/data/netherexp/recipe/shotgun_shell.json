@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "W",
+    "#",
+    "N"
+  ],
+  "key": {
+    "W": {
+      "item": "netherexp:wraithing_flesh"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "#": {
+      "tag": "minecraft:coals"
+    }
+  },
+  "result": {
+    "id": "netherexp:shotgun_shell",
+    "count": 4
+  }
+}

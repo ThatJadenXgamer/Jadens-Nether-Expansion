@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.client;
 
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
+import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
@@ -17,6 +18,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
 import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
@@ -60,30 +62,7 @@ public abstract class LevelRendererMixin {
             double z = player.getZ() + Math.sin(angle) * distance;
             Color color = new Color(level.getBiome(new BlockPos((int) x, (int) y, (int) z)).value().getFogColor());
 
-            fogParticle(level, level.random, x, y, z, color);
+            VFXHelper.fogParticle(level, level.random, x, y, z, color);
         }
-    }
-
-    @Unique
-    private void fogParticle(Level level, RandomSource random, double x, double y, double z, Color color) {
-        double motion = NETHER_MIST_MOTION_MULTIPLIER.get();
-        float scale = (float) NETHER_MIST_SCALE.getAsDouble();
-        float opacity = (float) NETHER_MIST_SCALE.getAsDouble();
-        float startSize = Mth.randomBetween(random, (scale - 2.0f), scale);
-        float endSize = Mth.randomBetween(random, (scale + 1.0f), (scale + 3.0f));
-        float transparency = Mth.randomBetween(random, (opacity - 0.2f), opacity);
-        Vec3 direction = new Vec3(0.0, 1.0, 0.0);
-        WorldParticleBuilder.create(JNEParticleTypes.NETHER_FOG.get())
-                .setFullBrightLighting()
-                .enableNoClip()
-                .setBehavior(SparkParticleBehavior.sparkBehavior().setForcedDirection(direction))
-                .setForceSpawn(true)
-                .setScaleData(GenericParticleData.create(startSize, endSize).build())
-                .setTransparencyData(GenericParticleData.create(0.002f, transparency, 0f).build())
-                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE.withDepthFade())
-                .setLifetime(random.nextInt(120, 180))
-                .setMotion(random.nextDouble() * motion, random.nextDouble() * motion, random.nextDouble() * motion)
-                .setColorData(ColorParticleData.create(color.brighter().brighter()).build())
-                .spawn(level, x, y, z);
     }
 }

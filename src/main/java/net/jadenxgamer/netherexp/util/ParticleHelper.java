@@ -2,15 +2,14 @@ package net.jadenxgamer.netherexp.util;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.jadenxgamer.netherexp.core.entity.Vessel;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
@@ -86,7 +85,7 @@ public class ParticleHelper {
                 .spawn(level, parX, y, parZ);
     }
 
-    public static Vec3 calculateBoneWorldPosition(Vessel entity, float partialTicks, ModelPart... bones) {
+    public static Vec3 calculateBoneWorldPosition(LivingEntity entity, float partialTicks, ModelPart... bones) {
         PoseStack poseStack = new PoseStack();
 
         float yBodyRot = Mth.rotLerp(partialTicks, entity.yBodyRotO, entity.yBodyRot);

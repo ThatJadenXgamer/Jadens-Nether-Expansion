@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blaze_powder"
+    },
+    "X": {
+      "item": "netherexp:shotgun_shell"
+    }
+  },
+  "result": {
+    "id": "netherexp:slug_shotgun_shell",
+    "count": 2
+  }
+}

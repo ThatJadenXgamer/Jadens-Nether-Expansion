@@ -109,6 +109,12 @@
     "netherexp:weeping_polished_blackstone_bricks",
     "netherexp:twisting_polished_blackstone_bricks",
 
+    "netherexp:pyroclast_crusts",
+    "netherexp:pyroclast",
+    "netherexp:pyroclast_slab",
+    "netherexp:pyroclast_stairs",
+    "netherexp:pyroclast_wall",
+
     "minecraft:glowstone",
     "minecraft:redstone_lamp",
     "#netherexp:mob_heads",

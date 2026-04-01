@@ -20,12 +20,14 @@ public final class NetherExp {
     public NetherExp(IEventBus modEventBus, ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.COMMON, JNEConfigImpl.CONFIG);
 
+        JNEDataComponents.init(modEventBus);
         JNERegistries.init(modEventBus);
         JNEParticleTypes.init(modEventBus);
         JNESoundEvents.init(modEventBus);
         JNECreativeModeTabs.init(modEventBus);
         JNECriteriaTriggers.init(modEventBus);
         JNEFeatureTypes.init(modEventBus);
+        JNEWorldGenRegistries.init(modEventBus);
 
         JNEEntityType.init(modEventBus);
         JNEMobEffects.init(modEventBus);

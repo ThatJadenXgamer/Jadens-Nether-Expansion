@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassB
 import net.jadenxgamer.netherexp.client.rendering.block_entity.JNECampfireRenderer;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.entity.*;
+import net.jadenxgamer.netherexp.client.rendering.item.ShotgunFistModel;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
@@ -29,6 +30,7 @@ import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticl
 
 @Mod(value = NetherExp.MOD_ID, dist = Dist.CLIENT)
 public final class NetherExpClient {
+    public static boolean shouldShowBetaPopup = false;
 
     public NetherExpClient(IEventBus modEventBus, ModContainer modContainer) {
         modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
@@ -100,6 +102,7 @@ public final class NetherExpClient {
         event.registerLayerDefinition(WillOWispRenderer.WillOWispModel.LAYER, WillOWispRenderer.WillOWispModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER_HAND, WillOWispRenderer.WillOWispItemModel::createHandLayer);
+        event.registerLayerDefinition(ShotgunFistModel.LAYER, ShotgunFistModel::createBodyLayer);
         event.registerLayerDefinition(PelletRenderer.ShotgunPelletModel.LAYER, PelletRenderer.ShotgunPelletModel::createBodyLayer);
     }
 }

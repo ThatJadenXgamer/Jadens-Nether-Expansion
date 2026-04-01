@@ -740,7 +740,7 @@ public class JNEBlocks {
             new ColoredFallingBlock(new ColorRGBA(10581094), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.4f).sound(SoundType.GRAVEL)));
 
     public static final Supplier<Block> SILT_FLINT_ORE = registerBlock("silt_flint_ore", () ->
-            new OreFallingBlock(UniformInt.of(0, 2), new ColorRGBA(10581094), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.4f).sound(SoundType.GRAVEL)));
+            new OreFallingBlock(UniformInt.of(0, 2), new ColorRGBA(10581094), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.6f).sound(SoundType.GRAVEL)));
 
     public static void init(IEventBus eventBus) {
         registerAliases();
