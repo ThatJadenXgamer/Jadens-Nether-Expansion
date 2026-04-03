@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.core.item;
 
-import net.jadenxgamer.netherexp.client.gui.BetaPopupWarning;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemAnimationState;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
@@ -12,7 +11,6 @@ import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.util.ClientItemData;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.jadenxgamer.netherexp.util.VFXHelper;
-import net.minecraft.client.Minecraft;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -107,7 +105,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
                 .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
                 .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
                 .setLifetime(Mth.randomBetweenInclusive(random, 10, 15))
-                .enableNoClip()
+                .disableNoClip()
                 .addMotion(motionX, motionY, motionZ)
                 .spawn(level, x, y, z);
     }

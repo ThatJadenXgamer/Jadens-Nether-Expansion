@@ -1,4 +1,4 @@
-# 2.4.0 - NeoForge 1.21.1 Port
+# 2.4.0-BETA.1 - [EARLY ACCESS VERSION OF THE 1.21.1 PORT]
 
 ### Major Changes
 -Updated to NeoForge 1.21.1
@@ -35,16 +35,6 @@
 
 -Phasmo Shotgun Shells are another variant of shotgun-shells crafted with phasmo shards. It can phase through blocks
 
--Ecto Slabs now produce obvious rays of light when they are underground to make them less annoying
-
--Ecto Slabs now rarely spawn naturally in the soul sand valley instead of soul swirls. To accommodate this, their detection radius has also been greatly reduced -X
-
--Ecto Slabs can however still detect entities inflicted with unbounded speed from as far as 64 blocks away and B-line towards them if possible -X
-
--Stampedes can now naturally spawn very rarely in the soul sand valley -X
-
--Stampedes' hunger meter UI has also received a redesign to make it more obvious as to what it is
-
 -Thin Black Ice can now shatter in a chain reaction if one breaks
 
 -Certain mobs (usually light ones) can now stand on thin black ice without shattering it 
@@ -57,9 +47,9 @@
 
 -Apparitions, Wisps, Banshees and Blazes no longer have shade and look similar to bedrock edition emissive mobs
 
--New Particles and Fog Color have been given to the soul sand valley to make it appear more windy and ethereal -X
+-Banshees now get stunned upon getting hit with their own projectiles to make encounters with them more stragetic
 
--Striders now have new Damp, Moist and Dry variants depending on which biome they're found in -X
+-Several new visual effects have been added to the nether to make it more atmospheric, alongside changes to their fog colors to further add to their etheral look
 
 -Soul Swirls no longer drop themselves if sheared when activated
 
@@ -67,25 +57,15 @@
 
 -Bone Corticals have been removed. all instances of this block from older worlds will automatically convert to regular vanilla bone blocks
 
--Wretched Gargoyle Statue has received a new model -X
-
--New Advancement "Why are you hitting yourself?" juke a will o' wisp into hitting the banshee which shot it
-
 -New Advancement "Guns for Hands" duel a vessel with your very own shotgun
 
--New Advancement "Ghosts Busted" kill one of each possessed and ghost mob
-
 -New Advancement "Involuntary Eviction" forcefully remove a wisp out of ecto soul sand by brushing it
-
--New Advancement "99 Blue Balloons" leash an apparition and have fun with your new sentient balloon
-
--Buckshot Wonderland Music Disc is now much rarer in brazier chests and has an alternative obtaining method when a vessel kills a creeper -X
 
 -Soul Sand Valleys and their sub-biomes now spawn cold frog variants opposed to warm ones
 
 -Snow Golems no longer melt in the Soul Sand Valley or its sub-biomes either
 
--2 New Immunities were added, Slow Falling Immunity and Infesting Immunity brewed with Wool and Obsidian respectively
+-2 New Immunities were added, Slow Falling Immunity and Infesting Immunity, currently unbrewable due to antidotes not being implemented
 
 -Sorrowsquash stem hitboxes now extend to encompasses the entire thing when attached
 
@@ -133,11 +113,23 @@
 
 -Apparitions now have new possession sounds
 
+-Lava now has a perlin noise gradient applied to it, making it look less mentonious
+
+-New windy dust particles have been added to the soul sand valley which replace the usual static ash particles now
+
+-Fire has received new particles and their each indevidual colors can be edited through a Resource Pack, allowing for mod-compat
+
+-Vessel's AI has been overhauled, their aim is now more perfect the closer they are to the target; as indicated by a yellow flash before firing
+
+-To accomdiate for the above change, their aim is also now worse at medium-to-far ranges, they now also become stationary upon firing to allow for easier hits
+
+-Many new particles such as a cooldown smoke, shotgun shoot flash, pellet impacts, trails and more have been given to both the Vessel and Shotgun-Fist
+
 -Updated German Translation
 
-### Mod Compatibility
+-***AND MORE I PROBABLY FORGOT TO MENTION LMAO***
 
--Sconces from Supplementaries now has an ancient fire variant
+### Mod Compatibility
 
 -Possessed and Ghost mobs now take 1.5x damage modifier if hurt with any modded silver weapon
 
@@ -148,8 +140,6 @@
 -Galosphere's Sterling armor pieces are now counted as silver armor and thus effective against ghosts and possessions
 
 ### Fixes
-
--Ecto Slabs can now be exorcised with water, this was bugged prior -X
 
 -Treacherous Candle spawn and round sounds didn't have subtitles, this has now been fixed
 

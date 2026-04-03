@@ -4,10 +4,7 @@ import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -550,7 +547,10 @@ public class JNECreativeModeTabs {
             insertToTab(event, Items.LAVA_BUCKET, JNEFluids.ECTOPLASM_BUCKET.get(), false);
 
             insertToTab(event, Items.MUSIC_DISC_PIGSTEP, JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), false);
-            insertToTab(event, Items.MUSIC_DISC_PIGSTEP, LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")), false);
+
+            var tearsDisc = LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears"));
+            boolean alreadyExists = event.getParentEntries().stream().anyMatch(stack -> stack.getItem() == tearsDisc);
+            if (!alreadyExists) insertToTab(event, Items.MUSIC_DISC_PIGSTEP, tearsDisc, false);
         }
     }
 }

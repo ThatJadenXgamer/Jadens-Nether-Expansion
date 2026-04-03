@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.client.gui;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -41,6 +42,7 @@ public class BetaPopupWarning extends Screen {
         Button dontShowAgainButton = Button.builder(Component.literal("Don't show again"), button -> {
                     this.onClose();
                     JNEConfigs.SHOW_BETA_WARNING_POPUP.set(false);
+                    JNEConfigImpl.CONFIG.save();
                 })
                 .bounds(popupX + 116, popupY + 156, 100, 20)
                 .build();
