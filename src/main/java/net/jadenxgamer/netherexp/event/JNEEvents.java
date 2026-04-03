@@ -62,7 +62,7 @@ public class JNEEvents {
         });
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void buildTabContents(BuildCreativeModeTabContentsEvent event) {
         JNECreativeModeTabs.addToExistingTabs(event);
     }

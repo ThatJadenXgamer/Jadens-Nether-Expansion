@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "netherexp:block/pyroclast",
+    "side": "netherexp:block/pyroclast",
+    "top": "netherexp:block/pyroclast"
+  }
+}

@@ -487,6 +487,9 @@ public class JNEConfigImpl {
                     .comment("Turns on various developer loggers, technical information and such for debugging purposes \n" +
                             "I suggest you keep this disabled if you're just a casual player")
                     .define("developerMode", false);
+            SHOW_BETA_WARNING_POPUP = builder
+                    .comment("Pretty self-explanatory; When running beta builds of JNE, a pop-up will appear on screen warning you upon joining worlds")
+                    .define("showBetaWarningPopUp", true);
         }
     }
 }

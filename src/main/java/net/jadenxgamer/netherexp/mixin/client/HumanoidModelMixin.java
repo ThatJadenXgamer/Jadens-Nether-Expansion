@@ -27,5 +27,14 @@ public class HumanoidModelMixin<T extends LivingEntity> {
             HumanoidModel<?> model = ((HumanoidModel<?>) (Object) this);
             model.leftArm.xRot = (float)Math.toRadians(-85.0F);
         }
+
+        if (main.is(JNEItems.SHOTGUN_FIST.get())) {
+            HumanoidModel<?> model = ((HumanoidModel<?>) (Object) this);
+            model.rightArm.xRot = (float)Math.toRadians(-90.0F);
+        }
+        if (offhand.is(JNEItems.SHOTGUN_FIST.get())) {
+            HumanoidModel<?> model = ((HumanoidModel<?>) (Object) this);
+            model.leftArm.xRot = (float)Math.toRadians(-90.0F);
+        }
     }
 }

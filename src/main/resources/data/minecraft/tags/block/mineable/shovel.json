@@ -8,6 +8,8 @@
     "netherexp:fossil_ore",
     "netherexp:fossil_fuel_ore",
     "netherexp:suspicious_soul_sand",
-    "netherexp:soul_permafrost"
+    "netherexp:soul_permafrost",
+    "netherexp:silt",
+    "netherexp:nether_silt_ore"
   ]
 }

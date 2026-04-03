@@ -40,7 +40,8 @@ public abstract class AbstractPellet extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level().isClientSide && this.tickCount > getMaxLife()) {
+        if (!this.level().isClientSide && (this.tickCount > getMaxLife() || this.isInWater())) {
+            this.level().broadcastEntityEvent(this, (byte) 40);
             this.hitGroundSound();
             this.discard();
         }

@@ -2,13 +2,9 @@ package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.util.RegistryHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -16,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-import static net.jadenxgamer.netherexp.util.RegistryHelper.*;
+import static net.jadenxgamer.netherexp.util.RegistryHelper.insertToTab;
 
 public class JNECreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, NetherExp.MOD_ID);
@@ -348,6 +344,14 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.NETHERRACK_TILES.get());
                 output.accept(JNEBlocks.NETHERRACK_PILLAR.get());
 
+                output.accept(JNEItems.PYROCLAST_CRUSTS.get());
+                output.accept(JNEBlocks.PYROCLAST.get());
+                output.accept(JNEBlocks.PYROCLAST_STAIRS.get());
+                output.accept(JNEBlocks.PYROCLAST_SLAB.get());
+                output.accept(JNEBlocks.PYROCLAST_WALL.get());
+
+                output.accept(JNEBlocks.SILT.get());
+                output.accept(JNEBlocks.SILT_FLINT_ORE.get());
                 output.accept(Items.MAGMA_BLOCK);
                 output.accept(Blocks.SOUL_SAND);
                 output.accept(Blocks.GLOWSTONE);
@@ -543,7 +547,10 @@ public class JNECreativeModeTabs {
             insertToTab(event, Items.LAVA_BUCKET, JNEFluids.ECTOPLASM_BUCKET.get(), false);
 
             insertToTab(event, Items.MUSIC_DISC_PIGSTEP, JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), false);
-            insertToTab(event, Items.MUSIC_DISC_PIGSTEP, LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")), false);
+
+            var tearsDisc = LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears"));
+            boolean alreadyExists = event.getParentEntries().stream().anyMatch(stack -> stack.getItem() == tearsDisc);
+            if (!alreadyExists) insertToTab(event, Items.MUSIC_DISC_PIGSTEP, tearsDisc, false);
         }
     }
 }

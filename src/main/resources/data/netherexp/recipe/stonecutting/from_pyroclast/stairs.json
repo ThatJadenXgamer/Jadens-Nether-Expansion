@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "netherexp:pyroclast"
+  },
+  "result": "netherexp:pyroclast_stairs",
+  "count": 1
+}

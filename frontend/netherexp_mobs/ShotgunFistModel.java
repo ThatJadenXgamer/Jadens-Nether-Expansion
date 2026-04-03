@@ -1,4 +1,4 @@
-// Made with Blockbench 4.9.3
+// Made with Blockbench 5.0.7
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
@@ -7,9 +7,17 @@ public class ShotgunFistModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "shotgunfistmodel"), "main");
 	private final ModelPart shotgun;
+	private final ModelPart skull;
+	private final ModelPart jaw;
+	private final ModelPart trigger;
+	private final ModelPart anchor;
 
 	public ShotgunFistModel(ModelPart root) {
 		this.shotgun = root.getChild("shotgun");
+		this.skull = this.shotgun.getChild("skull");
+		this.jaw = this.shotgun.getChild("jaw");
+		this.trigger = this.shotgun.getChild("trigger");
+		this.anchor = this.shotgun.getChild("anchor");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -26,11 +34,13 @@ public class ShotgunFistModel<T extends Entity> extends EntityModel<T> {
 
 		PartDefinition trigger = shotgun.addOrReplaceChild("trigger", CubeListBuilder.create().texOffs(0, 43).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-8.0F, -4.0F, 12.0F));
 
+		PartDefinition anchor = shotgun.addOrReplaceChild("anchor", CubeListBuilder.create(), PartPose.offset(-8.0F, -7.0F, 2.0F));
+
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
 	}
 

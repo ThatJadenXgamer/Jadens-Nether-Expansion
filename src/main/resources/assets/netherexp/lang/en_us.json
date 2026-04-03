@@ -653,6 +653,11 @@
   "advancements.nether.plume_bowels.description": "Glutton till nothing is left...",
   "advancements.nether.grieving_grove.title": "???",
   "advancements.nether.grieving_grove.description": "Envious to see me...?",
+  "block.netherexp.silt": "Silt",
+  "block.netherexp.silt_flint_ore": "Silt Flint Ore",
+  "block.netherexp.damp_siltmarram": "Damp Siltmarram",
+  "block.netherexp.moist_siltmarram": "Moist Siltmarram",
+  "block.netherexp.dry_siltmarram": "Dry Siltmarram",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",
@@ -786,6 +791,7 @@
   "netherexp.configuration.silverParanormalProtectionDamage": "Silver Paranormal Protection Damage",
   "netherexp.configuration.silverInflictsParanormalSlowness": "Silver Inflicts Paranormal Slowness",
   "netherexp.configuration.developerMode": "§oDeveloper Mode",
+  "netherexp.configuration.showBetaWarningPopUp": "§oShow Beta Warning Pop-Up",
 
   "itemGroup.netherexp.jne_grieving_grove": "JNE Grieving Grove",
   "itemGroup.netherexp.jne_plume_bowels": "JNE Plume Bowels",

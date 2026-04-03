@@ -27,13 +27,13 @@
 
 -Ancient Wax Block texture has received a glow-up, no longer looks like bricks
 
--Shotgun-Fist now no longer uses wraithing flesh as ammo but rather the new Shotgun-Shells instead -X
+-Shotgun-Fist now no longer uses wraithing flesh as ammo but rather the new Shotgun-Shells instead
 
--Shotgun-Shells are crafted with wraithing flesh and any coal-like item. It is the new ammunition for shotguns -X
+-Shotgun Shells are crafted with wraithing flesh, iron nuggets and any coal-like item. It is the new ammunition for shotguns
 
--Slug-Shells are a variant of shotgun-shells crafted with gunpowder. It can destroy weak blocks and easily create new openings -X
+-Slug Shotgun Shells are a variant of shotgun-shells crafted with blaze powder. It can destroy blocks and easily create new openings; deals knockback to entities
 
--Phasmo-Shells are another variant of shotgun-shells crafted with phasmo shards. It can phase through blocks -X
+-Phasmo Shotgun Shells are another variant of shotgun-shells crafted with phasmo shards. It can phase through blocks
 
 -Ecto Slabs now produce obvious rays of light when they are underground to make them less annoying
 

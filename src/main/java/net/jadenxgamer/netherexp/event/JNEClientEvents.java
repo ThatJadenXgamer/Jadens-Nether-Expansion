@@ -4,16 +4,16 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.client.JNEFogRenderer;
+import net.jadenxgamer.netherexp.client.gui.BetaPopupWarning;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderStateShard;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.renderer.ShaderInstance;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -21,10 +21,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
-import net.neoforged.neoforge.common.NeoForgeMod;
-import team.lodestar.lodestone.systems.rendering.rendeertype.RenderTypeProvider;
 
 import java.io.IOException;
+
+import static net.jadenxgamer.netherexp.NetherExpClient.shouldShowBetaPopup;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID, value = Dist.CLIENT)
@@ -37,7 +37,19 @@ public class JNEClientEvents {
 
     @SubscribeEvent
     public static void onClientTickPost(ClientTickEvent.Post event) {
+        if (shouldShowBetaPopup) {
+            Minecraft client = Minecraft.getInstance();
+            if (client.player != null && client.screen == null) {
+                client.setScreen(new BetaPopupWarning());
+                shouldShowBetaPopup = false;
+            }
+        }
+    }
 
+    @SubscribeEvent
+    public static void onPlayerLogin(ClientPlayerNetworkEvent.LoggingIn event) {
+        Minecraft client = Minecraft.getInstance();
+        //if (JNEConfigs.SHOW_BETA_WARNING_POPUP.get()) shouldShowBetaPopup = true;
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)
@@ -79,6 +91,7 @@ public class JNEClientEvents {
     @SubscribeEvent
     private static void clientExtensions(RegisterClientExtensionsEvent event) {
         event.registerFluidType(JNEFluidExtensions.ectoplasmExt, JNEFluids.ECTOPLASM_TYPE.get());
-        event.registerItem(JNEItemExtensions.willOWispExt, JNEItems.WILL_O_WISP.get());
+        event.registerItem(JNEItemExtensions.itemExt, JNEItems.WILL_O_WISP.get());
+        event.registerItem(JNEItemExtensions.itemExt, JNEItems.SHOTGUN_FIST.get());
     }
 }
