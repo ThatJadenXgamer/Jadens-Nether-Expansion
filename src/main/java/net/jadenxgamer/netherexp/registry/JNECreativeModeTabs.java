@@ -118,6 +118,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.SHOTGUN_SHELL.get());
                 output.accept(JNEItems.SLUG_SHOTGUN_SHELL.get());
                 output.accept(JNEItems.PHASMO_SHOTGUN_SHELL.get());
+                output.accept(JNEItems.BLANK_SHOTGUN_SHELL.get());
                 output.accept(JNEItems.SHOTGUN_FIST.get());
                 output.accept(JNEItems.PUMP_CHARGE_SHOTGUN.get());
                 output.accept(JNEBlocks.SHOTGUN_BARREL.get());

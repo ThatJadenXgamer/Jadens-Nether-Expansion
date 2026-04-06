@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "S",
+    "#",
+    "N"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:soul_sand"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "#": {
+      "tag": "minecraft:coals"
+    }
+  },
+  "result": {
+    "id": "netherexp:blank_shotgun_shell",
+    "count": 16
+  }
+}

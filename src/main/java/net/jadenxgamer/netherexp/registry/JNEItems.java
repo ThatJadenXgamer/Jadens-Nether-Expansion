@@ -101,7 +101,7 @@ public class JNEItems {
             new ShotgunFistItem(new Item.Properties().stacksTo(1).durability(512).fireResistant().rarity(Rarity.RARE)));
 
     public static final Supplier<Item> PUMP_CHARGE_SHOTGUN = ITEMS.register("pump_charge_shotgun", () ->
-            new Item(new Item.Properties().stacksTo(1).durability(640).fireResistant().rarity(Rarity.EPIC)));
+            new PumpChargeShotgunItem(new Item.Properties().stacksTo(1).durability(640).fireResistant().rarity(Rarity.EPIC)));
 
     public static final Supplier<Item> CLARET_SIGN = ITEMS.register("claret_sign", () ->
             new SignItem(new Item.Properties().stacksTo(16), JNEBlocks.CLARET_SIGN.get(), JNEBlocks.CLARET_WALL_SIGN.get()));
@@ -207,6 +207,9 @@ public class JNEItems {
 
     public static final Supplier<Item> PHASMO_SHOTGUN_SHELL = ITEMS.register("phasmo_shotgun_shell", () ->
             new ShotgunShellItem(PhasmoPellet.class, new Item.Properties()));
+
+    public static final Supplier<Item> BLANK_SHOTGUN_SHELL = ITEMS.register("blank_shotgun_shell", () ->
+            new Item(new Item.Properties()));
     
     /**
      * Artifacts

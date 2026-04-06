@@ -74,7 +74,7 @@ public abstract class ExorcismMob extends PathfinderMob {
         } else if (source.getEntity() instanceof Player player) {
             if (player.getMainHandItem().is(JNETags.Items.SILVER_WEAPONS)) {
                 amount *= SILVER_PARANORMAL_DAMAGE_MULTIPLIER.get();
-                if (SILVER_PARANORMAL_INFLICTS_SLOWNESS.get()) this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 2));
+                if (SILVER_PARANORMAL_INFLICTS_SLOWNESS.get()) this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 4));
                 this.level().broadcastEntityEvent(this, (byte) 91);
             }
         }
@@ -88,7 +88,7 @@ public abstract class ExorcismMob extends PathfinderMob {
 
             if (isWearingSilverArmor) {
                 this.hurt(level().damageSources().playerAttack(player), (float) SILVER_PARANORMAL_PROTECTION_DAMAGE.getAsDouble());
-                if (SILVER_PARANORMAL_INFLICTS_SLOWNESS.get()) this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 2));
+                if (SILVER_PARANORMAL_INFLICTS_SLOWNESS.get()) this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 4));
                 this.level().broadcastEntityEvent(this, (byte) 91);
             }
         }

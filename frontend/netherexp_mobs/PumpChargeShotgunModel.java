@@ -38,7 +38,7 @@ public class PumpChargeShotgunModel<T extends Entity> extends EntityModel<T> {
 
 		PartDefinition barrel = shotgun.addOrReplaceChild("barrel", CubeListBuilder.create().texOffs(38, 36).addBox(-3.0F, -3.5F, -3.5F, 6.0F, 7.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.02F, -0.02F, 1.25F));
 
-		PartDefinition anchor = shotgun.addOrReplaceChild("anchor", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, -10.25F));
+		PartDefinition anchor = shotgun.addOrReplaceChild("anchor", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, -11.25F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}

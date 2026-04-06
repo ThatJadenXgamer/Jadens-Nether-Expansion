@@ -5,12 +5,14 @@ import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassB
 import net.jadenxgamer.netherexp.client.rendering.block_entity.JNECampfireRenderer;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.entity.*;
+import net.jadenxgamer.netherexp.client.rendering.item.PumpChargeShotgunModel;
 import net.jadenxgamer.netherexp.client.rendering.item.ShotgunFistModel;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.particle.SplashParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -91,7 +93,10 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.GENERIC_GLOW.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SPARKLE.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SHOTGUN_FLASH.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.PUMP_SHOTGUN_FLASH.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.PELLET_HIT.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.RED_EXPLOSION.get(), HugeExplosionParticle.Provider::new);
+        event.registerSpecial(JNEParticleTypes.RED_EXPLOSION_EMITTER.get(), (new RedExplosionEmitterParticle.Factory()));
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -103,6 +108,7 @@ public final class NetherExpClient {
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER_HAND, WillOWispRenderer.WillOWispItemModel::createHandLayer);
         event.registerLayerDefinition(ShotgunFistModel.LAYER, ShotgunFistModel::createBodyLayer);
+        event.registerLayerDefinition(PumpChargeShotgunModel.LAYER, PumpChargeShotgunModel::createBodyLayer);
         event.registerLayerDefinition(PelletRenderer.ShotgunPelletModel.LAYER, PelletRenderer.ShotgunPelletModel::createBodyLayer);
     }
 }

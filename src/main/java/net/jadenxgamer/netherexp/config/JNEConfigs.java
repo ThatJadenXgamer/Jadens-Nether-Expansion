@@ -56,6 +56,8 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue SHOTGUN_FIST_COOLDOWN;
     public static ModConfigSpec.IntValue PUMP_CHARGE_SHOTGUN_BULLETS;
     public static ModConfigSpec.IntValue PUMP_CHARGE_SHOTGUN_COOLDOWN;
+    public static ModConfigSpec.DoubleValue SLUG_BLOCK_DAMAGE_STRENGTH;
+    public static ModConfigSpec.IntValue COUNTERFORCE_IFRAMES;
     public static ModConfigSpec.IntValue WILL_O_WISP_STACK_SIZE;
 
     // ENTITY

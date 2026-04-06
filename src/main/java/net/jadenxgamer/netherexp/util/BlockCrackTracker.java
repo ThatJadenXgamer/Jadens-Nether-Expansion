@@ -16,31 +16,31 @@ import java.util.*;
 
 public class BlockCrackTracker {
 
-    private static final Map<Level, Map<BlockPos, CrackEntry>> worldData = new HashMap<>();
+    private static final Map<Level, Map<BlockPos, CrackEntry>> LEVEL_DATA = new HashMap<>();
 
-    private record CrackEntry(int damage, int neededHits, int markerId, int resetTicks) {}
+    private record CrackEntry(double damage, double neededHits, int markerId, int resetTicks) {}
 
-    public static void onBlockHit(Level level, BlockPos pos, BlockState state) {
+    public static void onBlockHit(Level level, BlockPos pos, BlockState state, double damageDealt) {
         if (level.isClientSide || !(level instanceof ServerLevel serverLevel)) return;
+        if (damageDealt <= 0.0F) return;
 
         float hardness = state.getDestroySpeed(serverLevel, pos);
         if (hardness < 0 || hardness == Float.POSITIVE_INFINITY) return;
 
-        int neededHits = Math.max(1, (int) Math.ceil(hardness));
-        Map<BlockPos, CrackEntry> blockMap = worldData.computeIfAbsent(level, k -> new HashMap<>());
-
+        Map<BlockPos, CrackEntry> blockMap = LEVEL_DATA.computeIfAbsent(level, k -> new HashMap<>());
         CrackEntry entry = blockMap.get(pos);
+
         if (entry == null) {
             // There is no entry at the moment, make a new one
             Marker marker = new Marker(EntityType.MARKER, level);
             marker.setPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
             level.addFreshEntity(marker);
 
-            entry = new CrackEntry(1, neededHits, marker.getId(), 80);
+            entry = new CrackEntry(damageDealt, hardness, marker.getId(), 80);
             blockMap.put(pos, entry);
         } else {
             // There was an entry so we replace it
-            entry = new CrackEntry(entry.damage() + 1, entry.neededHits(), entry.markerId(), 80);
+            entry = new CrackEntry(entry.damage() + damageDealt, entry.neededHits(), entry.markerId(), 80);
             blockMap.put(pos, entry);
         }
 
@@ -52,13 +52,14 @@ public class BlockCrackTracker {
             sendCrackPacket(serverLevel, pos, entry.markerId(), -1);
             removeMarker(level, entry.markerId());
         } else {
-            int stage = (int) ((float) entry.damage() / entry.neededHits() * 9);
+            int stage = (int) ((entry.damage() / entry.neededHits()) * 9);
+            stage = Math.min(9, Math.max(0, stage));
             sendCrackPacket(serverLevel, pos, entry.markerId(), stage);
         }
     }
 
     public static void tick() {
-        Iterator<Map.Entry<Level, Map<BlockPos, CrackEntry>>> worldIt = worldData.entrySet().iterator();
+        Iterator<Map.Entry<Level, Map<BlockPos, CrackEntry>>> worldIt = LEVEL_DATA.entrySet().iterator();
         while (worldIt.hasNext()) {
             Map.Entry<Level, Map<BlockPos, CrackEntry>> worldEntry = worldIt.next();
             Level level = worldEntry.getKey();
@@ -92,7 +93,7 @@ public class BlockCrackTracker {
     }
 
     public static void onLevelUnload(Level level) {
-        Map<BlockPos, CrackEntry> blockMap = worldData.remove(level);
+        Map<BlockPos, CrackEntry> blockMap = LEVEL_DATA.remove(level);
         if (blockMap != null) {
             for (CrackEntry entry : blockMap.values()) {
                 removeMarker(level, entry.markerId());

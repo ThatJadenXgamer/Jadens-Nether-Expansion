@@ -3,9 +3,10 @@ package net.jadenxgamer.netherexp.core.item;
 import net.jadenxgamer.elysium_api.api.client.screen_flash.ScreenFlash;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemAnimationState;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
+import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
 import net.jadenxgamer.netherexp.core.keys.JNEEnchantments;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.registry.JNEDataComponents;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
@@ -13,7 +14,7 @@ import net.jadenxgamer.netherexp.util.ClientItemData;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -46,14 +47,18 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.COUNTERFORCE_IFRAMES;
+import static net.jadenxgamer.netherexp.core.item.ShotgunFistItem.pointBlankParticle;
 import static net.jadenxgamer.netherexp.util.ParticleHelper.SMOKE_VARIANTS;
 
-public class ShotgunFistItem extends ProjectileWeaponItem {
+public class PumpChargeShotgunItem extends ProjectileWeaponItem {
 
     public static final ItemAnimationState fire = new ItemAnimationState();
+    public static final ItemAnimationState pump = new ItemAnimationState();
+    public static final ItemAnimationState overpump = new ItemAnimationState();
+    public static final ItemAnimationState explode = new ItemAnimationState();
 
-    public ShotgunFistItem(Properties properties) {
-        super(properties);
+    public PumpChargeShotgunItem(Properties properties) {
+        super(properties.component(JNEDataComponents.PUMPS, 1));
     }
 
     @Override
@@ -64,6 +69,11 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if (!level.isClientSide()) return;
+        if (getPumps(stack) > 3) {
+            overpump.startIfStopped(entity.tickCount, entity);
+            if (entity.tickCount % 14 == 0) level.playLocalSound(entity, JNESoundEvents.PUMP_CHARGE_SHOTGUN_ALARM.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
+        } else overpump.stop(entity);
+
         if (entity instanceof Player player) {
             if (player.getCooldowns().isOnCooldown(this)) {
                 ClientItemData.getOrCreate(stack).put("isSmoking", true);
@@ -75,21 +85,37 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack shotgun = player.getItemInHand(hand);
+        if (player.isShiftKeyDown()) {
+            setPumps(shotgun, getPumps(shotgun) + 1);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_LOAD.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            pump.stop(player);
+            pump.startIfStopped(player.tickCount, player);
+            return InteractionResultHolder.pass(shotgun);
+        }
+
         ItemStack projectileStack = player.getProjectile(shotgun);
-        if (projectileStack.isEmpty() && !player.getAbilities().instabuild) return InteractionResultHolder.pass(shotgun);
-
         List<ItemStack> draw = draw(shotgun, projectileStack, player);
-        var baseVelocity = 1.5f;
-        var baseInaccuracy = 20;
-        this.shoot(level, player, hand, shotgun, draw, baseVelocity, baseInaccuracy, false, null);
+        if (projectileStack.isEmpty() && !player.getAbilities().instabuild) return InteractionResultHolder.pass(shotgun);
+        if (getPumps(shotgun) > 3) {
+            this.overpumpExplosion(level, player, shotgun, draw);
+            if (!player.getAbilities().instabuild) shotgun.hurtAndBreak(5, player, LivingEntity.getSlotForHand(hand));
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+            setPumps(shotgun, 1);
+            return InteractionResultHolder.pass(shotgun);
+        }
 
+        var baseVelocity = 1.5f;
+        var baseInaccuracy = 7 + (getPumps(shotgun) * 5);
+        this.shoot(level, player, shotgun, draw, baseVelocity, baseInaccuracy);
         if (!player.getAbilities().instabuild) shotgun.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 JNESoundEvents.SHOTGUN_USE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+        setPumps(shotgun, 1);
         return InteractionResultHolder.pass(shotgun);
     }
 
-    protected void shoot(Level level, LivingEntity shooter, InteractionHand hand, ItemStack shotgun, List<ItemStack> projectileItems, float velocity, float inaccuracy, boolean isCrit, @Nullable LivingEntity target) {
+    protected void shoot(Level level, LivingEntity shooter, ItemStack shotgun, List<ItemStack> projectileItems, float velocity, float inaccuracy) {
         int count = calculateCount(shotgun);
         int cooldown = calculateCooldown(shotgun);
         double selfRecoil = calculateSelfRecoil(shooter, shotgun);
@@ -101,7 +127,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
             ClientItemData.getOrCreate(shotgun).put("shootFlash", true);
         } else {
             if (!projectileItems.isEmpty()) {
-                Item shellItem = projectileItems.getFirst().getItem();
+                Item shellItem =  projectileItems.getFirst().getItem();
                 isBlank = projectileItems.getFirst().is(JNEItems.BLANK_SHOTGUN_SHELL.get());
                 for (int i = 0; i < count; i++) {
                     Vec3 look = shooter.getLookAngle();
@@ -126,11 +152,48 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
             if (COUNTERFORCE_IFRAMES.get() > 0) {
                 shooter.invulnerableTime = COUNTERFORCE_IFRAMES.get();
                 level.playSound(null, shooter.blockPosition(), JNESoundEvents.SHOTGUN_COUNTERFORCE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-                ScreenFlash.triggerScreenFlash(5, COUNTERFORCE_IFRAMES.get() / 4, 5, 0x3300FFFF, false, true);
+                ScreenFlash.triggerScreenFlash(5, COUNTERFORCE_IFRAMES.get() / 4, 5, 0x33FF0000, false, true);
             }
         }
         if (shooter instanceof Player player) player.getCooldowns().addCooldown(this, cooldown);
         shooter.push(pushBack.scale(selfRecoil));
+    }
+
+    protected void overpumpExplosion(Level level, LivingEntity shooter, ItemStack shotgun, List<ItemStack> projectileItems) {
+        var cooldown = 80;
+        var damage = 5;
+        boolean isBlank = false;
+        if (level.isClientSide()) {
+            VFXHelper.explosionScreenShake(shooter.position(), 16.0f, Easing.LINEAR);
+            explode.start(shooter.tickCount, shooter);
+            ClientItemData.getOrCreate(shotgun).put("shootFlash", true);
+        } else {
+            if (!projectileItems.isEmpty()) {
+                Item shellItem = projectileItems.getFirst().getItem();
+                isBlank = projectileItems.getFirst().is(JNEItems.BLANK_SHOTGUN_SHELL.get());
+                if (shellItem instanceof ShotgunShellItem) {
+                    level.explode(shooter, shooter.getX(), shooter.getY(), shooter.getZ(), 4, Level.ExplosionInteraction.NONE);
+                    ((ServerLevel)level).sendParticles(JNEParticleTypes.RED_EXPLOSION_EMITTER.get(), shooter.getX(), shooter.getY(), shooter.getZ(), 1, 0.0, 0.0, 0.0, 0);
+                    damage = 10;
+                }
+            }
+        }
+
+        var counterforce = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.COUNTERFORCE));
+        Vec3 pushBack = new Vec3(-shooter.getLookAngle().x, -shooter.getLookAngle().y, -shooter.getLookAngle().z).normalize();
+        boolean dashCancel = false;
+        if (counterforce > 0 && !shooter.onGround() && (shooter.fallDistance <= 0.0 || shooter.isInFluidType())) {
+            pushBack = new Vec3(shooter.getLookAngle().x, shooter.getLookAngle().y, shooter.getLookAngle().z).normalize();
+            dashCancel = true;
+            if (!isBlank) cooldown += 100;
+            if (COUNTERFORCE_IFRAMES.get() > 0) {
+                level.playSound(null, shooter.blockPosition(), JNESoundEvents.SHOTGUN_COUNTERFORCE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+                ScreenFlash.triggerScreenFlash(5, 1, 5, 0x33FF0000, false, true);
+            }
+        }
+        if (!dashCancel) shooter.hurt(level.damageSources().source(JNEDamageSources.SHOTGUN_EXPLOSION, shooter), damage);
+        if (shooter instanceof Player player) player.getCooldowns().addCooldown(this, cooldown);
+        shooter.push(pushBack.scale(1.5));
     }
 
     private double calculateSelfRecoil(LivingEntity shooter, ItemStack shotgun) {
@@ -150,26 +213,26 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
             pointBlankParticle(shooter.level(), raycastStart.add(shooter.getViewVector(1.0F).scale(1)));
         }
 
-        return base;
+        return base + ((double) getPumps(shotgun) / 10);
     }
 
     private int calculateCount(ItemStack shotgun) {
-        int base = JNEConfigs.SHOTGUN_FIST_BULLETS.get();
+        int base = JNEConfigs.PUMP_CHARGE_SHOTGUN_BULLETS.get();
         var volley = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.VOLLEY));
         var quickCharge = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.QUICK_CHARGE));
 
-        if (volley > 0) base += (volley * 5);
-        else if (quickCharge > 0) base -= (quickCharge * 5);
-        return base;
+        if (volley > 0) base += (volley * 2);
+        else if (quickCharge > 0) base -= (quickCharge * 2);
+        return base * getPumps(shotgun);
     }
 
     private int calculateCooldown(ItemStack shotgun) {
-        int base = JNEConfigs.SHOTGUN_FIST_COOLDOWN.get();
+        int base = JNEConfigs.PUMP_CHARGE_SHOTGUN_COOLDOWN.get();
         var volley = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.VOLLEY));
         var quickCharge = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.QUICK_CHARGE));
 
-        if (volley > 0) base += (volley * 15);
-        else if (quickCharge > 0) base -= (quickCharge * 8);
+        if (volley > 0) base += (volley * 10);
+        else if (quickCharge > 0) base -= (quickCharge * 4);
         return base;
     }
 
@@ -178,7 +241,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        return !oldStack.is(JNEItems.SHOTGUN_FIST.get()) || !newStack.is(JNEItems.SHOTGUN_FIST.get());
+        return !oldStack.is(JNEItems.PUMP_CHARGE_SHOTGUN.get()) || !newStack.is(JNEItems.PUMP_CHARGE_SHOTGUN.get());
     }
 
     @Override
@@ -196,26 +259,22 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
         return repairCandidate.is(Items.NETHERITE_SCRAP);
     }
 
-    public static void pointBlankParticle(Level level, Vec3 pos) {
-        if (!level.isClientSide()) return;
-        WorldParticleBuilder.create(JNEParticleTypes.WIND_TRAIL.get())
-                .setFullBrightLighting()
-                .setColorData(ColorParticleData.create(new Color(0xFFFFFF)).build())
-                .setScaleData(GenericParticleData.create(0.1f, 1.5f).setEasing(Easing.SINE_OUT).build())
-                .setTransparencyData(GenericParticleData.create(0.7f, 0.0f).build())
-                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
-                .setLifetime(10)
-                .disableNoClip()
-                .spawn(level, pos.x, pos.y, pos.z);
-    }
-
     @Override
     public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {
         return super.supportsEnchantment(stack, enchantment) || enchantment.is(Enchantments.QUICK_CHARGE);
     }
 
+    public static int getPumps(ItemStack stack) {
+        return stack.getOrDefault(JNEDataComponents.PUMPS, 1);
+    }
+
+    public static void setPumps(ItemStack stack, int pumps) {
+        int clamped = Math.max(1, Math.min(4, pumps));
+        stack.set(JNEDataComponents.PUMPS, clamped);
+    }
+
     public static void shotgunFlashParticle(Level level, RandomSource random, double x, double y, double z) {
-        LodestoneWorldParticleType particle = JNEParticleTypes.SHOTGUN_FLASH.get();
+        LodestoneWorldParticleType particle = JNEParticleTypes.PUMP_SHOTGUN_FLASH.get();
         WorldParticleBuilder.create(particle)
                 .setFullBrightLighting()
                 .setScaleData(GenericParticleData.create(0.01f, 1.45f, 0.0f).build())
@@ -232,8 +291,8 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
     public static void cooldownParticle(LivingEntity user, Level level, RandomSource random, double x, double y, double z) {
         LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
-        var startColor = new Color(0x1BA9B2);
-        var endColor = new Color(0x112321);
+        var startColor = new Color(0xB21B1B);
+        var endColor = new Color(0x231111);
         var look = user.getLookAngle();
 
         float pushFactor = 0.1f;

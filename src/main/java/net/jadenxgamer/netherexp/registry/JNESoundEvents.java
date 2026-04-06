@@ -36,6 +36,8 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
     public static final Supplier<SoundEvent> SHOTGUN_IMPACT = registerSoundEvents("item.shotgun.impact");
     public static final Supplier<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
+    public static final Supplier<SoundEvent> SHOTGUN_COUNTERFORCE = registerSoundEvents("item.shotgun.counterforce");
+    public static final Supplier<SoundEvent> PUMP_CHARGE_SHOTGUN_ALARM = registerSoundEvents("item.pump_charge_shotgun.alarm");
 
     public static final Supplier<SoundEvent> GOLD_GILDING = registerSoundEvents("item.gold.gilding");
 

@@ -1010,6 +1010,15 @@
       "netherexp:item/shotgun/load"
     ]
   },
+  "item.shotgun.counterforce": {
+    "subtitle": "subtitles.item.shotgun.counterforce",
+    "sounds": [
+      "netherexp:item/shotgun/counterforce1",
+      "netherexp:item/shotgun/counterforce2",
+      "netherexp:item/shotgun/counterforce3",
+      "netherexp:item/shotgun/counterforce4"
+    ]
+  },
   "item.pump_charge_shotgun.alarm": {
     "subtitle": "subtitles.item.pump_charge_shotgun.alarm",
     "sounds": [

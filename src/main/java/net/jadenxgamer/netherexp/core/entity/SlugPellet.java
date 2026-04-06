@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.core.entity;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -49,7 +50,7 @@ public class SlugPellet extends AbstractPellet {
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
-        BlockCrackTracker.onBlockHit(this.level(), result.getBlockPos(), this.level().getBlockState(result.getBlockPos()));
+        BlockCrackTracker.onBlockHit(this.level(), result.getBlockPos(), this.level().getBlockState(result.getBlockPos()), JNEConfigs.SLUG_BLOCK_DAMAGE_STRENGTH.get());
     }
 
     @Override

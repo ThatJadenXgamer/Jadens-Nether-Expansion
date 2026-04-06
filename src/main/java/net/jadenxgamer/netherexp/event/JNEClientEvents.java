@@ -93,5 +93,6 @@ public class JNEClientEvents {
         event.registerFluidType(JNEFluidExtensions.ectoplasmExt, JNEFluids.ECTOPLASM_TYPE.get());
         event.registerItem(JNEItemExtensions.itemExt, JNEItems.WILL_O_WISP.get());
         event.registerItem(JNEItemExtensions.itemExt, JNEItems.SHOTGUN_FIST.get());
+        event.registerItem(JNEItemExtensions.itemExt, JNEItems.PUMP_CHARGE_SHOTGUN.get());
     }
 }

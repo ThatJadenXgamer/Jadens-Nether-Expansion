@@ -177,13 +177,13 @@ public class JNEConfigImpl {
             SHOTGUN_SELF_RECOIL = builder
                     .comment("The amount of self-pushback experienced upon firing a shotgun\n" +
                             "Enchantments can influence the final total of bullets fired")
-                    .defineInRange("shotgunSelfRecoil", 0.3, 0.0, Double.MAX_VALUE);
+                    .defineInRange("shotgunSelfRecoil", 0.35, 0.0, Double.MAX_VALUE);
             POINT_BLANK_SELF_RECOIL_BONUS = builder
                     .comment("The amount of additional self-recoil gained from hitting a target point-blank")
                     .defineInRange("pointBlankSelfRecoilBonus", 0.45, 0.0, Double.MAX_VALUE);
             POINT_BLANK_SELF_RECOIL_DISTANCE = builder
                     .comment("How close you need to be to a target in blocks to get a point-blank self recoil bonus")
-                    .defineInRange("pointBlankSelfRecoilDistance", 2.5, 0.0, Double.MAX_VALUE);
+                    .defineInRange("pointBlankSelfRecoilDistance", 18.0, 0.0, Double.MAX_VALUE);
             SHOTGUN_FIST_BULLETS = builder
                     .comment("The base amount of shotgun pellets fired from a shotgun-fist\n" +
                             "Enchantments can influence the final total of bullets fired")
@@ -199,7 +199,14 @@ public class JNEConfigImpl {
             PUMP_CHARGE_SHOTGUN_COOLDOWN = builder
                     .comment("The base amount of ticks the pump-charge shotgun will go into cooldown upon firing\n" +
                             "Enchantments can influence the final total of cooldown")
-                    .defineInRange("pumpChargeShotgunCooldown", 40, 0, Integer.MAX_VALUE);
+                    .defineInRange("pumpChargeShotgunCooldown", 15, 0, Integer.MAX_VALUE);
+            SLUG_BLOCK_DAMAGE_STRENGTH = builder
+                    .comment("The amount of damage a slug pellet will deal to a block upon impact\n" +
+                            "Negative values will disable block destruction with slugs")
+                    .defineInRange("slugBlockDamageStrength", 1.0, -1.0, Double.MAX_VALUE);
+            COUNTERFORCE_IFRAMES = builder
+                    .comment("When a counterforce shotgun is used it'll grant you immunity frames for the specified number of ticks")
+                    .defineInRange("counterforce_iframes", 20, 0, Integer.MAX_VALUE);
             WILL_O_WISP_STACK_SIZE = builder
                     .comment("The number of will o' wisps that can be stored in a single stack")
                     .defineInRange("willOWispStackSize", 64, 1, 99);
@@ -476,7 +483,7 @@ public class JNEConfigImpl {
                     .define("ectoplasmRustsNetherite", true);
             SILVER_PARANORMAL_DAMAGE_MULTIPLIER = builder
                     .comment("Silver weapons will deal multiplied damage to possessed and ghost mobs")
-                    .defineInRange("silverParanormalDamageMultiplier", 1.5, Double.MIN_VALUE, Double.MAX_VALUE);
+                    .defineInRange("silverParanormalDamageMultiplier", 1.8, Double.MIN_VALUE, Double.MAX_VALUE);
             SILVER_PARANORMAL_PROTECTION_DAMAGE = builder
                     .comment("Silver armor will damage possessed and ghost mobs which damaged you in melee")
                     .defineInRange("silverParanormalProtectionDamage", 5, 0, Double.MAX_VALUE);

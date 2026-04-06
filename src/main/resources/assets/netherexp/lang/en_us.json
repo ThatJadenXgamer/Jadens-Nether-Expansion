@@ -632,6 +632,7 @@
   "item.netherexp.shotgun_shell": "Shotgun Shell",
   "item.netherexp.slug_shotgun_shell": "Slug Shotgun Shell",
   "item.netherexp.phasmo_shotgun_shell": "Phasmo Shotgun Shell",
+  "item.netherexp.blank_shotgun_shell": "Blank Shotgun Shell",
   "enchantment.netherexp.volley": "Volley",
   "enchantment.netherexp.longshot": "Longshot",
   "enchantment.netherexp.counterforce": "Counterforce",
@@ -658,6 +659,7 @@
   "block.netherexp.damp_siltmarram": "Damp Siltmarram",
   "block.netherexp.moist_siltmarram": "Moist Siltmarram",
   "block.netherexp.dry_siltmarram": "Dry Siltmarram",
+  "subtitles.item.shotgun.counterforce": "Counterforce pulsar",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",
@@ -714,6 +716,8 @@
   "netherexp.configuration.shotgunFistCooldown": "Shotgun-Fist Cooldown",
   "netherexp.configuration.pumpChargeShotgunBullets": "Pump-Charge Shotgun Bullets",
   "netherexp.configuration.pumpChargeShotgunCooldown": "Pump-Charge Shotgun Cooldown",
+  "netherexp.configuration.slugBlockDamageStrength": "Slug Block Damage Strength",
+  "netherexp.configuration.counterforce_iframes": "Counterforce I-Frames",
   "netherexp.configuration.willOWispStackSize": "Will O' Wisp Stack Size",
 
   "netherexp.configuration.wispBoredomChance": "Wisp Boredom Chance",
