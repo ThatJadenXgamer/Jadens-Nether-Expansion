@@ -15,6 +15,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -25,7 +26,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 @SuppressWarnings("deprecation")
 public class SoulGlassBlock extends LightableBlock {
     public SoulGlassBlock(Properties properties) {
-        super(() -> ParticleTypes.SOUL_FIRE_FLAME, properties);
+        super(() -> ParticleTypes.SOUL_FIRE_FLAME, properties
+                .isValidSpawn(Blocks::never)
+                .isViewBlocking((s, g, p) -> false)
+                .isRedstoneConductor((s, g, p) -> false)
+                .isSuffocating((s, g, p) -> false)
+        );
     }
 
     @Override
@@ -33,7 +39,7 @@ public class SoulGlassBlock extends LightableBlock {
         if (entity instanceof LivingEntity living) {
             if (level.isClientSide()) {
                 RandomSource random = level.random;
-                if (random.nextInt(2) == 0) level.addParticle(ParticleTypes.SOUL, entity.getX(), pos.getY() + 1, entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
+                if (random.nextInt(7) == 0) level.addParticle(ParticleTypes.SOUL, entity.getX(), pos.getY(), entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
             }
             if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
             double slowdown = JNEConfigs.SOUL_GLASS_MOVEMENT_SLOWDOWN.get();

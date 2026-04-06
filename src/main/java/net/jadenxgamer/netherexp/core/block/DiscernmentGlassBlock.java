@@ -21,6 +21,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,7 +42,12 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
     public DiscernmentGlassBlock(Properties properties) {
-        super(properties);
+        super(properties
+                .isValidSpawn(Blocks::never)
+                .isViewBlocking((s, g, p) -> false)
+                .isRedstoneConductor((s, g, p) -> false)
+                .isSuffocating((s, g, p) -> false)
+        );
         this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false));
     }
 

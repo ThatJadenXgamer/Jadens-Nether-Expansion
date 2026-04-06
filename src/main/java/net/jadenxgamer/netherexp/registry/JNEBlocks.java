@@ -130,7 +130,7 @@ public class JNEBlocks {
 
     public static final Supplier<Block> SOUL_GLASS = registerBlock("soul_glass", () ->
             new SoulGlassBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).lightLevel(
-                    state -> state.getValue(SoulGlassBlock.LIT) ? 12 : 0).strength(0.3f, 1200.0f).sound(JNESoundType.SOUL_GLASS)));
+                    state -> state.getValue(SoulGlassBlock.LIT) ? 12 : 0).noOcclusion().strength(0.3f, 1200.0f).sound(JNESoundType.SOUL_GLASS)));
 
     public static final Supplier<Block> DISCERNMENT_GLASS = registerBlock("discernment_glass", () ->
             new DiscernmentGlassBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.3f, 1200.0f).sound(JNESoundType.SOUL_GLASS)));

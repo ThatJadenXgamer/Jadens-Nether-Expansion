@@ -7,6 +7,6 @@
     "netherexp:apparition",
     "minecraft:enderman",
     "minecraft:endermite",
-    "#minecraft:projectiles"
+    "#minecraft:impact_projectiles"
   ]
 }

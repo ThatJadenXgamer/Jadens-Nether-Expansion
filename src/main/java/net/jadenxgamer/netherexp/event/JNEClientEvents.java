@@ -62,7 +62,6 @@ public class JNEClientEvents {
         JNEFogRenderer.fogColor(event);
     }
 
-
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         NetherExpClient.registerRenderers();
