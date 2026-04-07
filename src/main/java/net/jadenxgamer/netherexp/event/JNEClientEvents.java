@@ -8,11 +8,10 @@ import net.jadenxgamer.netherexp.client.gui.BetaPopupWarning;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderStateShard;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
-import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
@@ -21,6 +20,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import team.lodestar.lodestone.systems.postprocess.PostProcessHandler;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class JNEClientEvents {
 
     @SubscribeEvent
     public static void onClientTickPre(ClientTickEvent.Pre event) {
-
+        NetherExpClient.SubmergedStates.tick();
     }
 
     @SubscribeEvent
@@ -65,6 +65,7 @@ public class JNEClientEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         NetherExpClient.registerRenderers();
+        PostProcessHandler.addInstance(SoulGlassPostProcessor.INSTANCE);
     }
 
     @SubscribeEvent

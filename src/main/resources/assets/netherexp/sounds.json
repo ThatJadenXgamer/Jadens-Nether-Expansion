@@ -861,6 +861,21 @@
       "netherexp:block/soul_glass/break3"
     ]
   },
+  "block.soul_glass.enter": {
+    "sounds": [
+      "netherexp:block/soul_glass/enter"
+    ]
+  },
+  "block.soul_glass.exit": {
+    "sounds": [
+      "netherexp:block/soul_glass/exit"
+    ]
+  },
+  "block.soul_glass.submerged": {
+    "sounds": [
+      "netherexp:block/soul_glass/submerged"
+    ]
+  },
 
   "block.ectoplasm.freeze": {
     "subtitle": "subtitles.block.ectoplasm.freeze",

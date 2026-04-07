@@ -75,7 +75,7 @@ public abstract class AbstractPellet extends AbstractArrow {
 
     @Override
     public float getPickRadius() {
-        return super.getPickRadius();
+        return 0.0f;
     }
 
     private void triggerExplosion() {

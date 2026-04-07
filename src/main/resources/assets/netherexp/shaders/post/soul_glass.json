@@ -1,0 +1,27 @@
+{
+  "targets": ["swap"],
+  "passes": [
+    {
+      "name": "netherexp:frosted_glass",
+      "intarget": "minecraft:main",
+      "outtarget": "swap",
+      "uniforms": [
+        { "name": "InSize", "values": [ 1.0, 1.0 ] },
+        { "name": "OutSize", "values": [ 1.0, 1.0 ] },
+        { "name": "TintColor", "values": [ 0.168627, 0.529412, 0.513725, 1.0 ] },
+        { "name": "DistortionStrength", "values": [ 27.0 ] },
+        { "name": "RippleStrength", "values": [ 32.0 ] },
+        { "name": "RippleFrequency", "values": [ 24.0 ] },
+        { "name": "RippleSpeed", "values": [ 3.0 ] },
+        { "name": "RippleRandomness", "values": [ 0.4 ] },
+        { "name": "GameTime", "values": [ 0.0 ] }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "swap",
+      "outtarget": "minecraft:main",
+      "uniforms": []
+    }
+  ]
+}

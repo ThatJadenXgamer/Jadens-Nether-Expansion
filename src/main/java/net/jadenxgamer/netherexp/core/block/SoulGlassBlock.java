@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.core.block;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,6 +23,16 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import team.lodestar.lodestone.systems.easing.Easing;
+import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
+import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
+import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
+import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
+import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
+import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticleType;
+
+import java.awt.*;
 
 @SuppressWarnings("deprecation")
 public class SoulGlassBlock extends LightableBlock {
@@ -39,7 +50,7 @@ public class SoulGlassBlock extends LightableBlock {
         if (entity instanceof LivingEntity living) {
             if (level.isClientSide()) {
                 RandomSource random = level.random;
-                if (random.nextInt(7) == 0) level.addParticle(ParticleTypes.SOUL, entity.getX(), pos.getY(), entity.getZ(), Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f, 0.05f, Mth.randomBetween(random, -1.0f, 1.0f) * 0.083333336f);
+                if (random.nextInt(7) == 0) particle(level, random, living.getRandomX(1.5), living.getRandomY() - 0.25, living.getRandomZ(1.5));
             }
             if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
             double slowdown = JNEConfigs.SOUL_GLASS_MOVEMENT_SLOWDOWN.get();
@@ -80,5 +91,22 @@ public class SoulGlassBlock extends LightableBlock {
     @Override
     protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
         return true;
+    }
+
+    public static void particle(Level level, RandomSource random, double x, double y, double z) {
+        Color color = new Color(0x0E4E4E);
+        WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
+                .setFullBrightLighting()
+                .setColorData(ColorParticleData.create(color).build())
+                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                .setScaleData(GenericParticleData.create(0.05f, 0.13f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
+                .setTransparencyData(GenericParticleData.create(0.5f).build())
+                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                .setLifetime(random.nextInt(30, 40))
+                .enableNoClip()
+                .setGravity(0.0f)
+                .setMotion(0.0, 0.04, 0.0)
+                .spawn(level, x, y, z);
     }
 }

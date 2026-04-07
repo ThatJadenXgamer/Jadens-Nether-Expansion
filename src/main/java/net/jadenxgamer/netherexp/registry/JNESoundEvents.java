@@ -156,6 +156,9 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> RUSTY_NETHERITE_GRATE_PLACE = registerSoundEvents("block.rusty_netherite_grate.place");
     public static final Supplier<SoundEvent> RUSTY_NETHERITE_GRATE_BREAK = registerSoundEvents("block.rusty_netherite_grate.break");
     public static final Supplier<SoundEvent> SOUL_GLASS_BREAK = registerSoundEvents("block.soul_glass.break");
+    public static final Supplier<SoundEvent> SOUL_GLASS_ENTER = registerSoundEvents("block.soul_glass.enter");
+    public static final Supplier<SoundEvent> SOUL_GLASS_EXIT = registerSoundEvents("block.soul_glass.exit");
+    public static final Supplier<SoundEvent> SOUL_GLASS_SUBMERGED = registerSoundEvents("block.soul_glass.submerged");
 
     public static final Supplier<SoundEvent> BLACKSTONE_PLACE = registerSoundEvents("block.blackstone.place");
     public static final Supplier<SoundEvent> BLACKSTONE_BREAK = registerSoundEvents("block.blackstone.break");

@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 import java.awt.*;
@@ -39,6 +40,6 @@ public class ShotgunPellet extends AbstractPellet {
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return JNEItems.SHOTGUN_SHELL.get().getDefaultInstance();
+        return Items.AIR.getDefaultInstance();
     }
 }

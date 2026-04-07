@@ -7,19 +7,24 @@ import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSan
 import net.jadenxgamer.netherexp.client.rendering.entity.*;
 import net.jadenxgamer.netherexp.client.rendering.item.PumpChargeShotgunModel;
 import net.jadenxgamer.netherexp.client.rendering.item.ShotgunFistModel;
-import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
-import net.jadenxgamer.netherexp.registry.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.JNEFluids;
-import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
+import net.jadenxgamer.netherexp.client.sound.InsideFluidAmbientSoundInstance;
+import net.jadenxgamer.netherexp.registry.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.particle.SplashParticle;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -110,5 +115,31 @@ public final class NetherExpClient {
         event.registerLayerDefinition(ShotgunFistModel.LAYER, ShotgunFistModel::createBodyLayer);
         event.registerLayerDefinition(PumpChargeShotgunModel.LAYER, PumpChargeShotgunModel::createBodyLayer);
         event.registerLayerDefinition(PelletRenderer.ShotgunPelletModel.LAYER, PelletRenderer.ShotgunPelletModel::createBodyLayer);
+    }
+
+    public static class SubmergedStates {
+        public static boolean isInsideSoulGlass;
+        public static boolean wasInsideSoulGlass;
+
+        public static void tick() {
+            var client = Minecraft.getInstance();
+            Player player = client.player;
+            if (!(player instanceof LocalPlayer localPlayer)) return;
+            BlockPos eyePos = BlockPos.containing(player.getEyePosition());
+            BlockState state = player.level().getBlockState(eyePos);
+
+            updateSoulGlass(client, player.level(), localPlayer, state);
+        }
+
+        private static void updateSoulGlass(Minecraft client, Level level, LocalPlayer player, BlockState state) {
+            isInsideSoulGlass = state.is(JNEBlocks.SOUL_GLASS.get());
+
+            if (isInsideSoulGlass && !wasInsideSoulGlass) {
+                level.playLocalSound(player, JNESoundEvents.SOUL_GLASS_ENTER.get(), SoundSource.AMBIENT, 1.0f, 1.0f);
+                client.getSoundManager().play(new InsideFluidAmbientSoundInstance(player, JNESoundEvents.SOUL_GLASS_SUBMERGED.get(), 0.8f, p -> isInsideSoulGlass));
+            } else if (!isInsideSoulGlass && wasInsideSoulGlass) level.playLocalSound(player, JNESoundEvents.SOUL_GLASS_EXIT.get(), SoundSource.AMBIENT, 1.0f, 1.0f);
+
+            wasInsideSoulGlass = isInsideSoulGlass;
+        }
     }
 }

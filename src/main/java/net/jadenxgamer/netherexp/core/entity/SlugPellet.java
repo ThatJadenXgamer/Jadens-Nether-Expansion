@@ -13,6 +13,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -55,7 +56,7 @@ public class SlugPellet extends AbstractPellet {
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return JNEItems.SLUG_SHOTGUN_SHELL.get().getDefaultInstance();
+        return Items.AIR.getDefaultInstance();
     }
 
     @Override
