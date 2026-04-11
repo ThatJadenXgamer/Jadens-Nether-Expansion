@@ -23,9 +23,9 @@ import java.util.List;
 @Mixin(SplashManager.class)
 public class SplashManagerMixin {
     @Shadow @Final private List<String> splashes;
-    @Unique private static final ResourceLocation JNE_SPLASHES_LOCATION = NetherExp.id("texts/splashes.txt");
-    @Unique private static final ResourceLocation JNE_SPLASHES_PROFANITY_LOCATION = NetherExp.id("texts/profanity_splashes.txt");
-    @Unique private static final ResourceLocation JNE_SPLASHES_CENSORED_LOCATION = NetherExp.id("texts/censored_splashes.txt");
+    @Unique private static final ResourceLocation JNE_SPLASHES_LOCATION = NetherExp.netherexpPath("texts/splashes.txt");
+    @Unique private static final ResourceLocation JNE_SPLASHES_PROFANITY_LOCATION = NetherExp.netherexpPath("texts/profanity_splashes.txt");
+    @Unique private static final ResourceLocation JNE_SPLASHES_CENSORED_LOCATION = NetherExp.netherexpPath("texts/censored_splashes.txt");
 
     @Inject(
             method = "apply(Ljava/util/List;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V",

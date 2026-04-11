@@ -10,7 +10,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import team.lodestar.lodestone.registry.client.LodestonePostProcessEffects;
 
 @Mod(NetherExp.MOD_ID)
 public final class NetherExp {
@@ -41,11 +40,11 @@ public final class NetherExp {
     private static void initModCompat() {
     }
 
-    public static ResourceLocation id(String path) {
+    public static ResourceLocation netherexpPath(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
-    public static ResourceLocation idVanilla(String path) {
+    public static ResourceLocation minecraftPath(String path) {
         return ResourceLocation.fromNamespaceAndPath("minecraft", path);
     }
 

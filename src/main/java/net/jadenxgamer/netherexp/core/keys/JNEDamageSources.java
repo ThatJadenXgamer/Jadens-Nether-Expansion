@@ -16,6 +16,6 @@ public class JNEDamageSources {
     public static final ResourceKey<DamageType> ICICLE = register("icicle");
 
     private static ResourceKey<DamageType> register(String name) {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, NetherExp.id(name));
+        return ResourceKey.create(Registries.DAMAGE_TYPE, NetherExp.netherexpPath(name));
     }
 }

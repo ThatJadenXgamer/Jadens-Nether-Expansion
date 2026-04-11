@@ -36,6 +36,8 @@
 [JNE]Also try Biomes O' Plenty!
 [JNE]Also try Supplementaries!
 [JNE]Also try Infernal Expansion!
+[JNE]Also try Incision!
+[JNE]Also try Luminous Nether!
 [JNE]Jaden makes my nether expand!
 [JNE]Throw it back warphopper- NOT LIKE THAT!
 [JNE]My name is Nobody, Noooobody!

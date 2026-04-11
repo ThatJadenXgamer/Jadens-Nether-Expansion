@@ -148,7 +148,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.INSCRIBED_PANEL.get());
 
                 output.accept(Items.GHAST_TEAR);
-                output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
+                output.accept(LookupRegistryHelper.getItem(NetherExp.minecraftPath("music_disc_tears")));
 
                 output.accept(Items.SKELETON_SPAWN_EGG);
                 output.accept(Items.GHAST_SPAWN_EGG);
@@ -449,7 +449,7 @@ public class JNECreativeModeTabs {
 
                 output.accept(Items.GOLD_INGOT);
                 output.accept(Items.GHAST_TEAR);
-                output.accept(LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears")));
+                output.accept(LookupRegistryHelper.getItem(NetherExp.minecraftPath("music_disc_tears")));
                 output.accept(Items.BLAZE_ROD);
                 output.accept(Items.BLAZE_POWDER);
                 output.accept(Items.FIRE_CHARGE);
@@ -549,7 +549,7 @@ public class JNECreativeModeTabs {
 
             insertToTab(event, Items.MUSIC_DISC_PIGSTEP, JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), false);
 
-            var tearsDisc = LookupRegistryHelper.getItem(NetherExp.idVanilla("music_disc_tears"));
+            var tearsDisc = LookupRegistryHelper.getItem(NetherExp.minecraftPath("music_disc_tears"));
             boolean alreadyExists = event.getParentEntries().stream().anyMatch(stack -> stack.getItem() == tearsDisc);
             if (!alreadyExists) insertToTab(event, Items.MUSIC_DISC_PIGSTEP, tearsDisc, false);
         }

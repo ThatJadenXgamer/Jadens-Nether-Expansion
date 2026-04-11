@@ -14,6 +14,6 @@ public class PhasmoArrowRenderer extends ArrowRenderer<PhasmoArrow> {
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(PhasmoArrow entity) {
-        return NetherExp.id("textures/entity/projectiles/phasmo_arrow.png");
+        return NetherExp.netherexpPath("textures/entity/projectiles/phasmo_arrow.png");
     }
 }

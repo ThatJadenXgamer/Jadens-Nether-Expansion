@@ -11,6 +11,6 @@ public class JNETrimPatterns {
     public static final ResourceKey<TrimPattern> VALOR = key("valor");
 
     private static ResourceKey<TrimPattern> key(String name) {
-        return ResourceKey.create(Registries.TRIM_PATTERN, NetherExp.id(name));
+        return ResourceKey.create(Registries.TRIM_PATTERN, NetherExp.netherexpPath(name));
     }
 }

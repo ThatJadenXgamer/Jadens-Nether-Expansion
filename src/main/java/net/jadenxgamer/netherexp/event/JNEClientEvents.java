@@ -8,6 +8,7 @@ import net.jadenxgamer.netherexp.client.gui.BetaPopupWarning;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderStateShard;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
+import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -32,7 +33,9 @@ public class JNEClientEvents {
 
     @SubscribeEvent
     public static void onClientTickPre(ClientTickEvent.Pre event) {
+        var client = Minecraft.getInstance();
         NetherExpClient.SubmergedStates.tick();
+        NetherExpClient.HandlePostShaders.tick(client);
     }
 
     @SubscribeEvent
@@ -66,6 +69,7 @@ public class JNEClientEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
         NetherExpClient.registerRenderers();
         PostProcessHandler.addInstance(SoulGlassPostProcessor.INSTANCE);
+        PostProcessHandler.addInstance(NetherHeatDistortionPostprocessor.INSTANCE);
     }
 
     @SubscribeEvent

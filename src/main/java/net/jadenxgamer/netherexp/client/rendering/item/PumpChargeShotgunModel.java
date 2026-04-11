@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemHierarchicalModel;
 import net.jadenxgamer.netherexp.core.item.PumpChargeShotgunItem;
-import net.jadenxgamer.netherexp.core.item.ShotgunFistItem;
 import net.jadenxgamer.netherexp.util.ClientItemData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.animation.AnimationChannel;
@@ -25,7 +24,7 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
 public class PumpChargeShotgunModel extends ItemHierarchicalModel<PumpChargeShotgunItem> {
-    public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("pump_charge_shotgun"), "main");
+    public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("pump_charge_shotgun"), "main");
     private final ModelPart shotgun;
     private final ModelPart skull;
     private final ModelPart jaw;

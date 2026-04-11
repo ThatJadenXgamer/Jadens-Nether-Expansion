@@ -53,7 +53,7 @@ public abstract class LevelRendererMixin {
             double z = player.getZ() + Math.sin(angle) * distance;
             Color color = new Color(level.getBiome(new BlockPos((int) x, (int) y, (int) z)).value().getFogColor());
 
-            VFXHelper.fogParticle(level, level.random, x, y, z, color);
+            VFXHelper.netherFogParticle(level, level.random, x, y, z, color);
         }
     }
 }

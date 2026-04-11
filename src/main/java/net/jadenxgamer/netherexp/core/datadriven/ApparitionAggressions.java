@@ -15,6 +15,6 @@ public record ApparitionAggressions(List<Integer> preferredByPersonalities, bool
             Codec.BOOL.fieldOf("has_possession").forGetter(ApparitionAggressions::hasPossession),
             Codec.INT.fieldOf("target_priority").forGetter(ApparitionAggressions::targetPriority),
             ResourceLocation.CODEC.fieldOf("target_mob").forGetter(ApparitionAggressions::targetMob),
-            ResourceLocation.CODEC.optionalFieldOf("possessed_mob", NetherExp.idVanilla("pig")).forGetter(ApparitionAggressions::possessedMob)
+            ResourceLocation.CODEC.optionalFieldOf("possessed_mob", NetherExp.minecraftPath("pig")).forGetter(ApparitionAggressions::possessedMob)
     ).apply(instance, ApparitionAggressions::new));
 }

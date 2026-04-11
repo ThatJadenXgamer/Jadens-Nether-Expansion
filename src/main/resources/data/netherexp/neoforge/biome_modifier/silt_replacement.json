@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "netherexp:silt_replacement",
+  "step": "raw_generation"
+}

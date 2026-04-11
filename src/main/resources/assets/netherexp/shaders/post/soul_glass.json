@@ -1,5 +1,7 @@
 {
-  "targets": ["swap"],
+  "targets": [
+    "swap"
+  ],
   "passes": [
     {
       "name": "netherexp:frosted_glass",
@@ -12,7 +14,7 @@
         { "name": "DistortionStrength", "values": [ 27.0 ] },
         { "name": "RippleStrength", "values": [ 32.0 ] },
         { "name": "RippleFrequency", "values": [ 24.0 ] },
-        { "name": "RippleSpeed", "values": [ 3.0 ] },
+        { "name": "RippleSpeed", "values": [ 2.4 ] },
         { "name": "RippleRandomness", "values": [ 0.4 ] },
         { "name": "GameTime", "values": [ 0.0 ] }
       ]

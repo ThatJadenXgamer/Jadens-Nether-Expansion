@@ -36,7 +36,7 @@ public class JNERegistries {
     public static final ResourceKey<Registry<ApparitionGargoyleStatues>> APPARITION_GARGOYLE_STATUES = key("apparition/gargoyle_statues");
 
     private static <T> ResourceKey<Registry<T>> key(String name) {
-        return ResourceKey.createRegistryKey(NetherExp.id(name));
+        return ResourceKey.createRegistryKey(NetherExp.netherexpPath(name));
     }
 
     public static void init(IEventBus eventBus) {

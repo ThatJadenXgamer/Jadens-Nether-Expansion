@@ -225,7 +225,7 @@ public class JNEItems {
     public static void backportRegistries(RegisterEvent event) {
         event.register(Registries.ITEM,
                 registry -> {
-                    if (!BuiltInRegistries.ITEM.containsKey(NetherExp.idVanilla("music_disc_tears")))
+                    if (!BuiltInRegistries.ITEM.containsKey(NetherExp.minecraftPath("music_disc_tears")))
                         RegistryHelper.vanillaRegister(registry, "music_disc_tears", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(JNEJukeboxSongs.TEARS)));
                 }
         );

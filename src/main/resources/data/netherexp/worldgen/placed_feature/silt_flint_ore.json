@@ -1,0 +1,27 @@
+{
+  "feature": "netherexp:silt_flint_ore",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 80
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 20
+        },
+        "max_inclusive": {
+          "absolute": 40
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

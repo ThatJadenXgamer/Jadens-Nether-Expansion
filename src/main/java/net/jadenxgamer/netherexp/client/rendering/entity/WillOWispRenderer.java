@@ -38,7 +38,7 @@ public class WillOWispRenderer extends EntityRenderer<WillOWisp> {
 
     @Override
     public ResourceLocation getTextureLocation(WillOWisp entity) {
-        return NetherExp.id("textures/entity/will_o_wisp.png");
+        return NetherExp.netherexpPath("textures/entity/will_o_wisp.png");
     }
 
     @Override
@@ -63,7 +63,7 @@ public class WillOWispRenderer extends EntityRenderer<WillOWisp> {
     }
 
     public static class WillOWispModel<T extends WillOWisp> extends HierarchicalModel<T> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("will_o_wisp"), "main");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("will_o_wisp"), "main");
         private final ModelPart main;
         private final ModelPart wisp;
         private final ModelPart pivot;
@@ -107,8 +107,8 @@ public class WillOWispRenderer extends EntityRenderer<WillOWisp> {
     }
 
     public static class WillOWispItemModel extends ItemHierarchicalModel<WillOWispItem> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("will_o_wisp"), "main");
-        public static final ModelLayerLocation LAYER_HAND = new ModelLayerLocation(NetherExp.id("will_o_wisp_item"), "hand");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("will_o_wisp"), "main");
+        public static final ModelLayerLocation LAYER_HAND = new ModelLayerLocation(NetherExp.netherexpPath("will_o_wisp_item"), "hand");
         private final ModelPart main;
         private final ModelPart wisp;
         private final ModelPart pivot;

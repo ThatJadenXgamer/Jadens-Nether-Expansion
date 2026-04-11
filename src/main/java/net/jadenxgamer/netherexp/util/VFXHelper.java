@@ -3,9 +3,11 @@ package net.jadenxgamer.netherexp.util;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import team.lodestar.lodestone.handlers.ScreenshakeHandler;
@@ -53,7 +55,7 @@ public class VFXHelper {
         poseStack.popPose();
     }
 
-    public static void fogParticle(Level level, RandomSource random, double x, double y, double z, Color color) {
+    public static void netherFogParticle(Level level, RandomSource random, double x, double y, double z, Color color) {
         double motion = NETHER_MIST_MOTION_MULTIPLIER.get();
         float scale = (float) NETHER_MIST_SCALE.getAsDouble();
         float opacity = NETHER_MIST_OPACITY.get().floatValue();

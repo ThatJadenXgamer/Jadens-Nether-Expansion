@@ -24,7 +24,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import team.lodestar.lodestone.systems.block.LodestoneLogBlock;
 
-import java.awt.*;
 import java.util.function.Supplier;
 
 import static net.jadenxgamer.netherexp.util.RegistryHelper.*;
@@ -748,9 +747,9 @@ public class JNEBlocks {
     }
 
     private static void registerAliases() {
-        BLOCKS.addAlias(NetherExp.id("soul_jack_o_lantern"), NetherExp.idVanilla("jack_o_lantern")); // Removed 2.3.0
-        BLOCKS.addAlias(NetherExp.id("soul_ghoul_o_lantern"), NetherExp.idVanilla("ghoul_o_lantern")); // Removed 2.3.0
-        BLOCKS.addAlias(NetherExp.id("bone_cortical"), NetherExp.idVanilla("bone_block")); // Removed 2.4.0
-        BLOCKS.addAlias(NetherExp.id("bone_rod"), NetherExp.id("bone_pike")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("soul_jack_o_lantern"), NetherExp.minecraftPath("jack_o_lantern")); // Removed 2.3.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("soul_ghoul_o_lantern"), NetherExp.minecraftPath("ghoul_o_lantern")); // Removed 2.3.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("bone_cortical"), NetherExp.minecraftPath("bone_block")); // Removed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("bone_rod"), NetherExp.netherexpPath("bone_pike")); // Renamed 2.4.0
     }
 }

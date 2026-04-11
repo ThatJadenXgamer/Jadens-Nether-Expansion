@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.registry;
 
 import com.mojang.serialization.Codec;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;

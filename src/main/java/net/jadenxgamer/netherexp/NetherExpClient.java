@@ -7,7 +7,10 @@ import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSan
 import net.jadenxgamer.netherexp.client.rendering.entity.*;
 import net.jadenxgamer.netherexp.client.rendering.item.PumpChargeShotgunModel;
 import net.jadenxgamer.netherexp.client.rendering.item.ShotgunFistModel;
+import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
+import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.client.sound.InsideFluidAmbientSoundInstance;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
@@ -21,6 +24,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -78,13 +82,13 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.ECTOPLASM_RAYS.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.WIND_TRAIL.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.GLOWING_DOT.get(), LodestoneWorldParticleType.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.GLOWING_DOT_COIL.get(), CoilParticleEffect.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GLOWING_DOT_COIL.get(), CoilParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SOUL_CLOUD.get(), JNEPoofParticle.SoulProvider::new);
         event.registerSpriteSet(JNEParticleTypes.SILVER_GLIMMER.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.TREACHEROUS_FLAME.get(), FlameParticle.Provider::new);
         event.registerSpriteSet(JNEParticleTypes.POSSESSION.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SHOTGUN_SPARK.get(), LodestoneWorldParticleType.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.NETHER_FOG.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.NETHER_FOG.get(), ProximityFadeParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.LIGHTSPORE.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.NIGHTSPORE.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.WINDY_ASH.get(), WindBlownParticle.Provider::new);
@@ -115,6 +119,21 @@ public final class NetherExpClient {
         event.registerLayerDefinition(ShotgunFistModel.LAYER, ShotgunFistModel::createBodyLayer);
         event.registerLayerDefinition(PumpChargeShotgunModel.LAYER, PumpChargeShotgunModel::createBodyLayer);
         event.registerLayerDefinition(PelletRenderer.ShotgunPelletModel.LAYER, PelletRenderer.ShotgunPelletModel::createBodyLayer);
+    }
+
+    public static class HandlePostShaders {
+
+        public static void tick(Minecraft client) {
+            Entity player = client.getCameraEntity();
+            if (player == null) return;
+            BlockState state = player.level().getBlockState(client.gameRenderer.getMainCamera().getBlockPosition());
+            var biome = player.level().getBiome(client.gameRenderer.getMainCamera().getBlockPosition());
+
+            // Implementations
+            SoulGlassPostProcessor.INSTANCE.setActive(JNEConfigs.ENABLE_SOUL_GLASS_SCREEN_FILTER.get() && state.is(JNEBlocks.SOUL_GLASS.get()));
+            NetherHeatDistortionPostprocessor.INSTANCE.setActive(NetherHeatDistortionPostprocessor.shouldEnable());
+            NetherHeatDistortionPostprocessor.tick(client, player.level(), player, biome);
+        }
     }
 
     public static class SubmergedStates {

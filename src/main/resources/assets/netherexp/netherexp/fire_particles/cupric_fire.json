@@ -1,0 +1,15 @@
+{
+  "blocks": "caverns_and_chasms:cupric_fire",
+  "smoke_start_colors": [
+    "#00ff00"
+  ],
+  "smoke_end_colors": [
+    "#12190c",
+    "#151e0e",
+    "#1d2913",
+    "#223016"
+  ],
+  "ember_colors": [
+    "#72ff31"
+  ]
+}

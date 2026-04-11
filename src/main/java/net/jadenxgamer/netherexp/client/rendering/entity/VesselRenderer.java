@@ -78,11 +78,11 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(Vessel entity) {
-        return NetherExp.id("textures/entity/vessel.png");
+        return NetherExp.netherexpPath("textures/entity/vessel.png");
     }
 
     public static class VesselModel<T extends Vessel> extends HierarchicalModel<T> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("vessel"), "main");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("vessel"), "main");
         private final ModelPart vessel;
         private final ModelPart head;
         private final ModelPart body;
@@ -185,7 +185,7 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
 
         @Override
         public @NotNull RenderType renderType() {
-            return RenderType.eyes(NetherExp.id("textures/entity/vessel_glow.png"));
+            return RenderType.eyes(NetherExp.netherexpPath("textures/entity/vessel_glow.png"));
         }
     }
 

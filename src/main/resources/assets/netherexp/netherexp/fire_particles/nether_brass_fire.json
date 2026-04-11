@@ -1,0 +1,15 @@
+{
+  "blocks": "architects_palette:nether_brass_fire",
+  "smoke_start_colors": [
+    "#a1ff00"
+  ],
+  "smoke_end_colors": [
+    "#181709",
+    "#1c1c0a",
+    "#27260e",
+    "#2e2d10"
+  ],
+  "ember_colors": [
+    "#cbff62"
+  ]
+}

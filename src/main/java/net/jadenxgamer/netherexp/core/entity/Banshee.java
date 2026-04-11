@@ -54,7 +54,7 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     private int teleportCount = 0;
 
     public Banshee(EntityType<? extends PathfinderMob> entityType, Level level) {
-        super(entityType, level, NetherExp.idVanilla("blaze"));
+        super(entityType, level, NetherExp.minecraftPath("blaze"));
         this.setPathfindingMalus(PathType.WATER, -1.0F);
         this.setPathfindingMalus(PathType.LAVA, 8.0F);
         this.setPathfindingMalus(PathType.DANGER_FIRE, 0.0F);

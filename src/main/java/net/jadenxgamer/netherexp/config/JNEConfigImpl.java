@@ -411,6 +411,10 @@ public class JNEConfigImpl {
             NETHER_MIST_MOTION_MULTIPLIER = builder
                     .comment("Influences the nether mist particle to go off in random directions at the defined speed")
                     .defineInRange("netherMistMotionMultiplier", 0.05, 0, Double.MAX_VALUE);
+            NETHER_MIST_DISSIPATE_DISTANCE = builder
+                    .comment("Makes the nether mist particles disappear faster if you get close enough to them \n" +
+                            "You may disable this functionality entirely by just setting the value to 0.0")
+                    .defineInRange("netherMistDissipateDistance", 20.0, 0.0, Double.MAX_VALUE);
             SOUL_SAND_VALLEY_WIND_SPEED = builder
                     .comment("Influences the wind speed of ash particles in the soul sand valley")
                     .defineInRange("soulSandValleyWindSpeed", 0.2, 0.0, Double.MAX_VALUE);
@@ -458,6 +462,57 @@ public class JNEConfigImpl {
             SHOTGUN_SCREENSHAKE = builder
                     .comment("Toggle the screenshake when a shotgun is fired")
                     .define("shotgunScreenshake", true);
+            ENABLE_HEAT_DISTORTION = builder
+                    .comment("Toggles all heat distortion effects in JNE; To disable individual heat distortion effects check the below configs")
+                    .define("enableHeatDistortion", true);
+            BIOME_HEAT_DISTORTION = builder
+                    .comment("Heat distortion is applied to far away objects when in certain biomes such as the nether")
+                    .define("biomeHeatDistortion", true);
+            LAVA_HEAT_DISTORTION = builder
+                    .comment("A much stronger heat distortion is applied when close to lava source blocks")
+                    .define("lavaHeatDistortion", true);
+            HEAT_DISTORTION_INTENSITY = builder
+                    .comment("Intensity of heat distortion wobbling")
+                    .defineInRange("heatDistortionIntensity", 0.004, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_SPEED = builder
+                    .comment("Speed of heat distortion wobbling")
+                    .defineInRange("heatDistortionSpeed", 2.0, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_MIN_DISTANCE = builder
+                    .comment("Minimum distance from the camera that heat distortion starts at")
+                    .defineInRange("heatDistortionMinDistance", 12.0, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_MAX_DISTANCE = builder
+                    .comment("Maximum distance from the camera that heat distortion reaches its max intensity at")
+                    .defineInRange("heatDistortionMaxDistance", 128.0, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_LAVA_INTENSITY = builder
+                    .comment("Intensity of heat distortion wobbling when close to lava sources")
+                    .defineInRange("heatDistortionLavaIntensity", 0.006f, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_LAVA_SPEED = builder
+                    .comment("Speed of heat distortion wobbling when close to lava sources")
+                    .defineInRange("heatDistortionLavaSpeed", 2.0, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_LAVA_MIN_DISTANCE = builder
+                    .comment("Minimum distance from the camera that heat distortion starts at when close to lava sources")
+                    .defineInRange("heatDistortionLavaMinDistance", 0.0, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_LAVA_MAX_DISTANCE = builder
+                    .comment("Maximum distance from the camera that heat distortion reaches its max intensity at when close to lava sources")
+                    .defineInRange("heatDistortionLavaMaxDistance", 64.0, 0.0, Double.MAX_VALUE);
+            HEAT_DISTORTION_LAVA_CHECK_PERIOD = builder
+                    .comment("How often the game will check around the player for lava heat distortion in ticks \n" +
+                            "WARNING: Lower numbers can increase lag especially when paired with high check distances to iterate through")
+                    .defineInRange("heatDistortionLavaCheckPeriod", 40, 0, Integer.MAX_VALUE);
+            HEAT_DISTORTION_LAVA_PROXIMITY = builder
+                    .comment("How far the game will check around the player for heat distortion lava sources \n" +
+                            "Beware that increasing the distance can add some latency to performance! as it needs to iterate through all the specified blocks in-range")
+                    .defineInRange("heatDistortionLavaProximity", 2.0, 0.0, Double.MAX_VALUE);
+            REQUIRED_SOURCE_BLOCKS_FOR_LAVA_HEAT_DISTORTION = builder
+                    .comment("The number of source blocks that need to be around the player to cause heat distortion")
+                    .defineInRange("requiredSourceBlocksForLavaHeatDistortion", 12, 0, Integer.MAX_VALUE);
+            ENABLE_SOUL_GLASS_SCREEN_FILTER = builder
+                    .comment("Toggles the on-screen filter when submerged inside soul glass")
+                    .define("enableSoulGlassScreenFilter", true);
+            NO_SOUL_GLASS_RIPPLE = builder
+                    .comment("Removes the ripple effect from soul glass entirely and leaves just the frosted glass effect for people who find the distortion uneasy")
+                    .define("noSoulGlassRipple", false);
+
             ENABLE_JNE_SPLASH_TEXTS = builder
                     .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
                     .define("enableJNESplashTexts", true);

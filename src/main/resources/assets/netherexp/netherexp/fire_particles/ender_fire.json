@@ -1,0 +1,15 @@
+{
+  "blocks": "endergetic:ender_fire",
+  "smoke_start_colors": [
+    "#9000ff"
+  ],
+  "smoke_end_colors": [
+    "#160d22",
+    "#1a1028",
+    "#221536",
+    "#2a1941"
+  ],
+  "ember_colors": [
+    "#b924ff"
+  ]
+}

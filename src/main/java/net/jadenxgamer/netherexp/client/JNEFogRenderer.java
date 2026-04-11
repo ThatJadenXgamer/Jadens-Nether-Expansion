@@ -1,6 +1,5 @@
 package net.jadenxgamer.netherexp.client;
 
-import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +15,6 @@ public class JNEFogRenderer {
         Entity player = Minecraft.getInstance().getCameraEntity();
         if (event.isCanceled() || event.getType() != FogType.NONE || player == null) return;
         BlockState state = player.level().getBlockState(event.getCamera().getBlockPosition());
-        SoulGlassPostProcessor.INSTANCE.setActive(state.is(JNEBlocks.SOUL_GLASS.get()));
         if (state.is(JNEBlocks.SOUL_GLASS.get())) {
             event.setCanceled(true);
             event.setNearPlaneDistance(-8.0F);
@@ -35,13 +33,12 @@ public class JNEFogRenderer {
         }
     }
 
-    public static void skyColor(Vec3 pos, float partialTick, CallbackInfoReturnable<Vec3> cir) {
-        var client = Minecraft.getInstance();
+    // TODO: make this into an event with Elysium later, it's kind of insane how there isn't one already LMFAO
+    public static void skyColor(Minecraft client, Vec3 pos, float partialTick, CallbackInfoReturnable<Vec3> cir) {
         Entity player = client.player;
         if (player == null) return;
         BlockState state = player.level().getBlockState(client.gameRenderer.getMainCamera().getBlockPosition());
-        if (state.is(JNEBlocks.SOUL_GLASS.get())) {
-            cir.setReturnValue(new Vec3(0.0, 0.0, 0.0));
-        }
+
+        if (state.is(JNEBlocks.SOUL_GLASS.get())) cir.setReturnValue(new Vec3(0.0, 0.0, 0.0));
     }
 }

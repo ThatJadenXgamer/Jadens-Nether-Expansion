@@ -30,7 +30,7 @@ public class WispRenderer extends MobRenderer<Wisp, WispRenderer.WispModel<Wisp>
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(Wisp entity) {
-        return NetherExp.id("textures/entity/wisp.png");
+        return NetherExp.netherexpPath("textures/entity/wisp.png");
     }
 
     @Nullable
@@ -45,7 +45,7 @@ public class WispRenderer extends MobRenderer<Wisp, WispRenderer.WispModel<Wisp>
     }
 
     public static class WispModel<T extends Wisp> extends HierarchicalModel<T> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("wisp"), "main");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("wisp"), "main");
         private final ModelPart wisp;
         private final ModelPart body;
         private final ModelPart eyes;

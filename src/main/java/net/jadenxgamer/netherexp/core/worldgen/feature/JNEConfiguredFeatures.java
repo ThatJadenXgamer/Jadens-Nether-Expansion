@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.core.worldgen.feature;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 public class JNEConfiguredFeatures {
@@ -12,6 +11,6 @@ public class JNEConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRAIN_TREE = registerKey("nether_wastes/brain_tree");
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, NetherExp.id(name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, NetherExp.netherexpPath(name));
     }
 }

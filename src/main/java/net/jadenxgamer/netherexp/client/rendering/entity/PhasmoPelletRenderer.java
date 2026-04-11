@@ -13,6 +13,6 @@ public class PhasmoPelletRenderer extends PelletRenderer<PhasmoPellet> {
 
     @Override
     public ResourceLocation getTextureLocation(PhasmoPellet entity) {
-        return NetherExp.id("textures/entity/projectiles/phasmo_pellet.png");
+        return NetherExp.netherexpPath("textures/entity/projectiles/phasmo_pellet.png");
     }
 }

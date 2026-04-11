@@ -72,7 +72,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     public boolean armFlash = false;
 
     public Vessel(EntityType<? extends PathfinderMob> entityType, Level level) {
-        super(entityType, level, NetherExp.idVanilla("skeleton"));
+        super(entityType, level, NetherExp.minecraftPath("skeleton"));
         this.setPathfindingMalus(PathType.WATER, -1.0F);
         this.setPathfindingMalus(PathType.LAVA, 8.0F);
         this.setPathfindingMalus(PathType.DANGER_FIRE, 0.0F);

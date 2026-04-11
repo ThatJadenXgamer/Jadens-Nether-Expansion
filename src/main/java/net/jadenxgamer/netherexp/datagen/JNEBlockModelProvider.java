@@ -1,9 +1,7 @@
 package net.jadenxgamer.netherexp.datagen;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -14,7 +12,7 @@ public class JNEBlockModelProvider extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
-        var tex = NetherExp.id("block/pyroclast");
+        var tex = NetherExp.netherexpPath("block/pyroclast");
 
         // Block
         cubeAll("pyroclast", tex);

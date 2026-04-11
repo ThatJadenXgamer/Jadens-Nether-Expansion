@@ -46,7 +46,7 @@ public class JNEItemRenderer extends BlockEntityWithoutLevelRenderer {
             poseStack.mulPose(Axis.XP.rotationDegrees(-180));
             poseStack.mulPose(Axis.YP.rotationDegrees(180));
             poseStack.scale(1.0F, 1.0F, 1.0F);
-            ResourceLocation texture = NetherExp.id("textures/entity/will_o_wisp.png");
+            ResourceLocation texture = NetherExp.netherexpPath("textures/entity/will_o_wisp.png");
             VertexConsumer consumer = buffer.getBuffer(JNERenderType.noShadeEntityCutoutNoCull(texture));
             WILL_O_WISP_MODEL.setupAnim(player, (WillOWispItem) stack.getItem(), stack, displayContext, ageInTicks);
             WILL_O_WISP_MODEL.renderToBuffer(poseStack, consumer, LightTexture.FULL_BRIGHT, packedOverlay, 0xFFFFFF);
@@ -58,8 +58,8 @@ public class JNEItemRenderer extends BlockEntityWithoutLevelRenderer {
             poseStack.mulPose(Axis.XP.rotationDegrees(-180));
             poseStack.mulPose(Axis.YP.rotationDegrees(180));
             poseStack.scale(1.0F, 1.0F, 1.0F);
-            ResourceLocation texture = NetherExp.id("textures/entity/shotgun_fist/base.png");
-            ResourceLocation glow = NetherExp.id("textures/entity/shotgun_fist/glow.png");
+            ResourceLocation texture = NetherExp.netherexpPath("textures/entity/shotgun_fist/base.png");
+            ResourceLocation glow = NetherExp.netherexpPath("textures/entity/shotgun_fist/glow.png");
             SHOTGUN_FIST_MODEL.setupAnim(player, (ShotgunFistItem) stack.getItem(), stack, displayContext, ageInTicks);
             SHOTGUN_FIST_MODEL.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entityCutoutNoCull(texture)), packedLight, packedOverlay, 0xFFFFFF);
             SHOTGUN_FIST_MODEL.renderToBuffer(poseStack, buffer.getBuffer(JNERenderType.noShadeEntityCutoutNoCull(glow)), LightTexture.FULL_BRIGHT, packedOverlay, 0xFFFFFF);
@@ -77,8 +77,8 @@ public class JNEItemRenderer extends BlockEntityWithoutLevelRenderer {
             poseStack.mulPose(Axis.XP.rotationDegrees(-180));
             poseStack.mulPose(Axis.YP.rotationDegrees(180));
             poseStack.scale(1.0F, 1.0F, 1.0F);
-            ResourceLocation texture = NetherExp.id("textures/entity/pump_charge_shotgun/base_" + pumps + ".png");
-            ResourceLocation glow = NetherExp.id("textures/entity/pump_charge_shotgun/glow_" + pumps + ".png");
+            ResourceLocation texture = NetherExp.netherexpPath("textures/entity/pump_charge_shotgun/base_" + pumps + ".png");
+            ResourceLocation glow = NetherExp.netherexpPath("textures/entity/pump_charge_shotgun/glow_" + pumps + ".png");
             PUMP_CHARGE_SHOTGUN_MODEL.setupAnim(player, (PumpChargeShotgunItem) stack.getItem(), stack, displayContext, ageInTicks);
             PUMP_CHARGE_SHOTGUN_MODEL.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entityCutoutNoCull(texture)), packedLight, packedOverlay, 0xFFFFFF);
             PUMP_CHARGE_SHOTGUN_MODEL.renderToBuffer(poseStack, buffer.getBuffer(JNERenderType.noShadeEntityCutoutNoCull(glow)), LightTexture.FULL_BRIGHT, packedOverlay, 0xFFFFFF);

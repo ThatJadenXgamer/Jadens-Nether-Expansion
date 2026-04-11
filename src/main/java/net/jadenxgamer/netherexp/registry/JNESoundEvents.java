@@ -182,7 +182,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> HAZE_BLOCK_BREAK = registerSoundEvents("block.haze_block.break");
 
     private static Supplier<SoundEvent> registerSoundEvents(String name) {
-        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(NetherExp.id(name)));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(NetherExp.netherexpPath(name)));
     }
 
     public static void init(IEventBus eventBus) {

@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.client.rendering.extensions;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -22,17 +21,17 @@ public class JNEFluidExtensions {
     public static final IClientFluidTypeExtensions ectoplasmExt = new IClientFluidTypeExtensions() {
         @Override
         public ResourceLocation getStillTexture() {
-            return NetherExp.id("block/ectoplasm_still");
+            return NetherExp.netherexpPath("block/ectoplasm_still");
         }
 
         @Override
         public ResourceLocation getFlowingTexture() {
-            return NetherExp.id("block/ectoplasm_flow");
+            return NetherExp.netherexpPath("block/ectoplasm_flow");
         }
 
         @Override
         public @NotNull ResourceLocation getOverlayTexture() {
-            return NetherExp.id("block/underectoplasm");
+            return NetherExp.netherexpPath("block/underectoplasm");
         }
 
         @Override

@@ -22,7 +22,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 import team.lodestar.lodestone.registry.client.LodestoneRenderTypes;
 import team.lodestar.lodestone.systems.rendering.VFXBuilders;
-import team.lodestar.lodestone.systems.rendering.rendeertype.LodestoneRenderTypeBuilder;
 import team.lodestar.lodestone.systems.rendering.rendeertype.RenderTypeToken;
 
 public abstract class PelletRenderer<T extends AbstractPellet> extends EntityRenderer<T> {
@@ -64,7 +63,7 @@ public abstract class PelletRenderer<T extends AbstractPellet> extends EntityRen
         this.model.renderToBuffer(poseStack, vertexConsumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
 
         poseStack.popPose();
-        var trail = LodestoneRenderTypes.TRANSPARENT_TEXTURE_TRIANGLE.apply(RenderTypeToken.createToken(NetherExp.id("textures/particle/trail_solid_transparent.png")));
+        var trail = LodestoneRenderTypes.TRANSPARENT_TEXTURE_TRIANGLE.apply(RenderTypeToken.createToken(NetherExp.netherexpPath("textures/particle/trail_solid_transparent.png")));
         VFXBuilders.WorldVFXBuilder builder = VFXBuilders.createWorld().setRenderType(trail);
         VFXHelper.renderEntityTrail(poseStack, builder, entity.trailPointBuilder, entity, entity.getTrailColor(), 0.7f, 0.2f, partialTicks);
     }
@@ -75,7 +74,7 @@ public abstract class PelletRenderer<T extends AbstractPellet> extends EntityRen
     }
 
     public static class ShotgunPelletModel<T extends AbstractPellet> extends EntityModel<T> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("pellet"), "main");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("pellet"), "main");
         private final ModelPart main;
 
         public ShotgunPelletModel(ModelPart root) {

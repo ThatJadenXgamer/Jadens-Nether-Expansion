@@ -10,14 +10,14 @@ import team.lodestar.lodestone.systems.particle.world.options.WorldParticleOptio
 
 import javax.annotation.Nullable;
 
-public class CoilParticleEffect extends LodestoneWorldParticle {
+public class CoilParticle extends LodestoneWorldParticle {
     private final double centerX, centerY, centerZ;
     private final double coilRadius;
     private final double coilHeight;
     private final double coilSpeed;
     private final double timeOffset;
 
-    public CoilParticleEffect(ClientLevel world, WorldParticleOptions options, ParticleEngine.MutableSpriteSet spriteSet, double x, double y, double z, double xd, double yd, double zd) {
+    public CoilParticle(ClientLevel world, WorldParticleOptions options, ParticleEngine.MutableSpriteSet spriteSet, double x, double y, double z, double xd, double yd, double zd) {
         super(world, options, spriteSet, x, y, z, xd, yd, zd);
         this.centerX = x;
         this.centerY = y;
@@ -70,7 +70,7 @@ public class CoilParticleEffect extends LodestoneWorldParticle {
         @Nullable
         @Override
         public Particle createParticle(WorldParticleOptions options, ClientLevel level, double x, double y, double z, double mx, double my, double mz) {
-            return new CoilParticleEffect(level, options, (ParticleEngine.MutableSpriteSet) sprite, x, y, z, mx, my, mz);
+            return new CoilParticle(level, options, (ParticleEngine.MutableSpriteSet) sprite, x, y, z, mx, my, mz);
         }
     }
 }

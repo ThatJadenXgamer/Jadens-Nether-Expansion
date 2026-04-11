@@ -30,7 +30,7 @@ public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionRender
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(Apparition entity) {
-        return NetherExp.id("textures/entity/apparition.png");
+        return NetherExp.netherexpPath("textures/entity/apparition.png");
     }
 
     @Nullable
@@ -45,7 +45,7 @@ public class ApparitionRenderer extends MobRenderer<Apparition, ApparitionRender
     }
 
     public static class ApparitionModel<T extends Apparition> extends HierarchicalModel<T> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("apparition"), "main");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("apparition"), "main");
         private final ModelPart main;
         private final ModelPart right_arm;
         private final ModelPart right_chain;

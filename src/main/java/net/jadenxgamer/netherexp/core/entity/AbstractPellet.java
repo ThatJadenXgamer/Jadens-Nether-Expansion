@@ -35,6 +35,7 @@ public abstract class AbstractPellet extends AbstractArrow {
 
     protected AbstractPellet(EntityType<? extends AbstractArrow> entityType, Level level) {
         super(entityType, level);
+        this.pickup = AbstractArrow.Pickup.DISALLOWED;
     }
 
     @Override

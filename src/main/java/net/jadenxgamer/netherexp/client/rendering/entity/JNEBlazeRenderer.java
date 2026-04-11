@@ -13,13 +13,13 @@ import org.jetbrains.annotations.Nullable;
 
 public class JNEBlazeRenderer extends BlazeRenderer {
 
-    private static final ResourceLocation LIT = NetherExp.id("textures/entity/blaze/lit.png");
+    private static final ResourceLocation LIT = NetherExp.netherexpPath("textures/entity/blaze/lit.png");
 
-    private static final ResourceLocation DIM = NetherExp.id("textures/entity/blaze/dim.png");
+    private static final ResourceLocation DIM = NetherExp.netherexpPath("textures/entity/blaze/dim.png");
 
-    private static final ResourceLocation DULL = NetherExp.id("textures/entity/blaze/dull.png");
+    private static final ResourceLocation DULL = NetherExp.netherexpPath("textures/entity/blaze/dull.png");
 
-    private static final ResourceLocation FADING = NetherExp.id("textures/entity/blaze/fading.png");
+    private static final ResourceLocation FADING = NetherExp.netherexpPath("textures/entity/blaze/fading.png");
     
     public JNEBlazeRenderer(EntityRendererProvider.Context context) {
         super(context);

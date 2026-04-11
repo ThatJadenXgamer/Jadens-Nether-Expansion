@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemHierarchicalModel;
-import net.jadenxgamer.netherexp.core.entity.Vessel;
 import net.jadenxgamer.netherexp.core.item.ShotgunFistItem;
 import net.jadenxgamer.netherexp.util.ClientItemData;
 import net.minecraft.client.Minecraft;
@@ -19,14 +18,13 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
 public class ShotgunFistModel extends ItemHierarchicalModel<ShotgunFistItem> {
-    public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("shotgun_fist"), "main");
+    public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("shotgun_fist"), "main");
     private final ModelPart shotgun;
     private final ModelPart skull;
     private final ModelPart jaw;

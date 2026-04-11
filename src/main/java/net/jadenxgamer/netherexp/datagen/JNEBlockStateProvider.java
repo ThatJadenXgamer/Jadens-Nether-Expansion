@@ -20,24 +20,24 @@ public class JNEBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         // Block
         simpleBlock(JNEBlocks.PYROCLAST.get(),
-                models().getExistingFile(NetherExp.id("block/pyroclast")));
+                models().getExistingFile(NetherExp.netherexpPath("block/pyroclast")));
 
         // Slab
         slabBlock((SlabBlock) JNEBlocks.PYROCLAST_SLAB.get(),
-                models().getExistingFile(NetherExp.id("block/pyroclast_slab")),
-                models().getExistingFile(NetherExp.id("block/pyroclast_slab_top")),
-                models().getExistingFile(NetherExp.id("block/pyroclast")));
+                models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_slab")),
+                models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_slab_top")),
+                models().getExistingFile(NetherExp.netherexpPath("block/pyroclast")));
 
         // Stairs
         stairsBlock((StairBlock) JNEBlocks.PYROCLAST_STAIRS.get(),
-                models().getExistingFile(NetherExp.id("block/pyroclast_stairs")),
-                models().getExistingFile(NetherExp.id("block/pyroclast_stairs_inner")),
-                models().getExistingFile(NetherExp.id("block/pyroclast_stairs_outer")));
+                models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_stairs")),
+                models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_stairs_inner")),
+                models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_stairs_outer")));
 
         // Wall
-        ModelFile wallPost = models().getExistingFile(NetherExp.id("block/pyroclast_wall_post"));
-        ModelFile wallSide = models().getExistingFile(NetherExp.id("block/pyroclast_wall_side"));
-        ModelFile wallSideTall = models().getExistingFile(NetherExp.id("block/pyroclast_wall_side_tall"));
+        ModelFile wallPost = models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_wall_post"));
+        ModelFile wallSide = models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_wall_side"));
+        ModelFile wallSideTall = models().getExistingFile(NetherExp.netherexpPath("block/pyroclast_wall_side_tall"));
         wallBlock((WallBlock) JNEBlocks.PYROCLAST_WALL.get(), wallPost, wallSide, wallSideTall);
     }
 }

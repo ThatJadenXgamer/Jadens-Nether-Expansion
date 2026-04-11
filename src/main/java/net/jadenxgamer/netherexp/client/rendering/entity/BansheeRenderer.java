@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderType;
-import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.entity.Banshee;
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;
@@ -32,7 +31,7 @@ public class BansheeRenderer extends MobRenderer<Banshee, BansheeRenderer.Banshe
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(Banshee entity) {
-        return NetherExp.id("textures/entity/banshee.png");
+        return NetherExp.netherexpPath("textures/entity/banshee.png");
     }
 
     @Nullable
@@ -47,7 +46,7 @@ public class BansheeRenderer extends MobRenderer<Banshee, BansheeRenderer.Banshe
     }
 
     public static class BansheeModel<T extends Banshee> extends HierarchicalModel<T> {
-        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.id("banshee"), "main");
+        public static final ModelLayerLocation LAYER = new ModelLayerLocation(NetherExp.netherexpPath("banshee"), "main");
         private final ModelPart banshee;
         private final ModelPart body;
         private final ModelPart jaw;

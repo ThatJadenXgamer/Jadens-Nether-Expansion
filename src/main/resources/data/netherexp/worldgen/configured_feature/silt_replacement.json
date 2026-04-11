@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:netherrack_replace_blobs",
+  "config": {
+    "radius": {
+      "type": "minecraft:constant",
+      "value": 12
+    },
+    "state": {
+      "Name": "netherexp:silt"
+    },
+    "target": {
+      "Name": "minecraft:gravel"
+    }
+  }
+}

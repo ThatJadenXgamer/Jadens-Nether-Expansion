@@ -13,6 +13,6 @@ public class ShotgunPelletRenderer extends PelletRenderer<ShotgunPellet> {
 
     @Override
     public ResourceLocation getTextureLocation(ShotgunPellet entity) {
-        return NetherExp.id("textures/entity/projectiles/shotgun_pellet.png");
+        return NetherExp.netherexpPath("textures/entity/projectiles/shotgun_pellet.png");
     }
 }

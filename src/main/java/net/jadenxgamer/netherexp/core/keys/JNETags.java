@@ -26,7 +26,7 @@ public class JNETags {
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createTag("unbounded_speed_blocks"); // Blocks in this tag have their block speed factor ignored when unbounded speed is applied
 
         private static TagKey<Block> createTag(String name) {
-            return TagKey.create(Registries.BLOCK, NetherExp.id(name));
+            return TagKey.create(Registries.BLOCK, NetherExp.netherexpPath(name));
         }
     }
 
@@ -40,7 +40,7 @@ public class JNETags {
         public static final TagKey<Item> SHOTGUN_SHELLS = createTag("shotgun_shells"); // Shotguns can load these items as shells
 
         private static TagKey<Item> createTag(String name) {
-            return TagKey.create(Registries.ITEM, NetherExp.id(name));
+            return TagKey.create(Registries.ITEM, NetherExp.netherexpPath(name));
         }
 
         private static TagKey<Item> createTag(String namespace, String name) {
@@ -60,7 +60,7 @@ public class JNETags {
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createTag("ignores_soul_sand_slowness"); // Entities within this tag cannot be slowed down by soul sand
 
         private static TagKey<EntityType<?>> createTag(String name) {
-            return TagKey.create(Registries.ENTITY_TYPE, NetherExp.id(name));
+            return TagKey.create(Registries.ENTITY_TYPE, NetherExp.netherexpPath(name));
         }
     }
 
@@ -71,7 +71,7 @@ public class JNETags {
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash"); // Prevents geysers from producing white ash particles here
 
         private static TagKey<Biome> createBiomeTag(String name) {
-            return TagKey.create(Registries.BIOME, NetherExp.id(name));
+            return TagKey.create(Registries.BIOME, NetherExp.netherexpPath(name));
         }
     }
 
@@ -79,7 +79,7 @@ public class JNETags {
         public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createBiomeTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice
 
         private static TagKey<Fluid> createBiomeTag(String name) {
-            return TagKey.create(Registries.FLUID, NetherExp.id(name));
+            return TagKey.create(Registries.FLUID, NetherExp.netherexpPath(name));
         }
     }
 }

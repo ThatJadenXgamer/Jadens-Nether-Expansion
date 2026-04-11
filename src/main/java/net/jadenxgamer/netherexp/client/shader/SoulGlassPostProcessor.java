@@ -1,6 +1,8 @@
 package net.jadenxgamer.netherexp.client.shader;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.config.JNEConfigImpl;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
@@ -12,7 +14,7 @@ public class SoulGlassPostProcessor extends PostProcessor {
 
     @Override
     public ResourceLocation getPostChainLocation() {
-        return NetherExp.id("soul_glass");
+        return NetherExp.netherexpPath("soul_glass");
     }
 
     @Override
@@ -23,6 +25,12 @@ public class SoulGlassPostProcessor extends PostProcessor {
         float gameTimeTicks = client.level.getGameTime() + client.getTimer().getGameTimeDeltaPartialTick(true);
         float timeInSeconds = gameTimeTicks / 20.0f;
         this.postChain.setUniform("GameTime", timeInSeconds);
+        if (JNEConfigImpl.CONFIG.isLoaded() && JNEConfigs.NO_SOUL_GLASS_RIPPLE.get()) {
+            this.postChain.setUniform("RippleStrength", 0.0f);
+            this.postChain.setUniform("RippleFrequency", 0.0f);
+            this.postChain.setUniform("RippleSpeed", 0.0f);
+            this.postChain.setUniform("RippleRandomness", 0.0f);
+        }
     }
 
     @Override

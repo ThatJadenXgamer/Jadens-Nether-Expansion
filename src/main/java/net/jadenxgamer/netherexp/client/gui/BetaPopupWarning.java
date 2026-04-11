@@ -16,7 +16,7 @@ import java.awt.*;
 import java.util.List;
 
 public class BetaPopupWarning extends Screen {
-    private static final ResourceLocation POPUP_TEXTURE = NetherExp.id("textures/gui/popup.png");
+    private static final ResourceLocation POPUP_TEXTURE = NetherExp.netherexpPath("textures/gui/popup.png");
     private static final int POPUP_WIDTH = 227;
     private static final int POPUP_HEIGHT = 185;
 
