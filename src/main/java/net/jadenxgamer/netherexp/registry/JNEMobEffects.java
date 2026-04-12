@@ -4,6 +4,8 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.effect.ImmunityEffect;
 import net.jadenxgamer.netherexp.core.effect.IncurableEffect;
 import net.jadenxgamer.netherexp.core.effect.JNEMobEffect;
+import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
@@ -94,6 +96,7 @@ public class JNEMobEffects {
 
 
     public static void init(IEventBus eventBus) {
+        if (CompatUtil.OREGANIZED) OreganizedCompat.MobEffects.init();
         MOB_EFFECTS.register(eventBus);
     }
 }

@@ -18,18 +18,20 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 import java.util.function.Function;
 
 public class ImmunityEffect extends IncurableEffect {
 
-    private final ResourceLocation immunityOf;
+    @Nullable private final Holder<MobEffect> immunityOf;
     public final Function<MobEffectInstance, ParticleOptions> immunityParticleFactory;
+    private final int defaultColor = 0x808080;
 
     public ImmunityEffect(MobEffectCategory category, ResourceLocation immunityOf) {
         super(category, 0);
-        this.immunityOf = immunityOf;
+        this.immunityOf = resolveEffectHolder(immunityOf);
         this.immunityParticleFactory = (particle) -> {
             int alpha = particle.isAmbient() ? Mth.floor(38.25F) : 255;
             return ColorParticleOption.create(JNEParticleTypes.IMMUNITY_EFFECT.get(), FastColor.ARGB32.color(alpha, getColor()));
@@ -38,12 +40,13 @@ public class ImmunityEffect extends IncurableEffect {
 
     @Override
     public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
-        return true;
+        return immunityOf != null;
     }
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        Holder<MobEffect> immuneTo = getEffectImmuneTo();
+        if (immunityOf == null) return true;
+        Holder<MobEffect> immuneTo = immunityOf;
         Holder<MobEffect> itself = getAsHolder(this);
         if (entity.hasEffect(immuneTo)) {
             int currentDuration = entity.getEffect(itself).getDuration();
@@ -60,8 +63,8 @@ public class ImmunityEffect extends IncurableEffect {
 
     @Override
     public int getColor() {
-        getEffectImmuneTo().value();
-        return getEffectImmuneTo().value().getColor();
+        if (immunityOf == null) return defaultColor;
+        return immunityOf.value().getColor();
     }
 
     @Override
@@ -69,11 +72,16 @@ public class ImmunityEffect extends IncurableEffect {
         return this.immunityParticleFactory.apply(effect);
     }
 
-    private Holder<MobEffect> getEffectImmuneTo() {
-        return getAsHolder(LookupRegistryHelper.getMobEffect(immunityOf));
+    @Nullable
+    private Holder<MobEffect> resolveEffectHolder(ResourceLocation location) {
+        MobEffect effect = LookupRegistryHelper.getMobEffect(location);
+        if (effect == null) return null;
+        return getAsHolder(effect);
     }
 
+    @Nullable
     private Holder<MobEffect> getAsHolder(MobEffect effect) {
+        if (effect == null) return null;
         Optional<ResourceKey<MobEffect>> key = BuiltInRegistries.MOB_EFFECT.getResourceKey(effect);
         return key.map(BuiltInRegistries.MOB_EFFECT::getHolderOrThrow).orElse(null);
     }

@@ -1,7 +1,9 @@
 {
   "replace": false,
+  "values": [
+    "#minecraft:is_nether"
+  ],
   "remove": [
-    "minecraft:soul_sand_valley",
     {"id": "netherexp:black_ice_glaciers", "required": false}
   ]
 }

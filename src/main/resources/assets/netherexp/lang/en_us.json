@@ -823,5 +823,6 @@
   "itemGroup.netherexp.jne_warped_forest": "JNE Warped Forest",
   "itemGroup.netherexp.jne_crimson_forest": "JNE Crimson Forest",
   "itemGroup.netherexp.jne_soul_sand_valley": "JNE Soul Sand Valley",
-  "itemGroup.netherexp.jne_nether_wastes": "JNE Nether Wastes"
+  "itemGroup.netherexp.jne_nether_wastes": "JNE Nether Wastes",
+  "itemGroup.netherexp.jne_mod_compat": "JNE Mod Compat"
 }

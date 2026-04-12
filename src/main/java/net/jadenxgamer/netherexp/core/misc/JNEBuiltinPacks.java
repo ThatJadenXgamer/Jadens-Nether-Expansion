@@ -41,9 +41,26 @@ public class JNEBuiltinPacks {
         if (CompatUtil.AMPLIFIED_NETHER || !NETHER_WORLDGEN_OVERHAUL.get()) return;
 
         Path path = ModList.get().getModFileById(NetherExp.MOD_ID).getFile().findResource("resourcepacks/nether_worldgen_overhaul");
-        PackMetadataSection metadata = new PackMetadataSection(Component.literal("Overhauls the nether world generation"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+        PackMetadataSection metadata = new PackMetadataSection(Component.literal("Overhauls the nether world generation"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
         event.addRepositorySource(source -> source.accept(new Pack(
                 new PackLocationInfo("netherexp:nether_worldgen_overhaul", Component.literal("JNE Nether Worldgen Overhaul"), PackSource.BUILT_IN, Optional.empty()),
+                new PathPackResources.PathResourcesSupplier(path),
+                new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                new PackSelectionConfig(true, Pack.Position.TOP, false)
+        )));
+    }
+
+    ////////////////
+    // MOD COMPAT //
+    ////////////////
+
+    public static void dpCompatOreganized(AddPackFindersEvent event) {
+        if (!CompatUtil.OREGANIZED) return;
+
+        Path path = ModList.get().getModFileById(NetherExp.MOD_ID).getFile().findResource("resourcepacks/oreganized_compat");
+        PackMetadataSection metadata = new PackMetadataSection(Component.literal("Provides mod compat between the two mods"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
+        event.addRepositorySource(source -> source.accept(new Pack(
+                new PackLocationInfo("netherexp:oreganized_compat", Component.literal("JNE x Oreganized Compat"), PackSource.BUILT_IN, Optional.empty()),
                 new PathPackResources.PathResourcesSupplier(path),
                 new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
                 new PackSelectionConfig(true, Pack.Position.TOP, false)

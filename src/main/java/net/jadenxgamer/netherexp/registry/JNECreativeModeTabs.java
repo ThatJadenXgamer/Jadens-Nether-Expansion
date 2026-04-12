@@ -2,6 +2,8 @@ package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -463,6 +465,17 @@ public class JNECreativeModeTabs {
                 output.accept(Items.MAGMA_CUBE_SPAWN_EGG);
                 output.accept(Items.BLAZE_SPAWN_EGG);
                 output.accept(Items.WITHER_SKELETON_SPAWN_EGG);
+            })
+            .build());
+
+
+    public static final Supplier<CreativeModeTab> MOD_COMPAT = CREATIVE_MODE_TABS.register("mod_compat", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.netherexp.jne_mod_compat"))
+            .icon(() -> new ItemStack(JNEBlocks.NETHERITE_GRATE.get()))
+            .displayItems((params, output) -> {
+                if (CompatUtil.OREGANIZED) {
+                    output.accept(OreganizedCompat.Blocks.GROOVED_BLACK_ICE.get());
+                }
             })
             .build());
 

@@ -6,6 +6,8 @@ import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
+import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.ColorRGBA;
@@ -743,6 +745,7 @@ public class JNEBlocks {
 
     public static void init(IEventBus eventBus) {
         registerAliases();
+        if (CompatUtil.OREGANIZED) OreganizedCompat.Blocks.init();
         BLOCKS.register(eventBus);
     }
 

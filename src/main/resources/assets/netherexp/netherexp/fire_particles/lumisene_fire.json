@@ -1,0 +1,16 @@
+{
+  "blocks": "supplementaries:lumisene_fire",
+  "smoke_start_colors": [
+    "#ff772e"
+  ],
+  "smoke_end_colors": [
+    "#b38580",
+    "#d79484",
+    "#efa383",
+    "#faae78"
+  ],
+  "ember_colors": [
+    "#fdc792",
+    "#fff4e3"
+  ]
+}

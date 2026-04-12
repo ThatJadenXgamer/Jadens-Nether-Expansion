@@ -1,15 +1,15 @@
 {
   "blocks": "infernalexp:glowlight_fire",
   "smoke_start_colors": [
-    "#ffff00"
+    "#edab70"
   ],
   "smoke_end_colors": [
-    "#201c10",
-    "#262113",
-    "#332c1b",
-    "#3e3420"
+    "#ffffff",
+    "#f2e3d0",
+    "#eccfa8",
+    "#e0b883"
   ],
   "ember_colors": [
-    "#ffff70"
+    "#f9fb69"
   ]
 }
