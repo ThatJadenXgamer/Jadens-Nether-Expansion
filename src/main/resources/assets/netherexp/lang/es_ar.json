@@ -57,7 +57,7 @@
   "item.netherexp.non_consumable.tooltip": "Artefacto no consumible",
 
   "item.netherexp.antidote": "Antídoto",
-  "item.netherexp.antidote.effect.": "Antídoto no fabricable",
+  "item.netherexp.antidote.effect.empty": "Antídoto no fabricable",
   "item.netherexp.antidote.effect.awkward": "Antídoto extraño",
   "item.netherexp.antidote.effect.swiftness": "Antídoto para la velocidad",
   "item.netherexp.antidote.effect.slowness": "Antídoto para la lentitud",

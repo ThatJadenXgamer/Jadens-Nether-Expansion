@@ -55,7 +55,7 @@
   "item.netherexp.non_consumable.tooltip": "不消耗物品",
 
   "item.netherexp.antidote": "解药",
-  "item.netherexp.antidote.effect.": "不可合成的解药",
+  "item.netherexp.antidote.effect.empty": "不可合成的解药",
   "item.netherexp.antidote.effect.awkward": "粗制的解药",
   "item.netherexp.antidote.effect.swiftness": "迅捷解药",
   "item.netherexp.antidote.effect.slowness": "缓慢解药",

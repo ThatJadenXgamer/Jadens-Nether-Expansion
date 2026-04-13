@@ -10,6 +10,8 @@ import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
+import net.jadenxgamer.netherexp.core.item.AntidoteItem;
+import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.minecraft.client.Minecraft;
@@ -98,5 +100,11 @@ public class JNEClientEvents {
         event.registerItem(JNEItemExtensions.itemExt, JNEItems.WILL_O_WISP.get());
         event.registerItem(JNEItemExtensions.itemExt, JNEItems.SHOTGUN_FIST.get());
         event.registerItem(JNEItemExtensions.itemExt, JNEItems.PUMP_CHARGE_SHOTGUN.get());
+    }
+
+    @SubscribeEvent
+    public static void itemTints(RegisterColorHandlersEvent.Item event) {
+        event.register((stack, tint) -> tint > 0 ? -1 : AntidoteContents.getColor(stack), JNEItems.ANTIDOTE.get());
+        event.register((stack, tint) -> tint > 0 ? -1 : AntidoteContents.getColor(stack), JNEItems.GRENADE_ANTIDOTE.get());
     }
 }

@@ -55,7 +55,7 @@
   "item.netherexp.non_consumable.tooltip": "Non-consumable Item",
 
   "item.netherexp.antidote": "Antidote",
-  "item.netherexp.antidote.effect.": "Uncraftable Antidote",
+  "item.netherexp.antidote.effect.empty": "Uncraftable Antidote",
   "item.netherexp.antidote.effect.awkward": "Awkward Antidote",
   "item.netherexp.antidote.effect.swiftness": "Antidote for Swiftness",
   "item.netherexp.antidote.effect.slowness": "Antidote for Slowness",

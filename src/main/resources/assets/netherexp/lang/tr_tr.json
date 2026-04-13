@@ -56,7 +56,7 @@
   "item.netherexp.non_consumable.tooltip": "Netherit Yapıtı",
 
   "item.netherexp.antidote": "Panzehir",
-  "item.netherexp.antidote.effect.": "Üretilemeyen Panzehir",
+  "item.netherexp.antidote.effect.empty": "Üretilemeyen Panzehir",
   "item.netherexp.antidote.effect.awkward": "Garip Panzehir",
   "item.netherexp.antidote.effect.swiftness": "Çeviklik Panzehiri",
   "item.netherexp.antidote.effect.slowness": "Yavaşlık Panzehiri",

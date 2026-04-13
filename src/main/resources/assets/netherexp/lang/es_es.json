@@ -57,7 +57,7 @@
   "item.netherexp.non_consumable.tooltip": "Artefacto de Netherita",
   
   "item.netherexp.antidote": "Antídoto",
-  "item.netherexp.antidote.effect.": "Antídoto No-Crafteable",
+  "item.netherexp.antidote.effect.empty": "Antídoto No-Crafteable",
   "item.netherexp.antidote.effect.awkward": "Antídoto Raro",
   "item.netherexp.antidote.effect.swiftness": "Antídoto para Velocidad",
   "item.netherexp.antidote.effect.slowness": "Antídoto para Lentitud",

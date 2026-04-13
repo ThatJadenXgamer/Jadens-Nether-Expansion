@@ -54,7 +54,7 @@
   "item.netherexp.antidote.inactive_tooltip": "Щоб активувати, потрібно зварити з:",
   "item.netherexp.non_consumable.tooltip": "Невитратний артефакт",
   "item.netherexp.antidote": "Антидот",
-  "item.netherexp.antidote.effect.": "Нестворюваний антидот",
+  "item.netherexp.antidote.effect.empty": "Нестворюваний антидот",
   "item.netherexp.antidote.effect.awkward": "Незграбний антидот",
   "item.netherexp.antidote.effect.swiftness": "Антидот швидкости",
   "item.netherexp.antidote.effect.slowness": "Антидот повільности",

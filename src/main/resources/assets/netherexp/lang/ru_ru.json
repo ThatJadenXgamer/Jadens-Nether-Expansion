@@ -57,7 +57,7 @@
   "item.netherexp.netherite_artifact.tooltip": "Незеритовый артифакт",
 
   "item.netherexp.antidote": "Антидот",
-  "item.netherexp.antidote.effect.": "Несоздаваемый антидот",
+  "item.netherexp.antidote.effect.empty": "Несоздаваемый антидот",
   "item.netherexp.antidote.effect.awkward": "Мутный антидот",
   "item.netherexp.antidote.effect.swiftness": "Антидот от стремительности",
   "item.netherexp.antidote.effect.slowness": "Антидот от медлительности",

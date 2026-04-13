@@ -55,7 +55,7 @@
   "item.netherexp.non_consumable.tooltip": "Nicht verbrauchbar",
 
   "item.netherexp.antidote": "Gegenmittel",
-  "item.netherexp.antidote.effect.": "Nicht braubares Gegenmittel",
+  "item.netherexp.antidote.effect.empty": "Nicht braubares Gegenmittel",
   "item.netherexp.antidote.effect.awkward": "Seltsames Gegenmittel",
   "item.netherexp.antidote.effect.swiftness": "Gegenmittel für Schnelligkeit",
   "item.netherexp.antidote.effect.slowness": "Gegenmittel für Langsamkeit",

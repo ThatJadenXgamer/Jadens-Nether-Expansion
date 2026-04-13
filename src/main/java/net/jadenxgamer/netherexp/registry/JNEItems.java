@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.entity.*;
 import net.jadenxgamer.netherexp.core.item.*;
+import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEFoods;
@@ -53,7 +54,7 @@ public class JNEItems {
             new GlowsporesItem(JNEParticleTypes.NIGHTSPORE, new Item.Properties()));
 
     public static final Supplier<Item> ANTIDOTE = ITEMS.register("antidote", () ->
-            new Item(new Item.Properties()));
+            new AntidoteItem(new Item.Properties().stacksTo(1).component(JNEDataComponents.ANTIDOTE_CONTENTS.get(), AntidoteContents.EMPTY)));
 
     public static final Supplier<Item> GRENADE_ANTIDOTE = ITEMS.register("grenade_antidote", () ->
             new Item(new Item.Properties()));

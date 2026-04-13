@@ -15,10 +15,15 @@ public class JNEDataComponents {
 
     public static final DeferredRegister.DataComponents COMPONENTS = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, NetherExp.MOD_ID);
 
-        public static final Supplier<DataComponentType<Integer>> PUMPS = COMPONENTS.registerComponentType("pumps",
+    public static final Supplier<DataComponentType<Integer>> PUMPS = COMPONENTS.registerComponentType("pumps",
             builder -> builder
                     .persistent(Codec.INT)
                     .networkSynchronized(ByteBufCodecs.INT));
+
+    public static final Supplier<DataComponentType<AntidoteContents>> ANTIDOTE_CONTENTS = COMPONENTS.registerComponentType("antidote_contents",
+            builder -> builder
+                    .persistent(AntidoteContents.CODEC)
+                    .networkSynchronized(ByteBufCodecs.fromCodec(AntidoteContents.CODEC)));
 
     public static void init(IEventBus eventBus) {
         COMPONENTS.register(eventBus);

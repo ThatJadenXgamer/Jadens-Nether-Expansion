@@ -57,7 +57,7 @@
   "item.netherexp.non_consumable.tooltip": "Nie Zbywalny Artefakt",
 
   "item.netherexp.antidote": "Antidotum",
-  "item.netherexp.antidote.effect.": "Niewykonywalne Antidotum",
+  "item.netherexp.antidote.effect.empty": "Niewykonywalne Antidotum",
   "item.netherexp.antidote.effect.awkward": "Klarowne Antidotum",
   "item.netherexp.antidote.effect.swiftness": "Antidotum na Szybkość",
   "item.netherexp.antidote.effect.slowness": "Antidotum na Spowolnienie",

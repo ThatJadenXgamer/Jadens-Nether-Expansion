@@ -57,7 +57,7 @@
   "item.netherexp.netherite_artifact.tooltip": "Artefato in netherite",
 
   "item.netherexp.antidote": "Antidoto",
-  "item.netherexp.antidote.effect.": "Antidoto denso",
+  "item.netherexp.antidote.effect.empty": "Antidoto denso",
   "item.netherexp.antidote.effect.awkward": "Antidoto strano",
   "item.netherexp.antidote.effect.swiftness": "Antidoto per velocità",
   "item.netherexp.antidote.effect.slowness": "Antidoto per lentezza",
