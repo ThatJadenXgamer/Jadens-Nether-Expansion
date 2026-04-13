@@ -32,7 +32,11 @@ public class OreganizedCompat {
     public static class MobEffects {
 
         public static final Holder<MobEffect> BRAIN_DAMAGE_IMMUNITY = JNEMobEffects.MOB_EFFECTS.register("brain_damage_immunity", () ->
-                new ImmunityEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("oreganized", "brain_damage_immunity")));
+                new ImmunityEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("oreganized", "stunning")));
+
+
+        public static final Holder<MobEffect> TEST = JNEMobEffects.MOB_EFFECTS.register("test", () ->
+                new ImmunityEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("mod", "test")));
 
         public static void init() {}
     }

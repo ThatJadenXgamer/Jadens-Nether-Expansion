@@ -1,0 +1,14 @@
+{
+  "type": "oreganized:scribe",
+  "from": {
+    "blocks": "netherexp:black_ice"
+  },
+  "to": "netherexp:grooved_black_ice",
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "oreganized"
+    }
+  ]
+}

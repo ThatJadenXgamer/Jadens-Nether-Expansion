@@ -21,62 +21,75 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.function.Function;
 
 public class ImmunityEffect extends IncurableEffect {
 
-    @Nullable private final Holder<MobEffect> immunityOf;
-    public final Function<MobEffectInstance, ParticleOptions> immunityParticleFactory;
-    private final int defaultColor = 0x808080;
+    private static final int DEFAULT_COLOR = 0x808080;
+    private final ResourceLocation immunityOf;
+    private Holder<MobEffect> cachedImmunityHolder;
+    private Holder<MobEffect> cachedSelfHolder;
 
     public ImmunityEffect(MobEffectCategory category, ResourceLocation immunityOf) {
         super(category, 0);
-        this.immunityOf = resolveEffectHolder(immunityOf);
-        this.immunityParticleFactory = (particle) -> {
-            int alpha = particle.isAmbient() ? Mth.floor(38.25F) : 255;
-            return ColorParticleOption.create(JNEParticleTypes.IMMUNITY_EFFECT.get(), FastColor.ARGB32.color(alpha, getColor()));
-        };
+        this.immunityOf = immunityOf;
     }
 
     @Override
     public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
-        return immunityOf != null;
+        return getImmunityHolder() != null;
     }
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        if (immunityOf == null) return true;
-        Holder<MobEffect> immuneTo = immunityOf;
-        Holder<MobEffect> itself = getAsHolder(this);
-        if (entity.hasEffect(immuneTo)) {
-            int currentDuration = entity.getEffect(itself).getDuration();
-            int otherAmplifier = entity.getEffect(immuneTo).getAmplifier() + 1;
-            int duration = (currentDuration - (JNEConfigs.IMMUNITY_CONSUMPTION.get() * (JNEConfigs.AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION.get() ? otherAmplifier : 1)));
+        Holder<MobEffect> immuneTo = getImmunityHolder();
+        if (immuneTo == null) return true;
+        Holder<MobEffect> self = getSelfHolder();
 
-            entity.level().playSound(null, entity.blockPosition(), duration <= 0 ? JNESoundEvents.ANTIDOTE_EXPIRED.get() : JNESoundEvents.ANTIDOTE_NEGATE.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+        if (entity.hasEffect(immuneTo)) {
+            MobEffectInstance selfEffect = entity.getEffect(self);
+            if (selfEffect == null) return true;
+
+            int otherAmplifier = entity.getEffect(immuneTo).getAmplifier() + 1;
+            int newDuration = selfEffect.getDuration() - (JNEConfigs.IMMUNITY_CONSUMPTION.get() *
+                    (JNEConfigs.AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION.get() ? otherAmplifier : 1));
+
+            entity.level().playSound(null, entity.blockPosition(),
+                    newDuration <= 0 ? JNESoundEvents.ANTIDOTE_EXPIRED.get() : JNESoundEvents.ANTIDOTE_NEGATE.get(),
+                    SoundSource.PLAYERS, 1.0f, 1.0f);
+
             entity.removeEffect(immuneTo);
-            entity.removeEffect(itself);
-            entity.addEffect(new MobEffectInstance(itself, duration, amplifier));
+            entity.removeEffect(self);
+            entity.addEffect(new MobEffectInstance(self, newDuration, amplifier));
         }
         return true;
     }
 
     @Override
     public int getColor() {
-        if (immunityOf == null) return defaultColor;
-        return immunityOf.value().getColor();
+        Holder<MobEffect> immuneTo = getImmunityHolder();
+        return immuneTo != null ? immuneTo.value().getColor() : DEFAULT_COLOR;
     }
 
     @Override
     public @NotNull ParticleOptions createParticleOptions(MobEffectInstance effect) {
-        return this.immunityParticleFactory.apply(effect);
+        int alpha = effect.isAmbient() ? Mth.floor(38.25F) : 255;
+        return ColorParticleOption.create(JNEParticleTypes.IMMUNITY_EFFECT.get(),
+                FastColor.ARGB32.color(alpha, getColor()));
     }
 
     @Nullable
-    private Holder<MobEffect> resolveEffectHolder(ResourceLocation location) {
-        MobEffect effect = LookupRegistryHelper.getMobEffect(location);
-        if (effect == null) return null;
-        return getAsHolder(effect);
+    private Holder<MobEffect> getImmunityHolder() {
+        if (cachedImmunityHolder == null) {
+            MobEffect effect = LookupRegistryHelper.getMobEffect(immunityOf);
+            if (effect != null) cachedImmunityHolder = getAsHolder(effect);
+        }
+        return cachedImmunityHolder;
+    }
+
+    @Nullable
+    private Holder<MobEffect> getSelfHolder() {
+        if (cachedSelfHolder == null) cachedSelfHolder = getAsHolder(this);
+        return cachedSelfHolder;
     }
 
     @Nullable

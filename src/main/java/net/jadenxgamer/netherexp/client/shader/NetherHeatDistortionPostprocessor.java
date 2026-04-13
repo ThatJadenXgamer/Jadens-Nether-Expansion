@@ -72,7 +72,8 @@ public class NetherHeatDistortionPostprocessor extends PostProcessor {
             lastLavaCheckGameTime = gameTime;
         }
 
-        if (JNEConfigs.BIOME_HEAT_DISTORTION.get() && biome.is(BiomeTags.IS_NETHER)) targetIntensity = JNEConfigs.HEAT_DISTORTION_INTENSITY.get().floatValue();
+        if (JNEConfigs.BIOME_HEAT_DISTORTION.get() && biome.is(BiomeTags.IS_NETHER))
+            targetIntensity = JNEConfigs.HEAT_DISTORTION_INTENSITY.get().floatValue();
         if (nearLava) {
             targetIntensity = JNEConfigs.HEAT_DISTORTION_LAVA_INTENSITY.get().floatValue();
             targetSpeed = JNEConfigs.HEAT_DISTORTION_LAVA_SPEED.get().floatValue();
@@ -84,6 +85,13 @@ public class NetherHeatDistortionPostprocessor extends PostProcessor {
         currentSpeed = Mth.lerp(delta * 0.05F, currentSpeed, targetSpeed);
         currentMinDistance = Mth.lerp(delta * 0.05F, currentMinDistance, targetMinDistance);
         currentMaxDistance = Mth.lerp(delta * 0.05F, currentMaxDistance, targetMaxDistance);
+
+        final float epsilon = 1e-4f;
+
+        if (targetIntensity == 0.0f && Math.abs(currentIntensity) < epsilon) currentIntensity = 0.0f;
+        if (targetSpeed == JNEConfigs.HEAT_DISTORTION_SPEED.get().floatValue() && Math.abs(currentSpeed - targetSpeed) < epsilon) currentSpeed = targetSpeed;
+        if (targetMinDistance == JNEConfigs.HEAT_DISTORTION_MIN_DISTANCE.get().floatValue() && Math.abs(currentMinDistance - targetMinDistance) < epsilon) currentMinDistance = targetMinDistance;
+        if (targetMaxDistance == JNEConfigs.HEAT_DISTORTION_MAX_DISTANCE.get().floatValue() && Math.abs(currentMaxDistance - targetMaxDistance) < epsilon) currentMaxDistance = targetMaxDistance;
     }
 
     private static boolean isPlayerNearLava(Level level, Entity player) {
