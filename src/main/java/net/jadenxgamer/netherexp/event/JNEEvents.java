@@ -26,6 +26,7 @@ import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
+import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 @SuppressWarnings("unused")
@@ -88,6 +89,11 @@ public class JNEEvents {
 //            event.setSwingHand(false);
 //        }
 //    }
+
+    @SubscribeEvent
+    public static void registerRegistries(NewRegistryEvent event) {
+        JNERegistries.registryInit(event);
+    }
 
     @SubscribeEvent
     public static void datapackRegistry(DataPackRegistryEvent.NewRegistry event) {

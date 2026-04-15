@@ -112,10 +112,10 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
     }
 
     private void initPreferredTargetGoals() {
-        List<ApparitionAggressions> apparitionAggressions = this.level().registryAccess().registryOrThrow(JNERegistries.APPARITION_AGGRESSIONS).stream()
+        List<ApparitionAggressions> apparitionAggressions = this.level().registryAccess().registryOrThrow(JNERegistries.Keys.APPARITION_AGGRESSIONS).stream()
                 .filter(json -> json.preferredByPersonalities().contains(this.getPersonality())).toList();
 
-        List<ApparitionGargoyleStatues> apparitionGargoyleStatues = this.level().registryAccess().registryOrThrow(JNERegistries.APPARITION_GARGOYLE_STATUES).stream()
+        List<ApparitionGargoyleStatues> apparitionGargoyleStatues = this.level().registryAccess().registryOrThrow(JNERegistries.Keys.APPARITION_GARGOYLE_STATUES).stream()
                 .filter(json -> json.preferredByPersonalities().contains(this.getPersonality())).toList();
 
         registerApparitionAggressionGoals(apparitionAggressions);
@@ -219,7 +219,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
     @Override
     public boolean killedEntity(ServerLevel level, LivingEntity entity) {
         if (!this.canPossess()) return super.killedEntity(level, entity);
-        Optional<ApparitionAggressions> apparitionAggression = level.registryAccess().registryOrThrow(JNERegistries.APPARITION_AGGRESSIONS).stream()
+        Optional<ApparitionAggressions> apparitionAggression = level.registryAccess().registryOrThrow(JNERegistries.Keys.APPARITION_AGGRESSIONS).stream()
                 .filter(json -> {
                     EntityType<?> type = LookupRegistryHelper.getEntityType(json.targetMob());
                     return json.hasPossession() && entity.getType() == type;

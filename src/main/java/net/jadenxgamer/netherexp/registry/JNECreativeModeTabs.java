@@ -2,10 +2,14 @@ package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.datadriven.Antidote;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
@@ -148,6 +152,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.SEALED_GARGOYLE_STATUE.get());
                 output.accept(JNEBlocks.OBFUSCATED_GARGOYLE_STATUE.get());
                 output.accept(JNEBlocks.INSCRIBED_PANEL.get());
+                output.accept(JNEBlocks.WARPED_WART.get());
 
                 output.accept(Items.GHAST_TEAR);
                 output.accept(LookupRegistryHelper.getItem(NetherExp.minecraftPath("music_disc_tears")));
@@ -566,5 +571,14 @@ public class JNECreativeModeTabs {
             boolean alreadyExists = event.getParentEntries().stream().anyMatch(stack -> stack.getItem() == tearsDisc);
             if (!alreadyExists) insertToTab(event, Items.MUSIC_DISC_PIGSTEP, tearsDisc, false);
         }
+        if (event.getTabKey() == SOUL_SAND_VALLEY_KEY) {
+            Antidote.createStacksForAllAntidotes(event);
+        }
+    }
+
+    public static final ResourceKey<CreativeModeTab> SOUL_SAND_VALLEY_KEY = createKey("soul_sand_valley");
+
+    private static ResourceKey<CreativeModeTab> createKey(String name) {
+        return ResourceKey.create(Registries.CREATIVE_MODE_TAB, NetherExp.minecraftPath(name));
     }
 }

@@ -119,7 +119,7 @@ public class EctoSoulSandBlock extends SoulSandBlock {
     private ResourceLocation obtainFromWispArchaeology(ServerLevel level, BlockPos pos) {
         ResourceLocation defaultTable = ResourceLocation.parse(JNEConfigs.WISP_ARCHAEOLOGY_DEFAULT_LOOT_TABLE.get());
 
-        Optional<WispArchaeology> wispArchaeology = level.registryAccess().registryOrThrow(JNERegistries.WISP_ARCHAEOLOGY).stream()
+        Optional<WispArchaeology> wispArchaeology = level.registryAccess().registryOrThrow(JNERegistries.Keys.WISP_ARCHAEOLOGY).stream()
                 .filter(json -> {
                     StructureManager structureManager = level.structureManager();
                     Holder<Biome> biomeAtPos = level.getBiome(pos);

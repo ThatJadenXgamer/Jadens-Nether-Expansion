@@ -107,7 +107,7 @@ configurations {
 
 dependencies {
     //implementation "com.github.ThatJadenXgamer:Elysium:1.2.0-alpha.8"
-    implementation name: 'ElysiumAPI-1.21.1-1.2.0-ALPHA.8' //jitpack is being a bitch and not allowing alpha 8 implementation
+    implementation name: 'ElysiumAPI-1.21.1-1.2.0-ALPHA.10' //jitpack is being a bitch and not allowing alpha 8 implementation
 
     jarJar(implementation("team.lodestar.lodestone:lodestone")) {
         version {

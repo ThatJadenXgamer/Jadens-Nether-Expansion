@@ -497,11 +497,11 @@ public class JNEConfigImpl {
                     .defineInRange("heatDistortionLavaMaxDistance", 64.0, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_CHECK_PERIOD = builder
                     .comment("How often the game will check around the player for lava heat distortion in ticks \n" +
-                            "WARNING: Lower numbers can increase lag especially when paired with high check distances to iterate through")
-                    .defineInRange("heatDistortionLavaCheckPeriod", 40, 0, Integer.MAX_VALUE);
+                            "§cWARNING: Lower numbers can increase lag especially when paired with high proximity distances to iterate through")
+                    .defineInRange("heatDistortionLavaCheckPeriod", 100, 0, Integer.MAX_VALUE);
             HEAT_DISTORTION_LAVA_PROXIMITY = builder
                     .comment("How far the game will check around the player for heat distortion lava sources \n" +
-                            "Beware that increasing the distance can add some latency to performance! as it needs to iterate through all the specified blocks in-range")
+                            "§cWARNING: Increasing the distance can add some latency to performance! as it needs to iterate through all the specified blocks in-range")
                     .defineInRange("heatDistortionLavaProximity", 2.0, 0.0, Double.MAX_VALUE);
             REQUIRED_SOURCE_BLOCKS_FOR_LAVA_HEAT_DISTORTION = builder
                     .comment("The number of source blocks that need to be around the player to cause heat distortion")

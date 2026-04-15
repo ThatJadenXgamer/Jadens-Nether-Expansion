@@ -37,7 +37,7 @@ public record OnDeathGroundConversion(HolderSet<EntityType<?>> entityTypes,
         Holder<EntityType<?>> holderEntity = getAsHolder(entity.getType());
         BlockPos pos = entity.getOnPos();
         BlockState conversionBlock = entity.getBlockStateOn();
-        Optional<OnDeathGroundConversion> onDeathGroundConversion = level.registryAccess().registryOrThrow(JNERegistries.ON_DEATH_GROUND_CONVERSION).stream()
+        Optional<OnDeathGroundConversion> onDeathGroundConversion = level.registryAccess().registryOrThrow(JNERegistries.Keys.ON_DEATH_GROUND_CONVERSION).stream()
                 .filter(json -> json.entityTypes.contains(holderEntity) && json.groundBlock.contains(conversionBlock.getBlockHolder())).findFirst();
 
         if (onDeathGroundConversion.isEmpty()) return;
