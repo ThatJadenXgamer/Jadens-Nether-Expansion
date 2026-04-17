@@ -1,0 +1,16 @@
+{
+  "input_item": "minecraft:potion",
+  "input_components": {
+    "minecraft:potion_contents": {
+      "potion": "minecraft:water"
+    }
+  },
+  "ingredient": "netherexp:warped_wart",
+  "output_item": "netherexp:antidote",
+  "output_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:awkward"
+    }
+  },
+  "copy_input_components": false
+}

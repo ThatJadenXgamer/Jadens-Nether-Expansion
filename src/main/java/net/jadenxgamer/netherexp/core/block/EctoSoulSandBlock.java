@@ -39,8 +39,6 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.Optional;
 
-import static net.jadenxgamer.netherexp.config.JNEConfigs.CONVERTS_TO_SUSPICIOUS_SOUL_SAND;
-
 public class EctoSoulSandBlock extends SoulSandBlock {
 
     public static final BooleanProperty SALTED = BooleanProperty.create("salted");

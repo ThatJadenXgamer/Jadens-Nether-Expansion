@@ -1,0 +1,9 @@
+{
+  "name": "water_breathing",
+  "effects": [
+    {
+      "id": "netherexp:water_breathing_immunity",
+      "duration": 2400
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "mining_fatigue",
+  "effects": [
+    {
+      "id": "netherexp:mining_fatigue_immunity",
+      "duration": 36000
+    }
+  ]
+}

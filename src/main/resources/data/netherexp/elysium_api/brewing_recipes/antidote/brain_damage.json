@@ -1,0 +1,22 @@
+{
+  "input_item": "netherexp:antidote",
+  "input_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:awkward"
+    }
+  },
+  "ingredient": "netherexp:cerebrage",
+  "output_item": "netherexp:antidote",
+  "output_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:brain_damage"
+    }
+  },
+  "copy_input_components": false,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "oreganized"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "regeneration",
+  "effects": [
+    {
+      "id": "netherexp:regeneration_immunity",
+      "duration": 12000
+    }
+  ]
+}

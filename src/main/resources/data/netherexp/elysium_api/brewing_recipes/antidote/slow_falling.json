@@ -1,0 +1,16 @@
+{
+  "input_item": "netherexp:antidote",
+  "input_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:awkward"
+    }
+  },
+  "ingredient": "minecraft:pointed_dripstone",
+  "output_item": "netherexp:antidote",
+  "output_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:slow_falling"
+    }
+  },
+  "copy_input_components": false
+}

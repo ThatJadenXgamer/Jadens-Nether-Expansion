@@ -14,6 +14,7 @@
   ],
   "mixins": [
     "block.BaseFireBlockMixin",
+    "block.BrewingStandBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "client.IClientFluidTypeExtensionsMixin",
@@ -21,6 +22,7 @@
     "entity.BlockEntityTypeMixin",
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
+    "item.PotionItemMixin",
     "worldgen.NetherWorldCarverMixin"
   ],
   "injectors": {

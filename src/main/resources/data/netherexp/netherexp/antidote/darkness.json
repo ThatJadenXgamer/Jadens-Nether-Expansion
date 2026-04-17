@@ -1,0 +1,9 @@
+{
+  "name": "darkness",
+  "effects": [
+    {
+      "id": "netherexp:darkness_immunity",
+      "duration": 36000
+    }
+  ]
+}

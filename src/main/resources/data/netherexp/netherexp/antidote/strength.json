@@ -1,0 +1,9 @@
+{
+  "name": "strength",
+  "effects": [
+    {
+      "id": "netherexp:strength_immunity",
+      "duration": 12000
+    }
+  ]
+}

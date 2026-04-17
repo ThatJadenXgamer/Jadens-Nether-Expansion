@@ -1,0 +1,9 @@
+{
+  "name": "absorption",
+  "effects": [
+    {
+      "id": "netherexp:absorption_immunity",
+      "duration": 18000
+    }
+  ]
+}

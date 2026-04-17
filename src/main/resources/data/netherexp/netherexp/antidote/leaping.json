@@ -1,0 +1,9 @@
+{
+  "name": "leaping",
+  "effects": [
+    {
+      "id": "netherexp:jump_boost_immunity",
+      "duration": 12000
+    }
+  ]
+}

@@ -660,6 +660,10 @@
   "block.netherexp.moist_siltmarram": "Moist Siltmarram",
   "block.netherexp.dry_siltmarram": "Dry Siltmarram",
   "subtitles.item.shotgun.counterforce": "Counterforce pulsar",
+  "item.netherexp.antidote.effect.slow_falling": "Antidote for Slow Falling",
+  "item.netherexp.antidote.effect.infested": "Antidote for Infested",
+  "item.netherexp.grenade_antidote.effect.slow_falling": "Grenade Antidote for Slow Falling",
+  "item.netherexp.grenade_antidote.effect.infested": "Grenade Antidote for Infested",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",

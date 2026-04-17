@@ -12,10 +12,13 @@ import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.core.item.AntidoteItem;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
+import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -54,6 +57,8 @@ public class JNEClientEvents {
     @SubscribeEvent
     public static void onPlayerLogin(ClientPlayerNetworkEvent.LoggingIn event) {
         Minecraft client = Minecraft.getInstance();
+        //if (client.level == null || client.player == null || client.getConnection() == null) return;
+        //CreativeModeTabs.tryRebuildTabContents(client.level.enabledFeatures(), client.player.hasPermissions(2), client.getConnection().registryAccess());
         //if (JNEConfigs.SHOW_BETA_WARNING_POPUP.get()) shouldShowBetaPopup = true;
     }
 

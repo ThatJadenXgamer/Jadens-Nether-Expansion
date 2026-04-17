@@ -1,0 +1,9 @@
+{
+  "name": "weakness",
+  "effects": [
+    {
+      "id": "netherexp:weakness_immunity",
+      "duration": 12000
+    }
+  ]
+}

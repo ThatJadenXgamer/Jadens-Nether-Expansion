@@ -1,0 +1,9 @@
+{
+  "name": "decay",
+  "effects": [
+    {
+      "id": "netherexp:wither_immunity",
+      "duration": 18000
+    }
+  ]
+}

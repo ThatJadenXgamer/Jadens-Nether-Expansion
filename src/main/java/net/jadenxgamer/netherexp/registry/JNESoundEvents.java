@@ -29,6 +29,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> GLOWSPORES_APPLY = registerSoundEvents("block.glowspores.apply");
     public static final Supplier<SoundEvent> GLOWSPORES_SHEAR = registerSoundEvents("block.glowspores.shear");
 
+    public static final Supplier<SoundEvent> POTION_POSTDRINK = registerSoundEvents("item.potion.postdrink");
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
     public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");
     public static final Supplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");

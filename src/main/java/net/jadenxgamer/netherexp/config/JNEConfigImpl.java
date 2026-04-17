@@ -512,6 +512,9 @@ public class JNEConfigImpl {
             NO_SOUL_GLASS_RIPPLE = builder
                     .comment("Removes the ripple effect from soul glass entirely and leaves just the frosted glass effect for people who find the distortion uneasy")
                     .define("noSoulGlassRipple", false);
+            BREWING_STAND_PARTICLES = builder
+                    .comment("Improves the brewing stand's particles")
+                    .define("brewingStandParticles", false);
 
             ENABLE_JNE_SPLASH_TEXTS = builder
                     .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")

@@ -1,0 +1,9 @@
+{
+  "name": "resistance",
+  "effects": [
+    {
+      "id": "netherexp:resistance_immunity",
+      "duration": 18000
+    }
+  ]
+}

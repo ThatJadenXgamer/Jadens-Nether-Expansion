@@ -1,0 +1,9 @@
+{
+  "name": "fire_resistance",
+  "effects": [
+    {
+      "id": "netherexp:fire_resistance_immunity",
+      "duration": 2400
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "hunger",
+  "effects": [
+    {
+      "id": "netherexp:hunger_immunity",
+      "duration": 21600
+    }
+  ]
+}

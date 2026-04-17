@@ -1,0 +1,9 @@
+{
+  "name": "slow_falling",
+  "effects": [
+    {
+      "id": "netherexp:slow_falling_immunity",
+      "duration": 18000
+    }
+  ]
+}

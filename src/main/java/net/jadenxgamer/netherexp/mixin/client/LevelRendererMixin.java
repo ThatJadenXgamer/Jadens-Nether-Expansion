@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.client;
 
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
-import net.jadenxgamer.netherexp.util.VFXHelper;
+import net.jadenxgamer.netherexp.util.CommonParticles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
@@ -53,7 +53,7 @@ public abstract class LevelRendererMixin {
             double z = player.getZ() + Math.sin(angle) * distance;
             Color color = new Color(level.getBiome(new BlockPos((int) x, (int) y, (int) z)).value().getFogColor());
 
-            VFXHelper.netherFogParticle(level, level.random, x, y, z, color);
+            CommonParticles.netherFogParticle(level, level.random, x, y, z, color);
         }
     }
 }

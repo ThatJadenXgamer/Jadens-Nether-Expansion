@@ -146,6 +146,8 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue REQUIRED_SOURCE_BLOCKS_FOR_LAVA_HEAT_DISTORTION;
     public static ModConfigSpec.BooleanValue ENABLE_SOUL_GLASS_SCREEN_FILTER;
     public static ModConfigSpec.BooleanValue NO_SOUL_GLASS_RIPPLE;
+    public static ModConfigSpec.BooleanValue BREWING_STAND_PARTICLES;
+
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
     public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;

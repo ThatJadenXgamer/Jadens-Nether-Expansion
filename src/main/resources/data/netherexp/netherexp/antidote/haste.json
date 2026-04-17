@@ -1,0 +1,9 @@
+{
+  "name": "haste",
+  "effects": [
+    {
+      "id": "netherexp:haste_immunity",
+      "duration": 36000
+    }
+  ]
+}

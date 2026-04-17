@@ -24,8 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.awt.*;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
-import static net.jadenxgamer.netherexp.util.ParticleHelper.emberParticle;
-import static net.jadenxgamer.netherexp.util.ParticleHelper.smokeParticle;
+import static net.jadenxgamer.netherexp.util.CommonParticles.emberParticle;
+import static net.jadenxgamer.netherexp.util.CommonParticles.smokeParticle;
 
 @Mixin(BaseFireBlock.class)
 public abstract class BaseFireBlockMixin extends Block {

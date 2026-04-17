@@ -1,0 +1,9 @@
+{
+  "name": "poison",
+  "effects": [
+    {
+      "id": "netherexp:poison_immunity",
+      "duration": 12000
+    }
+  ]
+}

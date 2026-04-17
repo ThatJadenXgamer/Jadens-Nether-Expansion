@@ -1,0 +1,9 @@
+{
+  "name": "slowness",
+  "effects": [
+    {
+      "id": "netherexp:slowness_immunity",
+      "duration": 12000
+    }
+  ]
+}

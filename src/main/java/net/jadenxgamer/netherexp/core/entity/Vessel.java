@@ -49,7 +49,7 @@ import java.awt.*;
 import java.util.EnumSet;
 import java.util.Set;
 
-import static net.jadenxgamer.netherexp.util.ParticleHelper.SMOKE_VARIANTS;
+import static net.jadenxgamer.netherexp.util.CommonParticles.SMOKE_VARIANTS;
 
 public class Vessel extends PossessedMob implements RangedAttackMob {
     public final AnimationState idleAnimation = new AnimationState();

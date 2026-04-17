@@ -10,7 +10,6 @@
   },
 
 
-
   "block.soul_slate.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -980,6 +979,12 @@
     "sounds": [
       "netherexp:block/ectoplasm/fill1",
       "netherexp:block/ectoplasm/fill2"
+    ]
+  },
+  "item.potion.postdrink": {
+    "sounds": [
+      "netherexp:item/potion/postdrink1",
+      "netherexp:item/potion/postdrink2"
     ]
   },
   "item.antidote.negate": {

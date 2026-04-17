@@ -1,0 +1,16 @@
+{
+  "input_item": "netherexp:antidote",
+  "input_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:awkward"
+    }
+  },
+  "ingredient": "minecraft:charcoal",
+  "output_item": "netherexp:antidote",
+  "output_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:poison"
+    }
+  },
+  "copy_input_components": false
+}

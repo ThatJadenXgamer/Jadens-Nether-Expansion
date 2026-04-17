@@ -48,7 +48,7 @@ import java.util.function.Predicate;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.COUNTERFORCE_IFRAMES;
 import static net.jadenxgamer.netherexp.core.item.ShotgunFistItem.pointBlankParticle;
-import static net.jadenxgamer.netherexp.util.ParticleHelper.SMOKE_VARIANTS;
+import static net.jadenxgamer.netherexp.util.CommonParticles.SMOKE_VARIANTS;
 
 public class PumpChargeShotgunItem extends ProjectileWeaponItem {
 

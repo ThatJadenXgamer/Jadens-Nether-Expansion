@@ -1,0 +1,9 @@
+{
+  "name": "levitation",
+  "effects": [
+    {
+      "id": "netherexp:levitation_immunity",
+      "duration": 21600
+    }
+  ]
+}

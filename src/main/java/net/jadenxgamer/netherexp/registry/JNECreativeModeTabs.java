@@ -9,7 +9,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
@@ -167,6 +166,8 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
                 output.accept(JNEItems.CARCASS_SPAWN_EGG.get());
                 output.accept(JNEItems.FALSE_CARCASS_SPAWN_EGG.get());
+
+                Antidote.populateCreativeInventoryForAllAntidotes(output);
             })
             .build());
 
@@ -571,14 +572,14 @@ public class JNECreativeModeTabs {
             boolean alreadyExists = event.getParentEntries().stream().anyMatch(stack -> stack.getItem() == tearsDisc);
             if (!alreadyExists) insertToTab(event, Items.MUSIC_DISC_PIGSTEP, tearsDisc, false);
         }
-        if (event.getTabKey() == SOUL_SAND_VALLEY_KEY) {
-            Antidote.createStacksForAllAntidotes(event);
-        }
     }
 
-    public static final ResourceKey<CreativeModeTab> SOUL_SAND_VALLEY_KEY = createKey("soul_sand_valley");
+    public static class Keys {
 
-    private static ResourceKey<CreativeModeTab> createKey(String name) {
-        return ResourceKey.create(Registries.CREATIVE_MODE_TAB, NetherExp.minecraftPath(name));
+        public static final ResourceKey<CreativeModeTab> SOUL_SAND_VALLEY = createKey("soul_sand_valley");
+
+        private static ResourceKey<CreativeModeTab> createKey(String name) {
+            return ResourceKey.create(Registries.CREATIVE_MODE_TAB, NetherExp.netherexpPath(name));
+        }
     }
 }

@@ -1,0 +1,16 @@
+{
+  "input_item": "netherexp:antidote",
+  "input_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:awkward"
+    }
+  },
+  "ingredient": "minecraft:trial_key",
+  "output_item": "netherexp:antidote",
+  "output_components": {
+    "netherexp:antidote_contents": {
+      "antidote": "netherexp:trial_traps"
+    }
+  },
+  "copy_input_components": false
+}

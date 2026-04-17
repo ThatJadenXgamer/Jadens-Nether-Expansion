@@ -1,0 +1,9 @@
+{
+  "name": "invisibility",
+  "effects": [
+    {
+      "id": "netherexp:invisibility_immunity",
+      "duration": 12000
+    }
+  ]
+}

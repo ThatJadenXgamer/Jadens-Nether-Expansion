@@ -2,6 +2,8 @@ package net.jadenxgamer.netherexp.core.item;
 
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEDataComponents;
+import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.util.CommonParticles;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,6 +18,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 
+import java.awt.*;
 import java.util.List;
 
 public class AntidoteItem extends Item {
@@ -28,15 +31,17 @@ public class AntidoteItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         Player player = user instanceof Player ? (Player) user : null;
         if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
+        AntidoteContents contents = stack.getOrDefault(JNEDataComponents.ANTIDOTE_CONTENTS.get(), AntidoteContents.EMPTY);
+        boolean hasEffect = !contents.getAllEffects().isEmpty();
 
         if (!level.isClientSide) {
-            AntidoteContents contents = stack.getOrDefault(JNEDataComponents.ANTIDOTE_CONTENTS.get(), AntidoteContents.EMPTY);
             contents.forEachEffect(action -> {
                 if (action.getEffect().value().isInstantenous()) {
                     action.getEffect().value().applyInstantenousEffect(player, player, user, action.getAmplifier(), 1.0);
                 } else user.addEffect(action);
             });
-        }
+            if (hasEffect) level.playSound(null, user.blockPosition(), JNESoundEvents.POTION_POSTDRINK.get(), SoundSource.PLAYERS, 1.0f, 1.0F);
+        } else if (hasEffect) CommonParticles.potionConsumeParticle(level, level.random, user, new Color(AntidoteContents.getColor(stack)));
 
         if (player != null) {
             player.awardStat(Stats.ITEM_USED.get(this));
@@ -57,7 +62,7 @@ public class AntidoteItem extends Item {
 
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity) {
-        return 64;
+        return 20;
     }
 
     @Override
