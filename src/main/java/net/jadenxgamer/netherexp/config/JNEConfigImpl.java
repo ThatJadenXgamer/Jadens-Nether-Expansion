@@ -512,9 +512,15 @@ public class JNEConfigImpl {
             NO_SOUL_GLASS_RIPPLE = builder
                     .comment("Removes the ripple effect from soul glass entirely and leaves just the frosted glass effect for people who find the distortion uneasy")
                     .define("noSoulGlassRipple", false);
-            BREWING_STAND_PARTICLES = builder
+            IMPROVED_BREWING_STAND_PARTICLES = builder
                     .comment("Improves the brewing stand's particles")
-                    .define("brewingStandParticles", false);
+                    .define("improvedBrewingStandParticles", true);
+            POTION_CONSUMPTION_PARTICLES = builder
+                    .comment("Adds a particle effect around the player after drinking from a potion or antidote similar to Minecraft Dungeons")
+                    .define("potionConsumptionParticles", true);
+            IMPROVED_NETHER_PORTAL_PARTICLES = builder
+                    .comment("Improves the nether portal's particles")
+                    .define("improvedNetherPortalParticles", true);
 
             ENABLE_JNE_SPLASH_TEXTS = builder
                     .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")

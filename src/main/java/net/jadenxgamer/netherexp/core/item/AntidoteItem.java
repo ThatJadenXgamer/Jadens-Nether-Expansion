@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.core.item;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEDataComponents;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
@@ -32,7 +33,7 @@ public class AntidoteItem extends Item {
         Player player = user instanceof Player ? (Player) user : null;
         if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
         AntidoteContents contents = stack.getOrDefault(JNEDataComponents.ANTIDOTE_CONTENTS.get(), AntidoteContents.EMPTY);
-        boolean hasEffect = !contents.getAllEffects().isEmpty();
+        boolean hasEffect = JNEConfigs.POTION_CONSUMPTION_PARTICLES.get() && !contents.getAllEffects().isEmpty();
 
         if (!level.isClientSide) {
             contents.forEachEffect(action -> {

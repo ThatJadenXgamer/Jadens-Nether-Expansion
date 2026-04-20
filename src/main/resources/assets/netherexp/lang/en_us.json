@@ -664,6 +664,8 @@
   "item.netherexp.antidote.effect.infested": "Antidote for Infested",
   "item.netherexp.grenade_antidote.effect.slow_falling": "Grenade Antidote for Slow Falling",
   "item.netherexp.grenade_antidote.effect.infested": "Grenade Antidote for Infested",
+  "subtitles.block.nether_portal.activate": "Nether portal activates",
+  "subtitles.block.nether_portal.break": "Nether portal shatters",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",
@@ -806,6 +808,9 @@
   "netherexp.configuration.requiredSourceBlocksForLavaHeatDistortion": "Required Source Blocks for Lava Heat Distortion",
   "netherexp.configuration.enableSoulGlassScreenFilter": "Enable Soul Glass Screen Filter",
   "netherexp.configuration.noSoulGlassRipple": "No Soul Glass Ripple",
+  "netherexp.configuration.improvedBrewingStandParticles": "Improved Brewing Stand Particles",
+  "netherexp.configuration.potionConsumptionParticles": "Potion Consumption Particles",
+  "netherexp.configuration.improvedNetherPortalParticles": "Improved Nether Portal Particles",
 
   "netherexp.configuration.enableJNESplashTexts": "Enable JNE Splash Texts",
   "netherexp.configuration.redSplashText": "Red Splash Text",

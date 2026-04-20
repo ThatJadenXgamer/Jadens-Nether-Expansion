@@ -29,6 +29,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> GLOWSPORES_APPLY = registerSoundEvents("block.glowspores.apply");
     public static final Supplier<SoundEvent> GLOWSPORES_SHEAR = registerSoundEvents("block.glowspores.shear");
 
+
     public static final Supplier<SoundEvent> POTION_POSTDRINK = registerSoundEvents("item.potion.postdrink");
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
     public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");
@@ -160,6 +161,17 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> SOUL_GLASS_ENTER = registerSoundEvents("block.soul_glass.enter");
     public static final Supplier<SoundEvent> SOUL_GLASS_EXIT = registerSoundEvents("block.soul_glass.exit");
     public static final Supplier<SoundEvent> SOUL_GLASS_SUBMERGED = registerSoundEvents("block.soul_glass.submerged");
+
+    public static final Supplier<SoundEvent> OBSIDIAN_PLACE = registerSoundEvents("block.obsidian.place");
+    public static final Supplier<SoundEvent> OBSIDIAN_BREAK = registerSoundEvents("block.obsidian.break");
+    public static final Supplier<SoundEvent> OBSIDIAN_STEP = registerSoundEvents("block.obsidian.step");
+    public static final Supplier<SoundEvent> OBSIDIAN_HIT = registerSoundEvents("block.obsidian.hit");
+    public static final Supplier<SoundEvent> OBSIDIAN_FALL = registerSoundEvents("block.obsidian.fall");
+
+    public static final Supplier<SoundEvent> CRYING_OBSIDIAN_BREAK = registerSoundEvents("block.crying_obsidian.break");
+
+    public static final Supplier<SoundEvent> NETHER_PORTAL_ACTIVATE = registerSoundEvents("block.nether_portal.activate");
+    public static final Supplier<SoundEvent> NETHER_PORTAL_BREAK = registerSoundEvents("block.nether_portal.break");
 
     public static final Supplier<SoundEvent> BLACKSTONE_PLACE = registerSoundEvents("block.blackstone.place");
     public static final Supplier<SoundEvent> BLACKSTONE_BREAK = registerSoundEvents("block.blackstone.break");

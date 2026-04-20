@@ -1,0 +1,11 @@
+{
+  "blocks": "minecraft:nether_portal",
+
+  "break_sound": "minecraft:intentionally_empty",
+  "step_sound": "minecraft:intentionally_empty",
+  "place_sound": "minecraft:intentionally_empty",
+  "hit_sound": "minecraft:intentionally_empty",
+  "fall_sound": "minecraft:intentionally_empty",
+  "volume": 1.0,
+  "pitch": 1.0
+}

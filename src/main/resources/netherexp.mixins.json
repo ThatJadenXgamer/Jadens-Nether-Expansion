@@ -15,6 +15,7 @@
   "mixins": [
     "block.BaseFireBlockMixin",
     "block.BrewingStandBlockMixin",
+    "block.NetherPortalBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "client.IClientFluidTypeExtensionsMixin",

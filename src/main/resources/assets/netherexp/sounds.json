@@ -784,8 +784,7 @@
       "netherexp:block/netherite_grate/break1",
       "netherexp:block/netherite_grate/break2",
       "netherexp:block/netherite_grate/break3",
-      "netherexp:block/netherite_grate/break4",
-      "netherexp:block/netherite_grate/break5"
+      "netherexp:block/netherite_grate/break4"
     ]
   },
   "block.netherite_grate.step": {
@@ -805,8 +804,7 @@
       "netherexp:block/netherite_grate/break1",
       "netherexp:block/netherite_grate/break2",
       "netherexp:block/netherite_grate/break3",
-      "netherexp:block/netherite_grate/break4",
-      "netherexp:block/netherite_grate/break5"
+      "netherexp:block/netherite_grate/break4"
     ]
   },
   "block.netherite_grate.hit": {
@@ -1499,7 +1497,169 @@
     "subtitle": "subtitles.entity.ecto_slab.warn"
   },
 
+  "block.nether_portal.activate": {
+    "sounds": [
+      "netherexp:block/nether_portal/activate"
+    ],
+    "subtitle": "subtitles.block.nether_portal.activate"
+  },
+  "block.nether_portal.break": {
+    "sounds": [
+      "netherexp:block/nether_portal/break1",
+      "netherexp:block/nether_portal/break2",
+      "netherexp:block/nether_portal/break3"
+    ],
+    "subtitle": "subtitles.block.nether_portal.break"
+  },
 
+  "block.crying_obsidian.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      {
+        "name": "netherexp:block/crying_obsidian/break1",
+        "volume": 1.0
+      },
+      {
+        "name": "netherexp:block/crying_obsidian/break2",
+        "volume": 1.0
+      },
+      {
+        "name": "netherexp:block/crying_obsidian/break3",
+        "volume": 1.0
+      }
+    ]
+  },
+
+  "block.obsidian.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      {
+        "name": "netherexp:block/obsidian/break1",
+        "volume": 0.5
+      },
+      {
+        "name": "netherexp:block/obsidian/break2",
+        "volume": 0.5
+      },
+      {
+        "name": "netherexp:block/obsidian/break3",
+        "volume": 0.5
+      }
+    ]
+  },
+  "block.obsidian.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      {
+        "name": "netherexp:block/obsidian/place1",
+        "volume": 1.3
+      },
+      {
+        "name": "netherexp:block/obsidian/place2",
+        "volume": 1.3
+      },
+      {
+        "name": "netherexp:block/obsidian/place3",
+        "volume": 1.3
+      },
+      {
+        "name": "netherexp:block/obsidian/place4",
+        "volume": 1.3
+      }
+    ]
+  },
+  "block.obsidian.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      {
+        "name": "netherexp:block/obsidian/step1",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step2",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step3",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step4",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step5",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step6",
+        "volume": 2.0
+      }
+    ]
+  },
+  "block.obsidian.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      {
+        "name": "netherexp:block/obsidian/step1",
+        "volume": 2.0,
+        "pitch": 0.5
+      },
+      {
+        "name": "netherexp:block/obsidian/step2",
+        "volume": 2.0,
+        "pitch": 0.5
+      },
+      {
+        "name": "netherexp:block/obsidian/step3",
+        "volume": 2.0,
+        "pitch": 0.5
+      },
+      {
+        "name": "netherexp:block/obsidian/step4",
+        "volume": 2.0,
+        "pitch": 0.5
+      },
+      {
+        "name": "netherexp:block/obsidian/step5",
+        "volume": 2.0,
+        "pitch": 0.5
+      },
+      {
+        "name": "netherexp:block/obsidian/step6",
+        "volume": 2.0,
+        "pitch": 0.5
+      }
+    ]
+  },
+  "block.obsidian.fall": {
+    "sounds": [
+      {
+        "name": "netherexp:block/obsidian/step1",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step2",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step3",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step4",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step5",
+        "volume": 2.0
+      },
+      {
+        "name": "netherexp:block/obsidian/step6",
+        "volume": 2.0
+      }
+    ]
+  },
 
   "music_disc.cricket": {
     "sounds": [

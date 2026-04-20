@@ -1,0 +1,11 @@
+{
+  "blocks": "#netherexp:sounds/obsidian",
+
+  "break_sound": "netherexp:block.obsidian.break",
+  "step_sound": "netherexp:block.obsidian.step",
+  "place_sound": "netherexp:block.obsidian.place",
+  "hit_sound": "netherexp:block.obsidian.hit",
+  "fall_sound": "netherexp:block.obsidian.fall",
+  "volume": 1.0,
+  "pitch": 1.0
+}

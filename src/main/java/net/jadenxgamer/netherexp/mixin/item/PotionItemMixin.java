@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.mixin.item;
 
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.util.CommonParticles;
 import net.minecraft.core.component.DataComponents;
@@ -25,7 +26,7 @@ public class PotionItemMixin {
     )
     private static void netherexp$injectPotionUseEffect(ItemStack stack, Level level, LivingEntity entityLiving, CallbackInfoReturnable<ItemStack> cir) {
         PotionContents contents = stack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-        boolean hasEffect = contents.hasEffects();
+        boolean hasEffect = JNEConfigs.POTION_CONSUMPTION_PARTICLES.get() && contents.hasEffects();
         if (hasEffect) {
             if (level.isClientSide()) CommonParticles.potionConsumeParticle(level, level.random, entityLiving, new Color(contents.getColor()));
             level.playSound(null, entityLiving.blockPosition(), JNESoundEvents.POTION_POSTDRINK.get(), SoundSource.PLAYERS, 1.0f, 1.0F);

@@ -1,11 +1,15 @@
 package net.jadenxgamer.netherexp.util;
 
+import net.jadenxgamer.netherexp.client.particle.JNEPortalParticle;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.NetherPortalBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -166,5 +170,84 @@ public class CommonParticles {
                 .setMotion(random.nextDouble() * motion, random.nextDouble() * motion, random.nextDouble() * motion)
                 .setColorData(ColorParticleData.create(color.brighter().brighter()).build())
                 .spawn(level, x, y, z);
+    }
+
+    public static void netherPortalParticle(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        var base = new Color(0x9A2FFF);
+        var dot = new Color(0xFFFFFF);
+        var dim = new Color(0x6917B6);
+        var dark = new Color(0x29034A);
+        if (random.nextInt(4) == 0) {
+            var x = pos.getX() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
+            var y = pos.getY() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
+            var z = pos.getZ() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
+            LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
+            WorldParticleBuilder.create(JNEParticleTypes.PORTA_MIST.get())
+                    .setFullBrightLighting()
+                    .setNoClip(false)
+                    .enableForcedSpawn()
+                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, random.nextBoolean() ? -1.0f : 1.0f).setCoefficient(0.2f).setEasing(Easing.SINE_IN).build())
+                    .setScaleData(GenericParticleData.create(2.93f).build())
+                    .setTransparencyData(GenericParticleData.create(0.0f, 0.25f, 0.0f).setEasing(Easing.SINE_IN_OUT).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE.withDepthFade())
+                    .setColorData(ColorParticleData.create(random.nextBoolean() ? dim : dark).setEasing(Easing.SINE_OUT).build())
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(Mth.randomBetweenInclusive(random, 100, 120))
+                    .enableNoClip()
+                    .addMotion(random.nextDouble() / 50 * (random.nextBoolean() ? 1 : -1), 0.0, random.nextDouble() / 50 * (random.nextBoolean() ? 1 : -1))
+                    .spawn(level, x, y, z);
+        }
+
+        var dotX = pos.getX() + 0.5 + random.nextDouble() / 2 * (random.nextBoolean() ? 1 : -1);
+        var dotY = pos.getY() + 0.5 + random.nextDouble() / 2 * (random.nextBoolean() ? 1 : -1);
+        var dotZ = pos.getZ() + 0.5 + random.nextDouble() / 2 * (random.nextBoolean() ? 1 : -1);
+        WorldParticleBuilder.create(JNEParticleTypes.GLOWING_DOT.get())
+                .setFullBrightLighting()
+                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, random.nextBoolean() ? -1.0f : 1.0f).setCoefficient(0.2f).setEasing(Easing.SINE_IN).build())
+                .setScaleData(GenericParticleData.create(0.0f, 0.38f, 0.0f).build())
+                .setTransparencyData(GenericParticleData.create(1).build())
+                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE.withDepthFade())
+                .setLifetime(random.nextInt(20, 40))
+                .disableNoClip()
+                .setGravity(0f)
+                .setColorData(ColorParticleData.create(dot).build())
+                .setMotion(0.0, 0.02, 0.0)
+                .spawn(level, dotX, dotY, dotZ);
+
+        for (int i = 0; i < 4; i++) {
+            var x = pos.getX() + 0.5 + random.nextDouble() / 2 * (random.nextBoolean() ? 1 : -1);
+            var y = pos.getY() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
+            var z = pos.getZ() + 0.5 + random.nextDouble() / 2 * (random.nextBoolean() ? 1 : -1);
+            switch (state.getValue(NetherPortalBlock.AXIS)) {
+                case X: {
+                    z = pos.getZ() + 0.5 + random.nextDouble() / 0.3 * (random.nextBoolean() ? 1 : -1);
+                    break;
+                }
+                case Z: {
+                    x = pos.getX() + 0.5 + random.nextDouble() / 0.3 * (random.nextBoolean() ? 1 : -1);
+                    break;
+                }
+            }
+
+            WorldParticleBuilder.create(JNEParticleTypes.JNE_PORTAL.get())
+                    .setFullBrightLighting()
+                    .disableNoClip()
+                    .setScaleData(GenericParticleData.create(0.0f, 0.13f, 0.0f).setEasing(Easing.SINE_IN_OUT).build())
+                    .setTransparencyData(GenericParticleData.create(0.0f, 0.7f, 0f).build())
+                    .setColorData(ColorParticleData.create(random.nextBoolean() ? dim : base).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE.withDepthFade())
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.RANDOM_SPRITE)
+                    .setLifetime(random.nextInt(100))
+                    .addSpawnActor(actor -> {
+                        if (actor instanceof JNEPortalParticle portalParticle) {
+                            portalParticle.setTargetPos(
+                                    pos.getX() + 0.5 + random.nextDouble() / 2,
+                                    pos.getY() + 0.5 + random.nextDouble() / 2,
+                                    pos.getZ() + 0.5 + random.nextDouble() / 2);
+                        }
+                    })
+                    .setMotion(0, 0 ,0)
+                    .spawn(level, x, y, z);
+        }
     }
 }

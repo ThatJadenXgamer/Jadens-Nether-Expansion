@@ -5,12 +5,12 @@ import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManage
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
-import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
-import net.jadenxgamer.netherexp.registry.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.jadenxgamer.netherexp.registry.JNERegistries;
+import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.BlockCrackTracker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -22,6 +22,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -41,6 +42,12 @@ public class JNEEvents {
     @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
         BlockCrackTracker.tick();
+    }
+
+
+    @SubscribeEvent
+    public static void onPortalSpawn(BlockEvent.PortalSpawnEvent event) {
+        event.getLevel().playSound(null, event.getPos(), JNESoundEvents.NETHER_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     @SubscribeEvent

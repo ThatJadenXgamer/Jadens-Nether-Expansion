@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.mixin.client;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.minecraft.client.resources.SplashManager;
@@ -32,7 +33,7 @@ public class SplashManagerMixin {
             at = @At("RETURN")
     )
     private void netherexp$applyJNESplashes(List<String> object, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
-        if (!JNEConfigs.ENABLE_JNE_SPLASH_TEXTS.get()) return;
+        if (JNEConfigImpl.CONFIG.isLoaded() && !JNEConfigs.ENABLE_JNE_SPLASH_TEXTS.get()) return;
         ProfanityConfig profanity = JNEConfigs.PROFANITY.get();
 
         loadSplashesFile(resourceManager, JNE_SPLASHES_LOCATION, "JNE splashes");

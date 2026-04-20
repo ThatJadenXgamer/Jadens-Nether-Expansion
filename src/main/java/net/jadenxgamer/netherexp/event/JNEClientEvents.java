@@ -10,15 +10,12 @@ import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
-import net.jadenxgamer.netherexp.core.item.AntidoteItem;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
-import net.jadenxgamer.netherexp.registry.JNECreativeModeTabs;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ShaderInstance;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -81,7 +78,7 @@ public class JNEClientEvents {
 
     @SubscribeEvent
     public static void renderParticles(RegisterParticleProvidersEvent event) {
-        NetherExpClient.registerParticles(event);
+        JNEParticleTypes.registerParticles(event);
     }
 
     @SubscribeEvent

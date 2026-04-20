@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.mixin.block;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
@@ -16,9 +17,11 @@ public class BrewingStandBlockMixin {
 
     @WrapMethod(method = "animateTick")
     private void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, Operation<Void> original) {
-        double x = (double)pos.getX() + 0.4 + (double)random.nextFloat() * 0.2;
-        double y = (double)pos.getY() + 0.7 + (double)random.nextFloat() * 0.3;
-        double z = (double)pos.getZ() + 0.4 + (double)random.nextFloat() * 0.2;
-        brewingStandParticle(level, pos, random, x, y, z);
+        if (JNEConfigs.IMPROVED_BREWING_STAND_PARTICLES.get()) {
+            double x = (double)pos.getX() + 0.4 + (double)random.nextFloat() * 0.2;
+            double y = (double)pos.getY() + 0.7 + (double)random.nextFloat() * 0.3;
+            double z = (double)pos.getZ() + 0.4 + (double)random.nextFloat() * 0.2;
+            brewingStandParticle(level, pos, random, x, y, z);
+        } else original.call(state, level, pos, random);
     }
 }

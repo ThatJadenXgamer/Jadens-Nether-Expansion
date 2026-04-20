@@ -195,6 +195,16 @@
 
 -Apparitions now have new possession sounds
 
+-Obsidian, Crying Obsidian and Respawn Anchors now have sounds
+
+-Nether Portals now have brand-new particles alongside activation and destruction sounds
+
+-As a result of these new portal breaking sounds, they no longer rupture eardrums like in vanilla on larger portals when there is usually a lot of frames breaking
+
+-Updated Russian Translation -X
+
+-Updated Argentine Spanish Translation -X
+
 -Updated German Translation
 
 ### Mod Compatibility
@@ -204,6 +214,12 @@
 -To further convey that possessions and ghost mobs are weak to silver, new particles show up when they are damaged with it
 
 -Item Tags defining Silver Armors and Weapons are now located under the `c:` common tags namespace shared across NeoForge and Fabric for better compatibility
+
+-All Mod Compat registries are no longer present unless that mod is active during runtime; 
+
+-JNE's built-in mod compat datapacks have also been done away with in-favor of using NeoForge's conditionally loaded data jsons to fill the same role
+
+-Quite a few modded Quartz, Glowstone, Obsidian and Blackstone blocks have received the new JNE sound types 
 
 ### Fixes
 
