@@ -6,6 +6,7 @@ public class JNERenderStateShard {
 
     private static ShaderInstance renderTypeNoShadeEntityCutout;
     private static ShaderInstance renderTypeNoShadeEntityCutoutNoCull;
+    private static ShaderInstance renderTypeEntityAdditive;
 
     /////////////
     // GETTERS //
@@ -17,6 +18,9 @@ public class JNERenderStateShard {
     public static ShaderInstance getRenderTypeNoShadeEntityCutoutNoCull() {
         return renderTypeNoShadeEntityCutoutNoCull;
     }
+    public static ShaderInstance getRenderTypeEntityAdditive() {
+        return renderTypeEntityAdditive;
+    }
 
     /////////////
     // SETTERS //
@@ -27,5 +31,8 @@ public class JNERenderStateShard {
     }
     public static void setRenderTypeNoShadeEntityCutoutNoCull(ShaderInstance instance) {
         JNERenderStateShard.renderTypeNoShadeEntityCutoutNoCull = instance;
+    }
+    public static void setRenderTypeEntityAdditive(ShaderInstance instance) {
+        JNERenderStateShard.renderTypeEntityAdditive = instance;
     }
 }

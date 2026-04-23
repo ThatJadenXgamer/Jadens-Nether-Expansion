@@ -59,6 +59,10 @@ public class JNEEntityType {
             EntityType.Builder.<WillOWisp>of(WillOWisp::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("will_o_wisp"));
 
+    public static final Supplier<EntityType<PortalGlow>> PORTAL_GLOW = ENTITY_TYPES.register("portal_glow", () ->
+            EntityType.Builder.<PortalGlow>of(PortalGlow::new, MobCategory.MISC)
+                    .sized(1.0f, 1.0f).noSummon().build("portal_glow"));
+
     public static void init(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

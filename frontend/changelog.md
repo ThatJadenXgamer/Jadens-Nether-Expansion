@@ -43,7 +43,7 @@
 
 -Ancient Wax Block texture has received a glow-up, no longer looks like bricks
 
--Shotgun-Fist now no longer uses wraithing flesh as ammo but rather the new Shotgun-Shells instead
+-Shotgun-Fist now no longer uses wraithing flesh as ammo but rather the new Shotgun Shells instead
 
 -Shotgun Shells are crafted with wraithing flesh, iron nuggets and any coal-like item. It is the new ammunition for shotguns
 
@@ -59,7 +59,7 @@
 
 -Cartridge Enchantment has been removed
 
--Counterforce is a new treasure enchantment for all shotgun weapons that when used during a jump reverses one's self-knockback when the weapon is fired, letting you dash forwards
+-Counterforce is a new treasure enchantment for all shotgun weapons that when fired during a jump reverses one's self-knockback letting you dash forwards
 
 -The dash also provides 1 second of I-Frames indicated by a screen glow; any ammo that is not a blank will add 1.5 seconds of additional cooldown
 
@@ -223,7 +223,7 @@
 
 ### Fixes
 
--Ecto Slabs can now be exorcised with water, this was bugged prior -X
+-Ecto Slabs can now be exorcized with water, this was bugged prior -X
 
 -Treacherous Candle spawn and round sounds didn't have subtitles, this has now been fixed
 

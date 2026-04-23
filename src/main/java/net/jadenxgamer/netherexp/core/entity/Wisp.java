@@ -44,6 +44,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -100,12 +102,10 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
     public void aiStep() {
         super.aiStep();
         if (this.level().isClientSide()) {
-            for (int i = 0; i < 2; ++i) trailParticle(JNEParticleTypes.WISP.get(), level(), random, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5));
+            Client.trailParticle(JNEParticleTypes.WISP.get(), level(), random, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5));
         } else {
             if (!canGetBored()) return;
-            if (this.tickCount % 20 == 0 && random.nextDouble() < JNEConfigs.WISP_BOREDOM_CHANCE.get() && this.getBored() < 6) {
-                ++boredCounter;
-            }
+            if (this.tickCount % 20 == 0 && random.nextDouble() < JNEConfigs.WISP_BOREDOM_CHANCE.get() && this.getBored() < 6) ++boredCounter;
         }
     }
 
@@ -259,18 +259,6 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         this.walkAnimation.update(f, 0.2F);
     }
 
-    public static void trailParticle(LodestoneWorldParticleType particle, Level level, RandomSource random, double x, double y, double z) {
-        WorldParticleBuilder.create(particle)
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(0.13f).build())
-                .setTransparencyData(GenericParticleData.create(1).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(random.nextInt(40, 60))
-                .enableNoClip()
-                .spawn(level, x, y, z);
-    }
-
     ///////////////////////
     // GETTERS & SETTERS //
     ///////////////////////
@@ -409,6 +397,23 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         @Override
         public void stop() {
             super.stop();
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class Client {
+        public static void trailParticle(LodestoneWorldParticleType particle, Level level, RandomSource random, double x, double y, double z) {
+            for (int i = 0; i < 2; ++i) {
+                WorldParticleBuilder.create(particle)
+                        .setFullBrightLighting()
+                        .setScaleData(GenericParticleData.create(0.13f).build())
+                        .setTransparencyData(GenericParticleData.create(1).build())
+                        .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                        .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                        .setLifetime(random.nextInt(40, 60))
+                        .enableNoClip()
+                        .spawn(level, x, y, z);
+            }
         }
     }
 }

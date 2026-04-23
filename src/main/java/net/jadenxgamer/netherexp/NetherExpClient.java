@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp;
 
+import net.jadenxgamer.netherexp.client.particle.*;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.DiscernmentGlassBlockRenderer;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.JNECampfireRenderer;
 import net.jadenxgamer.netherexp.client.rendering.block_entity.SuspiciousSoulSandBlockRenderer;
@@ -12,11 +13,16 @@ import net.jadenxgamer.netherexp.client.sound.InsideFluidAmbientSoundInstance;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.particle.HugeExplosionParticle;
+import net.minecraft.client.particle.SpellParticle;
+import net.minecraft.client.particle.SplashParticle;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -29,8 +35,10 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticleType;
 
 @Mod(value = NetherExp.MOD_ID, dist = Dist.CLIENT)
 public final class NetherExpClient {
@@ -50,6 +58,7 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.SLUG_PELLET.get(), SlugPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_PELLET.get(), PhasmoPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.WILL_O_WISP.get(), WillOWispRenderer::new);
+        EntityRenderers.register(JNEEntityType.PORTAL_GLOW.get(), PortalGlowRenderer::new);
         EntityRenderers.register(EntityType.BLAZE, JNEBlazeRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.SUSPICIOUS_SOUL_SAND.get(), SuspiciousSoulSandBlockRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.DISCERNMENT_GLASS.get(), DiscernmentGlassBlockRenderer::new);
@@ -69,6 +78,52 @@ public final class NetherExpClient {
         event.registerLayerDefinition(ShotgunFistModel.LAYER, ShotgunFistModel::createBodyLayer);
         event.registerLayerDefinition(PumpChargeShotgunModel.LAYER, PumpChargeShotgunModel::createBodyLayer);
         event.registerLayerDefinition(PelletRenderer.ShotgunPelletModel.LAYER, PelletRenderer.ShotgunPelletModel::createBodyLayer);
+        event.registerLayerDefinition(PortalGlowRenderer.PortalGlowModel.LAYER, PortalGlowRenderer.PortalGlowModel::createBodyLayer);
+    }
+
+    public static void registerParticles(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(JNEParticleTypes.SOUL_SWIRL_POP.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.WISP.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get(), FlameParticle.SmallFlameProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobEffectProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.SOUL_MAGMA.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.CRIMSON_SMOG.get(), SmogParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.WARPED_SMOG.get(), SmogParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.BLACK_SMOKE.get(), SmogParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.WHITE_SMOKE.get(), SmogParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.BLACK_FLAKE.get(), BlackFlakeParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.DRIPPING_ECTOPLASM.get(), JNEDripHangParticle.EctoplasmProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.FALLING_ECTOPLASM.get(), JNEFallAndLandParticle.EctoplasmProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.ECTOSPLASH.get(), SplashParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.ECTOPLASM_RAYS.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.WIND_TRAIL.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GLOWING_DOT.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GLOWING_DOT_COIL.get(), CoilParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SOUL_CLOUD.get(), JNEPoofParticle.SoulProvider::new);
+        event.registerSpriteSet(JNEParticleTypes.SILVER_GLIMMER.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.TREACHEROUS_FLAME.get(), FlameParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.POSSESSION.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SHOTGUN_SPARK.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.NETHER_FOG.get(), ProximityFadeParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.LIGHTSPORE.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.NIGHTSPORE.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.WINDY_ASH.get(), WindBlownParticle.Provider::new);
+        event.registerSpriteSet(JNEParticleTypes.DRIFTING_SOUL.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.WILL_O_WISP_IMPACT.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_DUST_BLOB.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_DUST_STAR.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_POOF.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_POOF_BLOB.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.REDUX_POOF_STAR.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GENERIC_GLOW.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SPARKLE.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.SHOTGUN_FLASH.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.PUMP_SHOTGUN_FLASH.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.PELLET_HIT.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.RED_EXPLOSION.get(), HugeExplosionParticle.Provider::new);
+        event.registerSpecial(JNEParticleTypes.RED_EXPLOSION_EMITTER.get(), (new RedExplosionEmitterParticle.Factory()));
+        event.registerSpriteSet(JNEParticleTypes.JNE_PORTAL.get(), JNEPortalParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.PORTA_MIST.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static class HandlePostShaders {

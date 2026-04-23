@@ -3,15 +3,16 @@ package net.jadenxgamer.netherexp.event;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManager;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
+import net.jadenxgamer.netherexp.core.entity.PortalGlow;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.BlockCrackTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.NetherPortalBlock;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -47,7 +48,16 @@ public class JNEEvents {
 
     @SubscribeEvent
     public static void onPortalSpawn(BlockEvent.PortalSpawnEvent event) {
-        event.getLevel().playSound(null, event.getPos(), JNESoundEvents.NETHER_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+        if (event.getLevel() instanceof Level level) {
+            BlockPos pos = event.getPos();
+            level.playSound(null, pos, JNESoundEvents.NETHER_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+            if (level.getServer() == null) return;
+            level.getServer().execute(() -> {
+                if (level.getBlockState(pos).getBlock() instanceof NetherPortalBlock) {
+                    PortalGlow.spawnForPortal(level, pos);
+                }
+            });
+        }
     }
 
     @SubscribeEvent

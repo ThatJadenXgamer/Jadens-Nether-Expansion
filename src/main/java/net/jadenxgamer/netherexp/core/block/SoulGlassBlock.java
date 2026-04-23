@@ -23,6 +23,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
@@ -47,11 +49,10 @@ public class SoulGlassBlock extends LightableBlock {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        RandomSource random = level.random;
         if (entity instanceof LivingEntity living) {
-            if (level.isClientSide()) {
-                RandomSource random = level.random;
-                if (random.nextInt(7) == 0) particle(level, random, living.getRandomX(1.5), living.getRandomY() - 0.25, living.getRandomZ(1.5));
-            }
+            if (level.isClientSide() && random.nextInt(7) == 0)
+                Client.particle(level, random, living.getRandomX(1.5), living.getRandomY() - 0.25, living.getRandomZ(1.5));
             if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
             double slowdown = JNEConfigs.SOUL_GLASS_MOVEMENT_SLOWDOWN.get();
             entity.makeStuckInBlock(state, new Vec3(slowdown, slowdown, slowdown));
@@ -62,7 +63,6 @@ public class SoulGlassBlock extends LightableBlock {
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         if (context instanceof EntityCollisionContext collisionContext) {
             Entity entity = collisionContext.getEntity();
-
             if (entity != null && entity.getType().is(JNETags.EntityTypes.CAN_PHASE_THROUGH_SOUL_GLASS)) {
                 if (context.isAbove(Shapes.block(), pos, true) && !context.isDescending()) return Shapes.block();
                 return Shapes.empty();
@@ -93,20 +93,24 @@ public class SoulGlassBlock extends LightableBlock {
         return true;
     }
 
-    public static void particle(Level level, RandomSource random, double x, double y, double z) {
-        Color color = new Color(0x0E4E4E);
-        WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
-                .setFullBrightLighting()
-                .setColorData(ColorParticleData.create(color).build())
-                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                .setScaleData(GenericParticleData.create(0.05f, 0.13f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
-                .setTransparencyData(GenericParticleData.create(0.5f).build())
-                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(random.nextInt(30, 40))
-                .enableNoClip()
-                .setGravity(0.0f)
-                .setMotion(0.0, 0.04, 0.0)
-                .spawn(level, x, y, z);
+    @OnlyIn(Dist.CLIENT)
+    private static class Client {
+
+        public static void particle(Level level, RandomSource random, double x, double y, double z) {
+            Color color = new Color(0x0E4E4E);
+            WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
+                    .setFullBrightLighting()
+                    .setColorData(ColorParticleData.create(color).build())
+                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                    .setScaleData(GenericParticleData.create(0.05f, 0.13f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
+                    .setTransparencyData(GenericParticleData.create(0.5f).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(random.nextInt(30, 40))
+                    .enableNoClip()
+                    .setGravity(0.0f)
+                    .setMotion(0.0, 0.04, 0.0)
+                    .spawn(level, x, y, z);
+        }
     }
 }

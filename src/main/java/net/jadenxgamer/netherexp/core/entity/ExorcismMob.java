@@ -26,6 +26,8 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -84,7 +86,7 @@ public abstract class ExorcismMob extends PathfinderMob {
     @Override
     public boolean doHurtTarget(Entity target) {
         if (target instanceof Player player) {
-            boolean isWearingSilverArmor = player.getInventory().armor.stream().anyMatch(itemStack -> itemStack.is(JNETags.Items.SILVER_ARMORS));
+            boolean isWearingSilverArmor = player.getInventory().armor.stream().anyMatch(stack -> stack.is(JNETags.Items.SILVER_ARMORS));
 
             if (isWearingSilverArmor) {
                 this.hurt(level().damageSources().playerAttack(player), (float) SILVER_PARANORMAL_PROTECTION_DAMAGE.getAsDouble());
@@ -113,49 +115,52 @@ public abstract class ExorcismMob extends PathfinderMob {
         return this.getDeathSound();
     }
 
-    private void silverParticle(Level level, RandomSource random, double x, double y, double z) {
-        for (int i = 0; i < 9; i++) {
-            WorldParticleBuilder.create(JNEParticleTypes.SILVER_GLIMMER.get())
-                    .setFullBrightLighting()
-                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                    .setScaleData(GenericParticleData.create(0.165f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
-                    .setTransparencyData(GenericParticleData.create(1).build())
-                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                    .setLifetime(random.nextInt(10, 28))
-                    .enableNoClip()
-                    .setMotion(random.nextDouble() * 0.08, random.nextDouble() * 0.08, random.nextDouble() * 0.08)
-                    .spawn(level, x, y, z);
-        }
-    }
-
-    private void possessionParticle(Level level, RandomSource random) {
-        for (int i = 0; i < 12; i++) {
-            double x = this.getRandomX(0.5);
-            double y = this.getRandomY();
-            double z = this.getRandomZ(0.5);
-            WorldParticleBuilder.create(JNEParticleTypes.POSSESSION.get())
-                    .setFullBrightLighting()
-                    .setSpinData(SpinParticleData.create(0).build())
-                    .setScaleData(GenericParticleData.create(0.595f).build())
-                    .setTransparencyData(GenericParticleData.create(1).build())
-                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                    .setLifetime(random.nextInt(10, 28))
-                    .enableNoClip()
-                    .setMotion(random.nextDouble() * 0.02, random.nextDouble() * 0.02, random.nextDouble() * 0.02)
-                    .spawn(level, x, y, z);
-        }
-    }
-
     @Override
     public void handleEntityEvent(byte id) {
-        if (id == 91) this.silverParticle(this.level(), this.random, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5));
-        if (id == 92) this.possessionParticle(this.level(), this.random);
+        if (id == 91) Client.silverParticle(this.level(), this.random, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5));
+        if (id == 92) Client.possessionParticle(this.level(), this.random, this);
         super.handleEntityEvent(id);
     }
 
     public static boolean checkSpawnRules(EntityType<? extends ExorcismMob> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return level.getDifficulty() != Difficulty.PEACEFUL && (MobSpawnType.ignoresLightRequirements(spawnType) || isDarkEnoughToSpawn(level, pos, random)) && checkMobSpawnRules(type, level, spawnType, pos, random);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class Client {
+        public static void silverParticle(Level level, RandomSource random, double x, double y, double z) {
+            for (int i = 0; i < 9; i++) {
+                WorldParticleBuilder.create(JNEParticleTypes.SILVER_GLIMMER.get())
+                        .setFullBrightLighting()
+                        .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                        .setScaleData(GenericParticleData.create(0.165f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
+                        .setTransparencyData(GenericParticleData.create(1).build())
+                        .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                        .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                        .setLifetime(random.nextInt(10, 28))
+                        .enableNoClip()
+                        .setMotion(random.nextDouble() * 0.08, random.nextDouble() * 0.08, random.nextDouble() * 0.08)
+                        .spawn(level, x, y, z);
+            }
+        }
+
+        public static void possessionParticle(Level level, RandomSource random, ExorcismMob mob) {
+            for (int i = 0; i < 12; i++) {
+                double x = mob.getRandomX(0.5);
+                double y = mob.getRandomY();
+                double z = mob.getRandomZ(0.5);
+                WorldParticleBuilder.create(JNEParticleTypes.POSSESSION.get())
+                        .setFullBrightLighting()
+                        .setSpinData(SpinParticleData.create(0).build())
+                        .setScaleData(GenericParticleData.create(0.595f).build())
+                        .setTransparencyData(GenericParticleData.create(1).build())
+                        .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                        .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                        .setLifetime(random.nextInt(10, 28))
+                        .enableNoClip()
+                        .setMotion(random.nextDouble() * 0.02, random.nextDouble() * 0.02, random.nextDouble() * 0.02)
+                        .spawn(level, x, y, z);
+            }
+        }
     }
 }

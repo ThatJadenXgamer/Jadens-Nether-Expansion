@@ -484,4 +484,8 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
             return this.vessel.getAttributeValue(Attributes.FOLLOW_RANGE);
         }
     }
+
+    public static class Client {
+
+    }
 }

@@ -12,6 +12,8 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
@@ -34,7 +36,7 @@ public class SoulMagmaBlock extends Block {
 
     @Override
     public boolean addRunningEffects(BlockState state, Level level, BlockPos pos, Entity entity) {
-        particle(level, level.random, entity.getRandomX(0.5), entity.blockPosition().getY(), entity.getRandomZ(0.5));
+         if (level.isClientSide) Client.particle(level, level.random, entity.getRandomX(0.5), entity.blockPosition().getY(), entity.getRandomZ(0.5));
         return true;
     }
 
@@ -42,18 +44,22 @@ public class SoulMagmaBlock extends Block {
         return entity.isSprinting() && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
     }
 
-    private void particle(Level level, RandomSource random, double x, double y, double z) {
-        WorldParticleBuilder.create(JNEParticleTypes.SOUL_MAGMA.get())
-                .setFullBrightLighting()
-                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                .setScaleData(GenericParticleData.create(0.17f).build())
-                .setTransparencyData(GenericParticleData.create(1).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(random.nextInt(20, 30))
-                .disableNoClip()
-                .setGravity(0.05f)
-                .setMotion(random.nextDouble() * 0.1, 0.04, random.nextDouble() * 0.1)
-                .spawn(level, x, y, z);
+    @OnlyIn(Dist.CLIENT)
+    public static class Client {
+
+        public static void particle(Level level, RandomSource random, double x, double y, double z) {
+            WorldParticleBuilder.create(JNEParticleTypes.SOUL_MAGMA.get())
+                    .setFullBrightLighting()
+                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                    .setScaleData(GenericParticleData.create(0.17f).build())
+                    .setTransparencyData(GenericParticleData.create(1).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(random.nextInt(20, 30))
+                    .disableNoClip()
+                    .setGravity(0.05f)
+                    .setMotion(random.nextDouble() * 0.1, 0.04, random.nextDouble() * 0.1)
+                    .spawn(level, x, y, z);
+        }
     }
 }

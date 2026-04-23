@@ -13,32 +13,43 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
 public class PortalGlowRenderer extends EntityRenderer<PortalGlow> {
-    private final PortalGlowRenderer.PortalGlowModel<PortalGlow> model;
+    private final PortalGlowModel model;
 
-    protected PortalGlowRenderer(EntityRendererProvider.Context context) {
+    public PortalGlowRenderer(EntityRendererProvider.Context context) {
         super(context);
-        this.model = new PortalGlowRenderer.PortalGlowModel<>(context.bakeLayer(PortalGlowRenderer.PortalGlowModel.LAYER));
+        this.model = new PortalGlowModel(context.bakeLayer(PortalGlowModel.LAYER));
     }
 
     @Override
     public void render(PortalGlow entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        poseStack.pushPose();
-        poseStack.translate(0.5f, 0.2f, 0.5f);
-        poseStack.mulPose(Axis.XP.rotationDegrees(-180));
-        poseStack.mulPose(Axis.YP.rotationDegrees(180));
-        poseStack.scale(0.5f, 0.5f, 0.5f);
-
-        VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(entity)));
-        this.model.renderToBuffer(poseStack, vertexConsumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
+        int width = entity.getPortalWidth();
+        int height = entity.getPortalHeight();
+        Direction.Axis axis = entity.getPortalAxis();
 
         poseStack.pushPose();
+
+        float age = entity.tickCount + partialTick;
+        float scaleX = width - 0.025f;
+        float scaleY = height - 0.025f;
+        float scaleZ = 1.25f + 0.25f * (float) Math.sin(age * 0.05);
+
+        if (axis == Direction.Axis.X) {
+            poseStack.scale(scaleX, scaleY, scaleZ);
+        } else if (axis == Direction.Axis.Z) {
+            poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
+            poseStack.scale(scaleX, scaleY, scaleZ);
+        }
+
+        VertexConsumer vertexConsumer = buffer.getBuffer(JNERenderType.entityAdditive(getTextureLocation(entity)));
+        model.renderToBuffer(poseStack, vertexConsumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
+        poseStack.popPose();
     }
 
     @Override
@@ -58,17 +69,17 @@ public class PortalGlowRenderer extends EntityRenderer<PortalGlow> {
             MeshDefinition meshdefinition = new MeshDefinition();
             PartDefinition partdefinition = meshdefinition.getRoot();
 
-            PartDefinition glow = partdefinition.addOrReplaceChild("glow", CubeListBuilder.create().texOffs(0, 32).addBox(-8.0F, -8.0F, -18.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F))
-                    .texOffs(0, 0).addBox(-8.0F, -8.0F, 2.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 16.0F, 0.0F));
+            PartDefinition glow = partdefinition.addOrReplaceChild("glow",
+                    CubeListBuilder.create()
+                            .texOffs(0, 32).addBox(-8.0F, -8.0F, -16.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F))
+                            .texOffs(0, 0).addBox(-8.0F, -8.0F, 0.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)),
+                    PartPose.offset(0.0F, 0.0F, 0.0F));
 
             return LayerDefinition.create(meshdefinition, 64, 64);
         }
 
-
         @Override
-        public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
-        }
+        public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {}
 
         @Override
         public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {

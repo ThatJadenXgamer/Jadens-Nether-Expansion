@@ -24,6 +24,8 @@ import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
@@ -39,9 +41,9 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
 
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 
-    private final Supplier<LodestoneWorldParticleType> particle;
+    private final Supplier<Supplier<LodestoneWorldParticleType>> particle;
 
-    public SwirlsBlock(Supplier<LodestoneWorldParticleType> particle, Properties properties) {
+    public SwirlsBlock(Supplier<Supplier<LodestoneWorldParticleType>> particle, Properties properties) {
         super(7, 3, properties);
         this.particle = particle;
         this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false));
@@ -57,17 +59,18 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
             level.scheduleTick(pos, this, JNEConfigs.SOUL_SWIRLS_COOLDOWN.get() * 20);
 
             if (!level.isClientSide()) living.addEffect(new MobEffectInstance(JNEMobEffects.UNBOUNDED_SPEED, JNEConfigs.UNBOUNDED_SPEED_DURATION.get() * 20, 0, false, true), entity);
+            else {
+                Direction[] directions = Direction.values();
+                for (Direction direction : directions) {
+                    BlockPos directionPos = pos.relative(direction);
+                    if (!level.getBlockState(directionPos).isSolidRender(level, directionPos)) {
+                        Direction.Axis axis = direction.getAxis();
+                        double x = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) level.random.nextFloat();
+                        double y = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) level.random.nextFloat();
+                        double z = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) level.random.nextFloat();
 
-            Direction[] directions = Direction.values();
-            for (Direction direction : directions) {
-                BlockPos directionPos = pos.relative(direction);
-                if (!level.getBlockState(directionPos).isSolidRender(level, directionPos)) {
-                    Direction.Axis axis = direction.getAxis();
-                    double x = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double) direction.getStepX() : (double) level.random.nextFloat();
-                    double y = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) level.random.nextFloat();
-                    double z = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) level.random.nextFloat();
-
-                    swirlPopParticle(level, level.random, pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+                        Client.swirlPopParticle(particle.get(), level, level.random, pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+                    }
                 }
             }
         }
@@ -83,12 +86,13 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (!level.isClientSide()) return;
         if (state.getValue(ACTIVE) && random.nextInt(20) == 0) {
             double x = pos.getX() + random.nextDouble();
             double y = pos.getY() + 0.8;
             double z = pos.getZ() + random.nextDouble();
 
-            swirlPopParticle(level, random, x, y, z);
+            Client.swirlPopParticle(particle.get(), level, random, x, y, z);
         }
     }
 
@@ -121,28 +125,31 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
         }
     }
 
-    private void swirlPopParticle(Level level, RandomSource random, double x, double y, double z) {
-        WorldParticleBuilder.create(particle)
-                .setFullBrightLighting()
-                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                .setScaleData(GenericParticleData.create(0.05f, 0.13f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
-                .setTransparencyData(GenericParticleData.create(1).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(random.nextInt(20, 30))
-                .disableNoClip()
-                .setGravity(0.05f)
-                .setMotion(0.0, 0.04, 0.0)
-                .spawn(level, x, y, z);
-    }
-
     @Override
-    public boolean hasAnalogOutputSignal(BlockState blockState) {
+    public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
     }
 
     @Override
     public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         return state.getValue(ACTIVE) ? 15 : 0;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class Client {
+        private static void swirlPopParticle(Supplier<LodestoneWorldParticleType> particle, Level level, RandomSource random, double x, double y, double z) {
+            WorldParticleBuilder.create(particle)
+                    .setFullBrightLighting()
+                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                    .setScaleData(GenericParticleData.create(0.05f, 0.13f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
+                    .setTransparencyData(GenericParticleData.create(1).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(random.nextInt(20, 30))
+                    .disableNoClip()
+                    .setGravity(0.05f)
+                    .setMotion(0.0, 0.04, 0.0)
+                    .spawn(level, x, y, z);
+        }
     }
 }

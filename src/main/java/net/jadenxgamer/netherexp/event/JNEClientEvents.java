@@ -13,7 +13,6 @@ import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.neoforged.api.distmarker.Dist;
@@ -78,7 +77,7 @@ public class JNEClientEvents {
 
     @SubscribeEvent
     public static void renderParticles(RegisterParticleProvidersEvent event) {
-        JNEParticleTypes.registerParticles(event);
+        NetherExpClient.registerParticles(event);
     }
 
     @SubscribeEvent
@@ -91,6 +90,7 @@ public class JNEClientEvents {
         try {
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutout);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout_no_cull"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutoutNoCull);
+            event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_entity_additive"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeEntityAdditive);
         } catch (IOException exception) {
             NetherExp.LOGGER.error("Failed to load Shader Instances, {}", exception.getMessage());
         }

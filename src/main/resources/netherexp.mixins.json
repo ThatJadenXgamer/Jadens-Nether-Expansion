@@ -24,6 +24,7 @@
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
     "item.PotionItemMixin",
+    "misc.PortalForcerMixin",
     "worldgen.NetherWorldCarverMixin"
   ],
   "injectors": {
