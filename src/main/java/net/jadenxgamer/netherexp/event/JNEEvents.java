@@ -12,6 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherPortalBlock;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -50,10 +51,10 @@ public class JNEEvents {
     public static void onPortalSpawn(BlockEvent.PortalSpawnEvent event) {
         if (event.getLevel() instanceof Level level) {
             BlockPos pos = event.getPos();
-            level.playSound(null, pos, JNESoundEvents.NETHER_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             if (level.getServer() == null) return;
             level.getServer().execute(() -> {
-                if (level.getBlockState(pos).getBlock() instanceof NetherPortalBlock) {
+                if (level.getBlockState(pos).is(Blocks.NETHER_PORTAL)) {
+                    level.playSound(null, pos, JNESoundEvents.NETHER_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                     PortalGlow.spawnForPortal(level, pos);
                 }
             });

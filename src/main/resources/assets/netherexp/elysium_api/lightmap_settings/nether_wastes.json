@@ -1,0 +1,8 @@
+{
+  "biomes": [
+    "minecraft:nether_wastes"
+  ],
+  "sky_light_color": "#FF8570",
+  "block_light_color": "#FF8570",
+  "ambient_brightness_multiplier": 1.2
+}

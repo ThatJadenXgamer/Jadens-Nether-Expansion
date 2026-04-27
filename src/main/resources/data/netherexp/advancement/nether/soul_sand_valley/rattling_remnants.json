@@ -25,7 +25,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "netherexp:mega_fossil_campsite"
+                "structures": "netherexp:mega_fossil_campsite"
               }
             }
           }

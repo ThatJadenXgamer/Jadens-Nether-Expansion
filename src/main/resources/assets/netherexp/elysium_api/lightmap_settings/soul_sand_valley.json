@@ -1,0 +1,8 @@
+{
+  "biomes": [
+    "minecraft:soul_sand_valley"
+  ],
+  "sky_light_color": "#75F5FF",
+  "block_light_color": "#75F5FF",
+  "ambient_brightness_multiplier": 1.35
+}

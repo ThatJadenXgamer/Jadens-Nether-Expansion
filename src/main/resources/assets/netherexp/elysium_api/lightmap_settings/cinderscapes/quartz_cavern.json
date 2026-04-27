@@ -1,0 +1,8 @@
+{
+  "biomes": [
+    "cinderscapes:quartz_cavern"
+  ],
+  "sky_light_color": "#CE4848",
+  "block_light_color": "#CE4848",
+  "ambient_brightness_multiplier": 1.2
+}

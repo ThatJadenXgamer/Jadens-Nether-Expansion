@@ -1,0 +1,8 @@
+{
+  "biomes": [
+    "biomesoplenty:crystalline_chasm"
+  ],
+  "sky_light_color": "#FF8CC5",
+  "block_light_color": "#FF8CC5",
+  "ambient_brightness_multiplier": 1.5
+}

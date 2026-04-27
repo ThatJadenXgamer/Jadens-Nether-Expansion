@@ -473,7 +473,7 @@ public class JNEConfigImpl {
                     .define("lavaHeatDistortion", true);
             HEAT_DISTORTION_INTENSITY = builder
                     .comment("Intensity of heat distortion wobbling")
-                    .defineInRange("heatDistortionIntensity", 0.004, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionIntensity", 0.003, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_SPEED = builder
                     .comment("Speed of heat distortion wobbling")
                     .defineInRange("heatDistortionSpeed", 2.0, 0.0, Double.MAX_VALUE);

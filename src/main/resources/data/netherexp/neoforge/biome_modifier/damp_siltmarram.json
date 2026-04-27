@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#netherexp:spawns_damp_variant_striders_and_siltmarram",
+  "features": "netherexp:damp_siltmarram",
+  "step": "vegetal_decoration"
+}

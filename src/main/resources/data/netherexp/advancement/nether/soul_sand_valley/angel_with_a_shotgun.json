@@ -22,7 +22,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "netherexp:shotguns"
+            "items": "#netherexp:shotguns"
           }
         ]
       }

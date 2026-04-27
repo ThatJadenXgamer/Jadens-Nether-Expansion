@@ -1,0 +1,8 @@
+{
+  "biomes": [
+    "regions_unexplored:infernal_holt"
+  ],
+  "sky_light_color": "#FF9532",
+  "block_light_color": "#FF9532",
+  "ambient_brightness_multiplier": 1.0
+}

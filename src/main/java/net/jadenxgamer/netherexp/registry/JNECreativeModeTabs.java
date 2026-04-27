@@ -361,6 +361,9 @@ public class JNECreativeModeTabs {
 
                 output.accept(JNEBlocks.SILT.get());
                 output.accept(JNEBlocks.SILT_FLINT_ORE.get());
+                output.accept(JNEBlocks.DAMP_SILTMARRAM.get());
+                output.accept(JNEBlocks.MOIST_SILTMARRAM.get());
+                output.accept(JNEBlocks.DRY_SILTMARRAM.get());
                 output.accept(Items.MAGMA_BLOCK);
                 output.accept(Blocks.SOUL_SAND);
                 output.accept(Blocks.GLOWSTONE);

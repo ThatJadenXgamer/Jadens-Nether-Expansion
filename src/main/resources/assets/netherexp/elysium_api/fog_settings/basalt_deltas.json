@@ -2,6 +2,6 @@
   "biomes": [
     "minecraft:basalt_deltas"
   ],
-  "fog_start_multiplier": -6.2,
+  "fog_start_multiplier": -1.2,
   "fog_end_multiplier": 0.9
 }

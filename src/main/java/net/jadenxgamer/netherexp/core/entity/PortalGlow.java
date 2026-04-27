@@ -10,6 +10,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherPortalBlock;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.AABB;
@@ -145,7 +146,7 @@ public class PortalGlow extends Entity {
         if (level.isClientSide) return;
 
         var state = level.getBlockState(portalBlockPos);
-        if (!(state.getBlock() instanceof NetherPortalBlock)) return;
+        if (!level.getBlockState(portalBlockPos).is(Blocks.NETHER_PORTAL)) return;
 
         Direction.Axis axis = state.getValue(NetherPortalBlock.AXIS);
         int minX = portalBlockPos.getX();

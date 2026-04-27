@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_nether"
+  ],
+  "remove": [
+    "#netherexp:spawns_dry_variant_striders_and_siltmarram",
+    "#netherexp:spawns_damp_variant_striders_and_siltmarram"
+  ]
+}

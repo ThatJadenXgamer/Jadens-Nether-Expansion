@@ -12,24 +12,12 @@ public class JNEBlockModelProvider extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
-        var tex = NetherExp.netherexpPath("block/pyroclast");
-
-        // Block
-        cubeAll("pyroclast", tex);
-
-        // Slab
-        slab("pyroclast_slab", tex, tex, tex);
-        slabTop("pyroclast_slab_top", tex, tex, tex);
-
-        // Stairs
-        stairs("pyroclast_stairs", tex, tex, tex);
-        stairsInner("pyroclast_stairs_inner", tex, tex, tex);
-        stairsOuter("pyroclast_stairs_outer", tex, tex, tex);
-
-        // Wall
-        wallPost("pyroclast_wall_post", tex);
-        wallSide("pyroclast_wall_side", tex);
-        wallSideTall("pyroclast_wall_side_tall", tex);
-        wallInventory("pyroclast_wall_inventory", tex);
+//        var damp_siltmarram = NetherExp.netherexpPath("block/damp_siltmarram");
+//        var moist_siltmarram = NetherExp.netherexpPath("block/moist_siltmarram");
+//        var dry_siltmarram = NetherExp.netherexpPath("block/dry_siltmarram");
+//
+//        cross("damp_siltmarram", damp_siltmarram);
+//        cross("moist_siltmarram", moist_siltmarram);
+//        cross("dry_siltmarram", dry_siltmarram);
     }
 }

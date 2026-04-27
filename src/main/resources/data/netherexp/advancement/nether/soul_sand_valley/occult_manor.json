@@ -25,7 +25,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "netherexp:sanctum"
+                "structures": "netherexp:sanctum"
               }
             }
           }

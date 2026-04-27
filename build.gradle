@@ -38,6 +38,10 @@ repositories {
         name "KosmX's maven"
         url 'https://maven.kosmx.dev/'
     }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/releases/"
+    }
 
     maven { url 'https://jitpack.io' }
 
@@ -107,11 +111,16 @@ configurations {
 
 dependencies {
     //implementation "com.github.ThatJadenXgamer:Elysium:1.2.0-alpha.8"
-    implementation name: 'ElysiumAPI-1.21.1-1.2.0-ALPHA.10' //jitpack is being a bitch and not allowing alpha 8 implementation
+    implementation name: 'ElysiumAPI-1.21.1-1.2.0-ALPHA.12' //jitpack is being a bitch and not allowing alpha 8 implementation
 
     jarJar(implementation("team.lodestar.lodestone:lodestone")) {
         version {
             prefer lodestone_version
+        }
+    }
+    jarJar(implementation("com.terraformersmc:biolith-neoforge")) {
+        version {
+            prefer biolith_version
         }
     }
 

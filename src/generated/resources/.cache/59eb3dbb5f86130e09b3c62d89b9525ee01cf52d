@@ -1,6 +1,4 @@
-// 1.21.1	2026-03-31T19:42:06.5159621	Loot Tables
-94c87230865c0134a5ae7673b96631dbe0985d6c data/netherexp/loot_table/blocks/pyroclast.json
-8781cf2d422c559a82eb4eb941489be100974bfc data/netherexp/loot_table/blocks/pyroclast_slab.json
-2906d6f3a47a459b7ab5e0955627bfaeff6a3e40 data/netherexp/loot_table/blocks/pyroclast_stairs.json
-15ece49d50111b731bd1f4237b98173ddd32bd29 data/netherexp/loot_table/blocks/pyroclast_wall.json
-354b610a3111ebe8c9f1b6b57b2c58e0e8db6c56 data/netherexp/loot_table/blocks/silt.json
+// 1.21.1	2026-04-25T22:16:34.6072633	Loot Tables
+4c72ce0ffcb550bbdc94cafe0a4ca0f8a7fd06a7 data/netherexp/loot_table/blocks/damp_siltmarram.json
+acfb43ba0da3e603e1a9fa571ffbd26349e6076c data/netherexp/loot_table/blocks/dry_siltmarram.json
+196140c43afd98b617cfda1fe6f1bd53c9bb8316 data/netherexp/loot_table/blocks/moist_siltmarram.json

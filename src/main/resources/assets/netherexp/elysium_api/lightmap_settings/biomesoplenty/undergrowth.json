@@ -1,0 +1,8 @@
+{
+  "biomes": [
+    "biomesoplenty:undergrowth"
+  ],
+  "sky_light_color": "#8DAF59",
+  "block_light_color": "#8DAF59",
+  "ambient_brightness_multiplier": 1.5
+}

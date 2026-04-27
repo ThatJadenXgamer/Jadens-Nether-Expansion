@@ -2,10 +2,16 @@ package net.jadenxgamer.netherexp.datagen;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
+import java.util.Objects;
 
 public class JNEItemModelProvider extends ItemModelProvider {
     public JNEItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -15,15 +21,18 @@ public class JNEItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // Block
-        withExistingParent("pyroclast", modLoc("block/pyroclast"));
+        basicItemWithBlockPath(JNEBlocks.DAMP_SILTMARRAM.get().asItem());
+        basicItemWithBlockPath(JNEBlocks.MOIST_SILTMARRAM.get().asItem());
+        basicItemWithBlockPath(JNEBlocks.DRY_SILTMARRAM.get().asItem());
+    }
 
-        // Slab
-        withExistingParent("pyroclast_slab", modLoc("block/pyroclast_slab"));
+    public ItemModelBuilder basicItemWithBlockPath(Item item) {
+        return basicItemWithBlockPath(Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)));
+    }
 
-        // Stairs
-        withExistingParent("pyroclast_stairs", modLoc("block/pyroclast_stairs"));
-
-        // Wall
-        withExistingParent("pyroclast_wall", modLoc("block/pyroclast_wall_inventory"));
+    public ItemModelBuilder basicItemWithBlockPath(ResourceLocation item) {
+        return getBuilder(item.toString())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getNamespace(), "block/" + item.getPath()));
     }
 }

@@ -9,7 +9,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "netherexp:black_ice_glaciers"
+                "biomes": "netherexp:black_ice_glaciers"
               }
             }
           }
@@ -27,7 +27,9 @@
     "hidden": false,
     "icon": {
       "id": "netherexp:netherite_plated_block",
-      "nbt": "{CustomModelData:1}"
+      "components": {
+        "minecraft:custom_model_data": 1
+      }
     },
     "show_toast": true,
     "title": {

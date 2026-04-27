@@ -19,7 +19,7 @@
     "term": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "id": {
+        "item": {
           "items": [
             "netherexp:nether_pizza_slice"
           ]

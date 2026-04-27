@@ -10,6 +10,7 @@ import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -52,10 +53,8 @@ public class JNEClientEvents {
 
     @SubscribeEvent
     public static void onPlayerLogin(ClientPlayerNetworkEvent.LoggingIn event) {
-        Minecraft client = Minecraft.getInstance();
-        //if (client.level == null || client.player == null || client.getConnection() == null) return;
-        //CreativeModeTabs.tryRebuildTabContents(client.level.enabledFeatures(), client.player.hasPermissions(2), client.getConnection().registryAccess());
-        //if (JNEConfigs.SHOW_BETA_WARNING_POPUP.get()) shouldShowBetaPopup = true;
+//        Minecraft client = Minecraft.getInstance();
+//        if (JNEConfigs.SHOW_BETA_WARNING_POPUP.get()) shouldShowBetaPopup = true;
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)

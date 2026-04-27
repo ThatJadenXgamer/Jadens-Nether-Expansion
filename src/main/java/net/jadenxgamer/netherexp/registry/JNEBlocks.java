@@ -24,6 +24,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import team.lodestar.lodestone.systems.block.LodestoneBlockProperties;
 import team.lodestar.lodestone.systems.block.LodestoneLogBlock;
 
 import java.util.function.Supplier;
@@ -737,11 +738,24 @@ public class JNEBlocks {
     public static final Supplier<Block> PYROCLAST_WALL = registerBlock("pyroclast_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(PYROCLAST.get())));
 
+    /**
+     * Silt
+     */
+
     public static final Supplier<Block> SILT = registerBlock("silt", () ->
             new ColoredFallingBlock(new ColorRGBA(10581094), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.4f).sound(SoundType.GRAVEL)));
 
     public static final Supplier<Block> SILT_FLINT_ORE = registerBlock("silt_flint_ore", () ->
             new OreFallingBlock(UniformInt.of(0, 2), new ColorRGBA(10581094), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.6f).sound(SoundType.GRAVEL)));
+
+    public static final Supplier<Block> DAMP_SILTMARRAM = registerBlock("damp_siltmarram", () ->
+            new SiltMarramBlock(JNETags.Biomes.SPAWNS_DAMP_VARIANT_STRIDERS_AND_SILTMARRAM, LodestoneBlockProperties.ofLegacyCopy(Blocks.NETHER_SPROUTS).randomTicks().mapColor(MapColor.TERRACOTTA_PINK)));
+
+    public static final Supplier<Block> MOIST_SILTMARRAM = registerBlock("moist_siltmarram", () ->
+            new SiltMarramBlock(JNETags.Biomes.SPAWNS_MOIST_VARIANT_STRIDERS_AND_SILTMARRAM, LodestoneBlockProperties.ofLegacyCopy(Blocks.NETHER_SPROUTS).randomTicks().mapColor(MapColor.TERRACOTTA_PINK)));
+
+    public static final Supplier<Block> DRY_SILTMARRAM = registerBlock("dry_siltmarram", () ->
+            new SiltMarramBlock(JNETags.Biomes.SPAWNS_DRY_VARIANT_STRIDERS_AND_SILTMARRAM, LodestoneBlockProperties.ofLegacyCopy(Blocks.NETHER_SPROUTS).randomTicks().mapColor(MapColor.TERRACOTTA_PINK)));
 
     public static void init(IEventBus eventBus) {
         registerAliases();

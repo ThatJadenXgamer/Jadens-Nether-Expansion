@@ -1,0 +1,8 @@
+{
+  "biomes": [
+    "regions_unexplored:glistering_meadow"
+  ],
+  "sky_light_color": "#88478E",
+  "block_light_color": "#88478E",
+  "ambient_brightness_multiplier": 1.5
+}

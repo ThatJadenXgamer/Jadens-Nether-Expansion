@@ -24,6 +24,7 @@ public class JNETags {
         public static final TagKey<Block> FROGMIST = createTag("frogmist"); // Frogmists
         public static final TagKey<Block> SPELEOTHEM_BASE_BLOCKS = createTag("speleothem_base_blocks"); // Blocks which speleothems can be placed on
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createTag("unbounded_speed_blocks"); // Blocks in this tag have their block speed factor ignored when unbounded speed is applied
+        public static final TagKey<Block> SILTMARRAM_PLANTABLE_ON = createTag("siltmarram_plantable_on"); // Blocks in this tag can support siltmarrams
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.netherexpPath(name));
@@ -69,6 +70,9 @@ public class JNETags {
         public static final TagKey<Biome> HAS_WARPED_SPORES = createBiomeTag("particles/has_warped_spores"); // Prevents sporeshrooms from producing warped spores here
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash"); // Prevents geysers from producing ash particles here
         public static final TagKey<Biome> HAS_WHITE_ASH = createBiomeTag("particles/has_white_ash"); // Prevents geysers from producing white ash particles here
+        public static final TagKey<Biome> SPAWNS_DAMP_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_damp_variant_striders_and_siltmarram");
+        public static final TagKey<Biome> SPAWNS_MOIST_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_moist_variant_striders_and_siltmarram");
+        public static final TagKey<Biome> SPAWNS_DRY_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_dry_variant_striders_and_siltmarram");
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, NetherExp.netherexpPath(name));

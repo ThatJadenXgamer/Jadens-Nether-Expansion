@@ -25,10 +25,11 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-//        generator.addProvider(event.includeClient(), new JNEBlockModelProvider(output, existingFileHelper));
-//        generator.addProvider(event.includeClient(), new JNEItemModelProvider(output, existingFileHelper));
-//        generator.addProvider(event.includeClient(), new JNEBlockStateProvider(output, existingFileHelper));
-//        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
-//                List.of(new LootTableProvider.SubProviderEntry(JNEBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+        generator.addProvider(event.includeClient(), new JNEBlockModelProvider(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new JNEItemModelProvider(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new JNEBlockStateProvider(output, existingFileHelper));
+        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
+                List.of(new LootTableProvider.SubProviderEntry(JNEBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+        generator.addProvider(event.includeServer(), new JNEBlockTagProvider(output, lookupProvider, existingFileHelper));
     }
 }
