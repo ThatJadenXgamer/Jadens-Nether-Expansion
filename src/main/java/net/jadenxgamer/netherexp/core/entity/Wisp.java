@@ -156,8 +156,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
     }
 
     @Override
-    protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {
-    }
+    protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {}
 
     @Override
     protected PathNavigation createNavigation(Level level) {

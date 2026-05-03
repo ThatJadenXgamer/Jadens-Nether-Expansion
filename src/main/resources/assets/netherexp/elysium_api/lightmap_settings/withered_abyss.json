@@ -1,0 +1,9 @@
+{
+  "type": "biome",
+  "biomes": [
+    "biomesoplenty:withered_abyss"
+  ],
+  "sky_light_color": "#504875",
+  "block_light_color": "#504875",
+  "ambient_brightness_multiplier": 1.2
+}

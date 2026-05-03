@@ -3,5 +3,5 @@
   "has_possession": true,
   "target_priority": 4,
   "target_mob": "minecraft:magma_cube",
-  "possessed_mob": "minecraft:wither_skeleton"
+  "possessed_mob": "netherexp:ecto_slab"
 }

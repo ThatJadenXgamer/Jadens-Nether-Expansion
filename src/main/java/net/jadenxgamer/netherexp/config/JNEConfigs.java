@@ -149,6 +149,7 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue IMPROVED_BREWING_STAND_PARTICLES;
     public static ModConfigSpec.BooleanValue POTION_CONSUMPTION_PARTICLES;
     public static ModConfigSpec.BooleanValue IMPROVED_NETHER_PORTAL_PARTICLES;
+    public static ModConfigSpec.BooleanValue ENABLE_NETHER_BIOME_LIGHTMAPS;
 
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;

@@ -7,7 +7,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherPortalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -182,7 +181,7 @@ public class CommonParticles {
             var y = pos.getY() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
             var z = pos.getZ() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
             LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
-            WorldParticleBuilder.create(JNEParticleTypes.PORTA_MIST.get())
+            WorldParticleBuilder.create(JNEParticleTypes.PORTAL_MIST.get())
                     .setFullBrightLighting()
                     .setNoClip(false)
                     .enableForcedSpawn()

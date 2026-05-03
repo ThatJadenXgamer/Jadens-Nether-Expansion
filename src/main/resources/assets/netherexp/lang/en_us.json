@@ -811,6 +811,7 @@
   "netherexp.configuration.improvedBrewingStandParticles": "Improved Brewing Stand Particles",
   "netherexp.configuration.potionConsumptionParticles": "Potion Consumption Particles",
   "netherexp.configuration.improvedNetherPortalParticles": "Improved Nether Portal Particles",
+  "netherexp.configuration.enableNetherBiomeLightmaps": "Enable Nether Biome Lightmaps",
 
   "netherexp.configuration.enableJNESplashTexts": "Enable JNE Splash Texts",
   "netherexp.configuration.redSplashText": "Red Splash Text",

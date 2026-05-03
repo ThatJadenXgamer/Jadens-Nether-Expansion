@@ -1,0 +1,15 @@
+{
+  "type": "dimension",
+  "dimensions": [
+    "minecraft:the_nether"
+  ],
+
+  "sky_light_color": "#FFFFFF",
+  "block_light_color": "#FFFFFF",
+  "ambient_brightness_multiplier": 1.0,
+
+  "event_flags": [
+    "netherexp:disable_jne_lightmaps"
+  ],
+  "priority": 1
+}

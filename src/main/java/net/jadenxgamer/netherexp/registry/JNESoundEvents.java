@@ -60,6 +60,10 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> VESSEL_WARN = registerSoundEvents("entity.vessel.warn");
     public static final Supplier<SoundEvent> VESSEL_FIRE = registerSoundEvents("entity.vessel.fire");
 
+    public static final Supplier<SoundEvent> ECTO_SLAB_WARN = registerSoundEvents("entity.ecto_slab.warn");
+    public static final Supplier<SoundEvent> ECTO_SLAB_JUMP = registerSoundEvents("entity.ecto_slab.jump");
+    public static final Supplier<SoundEvent> ECTO_SLAB_SQUISH = registerSoundEvents("entity.ecto_slab.squish");
+
     public static final Supplier<SoundEvent> BANSHEE_AMBIENT = registerSoundEvents("entity.banshee.ambient");
     public static final Supplier<SoundEvent> BANSHEE_HURT = registerSoundEvents("entity.banshee.hurt");
     public static final Supplier<SoundEvent> BANSHEE_DEATH = registerSoundEvents("entity.banshee.death");

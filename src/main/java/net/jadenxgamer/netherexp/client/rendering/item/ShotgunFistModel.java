@@ -75,7 +75,7 @@ public class ShotgunFistModel extends ItemHierarchicalModel<ShotgunFistItem> {
         double y = cameraPos.y + positionVector.y();
         double z = cameraPos.z + positionVector.z();
 
-        ShotgunFistItem.cooldownParticle(entity, entity.level(), entity.getRandom(), x, y, z);
+        ShotgunFistItem.Client.cooldownParticle(entity, entity.level(), entity.getRandom(), x, y, z);
     }
 
     public void renderFlashParticles(ItemStack stack, LivingEntity entity, PoseStack poseStack, ItemDisplayContext context) {
@@ -93,7 +93,7 @@ public class ShotgunFistModel extends ItemHierarchicalModel<ShotgunFistItem> {
         double y = cameraPos.y + positionVector.y();
         double z = cameraPos.z + positionVector.z();
 
-        ShotgunFistItem.shotgunFlashParticle(entity.level(), entity.getRandom(), x, y, z);
+        ShotgunFistItem.Client.shotgunFlashParticle(entity.level(), entity.getRandom(), x, y, z);
         ClientItemData.getOrCreate(stack).remove("shootFlash");
     }
 

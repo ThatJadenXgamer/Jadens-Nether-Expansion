@@ -1,8 +1,9 @@
 {
+  "type": "biome",
   "biomes": [
     "minecraft:warped_forest"
   ],
   "sky_light_color": "#FF89FF",
-  "block_light_color": "FF89FF",
+  "block_light_color": "#FF89FF",
   "ambient_brightness_multiplier": 0.5
 }

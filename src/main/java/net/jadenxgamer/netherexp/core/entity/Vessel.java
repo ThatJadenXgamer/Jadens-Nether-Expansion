@@ -65,7 +65,7 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
             "Shotgun Guy"
     );
     private int idleAnimationTimeout = 0;
-    private int prepareAimAnimationTimeout = 20;
+    private int prepareAimAnimationTimer = 20;
     private boolean isAiming = false;
     private boolean isShooting = false;
     public boolean armSmoke = false;
@@ -119,7 +119,6 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
 
     }
 
-
     @Override
     public void tick() {
         super.tick();
@@ -158,6 +157,38 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         return JNEConfigs.VESSEL_UNLEASHING_ODDS.get();
     }
 
+    @Override
+    public void handleEntityEvent(byte id) {
+        switch (id) {
+            case 81 -> {
+                prepareAimAnimationTimer = 20;
+                isAiming = true;
+            }
+            case 82 -> {
+                prepareAimAnimation.stop();
+                aimAnimation.stop();
+                prepareAimAnimationTimer = 20;
+                isAiming = false;
+            }
+            case 83 -> {
+                isShooting = true;
+                armSmoke = true;
+                armFlash = true;
+                VFXHelper.shotgunScreenShake(this.position(), 8.0f, Easing.LINEAR);
+            }
+            case 84 -> {
+                isShooting = false;
+                armSmoke = false;
+                shootAnimation.stop();
+            }
+            case 85 -> {
+                this.accurateShotParticle(this.level(), this.random, 0.35f, 1.0f, 2.0f, new Color(0xFFFFFF), true);
+                this.accurateShotParticle(this.level(), this.random, 0.65f, 1.0f, 1.5f, new Color(0xFDD843), true);
+            }
+        }
+        super.handleEntityEvent(id);
+    }
+
     ///////////////////////
     // GETTERS & SETTERS //
     ///////////////////////
@@ -182,38 +213,6 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
     // ANIMATIONS //
     ////////////////
 
-    @Override
-    public void handleEntityEvent(byte id) {
-        switch (id) {
-            case 81 -> {
-                prepareAimAnimationTimeout = 20;
-                isAiming = true;
-            }
-            case 82 -> {
-                prepareAimAnimation.stop();
-                aimAnimation.stop();
-                prepareAimAnimationTimeout = 20;
-                isAiming = false;
-            }
-            case 83 -> {
-                isShooting = true;
-                armSmoke = true;
-                armFlash = true;
-                VFXHelper.shotgunScreenShake(this.position(), 8.0f, Easing.LINEAR);
-            }
-            case 84 -> {
-                isShooting = false;
-                armSmoke = false;
-                shootAnimation.stop();
-            }
-            case 85 -> {
-                this.accurateShotParticle(this.level(), this.random, 0.35f, 1.0f, 2.0f, new Color(0xFFFFFF), true);
-                this.accurateShotParticle(this.level(), this.random, 0.65f, 1.0f, 1.5f, new Color(0xFDD843), true);
-            }
-        }
-        super.handleEntityEvent(id);
-    }
-
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = 40;
@@ -223,12 +222,12 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         }
 
         if (isAiming) {
-            if (prepareAimAnimationTimeout == 20) prepareAimAnimation.startIfStopped(this.tickCount);
-            else if (prepareAimAnimationTimeout == 0) {
+            if (prepareAimAnimationTimer == 20) prepareAimAnimation.startIfStopped(this.tickCount);
+            else if (prepareAimAnimationTimer == 0) {
                 prepareAimAnimation.stop();
                 aimAnimation.startIfStopped(this.tickCount);
             }
-            if (prepareAimAnimationTimeout > 0) --prepareAimAnimationTimeout;
+            if (prepareAimAnimationTimer > 0) --prepareAimAnimationTimer;
         }
 
         if (isShooting) {

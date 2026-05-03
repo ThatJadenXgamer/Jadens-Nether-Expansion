@@ -22,7 +22,6 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -52,6 +51,7 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.WISP.get(), WispRenderer::new);
         EntityRenderers.register(JNEEntityType.APPARITION.get(), ApparitionRenderer::new);
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
+        EntityRenderers.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.SHOTGUN_PELLET.get(), ShotgunPelletRenderer::new);
@@ -71,6 +71,7 @@ public final class NetherExpClient {
         event.registerLayerDefinition(WispRenderer.WispModel.LAYER, WispRenderer.WispModel::createBodyLayer);
         event.registerLayerDefinition(ApparitionRenderer.ApparitionModel.LAYER, ApparitionRenderer.ApparitionModel::createBodyLayer);
         event.registerLayerDefinition(VesselRenderer.VesselModel.LAYER, VesselRenderer.VesselModel::createBodyLayer);
+        event.registerLayerDefinition(EctoSlabRenderer.EctoSlabModel.LAYER, EctoSlabRenderer.EctoSlabModel::createBodyLayer);
         event.registerLayerDefinition(BansheeRenderer.BansheeModel.LAYER, BansheeRenderer.BansheeModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispModel.LAYER, WillOWispRenderer.WillOWispModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);
@@ -123,7 +124,7 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.RED_EXPLOSION.get(), HugeExplosionParticle.Provider::new);
         event.registerSpecial(JNEParticleTypes.RED_EXPLOSION_EMITTER.get(), (new RedExplosionEmitterParticle.Factory()));
         event.registerSpriteSet(JNEParticleTypes.JNE_PORTAL.get(), JNEPortalParticle.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.PORTA_MIST.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.PORTAL_MIST.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static class HandlePostShaders {

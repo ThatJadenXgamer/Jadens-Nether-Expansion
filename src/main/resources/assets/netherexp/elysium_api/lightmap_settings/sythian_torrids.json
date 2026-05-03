@@ -1,0 +1,9 @@
+{
+  "type": "biome",
+  "biomes": [
+    "netherdescent:sythian_torrids"
+  ],
+  "sky_light_color": "#D39658",
+  "block_light_color": "#D39658",
+  "ambient_brightness_multiplier": 1
+}

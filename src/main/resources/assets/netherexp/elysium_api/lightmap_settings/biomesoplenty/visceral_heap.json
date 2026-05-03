@@ -1,8 +1,0 @@
-{
-  "biomes": [
-    "biomesoplenty:visceral_heap"
-  ],
-  "sky_light_color": "#C6645D",
-  "block_light_color": "#C6645D",
-  "ambient_brightness_multiplier": 1.2
-}

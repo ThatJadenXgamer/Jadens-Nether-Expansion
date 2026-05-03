@@ -1,6 +1,8 @@
 package net.jadenxgamer.netherexp.event;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import net.jadenxgamer.elysium_api.Elysium;
+import net.jadenxgamer.elysium_api.impl.client.lightmap_settings.LightmapSettingsManager;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.client.JNEFogRenderer;
@@ -28,6 +30,7 @@ import team.lodestar.lodestone.systems.postprocess.PostProcessHandler;
 import java.io.IOException;
 
 import static net.jadenxgamer.netherexp.NetherExpClient.shouldShowBetaPopup;
+import static net.jadenxgamer.netherexp.config.JNEConfigs.ENABLE_NETHER_BIOME_LIGHTMAPS;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = NetherExp.MOD_ID, value = Dist.CLIENT)
@@ -49,6 +52,8 @@ public class JNEClientEvents {
                 shouldShowBetaPopup = false;
             }
         }
+        if (ENABLE_NETHER_BIOME_LIGHTMAPS.get()) LightmapSettingsManager.disableEventFlag(NetherExp.netherexpPath("disable_jne_lightmaps"));
+        else LightmapSettingsManager.enableEventFlag(NetherExp.netherexpPath("disable_jne_lightmaps"));
     }
 
     @SubscribeEvent

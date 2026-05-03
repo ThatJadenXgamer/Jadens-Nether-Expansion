@@ -1,8 +1,0 @@
-{
-  "biomes": [
-    "regions_unexplored:mycotoxic_undergrowth"
-  ],
-  "sky_light_color": "#FFCC35",
-  "block_light_color": "#FFCC35",
-  "ambient_brightness_multiplier": 1.0
-}

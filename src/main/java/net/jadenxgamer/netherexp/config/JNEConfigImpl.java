@@ -521,6 +521,9 @@ public class JNEConfigImpl {
             IMPROVED_NETHER_PORTAL_PARTICLES = builder
                     .comment("Improves the nether portal's particles")
                     .define("improvedNetherPortalParticles", true);
+            ENABLE_NETHER_BIOME_LIGHTMAPS = builder
+                    .comment("Gives every nether biome a custom lightmap that compliments its environment")
+                    .define("enableNetherBiomeLightmaps", true);
 
             ENABLE_JNE_SPLASH_TEXTS = builder
                     .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")

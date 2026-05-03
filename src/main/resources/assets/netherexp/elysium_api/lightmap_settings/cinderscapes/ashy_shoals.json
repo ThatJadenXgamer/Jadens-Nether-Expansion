@@ -1,8 +1,0 @@
-{
-  "biomes": [
-    "cinderscapes:ashy_shoals"
-  ],
-  "sky_light_color": "#B77C7C",
-  "block_light_color": "#B77C7C",
-  "ambient_brightness_multiplier": 0.8
-}

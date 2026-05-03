@@ -25,12 +25,19 @@ public class JNEEntityType {
     public static final Supplier<EntityType<Wisp>> WISP = ENTITY_TYPES.register("wisp", () ->
             EntityType.Builder.of(Wisp::new, MobCategory.AMBIENT)
                     .sized(0.5f, 0.6f).fireImmune().build("wisp"));
+
     public static final Supplier<EntityType<Apparition>> APPARITION = ENTITY_TYPES.register("apparition", () ->
             EntityType.Builder.of(Apparition::new, MobCategory.MONSTER)
                     .sized(1.0f, 2.2f).fireImmune().build("apparition"));
+
     public static final Supplier<EntityType<Vessel>> VESSEL = ENTITY_TYPES.register("vessel", () ->
             EntityType.Builder.of(Vessel::new, MobCategory.MONSTER)
                     .sized(0.8f, 2.6f).fireImmune().build("vessel"));
+
+    public static final Supplier<EntityType<EctoSlab>> ECTO_SLAB = ENTITY_TYPES.register("ecto_slab", () ->
+            EntityType.Builder.of(EctoSlab::new, MobCategory.MONSTER)
+                    .sized(1.375f, 0.75f).fireImmune().build("ecto_slab"));
+
     public static final Supplier<EntityType<Banshee>> BANSHEE = ENTITY_TYPES.register("banshee", () ->
             EntityType.Builder.of(Banshee::new, MobCategory.MONSTER)
                     .sized(1.25f, 2.375f).fireImmune().build("banshee"));
@@ -71,6 +78,7 @@ public class JNEEntityType {
         event.put(WISP.get(), Wisp.createAttributes().build());
         event.put(APPARITION.get(), Apparition.createAttributes().build());
         event.put(VESSEL.get(), Vessel.createAttributes().build());
+        event.put(ECTO_SLAB.get(), EctoSlab.createAttributes().build());
         event.put(BANSHEE.get(), Banshee.createAttributes().build());
     }
 

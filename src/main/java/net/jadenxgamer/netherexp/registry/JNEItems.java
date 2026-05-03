@@ -129,7 +129,7 @@ public class JNEItems {
             new DeferredSpawnEggItem(JNEEntityType.VESSEL, 4864303, 12698049, new Item.Properties()));
 
     public static final Supplier<Item> ECTO_SLAB_SPAWN_EGG = ITEMS.register("ecto_slab_spawn_egg", () ->
-            new DeferredSpawnEggItem(JNEEntityType.WISP, 4864303, 1788232, new Item.Properties()));
+            new DeferredSpawnEggItem(JNEEntityType.ECTO_SLAB, 4864303, 1788232, new Item.Properties()));
 
     public static final Supplier<Item> BANSHEE_SPAWN_EGG = ITEMS.register("banshee_spawn_egg", () ->
             new DeferredSpawnEggItem(JNEEntityType.BANSHEE, 1985382, 1788232, new Item.Properties()));

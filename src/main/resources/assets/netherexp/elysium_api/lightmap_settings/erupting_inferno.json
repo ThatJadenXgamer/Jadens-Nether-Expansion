@@ -1,0 +1,9 @@
+{
+  "type": "biome",
+  "biomes": [
+    "biomesoplenty:erupting_inferno"
+  ],
+  "sky_light_color": "#FFB351",
+  "block_light_color": "#FFB351",
+  "ambient_brightness_multiplier": 1
+}
