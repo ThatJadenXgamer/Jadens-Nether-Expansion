@@ -666,6 +666,7 @@
   "item.netherexp.grenade_antidote.effect.infested": "Grenade Antidote for Infested",
   "subtitles.block.nether_portal.activate": "Nether portal activates",
   "subtitles.block.nether_portal.break": "Nether portal shatters",
+  "subtitles.entity.ecto_slab.leap": "Ecto Slab leaps",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",

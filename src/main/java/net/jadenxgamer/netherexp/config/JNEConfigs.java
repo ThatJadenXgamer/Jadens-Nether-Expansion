@@ -47,7 +47,6 @@ public class JNEConfigs {
     // ITEM
     public static ModConfigSpec.IntValue IMMUNITY_CONSUMPTION;
     public static ModConfigSpec.BooleanValue AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION;
-    public static ModConfigSpec.BooleanValue BACKPORT_TEARS_MUSIC_DISC;
     public static ModConfigSpec.BooleanValue TWEAK_OBTAINING_TEARS_MUSIC_DISC;
     public static ModConfigSpec.DoubleValue SHOTGUN_SELF_RECOIL;
     public static ModConfigSpec.DoubleValue POINT_BLANK_SELF_RECOIL_BONUS;

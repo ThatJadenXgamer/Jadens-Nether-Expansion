@@ -165,10 +165,6 @@ public class JNEConfigImpl {
             AMPLIFIER_SCALES_IMMUNITY_CONSUMPTION = builder
                     .comment("Weather the amount of duration depleted multiplies with the infliction's amplifier")
                     .define("amplifierScalesImmunityConsumption", true);
-            BACKPORT_TEARS_MUSIC_DISC = builder
-                    .comment("Backports the tears music disc from 1.21.6+")
-                    .worldRestart()
-                    .define("backportTearsMusicDisc", true);
             TWEAK_OBTAINING_TEARS_MUSIC_DISC = builder
                     .comment("Makes obtaining the tears music disc harder, when enabled requires you to slay a ghast in the overworld \n" +
                              "If disabled then the disc is obtained by redirecting a fireball into a ghast like in vanilla")

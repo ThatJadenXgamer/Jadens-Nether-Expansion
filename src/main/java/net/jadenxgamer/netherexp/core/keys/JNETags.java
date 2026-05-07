@@ -59,6 +59,7 @@ public class JNETags {
         public static final TagKey<EntityType<?>> PHANTASM_HULL_PROTECTS_BLACKLIST = createTag("phantasm_hull_protects_blacklist"); // Prevents projectiles from being phased through mobs in the above tag
         public static final TagKey<EntityType<?>> IGNORES_BLOCK_COLLISION = createTag("ignores_block_collision"); // Projectiles in this tag will go through blocks
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createTag("ignores_soul_sand_slowness"); // Entities within this tag cannot be slowed down by soul sand
+        public static final TagKey<EntityType<?>> SAFE_FROM_ECTO_SLAB_EMERGE_BURST = createTag("safe_from_ecto_slab_emerge_burst"); // Entities within this tag are immune to emerge burst attack's AoE
 
         private static TagKey<EntityType<?>> createTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, NetherExp.netherexpPath(name));

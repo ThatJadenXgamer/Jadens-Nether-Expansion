@@ -1474,14 +1474,14 @@
     ],
     "subtitle": "subtitles.entity.ecto_slab.squish"
   },
-  "entity.ecto_slab.squish_small": {
+  "entity.ecto_slab.leap": {
     "sounds": [
       "netherexp:mob/ecto_slab/small1",
       "netherexp:mob/ecto_slab/small2",
       "netherexp:mob/ecto_slab/small3",
       "netherexp:mob/ecto_slab/small4"
     ],
-    "subtitle": "subtitles.entity.ecto_slab.squish"
+    "subtitle": "subtitles.entity.ecto_slab.leap"
   },
   "entity.ecto_slab.warn": {
     "sounds": [

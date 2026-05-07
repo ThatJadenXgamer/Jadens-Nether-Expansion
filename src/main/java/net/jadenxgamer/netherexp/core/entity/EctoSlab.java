@@ -5,20 +5,25 @@ import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
@@ -33,9 +38,12 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.systems.easing.Easing;
@@ -47,23 +55,35 @@ import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParti
 import team.lodestar.lodestone.systems.particle.world.behaviors.DirectionalParticleBehavior;
 
 import java.awt.*;
+import java.util.Comparator;
 import java.util.EnumSet;
+import java.util.List;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.SILVER_PARANORMAL_DAMAGE_MULTIPLIER;
 import static net.jadenxgamer.netherexp.config.JNEConfigs.SILVER_PARANORMAL_INFLICTS_SLOWNESS;
 
 public class EctoSlab extends PossessedMob {
 
+    private static final ResourceLocation STACK_SPEED_MODIFIER_ID = NetherExp.netherexpPath("stack_speed");
+    private static final ResourceLocation STACK_KNOCKBACK_RESISTANCE_MODIFIER_ID = NetherExp.netherexpPath("stack_knockback_resistance");
+    private static final ResourceLocation STACK_DAMAGE_MODIFIER_ID = NetherExp.netherexpPath("stack_damage");
+    private static final ResourceLocation STACK_JUMP_STRENGTH_MODIFIER_ID = NetherExp.netherexpPath("stack_jump_strength");
+
     public final AnimationState idleAnimation = new AnimationState();
     public final AnimationState idleMirroredAnimation = new AnimationState();
     public final AnimationState idleBurrowedAnimation = new AnimationState();
     public final AnimationState burrowAnimation = new AnimationState();
     public final AnimationState emergeAnimation = new AnimationState();
+    private int maxStackSize = 4;
     private boolean wasOnGround;
     private int burrowedCooldown = 40;
+    private boolean lookingToStack = false;
+    private boolean wasForcedOut = false;
 
     private static final EntityDimensions BURROWED_DIMENSIONS = EntityDimensions.scalable(1.375f, 0.2f);
     private static final EntityDataAccessor<Boolean> IS_BURROWED = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> STACK_SIZE = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.INT);
+
     private int burrowAnimationAnimationTimer = 20;
     private int emergeAnimationAnimationTimer = 15;
     private boolean belowGroundAnimation = false;
@@ -82,18 +102,19 @@ public class EctoSlab extends PossessedMob {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0)
-                .add(Attributes.ATTACK_DAMAGE, 2.0)
+                .add(Attributes.MAX_HEALTH, 15.0)
+                .add(Attributes.ATTACK_DAMAGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.4)
-                .add(Attributes.JUMP_STRENGTH, 0.55)
+                .add(Attributes.JUMP_STRENGTH, 0.5)
                 .add(Attributes.FOLLOW_RANGE, 16.0);
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new EctoSlabFloatGoal(this));
-        this.goalSelector.addGoal(2, new EctoSlabAttackGoal(this));
-        this.goalSelector.addGoal(3, new EctoSlabRandomDirectionGoal(this));
+        this.goalSelector.addGoal(2, new EctoSlabStackGoal(this));
+        this.goalSelector.addGoal(3, new EctoSlabAttackGoal(this));
+        this.goalSelector.addGoal(4, new EctoSlabRandomDirectionGoal(this));
         this.goalSelector.addGoal(5, new EctoSlabKeepOnJumpingGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Piglin.class, true));
@@ -105,7 +126,16 @@ public class EctoSlab extends PossessedMob {
         super.tick();
         if (this.level().isClientSide) this.setupAnimationStates();
         if (!isBurrowed() && (this.onGround() && !this.wasOnGround)) {
+            float f = this.getDimensions(this.getPose()).width() * 2.0F;
+            float f1 = f / 2.0F;
             this.playSound(this.getSquishSound(), this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+            for (int i = 0; (float)i < f * 6.0F; i++) {
+                float f2 = this.random.nextFloat() * (float) (Math.PI * 2);
+                float f3 = this.random.nextFloat() * 0.5F + 0.5F;
+                float f4 = Mth.sin(f2) * f1 * f3;
+                float f5 = Mth.cos(f2) * f1 * f3;
+                this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX() + (double)f4, this.getY(), this.getZ() + (double)f5, 0.0, 0.0, 0.0);
+            }
         }
         this.wasOnGround = this.onGround();
     }
@@ -118,13 +148,19 @@ public class EctoSlab extends PossessedMob {
         Vec3 vec3 = this.getDeltaMovement();
         this.setDeltaMovement(vec3.x, this.getJumpPower(), vec3.z);
         this.hasImpulse = true;
-        net.neoforged.neoforge.common.CommonHooks.onLivingJump(this);
+        CommonHooks.onLivingJump(this);
     }
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (source.getDirectEntity() instanceof ThrownPotion potion && hurtWithCleanWater(potion)) doExorcism();
-        if (isBurrowed() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
+        if (isBurrowed()) {
+            if (isShovelHit(source)) {
+                playSound(SoundEvents.SHOVEL_FLATTEN, 1.0f, 1.0f);
+                this.wasForcedOut = true;
+            }
+            if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
+        }
         if (source.getEntity() instanceof Player player) {
             if (player.getMainHandItem().is(JNETags.Items.SILVER_WEAPONS)) {
                 amount *= SILVER_PARANORMAL_DAMAGE_MULTIPLIER.get();
@@ -133,6 +169,18 @@ public class EctoSlab extends PossessedMob {
             }
         }
         return super.hurt(source, amount);
+    }
+
+    @Override
+    public void die(DamageSource source) {
+        if (getStackSize() > 1) {
+            setStackSize(getStackSize() - 1);
+            setHealth(getMaxHealth());
+            this.level().playSound(null, this.blockPosition(), this.getDeathSound(), getSoundSource(), 1.0f, 1.0f);
+            level().broadcastEntityEvent(this, (byte) 86);
+            return;
+        }
+        super.die(source);
     }
 
     @Override
@@ -167,6 +215,30 @@ public class EctoSlab extends PossessedMob {
         }
     }
 
+    private void doEmergenceBurst(boolean wasForcedOut) {
+        if (this.level().isClientSide) return;
+        AABB area = this.getBoundingBox().inflate(1.2);
+        List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, area, victim -> victim != this && victim.isAlive());
+        float damage = this.getAttackDamage() * 2.0f;
+        DamageSource source = this.damageSources().mobAttack(this);
+
+        for (LivingEntity victim : targets) {
+            if (!wasForcedOut && victim.getType().is(JNETags.EntityTypes.SAFE_FROM_ECTO_SLAB_EMERGE_BURST)) continue;
+            if (victim instanceof EctoSlab) continue;
+            if (victim.hurt(source, damage)) {
+                this.playSound(JNESoundEvents.ECTOPLASM_FREEZE.get(), 1.0F, 1.0F);
+                if (this.level() instanceof ServerLevel serverLevel) EnchantmentHelper.doPostAttackEffects(serverLevel, victim, source);
+            }
+        }
+        this.wasForcedOut = false;
+    }
+
+    private boolean isShovelHit(DamageSource source) {
+        return source.getEntity() instanceof LivingEntity attacker &&
+                (attacker.getMainHandItem().canPerformAction(ItemAbilities.SHOVEL_DIG) ||
+                        attacker.getMainHandItem().is(ItemTags.SHOVELS));
+    }
+
     //////////
     // DATA //
     //////////
@@ -175,29 +247,37 @@ public class EctoSlab extends PossessedMob {
     public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
         super.onSyncedDataUpdated(key);
         if (IS_BURROWED.equals(key)) this.refreshDimensions();
+        if (STACK_SIZE.equals(key)) this.refreshDimensions();
     }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(IS_BURROWED, false);
+        builder.define(STACK_SIZE, 1);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("isBurrowed", this.isBurrowed());
+        nbt.putBoolean("IsBurrowed", this.isBurrowed());
+        nbt.putInt("StackSize", this.getStackSize());
+        nbt.putInt("MaxStackSize", this.getMaxStackSize());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setBurrowed(nbt.getBoolean("isBurrowed"));
+        this.setBurrowed(nbt.getBoolean("IsBurrowed"));
+        this.setStackSize(nbt.getInt("StackSize"));
+        this.setMaxStackSize(nbt.getInt("MaxStackSize"));
     }
 
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
-        return isBurrowed() ? BURROWED_DIMENSIONS : super.getDefaultDimensions(pose);
+        if (isBurrowed()) return BURROWED_DIMENSIONS;
+        float height = getStackSize() * 0.75f;
+        return EntityDimensions.scalable(1.375f, Math.max(0.2f, height));
     }
 
     protected float getAttackDamage() {
@@ -238,6 +318,18 @@ public class EctoSlab extends PossessedMob {
                 idleAnimation.stop();
             }
             case 85 -> Client.warnParticle(this, this.level(), this.position());
+            case 86 -> {
+                int stack = getStackSize();
+                double yOffset = stack * 0.75;
+                for (int i = 0; i < 20; i++) {
+                    double dx = random.nextGaussian() * 0.3;
+                    double dz = random.nextGaussian() * 0.3;
+                    double dy = random.nextDouble() * 0.5;
+                    level().addParticle(ParticleTypes.POOF,
+                            getX() + dx, getY() + yOffset + dy, getZ() + dz,
+                            0, 0, 0);
+                }
+            }
         }
         super.handleEntityEvent(id);
     }
@@ -251,6 +343,7 @@ public class EctoSlab extends PossessedMob {
     }
 
     public void setBurrowed(boolean burrowed) {
+        if (burrowed == isBurrowed()) return;
         this.entityData.set(IS_BURROWED, burrowed);
         this.refreshDimensions();
         if (burrowed) {
@@ -262,8 +355,85 @@ public class EctoSlab extends PossessedMob {
         }
     }
 
+    public int getStackSize() {
+        return this.entityData.get(STACK_SIZE);
+    }
+
+    public void setStackSize(int stack) {
+        stack = Mth.clamp(stack, 1, this.maxStackSize);
+        this.entityData.set(STACK_SIZE, stack);
+        this.updateAttributesForStack(stack);
+        this.refreshDimensions();
+    }
+
     protected int getJumpDelay() {
-        return this.random.nextInt(20) + 10;
+        int stack = getStackSize();
+        return switch (stack) {
+            case 1 -> 30;
+            case 2 -> 20;
+            case 3 -> 15;
+            default -> 10;
+        };
+    }
+
+    private int getBurrowCooldown() {
+        int stack = getStackSize();
+        return switch (stack) {
+            case 1 -> this.random.nextInt(60, 81);
+            case 2 -> 60;
+            default -> 50;
+        };
+    }
+
+    private void updateAttributesForStack(int newStackSize) {
+        AttributeInstance speed = this.getAttribute(Attributes.MOVEMENT_SPEED);
+        AttributeInstance damage = this.getAttribute(Attributes.ATTACK_DAMAGE);
+        AttributeInstance knockbackResistance = this.getAttribute(Attributes.KNOCKBACK_RESISTANCE);
+        AttributeInstance jumpStrength = this.getAttribute(Attributes.JUMP_STRENGTH);
+
+
+        if (speed != null) { // Speed: +0.05 per extra stack, capped at 0.6 total
+            speed.removeModifier(STACK_SPEED_MODIFIER_ID);
+            double speedBonus = Math.min((newStackSize - 1) * 0.05, 0.2);
+            if (speedBonus != 0.0) {
+                AttributeModifier speedMod = new AttributeModifier(STACK_SPEED_MODIFIER_ID, speedBonus, AttributeModifier.Operation.ADD_VALUE);
+                speed.addTransientModifier(speedMod);
+            }
+        }
+
+        if (damage != null) { // Damage: +2 per stack
+            damage.removeModifier(STACK_DAMAGE_MODIFIER_ID);
+            double damageBonus = newStackSize * 2.0;
+            AttributeModifier damageMod = new AttributeModifier(STACK_DAMAGE_MODIFIER_ID, damageBonus, AttributeModifier.Operation.ADD_VALUE);
+            damage.addTransientModifier(damageMod);
+        }
+
+        if (knockbackResistance != null) { // Knockback Resistance: +0.15 per extra stack
+            knockbackResistance.removeModifier(STACK_KNOCKBACK_RESISTANCE_MODIFIER_ID);
+            double kbBonus = (newStackSize - 1) * 0.15;
+            if (kbBonus != 0.0) {
+                AttributeModifier kbMod = new AttributeModifier(STACK_KNOCKBACK_RESISTANCE_MODIFIER_ID, kbBonus, AttributeModifier.Operation.ADD_VALUE);
+                knockbackResistance.addTransientModifier(kbMod);
+            }
+        }
+
+        if (jumpStrength != null) { // Jump Strength: +0.05 per extra stack
+            jumpStrength.removeModifier(STACK_JUMP_STRENGTH_MODIFIER_ID);
+            double jumpBonus = (newStackSize - 1) * 0.05;
+            if (jumpBonus != 0.0) {
+                AttributeModifier jumpMod = new AttributeModifier(STACK_JUMP_STRENGTH_MODIFIER_ID, jumpBonus, AttributeModifier.Operation.ADD_VALUE);
+                jumpStrength.addTransientModifier(jumpMod);
+            }
+        }
+    }
+
+    public int getMaxStackSize() {
+        return this.maxStackSize;
+    }
+
+    public void setMaxStackSize(int maxStackSize) {
+        maxStackSize = Mth.clamp(maxStackSize, 1, 16);
+        this.maxStackSize = maxStackSize;
     }
 
     ////////////////
@@ -318,7 +488,6 @@ public class EctoSlab extends PossessedMob {
         return JNESoundEvents.ECTO_SLAB_JUMP.get();
     }
 
-
     protected @NotNull SoundEvent getWarnSound() {
         return JNESoundEvents.ECTO_SLAB_WARN.get();
     }
@@ -332,6 +501,9 @@ public class EctoSlab extends PossessedMob {
         private int jumpDelay;
         private final EctoSlab ectoSlab;
         private boolean isAggressive;
+        @Nullable
+        private Entity movingTarget;
+        private double seekSpeed = 0.0;
 
         public EctoSlabMoveControl(EctoSlab ectoSlab) {
             super(ectoSlab);
@@ -346,7 +518,12 @@ public class EctoSlab extends PossessedMob {
 
         public void setWantedMovement(double speed) {
             this.speedModifier = speed;
-            this.operation = MoveControl.Operation.MOVE_TO;
+            this.operation = Operation.MOVE_TO;
+        }
+
+        public void setSeekTarget(@Nullable Entity target, double speed) {
+            this.movingTarget = target;
+            this.seekSpeed = speed;
         }
 
         @Override
@@ -359,18 +536,21 @@ public class EctoSlab extends PossessedMob {
                 this.mob.yBodyRot = this.mob.getYRot();
                 slimeBehavior();
             }
+            if (!ectoSlab.isBurrowed() && movingTarget != null) {
+                movingTarget = null;
+            }
         }
 
         private void slimeBehavior() {
-            if (this.operation != MoveControl.Operation.MOVE_TO) {
+            if (this.operation != Operation.MOVE_TO) {
                 this.mob.setZza(0.0F);
             } else {
-                this.operation = MoveControl.Operation.WAIT;
+                this.operation = Operation.WAIT;
                 if (this.mob.onGround()) {
                     this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.ectoSlab.getJumpDelay();
-                        if (this.isAggressive) this.jumpDelay /= 3;
+                        if (this.isAggressive) this.jumpDelay /= 2;
                         this.ectoSlab.getJumpControl().jump();
                         this.ectoSlab.playSound(this.ectoSlab.getJumpSound(), this.ectoSlab.getSoundVolume(), 1.0f);
                     } else {
@@ -383,21 +563,112 @@ public class EctoSlab extends PossessedMob {
         }
 
         private void burrowBehavior() {
-            float n;
-            if (this.operation == Operation.MOVE_TO) {
-                double x = this.wantedX - this.mob.getX();
-                double z = this.wantedZ - this.mob.getZ();
-                double y = this.wantedY - this.mob.getY();
-                double p = x * x + y * y + z * z;
-                if (p < 2.500000277905201E-7) {
-                    this.mob.setZza(0.0F);
+            if (movingTarget != null && movingTarget.isAlive()) {
+                Vec3 toTarget = movingTarget.position().subtract(mob.position());
+                double distance = toTarget.length();
+                if (distance < 0.5) {
+                    mob.setPos(movingTarget.getX(), mob.getY(), movingTarget.getZ());
+                    mob.setDeltaMovement(Vec3.ZERO);
+                    mob.setSpeed(0.0f);
                     return;
                 }
+                double maxSpeed = seekSpeed * mob.getAttributeValue(Attributes.MOVEMENT_SPEED) * 1.5;
+                Vec3 desiredVelocity = toTarget.normalize().scale(maxSpeed);
+                mob.setDeltaMovement(desiredVelocity.x, mob.getDeltaMovement().y, desiredVelocity.z);
+                float yaw = (float)(Mth.atan2(desiredVelocity.z, desiredVelocity.x) * (180F / Math.PI)) - 90F;
+                mob.setYRot(rotlerp(mob.getYRot(), yaw, 90.0F));
+                mob.setSpeed((float)seekSpeed);
+            } else {
+                mob.setDeltaMovement(0, mob.getDeltaMovement().y, 0);
+                mob.setSpeed(0.0f);
+                mob.setZza(0.0F);
+                this.operation = Operation.WAIT;
+            }
+        }
+    }
 
-                n = (float)(Mth.atan2(z, x) * 57.2957763671875) - 90.0F;
-                this.mob.setYRot(this.rotlerp(this.mob.getYRot(), n, 90.0F));
-                this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
-            } else this.mob.setZza(0.0F);
+    static class EctoSlabStackGoal extends Goal {
+        private static final double SEARCH_RADIUS = 24.0;
+        private static final double STACK_MERGE_DISTANCE = 1.8;
+
+        private int leapCooldown = 10;
+        private final EctoSlab ectoSlab;
+        @Nullable
+        private EctoSlab mergeTarget;
+
+        public EctoSlabStackGoal(EctoSlab ectoSlab) {
+            this.ectoSlab = ectoSlab;
+            this.setFlags(EnumSet.of(Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (ectoSlab.getTarget() == null) return false;
+            if (ectoSlab.getStackSize() > 1) return false;
+            mergeTarget = findBestMergeTarget();
+            return ectoSlab.getMoveControl() instanceof EctoSlabMoveControl && mergeTarget != null;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            if (ectoSlab.getTarget() == null) return false;
+            if (ectoSlab.getStackSize() > 1) return false;
+            return mergeTarget != null && mergeTarget.isAlive() && ectoSlab.distanceToSqr(mergeTarget) > STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE;
+        }
+
+        @Override
+        public void start() {
+            ectoSlab.lookingToStack = true;
+            leapCooldown = 10;
+        }
+
+        @Override
+        public void stop() {
+            mergeTarget = null;
+            ectoSlab.lookingToStack = false;
+            leapCooldown = 10;
+        }
+
+        @Override
+        public void tick() {
+            if (mergeTarget == null) return;
+            if (ectoSlab.getMoveControl() instanceof EctoSlabMoveControl control) {
+                double dx = mergeTarget.getX() - ectoSlab.getX();
+                double dz = mergeTarget.getZ() - ectoSlab.getZ();
+                float yaw = (float) (Mth.atan2(dz, dx) * (180F / Math.PI)) - 90F;
+                control.setDirection(yaw, true);
+                control.setWantedPosition(mergeTarget.getX(), mergeTarget.getY(), mergeTarget.getZ(), ectoSlab.getAttributeValue(Attributes.MOVEMENT_SPEED));
+
+                if (leapCooldown <= 0) {
+                    if (!ectoSlab.onGround()) return;
+                    ectoSlab.getJumpControl().jump();
+                    Vec3 leap = new Vec3(ectoSlab.getLookAngle().x, ectoSlab.getLookAngle().y, ectoSlab.getLookAngle().z).normalize();
+                    ectoSlab.playSound(JNESoundEvents.ECTO_SLAB_LEAP.get(), 1.0f, 1.0f);
+                    ectoSlab.push(leap.scale(0.55));
+                    leapCooldown = 20;
+                } else --leapCooldown;
+            }
+
+            if (ectoSlab.distanceToSqr(mergeTarget) <= STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE) {
+                int newSize = Math.min(mergeTarget.getStackSize() + 1, mergeTarget.getMaxStackSize());
+                mergeTarget.setStackSize(newSize);
+                ectoSlab.playSound(SoundEvents.RESPAWN_ANCHOR_CHARGE, 1.0f, 1.0f);
+                ectoSlab.discard();
+            }
+        }
+
+        @Nullable
+        private EctoSlab findBestMergeTarget() {
+            Level level = ectoSlab.level();
+            AABB searchBox = AABB.ofSize(ectoSlab.position(), SEARCH_RADIUS, SEARCH_RADIUS, SEARCH_RADIUS);
+            List<EctoSlab> candidates = level.getEntitiesOfClass(EctoSlab.class, searchBox,
+                    candidate -> candidate != ectoSlab &&
+                            !candidate.isBurrowed() &&
+                            candidate.getStackSize() < candidate.getMaxStackSize());
+
+            if (candidates.isEmpty()) return null;
+            candidates.sort(Comparator.comparingInt(EctoSlab::getStackSize).thenComparingDouble(e -> e.distanceToSqr(ectoSlab)));
+            return candidates.getFirst();
         }
     }
 
@@ -409,14 +680,15 @@ public class EctoSlab extends PossessedMob {
 
         public EctoSlabAttackGoal(EctoSlab ectoSlab) {
             this.ectoSlab = ectoSlab;
-            this.setFlags(EnumSet.of(Goal.Flag.LOOK));
+            this.setFlags(EnumSet.of(Flag.LOOK));
         }
 
         @Override
         public boolean canUse() {
-            LivingEntity livingentity = this.ectoSlab.getTarget();
-            if (livingentity == null) return false;
-            else return this.ectoSlab.canAttack(livingentity) && this.ectoSlab.getMoveControl() instanceof EctoSlabMoveControl;
+            if (ectoSlab.lookingToStack) return false;
+            LivingEntity target = this.ectoSlab.getTarget();
+            if (target == null) return false;
+            else return this.ectoSlab.canAttack(target) && this.ectoSlab.getMoveControl() instanceof EctoSlabMoveControl;
         }
 
         @Override
@@ -431,10 +703,14 @@ public class EctoSlab extends PossessedMob {
             burrowAnimationDelay = 0;
             ectoSlab.setBurrowed(false);
             ectoSlab.burrowedCooldown = 40;
+            if (ectoSlab.getMoveControl() instanceof EctoSlabMoveControl control) {
+                control.setSeekTarget(null, 0.0);
+            }
         }
 
         @Override
         public boolean canContinueToUse() {
+            if (ectoSlab.lookingToStack) return false;
             LivingEntity target = this.ectoSlab.getTarget();
             if (target == null) return false;
             else return this.ectoSlab.canAttack(target);
@@ -479,34 +755,23 @@ public class EctoSlab extends PossessedMob {
                 if (burrowedTime > 0) burrowedTime--;
 
                 if (ectoSlab.getMoveControl() instanceof EctoSlabMoveControl control) {
-                    if (burrowedTime >= 30) {
-                        double dx = target.getX() - ectoSlab.getX();
-                        double dy = target.getY() - ectoSlab.getY();
-                        double dz = target.getZ() - ectoSlab.getZ();
-                        double distSq = dx * dx + dy * dy + dz * dz;
-                        boolean reached = distSq < 0.05;
-
-                        if (reached) {
-                            control.setWantedPosition(ectoSlab.getX(), ectoSlab.getY(), ectoSlab.getZ(), 0.0);
-                            this.ectoSlab.setDeltaMovement(Vec3.ZERO);
-                            this.ectoSlab.setSpeed(0.0f);
-                        } else {
-                            control.setWantedPosition(target.getX(), target.getY(), target.getZ(),
-                                    ectoSlab.getAttributeValue(Attributes.MOVEMENT_SPEED));
-                        }
-                    }
+                    if (ectoSlab.wasForcedOut && burrowedTime > 30) burrowedTime = 30;
+                    if (burrowedTime >= 30) control.setSeekTarget(target, ectoSlab.getAttributeValue(Attributes.MOVEMENT_SPEED));
                     if (burrowedTime == 30) {
                         ectoSlab.playSound(ectoSlab.getWarnSound(), this.ectoSlab.getSoundVolume(), 1.0f);
                         ectoSlab.level().getServer().execute(() -> ectoSlab.level().broadcastEntityEvent(ectoSlab, (byte) 85));
                     }
                     if (burrowedTime > 0 && burrowedTime < 30) {
+                        control.setSeekTarget(null, 0.0);
                         control.setWantedPosition(ectoSlab.getX(), ectoSlab.getY(), ectoSlab.getZ(), 0.0);
                         this.ectoSlab.setDeltaMovement(Vec3.ZERO);
                         this.ectoSlab.setSpeed(0.0f);
                     }
                     if (burrowedTime == 0) {
                         ectoSlab.setBurrowed(false);
-                        ectoSlab.burrowedCooldown = ectoSlab.level().random.nextInt(60, 80);
+                        ectoSlab.burrowedCooldown = ectoSlab.getBurrowCooldown();
+                        ectoSlab.doEmergenceBurst(ectoSlab.wasForcedOut);
+                        control.setSeekTarget(null, 0.0);
                     }
                 }
             }
@@ -518,7 +783,7 @@ public class EctoSlab extends PossessedMob {
 
         public EctoSlabFloatGoal(EctoSlab ectoSlab) {
             this.ectoSlab = ectoSlab;
-            this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
+            this.setFlags(EnumSet.of(Flag.JUMP, Flag.MOVE));
             ectoSlab.getNavigation().setCanFloat(true);
         }
 
@@ -544,7 +809,7 @@ public class EctoSlab extends PossessedMob {
 
         public EctoSlabKeepOnJumpingGoal(EctoSlab ectoSlab) {
             this.ectoSlab = ectoSlab;
-            this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
+            this.setFlags(EnumSet.of(Flag.JUMP, Flag.MOVE));
         }
 
         @Override
@@ -565,7 +830,7 @@ public class EctoSlab extends PossessedMob {
 
         public EctoSlabRandomDirectionGoal(EctoSlab ectoSlab) {
             this.ectoSlab = ectoSlab;
-            this.setFlags(EnumSet.of(Goal.Flag.LOOK));
+            this.setFlags(EnumSet.of(Flag.LOOK));
         }
 
         @Override
