@@ -1,10 +1,13 @@
 package net.jadenxgamer.netherexp.core.entity;
 
+import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -14,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
@@ -31,6 +35,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
@@ -46,21 +51,27 @@ import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import team.lodestar.lodestone.handlers.ScreenshakeHandler;
 import team.lodestar.lodestone.systems.easing.Easing;
+import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
 import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
 import team.lodestar.lodestone.systems.particle.world.behaviors.DirectionalParticleBehavior;
+import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticleType;
+import team.lodestar.lodestone.systems.screenshake.ScreenshakeInstance;
 
 import java.awt.*;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Optional;
 
 import static net.jadenxgamer.netherexp.config.JNEConfigs.SILVER_PARANORMAL_DAMAGE_MULTIPLIER;
 import static net.jadenxgamer.netherexp.config.JNEConfigs.SILVER_PARANORMAL_INFLICTS_SLOWNESS;
+import static net.jadenxgamer.netherexp.util.CommonParticles.SMOKE_VARIANTS;
 
 public class EctoSlab extends PossessedMob {
 
@@ -83,6 +94,7 @@ public class EctoSlab extends PossessedMob {
     private static final EntityDimensions BURROWED_DIMENSIONS = EntityDimensions.scalable(1.375f, 0.2f);
     private static final EntityDataAccessor<Boolean> IS_BURROWED = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> STACK_SIZE = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> STACK_COOLDOWN = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.INT);
 
     private int burrowAnimationAnimationTimer = 20;
     private int emergeAnimationAnimationTimer = 15;
@@ -141,6 +153,12 @@ public class EctoSlab extends PossessedMob {
     }
 
     @Override
+    public void aiStep() {
+        if (getStackCooldown() > 0) setStackCooldown(getStackCooldown() - 1);
+        super.aiStep();
+    }
+
+    @Override
     protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {}
 
     @Override
@@ -161,6 +179,10 @@ public class EctoSlab extends PossessedMob {
             }
             if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
         }
+        if (source.is(DamageTypeTags.IS_EXPLOSION) && getStackSize() > 1) {
+            splitIntoIndividuals();
+            return false;
+        }
         if (source.getEntity() instanceof Player player) {
             if (player.getMainHandItem().is(JNETags.Items.SILVER_WEAPONS)) {
                 amount *= SILVER_PARANORMAL_DAMAGE_MULTIPLIER.get();
@@ -177,7 +199,7 @@ public class EctoSlab extends PossessedMob {
             setStackSize(getStackSize() - 1);
             setHealth(getMaxHealth());
             this.level().playSound(null, this.blockPosition(), this.getDeathSound(), getSoundSource(), 1.0f, 1.0f);
-            level().broadcastEntityEvent(this, (byte) 86);
+            this.level().broadcastEntityEvent(this, (byte) 86);
             return;
         }
         super.die(source);
@@ -216,7 +238,7 @@ public class EctoSlab extends PossessedMob {
     }
 
     private void doEmergenceBurst(boolean wasForcedOut) {
-        if (this.level().isClientSide) return;
+        if (!(this.level() instanceof ServerLevel serverLevel)) return;
         AABB area = this.getBoundingBox().inflate(1.2);
         List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, area, victim -> victim != this && victim.isAlive());
         float damage = this.getAttackDamage() * 2.0f;
@@ -227,9 +249,13 @@ public class EctoSlab extends PossessedMob {
             if (victim instanceof EctoSlab) continue;
             if (victim.hurt(source, damage)) {
                 this.playSound(JNESoundEvents.ECTOPLASM_FREEZE.get(), 1.0F, 1.0F);
-                if (this.level() instanceof ServerLevel serverLevel) EnchantmentHelper.doPostAttackEffects(serverLevel, victim, source);
+                EnchantmentHelper.doPostAttackEffects(serverLevel, victim, source);
             }
         }
+        ScreenshakeHandler.addScreenshake(
+                new ScreenshakeInstance(10, 1 + ((float) this.getStackSize() / 2), 0, 0,
+                        Easing.LINEAR, Easing.LINEAR, 1.0f, Optional.of(new ScreenshakeInstance.ScreenshakePositionData(
+                                this.position(),6.0f, Easing.LINEAR))));
         this.wasForcedOut = false;
     }
 
@@ -237,6 +263,77 @@ public class EctoSlab extends PossessedMob {
         return source.getEntity() instanceof LivingEntity attacker &&
                 (attacker.getMainHandItem().canPerformAction(ItemAbilities.SHOVEL_DIG) ||
                         attacker.getMainHandItem().is(ItemTags.SHOVELS));
+    }
+
+    private void splitIntoIndividuals() {
+        if (!(level() instanceof ServerLevel)) return;
+        int currentStack = getStackSize();
+        for (int i = 0; i < currentStack; i++) {
+            EctoSlab piece = new EctoSlab(JNEEntityType.ECTO_SLAB.get(), this.level());
+            piece.setPos(this.getX(), this.getY(), this.getZ());
+            piece.setStackSize(1);
+            piece.setStackCooldown(300);
+            piece.setMaxStackSize(this.getMaxStackSize());
+            piece.setHealth(piece.getMaxHealth());
+            piece.setNoAi(this.isNoAi());
+            piece.setCustomName(this.getCustomName());
+            if (this.isPersistenceRequired()) piece.setPersistenceRequired();
+
+            RandomSource random = this.random;
+            double angle = random.nextDouble() * 2 * Math.PI;
+            double speed = 0.3 + random.nextDouble() * 0.5;
+            double vx = Math.cos(angle) * speed;
+            double vz = Math.sin(angle) * speed;
+            double vy = 0.2 + random.nextDouble() * 0.4;
+            piece.setDeltaMovement(vx, vy, vz);
+            piece.hasImpulse = true;
+
+            this.level().addFreshEntity(piece);
+        }
+        this.level().broadcastEntityEvent(this, (byte) 88);
+        this.playSound(JNESoundEvents.ECTO_SLAB_COLLAPSE.get(), 1.0f, 1.0f);
+        this.discard();
+    }
+
+    @Override
+    public void doExorcism() {
+        if (this.isDeadOrDying()) return;
+        BlockPos pos = this.blockPosition();
+        this.level().playSound(null, pos, JNESoundEvents.APPARITION_DEATH.get(), SoundSource.NEUTRAL, 1.0f, 1.0f);
+        this.level().broadcastEntityEvent(this, (byte) 92);
+
+        EntityType<?> possessionOf = getPossessionOf() == null ? null : LookupRegistryHelper.getEntityType(ResourceLocation.parse(getPossessionOf()));
+        if (possessionOf == null) {
+            this.discard();
+            return;
+        }
+        EntityType<? extends Mob> possessionType = (EntityType<? extends Mob>) possessionOf;
+        Mob convertTo = this.convertTo(possessionType, true);
+        boolean slimeType = convertTo instanceof Slime;
+        if (!(this.level() instanceof ServerLevel serverLevel)) return;
+        if (slimeType) {
+            int stack = getStackSize();
+            for (int i = 0; i < stack / 3; i++) spawnSlimeOfSize(serverLevel, possessionType, 4);
+            for (int i = 0; i < stack % 3; i++) spawnSlimeOfSize(serverLevel, possessionType, 2);
+            this.discard();
+        } else {
+            if (convertTo != null) {
+                convertTo.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(pos), MobSpawnType.CONVERSION, null);
+                convertTo.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
+                if (this.hasCustomName()) convertTo.setCustomName(convertTo.getCustomName());
+            }
+        }
+    }
+
+    private void spawnSlimeOfSize(ServerLevel level, EntityType<?> slimeType, int size) {
+        if (!(slimeType.create(level) instanceof Slime slime)) return;
+        slime.setPos(this.getX(), this.getY(), this.getZ());
+        slime.finalizeSpawn(level, level.getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.CONVERSION, null);
+        slime.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
+        if (this.hasCustomName()) slime.setCustomName(slime.getCustomName());
+        slime.setSize(size, true);
+
+        level.addFreshEntity(slime);
     }
 
     //////////
@@ -255,6 +352,7 @@ public class EctoSlab extends PossessedMob {
         super.defineSynchedData(builder);
         builder.define(IS_BURROWED, false);
         builder.define(STACK_SIZE, 1);
+        builder.define(STACK_COOLDOWN, 0);
     }
 
     @Override
@@ -263,6 +361,7 @@ public class EctoSlab extends PossessedMob {
         nbt.putBoolean("IsBurrowed", this.isBurrowed());
         nbt.putInt("StackSize", this.getStackSize());
         nbt.putInt("MaxStackSize", this.getMaxStackSize());
+        nbt.putInt("StackCooldown", this.getStackCooldown());
     }
 
     @Override
@@ -271,6 +370,7 @@ public class EctoSlab extends PossessedMob {
         this.setBurrowed(nbt.getBoolean("IsBurrowed"));
         this.setStackSize(nbt.getInt("StackSize"));
         this.setMaxStackSize(nbt.getInt("MaxStackSize"));
+        this.setStackCooldown(nbt.getInt("StackCooldown"));
     }
 
     @Override
@@ -330,6 +430,8 @@ public class EctoSlab extends PossessedMob {
                             0, 0, 0);
                 }
             }
+            case 87 -> Client.forcedEmergeParticle(this, this.level(), this.position());
+            case 88 -> Client.shardParticle(this, this.level(), level().random);
         }
         super.handleEntityEvent(id);
     }
@@ -347,12 +449,15 @@ public class EctoSlab extends PossessedMob {
         this.entityData.set(IS_BURROWED, burrowed);
         this.refreshDimensions();
         if (burrowed) {
+            this.playSound(JNESoundEvents.ECTO_SLAB_BURROW.get(), 1.0f, 1.0f);
             this.level().broadcastEntityEvent(this, (byte) 81);
             this.level().broadcastEntityEvent(this, (byte) 84);
         } else {
             this.level().broadcastEntityEvent(this, (byte) 83);
             this.level().broadcastEntityEvent(this, (byte) 82);
         }
+        AttributeInstance stepHeight = this.getAttribute(Attributes.STEP_HEIGHT);
+        if (stepHeight != null) stepHeight.setBaseValue(burrowed ? 16.0 : 0.0);
     }
 
     public int getStackSize() {
@@ -364,6 +469,14 @@ public class EctoSlab extends PossessedMob {
         this.entityData.set(STACK_SIZE, stack);
         this.updateAttributesForStack(stack);
         this.refreshDimensions();
+    }
+
+    public int getStackCooldown() {
+        return entityData.get(STACK_COOLDOWN);
+    }
+
+    public void setStackCooldown(int stackCooldown) {
+        entityData.set(STACK_COOLDOWN, stackCooldown);
     }
 
     protected int getJumpDelay() {
@@ -446,6 +559,12 @@ public class EctoSlab extends PossessedMob {
                 burrowAnimation.startIfStopped(this.tickCount);
                 showLight = true;
             }
+            if (burrowAnimationAnimationTimer < 18 && burrowAnimationAnimationTimer > 0) {
+                Client.burrowDustParticle(this, level(), random);
+                for (int i = 0; i < 4; i++)
+                    level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, getBlockStateOn()),
+                            this.getRandomX(0.7), this.getY(), this.getRandomZ(0.7), 0,0.6, 0);
+            }
             else if (burrowAnimationAnimationTimer == 0) {
                 burrowAnimation.stop();
                 idleBurrowedAnimation.startIfStopped(this.tickCount);
@@ -453,7 +572,12 @@ public class EctoSlab extends PossessedMob {
             if (burrowAnimationAnimationTimer > 0) --burrowAnimationAnimationTimer;
         }
         if (aboveGroundAnimation) {
-            if (emergeAnimationAnimationTimer == 15) emergeAnimation.startIfStopped(this.tickCount);
+            if (emergeAnimationAnimationTimer == 15) {
+                emergeAnimation.startIfStopped(this.tickCount);
+                for (int i = 0; i < 32; i++)
+                    level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, getBlockStateOn()),
+                            this.getRandomX(0.7), this.getY(), this.getRandomZ(0.7), 0,0.6, 0);
+            }
             else if (emergeAnimationAnimationTimer == 0) {
                 emergeAnimation.stop();
                 idleAnimation.startIfStopped(this.tickCount);
@@ -603,6 +727,7 @@ public class EctoSlab extends PossessedMob {
 
         @Override
         public boolean canUse() {
+            if (ectoSlab.getStackCooldown() > 0) return false;
             if (ectoSlab.getTarget() == null) return false;
             if (ectoSlab.getStackSize() > 1) return false;
             mergeTarget = findBestMergeTarget();
@@ -611,6 +736,7 @@ public class EctoSlab extends PossessedMob {
 
         @Override
         public boolean canContinueToUse() {
+            if (ectoSlab.getStackCooldown() > 0) return false;
             if (ectoSlab.getTarget() == null) return false;
             if (ectoSlab.getStackSize() > 1) return false;
             return mergeTarget != null && mergeTarget.isAlive() && ectoSlab.distanceToSqr(mergeTarget) > STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE;
@@ -652,7 +778,7 @@ public class EctoSlab extends PossessedMob {
             if (ectoSlab.distanceToSqr(mergeTarget) <= STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE) {
                 int newSize = Math.min(mergeTarget.getStackSize() + 1, mergeTarget.getMaxStackSize());
                 mergeTarget.setStackSize(newSize);
-                ectoSlab.playSound(SoundEvents.RESPAWN_ANCHOR_CHARGE, 1.0f, 1.0f);
+                ectoSlab.playSound(JNESoundEvents.ECTO_SLAB_STACK.get(), 2.0f, 1.0f);
                 ectoSlab.discard();
             }
         }
@@ -755,7 +881,10 @@ public class EctoSlab extends PossessedMob {
                 if (burrowedTime > 0) burrowedTime--;
 
                 if (ectoSlab.getMoveControl() instanceof EctoSlabMoveControl control) {
-                    if (ectoSlab.wasForcedOut && burrowedTime > 30) burrowedTime = 30;
+                    if (ectoSlab.wasForcedOut && burrowedTime > 10) {
+                        burrowedTime = 10;
+                        ectoSlab.level().broadcastEntityEvent(ectoSlab, (byte) 87);
+                    }
                     if (burrowedTime >= 30) control.setSeekTarget(target, ectoSlab.getAttributeValue(Attributes.MOVEMENT_SPEED));
                     if (burrowedTime == 30) {
                         ectoSlab.playSound(ectoSlab.getWarnSound(), this.ectoSlab.getSoundVolume(), 1.0f);
@@ -891,6 +1020,61 @@ public class EctoSlab extends PossessedMob {
                     .setColorData(ColorParticleData.create(new Color(0x72F4FF)).build())
                     .setMotion(0.0, 0.26, 0.0)
                     .spawn(level, parX, ectoSlab.getY(), parZ);
+        }
+
+        public static void forcedEmergeParticle(EctoSlab ectoSlab, Level level, Vec3 pos) {
+            Vec3 direction = new Vec3(0.0, 1.0, 0.0);
+            WorldParticleBuilder.create(JNEParticleTypes.WIND_TRAIL.get())
+                    .setFullBrightLighting()
+                    .setSpinData(SpinParticleData.createRandomDirection(level.random, 0.0f, 1.0f).setCoefficient(0.25f).setEasing(Easing.SINE_IN).build())
+                    .setColorData(ColorParticleData.create(new Color(0xFFFFFF)).build())
+                    .setScaleData(GenericParticleData.create(0.1f, 1.5f).setEasing(Easing.SINE_OUT).build())
+                    .setBehavior(DirectionalParticleBehavior.directional(direction))
+                    .setTransparencyData(GenericParticleData.create(0.5f, 0.0f).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                    .setLifetime(10)
+                    .disableNoClip()
+                    .addTickActor(actor -> {
+                        if (ectoSlab.isBurrowed()) actor.setPos(ectoSlab.getX(), ectoSlab.getY() + 0.1, ectoSlab.getZ());
+                    })
+                    .spawn(level, pos.x, pos.y - 1.5, pos.z);
+        }
+
+        public static void burrowDustParticle(EctoSlab ectoSlab, Level level, RandomSource random) {
+            LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
+            WorldParticleBuilder.create(particle)
+                    .setNaturalLighting()
+                    .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.33f, 0.4f), 0.95f).build())
+                    .setTransparencyData(GenericParticleData.create(0.75f, 0.5f, 0.0f).setEasing(Easing.BOUNCE_OUT).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setColorData(ColorParticleData.create(new Color(0x9E9E9E)).setEasing(Easing.SINE_IN_OUT).build())
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(Mth.randomBetweenInclusive(random, 20, 30))
+                    .disableNoClip()
+                    .addMotion(0.0 + random.nextDouble() / 24, 0.09, 0.0 + random.nextDouble() / 24)
+                    .setGravity(0.3f)
+                    .spawn(level, ectoSlab.getRandomX(1.0), ectoSlab.getY() + 0.2, ectoSlab.getRandomZ(1.0));
+        }
+
+        public static void shardParticle(EctoSlab ectoSlab, Level level, RandomSource random) {
+            LodestoneWorldParticleType particle = JNEParticleTypes.ECTO_SHARD.get();
+            for (int i = 0; i < 64; i++) {
+                var motionX = random.nextDouble() / 3.6 * (random.nextBoolean() ? 1 : -1);
+                var motionY = random.nextDouble() / 2.6 * (random.nextBoolean() ? 1 : -1);
+                var motionZ = random.nextDouble() / 3.6 * (random.nextBoolean() ? 1 : -1);
+                WorldParticleBuilder.create(particle)
+                        .setNaturalLighting()
+                        .setSpinData(SpinParticleData.createRandomDirection(level.random, 0.0f, 1.0f).setCoefficient(0.0f).setEasing(Easing.SINE_IN).build())
+                        .setScaleData(GenericParticleData.create(0.13f).build())
+                        .setTransparencyData(GenericParticleData.create(1.0f).build())
+                        .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                        .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.RANDOM_SPRITE)
+                        .setLifetime(random.nextInt(80, 120))
+                        .disableNoClip()
+                        .addMotion(motionX, motionY, motionZ)
+                        .setGravity(0.75f)
+                        .spawn(level, ectoSlab.getX(), ectoSlab.getY() + 0.2, ectoSlab.getZ());
+            }
         }
     }
 }

@@ -667,6 +667,9 @@
   "subtitles.block.nether_portal.activate": "Nether portal activates",
   "subtitles.block.nether_portal.break": "Nether portal shatters",
   "subtitles.entity.ecto_slab.leap": "Ecto Slab leaps",
+  "subtitles.entity.ecto_slab.stack": "Ecto Slab stacks up",
+  "subtitles.entity.ecto_slab.collapse": "Ecto Slab tower collapses",
+  "subtitles.entity.ecto_slab.burrow": "Ecto Slab burrows",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",

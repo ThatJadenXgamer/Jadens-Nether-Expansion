@@ -1476,10 +1476,10 @@
   },
   "entity.ecto_slab.leap": {
     "sounds": [
-      "netherexp:mob/ecto_slab/small1",
-      "netherexp:mob/ecto_slab/small2",
-      "netherexp:mob/ecto_slab/small3",
-      "netherexp:mob/ecto_slab/small4"
+      "netherexp:mob/ecto_slab/leap1",
+      "netherexp:mob/ecto_slab/leap2",
+      "netherexp:mob/ecto_slab/leap3",
+      "netherexp:mob/ecto_slab/leap4"
     ],
     "subtitle": "subtitles.entity.ecto_slab.leap"
   },
@@ -1490,11 +1490,25 @@
     ],
     "subtitle": "subtitles.entity.ecto_slab.warn"
   },
-  "entity.ecto_slab.warn_small": {
+  "entity.ecto_slab.collapse": {
     "sounds": [
-      "netherexp:mob/ecto_slab/small_warn"
+      "netherexp:mob/ecto_slab/collapse"
     ],
-    "subtitle": "subtitles.entity.ecto_slab.warn"
+    "subtitle": "subtitles.entity.ecto_slab.collapse"
+  },
+  "entity.ecto_slab.burrow": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/burrow"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.burrow"
+  },
+  "entity.ecto_slab.stack": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/stack1",
+      "netherexp:mob/ecto_slab/stack2",
+      "netherexp:mob/ecto_slab/stack3"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.stack"
   },
 
   "block.nether_portal.activate": {

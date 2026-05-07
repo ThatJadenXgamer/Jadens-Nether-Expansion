@@ -89,7 +89,7 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
             WorldParticleBuilder.create(JNEParticleTypes.GLOWING_DOT.get())
                     .setFullBrightLighting()
                     .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                    .setScaleData(GenericParticleData.create(0.18f).build())
+                    .setScaleData(GenericParticleData.create(0.0f, 0.18f).setCoefficient(2.4f).build())
                     .setTransparencyData(GenericParticleData.create(1, 0).build())
                     .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
                     .setLifetime(random.nextInt(60, 90))

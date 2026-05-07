@@ -15,6 +15,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -36,7 +37,7 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(EctoSlab entity) {
-        return NetherExp.netherexpPath("textures/entity/ecto_slab/active.png");
+        return entity.getStackCooldown() > 0 ? NetherExp.netherexpPath("textures/entity/ecto_slab/cracked.png") : NetherExp.netherexpPath("textures/entity/ecto_slab/active.png");
     }
 
     @Override
@@ -106,7 +107,7 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
 
         @Override
         protected ResourceLocation getTextureLocation(EctoSlab entity) {
-            return NetherExp.netherexpPath("textures/entity/ecto_slab/active_glow.png");
+            return entity.getStackCooldown() > 0 ? NetherExp.netherexpPath("textures/entity/ecto_slab/cracked_glow.png") : NetherExp.netherexpPath("textures/entity/ecto_slab/active_glow.png");
         }
 
         @Override
@@ -130,7 +131,7 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
         public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, EctoSlab entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
             if (!entity.showLight) return;
             VertexConsumer vertexconsumer = buffer.getBuffer(this.renderType(entity));
-            this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728640, OverlayTexture.NO_OVERLAY);
+            this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY);
         }
 
         public @NotNull RenderType renderType(EctoSlab entity) {
@@ -260,7 +261,11 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
                         new Keyframe(0.7917F, KeyframeAnimations.degreeVec(-2.5F, -720.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
                 )).addAnimation("body" + i, new AnimationChannel(AnimationChannel.Targets.POSITION,
                         new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, depth, 0.0F), AnimationChannel.Interpolations.LINEAR),
-                        new Keyframe(0.7917F, KeyframeAnimations.posVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
+                        new Keyframe(0.25F, KeyframeAnimations.posVec(0.0F, 18.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+                        new Keyframe(0.5F, KeyframeAnimations.posVec(0.0F, 18.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+                        new Keyframe(0.6667F, KeyframeAnimations.posVec(0.0F, 4.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+                        new Keyframe(0.7083F, KeyframeAnimations.posVec(0.0F, 4.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+                        new Keyframe(0.7917F, KeyframeAnimations.posVec(0.0F, 1.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
                 ));
             }
 

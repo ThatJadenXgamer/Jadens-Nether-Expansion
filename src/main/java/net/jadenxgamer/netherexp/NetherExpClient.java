@@ -125,6 +125,7 @@ public final class NetherExpClient {
         event.registerSpecial(JNEParticleTypes.RED_EXPLOSION_EMITTER.get(), (new RedExplosionEmitterParticle.Factory()));
         event.registerSpriteSet(JNEParticleTypes.JNE_PORTAL.get(), JNEPortalParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.PORTAL_MIST.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.ECTO_SHARD.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static class HandlePostShaders {

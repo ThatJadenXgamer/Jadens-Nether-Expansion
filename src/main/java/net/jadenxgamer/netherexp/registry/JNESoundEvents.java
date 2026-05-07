@@ -64,6 +64,9 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> ECTO_SLAB_JUMP = registerSoundEvents("entity.ecto_slab.jump");
     public static final Supplier<SoundEvent> ECTO_SLAB_LEAP = registerSoundEvents("entity.ecto_slab.leap");
     public static final Supplier<SoundEvent> ECTO_SLAB_SQUISH = registerSoundEvents("entity.ecto_slab.squish");
+    public static final Supplier<SoundEvent> ECTO_SLAB_STACK = registerSoundEvents("entity.ecto_slab.stack");
+    public static final Supplier<SoundEvent> ECTO_SLAB_COLLAPSE = registerSoundEvents("entity.ecto_slab.collapse");
+    public static final Supplier<SoundEvent> ECTO_SLAB_BURROW = registerSoundEvents("entity.ecto_slab.burrow");
 
     public static final Supplier<SoundEvent> BANSHEE_AMBIENT = registerSoundEvents("entity.banshee.ambient");
     public static final Supplier<SoundEvent> BANSHEE_HURT = registerSoundEvents("entity.banshee.hurt");

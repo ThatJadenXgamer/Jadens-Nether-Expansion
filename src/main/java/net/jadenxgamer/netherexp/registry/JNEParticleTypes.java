@@ -58,6 +58,7 @@ public class JNEParticleTypes {
     public static final Supplier<SimpleParticleType> RED_EXPLOSION_EMITTER = PARTICLE_TYPES.register("red_explosion_emitter", () -> new SimpleParticleType(false){});
     public static final Supplier<LodestoneWorldParticleType> JNE_PORTAL = PARTICLE_TYPES.register("jne_portal", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> PORTAL_MIST = PARTICLE_TYPES.register("portal_mist", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> ECTO_SHARD = PARTICLE_TYPES.register("ecto_shard", LodestoneWorldParticleType::new);
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
