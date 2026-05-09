@@ -22,6 +22,8 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -39,6 +41,8 @@ import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -83,9 +87,12 @@ public class EctoSlab extends PossessedMob {
     public final AnimationState idleAnimation = new AnimationState();
     public final AnimationState idleMirroredAnimation = new AnimationState();
     public final AnimationState idleBurrowedAnimation = new AnimationState();
+    public final AnimationState idlePetrifiedAnimation = new AnimationState();
+    public final AnimationState petrifiedHitAnimation = new AnimationState();
     public final AnimationState burrowAnimation = new AnimationState();
     public final AnimationState emergeAnimation = new AnimationState();
     private int maxStackSize = 4;
+    private double disturbed = 0.0;
     private boolean wasOnGround;
     private int burrowedCooldown = 40;
     private boolean lookingToStack = false;
@@ -93,6 +100,7 @@ public class EctoSlab extends PossessedMob {
 
     private static final EntityDimensions BURROWED_DIMENSIONS = EntityDimensions.scalable(1.375f, 0.2f);
     private static final EntityDataAccessor<Boolean> IS_BURROWED = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> IS_PETRIFIED = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> STACK_SIZE = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> STACK_COOLDOWN = SynchedEntityData.defineId(EctoSlab.class, EntityDataSerializers.INT);
 
@@ -118,11 +126,12 @@ public class EctoSlab extends PossessedMob {
                 .add(Attributes.ATTACK_DAMAGE, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.4)
                 .add(Attributes.JUMP_STRENGTH, 0.5)
-                .add(Attributes.FOLLOW_RANGE, 16.0);
+                .add(Attributes.FOLLOW_RANGE, 28.0);
     }
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new EctoSlabPetrifiedGoal(this));
         this.goalSelector.addGoal(1, new EctoSlabFloatGoal(this));
         this.goalSelector.addGoal(2, new EctoSlabStackGoal(this));
         this.goalSelector.addGoal(3, new EctoSlabAttackGoal(this));
@@ -134,9 +143,20 @@ public class EctoSlab extends PossessedMob {
     }
 
     @Override
+    public boolean canBeCollidedWith() {
+        return isPetrified();
+    }
+
+    @Override
     public void tick() {
         super.tick();
         if (this.level().isClientSide) this.setupAnimationStates();
+        if (isPetrified()) {
+            this.setYHeadRot(0.0f);
+            this.setYRot(0.0f);
+            this.setYBodyRot(0.0f);
+            return;
+        }
         if (!isBurrowed() && (this.onGround() && !this.wasOnGround)) {
             float f = this.getDimensions(this.getPose()).width() * 2.0F;
             float f1 = f / 2.0F;
@@ -154,8 +174,26 @@ public class EctoSlab extends PossessedMob {
 
     @Override
     public void aiStep() {
-        if (getStackCooldown() > 0) setStackCooldown(getStackCooldown() - 1);
+        if (!level().isClientSide()) {
+            if (getStackCooldown() > 0) setStackCooldown(getStackCooldown() - 1);
+            if (isPetrified()) {
+                if (disturbed >= 20.0) splitIntoIndividuals(false);
+                if (level().getGameTime() % 40 == 0) disturbed -= 1;
+            }
+        }
         super.aiStep();
+    }
+
+    @Override
+    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (!this.isPetrified() && !isBurrowed() && stack.is(Items.GHAST_TEAR)) {
+            this.setPetrified(true);
+            stack.shrink(1);
+            playSound(SoundEvents.HONEYCOMB_WAX_ON, 1.0f, 1.0f);
+            if (level().isClientSide()) Client.petrificationParticle(this, level(), random);
+            return InteractionResult.SUCCESS;
+        } else return super.mobInteract(player, hand);
     }
 
     @Override
@@ -172,6 +210,11 @@ public class EctoSlab extends PossessedMob {
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (source.getDirectEntity() instanceof ThrownPotion potion && hurtWithCleanWater(potion)) doExorcism();
+        if (isPetrified()) {
+            disturbed += amount;
+            this.level().broadcastEntityEvent(this, (byte) 89);
+            amount = 0;
+        }
         if (isBurrowed()) {
             if (isShovelHit(source)) {
                 playSound(SoundEvents.SHOVEL_FLATTEN, 1.0f, 1.0f);
@@ -180,7 +223,7 @@ public class EctoSlab extends PossessedMob {
             if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
         }
         if (source.is(DamageTypeTags.IS_EXPLOSION) && getStackSize() > 1) {
-            splitIntoIndividuals();
+            splitIntoIndividuals(true);
             return false;
         }
         if (source.getEntity() instanceof Player player) {
@@ -207,17 +250,17 @@ public class EctoSlab extends PossessedMob {
 
     @Override
     public boolean isPushable() {
-        return !isBurrowed() && super.isPushable();
+        return !isBurrowed() && !isPetrified() && super.isPushable();
     }
 
     @Override
     protected void pushEntities() {
-        if (!isBurrowed()) super.pushEntities();
+        if (!isBurrowed() && !isPetrified()) super.pushEntities();
     }
 
     @Override
     public void push(Entity entity) {
-        if (isBurrowed()) return;
+        if (isBurrowed() || isPetrified()) return;
         super.push(entity);
         if (entity instanceof Piglin || entity instanceof IronGolem) this.dealDamage((LivingEntity) entity);
     }
@@ -228,6 +271,7 @@ public class EctoSlab extends PossessedMob {
     }
 
     protected void dealDamage(LivingEntity victim) {
+        if (isPetrified()) return;
         if (this.isAlive() && this.isWithinMeleeAttackRange(victim) && this.hasLineOfSight(victim)) {
             DamageSource source = this.damageSources().mobAttack(this);
             if (victim.hurt(source, this.getAttackDamage())) {
@@ -265,14 +309,14 @@ public class EctoSlab extends PossessedMob {
                         attacker.getMainHandItem().is(ItemTags.SHOVELS));
     }
 
-    private void splitIntoIndividuals() {
+    private void splitIntoIndividuals(boolean explosion) {
         if (!(level() instanceof ServerLevel)) return;
         int currentStack = getStackSize();
         for (int i = 0; i < currentStack; i++) {
             EctoSlab piece = new EctoSlab(JNEEntityType.ECTO_SLAB.get(), this.level());
-            piece.setPos(this.getX(), this.getY(), this.getZ());
+            piece.setPos(this.getX(), this.getY() + i, this.getZ());
             piece.setStackSize(1);
-            piece.setStackCooldown(300);
+            piece.setStackCooldown(explosion ? 300 : 20);
             piece.setMaxStackSize(this.getMaxStackSize());
             piece.setHealth(piece.getMaxHealth());
             piece.setNoAi(this.isNoAi());
@@ -280,11 +324,20 @@ public class EctoSlab extends PossessedMob {
             if (this.isPersistenceRequired()) piece.setPersistenceRequired();
 
             RandomSource random = this.random;
-            double angle = random.nextDouble() * 2 * Math.PI;
-            double speed = 0.3 + random.nextDouble() * 0.5;
-            double vx = Math.cos(angle) * speed;
-            double vz = Math.sin(angle) * speed;
-            double vy = 0.2 + random.nextDouble() * 0.4;
+            double vx, vy, vz;
+            if (explosion) {
+                double angle = random.nextDouble() * 2 * Math.PI;
+                double speed = 0.3 + random.nextDouble() * 0.5;
+                vx = Math.cos(angle) * speed;
+                vz = Math.sin(angle) * speed;
+                vy = 0.2 + random.nextDouble() * 0.4;
+            } else {
+                double angle = random.nextDouble() * 2 * Math.PI;
+                double speed = 0.05 + random.nextDouble() * 0.01;
+                vx = Math.cos(angle) * speed;
+                vz = Math.sin(angle) * speed;
+                vy = 0.05 + random.nextDouble() * 0.05;
+            }
             piece.setDeltaMovement(vx, vy, vz);
             piece.hasImpulse = true;
 
@@ -351,6 +404,7 @@ public class EctoSlab extends PossessedMob {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(IS_BURROWED, false);
+        builder.define(IS_PETRIFIED, false);
         builder.define(STACK_SIZE, 1);
         builder.define(STACK_COOLDOWN, 0);
     }
@@ -359,6 +413,7 @@ public class EctoSlab extends PossessedMob {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("IsBurrowed", this.isBurrowed());
+        nbt.putBoolean("IsPetrified", this.isPetrified());
         nbt.putInt("StackSize", this.getStackSize());
         nbt.putInt("MaxStackSize", this.getMaxStackSize());
         nbt.putInt("StackCooldown", this.getStackCooldown());
@@ -368,6 +423,7 @@ public class EctoSlab extends PossessedMob {
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setBurrowed(nbt.getBoolean("IsBurrowed"));
+        this.setPetrified(nbt.getBoolean("IsPetrified"));
         this.setStackSize(nbt.getInt("StackSize"));
         this.setMaxStackSize(nbt.getInt("MaxStackSize"));
         this.setStackCooldown(nbt.getInt("StackCooldown"));
@@ -431,7 +487,8 @@ public class EctoSlab extends PossessedMob {
                 }
             }
             case 87 -> Client.forcedEmergeParticle(this, this.level(), this.position());
-            case 88 -> Client.shardParticle(this, this.level(), level().random);
+            case 88 -> Client.shardParticle(this, this.level(), random);
+            case 89 -> petrifiedHitAnimation.start(tickCount);
         }
         super.handleEntityEvent(id);
     }
@@ -460,15 +517,27 @@ public class EctoSlab extends PossessedMob {
         if (stepHeight != null) stepHeight.setBaseValue(burrowed ? 16.0 : 0.0);
     }
 
+    public static int absoluteMaximumStackSize() {
+        return 16;
+    }
+
     public int getStackSize() {
         return this.entityData.get(STACK_SIZE);
     }
 
     public void setStackSize(int stack) {
-        stack = Mth.clamp(stack, 1, this.maxStackSize);
+        stack = Mth.clamp(stack, 1, isPetrified() ? absoluteMaximumStackSize() : this.maxStackSize);
         this.entityData.set(STACK_SIZE, stack);
         this.updateAttributesForStack(stack);
         this.refreshDimensions();
+    }
+
+    public boolean isPetrified() {
+        return this.entityData.get(IS_PETRIFIED);
+    }
+
+    public void setPetrified(boolean petrified) {
+        this.entityData.set(IS_PETRIFIED, petrified);
     }
 
     public int getStackCooldown() {
@@ -503,7 +572,6 @@ public class EctoSlab extends PossessedMob {
         AttributeInstance damage = this.getAttribute(Attributes.ATTACK_DAMAGE);
         AttributeInstance knockbackResistance = this.getAttribute(Attributes.KNOCKBACK_RESISTANCE);
         AttributeInstance jumpStrength = this.getAttribute(Attributes.JUMP_STRENGTH);
-
 
         if (speed != null) { // Speed: +0.05 per extra stack, capped at 0.6 total
             speed.removeModifier(STACK_SPEED_MODIFIER_ID);
@@ -545,7 +613,7 @@ public class EctoSlab extends PossessedMob {
     }
 
     public void setMaxStackSize(int maxStackSize) {
-        maxStackSize = Mth.clamp(maxStackSize, 1, 16);
+        maxStackSize = Mth.clamp(maxStackSize, 1, absoluteMaximumStackSize());
         this.maxStackSize = maxStackSize;
     }
 
@@ -554,6 +622,16 @@ public class EctoSlab extends PossessedMob {
     ////////////////
 
     private void setupAnimationStates() {
+        if (isPetrified()) {
+            if (tickCount % 20 == 0) Client.petrificationParticle(this, level(), random);
+            idlePetrifiedAnimation.startIfStopped(tickCount);
+            idleAnimation.stop();
+            idleBurrowedAnimation.stop();
+            burrowAnimation.stop();
+            emergeAnimation.stop();
+            return;
+        }
+
         if (belowGroundAnimation) {
             if (burrowAnimationAnimationTimer == 20) {
                 burrowAnimation.startIfStopped(this.tickCount);
@@ -713,7 +791,7 @@ public class EctoSlab extends PossessedMob {
 
     static class EctoSlabStackGoal extends Goal {
         private static final double SEARCH_RADIUS = 24.0;
-        private static final double STACK_MERGE_DISTANCE = 1.8;
+        private static final double STACK_MERGE_DISTANCE = 2.0;
 
         private int leapCooldown = 10;
         private final EctoSlab ectoSlab;
@@ -739,7 +817,9 @@ public class EctoSlab extends PossessedMob {
             if (ectoSlab.getStackCooldown() > 0) return false;
             if (ectoSlab.getTarget() == null) return false;
             if (ectoSlab.getStackSize() > 1) return false;
-            return mergeTarget != null && mergeTarget.isAlive() && ectoSlab.distanceToSqr(mergeTarget) > STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE;
+            if (mergeTarget == null || !mergeTarget.isAlive()) return false;
+            if (mergeTarget.isPetrified() && mergeTarget.getStackSize() >= absoluteMaximumStackSize()) return false;
+            return ectoSlab.distanceToSqr(mergeTarget) > STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE;
         }
 
         @Override
@@ -776,8 +856,7 @@ public class EctoSlab extends PossessedMob {
             }
 
             if (ectoSlab.distanceToSqr(mergeTarget) <= STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE) {
-                int newSize = Math.min(mergeTarget.getStackSize() + 1, mergeTarget.getMaxStackSize());
-                mergeTarget.setStackSize(newSize);
+                mergeTarget.setStackSize(mergeTarget.getStackSize() + 1);
                 ectoSlab.playSound(JNESoundEvents.ECTO_SLAB_STACK.get(), 2.0f, 1.0f);
                 ectoSlab.discard();
             }
@@ -790,10 +869,16 @@ public class EctoSlab extends PossessedMob {
             List<EctoSlab> candidates = level.getEntitiesOfClass(EctoSlab.class, searchBox,
                     candidate -> candidate != ectoSlab &&
                             !candidate.isBurrowed() &&
-                            candidate.getStackSize() < candidate.getMaxStackSize());
+                            (candidate.isPetrified()
+                                    ? candidate.getStackSize() < absoluteMaximumStackSize()
+                                    : candidate.getStackSize() < candidate.getMaxStackSize()));
 
             if (candidates.isEmpty()) return null;
-            candidates.sort(Comparator.comparingInt(EctoSlab::getStackSize).thenComparingDouble(e -> e.distanceToSqr(ectoSlab)));
+            candidates.sort(Comparator
+                    .<EctoSlab>comparingInt(c -> c.isPetrified() ? 0 : 1)
+                    .thenComparingInt(EctoSlab::getStackSize)
+                    .thenComparingDouble(e -> e.distanceToSqr(ectoSlab)));
+
             return candidates.getFirst();
         }
     }
@@ -980,6 +1065,48 @@ public class EctoSlab extends PossessedMob {
         }
     }
 
+    static class EctoSlabPetrifiedGoal extends Goal {
+        private final EctoSlab ectoSlab;
+
+        public EctoSlabPetrifiedGoal(EctoSlab ectoSlab) {
+            this.ectoSlab = ectoSlab;
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return ectoSlab.isPetrified();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return ectoSlab.isPetrified();
+        }
+
+        @Override
+        public void start() {
+            alignToBlockCenter();
+        }
+
+        @Override
+        public void tick() {
+            ectoSlab.setDeltaMovement(0.0, ectoSlab.getDeltaMovement().y, 0.0);
+            ectoSlab.setSpeed(0);
+            ectoSlab.xxa = 0;
+            ectoSlab.zza = 0;
+            if (ectoSlab.onGround()) alignToBlockCenter();
+        }
+
+        private void alignToBlockCenter() {
+            if (ectoSlab.level().isClientSide) return;
+
+            BlockPos blockPos = ectoSlab.blockPosition();
+            double centerX = blockPos.getX() + 0.5;
+            double centerZ = blockPos.getZ() + 0.5;
+            ectoSlab.setPos(centerX, ectoSlab.getY(), centerZ);
+        }
+    }
+
     @OnlyIn(Dist.CLIENT)
     public static class Client {
 
@@ -1017,6 +1144,9 @@ public class EctoSlab extends PossessedMob {
                     .setLifetime(random.nextInt(20))
                     .disableNoClip()
                     .setGravity(0f)
+                    .modifySpinData(consumer -> {
+
+                    })
                     .setColorData(ColorParticleData.create(new Color(0x72F4FF)).build())
                     .setMotion(0.0, 0.26, 0.0)
                     .spawn(level, parX, ectoSlab.getY(), parZ);
@@ -1074,6 +1204,26 @@ public class EctoSlab extends PossessedMob {
                         .addMotion(motionX, motionY, motionZ)
                         .setGravity(0.75f)
                         .spawn(level, ectoSlab.getX(), ectoSlab.getY() + 0.2, ectoSlab.getZ());
+            }
+        }
+
+        public static void petrificationParticle(EctoSlab ectoSlab, Level level, RandomSource random) {
+            Color color = new Color(0x0E4E4E);
+            for (int i = 0; i < 12; i++) {
+                WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
+                        .setFullBrightLighting()
+                        .setColorData(ColorParticleData.create(color).build())
+                        .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f).setCoefficient(1.0f).setEasing(Easing.SINE_IN).build())
+                        .setScaleData(GenericParticleData.create(0.05f, 0.13f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
+                        .setTransparencyData(GenericParticleData.create(0.5f).build())
+                        .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                        .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                        .setLifetime(random.nextInt(5, 15) + (ectoSlab.getStackSize() * 10))
+                        .enableNoClip()
+                        .setLifeDelay(random.nextInt(0, 20))
+                        .setGravity(0.0f)
+                        .setMotion(0.0, 0.08, 0.0)
+                        .spawn(level, ectoSlab.getRandomX(1.0), ectoSlab.getY() + 0.2, ectoSlab.getRandomZ(1.0));
             }
         }
     }

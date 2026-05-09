@@ -670,6 +670,7 @@
   "subtitles.entity.ecto_slab.stack": "Ecto Slab stacks up",
   "subtitles.entity.ecto_slab.collapse": "Ecto Slab tower collapses",
   "subtitles.entity.ecto_slab.burrow": "Ecto Slab burrows",
+  "block.netherexp.petrified_swirls": "Petrified Swirls",
 
   "netherexp.configuration.blockSettings": "Block Settings",
   "netherexp.configuration.itemSettings": "Item Settings",

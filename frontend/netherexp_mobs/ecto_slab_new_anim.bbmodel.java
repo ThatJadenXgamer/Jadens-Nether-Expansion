@@ -32,6 +32,21 @@ public class ecto_slab_newAnimation {
 		))
 		.build();
 
+	public static final AnimationDefinition PETRIFIED_HIT = AnimationDefinition.Builder.withLength(0.4065F)
+		.addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION, 
+			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(0.0762F, KeyframeAnimations.degreeVec(0.0F, 12.14F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(0.127F, KeyframeAnimations.degreeVec(0.0F, -8.93F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(0.1778F, KeyframeAnimations.degreeVec(0.0F, 5.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(0.2541F, KeyframeAnimations.degreeVec(0.0F, -3.75F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(0.3303F, KeyframeAnimations.degreeVec(0.0F, 2.5F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(0.4065F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+		))
+		.addAnimation("light", new AnimationChannel(AnimationChannel.Targets.SCALE, 
+			new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0F, 0.0F, 1.0F), AnimationChannel.Interpolations.LINEAR)
+		))
+		.build();
+
 	public static final AnimationDefinition IDLE_MIRRORED = AnimationDefinition.Builder.withLength(2.0F).looping()
 		.addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION, 
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),

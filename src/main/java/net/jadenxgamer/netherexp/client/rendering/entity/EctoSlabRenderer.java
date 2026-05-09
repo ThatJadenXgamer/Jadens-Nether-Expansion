@@ -15,7 +15,6 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -37,7 +36,8 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(EctoSlab entity) {
-        return entity.getStackCooldown() > 0 ? NetherExp.netherexpPath("textures/entity/ecto_slab/cracked.png") : NetherExp.netherexpPath("textures/entity/ecto_slab/active.png");
+        if (entity.isPetrified()) return NetherExp.netherexpPath("textures/entity/ecto_slab/petrified.png");
+        return entity.getStackCooldown() > 20 ? NetherExp.netherexpPath("textures/entity/ecto_slab/cracked.png") : NetherExp.netherexpPath("textures/entity/ecto_slab/active.png");
     }
 
     @Override
@@ -95,6 +95,8 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
             this.animate(entity.idleAnimation, Animation.IDLE, ageInTicks);
             this.animate(entity.idleMirroredAnimation, Animation.IDLE_MIRRORED, ageInTicks);
             this.animate(entity.idleBurrowedAnimation, Animation.IDLE_BURROWED, ageInTicks);
+            this.animate(entity.idlePetrifiedAnimation, Animation.IDLE_PETRIFIED, ageInTicks);
+            this.animate(entity.petrifiedHitAnimation, Animation.PETRIFIED_HIT, ageInTicks);
             this.animate(entity.burrowAnimation, Animation.BURROW, ageInTicks);
             this.animate(entity.emergeAnimation, Animation.EMERGE, ageInTicks);
         }
@@ -107,13 +109,14 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
 
         @Override
         protected ResourceLocation getTextureLocation(EctoSlab entity) {
-            return entity.getStackCooldown() > 0 ? NetherExp.netherexpPath("textures/entity/ecto_slab/cracked_glow.png") : NetherExp.netherexpPath("textures/entity/ecto_slab/active_glow.png");
+            return entity.getStackCooldown() > 20 ? NetherExp.netherexpPath("textures/entity/ecto_slab/cracked_glow.png") : NetherExp.netherexpPath("textures/entity/ecto_slab/active_glow.png");
         }
 
         @Override
         public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, EctoSlab entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-            VertexConsumer vertexconsumer = buffer.getBuffer(this.renderType(entity));
-            this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728640, OverlayTexture.NO_OVERLAY);
+            if (entity.isPetrified()) return;
+            VertexConsumer vertexConsumer = buffer.getBuffer(this.renderType(entity));
+            this.getParentModel().renderToBuffer(poseStack, vertexConsumer, 15728640, OverlayTexture.NO_OVERLAY);
         }
 
         public @NotNull RenderType renderType(EctoSlab entity) {
@@ -130,8 +133,8 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
         @Override
         public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, EctoSlab entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
             if (!entity.showLight) return;
-            VertexConsumer vertexconsumer = buffer.getBuffer(this.renderType(entity));
-            this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY);
+            VertexConsumer vertexConsumer = buffer.getBuffer(this.renderType(entity));
+            this.getParentModel().renderToBuffer(poseStack, vertexConsumer, 15728880, OverlayTexture.NO_OVERLAY);
         }
 
         public @NotNull RenderType renderType(EctoSlab entity) {
@@ -146,6 +149,8 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
         public static final AnimationDefinition IDLE = createIdle(false);
         public static final AnimationDefinition IDLE_MIRRORED = createIdle(true);
         public static final AnimationDefinition IDLE_BURROWED = createIdleBurrowed();
+        public static final AnimationDefinition IDLE_PETRIFIED = createIdlePetrified();
+        public static final AnimationDefinition PETRIFIED_HIT = createPetrifiedHit();
         public static final AnimationDefinition BURROW = createBurrow();
         public static final AnimationDefinition EMERGE = createEmerge();
 
@@ -174,6 +179,38 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
                         new Keyframe(1.8333F, KeyframeAnimations.degreeVec(0.0F, 360.0F * yDegrees, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
                         new Keyframe(2.0F, KeyframeAnimations.degreeVec(0.0F, 360.0F * yDegrees, 0.0F), AnimationChannel.Interpolations.LINEAR),
                         new Keyframe(2.001F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+                ));
+            }
+            return builder.build();
+        }
+
+        private static AnimationDefinition createIdlePetrified() {
+            AnimationDefinition.Builder builder = AnimationDefinition.Builder.withLength(0.01F).looping();
+            for (int i = 0; i < 16; i++) {
+                float posY = i == 0 ? 0.0f : 0.0f - i;
+                builder.addAnimation("body" + i, new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0f, 0.0F), AnimationChannel.Interpolations.LINEAR)
+                ));
+                builder.addAnimation("body" + i, new AnimationChannel(AnimationChannel.Targets.POSITION,
+                        new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, posY, 0.0F), AnimationChannel.Interpolations.LINEAR)
+                ));
+            }
+            return builder.build();
+        }
+
+        private static AnimationDefinition createPetrifiedHit() {
+            AnimationDefinition.Builder builder = AnimationDefinition.Builder.withLength(2.0F);
+            for (int i = 0; i < 16; i++) {
+                float yDegrees = (i % 2 == 0) ? -1.0F : 1.0F;
+
+                builder.addAnimation("body" + i, new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(0.0762F, KeyframeAnimations.degreeVec(0.0F, 12.14F * yDegrees, 0.0F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(0.127F, KeyframeAnimations.degreeVec(0.0F, -8.93F * yDegrees, 0.0F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(0.1778F, KeyframeAnimations.degreeVec(0.0F, 5.0F * yDegrees, 0.0F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(0.2541F, KeyframeAnimations.degreeVec(0.0F, -3.75F * yDegrees, 0.0F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(0.3303F, KeyframeAnimations.degreeVec(0.0F, 2.5F * yDegrees, 0.0F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(0.4065F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
                 ));
             }
             return builder.build();
