@@ -29,7 +29,6 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> GLOWSPORES_APPLY = registerSoundEvents("block.glowspores.apply");
     public static final Supplier<SoundEvent> GLOWSPORES_SHEAR = registerSoundEvents("block.glowspores.shear");
 
-
     public static final Supplier<SoundEvent> POTION_POSTDRINK = registerSoundEvents("item.potion.postdrink");
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
     public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");
@@ -40,6 +39,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> SHOTGUN_LOAD = registerSoundEvents("item.shotgun.load");
     public static final Supplier<SoundEvent> SHOTGUN_COUNTERFORCE = registerSoundEvents("item.shotgun.counterforce");
     public static final Supplier<SoundEvent> PUMP_CHARGE_SHOTGUN_ALARM = registerSoundEvents("item.pump_charge_shotgun.alarm");
+    public static final Supplier<SoundEvent> PUMP_CHARGE_SHOTGUN_ALARM_PROFANITY = registerSoundEvents("item.pump_charge_shotgun.alarm_profanity");
 
     public static final Supplier<SoundEvent> GOLD_GILDING = registerSoundEvents("item.gold.gilding");
 
@@ -67,6 +67,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> ECTO_SLAB_STACK = registerSoundEvents("entity.ecto_slab.stack");
     public static final Supplier<SoundEvent> ECTO_SLAB_COLLAPSE = registerSoundEvents("entity.ecto_slab.collapse");
     public static final Supplier<SoundEvent> ECTO_SLAB_BURROW = registerSoundEvents("entity.ecto_slab.burrow");
+    public static final Supplier<SoundEvent> ECTO_SLAB_PETRIFY_SWIRLS = registerSoundEvents("entity.ecto_slab.petrify_swirls");
 
     public static final Supplier<SoundEvent> BANSHEE_AMBIENT = registerSoundEvents("entity.banshee.ambient");
     public static final Supplier<SoundEvent> BANSHEE_HURT = registerSoundEvents("entity.banshee.hurt");
@@ -98,6 +99,8 @@ public class JNESoundEvents {
 
     public static final Supplier<SoundEvent> SOUL_SWIRLS_PLACE = registerSoundEvents("block.soul_swirls.place");
     public static final Supplier<SoundEvent> SOUL_SWIRLS_BREAK = registerSoundEvents("block.soul_swirls.break");
+    public static final Supplier<SoundEvent> SOUL_SWIRLS_PETRIFY = registerSoundEvents("block.soul_swirls.petrify");
+    public static final Supplier<SoundEvent> SOUL_SWIRLS_UNPETRIFY = registerSoundEvents("block.soul_swirls.unpetrify");
 
     public static final Supplier<SoundEvent> SOUL_CANDLE_PLACE = registerSoundEvents("block.soul_candle.place");
     public static final Supplier<SoundEvent> SOUL_CANDLE_BREAK = registerSoundEvents("block.soul_candle.break");

@@ -58,20 +58,20 @@ public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselMod
         VesselModel<Vessel> model = this.getModel();
 
         Vec3 leftPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.left_arm, model.left_arm_anchor);
-        Vessel.cooldownParticle(entity.level(), entity.getRandom(), leftPos.x, leftPos.y, leftPos.z);
+        Vessel.Client.cooldownParticle(entity.level(), entity.getRandom(), leftPos.x, leftPos.y, leftPos.z);
 
         Vec3 rightPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.right_arm, model.right_arm_anchor);
-        Vessel.cooldownParticle(entity.level(), entity.getRandom(), rightPos.x, rightPos.y, rightPos.z);
+        Vessel.Client.cooldownParticle(entity.level(), entity.getRandom(), rightPos.x, rightPos.y, rightPos.z);
     }
 
     private void renderFlashParticles(Vessel entity, float partialTicks) {
         VesselModel<Vessel> model = this.getModel();
 
         Vec3 leftPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.left_arm, model.left_arm_anchor);
-        Vessel.shotgunFlashParticle(entity.level(), entity.getRandom(), leftPos.x, leftPos.y, leftPos.z);
+        Vessel.Client.shotgunFlashParticle(entity.level(), entity.getRandom(), leftPos.x, leftPos.y, leftPos.z);
 
         Vec3 rightPos = ParticleHelper.calculateBoneWorldPosition(entity, partialTicks, model.vessel, model.body, model.waist, model.right_arm, model.right_arm_anchor);
-        Vessel.shotgunFlashParticle(entity.level(), entity.getRandom(), rightPos.x, rightPos.y, rightPos.z);
+        Vessel.Client.shotgunFlashParticle(entity.level(), entity.getRandom(), rightPos.x, rightPos.y, rightPos.z);
 
         entity.armFlash = false;
     }

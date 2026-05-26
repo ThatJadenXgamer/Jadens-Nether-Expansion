@@ -30,6 +30,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -106,7 +108,7 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
             x += (this.random.nextDouble() - 0.5) * 1.5;
             z += (this.random.nextDouble() - 0.5) * 0.5;
 
-            breathingParticle(level(), random, x, y, z);
+            if (this.level().isClientSide()) Client.breathingParticle(level(), random, x, y, z);
         }
     }
 
@@ -212,8 +214,7 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     }
 
     public void setStunTime(int stunTime) {
-        var stunSound = new EntityBoundSoundInstance(JNESoundEvents.BANSHEE_STUN.get(), SoundSource.HOSTILE, 1.0f, 1.0f, this, 0);
-        if (this.getStunTime() == 0 && stunTime > 0) Minecraft.getInstance().getSoundManager().play(stunSound);
+        if (level().isClientSide()) Client.stunSoundInstance(this, stunTime);
         this.entityData.set(STUN_TIME, stunTime);
     }
 
@@ -224,22 +225,6 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
     ////////////////
     // ANIMATIONS //
     ////////////////
-
-    public static void breathingParticle(Level level, RandomSource random, double x, double y, double z) {
-        LodestoneWorldParticleType particle = random.nextBoolean() ? JNEParticleTypes.REDUX_DUST_BLOB.get() : JNEParticleTypes.REDUX_DUST_STAR.get();
-        var startColor = new Color(0x0aabaf);
-        var endColor = new Color(0x203f64);
-        WorldParticleBuilder.create(particle)
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(0.33f).build())
-                .setTransparencyData(GenericParticleData.create(0.65f).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(20)
-                .enableNoClip()
-                .spawn(level, x, y, z);
-    }
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
@@ -330,6 +315,31 @@ public class Banshee extends PossessedMob implements RangedAttackMob {
                     this.banshee.teleport();
                 }
             }
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class Client {
+
+        public static void stunSoundInstance(Banshee banshee, int stunTime) {
+            var stunSound = new EntityBoundSoundInstance(JNESoundEvents.BANSHEE_STUN.get(), SoundSource.HOSTILE, 1.0f, 1.0f, banshee, 0);
+            if (banshee.getStunTime() == 0 && stunTime > 0) Minecraft.getInstance().getSoundManager().play(stunSound);
+        }
+
+        public static void breathingParticle(Level level, RandomSource random, double x, double y, double z) {
+            LodestoneWorldParticleType particle = random.nextBoolean() ? JNEParticleTypes.REDUX_DUST_BLOB.get() : JNEParticleTypes.REDUX_DUST_STAR.get();
+            var startColor = new Color(0x0aabaf);
+            var endColor = new Color(0x203f64);
+            WorldParticleBuilder.create(particle)
+                    .setFullBrightLighting()
+                    .setScaleData(GenericParticleData.create(0.33f).build())
+                    .setTransparencyData(GenericParticleData.create(0.65f).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(20)
+                    .enableNoClip()
+                    .spawn(level, x, y, z);
         }
     }
 }

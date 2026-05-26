@@ -4,6 +4,6 @@
     "netherexp:wisp",
     "netherexp:apparition",
     "#netherexp:possessed",
-    "netherexp:carcass"
+    {"id": "netherexp:carcass", "required": false}
   ]
 }

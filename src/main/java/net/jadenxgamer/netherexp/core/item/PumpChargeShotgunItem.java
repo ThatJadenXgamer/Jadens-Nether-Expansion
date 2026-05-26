@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.core.item;
 import net.jadenxgamer.elysium_api.api.client.screen_flash.ScreenFlash;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemAnimationState;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
 import net.jadenxgamer.netherexp.core.keys.JNEEnchantments;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
@@ -15,6 +16,7 @@ import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -32,6 +34,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -71,7 +75,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem {
         if (!level.isClientSide()) return;
         if (getPumps(stack) > 3) {
             overpump.startIfStopped(entity.tickCount, entity);
-            if (entity.tickCount % 14 == 0) level.playLocalSound(entity, JNESoundEvents.PUMP_CHARGE_SHOTGUN_ALARM.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
+            if (entity.tickCount % 14 == 0) level.playLocalSound(entity, getAlarmSound(), SoundSource.PLAYERS, 0.7f, 1.0f);
         } else overpump.stop(entity);
 
         if (entity instanceof Player player) {
@@ -80,6 +84,10 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem {
             } else ClientItemData.getOrCreate(stack).remove("isSmoking");
         }
         super.inventoryTick(stack, level, entity, slotId, isSelected);
+    }
+
+    private SoundEvent getAlarmSound() {
+        return JNEConfigs.PROFANITY.get() == ProfanityConfig.UNFILTERED ? JNESoundEvents.PUMP_CHARGE_SHOTGUN_ALARM_PROFANITY.get() : JNESoundEvents.PUMP_CHARGE_SHOTGUN_ALARM.get();
     }
 
     @Override
@@ -210,7 +218,7 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem {
                 victim -> victim instanceof LivingEntity && victim != shooter);
         if (entityHitResult != null && entityHitResult.getEntity() instanceof LivingEntity living && living.isAlive()) {
             base += JNEConfigs.POINT_BLANK_SELF_RECOIL_BONUS.get();
-            pointBlankParticle(shooter.level(), raycastStart.add(shooter.getViewVector(1.0F).scale(1)));
+            if (shooter.level().isClientSide) pointBlankParticle(shooter.level(), raycastStart.add(shooter.getViewVector(1.0F).scale(1)));
         }
 
         return base + ((double) getPumps(shotgun) / 10);
@@ -273,48 +281,52 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem {
         stack.set(JNEDataComponents.PUMPS, clamped);
     }
 
-    public static void shotgunFlashParticle(Level level, RandomSource random, double x, double y, double z) {
-        LodestoneWorldParticleType particle = JNEParticleTypes.PUMP_SHOTGUN_FLASH.get();
-        WorldParticleBuilder.create(particle)
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(0.01f, 1.45f, 0.0f).build())
-                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
-                        .setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                .setTransparencyData(GenericParticleData.create(1.0f).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(5)
-                .enableNoClip()
-                .addMotion(0.0f, 0.0f, 0.0f)
-                .spawn(level, x, y, z);
-    }
-
-    public static void cooldownParticle(LivingEntity user, Level level, RandomSource random, double x, double y, double z) {
-        LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
-        var startColor = new Color(0xB21B1B);
-        var endColor = new Color(0x231111);
-        var look = user.getLookAngle();
-
-        float pushFactor = 0.1f;
-        double motionX = (random.nextDouble() / 10) + look.x * pushFactor;
-        double motionY = (-0.09 + random.nextDouble() / 64) + look.y * pushFactor;
-        double motionZ = (random.nextDouble() / 10) + look.z * pushFactor;
-
-        WorldParticleBuilder.create(particle)
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.23f, 0.3f), 0.75f).build())
-                .setTransparencyData(GenericParticleData.create(0.75f, 0.4f, 0.0f).setEasing(Easing.BOUNCE_OUT).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(Mth.randomBetweenInclusive(random, 10, 15))
-                .disableNoClip()
-                .addMotion(motionX, motionY, motionZ)
-                .spawn(level, x, y, z);
-    }
-
     @Override
     public ItemStack getDefaultCreativeAmmo(@Nullable Player player, ItemStack projectileWeaponItem) {
         return JNEItems.SHOTGUN_SHELL.get().getDefaultInstance();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class Client {
+
+        public static void shotgunFlashParticle(Level level, RandomSource random, double x, double y, double z) {
+            LodestoneWorldParticleType particle = JNEParticleTypes.PUMP_SHOTGUN_FLASH.get();
+            WorldParticleBuilder.create(particle)
+                    .setFullBrightLighting()
+                    .setScaleData(GenericParticleData.create(0.01f, 1.45f, 0.0f).build())
+                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
+                            .setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                    .setTransparencyData(GenericParticleData.create(1.0f).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(5)
+                    .enableNoClip()
+                    .addMotion(0.0f, 0.0f, 0.0f)
+                    .spawn(level, x, y, z);
+        }
+
+        public static void cooldownParticle(LivingEntity user, Level level, RandomSource random, double x, double y, double z) {
+            LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
+            var startColor = new Color(0xB21B1B);
+            var endColor = new Color(0x231111);
+            var look = user.getLookAngle();
+
+            float pushFactor = 0.1f;
+            double motionX = (random.nextDouble() / 10) + look.x * pushFactor;
+            double motionY = (-0.09 + random.nextDouble() / 64) + look.y * pushFactor;
+            double motionZ = (random.nextDouble() / 10) + look.z * pushFactor;
+
+            WorldParticleBuilder.create(particle)
+                    .setFullBrightLighting()
+                    .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.23f, 0.3f), 0.75f).build())
+                    .setTransparencyData(GenericParticleData.create(0.75f, 0.4f, 0.0f).setEasing(Easing.BOUNCE_OUT).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(Mth.randomBetweenInclusive(random, 10, 15))
+                    .disableNoClip()
+                    .addMotion(motionX, motionY, motionZ)
+                    .spawn(level, x, y, z);
+        }
     }
 }

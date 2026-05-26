@@ -35,6 +35,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -182,8 +184,8 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
                 shootAnimation.stop();
             }
             case 85 -> {
-                this.accurateShotParticle(this.level(), this.random, 0.35f, 1.0f, 2.0f, new Color(0xFFFFFF), true);
-                this.accurateShotParticle(this.level(), this.random, 0.65f, 1.0f, 1.5f, new Color(0xFDD843), true);
+                Client.accurateShotParticle(this.level(), this, this.random, 0.35f, 1.0f, 2.0f, new Color(0xFFFFFF), true);
+                Client.accurateShotParticle(this.level(), this, this.random, 0.65f, 1.0f, 1.5f, new Color(0xFDD843), true);
             }
         }
         super.handleEntityEvent(id);
@@ -245,74 +247,6 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         }
 
         this.walkAnimation.update(f, 0.2F);
-    }
-
-    public static void cooldownParticle(Level level, RandomSource random, double x, double y, double z) {
-        LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
-        var startColor = new Color(0x1BA9B2);
-        var endColor = new Color(0x112321);
-        WorldParticleBuilder.create(particle)
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.33f, 0.43f), 0.75f).build())
-                .setTransparencyData(GenericParticleData.create(0.9f, 0.4f, 0.0f).setEasing(Easing.BOUNCE_OUT).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(Mth.randomBetweenInclusive(random, 10, 15))
-                .enableNoClip()
-                .addMotion(0.0 + random.nextDouble() / 10, 0.0 + random.nextDouble() / 64, 0.0 + random.nextDouble() / 10)
-                .spawn(level, x, y, z);
-    }
-
-    public static void shotgunFlashParticle(Level level, RandomSource random, double x, double y, double z) {
-        LodestoneWorldParticleType particle = JNEParticleTypes.SHOTGUN_FLASH.get();
-        WorldParticleBuilder.create(particle)
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(0.01f, 1.45f, 0.0f).build())
-                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
-                        .setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                .setTransparencyData(GenericParticleData.create(1.0f).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(5)
-                .enableNoClip()
-                .addMotion(0.0f, 0.0f, 0.0f)
-                .spawn(level, x, y + 0.75, z);
-    }
-
-    public void accurateShotParticle(Level level, RandomSource random, float scale, float translucency, float spinCoefficient, Color color, boolean additive) {
-        final double[] offsets = {0.25, -0.22, 0.2};
-        Vec3 eyePos = this.getEyePosition();
-        Vec3 lookAngle = this.getLookAngle();
-        Vec3 startPos = eyePos
-                .add(0, offsets[2], 0)
-                .add(lookAngle.normalize().scale(offsets[0]))
-                .add(new Vec3(0, 1, 0).cross(lookAngle).normalize().scale(offsets[1]));
-
-        WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
-                .setFullBrightLighting()
-                .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
-                        .setCoefficient(spinCoefficient).setEasing(Easing.SINE_IN).build())
-                .setScaleData(GenericParticleData.create(0.01f, scale, 0.0f)
-                        .setCoefficient(1.4f).setEasing(Easing.SINE_IN_OUT).build())
-                .setTransparencyData(GenericParticleData.create(translucency).build())
-                .setRenderType(additive ? LodestoneWorldParticleRenderType.ADDITIVE : LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setColorData(ColorParticleData.create(color).build())
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(20)
-                .enableNoClip()
-                .setForceSpawn(true)
-                .addMotion(0.0, 0.0, 0.0)
-                .addTickActor(actor -> {
-                    Vec3 currentEyePos = Vessel.this.getEyePosition();
-                    Vec3 currentLookAngle = Vessel.this.getLookAngle();
-                    Vec3 offsetPos = currentEyePos
-                            .add(0, offsets[2], 0)
-                            .add(currentLookAngle.normalize().scale(offsets[0]))
-                            .add(new Vec3(0, 1, 0).cross(currentLookAngle).normalize().scale(offsets[1]));
-                    actor.setPos(offsetPos.x, offsetPos.y, offsetPos.z);
-                })
-                .spawn(level, startPos.x, startPos.y, startPos.z);
     }
 
     ////////////
@@ -484,7 +418,75 @@ public class Vessel extends PossessedMob implements RangedAttackMob {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
     public static class Client {
 
+        public static void cooldownParticle(Level level, RandomSource random, double x, double y, double z) {
+            LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
+            var startColor = new Color(0x1BA9B2);
+            var endColor = new Color(0x112321);
+            WorldParticleBuilder.create(particle)
+                    .setFullBrightLighting()
+                    .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.33f, 0.43f), 0.75f).build())
+                    .setTransparencyData(GenericParticleData.create(0.9f, 0.4f, 0.0f).setEasing(Easing.BOUNCE_OUT).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setColorData(ColorParticleData.create(startColor, endColor).setEasing(Easing.SINE_IN_OUT).build())
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(Mth.randomBetweenInclusive(random, 10, 15))
+                    .enableNoClip()
+                    .addMotion(0.0 + random.nextDouble() / 10, 0.0 + random.nextDouble() / 64, 0.0 + random.nextDouble() / 10)
+                    .spawn(level, x, y, z);
+        }
+
+        public static void shotgunFlashParticle(Level level, RandomSource random, double x, double y, double z) {
+            LodestoneWorldParticleType particle = JNEParticleTypes.SHOTGUN_FLASH.get();
+            WorldParticleBuilder.create(particle)
+                    .setFullBrightLighting()
+                    .setScaleData(GenericParticleData.create(0.01f, 1.45f, 0.0f).build())
+                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
+                            .setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
+                    .setTransparencyData(GenericParticleData.create(1.0f).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(5)
+                    .enableNoClip()
+                    .addMotion(0.0f, 0.0f, 0.0f)
+                    .spawn(level, x, y + 0.75, z);
+        }
+
+        public static void accurateShotParticle(Level level, Vessel vessel, RandomSource random, float scale, float translucency, float spinCoefficient, Color color, boolean additive) {
+            final double[] offsets = {0.25, -0.22, 0.2};
+            Vec3 eyePos = vessel.getEyePosition();
+            Vec3 lookAngle = vessel.getLookAngle();
+            Vec3 startPos = eyePos
+                    .add(0, offsets[2], 0)
+                    .add(lookAngle.normalize().scale(offsets[0]))
+                    .add(new Vec3(0, 1, 0).cross(lookAngle).normalize().scale(offsets[1]));
+
+            WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
+                    .setFullBrightLighting()
+                    .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 2.0f)
+                            .setCoefficient(spinCoefficient).setEasing(Easing.SINE_IN).build())
+                    .setScaleData(GenericParticleData.create(0.01f, scale, 0.0f)
+                            .setCoefficient(1.4f).setEasing(Easing.SINE_IN_OUT).build())
+                    .setTransparencyData(GenericParticleData.create(translucency).build())
+                    .setRenderType(additive ? LodestoneWorldParticleRenderType.ADDITIVE : LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setColorData(ColorParticleData.create(color).build())
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(20)
+                    .enableNoClip()
+                    .setForceSpawn(true)
+                    .addMotion(0.0, 0.0, 0.0)
+                    .addTickActor(actor -> {
+                        Vec3 currentEyePos = vessel.getEyePosition();
+                        Vec3 currentLookAngle = vessel.getLookAngle();
+                        Vec3 offsetPos = currentEyePos
+                                .add(0, offsets[2], 0)
+                                .add(currentLookAngle.normalize().scale(offsets[0]))
+                                .add(new Vec3(0, 1, 0).cross(currentLookAngle).normalize().scale(offsets[1]));
+                        actor.setPos(offsetPos.x, offsetPos.y, offsetPos.z);
+                    })
+                    .spawn(level, startPos.x, startPos.y, startPos.z);
+        }
     }
 }

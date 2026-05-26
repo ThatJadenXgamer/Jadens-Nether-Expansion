@@ -89,6 +89,9 @@ public class JNEEntityType {
         event.register(JNEEntityType.VESSEL.get(), SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ExorcismMob::checkSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(JNEEntityType.ECTO_SLAB.get(), SpawnPlacementTypes.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EctoSlab::checkSpawnRules,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(JNEEntityType.BANSHEE.get(), SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ExorcismMob::checkSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);

@@ -25,6 +25,7 @@ public class JNETags {
         public static final TagKey<Block> SPELEOTHEM_BASE_BLOCKS = createTag("speleothem_base_blocks"); // Blocks which speleothems can be placed on
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createTag("unbounded_speed_blocks"); // Blocks in this tag have their block speed factor ignored when unbounded speed is applied
         public static final TagKey<Block> SILTMARRAM_PLANTABLE_ON = createTag("siltmarram_plantable_on"); // Blocks in this tag can support siltmarrams
+        public static final TagKey<Block> SOUL_SWIRLS = createTag("soul_swirls"); // Blocks in this tag are treated as soul swirls and can be petrified
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.netherexpPath(name));

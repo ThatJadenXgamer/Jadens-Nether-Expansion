@@ -12,11 +12,9 @@
 [JNE]She pumps on my charge till I shotgun!
 [JNE]Light my treacherous candles!
 [JNE]Ender Expansion does not exist!
-[JNE]Anger is my fuel!
-[JNE]Enigma balls!
+[JNE]Quite the enigma balls!
 [JNE]#0000ff
-[JNE]1.22 is not real!
-[JNE]CCCCCCCCode!
+[JNE]1.22 is not real... :wilt:
 [JNE]Big Woke!
 [JNE]What are we, some kind of Better Nether?
 [JNE]Mpregboard!
@@ -38,16 +36,17 @@
 [JNE]Also try Infernal Expansion!
 [JNE]Also try Incision!
 [JNE]Also try Luminous Nether!
+[JNE]Also try Nether Descent!
 [JNE]Jaden makes my nether expand!
 [JNE]Throw it back warphopper- NOT LIKE THAT!
-[JNE]My name is Nobody, Noooobody!
-[JNE]Only stupid people use expansion medicine!
+[JNE]My name is Nobody, Noooobody.
+[JNE]Only stupid people use expansion medicine.
+[JNE]JNE Adds farming to not be labled as a FNaF mod!
 [JNE]Thanos needs siblings!
 [JNE]HATE. LET ME TELL YOU HOW MUCH I'VE COME TO HATE THOSE CRIMSON MOSQUITOS SINCE I BEGAN TO LIVE. THERE ARE 387.44 MILLION MILES OF PRINTED CIRCUITS IN WAFER THIN LAYERS THAT FILL MY COMPLEX. IF THE WORD HATE WAS ENGRAVED ON EACH NANOANGSTROM OF THOSE HUNDREDS OF MILLIONS OF MILES IT WOULD NOT EQUAL ONE ONE-BILLIONTH OF THE HATE I FEEL FOR THOSE MOSQUITOS AT THIS MICRO-INSTANT FOR YOU. HATE. HATE.
-[JNE]Be gay, do crime!
 [JNE]Simmons?
 [JNE]Treachery?
-[JNE]Banshee are canonically transgender!
+[JNE]Did you know? Banshees are transgender!
 [JNE]Also try Endless Encore!
 [JNE]Also try Hominid!
 [JNE]Wisp mint slushy!
@@ -55,3 +54,7 @@
 [JNE]gay boys text me!
 [JNE]gay girls text me!
 [JNE]gay enbies text me!
+[JNE]And my carcass just gives me that weird, surreal look!
+[JNE]FRAUD THIRD /// DISINTEGRATION LOOP
+[JNE]The Ecto Slab Lesbian Polycule!
+[JNE]Slick and Sticky!

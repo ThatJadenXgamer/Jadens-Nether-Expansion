@@ -1,0 +1,70 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
+	"render_type": "minecraft:translucent",
+	"textures": {
+		"particle": "netherexp:block/magma_cream_block_inside",
+		"inside": "netherexp:block/magma_cream_block_inside",
+		"sticky": "netherexp:block/magma_cream_block_sticky"
+	},
+	"elements": [
+		{
+			"from": [2, 2, 2],
+			"to": [14, 14, 14],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#inside"},
+				"east": {"uv": [2, 2, 14, 14], "texture": "#inside"},
+				"south": {"uv": [2, 2, 14, 14], "texture": "#inside"},
+				"west": {"uv": [2, 2, 14, 14], "texture": "#inside"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#inside"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#inside"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#sticky", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#sticky", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#sticky", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#sticky", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#sticky", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#sticky", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -135, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, -135, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

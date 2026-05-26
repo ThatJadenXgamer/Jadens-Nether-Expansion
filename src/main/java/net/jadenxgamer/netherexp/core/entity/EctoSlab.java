@@ -2,13 +2,17 @@ package net.jadenxgamer.netherexp.core.entity;
 
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.block.PetrifiedSwirlsBlock;
+import net.jadenxgamer.netherexp.core.block.entity.PetrifiedSwirlsBlockEntity;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -22,6 +26,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -45,7 +50,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -178,7 +186,7 @@ public class EctoSlab extends PossessedMob {
             if (getStackCooldown() > 0) setStackCooldown(getStackCooldown() - 1);
             if (isPetrified()) {
                 if (disturbed >= 20.0) splitIntoIndividuals(false);
-                if (level().getGameTime() % 40 == 0) disturbed -= 1;
+                if (disturbed > 0 && level().getGameTime() % 40 == 0) disturbed -= 1;
             }
         }
         super.aiStep();
@@ -299,7 +307,7 @@ public class EctoSlab extends PossessedMob {
         ScreenshakeHandler.addScreenshake(
                 new ScreenshakeInstance(10, 1 + ((float) this.getStackSize() / 2), 0, 0,
                         Easing.LINEAR, Easing.LINEAR, 1.0f, Optional.of(new ScreenshakeInstance.ScreenshakePositionData(
-                                this.position(),6.0f, Easing.LINEAR))));
+                        this.position(),6.0f, Easing.LINEAR))));
         this.wasForcedOut = false;
     }
 
@@ -348,6 +356,48 @@ public class EctoSlab extends PossessedMob {
         this.discard();
     }
 
+    private void petrifyNearbySwirls(int radius) {
+        if (!(level() instanceof ServerLevel serverLevel)) return;
+        BlockPos center = this.blockPosition();
+        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+        this.level().broadcastEntityEvent(this, (byte) 120);
+        this.playSound(JNESoundEvents.ECTO_SLAB_PETRIFY_SWIRLS.get(), 2.0f, 1.0f);
+        ScreenshakeHandler.addScreenshake(
+                new ScreenshakeInstance(20, 1, 0, 0,
+                        Easing.LINEAR, Easing.LINEAR, 1.0f, Optional.of(new ScreenshakeInstance.ScreenshakePositionData(
+                        this.position(), (float) getPetrificationRadius() / 2, Easing.LINEAR))));
+
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dy = -radius; dy <= radius; dy++) {
+                for (int dz = -radius; dz <= radius; dz++) {
+                    mutablePos.set(center.getX() + dx, center.getY() + dy, center.getZ() + dz);
+                    BlockState oldState = serverLevel.getBlockState(mutablePos);
+                    if (!oldState.is(JNETags.Blocks.SOUL_SWIRLS)) continue;
+                    BlockState newState = JNEBlocks.PETRIFIED_SWIRLS.get().defaultBlockState().setValue(PetrifiedSwirlsBlock.SALTED, false);
+
+                    if (newState.hasProperty(BlockStateProperties.FACING) && oldState.hasProperty(BlockStateProperties.FACING))
+                        newState = newState.setValue(BlockStateProperties.FACING, oldState.getValue(BlockStateProperties.FACING));
+                    if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && oldState.hasProperty(BlockStateProperties.WATERLOGGED))
+                        newState = newState.setValue(BlockStateProperties.WATERLOGGED, oldState.getValue(BlockStateProperties.WATERLOGGED));
+
+                    serverLevel.setBlock(mutablePos, newState, Block.UPDATE_ALL);
+                    level().playSound(null, mutablePos, JNESoundEvents.SOUL_SWIRLS_PETRIFY.get(), SoundSource.BLOCKS, 0.2f, 1.0f);
+
+                    if (serverLevel.getBlockEntity(mutablePos) instanceof PetrifiedSwirlsBlockEntity blockEntity) {
+                        blockEntity.setPetrifier(this);
+                        blockEntity.setUnpetrifiedBlock(BuiltInRegistries.BLOCK.getKey(oldState.getBlock()));
+                    }
+                    final BlockPos pos = mutablePos.immutable();
+                    serverLevel.getServer().execute(() -> {
+                        if (serverLevel.getBlockState(pos).is(JNEBlocks.PETRIFIED_SWIRLS.get())) {
+                            serverLevel.blockEvent(pos, JNEBlocks.PETRIFIED_SWIRLS.get(), 1, 0);
+                        }
+                    });
+                }
+            }
+        }
+    }
+
     @Override
     public void doExorcism() {
         if (this.isDeadOrDying()) return;
@@ -389,6 +439,43 @@ public class EctoSlab extends PossessedMob {
         level.addFreshEntity(slime);
     }
 
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+        if (spawnType == MobSpawnType.NATURAL) {
+            RandomSource random = level.getRandom();
+            if (random.nextFloat() < 0.33f) {
+                this.setPetrified(true);
+                int stackSize = 8 + random.nextInt(5);
+                this.setStackSize(stackSize);
+            } else {
+                int packSize = 2 + random.nextInt(6);
+                this.setStackSize(1);
+                for (int i = 1; i < packSize; i++) {
+                    EctoSlab additional = new EctoSlab(JNEEntityType.ECTO_SLAB.get(), this.level());
+                    double angle = random.nextDouble() * 2 * Math.PI;
+                    double distance = 0.8 + random.nextDouble() * 1.2;
+                    BlockPos pos = this.blockPosition();
+                    additional.setPos(pos.getX() + 0.5 + Math.cos(angle) * distance, this.getY(), pos.getZ() + 0.5 + Math.sin(angle) * distance);
+                    additional.setMaxStackSize(this.getMaxStackSize());
+                    additional.finalizeSpawn(level, difficulty, MobSpawnType.REINFORCEMENT, spawnGroupData);
+                    this.level().addFreshEntity(additional);
+                }
+            }
+        }
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+    }
+
+    public static boolean checkSpawnRules(EntityType<? extends ExorcismMob> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        if (!ExorcismMob.checkSpawnRules(type, level, spawnType, pos, random)) return false;
+        if (spawnType == MobSpawnType.NATURAL) {
+            AABB area = new AABB(pos).inflate(48.0);
+            List<EctoSlab> petrifiedNearby = level.getEntitiesOfClass(EctoSlab.class, area, aPotentialLesbian -> aPotentialLesbian.isPetrified() && aPotentialLesbian.isAlive());
+            if (!petrifiedNearby.isEmpty()) return false;
+            int nearbyCount = level.getEntitiesOfClass(EctoSlab.class, area, LivingEntity::isAlive).size();
+            return nearbyCount < 6;
+        }
+        return true;
+    }
     //////////
     // DATA //
     //////////
@@ -489,6 +576,7 @@ public class EctoSlab extends PossessedMob {
             case 87 -> Client.forcedEmergeParticle(this, this.level(), this.position());
             case 88 -> Client.shardParticle(this, this.level(), random);
             case 89 -> petrifiedHitAnimation.start(tickCount);
+            case 120 -> Client.petrifySwirlsBurstParticle(this, this.level(), this.position());
         }
         super.handleEntityEvent(id);
     }
@@ -517,8 +605,26 @@ public class EctoSlab extends PossessedMob {
         if (stepHeight != null) stepHeight.setBaseValue(burrowed ? 16.0 : 0.0);
     }
 
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        if (isPetrified()) return false;
+        return super.removeWhenFarAway(distanceToClosestPlayer);
+    }
+
+    @Override
+    public boolean isPersistenceRequired() {
+        if (isPetrified()) return true;
+        return super.isPersistenceRequired();
+    }
+
     public static int absoluteMaximumStackSize() {
         return 16;
+    }
+
+    private int getPetrificationRadius() {
+        int baseRadius = 32;
+        int incrementPerStack = 4;
+        return baseRadius + (getStackSize() - 1) * incrementPerStack;
     }
 
     public int getStackSize() {
@@ -530,6 +636,7 @@ public class EctoSlab extends PossessedMob {
         this.entityData.set(STACK_SIZE, stack);
         this.updateAttributesForStack(stack);
         this.refreshDimensions();
+        if (!level().isClientSide && isPetrified()) petrifyNearbySwirls(getPetrificationRadius());
     }
 
     public boolean isPetrified() {
@@ -537,6 +644,7 @@ public class EctoSlab extends PossessedMob {
     }
 
     public void setPetrified(boolean petrified) {
+        if (petrified && !isPetrified() && !level().isClientSide) petrifyNearbySwirls(getPetrificationRadius());
         this.entityData.set(IS_PETRIFIED, petrified);
     }
 
@@ -630,7 +738,7 @@ public class EctoSlab extends PossessedMob {
             burrowAnimation.stop();
             emergeAnimation.stop();
             return;
-        }
+        } else idlePetrifiedAnimation.stop();
 
         if (belowGroundAnimation) {
             if (burrowAnimationAnimationTimer == 20) {
@@ -817,7 +925,7 @@ public class EctoSlab extends PossessedMob {
             if (ectoSlab.getStackCooldown() > 0) return false;
             if (ectoSlab.getTarget() == null) return false;
             if (ectoSlab.getStackSize() > 1) return false;
-            if (mergeTarget == null || !mergeTarget.isAlive()) return false;
+            if (mergeTarget == null || !mergeTarget.isAlive() || mergeTarget.isDeadOrDying()) return false;
             if (mergeTarget.isPetrified() && mergeTarget.getStackSize() >= absoluteMaximumStackSize()) return false;
             return ectoSlab.distanceToSqr(mergeTarget) > STACK_MERGE_DISTANCE * STACK_MERGE_DISTANCE;
         }
@@ -869,6 +977,7 @@ public class EctoSlab extends PossessedMob {
             List<EctoSlab> candidates = level.getEntitiesOfClass(EctoSlab.class, searchBox,
                     candidate -> candidate != ectoSlab &&
                             !candidate.isBurrowed() &&
+                            !candidate.isDeadOrDying() &&
                             (candidate.isPetrified()
                                     ? candidate.getStackSize() < absoluteMaximumStackSize()
                                     : candidate.getStackSize() < candidate.getMaxStackSize()));
@@ -1225,6 +1334,21 @@ public class EctoSlab extends PossessedMob {
                         .setMotion(0.0, 0.08, 0.0)
                         .spawn(level, ectoSlab.getRandomX(1.0), ectoSlab.getY() + 0.2, ectoSlab.getRandomZ(1.0));
             }
+        }
+
+        public static void petrifySwirlsBurstParticle(EctoSlab ectoSlab, Level level, Vec3 pos) {
+            Vec3 direction = new Vec3(0.0, 1.0, 0.0);
+            WorldParticleBuilder.create(JNEParticleTypes.LARGE_BURST.get())
+                    .setFullBrightLighting()
+                    .setSpinData(SpinParticleData.createRandomDirection(level.random, 0.0f, 1.0f).setCoefficient(0.25f).setEasing(Easing.SINE_IN).build())
+                    .setColorData(ColorParticleData.create(new Color(0x0E4E4E)).build())
+                    .setScaleData(GenericParticleData.create(0.1f, ectoSlab.getPetrificationRadius()).setEasing(Easing.SINE_OUT).build())
+                    .setBehavior(DirectionalParticleBehavior.directional(direction))
+                    .setTransparencyData(GenericParticleData.create(1.0f, 0.0f).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                    .setLifetime(80)
+                    .disableNoClip()
+                    .spawn(level, pos.x, pos.y + 0.4, pos.z);
         }
     }
 }

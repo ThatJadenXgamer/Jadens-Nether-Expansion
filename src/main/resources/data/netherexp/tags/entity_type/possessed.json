@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "netherexp:vessel",
-    "netherexp:ecto_slab",
-    "netherexp:banshee",
-    "netherexp:stampede"
+    {"id": "netherexp:vessel", "required": false},
+    {"id": "netherexp:ecto_slab", "required": false},
+    {"id": "netherexp:banshee", "required": false},
+    {"id": "netherexp:stampede", "required": false}
   ]
 }

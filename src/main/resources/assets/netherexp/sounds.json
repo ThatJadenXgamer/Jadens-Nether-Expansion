@@ -168,6 +168,19 @@
       "netherexp:block/soul_swirls/break4"
     ]
   },
+  "block.soul_swirls.petrify": {
+    "sounds": [
+      "netherexp:block/soul_swirls/petrify"
+    ]
+  },
+  "block.soul_swirls.unpetrify": {
+    "sounds": [
+      "netherexp:block/soul_swirls/unpetrify1",
+      "netherexp:block/soul_swirls/unpetrify2",
+      "netherexp:block/soul_swirls/unpetrify3",
+      "netherexp:block/soul_swirls/unpetrify4"
+    ]
+  },
 
   "block.netherrack_bricks.break": {
     "subtitle": "subtitles.block.generic.break",
@@ -1043,6 +1056,12 @@
       "netherexp:item/shotgun/alarm"
     ]
   },
+  "item.pump_charge_shotgun.alarm_profanity": {
+    "subtitle": "subtitles.item.pump_charge_shotgun.alarm_profanity",
+    "sounds": [
+      "netherexp:item/shotgun/alarm"
+    ]
+  },
   "item.compass.tick": {
     "subtitle": "subtitles.item.compass.tick",
     "sounds": [
@@ -1509,6 +1528,14 @@
       "netherexp:mob/ecto_slab/stack3"
     ],
     "subtitle": "subtitles.entity.ecto_slab.stack"
+  },
+  "entity.ecto_slab.petrify_swirls": {
+    "sounds": [
+      "netherexp:mob/ecto_slab/petrify_swirls1",
+      "netherexp:mob/ecto_slab/petrify_swirls2",
+      "netherexp:mob/ecto_slab/petrify_swirls3"
+    ],
+    "subtitle": "subtitles.entity.ecto_slab.petrify_swirls"
   },
 
   "block.nether_portal.activate": {

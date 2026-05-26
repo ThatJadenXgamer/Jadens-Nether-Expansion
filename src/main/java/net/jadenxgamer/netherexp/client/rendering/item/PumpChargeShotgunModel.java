@@ -79,7 +79,7 @@ public class PumpChargeShotgunModel extends ItemHierarchicalModel<PumpChargeShot
         double y = cameraPos.y + positionVector.y();
         double z = cameraPos.z + positionVector.z();
 
-        PumpChargeShotgunItem.cooldownParticle(entity, entity.level(), entity.getRandom(), x, y, z);
+        PumpChargeShotgunItem.Client.cooldownParticle(entity, entity.level(), entity.getRandom(), x, y, z);
     }
 
     public void renderFlashParticles(ItemStack stack, LivingEntity entity, PoseStack poseStack, ItemDisplayContext context) {
@@ -97,7 +97,7 @@ public class PumpChargeShotgunModel extends ItemHierarchicalModel<PumpChargeShot
         double y = cameraPos.y + positionVector.y();
         double z = cameraPos.z + positionVector.z();
 
-        PumpChargeShotgunItem.shotgunFlashParticle(entity.level(), entity.getRandom(), x, y, z);
+        PumpChargeShotgunItem.Client.shotgunFlashParticle(entity.level(), entity.getRandom(), x, y, z);
         ClientItemData.getOrCreate(stack).remove("shootFlash");
     }
 

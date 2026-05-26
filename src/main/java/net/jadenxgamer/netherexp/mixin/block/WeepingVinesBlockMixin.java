@@ -70,8 +70,7 @@ public abstract class WeepingVinesBlockMixin extends GrowingPlantHeadBlock imple
             double x = pos.getX() + random.nextDouble();
             double y = pos.getY() + 0.5;
             double z = pos.getZ() + random.nextDouble();
-
-            GlowsporesItem.glowsporeParticle(level, random, x, y, z, JNEParticleTypes.LIGHTSPORE.get(), false);
+            GlowsporesItem.glowsporeParticle(level, random, x, y, z, JNEParticleTypes.NIGHTSPORE.get(), true);
         }
         super.animateTick(state, level, pos, random);
     }

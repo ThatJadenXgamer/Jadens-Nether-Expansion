@@ -1,8 +1,7 @@
 package net.jadenxgamer.netherexp.event;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import net.jadenxgamer.elysium_api.Elysium;
-import net.jadenxgamer.elysium_api.impl.client.lightmap_settings.LightmapSettingsManager;
+import net.jadenxgamer.elysium_api.impl.client.assetdriven.lightmap_settings.LightmapSettingsManager;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.client.JNEFogRenderer;
@@ -12,7 +11,6 @@ import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
-import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;

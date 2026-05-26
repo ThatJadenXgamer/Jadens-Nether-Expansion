@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "netherexp:block/petrified_swirls",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "netherexp:block/petrified_swirls",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "netherexp:block/petrified_swirls",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "netherexp:block/petrified_swirls",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "netherexp:block/petrified_swirls"
+    },
+    "facing=west": {
+      "model": "netherexp:block/petrified_swirls",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

@@ -25,6 +25,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -160,7 +162,7 @@ public class WillOWisp extends ThrowableItemProjectile {
 
         if (this.entityData.get(WIND_PROPELLED)) {
             this.currentSpeed = (WIND_PROPELLED_SPEED_BPS / 20.0f);
-            if (this.tickCount % 4 == 0) windTrailParticle(level(), this.getX(), this.getY(), this.getZ());
+            if (this.level().isClientSide() && this.tickCount % 4 == 0) Client.windTrailParticle(level(), this.getX(), this.getY(), this.getZ());
         } else {
             checkWindChargeCollision();
             float ageInSeconds = tickCount / 20.0f;
@@ -180,7 +182,7 @@ public class WillOWisp extends ThrowableItemProjectile {
 
         if (this.level().isClientSide()) {
             if (WILL_O_WISP_PARTICLES.get()) updateParticleTrail();
-            if (WILL_O_WISP_SOUNDS.get()) updateSound();
+            if (WILL_O_WISP_SOUNDS.get()) Client.updateSound(this);
             loopAnimation.startIfStopped(this.tickCount);
         } else if (tickCount > MAX_LIFETIME_TICKS) this.impact(this.position());
     }
@@ -220,15 +222,6 @@ public class WillOWisp extends ThrowableItemProjectile {
         while (difference < -180.0F) difference += 360.0F;
         while (difference >= 180.0F) difference -= 360.0F;
         return current + difference * 0.3f;
-    }
-
-    private void updateSound() {
-        if (this.soundInstance == null) {
-            this.soundInstance = new LoopedEntityBoundSoundInstance(
-                    JNESoundEvents.WILL_O_WISP_AMBIENT.get(), SoundSource.NEUTRAL,
-                    0.5f, 1.0f, this, 0);
-            Minecraft.getInstance().getSoundManager().play(this.soundInstance);
-        }
     }
 
     private void updateDirection() {
@@ -312,47 +305,7 @@ public class WillOWisp extends ThrowableItemProjectile {
     }
 
     private void impactParticle(Level level, Vec3 pos) {
-        impactParticle(level, pos.x, pos.y, pos.z);
-    }
-
-    private void impactParticle(Level level, double x, double y, double z) {
-        WorldParticleBuilder.create(JNEParticleTypes.WILL_O_WISP_IMPACT.get())
-                .setFullBrightLighting()
-                .setSpinData(SpinParticleData.create(0).build())
-                .setScaleData(GenericParticleData.create(0.595f).build())
-                .setTransparencyData(GenericParticleData.create(1).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(10)
-                .enableNoClip()
-                .spawn(level, x, y, z);
-    }
-
-    private void windTrailParticle(Level level, double x, double y, double z) {
-        if (!level.isClientSide()) return;
-        WorldParticleBuilder.create(JNEParticleTypes.WIND_TRAIL.get())
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(0.2f, 0.6f).setEasing(Easing.SINE_OUT).build())
-                .setTransparencyData(GenericParticleData.create(0.3f, 0.0f).build())
-                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
-                .setLifetime(20)
-                .disableNoClip()
-                .spawn(level, x, y, z);
-    }
-
-    private void spawnSpeedAdjustedTrailParticle(double x, double y, double z) {
-        int lifetime = Math.max(1, (int)(6.0f / currentSpeed) + level().random.nextInt(-12, 13));
-        lifetime = Math.min(lifetime, 100);
-
-        WorldParticleBuilder.create(JNEParticleTypes.WISP.get())
-                .setFullBrightLighting()
-                .setScaleData(GenericParticleData.create(0.13f).build())
-                .setTransparencyData(GenericParticleData.create(1).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                .setLifetime(lifetime)
-                .enableNoClip()
-                .spawn(level(), x, y, z);
+        Client.impactParticle(level, pos.x, pos.y, pos.z);
     }
 
     private void updateParticleTrail() {
@@ -392,15 +345,15 @@ public class WillOWisp extends ThrowableItemProjectile {
             lastParticlePos = spawnPos;
         }
 
-        if (level().random.nextFloat() < 0.3f) spawnSpeedAdjustedTrailParticle(this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5));
+        if (level().isClientSide()) Client.spawnSpeedAdjustedTrailParticle(this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), this);
     }
 
     private void spawnParticleWithOffset(Vec3 pos, double offsetRange) {
+        if (!this.level().isClientSide()) return;
         double offsetX = (level().random.nextDouble() - 0.5) * offsetRange;
         double offsetY = (level().random.nextDouble() - 0.5) * offsetRange;
         double offsetZ = (level().random.nextDouble() - 0.5) * offsetRange;
-
-        spawnSpeedAdjustedTrailParticle(pos.x + offsetX, pos.y + offsetY, pos.z + offsetZ);
+        Client.spawnSpeedAdjustedTrailParticle(pos.x + offsetX, pos.y + offsetY, pos.z + offsetZ, this);
     }
 
     @Override
@@ -427,4 +380,59 @@ public class WillOWisp extends ThrowableItemProjectile {
     }
 
     private record TurnPoint(float time, float turnFactor) {}
+
+    @OnlyIn(Dist.CLIENT)
+    public static class Client {
+
+        private static void impactParticle(Level level, double x, double y, double z) {
+            WorldParticleBuilder.create(JNEParticleTypes.WILL_O_WISP_IMPACT.get())
+                    .setFullBrightLighting()
+                    .setSpinData(SpinParticleData.create(0).build())
+                    .setScaleData(GenericParticleData.create(0.595f).build())
+                    .setTransparencyData(GenericParticleData.create(1).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(10)
+                    .enableNoClip()
+                    .spawn(level, x, y, z);
+        }
+
+        private static void windTrailParticle(Level level, double x, double y, double z) {
+            if (!level.isClientSide()) return;
+            WorldParticleBuilder.create(JNEParticleTypes.WIND_TRAIL.get())
+                    .setFullBrightLighting()
+                    .setScaleData(GenericParticleData.create(0.2f, 0.6f).setEasing(Easing.SINE_OUT).build())
+                    .setTransparencyData(GenericParticleData.create(0.3f, 0.0f).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
+                    .setLifetime(20)
+                    .disableNoClip()
+                    .spawn(level, x, y, z);
+        }
+
+        private static void spawnSpeedAdjustedTrailParticle(double x, double y, double z, WillOWisp willOWisp) {
+            if (willOWisp.level().random.nextFloat() > 0.3f) return;
+
+            int lifetime = Math.max(1, (int)(6.0f / willOWisp.currentSpeed) + willOWisp.level().random.nextInt(-12, 13));
+            lifetime = Math.min(lifetime, 100);
+
+            WorldParticleBuilder.create(JNEParticleTypes.WISP.get())
+                    .setFullBrightLighting()
+                    .setScaleData(GenericParticleData.create(0.13f).build())
+                    .setTransparencyData(GenericParticleData.create(1).build())
+                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                    .setLifetime(lifetime)
+                    .enableNoClip()
+                    .spawn(willOWisp.level(), x, y, z);
+        }
+
+        private static void updateSound(WillOWisp willOWisp) {
+            if (willOWisp.soundInstance == null) {
+                willOWisp.soundInstance = new LoopedEntityBoundSoundInstance(
+                        JNESoundEvents.WILL_O_WISP_AMBIENT.get(), SoundSource.NEUTRAL,
+                        0.5f, 1.0f, willOWisp, 0);
+                Minecraft.getInstance().getSoundManager().play(willOWisp.soundInstance);
+            }
+        }
+    }
 }

@@ -1,30 +1,57 @@
 {
-  "variants": {
-    "facing=down": {
-      "model": "netherexp:block/magma_cream_block",
-      "x": 180
+  "multipart": [
+    {
+      "apply": {
+        "model": "netherexp:block/magma_cream_block/sticky"
+      }
     },
-    "facing=east": {
-      "model": "netherexp:block/magma_cream_block",
-      "x": 90,
-      "y": 90
+    {
+      "apply": {
+        "model": "netherexp:block/magma_cream_block/slick_north"
+      },
+      "when": {
+        "north": "true"
+      }
     },
-    "facing=north": {
-      "model": "netherexp:block/magma_cream_block",
-      "x": 90
+    {
+      "apply": {
+        "model": "netherexp:block/magma_cream_block/slick_east"
+      },
+      "when": {
+        "east": "true"
+      }
     },
-    "facing=south": {
-      "model": "netherexp:block/magma_cream_block",
-      "x": 90,
-      "y": 180
+    {
+      "apply": {
+        "model": "netherexp:block/magma_cream_block/slick_south"
+      },
+      "when": {
+        "south": "true"
+      }
     },
-    "facing=up": {
-      "model": "netherexp:block/magma_cream_block"
+    {
+      "apply": {
+        "model": "netherexp:block/magma_cream_block/slick_west"
+      },
+      "when": {
+        "west": "true"
+      }
     },
-    "facing=west": {
-      "model": "netherexp:block/magma_cream_block",
-      "x": 90,
-      "y": 270
+    {
+      "apply": {
+        "model": "netherexp:block/magma_cream_block/slick_up"
+      },
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "netherexp:block/magma_cream_block/slick_down"
+      },
+      "when": {
+        "down": "true"
+      }
     }
-  }
+  ]
 }

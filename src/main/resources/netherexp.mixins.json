@@ -14,8 +14,10 @@
   ],
   "mixins": [
     "block.BaseFireBlockMixin",
+    "block.BlockMixin",
     "block.BrewingStandBlockMixin",
     "block.NetherPortalBlockMixin",
+    "block.PistonStructureResolverMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "client.IClientFluidTypeExtensionsMixin",

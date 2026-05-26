@@ -1,10 +1,7 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.block.entity.DiscernmentGlassBlockEntity;
-import net.jadenxgamer.netherexp.core.block.entity.DriftingSoulsBlockEntity;
-import net.jadenxgamer.netherexp.core.block.entity.JNECampfireBlockEntity;
-import net.jadenxgamer.netherexp.core.block.entity.SuspiciousSoulSandBlockEntity;
+import net.jadenxgamer.netherexp.core.block.entity.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -27,6 +24,9 @@ public class JNEBlockEntityType {
 
     public static final Supplier<BlockEntityType<DriftingSoulsBlockEntity>> DRIFTING_SOULS = BLOCK_ENTITY_TYPES.register("drifting_souls", () ->
             BlockEntityType.Builder.of(DriftingSoulsBlockEntity::new, JNEBlocks.DRIFTING_SOULS.get()).build(null));
+
+    public static final Supplier<BlockEntityType<PetrifiedSwirlsBlockEntity>> PETRIFIED_SWIRLS = BLOCK_ENTITY_TYPES.register("petrified_swirls", () ->
+            BlockEntityType.Builder.of(PetrifiedSwirlsBlockEntity::new, JNEBlocks.PETRIFIED_SWIRLS.get()).build(null));
 
     public static void init(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
