@@ -1,8 +1,10 @@
 {
-  "type": "minecraft:stonecutting",
   "ingredient": {
     "item": "minecraft:nether_bricks"
   },
-  "result": "netherexp:nether_brick_pillar",
-  "count": 1
+  "result": {
+    "count": 1,
+    "id": "netherexp:nether_brick_pillar"
+  },
+  "type": "minecraft:stonecutting"
 }

@@ -1,8 +1,10 @@
 {
-  "type": "minecraft:stonecutting",
   "ingredient": {
     "item": "netherexp:smooth_netherrack"
   },
-  "result": "netherexp:netherrack_bricks",
-  "count": 1
+  "result": {
+    "count": 1,
+    "id": "netherexp:netherrack_bricks"
+  },
+  "type": "minecraft:stonecutting"
 }

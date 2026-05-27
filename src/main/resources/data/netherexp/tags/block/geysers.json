@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "netherexp:souled_geyser",
-    "netherexp:basaltic_geyser"
+    "netherexp:basaltic_geyser",
+    {"id": "netherexp:blackstonic_geyser", "required": false},
+    {"id": "netherexp:ashen_geyser", "required": false}
   ]
 }

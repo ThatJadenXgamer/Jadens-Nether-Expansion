@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "netherexp:indented_soul_slate_tiles"
+        "recipe": "netherexp:etched_soul_slate_tiles"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "netherexp:indented_soul_slate_tiles"
+      "netherexp:etched_soul_slate_tiles"
     ]
   }
 }

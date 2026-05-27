@@ -10,6 +10,6 @@
     "item": "netherexp:treacherous_flame"
   },
   "result": {
-    "item": "netherexp:pump_charge_shotgun"
+    "id": "netherexp:pump_charge_shotgun"
   }
 }

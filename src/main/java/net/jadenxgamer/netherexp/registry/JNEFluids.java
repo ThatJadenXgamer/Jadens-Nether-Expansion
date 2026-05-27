@@ -47,8 +47,8 @@ public class JNEFluids {
                 }
             });
 
-    public static final DeferredHolder<Fluid, FlowingFluid> ECTOPLASM_SOURCE = FLUIDS.register("ectoplasm_source", () -> new BaseFlowingFluid.Source(ectoplasmProperties()));
-    public static final DeferredHolder<Fluid, FlowingFluid> ECTOPLASM_FLOWING = FLUIDS.register("ectoplasm_flowing", () -> new BaseFlowingFluid.Flowing(ectoplasmProperties()));
+    public static final DeferredHolder<Fluid, FlowingFluid> ECTOPLASM_SOURCE = FLUIDS.register("ectoplasm", () -> new BaseFlowingFluid.Source(ectoplasmProperties()));
+    public static final DeferredHolder<Fluid, FlowingFluid> ECTOPLASM_FLOWING = FLUIDS.register("flowing_ectoplasm", () -> new BaseFlowingFluid.Flowing(ectoplasmProperties()));
     public static final Supplier<LiquidBlock> ECTOPLASM = JNEBlocks.BLOCKS.register("ectoplasm", () ->
             new EctoplasmLiquidBlock(ECTOPLASM_SOURCE.get(), BlockBehaviour.Properties.ofLegacyCopy(Blocks.WATER).lightLevel((state) -> 12).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final Supplier<Item> ECTOPLASM_BUCKET = JNEItems.ITEMS.register("ectoplasm_bucket", () ->

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "netherexp:smokestalk_block"
+          "name": "netherexp:drifting_souls"
         }
       ],
       "conditions": [

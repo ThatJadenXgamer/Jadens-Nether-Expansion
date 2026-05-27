@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "minecraft:shroomlight",
-    "netherexp:shroomnight"
+    "netherexp:shroomnight",
+    {"id": "netherexp:shroomblight", "required": false},
+    {"id": "netherexp:shroombright", "required": false},
+    {"id": "netherexp:shroomsight", "required": false},
+    {"id": "netherexp:shroomfright", "required": false}
   ]
 }

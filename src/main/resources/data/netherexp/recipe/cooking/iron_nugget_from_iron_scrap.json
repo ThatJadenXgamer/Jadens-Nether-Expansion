@@ -3,7 +3,9 @@
   "ingredient": {
     "item": "netherexp:iron_scrap"
   },
-  "result": "minecraft:iron_nugget",
+  "result": {
+    "id": "minecraft:iron_nugget"
+  },
   "experience": 0.35,
   "cookingtime": 200
 }

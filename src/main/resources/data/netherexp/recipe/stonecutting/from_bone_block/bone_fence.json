@@ -1,8 +1,10 @@
 {
-  "type": "minecraft:stonecutting",
   "ingredient": {
     "item": "minecraft:bone_block"
   },
-  "result": "netherexp:bone_fence",
-  "count": 4
+  "result": {
+    "count": 4,
+    "id": "netherexp:bone_fence"
+  },
+  "type": "minecraft:stonecutting"
 }

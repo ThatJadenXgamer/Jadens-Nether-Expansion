@@ -904,7 +904,6 @@
     ]
   },
   "block.pointed_dripstone.drip_ectoplasm_into_cauldron": {
-    "subtitle": "subtitles.block.pointed_dripstone.drip_ectoplasm_into_cauldron",
     "sounds": [
       "netherexp:block/ectoplasm/drip1",
       "netherexp:block/ectoplasm/drip2",

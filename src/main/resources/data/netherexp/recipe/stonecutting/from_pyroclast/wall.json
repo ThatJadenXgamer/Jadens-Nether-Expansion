@@ -1,8 +1,10 @@
 {
-  "type": "minecraft:stonecutting",
   "ingredient": {
     "item": "netherexp:pyroclast"
   },
-  "result": "netherexp:pyroclast_wall",
-  "count": 1
+  "result": {
+    "count": 1,
+    "id": "netherexp:pyroclast_wall"
+  },
+  "type": "minecraft:stonecutting"
 }

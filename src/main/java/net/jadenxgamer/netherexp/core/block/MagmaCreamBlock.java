@@ -49,6 +49,8 @@ public class MagmaCreamBlock extends HalfTransparentBlock implements IElysiumBlo
     public static final BooleanProperty UP = BooleanProperty.create("up");
     public static final BooleanProperty DOWN = BooleanProperty.create("down");
 
+    private static final double PARTICLE_SPEED_THRESHOLD = 0.4;
+
     public MagmaCreamBlock(Properties properties) {
         super(properties);
     }
@@ -80,7 +82,7 @@ public class MagmaCreamBlock extends HalfTransparentBlock implements IElysiumBlo
 
     @Override
     public float getFriction(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) {
-        return (state.getValue(UP)) ? 1.1f : super.getFriction(state, level, pos, entity);
+        return state.getValue(UP) ? 1.0f / 0.91f : super.getFriction(state, level, pos, entity);
     }
 
     @Override
@@ -104,22 +106,18 @@ public class MagmaCreamBlock extends HalfTransparentBlock implements IElysiumBlo
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         super.stepOn(level, pos, state, entity);
-
         if (state.getValue(UP)) {
-            if (level.isClientSide() && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
-                double xChange = Math.abs(entity.getX() - entity.xOld);
-                double zChange = Math.abs(entity.getZ() - entity.zOld);
-                if (xChange >= 0.26F || zChange >= 0.26F) {
-                    Client.particle(level, level.random, entity.getRandomX(0.5), entity.blockPosition().getY(), entity.getRandomZ(0.5));
-                    for (int i = 0; i < 2; i++) level.addParticle(ParticleTypes.SMALL_FLAME, entity.getRandomX(0.5), entity.blockPosition().getY() + 0.2, entity.getRandomZ(0.5), 0.0f, 0.08f, 0.0f);
-                }
+            double horizontalSpeed = Math.sqrt(entity.getDeltaMovement().x * entity.getDeltaMovement().x + entity.getDeltaMovement().z * entity.getDeltaMovement().z);
+            if (level.isClientSide() && horizontalSpeed >= PARTICLE_SPEED_THRESHOLD) {
+                Client.particle(level, level.random, entity.getRandomX(0.5), entity.blockPosition().getY(), entity.getRandomZ(0.5));
+                for (int i = 0; i < 2; i++) level.addParticle(ParticleTypes.SMALL_FLAME, entity.getRandomX(0.5), entity.blockPosition().getY() + 0.2, entity.getRandomZ(0.5), 0.0f, 0.08f, 0.0f);
             }
-            return;
-        }
-        double d0 = Math.abs(entity.getDeltaMovement().y);
-        if (d0 < 0.1 && !entity.isSteppingCarefully()) {
-            double d1 = 0.4 + d0 * 0.2;
-            entity.setDeltaMovement(entity.getDeltaMovement().multiply(d1, 1.0, d1));
+        } else {
+            double d0 = Math.abs(entity.getDeltaMovement().y);
+            if (d0 < 0.1 && !entity.isSteppingCarefully()) {
+                double d1 = 0.4 + d0 * 0.2;
+                entity.setDeltaMovement(entity.getDeltaMovement().multiply(d1, 1.0, d1));
+            }
         }
     }
 

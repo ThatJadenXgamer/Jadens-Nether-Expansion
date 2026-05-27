@@ -11,7 +11,9 @@ import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
+import net.jadenxgamer.netherexp.core.block.MagmaCreamBlock;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
+import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.minecraft.client.Minecraft;
@@ -110,5 +112,22 @@ public class JNEClientEvents {
     public static void itemTints(RegisterColorHandlersEvent.Item event) {
         event.register((stack, tint) -> tint > 0 ? -1 : AntidoteContents.getColor(stack), JNEItems.ANTIDOTE.get());
         event.register((stack, tint) -> tint > 0 ? -1 : AntidoteContents.getColor(stack), JNEItems.GRENADE_ANTIDOTE.get());
+    }
+
+    @SubscribeEvent
+    public static void onMovementInput(MovementInputUpdateEvent event) {
+        var player = event.getEntity();
+        var state = player.getBlockStateOn();
+        if (state.is(JNEBlocks.MAGMA_CREAM_BLOCK.get()) && state.getValue(MagmaCreamBlock.UP)) {
+            var input = event.getInput();
+
+            input.forwardImpulse = 0.0F;
+            input.leftImpulse = 0.0F;
+
+            input.up = false;
+            input.down = false;
+            input.left = false;
+            input.right = false;
+        }
     }
 }

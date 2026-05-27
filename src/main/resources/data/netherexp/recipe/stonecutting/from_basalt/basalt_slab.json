@@ -1,8 +1,10 @@
 {
-  "type": "minecraft:stonecutting",
   "ingredient": {
     "item": "minecraft:basalt"
   },
-  "result": "netherexp:basalt_slab",
-  "count": 2
+  "result": {
+    "count": 2,
+    "id": "netherexp:basalt_slab"
+  },
+  "type": "minecraft:stonecutting"
 }

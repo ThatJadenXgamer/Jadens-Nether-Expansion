@@ -6,7 +6,7 @@
 		"particle": "block/flower_pot",
 		"flowerpot": "block/flower_pot",
 		"dirt": "block/dirt",
-		"plant": "netherexp:block/soul_swirls_pot"
+		"plant": "netherexp:block/potted/soul_swirls"
 	},
 	"elements": [
 		{

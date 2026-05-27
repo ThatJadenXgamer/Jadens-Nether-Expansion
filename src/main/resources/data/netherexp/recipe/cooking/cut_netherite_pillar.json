@@ -3,7 +3,9 @@
   "ingredient": {
     "item": "netherexp:rusty_cut_netherite_pillar"
   },
-  "result": "netherexp:cut_netherite_pillar",
+  "result": {
+    "id": "netherexp:cut_netherite_pillar"
+  },
   "experience": 0.1,
   "cookingtime": 200
 }

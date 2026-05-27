@@ -7,9 +7,9 @@
 		"particle": "block/flower_pot",
 		"flowerpot": "block/flower_pot",
 		"dirt": "block/dirt",
-		"azalea_plant": "netherexp:block/warped_sporeshroom_stem_pot",
-		"top": "netherexp:block/warped_sporeshroom_top_pot",
-		"side": "netherexp:block/warped_sporeshroom_side_pot"
+		"azalea_plant": "netherexp:block/potted/warped_sporeshroom_stem",
+		"top": "netherexp:block/potted/warped_sporeshroom_top",
+		"side": "netherexp:block/potted/warped_sporeshroom_side"
 	},
 	"elements": [
 		{

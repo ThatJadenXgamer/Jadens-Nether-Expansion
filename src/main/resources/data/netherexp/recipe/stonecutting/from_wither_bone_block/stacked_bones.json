@@ -1,8 +1,10 @@
 {
-  "type": "minecraft:stonecutting",
   "ingredient": {
     "item": "netherexp:wither_bone_block"
   },
-  "result": "netherexp:stacked_wither_bones",
-  "count": 1
+  "result": {
+    "count": 1,
+    "id": "netherexp:stacked_wither_bones"
+  },
+  "type": "minecraft:stonecutting"
 }

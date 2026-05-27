@@ -9,6 +9,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -72,7 +73,7 @@ public class GeyserBlock extends Block {
 
         Vec3 velocity = entity.getDeltaMovement();
         entity.push(velocity.x, JNEConfigs.GEYSER_HEIGHT_VELOCITY.get(), velocity.z);
-        level.playSound(null, pos, JNESoundEvents.GEYSER_STEAM.get(), SoundSource.BLOCKS, 0.5f, 1.0f);
+        level.playSound(null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.0f);
         level.setBlock(pos, state.setValue(COOLDOWN, true), Block.UPDATE_ALL);
         level.scheduleTick(pos, this, JNEConfigs.GEYSER_COOLDOWN.get() * 20);
     }
@@ -101,7 +102,6 @@ public class GeyserBlock extends Block {
         double x = pos.getX();
         double y = pos.getY();
         double z = pos.getZ();
-        if (state.getValue(COOLDOWN)) level.addParticle(smokeParticle.get(), true, x + 0.5, y + 1.4, z + 0.5, 0.0, 0.15, 0.0);
 
         if (!state.getValue(ACTIVE)) return;
 
