@@ -1,9 +1,0 @@
-{
-  "type": "biome",
-  "biomes": [
-    "netherdescent:arisian_undergrowth"
-  ],
-  "sky_light_color": "#5E8BFF",
-  "block_light_color": "#5E8BFF",
-  "ambient_brightness_multiplier": 0.4
-}

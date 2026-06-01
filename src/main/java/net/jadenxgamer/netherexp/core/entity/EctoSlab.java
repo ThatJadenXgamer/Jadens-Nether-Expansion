@@ -81,10 +81,10 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 
-import static net.jadenxgamer.netherexp.config.JNEConfigs.SILVER_PARANORMAL_DAMAGE_MULTIPLIER;
-import static net.jadenxgamer.netherexp.config.JNEConfigs.SILVER_PARANORMAL_INFLICTS_SLOWNESS;
+import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
 import static net.jadenxgamer.netherexp.util.CommonParticles.SMOKE_VARIANTS;
 
+@SuppressWarnings("deprecation")
 public class EctoSlab extends PossessedMob {
 
     private static final ResourceLocation STACK_SPEED_MODIFIER_ID = NetherExp.netherexpPath("stack_speed");
@@ -99,7 +99,7 @@ public class EctoSlab extends PossessedMob {
     public final AnimationState petrifiedHitAnimation = new AnimationState();
     public final AnimationState burrowAnimation = new AnimationState();
     public final AnimationState emergeAnimation = new AnimationState();
-    private int maxStackSize = 4;
+    private int maxStackSize = ECTO_SLAB_MAX_STACK_SIZE.get();
     private double disturbed = 0.0;
     private boolean wasOnGround;
     private int burrowedCooldown = 40;
@@ -185,7 +185,7 @@ public class EctoSlab extends PossessedMob {
         if (!level().isClientSide()) {
             if (getStackCooldown() > 0) setStackCooldown(getStackCooldown() - 1);
             if (isPetrified()) {
-                if (disturbed >= 20.0) splitIntoIndividuals(false);
+                if (disturbed >= PETRIFIED_ECTO_SLAB_SHATTER_DISTURBANCE.get()) splitIntoIndividuals(false);
                 if (disturbed > 0 && level().getGameTime() % 40 == 0) disturbed -= 1;
             }
         }
@@ -195,7 +195,7 @@ public class EctoSlab extends PossessedMob {
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (!this.isPetrified() && !isBurrowed() && stack.is(Items.GHAST_TEAR)) {
+        if (ECTO_SLAB_PETRIFY_WITH_GHAST_TEAR.get() && !this.isPetrified() && !isBurrowed() && stack.is(Items.GHAST_TEAR)) {
             this.setPetrified(true);
             stack.shrink(1);
             playSound(SoundEvents.HONEYCOMB_WAX_ON, 1.0f, 1.0f);
@@ -224,13 +224,13 @@ public class EctoSlab extends PossessedMob {
             amount = 0;
         }
         if (isBurrowed()) {
-            if (isShovelHit(source)) {
+            if (ECTO_SLAB_FORCE_OUT_WITH_SHOVEL.get() && isShovelHit(source)) {
                 playSound(SoundEvents.SHOVEL_FLATTEN, 1.0f, 1.0f);
                 this.wasForcedOut = true;
             }
             if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
         }
-        if (source.is(DamageTypeTags.IS_EXPLOSION) && getStackSize() > 1) {
+        if (EXPLOSION_SHATTERS_ECTO_SLAB_STACK.get() && source.is(DamageTypeTags.IS_EXPLOSION) && getStackSize() > 1) {
             splitIntoIndividuals(true);
             return false;
         }
@@ -293,21 +293,21 @@ public class EctoSlab extends PossessedMob {
         if (!(this.level() instanceof ServerLevel serverLevel)) return;
         AABB area = this.getBoundingBox().inflate(1.2);
         List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, area, victim -> victim != this && victim.isAlive());
-        float damage = this.getAttackDamage() * 2.0f;
+        float damage = this.getAttackDamage() * EMERGE_BURST_DAMAGE_MULTIPLIER.get().floatValue();
         DamageSource source = this.damageSources().mobAttack(this);
 
         for (LivingEntity victim : targets) {
-            if (!wasForcedOut && victim.getType().is(JNETags.EntityTypes.SAFE_FROM_ECTO_SLAB_EMERGE_BURST)) continue;
             if (victim instanceof EctoSlab) continue;
+            if (!wasForcedOut && !FORCED_OUT_ECTO_SLAB_FRIENDLY_FIRE.get() && !victim.getType().is(JNETags.EntityTypes.AFFECTED_BY_ECTO_SLAB_EMERGE_BURST)) continue;
             if (victim.hurt(source, damage)) {
                 this.playSound(JNESoundEvents.ECTOPLASM_FREEZE.get(), 1.0F, 1.0F);
                 EnchantmentHelper.doPostAttackEffects(serverLevel, victim, source);
             }
         }
-        ScreenshakeHandler.addScreenshake(
-                new ScreenshakeInstance(10, 1 + ((float) this.getStackSize() / 2), 0, 0,
-                        Easing.LINEAR, Easing.LINEAR, 1.0f, Optional.of(new ScreenshakeInstance.ScreenshakePositionData(
-                        this.position(),6.0f, Easing.LINEAR))));
+        if (ECTO_SLAB_EMERGE_BURST_SCREENSHAKE.get()) ScreenshakeHandler.addScreenshake(
+                    new ScreenshakeInstance(10, 1 + ((float) this.getStackSize() / 2), 0, 0,
+                            Easing.LINEAR, Easing.LINEAR, 1.0f, Optional.of(new ScreenshakeInstance.ScreenshakePositionData(
+                            this.position(),6.0f, Easing.LINEAR))));
         this.wasForcedOut = false;
     }
 
@@ -324,7 +324,7 @@ public class EctoSlab extends PossessedMob {
             EctoSlab piece = new EctoSlab(JNEEntityType.ECTO_SLAB.get(), this.level());
             piece.setPos(this.getX(), this.getY() + i, this.getZ());
             piece.setStackSize(1);
-            piece.setStackCooldown(explosion ? 300 : 20);
+            piece.setStackCooldown(explosion ? EXPLOSION_SHATTER_COOLDOWN.get() : 20);
             piece.setMaxStackSize(this.getMaxStackSize());
             piece.setHealth(piece.getMaxHealth());
             piece.setNoAi(this.isNoAi());
@@ -357,15 +357,16 @@ public class EctoSlab extends PossessedMob {
     }
 
     private void petrifyNearbySwirls(int radius) {
+        if (!PETRIFICATION_PETRIFIES_SWIRLS.get()) return;
         if (!(level() instanceof ServerLevel serverLevel)) return;
         BlockPos center = this.blockPosition();
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
         this.level().broadcastEntityEvent(this, (byte) 120);
         this.playSound(JNESoundEvents.ECTO_SLAB_PETRIFY_SWIRLS.get(), 2.0f, 1.0f);
-        ScreenshakeHandler.addScreenshake(
-                new ScreenshakeInstance(20, 1, 0, 0,
-                        Easing.LINEAR, Easing.LINEAR, 1.0f, Optional.of(new ScreenshakeInstance.ScreenshakePositionData(
-                        this.position(), (float) getPetrificationRadius() / 2, Easing.LINEAR))));
+        if (ECTO_SLAB_PETRIFICATION_SCREENSHAKE.get()) ScreenshakeHandler.addScreenshake(
+                    new ScreenshakeInstance(20, 1, 0, 0,
+                            Easing.LINEAR, Easing.LINEAR, 1.0f, Optional.of(new ScreenshakeInstance.ScreenshakePositionData(
+                            this.position(), (float) getPetrificationRadius() / 2, Easing.LINEAR))));
 
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dy = -radius; dy <= radius; dy++) {
@@ -443,12 +444,12 @@ public class EctoSlab extends PossessedMob {
     public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
         if (spawnType == MobSpawnType.NATURAL) {
             RandomSource random = level.getRandom();
-            if (random.nextFloat() < 0.33f) {
+            if (random.nextFloat() < NATURAL_PETRIFIED_ECTO_SLAB_CHANCE.get().floatValue()) {
                 this.setPetrified(true);
-                int stackSize = 8 + random.nextInt(5);
+                int stackSize = NATURAL_PETRIFIED_ECTO_SLAB_MIN_STACK.get() + random.nextInt(NATURAL_PETRIFIED_ECTO_SLAB_MAX_STACK.get() - NATURAL_PETRIFIED_ECTO_SLAB_MIN_STACK.get() + 1);
                 this.setStackSize(stackSize);
             } else {
-                int packSize = 2 + random.nextInt(6);
+                int packSize = NATURAL_ECTO_SLAB_PACK_MIN.get() + random.nextInt(NATURAL_ECTO_SLAB_PACK_MAX.get() - NATURAL_ECTO_SLAB_PACK_MIN.get() + 1);
                 this.setStackSize(1);
                 for (int i = 1; i < packSize; i++) {
                     EctoSlab additional = new EctoSlab(JNEEntityType.ECTO_SLAB.get(), this.level());
@@ -534,7 +535,7 @@ public class EctoSlab extends PossessedMob {
 
     @Override
     protected double apparitionUnleashingOdds() {
-        return super.apparitionUnleashingOdds();
+        return ECTO_SLAB_UNLEASHING_ODDS.get();
     }
 
     @Override
@@ -618,12 +619,12 @@ public class EctoSlab extends PossessedMob {
     }
 
     public static int absoluteMaximumStackSize() {
-        return 16;
+        return ABSOLUTE_MAXIMUM_STACK_SIZE.get();
     }
 
     private int getPetrificationRadius() {
-        int baseRadius = 32;
-        int incrementPerStack = 4;
+        int baseRadius = PETRIFICATION_SWIRLS_RANGE.get();
+        int incrementPerStack = PETRIFICATION_SWIRLS_RANGE_PER_STACK.get();
         return baseRadius + (getStackSize() - 1) * incrementPerStack;
     }
 
@@ -658,21 +659,23 @@ public class EctoSlab extends PossessedMob {
 
     protected int getJumpDelay() {
         int stack = getStackSize();
-        return switch (stack) {
+        int baseDelay = switch (stack) {
             case 1 -> 30;
             case 2 -> 20;
             case 3 -> 15;
             default -> 10;
         };
+        return baseDelay + ECTO_SLAB_EXTRA_JUMP_DELAY.get();
     }
 
     private int getBurrowCooldown() {
         int stack = getStackSize();
-        return switch (stack) {
+        int baseCooldown = switch (stack) {
             case 1 -> this.random.nextInt(60, 81);
             case 2 -> 60;
             default -> 50;
         };
+        return baseCooldown + ECTO_SLAB_EXTRA_BURROW_COOLDOWN.get();
     }
 
     private void updateAttributesForStack(int newStackSize) {
@@ -681,34 +684,42 @@ public class EctoSlab extends PossessedMob {
         AttributeInstance knockbackResistance = this.getAttribute(Attributes.KNOCKBACK_RESISTANCE);
         AttributeInstance jumpStrength = this.getAttribute(Attributes.JUMP_STRENGTH);
 
-        if (speed != null) { // Speed: +0.05 per extra stack, capped at 0.6 total
+        if (speed != null) {
             speed.removeModifier(STACK_SPEED_MODIFIER_ID);
-            double speedBonus = Math.min((newStackSize - 1) * 0.05, 0.2);
+            double speedBonus = (newStackSize - 1) * ECTO_SLAB_SPEED_PER_STACK.get();
+            double speedCap = ECTO_SLAB_SPEED_CAP.get();
+            if (speedCap >= 0) speedBonus = Math.min(speedBonus, speedCap);
             if (speedBonus != 0.0) {
                 AttributeModifier speedMod = new AttributeModifier(STACK_SPEED_MODIFIER_ID, speedBonus, AttributeModifier.Operation.ADD_VALUE);
                 speed.addTransientModifier(speedMod);
             }
         }
 
-        if (damage != null) { // Damage: +2 per stack
+        if (damage != null) {
             damage.removeModifier(STACK_DAMAGE_MODIFIER_ID);
-            double damageBonus = newStackSize * 2.0;
+            double damageBonus = newStackSize * ECTO_SLAB_DAMAGE_PER_STACK.get();
+            double damageCap = ECTO_SLAB_DAMAGE_CAP.get();
+            if (damageCap >= 0) damageBonus = Math.min(damageBonus, damageCap);
             AttributeModifier damageMod = new AttributeModifier(STACK_DAMAGE_MODIFIER_ID, damageBonus, AttributeModifier.Operation.ADD_VALUE);
             damage.addTransientModifier(damageMod);
         }
 
-        if (knockbackResistance != null) { // Knockback Resistance: +0.15 per extra stack
+        if (knockbackResistance != null) {
             knockbackResistance.removeModifier(STACK_KNOCKBACK_RESISTANCE_MODIFIER_ID);
-            double kbBonus = (newStackSize - 1) * 0.15;
+            double kbBonus = (newStackSize - 1) * ECTO_SLAB_KNOCKBACK_RESISTANCE_PER_STACK.get();
+            double kbCap = ECTO_SLAB_KNOCKBACK_RESISTANCE_CAP.get();
+            if (kbCap >= 0) kbBonus = Math.min(kbBonus, kbCap);
             if (kbBonus != 0.0) {
                 AttributeModifier kbMod = new AttributeModifier(STACK_KNOCKBACK_RESISTANCE_MODIFIER_ID, kbBonus, AttributeModifier.Operation.ADD_VALUE);
                 knockbackResistance.addTransientModifier(kbMod);
             }
         }
 
-        if (jumpStrength != null) { // Jump Strength: +0.05 per extra stack
+        if (jumpStrength != null) {
             jumpStrength.removeModifier(STACK_JUMP_STRENGTH_MODIFIER_ID);
-            double jumpBonus = (newStackSize - 1) * 0.05;
+            double jumpBonus = (newStackSize - 1) * ECTO_SLAB_JUMP_STRENGTH_PER_STACK.get();
+            double jumpCap = ECTO_SLAB_JUMP_STRENGTH_CAP.get();
+            if (jumpCap >= 0) jumpBonus = Math.min(jumpBonus, jumpCap);
             if (jumpBonus != 0.0) {
                 AttributeModifier jumpMod = new AttributeModifier(STACK_JUMP_STRENGTH_MODIFIER_ID, jumpBonus, AttributeModifier.Operation.ADD_VALUE);
                 jumpStrength.addTransientModifier(jumpMod);
@@ -996,7 +1007,6 @@ public class EctoSlab extends PossessedMob {
         private final EctoSlab ectoSlab;
         private int burrowedTime = 0;
         private int burrowAnimationDelay = 0;
-        private static int MAX_DIG_TIME = 80;
 
         public EctoSlabAttackGoal(EctoSlab ectoSlab) {
             this.ectoSlab = ectoSlab;
@@ -1059,7 +1069,7 @@ public class EctoSlab extends PossessedMob {
 
                 if (ectoSlab.onGround() && ectoSlab.burrowedCooldown-- <= 0) {
                     ectoSlab.setBurrowed(true);
-                    burrowedTime = MAX_DIG_TIME;
+                    burrowedTime = ECTO_SLAB_MAX_DIG_TIME.get();
                     burrowAnimationDelay = 20;
                 }
             } else {

@@ -1,0 +1,13 @@
+{
+  "dimension": "minecraft:the_nether",
+  "climate_point": 0,
+  "biome": "biomesoplenty:crystalline_chasm",
+  "weight": 15,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

@@ -1,9 +1,0 @@
-{
-  "type": "biome",
-  "biomes": [
-    "cinderscapes:luminous_grove"
-  ],
-  "sky_light_color": "#8D59FF",
-  "block_light_color": "#8D59FF",
-  "ambient_brightness_multiplier": 1.2
-}

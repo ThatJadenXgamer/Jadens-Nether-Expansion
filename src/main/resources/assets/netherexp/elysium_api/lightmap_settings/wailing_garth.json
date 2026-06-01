@@ -1,9 +1,0 @@
-{
-  "type": "biome",
-  "biomes": [
-    "netherdescent:wailing_garth"
-  ],
-  "sky_light_color": "#A97BD1",
-  "block_light_color": "#A97BD1",
-  "ambient_brightness_multiplier": 1.3
-}

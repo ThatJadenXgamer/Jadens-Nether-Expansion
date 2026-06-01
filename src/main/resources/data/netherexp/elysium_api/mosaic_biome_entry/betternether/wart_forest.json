@@ -1,0 +1,12 @@
+{
+  "dimension": "minecraft:the_nether",
+  "climate_point": 2,
+  "biome": "betternether:wart_forest",
+  "weight": 5,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "betternether"
+    }
+  ]
+}

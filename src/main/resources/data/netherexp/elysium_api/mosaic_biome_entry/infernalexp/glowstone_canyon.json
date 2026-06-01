@@ -1,0 +1,13 @@
+{
+  "dimension": "minecraft:the_nether",
+  "climate_point": 5,
+  "biome": "infernalexp:glowstone_canyon",
+  "weight": 18,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "infernalexp"
+    }
+  ]
+}

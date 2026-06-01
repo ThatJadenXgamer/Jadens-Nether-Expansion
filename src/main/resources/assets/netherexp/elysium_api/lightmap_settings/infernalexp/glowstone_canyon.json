@@ -1,0 +1,8 @@
+{
+  "type": "biome",
+  "biomes": [
+    "infernalexp:glowstone_canyon"
+  ],
+  "sky_light_color": "#FFA17C",
+  "block_light_color": "#FFA17C"
+}

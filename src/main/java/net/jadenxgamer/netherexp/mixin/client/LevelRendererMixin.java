@@ -34,7 +34,7 @@ public abstract class LevelRendererMixin {
             at = @At(value = "HEAD")
     )
     private void netherexp$renderNetherFog(LightTexture lightTexture, float partialTick, double camX, double camY, double camZ, CallbackInfo ci) {
-        if (!JNEConfigImpl.CONFIG.isLoaded()) return;
+        if (!JNEConfigImpl.COMMON.isLoaded()) return;
         if (!NETHER_MIST_PARTICLES.get() || level.dimension() != Level.NETHER) return;
 
         Minecraft client = Minecraft.getInstance();

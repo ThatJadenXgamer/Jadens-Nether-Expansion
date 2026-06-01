@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:blaze",
+    "minecraft:allay",
+    "minecraft:vex",
+    "minecraft:glow_squid",
+    "netherexp:apparition",
+    "netherexp:wisp",
+    "netherexp:banshee"
+  ]
+}

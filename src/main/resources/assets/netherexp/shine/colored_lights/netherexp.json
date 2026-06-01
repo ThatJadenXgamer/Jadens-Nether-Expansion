@@ -1,0 +1,132 @@
+{
+  "enabled": true,
+  "scanRadius": 190,
+  "blockLights": {
+    "minecraft:soul_fire": {
+      "enabled": true,
+      "color": 5636095,
+      "radius": 10.0,
+      "intensity": 0.30000000000000004
+    },
+    "netherexp:ancient_fire": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 9.0,
+      "intensity": 1.0
+    },
+    "netherexp:ancient_torch": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 9.0,
+      "intensity": 1.6
+    },
+    "netherexp:ancient_lantern": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 9.0,
+      "intensity": 1.6
+    },
+    "netherexp:ancient_wall_torch": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 9.0,
+      "intensity": 1.6
+    },
+    "netherexp:ancient_candle": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 4.0,
+      "intensity": 1.6
+    },
+    "netherexp:ancient_campfire": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 9.0,
+      "intensity": 1.6
+    },
+    "netherexp:ancient_burning_skull_block": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 9.0,
+      "intensity": 1.6
+    },
+    "netherexp:ancient_burning_wither_skull_block": {
+      "enabled": true,
+      "color": 16711680,
+      "radius": 9.0,
+      "intensity": 1.6
+    },
+    "netherexp:soul_burning_wither_skull_block": {
+      "enabled": true,
+      "color": 5636095,
+      "radius": 10.0,
+      "intensity": 0.75
+    },
+    "netherexp:ghoul_o_lantern": {
+      "enabled": true,
+      "color": 5636095,
+      "radius": 10.0,
+      "intensity": 0.75
+    },
+    "netherexp:ectoplasm": {
+      "enabled": true,
+      "color": 5636095,
+      "radius": 12.0,
+      "intensity": 1.0
+    },
+    "netherexp:ectoplasm_cauldron": {
+      "enabled": true,
+      "color": 5636095,
+      "radius": 12.0,
+      "intensity": 1.0
+    },
+    "netherexp:soul_swirls": {
+      "enabled": true,
+      "color": 5636089,
+      "radius": 6.0,
+      "intensity": 0.45
+    },
+    "netherexp:shroomnight": {
+      "enabled": true,
+      "color": 16733675,
+      "radius": 8.0,
+      "intensity": 1.4500000000000002
+    },
+    "minecraft:nether_portal": {
+      "enabled": true,
+      "color": 7733419,
+      "radius": 12.0,
+      "intensity": 2.25
+    },
+    "netherexp:soul_glass": {
+      "enabled": true,
+      "color": 5636095,
+      "radius": 12.0,
+      "intensity": 0.75
+    },
+    "netherexp:wraithing_lesion": {
+      "enabled": true,
+      "color": 16755285,
+      "radius": 12.0,
+      "intensity": 1.6500000000000001
+    },
+    "minecraft:glowstone": {
+      "enabled": true,
+      "color": 16755502,
+      "radius": 15.0,
+      "intensity": 0.25
+    },
+    "minecraft:ender_chest": {
+      "enabled": true,
+      "color": 2840347,
+      "radius": 12.0,
+      "intensity": 1.6
+    },
+    "netherexp:magma_cream_block": {
+      "enabled": true,
+      "color": 16746240,
+      "radius": 3.0,
+      "intensity": 0.4
+    }
+  }
+}

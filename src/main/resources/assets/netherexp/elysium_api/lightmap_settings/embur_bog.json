@@ -1,9 +1,0 @@
-{
-  "type": "biome",
-  "biomes": [
-    "netherdescent:embur_bog"
-  ],
-  "sky_light_color": "#CC973D",
-  "block_light_color": "#CC973D",
-  "ambient_brightness_multiplier": 0.8
-}

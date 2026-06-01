@@ -42,7 +42,7 @@ public class BetaPopupWarning extends Screen {
         Button dontShowAgainButton = Button.builder(Component.literal("Don't show again"), button -> {
                     this.onClose();
                     JNEConfigs.SHOW_BETA_WARNING_POPUP.set(false);
-                    JNEConfigImpl.CONFIG.save();
+                    JNEConfigImpl.COMMON.save();
                 })
                 .bounds(popupX + 116, popupY + 156, 100, 20)
                 .build();

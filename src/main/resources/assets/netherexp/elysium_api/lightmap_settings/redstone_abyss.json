@@ -1,9 +1,0 @@
-{
-  "type": "biome",
-  "biomes": [
-    "regions_unexplored:redstone_abyss"
-  ],
-  "sky_light_color": "#FF5E5E",
-  "block_light_color": "#FF5E5E",
-  "ambient_brightness_multiplier": 0.2
-}

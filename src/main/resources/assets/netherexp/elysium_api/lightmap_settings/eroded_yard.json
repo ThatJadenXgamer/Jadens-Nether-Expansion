@@ -1,9 +1,0 @@
-{
-  "type": "biome",
-  "biomes": [
-    "incision:eroded_yard"
-  ],
-  "sky_light_color": "#8CA353",
-  "block_light_color": "#8CA353",
-  "ambient_brightness_multiplier": 1.8
-}

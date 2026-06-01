@@ -136,7 +136,10 @@ public class JNEEvents {
     @SubscribeEvent
     public static void addBuiltinPacks(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) JNEBuiltinPacks.rpJNERetextures(event); // Resource Packs
-        if (event.getPackType() == PackType.SERVER_DATA) JNEBuiltinPacks.dpNetherWorldgenOverhaul(event); // Datapacks
+        if (event.getPackType() == PackType.SERVER_DATA) { // Datapacks
+            JNEBuiltinPacks.dpNetherMosaicBiomeSource(event);
+            JNEBuiltinPacks.dpNetherWorldgenOverhaul(event);
+        }
     }
 
     @SubscribeEvent

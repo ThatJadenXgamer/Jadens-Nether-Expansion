@@ -8,36 +8,43 @@ import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
 
 public class JNEConfigImpl {
 
-    public static ModConfigSpec CONFIG;
+    public static ModConfigSpec STARTUP;
+    public static ModConfigSpec COMMON;
 
     static {
-        ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+        ModConfigSpec.Builder COMMON = new ModConfigSpec.Builder();
+        ModConfigSpec.Builder STARTUP = new ModConfigSpec.Builder();
 
-        BUILDER.comment("Block Settings").push("blockSettings");
-        JNEConfigImpl.BlockSettings.init(BUILDER);
-        BUILDER.pop();
+        COMMON.comment("Block Settings").push("blockSettings");
+        JNEConfigImpl.BlockSettings.init(COMMON);
+        COMMON.pop();
 
-        BUILDER.comment("Item Settings").push("itemSettings");
-        JNEConfigImpl.ItemSettings.init(BUILDER);
-        BUILDER.pop();
+        COMMON.comment("Item Settings").push("itemSettings");
+        JNEConfigImpl.ItemSettings.init(COMMON);
+        COMMON.pop();
 
-        BUILDER.comment("Entity Settings").push("entitySettings");
-        JNEConfigImpl.EntitySettings.init(BUILDER);
-        BUILDER.pop();
+        COMMON.comment("Entity Settings").push("entitySettings");
+        JNEConfigImpl.EntitySettings.init(COMMON);
+        COMMON.pop();
 
-        BUILDER.comment("World Settings").push("worldSettings");
-        JNEConfigImpl.WorldSettings.init(BUILDER);
-        BUILDER.pop();
+        COMMON.comment("World Settings").push("worldSettings");
+        JNEConfigImpl.WorldSettings.init(COMMON);
+        COMMON.pop();
 
-        BUILDER.comment("Visual & Sound Settings").push("visualAndSoundSettings");
-        JNEConfigImpl.VisualAndSoundSettings.init(BUILDER);
-        BUILDER.pop();
+        COMMON.comment("Visual & Sound Settings").push("visualAndSoundSettings");
+        JNEConfigImpl.VisualAndSoundSettings.init(COMMON);
+        COMMON.pop();
 
-        BUILDER.comment("Game Mechanic Settings").push("gameMechanicSettings");
-        JNEConfigImpl.GameMechanicSettings.init(BUILDER);
-        BUILDER.pop();
+        COMMON.comment("Game Mechanic Settings").push("gameMechanicSettings");
+        JNEConfigImpl.GameMechanicSettings.init(COMMON);
+        COMMON.pop();
 
-        CONFIG = BUILDER.build();
+        STARTUP.comment("Startup Settings").push("startupSettings");
+        JNEConfigImpl.StartupSettings.init(STARTUP);
+        STARTUP.pop();
+
+        JNEConfigImpl.COMMON = COMMON.build();
+        JNEConfigImpl.STARTUP = STARTUP.build();
     }
 
     public static class BlockSettings {
@@ -52,9 +59,9 @@ public class JNEConfigImpl {
             SOUL_SWIRLS_COOLDOWN = builder
                     .comment("Defines how long it should take for the soul swirls to deactivate in seconds")
                     .defineInRange("soulSwirlsCooldown", 50, 0, Integer.MAX_VALUE);
-            UNBOUNDED_SPEED_DURATION = builder
+            SOUL_SPEED_DURATION = builder
                     .comment("Duration of unbounded speed when it is inflicted from soul swirls\nSetting to 0 functionally disables it")
-                    .defineInRange("unboundedSpeedDuration", 10, 0, Integer.MAX_VALUE);
+                    .defineInRange("soulSpeedDuration", 7, 0, Integer.MAX_VALUE);
             BONE_MEAL_SOUL_SWIRLS = builder
                     .comment("Weather soul swirls can be bone-mealed to duplicate or not")
                     .define("boneMealSoulSwirls", true);
@@ -198,7 +205,7 @@ public class JNEConfigImpl {
                     .defineInRange("pumpChargeShotgunCooldown", 15, 0, Integer.MAX_VALUE);
             SLUG_BLOCK_DAMAGE_STRENGTH = builder
                     .comment("The amount of damage a slug pellet will deal to a block upon impact\n" +
-                            "Negative values will disable block destruction with slugs")
+                            "§eNOTE: Negative values will disable block destruction with slugs")
                     .defineInRange("slugBlockDamageStrength", 1.0, -1.0, Double.MAX_VALUE);
             COUNTERFORCE_IFRAMES = builder
                     .comment("When a counterforce shotgun is used it'll grant you immunity frames for the specified number of ticks")
@@ -318,15 +325,111 @@ public class JNEConfigImpl {
             WILL_O_WISP_WIND_PROPULSION = builder
                     .comment("When a will o' wisp is hit with a wind charge it'll accelerate the its speed and manoeuvrability greatly")
                     .define("willOWispWindPropulsion", true);
+            ECTO_SLAB_PETRIFY_WITH_GHAST_TEAR = builder
+                    .comment("Whether you can use ghast tears to petrify ecto slabs")
+                    .define("ectoSlabPetrifyWithGhastTear", true);
+            PETRIFIED_ECTO_SLAB_SHATTER_DISTURBANCE = builder
+                    .comment("The amount of disturbance needed to shatter a petrified stack")
+                    .defineInRange("petrifiedEctoSlabShatterDisturbance", 20, 0, Integer.MAX_VALUE);
+            ECTO_SLAB_FORCE_OUT_WITH_SHOVEL = builder
+                    .comment("Whether you can force an ecto slab out with a shovel")
+                    .define("ectoSlabForceOutWithShovel", true);
+            FORCED_OUT_ECTO_SLAB_FRIENDLY_FIRE = builder
+                    .comment("Whether forced out ecto slabs can deal friendly fire to entities not susceptible to emerge burst")
+                    .define("forcedOutEctoSlabFriendlyFire", true);
+            EXPLOSION_SHATTERS_ECTO_SLAB_STACK = builder
+                    .comment("Whether explosion damage can shatter the ecto slab stack")
+                    .define("explosionShattersEctoSlabStack", true);
+            EXPLOSION_SHATTER_COOLDOWN = builder
+                    .comment("How long of a cooldown ecto slabs gain upon being shattered via an explosion in ticks")
+                    .defineInRange("explosionShatterCooldown", 300, 0, Integer.MAX_VALUE);
+            PETRIFICATION_PETRIFIES_SWIRLS = builder
+                    .comment("Whether petrification should petrify nearby swirls")
+                    .define("petrificationPetrifiesSwirls", true);
+            PETRIFICATION_SWIRLS_RANGE = builder
+                    .comment("The range of swirls petrification")
+                    .defineInRange("petrificationSwirlsRange", 32, 0, Integer.MAX_VALUE);
+            PETRIFICATION_SWIRLS_RANGE_PER_STACK = builder
+                    .comment("Additional range per stack for swirls petrification")
+                    .defineInRange("petrificationSwirlsRangePerStack", 4, 0, Integer.MAX_VALUE);
+            NATURAL_PETRIFIED_ECTO_SLAB_CHANCE = builder
+                    .comment("Odds for naturally spawned ecto slabs to be petrified")
+                    .defineInRange("naturalPetrifiedEctoSlabChance", 0.12, 0.0, 1.0);
+            NATURAL_PETRIFIED_ECTO_SLAB_MIN_STACK = builder
+                    .comment("Minimum stack size for naturally spawned petrified ecto slabs")
+                    .defineInRange("naturalPetrifiedEctoSlabMinStack", 8, 0, Integer.MAX_VALUE);
+            NATURAL_PETRIFIED_ECTO_SLAB_MAX_STACK = builder
+                    .comment("Maximum stack size for naturally spawned petrified ecto slabs")
+                    .defineInRange("naturalPetrifiedEctoSlabMaxStack", 12, 0, Integer.MAX_VALUE);
+            NATURAL_ECTO_SLAB_PACK_MIN = builder
+                    .comment("Minimum pack size of individual naturally spawned ecto slabs")
+                    .defineInRange("naturalEctoSlabPackMin", 2, 0, Integer.MAX_VALUE);
+            NATURAL_ECTO_SLAB_PACK_MAX = builder
+                    .comment("Maximum pack size of individual naturally spawned ecto slabs")
+                    .defineInRange("naturalEctoSlabPackMax", 5, 0, Integer.MAX_VALUE);
+            EMERGE_BURST_DAMAGE_MULTIPLIER = builder
+                    .comment("Emerge burst damage multiplier")
+                    .defineInRange("emergeBurstDamageMultiplier", 2.0, 0.0, Double.MAX_VALUE);
+            ABSOLUTE_MAXIMUM_STACK_SIZE = builder
+                    .comment("""
+                            The absolute maximum stack size for all ecto slabs
+                            §cWARNING: Higher values can easily cause FPS lag when too many ecto slabs are present
+                             \
+                            Due to the additional segments needing to be added for rendering""")
+                    .gameRestart()
+                    .defineInRange("absoluteMaximumStackSize", 16, 1, 99);
+            ECTO_SLAB_EXTRA_JUMP_DELAY = builder
+                    .comment("Additional jump delay on top of the base hardcoded values")
+                    .defineInRange("ectoSlabExtraJumpDelay", 0, 0, Integer.MAX_VALUE);
+            ECTO_SLAB_EXTRA_BURROW_COOLDOWN = builder
+                    .comment("Additional burrow cooldown on top of the base hardcoded values")
+                    .defineInRange("ectoSlabExtraBurrowCooldown", 0, 0, Integer.MAX_VALUE);
+            ECTO_SLAB_SPEED_PER_STACK = builder
+                    .comment("Speed bonus per ecto slab stack")
+                    .defineInRange("ectoSlabSpeedPerStack", 0.05, 0.0, Double.MAX_VALUE);
+            ECTO_SLAB_SPEED_CAP = builder
+                    .comment("Speed cap per ecto slab stack\n" +
+                            "§eNOTE: Negative values disable cap")
+                    .defineInRange("ectoSlabSpeedCap", 0.6, -1.0, Double.MAX_VALUE);
+            ECTO_SLAB_DAMAGE_PER_STACK = builder
+                    .comment("Damage bonus per ecto slab stack")
+                    .defineInRange("ectoSlabDamagePerStack", 2.0, 0.0, Double.MAX_VALUE);
+            ECTO_SLAB_DAMAGE_CAP = builder
+                    .comment("Damage cap per ecto slab stack\n" +
+                            "§eNOTE: Negative values disable cap")
+                    .defineInRange("ectoSlabDamageCap", -1.0, -1.0, Double.MAX_VALUE);
+            ECTO_SLAB_KNOCKBACK_RESISTANCE_PER_STACK = builder
+                    .comment("Knockback resistance per ecto slab stack")
+                    .defineInRange("ectoSlabKnockbackResistancePerStack", 0.15, 0.0, Double.MAX_VALUE);
+            ECTO_SLAB_KNOCKBACK_RESISTANCE_CAP = builder
+                    .comment("Knockback resistance cap per ecto slab stack\n" +
+                            "§eNOTE: Negative values disable cap")
+                    .defineInRange("ectoSlabKnockbackResistanceCap", -1.0, -1.0, Double.MAX_VALUE);
+            ECTO_SLAB_JUMP_STRENGTH_PER_STACK = builder
+                    .comment("Jump strength per ecto slab stack")
+                    .defineInRange("ectoSlabJumpStrengthPerStack", 0.05, 0.0, Double.MAX_VALUE);
+            ECTO_SLAB_JUMP_STRENGTH_CAP = builder
+                    .comment("Jump strength cap per ecto slab stack\n" +
+                            "§eNOTE: Negative values disable cap")
+                    .defineInRange("ectoSlabJumpStrengthCap", -1.0, -1.0, Double.MAX_VALUE);
+            ECTO_SLAB_MAX_STACK_SIZE = builder
+                    .comment("Maximum stack size for non-petrified ecto slabs")
+                    .defineInRange("ectoSlabMaxStackSize", 4, 1, 16);
+            ECTO_SLAB_MAX_DIG_TIME = builder
+                    .comment("How long the ecto slab can stay underground in ticks")
+                    .defineInRange("ectoSlabMaxDigTime", 80, 0, Integer.MAX_VALUE);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
-            STAMPEDE_UNLEASHING_ODDS = builder
-                    .comment("The chance for stampedes to unleash apparitions upon death")
-                    .defineInRange("stampedeUnleashingOdds", 0.5, 0.0, 1.0);
+            ECTO_SLAB_UNLEASHING_ODDS = builder
+                    .comment("The chance for ecto slabs to unleash apparitions upon death")
+                    .defineInRange("ectoSlabUnleashingOdds", 0.05, 0.0, 1.0);
             BANSHEE_UNLEASHING_ODDS = builder
                     .comment("The chance for banshees to unleash apparitions upon death")
                     .defineInRange("bansheeUnleashingOdds", 0.15, 0.0, 1.0);
+            STAMPEDE_UNLEASHING_ODDS = builder
+                    .comment("The chance for stampedes to unleash apparitions upon death")
+                    .defineInRange("stampedeUnleashingOdds", 0.5, 0.0, 1.0);
             STAMPEDE_STRIDITE_SHEDDING_CHANCE = builder
                     .comment("Stampedes will shed stridite upon running over any entity")
                     .defineInRange("stampedeStriditeSheddingChance", 0.1, 0.0, 1.0);
@@ -354,6 +457,16 @@ public class JNEConfigImpl {
                             """)
                     .gameRestart()
                     .define("netherWorldGenOverhaul", true);
+            IMPROVED_NETHER_BIOME_SOURCE = builder
+                    .comment("""
+                            Completely replaces the vanilla multi-noise biome source for Elysium API's mosaic ones\s
+                            Rather than determining a biomes position based on the terrain's noise climate. it instead use voronoi cells with a weighted list\s
+                            Mosaic biome source is remarkably good at keeping consistent sizes between all the biomes and equally distributes them too no matter how many mods you have\s
+                            \s
+                            §cNOTE: MosaicBiomeSource is currently in BETA and active testing. currently sub-biome support is limited and there is no 3D biome support either
+                            """)
+                    .gameRestart()
+                    .define("improvedNetherBiomeSource", true);
             BRIGHTER_NETHER_FOG = builder
                     .comment("Brightens up the nether fog of most vanilla and modded biomes to compliment their environments better \n" +
                             "It overall makes the nether feel more warmer and helps make out shapes in the distance like actual fog")
@@ -458,6 +571,12 @@ public class JNEConfigImpl {
             SHOTGUN_SCREENSHAKE = builder
                     .comment("Toggle the screenshake when a shotgun is fired")
                     .define("shotgunScreenshake", true);
+            ECTO_SLAB_EMERGE_BURST_SCREENSHAKE = builder
+                    .comment("Toggle the emerge burst screen shake")
+                    .define("ectoSlabEmergeBurstScreenshake", true);
+            ECTO_SLAB_PETRIFICATION_SCREENSHAKE = builder
+                    .comment("Toggle petrification screen shake")
+                    .define("ectoSlabPetrificationScreenshake", true);
             ENABLE_HEAT_DISTORTION = builder
                     .comment("Toggles all heat distortion effects in JNE; To disable individual heat distortion effects check the below configs")
                     .define("enableHeatDistortion", true);
@@ -520,17 +639,6 @@ public class JNEConfigImpl {
             ENABLE_NETHER_BIOME_LIGHTMAPS = builder
                     .comment("Gives every nether biome a custom lightmap that compliments its environment")
                     .define("enableNetherBiomeLightmaps", true);
-
-            ENABLE_JNE_SPLASH_TEXTS = builder
-                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
-                    .define("enableJNESplashTexts", true);
-            RED_SPLASH_TEXT = builder
-                    .comment("Splash texts added by JNE will be a wonderful red color opposed to the usual yellow")
-                    .define("redSplashText", true);
-            PROFANITY = builder
-                    .comment("JNE has swearing, and lots of it too but is normally censored \n" +
-                            "If you'd like to disable profanity entirely or uncensor it you may do so with this config")
-                    .defineEnum("profanity", ProfanityConfig.CENSORED);
         }
     }
 
@@ -560,6 +668,23 @@ public class JNEConfigImpl {
             SHOW_BETA_WARNING_POPUP = builder
                     .comment("Pretty self-explanatory; When running beta builds of JNE, a pop-up will appear on screen warning you upon joining worlds")
                     .define("showBetaWarningPopUp", true);
+        }
+    }
+
+
+    public static class StartupSettings {
+
+        public static void init(ModConfigSpec.Builder builder) {
+            ENABLE_JNE_SPLASH_TEXTS = builder
+                    .comment("Adds new JNE inspired splash texts alongside the vanilla ones if enabled")
+                    .define("enableJNESplashTexts", true);
+            RED_SPLASH_TEXT = builder
+                    .comment("Splash texts added by JNE will be a wonderful red color opposed to the usual yellow")
+                    .define("redSplashText", true);
+            PROFANITY = builder
+                    .comment("JNE has swearing, and lots of it too but is normally censored \n" +
+                            "If you'd like to disable profanity entirely or uncensor it you may do so with this config")
+                    .defineEnum("profanity", ProfanityConfig.CENSORED);
         }
     }
 }

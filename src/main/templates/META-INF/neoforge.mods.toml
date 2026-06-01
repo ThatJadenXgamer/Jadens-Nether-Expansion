@@ -7,7 +7,7 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
-credits = "AlwaysMuddy, Shroomaniac, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior, Alganaut, Derp_gamer22"
+credits = "AlwaysMuddy, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior, Alganaut, Derp_gamer22"
 description='''${mod_description}'''
 logoFile = "netherexp.png"
 

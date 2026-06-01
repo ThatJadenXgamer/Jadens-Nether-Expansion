@@ -29,7 +29,7 @@ public class PetrifiedSwirlsBlockEntity extends BlockEntity {
     private UUID petrifier;
     private BlockPos petrifierPos;
     private ResourceLocation unpetrifiedBlock;
-    private long nextCheckTime = 0;
+    private long nextCheckTime = 20;
     private boolean pendingUnpetrify = false;
 
     public PetrifiedSwirlsBlockEntity(BlockPos pos, BlockState blockState) {
@@ -87,8 +87,10 @@ public class PetrifiedSwirlsBlockEntity extends BlockEntity {
         if (gameTime >= nextCheckTime || nextCheckTime == 0) {
             if (petrifier != null && level instanceof ServerLevel serverLevel) {
                 if (level.random.nextInt(5) == 0) serverLevel.blockEvent(getBlockPos(), getBlockState().getBlock(), 1, 0);
-                Entity entity = serverLevel.getEntity(petrifier);
-                if (entity == null || !entity.isAlive()) unpetrify();
+                if (petrifierPos != null && serverLevel.isLoaded(petrifierPos)) {
+                    Entity entity = serverLevel.getEntity(petrifier);
+                    if (entity == null || !entity.isAlive()) unpetrify();
+                }
             }
             nextCheckTime = gameTime + 20 + level.random.nextInt(61);
         }
@@ -129,7 +131,7 @@ public class PetrifiedSwirlsBlockEntity extends BlockEntity {
         if (petrifier != null) nbt.putUUID("Petrifier", petrifier);
         if (petrifierPos != null) nbt.put("PetrifierPos", NbtUtils.writeBlockPos(petrifierPos));
         if (unpetrifiedBlock != null) nbt.putString("UnpetrifiedBlock", unpetrifiedBlock.toString());
-        nbt.putBoolean("PendingUnpetrify", pendingUnpetrify);
+        // Do NOT save pendingUnpetrify – it would cause premature unpetrification on reload
     }
 
     @Override
@@ -138,7 +140,8 @@ public class PetrifiedSwirlsBlockEntity extends BlockEntity {
         if (nbt.hasUUID("Petrifier")) this.petrifier = nbt.getUUID("Petrifier");
         if (nbt.contains("PetrifierPos")) this.petrifierPos = NbtUtils.readBlockPos(nbt, "PetrifierPos").orElse(null);
         if (nbt.contains("UnpetrifiedBlock")) this.unpetrifiedBlock = ResourceLocation.tryParse(nbt.getString("UnpetrifiedBlock"));
-        if (nbt.contains("PendingUnpetrify")) this.pendingUnpetrify = nbt.getBoolean("PendingUnpetrify");
+        // Always reset pending flag on load – never restore from saved data
+        this.pendingUnpetrify = false;
     }
 
     public void setPetrifier(Entity petrifier) {

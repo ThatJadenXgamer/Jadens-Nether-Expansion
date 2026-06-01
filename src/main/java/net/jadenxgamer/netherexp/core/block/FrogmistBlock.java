@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.EmptyFluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -40,7 +39,7 @@ public class FrogmistBlock extends Block implements LiquidloggedBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        if (JNEConfigImpl.CONFIG.isLoaded() && JNEConfigs.CAN_ANYTHING_BREAK_FROGMIST.get()) return SHAPE;
+        if (JNEConfigImpl.COMMON.isLoaded() && JNEConfigs.CAN_ANYTHING_BREAK_FROGMIST.get()) return SHAPE;
         else if (((EntityCollisionContext) context).getEntity() instanceof Player player && player.getMainHandItem().is(JNETags.Items.FROGMIST_VISIBLE_ITEMS)) {
             return SHAPE;
         }

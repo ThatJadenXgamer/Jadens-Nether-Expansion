@@ -1,0 +1,571 @@
+{
+  "spriteMasks": {
+    "netherexp:block/soul_burning_skull_block": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
+    },
+    "netherexp:block/soul_burning_skull_block_side": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "netherexp:block/skull_block_top": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/skull_block_back": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/burning_skull_block": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
+    },
+    "netherexp:block/burning_skull_block_side": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "netherexp:block/ecto_soul_sand_side": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAACgACAAAABgAjAAAAoACgAAAAAAQABQABAAQADA\u003d"
+    },
+    "netherexp:block/ecto_soul_sand": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAJAA0ABgAGAAIAgAKAAgABAgGDAIEAAEACQAIAA\u003d"
+    },
+    "netherexp:block/ancient_torch": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAgAGAAQAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/ancient_lantern": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/ancient_burning_skull_block_side": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "netherexp:block/ancient_burning_skull_block": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
+    },
+    "netherexp:block/soul_burning_wither_skull_block": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+B54AAAAAAZgDvD//////////wZgAAA\u003d"
+    },
+    "netherexp:block/soul_burning_wither_skull_block_side": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
+    },
+    "netherexp:block/wither_skull_block_top": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/wither_skull_block_back": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/burning_wither_skull_block": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+B54AAAAAAZgD/D///////+//wZgAAA\u003d"
+    },
+    "netherexp:block/burning_wither_skull_block_side": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
+    },
+    "netherexp:block/ancient_burning_wither_skull_block": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+B54AAAAAAZgDvD//////////wZgAAA\u003d"
+    },
+    "netherexp:block/ancient_burning_wither_skull_block_side": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
+    },
+    "netherexp:block/sorrowsquash": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/ghoul_o_lantern": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAYGDw4PDw8PDwcMAAG2Bf8P/w/PDwcOBgYAAA\u003d"
+    },
+    "netherexp:block/sorrowsquash_top": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/sorrowsquash_bottom": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "netherexp:block/soul_magma": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAABAACAAOAQ+BheDAcMAwYBBwCDgIHgAPAAeAAOAA\u003d"
+    },
+    "netherexp:block/wraithing_lesion": {
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAPAD/AMPHAP4AfAAAAAAAH4D/48F/ABwAAAA\u003d"
+    }
+  },
+  "sourceMasks": {
+    "block:netherexp:soul_burning_skull_block#north": {
+      "sourceId": "netherexp:soul_burning_skull_block",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/soul_burning_skull_block",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
+    },
+    "block:netherexp:soul_burning_skull_block#down": {
+      "sourceId": "netherexp:soul_burning_skull_block",
+      "fluid": false,
+      "face": "down",
+      "spriteId": "netherexp:block/skull_block_top",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_burning_skull_block#west": {
+      "sourceId": "netherexp:soul_burning_skull_block",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/soul_burning_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "block:netherexp:soul_burning_skull_block#south": {
+      "sourceId": "netherexp:soul_burning_skull_block",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/skull_block_back",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_burning_skull_block#up": {
+      "sourceId": "netherexp:soul_burning_skull_block",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "netherexp:block/skull_block_top",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_burning_skull_block#east": {
+      "sourceId": "netherexp:soul_burning_skull_block",
+      "fluid": false,
+      "face": "east",
+      "spriteId": "netherexp:block/soul_burning_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "block:netherexp:burning_skull_block#down": {
+      "sourceId": "netherexp:burning_skull_block",
+      "fluid": false,
+      "face": "down",
+      "spriteId": "netherexp:block/skull_block_top",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:burning_skull_block#west": {
+      "sourceId": "netherexp:burning_skull_block",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/burning_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "block:netherexp:burning_skull_block#up": {
+      "sourceId": "netherexp:burning_skull_block",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "netherexp:block/skull_block_top",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:burning_skull_block#north": {
+      "sourceId": "netherexp:burning_skull_block",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/burning_skull_block",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
+    },
+    "block:netherexp:burning_skull_block#east": {
+      "sourceId": "netherexp:burning_skull_block",
+      "fluid": false,
+      "face": "east",
+      "spriteId": "netherexp:block/burning_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "block:netherexp:burning_skull_block#south": {
+      "sourceId": "netherexp:burning_skull_block",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/skull_block_back",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:minecraft:campfire#up": {
+      "sourceId": "minecraft:campfire",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "minecraft:block/campfire_log",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ecto_soul_sand#up": {
+      "sourceId": "netherexp:ecto_soul_sand",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "netherexp:block/ecto_soul_sand",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAJAA0ABgAGAAIAgAKAAgABAgGDAIEAAEACQAIAA\u003d"
+    },
+    "block:netherexp:ecto_soul_sand#west": {
+      "sourceId": "netherexp:ecto_soul_sand",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/ecto_soul_sand_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAACgACAAAABgAjAAAAoACgAAAAAAQABQABAAQADA\u003d"
+    },
+    "block:netherexp:ecto_soul_sand#south": {
+      "sourceId": "netherexp:ecto_soul_sand",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/ecto_soul_sand_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAACgACAAAABgAjAAAAoACgAAAAAAQABQABAAQADA\u003d"
+    },
+    "block:netherexp:ecto_soul_sand#north": {
+      "sourceId": "netherexp:ecto_soul_sand",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/ecto_soul_sand_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAACgACAAAABgAjAAAAoACgAAAAAAQABQABAAQADA\u003d"
+    },
+    "block:netherexp:ancient_torch#north": {
+      "sourceId": "netherexp:ancient_torch",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/ancient_torch",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAgAGAAQAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_lantern#north": {
+      "sourceId": "netherexp:ancient_lantern",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/ancient_lantern",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_lantern#up": {
+      "sourceId": "netherexp:ancient_lantern",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "netherexp:block/ancient_lantern",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_lantern#south": {
+      "sourceId": "netherexp:ancient_lantern",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/ancient_lantern",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_lantern#west": {
+      "sourceId": "netherexp:ancient_lantern",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/ancient_lantern",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_lantern#down": {
+      "sourceId": "netherexp:ancient_lantern",
+      "fluid": false,
+      "face": "down",
+      "spriteId": "netherexp:block/ancient_lantern",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_lantern#east": {
+      "sourceId": "netherexp:ancient_lantern",
+      "fluid": false,
+      "face": "east",
+      "spriteId": "netherexp:block/ancient_lantern",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_burning_skull_block#south": {
+      "sourceId": "netherexp:ancient_burning_skull_block",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/skull_block_back",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_burning_skull_block#west": {
+      "sourceId": "netherexp:ancient_burning_skull_block",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/ancient_burning_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
+    },
+    "block:netherexp:ancient_burning_skull_block#north": {
+      "sourceId": "netherexp:ancient_burning_skull_block",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/ancient_burning_skull_block",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
+    },
+    "block:netherexp:soul_burning_wither_skull_block#east": {
+      "sourceId": "netherexp:soul_burning_wither_skull_block",
+      "fluid": false,
+      "face": "east",
+      "spriteId": "netherexp:block/soul_burning_wither_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_burning_wither_skull_block#up": {
+      "sourceId": "netherexp:soul_burning_wither_skull_block",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "netherexp:block/wither_skull_block_top",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_burning_wither_skull_block#down": {
+      "sourceId": "netherexp:soul_burning_wither_skull_block",
+      "fluid": false,
+      "face": "down",
+      "spriteId": "netherexp:block/wither_skull_block_top",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_burning_wither_skull_block#north": {
+      "sourceId": "netherexp:soul_burning_wither_skull_block",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/soul_burning_wither_skull_block",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+B54AAAAAAZgDvD//////////wZgAAA\u003d"
+    },
+    "block:netherexp:soul_burning_wither_skull_block#west": {
+      "sourceId": "netherexp:soul_burning_wither_skull_block",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/soul_burning_wither_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_burning_wither_skull_block#south": {
+      "sourceId": "netherexp:soul_burning_wither_skull_block",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/wither_skull_block_back",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:burning_wither_skull_block#west": {
+      "sourceId": "netherexp:burning_wither_skull_block",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/burning_wither_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
+    },
+    "block:netherexp:burning_wither_skull_block#north": {
+      "sourceId": "netherexp:burning_wither_skull_block",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/burning_wither_skull_block",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+B54AAAAAAZgD/D///////+//wZgAAA\u003d"
+    },
+    "block:netherexp:burning_wither_skull_block#south": {
+      "sourceId": "netherexp:burning_wither_skull_block",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/wither_skull_block_back",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ancient_burning_wither_skull_block#north": {
+      "sourceId": "netherexp:ancient_burning_wither_skull_block",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/ancient_burning_wither_skull_block",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAf+B54AAAAAAZgDvD//////////wZgAAA\u003d"
+    },
+    "block:netherexp:ancient_burning_wither_skull_block#west": {
+      "sourceId": "netherexp:ancient_burning_wither_skull_block",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/ancient_burning_wither_skull_block_side",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
+    },
+    "block:netherexp:ghoul_o_lantern#north": {
+      "sourceId": "netherexp:ghoul_o_lantern",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/ghoul_o_lantern",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAYGDw4PDw8PDwcMAAG2Bf8P/w/PDwcOBgYAAA\u003d"
+    },
+    "block:netherexp:ghoul_o_lantern#east": {
+      "sourceId": "netherexp:ghoul_o_lantern",
+      "fluid": false,
+      "face": "east",
+      "spriteId": "netherexp:block/sorrowsquash",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ghoul_o_lantern#west": {
+      "sourceId": "netherexp:ghoul_o_lantern",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/sorrowsquash",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ghoul_o_lantern#south": {
+      "sourceId": "netherexp:ghoul_o_lantern",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/sorrowsquash",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ghoul_o_lantern#down": {
+      "sourceId": "netherexp:ghoul_o_lantern",
+      "fluid": false,
+      "face": "down",
+      "spriteId": "netherexp:block/sorrowsquash_bottom",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:ghoul_o_lantern#up": {
+      "sourceId": "netherexp:ghoul_o_lantern",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "netherexp:block/sorrowsquash_top",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
+    },
+    "block:netherexp:soul_magma_block#north": {
+      "sourceId": "netherexp:soul_magma_block",
+      "fluid": false,
+      "face": "north",
+      "spriteId": "netherexp:block/soul_magma",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAABAACAAOAQ+BheDAcMAwYBBwCDgIHgAPAAeAAOAA\u003d"
+    },
+    "block:netherexp:wraithing_lesion#west": {
+      "sourceId": "netherexp:wraithing_lesion",
+      "fluid": false,
+      "face": "west",
+      "spriteId": "netherexp:block/wraithing_lesion",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAPAD/AMPHAP4AfAAAAAAAH4D/48F/ABwAAAA\u003d"
+    },
+    "block:netherexp:wraithing_lesion#up": {
+      "sourceId": "netherexp:wraithing_lesion",
+      "fluid": false,
+      "face": "up",
+      "spriteId": "netherexp:block/wraithing_lesion",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAPAD/AMPHAP4AfAAAAAAAH4D/48F/ABwAAAA\u003d"
+    },
+    "block:netherexp:wraithing_lesion#south": {
+      "sourceId": "netherexp:wraithing_lesion",
+      "fluid": false,
+      "face": "south",
+      "spriteId": "netherexp:block/wraithing_lesion",
+      "width": 16,
+      "height": 16,
+      "bits": "AAAAAAAAPAD/AMPHAP4AfAAAAAAAH4D/48F/ABwAAAA\u003d"
+    }
+  },
+  "entityTextureMasks": {
+    
+  }
+}

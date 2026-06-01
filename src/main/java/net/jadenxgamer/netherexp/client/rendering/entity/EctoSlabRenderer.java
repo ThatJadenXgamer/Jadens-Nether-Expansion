@@ -90,7 +90,10 @@ public class EctoSlabRenderer extends MobRenderer<EctoSlab, EctoSlabRenderer.Ect
             this.root().getAllParts().forEach(ModelPart::resetPose);
 
             int stackSize = entity.getStackSize();
-            for (int i = 0; i < 16; i++) this.segments[i].visible = i < stackSize;
+            int maxStack = EctoSlab.absoluteMaximumStackSize();
+            for (int i = 0; i < maxStack && i < segments.length; i++) {
+                this.segments[i].visible = i < stackSize;
+            }
 
             this.animate(entity.idleAnimation, Animation.IDLE, ageInTicks);
             this.animate(entity.idleMirroredAnimation, Animation.IDLE_MIRRORED, ageInTicks);

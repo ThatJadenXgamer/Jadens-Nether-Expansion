@@ -1,0 +1,9 @@
+{
+  "type": "biome",
+  "biomes": [
+    "regions_unexplored:blackstone_basin"
+  ],
+  "sky_light_color": "#8B87FF",
+  "block_light_color": "#8B87FF",
+  "ambient_brightness": -0.04000000000000001
+}

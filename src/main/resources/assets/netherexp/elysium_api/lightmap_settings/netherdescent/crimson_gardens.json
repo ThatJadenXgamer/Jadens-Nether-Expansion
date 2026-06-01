@@ -1,0 +1,8 @@
+{
+  "type": "biome",
+  "biomes": [
+    "netherdescent:crimson_gardens"
+  ],
+  "sky_light_color": "#FF5959",
+  "block_light_color": "#FF5959"
+}

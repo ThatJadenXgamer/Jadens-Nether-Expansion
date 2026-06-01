@@ -1,0 +1,13 @@
+{
+  "dimension": "minecraft:the_nether",
+  "climate_point": 4,
+  "biome": "biomesoplenty:erupting_inferno",
+  "weight": 10,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ public class SoulGlassPostProcessor extends PostProcessor {
         float gameTimeTicks = client.level.getGameTime() + client.getTimer().getGameTimeDeltaPartialTick(true);
         float timeInSeconds = gameTimeTicks / 20.0f;
         this.postChain.setUniform("GameTime", timeInSeconds);
-        if (JNEConfigImpl.CONFIG.isLoaded() && JNEConfigs.NO_SOUL_GLASS_RIPPLE.get()) {
+        if (JNEConfigImpl.COMMON.isLoaded() && JNEConfigs.NO_SOUL_GLASS_RIPPLE.get()) {
             this.postChain.setUniform("RippleStrength", 0.0f);
             this.postChain.setUniform("RippleFrequency", 0.0f);
             this.postChain.setUniform("RippleSpeed", 0.0f);

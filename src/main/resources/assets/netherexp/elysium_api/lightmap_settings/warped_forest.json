@@ -5,5 +5,5 @@
   ],
   "sky_light_color": "#FF89FF",
   "block_light_color": "#FF89FF",
-  "ambient_brightness_multiplier": 0.5
+  "ambient_brightness": -0.025
 }

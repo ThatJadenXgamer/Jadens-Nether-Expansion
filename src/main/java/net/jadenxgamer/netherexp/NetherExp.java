@@ -18,7 +18,8 @@ public final class NetherExp {
     public static RegistryAccess registryAccess;
 
     public NetherExp(IEventBus modEventBus, ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.COMMON, JNEConfigImpl.CONFIG);
+        modContainer.registerConfig(ModConfig.Type.STARTUP, JNEConfigImpl.STARTUP);
+        modContainer.registerConfig(ModConfig.Type.COMMON, JNEConfigImpl.COMMON);
 
         JNEDataComponents.init(modEventBus);
         JNERegistries.init(modEventBus);

@@ -14,7 +14,7 @@ public record ConfigCondition(String path) implements ICondition {
 
     @Override
     public boolean test(IContext iContext) {
-        ModConfigSpec.ConfigValue<?> configValue = JNEConfigImpl.CONFIG.getValues().get(this.path);
+        ModConfigSpec.ConfigValue<?> configValue = JNEConfigImpl.COMMON.getValues().get(this.path);
         if (configValue instanceof ModConfigSpec.BooleanValue booleanValue) {
             return booleanValue.get();
         }

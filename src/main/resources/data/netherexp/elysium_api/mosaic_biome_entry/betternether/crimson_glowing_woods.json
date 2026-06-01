@@ -1,0 +1,12 @@
+{
+  "dimension": "minecraft:the_nether",
+  "climate_point": 2,
+  "biome": "betternether:crimson_glowing_woods",
+  "weight": 5,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "betternether"
+    }
+  ]
+}

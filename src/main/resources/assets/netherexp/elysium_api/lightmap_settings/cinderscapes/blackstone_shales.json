@@ -1,0 +1,9 @@
+{
+  "type": "biome",
+  "biomes": [
+    "cinderscapes:blackstone_shales"
+  ],
+  "sky_light_color": "#FF9659",
+  "block_light_color": "#FF9659",
+  "ambient_brightness": 0.009999999999999998
+}

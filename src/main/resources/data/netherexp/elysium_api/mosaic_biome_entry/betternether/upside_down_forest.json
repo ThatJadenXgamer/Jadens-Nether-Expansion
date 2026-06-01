@@ -1,0 +1,12 @@
+{
+  "dimension": "minecraft:the_nether",
+  "climate_point": 8,
+  "biome": "betternether:upside_down_forest",
+  "weight": 4,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "betternether"
+    }
+  ]
+}

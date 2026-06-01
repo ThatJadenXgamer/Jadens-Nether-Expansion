@@ -4,6 +4,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.effect.ImmunityEffect;
 import net.jadenxgamer.netherexp.core.effect.IncurableEffect;
 import net.jadenxgamer.netherexp.core.effect.JNEMobEffect;
+import net.jadenxgamer.netherexp.core.effect.SoulSpeedEffect;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.Holder;
@@ -18,8 +19,8 @@ public class JNEMobEffects {
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, NetherExp.MOD_ID);
 
-    public static final Holder<MobEffect> UNBOUNDED_SPEED = MOB_EFFECTS.register("unbounded_speed", () ->
-            new JNEMobEffect(MobEffectCategory.BENEFICIAL, 1787717));
+    public static final Holder<MobEffect> SOUL_SPEED = MOB_EFFECTS.register("soul_speed", () ->
+            new SoulSpeedEffect(MobEffectCategory.BENEFICIAL, 1787717));
 
     public static final Holder<MobEffect> BETRAYED = MOB_EFFECTS.register("betrayed", () ->
             new IncurableEffect(MobEffectCategory.NEUTRAL, 11730944));
@@ -96,7 +97,12 @@ public class JNEMobEffects {
 
 
     public static void init(IEventBus eventBus) {
+        registerAliases();
         if (CompatUtil.OREGANIZED) OreganizedCompat.MobEffects.init();
         MOB_EFFECTS.register(eventBus);
+    }
+
+    private static void registerAliases() {
+        MOB_EFFECTS.addAlias(NetherExp.netherexpPath("unbounded_speed"), NetherExp.netherexpPath("soul_speed")); // Renamed 2.4.0
     }
 }

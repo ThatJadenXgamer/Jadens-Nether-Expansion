@@ -1,0 +1,9 @@
+{
+  "type": "biome",
+  "biomes": [
+    "biomesoplenty:visceral_heap"
+  ],
+  "sky_light_color": "#C6645D",
+  "block_light_color": "#C6645D",
+  "ambient_brightness": 0.009999999999999998
+}

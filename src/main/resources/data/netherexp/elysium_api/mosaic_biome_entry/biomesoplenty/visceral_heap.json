@@ -1,0 +1,13 @@
+{
+  "dimension": "minecraft:the_nether",
+  "climate_point": 7,
+  "biome": "biomesoplenty:visceral_heap",
+  "weight": 15,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ]
+}

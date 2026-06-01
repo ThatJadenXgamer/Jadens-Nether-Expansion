@@ -58,7 +58,12 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
             level.setBlock(pos, state.cycle(ACTIVE), Block.UPDATE_ALL);
             level.scheduleTick(pos, this, JNEConfigs.SOUL_SWIRLS_COOLDOWN.get() * 20);
 
-            if (!level.isClientSide()) living.addEffect(new MobEffectInstance(JNEMobEffects.UNBOUNDED_SPEED, JNEConfigs.UNBOUNDED_SPEED_DURATION.get() * 20, 0, false, true), entity);
+            if (!level.isClientSide()) {
+                int amplifier = 0;
+                MobEffectInstance currentEffect = living.getEffect(JNEMobEffects.SOUL_SPEED);
+                if (currentEffect != null) amplifier = Math.min(2, currentEffect.getAmplifier() + 1);
+                living.addEffect(new MobEffectInstance(JNEMobEffects.SOUL_SPEED, JNEConfigs.SOUL_SPEED_DURATION.get() * 20, amplifier, false, true), entity);
+            }
             else {
                 Direction[] directions = Direction.values();
                 for (Direction direction : directions) {

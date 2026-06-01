@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
+import static net.jadenxgamer.netherexp.config.JNEConfigs.IMPROVED_NETHER_BIOME_SOURCE;
 import static net.jadenxgamer.netherexp.config.JNEConfigs.NETHER_WORLDGEN_OVERHAUL;
 
 public class JNEBuiltinPacks {
@@ -44,6 +45,20 @@ public class JNEBuiltinPacks {
         PackMetadataSection metadata = new PackMetadataSection(Component.literal("Overhauls the nether world generation"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
         event.addRepositorySource(source -> source.accept(new Pack(
                 new PackLocationInfo("netherexp:nether_worldgen_overhaul", Component.literal("JNE Nether Worldgen Overhaul"), PackSource.BUILT_IN, Optional.empty()),
+                new PathPackResources.PathResourcesSupplier(path),
+                new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                new PackSelectionConfig(true, Pack.Position.TOP, false)
+        )));
+    }
+
+    // Nether Mosaic Biome Source
+    public static void dpNetherMosaicBiomeSource(AddPackFindersEvent event) {
+        if (!IMPROVED_NETHER_BIOME_SOURCE.get()) return;
+
+        Path path = ModList.get().getModFileById(NetherExp.MOD_ID).getFile().findResource("resourcepacks/nether_mosaic_biome_source");
+        PackMetadataSection metadata = new PackMetadataSection(Component.literal("Overrides the nether multi-noise biome source"), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
+        event.addRepositorySource(source -> source.accept(new Pack(
+                new PackLocationInfo("netherexp:nether_mosaic_biome_source", Component.literal("JNE Nether Mosaic Biome Source"), PackSource.BUILT_IN, Optional.empty()),
                 new PathPackResources.PathResourcesSupplier(path),
                 new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
                 new PackSelectionConfig(true, Pack.Position.TOP, false)
