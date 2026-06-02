@@ -56,21 +56,20 @@ public class PetrifiedSwirlsBlockEntity extends BlockEntity {
 
     @Override
     public boolean triggerEvent(int id, int type) {
-        if (this.level != null && id == 1) {
-            switch (type) {
-                case 0 -> {
-                    PetrifiedSwirlsBlock.Client.petrificationParticle(level, level.random, getBlockPos());
-                    return true;
-                }
-                case 1 -> {
-                    PetrifiedSwirlsBlock.Client.unpetrifyParticle(level, level.random, getBlockPos());
-                    return true;
-                }
-                case 2 -> {
-                    PetrifiedSwirlsBlock.Client.attractToPetrifierParticle(level, level.random, getBlockPos());
-                    return true;
+        if (this.level != null && id == 1 && type >= 0 && type <= 2) {
+            // The particle helpers live in PetrifiedSwirlsBlock.Client, which is @OnlyIn(Dist.CLIENT).
+            // triggerEvent is dispatched on the server too (ServerLevel#blockEvent -> doBlockEvent),
+            // so touching that class server-side trips RuntimeDistCleaner and crashes dedicated servers.
+            // Only spawn particles on the client; on the server just acknowledge the event (return true)
+            // so it is still relayed to nearby clients.
+            if (this.level.isClientSide()) {
+                switch (type) {
+                    case 0 -> PetrifiedSwirlsBlock.Client.petrificationParticle(level, level.random, getBlockPos());
+                    case 1 -> PetrifiedSwirlsBlock.Client.unpetrifyParticle(level, level.random, getBlockPos());
+                    case 2 -> PetrifiedSwirlsBlock.Client.attractToPetrifierParticle(level, level.random, getBlockPos());
                 }
             }
+            return true;
         }
         return super.triggerEvent(id, type);
     }
