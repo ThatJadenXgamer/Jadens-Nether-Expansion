@@ -2,6 +2,5 @@
   "replace": false,
   "values": [
     {"id": "incision:gravelfalls", "required": false},
-    {"id": "regions_unexplored:redstone_abyss", "required": false}
-  ]
+    {"id": "regions_unexplored:redstone_abyss", "required": false}  ]
 }
