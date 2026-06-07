@@ -668,6 +668,7 @@
   "subtitles.item.pump_charge_shotgun.alarm": "Pump-Charge Shotgun about to f§ucking§r explode",
   "subtitles.item.pump_charge_shotgun.alarm_profanity": "Pump-Charge Shotgun about to fucking explode",
   "subtitles.item.antidote.expired": "Antidote expired",
+  "block.netherexp.cerebrage_kale": "Cerebrage Kale",
 
   "enchantment.netherexp.phantasm_hull.desc": "Sneaking causes projectiles to phase through you in-exchange for durability",
   "enchantment.netherexp.counterforce.desc": "Reverses the pushback direction and provides I-frames when used midair during without any downwards pull",

@@ -13,7 +13,7 @@
       "noise_octaves": 0,
 
       "auto_populate_entries_from_tag": "minecraft:is_nether",
-      "auto_populate_exclusion_tag": "netherexp:exclude_from_nether_mosaic"
+      "biome_exclusion_tag": "netherexp:exclude_from_nether_mosaic"
     },
     "settings": "minecraft:nether"
   }

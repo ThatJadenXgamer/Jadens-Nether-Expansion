@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " S ",
+    "SPS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:phasmo_shard"
+    },
+    "P": {
+      "tag": "netherexp:soul_swirls"
+    }
+  },
+  "result": {
+    "id": "netherexp:petrified_swirls",
+    "count": 4
+  }
+}

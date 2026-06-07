@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.core.block;
 
+import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -42,6 +43,7 @@ public class CerebrageSkullBlock extends AbstractHeadBlock implements Bonemealab
         int age = state.getValue(AGE);
         if (age > 2) {
             if (MAX_CEREBRAGE_DROPPED.get() > 0 && age == 3) popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE.get(), level.random.nextInt(MIN_CEREBRAGE_DROPPED.get(), MAX_CEREBRAGE_DROPPED.get())));
+            if (age == 4 && !level.getBlockState(pos.above()).isAir()) return ItemInteractionResult.FAIL;
             if (level.random.nextDouble() < CEREBRAGE_SEEDS_DROP_CHANCE.get()) popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(JNEItems.CEREBRAGE_SEEDS.get(), 1));
             level.setBlock(pos, state.setValue(AGE, 1), CerebrageSkullBlock.UPDATE_CLIENTS);
             level.playSound(null, pos, JNESoundEvents.CEREBRAGE_PLANT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -71,7 +73,8 @@ public class CerebrageSkullBlock extends AbstractHeadBlock implements Bonemealab
 
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
-        return state.getValue(AGE) != 3 || level.getBlockState(pos.above()).isAir();
+        if (state.getValue(AGE) == 4) return level.getBlockState(pos.above()).isAir();
+        return true;
     }
 
     @Override
@@ -84,9 +87,9 @@ public class CerebrageSkullBlock extends AbstractHeadBlock implements Bonemealab
         int age = state.getValue(AGE);
         if (age < 3) {
             level.setBlock(pos, state.setValue(AGE, age + 1), Block.UPDATE_CLIENTS);
-        } else if (CEREBRAGE_GROWS_BRAIN_TREES.get()) {
+        } else if (CEREBRAGE_GROWS_BRAIN_TREES.get() && level.getBlockState(pos.above()).isAir()) {
             level.setBlock(pos, state.setValue(AGE, 4), Block.UPDATE_CLIENTS);
-            level.registryAccess().registry(Registries.CONFIGURED_FEATURE).flatMap((registry) -> registry.getHolder(JNEConfiguredFeatures.BRAIN_TREE)).ifPresent((reference) ->
+            level.registryAccess().registry(Registries.CONFIGURED_FEATURE).flatMap((registry) -> registry.getHolder(JNEConfiguredFeatures.CEREBRAGE_TREE)).ifPresent((reference) ->
                     reference.value().place(level, level.getChunkSource().getGenerator(), random, pos));
             AdvancementGranter.grantPlayersInRadius(level, pos, JNECriteriaTriggers.GROW_CEREBRAGE_CLARET);
         }

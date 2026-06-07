@@ -8,7 +8,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 public class JNEConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SORROWEED_PATCH_BONEMEAL = registerKey("soul_sand_valley/sorrowsquash_pastures/sorroweed_patch_bonemeal");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BRAIN_TREE = registerKey("nether_wastes/brain_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CEREBRAGE_TREE = registerKey("nether_wastes/cerebrage_tree");
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, NetherExp.netherexpPath(name));

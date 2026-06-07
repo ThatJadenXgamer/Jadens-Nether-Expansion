@@ -337,6 +337,9 @@ public class JNEBlocks {
      * Claret WoodSet
      */
 
+    public static final Supplier<Block> CEREBRAGE_KALE = registerBlock("cerebrage_kale", () ->
+            new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of().instabreak().noOcclusion().noCollission().pushReaction(PushReaction.DESTROY).sound(SoundType.AZALEA_LEAVES)));
+
     public static final Supplier<Block> CEREBRAGE_CLARET_STEM = registerBlock("cerebrage_claret_stem", () ->
             new LodestoneLogBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.WARPED_STEM).mapColor(MapColor.CRIMSON_HYPHAE).sound(JNESoundType.CEREBRAGE_STEM), JNEBlocks.STRIPPED_CLARET_STEM));
 

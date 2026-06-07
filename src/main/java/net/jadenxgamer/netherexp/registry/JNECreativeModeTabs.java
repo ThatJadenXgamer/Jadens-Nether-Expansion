@@ -78,6 +78,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.SOULED_GEYSER.get());
 
                 output.accept(JNEBlocks.SOUL_SWIRLS.get());
+                output.accept(JNEBlocks.PETRIFIED_SWIRLS.get());
 
                 output.accept(JNEBlocks.BLACK_ICE.get());
                 output.accept(JNEBlocks.THIN_BLACK_ICE.get());
@@ -387,6 +388,7 @@ public class JNECreativeModeTabs {
 
                 output.accept(JNEItems.CEREBRAGE_SEEDS.get());
                 output.accept(JNEItems.CEREBRAGE.get());
+                output.accept(JNEBlocks.CEREBRAGE_KALE.get());
                 output.accept(JNEBlocks.CEREBRAGE_CLARET_STEM.get());
                 output.accept(JNEBlocks.CEREBRAGE_CLARET_HYPHAE.get());
                 output.accept(JNEBlocks.STRIPPED_CLARET_STEM.get());

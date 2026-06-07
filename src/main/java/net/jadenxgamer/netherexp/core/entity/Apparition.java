@@ -103,12 +103,11 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
         if (this.random.nextInt(30) == 0) playStepSound(this.getOnPos(), this.getBlockStateOn());
     }
 
-    @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+    public void onAddedToLevel() {
+        super.onAddedToLevel();
         if (this.getPersonality() == 0) this.setPersonality(Mth.randomBetweenInclusive(random, 1, 4));
-        if (level instanceof ServerLevel) this.initPreferredTargetGoals();
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+        if (this.level() instanceof ServerLevel) this.initPreferredTargetGoals();
     }
 
     private void initPreferredTargetGoals() {
@@ -178,7 +177,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
 
     @Override
     public boolean canBeLeashed() {
-        return JNEConfigs.BRUSH_WISPS_OUT.get();
+        return true;
     }
 
     @Override

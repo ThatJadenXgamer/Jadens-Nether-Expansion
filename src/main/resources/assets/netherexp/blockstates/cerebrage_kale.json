@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "netherexp:block/cerebrage_kale",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "netherexp:block/cerebrage_kale_wall",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "netherexp:block/cerebrage_kale_wall"
+    },
+    "facing=south": {
+      "model": "netherexp:block/cerebrage_kale_wall",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "netherexp:block/cerebrage_kale"
+    },
+    "facing=west": {
+      "model": "netherexp:block/cerebrage_kale_wall",
+      "y": 270
+    }
+  }
+}

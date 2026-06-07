@@ -1,0 +1,15 @@
+{
+  "type": "elysium_api:structure_stamp",
+
+  "config": {
+    "templates": [
+      {
+        "data": "netherexp:cerebrage_tree/basic",
+        "weight": 1
+      }
+    ],
+    "origin_type": "anchored",
+    "processors": "minecraft:empty",
+    "liquid_settings": "apply_waterlogging"
+  }
+}

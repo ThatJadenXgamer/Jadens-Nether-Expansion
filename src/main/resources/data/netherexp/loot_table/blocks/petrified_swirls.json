@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "netherexp:petrified_swirls",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "netherexp:petrified_swirls",
+              "properties": {
+                "salted": "true"
+              }
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "netherexp:blocks/petrified_soul_swirls"
+}

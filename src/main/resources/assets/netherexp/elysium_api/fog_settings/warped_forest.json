@@ -1,4 +1,5 @@
 {
+  "type": "biome",
   "biomes": [
     "minecraft:warped_forest"
   ],

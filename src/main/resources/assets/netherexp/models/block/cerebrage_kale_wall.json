@@ -1,0 +1,31 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made by @ThatJadenXgamer",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"0": "netherexp:block/cerebrage_kale",
+		"particle": "netherexp:block/cerebrage_kale"
+	},
+	"elements": [
+		{
+			"from": [0, 8, 0],
+			"to": [16, 8, 16],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 8, 16]},
+			"faces": {
+				"up": {"uv": [0, 16, 16, 0], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 16, 16, 0], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 1, 0],
+			"to": [16, 1, 16],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 1, 16]},
+			"faces": {
+				"up": {"uv": [0, 16, 16, 0], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [16, 16, 0, 0], "texture": "#0"}
+			}
+		}
+	]
+}
