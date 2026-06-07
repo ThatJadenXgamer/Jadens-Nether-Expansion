@@ -2,6 +2,7 @@ package net.jadenxgamer.netherexp.core.effect;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNEMobEffects;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -33,8 +34,7 @@ public class SoulSpeedEffect extends JNEMobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        BlockState state = entity.getBlockStateOn();
-        boolean onSoulSpeedBlock = state.is(BlockTags.SOUL_SPEED_BLOCKS);
+        boolean onSoulSpeedBlock = isAboveSoulSpeedBlock(entity);
 
         AttributeInstance speedAttribute = entity.getAttribute(Attributes.MOVEMENT_SPEED);
         AttributeInstance efficiencyAttribute = entity.getAttribute(Attributes.MOVEMENT_EFFICIENCY);
@@ -48,7 +48,8 @@ public class SoulSpeedEffect extends JNEMobEffect {
                     if (currentSpeedModifier != null) speedAttribute.removeModifier(SPEED_MODIFIER_ID);
                     speedAttribute.addTransientModifier(new AttributeModifier(SPEED_MODIFIER_ID, speedBoostAmount, AttributeModifier.Operation.ADD_VALUE));
                 }
-                if (!efficiencyAttribute.hasModifier(EFFICIENCY_MODIFIER_ID)) efficiencyAttribute.addTransientModifier(new AttributeModifier(EFFICIENCY_MODIFIER_ID, 1.0, AttributeModifier.Operation.ADD_VALUE));
+                if (!efficiencyAttribute.hasModifier(EFFICIENCY_MODIFIER_ID))
+                    efficiencyAttribute.addTransientModifier(new AttributeModifier(EFFICIENCY_MODIFIER_ID, 1.0, AttributeModifier.Operation.ADD_VALUE));
 
                 Vec3 delta = entity.getDeltaMovement();
                 double horizontalSpeedSq = delta.x * delta.x + delta.z * delta.z;
@@ -87,5 +88,13 @@ public class SoulSpeedEffect extends JNEMobEffect {
 
         if (speedAttribute != null) speedAttribute.removeModifier(SPEED_MODIFIER_ID);
         if (efficiencyAttribute != null) efficiencyAttribute.removeModifier(EFFICIENCY_MODIFIER_ID);
+    }
+
+    private boolean isAboveSoulSpeedBlock(LivingEntity entity) {
+        var onState = entity.level().getBlockState(entity.getOnPos()).is(BlockTags.SOUL_SPEED_BLOCKS);
+        var belowState = entity.level().getBlockState(entity.getOnPos().below()).is(BlockTags.SOUL_SPEED_BLOCKS);
+        var evenFurtherBelowState = entity.level().getBlockState(entity.getOnPos().below(2)).is(BlockTags.SOUL_SPEED_BLOCKS);
+
+        return entity.onGround() ? onState : onState || belowState || evenFurtherBelowState;
     }
 }

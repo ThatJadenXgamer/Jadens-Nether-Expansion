@@ -38,9 +38,7 @@ public class DiscernmentGlassBlockEntity extends BlockEntity {
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag nbt = super.getUpdateTag(registries);
-        if (!this.filterItem.isEmpty()) {
-            nbt.put("item", this.filterItem.save(registries));
-        }
+        if (!this.filterItem.isEmpty()) nbt.put(FILTER_ITEM_TAG, this.filterItem.save(registries));
         return nbt;
     }
 
@@ -63,9 +61,11 @@ public class DiscernmentGlassBlockEntity extends BlockEntity {
             stack = stack.copyWithCount(1);
         }
         this.filterItem = stack;
+        this.setChanged();          // mark dirty for saving and syncing
     }
 
     public void removeFilterItem() {
         this.filterItem = ItemStack.EMPTY;
+        this.setChanged();          // mark dirty for saving and syncing
     }
 }

@@ -26,8 +26,9 @@ public class DiscernmentGlassBlockRenderer implements BlockEntityRenderer<Discer
 
         poseStack.pushPose();
         poseStack.translate(0.5f, 0.5f, 0.5f);
+        poseStack.scale(0.55f, 0.55f, 0.55f);
         poseStack.mulPose(Axis.YP.rotation(tick % 360.0f));
-        this.itemRenderer.renderStatic(entity.getFilterItem(), ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.getLevel(), packedOverlay);
+        this.itemRenderer.renderStatic(entity.getFilterItem(), ItemDisplayContext.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.getLevel(), packedOverlay);
         poseStack.popPose();
     }
 }

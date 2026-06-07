@@ -51,7 +51,9 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
                 .isRedstoneConductor((s, g, p) -> false)
                 .isSuffocating((s, g, p) -> false)
         );
-        this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false));
+        this.registerDefaultState(this.defaultBlockState()
+                .setValue(POWERED, false)
+        );
     }
 
     @Nullable
@@ -89,18 +91,26 @@ public class DiscernmentGlassBlock extends BaseEntityBlock {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.getBlockEntity(pos) instanceof DiscernmentGlassBlockEntity blockEntity) {
             if (!stack.isEmpty() && blockEntity.getFilterItem().isEmpty()) {
+                if (stack.is(this.asItem())) return ItemInteractionResult.FAIL;
                 blockEntity.setFilterItem(stack);
                 if (!player.getAbilities().instabuild) stack.shrink(1);
+
                 ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
                 level.playSound(null, pos, JNESoundEvents.DISCERNMENT_GLASS_ADD.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+
+                level.sendBlockUpdated(pos, state, state, Block.UPDATE_CLIENTS);
                 level.blockUpdated(pos, this);
                 return ItemInteractionResult.SUCCESS;
+
             } else if (stack.isEmpty() && !blockEntity.getFilterItem().isEmpty()) {
                 if (!player.getAbilities().instabuild) {
                     if (player.getInventory().add(blockEntity.getFilterItem())) blockEntity.removeFilterItem();
                 } else blockEntity.removeFilterItem();
+
                 ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
                 level.playSound(null, pos, JNESoundEvents.DISCERNMENT_GLASS_REMOVE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+
+                level.sendBlockUpdated(pos, state, state, Block.UPDATE_CLIENTS);
                 level.blockUpdated(pos, this);
                 return ItemInteractionResult.SUCCESS;
             }
