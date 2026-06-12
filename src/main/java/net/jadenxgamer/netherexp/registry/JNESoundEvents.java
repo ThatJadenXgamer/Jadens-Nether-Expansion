@@ -28,6 +28,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> CEREBRAGE_PLANT = registerSoundEvents("block.cerebrage.plant");
     public static final Supplier<SoundEvent> GLOWSPORES_APPLY = registerSoundEvents("block.glowspores.apply");
     public static final Supplier<SoundEvent> GLOWSPORES_SHEAR = registerSoundEvents("block.glowspores.shear");
+    public static final Supplier<SoundEvent> BLOTTED_NETHERRACK_DRIP = registerSoundEvents("block.blotted_netherrack.drip");
 
     public static final Supplier<SoundEvent> POTION_POSTDRINK = registerSoundEvents("item.potion.postdrink");
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
@@ -204,6 +205,12 @@ public class JNESoundEvents {
 
     public static final Supplier<SoundEvent> HAZE_BLOCK_PLACE = registerSoundEvents("block.haze_block.place");
     public static final Supplier<SoundEvent> HAZE_BLOCK_BREAK = registerSoundEvents("block.haze_block.break");
+
+    public static final Supplier<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
+    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_VICTORY = registerSoundEvents("block.treacherous_candle.victory");
+    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_DEFEAT = registerSoundEvents("block.treacherous_candle.defeat");
+    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_ROUND = registerSoundEvents("block.treacherous_candle.round");
+    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_SPAWN = registerSoundEvents("block.treacherous_candle.spawn");
 
     private static Supplier<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(NetherExp.netherexpPath(name)));

@@ -2,17 +2,17 @@ package net.jadenxgamer.netherexp.registry;
 
 import com.mojang.serialization.MapCodec;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.datadriven.ApparitionAggressions;
-import net.jadenxgamer.netherexp.core.datadriven.ApparitionGargoyleStatues;
-import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
-import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
-import net.jadenxgamer.netherexp.core.datadriven.Antidote;
+import net.jadenxgamer.netherexp.core.datadriven.*;
 import net.jadenxgamer.netherexp.core.misc.neoforge.ConfigCondition;
+import net.jadenxgamer.netherexp.core.misc.neoforge.StartupConfigCondition;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.conditions.ICondition;
-import net.neoforged.neoforge.registries.*;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.NewRegistryEvent;
 
 import java.util.function.Supplier;
 
@@ -24,6 +24,7 @@ public class JNERegistries {
 
     public static final DeferredRegister<MapCodec<? extends ICondition>> CONDITION_CODECS = DeferredRegister.create(NeoForgeRegistries.Keys.CONDITION_CODECS, NetherExp.MOD_ID);
     public static final Supplier<MapCodec<ConfigCondition>> CONFIG = CONDITION_CODECS.register("config", () -> ConfigCondition.CODEC);
+    public static final Supplier<MapCodec<StartupConfigCondition>> STARTUP_CONFIG = CONDITION_CODECS.register("startup_config", () -> StartupConfigCondition.CODEC);
 
     /**
      * JNE Registries

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "netherexp:blotted_netherrack",
     "netherexp:smooth_netherrack",
     "netherexp:smooth_netherrack_slab",
     "netherexp:smooth_netherrack_stairs",

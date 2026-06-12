@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.core.effect.BetrayedEffect;
 import net.jadenxgamer.netherexp.core.effect.ImmunityEffect;
 import net.jadenxgamer.netherexp.core.effect.IncurableEffect;
-import net.jadenxgamer.netherexp.core.effect.JNEMobEffect;
 import net.jadenxgamer.netherexp.core.effect.SoulSpeedEffect;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
@@ -23,7 +23,7 @@ public class JNEMobEffects {
             new SoulSpeedEffect(MobEffectCategory.BENEFICIAL, 1787717));
 
     public static final Holder<MobEffect> BETRAYED = MOB_EFFECTS.register("betrayed", () ->
-            new IncurableEffect(MobEffectCategory.NEUTRAL, 11730944));
+            new BetrayedEffect(MobEffectCategory.NEUTRAL, 11730944));
 
     /**
      * Immunity Effects

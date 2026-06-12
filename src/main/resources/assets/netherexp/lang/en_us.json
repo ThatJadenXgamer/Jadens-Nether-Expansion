@@ -669,6 +669,7 @@
   "subtitles.item.pump_charge_shotgun.alarm_profanity": "Pump-Charge Shotgun about to fucking explode",
   "subtitles.item.antidote.expired": "Antidote expired",
   "block.netherexp.cerebrage_kale": "Cerebrage Kale",
+  "block.netherexp.blotted_netherrack": "Blotted Netherrack",
 
   "enchantment.netherexp.phantasm_hull.desc": "Sneaking causes projectiles to phase through you in-exchange for durability",
   "enchantment.netherexp.counterforce.desc": "Reverses the pushback direction and provides I-frames when used midair during without any downwards pull",
@@ -682,6 +683,7 @@
   "netherexp.configuration.visualAndSoundSettings": "Visual & Sound Settings",
   "netherexp.configuration.gameMechanicSettings": "Game Mechanic Settings",
   "netherexp.configuration.startupSettings": "Startup Settings",
+  "netherexp.configuration.packSettings": "Pack Settings",
 
   "netherexp.configuration.fossilOreConversionChance": "Fossil Ore Conversion Chance",
   "netherexp.configuration.soulGlassMovementSlowdown": "Soul Glass Movement Slowdown",
@@ -866,6 +868,8 @@
   "netherexp.configuration.driftingSoulsSpawnRadius": "Drifting Souls Spawn Radius",
   "netherexp.configuration.ectoSlabEmergeBurstScreenshake": "Ecto Slab Emerge Burst Screenshake",
   "netherexp.configuration.ectoSlabPetrificationScreenshake": "Ecto Slab Petrification Screenshake",
+
+  "netherexp.configuration.soulCampfireSoulSoil": "Soul Campfire Soul Soil",
 
   "itemGroup.netherexp.jne_grieving_grove": "JNE Grieving Grove",
   "itemGroup.netherexp.jne_plume_bowels": "JNE Plume Bowels",

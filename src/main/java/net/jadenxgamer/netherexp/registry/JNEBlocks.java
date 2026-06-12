@@ -169,10 +169,11 @@ public class JNEBlocks {
             new Block(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).isRedstoneConductor((a, b, c) -> false).sound(JNESoundType.SOUL_SLATE)));
 
     public static final Supplier<Block> TREACHEROUS_CANDLE = registerBlock("treacherous_candle", () ->
-            new Block(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().sound(JNESoundType.SOUL_SLATE)));
+            new TreacherousCandleBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().lightLevel(
+                    blockState -> blockState.getValue(TreacherousCandleBlock.LIT) ? 10 : 0).sound(JNESoundType.SOUL_SLATE)));
 
     public static final Supplier<Block> HAZE_BLOCK = registerBlockWithoutItem("haze_block", () ->
-            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(JNESoundType.HAZE_BLOCK)));
+            new HazeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(JNESoundType.HAZE_BLOCK)));
 
     public static final Supplier<Block> SCULK_GRINDER = registerBlock("sculk_grinder", () ->
             new Block(BlockBehaviour.Properties.of().strength(80.0f, 1200.0f).lightLevel(state -> 13).sound(SoundType.SCULK_CATALYST)));
@@ -209,8 +210,11 @@ public class JNEBlocks {
             new JNEPathBlock(() -> Blocks.NETHERRACK, BlockBehaviour.Properties.ofLegacyCopy(Blocks.WARPED_NYLIUM)));
 
     /**
-     * Smooth Netherrack
+     * Netherrack
      */
+
+    public static final Supplier<Block> BLOTTED_NETHERRACK = registerBlock("blotted_netherrack", () ->
+            new BlottedNetherrackBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.NETHERRACK)));
 
     public static final Supplier<Block> SMOOTH_NETHERRACK = registerBlock("smooth_netherrack", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.NETHERRACK).strength(0.4f).requiresCorrectToolForDrops()));

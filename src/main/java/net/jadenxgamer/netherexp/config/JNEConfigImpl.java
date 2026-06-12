@@ -43,6 +43,10 @@ public class JNEConfigImpl {
         JNEConfigImpl.StartupSettings.init(STARTUP);
         STARTUP.pop();
 
+        STARTUP.comment("Pack Settings").push("packSettings");
+        JNEConfigImpl.PackSettings.init(STARTUP);
+        STARTUP.pop();
+
         JNEConfigImpl.COMMON = COMMON.build();
         JNEConfigImpl.STARTUP = STARTUP.build();
     }
@@ -160,6 +164,12 @@ public class JNEConfigImpl {
                     .comment("Normally frogmists can only be broken when other frogmist or a hoe is held in hand \n" +
                             "This config makes it breakable with anything regardless of what's in your hand")
                     .define("canAnythingBreakFrogmist", false);
+            TREACHEROUS_CANDLE_COMPLETION_COOLDOWN = builder
+                    .comment("Completed treacherous candles will become active again after the specified time in seconds has elapsed")
+                    .defineInRange("treacherousCandleCompletionCooldown", 1800, 0, 86400);
+            HAZE_BLOCK_COOLDOWN = builder
+                    .comment("Defines how long a haze block will last after being placed in seconds")
+                    .defineInRange("hazeBlockCooldown", 8, 0, Integer.MAX_VALUE);
         }
     }
 
@@ -639,6 +649,15 @@ public class JNEConfigImpl {
             ENABLE_NETHER_BIOME_LIGHTMAPS = builder
                     .comment("Gives every nether biome a custom lightmap that compliments its environment")
                     .define("enableNetherBiomeLightmaps", true);
+            TREACHEROUS_CANDLE_RED_LIGHTS = builder
+                    .comment("When the betrayed effect is active, it'll turn all lighting red")
+                    .define("treacherousCandleRedLights", true);
+            TREACHEROUS_CANDLE_FOG = builder
+                    .comment("When the betrayed effect is active, a dense red fog will appear")
+                    .define("treacherousCandleFog", true);
+            TREACHEROUS_CANDLE_PARTICLES = builder
+                    .comment("Treacherous Candle will produce red haze and sparkle particles")
+                    .define("treacherousCandleParticles", true);
         }
     }
 
@@ -685,6 +704,16 @@ public class JNEConfigImpl {
                     .comment("JNE has swearing, and lots of it too but is normally censored \n" +
                             "If you'd like to disable profanity entirely or uncensor it you may do so with this config")
                     .defineEnum("profanity", ProfanityConfig.CENSORED);
+        }
+    }
+
+
+    public static class PackSettings {
+
+        public static void init(ModConfigSpec.Builder builder) {
+            SOUL_CAMPFIRE_SOUL_SOIL = builder
+                    .comment("Changes the soot part of the soul campfire texture to become soul soil instead")
+                    .define("soulCampfireSoulSoil", true);
         }
     }
 }

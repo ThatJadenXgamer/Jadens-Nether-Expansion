@@ -1700,6 +1700,14 @@
       }
     ]
   },
+  "block.blotted_netherrack.drip": {
+    "sounds": [
+      "netherexp:block/blotted_netherrack/drip1",
+      "netherexp:block/blotted_netherrack/drip2",
+      "netherexp:block/blotted_netherrack/drip3",
+      "netherexp:block/blotted_netherrack/drip4"
+    ]
+  },
 
   "music_disc.cricket": {
     "sounds": [

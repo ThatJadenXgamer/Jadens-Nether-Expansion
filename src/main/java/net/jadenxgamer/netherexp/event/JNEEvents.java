@@ -1,11 +1,13 @@
 package net.jadenxgamer.netherexp.event;
 
+import net.jadenxgamer.elysium_api.api.surface_rules.SurfaceRulesRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManager;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.entity.PortalGlow;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
+import net.jadenxgamer.netherexp.core.worldgen.JNESurfaceRules;
 import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.BlockCrackTracker;
 import net.minecraft.core.BlockPos;
@@ -75,6 +77,7 @@ public class JNEEvents {
     @SubscribeEvent
     public static void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            SurfaceRulesRegistry.registerNetherSurfaceRule(JNESurfaceRules.init(), NetherExp.MOD_ID);
             JNECauldronInteractions.register();
             JNEItems.setup();
         });

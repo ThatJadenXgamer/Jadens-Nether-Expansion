@@ -62,6 +62,8 @@ public class JNETags {
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createTag("ignores_soul_sand_slowness"); // Entities within this tag cannot be slowed down by soul sand
         public static final TagKey<EntityType<?>> AFFECTED_BY_ECTO_SLAB_EMERGE_BURST = createTag("affected_by_ecto_slab_emerge_burst"); // Entities within this tag are affected by the emerge burst attack's AoE
         public static final TagKey<EntityType<?>> HAS_LIGHT_SHADOW = createTag("has_light_shadow"); // Entities within this tag have a light instead of the usual shadow
+        public static final TagKey<EntityType<?>> IGNORES_TREACHEROUS_CANDLE = createTag("ignores_treacherous_candle");
+        public static final TagKey<EntityType<?>> TARGETS_REGARDLESS_OF_BETRAYED = createTag("targets_regardless_of_betrayed");
 
         private static TagKey<EntityType<?>> createTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, NetherExp.netherexpPath(name));
@@ -76,6 +78,8 @@ public class JNETags {
         public static final TagKey<Biome> SPAWNS_DAMP_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_damp_variant_striders_and_siltmarram");
         public static final TagKey<Biome> SPAWNS_MOIST_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_moist_variant_striders_and_siltmarram");
         public static final TagKey<Biome> SPAWNS_DRY_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_dry_variant_striders_and_siltmarram");
+        public static final TagKey<Biome> HAS_BEACH_SHORELINE = createBiomeTag("has_beach_shoreline");
+        public static final TagKey<Biome> HAS_NO_SHORELINE = createBiomeTag("has_no_shoreline");
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, NetherExp.netherexpPath(name));

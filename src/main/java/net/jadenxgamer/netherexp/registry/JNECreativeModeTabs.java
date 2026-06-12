@@ -211,6 +211,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.COOKED_HOGHAM.get());
 
                 output.accept(Blocks.NETHERRACK);
+                output.accept(JNEBlocks.BLOTTED_NETHERRACK.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK_SLAB.get());
@@ -266,6 +267,7 @@ public class JNECreativeModeTabs {
                 output.accept(Items.WARPED_HANGING_SIGN);
 
                 output.accept(Blocks.NETHERRACK);
+                output.accept(JNEBlocks.BLOTTED_NETHERRACK.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK_SLAB.get());
@@ -343,6 +345,7 @@ public class JNECreativeModeTabs {
             .icon(() -> new ItemStack(JNEBlocks.NETHERRACK_TILES.get()))
             .displayItems((params, output) -> {
                 output.accept(Blocks.NETHERRACK);
+                output.accept(JNEBlocks.BLOTTED_NETHERRACK.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK_STAIRS.get());
                 output.accept(JNEBlocks.SMOOTH_NETHERRACK_SLAB.get());

@@ -43,6 +43,8 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue CEREBRAGE_GROWS_BRAIN_TREES;
     public static ModConfigSpec.IntValue SHOTGUN_BARREL_BULLETS;
     public static ModConfigSpec.BooleanValue CAN_ANYTHING_BREAK_FROGMIST;
+    public static ModConfigSpec.IntValue TREACHEROUS_CANDLE_COMPLETION_COOLDOWN;
+    public static ModConfigSpec.IntValue HAZE_BLOCK_COOLDOWN;
 
     // ITEM
     public static ModConfigSpec.IntValue IMMUNITY_CONSUMPTION;
@@ -181,10 +183,9 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue POTION_CONSUMPTION_PARTICLES;
     public static ModConfigSpec.BooleanValue IMPROVED_NETHER_PORTAL_PARTICLES;
     public static ModConfigSpec.BooleanValue ENABLE_NETHER_BIOME_LIGHTMAPS;
-
-    public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
-    public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
-    public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;
+    public static ModConfigSpec.BooleanValue TREACHEROUS_CANDLE_RED_LIGHTS;
+    public static ModConfigSpec.BooleanValue TREACHEROUS_CANDLE_FOG;
+    public static ModConfigSpec.BooleanValue TREACHEROUS_CANDLE_PARTICLES;
 
     // GAME MECHANICS
     public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;
@@ -194,4 +195,12 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue SILVER_PARANORMAL_INFLICTS_SLOWNESS;
     public static ModConfigSpec.BooleanValue DEVELOPER_MODE;
     public static ModConfigSpec.BooleanValue SHOW_BETA_WARNING_POPUP;
+
+    // STARTUP
+    public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
+    public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
+    public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;
+
+    // PACK
+    public static ModConfigSpec.BooleanValue SOUL_CAMPFIRE_SOUL_SOIL;
 }

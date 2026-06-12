@@ -25,6 +25,8 @@
     "entity.BlockEntityTypeMixin",
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
+    "entity.ai.NearestAttackableTargetGoalMixin",
+    "item.BlockItemMixin",
     "item.PotionItemMixin",
     "misc.PortalForcerMixin",
     "worldgen.NetherWorldCarverMixin"
