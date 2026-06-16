@@ -23,6 +23,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -55,7 +56,7 @@ public class EctoSoulSandBlock extends SoulSandBlock {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (JNEConfigs.BRUSH_WISPS_OUT.get() && stack.is(Items.BRUSH) && level.getBlockState(pos.above()).isAir()) {
+        if (JNEConfigs.BRUSH_WISPS_OUT.get() && stack.getItem() instanceof BrushItem && level.getBlockState(pos.above()).isAir()) {
             level.playSound(null, pos, SoundEvents.BRUSH_SAND, SoundSource.BLOCKS, 1.0f, 1.0f);
             if (!player.getAbilities().instabuild) stack.hurtAndBreak(JNEConfigs.ECTO_SOUL_SAND_BRUSH_DAMAGE.get(), player, LivingEntity.getSlotForHand(hand));
             ParticleHelper.surroundBlockParticle(level, pos, ParticleTypes.SOUL);
