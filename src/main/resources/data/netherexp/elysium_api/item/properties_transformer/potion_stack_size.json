@@ -1,0 +1,13 @@
+{
+  "items": "#netherexp:stackable_potions",
+  "properties": {
+    "max_stack_size": 16
+  },
+
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "itemSettings.stackablePotions"
+    }
+  ]
+}

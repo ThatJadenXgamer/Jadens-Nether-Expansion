@@ -1,0 +1,18 @@
+{
+  "blocks": "minecraft:magma_block",
+  "base_properties": {},
+  "conditional_properties": {
+    "has_post_process": {
+      "default": false,
+      "rules": []
+    },
+    "light_emission": {
+      "default": 5,
+      "rules": []
+    },
+    "emissive_rendering": {
+      "default": false,
+      "rules": []
+    }
+  }
+}

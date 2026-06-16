@@ -22,23 +22,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
-import java.util.WeakHashMap;
 
 @Mixin(NetherPortalBlock.class)
 public class NetherPortalBlockMixin {
 
-    @Unique private static final WeakHashMap<Level, Long> LAST_PORTAL_BREAK_SOUND_TIME = new WeakHashMap<>();
+    @Unique private static long lastPortalBreakSoundTime = -1;
 
     @WrapMethod(method = "animateTick")
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, Operation<Void> original) {
         if (JNEConfigs.IMPROVED_NETHER_PORTAL_PARTICLES.get()) {
             if (random.nextInt(100) == 0) {
                 level.playLocalSound(
-                        (double) pos.getX() + 0.5,
-                        (double) pos.getY() + 0.5,
-                        (double) pos.getZ() + 0.5,
-                        SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS,
-                        0.5F, random.nextFloat() * 0.4F + 0.8F, false
+                        (double) pos.getX() + 0.5, (double) pos.getY() + 0.5, (double) pos.getZ() + 0.5,
+                        SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false
                 );
             }
             CommonParticles.netherPortalParticle(state, level, pos, random);
@@ -52,12 +48,12 @@ public class NetherPortalBlockMixin {
     private void updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor levelAccessor, BlockPos currentPos, BlockPos facingPos, CallbackInfoReturnable<BlockState> cir) {
         if (levelAccessor.isClientSide()) return;
         if (!(levelAccessor instanceof Level level)) return;
-        long gameTime = level.getGameTime();
+
         BlockState newState = cir.getReturnValue();
         if (newState.isAir() && state.getBlock() instanceof NetherPortalBlock) {
-            Long lastPlayed = LAST_PORTAL_BREAK_SOUND_TIME.get(level);
-            if (lastPlayed == null || gameTime - lastPlayed > 20) {
-                LAST_PORTAL_BREAK_SOUND_TIME.put(level, gameTime);
+            long gameTime = level.getGameTime();
+            if (gameTime != lastPortalBreakSoundTime) {
+                lastPortalBreakSoundTime = gameTime;
                 level.playSound(null, currentPos, JNESoundEvents.NETHER_PORTAL_BREAK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             }
         }

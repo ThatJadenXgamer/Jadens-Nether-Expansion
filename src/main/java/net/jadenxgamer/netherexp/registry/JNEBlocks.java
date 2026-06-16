@@ -147,7 +147,8 @@ public class JNEBlocks {
             new SuspiciousSoulSandBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_SAND).randomTicks().speedFactor(0.2f).strength(0.25f).pushReaction(PushReaction.DESTROY).sound(JNESoundType.SUSPICIOUS_SOUL_SAND)));
 
     public static final Supplier<Block> SOUL_MAGMA_BLOCK = registerBlock("soul_magma_block", () ->
-            new SoulMagmaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(0.5f).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+            new SoulMagmaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(0.5f).lightLevel((state) -> 3).instrument(NoteBlockInstrument.BASEDRUM)
+                    .emissiveRendering((a, b , blockPos) -> false).requiresCorrectToolForDrops()
                     .isValidSpawn((state, level, pos, entity) -> entity.fireImmune()).sound(JNESoundType.SOUL_MAGMA_BLOCK)));
 
     public static final Supplier<Block> SOUL_SOIL_LAYER = registerBlock("soul_soil_layer", () ->

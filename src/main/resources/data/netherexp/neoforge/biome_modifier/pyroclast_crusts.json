@@ -2,5 +2,11 @@
   "type": "neoforge:add_features",
   "biomes": "#minecraft:is_nether",
   "features": "netherexp:pyroclast_crusts",
-  "step": "underground_decoration"
+  "step": "underground_decoration",
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "worldSettings.biomeFeaturesSettings.pyroclastCrusts"
+    }
+  ]
 }

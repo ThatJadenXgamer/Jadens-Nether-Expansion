@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.core.worldgen.feature;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.JNEHugeFungusFeatureConfiguration;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
@@ -13,24 +13,28 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeatureConfiguration> {
+import java.util.Optional;
+
+public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeature.Config> {
 
     // Based on Vanilla HugeFungusFeature with cleaner variables, more configurable bits and beard logic
 
-    public JNEHugeFungusFeature(Codec<JNEHugeFungusFeatureConfiguration> codec) {
+    public JNEHugeFungusFeature(Codec<Config> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<JNEHugeFungusFeatureConfiguration> context) {
+    public boolean place(FeaturePlaceContext<Config> context) {
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
         RandomSource random = context.random();
         ChunkGenerator chunkGenerator = context.chunkGenerator();
-        JNEHugeFungusFeatureConfiguration config = context.config();
+        Config config = context.config();
         Block baseBlock = config.validBaseState().getBlock();
         BlockPos placePos = null;
         BlockState baseBlockState = level.getBlockState(origin.below());
@@ -62,7 +66,7 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeatureConfigurat
         }
     }
 
-    private static boolean isReplaceable(WorldGenLevel level, BlockPos pos, JNEHugeFungusFeatureConfiguration config, boolean checkReplaceableBlocks) {
+    private static boolean isReplaceable(WorldGenLevel level, BlockPos pos, Config config, boolean checkReplaceableBlocks) {
         if (level.isStateAtPosition(pos, BlockBehaviour.BlockStateBase::canBeReplaced)) {
             return true;
         } else {
@@ -70,7 +74,7 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeatureConfigurat
         }
     }
 
-    private void placeStem(WorldGenLevel level, RandomSource random, JNEHugeFungusFeatureConfiguration config, BlockPos pos, int height, boolean largeStem) {
+    private void placeStem(WorldGenLevel level, RandomSource random, Config config, BlockPos pos, int height, boolean largeStem) {
         BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
         BlockState stemState = config.stemState();
         int stemRadius = largeStem ? 1 : 0;
@@ -100,7 +104,7 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeatureConfigurat
         }
     }
 
-    private void placeHat(WorldGenLevel level, RandomSource random, JNEHugeFungusFeatureConfiguration config, BlockPos pos, int height, boolean largeStem) {
+    private void placeHat(WorldGenLevel level, RandomSource random, Config config, BlockPos pos, int height, boolean largeStem) {
         BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
         int hatHeight = Math.min(random.nextInt(1 + height / 3) + 5, height);
         int stemHeight = height - hatHeight;
@@ -145,7 +149,7 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeatureConfigurat
         }
     }
 
-    private void placeHatBlock(LevelAccessor level, RandomSource random, JNEHugeFungusFeatureConfiguration config, BlockPos.MutableBlockPos pos, float probability1, float probability2) {
+    private void placeHatBlock(LevelAccessor level, RandomSource random, Config config, BlockPos.MutableBlockPos pos, float probability1, float probability2) {
         if (random.nextFloat() < probability1) {
             this.setBlock(level, pos, config.decorState());
         } else if (random.nextFloat() < probability2) {
@@ -154,7 +158,7 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeatureConfigurat
         }
     }
 
-    private void placeHatDropBlock(LevelAccessor level, RandomSource random, JNEHugeFungusFeatureConfiguration config, BlockPos pos, BlockState state) {
+    private void placeHatDropBlock(LevelAccessor level, RandomSource random, Config config, BlockPos pos, BlockState state) {
         if (level.getBlockState(pos.below()).is(state.getBlock())) {
             this.setBlock(level, pos, state);
         } else if (random.nextFloat() < 0.15) {
@@ -164,11 +168,33 @@ public class JNEHugeFungusFeature extends Feature<JNEHugeFungusFeatureConfigurat
         }
     }
 
-    private static void tryPlaceBeard(BlockPos pos, LevelAccessor level, JNEHugeFungusFeatureConfiguration config) {
+    private static void tryPlaceBeard(BlockPos pos, LevelAccessor level, Config config) {
         if (config.beardState().isEmpty()) return;
         BlockPos.MutableBlockPos mutableBlockPos = pos.mutable().move(Direction.DOWN);
         if (level.isEmptyBlock(mutableBlockPos) && level.isEmptyBlock(mutableBlockPos.below()) && level.getBlockState(mutableBlockPos.above()).is(config.hatState().getBlock())) {
             level.setBlock(mutableBlockPos, config.beardState().get(), Block.UPDATE_CLIENTS);
         }
+    }
+
+    public record Config(BlockState validBaseState,
+                         BlockState stemState, BlockState hatState, BlockState decorState,
+                         Optional<BlockState> beardState,
+                         BlockPredicate replaceableBlocks, boolean planted,
+                         int minHeight, int maxHeight, int bonusHeight
+    ) implements FeatureConfiguration {
+        public static final Codec<Config> CODEC = RecordCodecBuilder.create((instance) ->
+                instance.group(
+                        BlockState.CODEC.fieldOf("valid_base_block").forGetter(Config::validBaseState),
+                        BlockState.CODEC.fieldOf("stem_state").forGetter(Config::stemState),
+                        BlockState.CODEC.fieldOf("hat_state").forGetter(Config::hatState),
+                        BlockState.CODEC.fieldOf("decor_state").forGetter(Config::decorState),
+                        BlockState.CODEC.optionalFieldOf("beard_state").forGetter(Config::beardState),
+                        BlockPredicate.CODEC.fieldOf("replaceable_blocks").forGetter(Config::replaceableBlocks),
+                        Codec.BOOL.fieldOf("planted").forGetter(Config::planted),
+                        Codec.INT.fieldOf("min_height").forGetter(Config::minHeight),
+                        Codec.INT.fieldOf("max_height").forGetter(Config::maxHeight),
+                        Codec.INT.fieldOf("bonus_height").forGetter(Config::bonusHeight)
+                ).apply(instance, Config::new)
+        );
     }
 }

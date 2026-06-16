@@ -2,5 +2,11 @@
   "type": "neoforge:add_features",
   "biomes": "#minecraft:is_nether",
   "features": "netherexp:netherrack_speleothem",
-  "step": "raw_generation"
+  "step": "raw_generation",
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "worldSettings.biomeFeaturesSettings.netherrackSpeleothem"
+    }
+  ]
 }

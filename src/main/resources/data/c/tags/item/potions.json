@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "netherexp:antidote", "required": false },
+    { "id": "netherexp:grenade_antidote", "required": false }
+  ]
+}

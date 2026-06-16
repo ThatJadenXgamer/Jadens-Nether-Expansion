@@ -1,5 +1,11 @@
 {
   "type": "neoforge:remove_carvers",
   "biomes": "#minecraft:is_nether",
-  "carvers": "minecraft:nether_cave"
+  "carvers": "minecraft:nether_cave",
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "worldSettings.biomeFeaturesSettings.removeNetherNoodleCaves"
+    }
+  ]
 }

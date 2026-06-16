@@ -1,7 +1,10 @@
 package net.jadenxgamer.netherexp.core.worldgen.feature;
 
 import com.mojang.serialization.Codec;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.MoundFeatureConfiguration;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -10,17 +13,18 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public class MoundFeature extends Feature<MoundFeatureConfiguration> {
+public class MoundFeature extends Feature<MoundFeature.Config> {
 
-    public MoundFeature(Codec<MoundFeatureConfiguration> codec) {
+    public MoundFeature(Codec<Config> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<MoundFeatureConfiguration> context) {
+    public boolean place(FeaturePlaceContext<Config> context) {
         WorldGenLevel level = context.level();
-        MoundFeatureConfiguration config = context.config();
+        Config config = context.config();
         RandomSource random = context.random();
         BlockPos origin = config.hanging() ? context.origin().above(2) : context.origin().below(2);
         BlockState state = level.getBlockState(config.hanging() ? context.origin().above() : context.origin().below());
@@ -41,7 +45,7 @@ public class MoundFeature extends Feature<MoundFeatureConfiguration> {
         } else return false;
     }
 
-    private void placeMound(MoundFeatureConfiguration config, WorldGenLevel level, BlockPos origin, int height, BlockState state, RandomSource random) {
+    private void placeMound(Config config, WorldGenLevel level, BlockPos origin, int height, BlockState state, RandomSource random) {
         int radius = config.radius();
         boolean hanging = config.hanging();
 
@@ -83,5 +87,25 @@ public class MoundFeature extends Feature<MoundFeatureConfiguration> {
                 }
             }
         }
+    }
+
+    public record Config(HolderSet<Block> validPlacements,
+                         int height, int bonusHeight, int extraHeight, int bonusExtraHeight,
+                         int minExtraMounds, int maxExtraMounds,
+                         int radius, boolean hanging
+    ) implements FeatureConfiguration {
+        public static final Codec<Config> CODEC = RecordCodecBuilder.create((instance) ->
+                instance.group(
+                        RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("valid_placements").forGetter(Config::validPlacements),
+                        Codec.INT.fieldOf("height").forGetter(Config::height),
+                        Codec.INT.fieldOf("bonus_height").forGetter(Config::bonusHeight),
+                        Codec.INT.fieldOf("extra_height").forGetter(Config::extraHeight),
+                        Codec.INT.fieldOf("bonus_extra_height").forGetter(Config::bonusExtraHeight),
+                        Codec.INT.fieldOf("min_extra_mounds").forGetter(Config::minExtraMounds),
+                        Codec.INT.fieldOf("max_extra_mounds").forGetter(Config::maxExtraMounds),
+                        Codec.INT.fieldOf("radius").forGetter(Config::radius),
+                        Codec.BOOL.optionalFieldOf("hanging", false).forGetter(Config::hanging)
+                ).apply(instance, Config::new)
+        );
     }
 }

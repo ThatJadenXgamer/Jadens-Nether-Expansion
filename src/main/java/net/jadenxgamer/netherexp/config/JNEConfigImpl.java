@@ -223,6 +223,9 @@ public class JNEConfigImpl {
             WILL_O_WISP_STACK_SIZE = builder
                     .comment("The number of will o' wisps that can be stored in a single stack")
                     .defineInRange("willOWispStackSize", 64, 1, 99);
+            STACKABLE_POTIONS = builder
+                    .comment("When enabled almost all types of potions can be stacked to 16 like in the combat snapshots")
+                    .define("stackablePotions", true);
         }
     }
 
@@ -252,7 +255,7 @@ public class JNEConfigImpl {
                     .defineInRange("apparitionPossessionCooldown", 300, -1, Integer.MAX_VALUE);
             APPARITIONS_CAN_BE_SALTED = builder
                     .comment("Apparitions can be salted... or erm, \"waxed\" until actual salt is added in the future \n" +
-                            "Salted apparitions cannot possess any mobs, although will still attack them")
+                            "Salted apparitions cannot possess any mobs, although they will still attack them")
                     .define("apparitionsCanBeSalted", true);
             APPARITIONS_CAN_POSSESS_MOBS = builder
                     .comment("Apparitions can take control of certain mobs they kill and turn into possessed variants")
@@ -326,14 +329,14 @@ public class JNEConfigImpl {
                     .defineInRange("bansheeWillOWispManoeuvrability", 0.2, 0, Double.MAX_VALUE);
             MANEUVERABILITY_AFFECTED_BY_DIFFICULTY = builder
                     .comment("""
-                            Weather world difficulty will have any affect on a banshee will o' wisps' manoeuvrability\s
+                            Weather world difficulty will have any effect on a banshee will o' wisps' manoeuvrability\s
                             The values below are added onto whatever is specifed in "bansheeWillOWispManoeuvrability"\s
                             -0.05 on Easy\s
                             +0.04 on Hard
                             """)
                     .define("manoeuvrabilityAffectedByDifficulty", true);
             WILL_O_WISP_WIND_PROPULSION = builder
-                    .comment("When a will o' wisp is hit with a wind charge it'll accelerate the its speed and manoeuvrability greatly")
+                    .comment("When a will o' wisp is hit with a wind charge it'll accelerate its speed and manoeuvrability greatly")
                     .define("willOWispWindPropulsion", true);
             ECTO_SLAB_PETRIFY_WITH_GHAST_TEAR = builder
                     .comment("Whether you can use ghast tears to petrify ecto slabs")
@@ -455,6 +458,10 @@ public class JNEConfigImpl {
     public static class WorldSettings {
 
         public static void init(ModConfigSpec.Builder builder) {
+            builder.comment("Biome Feature Settings").push("biomeFeaturesSettings");
+            JNEConfigImpl.BiomeFeatures.init(builder);
+            builder.pop();
+
             NETHER_WORLDGEN_OVERHAUL = builder
                     .comment("""
                             Improves the vanilla nether terrain generation with better multilayered-ness and height changes\s
@@ -470,16 +477,16 @@ public class JNEConfigImpl {
             IMPROVED_NETHER_BIOME_SOURCE = builder
                     .comment("""
                             Completely replaces the vanilla multi-noise biome source for Elysium API's mosaic ones\s
-                            Rather than determining a biomes position based on the terrain's noise climate. it instead use voronoi cells with a weighted list\s
-                            Mosaic biome source is remarkably good at keeping consistent sizes between all the biomes and equally distributes them too no matter how many mods you have\s
+                            Rather than determining a biomes' position based on the terrain's noise climate. it instead uses voronoi cells with a weighted list\s
+                            Mosaic biome source is remarkably stellar at keeping consistent sizes between all the biomes and equally distributes them too, no matter how many mods you have\s
                             \s
-                            §cNOTE: MosaicBiomeSource is currently in BETA and active testing. currently sub-biome support is limited and there is no 3D biome support either
+                            §cNOTE: MosaicBiomeSource is currently in BETA and in active testing. as of now sub-biome support is limited and there is no 3D biome support either
                             """)
                     .gameRestart()
                     .define("improvedNetherBiomeSource", true);
             BRIGHTER_NETHER_FOG = builder
                     .comment("Brightens up the nether fog of most vanilla and modded biomes to compliment their environments better \n" +
-                            "It overall makes the nether feel more warmer and helps make out shapes in the distance like actual fog")
+                            "It overall makes the nether feel warmer and helps make out shapes in the distance like actual fog")
                     .worldRestart()
                     .define("brighterNetherFog", true);
             RED_NETHER_WASTES_FOG = builder
@@ -490,6 +497,72 @@ public class JNEConfigImpl {
                     .comment("Dust like particles will blow in the soul sand valley instead of the occasional falling ash")
                     .worldRestart()
                     .define("betterSoulSandValleyParticles", true);
+        }
+    }
+
+    public static class BiomeFeatures {
+
+        public static void init(ModConfigSpec.Builder builder) {
+            BONE_PIKE = builder
+                    .gameRestart()
+                    .comment("Generates bone pikes on the soul sand valley surface")
+                    .define("bonePike", true);
+            ECTO_SOUL_SAND = builder
+                    .gameRestart()
+                    .comment("Generates ecto soul sand patches in the soul sand valley")
+                    .define("ectoSoulSand", true);
+            ECTOPLASM_LAKE = builder
+                    .gameRestart()
+                    .comment("Generates ectoplasm lakes in the soul sand valley")
+                    .define("ectoplasmLake", true);
+            FOSSIL_FUEL_ORE = builder
+                    .gameRestart()
+                    .comment("Generates fossil fuel ore deposits in the soul sand valley")
+                    .define("fossilFuelOre", true);
+            FOSSIL_ORE = builder
+                    .gameRestart()
+                    .comment("Generates fossil ore deposits in the soul sand valley")
+                    .define("fossilOre", true);
+            MOUND = builder
+                    .gameRestart()
+                    .comment("Generates mounds on the ceiling and floor of the soul sand valley")
+                    .define("mound", true);
+            SOUL_MAGMA = builder
+                    .gameRestart()
+                    .comment("Generates soul magma patches towards the upper regions of the soul sand valley")
+                    .define("soulMagma", true);
+            PALE_SOUL_SLATE = builder
+                    .gameRestart()
+                    .comment("Generates pale soul slate embedded in the walls or surface of the soul sand valley")
+                    .define("paleSoulSlate", true);
+            SOUL_SWIRLS = builder
+                    .gameRestart()
+                    .comment("Generates soul swirls in the soul sand valley floor and ceiling")
+                    .define("soulSwirls", true);
+            BLOTTED_NETHERRACK = builder
+                    .gameRestart()
+                    .comment("Generates blotted netherrack patches all throughout the nether")
+                    .define("blottedNetherrack", true);
+            SILTMARRAM = builder
+                    .gameRestart()
+                    .comment("Generates siltmarram on silt beaches and coves with a different variant based on the biome's moisture")
+                    .define("siltmarram", true);
+            NETHERRACK_SPELEOTHEM = builder
+                    .gameRestart()
+                    .comment("Generates large netherrack speleothem all throughout the nether")
+                    .define("netherrackSpeleothem", true);
+            PYROCLAST_CRUSTS = builder
+                    .gameRestart()
+                    .comment("Generates pyroclast crusts on the lava sea surfaces")
+                    .define("pyroclastCrusts", true);
+            SILT_FLINT_ORE = builder
+                    .gameRestart()
+                    .comment("Generates silt flint ore deposits in silt beaches and coves")
+                    .define("siltFlintOre", true);
+            REMOVE_NETHER_NOODLE_CAVES = builder
+                    .gameRestart()
+                    .comment("Prevents those ugly ravines and noodle caves from cutting through the nether's terrain by removing them entirely")
+                    .define("removeNetherNoodleCaves", true);
         }
     }
 
@@ -531,9 +604,9 @@ public class JNEConfigImpl {
                     .comment("Influences the nether mist particle to go off in random directions at the defined speed")
                     .defineInRange("netherMistMotionMultiplier", 0.05, 0, Double.MAX_VALUE);
             NETHER_MIST_DISSIPATE_DISTANCE = builder
-                    .comment("Makes the nether mist particles disappear faster if you get close enough to them \n" +
+                    .comment("Makes the nether mist particles disappear faster if you get close enough to them, \n" +
                             "You may disable this functionality entirely by just setting the value to 0.0")
-                    .defineInRange("netherMistDissipateDistance", 20.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("netherMistDissipateDistance", 28.0, 0.0, Double.MAX_VALUE);
             SOUL_SAND_VALLEY_WIND_SPEED = builder
                     .comment("Influences the wind speed of ash particles in the soul sand valley")
                     .defineInRange("soulSandValleyWindSpeed", 0.2, 0.0, Double.MAX_VALUE);

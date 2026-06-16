@@ -1,0 +1,17 @@
+{
+  "type": "netherexp:blotted_patch",
+  "config": {
+    "radius": 12,
+    "thickness": 4,
+    "hole_count": 16,
+    "hole_radius_min": 1,
+    "hole_radius_max": 5,
+    "replaceable": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:netherrack"
+    },
+    "state": {
+      "Name": "netherexp:blotted_netherrack"
+    }
+  }
+}

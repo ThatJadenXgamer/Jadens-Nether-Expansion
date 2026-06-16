@@ -2,9 +2,6 @@ package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.worldgen.feature.*;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.JNEHugeFungusFeatureConfiguration;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.MoundFeatureConfiguration;
-import net.jadenxgamer.netherexp.core.worldgen.feature.config.NotGarbageLargeDripstoneFeatureConfiguration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -18,16 +15,16 @@ public class JNEFeatureTypes {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(BuiltInRegistries.FEATURE, NetherExp.MOD_ID);
 
     public static final Supplier<Feature<?>> NOT_GARBAGE_LARGE_DRIPSTONE = FEATURES.register("not_garbage_large_dripstone", () ->
-            new NotGarbageLargeDripstoneFeature(NotGarbageLargeDripstoneFeatureConfiguration.CODEC));
+            new NotGarbageLargeDripstoneFeature(NotGarbageLargeDripstoneFeature.Config.CODEC));
 
     public static final Supplier<Feature<?>> JNE_HUGE_FUNGUS = FEATURES.register("jne_huge_fungus", () ->
-            new JNEHugeFungusFeature(JNEHugeFungusFeatureConfiguration.CODEC));
+            new JNEHugeFungusFeature(JNEHugeFungusFeature.Config.CODEC));
 
-    public static final Supplier<Feature<?>> BRAIN_TREE = FEATURES.register("brain_tree", () ->
-            new BrainTreeFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<?>> BLOTTED_PATCH = FEATURES.register("blotted_patch", () ->
+            new BlottedPatchFeature(BlottedPatchFeature.Config.CODEC));
 
     public static final Supplier<Feature<?>> MOUND = FEATURES.register("mound", () ->
-            new MoundFeature(MoundFeatureConfiguration.CODEC));
+            new MoundFeature(MoundFeature.Config.CODEC));
 
     public static final Supplier<Feature<?>> NETHER_SPELEOTHEM = FEATURES.register("nether_speleothem", () ->
             new NetherSpeleothemFeature(NoneFeatureConfiguration.CODEC));

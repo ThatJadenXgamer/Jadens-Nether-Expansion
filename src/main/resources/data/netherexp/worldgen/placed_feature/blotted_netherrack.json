@@ -1,13 +1,12 @@
 {
-  "feature": "netherexp:soul_soil_speleothem",
+  "feature": "netherexp:blotted_netherrack",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 7
-    },
-    {
       "type": "minecraft:count",
-      "count": 1
+      "count": {
+        "type": "minecraft:constant",
+        "value": 4
+      }
     },
     {
       "type": "minecraft:in_square"
@@ -17,7 +16,7 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "above_bottom": 0
+          "above_bottom": 4
         },
         "max_inclusive": {
           "below_top": 4

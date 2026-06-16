@@ -60,6 +60,7 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue SLUG_BLOCK_DAMAGE_STRENGTH;
     public static ModConfigSpec.IntValue COUNTERFORCE_IFRAMES;
     public static ModConfigSpec.IntValue WILL_O_WISP_STACK_SIZE;
+    public static ModConfigSpec.BooleanValue STACKABLE_POTIONS;
 
     // ENTITY
     public static ModConfigSpec.DoubleValue WISP_BOREDOM_CHANCE;
@@ -133,6 +134,23 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue BRIGHTER_NETHER_FOG;
     public static ModConfigSpec.BooleanValue RED_NETHER_WASTES_FOG;
     public static ModConfigSpec.BooleanValue BETTER_SOUL_SAND_VALLEY_PARTICLES;
+
+    // BIOME FEATURES
+    public static ModConfigSpec.BooleanValue BONE_PIKE;
+    public static ModConfigSpec.BooleanValue ECTO_SOUL_SAND;
+    public static ModConfigSpec.BooleanValue ECTOPLASM_LAKE;
+    public static ModConfigSpec.BooleanValue FOSSIL_FUEL_ORE;
+    public static ModConfigSpec.BooleanValue FOSSIL_ORE;
+    public static ModConfigSpec.BooleanValue MOUND;
+    public static ModConfigSpec.BooleanValue SOUL_MAGMA;
+    public static ModConfigSpec.BooleanValue PALE_SOUL_SLATE;
+    public static ModConfigSpec.BooleanValue SOUL_SWIRLS;
+    public static ModConfigSpec.BooleanValue BLOTTED_NETHERRACK;
+    public static ModConfigSpec.BooleanValue SILTMARRAM;
+    public static ModConfigSpec.BooleanValue NETHERRACK_SPELEOTHEM;
+    public static ModConfigSpec.BooleanValue PYROCLAST_CRUSTS;
+    public static ModConfigSpec.BooleanValue SILT_FLINT_ORE;
+    public static ModConfigSpec.BooleanValue REMOVE_NETHER_NOODLE_CAVES;
 
     // VISUAL AND SOUND
     public static ModConfigSpec.BooleanValue UNCAPPED_NETHER_FOG_DISTANCE;
