@@ -130,11 +130,6 @@ dependencies {
 
     compileOnly "top.theillusivec4.curios:curios-neoforge:$curios_version:api"
     runtimeOnly "top.theillusivec4.curios:curios-neoforge:$curios_version"
-
-    // These mods are not dependencies and are only used for testing
-    //runtimeOnly "maven.modrinth:resourceful-config:$resourceful_config_version"
-    //runtimeOnly "maven.modrinth:architectury-api:$architectury_api_version"
-    //runtimeOnly "maven.modrinth:better-archeology:$better_archeology_version"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
