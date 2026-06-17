@@ -2,7 +2,7 @@
   "dimension": "minecraft:the_nether",
   "climate_point": 8,
   "biome": "netherdescent:arisian_undergrowth",
-  "weight": 15,
+  "weight": 10,
 
   "neoforge:conditions": [
     {

@@ -14,6 +14,7 @@ import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.Instruments;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
@@ -132,6 +133,10 @@ public class JNEBlocks {
 
     public static final Supplier<Block> SOUL_CANDLE = registerBlock("soul_candle", () ->
             new SoulCandleBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noOcclusion().strength(1.0f).lightLevel(SoulCandleBlock.STATE_TO_LUMINANCE).sound(JNESoundType.SOUL_CANDLE)));
+
+    public static final Supplier<Block> PHASMO_SLAB = registerBlock("phasmo_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.of().strength(1.0f, 1200.0f).lightLevel(state -> 2).emissiveRendering((a, b, c) -> false)
+                    .requiresCorrectToolForDrops().instrument(NoteBlockInstrument.CHIME).sound(JNESoundType.BLACK_ICE)));
 
     public static final Supplier<Block> SOUL_GLASS = registerBlock("soul_glass", () ->
             new SoulGlassBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).lightLevel(

@@ -2,7 +2,7 @@
   "dimension": "minecraft:the_nether",
   "climate_point": 6,
   "biome": "regions_unexplored:infernal_holt",
-  "weight": 15,
+  "weight": 12,
 
   "neoforge:conditions": [
     {

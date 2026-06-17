@@ -2,7 +2,7 @@
   "dimension": "minecraft:the_nether",
   "climate_point": 5,
   "biome": "netherdescent:embur_bog",
-  "weight": 12,
+  "weight": 8,
 
   "neoforge:conditions": [
     {

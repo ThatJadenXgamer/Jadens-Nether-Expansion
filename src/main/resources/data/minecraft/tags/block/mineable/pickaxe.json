@@ -120,6 +120,7 @@
     "minecraft:redstone_lamp",
     "#netherexp:mob_heads",
 
-    "netherexp:ancient_lantern"
+    "netherexp:ancient_lantern",
+    "netherexp:phasmo_slab"
   ]
 }

@@ -7,7 +7,7 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
-credits = "AlwaysMuddy, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior, Alganaut, Derp_gamer22"
+credits = "AlwaysMuddy, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior, Derp_gamer22, lazar_the_artman"
 description='''${mod_description}'''
 logoFile = "netherexp.png"
 
@@ -34,6 +34,6 @@ side="BOTH"
 [[dependencies.${mod_id}]]
 modId = "elysium_api"
 type = "required"
-versionRange = "[${elysium_version},)"
+versionRange = "[2.0.0,)"
 ordering = "NONE"
 side = "BOTH"

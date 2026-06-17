@@ -1,6 +1,7 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made by @ThatJadenXgamer",
+	"ambientocclusion": false,
 	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "netherexp:block/cerebrage_kale",

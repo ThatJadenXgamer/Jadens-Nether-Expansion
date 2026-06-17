@@ -2,7 +2,7 @@
   "dimension": "minecraft:the_nether",
   "climate_point": 4,
   "biome": "regions_unexplored:blackstone_basin",
-  "weight": 10,
+  "weight": 8,
 
   "neoforge:conditions": [
     {

@@ -7,10 +7,10 @@
       "grid_cell_size": 80,
       "climate_count": 10,
 
-      "distortion_strength": 0.0,
-      "distortion_scale": 0.0,
-      "warp_iterations": 0,
-      "noise_octaves": 0,
+      "distortion_strength": 12.0,
+      "distortion_scale": 0.016,
+      "warp_iterations": 2,
+      "noise_octaves": 2,
 
       "auto_populate_entries_from_tag": "minecraft:is_nether",
       "biome_exclusion_tag": "netherexp:exclude_from_nether_mosaic"

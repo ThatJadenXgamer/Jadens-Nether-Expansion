@@ -68,6 +68,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.FOSSIL_ORE.get());
                 output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
 
+                output.accept(JNEBlocks.PHASMO_SLAB.get());
                 output.accept(JNEItems.PHASMO_SHARD.get());
                 output.accept(JNEItems.PHASMO_ARROW.get());
                 output.accept(JNEBlocks.SOUL_GLASS.get());
