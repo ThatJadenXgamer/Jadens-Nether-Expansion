@@ -6,7 +6,9 @@ import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -35,16 +37,21 @@ import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParti
 import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticleType;
 
 import java.awt.*;
+import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class SoulGlassBlock extends LightableBlock {
-    public SoulGlassBlock(Properties properties) {
-        super(() -> ParticleTypes.SOUL_FIRE_FLAME, properties
+
+    private final Color color;
+
+    public SoulGlassBlock(Color color, Supplier<SimpleParticleType> fireParticle, Properties properties) {
+        super(fireParticle, properties
                 .isValidSpawn(Blocks::never)
                 .isViewBlocking((s, g, p) -> false)
                 .isRedstoneConductor((s, g, p) -> false)
                 .isSuffocating((s, g, p) -> false)
         );
+        this.color = color;
     }
 
     @Override
@@ -52,7 +59,7 @@ public class SoulGlassBlock extends LightableBlock {
         RandomSource random = level.random;
         if (entity instanceof LivingEntity living) {
             if (level.isClientSide() && random.nextInt(7) == 0)
-                Client.particle(level, random, living.getRandomX(1.5), living.getRandomY() - 0.25, living.getRandomZ(1.5));
+                Client.particle(level, random, living.getRandomX(1.5), living.getRandomY() - 0.25, living.getRandomZ(1.5), this.color);
             if (EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), living.getItemBySlot(EquipmentSlot.FEET)) > 0) return;
             double slowdown = JNEConfigs.SOUL_GLASS_MOVEMENT_SLOWDOWN.get();
             entity.makeStuckInBlock(state, new Vec3(slowdown, slowdown, slowdown));
@@ -96,8 +103,7 @@ public class SoulGlassBlock extends LightableBlock {
     @OnlyIn(Dist.CLIENT)
     private static class Client {
 
-        public static void particle(Level level, RandomSource random, double x, double y, double z) {
-            Color color = new Color(0x0E4E4E);
+        public static void particle(Level level, RandomSource random, double x, double y, double z, Color color) {
             WorldParticleBuilder.create(JNEParticleTypes.SPARKLE.get())
                     .setFullBrightLighting()
                     .setColorData(ColorParticleData.create(color).build())

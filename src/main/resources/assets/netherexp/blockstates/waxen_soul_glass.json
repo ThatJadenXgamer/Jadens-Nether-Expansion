@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "netherexp:block/waxen_soul_glass"
+    },
+    "lit=true": {
+      "model": "netherexp:block/waxen_soul_glass_lit"
+    }
+  }
+}

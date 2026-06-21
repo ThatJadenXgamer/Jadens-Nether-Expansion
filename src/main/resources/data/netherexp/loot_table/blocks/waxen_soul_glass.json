@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "levels": {
+                    "min": 1
+                  },
+                  "enchantments": "minecraft:silk_touch"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "netherexp:waxen_soul_glass"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.Antidote;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
+import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -72,6 +73,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.PHASMO_SHARD.get());
                 output.accept(JNEItems.PHASMO_ARROW.get());
                 output.accept(JNEBlocks.SOUL_GLASS.get());
+                output.accept(JNEBlocks.WAXEN_SOUL_GLASS.get());
                 output.accept(JNEBlocks.DISCERNMENT_GLASS.get());
 
                 output.accept(JNEItems.WRAITHING_FLESH.get());
@@ -491,6 +493,9 @@ public class JNECreativeModeTabs {
                 if (CompatUtil.OREGANIZED) {
                     output.accept(OreganizedCompat.Blocks.GROOVED_BLACK_ICE.get());
                 }
+                if (CompatUtil.RUBINATED_NETHER) {
+                    output.accept(RubinatedNetherCompat.Blocks.SOUL_RUBY_ORE.get());
+                }
             })
             .build());
 
@@ -560,6 +565,7 @@ public class JNECreativeModeTabs {
             insertToTab(event, Items.CANDLE, JNEBlocks.ANCIENT_CANDLE.get(), false);
             insertToTab(event, Items.CANDLE, JNEBlocks.SOUL_CANDLE.get(), false);
             insertToTab(event, Items.TINTED_GLASS, JNEBlocks.DISCERNMENT_GLASS.get(), false);
+            insertToTab(event, Items.TINTED_GLASS, JNEBlocks.WAXEN_SOUL_GLASS.get(), false);
             insertToTab(event, Items.TINTED_GLASS, JNEBlocks.SOUL_GLASS.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {

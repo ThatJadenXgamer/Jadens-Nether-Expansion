@@ -121,6 +121,8 @@
     "#netherexp:mob_heads",
 
     "netherexp:ancient_lantern",
-    "netherexp:phasmo_slab"
+    "netherexp:phasmo_slab",
+
+    {"id": "netherexp:grooved_black_ice", "required": false}
   ]
 }

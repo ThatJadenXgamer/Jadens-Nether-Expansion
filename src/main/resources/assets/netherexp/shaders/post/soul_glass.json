@@ -10,7 +10,9 @@
       "uniforms": [
         { "name": "InSize", "values": [ 1.0, 1.0 ] },
         { "name": "OutSize", "values": [ 1.0, 1.0 ] },
-        { "name": "TintColor", "values": [ 0.168627, 0.529412, 0.513725, 1.0 ] },
+        { "name": "TintColorR", "type": "float", "count": 1, "values": [ 0.168627 ] },
+        { "name": "TintColorG", "type": "float", "count": 1, "values": [ 0.529412 ] },
+        { "name": "TintColorB", "type": "float", "count": 1, "values": [ 0.513725 ] },
         { "name": "DistortionStrength", "values": [ 27.0 ] },
         { "name": "RippleStrength", "values": [ 32.0 ] },
         { "name": "RippleFrequency", "values": [ 24.0 ] },

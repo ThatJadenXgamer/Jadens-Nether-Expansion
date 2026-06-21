@@ -7,6 +7,7 @@ import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
+import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -28,6 +29,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import team.lodestar.lodestone.systems.block.LodestoneBlockProperties;
 import team.lodestar.lodestone.systems.block.LodestoneLogBlock;
 
+import java.awt.*;
 import java.util.function.Supplier;
 
 import static net.jadenxgamer.netherexp.util.RegistryHelper.*;
@@ -139,8 +141,12 @@ public class JNEBlocks {
                     .requiresCorrectToolForDrops().instrument(NoteBlockInstrument.CHIME).sound(JNESoundType.BLACK_ICE)));
 
     public static final Supplier<Block> SOUL_GLASS = registerBlock("soul_glass", () ->
-            new SoulGlassBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).lightLevel(
+            new SoulGlassBlock(new Color(0x0E4E4E), () -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).lightLevel(
                     state -> state.getValue(SoulGlassBlock.LIT) ? 12 : 0).noOcclusion().strength(0.3f, 1200.0f).sound(JNESoundType.SOUL_GLASS)));
+
+    public static final Supplier<Block> WAXEN_SOUL_GLASS = registerBlock("waxen_soul_glass", () ->
+            new SoulGlassBlock(new Color(0x730E0E), JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_RED).lightLevel(
+                    state -> state.getValue(SoulGlassBlock.LIT) ? 10 : 0).noOcclusion().strength(0.3f, 1200.0f).sound(JNESoundType.SOUL_GLASS)));
 
     public static final Supplier<Block> DISCERNMENT_GLASS = registerBlock("discernment_glass", () ->
             new DiscernmentGlassBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.GLASS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.3f, 1200.0f).sound(JNESoundType.SOUL_GLASS)));
@@ -776,6 +782,7 @@ public class JNEBlocks {
     public static void init(IEventBus eventBus) {
         registerAliases();
         if (CompatUtil.OREGANIZED) OreganizedCompat.Blocks.init();
+        if (CompatUtil.RUBINATED_NETHER) RubinatedNetherCompat.Blocks.init();
         BLOCKS.register(eventBus);
     }
 

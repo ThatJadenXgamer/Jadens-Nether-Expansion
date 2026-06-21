@@ -11,6 +11,7 @@ import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.client.sound.InsideFluidAmbientSoundInstance;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
@@ -143,7 +144,8 @@ public final class NetherExpClient {
             var biome = player.level().getBiome(client.gameRenderer.getMainCamera().getBlockPosition());
 
             // Implementations
-            SoulGlassPostProcessor.INSTANCE.setActive(JNEConfigs.ENABLE_SOUL_GLASS_SCREEN_FILTER.get() && state.is(JNEBlocks.SOUL_GLASS.get()));
+            SoulGlassPostProcessor.INSTANCE.setActive(JNEConfigs.ENABLE_SOUL_GLASS_SCREEN_FILTER.get() && state.is(JNETags.Blocks.SOUL_GLASSES));
+            SoulGlassPostProcessor.tick(state);
             NetherHeatDistortionPostprocessor.INSTANCE.setActive(NetherHeatDistortionPostprocessor.shouldEnable());
             NetherHeatDistortionPostprocessor.tick(client, player.level(), player, biome);
         }
@@ -164,7 +166,7 @@ public final class NetherExpClient {
         }
 
         private static void updateSoulGlass(Minecraft client, Level level, LocalPlayer player, BlockState state) {
-            isInsideSoulGlass = state.is(JNEBlocks.SOUL_GLASS.get());
+            isInsideSoulGlass = state.is(JNETags.Blocks.SOUL_GLASSES);
 
             if (isInsideSoulGlass && !wasInsideSoulGlass) {
                 level.playLocalSound(player, JNESoundEvents.SOUL_GLASS_ENTER.get(), SoundSource.AMBIENT, 1.0f, 1.0f);
