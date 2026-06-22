@@ -20,7 +20,7 @@ public class JNEBlockEntityType {
             BlockEntityType.Builder.of(DiscernmentGlassBlockEntity::new, JNEBlocks.DISCERNMENT_GLASS.get()).build(null));
 
     public static final Supplier<BlockEntityType<JNECampfireBlockEntity>> JNE_CAMPFIRE = BLOCK_ENTITY_TYPES.register("jne_campfire", () ->
-            BlockEntityType.Builder.of(JNECampfireBlockEntity::new, JNEBlocks.ANCIENT_CAMPFIRE.get()).build(null));
+            BlockEntityType.Builder.of(JNECampfireBlockEntity::new, JNEBlocks.TREACHEROUS_CAMPFIRE.get()).build(null));
 
     public static final Supplier<BlockEntityType<DriftingSoulsBlockEntity>> DRIFTING_SOULS = BLOCK_ENTITY_TYPES.register("drifting_souls", () ->
             BlockEntityType.Builder.of(DriftingSoulsBlockEntity::new, JNEBlocks.DRIFTING_SOULS.get()).build(null));

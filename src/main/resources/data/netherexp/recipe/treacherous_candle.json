@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "A",
+    "A"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "A": {
+      "item": "netherexp:treacherous_wax"
+    }
+  },
+  "result": {
+    "id": "netherexp:treacherous_candle",
+    "count": 6
+  }
+}

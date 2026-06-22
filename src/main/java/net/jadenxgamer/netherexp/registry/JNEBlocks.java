@@ -608,7 +608,7 @@ public class JNEBlocks {
     public static final Supplier<Block> SOUL_SKELETON_SKULL_CANDLE = registerBlock("soul_skeleton_skull_candle", () ->
             new SkullCandleBlock(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.SKELETON_SKULL).lightLevel((state) -> 10)));
 
-    public static final Supplier<Block> ANCIENT_SKELETON_SKULL_CANDLE = registerBlock("ancient_skeleton_skull_candle", () ->
+    public static final Supplier<Block> TREACHEROUS_SKELETON_SKULL_CANDLE = registerBlock("treacherous_skeleton_skull_candle", () ->
             new SkullCandleBlock(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.SKELETON_SKULL).lightLevel((state) -> 13)));
 
     public static final Supplier<Block> BONE_PIKE = registerBlock("bone_pike", () ->
@@ -626,7 +626,7 @@ public class JNEBlocks {
     public static final Supplier<Block> SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 10)));
 
-    public static final Supplier<Block> ANCIENT_BURNING_SKULL_BLOCK = registerBlock("ancient_burning_skull_block", () ->
+    public static final Supplier<Block> TREACHEROUS_BURNING_SKULL_BLOCK = registerBlock("treacherous_burning_skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 9)));
 
     public static final Supplier<Block> STACKED_BONES = registerBlock("stacked_bones", () ->
@@ -654,7 +654,7 @@ public class JNEBlocks {
     public static final Supplier<Block> SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 10)));
 
-    public static final Supplier<Block> ANCIENT_BURNING_WITHER_SKULL_BLOCK = registerBlock("ancient_burning_wither_skull_block", () ->
+    public static final Supplier<Block> TREACHEROUS_BURNING_WITHER_SKULL_BLOCK = registerBlock("treacherous_burning_wither_skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 9)));
 
     public static final Supplier<Block> STACKED_WITHER_BONES = registerBlock("stacked_wither_bones", () ->
@@ -707,29 +707,29 @@ public class JNEBlocks {
             new ShotgunBarrelBlock(BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops().sound(JNESoundType.SHOTGUN_BARREL)));
 
     /**
-     * Ancient Fire
+     * Treacherous Fire
      */
 
-    public static final Supplier<Block> ANCIENT_WAX_BLOCK = registerBlock("ancient_wax_block", () ->
-            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.HONEYCOMB_BLOCK).sound(JNESoundType.ANCIENT_WAX)));
+    public static final Supplier<Block> TREACHEROUS_WAX_BLOCK = registerBlock("treacherous_wax_block", () ->
+            new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.HONEYCOMB_BLOCK).sound(JNESoundType.TREACHEROUS_WAX)));
 
-    public static final Supplier<Block> ANCIENT_FIRE = registerBlockWithoutItem("ancient_fire", () ->
-            new AncientFireBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 9)));
+    public static final Supplier<Block> TREACHEROUS_FIRE = registerBlockWithoutItem("treacherous_fire", () ->
+            new TreacherousFireBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> 9)));
 
-    public static final Supplier<Block> ANCIENT_TORCH = registerBlockWithoutItem("ancient_torch", () ->
+    public static final Supplier<Block> TREACHEROUS_TORCH = registerBlockWithoutItem("treacherous_torch", () ->
             new JNETorchBlock.Standing(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.TORCH).mapColor(MapColor.COLOR_RED).lightLevel(state -> 9)));
 
-    public static final Supplier<Block> ANCIENT_WALL_TORCH = registerBlockWithoutItem("ancient_wall_torch", () ->
-            new JNETorchBlock.Wall(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.WALL_TORCH).mapColor(MapColor.COLOR_RED).dropsLike(JNEBlocks.ANCIENT_TORCH.get()).lightLevel(state -> 9)));
+    public static final Supplier<Block> TREACHEROUS_WALL_TORCH = registerBlockWithoutItem("treacherous_wall_torch", () ->
+            new JNETorchBlock.Wall(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.WALL_TORCH).mapColor(MapColor.COLOR_RED).dropsLike(JNEBlocks.TREACHEROUS_TORCH.get()).lightLevel(state -> 9)));
 
-    public static final Supplier<Block> ANCIENT_LANTERN = registerBlock("ancient_lantern", () ->
+    public static final Supplier<Block> TREACHEROUS_LANTERN = registerBlock("treacherous_lantern", () ->
             new LanternBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_LANTERN).mapColor(MapColor.COLOR_RED).lightLevel(state -> 9)));
 
-    public static final Supplier<Block> ANCIENT_CAMPFIRE = registerBlock("ancient_campfire", () ->
+    public static final Supplier<Block> TREACHEROUS_CAMPFIRE = registerBlock("treacherous_campfire", () ->
             new JNECampfireBlock(false, 0, BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_CAMPFIRE).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(JNECampfireBlock.LIT) ? 9 : 0)));
 
-    public static final Supplier<Block> ANCIENT_CANDLE = registerBlockWithoutItem("ancient_candle", () ->
-            new AncientCandleBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SOUL_CANDLE.get()).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(AncientCandleBlock.LIT) ? 4 : 0).sound(JNESoundType.ANCIENT_CANDLE)));
+    public static final Supplier<Block> TREACHEROUS_CANDLE = registerBlockWithoutItem("treacherous_candle", () ->
+            new TreacherousCandleBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.SOUL_CANDLE.get()).mapColor(MapColor.COLOR_RED).lightLevel(state -> state.getValue(TreacherousCandleBlock.LIT) ? 4 : 0).sound(JNESoundType.TREACHEROUS_CANDLE)));
 
     /**
      * Frogmist
@@ -790,5 +790,15 @@ public class JNEBlocks {
         BLOCKS.addAlias(NetherExp.netherexpPath("soul_ghoul_o_lantern"), NetherExp.minecraftPath("ghoul_o_lantern")); // Removed 2.3.0
         BLOCKS.addAlias(NetherExp.netherexpPath("bone_cortical"), NetherExp.minecraftPath("bone_block")); // Removed 2.4.0
         BLOCKS.addAlias(NetherExp.netherexpPath("bone_rod"), NetherExp.netherexpPath("bone_pike")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_wax_block"), NetherExp.netherexpPath("treacherous_wax_block")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_fire"), NetherExp.netherexpPath("treacherous_fire")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_torch"), NetherExp.netherexpPath("treacherous_torch")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_wall_torch"), NetherExp.netherexpPath("treacherous_wall_torch")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_lantern"), NetherExp.netherexpPath("treacherous_lantern")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_campfire"), NetherExp.netherexpPath("treacherous_campfire")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_candle"), NetherExp.netherexpPath("treacherous_candle")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_skeleton_skull_candle"), NetherExp.netherexpPath("treacherous_skeleton_skull_candle")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_burning_skull_block"), NetherExp.netherexpPath("treacherous_burning_skull_block")); // Renamed 2.4.0
+        BLOCKS.addAlias(NetherExp.netherexpPath("ancient_burning_wither_skull_block"), NetherExp.netherexpPath("treacherous_burning_wither_skull_block")); // Renamed 2.4.0
     }
 }

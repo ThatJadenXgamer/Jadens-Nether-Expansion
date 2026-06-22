@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "netherexp:block/treacherous_candle"
+    },
+    "lit=true": {
+      "model": "netherexp:block/treacherous_candle_lit"
+    }
+  }
+}

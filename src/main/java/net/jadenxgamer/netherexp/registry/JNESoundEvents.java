@@ -155,11 +155,11 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> BONE_PIKE_PLACE = registerSoundEvents("block.bone_pike.place");
     public static final Supplier<SoundEvent> BONE_PIKE_BREAK = registerSoundEvents("block.bone_pike.break");
 
-    public static final Supplier<SoundEvent> ANCIENT_CANDLE_PLACE = registerSoundEvents("block.ancient_candle.place");
-    public static final Supplier<SoundEvent> ANCIENT_CANDLE_BREAK = registerSoundEvents("block.ancient_candle.break");
+    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_PLACE = registerSoundEvents("block.treacherous_candle.place");
+    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_BREAK = registerSoundEvents("block.treacherous_candle.break");
 
-    public static final Supplier<SoundEvent> ANCIENT_WAX_PLACE = registerSoundEvents("block.ancient_wax.place");
-    public static final Supplier<SoundEvent> ANCIENT_WAX_BREAK = registerSoundEvents("block.ancient_wax.break");
+    public static final Supplier<SoundEvent> TREACHEROUS_WAX_PLACE = registerSoundEvents("block.treacherous_wax.place");
+    public static final Supplier<SoundEvent> TREACHEROUS_WAX_BREAK = registerSoundEvents("block.treacherous_wax.break");
 
     public static final Supplier<SoundEvent> NETHERITE_GRATE_PLACE = registerSoundEvents("block.netherite_grate.place");
     public static final Supplier<SoundEvent> NETHERITE_GRATE_BREAK = registerSoundEvents("block.netherite_grate.break");

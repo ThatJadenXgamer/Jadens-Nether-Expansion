@@ -751,43 +751,43 @@
     ]
   },
 
-  "block.ancient_candle.place": {
+  "block.treacherous_candle.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
-      "netherexp:block/ancient_candle/break1",
-      "netherexp:block/ancient_candle/break2",
-      "netherexp:block/ancient_candle/break3",
-      "netherexp:block/ancient_candle/break4",
-      "netherexp:block/ancient_candle/break5"
+      "netherexp:block/treacherous_candle/break1",
+      "netherexp:block/treacherous_candle/break2",
+      "netherexp:block/treacherous_candle/break3",
+      "netherexp:block/treacherous_candle/break4",
+      "netherexp:block/treacherous_candle/break5"
     ]
   },
-  "block.ancient_candle.break": {
+  "block.treacherous_candle.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "netherexp:block/ancient_candle/break1",
-      "netherexp:block/ancient_candle/break2",
-      "netherexp:block/ancient_candle/break3",
-      "netherexp:block/ancient_candle/break4",
-      "netherexp:block/ancient_candle/break5"
+      "netherexp:block/treacherous_candle/break1",
+      "netherexp:block/treacherous_candle/break2",
+      "netherexp:block/treacherous_candle/break3",
+      "netherexp:block/treacherous_candle/break4",
+      "netherexp:block/treacherous_candle/break5"
     ]
   },
 
-  "block.ancient_wax.place": {
+  "block.treacherous_wax.place": {
     "subtitle": "subtitles.block.generic.place",
     "sounds": [
-      "netherexp:block/ancient_wax/break1",
-      "netherexp:block/ancient_wax/break2",
-      "netherexp:block/ancient_wax/break3",
-      "netherexp:block/ancient_wax/break4"
+      "netherexp:block/treacherous_wax/break1",
+      "netherexp:block/treacherous_wax/break2",
+      "netherexp:block/treacherous_wax/break3",
+      "netherexp:block/treacherous_wax/break4"
     ]
   },
-  "block.ancient_wax.break": {
+  "block.treacherous_wax.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "netherexp:block/ancient_wax/break1",
-      "netherexp:block/ancient_wax/break2",
-      "netherexp:block/ancient_wax/break3",
-      "netherexp:block/ancient_wax/break4"
+      "netherexp:block/treacherous_wax/break1",
+      "netherexp:block/treacherous_wax/break2",
+      "netherexp:block/treacherous_wax/break3",
+      "netherexp:block/treacherous_wax/break4"
     ]
   },
 

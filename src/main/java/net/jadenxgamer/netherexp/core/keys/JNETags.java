@@ -20,7 +20,7 @@ public class JNETags {
         public static final TagKey<Block> SOUL_LAYER_CAN_SURVIVE_ON = createTag("soul_layer_can_survive_on"); // self-explanatory
         public static final TagKey<Block> SOUL_LAYER_CANNOT_SURVIVE_ON = createTag("soul_layer_cannot_survive_on"); // also self-explanatory
         public static final TagKey<Block> BONE_FENCES = createTag("bone_fences"); // Bone fences will only connect to blocks in this tag
-        public static final TagKey<Block> ANCIENT_FIRE_BASE_BLOCKS = createTag("ancient_fire_base_blocks"); // Blocks will burn ancient fire on top of 'em
+        public static final TagKey<Block> TREACHEROUS_FIRE_BASE_BLOCKS = createTag("treacherous_fire_base_blocks"); // Blocks will burn treacherous fire on top of 'em
         public static final TagKey<Block> FROGMIST = createTag("frogmist"); // Frogmists
         public static final TagKey<Block> SPELEOTHEM_BASE_BLOCKS = createTag("speleothem_base_blocks"); // Blocks which speleothems can be placed on
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createTag("unbounded_speed_blocks"); // Blocks in this tag have their block speed factor ignored when unbounded speed is applied
