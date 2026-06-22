@@ -25,7 +25,7 @@
             "predicate": {
               "block": {
                 "blocks": [
-                  "netherexp:treacherous_candle"
+                  "netherexp:cierge_of_treachery"
                 ]
               }
             }

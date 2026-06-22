@@ -5,7 +5,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-import static net.jadenxgamer.netherexp.config.JNEConfigs.TREACHEROUS_CANDLE_RED_LIGHTS;
+import static net.jadenxgamer.netherexp.config.JNEConfigs.CIERGE_OF_TREACHERY_RED_LIGHTS;
 
 public class BetrayedEffect extends IncurableEffect {
 
@@ -15,7 +15,7 @@ public class BetrayedEffect extends IncurableEffect {
 
     @Override
     public void onEffectAdded(LivingEntity entity, int amplifier) {
-        if (TREACHEROUS_CANDLE_RED_LIGHTS.get()) LightmapSettingsManager.enableEventFlag(NetherExp.netherexpPath("betrayed"));
+        if (CIERGE_OF_TREACHERY_RED_LIGHTS.get()) LightmapSettingsManager.enableEventFlag(NetherExp.netherexpPath("betrayed"));
         super.onEffectAdded(entity, amplifier);
     }
 

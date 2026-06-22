@@ -15,7 +15,6 @@ import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.Instruments;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
@@ -180,9 +179,9 @@ public class JNEBlocks {
     public static final Supplier<Block> BRAZIER_CHEST = registerBlock("brazier_chest", () ->
             new Block(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).isRedstoneConductor((a, b, c) -> false).sound(JNESoundType.SOUL_SLATE)));
 
-    public static final Supplier<Block> TREACHEROUS_CANDLE = registerBlock("treacherous_candle", () ->
-            new TreacherousCandleBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().lightLevel(
-                    blockState -> blockState.getValue(TreacherousCandleBlock.LIT) ? 10 : 0).sound(JNESoundType.SOUL_SLATE)));
+    public static final Supplier<Block> CIERGE_OF_TREACHERY = registerBlock("cierge_of_treachery", () ->
+            new CiergeOfTreacheryBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().lightLevel(
+                    blockState -> blockState.getValue(CiergeOfTreacheryBlock.LIT) ? 10 : 0).sound(JNESoundType.SOUL_SLATE)));
 
     public static final Supplier<Block> HAZE_BLOCK = registerBlockWithoutItem("haze_block", () ->
             new HazeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(JNESoundType.HAZE_BLOCK)));

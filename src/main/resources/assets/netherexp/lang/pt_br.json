@@ -142,8 +142,8 @@
   "block.netherexp.chiseled_soul_slate_tiles": "Ladrilhos de ardósia das almas talhado",
 
   "block.netherexp.brazier_chest": "Baú de braseiro",
-  "block.netherexp.treacherous_candle": "Vela traiçoeira",
-  "treacherous_candle.health": "Vela traiçoeira",
+  "block.netherexp.cierge_of_treachery": "Vela traiçoeira",
+  "cierge_of_treachery.health": "Vela traiçoeira",
 
   "block.netherexp.inscribed_panel": "Painel inscrito",
 
@@ -386,8 +386,8 @@
   "subtitles.block.brazier_chest.open": "Baú de braseiro abre",
   "subtitles.block.brazier_chest.close": "Baú de braseiro fecha",
   "subtitles.block.brazier_chest.lit": "Traiçoeiro grita",
-  "subtitles.block.treacherous_candle.victory": "Coro da vitória da vela traiçoeira",
-  "subtitles.block.treacherous_candle.defeat": "Coro de derrota da vela traiçoeira",
+  "subtitles.block.cierge_of_treachery.victory": "Coro da vitória da vela traiçoeira",
+  "subtitles.block.cierge_of_treachery.defeat": "Coro de derrota da vela traiçoeira",
 
   "subtitles.entity.warphopper.ambient": "Warphopper gorjeia",
   "subtitles.entity.warphopper.hurt": "Warphopper ferido",

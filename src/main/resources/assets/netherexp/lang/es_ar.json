@@ -143,8 +143,8 @@
 
   "block.netherexp.brazier_chest": "Cofre brasero",
   "block.netherexp.brazier_chest.locked": "Este cofre brasero está bloqueado, necesita una llama traicionera para ser abierto",
-  "block.netherexp.treacherous_candle": "Vela traicionera",
-  "treacherous_candle.health": "Vela traicionera",
+  "block.netherexp.cierge_of_treachery": "Vela traicionera",
+  "cierge_of_treachery.health": "Vela traicionera",
   "block.netherexp.sculk_grinder": "Triturador de sculk",
 
   "block.netherexp.inscribed_panel": "Panel inscripto",
@@ -388,8 +388,8 @@
   "subtitles.block.brazier_chest.open": "Cofre brasero abierto",
   "subtitles.block.brazier_chest.close": "Cofre brasero cerrado",
   "subtitles.block.brazier_chest.lit": "Chillidos traicioneros",
-  "subtitles.block.treacherous_candle.victory": "Coro victorioso de la vela traicionera",
-  "subtitles.block.treacherous_candle.defeat": "Coro derrotado de la vela traicionera",
+  "subtitles.block.cierge_of_treachery.victory": "Coro victorioso de la vela traicionera",
+  "subtitles.block.cierge_of_treachery.defeat": "Coro derrotado de la vela traicionera",
 
   "subtitles.entity.warphopper.ambient": "Chillido de warphopper",
   "subtitles.entity.warphopper.hurt": "Warphopper herido",

@@ -146,8 +146,8 @@
 
   "block.netherexp.brazier_chest": "Cofano bracere",
   "block.netherexp.brazier_chest.locked": "Il cofano bracere è sigillato, prova ad usare una fiamma perfida",
-  "block.netherexp.treacherous_candle": "Candela perfida",
-  "treacherous_candle.health": "Candela perfida",
+  "block.netherexp.cierge_of_treachery": "Candela perfida",
+  "cierge_of_treachery.health": "Candela perfida",
   "block.netherexp.sculk_grinder": "Sculk macinatore",
 
   "block.netherexp.inscribed_panel": "pannello inscritto",
@@ -393,8 +393,8 @@
   "subtitles.block.brazier_chest.open": "Cofano bracere si apre",
   "subtitles.block.brazier_chest.close": "Cofano bracere si chiude",
   "subtitles.block.brazier_chest.lit": "Urlo perfido",
-  "subtitles.block.treacherous_candle.victory": "Coro vittorioso della candela",
-  "subtitles.block.treacherous_candle.defeat": "Coro sconfitto della candela",
+  "subtitles.block.cierge_of_treachery.victory": "Coro vittorioso della candela",
+  "subtitles.block.cierge_of_treachery.defeat": "Coro sconfitto della candela",
 
   "subtitles.entity.warphopper.ambient": "Warphopper cinguetta",
   "subtitles.entity.warphopper.hurt": "Warphopper ferito",

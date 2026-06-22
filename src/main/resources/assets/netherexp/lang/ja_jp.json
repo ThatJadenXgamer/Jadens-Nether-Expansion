@@ -140,8 +140,8 @@
 
   "block.netherexp.brazier_chest": "火鉢のチェスト",
   "block.netherexp.brazier_chest.locked": "火鉢のチェストは施錠されている。不実の炎が必要だ",
-  "block.netherexp.treacherous_candle": "不実のロウソク",
-  "treacherous_candle.health": "不実のロウソク",
+  "block.netherexp.cierge_of_treachery": "不実のロウソク",
+  "cierge_of_treachery.health": "不実のロウソク",
   "block.netherexp.sculk_grinder": "スカルクグラインダー",
 
   "block.netherexp.inscribed_panel": "刻印されたパネル",
@@ -332,8 +332,8 @@
   "subtitles.block.brazier_chest.open": "火鉢チェストが開く",
   "subtitles.block.brazier_chest.close": "火鉢チェストが閉じる",
   "subtitles.block.brazier_chest.lit": "裏切りの悲鳴",
-  "subtitles.block.treacherous_candle.victory": "不実のロウソクがあなたの勝利を讃える",
-  "subtitles.block.treacherous_candle.defeat": "不実のロウソクがあなたの敗北を嘲笑う",
+  "subtitles.block.cierge_of_treachery.victory": "不実のロウソクがあなたの勝利を讃える",
+  "subtitles.block.cierge_of_treachery.defeat": "不実のロウソクがあなたの敗北を嘲笑う",
 
   "subtitles.entity.warphopper.ambient": "ワープホッパーが鳴く",
   "subtitles.entity.warphopper.hurt": "ワープホッパーがダメージを受ける",
@@ -601,8 +601,8 @@
   "subtitles.item.jackhammer_fist.pull": "ジャックハンマー・フィストが充填する",
   "entity.netherexp.shotgun_pellet": "ショットガンペレット",
 
-  "subtitles.block.treacherous_candle.spawn": "不実のロウソクがモブを召喚する",
-  "subtitles.block.treacherous_candle.round": "不実のロウソクが次の襲撃を告げる",
+  "subtitles.block.cierge_of_treachery.spawn": "不実のロウソクがモブを召喚する",
+  "subtitles.block.cierge_of_treachery.round": "不実のロウソクが次の襲撃を告げる",
   "subtitles.block.soul_swirls.deactivate": "魂のウネリソウが消える",
   "subtitles.item.bottle.fill_wisp": "ウィスプを捕獲する",
   "subtitles.item.gold.gilding": "金で装飾する",

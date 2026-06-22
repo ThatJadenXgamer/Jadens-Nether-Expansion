@@ -136,8 +136,8 @@
   
   "block.netherexp.brazier_chest": "火盆匣",
   "block.netherexp.brazier_chest.locked": "火盆匣已上锁，需要狡诈烛焰开启",
-  "block.netherexp.treacherous_candle": "狡诈蜡烛",
-  "treacherous_candle.health": "狡诈蜡烛",
+  "block.netherexp.cierge_of_treachery": "狡诈蜡烛",
+  "cierge_of_treachery.health": "狡诈蜡烛",
   "block.netherexp.sculk_grinder": "幽匿碾磨体",
   
   "block.netherexp.inscribed_panel": "铭刻石板",
@@ -327,8 +327,8 @@
   "subtitles.block.brazier_chest.open": "火盆匣：开启",
   "subtitles.block.brazier_chest.close": "火盆匣：关闭",
   "subtitles.block.brazier_chest.lit": "狡诈的尖叫声",
-  "subtitles.block.treacherous_candle.victory": "狡诈蜡烛：歌颂胜利",
-  "subtitles.block.treacherous_candle.defeat": "狡诈蜡烛：羞辱溃败",
+  "subtitles.block.cierge_of_treachery.victory": "狡诈蜡烛：歌颂胜利",
+  "subtitles.block.cierge_of_treachery.defeat": "狡诈蜡烛：羞辱溃败",
 
   "subtitles.entity.warphopper.ambient": "诡异蝗：啾啾",
   "subtitles.entity.warphopper.hurt": "诡异煌：受伤",
@@ -591,8 +591,8 @@
   "subtitles.item.jackhammer_fist.pull": "冲击手锤：上发条",
   "entity.netherexp.shotgun_pellet": "霰弹炮弹丸",
 
-  "subtitles.block.treacherous_candle.spawn": "狡诈蜡烛：生成生物",
-  "subtitles.block.treacherous_candle.round": "狡诈蜡烛：警示下一波次",
+  "subtitles.block.cierge_of_treachery.spawn": "狡诈蜡烛：生成生物",
+  "subtitles.block.cierge_of_treachery.round": "狡诈蜡烛：警示下一波次",
   "subtitles.block.soul_swirls.deactivate": "灵魂卷须：停止",
   "subtitles.item.bottle.fill_wisp": "鬼火团：被困",
   "subtitles.item.gold.gilding": "金光闪闪",

@@ -28,8 +28,8 @@ public class JNEBlockEntityType {
     public static final Supplier<BlockEntityType<PetrifiedSwirlsBlockEntity>> PETRIFIED_SWIRLS = BLOCK_ENTITY_TYPES.register("petrified_swirls", () ->
             BlockEntityType.Builder.of(PetrifiedSwirlsBlockEntity::new, JNEBlocks.PETRIFIED_SWIRLS.get()).build(null));
 
-    public static final Supplier<BlockEntityType<TreacherousCandleBlockEntity>> TREACHEROUS_CANDLE = BLOCK_ENTITY_TYPES.register("treacherous_candle", () ->
-            BlockEntityType.Builder.of(TreacherousCandleBlockEntity::new, JNEBlocks.TREACHEROUS_CANDLE.get()).build(null));
+    public static final Supplier<BlockEntityType<CiergeOfTreacheryBlockEntity>> CIERGE_OF_TREACHERY = BLOCK_ENTITY_TYPES.register("cierge_of_treachery", () ->
+            BlockEntityType.Builder.of(CiergeOfTreacheryBlockEntity::new, JNEBlocks.CIERGE_OF_TREACHERY.get()).build(null));
 
     public static void init(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);

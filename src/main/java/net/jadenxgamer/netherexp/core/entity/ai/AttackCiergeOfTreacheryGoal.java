@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.core.entity.ai;
 
-import net.jadenxgamer.netherexp.core.block.TreacherousCandleBlock;
-import net.jadenxgamer.netherexp.core.block.entity.TreacherousCandleBlockEntity;
+import net.jadenxgamer.netherexp.core.block.CiergeOfTreacheryBlock;
+import net.jadenxgamer.netherexp.core.block.entity.CiergeOfTreacheryBlockEntity;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
@@ -17,11 +17,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 // garbage from 1.20.1
-public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
+public class AttackCiergeOfTreacheryGoal extends MoveToBlockGoal {
     PathfinderMob entity;
     int attackDelay = 60;
 
-    public AttackTreacherousCandleGoal(PathfinderMob pathfinderMob, int range) {
+    public AttackCiergeOfTreacheryGoal(PathfinderMob pathfinderMob, int range) {
         super(pathfinderMob, 1.0F, range, range);
         entity = pathfinderMob;
     }
@@ -34,7 +34,7 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
     @Override
     protected boolean isValidTarget(LevelReader level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.is(JNEBlocks.TREACHEROUS_CANDLE.get());
+        return state.is(JNEBlocks.CIERGE_OF_TREACHERY.get());
     }
 
     @Override
@@ -50,16 +50,16 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
         BlockState state = level.getBlockState(target);
         if (this.isReachedTarget()) {
             BlockEntity blockEntity = level.getBlockEntity(target);
-            if (blockEntity instanceof TreacherousCandleBlockEntity treacherousCandle && !state.getValue(TreacherousCandleBlock.COMPLETED) && state.getValue(TreacherousCandleBlock.LIT)) {
-                int health = treacherousCandle.getHealth();
-                if (attackDelay <= 0 && !state.getValue(TreacherousCandleBlock.BROKEN)) {
+            if (blockEntity instanceof CiergeOfTreacheryBlockEntity ciergeOfTreachery && !state.getValue(CiergeOfTreacheryBlock.COMPLETED) && state.getValue(CiergeOfTreacheryBlock.LIT)) {
+                int health = ciergeOfTreachery.getHealth();
+                if (attackDelay <= 0 && !state.getValue(CiergeOfTreacheryBlock.BROKEN)) {
                     if (health > 0) {
-                        treacherousCandle.setHealth(health - 1);
+                        ciergeOfTreachery.setHealth(health - 1);
                         level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 1.0f, 1.0f);
                     }
                     else {
-                        level.setBlock(target, level.getBlockState(target).setValue(TreacherousCandleBlock.LIT, false).setValue(TreacherousCandleBlock.BROKEN, true), 2);
-                        level.playSound(null, target.getX(), target.getY(), target.getZ(), JNESoundEvents.TREACHEROUS_CANDLE_DEFEAT.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+                        level.setBlock(target, level.getBlockState(target).setValue(CiergeOfTreacheryBlock.LIT, false).setValue(CiergeOfTreacheryBlock.BROKEN, true), 2);
+                        level.playSound(null, target.getX(), target.getY(), target.getZ(), JNESoundEvents.CIERGE_OF_TREACHERY_DEFEAT.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
                         level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEvents.WITHER_BREAK_BLOCK, SoundSource.BLOCKS, 0.5f, 1.0f);
                     }
                     attackDelay = 60;
@@ -73,14 +73,14 @@ public class AttackTreacherousCandleGoal extends MoveToBlockGoal {
 
     @Override
     public boolean canUse() {
-        return entity.getTarget() == null && !entity.getType().is(JNETags.EntityTypes.IGNORES_TREACHEROUS_CANDLE) && super.canUse();
+        return entity.getTarget() == null && !entity.getType().is(JNETags.EntityTypes.IGNORES_CIERGE_OF_TREACHERY) && super.canUse();
     }
 
     @Override
     public boolean canContinueToUse() {
         BlockPos target = getMoveToTarget();
         BlockState targetState = entity.level().getBlockState(target);
-        return targetState.is(JNEBlocks.TREACHEROUS_CANDLE.get()) && !targetState.getValue(TreacherousCandleBlock.COMPLETED) && targetState.getValue(TreacherousCandleBlock.LIT) && super.canContinueToUse();
+        return targetState.is(JNEBlocks.CIERGE_OF_TREACHERY.get()) && !targetState.getValue(CiergeOfTreacheryBlock.COMPLETED) && targetState.getValue(CiergeOfTreacheryBlock.LIT) && super.canContinueToUse();
     }
 
     @Override

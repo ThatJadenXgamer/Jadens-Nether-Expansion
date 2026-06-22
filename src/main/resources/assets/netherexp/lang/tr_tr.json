@@ -142,8 +142,8 @@
   "block.netherexp.chiseled_soul_slate_tiles": "Oyma Döşeme Ruh Taşı",
 
   "block.netherexp.brazier_chest": "Maltız Sandık",
-  "block.netherexp.treacherous_candle": "Hain Mum",
-  "treacherous_candle.health": "Hain Mum",
+  "block.netherexp.cierge_of_treachery": "Hain Mum",
+  "cierge_of_treachery.health": "Hain Mum",
   "block.netherexp.sculk_grinder": "Sculk Öğütücü",
 
   "block.netherexp.inscribed_panel": "Oyma Panel",
@@ -387,8 +387,8 @@
   "subtitles.block.brazier_chest.open": "Maltız Sandık açıldı ",
   "subtitles.block.brazier_chest.close": "Maltız Sandık kapandı",
   "subtitles.block.brazier_chest.lit": "Hain çığlıklar",
-  "subtitles.block.treacherous_candle.victory": "Hain Mum zafer korosu",
-  "subtitles.block.treacherous_candle.defeat": "Hain Mum bozgun korosu",
+  "subtitles.block.cierge_of_treachery.victory": "Hain Mum zafer korosu",
+  "subtitles.block.cierge_of_treachery.defeat": "Hain Mum bozgun korosu",
 
   "subtitles.entity.warphopper.ambient": "Çarpık Zıp Zıp cıvıldadı",
   "subtitles.entity.warphopper.hurt": "Çarpık Zıp Zıp hasar aldı",

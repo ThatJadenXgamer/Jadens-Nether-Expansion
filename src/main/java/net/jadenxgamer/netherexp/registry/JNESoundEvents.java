@@ -207,10 +207,10 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> HAZE_BLOCK_BREAK = registerSoundEvents("block.haze_block.break");
 
     public static final Supplier<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
-    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_VICTORY = registerSoundEvents("block.treacherous_candle.victory");
-    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_DEFEAT = registerSoundEvents("block.treacherous_candle.defeat");
-    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_ROUND = registerSoundEvents("block.treacherous_candle.round");
-    public static final Supplier<SoundEvent> TREACHEROUS_CANDLE_SPAWN = registerSoundEvents("block.treacherous_candle.spawn");
+    public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_VICTORY = registerSoundEvents("block.cierge_of_treachery.victory");
+    public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_DEFEAT = registerSoundEvents("block.cierge_of_treachery.defeat");
+    public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_ROUND = registerSoundEvents("block.cierge_of_treachery.round");
+    public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_SPAWN = registerSoundEvents("block.cierge_of_treachery.spawn");
 
     private static Supplier<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(NetherExp.netherexpPath(name)));

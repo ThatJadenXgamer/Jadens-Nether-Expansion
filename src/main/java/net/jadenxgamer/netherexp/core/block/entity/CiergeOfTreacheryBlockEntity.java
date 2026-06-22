@@ -1,9 +1,9 @@
 package net.jadenxgamer.netherexp.core.block.entity;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.block.TreacherousCandleBlock;
+import net.jadenxgamer.netherexp.core.block.CiergeOfTreacheryBlock;
 import net.jadenxgamer.netherexp.core.entity.Apparition;
-import net.jadenxgamer.netherexp.core.entity.ai.AttackTreacherousCandleGoal;
+import net.jadenxgamer.netherexp.core.entity.ai.AttackCiergeOfTreacheryGoal;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.core.BlockPos;
@@ -37,7 +37,7 @@ import net.minecraft.world.phys.AABB;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TreacherousCandleBlockEntity extends BlockEntity {
+public class CiergeOfTreacheryBlockEntity extends BlockEntity {
     private int fireRewarded = 1;
     private int maximumWaves = 5;
     private int currentWave = 0;
@@ -49,14 +49,14 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
     private int increaseInMobsPerWave = 2;
     private int health = 20;
     private int maximumHealth = 20;
-    private int completionCooldown = JNEConfigs.TREACHEROUS_CANDLE_COMPLETION_COOLDOWN.get() * 20;
+    private int completionCooldown = JNEConfigs.CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN.get() * 20;
     private int playersNearby = 1;
     private List<EntityType<?>> spawnableMobs = new ArrayList<>();
     private final ServerBossEvent bossEvent;
 
-    public TreacherousCandleBlockEntity(BlockPos pos, BlockState state) {
-        super(JNEBlockEntityType.TREACHEROUS_CANDLE.get(), pos, state);
-        this.bossEvent = (ServerBossEvent)(new ServerBossEvent(Component.translatable("treacherous_candle.health"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(false);
+    public CiergeOfTreacheryBlockEntity(BlockPos pos, BlockState state) {
+        super(JNEBlockEntityType.CIERGE_OF_TREACHERY.get(), pos, state);
+        this.bossEvent = (ServerBossEvent)(new ServerBossEvent(Component.translatable("cierge_of_treachery.health"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(false);
     }
 
     @Override
@@ -119,9 +119,9 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         this.health = health;
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, TreacherousCandleBlockEntity blockEntity) {
-        boolean isCompleted = state.getValue(TreacherousCandleBlock.COMPLETED);
-        boolean isLit = state.getValue(TreacherousCandleBlock.LIT);
+    public static void tick(Level level, BlockPos pos, BlockState state, CiergeOfTreacheryBlockEntity blockEntity) {
+        boolean isCompleted = state.getValue(CiergeOfTreacheryBlock.COMPLETED);
+        boolean isLit = state.getValue(CiergeOfTreacheryBlock.LIT);
 
         // When completed all players are removed from the bossEvent and starts the cooldown
         if (isCompleted) {
@@ -130,7 +130,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
 
             if (blockEntity.completionCooldown <= 0) {
                 resetValues(blockEntity);
-                level.setBlock(pos, state.setValue(TreacherousCandleBlock.COMPLETED, false).setValue(TreacherousCandleBlock.LIT, false), 2);
+                level.setBlock(pos, state.setValue(CiergeOfTreacheryBlock.COMPLETED, false).setValue(CiergeOfTreacheryBlock.LIT, false), 2);
                 level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 0.5f, 1.0f);
             }
             return;
@@ -148,8 +148,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
             }
             else if (blockEntity.currentWaveDelay <= 0) {
                 dropFire(level, pos.above(), blockEntity);
-                level.playSound(null, pos, JNESoundEvents.TREACHEROUS_CANDLE_VICTORY.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
-                level.setBlock(pos, state.cycle(TreacherousCandleBlock.COMPLETED), 2);
+                level.playSound(null, pos, JNESoundEvents.CIERGE_OF_TREACHERY_VICTORY.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+                level.setBlock(pos, state.cycle(CiergeOfTreacheryBlock.COMPLETED), 2);
             }
             return;
         }
@@ -158,7 +158,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         clearBossBarPlayers(blockEntity);
     }
 
-    private static void clearBossBarPlayers(TreacherousCandleBlockEntity blockEntity) {
+    private static void clearBossBarPlayers(CiergeOfTreacheryBlockEntity blockEntity) {
         // We make a list before clearing the players otherwise it causes a ConcurrentModificationException
         List<ServerPlayer> playersToRemove = new ArrayList<>(blockEntity.bossEvent.getPlayers());
         for (ServerPlayer player : playersToRemove) {
@@ -167,7 +167,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         }
     }
 
-    private static void updateHealth(TreacherousCandleBlockEntity blockEntity) {
+    private static void updateHealth(CiergeOfTreacheryBlockEntity blockEntity) {
         blockEntity.bossEvent.setProgress((float) blockEntity.health / blockEntity.maximumHealth);
     }
 
@@ -175,7 +175,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         return level.getEntitiesOfClass(ServerPlayer.class, new AABB(pos).inflate(16.0, 16.0, 16.0));
     }
 
-    private static void updateBossBarPlayers(TreacherousCandleBlockEntity blockEntity, List<ServerPlayer> playersInRadius, Level level) {
+    private static void updateBossBarPlayers(CiergeOfTreacheryBlockEntity blockEntity, List<ServerPlayer> playersInRadius, Level level) {
         for (ServerPlayer player : playersInRadius) {
             if (player.isAlive() && player.level() == level) {
                 player.addEffect(new MobEffectInstance(JNEMobEffects.BETRAYED, 200, 0));
@@ -197,9 +197,9 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         }
     }
 
-    private static void prepareWaves(Level level, BlockPos pos, TreacherousCandleBlockEntity blockEntity) {
+    private static void prepareWaves(Level level, BlockPos pos, CiergeOfTreacheryBlockEntity blockEntity) {
         if (blockEntity.currentWaveDelay == 60) {
-            level.playSound(null, pos, JNESoundEvents.TREACHEROUS_CANDLE_ROUND.get(), SoundSource.BLOCKS, 0.7f, 1.0f);
+            level.playSound(null, pos, JNESoundEvents.CIERGE_OF_TREACHERY_ROUND.get(), SoundSource.BLOCKS, 0.7f, 1.0f);
         }
         // for some reason causes a weird desync if in the (<= 0) check??
         if (blockEntity.currentWaveDelay == 1) {
@@ -207,14 +207,14 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         }
         if (blockEntity.currentWaveDelay <= 0) {
             blockEntity.currentWave++;
-            blockEntity.bossEvent.setName(Component.translatable("treacherous_candle.health").append(blockEntity.currentWave >= blockEntity.maximumWaves ? " - FINAL WAVE" : " - WAVE " + blockEntity.currentWave));
+            blockEntity.bossEvent.setName(Component.translatable("cierge_of_treachery.health").append(blockEntity.currentWave >= blockEntity.maximumWaves ? " - FINAL WAVE" : " - WAVE " + blockEntity.currentWave));
             blockEntity.spawnWave(level, pos);
             blockEntity.mobsPerWave += blockEntity.increaseInMobsPerWave;
             blockEntity.currentWaveDelay = blockEntity.maximumWaveDelay;
         }
     }
 
-    private static void dropFire(Level level, BlockPos pos, TreacherousCandleBlockEntity blockEntity) {
+    private static void dropFire(Level level, BlockPos pos, CiergeOfTreacheryBlockEntity blockEntity) {
         ItemEntity item = new ItemEntity(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(JNEItems.TREACHEROUS_FLAME.get(), blockEntity.fireRewarded * blockEntity.playersNearby));
         item.setDeltaMovement(0.0,0.2,0.0);
         item.setGlowingTag(true);
@@ -222,8 +222,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
-    public static void resetValues(TreacherousCandleBlockEntity blockEntity) {
-        blockEntity.completionCooldown = JNEConfigs.TREACHEROUS_CANDLE_COMPLETION_COOLDOWN.get() * 20;
+    public static void resetValues(CiergeOfTreacheryBlockEntity blockEntity) {
+        blockEntity.completionCooldown = JNEConfigs.CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN.get() * 20;
         blockEntity.currentWave = 0;
         blockEntity.health = blockEntity.maximumHealth;
         blockEntity.mobsPerWave = blockEntity.resetMobsPerWave;
@@ -231,7 +231,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         blockEntity.playersNearby = 1;
     }
 
-    public static void findAllNearbyPlayers(TreacherousCandleBlockEntity blockEntity, BlockPos pos, Level level) {
+    public static void findAllNearbyPlayers(CiergeOfTreacheryBlockEntity blockEntity, BlockPos pos, Level level) {
         if (level != null) {
             List<Player> nearbyPlayers = level.getEntitiesOfClass(Player.class, (new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX(), pos.getY(), pos.getZ())).inflate(16.0, 16.0, 16.0));
             blockEntity.playersNearby = nearbyPlayers.size();
@@ -242,7 +242,7 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
         RandomSource random = level.random;
         if (!spawnableMobs.isEmpty()) {
             int bonusSpawns = this.playersNearby > 1 ? playersNearby * 2 : 0;
-            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.TREACHEROUS_CANDLE_SPAWN.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.CIERGE_OF_TREACHERY_SPAWN.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
             for (int i = 0; i < this.mobsPerWave + bonusSpawns; i++) {
                 BlockPos spawnPos = findValidSpawnPosition(level, pos, random);
 
@@ -258,8 +258,8 @@ public class TreacherousCandleBlockEntity extends BlockEntity {
                         if (mob instanceof Apparition apparition) {
                             apparition.setDropWisps(false);
                         }
-                        if (mob instanceof PathfinderMob pathfinder && !pathfinder.getType().is(JNETags.EntityTypes.IGNORES_TREACHEROUS_CANDLE)) {
-                            mob.targetSelector.addGoal(2, new AttackTreacherousCandleGoal(pathfinder, 32));
+                        if (mob instanceof PathfinderMob pathfinder && !pathfinder.getType().is(JNETags.EntityTypes.IGNORES_CIERGE_OF_TREACHERY)) {
+                            mob.targetSelector.addGoal(2, new AttackCiergeOfTreacheryGoal(pathfinder, 32));
                         }
                         level.addFreshEntity(mob);
                     }

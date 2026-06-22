@@ -1,7 +1,7 @@
 package net.jadenxgamer.netherexp.core.block;
 
 import com.mojang.serialization.MapCodec;
-import net.jadenxgamer.netherexp.core.block.entity.TreacherousCandleBlockEntity;
+import net.jadenxgamer.netherexp.core.block.entity.CiergeOfTreacheryBlockEntity;
 import net.jadenxgamer.netherexp.registry.JNEBlockEntityType;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
@@ -12,7 +12,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +35,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class TreacherousCandleBlock extends BaseEntityBlock {
+public class CiergeOfTreacheryBlock extends BaseEntityBlock {
 
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final BooleanProperty BROKEN = BooleanProperty.create("broken");
@@ -46,7 +45,7 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
     protected static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 16, 13);
     protected static final VoxelShape BROKEN_SHAPE = Block.box(1, 0, 1, 15, 2, 15);
 
-    public TreacherousCandleBlock(Properties properties) {
+    public CiergeOfTreacheryBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(LIT, false).setValue(BROKEN, false).setValue(FACING, Direction.NORTH).setValue(COMPLETED, false));
     }
@@ -58,7 +57,7 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, JNEBlockEntityType.TREACHEROUS_CANDLE.get(), TreacherousCandleBlockEntity::tick);
+        return createTickerHelper(blockEntityType, JNEBlockEntityType.CIERGE_OF_TREACHERY.get(), CiergeOfTreacheryBlockEntity::tick);
     }
 
     @SuppressWarnings("deprecation")
@@ -70,7 +69,7 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new TreacherousCandleBlockEntity(pos, state);
+        return new CiergeOfTreacheryBlockEntity(pos, state);
     }
 
     @SuppressWarnings("deprecation")
@@ -97,8 +96,8 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
         if (broken) {
             if (itemStack.is(Items.HONEYCOMB)) {
                 bl = true;
-                if (blockEntity instanceof TreacherousCandleBlockEntity treacherousCandleBlock) {
-                    TreacherousCandleBlockEntity.resetValues(treacherousCandleBlock);
+                if (blockEntity instanceof CiergeOfTreacheryBlockEntity ciergeOfTreacheryBlock) {
+                    CiergeOfTreacheryBlockEntity.resetValues(ciergeOfTreacheryBlock);
                 }
                 level.setBlock(pos, state.setValue(BROKEN, false), Block.UPDATE_CLIENTS);
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_CANDLE_PLACE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -110,8 +109,8 @@ public class TreacherousCandleBlock extends BaseEntityBlock {
         else if (!lit) {
             if (itemStack.is(Items.FLINT_AND_STEEL) && validPath(state, pos, level)) {
                 bl = true;
-                if (blockEntity instanceof TreacherousCandleBlockEntity treacherousCandleBlock) {
-                    TreacherousCandleBlockEntity.findAllNearbyPlayers(treacherousCandleBlock, pos, level);
+                if (blockEntity instanceof CiergeOfTreacheryBlockEntity ciergeOfTreacheryBlock) {
+                    CiergeOfTreacheryBlockEntity.findAllNearbyPlayers(ciergeOfTreacheryBlock, pos, level);
                 }
                 level.setBlock(pos, state.cycle(LIT), Block.UPDATE_CLIENTS);
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);

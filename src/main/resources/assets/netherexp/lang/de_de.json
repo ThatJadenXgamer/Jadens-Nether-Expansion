@@ -139,8 +139,8 @@
 
   "block.netherexp.brazier_chest": "Kohlenbeckentruhe",
   "block.netherexp.brazier_chest.locked": "Kohlenbeckentruhe ist verschlossen, benötigt verräterische Flamme zum öffnen",
-  "block.netherexp.treacherous_candle": "Verräterische Kerze",
-  "treacherous_candle.health": "Verräterische Kerze",
+  "block.netherexp.cierge_of_treachery": "Verräterische Kerze",
+  "cierge_of_treachery.health": "Verräterische Kerze",
   "block.netherexp.sculk_grinder": "Sculk-Mühle",
 
   "block.netherexp.inscribed_panel": "Beschriebene Tafel",
@@ -330,8 +330,8 @@
   "subtitles.block.brazier_chest.open": "Kohlenbeckentruhe öffnet",
   "subtitles.block.brazier_chest.close": "Kohlenbeckentruhe schließt",
   "subtitles.block.brazier_chest.lit": "Verräterisches Kreischen",
-  "subtitles.block.treacherous_candle.victory": "Verräterische Kerze Siegeschor",
-  "subtitles.block.treacherous_candle.defeat": "Verräterische Kerze Niederlagechor",
+  "subtitles.block.cierge_of_treachery.victory": "Verräterische Kerze Siegeschor",
+  "subtitles.block.cierge_of_treachery.defeat": "Verräterische Kerze Niederlagechor",
 
   "subtitles.entity.warphopper.ambient": "Wirrhüpfer zwitschert",
   "subtitles.entity.warphopper.hurt": "Wirrhüpfer nimmt Schaden",
@@ -594,8 +594,8 @@
   "subtitles.item.jackhammer_fist.pull": "Jackhammer-Fist winding-up",
   "entity.netherexp.shotgun_pellet": "Shotgun Pellet",
 
-  "subtitles.block.treacherous_candle.spawn": "Treacherous Candle spawns mob",
-  "subtitles.block.treacherous_candle.round": "Treacherous Candle warns next wave",
+  "subtitles.block.cierge_of_treachery.spawn": "Cierge of Treachery spawns mob",
+  "subtitles.block.cierge_of_treachery.round": "Cierge of Treachery warns next wave",
   "subtitles.block.soul_swirls.deactivate": "Soul Swirls deactivate",
   "subtitles.item.bottle.fill_wisp": "Wisp captured",
   "subtitles.item.gold.gilding": "Gold gilding",

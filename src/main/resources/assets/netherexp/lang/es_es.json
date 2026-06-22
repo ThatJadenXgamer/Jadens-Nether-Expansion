@@ -144,8 +144,8 @@
   
   "block.netherexp.brazier_chest": "Cofre Brasero",
   "block.netherexp.brazier_chest.locked": "Cofre Brasero está bloqueado, requiere Llama Traicionera para abrir",
-  "block.netherexp.treacherous_candle": "Vela Traicionera",
-  "treacherous_candle.health": "Vela Traicionera",
+  "block.netherexp.cierge_of_treachery": "Vela Traicionera",
+  "cierge_of_treachery.health": "Vela Traicionera",
   "block.netherexp.sculk_grinder": "Triturador de Sculk",
   
   "block.netherexp.inscribed_panel": "Panel Inscrito",
@@ -392,8 +392,8 @@
   "subtitles.block.brazier_chest.open": "El Cofre Brasero se abre",
   "subtitles.block.brazier_chest.close": "El Cofre Brasero se cierra",
   "subtitles.block.brazier_chest.lit": "Chirridos traicioneros",
-  "subtitles.block.treacherous_candle.victory": "Coro victorioso de la Vela Traicionera",
-  "subtitles.block.treacherous_candle.defeat": "Coro derrotado de la Vela Traicionera",
+  "subtitles.block.cierge_of_treachery.victory": "Coro victorioso de la Vela Traicionera",
+  "subtitles.block.cierge_of_treachery.defeat": "Coro derrotado de la Vela Traicionera",
   
   "subtitles.entity.warphopper.ambient": "El Saltador Dimensional chilla",
   "subtitles.entity.warphopper.hurt": "El Saltador Dimensional está herido",

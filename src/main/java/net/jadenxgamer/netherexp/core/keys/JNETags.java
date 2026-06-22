@@ -63,7 +63,7 @@ public class JNETags {
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createTag("ignores_soul_sand_slowness"); // Entities within this tag cannot be slowed down by soul sand
         public static final TagKey<EntityType<?>> AFFECTED_BY_ECTO_SLAB_EMERGE_BURST = createTag("affected_by_ecto_slab_emerge_burst"); // Entities within this tag are affected by the emerge burst attack's AoE
         public static final TagKey<EntityType<?>> HAS_LIGHT_SHADOW = createTag("has_light_shadow"); // Entities within this tag have a light instead of the usual shadow
-        public static final TagKey<EntityType<?>> IGNORES_TREACHEROUS_CANDLE = createTag("ignores_treacherous_candle");
+        public static final TagKey<EntityType<?>> IGNORES_CIERGE_OF_TREACHERY = createTag("ignores_cierge_of_treachery");
         public static final TagKey<EntityType<?>> TARGETS_REGARDLESS_OF_BETRAYED = createTag("targets_regardless_of_betrayed");
 
         private static TagKey<EntityType<?>> createTag(String name) {
