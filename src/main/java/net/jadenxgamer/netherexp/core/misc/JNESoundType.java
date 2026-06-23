@@ -74,12 +74,12 @@ public class JNESoundType {
             JNESoundEvents.BONE_PIKE_BREAK.get(), SoundEvents.BONE_BLOCK_STEP, JNESoundEvents.BONE_PIKE_PLACE.get(),
             SoundEvents.BONE_BLOCK_HIT, SoundEvents.BONE_BLOCK_FALL);
 
-    public static final SoundType ANCIENT_CANDLE = new SoundType(1.0f, 1.0f,
-            JNESoundEvents.ANCIENT_CANDLE_BREAK.get(), SoundEvents.CANDLE_STEP, JNESoundEvents.ANCIENT_CANDLE_PLACE.get(),
+    public static final SoundType TREACHEROUS_CANDLE = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.TREACHEROUS_CANDLE_BREAK.get(), SoundEvents.CANDLE_STEP, JNESoundEvents.TREACHEROUS_CANDLE_PLACE.get(),
             SoundEvents.CANDLE_HIT, SoundEvents.CANDLE_FALL);
 
-    public static final SoundType ANCIENT_WAX = new SoundType(1.0f, 1.0f,
-            JNESoundEvents.ANCIENT_WAX_BREAK.get(), SoundEvents.CORAL_BLOCK_STEP, JNESoundEvents.ANCIENT_WAX_PLACE.get(),
+    public static final SoundType TREACHEROUS_WAX = new SoundType(1.0f, 1.0f,
+            JNESoundEvents.TREACHEROUS_WAX_BREAK.get(), SoundEvents.CORAL_BLOCK_STEP, JNESoundEvents.TREACHEROUS_WAX_PLACE.get(),
             SoundEvents.CORAL_BLOCK_HIT, SoundEvents.CORAL_BLOCK_FALL);
 
     public static final SoundType NETHERITE_GRATE = new SoundType(1.0f, 1.0f,

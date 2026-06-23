@@ -4,6 +4,7 @@ import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.Antidote;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
+import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -57,7 +58,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.SKULL_BLOCK.get());
                 output.accept(JNEBlocks.BURNING_SKULL_BLOCK.get());
                 output.accept(JNEBlocks.SOUL_BURNING_SKULL_BLOCK.get());
-                output.accept(JNEBlocks.ANCIENT_BURNING_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.TREACHEROUS_BURNING_SKULL_BLOCK.get());
                 output.accept(JNEBlocks.BONE_PIKE.get());
                 output.accept(JNEBlocks.BONE_FENCE.get());
 
@@ -72,6 +73,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.PHASMO_SHARD.get());
                 output.accept(JNEItems.PHASMO_ARROW.get());
                 output.accept(JNEBlocks.SOUL_GLASS.get());
+                output.accept(JNEBlocks.WAXEN_SOUL_GLASS.get());
                 output.accept(JNEBlocks.DISCERNMENT_GLASS.get());
 
                 output.accept(JNEItems.WRAITHING_FLESH.get());
@@ -135,12 +137,12 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get());
 
                 output.accept(JNEItems.TREACHEROUS_FLAME.get());
-                output.accept(JNEItems.ANCIENT_WAX.get());
-                output.accept(JNEBlocks.ANCIENT_WAX_BLOCK.get());
-                output.accept(JNEItems.ANCIENT_TORCH.get());
-                output.accept(JNEBlocks.ANCIENT_LANTERN.get());
-                output.accept(JNEBlocks.ANCIENT_CAMPFIRE.get());
-                output.accept(JNEBlocks.ANCIENT_CANDLE.get());
+                output.accept(JNEItems.TREACHEROUS_WAX.get());
+                output.accept(JNEBlocks.TREACHEROUS_WAX_BLOCK.get());
+                output.accept(JNEItems.TREACHEROUS_TORCH.get());
+                output.accept(JNEBlocks.TREACHEROUS_LANTERN.get());
+                output.accept(JNEBlocks.TREACHEROUS_CAMPFIRE.get());
+                output.accept(JNEBlocks.TREACHEROUS_CANDLE.get());
 
                 output.accept(JNEBlocks.OSSIFIED_GARGOYLE_STATUE.get());
                 output.accept(JNEBlocks.TRAMPLE_GARGOYLE_STATUE.get());
@@ -438,7 +440,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.WITHER_SKULL_BLOCK.get());
                 output.accept(JNEBlocks.BURNING_WITHER_SKULL_BLOCK.get());
                 output.accept(JNEBlocks.SOUL_BURNING_WITHER_SKULL_BLOCK.get());
-                output.accept(JNEBlocks.ANCIENT_BURNING_WITHER_SKULL_BLOCK.get());
+                output.accept(JNEBlocks.TREACHEROUS_BURNING_WITHER_SKULL_BLOCK.get());
 
                 output.accept(Items.NETHERITE_SCRAP);
                 output.accept(Items.ANCIENT_DEBRIS);
@@ -490,6 +492,9 @@ public class JNECreativeModeTabs {
             .displayItems((params, output) -> {
                 if (CompatUtil.OREGANIZED) {
                     output.accept(OreganizedCompat.Blocks.GROOVED_BLACK_ICE.get());
+                }
+                if (CompatUtil.RUBINATED_NETHER) {
+                    output.accept(RubinatedNetherCompat.Blocks.SOUL_RUBY_ORE.get());
                 }
             })
             .build());
@@ -549,28 +554,29 @@ public class JNECreativeModeTabs {
 
             insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
             insertToTab(event, Items.MAGMA_BLOCK, JNEBlocks.SOUL_MAGMA_BLOCK.get(), false);
-            insertToTab(event, Items.HONEYCOMB_BLOCK, JNEBlocks.ANCIENT_WAX_BLOCK.get(), false);
+            insertToTab(event, Items.HONEYCOMB_BLOCK, JNEBlocks.TREACHEROUS_WAX_BLOCK.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             insertToTab(event, Items.SHROOMLIGHT, JNEBlocks.SHROOMNIGHT.get(), false);
             insertToTab(event, Items.MAGMA_BLOCK, JNEBlocks.SOUL_MAGMA_BLOCK.get(), false);
-            insertToTab(event, Items.SOUL_TORCH, JNEBlocks.ANCIENT_TORCH.get(), false);
-            insertToTab(event, Items.SOUL_LANTERN, JNEBlocks.ANCIENT_LANTERN.get(), false);
-            insertToTab(event, Items.SOUL_CAMPFIRE, JNEBlocks.ANCIENT_CAMPFIRE.get(), false);
-            insertToTab(event, Items.CANDLE, JNEBlocks.ANCIENT_CANDLE.get(), false);
+            insertToTab(event, Items.SOUL_TORCH, JNEBlocks.TREACHEROUS_TORCH.get(), false);
+            insertToTab(event, Items.SOUL_LANTERN, JNEBlocks.TREACHEROUS_LANTERN.get(), false);
+            insertToTab(event, Items.SOUL_CAMPFIRE, JNEBlocks.TREACHEROUS_CAMPFIRE.get(), false);
+            insertToTab(event, Items.CANDLE, JNEBlocks.TREACHEROUS_CANDLE.get(), false);
             insertToTab(event, Items.CANDLE, JNEBlocks.SOUL_CANDLE.get(), false);
             insertToTab(event, Items.TINTED_GLASS, JNEBlocks.DISCERNMENT_GLASS.get(), false);
+            insertToTab(event, Items.TINTED_GLASS, JNEBlocks.WAXEN_SOUL_GLASS.get(), false);
             insertToTab(event, Items.TINTED_GLASS, JNEBlocks.SOUL_GLASS.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
-            insertToTab(event, Items.CANDLE, JNEBlocks.ANCIENT_CANDLE.get(), false);
+            insertToTab(event, Items.CANDLE, JNEBlocks.TREACHEROUS_CANDLE.get(), false);
             insertToTab(event, Items.CANDLE, JNEBlocks.SOUL_CANDLE.get(), false);
             insertToTab(event, Items.TINTED_GLASS, JNEBlocks.SOUL_GLASS.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);
             insertToTab(event, Items.BREEZE_ROD, JNEItems.BANSHEE_ROD.get(), false);
-            insertToTab(event, Items.HONEYCOMB, JNEItems.ANCIENT_WAX.get(), false);
+            insertToTab(event, Items.HONEYCOMB, JNEItems.TREACHEROUS_WAX.get(), false);
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             insertToTab(event, Items.LAVA_BUCKET, JNEFluids.ECTOPLASM_BUCKET.get(), false);

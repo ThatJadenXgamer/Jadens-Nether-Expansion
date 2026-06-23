@@ -3,7 +3,7 @@ package net.jadenxgamer.netherexp.mixin.block;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.jadenxgamer.netherexp.client.assetdriven.FireParticles;
-import net.jadenxgamer.netherexp.core.block.AncientFireBlock;
+import net.jadenxgamer.netherexp.core.block.TreacherousFireBlock;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -41,8 +41,8 @@ public abstract class BaseFireBlockMixin extends Block {
     )
     private static void netherexp$getState(BlockGetter reader, BlockPos pos, CallbackInfoReturnable<BlockState> cir) {
         BlockState state = reader.getBlockState(pos.below());
-        if (AncientFireBlock.canSurviveOnBlock(state))
-            cir.setReturnValue(JNEBlocks.ANCIENT_FIRE.get().defaultBlockState());
+        if (TreacherousFireBlock.canSurviveOnBlock(state))
+            cir.setReturnValue(JNEBlocks.TREACHEROUS_FIRE.get().defaultBlockState());
     }
 
     @WrapMethod(

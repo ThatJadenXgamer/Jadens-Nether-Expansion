@@ -20,12 +20,13 @@ public class JNETags {
         public static final TagKey<Block> SOUL_LAYER_CAN_SURVIVE_ON = createTag("soul_layer_can_survive_on"); // self-explanatory
         public static final TagKey<Block> SOUL_LAYER_CANNOT_SURVIVE_ON = createTag("soul_layer_cannot_survive_on"); // also self-explanatory
         public static final TagKey<Block> BONE_FENCES = createTag("bone_fences"); // Bone fences will only connect to blocks in this tag
-        public static final TagKey<Block> ANCIENT_FIRE_BASE_BLOCKS = createTag("ancient_fire_base_blocks"); // Blocks will burn ancient fire on top of 'em
+        public static final TagKey<Block> TREACHEROUS_FIRE_BASE_BLOCKS = createTag("treacherous_fire_base_blocks"); // Blocks will burn treacherous fire on top of 'em
         public static final TagKey<Block> FROGMIST = createTag("frogmist"); // Frogmists
         public static final TagKey<Block> SPELEOTHEM_BASE_BLOCKS = createTag("speleothem_base_blocks"); // Blocks which speleothems can be placed on
         public static final TagKey<Block> UNBOUNDED_SPEED_BLOCKS = createTag("unbounded_speed_blocks"); // Blocks in this tag have their block speed factor ignored when unbounded speed is applied
         public static final TagKey<Block> SILTMARRAM_PLANTABLE_ON = createTag("siltmarram_plantable_on"); // Blocks in this tag can support siltmarrams
         public static final TagKey<Block> SOUL_SWIRLS = createTag("soul_swirls"); // Blocks in this tag are treated as soul swirls and can be petrified
+        public static final TagKey<Block> SOUL_GLASSES = createTag("soul_glasses"); // Blocks in this tag are treated as soul glasses and get a shader effect applied to them
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.netherexpPath(name));
@@ -62,7 +63,7 @@ public class JNETags {
         public static final TagKey<EntityType<?>> IGNORES_SOUL_SAND_SLOWNESS = createTag("ignores_soul_sand_slowness"); // Entities within this tag cannot be slowed down by soul sand
         public static final TagKey<EntityType<?>> AFFECTED_BY_ECTO_SLAB_EMERGE_BURST = createTag("affected_by_ecto_slab_emerge_burst"); // Entities within this tag are affected by the emerge burst attack's AoE
         public static final TagKey<EntityType<?>> HAS_LIGHT_SHADOW = createTag("has_light_shadow"); // Entities within this tag have a light instead of the usual shadow
-        public static final TagKey<EntityType<?>> IGNORES_TREACHEROUS_CANDLE = createTag("ignores_treacherous_candle");
+        public static final TagKey<EntityType<?>> IGNORES_CIERGE_OF_TREACHERY = createTag("ignores_cierge_of_treachery");
         public static final TagKey<EntityType<?>> TARGETS_REGARDLESS_OF_BETRAYED = createTag("targets_regardless_of_betrayed");
 
         private static TagKey<EntityType<?>> createTag(String name) {

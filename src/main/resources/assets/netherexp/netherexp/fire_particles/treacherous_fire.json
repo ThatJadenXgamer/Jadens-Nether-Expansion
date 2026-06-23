@@ -1,0 +1,15 @@
+{
+  "blocks": "netherexp:treacherous_fire",
+  "smoke_start_colors": [
+    "#FF0000"
+  ],
+  "smoke_end_colors": [
+    "#230303",
+    "#290404",
+    "#370505",
+    "#420707"
+  ],
+  "ember_colors": [
+    "#FF2E35"
+  ]
+}

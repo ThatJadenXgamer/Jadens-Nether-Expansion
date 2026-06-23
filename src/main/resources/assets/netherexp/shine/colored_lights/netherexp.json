@@ -8,49 +8,49 @@
       "radius": 10.0,
       "intensity": 0.30000000000000004
     },
-    "netherexp:ancient_fire": {
+    "netherexp:treacherous_fire": {
       "enabled": true,
       "color": 16711680,
       "radius": 9.0,
       "intensity": 1.0
     },
-    "netherexp:ancient_torch": {
+    "netherexp:treacherous_torch": {
       "enabled": true,
       "color": 16711680,
       "radius": 9.0,
       "intensity": 1.6
     },
-    "netherexp:ancient_lantern": {
+    "netherexp:treacherous_lantern": {
       "enabled": true,
       "color": 16711680,
       "radius": 9.0,
       "intensity": 1.6
     },
-    "netherexp:ancient_wall_torch": {
+    "netherexp:treacherous_wall_torch": {
       "enabled": true,
       "color": 16711680,
       "radius": 9.0,
       "intensity": 1.6
     },
-    "netherexp:ancient_candle": {
+    "netherexp:treacherous_candle": {
       "enabled": true,
       "color": 16711680,
       "radius": 4.0,
       "intensity": 1.6
     },
-    "netherexp:ancient_campfire": {
+    "netherexp:treacherous_campfire": {
       "enabled": true,
       "color": 16711680,
       "radius": 9.0,
       "intensity": 1.6
     },
-    "netherexp:ancient_burning_skull_block": {
+    "netherexp:treacherous_burning_skull_block": {
       "enabled": true,
       "color": 16711680,
       "radius": 9.0,
       "intensity": 1.6
     },
-    "netherexp:ancient_burning_wither_skull_block": {
+    "netherexp:treacherous_burning_wither_skull_block": {
       "enabled": true,
       "color": 16711680,
       "radius": 9.0,

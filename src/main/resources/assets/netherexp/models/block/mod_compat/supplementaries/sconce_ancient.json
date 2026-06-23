@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "netherexp:block/mod_compat/supplementaries/sconce_ancient",
-		"1": "netherexp:block/mod_compat/supplementaries/sconce_fire_ancient",
-		"particle": "netherexp:block/mod_compat/supplementaries/sconce_ancient"
+		"0": "netherexp:block/mod_compat/supplementaries/sconce_treacherous",
+		"1": "netherexp:block/mod_compat/supplementaries/sconce_fire_treacherous",
+		"particle": "netherexp:block/mod_compat/supplementaries/sconce_treacherous"
 	},
 	"elements": [
 		{

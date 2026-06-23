@@ -88,28 +88,6 @@ public class JNEEvents {
         JNECreativeModeTabs.addToExistingTabs(event);
     }
 
-//    @SubscribeEvent
-//    public static void onInteraction(InputEvent.InteractionKeyMappingTriggered event) {
-//        Minecraft client = Minecraft.getInstance();
-//        LocalPlayer player = client.player;
-//
-//        if (player == null) return;
-//        ItemStack stack = player.getMainHandItem();
-//        if (stack.is(JNEItems.SHOTGUN_FIST.get()) && event.getKeyMapping() == client.options.keyAttack) {
-//            client.options.keyAttack.setDown(false);
-//            NetherExp.LOGGER.info("SHOTGUN-FIST");
-//            event.setCanceled(true);
-//            event.setSwingHand(false);
-//        }
-//        else if (stack.is(JNEItems.PUMP_CHARGE_SHOTGUN.get()) && event.getKeyMapping() == client.options.keyAttack) {
-//            client.options.keyAttack.setDown(false);
-//            PumpChargeShotgunItem.setPumps(stack, PumpChargeShotgunItem.getPumps(stack) + 1);
-//            player.level().playSound(null, player.getX(), player.getY(), player.getZ(), JNESoundEvents.SHOTGUN_LOAD.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-//            event.setCanceled(true);
-//            event.setSwingHand(false);
-//        }
-//    }
-
     @SubscribeEvent
     public static void registerRegistries(NewRegistryEvent event) {
         JNERegistries.registryInit(event);

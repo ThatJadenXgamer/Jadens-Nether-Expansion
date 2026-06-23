@@ -1,64 +1,10 @@
 {
   "variants": {
-    "facing=north,lit=false,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken"
-    },
-    "facing=east,lit=false,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken",
-      "y": 90
-    },
-    "facing=south,lit=false,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken",
-      "y": 180
-    },
-    "facing=west,lit=false,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken",
-      "y": 270
-    },
-    "facing=north,lit=true,broken=false": {
-      "model": "netherexp:block/treacherous_candle_lit"
-    },
-    "facing=east,lit=true,broken=false": {
-      "model": "netherexp:block/treacherous_candle_lit",
-      "y": 90
-    },
-    "facing=south,lit=true,broken=false": {
-      "model": "netherexp:block/treacherous_candle_lit",
-      "y": 180
-    },
-    "facing=west,lit=true,broken=false": {
-      "model": "netherexp:block/treacherous_candle_lit",
-      "y": 270
-    },
-    "facing=north,lit=false,broken=false": {
+    "lit=false": {
       "model": "netherexp:block/treacherous_candle"
     },
-    "facing=east,lit=false,broken=false": {
-      "model": "netherexp:block/treacherous_candle",
-      "y": 90
-    },
-    "facing=south,lit=false,broken=false": {
-      "model": "netherexp:block/treacherous_candle",
-      "y": 180
-    },
-    "facing=west,lit=false,broken=false": {
-      "model": "netherexp:block/treacherous_candle",
-      "y": 270
-    },
-    "facing=north,lit=true,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken"
-    },
-    "facing=east,lit=true,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken",
-      "y": 90
-    },
-    "facing=south,lit=true,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken",
-      "y": 180
-    },
-    "facing=west,lit=true,broken=true": {
-      "model": "netherexp:block/treacherous_candle_broken",
-      "y": 270
+    "lit=true": {
+      "model": "netherexp:block/treacherous_candle_lit"
     }
   }
 }

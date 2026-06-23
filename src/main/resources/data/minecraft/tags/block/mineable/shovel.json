@@ -10,6 +10,7 @@
     "netherexp:suspicious_soul_sand",
     "netherexp:soul_permafrost",
     "netherexp:silt",
-    "netherexp:silt_flint_ore"
+    "netherexp:silt_flint_ore",
+    {"id": "netherexp:soul_ruby_ore", "required": false}
   ]
 }

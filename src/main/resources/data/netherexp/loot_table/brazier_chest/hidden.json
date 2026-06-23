@@ -264,7 +264,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "netherexp:ancient_wax",
+          "name": "netherexp:treacherous_wax",
           "weight": 45,
           "functions": [
             {

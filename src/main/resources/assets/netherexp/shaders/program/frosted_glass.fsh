@@ -2,7 +2,9 @@
 
 uniform sampler2D DiffuseSampler;
 uniform vec2 InSize;
-uniform vec4 TintColor;
+uniform float TintColorR;
+uniform float TintColorG;
+uniform float TintColorB;
 uniform float DistortionStrength;
 uniform float RippleStrength;
 uniform float RippleFrequency;
@@ -53,7 +55,7 @@ void main() {
     vec2 invInSize = 1.0 / InSize;
     vec2 distortedCoord = texCoord + totalPixelOffset * invInSize;
     vec3 distortedColor = texture(DiffuseSampler, distortedCoord).rgb;
-    vec3 finalColor = distortedColor * TintColor.rgb;
+    vec3 finalColor = distortedColor * vec3(TintColorR, TintColorG, TintColorB);
 
     fragColor = vec4(finalColor, 1.0);
 }

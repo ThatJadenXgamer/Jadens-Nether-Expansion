@@ -40,22 +40,22 @@
       "height": 16,
       "bits": "AAAAAJAA0ABgAGAAIAgAKAAgABAgGDAIEAAEACQAIAA\u003d"
     },
-    "netherexp:block/ancient_torch": {
+    "netherexp:block/treacherous_torch": {
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAAAAAAgAGAAQAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "netherexp:block/ancient_lantern": {
+    "netherexp:block/treacherous_lantern": {
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "netherexp:block/ancient_burning_skull_block_side": {
+    "netherexp:block/treacherous_burning_skull_block_side": {
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
     },
-    "netherexp:block/ancient_burning_skull_block": {
+    "netherexp:block/treacherous_burning_skull_block": {
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
@@ -90,12 +90,12 @@
       "height": 16,
       "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
     },
-    "netherexp:block/ancient_burning_wither_skull_block": {
+    "netherexp:block/treacherous_burning_wither_skull_block": {
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAf+B54AAAAAAZgDvD//////////wZgAAA\u003d"
     },
-    "netherexp:block/ancient_burning_wither_skull_block_side": {
+    "netherexp:block/treacherous_burning_wither_skull_block_side": {
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"
@@ -285,71 +285,71 @@
       "height": 16,
       "bits": "AAAAACgACAAAABgAjAAAAoACgAAAAAAQABQABAAQADA\u003d"
     },
-    "block:netherexp:ancient_torch#north": {
-      "sourceId": "netherexp:ancient_torch",
+    "block:netherexp:treacherous_torch#north": {
+      "sourceId": "netherexp:treacherous_torch",
       "fluid": false,
       "face": "north",
-      "spriteId": "netherexp:block/ancient_torch",
+      "spriteId": "netherexp:block/treacherous_torch",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAAAAAAgAGAAQAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_lantern#north": {
-      "sourceId": "netherexp:ancient_lantern",
+    "block:netherexp:treacherous_lantern#north": {
+      "sourceId": "netherexp:treacherous_lantern",
       "fluid": false,
       "face": "north",
-      "spriteId": "netherexp:block/ancient_lantern",
+      "spriteId": "netherexp:block/treacherous_lantern",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_lantern#up": {
-      "sourceId": "netherexp:ancient_lantern",
+    "block:netherexp:treacherous_lantern#up": {
+      "sourceId": "netherexp:treacherous_lantern",
       "fluid": false,
       "face": "up",
-      "spriteId": "netherexp:block/ancient_lantern",
+      "spriteId": "netherexp:block/treacherous_lantern",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_lantern#south": {
-      "sourceId": "netherexp:ancient_lantern",
+    "block:netherexp:treacherous_lantern#south": {
+      "sourceId": "netherexp:treacherous_lantern",
       "fluid": false,
       "face": "south",
-      "spriteId": "netherexp:block/ancient_lantern",
+      "spriteId": "netherexp:block/treacherous_lantern",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_lantern#west": {
-      "sourceId": "netherexp:ancient_lantern",
+    "block:netherexp:treacherous_lantern#west": {
+      "sourceId": "netherexp:treacherous_lantern",
       "fluid": false,
       "face": "west",
-      "spriteId": "netherexp:block/ancient_lantern",
+      "spriteId": "netherexp:block/treacherous_lantern",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_lantern#down": {
-      "sourceId": "netherexp:ancient_lantern",
+    "block:netherexp:treacherous_lantern#down": {
+      "sourceId": "netherexp:treacherous_lantern",
       "fluid": false,
       "face": "down",
-      "spriteId": "netherexp:block/ancient_lantern",
+      "spriteId": "netherexp:block/treacherous_lantern",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_lantern#east": {
-      "sourceId": "netherexp:ancient_lantern",
+    "block:netherexp:treacherous_lantern#east": {
+      "sourceId": "netherexp:treacherous_lantern",
       "fluid": false,
       "face": "east",
-      "spriteId": "netherexp:block/ancient_lantern",
+      "spriteId": "netherexp:block/treacherous_lantern",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAHgAeAB4AHgAeAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_burning_skull_block#south": {
-      "sourceId": "netherexp:ancient_burning_skull_block",
+    "block:netherexp:treacherous_burning_skull_block#south": {
+      "sourceId": "netherexp:treacherous_burning_skull_block",
       "fluid": false,
       "face": "south",
       "spriteId": "netherexp:block/skull_block_back",
@@ -357,20 +357,20 @@
       "height": 16,
       "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_burning_skull_block#west": {
-      "sourceId": "netherexp:ancient_burning_skull_block",
+    "block:netherexp:treacherous_burning_skull_block#west": {
+      "sourceId": "netherexp:treacherous_burning_skull_block",
       "fluid": false,
       "face": "west",
-      "spriteId": "netherexp:block/ancient_burning_skull_block_side",
+      "spriteId": "netherexp:block/treacherous_burning_skull_block_side",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAABAAAAAAADAAcABwAHAAcABwAHAAcAAwA\u003d"
     },
-    "block:netherexp:ancient_burning_skull_block#north": {
-      "sourceId": "netherexp:ancient_burning_skull_block",
+    "block:netherexp:treacherous_burning_skull_block#north": {
+      "sourceId": "netherexp:treacherous_burning_skull_block",
       "fluid": false,
       "face": "north",
-      "spriteId": "netherexp:block/ancient_burning_skull_block",
+      "spriteId": "netherexp:block/treacherous_burning_skull_block",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAf+P5/gAGDwQfgJ+T//////////yfkB+A\u003d"
@@ -456,20 +456,20 @@
       "height": 16,
       "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\u003d"
     },
-    "block:netherexp:ancient_burning_wither_skull_block#north": {
-      "sourceId": "netherexp:ancient_burning_wither_skull_block",
+    "block:netherexp:treacherous_burning_wither_skull_block#north": {
+      "sourceId": "netherexp:treacherous_burning_wither_skull_block",
       "fluid": false,
       "face": "north",
-      "spriteId": "netherexp:block/ancient_burning_wither_skull_block",
+      "spriteId": "netherexp:block/treacherous_burning_wither_skull_block",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAf+B54AAAAAAZgDvD//////////wZgAAA\u003d"
     },
-    "block:netherexp:ancient_burning_wither_skull_block#west": {
-      "sourceId": "netherexp:ancient_burning_wither_skull_block",
+    "block:netherexp:treacherous_burning_wither_skull_block#west": {
+      "sourceId": "netherexp:treacherous_burning_wither_skull_block",
       "fluid": false,
       "face": "west",
-      "spriteId": "netherexp:block/ancient_burning_wither_skull_block_side",
+      "spriteId": "netherexp:block/treacherous_burning_wither_skull_block_side",
       "width": 16,
       "height": 16,
       "bits": "AAAAAAAAAAAAAAAAAAAAAAAAAAADAAcABgACAAAAAAA\u003d"

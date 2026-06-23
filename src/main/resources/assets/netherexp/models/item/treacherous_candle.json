@@ -1,3 +1,6 @@
 {
-  "parent": "netherexp:block/treacherous_candle"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "netherexp:item/treacherous_candle"
+  }
 }

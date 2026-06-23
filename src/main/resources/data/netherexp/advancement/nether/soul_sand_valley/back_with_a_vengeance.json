@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "id": "netherexp:treacherous_candle"
+      "id": "netherexp:cierge_of_treachery"
     },
     "title": {
       "translate": "advancements.nether.back_with_a_vengeance.title"
@@ -25,7 +25,7 @@
             "predicate": {
               "block": {
                 "blocks": [
-                  "netherexp:treacherous_candle"
+                  "netherexp:cierge_of_treachery"
                 ]
               }
             }

@@ -63,7 +63,7 @@ public class AntidoteItem extends Item {
 
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity) {
-        return 20;
+        return 48;
     }
 
     @Override

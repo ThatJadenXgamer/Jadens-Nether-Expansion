@@ -179,14 +179,14 @@ public class JNEItems {
     public static final Supplier<Item> TWISTING_HELIX = ITEMS.register("twisting_helix", () ->
             new Item(new Item.Properties()));
 
-    public static final Supplier<Item> ANCIENT_WAX = ITEMS.register("ancient_wax", () ->
+    public static final Supplier<Item> TREACHEROUS_WAX = ITEMS.register("treacherous_wax", () ->
             new Item(new Item.Properties()));
 
-    public static final Supplier<Item> ANCIENT_TORCH = ITEMS.register("ancient_torch", () ->
-            new StandingAndWallBlockItem(JNEBlocks.ANCIENT_TORCH.get(), JNEBlocks.ANCIENT_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN));
+    public static final Supplier<Item> TREACHEROUS_TORCH = ITEMS.register("treacherous_torch", () ->
+            new StandingAndWallBlockItem(JNEBlocks.TREACHEROUS_TORCH.get(), JNEBlocks.TREACHEROUS_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN));
 
-    public static final Supplier<Item> ANCIENT_CANDLE = ITEMS.register("ancient_candle", () ->
-            new UpwardsStackingBlockItem(JNEBlocks.ANCIENT_CANDLE.get(), new Item.Properties()));
+    public static final Supplier<Item> TREACHEROUS_CANDLE = ITEMS.register("treacherous_candle", () ->
+            new UpwardsStackingBlockItem(JNEBlocks.TREACHEROUS_CANDLE.get(), new Item.Properties()));
 
     public static final Supplier<Item> OCHRE_FROGMIST = ITEMS.register("ochre_frogmist", () ->
             new PlaceOnWaterBlockItem(JNEBlocks.OCHRE_FROGMIST.get(), new Item.Properties()));
@@ -220,6 +220,7 @@ public class JNEItems {
             new NonConsumableItem(new Item.Properties().fireResistant().stacksTo(1)));
     
     public static void init(IEventBus eventBus) {
+        registerAliases();
         ITEMS.register(eventBus);
     }
 
@@ -230,6 +231,10 @@ public class JNEItems {
                         RegistryHelper.vanillaRegister(registry, "music_disc_tears", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(JNEJukeboxSongs.TEARS)));
                 }
         );
+    }
+
+    private static void registerAliases() {
+        ITEMS.addAlias(NetherExp.netherexpPath("ancient_wax"), NetherExp.netherexpPath("treacherous_wax")); // Renamed 2.4.0
     }
 
     public static void setup() {

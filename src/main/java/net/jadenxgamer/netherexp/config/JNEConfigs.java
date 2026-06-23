@@ -43,7 +43,7 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue CEREBRAGE_GROWS_BRAIN_TREES;
     public static ModConfigSpec.IntValue SHOTGUN_BARREL_BULLETS;
     public static ModConfigSpec.BooleanValue CAN_ANYTHING_BREAK_FROGMIST;
-    public static ModConfigSpec.IntValue TREACHEROUS_CANDLE_COMPLETION_COOLDOWN;
+    public static ModConfigSpec.IntValue CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN;
     public static ModConfigSpec.IntValue HAZE_BLOCK_COOLDOWN;
 
     // ITEM
@@ -201,9 +201,9 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue POTION_CONSUMPTION_PARTICLES;
     public static ModConfigSpec.BooleanValue IMPROVED_NETHER_PORTAL_PARTICLES;
     public static ModConfigSpec.BooleanValue ENABLE_NETHER_BIOME_LIGHTMAPS;
-    public static ModConfigSpec.BooleanValue TREACHEROUS_CANDLE_RED_LIGHTS;
-    public static ModConfigSpec.BooleanValue TREACHEROUS_CANDLE_FOG;
-    public static ModConfigSpec.BooleanValue TREACHEROUS_CANDLE_PARTICLES;
+    public static ModConfigSpec.BooleanValue CIERGE_OF_TREACHERY_RED_LIGHTS;
+    public static ModConfigSpec.BooleanValue CIERGE_OF_TREACHERY_FOG;
+    public static ModConfigSpec.BooleanValue CIERGE_OF_TREACHERY_PARTICLES;
 
     // GAME MECHANICS
     public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;

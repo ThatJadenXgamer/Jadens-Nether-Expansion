@@ -1,0 +1,17 @@
+{
+  "blocks": "netherexp:treacherous_light_stand",
+  "break_sound": "galosphere:block.palladium.break",
+  "step_sound": "galosphere:block.palladium.step",
+  "place_sound": "galosphere:block.palladium.place",
+  "hit_sound": "galosphere:block.palladium.hit",
+  "fall_sound": "galosphere:block.palladium.fall",
+  "volume": 1.0,
+  "pitch": 1.0,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "galosphere"
+    }
+  ]
+}

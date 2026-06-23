@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "A"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "A": {
+      "item": "netherexp:treacherous_wax"
+    },
+    "X": {
+      "item": "netherexp:fossil_fuel"
+    }
+  },
+  "result": {
+    "id": "netherexp:treacherous_torch",
+    "count": 4
+  }
+}

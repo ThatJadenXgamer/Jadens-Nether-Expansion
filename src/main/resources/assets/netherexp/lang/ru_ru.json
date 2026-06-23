@@ -144,8 +144,8 @@
 
   "block.netherexp.brazier_chest": "Сундук-жаровня",
   "block.netherexp.brazier_chest.locked": "Сундук-жаровня заперт, чтобы открыть необходимо предательское пламя",
-  "block.netherexp.treacherous_candle": "Предательская свеча",
-  "treacherous_candle.health": "Предательская свеча",
+  "block.netherexp.cierge_of_treachery": "Предательская свеча",
+  "cierge_of_treachery.health": "Предательская свеча",
   "block.netherexp.sculk_grinder": "Скалковый дробитель",
 
   "block.netherexp.inscribed_panel": "Гравированная плитка",
@@ -391,8 +391,8 @@
   "subtitles.block.brazier_chest.open": "Открыт сундук-жаровня",
   "subtitles.block.brazier_chest.close": "Закрыт сундук-жаровня",
   "subtitles.block.brazier_chest.lit": "Предательский скрежет",
-  "subtitles.block.treacherous_candle.victory": "Предательская свеча играет песнь победы",
-  "subtitles.block.treacherous_candle.defeat": "Предательская свеча играет песнь поражения",
+  "subtitles.block.cierge_of_treachery.victory": "Предательская свеча играет песнь победы",
+  "subtitles.block.cierge_of_treachery.defeat": "Предательская свеча играет песнь поражения",
 
   "subtitles.entity.warphopper.ambient": "Искажённый прыгун щебечет",
   "subtitles.entity.warphopper.hurt": "Искажённый прыгун ранен",
@@ -576,15 +576,15 @@
   "block.netherexp.cut_necromium_stairs": "Резные некромиевые ступеньки",
   "block.netherexp.cut_necromium_pillar": "Резная некромиевая колонна",
   
-  "block.netherexp.ancient_wax_block": "Древний блок сот",
-  "block.netherexp.ancient_fire": "Древний огонь",
-  "block.netherexp.ancient_torch": "Древний факел",
-  "block.netherexp.ancient_lantern": "Древняя лампа",
-  "block.netherexp.ancient_campfire": "Древний костёр",
-  "block.netherexp.ancient_candle": "Древняя свеча",
-  "block.netherexp.ancient_burning_skull_block": "Древний пылающий огромный череп",
-  "block.netherexp.ancient_burning_wither_skull_block": "Древний пылающий огромный череп визер-скелета",
-  "block.netherexp.ancient_skeleton_skull_candle": "Череп с древней свечой",
+  "block.netherexp.treacherous_wax_block": "Древний блок сот",
+  "block.netherexp.treacherous_fire": "Древний огонь",
+  "block.netherexp.treacherous_torch": "Древний факел",
+  "block.netherexp.treacherous_lantern": "Древняя лампа",
+  "block.netherexp.treacherous_campfire": "Древний костёр",
+  "block.netherexp.treacherous_candle": "Древняя свеча",
+  "block.netherexp.treacherous_burning_skull_block": "Древний пылающий огромный череп",
+  "block.netherexp.treacherous_burning_wither_skull_block": "Древний пылающий огромный череп визер-скелета",
+  "block.netherexp.treacherous_skeleton_skull_candle": "Череп с древней свечой",
 
   "item.netherexp.sealed_pottery_sherd": "Глиняный черепок «Печать»",
   "item.netherexp.spectre_pottery_sherd": "Глиняный черепок «Призрак»",
@@ -593,7 +593,7 @@
   "item.netherexp.deception_pottery_sherd": "Глиняный черепок «Обман»",
   "item.netherexp.firearm_pottery_sherd": "Глиняный черепок «Огнестрел»",
   "item.netherexp.botanical_pottery_sherd": "Глиняный черепок «Ботаника»",
-    "item.netherexp.ancient_wax": "Древние соты",
+    "item.netherexp.treacherous_wax": "Древние соты",
 
   "item.netherexp.jackhammer_fist": "Ручной отбойный молоток",
 

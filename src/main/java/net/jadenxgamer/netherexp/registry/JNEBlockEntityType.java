@@ -20,7 +20,7 @@ public class JNEBlockEntityType {
             BlockEntityType.Builder.of(DiscernmentGlassBlockEntity::new, JNEBlocks.DISCERNMENT_GLASS.get()).build(null));
 
     public static final Supplier<BlockEntityType<JNECampfireBlockEntity>> JNE_CAMPFIRE = BLOCK_ENTITY_TYPES.register("jne_campfire", () ->
-            BlockEntityType.Builder.of(JNECampfireBlockEntity::new, JNEBlocks.ANCIENT_CAMPFIRE.get()).build(null));
+            BlockEntityType.Builder.of(JNECampfireBlockEntity::new, JNEBlocks.TREACHEROUS_CAMPFIRE.get()).build(null));
 
     public static final Supplier<BlockEntityType<DriftingSoulsBlockEntity>> DRIFTING_SOULS = BLOCK_ENTITY_TYPES.register("drifting_souls", () ->
             BlockEntityType.Builder.of(DriftingSoulsBlockEntity::new, JNEBlocks.DRIFTING_SOULS.get()).build(null));
@@ -28,8 +28,8 @@ public class JNEBlockEntityType {
     public static final Supplier<BlockEntityType<PetrifiedSwirlsBlockEntity>> PETRIFIED_SWIRLS = BLOCK_ENTITY_TYPES.register("petrified_swirls", () ->
             BlockEntityType.Builder.of(PetrifiedSwirlsBlockEntity::new, JNEBlocks.PETRIFIED_SWIRLS.get()).build(null));
 
-    public static final Supplier<BlockEntityType<TreacherousCandleBlockEntity>> TREACHEROUS_CANDLE = BLOCK_ENTITY_TYPES.register("treacherous_candle", () ->
-            BlockEntityType.Builder.of(TreacherousCandleBlockEntity::new, JNEBlocks.TREACHEROUS_CANDLE.get()).build(null));
+    public static final Supplier<BlockEntityType<CiergeOfTreacheryBlockEntity>> CIERGE_OF_TREACHERY = BLOCK_ENTITY_TYPES.register("cierge_of_treachery", () ->
+            BlockEntityType.Builder.of(CiergeOfTreacheryBlockEntity::new, JNEBlocks.CIERGE_OF_TREACHERY.get()).build(null));
 
     public static void init(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);

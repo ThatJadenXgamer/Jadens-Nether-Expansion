@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "netherexp:block/treacherous_lantern"
+    },
+    "hanging=true": {
+      "model": "netherexp:block/treacherous_hanging_lantern"
+    }
+  }
+}

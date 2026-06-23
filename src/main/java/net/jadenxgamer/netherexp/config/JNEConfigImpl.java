@@ -164,9 +164,9 @@ public class JNEConfigImpl {
                     .comment("Normally frogmists can only be broken when other frogmist or a hoe is held in hand \n" +
                             "This config makes it breakable with anything regardless of what's in your hand")
                     .define("canAnythingBreakFrogmist", false);
-            TREACHEROUS_CANDLE_COMPLETION_COOLDOWN = builder
-                    .comment("Completed treacherous candles will become active again after the specified time in seconds has elapsed")
-                    .defineInRange("treacherousCandleCompletionCooldown", 1800, 0, 86400);
+            CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN = builder
+                    .comment("Completed Cierge of Treacherys will become active again after the specified time in seconds has elapsed")
+                    .defineInRange("ciergeOfTreacheryCompletionCooldown", 1800, 0, 86400);
             HAZE_BLOCK_COOLDOWN = builder
                     .comment("Defines how long a haze block will last after being placed in seconds")
                     .defineInRange("hazeBlockCooldown", 8, 0, Integer.MAX_VALUE);
@@ -722,15 +722,15 @@ public class JNEConfigImpl {
             ENABLE_NETHER_BIOME_LIGHTMAPS = builder
                     .comment("Gives every nether biome a custom lightmap that compliments its environment")
                     .define("enableNetherBiomeLightmaps", true);
-            TREACHEROUS_CANDLE_RED_LIGHTS = builder
+            CIERGE_OF_TREACHERY_RED_LIGHTS = builder
                     .comment("When the betrayed effect is active, it'll turn all lighting red")
-                    .define("treacherousCandleRedLights", true);
-            TREACHEROUS_CANDLE_FOG = builder
+                    .define("ciergeOfTreacheryRedLights", true);
+            CIERGE_OF_TREACHERY_FOG = builder
                     .comment("When the betrayed effect is active, a dense red fog will appear")
-                    .define("treacherousCandleFog", true);
-            TREACHEROUS_CANDLE_PARTICLES = builder
-                    .comment("Treacherous Candle will produce red haze and sparkle particles")
-                    .define("treacherousCandleParticles", true);
+                    .define("ciergeOfTreacheryFog", true);
+            CIERGE_OF_TREACHERY_PARTICLES = builder
+                    .comment("Cierge of Treachery will produce red haze and sparkle particles")
+                    .define("ciergeOfTreacheryParticles", true);
         }
     }
 

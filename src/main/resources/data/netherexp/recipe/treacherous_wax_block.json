@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#A#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:honeycomb_block"
+    },
+    "A": {
+      "item": "netherexp:treacherous_wax"
+    }
+  },
+  "result": {
+    "id": "netherexp:treacherous_wax_block",
+    "count": 8
+  }
+}
