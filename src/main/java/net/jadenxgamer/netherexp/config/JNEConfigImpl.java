@@ -165,7 +165,7 @@ public class JNEConfigImpl {
                             "This config makes it breakable with anything regardless of what's in your hand")
                     .define("canAnythingBreakFrogmist", false);
             CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN = builder
-                    .comment("Completed Cierge of Treacherys will become active again after the specified time in seconds has elapsed")
+                    .comment("Completed Cierges of Treachery will become active again after the specified time in seconds has elapsed")
                     .defineInRange("ciergeOfTreacheryCompletionCooldown", 1800, 0, 86400);
             HAZE_BLOCK_COOLDOWN = builder
                     .comment("Defines how long a haze block will last after being placed in seconds")

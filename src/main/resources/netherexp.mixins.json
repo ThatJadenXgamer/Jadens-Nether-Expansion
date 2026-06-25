@@ -18,6 +18,7 @@
     "block.BrewingStandBlockMixin",
     "block.NetherPortalBlockMixin",
     "block.PistonStructureResolverMixin",
+    "block.StructureVoidBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "client.IClientFluidTypeExtensionsMixin",

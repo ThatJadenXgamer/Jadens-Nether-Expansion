@@ -296,7 +296,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:ancient_",
+          "name": "minecraft:ancient_debris",
           "weight": 25,
           "functions": [
             {

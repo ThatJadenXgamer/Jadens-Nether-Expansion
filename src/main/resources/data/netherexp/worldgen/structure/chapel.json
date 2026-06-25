@@ -1,0 +1,20 @@
+{
+  "type": "elysium_api:multilayered_jigsaw",
+  "biomes": "#netherexp:has_structure/chapel",
+  "step": "underground_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_thin",
+  "start_pool": "netherexp:chapel/root",
+  "size": 1,
+  "start_height": {
+    "type": "minecraft:uniform",
+    "min_inclusive": {
+      "absolute": 32
+    },
+    "max_inclusive": {
+      "below_top": 2
+    }
+  },
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false
+}
