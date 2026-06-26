@@ -1,20 +1,10 @@
 package net.jadenxgamer.netherexp.registry.compat;
 
-import net.jadenxgamer.elysium_api.api.reflection.ElysiumReflection;
-import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.block.BlackIceBlock;
-import net.jadenxgamer.netherexp.core.effect.ImmunityEffect;
-import net.jadenxgamer.netherexp.core.misc.JNESoundType;
+import net.jadenxgamer.elysium_api.api.registry.ElysiumReflection;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.JNEMobEffects;
-import net.minecraft.core.Holder;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
-import team.lodestar.lodestone.systems.block.LodestoneBlockProperties;
 
 import java.util.function.Supplier;
 
