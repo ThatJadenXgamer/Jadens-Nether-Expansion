@@ -1,8 +1,10 @@
 package net.jadenxgamer.netherexp.event;
 
+import net.jadenxgamer.elysium_api.api.event.BlockOnPlaceEvent;
 import net.jadenxgamer.elysium_api.api.surface_rules.SurfaceRulesRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManager;
+import net.jadenxgamer.netherexp.core.block.SorrowsquashBlock;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.entity.PortalGlow;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
@@ -82,6 +84,14 @@ public class JNEEvents {
             JNEItems.setup();
             JNEFluids.setup();
         });
+    }
+
+    @SubscribeEvent
+    public static void onPlaceBlock(BlockOnPlaceEvent event) {
+        var level = event.getLevel();
+        var state = event.getState();
+        var pos = event.getPos();
+        SorrowsquashBlock.convertPumpkinStem(level, state, pos);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
