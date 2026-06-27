@@ -50,6 +50,7 @@ public class JNERegistries {
         event.dataPackRegistry(JNERegistries.Keys.APPARITION_AGGRESSIONS, ApparitionAggressions.CODEC);
         event.dataPackRegistry(JNERegistries.Keys.APPARITION_GARGOYLE_STATUES, ApparitionGargoyleStatues.CODEC);
         event.dataPackRegistry(JNERegistries.Keys.ANTIDOTE, Antidote.CODEC);
+        event.dataPackRegistry(JNERegistries.Keys.ECTOPLASM_HAUNTING, EctoplasmHaunting.CODEC);
     }
 
     public static final class Keys {
@@ -62,5 +63,6 @@ public class JNERegistries {
         public static final ResourceKey<Registry<ApparitionAggressions>> APPARITION_AGGRESSIONS = key("apparition/aggressions");
         public static final ResourceKey<Registry<ApparitionGargoyleStatues>> APPARITION_GARGOYLE_STATUES = key("apparition/gargoyle_statues");
         public static final ResourceKey<Registry<Antidote>> ANTIDOTE = key("antidote");
+        public static final ResourceKey<Registry<EctoplasmHaunting>> ECTOPLASM_HAUNTING = key("ectoplasm_haunting");
     }
 }

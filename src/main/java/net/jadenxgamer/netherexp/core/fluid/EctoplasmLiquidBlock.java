@@ -1,17 +1,24 @@
 package net.jadenxgamer.netherexp.core.fluid;
 
-import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.datadriven.EctoplasmHaunting;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
+import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
@@ -28,7 +35,10 @@ import team.lodestar.lodestone.systems.particle.world.behaviors.SparkParticleBeh
 import java.awt.*;
 import java.util.Optional;
 
+import static net.jadenxgamer.netherexp.config.JNEConfigs.*;
+
 public class EctoplasmLiquidBlock extends LiquidBlock {
+
     public EctoplasmLiquidBlock(FlowingFluid fluid, Properties properties) {
         super(fluid, properties);
     }
@@ -40,10 +50,9 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!JNEConfigs.ECTOPLASM_FREEZES.get()) return;
+        if (!ECTOPLASM_FREEZES.get()) return;
         if (entity instanceof LivingEntity living) {
             if (level.isClientSide || living.isInPowderSnow || living.isDeadOrDying() || !entity.canFreeze()) return;
-
             living.setTicksFrozen(Math.min(entity.getTicksFrozen() + 3, 200));
         }
     }
@@ -51,13 +60,15 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (!level.isClientSide()) return;
-        if (JNEConfigs.ECTOPLASM_SOUNDS.get() && random.nextInt(600) == 0) level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.ECTOPLASM_WHISPERING.get(), SoundSource.BLOCKS, 0.3f, 1.0f, false);
-        if (JNEConfigs.ECTOPLASM_PARTICLES.get()) {
+        if (ECTOPLASM_SOUNDS.get() && random.nextInt(600) == 0)
+            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.ECTOPLASM_WHISPERING.get(), SoundSource.BLOCKS, 0.3f, 1.0f, false);
+        if (ECTOPLASM_PARTICLES.get()) {
             BlockPos abovePos = pos.above();
-            double x = (double) pos.getX() + random.nextDouble();
-            double y = (double) pos.getY() + 1.0;
-            double z = (double) pos.getZ() + random.nextDouble();
-            if (state.getFluidState().isSource() && !level.getBlockState(abovePos).isSolidRender(level, abovePos)) Client.rayParticle(level, random, x, y, z);
+            double x = pos.getX() + random.nextDouble();
+            double y = pos.getY() + 1.0;
+            double z = pos.getZ() + random.nextDouble();
+            if (state.getFluidState().isSource() && !level.getBlockState(abovePos).isSolidRender(level, abovePos))
+                Client.rayParticle(level, random, x, y, z);
             Client.ectoplasmParticle(level, random, x, y, z);
         }
     }
@@ -67,10 +78,50 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
         return Optional.of(JNESoundEvents.BUCKET_FILL_ECTOPLASM.get());
     }
 
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        super.onPlace(state, level, pos, oldState, movedByPiston);
+        if (!level.isClientSide()) hauntNeighbors(level, pos);
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+        if (!level.isClientSide()) hauntNeighbors(level, pos);
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private void hauntNeighbors(Level level, BlockPos pos) {
+        Registry<EctoplasmHaunting> registry = level.registryAccess().registryOrThrow(JNERegistries.Keys.ECTOPLASM_HAUNTING);
+        for (Direction direction : Direction.values()) {
+            BlockPos targetPos = pos.relative(direction);
+            BlockState currentState = level.getBlockState(targetPos);
+            if (!currentState.isAir()) {
+                registry.stream()
+                        .filter(e -> e.target().contains(currentState.getBlockHolder()))
+                        .findFirst()
+                        .map(EctoplasmHaunting::haunted)
+                        .map(BuiltInRegistries.BLOCK::get)
+                        .filter(hauntedBlock -> hauntedBlock != Blocks.AIR)
+                        .ifPresent(hauntedBlock -> {
+                            BlockState hauntedState = hauntedBlock.defaultBlockState();
+                            BlockState newState = hauntedState;
+                            for (Property property : currentState.getProperties()) {
+                                if (hauntedState.hasProperty(property))
+                                    newState = newState.setValue(property, currentState.getValue(property));
+                            }
+                            if (!newState.equals(currentState)) {
+                                level.setBlock(targetPos, newState, Block.UPDATE_ALL);
+                                level.playSound(null, pos, JNESoundEvents.ECTOPLASM_FREEZE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                            }
+                        });
+            }
+        }
+    }
+
     @OnlyIn(Dist.CLIENT)
     public static class Client {
-
-        public static void rayParticle(Level level, RandomSource random, double x, double y,double z) {
+        public static void rayParticle(Level level, RandomSource random, double x, double y, double z) {
             if (random.nextInt(55) != 0) return;
             Vec3 direction = new Vec3(0.0, 1.0, 0.0);
             WorldParticleBuilder.create(JNEParticleTypes.ECTOPLASM_RAYS.get())
@@ -84,7 +135,7 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
                     .spawn(level, x, y, z);
         }
 
-        public static void ectoplasmParticle(Level level, RandomSource random, double x, double y,double z) {
+        public static void ectoplasmParticle(Level level, RandomSource random, double x, double y, double z) {
             if (random.nextInt(28) != 0) return;
             WorldParticleBuilder.create(JNEParticleTypes.GLOWING_DOT.get())
                     .setFullBrightLighting()
