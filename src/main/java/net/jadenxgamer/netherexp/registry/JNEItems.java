@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.registry;
 
+import net.jadenxgamer.elysium_api.impl.core.item.ElysiumArrowItem;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.entity.PhasmoArrow;
 import net.jadenxgamer.netherexp.core.entity.PhasmoPellet;

@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.core.item;
 
 import net.jadenxgamer.elysium_api.api.client.screen_flash.ScreenFlash;
+import net.jadenxgamer.elysium_api.api.util.ClientItemData;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemAnimationState;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
@@ -11,7 +12,6 @@ import net.jadenxgamer.netherexp.registry.JNEDataComponents;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
-import net.jadenxgamer.netherexp.util.ClientItemData;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.core.Holder;

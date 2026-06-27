@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.core.fluid;
 
 import net.jadenxgamer.netherexp.core.datadriven.EctoplasmHaunting;
+import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
@@ -24,6 +25,8 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.fluids.FluidType;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
@@ -97,6 +100,12 @@ public class EctoplasmLiquidBlock extends LiquidBlock {
             BlockPos targetPos = pos.relative(direction);
             BlockState currentState = level.getBlockState(targetPos);
             if (!currentState.isAir()) {
+                FluidType fluid = level.getFluidState(targetPos).getFluidType();
+                if (fluid == NeoForgeMod.WATER_TYPE.value()) {
+                    level.setBlock(targetPos, JNEBlocks.BLACK_ICE.get().defaultBlockState(), Block.UPDATE_ALL);
+                    level.playSound(null, pos, JNESoundEvents.ECTOPLASM_FREEZE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                    continue;
+                }
                 registry.stream()
                         .filter(e -> e.target().contains(currentState.getBlockHolder()))
                         .findFirst()

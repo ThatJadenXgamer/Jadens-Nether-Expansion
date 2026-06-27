@@ -80,6 +80,7 @@ public class JNEEvents {
             SurfaceRulesRegistry.registerNetherSurfaceRule(JNESurfaceRules.init(), NetherExp.MOD_ID);
             JNECauldronInteractions.register();
             JNEItems.setup();
+            JNEFluids.setup();
         });
     }
 

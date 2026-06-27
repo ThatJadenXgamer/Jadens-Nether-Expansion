@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.core.block;
 
-import net.jadenxgamer.netherexp.core.block.interfaces.IElysiumBlockExtension;
+import net.jadenxgamer.elysium_api.api.extensions.IElysiumBlockExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;

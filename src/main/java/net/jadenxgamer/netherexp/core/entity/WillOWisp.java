@@ -1,6 +1,6 @@
 package net.jadenxgamer.netherexp.core.entity;
 
-import net.jadenxgamer.netherexp.client.sound.LoopedEntityBoundSoundInstance;
+import net.jadenxgamer.elysium_api.api.client.sound.LoopedEntityBoundSoundInstance;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
 import net.jadenxgamer.netherexp.registry.*;

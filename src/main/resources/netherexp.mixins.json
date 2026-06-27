@@ -14,10 +14,9 @@
   ],
   "mixins": [
     "block.BaseFireBlockMixin",
-    "block.BlockMixin",
     "block.BrewingStandBlockMixin",
     "block.NetherPortalBlockMixin",
-    "block.PistonStructureResolverMixin",
+    "block.StemBlockMixin",
     "block.StructureVoidBlockMixin",
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
