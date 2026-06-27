@@ -11,6 +11,7 @@ import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
+import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.core.block.MagmaCreamBlock;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
@@ -45,6 +46,7 @@ public class JNEClientEvents {
 
     @SubscribeEvent
     public static void onClientTickPost(ClientTickEvent.Post event) {
+        if (!JNEConfigImpl.COMMON.isLoaded() || !JNEConfigImpl.STARTUP.isLoaded()) return;
         if (shouldShowBetaPopup) {
             Minecraft client = Minecraft.getInstance();
             if (client.player != null && client.screen == null) {
