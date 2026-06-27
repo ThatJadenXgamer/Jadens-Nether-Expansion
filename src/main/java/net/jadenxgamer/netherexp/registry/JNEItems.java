@@ -1,7 +1,10 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.entity.*;
+import net.jadenxgamer.netherexp.core.entity.PhasmoArrow;
+import net.jadenxgamer.netherexp.core.entity.PhasmoPellet;
+import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
+import net.jadenxgamer.netherexp.core.entity.SlugPellet;
 import net.jadenxgamer.netherexp.core.item.*;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
@@ -16,6 +19,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.neoforged.neoforge.fluids.DispenseFluidContainer;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
@@ -239,5 +243,6 @@ public class JNEItems {
 
     public static void setup() {
         DispenserBlock.registerProjectileBehavior(PHASMO_ARROW.get());
+        DispenserBlock.registerBehavior(JNEFluids.ECTOPLASM_BUCKET.get(), DispenseFluidContainer.getInstance());
     }
 }
