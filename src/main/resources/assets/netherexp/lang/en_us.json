@@ -672,6 +672,7 @@
   "block.netherexp.blotted_netherrack": "Blotted Netherrack",
   "block.netherexp.phasmo_slab": "Phasmo Slab",
   "block.netherexp.waxen_soul_glass": "Waxen Soul Glass",
+  "block.netherexp.tethered_bone_block": "Tethered Bone Block",
 
   "enchantment.netherexp.phantasm_hull.desc": "Sneaking causes projectiles to phase through you in-exchange for durability",
   "enchantment.netherexp.counterforce.desc": "Reverses the pushback direction and provides I-frames when used midair during without any downwards pull",

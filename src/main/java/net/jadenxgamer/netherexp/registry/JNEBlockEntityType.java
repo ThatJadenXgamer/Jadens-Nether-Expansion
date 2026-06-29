@@ -31,6 +31,9 @@ public class JNEBlockEntityType {
     public static final Supplier<BlockEntityType<CiergeOfTreacheryBlockEntity>> CIERGE_OF_TREACHERY = BLOCK_ENTITY_TYPES.register("cierge_of_treachery", () ->
             BlockEntityType.Builder.of(CiergeOfTreacheryBlockEntity::new, JNEBlocks.CIERGE_OF_TREACHERY.get()).build(null));
 
+    public static final Supplier<BlockEntityType<BrazierChestBlockEntity>> BRAZIER_CHEST = BLOCK_ENTITY_TYPES.register("brazier_chest", () ->
+            BlockEntityType.Builder.of(BrazierChestBlockEntity::new, JNEBlocks.BRAZIER_CHEST.get()).build(null));
+
     public static void init(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
     }

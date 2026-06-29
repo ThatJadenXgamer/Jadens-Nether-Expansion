@@ -167,6 +167,9 @@ public class JNEConfigImpl {
             CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN = builder
                     .comment("Completed Cierges of Treachery will become active again after the specified time in seconds has elapsed")
                     .defineInRange("ciergeOfTreacheryCompletionCooldown", 1800, 0, 86400);
+            BRAZIER_CHEST_REFILL_COOLDOWN = builder
+                    .comment("Unlocked brazier chests will extinguish after the specified time in seconds has elapsed and refill their loot")
+                    .defineInRange("brazierChestRefillCooldown", 3600, 0, 86400);
             HAZE_BLOCK_COOLDOWN = builder
                     .comment("Defines how long a haze block will last after being placed in seconds")
                     .defineInRange("hazeBlockCooldown", 8, 0, Integer.MAX_VALUE);

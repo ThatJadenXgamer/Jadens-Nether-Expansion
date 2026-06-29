@@ -177,7 +177,9 @@ public class JNEBlocks {
 
 
     public static final Supplier<Block> BRAZIER_CHEST = registerBlock("brazier_chest", () ->
-            new Block(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).isRedstoneConductor((a, b, c) -> false).sound(JNESoundType.SOUL_SLATE)));
+            new BrazierChestBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f)
+                    .lightLevel(state -> state.getValue(BrazierChestBlock.LOCKED) ? 15 : 0)
+                    .isRedstoneConductor((a, b, c) -> false).sound(JNESoundType.SOUL_SLATE)));
 
     public static final Supplier<Block> CIERGE_OF_TREACHERY = registerBlock("cierge_of_treachery", () ->
             new CiergeOfTreacheryBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f).noOcclusion().lightLevel(
@@ -616,6 +618,9 @@ public class JNEBlocks {
 
     public static final Supplier<Block> BONE_FENCE = registerBlock("bone_fence", () ->
             new BoneFenceBlock(BlockBehaviour.Properties.of().strength(0.5f).sound(JNESoundType.BONE_PIKE)));
+
+    public static final Supplier<Block> TETHERED_BONE_BLOCK = registerBlockWithoutItem("tethered_bone_block", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BONE_BLOCK)));
 
     public static final Supplier<Block> SKULL_BLOCK = registerBlock("skull_block", () ->
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));

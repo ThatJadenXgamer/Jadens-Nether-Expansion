@@ -136,6 +136,8 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                 output.accept(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get());
 
+                output.accept(JNEBlocks.CIERGE_OF_TREACHERY.get());
+                output.accept(JNEBlocks.BRAZIER_CHEST.get());
                 output.accept(JNEItems.TREACHEROUS_FLAME.get());
                 output.accept(JNEItems.TREACHEROUS_WAX.get());
                 output.accept(JNEBlocks.TREACHEROUS_WAX_BLOCK.get());

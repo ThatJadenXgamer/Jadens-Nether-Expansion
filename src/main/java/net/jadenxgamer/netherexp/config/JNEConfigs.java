@@ -44,6 +44,7 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue SHOTGUN_BARREL_BULLETS;
     public static ModConfigSpec.BooleanValue CAN_ANYTHING_BREAK_FROGMIST;
     public static ModConfigSpec.IntValue CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN;
+    public static ModConfigSpec.IntValue BRAZIER_CHEST_REFILL_COOLDOWN;
     public static ModConfigSpec.IntValue HAZE_BLOCK_COOLDOWN;
 
     // ITEM

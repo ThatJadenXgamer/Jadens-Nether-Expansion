@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "minecraft:block/bone_block_top",
-    "side": "netherexp:block/bone_block_tethered"
+    "side": "netherexp:block/tethered_bone_block"
   }
 }

@@ -207,6 +207,8 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> HAZE_BLOCK_BREAK = registerSoundEvents("block.haze_block.break");
 
     public static final Supplier<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
+    public static final Supplier<SoundEvent> BRAZIER_CHEST_OPEN = registerSoundEvents("block.brazier_chest.open");
+    public static final Supplier<SoundEvent> BRAZIER_CHEST_CLOSE = registerSoundEvents("block.brazier_chest.close");
     public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_VICTORY = registerSoundEvents("block.cierge_of_treachery.victory");
     public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_DEFEAT = registerSoundEvents("block.cierge_of_treachery.defeat");
     public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_ROUND = registerSoundEvents("block.cierge_of_treachery.round");
