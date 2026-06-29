@@ -72,11 +72,8 @@ public class BrazierChestBlock extends BaseEntityBlock {
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.SOUL_SLATE_BRICKS_HIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (level.isClientSide) player.displayClientMessage(Component.translatable("block.netherexp.brazier_chest.locked").withStyle(ChatFormatting.DARK_RED), true);
             }
-            return ItemInteractionResult.SUCCESS;
-        } else {
-            if (blockEntity instanceof BrazierChestBlockEntity) player.openMenu(blockEntity);
-            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
-        }
+        } else player.openMenu(blockEntity);
+        return ItemInteractionResult.SUCCESS;
     }
 
     @Override
@@ -86,7 +83,6 @@ public class BrazierChestBlock extends BaseEntityBlock {
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
-    @SuppressWarnings("deprecation")
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BrazierChestBlockEntity) {
@@ -111,22 +107,18 @@ public class BrazierChestBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    @SuppressWarnings("deprecation")
     public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
     }
 
-    @SuppressWarnings("deprecation")
     public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
     }
 
-    @SuppressWarnings("deprecation")
     public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
-    @SuppressWarnings("deprecation")
     public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }

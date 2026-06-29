@@ -178,7 +178,7 @@ public class JNEBlocks {
 
     public static final Supplier<Block> BRAZIER_CHEST = registerBlock("brazier_chest", () ->
             new BrazierChestBlock(BlockBehaviour.Properties.of().strength(120.0f, 1200.0f)
-                    .lightLevel(state -> state.getValue(BrazierChestBlock.LOCKED) ? 15 : 0)
+                    .lightLevel(state -> state.getValue(BrazierChestBlock.LOCKED) ? 0 : 15)
                     .isRedstoneConductor((a, b, c) -> false).sound(JNESoundType.SOUL_SLATE)));
 
     public static final Supplier<Block> CIERGE_OF_TREACHERY = registerBlock("cierge_of_treachery", () ->
