@@ -27,12 +27,11 @@ public class LiquidloggedTransparentBlock extends TransparentBlock implements Li
         this.registerDefaultState(this.defaultBlockState().setValue(LIQUIDLOGGED, Liquidlogged.AllFluids.AIR));
     }
 
-    @Override
-    public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
+    public static int stateToProperty(BlockState state) {
         return switch (state.getValue(LIQUIDLOGGED)) {
-            case LAVA -> Blocks.LAVA.getLightEmission(state, level, pos);
-            case ECTOPLASM -> JNEFluids.ECTOPLASM.get().getLightEmission(state, level, pos);
-            default -> super.getLightEmission(state, level, pos);
+            case LAVA -> 15;
+            case ECTOPLASM -> 12;
+            default -> 0;
         };
     }
 

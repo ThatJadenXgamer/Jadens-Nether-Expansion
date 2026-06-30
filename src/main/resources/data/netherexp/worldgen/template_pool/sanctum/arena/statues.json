@@ -18,6 +18,15 @@
         "location": "netherexp:sanctum/arena/ossified_statue",
         "processors": "netherexp:sanctum_destruction"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "netherexp:sanctum/arena/phase_statue",
+        "processors": "netherexp:sanctum_destruction"
+      }
     }
   ]
 }

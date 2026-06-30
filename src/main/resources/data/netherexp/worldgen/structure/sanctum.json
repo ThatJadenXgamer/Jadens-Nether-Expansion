@@ -1,5 +1,5 @@
 {
-  "type": "netherexp:giant_jigsaw",
+  "type": "elysium_api:giant_jigsaw",
   "biomes": "#netherexp:has_structure/sanctum",
   "step": "raw_generation",
   "spawn_overrides": {
@@ -63,7 +63,7 @@
   },
   "terrain_adaptation": "beard_box",
   "start_pool": "netherexp:sanctum/church/center",
-  "size": 15,
+  "size": 32,
   "start_height": {
     "absolute": 38
   },

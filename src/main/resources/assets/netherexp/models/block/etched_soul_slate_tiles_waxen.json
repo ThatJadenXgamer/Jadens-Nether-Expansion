@@ -1,0 +1,7 @@
+{
+  "parent": "netherexp:block/emissive_block_12",
+  "textures": {
+    "base": "netherexp:block/etched_soul_slate_tiles_waxen",
+    "glow": "netherexp:block/etched_soul_slate_tiles_waxen_glow"
+  }
+}

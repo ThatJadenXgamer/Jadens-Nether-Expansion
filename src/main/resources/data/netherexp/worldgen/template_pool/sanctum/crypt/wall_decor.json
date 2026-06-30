@@ -7,7 +7,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/statue_ossified",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -16,7 +16,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/statue_trample",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -25,7 +25,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/statue_phase",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -34,7 +34,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/statue_ghoul",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -43,7 +43,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/statue_wretched",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -52,7 +52,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/cipher/cipher_2",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -61,7 +61,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/cipher/cipher_3",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -70,7 +70,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/cipher/cipher_4",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -79,7 +79,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/cipher/cipher_5",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -88,7 +88,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/cipher/cipher_6",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -97,7 +97,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/cipher/cipher_7",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     }
   ]

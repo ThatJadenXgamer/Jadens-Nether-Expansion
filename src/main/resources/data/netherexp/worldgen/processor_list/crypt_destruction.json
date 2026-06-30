@@ -36,7 +36,7 @@
           "output_state": {
             "Name": "netherexp:etched_soul_slate_bricks",
             "Properties": {
-              "lit": "waxen"
+              "lit": "true"
             }
           }
         },
@@ -101,7 +101,7 @@
           "output_state": {
             "Name": "netherexp:etched_soul_slate_tiles",
             "Properties": {
-              "lit": "waxen"
+              "lit": "true"
             }
           }
         }

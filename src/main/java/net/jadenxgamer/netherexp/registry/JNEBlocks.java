@@ -74,8 +74,8 @@ public class JNEBlocks {
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())));
 
     public static final Supplier<Block> ETCHED_SOUL_SLATE_BRICKS = registerBlock("etched_soul_slate_bricks", () ->
-            new LightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get()).lightLevel(
-                    blockState -> blockState.getValue(LightableBlock.LIT) ? 4 : 0)));
+            new WaxenLightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())
+                    .lightLevel(WaxenLightableBlock::stateForProperty)));
 
     public static final Supplier<Block> CRACKED_SOUL_SLATE_BRICKS = registerBlock("cracked_soul_slate_bricks", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())));
@@ -84,8 +84,8 @@ public class JNEBlocks {
             new RotatedPillarBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())));
 
     public static final Supplier<Block> CHISELED_SOUL_SLATE_BRICKS = registerBlock("chiseled_soul_slate_bricks", () ->
-            new LightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get()).lightLevel(
-                    blockState -> blockState.getValue(LightableBlock.LIT) ? 7 : 0)));
+            new WaxenLightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_BRICKS.get())
+                    .lightLevel(WaxenLightableBlock::stateForProperty)));
 
     /**
      * Soul Slate Tiles
@@ -104,12 +104,12 @@ public class JNEBlocks {
             new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get())));
 
     public static final Supplier<Block> ETCHED_SOUL_SLATE_TILES = registerBlock("etched_soul_slate_tiles", () ->
-            new LightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get()).lightLevel(
-                    blockState -> blockState.getValue(LightableBlock.LIT) ? 4 : 0)));
+            new WaxenLightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get())
+                    .lightLevel(WaxenLightableBlock::stateForProperty)));
 
     public static final Supplier<Block> CHISELED_SOUL_SLATE_TILES = registerBlock("chiseled_soul_slate_tiles", () ->
-            new LightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get()).lightLevel(
-                    blockState -> blockState.getValue(LightableBlock.LIT) ? 7 : 0)));
+            new WaxenLightableBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(SOUL_SLATE_TILES.get())
+                    .lightLevel(WaxenLightableBlock::stateForProperty)));
 
     /**
      * Fossil Ores
@@ -326,7 +326,8 @@ public class JNEBlocks {
             new RotatedPillarBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final Supplier<Block> NETHERITE_GRATE = registerItemPropertiesBlock("netherite_grate", () ->
-            new LiquidloggedTransparentBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.CUT_NETHERITE_BLOCK.get()).noOcclusion().sound(JNESoundType.NETHERITE_GRATE)), new Item.Properties().fireResistant());
+            new LiquidloggedTransparentBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.CUT_NETHERITE_BLOCK.get()).noOcclusion().sound(JNESoundType.NETHERITE_GRATE)
+                    .lightLevel(LiquidloggedTransparentBlock::stateToProperty)), new Item.Properties().fireResistant());
 
     /**
      * Rusty Netherite
@@ -348,7 +349,8 @@ public class JNEBlocks {
             new RotatedPillarBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get())), new Item.Properties().fireResistant());
 
     public static final Supplier<Block> RUSTY_NETHERITE_GRATE = registerItemPropertiesBlock("rusty_netherite_grate", () ->
-            new LiquidloggedTransparentBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get()).noOcclusion().sound(JNESoundType.RUSTY_NETHERITE_GRATE)), new Item.Properties().fireResistant());
+            new LiquidloggedTransparentBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.RUSTY_CUT_NETHERITE_BLOCK.get()).noOcclusion().sound(JNESoundType.RUSTY_NETHERITE_GRATE)
+                    .lightLevel(LiquidloggedTransparentBlock::stateToProperty)), new Item.Properties().fireResistant());
 
     /**
      * Claret WoodSet

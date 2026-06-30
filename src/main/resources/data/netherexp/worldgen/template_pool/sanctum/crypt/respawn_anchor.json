@@ -7,7 +7,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/respawn_anchor",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     }
   ]

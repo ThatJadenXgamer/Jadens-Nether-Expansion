@@ -7,7 +7,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/brazier_chest",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     },
     {
@@ -16,7 +16,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "netherexp:sanctum/crypt/breaker_room",
-        "processors": "netherexp:sanctum_destruction"
+        "processors": "netherexp:crypt_destruction"
       }
     }
   ]
