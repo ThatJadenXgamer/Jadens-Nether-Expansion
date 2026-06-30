@@ -56,21 +56,13 @@ public class PetrifiedSwirlsBlockEntity extends BlockEntity {
 
     @Override
     public boolean triggerEvent(int id, int type) {
-        if (this.level != null && id == 1) {
+        if (this.level != null && this.level.isClientSide() && id == 1) {
             switch (type) {
-                case 0 -> {
-                    PetrifiedSwirlsBlock.Client.petrificationParticle(level, level.random, getBlockPos());
-                    return true;
-                }
-                case 1 -> {
-                    PetrifiedSwirlsBlock.Client.unpetrifyParticle(level, level.random, getBlockPos());
-                    return true;
-                }
-                case 2 -> {
-                    PetrifiedSwirlsBlock.Client.attractToPetrifierParticle(level, level.random, getBlockPos());
-                    return true;
-                }
+                case 0 -> PetrifiedSwirlsBlock.Client.petrificationParticle(level, level.random, getBlockPos());
+                case 1 -> PetrifiedSwirlsBlock.Client.unpetrifyParticle(level, level.random, getBlockPos());
+                case 2 -> PetrifiedSwirlsBlock.Client.attractToPetrifierParticle(level, level.random, getBlockPos());
             }
+            return true;
         }
         return super.triggerEvent(id, type);
     }
