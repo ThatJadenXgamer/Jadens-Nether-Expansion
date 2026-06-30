@@ -51,7 +51,6 @@ public class WaxenLightableBlock extends Block {
                 changeState = true;
             } else if (stack.is(JNEItems.TREACHEROUS_WAX.get())) {
                 level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, 1.0f);
-                if (!player.getAbilities().instabuild) stack.shrink(1);
                 changeState = true;
                 waxen = true;
             }
@@ -61,6 +60,12 @@ public class WaxenLightableBlock extends Block {
                 if (particle.get() != null) ParticleHelper.surroundBlockParticle(level, pos, waxen ? JNEParticleTypes.TREACHEROUS_FLAME.get() : particle.get());
                 return ItemInteractionResult.sidedSuccess(level.isClientSide());
             }
+        }
+        if (state.getValue(LIT) == WaxenLit.TRUE && stack.is(JNEItems.TREACHEROUS_WAX.get())) {
+            level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.setBlock(pos, state.setValue(LIT, WaxenLit.WAXEN), Block.UPDATE_ALL);
+            if (particle.get() != null) ParticleHelper.surroundBlockParticle(level, pos, JNEParticleTypes.TREACHEROUS_FLAME.get());
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }

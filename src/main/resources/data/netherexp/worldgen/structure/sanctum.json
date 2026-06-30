@@ -68,6 +68,6 @@
     "absolute": 38
   },
   "start_jigsaw_name": "netherexp:sanctum_anchor",
-  "max_distance_from_center": 128,
+  "max_distance_from_center": 110,
   "use_expansion_hack": false
 }
