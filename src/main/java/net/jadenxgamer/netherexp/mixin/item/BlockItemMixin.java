@@ -40,7 +40,7 @@ public abstract class BlockItemMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;consume(ILnet/minecraft/world/entity/LivingEntity;)V")
     )
     private void netherexp$preventShrinkWhenBetrayed(ItemStack instance, int amount, LivingEntity entity, Operation<Void> original) {
-        if (entity.hasEffect(JNEMobEffects.BETRAYED)) amount = 0;
+        if (entity != null && entity.hasEffect(JNEMobEffects.BETRAYED)) amount = 0;
         original.call(instance, amount, entity);
     }
 }
