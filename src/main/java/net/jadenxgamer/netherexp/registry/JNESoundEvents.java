@@ -86,6 +86,10 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> WISP_BOTTLE_FILL = registerSoundEvents("entity.wisp.bottle_fill");
     public static final Supplier<SoundEvent> WISP_BOTTLE_EMPTY = registerSoundEvents("entity.wisp.bottle_empty");
 
+    public static final Supplier<SoundEvent> ENTITY_CARCASS_HURT = registerSoundEvents("entity.carcass.hurt");
+    public static final Supplier<SoundEvent> ENTITY_CARCASS_DEATH = registerSoundEvents("entity.carcass.death");
+    public static final Supplier<SoundEvent> ENTITY_CARCASS_REANIMATE = registerSoundEvents("entity.carcass.reanimate");
+
     public static final Supplier<SoundEvent> SOUL_SLATE_PLACE = registerSoundEvents("block.soul_slate.place");
     public static final Supplier<SoundEvent> SOUL_SLATE_BREAK = registerSoundEvents("block.soul_slate.break");
     public static final Supplier<SoundEvent> SOUL_SLATE_STEP = registerSoundEvents("block.soul_slate.step");

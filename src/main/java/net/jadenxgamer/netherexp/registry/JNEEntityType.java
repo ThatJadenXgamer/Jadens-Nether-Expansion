@@ -42,6 +42,10 @@ public class JNEEntityType {
             EntityType.Builder.of(Banshee::new, MobCategory.MONSTER)
                     .sized(1.25f, 2.375f).fireImmune().build("banshee"));
 
+    public static final Supplier<EntityType<Carcass>> CARCASS = ENTITY_TYPES.register("carcass", () ->
+            EntityType.Builder.of(Carcass::new, MobCategory.MISC)
+                    .sized(1.4F, 1.3F).fireImmune().build("carcass"));
+
     /**
      * Non-Living Entities
      */
@@ -80,6 +84,7 @@ public class JNEEntityType {
         event.put(VESSEL.get(), Vessel.createAttributes().build());
         event.put(ECTO_SLAB.get(), EctoSlab.createAttributes().build());
         event.put(BANSHEE.get(), Banshee.createAttributes().build());
+        event.put(CARCASS.get(), Carcass.createAttributes().build());
     }
 
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {

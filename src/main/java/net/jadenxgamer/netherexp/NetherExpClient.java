@@ -11,6 +11,7 @@ import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.client.sound.InsideFluidAmbientSoundInstance;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.entity.Carcass;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.client.Minecraft;
@@ -54,6 +55,7 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRenderers.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
+        EntityRenderers.register(JNEEntityType.CARCASS.get(), CarcassRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.SHOTGUN_PELLET.get(), ShotgunPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.SLUG_PELLET.get(), SlugPelletRenderer::new);
@@ -74,6 +76,7 @@ public final class NetherExpClient {
         event.registerLayerDefinition(VesselRenderer.VesselModel.LAYER, VesselRenderer.VesselModel::createBodyLayer);
         event.registerLayerDefinition(EctoSlabRenderer.EctoSlabModel.LAYER, EctoSlabRenderer.EctoSlabModel::createBodyLayer);
         event.registerLayerDefinition(BansheeRenderer.BansheeModel.LAYER, BansheeRenderer.BansheeModel::createBodyLayer);
+        event.registerLayerDefinition(CarcassRenderer.CarcassModel.LAYER, CarcassRenderer.CarcassModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispModel.LAYER, WillOWispRenderer.WillOWispModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER_HAND, WillOWispRenderer.WillOWispItemModel::createHandLayer);
