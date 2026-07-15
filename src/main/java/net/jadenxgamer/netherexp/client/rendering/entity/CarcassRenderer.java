@@ -33,9 +33,7 @@ public class CarcassRenderer extends MobRenderer<Carcass, CarcassRenderer.Carcas
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(Carcass entity) {
-        if (entity.getIsImmortal()) return NetherExp.netherexpPath("textures/entity/carcass/carcass_immortal.png");
-        else if (entity.getIsReanimated()) return NetherExp.netherexpPath("textures/entity/carcass/carcass_reanimated.png");
-
+        if (entity.getIsReanimated()) return NetherExp.netherexpPath("textures/entity/carcass/carcass_reanimated.png");
         return NetherExp.netherexpPath("textures/entity/carcass/carcass.png");
     }
 
@@ -118,9 +116,8 @@ public class CarcassRenderer extends MobRenderer<Carcass, CarcassRenderer.Carcas
         @Override
         public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
             if (!entity.getIsReanimated()) return;
-            ResourceLocation texture = entity.getIsImmortal() ? NetherExp.netherexpPath("textures/entity/carcass/carcass_immortal_glow.png") : NetherExp.netherexpPath("textures/entity/carcass/carcass_glow.png");
 
-            VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.eyes(texture));
+            VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.eyes(NetherExp.netherexpPath("textures/entity/carcass/carcass_glow.png")));
             this.getParentModel().renderToBuffer(poseStack, vertexConsumer, 15728640, OverlayTexture.NO_OVERLAY);
         }
     }
