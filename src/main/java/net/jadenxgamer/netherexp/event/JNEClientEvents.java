@@ -9,6 +9,7 @@ import net.jadenxgamer.netherexp.client.gui.BetaPopupWarning;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderStateShard;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
+import net.jadenxgamer.netherexp.client.rendering.layer.FireOverlayLayer;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
@@ -19,6 +20,11 @@ import net.jadenxgamer.netherexp.registry.JNEFluids;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.resources.PlayerSkin;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -56,6 +62,22 @@ public class JNEClientEvents {
         }
         if (ENABLE_NETHER_BIOME_LIGHTMAPS.get()) LightmapSettingsManager.disableEventFlag(NetherExp.netherexpPath("disable_jne_lightmaps"));
         else LightmapSettingsManager.enableEventFlag(NetherExp.netherexpPath("disable_jne_lightmaps"));
+    }
+
+    @SubscribeEvent
+    public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
+        for (EntityType<?> entityType : event.getEntityTypes()) {
+            EntityRenderer<?> renderer = event.getRenderer(entityType);
+            if (renderer instanceof LivingEntityRenderer<?, ?> livingRenderer) {
+                livingRenderer.addLayer((RenderLayer) new FireOverlayLayer<>(livingRenderer));
+            }
+        }
+        for (PlayerSkin.Model skinModel : event.getSkins()) {
+            EntityRenderer<?> renderer = event.getSkin(skinModel);
+            if (renderer instanceof LivingEntityRenderer<?, ?> livingRenderer) {
+                livingRenderer.addLayer((RenderLayer) new FireOverlayLayer<>(livingRenderer));
+            }
+        }
     }
 
     @SubscribeEvent
@@ -97,6 +119,7 @@ public class JNEClientEvents {
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutout);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout_no_cull"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutoutNoCull);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_entity_additive"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeEntityAdditive);
+            event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_fire_overlay"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeFireOverlay);
         } catch (IOException exception) {
             NetherExp.LOGGER.error("Failed to load Shader Instances, {}", exception.getMessage());
         }

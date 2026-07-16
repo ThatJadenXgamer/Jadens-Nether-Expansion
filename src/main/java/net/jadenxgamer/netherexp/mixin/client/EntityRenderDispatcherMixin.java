@@ -22,17 +22,17 @@ public abstract class EntityRenderDispatcherMixin {
     @Unique
     private static final RenderType LIGHT_RENDER_TYPE = RenderType.entityShadow(NetherExp.netherexpPath("textures/misc/light.png"));
 
-//    @Inject(
-//            method = "renderFlame",
-//            at = @At(value = "HEAD"),
-//            cancellable = true
-//    )
-//    private void netherexp$improvedBurn(PoseStack poseStack, MultiBufferSource buffer, Entity entity, Quaternionf quaternion, CallbackInfo ci) {
-//        CommonParticles.burnParticle(entity.level(), entity.level().random, entity);
-//        poseStack.pushPose();
-//        poseStack.popPose();
-//        ci.cancel();
-//    }
+    @Inject(
+            method = "renderFlame",
+            at = @At(value = "HEAD"),
+            cancellable = true
+    )
+    private void netherexp$improvedBurn(PoseStack poseStack, MultiBufferSource buffer, Entity entity, Quaternionf quaternion, CallbackInfo ci) {
+        CommonParticles.burnParticle(entity.level(), entity.level().random, entity);
+        poseStack.pushPose();
+        poseStack.popPose();
+        ci.cancel();
+    }
 
 //    @WrapOperation(
 //            method = "renderShadow",

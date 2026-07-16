@@ -7,6 +7,8 @@ public class JNERenderStateShard {
     private static ShaderInstance renderTypeNoShadeEntityCutout;
     private static ShaderInstance renderTypeNoShadeEntityCutoutNoCull;
     private static ShaderInstance renderTypeEntityAdditive;
+    private static ShaderInstance renderTypeFireOverlay;
+
 
     /////////////
     // GETTERS //
@@ -21,6 +23,9 @@ public class JNERenderStateShard {
     public static ShaderInstance getRenderTypeEntityAdditive() {
         return renderTypeEntityAdditive;
     }
+    public static ShaderInstance getRenderTypeFireOverlay() {
+        return renderTypeFireOverlay;
+    }
 
     /////////////
     // SETTERS //
@@ -34,5 +39,8 @@ public class JNERenderStateShard {
     }
     public static void setRenderTypeEntityAdditive(ShaderInstance instance) {
         JNERenderStateShard.renderTypeEntityAdditive = instance;
+    }
+    public static void setRenderTypeFireOverlay(ShaderInstance instance) {
+        JNERenderStateShard.renderTypeFireOverlay = instance;
     }
 }

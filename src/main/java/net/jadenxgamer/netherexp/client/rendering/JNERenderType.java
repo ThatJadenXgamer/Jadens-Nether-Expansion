@@ -16,6 +16,7 @@ public class JNERenderType {
     protected static final RenderStateShard.ShaderStateShard RENDERTYPE_NO_SHADE_ENTITY_CUTOUT = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeNoShadeEntityCutout);
     protected static final RenderStateShard.ShaderStateShard RENDERTYPE_NO_SHADE_ENTITY_CUTOUT_NO_CULL = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeNoShadeEntityCutoutNoCull);
     protected static final RenderStateShard.ShaderStateShard RENDERTYPE_ENTITY_ADDITIVE = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeEntityAdditive);
+    protected static final RenderStateShard.ShaderStateShard RENDERTYPE_FIRE_OVERLAY = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeFireOverlay);
 
     protected static final RenderStateShard.WriteMaskStateShard NO_DEPTH_WRITE = new RenderStateShard.WriteMaskStateShard(true, false);
 
@@ -65,6 +66,17 @@ public class JNERenderType {
             )
     );
 
+    public static final RenderTypeProvider FIRE_OVERLAY = new RenderTypeProvider(token ->
+            LodestoneRenderTypes.createGenericRenderType(token, "fire_overlay", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, LodestoneRenderTypes.builder()
+                    .setShaderState(RENDERTYPE_FIRE_OVERLAY)
+                    .setCullState(RenderStateShard.NO_CULL)
+                    .setLightmapState(RenderStateShard.LIGHTMAP)
+                    .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                    .setTextureState(token)
+                    .setOverlayState(RenderStateShard.OVERLAY)
+            )
+    );
+
     public static LodestoneRenderType noShadeEntityCutout(ResourceLocation texture) {
         return NO_SHADE_ENTITY_CUTOUT.apply(RenderTypeToken.createToken(texture)).getRenderType();
     }
@@ -75,5 +87,9 @@ public class JNERenderType {
 
     public static LodestoneRenderType entityAdditive(ResourceLocation texture) {
         return ENTITY_ADDITIVE.apply(RenderTypeToken.createToken(texture)).getRenderType();
+    }
+
+    public static LodestoneRenderType fireOverlay(ResourceLocation texture) {
+        return FIRE_OVERLAY.apply(RenderTypeToken.createToken(texture)).getRenderType();
     }
 }

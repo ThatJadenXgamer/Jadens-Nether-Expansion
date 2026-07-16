@@ -5,6 +5,7 @@
   "minVersion": "0.8",
   "client": [
     "client.ClientLevelMixin",
+    "client.EntityRenderDispatcherMixin",
     "client.FogRendererMixin",
     "client.HumanoidModelMixin",
     "client.LevelRendererMixin",

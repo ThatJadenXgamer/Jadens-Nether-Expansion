@@ -65,6 +65,7 @@ public class JNETags {
         public static final TagKey<EntityType<?>> HAS_LIGHT_SHADOW = createTag("has_light_shadow"); // Entities within this tag have a light instead of the usual shadow
         public static final TagKey<EntityType<?>> IGNORES_CIERGE_OF_TREACHERY = createTag("ignores_cierge_of_treachery");
         public static final TagKey<EntityType<?>> TARGETS_REGARDLESS_OF_BETRAYED = createTag("targets_regardless_of_betrayed");
+        public static final TagKey<EntityType<?>> NO_BURNING_FILTER = createTag("no_burning_filter");
 
         private static TagKey<EntityType<?>> createTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, NetherExp.netherexpPath(name));
