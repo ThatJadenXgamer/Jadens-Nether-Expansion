@@ -5,8 +5,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.renderer.RenderStateShard;
+import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.resources.ResourceLocation;
 import team.lodestar.lodestone.registry.client.LodestoneRenderTypes;
+import team.lodestar.lodestone.registry.client.LodestoneShaders;
+import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
 import team.lodestar.lodestone.systems.rendering.LodestoneRenderType;
 import team.lodestar.lodestone.systems.rendering.rendeertype.RenderTypeProvider;
 import team.lodestar.lodestone.systems.rendering.rendeertype.RenderTypeToken;
@@ -17,6 +20,7 @@ public class JNERenderType {
     protected static final RenderStateShard.ShaderStateShard RENDERTYPE_NO_SHADE_ENTITY_CUTOUT_NO_CULL = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeNoShadeEntityCutoutNoCull);
     protected static final RenderStateShard.ShaderStateShard RENDERTYPE_ENTITY_ADDITIVE = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeEntityAdditive);
     protected static final RenderStateShard.ShaderStateShard RENDERTYPE_FIRE_OVERLAY = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeFireOverlay);
+    protected static final RenderStateShard.ShaderStateShard RENDERTYPE_PARTICLE_OVERLAY = new RenderStateShard.ShaderStateShard(JNERenderStateShard::getRenderTypeParticleOverlay);
 
     protected static final RenderStateShard.WriteMaskStateShard NO_DEPTH_WRITE = new RenderStateShard.WriteMaskStateShard(true, false);
 
@@ -77,6 +81,16 @@ public class JNERenderType {
             )
     );
 
+    public static final RenderTypeProvider PARTICLE_OVERLAY = new RenderTypeProvider(token ->
+            LodestoneRenderTypes.createGenericRenderType(token, "particle_overlay", DefaultVertexFormat.PARTICLE, VertexFormat.Mode.QUADS, LodestoneRenderTypes.builder()
+                    .setShaderState(RENDERTYPE_PARTICLE_OVERLAY)
+                    .setCullState(RenderStateShard.NO_CULL)
+                    .setLightmapState(RenderStateShard.LIGHTMAP)
+                    .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                    .setTextureState(token)
+            )
+    );
+
     public static LodestoneRenderType noShadeEntityCutout(ResourceLocation texture) {
         return NO_SHADE_ENTITY_CUTOUT.apply(RenderTypeToken.createToken(texture)).getRenderType();
     }
@@ -92,4 +106,12 @@ public class JNERenderType {
     public static LodestoneRenderType fireOverlay(ResourceLocation texture) {
         return FIRE_OVERLAY.apply(RenderTypeToken.createToken(texture)).getRenderType();
     }
+
+    public static final LodestoneWorldParticleRenderType ADDITIVE_OVERLAY = new LodestoneWorldParticleRenderType(
+            LodestoneRenderTypes.ADDITIVE_PARTICLE, LodestoneShaders.PARTICLE, TextureAtlas.LOCATION_PARTICLES,
+            LodestoneRenderTypes.ADDITIVE_FUNCTION);
+
+    public static final LodestoneWorldParticleRenderType TRANSPARENT_OVERLAY = new LodestoneWorldParticleRenderType(
+            LodestoneRenderTypes.TRANSPARENT_PARTICLE, LodestoneShaders.PARTICLE, TextureAtlas.LOCATION_PARTICLES,
+            LodestoneRenderTypes.TRANSPARENT_FUNCTION);
 }

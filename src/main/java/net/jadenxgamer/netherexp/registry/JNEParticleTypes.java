@@ -62,6 +62,8 @@ public class JNEParticleTypes {
     public static final Supplier<LodestoneWorldParticleType> LARGE_BURST = PARTICLE_TYPES.register("large_burst", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> BURN_DROPLET = PARTICLE_TYPES.register("burn_droplet", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> BURN_SIDE = PARTICLE_TYPES.register("burn_side", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> BURN_DROPLET_TINT = PARTICLE_TYPES.register("burn_droplet_tint", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> BURN_SIDE_TINT = PARTICLE_TYPES.register("burn_side_tint", LodestoneWorldParticleType::new);
     public static final Supplier<SimpleParticleType> RED_HAZE = PARTICLE_TYPES.register("red_haze", () -> new SimpleParticleType(false));
     public static final Supplier<SimpleParticleType> RED_SPARKLE = PARTICLE_TYPES.register("red_sparkle", () -> new SimpleParticleType(false));
     public static final Supplier<SimpleParticleType> CANDLE_BURST = PARTICLE_TYPES.register("candle_burst", () -> new SimpleParticleType(false));

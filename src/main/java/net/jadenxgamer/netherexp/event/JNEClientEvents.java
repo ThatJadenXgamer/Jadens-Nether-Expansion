@@ -120,6 +120,8 @@ public class JNEClientEvents {
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_no_shade_entity_cutout_no_cull"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeNoShadeEntityCutoutNoCull);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_entity_additive"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeEntityAdditive);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_fire_overlay"), DefaultVertexFormat.NEW_ENTITY), JNERenderStateShard::setRenderTypeFireOverlay);
+
+            event.registerShader(new ShaderInstance(event.getResourceProvider(), NetherExp.idPath(NetherExp.MOD_ID, "rendertype_particle_overlay"), DefaultVertexFormat.PARTICLE), JNERenderStateShard::setRenderTypeParticleOverlay);
         } catch (IOException exception) {
             NetherExp.LOGGER.error("Failed to load Shader Instances, {}", exception.getMessage());
         }

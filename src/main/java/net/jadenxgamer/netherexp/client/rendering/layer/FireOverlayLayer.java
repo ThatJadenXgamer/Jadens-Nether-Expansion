@@ -20,15 +20,7 @@ public class FireOverlayLayer<T extends LivingEntity, M extends EntityModel<T>> 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
         if (entity.getType().is(JNETags.EntityTypes.NO_BURNING_FILTER) || !entity.displayFireAnimation() || entity.isSpectator()) return;
-        float minAlpha = 0.05f;
-        float maxAlpha = 0.5f;
-        float speed = 0.4f;
-
-        float offset = (minAlpha + maxAlpha) / 2.0f;
-        float amplitude = (maxAlpha - minAlpha) / 2.0f;
-        float alpha = offset + amplitude * Mth.sin((entity.tickCount + partialTick) * speed);
-        alpha = Mth.clamp(alpha, minAlpha, maxAlpha);
-        int packedColor = ((int) (alpha * 255) << 24) | 0xFF8000;
+        int packedColor = getGlow(entity, partialTick);
         this.getParentModel().renderToBuffer(
                 poseStack,
                 bufferSource.getBuffer(JNERenderType.fireOverlay(this.getTextureLocation(entity))),
@@ -36,5 +28,20 @@ public class FireOverlayLayer<T extends LivingEntity, M extends EntityModel<T>> 
                 OverlayTexture.NO_OVERLAY,
                 packedColor
         );
+    }
+
+    private static <T extends LivingEntity> int getGlow(T entity, float partialTick) {
+        float minAlpha = 0.05f;
+        float maxAlpha = 0.5f;
+        float speed = 0.4f;
+        float frameRate = 20.0f / 12.0f;
+
+        float quantizedTicks = Mth.floor((entity.tickCount + partialTick) / frameRate) * frameRate;
+
+        float offset = (minAlpha + maxAlpha) / 2.0f;
+        float amplitude = (maxAlpha - minAlpha) / 2.0f;
+        float alpha = offset + amplitude * Mth.sin(quantizedTicks * speed);
+        alpha = Mth.clamp(alpha, minAlpha, maxAlpha);
+        return ((int) (alpha * 255) << 24) | 0xFF8000;
     }
 }

@@ -133,6 +133,8 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.LARGE_BURST.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.BURN_DROPLET.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.BURN_SIDE.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BURN_DROPLET_TINT.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BURN_SIDE_TINT.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.RED_HAZE.get(), RedHazeParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.RED_SPARKLE.get(), FallingParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
