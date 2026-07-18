@@ -212,13 +212,13 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_DAMAGE_MULTIPLIER;
     public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_PROTECTION_DAMAGE;
     public static ModConfigSpec.BooleanValue SILVER_PARANORMAL_INFLICTS_SLOWNESS;
-    public static ModConfigSpec.BooleanValue DEVELOPER_MODE;
     public static ModConfigSpec.BooleanValue SHOW_BETA_WARNING_POPUP;
 
     // STARTUP
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
     public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;
+    public static ModConfigSpec.BooleanValue DEVELOPER_MODE;
 
     // PACK
     public static ModConfigSpec.BooleanValue SOUL_CAMPFIRE_SOUL_SOIL;

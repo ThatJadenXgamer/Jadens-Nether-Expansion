@@ -756,10 +756,6 @@ public class JNEConfigImpl {
             SILVER_PARANORMAL_INFLICTS_SLOWNESS = builder
                     .comment("Silver armor and weapons will inflict possessed and ghost mobs with slowness")
                     .define("silverInflictsParanormalSlowness", true);
-            DEVELOPER_MODE = builder
-                    .comment("Turns on various developer loggers, technical information and such for debugging purposes \n" +
-                            "I suggest you keep this disabled if you're just a casual player")
-                    .define("developerMode", false);
             SHOW_BETA_WARNING_POPUP = builder
                     .comment("Pretty self-explanatory; When running beta builds of JNE, a pop-up will appear on screen warning you upon joining worlds")
                     .define("showBetaWarningPopUp", true);
@@ -780,6 +776,10 @@ public class JNEConfigImpl {
                     .comment("JNE has swearing, and lots of it too but is normally censored \n" +
                             "If you'd like to disable profanity entirely or uncensor it you may do so with this config")
                     .defineEnum("profanity", ProfanityConfig.CENSORED);
+            DEVELOPER_MODE = builder
+                    .comment("Turns on various developer loggers, technical information and such for debugging purposes \n" +
+                            "I suggest you keep this disabled if you're just a casual player... or don't, I'm not your mother")
+                    .define("developerMode", false);
         }
     }
 

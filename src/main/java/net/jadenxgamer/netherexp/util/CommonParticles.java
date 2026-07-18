@@ -5,12 +5,10 @@ import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.NetherPortalBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
@@ -248,47 +246,6 @@ public class CommonParticles {
                     })
                     .setMotion(0, 0 ,0)
                     .spawn(level, x, y, z);
-        }
-    }
-
-    public static void burnParticle(Level level, RandomSource random, Entity entity) {
-        AABB box = entity.getBoundingBox();
-        double volume = box.getXsize() * box.getYsize() * box.getZsize();
-        int frequency = Math.max(1, (int)(volume * 0.6 + 0.5f));
-
-        for (int i = 0; i < frequency; i++) {
-            var x = entity.getRandomX(Mth.nextFloat(random, 0.2f, 1.2f));
-            var y = entity.getRandomY() + Mth.nextFloat(random, 0f, 0.2f);
-            var z = entity.getRandomZ(Mth.nextFloat(random, 0.2f, 1.2f));
-            var burnVariant = random.nextBoolean() ? JNEParticleTypes.BURN_DROPLET.get() : JNEParticleTypes.BURN_SIDE.get();
-            var start = new Color(0xFF7C1E);
-            var end = new Color(0x3C2E2E);
-            WorldParticleBuilder.create(burnVariant)
-                    .setFullBrightLighting()
-                    .setScaleData(GenericParticleData.create(Mth.nextFloat(random, 0.18f, 0.42f)).build())
-                    .setTransparencyData(GenericParticleData.create(1).build())
-                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                    .setLifetime(random.nextInt(5, 20))
-                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                    .disableNoClip()
-                    .setGravity(0f)
-                    .setMotion(0.0, 0.0, 0.0)
-                    .setLifeDelay(random.nextInt(0, 10))
-                    .spawn(level, x, y, z);
-
-            if (random.nextInt(2) != 0) continue;
-            LodestoneWorldParticleType smokeVariant = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
-            WorldParticleBuilder.create(smokeVariant)
-                    .setNaturalLighting()
-                    .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.13f, 0.49f)).build())
-                    .setTransparencyData(GenericParticleData.create(1.0f, 0.0f).build())
-                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                    .setColorData(ColorParticleData.create(start, end).setEasing(Easing.SINE_OUT).build())
-                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                    .setLifetime(Mth.randomBetweenInclusive(random, 12, 27))
-                    .enableNoClip()
-                    .addMotion(0.0, 0.1, 0.0)
-                    .spawn(level, entity.getRandomX(0.3), y, entity.getRandomZ(0.3));
         }
     }
 }

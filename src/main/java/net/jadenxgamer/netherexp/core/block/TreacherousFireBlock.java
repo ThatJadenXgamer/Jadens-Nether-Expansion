@@ -6,6 +6,7 @@ import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -60,5 +61,8 @@ public class TreacherousFireBlock extends BaseFireBlock {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if (!(entity instanceof LivingEntity living)) return;
+        if (living.getHealth() <= living.getMaxHealth() / 3) entity.hurt(level.damageSources().inFire(), 8);
+        living.setRemainingFireTicks(18);
     }
 }
