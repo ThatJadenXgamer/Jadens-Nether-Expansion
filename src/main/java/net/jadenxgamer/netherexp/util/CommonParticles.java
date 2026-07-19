@@ -62,7 +62,7 @@ public class CommonParticles {
                 .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
                 .setScaleData(GenericParticleData.create(0.18f, 0.18f, 0.0f).build())
                 .setTransparencyData(GenericParticleData.create(1).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
                 .setLifetime(random.nextInt(10, 50))
                 .disableNoClip()
                 .setGravity(0f)

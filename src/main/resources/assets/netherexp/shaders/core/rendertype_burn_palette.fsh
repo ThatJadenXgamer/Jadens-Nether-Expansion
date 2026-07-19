@@ -8,7 +8,6 @@ uniform sampler2D PaletteSampler;
 
 uniform float LumiTransparency;
 uniform float DepthFade;
-uniform float PaletteRows;
 
 uniform vec4 ColorModulator;
 uniform float FogStart;
@@ -49,9 +48,15 @@ void main() {
     else if (isPlaceholder(color, PLACEHOLDER5)) colorIndex = 4;
     else if (isPlaceholder(color, PLACEHOLDER6)) colorIndex = 5;
 
-    if (colorIndex != -1 && PaletteRows > 0.0) {
-        float u = (colorIndex + 0.5) / 6.0;
-        float v = vertexColor.r;
+    if (colorIndex != -1) {
+        ivec3 col = ivec3(round(vertexColor.rgb * 255.0));
+        int rowInt = col.r | (col.g << 8) | (col.b << 16);
+        ivec2 texSize = textureSize(PaletteSampler, 0);
+        int palettesPerRow = texSize.x / 6;
+        int block = rowInt / palettesPerRow;
+        int local = rowInt - block * palettesPerRow;
+        float u = (float(local * 6 + colorIndex) + 0.5) / float(texSize.x);
+        float v = (float(block) + 0.5) / float(texSize.y);
         vec4 paletteColor = texture(PaletteSampler, vec2(u, v));
         color = paletteColor.rgb;
     }

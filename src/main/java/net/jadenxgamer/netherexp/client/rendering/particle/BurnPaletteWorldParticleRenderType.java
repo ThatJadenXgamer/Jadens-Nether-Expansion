@@ -24,8 +24,6 @@ public class BurnPaletteWorldParticleRenderType extends LodestoneWorldParticleRe
         if (shader != null) {
             var paletteTextureId = BurnPalettesManager.getPaletteTexture();
             shader.setSampler("PaletteSampler", paletteTextureId);
-            var rowsUniform = shader.getUniform("PaletteRows");
-            if (rowsUniform != null) rowsUniform.set((float) BurnPalettesManager.getPaletteRows());
         }
         return builder;
     }

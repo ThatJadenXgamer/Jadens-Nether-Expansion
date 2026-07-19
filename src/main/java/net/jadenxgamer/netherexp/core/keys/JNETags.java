@@ -27,6 +27,7 @@ public class JNETags {
         public static final TagKey<Block> SILTMARRAM_PLANTABLE_ON = createTag("siltmarram_plantable_on"); // Blocks in this tag can support siltmarrams
         public static final TagKey<Block> SOUL_SWIRLS = createTag("soul_swirls"); // Blocks in this tag are treated as soul swirls and can be petrified
         public static final TagKey<Block> SOUL_GLASSES = createTag("soul_glasses"); // Blocks in this tag are treated as soul glasses and get a shader effect applied to them
+        public static final TagKey<Block> LAST_FIRE_SUPPORTED_BLOCKS = createTag("last_fire_supported_blocks"); // The game will remember you last went through this block when burning
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.netherexpPath(name));
@@ -73,6 +74,7 @@ public class JNETags {
     }
 
     public static class Biomes {
+
         public static final TagKey<Biome> HAS_CRIMSON_SPORES = createBiomeTag("particles/has_crimson_spores"); // Prevents sporeshrooms from producing crimson spores here
         public static final TagKey<Biome> HAS_WARPED_SPORES = createBiomeTag("particles/has_warped_spores"); // Prevents sporeshrooms from producing warped spores here
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash"); // Prevents geysers from producing ash particles here
@@ -89,7 +91,8 @@ public class JNETags {
     }
 
     public static class Fluids {
-        public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createBiomeTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice
+
+        public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createBiomeTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice if near just black ice
 
         private static TagKey<Fluid> createBiomeTag(String name) {
             return TagKey.create(Registries.FLUID, NetherExp.netherexpPath(name));

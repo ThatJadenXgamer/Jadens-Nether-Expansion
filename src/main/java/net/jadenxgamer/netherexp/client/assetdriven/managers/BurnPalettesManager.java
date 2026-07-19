@@ -8,6 +8,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.assetdriven.BurnPalettes;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderType;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEAttachmentTypes;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.util.ColorHelper;
@@ -17,7 +18,6 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -47,6 +47,8 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
             Color.decode("#F9EBAB"), Color.decode("#EFCD56"), Color.decode("#DFA21B"),
             Color.decode("#C96C03"), Color.decode("#B13F00"), Color.decode("#A32102")
     };
+
+    private static final int PALETTES_PER_TEXTURE_ROW = 1024;
 
     private static final Map<ResourceLocation, Integer> BLOCK_PALETTE_ROW_MAP = new HashMap<>();
     private static final Map<ResourceLocation, Integer> PARTICLE_PALETTE_ROW_MAP = new HashMap<>();
@@ -135,15 +137,27 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
     }
 
     private static NativeImage createPaletteImage(List<BurnPalettes> palettes) {
-        NativeImage image = new NativeImage(6, palettes.size(), false);
-        for (int row = 0; row < palettes.size(); row++) {
+        int rows = palettes.size();
+        int height = (rows + PALETTES_PER_TEXTURE_ROW - 1) / PALETTES_PER_TEXTURE_ROW;
+        int width = 6 * PALETTES_PER_TEXTURE_ROW;
+        NativeImage image = new NativeImage(width, height, false);
+        int black = argbToAbgr(0xFF000000);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                image.setPixelRGBA(x, y, black);
+            }
+        }
+        for (int row = 0; row < rows; row++) {
             BurnPalettes palette = palettes.get(row);
-            image.setPixelRGBA(0, row, argbToAbgr(palette.palette1().getRGB()));
-            image.setPixelRGBA(1, row, argbToAbgr(palette.palette2().getRGB()));
-            image.setPixelRGBA(2, row, argbToAbgr(palette.palette3().getRGB()));
-            image.setPixelRGBA(3, row, argbToAbgr(palette.palette4().getRGB()));
-            image.setPixelRGBA(4, row, argbToAbgr(palette.palette5().getRGB()));
-            image.setPixelRGBA(5, row, argbToAbgr(palette.palette6().getRGB()));
+            int y = row / PALETTES_PER_TEXTURE_ROW;
+            int local = row % PALETTES_PER_TEXTURE_ROW;
+            int baseX = local * 6;
+            image.setPixelRGBA(baseX, y, argbToAbgr(palette.palette1().getRGB()));
+            image.setPixelRGBA(baseX + 1, y, argbToAbgr(palette.palette2().getRGB()));
+            image.setPixelRGBA(baseX + 2, y, argbToAbgr(palette.palette3().getRGB()));
+            image.setPixelRGBA(baseX + 3, y, argbToAbgr(palette.palette4().getRGB()));
+            image.setPixelRGBA(baseX + 4, y, argbToAbgr(palette.palette5().getRGB()));
+            image.setPixelRGBA(baseX + 5, y, argbToAbgr(palette.palette6().getRGB()));
         }
         return image;
     }
@@ -182,14 +196,19 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
         };
     }
 
+    private static Color encodeRow(int row) {
+        int r = row & 0xFF;
+        int g = (row >> 8) & 0xFF;
+        int b = (row >> 16) & 0xFF;
+        int a = 255;
+        return new Color(r, g, b, a);
+    }
+
     public static void handleLastFire(Level level, LivingEntity entity) {
         if (level.isClientSide()) return;
         if (entity.displayFireAnimation()) {
             var state = entity.getInBlockState();
-            if (state.is(BlockTags.FIRE)) {
-                var block = state.getBlock();
-                entity.setData(JNEAttachmentTypes.LAST_FIRE, block.builtInRegistryHolder().key().location());
-            }
+            if (state.is(JNETags.Blocks.LAST_FIRE_SUPPORTED_BLOCKS)) entity.setData(JNEAttachmentTypes.LAST_FIRE, state.getBlock().builtInRegistryHolder().key().location());
         } else entity.setData(JNEAttachmentTypes.LAST_FIRE, NetherExp.minecraftPath("fire"));
     }
 
@@ -200,8 +219,7 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
 
         ResourceLocation fireBlock = entity.getData(JNEAttachmentTypes.LAST_FIRE);
         int row = getRowForBlock(fireBlock);
-        ColorParticleData colorData = ColorParticleData.create(new Color((int)((row + 0.5f) / getPaletteRows() * 255), 0, 0)).build();
-
+        ColorParticleData colorData = ColorParticleData.create(encodeRow(row)).build();
         Color smokeStart = getPaletteColor(row, 2);
         Color smokeEnd = ColorHelper.adjustHSB(getPaletteColor(row, 5)).saturation(0.3f).brightness(0.143f).build();
 
@@ -240,7 +258,7 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
     }
 
     public static void flameToBurnParticle(Level level, RandomSource random, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, boolean small, int row) {
-        ColorParticleData colorData = ColorParticleData.create(new Color((int)((row + 0.5f) / getPaletteRows() * 255), 0, 0)).build();
+        ColorParticleData colorData = ColorParticleData.create(encodeRow(row)).build();
         float minScale = small ? 0.12f : 0.18f;
         float maxScale = small ? 0.22f : 0.32f;
 
