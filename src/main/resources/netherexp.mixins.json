@@ -6,6 +6,8 @@
   "client": [
     "client.ClientLevelMixin",
     "client.EntityRenderDispatcherMixin",
+    "client.FlameParticleProviderMixin",
+    "client.FlameParticleSmallProviderMixin",
     "client.FogRendererMixin",
     "client.HumanoidModelMixin",
     "client.LevelRendererMixin",

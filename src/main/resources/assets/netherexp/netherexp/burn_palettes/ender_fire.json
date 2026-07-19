@@ -1,5 +1,9 @@
 {
   "blocks": "endergetic:ender_fire",
+  "replace_particles": [
+    "endergetic:ender_fire_flame",
+    "endergetic:small_ender_fire_flame"
+  ],
   "palette1": "#e5e5e5",
   "palette2": "#ecb6fb",
   "palette3": "#d786fc",

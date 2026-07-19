@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public record BurnPalettes(Set<ResourceLocation> blocks, Color palette1, Color palette2, Color palette3, Color palette4, Color palette5, Color palette6) {
+public record BurnPalettes(Set<ResourceLocation> blocks, Color palette1, Color palette2, Color palette3, Color palette4, Color palette5, Color palette6, Set<ResourceLocation> replaceParticles) {
 
     public static BurnPalettes parseSetting(JsonObject json) {
         Set<ResourceLocation> blocks = new HashSet<>();
@@ -30,7 +30,22 @@ public record BurnPalettes(Set<ResourceLocation> blocks, Color palette1, Color p
         Color p4 = hexToColor(json.get("palette4").getAsString());
         Color p5 = hexToColor(json.get("palette5").getAsString());
         Color p6 = hexToColor(json.get("palette6").getAsString());
-        return new BurnPalettes(blocks, p1, p2, p3, p4, p5, p6);
+
+        Set<ResourceLocation> replaceParticles = new HashSet<>();
+        JsonElement particlesElement = json.get("replace_particles");
+        if (particlesElement != null) {
+            if (particlesElement.isJsonPrimitive()) {
+                replaceParticles.add(ResourceLocation.parse(particlesElement.getAsString()));
+            } else if (particlesElement.isJsonArray()) {
+                JsonArray array = particlesElement.getAsJsonArray();
+                for (JsonElement elem : array) {
+                    if (elem.isJsonPrimitive()) {
+                        replaceParticles.add(ResourceLocation.parse(elem.getAsString()));
+                    }
+                }
+            }
+        }
+        return new BurnPalettes(blocks, p1, p2, p3, p4, p5, p6, replaceParticles);
     }
 
     private static Color hexToColor(String hex) {

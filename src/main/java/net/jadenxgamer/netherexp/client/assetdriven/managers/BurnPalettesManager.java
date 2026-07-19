@@ -49,6 +49,7 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
     };
 
     private static final Map<ResourceLocation, Integer> BLOCK_PALETTE_ROW_MAP = new HashMap<>();
+    private static final Map<ResourceLocation, Integer> PARTICLE_PALETTE_ROW_MAP = new HashMap<>();
     private static int totalPaletteRows = 1;
     private static final AtomicReference<DynamicTexture> paletteTextureRef = new AtomicReference<>();
     private static List<BurnPalettes> paletteList = new ArrayList<>();
@@ -67,7 +68,8 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
                             List.of(new BurnPalettes(
                                     Collections.emptySet(),
                                     DEFAULT_PALETTE_COLORS[0], DEFAULT_PALETTE_COLORS[1], DEFAULT_PALETTE_COLORS[2],
-                                    DEFAULT_PALETTE_COLORS[3], DEFAULT_PALETTE_COLORS[4], DEFAULT_PALETTE_COLORS[5]
+                                    DEFAULT_PALETTE_COLORS[3], DEFAULT_PALETTE_COLORS[4], DEFAULT_PALETTE_COLORS[5],
+                                    Collections.emptySet()
                             ))
                     );
                     texture = new DynamicTexture(defaultImage);
@@ -92,15 +94,26 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
         allPalettes.add(new BurnPalettes(
                 Collections.emptySet(),
                 DEFAULT_PALETTE_COLORS[0], DEFAULT_PALETTE_COLORS[1], DEFAULT_PALETTE_COLORS[2],
-                DEFAULT_PALETTE_COLORS[3], DEFAULT_PALETTE_COLORS[4], DEFAULT_PALETTE_COLORS[5]
+                DEFAULT_PALETTE_COLORS[3], DEFAULT_PALETTE_COLORS[4], DEFAULT_PALETTE_COLORS[5],
+                Collections.emptySet()
         ));
         allPalettes.addAll(loadedPalettes);
         paletteList = allPalettes;
 
         BLOCK_PALETTE_ROW_MAP.clear();
+        PARTICLE_PALETTE_ROW_MAP.clear();
         for (int row = 0; row < allPalettes.size(); row++) {
             BurnPalettes palette = allPalettes.get(row);
-            if (!palette.blocks().isEmpty()) for (ResourceLocation block : palette.blocks()) BLOCK_PALETTE_ROW_MAP.put(block, row);
+            if (!palette.blocks().isEmpty()) {
+                for (ResourceLocation block : palette.blocks()) {
+                    BLOCK_PALETTE_ROW_MAP.put(block, row);
+                }
+            }
+            if (!palette.replaceParticles().isEmpty()) {
+                for (ResourceLocation particle : palette.replaceParticles()) {
+                    PARTICLE_PALETTE_ROW_MAP.put(particle, row);
+                }
+            }
         }
         totalPaletteRows = allPalettes.size();
 
@@ -149,6 +162,10 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
 
     public static int getRowForBlock(ResourceLocation block) {
         return BLOCK_PALETTE_ROW_MAP.getOrDefault(block, 0);
+    }
+
+    public static int getRowForParticle(ResourceLocation particle) {
+        return PARTICLE_PALETTE_ROW_MAP.getOrDefault(particle, -1);
     }
 
     public static Color getPaletteColor(int row, int index) {
@@ -220,5 +237,25 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
                     .addMotion(0.0, 0.1, 0.0)
                     .spawn(level, entity.getRandomX(0.5), y, entity.getRandomZ(0.5));
         }
+    }
+
+    public static void flameToBurnParticle(Level level, RandomSource random, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, boolean small, int row) {
+        ColorParticleData colorData = ColorParticleData.create(new Color((int)((row + 0.5f) / getPaletteRows() * 255), 0, 0)).build();
+        float minScale = small ? 0.12f : 0.18f;
+        float maxScale = small ? 0.22f : 0.32f;
+
+        var burnVariant = random.nextBoolean() ? JNEParticleTypes.BURN_DROPLET.get() : JNEParticleTypes.BURN_SIDE.get();
+        WorldParticleBuilder.create(burnVariant)
+                .setFullBrightLighting()
+                .setScaleData(GenericParticleData.create(Mth.nextFloat(random, minScale, maxScale)).build())
+                .setTransparencyData(GenericParticleData.create(1).build())
+                .setRenderType(JNERenderType.TRANSPARENT_BURN_PALETTE)
+                .setColorData(colorData)
+                .setLifetime(random.nextInt(5, 20))
+                .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
+                .disableNoClip()
+                .setGravity(0f)
+                .setMotion(xSpeed, ySpeed, zSpeed)
+                .spawn(level, x, y + 0.05, z);
     }
 }

@@ -1,5 +1,8 @@
 {
   "blocks": "architects_palette:nether_brass_fire",
+  "replace_particles": [
+    "architects_palette:green_flame"
+  ],
   "palette1": "#f4faff",
   "palette2": "#fff09a",
   "palette3": "#dcf414",

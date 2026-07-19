@@ -1,5 +1,9 @@
 {
   "blocks": "minecraft:fire",
+  "replace_particles": [
+    "minecraft:flame",
+    "minecraft:small_flame"
+  ],
   "palette1": "#F9EBAB",
   "palette2": "#EFCD56",
   "palette3": "#DFA21B",

@@ -1,5 +1,10 @@
 {
   "blocks": "caverns_and_chasms:cupric_fire",
+  "replace_particles": [
+    "caverns_and_chasms:cupric_fire_flame",
+    "caverns_and_chasms:small_cupric_fire_flame",
+    "supplementaries:green_flame"
+  ],
   "palette1": "#e9ffc6",
   "palette2": "#a5f09b",
   "palette3": "#6dee5c",
