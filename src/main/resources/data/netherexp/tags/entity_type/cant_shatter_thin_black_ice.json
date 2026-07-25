@@ -22,6 +22,8 @@
     "minecraft:breeze",
     "minecraft:wither",
     "minecraft:ender_dragon",
-    "netherexp:wisp"
+    "netherexp:wisp",
+    "netherexp:apparition",
+    "netherexp:banshee"
   ]
 }

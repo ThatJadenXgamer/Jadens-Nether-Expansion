@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "minecraft:blaze"
+    "minecraft:blaze",
+    "minecraft:fireball",
+    "minecraft:small_fireball"
   ]
 }

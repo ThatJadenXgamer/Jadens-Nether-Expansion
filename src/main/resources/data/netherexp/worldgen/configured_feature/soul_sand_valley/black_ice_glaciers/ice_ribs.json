@@ -1,0 +1,15 @@
+{
+  "type": "elysium_api:structure_stamp",
+  "config": {
+    "templates": [
+      { "data": "netherexp:ice_ribs/small", "weight": 1 },
+      { "data": "netherexp:ice_ribs/medium", "weight": 1 },
+      { "data": "netherexp:ice_ribs/big", "weight": 1 },
+      { "data": "netherexp:ice_ribs/large", "weight": 1 }
+    ],
+    "origin_type": "centered",
+    "can_place_on": "#netherexp:black_ice_replaceable",
+    "processors": "minecraft:empty",
+    "liquid_settings": "apply_waterlogging"
+  }
+}

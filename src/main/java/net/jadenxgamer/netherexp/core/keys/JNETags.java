@@ -28,6 +28,7 @@ public class JNETags {
         public static final TagKey<Block> SOUL_SWIRLS = createTag("soul_swirls"); // Blocks in this tag are treated as soul swirls and can be petrified
         public static final TagKey<Block> SOUL_GLASSES = createTag("soul_glasses"); // Blocks in this tag are treated as soul glasses and get a shader effect applied to them
         public static final TagKey<Block> LAST_FIRE_SUPPORTED_BLOCKS = createTag("last_fire_supported_blocks"); // The game will remember you last went through this block when burning
+        public static final TagKey<Block> BLACK_ICE_REPLACEABLE = createTag("black_ice_replaceable");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.netherexpPath(name));

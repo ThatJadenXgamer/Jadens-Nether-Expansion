@@ -4,6 +4,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.worldgen.feature.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -28,6 +29,9 @@ public class JNEFeatureTypes {
 
     public static final Supplier<Feature<?>> NETHER_SPELEOTHEM = FEATURES.register("nether_speleothem", () ->
             new NetherSpeleothemFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final Supplier<Feature<?>> BLACK_ICE_CLUSTER = FEATURES.register("black_ice_cluster", () ->
+            new BlackIceClusterFeature(DripstoneClusterConfiguration.CODEC));
 
     public static void init(IEventBus eventBus) {
         FEATURES.register(eventBus);

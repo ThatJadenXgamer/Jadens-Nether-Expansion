@@ -1,4 +1,5 @@
 {
+  "type": "default",
   "dimension": "minecraft:the_nether",
   "climate_point": 5,
   "biome": "infernalexp:glowstone_canyon",

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:basalt_deltas"
+    "minecraft:basalt_deltas",
+    "netherexp:black_ice_glaciers"
   ]
 }

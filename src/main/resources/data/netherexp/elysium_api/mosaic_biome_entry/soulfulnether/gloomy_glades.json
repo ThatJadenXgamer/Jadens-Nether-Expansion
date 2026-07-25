@@ -1,4 +1,5 @@
 {
+  "type": "default",
   "dimension": "minecraft:the_nether",
   "climate_point": 3,
   "biome": "soulfulnether:gloomy_glades",
