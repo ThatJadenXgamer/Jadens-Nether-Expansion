@@ -23,40 +23,31 @@ in vec4 viewSpacePos;
 
 out vec4 fragColor;
 
-const vec3 PLACEHOLDER1 = vec3(1.0, 1.0, 1.0);
-const vec3 PLACEHOLDER2 = vec3(183.0/255.0, 183.0/255.0, 183.0/255.0);
-const vec3 PLACEHOLDER3 = vec3(135.0/255.0, 135.0/255.0, 135.0/255.0);
-const vec3 PLACEHOLDER4 = vec3(102.0/255.0, 102.0/255.0, 102.0/255.0);
-const vec3 PLACEHOLDER5 = vec3(79.0/255.0, 79.0/255.0, 79.0/255.0);
-const vec3 PLACEHOLDER6 = vec3(61.0/255.0, 61.0/255.0, 61.0/255.0);
-
-bool isPlaceholder(vec3 a, vec3 b) {
-    const float epsilon = 0.05;
-    return all(lessThan(abs(a - b), vec3(epsilon)));
-}
-
 void main() {
     vec4 texColor = texture(Sampler0, texCoord0);
     vec3 color = texColor.rgb;
     float alpha = texColor.a;
 
+    float brightness = color.r;
+    const float epsilon = 0.05;
     int colorIndex = -1;
-    if (isPlaceholder(color, PLACEHOLDER1)) colorIndex = 0;
-    else if (isPlaceholder(color, PLACEHOLDER2)) colorIndex = 1;
-    else if (isPlaceholder(color, PLACEHOLDER3)) colorIndex = 2;
-    else if (isPlaceholder(color, PLACEHOLDER4)) colorIndex = 3;
-    else if (isPlaceholder(color, PLACEHOLDER5)) colorIndex = 4;
-    else if (isPlaceholder(color, PLACEHOLDER6)) colorIndex = 5;
+
+    if (abs(brightness - 1.0) < epsilon) colorIndex = 0;
+    else if (abs(brightness - 0.717647) < epsilon) colorIndex = 1;
+    else if (abs(brightness - 0.529412) < epsilon) colorIndex = 2;
+    else if (abs(brightness - 0.4) < epsilon) colorIndex = 3;
+    else if (abs(brightness - 0.309804) < epsilon) colorIndex = 4;
+    else if (abs(brightness - 0.239216) < epsilon) colorIndex = 5;
 
     if (colorIndex != -1) {
         ivec3 col = ivec3(round(vertexColor.rgb * 255.0));
-        int rowInt = col.r | (col.g << 8) | (col.b << 16);
+        int paletteIndex = col.r | (col.g << 8) | (col.b << 16);
         ivec2 texSize = textureSize(PaletteSampler, 0);
         int palettesPerRow = texSize.x / 6;
-        int block = rowInt / palettesPerRow;
-        int local = rowInt - block * palettesPerRow;
-        float u = (float(local * 6 + colorIndex) + 0.5) / float(texSize.x);
-        float v = (float(block) + 0.5) / float(texSize.y);
+        int pRow = paletteIndex / palettesPerRow;
+        int pCol = paletteIndex % palettesPerRow;
+        float u = (float(pCol * 6 + colorIndex) + 0.5) / float(texSize.x);
+        float v = (float(pRow) + 0.5) / float(texSize.y);
         vec4 paletteColor = texture(PaletteSampler, vec2(u, v));
         color = paletteColor.rgb;
     }

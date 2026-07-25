@@ -3,8 +3,11 @@ package net.jadenxgamer.netherexp.core.block;
 import com.mojang.serialization.MapCodec;
 import net.jadenxgamer.elysium_api.api.tags.ElysiumTags;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
+import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -62,7 +65,11 @@ public class TreacherousFireBlock extends BaseFireBlock {
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!(entity instanceof LivingEntity living)) return;
-        if (living.getHealth() <= living.getMaxHealth() / 3) entity.hurt(level.damageSources().inFire(), 8);
+        if (living.getHealth() <= living.getMaxHealth() / 2) {
+            entity.hurt(level.damageSources().inFire(), 8);
+            if (entity.tickCount % 20 == 0) level.playSound(null, pos, JNESoundEvents.TREACHEROUS_FIRE_MOCKING.get(), SoundSource.BLOCKS,
+                    1.0F, Mth.randomBetween(level.random, 0.5F, 1.5F));
+        }
         living.setRemainingFireTicks(18);
     }
 }

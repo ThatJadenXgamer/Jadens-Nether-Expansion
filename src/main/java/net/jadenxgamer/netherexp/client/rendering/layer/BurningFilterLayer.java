@@ -14,11 +14,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 
-import java.awt.*;
+public class BurningFilterLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
 
-public class FireOverlayLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
-
-    public FireOverlayLayer(LivingEntityRenderer<T, M> renderer) {
+    public BurningFilterLayer(LivingEntityRenderer<T, M> renderer) {
         super(renderer);
     }
 

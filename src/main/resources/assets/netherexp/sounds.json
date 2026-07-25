@@ -1537,6 +1537,13 @@
     "subtitle": "subtitles.entity.ecto_slab.petrify_swirls"
   },
 
+  "block.treacherous_fire.mocking": {
+    "sounds": [
+      "netherexp:block/treacherous_fire/mocking1",
+      "netherexp:block/treacherous_fire/mocking2"
+    ],
+    "subtitle": "subtitles.block.treacherous_fire.mocking"
+  },
   "block.nether_portal.activate": {
     "sounds": [
       "netherexp:block/nether_portal/activate"

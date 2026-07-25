@@ -8,7 +8,7 @@ import net.jadenxgamer.netherexp.client.gui.BetaPopupWarning;
 import net.jadenxgamer.netherexp.client.rendering.JNEShaders;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
-import net.jadenxgamer.netherexp.client.rendering.layer.FireOverlayLayer;
+import net.jadenxgamer.netherexp.client.rendering.layer.BurningFilterLayer;
 import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor;
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
@@ -65,13 +65,13 @@ public class JNEClientEvents {
         for (EntityType<?> entityType : event.getEntityTypes()) {
             EntityRenderer<?> renderer = event.getRenderer(entityType);
             if (renderer instanceof LivingEntityRenderer<?, ?> livingRenderer) {
-                livingRenderer.addLayer((RenderLayer) new FireOverlayLayer<>(livingRenderer));
+                livingRenderer.addLayer((RenderLayer) new BurningFilterLayer<>(livingRenderer));
             }
         }
         for (PlayerSkin.Model skinModel : event.getSkins()) {
             EntityRenderer<?> renderer = event.getSkin(skinModel);
             if (renderer instanceof LivingEntityRenderer<?, ?> livingRenderer) {
-                livingRenderer.addLayer((RenderLayer) new FireOverlayLayer<>(livingRenderer));
+                livingRenderer.addLayer((RenderLayer) new BurningFilterLayer<>(livingRenderer));
             }
         }
     }

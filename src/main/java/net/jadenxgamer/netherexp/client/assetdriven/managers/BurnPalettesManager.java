@@ -38,45 +38,39 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
 
     private static final Gson GSON = new Gson();
 
-    private static final Color[] DEFAULT_PALETTE_COLORS = {
+    private static final BurnPalettes DEFAULT_PALETTE = new BurnPalettes(
+            Collections.emptySet(),
             Color.decode("#F9EBAB"), Color.decode("#EFCD56"), Color.decode("#DFA21B"),
-            Color.decode("#C96C03"), Color.decode("#B13F00"), Color.decode("#A32102")
-    };
+            Color.decode("#C96C03"), Color.decode("#B13F00"), Color.decode("#A32102"),
+            Collections.emptySet()
+    );
 
-    private static final int PALETTES_PER_TEXTURE_ROW = 1024;
-
-    private static final Map<ResourceLocation, Integer> BLOCK_PALETTE_ROW_MAP = new HashMap<>();
-    private static final Map<ResourceLocation, Integer> PARTICLE_PALETTE_ROW_MAP = new HashMap<>();
-    private static int totalPaletteRows = 1;
-    private static final AtomicReference<DynamicTexture> paletteTextureRef = new AtomicReference<>();
-    private static List<BurnPalettes> paletteList = new ArrayList<>();
+    private static List<BurnPalettes> paletteList = List.of();
+    private static Map<ResourceLocation, Integer> blockRowMap = Map.of();
+    private static Map<ResourceLocation, Integer> particleRowMap = Map.of();
+    private static Color[] rowColors = new Color[0];
+    private static final AtomicReference<DynamicTexture> paletteTextureReference = new AtomicReference<>();
 
     public BurnPalettesManager() {
         super(GSON, "netherexp/burn_palettes");
     }
 
     private static DynamicTexture getOrCreateDefaultTexture() {
-        DynamicTexture texture = paletteTextureRef.get();
+        DynamicTexture texture = paletteTextureReference.get();
         if (texture == null) {
             synchronized (BurnPalettesManager.class) {
-                texture = paletteTextureRef.get();
+                texture = paletteTextureReference.get();
                 if (texture == null) {
-                    NativeImage defaultImage = createPaletteImage(
-                            List.of(new BurnPalettes(
-                                    Collections.emptySet(),
-                                    DEFAULT_PALETTE_COLORS[0], DEFAULT_PALETTE_COLORS[1], DEFAULT_PALETTE_COLORS[2],
-                                    DEFAULT_PALETTE_COLORS[3], DEFAULT_PALETTE_COLORS[4], DEFAULT_PALETTE_COLORS[5],
-                                    Collections.emptySet()
-                            ))
-                    );
+                    NativeImage defaultImage = createPaletteImage(List.of(DEFAULT_PALETTE));
                     texture = new DynamicTexture(defaultImage);
                     texture.setFilter(false, false);
-                    paletteTextureRef.set(texture);
+                    paletteTextureReference.set(texture);
                 }
             }
         }
@@ -89,80 +83,86 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
         for (Map.Entry<ResourceLocation, JsonElement> entry : elements.entrySet()) {
             try {
                 loadedPalettes.add(BurnPalettes.parseSetting(entry.getValue().getAsJsonObject()));
-            } catch (Exception e) { NetherExp.LOGGER.error("Failed to parse burn palette {}: {}", entry.getKey(), e.getMessage()); }
+            } catch (Exception e) {
+                NetherExp.LOGGER.error("Failed to parse burn palette {}: {}", entry.getKey(), e.getMessage());
+            }
         }
 
         List<BurnPalettes> allPalettes = new ArrayList<>();
-        allPalettes.add(new BurnPalettes(
-                Collections.emptySet(),
-                DEFAULT_PALETTE_COLORS[0], DEFAULT_PALETTE_COLORS[1], DEFAULT_PALETTE_COLORS[2],
-                DEFAULT_PALETTE_COLORS[3], DEFAULT_PALETTE_COLORS[4], DEFAULT_PALETTE_COLORS[5],
-                Collections.emptySet()
-        ));
+        allPalettes.add(DEFAULT_PALETTE);
         allPalettes.addAll(loadedPalettes);
-        paletteList = allPalettes;
+        allPalettes = allPalettes.stream()
+                .map(palette -> new BurnPalettes(
+                        Set.copyOf(palette.blocks()),
+                        palette.palette1(), palette.palette2(), palette.palette3(),
+                        palette.palette4(), palette.palette5(), palette.palette6(),
+                        Set.copyOf(palette.replaceParticles())
+                )).collect(Collectors.toList());
 
-        BLOCK_PALETTE_ROW_MAP.clear();
-        PARTICLE_PALETTE_ROW_MAP.clear();
+        Map<ResourceLocation, Integer> newBlockMap = new HashMap<>();
+        Map<ResourceLocation, Integer> newParticleMap = new HashMap<>();
         for (int row = 0; row < allPalettes.size(); row++) {
             BurnPalettes palette = allPalettes.get(row);
-            if (!palette.blocks().isEmpty()) {
-                for (ResourceLocation block : palette.blocks()) {
-                    BLOCK_PALETTE_ROW_MAP.put(block, row);
-                }
-            }
-            if (!palette.replaceParticles().isEmpty()) {
-                for (ResourceLocation particle : palette.replaceParticles()) {
-                    PARTICLE_PALETTE_ROW_MAP.put(particle, row);
-                }
-            }
+            if (!palette.blocks().isEmpty()) for (ResourceLocation block : palette.blocks()) newBlockMap.put(block, row);
+            if (!palette.replaceParticles().isEmpty()) for (ResourceLocation particle : palette.replaceParticles()) newParticleMap.put(particle, row);
         }
-        totalPaletteRows = allPalettes.size();
 
+        Color[] newRowColors = new Color[allPalettes.size()];
+        for (int i = 0; i < allPalettes.size(); i++) {
+            int r = i & 0xFF;
+            int g = (i >> 8) & 0xFF;
+            int b = (i >> 16) & 0xFF;
+            newRowColors[i] = new Color(r, g, b, 255);
+        }
+
+        paletteList = List.copyOf(allPalettes);
+        blockRowMap = Map.copyOf(newBlockMap);
+        particleRowMap = Map.copyOf(newParticleMap);
+        rowColors = newRowColors;
+
+        final var finalPalettes = allPalettes;
         RenderSystem.recordRenderCall(() -> {
-            NativeImage paletteImage = createPaletteImage(allPalettes);
+            NativeImage paletteImage = createPaletteImage(finalPalettes);
             if (JNEConfigs.DEVELOPER_MODE.get()) {
                 try {
                     Files.createDirectories(Minecraft.getInstance().gameDirectory.toPath().resolve("netherexp_debug"));
                     paletteImage.writeToFile(Minecraft.getInstance().gameDirectory.toPath().resolve("netherexp_debug/burn_palette.png"));
-                } catch (Exception e) { NetherExp.LOGGER.error("Failed to save burn palette texture: {}", e.getMessage()); }
+                } catch (Exception e) {
+                    NetherExp.LOGGER.error("Failed to save burn palette texture: {}", e.getMessage());
+                }
             }
             DynamicTexture newTexture = new DynamicTexture(paletteImage);
             newTexture.setFilter(false, false);
-            DynamicTexture old = paletteTextureRef.getAndSet(newTexture);
-            if (old != null) {
-                old.close();
-            }
+            DynamicTexture oldTexture = paletteTextureReference.getAndSet(newTexture);
+            if (oldTexture != null) oldTexture.close();
         });
     }
 
     private static NativeImage createPaletteImage(List<BurnPalettes> palettes) {
-        int rows = palettes.size();
-        int height = (rows + PALETTES_PER_TEXTURE_ROW - 1) / PALETTES_PER_TEXTURE_ROW;
-        int width = 6 * PALETTES_PER_TEXTURE_ROW;
+        int paletteCount = palettes.size();
+        int maxPalettesPerRow = 16384 / 6;
+        int palettesPerRow = Math.min(maxPalettesPerRow, paletteCount);
+
+        int height = (paletteCount + palettesPerRow - 1) / palettesPerRow;
+        int width = palettesPerRow * 6;
+
         NativeImage image = new NativeImage(width, height, false);
-        int black = argbToAbgr(0xFF000000);
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                image.setPixelRGBA(x, y, black);
+        int black = convertARGBToABGR(0xFF000000);
+        for (int x = 0; x < width; x++) for (int y = 0; y < height; y++) image.setPixelRGBA(x, y, black);
+        for (int i = 0; i < paletteCount; i++) {
+            BurnPalettes palette = palettes.get(i);
+            int row = i / palettesPerRow;
+            int col = i % palettesPerRow;
+            Color[] colors = { palette.palette1(), palette.palette2(), palette.palette3(), palette.palette4(), palette.palette5(), palette.palette6() };
+            for (int index = 0; index < 6; index++) {
+                int pixelX = col * 6 + index;
+                image.setPixelRGBA(pixelX, row, convertARGBToABGR(colors[index].getRGB()));
             }
-        }
-        for (int row = 0; row < rows; row++) {
-            BurnPalettes palette = palettes.get(row);
-            int y = row / PALETTES_PER_TEXTURE_ROW;
-            int local = row % PALETTES_PER_TEXTURE_ROW;
-            int baseX = local * 6;
-            image.setPixelRGBA(baseX, y, argbToAbgr(palette.palette1().getRGB()));
-            image.setPixelRGBA(baseX + 1, y, argbToAbgr(palette.palette2().getRGB()));
-            image.setPixelRGBA(baseX + 2, y, argbToAbgr(palette.palette3().getRGB()));
-            image.setPixelRGBA(baseX + 3, y, argbToAbgr(palette.palette4().getRGB()));
-            image.setPixelRGBA(baseX + 4, y, argbToAbgr(palette.palette5().getRGB()));
-            image.setPixelRGBA(baseX + 5, y, argbToAbgr(palette.palette6().getRGB()));
         }
         return image;
     }
 
-    private static int argbToAbgr(int argb) {
+    private static int convertARGBToABGR(int argb) {
         return ((argb >> 24) & 0xFF) << 24 | ((argb & 0xFF) << 16) | (((argb >> 8) & 0xFF) << 8) | ((argb >> 16) & 0xFF);
     }
 
@@ -170,38 +170,20 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
         return getOrCreateDefaultTexture();
     }
 
-    public static int getPaletteRows() {
-        return totalPaletteRows;
-    }
-
     public static int getRowForBlock(ResourceLocation block) {
-        return BLOCK_PALETTE_ROW_MAP.getOrDefault(block, 0);
+        return blockRowMap.getOrDefault(block, 0);
     }
 
     public static int getRowForParticle(ResourceLocation particle) {
-        return PARTICLE_PALETTE_ROW_MAP.getOrDefault(particle, -1);
+        return particleRowMap.getOrDefault(particle, -1);
     }
 
     public static Color getPaletteColor(int row, int index) {
         if (row < 0 || row >= paletteList.size()) row = 0;
         BurnPalettes palette = paletteList.get(row);
-        return switch (index) {
-            case 0 -> palette.palette1();
-            case 1 -> palette.palette2();
-            case 2 -> palette.palette3();
-            case 3 -> palette.palette4();
-            case 4 -> palette.palette5();
-            case 5 -> palette.palette6();
-            default -> throw new IllegalArgumentException("Invalid palette index: " + index);
-        };
-    }
-
-    private static Color encodeRow(int row) {
-        int r = row & 0xFF;
-        int g = (row >> 8) & 0xFF;
-        int b = (row >> 16) & 0xFF;
-        int a = 255;
-        return new Color(r, g, b, a);
+        Color[] colors = { palette.palette1(), palette.palette2(), palette.palette3(), palette.palette4(),palette.palette5(), palette.palette6() };
+        if (index < 0 || index >= colors.length) index = 0;
+        return colors[index];
     }
 
     public static void handleLastFire(Level level, LivingEntity entity) {
@@ -219,9 +201,11 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
 
         ResourceLocation fireBlock = entity.getData(JNEAttachmentTypes.LAST_FIRE);
         int row = getRowForBlock(fireBlock);
-        ColorParticleData colorData = ColorParticleData.create(encodeRow(row)).build();
-        Color smokeStart = getPaletteColor(row, 2);
-        Color smokeEnd = ColorHelper.adjustHSB(getPaletteColor(row, 5)).saturation(0.3f).brightness(0.143f).build();
+        ColorParticleData colorData = ColorParticleData.create(rowColors[row]).build();
+
+        BurnPalettes palette = paletteList.get(row);
+        Color smokeStart = palette.palette3();
+        Color smokeEnd = ColorHelper.adjustHSB(palette.palette6()).saturation(0.3f).brightness(0.143f).build();
 
         for (int i = 0; i < frequency; i++) {
             var x = entity.getRandomX(Mth.nextFloat(random, 0.2f, 1.2f));
@@ -257,8 +241,9 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
         }
     }
 
-    public static void flameToBurnParticle(Level level, RandomSource random, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, boolean small, int row) {
-        ColorParticleData colorData = ColorParticleData.create(encodeRow(row)).build();
+    public static void flameToBurnParticle(Level level, RandomSource random, double x, double y, double z,
+                                           double xSpeed, double ySpeed, double zSpeed, boolean small, int row) {
+        ColorParticleData colorData = ColorParticleData.create(rowColors[row]).build();
         float minScale = small ? 0.12f : 0.18f;
         float maxScale = small ? 0.22f : 0.32f;
 

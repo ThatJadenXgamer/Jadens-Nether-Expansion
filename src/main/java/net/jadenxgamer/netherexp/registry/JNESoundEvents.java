@@ -15,6 +15,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> FOSSILIZATION = registerSoundEvents("block.fossilization");
     public static final Supplier<SoundEvent> SOUL_SWIRLS_BOOST = registerSoundEvents("block.soul_swirls.boost");
     public static final Supplier<SoundEvent> SOUL_SWIRLS_DEACTIVATE = registerSoundEvents("block.soul_swirls.deactivate");
+    public static final Supplier<SoundEvent> TREACHEROUS_FIRE_MOCKING = registerSoundEvents("block.treacherous_fire.mocking");
     public static final Supplier<SoundEvent> LESION_BLOCK_HARVEST = registerSoundEvents("block.lesion_block.harvest");
     public static final Supplier<SoundEvent> LESION_BLOCK_GROWS = registerSoundEvents("block.lesion_block.grows");
     public static final Supplier<SoundEvent> SPORESHROOM_TRAMPOLINED = registerSoundEvents("block.sporeshroom.trampolined");
