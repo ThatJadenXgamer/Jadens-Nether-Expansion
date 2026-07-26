@@ -1,0 +1,8 @@
+{
+  "type": "biome",
+  "biomes": [
+    "minecraft:black_ice_glaciers"
+  ],
+  "fog_start_multiplier": -1.5,
+  "fog_end_multiplier": 1.0
+}

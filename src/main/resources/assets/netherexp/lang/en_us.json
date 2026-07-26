@@ -757,6 +757,7 @@
   "netherexp.configuration.hardDifficultyUnleashingMultiplier": "Hard Difficulty Unleashing Multiplier",
   "netherexp.configuration.projectilesPhaseThroughGhosts": "Projectiles Phase Through Ghosts",
   "netherexp.configuration.diminishingBlazes": "Diminishing Blazes",
+  "netherexp.configuration.pixelConsistentMagmaCubes": "Pixel Consistent Magma Cubes",
   "netherexp.configuration.minVesselBullets": "Minimum Vessel Bullets",
   "netherexp.configuration.maxVesselBullets": "Maximum Vessel Bullets",
   "netherexp.configuration.vesselAttackTime": "Vessel Attack Time",

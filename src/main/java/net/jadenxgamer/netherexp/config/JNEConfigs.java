@@ -77,6 +77,7 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue HARD_DIFFICULTY_UNLEASHING_MULTIPLIER;
     public static ModConfigSpec.BooleanValue PROJECTILES_PHASE_THROUGH_GHOSTS;
     public static ModConfigSpec.BooleanValue DIMINISHING_BLAZES;
+    public static ModConfigSpec.BooleanValue PIXEL_CONSISTENT_MAGMA_CUBES;
     public static ModConfigSpec.IntValue MIN_VESSEL_BULLETS;
     public static ModConfigSpec.IntValue MAX_VESSEL_BULLETS;
     public static ModConfigSpec.IntValue VESSEL_ATTACK_TIME;

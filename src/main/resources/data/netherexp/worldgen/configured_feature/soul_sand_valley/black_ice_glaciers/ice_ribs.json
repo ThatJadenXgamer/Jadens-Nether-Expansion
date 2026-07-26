@@ -9,7 +9,12 @@
     ],
     "origin_type": "centered",
     "can_place_on": "#netherexp:black_ice_replaceable",
-    "processors": "minecraft:empty",
-    "liquid_settings": "apply_waterlogging"
+    "processors": "netherexp:features_cannot_replace",
+    "liquid_settings": "apply_waterlogging",
+    "origin_offset": {
+      "type": "minecraft:uniform",
+      "min_inclusive": -3,
+      "max_inclusive": -1
+    }
   }
 }

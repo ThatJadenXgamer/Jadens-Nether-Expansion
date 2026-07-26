@@ -68,6 +68,9 @@ public class JNEParticleTypes {
     public static final Supplier<SimpleParticleType> RED_SPARKLE = PARTICLE_TYPES.register("red_sparkle", () -> new SimpleParticleType(false));
     public static final Supplier<SimpleParticleType> CANDLE_BURST = PARTICLE_TYPES.register("candle_burst", () -> new SimpleParticleType(false));
     public static final Supplier<LodestoneWorldParticleType> BLOT_DROP = PARTICLE_TYPES.register("blot_drop", LodestoneWorldParticleType::new);
+    public static final Supplier<SimpleParticleType> GLACIER_EFFECT = PARTICLE_TYPES.register("glacier_effect", () -> new SimpleParticleType(false));
+    public static final Supplier<LodestoneWorldParticleType> BLACK_FLAKE_WORLD = PARTICLE_TYPES.register("black_flake_world", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> COLD_FOG = PARTICLE_TYPES.register("cold_fog", LodestoneWorldParticleType::new);
 
     public static void init(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

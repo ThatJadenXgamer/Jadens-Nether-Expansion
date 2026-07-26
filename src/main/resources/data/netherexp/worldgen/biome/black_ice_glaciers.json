@@ -26,7 +26,7 @@
     },
     "particle": {
       "options": {
-        "type": "netherexp:black_flake"
+        "type": "netherexp:glacier_effect"
       },
       "probability": 0.0191
     },

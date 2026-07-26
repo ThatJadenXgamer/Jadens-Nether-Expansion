@@ -279,6 +279,9 @@ public class JNEConfigImpl {
             DIMINISHING_BLAZES = builder
                     .comment("Blazes will visibly become dimmer the lower their health is much like Minecraft: Dungeons")
                     .define("diminishingBlazes", true);
+            PIXEL_CONSISTENT_MAGMA_CUBES = builder
+                    .comment("Magma Cube textures will scale with the model and conform to pixel consistency")
+                    .define("pixelConsistentMagmaCubes", true);
             MIN_VESSEL_BULLETS = builder
                     .comment("The minimum amount of shotgun pellets fired from a vessel")
                     .defineInRange("minVesselBullets", 16, 0, Integer.MAX_VALUE);

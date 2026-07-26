@@ -2,6 +2,8 @@ package net.jadenxgamer.netherexp.client.shader;
 
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.keys.JNEBiomes;
+import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -72,7 +74,7 @@ public class NetherHeatDistortionPostprocessor extends PostProcessor {
             lastLavaCheckGameTime = gameTime;
         }
 
-        if (JNEConfigs.BIOME_HEAT_DISTORTION.get() && biome.is(BiomeTags.IS_NETHER))
+        if (JNEConfigs.BIOME_HEAT_DISTORTION.get() && biome.is(JNETags.Biomes.HAS_HEAT_DISTORTION))
             targetIntensity = JNEConfigs.HEAT_DISTORTION_INTENSITY.get().floatValue();
         if (nearLava) {
             targetIntensity = JNEConfigs.HEAT_DISTORTION_LAVA_INTENSITY.get().floatValue();

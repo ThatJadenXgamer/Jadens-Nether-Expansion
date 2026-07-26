@@ -11,6 +11,7 @@
     "client.FogRendererMixin",
     "client.HumanoidModelMixin",
     "client.LevelRendererMixin",
+    "client.MagmaCubeRendererMixin",
     "client.ParticleEngineMixin",
     "client.SplashManagerMixin",
     "client.SplashRendererMixin"
@@ -28,6 +29,7 @@
     "entity.BlockEntityTypeMixin",
     "entity.LivingEntityMixin",
     "entity.ProjectileMixin",
+    "entity.StrayMixin",
     "entity.ai.NearestAttackableTargetGoalMixin",
     "item.BlockItemMixin",
     "item.PotionItemMixin",

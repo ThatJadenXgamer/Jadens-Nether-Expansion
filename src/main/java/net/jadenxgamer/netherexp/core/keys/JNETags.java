@@ -85,6 +85,8 @@ public class JNETags {
         public static final TagKey<Biome> SPAWNS_DRY_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_dry_variant_striders_and_siltmarram");
         public static final TagKey<Biome> HAS_BEACH_SHORELINE = createBiomeTag("has_beach_shoreline");
         public static final TagKey<Biome> HAS_NO_SHORELINE = createBiomeTag("has_no_shoreline");
+        public static final TagKey<Biome> OVERRIDE_STRAY_SPAWN_RULES = createBiomeTag("override_stray_spawn_rules"); // Within these biomes the stray mob will spawn like a regular skeleton and ignores skylight access
+        public static final TagKey<Biome> HAS_HEAT_DISTORTION = createBiomeTag("has_heat_distortion"); // Biomes in this tag will get a moderate heat distortion
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, NetherExp.netherexpPath(name));

@@ -139,6 +139,10 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.RED_SPARKLE.get(), FallingParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.BLOT_DROP.get(), LodestoneDrippingParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GLACIER_EFFECT.get(), GlacierEffectParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BLACK_FLAKE_WORLD.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.COLD_FOG.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BLOT_DROP.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static class HandlePostShaders {
