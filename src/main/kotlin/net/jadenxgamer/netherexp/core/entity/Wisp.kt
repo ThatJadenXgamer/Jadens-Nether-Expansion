@@ -177,6 +177,13 @@ class Wisp(entityType: EntityType<out PathfinderMob>, level: Level): ExorcismMob
                 .add(Attributes.FOLLOW_RANGE, 16.0)
         }
     }
+    
+    // SOUNDS //
+
+    override fun getAmbientSound(): SoundEvent? = JNESoundEvents.WISP_AMBIENT.get()
+    protected override fun getHurtSound(damageSource: DamageSource): SoundEvent? = JNESoundEvents.WISP_HURT.get()
+    override fun getDeathSound(): SoundEvent? = JNESoundEvents.WISP_DEATH.get()
+
 
     // AI //
 
