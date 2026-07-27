@@ -64,11 +64,11 @@ public class BetaPopupWarning extends Screen {
         int textStartX = popupX + TEXT_AREA_X_OFFSET;
         int textStartY = popupY + TEXT_AREA_Y_OFFSET;
 
-        renderWrappedText(gui, textStartX, textStartY, TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT);
+        renderWrappedText(gui, textStartX, textStartY);
         super.render(gui, mouseX, mouseY, partialTick);
     }
 
-    private void renderWrappedText(GuiGraphics gui, int x, int y, int maxWidth, int maxHeight) {
+    private void renderWrappedText(GuiGraphics gui, int x, int y) {
         Minecraft minecraft = Minecraft.getInstance();
         var font = minecraft.font;
         List<Component> textLines = List.of(
@@ -84,12 +84,12 @@ public class BetaPopupWarning extends Screen {
 
         int currentY = y;
         for (Component line : textLines) {
-            List<FormattedCharSequence> wrappedLines = font.split(line, maxWidth);
+            List<FormattedCharSequence> wrappedLines = font.split(line, BetaPopupWarning.TEXT_AREA_WIDTH);
 
             for (FormattedCharSequence wrappedLine : wrappedLines) {
-                if (currentY + LINE_HEIGHT > y + maxHeight) return;
+                if (currentY + LINE_HEIGHT > y + BetaPopupWarning.TEXT_AREA_HEIGHT) return;
                 int lineWidth = font.width(wrappedLine);
-                int centeredX = x + (maxWidth - lineWidth) / 2;
+                int centeredX = x + (BetaPopupWarning.TEXT_AREA_WIDTH - lineWidth) / 2;
                 gui.drawString(font, wrappedLine, centeredX, currentY, 0xFFFFFF, false);
                 currentY += LINE_HEIGHT;
             }

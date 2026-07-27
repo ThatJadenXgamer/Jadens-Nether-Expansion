@@ -10,6 +10,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.function.Predicate;
 
+//TODO: move this to Elysium API
 @OnlyIn(Dist.CLIENT)
 public class InsideFluidAmbientSoundInstance extends AbstractTickableSoundInstance {
     private final LocalPlayer player;
@@ -31,9 +32,8 @@ public class InsideFluidAmbientSoundInstance extends AbstractTickableSoundInstan
         if (!this.player.isRemoved() && this.fade >= 0) {
             if (this.predicate.test(this.player)) this.fade++;
             else this.fade -= 2;
-
             this.fade = Math.min(this.fade, 40);
-            this.volume = Math.max(0.0F, Math.min((float) this.fade / 40.0F, 1.0F));
+            this.volume = Math.clamp((float) this.fade / 40.0F, 0.0F, 1.0F);
         } else this.stop();
     }
 }
