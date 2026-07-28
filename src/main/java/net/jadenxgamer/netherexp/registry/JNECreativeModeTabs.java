@@ -171,7 +171,6 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
                 output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
                 output.accept(JNEItems.CARCASS_SPAWN_EGG.get());
-                output.accept(JNEItems.FALSE_CARCASS_SPAWN_EGG.get());
 
                 Antidote.populateCreativeInventoryForAllAntidotes(output);
             })

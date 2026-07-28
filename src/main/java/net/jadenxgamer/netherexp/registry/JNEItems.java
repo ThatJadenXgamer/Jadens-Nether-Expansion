@@ -140,13 +140,10 @@ public class JNEItems {
             new DeferredSpawnEggItem(JNEEntityType.BANSHEE, 1985382, 1788232, new Item.Properties()));
 
     public static final Supplier<Item> STAMPEDE_SPAWN_EGG = ITEMS.register("stampede_spawn_egg", () ->
-            new DeferredSpawnEggItem(JNEEntityType.WISP, 4864303, 10236982, new Item.Properties()));
+            new DeferredSpawnEggItem(JNEEntityType.STAMPEDE, 4864303, 10236982, new Item.Properties()));
 
     public static final Supplier<Item> CARCASS_SPAWN_EGG = ITEMS.register("carcass_spawn_egg", () ->
             new DeferredSpawnEggItem(JNEEntityType.CARCASS, 8263192, 4066060, new Item.Properties()));
-
-    public static final Supplier<Item> FALSE_CARCASS_SPAWN_EGG = ITEMS.register("false_carcass_spawn_egg", () ->
-            new DeferredSpawnEggItem(JNEEntityType.WISP, 4066060, 8263192, new Item.Properties()));
 
     public static final Supplier<Item> SEALED_POTTERY_SHERD = ITEMS.register("sealed_pottery_sherd", () ->
             new Item(new Item.Properties()));
