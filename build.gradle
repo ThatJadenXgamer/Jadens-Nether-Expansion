@@ -1,11 +1,7 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     id 'java-library'
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.124'
-    id 'org.jetbrains.kotlin.jvm' version "$kotlin_version"
-    id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlin_version"
     id 'idea'
 }
 
@@ -29,10 +25,6 @@ repositories {
     maven {
         name = 'ParchmentMC'
         url = 'https://maven.parchmentmc.org'
-    }
-    maven {
-        name = 'Kotlin for Forge'
-        url = 'https://thedarkcolour.github.io/KotlinForForge/'
     }
     maven {
         name 'Curios maven'
@@ -125,7 +117,6 @@ dependencies {
     //implementation "com.github.ThatJadenXgamer:Elysium:1.2.0-alpha.8"
     implementation name: 'ElysiumAPI-1.21.1-2.0.0-BETA.20' //jitpack is being a bitch and not allowing implementation
 
-    implementation "thedarkcolour:kotlinforforge-neoforge:$kff_version"
     jarJar(implementation("team.lodestar.lodestone:lodestone:$lodestone_version"))
     jarJar(implementation("com.terraformersmc:biolith-neoforge:$biolith_version"))
 
@@ -161,13 +152,6 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
-}
-
-kotlin {
-    jvmToolchain(21)
-    compilerOptions {
-        jvmTarget = JvmTarget.JVM_21
-    }
 }
 
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.

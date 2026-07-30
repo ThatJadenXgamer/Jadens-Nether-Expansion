@@ -29,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 public class StampedeRenderer extends MobRenderer<Stampede, StampedeRenderer.StampedeModel<Stampede>> {
 
     public StampedeRenderer(EntityRendererProvider.Context context) {
-        super(context, new StampedeModel<>(context.bakeLayer(StampedeModel.LAYER)), 1.05f);
+        super(context, new StampedeModel<>(context.bakeLayer(StampedeModel.LAYER)), 1.0f);
         this.addLayer(new StampedeGlowLayer(this));
     }
 
@@ -42,11 +42,6 @@ public class StampedeRenderer extends MobRenderer<Stampede, StampedeRenderer.Sta
     @Override
     protected RenderType getRenderType(Stampede entity, boolean bodyVisible, boolean translucent, boolean glowing) {
         return RenderType.entityCutout(getTextureLocation(entity));
-    }
-
-    @Override
-    protected int getBlockLightLevel(Stampede entity, BlockPos pos) {
-        return 15;
     }
 
     public static class StampedeModel<T extends Stampede> extends HierarchicalModel<T> {
@@ -105,8 +100,8 @@ public class StampedeRenderer extends MobRenderer<Stampede, StampedeRenderer.Sta
             this.root().getAllParts().forEach(ModelPart::resetPose);
 
             this.animate(entity.idleAnimation, Animation.IDLE, ageInTicks);
-            this.animate(entity.grinAnimation, Animation.IDLE, ageInTicks);
-            this.animate(entity.chewAnimation, Animation.IDLE, ageInTicks);
+            this.animate(entity.grinAnimation, Animation.GRIN, ageInTicks);
+            this.animate(entity.chewAnimation, Animation.CHEW, ageInTicks);
             this.animateWalk(entity.isInLava() ? Animation.STRIDE : Animation.WALK, limbSwing, limbSwingAmount, 2.0f, 2.5f);
         }
 
