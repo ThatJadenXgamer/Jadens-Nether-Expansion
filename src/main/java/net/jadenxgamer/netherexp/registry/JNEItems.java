@@ -122,7 +122,7 @@ public class JNEItems {
             new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final Supplier<Item> SKULL_ON_A_STICK = ITEMS.register("skull_on_a_stick", () ->
-            new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).durability(100)));
+            new SkullOnAStick(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).durability(100)));
 
     public static final Supplier<Item> WISP_SPAWN_EGG = ITEMS.register("wisp_spawn_egg", () ->
             new DeferredSpawnEggItem(JNEEntityType.WISP, 6022120, 699311, new Item.Properties()));

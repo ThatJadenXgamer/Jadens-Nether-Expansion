@@ -79,6 +79,7 @@ public final class NetherExpClient {
         event.registerLayerDefinition(EctoSlabRenderer.EctoSlabModel.LAYER, EctoSlabRenderer.EctoSlabModel::createBodyLayer);
         event.registerLayerDefinition(BansheeRenderer.BansheeModel.LAYER, BansheeRenderer.BansheeModel::createBodyLayer);
         event.registerLayerDefinition(StampedeRenderer.StampedeModel.LAYER, StampedeRenderer.StampedeModel::createBodyLayer);
+        event.registerLayerDefinition(StampedeRenderer.StampedeModel.SADDLE_LAYER, StampedeRenderer.StampedeModel::createBodyLayer);
         event.registerLayerDefinition(CarcassRenderer.CarcassModel.LAYER, CarcassRenderer.CarcassModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispModel.LAYER, WillOWispRenderer.WillOWispModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);

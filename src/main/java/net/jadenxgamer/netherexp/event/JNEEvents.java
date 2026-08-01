@@ -8,6 +8,7 @@ import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManage
 import net.jadenxgamer.netherexp.core.block.SorrowsquashBlock;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.entity.PortalGlow;
+import net.jadenxgamer.netherexp.core.entity.Stampede;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.core.worldgen.JNESurfaceRules;
@@ -24,6 +25,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.CalculateDetachedCameraDistanceEvent;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -48,6 +50,11 @@ public class JNEEvents {
     @SubscribeEvent
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {
         NetherExp.registryAccess = event.getServer().registryAccess();
+    }
+
+    @SubscribeEvent
+    public static void calculateCameraDistance(CalculateDetachedCameraDistanceEvent event) {
+        if (event.getCamera().getEntity().getVehicle() instanceof Stampede) event.setDistance(event.getDistance() * 1.7f);
     }
 
     @SubscribeEvent

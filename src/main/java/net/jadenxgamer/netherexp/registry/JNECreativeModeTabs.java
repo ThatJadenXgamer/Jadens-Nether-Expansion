@@ -65,6 +65,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.SOUL_PATH.get());
 
                 output.accept(Items.BONE);
+                output.accept(JNEItems.SKULL_ON_A_STICK.get());
                 output.accept(JNEItems.FOSSIL_FUEL.get());
                 output.accept(JNEBlocks.FOSSIL_ORE.get());
                 output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
