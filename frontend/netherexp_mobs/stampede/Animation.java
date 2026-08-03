@@ -125,14 +125,14 @@ public class StampedeModelAnimation {
 		.addAnimation("stampede", new AnimationChannel(AnimationChannel.Targets.ROTATION, 
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 2.5F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(0.7895F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(1.5789F, KeyframeAnimations.degreeVec(0.0F, -2.5F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(1.579F, KeyframeAnimations.degreeVec(0.0F, -2.5F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(2.3684F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(3.1579F, KeyframeAnimations.degreeVec(0.0F, 2.5F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 		))
 		.addAnimation("stampede", new AnimationChannel(AnimationChannel.Targets.POSITION, 
 			new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, -3.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(0.7895F, KeyframeAnimations.posVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(1.5789F, KeyframeAnimations.posVec(0.0F, -3.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
+			new Keyframe(1.579F, KeyframeAnimations.posVec(0.0F, -3.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(2.3684F, KeyframeAnimations.posVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 			new Keyframe(3.1579F, KeyframeAnimations.posVec(0.0F, -3.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 		))
@@ -140,7 +140,7 @@ public class StampedeModelAnimation {
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(12.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(0.5263F, KeyframeAnimations.degreeVec(5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(1.0526F, KeyframeAnimations.degreeVec(12.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-			new Keyframe(1.5789F, KeyframeAnimations.degreeVec(5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(1.579F, KeyframeAnimations.degreeVec(5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(2.1053F, KeyframeAnimations.degreeVec(12.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(2.6316F, KeyframeAnimations.degreeVec(5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(3.1579F, KeyframeAnimations.degreeVec(12.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
@@ -151,9 +151,9 @@ public class StampedeModelAnimation {
 		.addAnimation("right_ear", new AnimationChannel(AnimationChannel.Targets.ROTATION, 
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(29.6216F, 4.9809F, -8.6822F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(0.4386F, KeyframeAnimations.degreeVec(15.2611F, -5.4355F, 3.2513F), AnimationChannel.Interpolations.CATMULLROM),
-			new Keyframe(0.7018F, KeyframeAnimations.degreeVec(30.4211F, -0.2092F, -7.0663F), AnimationChannel.Interpolations.CATMULLROM),
-			new Keyframe(1.1404F, KeyframeAnimations.degreeVec(11.7942F, -8.4276F, -2.9905F), AnimationChannel.Interpolations.CATMULLROM),
-			new Keyframe(1.5789F, KeyframeAnimations.degreeVec(19.7702F, 0.8996F, -5.7894F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.7017F, KeyframeAnimations.degreeVec(30.4211F, -0.2092F, -7.0663F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(1.1403F, KeyframeAnimations.degreeVec(11.7942F, -8.4276F, -2.9905F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(1.579F, KeyframeAnimations.degreeVec(19.7702F, 0.8996F, -5.7894F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(2.0175F, KeyframeAnimations.degreeVec(41.7337F, -7.4833F, 3.5067F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(2.4561F, KeyframeAnimations.degreeVec(33.1143F, -9.2527F, 9.1926F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(3.1579F, KeyframeAnimations.degreeVec(29.6216F, 4.9809F, -8.6822F), AnimationChannel.Interpolations.CATMULLROM)
@@ -161,7 +161,7 @@ public class StampedeModelAnimation {
 		.addAnimation("left_ear", new AnimationChannel(AnimationChannel.Targets.ROTATION, 
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(29.6216F, -4.9809F, 8.6822F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(0.3509F, KeyframeAnimations.degreeVec(15.2611F, 5.4355F, -3.2513F), AnimationChannel.Interpolations.CATMULLROM),
-			new Keyframe(0.7018F, KeyframeAnimations.degreeVec(30.4211F, 0.2092F, 7.0663F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.7017F, KeyframeAnimations.degreeVec(30.4211F, 0.2092F, 7.0663F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(1.0526F, KeyframeAnimations.degreeVec(11.7942F, 8.4276F, 2.9905F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(1.4912F, KeyframeAnimations.degreeVec(19.7702F, -0.8996F, 5.7894F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(2.193F, KeyframeAnimations.degreeVec(41.7337F, 7.4833F, -3.5067F), AnimationChannel.Interpolations.CATMULLROM),
@@ -186,7 +186,7 @@ public class StampedeModelAnimation {
 		))
 		.addAnimation("left_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION, 
 			new Keyframe(0.0F, KeyframeAnimations.degreeVec(25.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
-			new Keyframe(0.7018F, KeyframeAnimations.degreeVec(15.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.7017F, KeyframeAnimations.degreeVec(15.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(1.3158F, KeyframeAnimations.degreeVec(-5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(2.1053F, KeyframeAnimations.degreeVec(5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(3.1579F, KeyframeAnimations.degreeVec(25.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
@@ -194,7 +194,7 @@ public class StampedeModelAnimation {
 		.addAnimation("left_leg", new AnimationChannel(AnimationChannel.Targets.POSITION, 
 			new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, -3.0F, 7.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(0.2632F, KeyframeAnimations.posVec(0.0F, -3.91F, 2.24F), AnimationChannel.Interpolations.CATMULLROM),
-			new Keyframe(0.7018F, KeyframeAnimations.posVec(0.0F, 3.0F, -3.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.7017F, KeyframeAnimations.posVec(0.0F, 3.0F, -3.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(1.3158F, KeyframeAnimations.posVec(0.0F, 2.0F, -6.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(1.4912F, KeyframeAnimations.posVec(0.0F, 2.0F, -6.0F), AnimationChannel.Interpolations.CATMULLROM),
 			new Keyframe(2.1053F, KeyframeAnimations.posVec(0.0F, 1.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),

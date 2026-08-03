@@ -1458,6 +1458,26 @@
       "netherexp:mob/stampede/step4"
     ]
   },
+  "entity.stampede.lavastep": {
+    "subtitle": "subtitles.entity.stampede.step",
+    "sounds": [
+      "netherexp:mob/stampede/lavastep1",
+      "netherexp:mob/stampede/lavastep2",
+      "netherexp:mob/stampede/lavastep3",
+      "netherexp:mob/stampede/lavastep4",
+      "netherexp:mob/stampede/lavastep5"
+    ]
+  },
+  "entity.stampede.hungry": {
+    "sounds": [
+      "netherexp:mob/stampede/hungry"
+    ]
+  },
+  "entity.stampede.trample": {
+    "sounds": [
+      "netherexp:mob/stampede/trample"
+    ]
+  },
   "entity.stampede.eat": {
     "subtitle": "subtitles.entity.stampede.eat",
     "sounds": [

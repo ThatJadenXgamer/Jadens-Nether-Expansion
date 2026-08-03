@@ -37,7 +37,7 @@ public class StampedeRenderer extends MobRenderer<Stampede, StampedeRenderer.Sta
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(Stampede entity) {
-        return NetherExp.netherexpPath("textures/entity/stampede/stampede.png");
+        return NetherExp.netherexpPath(entity.isPatrick() ? "textures/entity/stampede/patrick.png" : "textures/entity/stampede/stampede.png");
     }
 
     @Override
@@ -111,8 +111,9 @@ public class StampedeRenderer extends MobRenderer<Stampede, StampedeRenderer.Sta
 
             this.animateIdle(entity.idleAnimation, Animation.IDLE, ageInTicks, entity.walkAnimation, 0.1f);
             this.animate(entity.idleBreakAnimation, Animation.IDLE_BREAK, ageInTicks);
+            this.animate(entity.chewAnimation, Animation.CHEW, ageInTicks);
             this.animate(entity.grinAnimation, Animation.GRIN, ageInTicks);
-            this.animateWalkBlended(Animation.WALK, Animation.STRIDE, entity.walkBlendState.get(), limbSwing, limbSwingAmount, entity.getSpeedBoostTicks() > 0 ? 3.0f : 2.0f, 1.5f);
+            this.animateWalkBlended(Animation.WALK, Animation.STRIDE, entity.walkBlendState.get(), limbSwing, limbSwingAmount, entity.getSpeedBoostTicks() > 0 ? 3.0f : 2.2f, 1.5f);
         }
 
         private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch) {
@@ -398,6 +399,7 @@ public class StampedeRenderer extends MobRenderer<Stampede, StampedeRenderer.Sta
                         new Keyframe(1.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
                 ))
                 .build();
+
 
         public static final AnimationDefinition CHEW = AnimationDefinition.Builder.withLength(1.0F).looping()
                 .addAnimation("jaw", new AnimationChannel(AnimationChannel.Targets.ROTATION,

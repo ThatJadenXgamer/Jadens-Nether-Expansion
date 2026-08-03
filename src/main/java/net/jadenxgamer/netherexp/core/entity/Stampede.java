@@ -3,7 +3,6 @@ package net.jadenxgamer.netherexp.core.entity;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.BlendAnimationState;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
-import net.jadenxgamer.netherexp.core.item.SkullOnAStick;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.JNEItems;
@@ -15,6 +14,7 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -23,6 +23,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
@@ -52,9 +53,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.CommonHooks;
@@ -82,6 +81,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
     public final BlendAnimationState walkBlendState = new BlendAnimationState();
 
     public boolean isStampedeJumping = false;
+    private int hungerDecrementTimer = 0;
     public float playerJumpPendingScale = 0.0f;
     private int remainingPersistentAngerTime;
     @Nullable private UUID persistentAngerTarget;
@@ -138,6 +138,8 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0f));
         this.targetSelector.addGoal(1, new StampedeHurtByOtherGoal(this));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false,
+                target -> !this.isVehicle() && target.getType().is(EntityTypeTags.SKELETONS)));
         this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal<>(this, false));
     }
 
@@ -174,15 +176,36 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
         super.customServerAiStep();
         if (this.level().isClientSide()) return;
 
+        this.handleHungerDepletion();
         this.setStampedeAngry(this.isAngry() || this.getHunger() <= 0);
         this.updatePersistentAnger((ServerLevel) this.level(), false);
         this.handleEating();
     }
 
+    private void handleHungerDepletion() {
+        if (!this.isVehicle()) return;
+        if (this.getFirstPassenger() instanceof Player passenger) {
+            hungerDecrementTimer++;
+            if (this.hungerDecrementTimer >= 400) {
+                this.hungerDecrementTimer = 0;
+                int currentHunger = this.getHunger();
+                if (currentHunger > 0) {
+                    this.setHunger(currentHunger - 1);
+                    currentHunger = this.getHunger();
+                }
+                if (currentHunger <= 0 && this.isVehicle()) {
+                    passenger.stopRiding();
+                    this.setPersistentAngerTarget(passenger.getUUID());
+                    this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+                    this.setStampedeAngry(true);
+                }
+            }
+        }
+    }
+
     private void handleEating() {
         ItemStack itemInMouth = this.getItemBySlot(EquipmentSlot.MAINHAND);
         if (itemInMouth.isEmpty()) return;
-        if (this.getControllingPassenger() != null) this.getControllingPassenger().stopRiding();
         if (this.getEatingTime() == 0) {
             float healAmount = 10.0f;
             int hungerSatiation = 3;
@@ -214,7 +237,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
     public void jumpFromGround() {
         super.jumpFromGround();
         this.playSound(JNESoundEvents.STAMPEDE_STEP.get(), 0.85f, Mth.randomBetween(this.level().random, 1.0f, 2.0f));
-        movementScreenshake(this, 7.0f, 1.0f, 0);
+        movementScreenshake(this, 7.0f, 1.0f, 0, false);
     }
 
     @Override
@@ -243,23 +266,24 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
 
         var boundingBox = this.getBoundingBox();
         var height = boundingBox.getYsize();
+        var damageSource = this.damageSources().mobAttack(this);
         this.level().getEntities(this, boundingBox.inflate(1.6), EntitySelector.NO_CREATIVE_OR_SPECTATOR)
                 .stream()
                 .filter(LivingEntity.class::isInstance)
                 .map(LivingEntity.class::cast)
-                .filter(victim -> victim != this && !this.getPassengers().contains(victim))
+                .filter(victim -> victim != this && !this.getPassengers().contains(victim) && !victim.isInvulnerableTo(damageSource))
                 .forEach(victim -> {
-                    if (victim.invulnerableTime > 5) return;
+                    if (victim.invulnerableTime > 5 || victim.isInvulnerable()) return;
                     if (victim.getBoundingBox().getYsize() < height) {
                         Vec3 vel = this.getDeltaMovement();
                         double speed = Math.sqrt(vel.x * vel.x + vel.z * vel.z);
                         float damage = (float) (this.getAttributeValue(Attributes.ATTACK_DAMAGE) * (0.5 + speed * 2.0));
-                        victim.hurt(this.damageSources().mobAttack(this), damage);
+                        victim.hurt(damageSource, damage);
                         if (speed > 0.1) {
                             double knockback = this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
                             victim.push(vel.x * knockback, 0.25, vel.z * knockback);
                         }
-                        this.level().playSound(null, this.blockPosition(), SoundEvents.RAVAGER_STEP, this.getSoundSource(), 1.0f, 0.8f + this.random.nextFloat() * 0.4f);
+                        this.level().playSound(null, this.blockPosition(), JNESoundEvents.STAMPEDE_TRAMPLE.get(), this.getSoundSource(), 1.0f, 0.8f + this.random.nextFloat() * 0.4f);
                         this.invulnerableTime = 15;
                     }
                 });
@@ -281,11 +305,12 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
                     if (!player.getAbilities().instabuild) stack.hurtAndBreak(1, player, player.getEquipmentSlotForItem(stack));
                     this.spawnAtLocation(Items.SADDLE);
                     return InteractionResult.SUCCESS;
-                } else if (!this.isVehicle() && !player.isSecondaryUseActive() && this.getEatingTime() <= 0) {
+                } else if (!this.isVehicle() && !player.isSecondaryUseActive() && !this.isAngry()) {
                     player.startRiding(this);
                     return InteractionResult.SUCCESS;
                 } else return super.mobInteract(player, hand);
             } else if (this.isSaddleable() && !this.isSaddled() && stack.is(Items.SADDLE)) {
+                this.level().playSound(null, player.blockPosition(), SoundEvents.STRIDER_SADDLE, SoundSource.PLAYERS, 1.0f, 1.0f);
                 this.equipSaddle(stack.split(1), SoundSource.NEUTRAL);
                 this.level().gameEvent(this, GameEvent.EQUIP, this.position());
                 return InteractionResult.SUCCESS;
@@ -296,9 +321,31 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
 
     @Override
     public Vec3 getPassengerAttachmentPoint(Entity entity, EntityDimensions dimensions, float partialTick) {
-        float f = this.walkAnimation.position();
-        float g = 0.12f * Mth.cos(f * 1.5f) * 2.0f * Math.min(0.25f, this.walkAnimation.speed());
-        return super.getPassengerAttachmentPoint(entity, dimensions, partialTick).add(0.0, (g * partialTick), 0.0);
+        double walkY = 0.0;
+        if (!this.isInLava()) {
+            float f = this.walkAnimation.position();
+            float g = 0.12f * Mth.cos(f * 1.5f) * 2.0f * Math.min(0.25f, this.walkAnimation.speed());
+            walkY = g * partialTick;
+        }
+
+        double chewOffset = 0.0;
+        int eatingTime = this.getEatingTime();
+
+        if (this.isStampedeAngry()) {
+            chewOffset = 0.5;
+        } else if (eatingTime > 0) {
+            float elapsedTicks = 60.0f - eatingTime + partialTick;
+            double animationPhase = (1.0 - Math.cos((elapsedTicks * Math.PI) / 5.0)) / 2.0;
+            chewOffset = (animationPhase * (7.0 / 16.0)) * 2.9f;
+        }
+
+        return super.getPassengerAttachmentPoint(entity, dimensions, partialTick).add(0.0, walkY + chewOffset, 0.0);
+    }
+
+    @Override
+    public void setCustomName(@Nullable Component name) {
+        super.setCustomName(name);
+        if (!this.isPatrick() && name != null && name.getString().equalsIgnoreCase("Patrick")) this.setPatrick();
     }
 
     @Override
@@ -365,7 +412,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
         if (this.isSaddled()) {
             int p = Math.max(0, jumpPower);
             this.playerJumpPendingScale = (p >= 90) ? 1.0f : 0.4f + 0.4f * (float) p / 90.0f;
-            movementScreenshake(this, 2.0f, 1.5f, 0);
+            movementScreenshake(this, 2.0f, 1.5f, 0, false);
             for (int i = 0; i < 32; i++) level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, getBlockStateOn()),
                     this.getRandomX(1.2), this.getY(), this.getRandomZ(1.2), 0,4.6, 0);
         }
@@ -578,11 +625,12 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
         this.entityData.set(TAMED, true);
     }
 
-    private int getHunger() {
+    public int getHunger() {
         return this.entityData.get(HUNGER);
     }
 
     private void setHunger(int hunger) {
+        if (hunger <= 4) this.playSound(JNESoundEvents.STAMPEDE_HUNGRY.get(), 2.0f, 1.0f);
         this.entityData.set(HUNGER, Math.clamp(hunger, 0, 20));
     }
 
@@ -600,6 +648,14 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
 
     public void setSpeedBoostTicks(int speedBoostTicks) {
         this.entityData.set(SPEED_BOOST_TICKS, Math.max(0, speedBoostTicks));
+    }
+
+    public boolean isPatrick() {
+        return this.entityData.get(IS_PATRICK);
+    }
+
+    private void setPatrick() {
+        this.entityData.set(IS_PATRICK, true);
     }
 
     // ANIMATIONS //
@@ -670,20 +726,22 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
 
     @Override
     public void playStepSound(BlockPos pos, BlockState state) {
-        if (isInLava()) this.playSound(SoundEvents.STRIDER_STEP_LAVA, 2.0f, Mth.randomBetween(this.level().random, 0.4f, 1.0f));
+        if (isInLava()) this.playSound(JNESoundEvents.STAMPEDE_LAVASTEP.get(), 0.5f, Mth.randomBetween(this.level().random, 0.4f, 1.0f));
         else {
             if (this.isVehicle()) {
                 if (stepCooldown-- != 0) return;
                 stepCooldown = 2;
             }
             this.playSound(JNESoundEvents.STAMPEDE_STEP.get(), 0.85f, Mth.randomBetween(this.level().random, 1.0f, 2.0f));
-            movementScreenshake(this, this.isVehicle() ? 0.2f : 0.5f, 0, 0);
+            movementScreenshake(this, this.isVehicle() ? 0.25f : 0.5f, 0, 0, false);
             for (int i = 0; i < 12; i++) level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, getBlockStateOn()),
                     this.getRandomX(0.7), this.getY(), this.getRandomZ(0.7), 0,0.6, 0);
         }
     }
 
-    public static void movementScreenshake(Stampede stampede, float start, float mid, float end) {
+    public static void movementScreenshake(Stampede stampede, float start, float mid, float end, boolean client) {
+        if (stampede.level().isClientSide && !client) return;
+        if (!stampede.level().isClientSide && client) return;
         ScreenshakeHandler.addScreenshake(
                 new ScreenshakeInstance(10, start, mid, end,
                         Easing.LINEAR, Easing.LINEAR, 1.0f,

@@ -21,6 +21,6 @@ public abstract class MagmaCubeRendererMixin {
     private void netherexp$pixelConsistentTextureLocation(MagmaCube entity, CallbackInfoReturnable<ResourceLocation> cir) {
         if (!JNEConfigs.PIXEL_CONSISTENT_MAGMA_CUBES.get()) return;
         var size = entity.getSize();
-        cir.setReturnValue(NetherExp.netherexpPath("textures/entity/magmacube_" + size + ".png"));
+        cir.setReturnValue(NetherExp.netherexpPath("textures/entity/magma_cube/magmacube_" + size + ".png"));
     }
 }

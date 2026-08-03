@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.NetherExpClient;
 import net.jadenxgamer.netherexp.client.JNEFogRenderer;
 import net.jadenxgamer.netherexp.client.gui.BetaPopupWarning;
+import net.jadenxgamer.netherexp.client.gui.hud.StampedeHungerHud;
 import net.jadenxgamer.netherexp.client.rendering.JNEShaders;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEFluidExtensions;
 import net.jadenxgamer.netherexp.client.rendering.extensions.JNEItemExtensions;
@@ -75,6 +76,13 @@ public class JNEClientEvents {
             }
         }
     }
+
+
+    @SubscribeEvent
+    public static void registerOverlays(RegisterGuiLayersEvent event) {
+        event.registerAboveAll(NetherExp.netherexpPath("stampede_hunger"), StampedeHungerHud.OVERLAY);
+    }
+
 
     @SubscribeEvent
     public static void onPlayerLogin(ClientPlayerNetworkEvent.LoggingIn event) {

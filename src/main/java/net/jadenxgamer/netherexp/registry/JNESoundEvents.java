@@ -91,8 +91,11 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> STAMPEDE_HURT = registerSoundEvents("entity.stampede.hurtt");
     public static final Supplier<SoundEvent> STAMPEDE_DEATH = registerSoundEvents("entity.stampede.death");
     public static final Supplier<SoundEvent> STAMPEDE_STEP = registerSoundEvents("entity.stampede.step");
+    public static final Supplier<SoundEvent> STAMPEDE_LAVASTEP = registerSoundEvents("entity.stampede.lavastep");
     public static final Supplier<SoundEvent> STAMPEDE_EAT = registerSoundEvents("entity.stampede.eat");
     public static final Supplier<SoundEvent> STAMPEDE_AGITATED = registerSoundEvents("entity.stampede.agitated");
+    public static final Supplier<SoundEvent> STAMPEDE_HUNGRY = registerSoundEvents("entity.stampede.hungry");
+    public static final Supplier<SoundEvent> STAMPEDE_TRAMPLE = registerSoundEvents("entity.stampede.trample");
 
     public static final Supplier<SoundEvent> ENTITY_CARCASS_HURT = registerSoundEvents("entity.carcass.hurt");
     public static final Supplier<SoundEvent> ENTITY_CARCASS_DEATH = registerSoundEvents("entity.carcass.death");
