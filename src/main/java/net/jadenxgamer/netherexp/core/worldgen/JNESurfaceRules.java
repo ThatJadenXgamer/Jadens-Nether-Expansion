@@ -142,7 +142,7 @@ public class JNESurfaceRules {
                                     SurfaceRules.sequence(
                                             SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -0.012, Double.MAX_VALUE),
                                                     SurfaceRules.ifTrue(SurfaceRules.yStartCheck(VerticalAnchor.absolute(30), 0),
-                                                            SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(35), 0)), SILT)
+                                                            SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(35), 0)), SOUL_PERMAFROST)
                                                     )
                                             ),
                                             SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.NETHER_STATE_SELECTOR, 0, 0.7976931348623157e+308), SOUL_PERMAFROST),

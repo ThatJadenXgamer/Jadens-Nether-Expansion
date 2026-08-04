@@ -15,6 +15,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> FOSSILIZATION = registerSoundEvents("block.fossilization");
     public static final Supplier<SoundEvent> SOUL_SWIRLS_BOOST = registerSoundEvents("block.soul_swirls.boost");
     public static final Supplier<SoundEvent> SOUL_SWIRLS_DEACTIVATE = registerSoundEvents("block.soul_swirls.deactivate");
+    public static final Supplier<SoundEvent> TREACHEROUS_FIRE_MOCKING = registerSoundEvents("block.treacherous_fire.mocking");
     public static final Supplier<SoundEvent> LESION_BLOCK_HARVEST = registerSoundEvents("block.lesion_block.harvest");
     public static final Supplier<SoundEvent> LESION_BLOCK_GROWS = registerSoundEvents("block.lesion_block.grows");
     public static final Supplier<SoundEvent> SPORESHROOM_TRAMPOLINED = registerSoundEvents("block.sporeshroom.trampolined");
@@ -85,6 +86,20 @@ public class JNESoundEvents {
 
     public static final Supplier<SoundEvent> WISP_BOTTLE_FILL = registerSoundEvents("entity.wisp.bottle_fill");
     public static final Supplier<SoundEvent> WISP_BOTTLE_EMPTY = registerSoundEvents("entity.wisp.bottle_empty");
+
+    public static final Supplier<SoundEvent> STAMPEDE_AMBIENT = registerSoundEvents("entity.stampede.ambient");
+    public static final Supplier<SoundEvent> STAMPEDE_HURT = registerSoundEvents("entity.stampede.hurtt");
+    public static final Supplier<SoundEvent> STAMPEDE_DEATH = registerSoundEvents("entity.stampede.death");
+    public static final Supplier<SoundEvent> STAMPEDE_STEP = registerSoundEvents("entity.stampede.step");
+    public static final Supplier<SoundEvent> STAMPEDE_LAVASTEP = registerSoundEvents("entity.stampede.lavastep");
+    public static final Supplier<SoundEvent> STAMPEDE_EAT = registerSoundEvents("entity.stampede.eat");
+    public static final Supplier<SoundEvent> STAMPEDE_AGITATED = registerSoundEvents("entity.stampede.agitated");
+    public static final Supplier<SoundEvent> STAMPEDE_HUNGRY = registerSoundEvents("entity.stampede.hungry");
+    public static final Supplier<SoundEvent> STAMPEDE_TRAMPLE = registerSoundEvents("entity.stampede.trample");
+
+    public static final Supplier<SoundEvent> ENTITY_CARCASS_HURT = registerSoundEvents("entity.carcass.hurt");
+    public static final Supplier<SoundEvent> ENTITY_CARCASS_DEATH = registerSoundEvents("entity.carcass.death");
+    public static final Supplier<SoundEvent> ENTITY_CARCASS_REANIMATE = registerSoundEvents("entity.carcass.reanimate");
 
     public static final Supplier<SoundEvent> SOUL_SLATE_PLACE = registerSoundEvents("block.soul_slate.place");
     public static final Supplier<SoundEvent> SOUL_SLATE_BREAK = registerSoundEvents("block.soul_slate.break");
@@ -207,6 +222,8 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> HAZE_BLOCK_BREAK = registerSoundEvents("block.haze_block.break");
 
     public static final Supplier<SoundEvent> BRAZIER_CHEST_LIT = registerSoundEvents("block.brazier_chest.lit");
+    public static final Supplier<SoundEvent> BRAZIER_CHEST_OPEN = registerSoundEvents("block.brazier_chest.open");
+    public static final Supplier<SoundEvent> BRAZIER_CHEST_CLOSE = registerSoundEvents("block.brazier_chest.close");
     public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_VICTORY = registerSoundEvents("block.cierge_of_treachery.victory");
     public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_DEFEAT = registerSoundEvents("block.cierge_of_treachery.defeat");
     public static final Supplier<SoundEvent> CIERGE_OF_TREACHERY_ROUND = registerSoundEvents("block.cierge_of_treachery.round");

@@ -1,0 +1,14 @@
+{
+  "type": "default",
+  "dimension": "minecraft:the_nether",
+  "climate_point": 1,
+  "biome": "cinderscapes:ashy_shoals",
+  "weight": 10,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cinderscapes"
+    }
+  ]
+}

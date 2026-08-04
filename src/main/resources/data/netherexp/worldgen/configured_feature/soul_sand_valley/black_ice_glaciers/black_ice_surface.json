@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "netherexp:black_ice"
+        }
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "netherexp:soul_permafrost"
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 5,
+      "max_inclusive": 6
+    },
+    "half_height": 1
+  }
+}

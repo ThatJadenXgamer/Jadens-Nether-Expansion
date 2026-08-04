@@ -46,9 +46,7 @@ public abstract class AbstractPellet extends AbstractArrow {
             this.hitGroundSound();
             this.discard();
         }
-        if (this.level().isClientSide) {
-            trailPointBuilder.addTrailPoint(this.position().add(0.0, 0.15, 0.0));
-        }
+        if (this.level().isClientSide) trailPointBuilder.addTrailPoint(this.position().add(0.0, 0.15, 0.0));
         trailPointBuilder.tickTrailPoints();
     }
 

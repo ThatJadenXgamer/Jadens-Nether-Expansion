@@ -21,6 +21,7 @@ public final class NetherExp {
         modContainer.registerConfig(ModConfig.Type.STARTUP, JNEConfigImpl.STARTUP);
         modContainer.registerConfig(ModConfig.Type.COMMON, JNEConfigImpl.COMMON);
 
+        JNEAttachmentTypes.init(modEventBus);
         JNEDataComponents.init(modEventBus);
         JNERegistries.init(modEventBus);
         JNEParticleTypes.init(modEventBus);

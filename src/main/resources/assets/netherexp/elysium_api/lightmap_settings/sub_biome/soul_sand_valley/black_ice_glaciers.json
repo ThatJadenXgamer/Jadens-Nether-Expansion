@@ -1,0 +1,9 @@
+{
+  "type": "biome",
+  "biomes": [
+    "netherexp:black_ice_glaciers"
+  ],
+  "sky_light_color": "#7FA3FF",
+  "block_light_color": "#7FA3FF",
+  "ambient_brightness": -0.055
+}

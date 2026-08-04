@@ -1,0 +1,13 @@
+{
+  "type": "default",
+  "dimension": "minecraft:the_nether",
+  "climate_point": 0,
+  "biome": "betternether:gravel_desert",
+  "weight": 4,
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "betternether"
+    }
+  ]
+}

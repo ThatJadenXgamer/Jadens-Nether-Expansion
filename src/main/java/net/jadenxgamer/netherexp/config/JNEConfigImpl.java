@@ -165,8 +165,11 @@ public class JNEConfigImpl {
                             "This config makes it breakable with anything regardless of what's in your hand")
                     .define("canAnythingBreakFrogmist", false);
             CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN = builder
-                    .comment("Completed Cierge of Treacherys will become active again after the specified time in seconds has elapsed")
+                    .comment("Completed Cierges of Treachery will become active again after the specified time in seconds has elapsed")
                     .defineInRange("ciergeOfTreacheryCompletionCooldown", 1800, 0, 86400);
+            BRAZIER_CHEST_REFILL_COOLDOWN = builder
+                    .comment("Unlocked brazier chests will extinguish after the specified time in seconds has elapsed and refill their loot")
+                    .defineInRange("brazierChestRefillCooldown", 3600, 0, 86400);
             HAZE_BLOCK_COOLDOWN = builder
                     .comment("Defines how long a haze block will last after being placed in seconds")
                     .defineInRange("hazeBlockCooldown", 8, 0, Integer.MAX_VALUE);
@@ -276,6 +279,9 @@ public class JNEConfigImpl {
             DIMINISHING_BLAZES = builder
                     .comment("Blazes will visibly become dimmer the lower their health is much like Minecraft: Dungeons")
                     .define("diminishingBlazes", true);
+            PIXEL_CONSISTENT_MAGMA_CUBES = builder
+                    .comment("Magma Cube textures will scale with the model and conform to pixel consistency")
+                    .define("pixelConsistentMagmaCubes", true);
             MIN_VESSEL_BULLETS = builder
                     .comment("The minimum amount of shotgun pellets fired from a vessel")
                     .defineInRange("minVesselBullets", 16, 0, Integer.MAX_VALUE);
@@ -753,10 +759,6 @@ public class JNEConfigImpl {
             SILVER_PARANORMAL_INFLICTS_SLOWNESS = builder
                     .comment("Silver armor and weapons will inflict possessed and ghost mobs with slowness")
                     .define("silverInflictsParanormalSlowness", true);
-            DEVELOPER_MODE = builder
-                    .comment("Turns on various developer loggers, technical information and such for debugging purposes \n" +
-                            "I suggest you keep this disabled if you're just a casual player")
-                    .define("developerMode", false);
             SHOW_BETA_WARNING_POPUP = builder
                     .comment("Pretty self-explanatory; When running beta builds of JNE, a pop-up will appear on screen warning you upon joining worlds")
                     .define("showBetaWarningPopUp", true);
@@ -777,6 +779,10 @@ public class JNEConfigImpl {
                     .comment("JNE has swearing, and lots of it too but is normally censored \n" +
                             "If you'd like to disable profanity entirely or uncensor it you may do so with this config")
                     .defineEnum("profanity", ProfanityConfig.CENSORED);
+            DEVELOPER_MODE = builder
+                    .comment("Turns on various developer loggers, technical information and such for debugging purposes \n" +
+                            "I suggest you keep this disabled if you're just a casual player... or don't, I'm not your mother")
+                    .define("developerMode", false);
         }
     }
 

@@ -11,6 +11,8 @@ import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.client.sound.InsideFluidAmbientSoundInstance;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.entity.Carcass;
+import net.jadenxgamer.netherexp.core.entity.Stampede;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.client.Minecraft;
@@ -54,6 +56,8 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.VESSEL.get(), VesselRenderer::new);
         EntityRenderers.register(JNEEntityType.ECTO_SLAB.get(), EctoSlabRenderer::new);
         EntityRenderers.register(JNEEntityType.BANSHEE.get(), BansheeRenderer::new);
+        EntityRenderers.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
+        EntityRenderers.register(JNEEntityType.CARCASS.get(), CarcassRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
         EntityRenderers.register(JNEEntityType.SHOTGUN_PELLET.get(), ShotgunPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.SLUG_PELLET.get(), SlugPelletRenderer::new);
@@ -74,6 +78,9 @@ public final class NetherExpClient {
         event.registerLayerDefinition(VesselRenderer.VesselModel.LAYER, VesselRenderer.VesselModel::createBodyLayer);
         event.registerLayerDefinition(EctoSlabRenderer.EctoSlabModel.LAYER, EctoSlabRenderer.EctoSlabModel::createBodyLayer);
         event.registerLayerDefinition(BansheeRenderer.BansheeModel.LAYER, BansheeRenderer.BansheeModel::createBodyLayer);
+        event.registerLayerDefinition(StampedeRenderer.StampedeModel.LAYER, StampedeRenderer.StampedeModel::createBodyLayer);
+        event.registerLayerDefinition(StampedeRenderer.StampedeModel.SADDLE_LAYER, StampedeRenderer.StampedeModel::createBodyLayer);
+        event.registerLayerDefinition(CarcassRenderer.CarcassModel.LAYER, CarcassRenderer.CarcassModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispModel.LAYER, WillOWispRenderer.WillOWispModel::createBodyLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER, WillOWispRenderer.WillOWispItemModel::createOrbLayer);
         event.registerLayerDefinition(WillOWispRenderer.WillOWispItemModel.LAYER_HAND, WillOWispRenderer.WillOWispItemModel::createHandLayer);
@@ -128,11 +135,18 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.PORTAL_MIST.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.ECTO_SHARD.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.LARGE_BURST.get(), LodestoneWorldParticleType.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.BURN.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BURN_DROPLET.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BURN_SIDE.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BURN_DROPLET_TINT.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BURN_SIDE_TINT.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.RED_HAZE.get(), RedHazeParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.RED_SPARKLE.get(), FallingParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.CANDLE_BURST.get(), BurstParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.BLOT_DROP.get(), LodestoneDrippingParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.GLACIER_EFFECT.get(), GlacierEffectParticle.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BLACK_FLAKE_WORLD.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.COLD_FOG.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.BLOT_DROP.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static class HandlePostShaders {

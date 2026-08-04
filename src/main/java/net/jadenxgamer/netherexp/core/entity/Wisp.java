@@ -105,7 +105,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
             Client.trailParticle(JNEParticleTypes.WISP.get(), level(), random, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5));
         } else {
             if (!canGetBored()) return;
-            if (this.tickCount % 20 == 0 && random.nextDouble() < JNEConfigs.WISP_BOREDOM_CHANCE.get() && this.getBored() < 6) ++boredCounter;
+            if (this.tickCount % 20 == 0 && random.nextDouble() < JNEConfigs.WISP_BOREDOM_CHANCE.get() && this.getBoredCounter() < 6) ++boredCounter;
         }
     }
 
@@ -120,15 +120,12 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         if (!this.isSalted() && stack.is(Items.HONEYCOMB)) {
             if (this.level() instanceof ServerLevel serverLevel) {
                 this.setSalted(true);
-                stack.shrink(1);
-                for(int i = 0; i < 4; ++i) {
+                stack.split(1);
+                for(int i = 0; i < 4; ++i)
                     serverLevel.sendParticles(ParticleTypes.WAX_ON, this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), 1, 0.0, 0.0, 0.0, 0.0);
-                }
             }
             return InteractionResult.SUCCESS;
-        } else {
-            return Bottleable.bottleMobPickup(player, hand, this, () -> Items.GLASS_BOTTLE).orElse(super.mobInteract(player, hand));
-        }
+        } else return Bottleable.bottleMobPickup(player, hand, this, () -> Items.GLASS_BOTTLE).orElse(super.mobInteract(player, hand));
     }
 
     @Override
@@ -173,9 +170,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         return navigation;
     }
 
-    //////////
     // DATA //
-    //////////
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
@@ -187,7 +182,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("FromBottle", this.fromBottle());
-        nbt.putInt("BoredCounter", this.getBored());
+        nbt.putInt("BoredCounter", this.getBoredCounter());
         nbt.putBoolean("Salted", this.isSalted());
     }
 
@@ -195,13 +190,11 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setFromBottle(nbt.getBoolean("FromBottle"));
-        this.setBored(nbt.getInt("BoredCounter"));
+        this.setBoredCounter(nbt.getInt("BoredCounter"));
         this.setSalted(nbt.getBoolean("Salted"));
     }
 
-    /////////////
     // BOTTLED //
-    /////////////
 
     @Override
     public boolean fromBottle() {
@@ -233,9 +226,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         return JNESoundEvents.WISP_BOTTLE_FILL.get();
     }
 
-    ////////////////
     // ANIMATIONS //
-    ////////////////
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
@@ -258,16 +249,14 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         this.walkAnimation.update(f, 0.2F);
     }
 
-    ///////////////////////
     // GETTERS & SETTERS //
-    ///////////////////////
 
-    public int getBored() {
+    public int getBoredCounter() {
         return this.boredCounter;
     }
 
-    public void setBored(int boredDelay) {
-        this.boredCounter = boredDelay;
+    public void setBoredCounter(int boredCounter) {
+        this.boredCounter = boredCounter;
     }
 
     public boolean isSalted() {
@@ -278,9 +267,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         this.salted = salted;
     }
 
-    ////////////
     // SOUNDS //
-    ////////////
 
     @Nullable
     @Override
@@ -300,10 +287,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
         return JNESoundEvents.WISP_DEATH.get();
     }
 
-    ////////
     // AI //
-    ////////
-
     static class WispAvoidEntityGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
 
         public WispAvoidEntityGoal(Wisp wisp, Class<T> fleeFromType, float distance, double slowSpeed, double fastSpeed) {
@@ -379,7 +363,7 @@ public class Wisp extends ExorcismMob implements FlyingAnimal, Bottleable {
 
         @Override
         public boolean canUse() {
-            return wisp.getBored() > 5 && !wisp.isSalted() && super.canUse();
+            return wisp.getBoredCounter() > 5 && !wisp.isSalted() && super.canUse();
         }
 
         @Override

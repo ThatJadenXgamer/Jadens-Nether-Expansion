@@ -5,6 +5,9 @@
     },
     "lit=true": {
       "model": "netherexp:block/chiseled_soul_slate_tiles_lit"
+    },
+    "lit=waxen": {
+      "model": "netherexp:block/chiseled_soul_slate_tiles_waxen"
     }
   }
 }

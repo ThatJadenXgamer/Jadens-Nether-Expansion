@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "netherexp:devils_misfortune",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 871259369,
+    "spread_type": "triangular",
+    "spacing": 30,
+    "separation": 8
+  }
+}

@@ -100,7 +100,7 @@ public class EctoSoulSandBlock extends SoulSandBlock {
         if (pos == null) return;
         Wisp wisp = JNEEntityType.WISP.get().create(level);
         if (wisp != null) {
-            wisp.setBored(random.nextInt(0,2));
+            wisp.setBoredCounter(random.nextInt(0,2));
             wisp.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
             level.addFreshEntity(wisp);
         }

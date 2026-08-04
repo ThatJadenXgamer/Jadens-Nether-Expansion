@@ -1,0 +1,7 @@
+{
+  "type": "default",
+  "dimension": "minecraft:the_nether",
+  "climate_point": 4,
+  "biome": "minecraft:basalt_deltas",
+  "weight": 20
+}

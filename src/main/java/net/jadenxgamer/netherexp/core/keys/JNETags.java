@@ -27,6 +27,8 @@ public class JNETags {
         public static final TagKey<Block> SILTMARRAM_PLANTABLE_ON = createTag("siltmarram_plantable_on"); // Blocks in this tag can support siltmarrams
         public static final TagKey<Block> SOUL_SWIRLS = createTag("soul_swirls"); // Blocks in this tag are treated as soul swirls and can be petrified
         public static final TagKey<Block> SOUL_GLASSES = createTag("soul_glasses"); // Blocks in this tag are treated as soul glasses and get a shader effect applied to them
+        public static final TagKey<Block> LAST_FIRE_SUPPORTED_BLOCKS = createTag("last_fire_supported_blocks"); // The game will remember you last went through this block when burning
+        public static final TagKey<Block> BLACK_ICE_REPLACEABLE = createTag("black_ice_replaceable");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, NetherExp.netherexpPath(name));
@@ -65,6 +67,7 @@ public class JNETags {
         public static final TagKey<EntityType<?>> HAS_LIGHT_SHADOW = createTag("has_light_shadow"); // Entities within this tag have a light instead of the usual shadow
         public static final TagKey<EntityType<?>> IGNORES_CIERGE_OF_TREACHERY = createTag("ignores_cierge_of_treachery");
         public static final TagKey<EntityType<?>> TARGETS_REGARDLESS_OF_BETRAYED = createTag("targets_regardless_of_betrayed");
+        public static final TagKey<EntityType<?>> NO_BURNING_FILTER = createTag("no_burning_filter");
 
         private static TagKey<EntityType<?>> createTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, NetherExp.netherexpPath(name));
@@ -72,6 +75,7 @@ public class JNETags {
     }
 
     public static class Biomes {
+
         public static final TagKey<Biome> HAS_CRIMSON_SPORES = createBiomeTag("particles/has_crimson_spores"); // Prevents sporeshrooms from producing crimson spores here
         public static final TagKey<Biome> HAS_WARPED_SPORES = createBiomeTag("particles/has_warped_spores"); // Prevents sporeshrooms from producing warped spores here
         public static final TagKey<Biome> HAS_ASH = createBiomeTag("particles/has_ash"); // Prevents geysers from producing ash particles here
@@ -81,6 +85,8 @@ public class JNETags {
         public static final TagKey<Biome> SPAWNS_DRY_VARIANT_STRIDERS_AND_SILTMARRAM = createBiomeTag("spawns_dry_variant_striders_and_siltmarram");
         public static final TagKey<Biome> HAS_BEACH_SHORELINE = createBiomeTag("has_beach_shoreline");
         public static final TagKey<Biome> HAS_NO_SHORELINE = createBiomeTag("has_no_shoreline");
+        public static final TagKey<Biome> OVERRIDE_STRAY_SPAWN_RULES = createBiomeTag("override_stray_spawn_rules"); // Within these biomes the stray mob will spawn like a regular skeleton and ignores skylight access
+        public static final TagKey<Biome> HAS_HEAT_DISTORTION = createBiomeTag("has_heat_distortion"); // Biomes in this tag will get a moderate heat distortion
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.create(Registries.BIOME, NetherExp.netherexpPath(name));
@@ -88,7 +94,8 @@ public class JNETags {
     }
 
     public static class Fluids {
-        public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createBiomeTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice
+
+        public static final TagKey<Fluid> TURNS_TO_BLACK_ICE = createBiomeTag("turns_to_black_ice"); // Fluids in tag frost into black ice if in contact with ectoplasm or into thin black ice if near just black ice
 
         private static TagKey<Fluid> createBiomeTag(String name) {
             return TagKey.create(Registries.FLUID, NetherExp.netherexpPath(name));

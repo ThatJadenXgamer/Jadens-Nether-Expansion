@@ -65,6 +65,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.SOUL_PATH.get());
 
                 output.accept(Items.BONE);
+                output.accept(JNEItems.SKULL_ON_A_STICK.get());
                 output.accept(JNEItems.FOSSIL_FUEL.get());
                 output.accept(JNEBlocks.FOSSIL_ORE.get());
                 output.accept(JNEBlocks.FOSSIL_FUEL_ORE.get());
@@ -136,6 +137,8 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.PUMP_CHARGE_UPGRADE_SMITHING_TEMPLATE.get());
                 output.accept(JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get());
 
+                output.accept(JNEBlocks.CIERGE_OF_TREACHERY.get());
+                output.accept(JNEBlocks.BRAZIER_CHEST.get());
                 output.accept(JNEItems.TREACHEROUS_FLAME.get());
                 output.accept(JNEItems.TREACHEROUS_WAX.get());
                 output.accept(JNEBlocks.TREACHEROUS_WAX_BLOCK.get());
@@ -169,7 +172,6 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.ECTO_SLAB_SPAWN_EGG.get());
                 output.accept(JNEItems.BANSHEE_SPAWN_EGG.get());
                 output.accept(JNEItems.CARCASS_SPAWN_EGG.get());
-                output.accept(JNEItems.FALSE_CARCASS_SPAWN_EGG.get());
 
                 Antidote.populateCreativeInventoryForAllAntidotes(output);
             })

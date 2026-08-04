@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:fire",
+    {"id": "supplementaries:lumisene", "required": false}
+  ]
+}

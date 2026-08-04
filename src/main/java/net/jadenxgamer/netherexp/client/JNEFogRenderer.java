@@ -40,7 +40,7 @@ public class JNEFogRenderer {
     }
 
     // TODO: make this into an event with Elysium later, it's kind of insane how there isn't one already LMFAO
-    public static void skyColor(Minecraft client, Vec3 pos, float partialTick, CallbackInfoReturnable<Vec3> cir) {
+    public static void skyColor(Minecraft client, Vec3 ignoredPos, float ignoredPartialTick, CallbackInfoReturnable<Vec3> cir) {
         Entity player = client.player;
         if (player == null) return;
         BlockState state = player.level().getBlockState(client.gameRenderer.getMainCamera().getBlockPosition());

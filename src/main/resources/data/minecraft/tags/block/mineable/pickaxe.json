@@ -83,6 +83,7 @@
 
     "netherexp:bone_pike",
     "netherexp:bone_fence",
+    "netherexp:tethered_bone_block",
     "netherexp:stacked_bones",
     "netherexp:stacked_bone_slab",
     "netherexp:stacked_bone_stairs",

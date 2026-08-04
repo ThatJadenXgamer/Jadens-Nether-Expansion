@@ -1,12 +1,10 @@
 package net.jadenxgamer.netherexp.util;
 
-import net.jadenxgamer.netherexp.client.assetdriven.FireParticles;
 import net.jadenxgamer.netherexp.client.particle.JNEPortalParticle;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.NetherPortalBlock;
@@ -64,7 +62,7 @@ public class CommonParticles {
                 .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
                 .setScaleData(GenericParticleData.create(0.18f, 0.18f, 0.0f).build())
                 .setTransparencyData(GenericParticleData.create(1).build())
-                .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                .setRenderType(LodestoneWorldParticleRenderType.ADDITIVE)
                 .setLifetime(random.nextInt(10, 50))
                 .disableNoClip()
                 .setGravity(0f)
@@ -182,7 +180,6 @@ public class CommonParticles {
             var x = pos.getX() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
             var y = pos.getY() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
             var z = pos.getZ() + 0.5 + random.nextDouble() * (random.nextBoolean() ? 1 : -1);
-            LodestoneWorldParticleType particle = SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)];
             WorldParticleBuilder.create(JNEParticleTypes.PORTAL_MIST.get())
                     .setFullBrightLighting()
                     .setNoClip(false)
@@ -249,41 +246,6 @@ public class CommonParticles {
                     })
                     .setMotion(0, 0 ,0)
                     .spawn(level, x, y, z);
-        }
-    }
-
-    public static void burnParticle(Level level, RandomSource random, Entity entity) {
-        if (random.nextInt(1) == 0) {
-            var x = entity.getX() + random.nextDouble() / 2 * (random.nextBoolean() ? 1 : -1);
-            var y = entity.getY() + Mth.nextFloat(random, 0f, 1.9f);
-            var z = entity.getZ() + random.nextDouble() / 2 * (random.nextBoolean() ? 1 : -1);
-            WorldParticleBuilder.create(JNEParticleTypes.BURN.get())
-                    .setSpinData(SpinParticleData.create(0.0f, Mth.nextFloat(random, -0.5f, 0.5f)).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
-                    .setFullBrightLighting()
-                    .setScaleData(GenericParticleData.create(0.28f, 0.0f).build())
-                    .setTransparencyData(GenericParticleData.create(1).build())
-                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                    .setLifetime(random.nextInt(5, 25))
-                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.RANDOM_SPRITE)
-                    .disableNoClip()
-                    .setGravity(0f)
-                    .setMotion(0.0, 0.0, 0.0)
-                    .spawn(level, x, y, z);
-
-            var fireParticles = FireParticles.DEFAULT;
-            Color start = new Color(0xFF9913);
-            Color end = fireParticles.smokeStartColors()[random.nextInt(fireParticles.smokeStartColors().length)];
-            WorldParticleBuilder.create(SMOKE_VARIANTS[random.nextInt(SMOKE_VARIANTS.length)])
-                    .setNaturalLighting()
-                    .setScaleData(GenericParticleData.create(Mth.randomBetween(random, 0.23f, 0.29f)).build())
-                    .setTransparencyData(GenericParticleData.create(1.0f, 0.3f).setEasing(Easing.BOUNCE_OUT).build())
-                    .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
-                    .setColorData(ColorParticleData.create(end).setCoefficient(1.3f).setEasing(Easing.SINE_OUT).build())
-                    .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
-                    .setLifetime(Mth.randomBetweenInclusive(random, 12, 27))
-                    .enableNoClip()
-                    .addMotion(0.0 + random.nextDouble() / 64, 0.1, 0.0 + random.nextDouble() / 64)
-                    .spawn(level, x, entity.getY() + 0.25 + (Mth.nextFloat(random, 0.0f, 1.5f)), z);
         }
     }
 }

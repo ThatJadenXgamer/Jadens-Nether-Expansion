@@ -3,5 +3,5 @@
   "has_possession": true,
   "target_priority": 2,
   "target_mob": "minecraft:strider",
-  "possessed_mob": "minecraft:wither_skeleton"
+  "possessed_mob": "netherexp:stampede"
 }

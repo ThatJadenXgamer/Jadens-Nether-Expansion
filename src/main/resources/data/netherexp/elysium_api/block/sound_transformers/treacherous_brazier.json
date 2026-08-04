@@ -11,8 +11,17 @@
 
   "neoforge:conditions": [
     {
-      "type": "neoforge:mod_loaded",
-      "modid": "caverns_and_chasms"
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "caverns_and_chasms"
+        },
+        {
+          "type": "neoforge:item_exists",
+          "item": "netherexp:treacherous_brazier"
+        }
+      ]
     }
   ]
 }

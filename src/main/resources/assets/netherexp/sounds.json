@@ -4,7 +4,7 @@
       {
         "name": "netherexp:ambient/nether/soul_sand_valley/black_ice_glaciers/ambience",
         "stream": true,
-        "volume": 0.85
+        "volume": 1.25
       }
     ]
   },
@@ -1458,6 +1458,26 @@
       "netherexp:mob/stampede/step4"
     ]
   },
+  "entity.stampede.lavastep": {
+    "subtitle": "subtitles.entity.stampede.step",
+    "sounds": [
+      "netherexp:mob/stampede/lavastep1",
+      "netherexp:mob/stampede/lavastep2",
+      "netherexp:mob/stampede/lavastep3",
+      "netherexp:mob/stampede/lavastep4",
+      "netherexp:mob/stampede/lavastep5"
+    ]
+  },
+  "entity.stampede.hungry": {
+    "sounds": [
+      "netherexp:mob/stampede/hungry"
+    ]
+  },
+  "entity.stampede.trample": {
+    "sounds": [
+      "netherexp:mob/stampede/trample"
+    ]
+  },
   "entity.stampede.eat": {
     "subtitle": "subtitles.entity.stampede.eat",
     "sounds": [
@@ -1537,6 +1557,13 @@
     "subtitle": "subtitles.entity.ecto_slab.petrify_swirls"
   },
 
+  "block.treacherous_fire.mocking": {
+    "sounds": [
+      "netherexp:block/treacherous_fire/mocking1",
+      "netherexp:block/treacherous_fire/mocking2"
+    ],
+    "subtitle": "subtitles.block.treacherous_fire.mocking"
+  },
   "block.nether_portal.activate": {
     "sounds": [
       "netherexp:block/nether_portal/activate"

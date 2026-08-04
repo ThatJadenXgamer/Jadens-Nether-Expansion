@@ -1,0 +1,12 @@
+{
+  "blocks": "netherexp:treacherous_fire",
+  "replace_particles": [
+    "netherexp:treacherous_flame"
+  ],
+  "palette1": "#FBF4CF",
+  "palette2": "#FD5B5B",
+  "palette3": "#ED1C24",
+  "palette4": "#9E1013",
+  "palette5": "#6C1315",
+  "palette6": "#3E0B0C"
+}

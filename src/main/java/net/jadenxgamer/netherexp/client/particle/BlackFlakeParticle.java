@@ -6,11 +6,6 @@ import net.minecraft.core.particles.SimpleParticleType;
 import org.jetbrains.annotations.Nullable;
 
 public class BlackFlakeParticle extends TextureSheetParticle {
-    private static final float ACCELERATION_SCALE = 0.0025F;
-    private static final int INITIAL_LIFETIME = 300;
-    private static final int CURVE_ENDPOINT_TIME = 300;
-    private static final float FALL_ACC = 0.25F;
-    private static final float WIND_BIG = 2.0F;
     private float rotSpeed;
     private final float particleRandom;
     private final float spinAcceleration;

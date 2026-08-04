@@ -1,0 +1,11 @@
+{
+  "type": "sub_biome",
+  "dimension": "minecraft:the_nether",
+  "climate_point": 1,
+  "biome": "netherexp:black_ice_glaciers",
+  "sub_biome_settings": {
+    "replace_biome": "minecraft:soul_sand_valley",
+    "behavior": "replace"
+  },
+  "weight": 20
+}

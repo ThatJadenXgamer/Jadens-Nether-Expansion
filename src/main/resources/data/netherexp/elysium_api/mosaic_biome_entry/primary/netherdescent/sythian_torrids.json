@@ -1,0 +1,14 @@
+{
+  "type": "default",
+  "dimension": "minecraft:the_nether",
+  "climate_point": 3,
+  "biome": "netherdescent:sythian_torrids",
+  "weight": 10,
+
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "netherdescent"
+    }
+  ]
+}

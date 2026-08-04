@@ -64,4 +64,10 @@ public class SorrowsquashBlock extends Block implements BonemealableBlock, Falla
     public DamageSource getFallDamageSource(Entity entity) {
         return entity.damageSources().source(JNEDamageSources.SORROWSQUISHED, entity);
     }
+
+    public static void convertPumpkinStem(Level level, BlockState state, BlockPos pos) {
+        if (!state.is(Blocks.PUMPKIN_STEM)) return;
+        if (level.getBlockState(pos.below()).is(JNETags.Blocks.SOUL_CROP_MUTATION_BLOCKS))
+            level.setBlock(pos, JNEBlocks.SORROWSQUASH_STEM.get().defaultBlockState(), Block.UPDATE_ALL);
+    }
 }

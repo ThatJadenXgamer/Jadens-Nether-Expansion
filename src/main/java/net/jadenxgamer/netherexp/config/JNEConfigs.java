@@ -44,6 +44,7 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue SHOTGUN_BARREL_BULLETS;
     public static ModConfigSpec.BooleanValue CAN_ANYTHING_BREAK_FROGMIST;
     public static ModConfigSpec.IntValue CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN;
+    public static ModConfigSpec.IntValue BRAZIER_CHEST_REFILL_COOLDOWN;
     public static ModConfigSpec.IntValue HAZE_BLOCK_COOLDOWN;
 
     // ITEM
@@ -76,6 +77,7 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue HARD_DIFFICULTY_UNLEASHING_MULTIPLIER;
     public static ModConfigSpec.BooleanValue PROJECTILES_PHASE_THROUGH_GHOSTS;
     public static ModConfigSpec.BooleanValue DIMINISHING_BLAZES;
+    public static ModConfigSpec.BooleanValue PIXEL_CONSISTENT_MAGMA_CUBES;
     public static ModConfigSpec.IntValue MIN_VESSEL_BULLETS;
     public static ModConfigSpec.IntValue MAX_VESSEL_BULLETS;
     public static ModConfigSpec.IntValue VESSEL_ATTACK_TIME;
@@ -211,13 +213,13 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_DAMAGE_MULTIPLIER;
     public static ModConfigSpec.DoubleValue SILVER_PARANORMAL_PROTECTION_DAMAGE;
     public static ModConfigSpec.BooleanValue SILVER_PARANORMAL_INFLICTS_SLOWNESS;
-    public static ModConfigSpec.BooleanValue DEVELOPER_MODE;
     public static ModConfigSpec.BooleanValue SHOW_BETA_WARNING_POPUP;
 
     // STARTUP
     public static ModConfigSpec.BooleanValue ENABLE_JNE_SPLASH_TEXTS;
     public static ModConfigSpec.BooleanValue RED_SPLASH_TEXT;
     public static ModConfigSpec.EnumValue<ProfanityConfig> PROFANITY;
+    public static ModConfigSpec.BooleanValue DEVELOPER_MODE;
 
     // PACK
     public static ModConfigSpec.BooleanValue SOUL_CAMPFIRE_SOUL_SOIL;

@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": "minecraft:soul_sand_valley",
+  "biomes": "#netherexp:soul_sand_valleys",
   "spawners": {
     "type": "netherexp:vessel",
     "weight": 30,

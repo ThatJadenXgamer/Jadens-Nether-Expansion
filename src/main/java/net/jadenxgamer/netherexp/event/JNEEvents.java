@@ -1,10 +1,14 @@
 package net.jadenxgamer.netherexp.event;
 
+import net.jadenxgamer.elysium_api.api.event.BlockOnPlaceEvent;
 import net.jadenxgamer.elysium_api.api.surface_rules.SurfaceRulesRegistry;
 import net.jadenxgamer.netherexp.NetherExp;
+import net.jadenxgamer.netherexp.client.assetdriven.managers.BurnPalettesManager;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManager;
+import net.jadenxgamer.netherexp.core.block.SorrowsquashBlock;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
 import net.jadenxgamer.netherexp.core.entity.PortalGlow;
+import net.jadenxgamer.netherexp.core.entity.Stampede;
 import net.jadenxgamer.netherexp.core.misc.JNEBuiltinPacks;
 import net.jadenxgamer.netherexp.core.misc.JNECauldronInteractions;
 import net.jadenxgamer.netherexp.core.worldgen.JNESurfaceRules;
@@ -13,21 +17,27 @@ import net.jadenxgamer.netherexp.util.BlockCrackTracker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.CalculateDetachedCameraDistanceEvent;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.EntityEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
@@ -40,6 +50,11 @@ public class JNEEvents {
     @SubscribeEvent
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {
         NetherExp.registryAccess = event.getServer().registryAccess();
+    }
+
+    @SubscribeEvent
+    public static void calculateCameraDistance(CalculateDetachedCameraDistanceEvent event) {
+        if (event.getCamera().getEntity().getVehicle() instanceof Stampede) event.setDistance(event.getDistance() * 1.7f);
     }
 
     @SubscribeEvent
@@ -80,7 +95,16 @@ public class JNEEvents {
             SurfaceRulesRegistry.registerNetherSurfaceRule(JNESurfaceRules.init(), NetherExp.MOD_ID);
             JNECauldronInteractions.register();
             JNEItems.setup();
+            JNEFluids.setup();
         });
+    }
+
+    @SubscribeEvent
+    public static void onPlaceBlock(BlockOnPlaceEvent event) {
+        var level = event.getLevel();
+        var state = event.getState();
+        var pos = event.getPos();
+        SorrowsquashBlock.convertPumpkinStem(level, state, pos);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -125,5 +149,12 @@ public class JNEEvents {
     @SubscribeEvent
     public static void registerReloadListener(RegisterClientReloadListenersEvent event) {
         event.registerReloadListener(new FireParticlesManager());
+        event.registerReloadListener(new BurnPalettesManager());
+    }
+
+    @SubscribeEvent
+    public static void onLivingTick(EntityTickEvent.Post event) {
+        if (!(event.getEntity() instanceof LivingEntity entity)) return;
+        BurnPalettesManager.handleLastFire(entity.level(), entity);
     }
 }

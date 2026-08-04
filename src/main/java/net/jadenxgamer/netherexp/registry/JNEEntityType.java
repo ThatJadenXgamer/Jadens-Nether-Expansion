@@ -42,6 +42,14 @@ public class JNEEntityType {
             EntityType.Builder.of(Banshee::new, MobCategory.MONSTER)
                     .sized(1.25f, 2.375f).fireImmune().build("banshee"));
 
+    public static final Supplier<EntityType<Stampede>> STAMPEDE = ENTITY_TYPES.register("stampede", () ->
+            EntityType.Builder.of(Stampede::new, MobCategory.MONSTER)
+                    .sized(1.25f, 4.0f).fireImmune().build("stampede"));
+
+    public static final Supplier<EntityType<Carcass>> CARCASS = ENTITY_TYPES.register("carcass", () ->
+            EntityType.Builder.of(Carcass::new, MobCategory.MISC)
+                    .sized(1.4F, 1.3F).fireImmune().build("carcass"));
+
     /**
      * Non-Living Entities
      */
@@ -79,7 +87,9 @@ public class JNEEntityType {
         event.put(APPARITION.get(), Apparition.createAttributes().build());
         event.put(VESSEL.get(), Vessel.createAttributes().build());
         event.put(ECTO_SLAB.get(), EctoSlab.createAttributes().build());
+        event.put(STAMPEDE.get(), Stampede.createAttributes().build());
         event.put(BANSHEE.get(), Banshee.createAttributes().build());
+        event.put(CARCASS.get(), Carcass.createAttributes().build());
     }
 
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
@@ -93,6 +103,9 @@ public class JNEEntityType {
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EctoSlab::checkSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(JNEEntityType.BANSHEE.get(), SpawnPlacementTypes.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ExorcismMob::checkSpawnRules,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(JNEEntityType.STAMPEDE.get(), SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ExorcismMob::checkSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }

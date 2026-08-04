@@ -1,7 +1,11 @@
 package net.jadenxgamer.netherexp.registry;
 
+import net.jadenxgamer.elysium_api.impl.core.item.ElysiumArrowItem;
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.entity.*;
+import net.jadenxgamer.netherexp.core.entity.PhasmoArrow;
+import net.jadenxgamer.netherexp.core.entity.PhasmoPellet;
+import net.jadenxgamer.netherexp.core.entity.ShotgunPellet;
+import net.jadenxgamer.netherexp.core.entity.SlugPellet;
 import net.jadenxgamer.netherexp.core.item.*;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
@@ -16,6 +20,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.neoforged.neoforge.fluids.DispenseFluidContainer;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
@@ -117,7 +122,7 @@ public class JNEItems {
             new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final Supplier<Item> SKULL_ON_A_STICK = ITEMS.register("skull_on_a_stick", () ->
-            new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).durability(100)));
+            new SkullOnAStick(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).durability(100)));
 
     public static final Supplier<Item> WISP_SPAWN_EGG = ITEMS.register("wisp_spawn_egg", () ->
             new DeferredSpawnEggItem(JNEEntityType.WISP, 6022120, 699311, new Item.Properties()));
@@ -135,13 +140,10 @@ public class JNEItems {
             new DeferredSpawnEggItem(JNEEntityType.BANSHEE, 1985382, 1788232, new Item.Properties()));
 
     public static final Supplier<Item> STAMPEDE_SPAWN_EGG = ITEMS.register("stampede_spawn_egg", () ->
-            new DeferredSpawnEggItem(JNEEntityType.WISP, 4864303, 10236982, new Item.Properties()));
+            new DeferredSpawnEggItem(JNEEntityType.STAMPEDE, 4864303, 10236982, new Item.Properties()));
 
     public static final Supplier<Item> CARCASS_SPAWN_EGG = ITEMS.register("carcass_spawn_egg", () ->
-            new DeferredSpawnEggItem(JNEEntityType.WISP, 8263192, 4066060, new Item.Properties()));
-
-    public static final Supplier<Item> FALSE_CARCASS_SPAWN_EGG = ITEMS.register("false_carcass_spawn_egg", () ->
-            new DeferredSpawnEggItem(JNEEntityType.WISP, 4066060, 8263192, new Item.Properties()));
+            new DeferredSpawnEggItem(JNEEntityType.CARCASS, 8263192, 4066060, new Item.Properties()));
 
     public static final Supplier<Item> SEALED_POTTERY_SHERD = ITEMS.register("sealed_pottery_sherd", () ->
             new Item(new Item.Properties()));
@@ -239,5 +241,6 @@ public class JNEItems {
 
     public static void setup() {
         DispenserBlock.registerProjectileBehavior(PHASMO_ARROW.get());
+        DispenserBlock.registerBehavior(JNEFluids.ECTOPLASM_BUCKET.get(), DispenseFluidContainer.getInstance());
     }
 }

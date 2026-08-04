@@ -3,10 +3,10 @@ package net.jadenxgamer.netherexp.client.rendering.item;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.jadenxgamer.elysium_api.api.util.ClientItemData;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.rendering.keyframe.ItemHierarchicalModel;
 import net.jadenxgamer.netherexp.core.item.ShotgunFistItem;
-import net.jadenxgamer.netherexp.util.ClientItemData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;

@@ -1,9 +1,8 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.fluid.EctoplasmLiquidBlock;
 import net.jadenxgamer.netherexp.core.fluid.EctoplasmFluidType;
-import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.core.fluid.EctoplasmLiquidBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BucketItem;
@@ -61,5 +60,12 @@ public class JNEFluids {
 
     private static BaseFlowingFluid.Properties ectoplasmProperties() {
         return new BaseFlowingFluid.Properties(ECTOPLASM_TYPE, ECTOPLASM_SOURCE, ECTOPLASM_FLOWING).bucket(ECTOPLASM_BUCKET).block(ECTOPLASM).explosionResistance(100.0f);
+    }
+
+    public static void setup() {
+        // interactions added this way have a smoke particle and lava extinguish sound, which obviously would sound like shit with black ice
+//        FluidInteractionRegistry.addInteraction(ECTOPLASM_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+//                NeoForgeMod.WATER_TYPE.value(), (fluidState) -> JNEBlocks.BLACK_ICE.get().defaultBlockState()
+//        ));
     }
 }

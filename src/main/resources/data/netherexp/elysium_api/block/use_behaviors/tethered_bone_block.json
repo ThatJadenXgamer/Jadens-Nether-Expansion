@@ -1,0 +1,22 @@
+{
+  "blocks": "minecraft:bone_block",
+  "item_condition": "minecraft:string",
+  "chance_to_fail": 0,
+  "behaviors": {
+    "type": "place",
+    "blockstate": {
+      "Name": "netherexp:tethered_bone_block"
+    },
+    "pos": "noop",
+    "pos_offset": 0,
+    "after_use_item": "consume",
+    "can_replace_solids": true,
+    "break_particles": false,
+    "sounds": {
+      "sound_event": "minecraft:entity.leash_knot.place",
+      "volume": 1.0,
+      "pitch": 1.0
+    },
+    "copy_properties": ["axis"]
+  }
+}

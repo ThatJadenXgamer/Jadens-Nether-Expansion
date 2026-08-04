@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "netherexp:stampede", "required": false },
+    "netherexp:ecto_slab",
+    "netherexp:banshee"
+  ]
+}

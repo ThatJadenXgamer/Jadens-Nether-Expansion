@@ -1,0 +1,8 @@
+{
+  "processors": [
+    {
+      "processor_type": "elysium_api:protect_non_replaceable",
+      "blacklist": "#minecraft:features_cannot_replace"
+    }
+  ]
+}

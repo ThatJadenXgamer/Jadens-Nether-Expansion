@@ -20,7 +20,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -42,7 +41,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
@@ -208,7 +206,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal {
         for (int i = 0; i < JNEConfigs.WISPS_DROPPED_BY_APPARITION.get(); i++) {
             Wisp wisp = JNEEntityType.WISP.get().create(this.level());
             if (wisp != null) {
-                wisp.setBored(6);
+                wisp.setBoredCounter(6);
                 wisp.setPos(this.getX() + random.nextDouble(), this.getY() + random.nextDouble(), this.getZ() + random.nextDouble());
                 this.level().addFreshEntity(wisp);
             }
