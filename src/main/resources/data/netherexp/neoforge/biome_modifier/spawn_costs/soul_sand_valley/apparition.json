@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_spawn_costs",
-  "biomes": "minecraft:soul_sand_valley",
+  "biomes": "#netherexp:soul_sand_valleys",
   "entity_types": "netherexp:apparition",
   "spawn_cost": {
     "energy_budget": 0.15,

@@ -1,7 +1,7 @@
 {
   "type": "neoforge:add_spawn_costs",
   "biomes": "#netherexp:soul_sand_valleys",
-  "entity_types": "minecraft:stray",
+  "entity_types": "netherexp:banshee",
   "spawn_cost": {
     "energy_budget": 0.15,
     "charge": 0.7

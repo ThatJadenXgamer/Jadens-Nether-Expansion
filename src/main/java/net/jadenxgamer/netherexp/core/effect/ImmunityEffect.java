@@ -45,7 +45,7 @@ public class ImmunityEffect extends IncurableEffect {
         if (immuneTo == null) return true;
         Holder<MobEffect> self = getSelfHolder();
 
-        if (entity.hasEffect(immuneTo)) {
+        if (self != null && entity.hasEffect(immuneTo)) {
             MobEffectInstance selfEffect = entity.getEffect(self);
             if (selfEffect == null) return true;
 

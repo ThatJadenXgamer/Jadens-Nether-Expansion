@@ -35,14 +35,15 @@ public record Antidote(String name, List<MobEffectInstance> effects) {
         for (Map.Entry<ResourceKey<Antidote>, Antidote> entry : registry.entrySet()) {
             ResourceLocation antidoteId = entry.getKey().location();
 
-            ItemStack stack = new ItemStack(JNEItems.ANTIDOTE.get());
-            AntidoteContents contents = new AntidoteContents(
-                    Optional.of(antidoteId),
-                    Optional.empty(),
-                    List.of()
-            );
-            stack.set(JNEDataComponents.ANTIDOTE_CONTENTS.get(), contents);
-            stacks.add(stack);
+            ItemStack baseStack = new ItemStack(JNEItems.ANTIDOTE.get());
+            baseStack.set(JNEDataComponents.ANTIDOTE_CONTENTS.get(), new AntidoteContents(
+                    Optional.of(antidoteId), Optional.empty(), List.of()));
+            stacks.add(baseStack);
+
+            ItemStack grenadeStack = new ItemStack(JNEItems.GRENADE_ANTIDOTE.get());
+            grenadeStack.set(JNEDataComponents.ANTIDOTE_CONTENTS.get(), new AntidoteContents(
+                    Optional.of(antidoteId), Optional.empty(), List.of()));
+            stacks.add(grenadeStack);
         }
         output.acceptAll(stacks);
     }

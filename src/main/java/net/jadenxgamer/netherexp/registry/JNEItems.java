@@ -62,7 +62,7 @@ public class JNEItems {
             new AntidoteItem(new Item.Properties().stacksTo(1).component(JNEDataComponents.ANTIDOTE_CONTENTS.get(), AntidoteContents.EMPTY)));
 
     public static final Supplier<Item> GRENADE_ANTIDOTE = ITEMS.register("grenade_antidote", () ->
-            new Item(new Item.Properties()));
+            new GrenadeAntidoteItem(new Item.Properties().stacksTo(1).component(JNEDataComponents.ANTIDOTE_CONTENTS.get(), AntidoteContents.EMPTY)));
 
     public static final Supplier<Item> GLOWCHEESE = ITEMS.register("glowcheese", () ->
             new Item(new Item.Properties().food(JNEFoods.GLOWCHEESE)));
@@ -241,6 +241,7 @@ public class JNEItems {
 
     public static void setup() {
         DispenserBlock.registerProjectileBehavior(PHASMO_ARROW.get());
+        DispenserBlock.registerBehavior(JNEFluids.ECTOPLASM_BUCKET.get(), DispenseFluidContainer.getInstance());
         DispenserBlock.registerBehavior(JNEFluids.ECTOPLASM_BUCKET.get(), DispenseFluidContainer.getInstance());
     }
 }

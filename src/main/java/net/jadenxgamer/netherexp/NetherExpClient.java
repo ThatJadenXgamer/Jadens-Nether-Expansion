@@ -25,6 +25,8 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.NoopRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -64,6 +66,8 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.PHASMO_PELLET.get(), PhasmoPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.WILL_O_WISP.get(), WillOWispRenderer::new);
         EntityRenderers.register(JNEEntityType.PORTAL_GLOW.get(), PortalGlowRenderer::new);
+        EntityRenderers.register(JNEEntityType.ANTIDOTE.get(), ThrownItemRenderer::new);
+        EntityRenderers.register(JNEEntityType.ANTIDOTE_EFFECT_CLOUD.get(), NoopRenderer::new);
         EntityRenderers.register(EntityType.BLAZE, JNEBlazeRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.SUSPICIOUS_SOUL_SAND.get(), SuspiciousSoulSandBlockRenderer::new);
         BlockEntityRenderers.register(JNEBlockEntityType.DISCERNMENT_GLASS.get(), DiscernmentGlassBlockRenderer::new);

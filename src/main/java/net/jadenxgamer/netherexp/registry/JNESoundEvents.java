@@ -34,6 +34,8 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> POTION_POSTDRINK = registerSoundEvents("item.potion.postdrink");
     public static final Supplier<SoundEvent> ANTIDOTE_NEGATE = registerSoundEvents("item.antidote.negate");
     public static final Supplier<SoundEvent> ANTIDOTE_EXPIRED = registerSoundEvents("item.antidote.expired");
+    public static final Supplier<SoundEvent> GRENADE_ANTIDOTE_TICK = registerSoundEvents("item.grenade_antidote.tick");
+    public static final Supplier<SoundEvent> GRENADE_ANTIDOTE_EXPLODE = registerSoundEvents("item.grenade_antidote.explode");
     public static final Supplier<SoundEvent> BUCKET_FILL_ECTOPLASM = registerSoundEvents("item.bucket.fill_ectoplasm");
     public static final Supplier<SoundEvent> BUCKET_EMPTY_ECTOPLASM = registerSoundEvents("item.bucket.empty_ectoplasm");
     public static final Supplier<SoundEvent> SHOTGUN_USE = registerSoundEvents("item.shotgun.use");
