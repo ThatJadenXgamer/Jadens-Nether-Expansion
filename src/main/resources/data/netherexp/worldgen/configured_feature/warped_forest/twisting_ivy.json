@@ -1,0 +1,55 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "weight": 20,
+            "data": {
+              "Name": "netherexp:twisting_ivy",
+              "Properties": {
+                "down": "true",
+                "helix": "true"
+              }
+            }
+          },
+          {
+            "weight": 25,
+            "data": {
+              "Name": "netherexp:twisting_ivy",
+              "Properties": {
+                "down": "true",
+                "helix": "false"
+              }
+            }
+          }
+        ]
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:all_of",
+      "predicates": [
+        {
+          "type": "minecraft:matching_blocks",
+          "blocks": "minecraft:air"
+        },
+        {
+          "type": "minecraft:matching_blocks",
+          "offset": [
+            0,
+            -1,
+            0
+          ],
+          "blocks": [
+            "minecraft:netherrack"
+          ]
+        }
+      ]
+    },
+    "radius": 3,
+    "half_height": 1
+  }
+}
