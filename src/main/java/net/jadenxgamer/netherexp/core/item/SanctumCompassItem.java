@@ -88,6 +88,7 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
         if (ammo.isEmpty() && !player.getAbilities().instabuild) return InteractionResultHolder.pass(stack);
         if (!player.getAbilities().instabuild) ammo.shrink(1);
         if (!activateCompass(stack, level, player, pos)) return InteractionResultHolder.pass(stack);
+
         player.swing(hand, true);
         return InteractionResultHolder.success(stack);
     }
@@ -103,11 +104,12 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
         if (pos == null) return false;
         other.shrink(1);
         slot.set(other);
+
         return activateCompass(stack, player.level(), player, pos);
     }
 
     @Override
-    public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access) {
+    public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess slotAccess) {
         if (stack.getCount() != 1 || action != ClickAction.SECONDARY) return false;
         LocatorCompass compass = stack.get(JNEDataComponents.LOCATOR_COMPASS);
         if (compass == null || compass.isActive()) return false;
@@ -115,7 +117,8 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
         BlockPos pos = findStructure(player.level(), player, stack);
         if (pos == null) return false;
         other.shrink(1);
-        access.set(other);
+        slotAccess.set(other);
+
         return activateCompass(stack, player.level(), player, pos);
     }
 
@@ -149,12 +152,11 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
 
     @Nullable
     private BlockPos findStructure(Level level, Player player, ItemStack stack) {
-        if (!(level instanceof ServerLevel sl)) return null;
+        if (!(level instanceof ServerLevel serverLevel)) return null;
         LocatorCompass compass = stack.get(JNEDataComponents.LOCATOR_COMPASS);
         if (compass == null) return null;
-        return compass.bound() && compass.structurePos().isPresent() && compass.dimension().isPresent()
-                ? compass.structurePos().get()
-                : sl.findNearestMapStructure(JNETags.Structures.SANCTUM_COMPASS_LOCATED, player.blockPosition(), 100, false);
+        return compass.bound() && compass.structurePos().isPresent() && compass.dimension().isPresent() ? compass.structurePos().get()
+                : serverLevel.findNearestMapStructure(JNETags.Structures.SANCTUM_COMPASS_LOCATED, player.blockPosition(), 100, false);
     }
 
     private boolean activateCompass(ItemStack stack, Level level, Player player, BlockPos pos) {
@@ -174,9 +176,9 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
                     if (!(entity instanceof LivingEntity living)) return 0.0f;
                     LocatorCompass compass = stack.get(JNEDataComponents.LOCATOR_COMPASS);
                     if (compass == null || !compass.isActive() || !compass.bound()) return 0.0f;
-                    GlobalPos gp = getStructurePosition(stack);
-                    if (gp == null) return 0.0f;
-                    BlockPos target = gp.pos();
+                    GlobalPos globalPos = getStructurePosition(stack);
+                    if (globalPos == null) return 0.0f;
+                    BlockPos target = globalPos.pos();
                     double dx = target.getX() + 0.5 - living.getX();
                     double dz = target.getZ() + 0.5 - living.getZ();
                     double angle = Math.atan2(dz, dx) - Math.toRadians(living.getYRot());

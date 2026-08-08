@@ -1,0 +1,20 @@
+{
+  "type": "netherexp:replace_item",
+  "conditions": [
+    {
+      "condition": "minecraft:alternative",
+      "terms": [
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/hoglin"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/bastion_hoglin_stable"
+        }
+      ]
+    }
+  ],
+  "target": "minecraft:porkchop",
+  "replacement": "netherexp:hogham"
+}

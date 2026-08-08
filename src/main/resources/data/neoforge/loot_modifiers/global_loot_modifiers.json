@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "entries": [
+    "netherexp:rift_armor_trim_smithing_template",
+    "netherexp:porkchop_to_hogham",
+    "netherexp:cooked_porkchop_to_cooked_hogham"
+  ]
+}

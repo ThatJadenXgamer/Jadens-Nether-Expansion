@@ -3,12 +3,14 @@ package net.jadenxgamer.netherexp.registry;
 import com.mojang.serialization.MapCodec;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.*;
-import net.jadenxgamer.netherexp.core.misc.neoforge.ConfigCondition;
-import net.jadenxgamer.netherexp.core.misc.neoforge.StartupConfigCondition;
+import net.jadenxgamer.netherexp.core.misc.neoforge.conditional_data.ConfigCondition;
+import net.jadenxgamer.netherexp.core.misc.neoforge.conditional_data.StartupConfigCondition;
+import net.jadenxgamer.netherexp.core.misc.neoforge.glm.ReplaceItemModifier;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -23,8 +25,14 @@ public class JNERegistries {
      */
 
     public static final DeferredRegister<MapCodec<? extends ICondition>> CONDITION_CODECS = DeferredRegister.create(NeoForgeRegistries.Keys.CONDITION_CODECS, NetherExp.MOD_ID);
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> GLOBAL_LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, NetherExp.MOD_ID);
+
+    // CONDITIONS
     public static final Supplier<MapCodec<ConfigCondition>> CONFIG = CONDITION_CODECS.register("config", () -> ConfigCondition.CODEC);
     public static final Supplier<MapCodec<StartupConfigCondition>> STARTUP_CONFIG = CONDITION_CODECS.register("startup_config", () -> StartupConfigCondition.CODEC);
+
+    // GLOBAL LOOT MODIFIERS (GLM)
+    public static final Supplier<MapCodec<ReplaceItemModifier>> REPLACE_ITEM = GLOBAL_LOOT_MODIFIERS.register("replace_item", () -> ReplaceItemModifier.CODEC);
 
     /**
      * JNE Registries
@@ -38,6 +46,7 @@ public class JNERegistries {
 
     public static void init(IEventBus eventBus) {
         CONDITION_CODECS.register(eventBus);
+        GLOBAL_LOOT_MODIFIERS.register(eventBus);
     }
 
     public static void registryInit(NewRegistryEvent event) {

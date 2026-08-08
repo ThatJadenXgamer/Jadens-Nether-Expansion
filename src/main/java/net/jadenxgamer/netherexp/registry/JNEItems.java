@@ -241,6 +241,7 @@ public class JNEItems {
 
     public static void setup() {
         DispenserBlock.registerProjectileBehavior(PHASMO_ARROW.get());
+        DispenserBlock.registerProjectileBehavior(GRENADE_ANTIDOTE.get());
         DispenserBlock.registerBehavior(JNEFluids.ECTOPLASM_BUCKET.get(), DispenseFluidContainer.getInstance());
         DispenserBlock.registerBehavior(JNEFluids.ECTOPLASM_BUCKET.get(), DispenseFluidContainer.getInstance());
     }

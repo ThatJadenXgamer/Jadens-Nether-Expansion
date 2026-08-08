@@ -1,4 +1,4 @@
-package net.jadenxgamer.netherexp.core.misc.neoforge;
+package net.jadenxgamer.netherexp.core.misc.neoforge.conditional_data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -7,14 +7,14 @@ import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.conditions.ICondition;
 
-public record StartupConfigCondition(String path) implements ICondition {
-    public static final MapCodec<StartupConfigCondition> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            Codec.STRING.fieldOf("path").forGetter(StartupConfigCondition::path)
-    ).apply(instance, StartupConfigCondition::new));
+public record ConfigCondition(String path) implements ICondition {
+    public static final MapCodec<ConfigCondition> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            Codec.STRING.fieldOf("path").forGetter(ConfigCondition::path)
+    ).apply(instance, ConfigCondition::new));
 
     @Override
     public boolean test(IContext iContext) {
-        ModConfigSpec.ConfigValue<?> configValue = JNEConfigImpl.STARTUP.getValues().get(this.path);
+        ModConfigSpec.ConfigValue<?> configValue = JNEConfigImpl.COMMON.getValues().get(this.path);
         if (configValue instanceof ModConfigSpec.BooleanValue booleanValue) {
             return booleanValue.get();
         }
