@@ -160,6 +160,10 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.INSCRIBED_PANEL.get());
                 output.accept(JNEBlocks.WARPED_WART.get());
 
+                output.accept(JNEItems.OCHRE_FROGMIST.get());
+                output.accept(JNEItems.VERDANT_FROGMIST.get());
+                output.accept(JNEItems.PEARLESCENT_FROGMIST.get());
+
                 output.accept(Items.GHAST_TEAR);
                 output.accept(LookupRegistryHelper.getItem(NetherExp.minecraftPath("music_disc_tears")));
 
@@ -585,9 +589,9 @@ public class JNECreativeModeTabs {
 
             insertToTab(event, Items.MUSIC_DISC_PIGSTEP, JNEItems.MUSIC_DISC_BUCKSHOT_WONDERLAND.get(), false);
 
-            var tearsDisc = LookupRegistryHelper.getItem(NetherExp.minecraftPath("music_disc_tears"));
-            boolean alreadyExists = event.getParentEntries().stream().anyMatch(stack -> stack.getItem() == tearsDisc);
-            if (!alreadyExists) insertToTab(event, Items.MUSIC_DISC_PIGSTEP, tearsDisc, false);
+//            var tearsDisc = LookupRegistryHelper.getItem(NetherExp.minecraftPath("music_disc_tears"));
+//            boolean alreadyExists = event.getParentEntries().stream().anyMatch(stack -> stack.getItem() == tearsDisc);
+//            if (!alreadyExists) insertToTab(event, Items.MUSIC_DISC_PIGSTEP, tearsDisc, false);
         }
     }
 

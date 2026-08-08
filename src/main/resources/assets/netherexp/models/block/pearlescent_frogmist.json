@@ -1,6 +1,0 @@
-{
-  "parent": "netherexp:block/frogmist_template",
-  "textures": {
-    "frogmist": "netherexp:block/pearlescent_frogmist"
-  }
-}
