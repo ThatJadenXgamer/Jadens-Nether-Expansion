@@ -95,13 +95,17 @@ by simply smacking them with a shovel, doing so will cause them to deal friendly
 
 -Explosion damage can force stacked up ecto slabs to dismantle and go into a cooldown for a few seconds
 
--Stampedes can now naturally spawn very rarely in the soul sand valley
+-Stampedes can now naturally spawn VERY RARELY in the soul sand valleys
 
--Stampedes' hunger meter UI has also received a redesign to make it more obvious as to what it is
+-Stampedes' hunger meter UI has also received a redesign to make it more obvious as to what it is with more dynamic animations for when it is low or replenishing
 
--Thin Black Ice can now shatter in a chain reaction if one breaks, and certain mobs (usually light ones) can now stand on thin black ice without shattering it 
+-Drastically improved how the stampede's movement works, it is now controlled using WSAD like horses with the added ability to jump
 
--Banshees had small visual tweaks to their textures and now produce smoke particles behind their orbit
+-There's now a scerenshake every time the stampede moves or lands from a fall, the itensity of the latter being determined by fall distance
+
+-You can now boost a stampede's speed very briefly by right-clicking the skull on a stick, doing so will make it lose durability similar to warped fungi on a sticks with striders
+
+-To help with traversal and convenience of obtaining a stampede, they can now stride on lava without sinking but have a heavily reduced movement speed compared to that of striders
 
 -Left-handed banshees rod now orbits counter-clockwise instead of the usual clockwise rotation
 
@@ -162,9 +166,11 @@ in order to make soul speed far more accessible right from the get-go and reduce
 
 -Fire particles have been entirely overhauled to have more appealing smoke and embers; they are fully resource-pack json driven and more can be added as mod compat very easily
 
--Vanilla Flame particles have been replaced with a palette permutated burn particle from Minecraft: Dungeons that is animated and easy to add similarly resource-pack json driven
+-Vanilla Flame particles have been replaced with a palette permutated burn particle from Minecraft: Dungeons that is animated and easy to add compat to with resourcepack driven jsons; which supplies permutations for each palette and what blocks it's associated to and what particles it'll replace
 
--Apparitions can now also turn into a banshee if they happen to possess a Breeze
+-Apparitions can now also turn into a Banshee if they happen to possess a Breeze
+
+-Similarly another conversion has been added for the Bogged into Vessels
 
 -Apparition Aggressions is a new data-driven registry which allows you to define custom hostility towards certain mobs depending on the apparition's personality 
 
@@ -176,7 +182,7 @@ in order to make soul speed far more accessible right from the get-go and reduce
 
 -Apparitions can now be salted to prevent it from possessing mobs or gargoyle statues; Honeycombs are a temporary item until actual Nether Salt is added in the future
 
--Possessed mobs made from an apparition possessing an entity now retain the information of what EntityType they use to be for reverting in exorcisms
+-Possessed mobs made from an apparition possessing an entity now retain the information of what EntityType they use to be for reverting in exorcisms.
 To make it easier for people to make possessions, apparitions can be "transported" with leashes. and will calm down after a while of being leashed if not already docile
 
 -Discernment Glass now emits a comparator output if it has a filter item
@@ -241,11 +247,11 @@ you can use axe to scrape a slick side to sticky or use flint and steel to burn 
 
 -Magma Block has been given a brand new retexture and better emissives to make it look more consistent with soul magma blocks
 
--Treacherous Fire still cannot hurt you, nothing changed :)
+-Treacherous Fire still cannot hurt you, nothing changed. If anything it protects you against fire damage and extinguishes you faster! :)
 
 -Vessels become completely stationary and staggered after firing their shotgun, leaving themselves vulnerable to attacks
 
--Vessels' bullet precision has been tweaked to be much more lenient, but being close to it makes the mob always land a perfect point-blank that is indecated with a yellow flash\
+-Vessels' bullet precision has been tweaked to be much more lenient, but being close to it makes the mob always land a perfect point-blank that is indecated with a yellow flash
 
 -Ectoplasm transforming blocks sorrounding it has been made data-driven and you can easily add more hauntings this way
 
@@ -273,7 +279,11 @@ you can use axe to scrape a slick side to sticky or use flint and steel to burn 
 
 ### Fixes
 
--As mentioned earlier, a disgusting amount of bugs were fixed due to the total code rewrite, so much so that I cannot list all of them out
+-As mentioned earlier, a disgusting amount of bugs were fixed due to the total code rewrite, so much so that I cannot list all of them out,
+
+-The backface of a stampede's teto tails were not rendering emissive and had a noticably darker under-texture.
+
+-Stampedes used to not forget their anger state and target when fed, leaing to them constantly being stuck angry which was especially bad when it was caused due to a lack of hunger
 
 -Ecto Slabs can now be exorcized with water, this was bugged prior
 

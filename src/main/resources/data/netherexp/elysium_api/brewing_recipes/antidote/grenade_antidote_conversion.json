@@ -1,0 +1,6 @@
+{
+  "input_item": "netherexp:antidote",
+  "ingredient": "minecraft:gunpowder",
+  "output_item": "netherexp:grenade_antidote",
+  "copy_input_components": true
+}

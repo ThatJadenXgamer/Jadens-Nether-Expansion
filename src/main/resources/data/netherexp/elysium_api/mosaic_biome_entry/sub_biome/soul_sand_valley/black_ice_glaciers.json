@@ -7,5 +7,5 @@
     "replace_biome": "minecraft:soul_sand_valley",
     "behavior": "replace"
   },
-  "weight": 10
+  "weight": 1
 }

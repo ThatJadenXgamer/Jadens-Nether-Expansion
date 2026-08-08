@@ -14,6 +14,7 @@ import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.core.block.MagmaCreamBlock;
+import net.jadenxgamer.netherexp.core.item.SanctumCompassItem;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
@@ -77,12 +78,10 @@ public class JNEClientEvents {
         }
     }
 
-
     @SubscribeEvent
     public static void registerOverlays(RegisterGuiLayersEvent event) {
         event.registerAboveAll(NetherExp.netherexpPath("stampede_hunger"), StampedeHungerHud.OVERLAY);
     }
-
 
     @SubscribeEvent
     public static void onPlayerLogin(ClientPlayerNetworkEvent.LoggingIn event) {
@@ -105,6 +104,7 @@ public class JNEClientEvents {
         NetherExpClient.registerRenderers();
         PostProcessHandler.addInstance(SoulGlassPostProcessor.INSTANCE);
         PostProcessHandler.addInstance(NetherHeatDistortionPostprocessor.INSTANCE);
+        event.enqueueWork(SanctumCompassItem::registerProperties);
     }
 
     @SubscribeEvent

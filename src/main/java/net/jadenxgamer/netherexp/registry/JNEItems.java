@@ -74,7 +74,7 @@ public class JNEItems {
             new MobBottleItem<>(JNEEntityType.WISP, JNESoundEvents.WISP_BOTTLE_EMPTY, new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE)));
 
     public static final Supplier<Item> SANCTUM_COMPASS = ITEMS.register("sanctum_compass", () ->
-            new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+            new SanctumCompassItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final Supplier<Item> WRAITHING_FLESH = ITEMS.register("wraithing_flesh", () ->
             new Item(new Item.Properties().food(JNEFoods.WRAITHING_FLESH)));

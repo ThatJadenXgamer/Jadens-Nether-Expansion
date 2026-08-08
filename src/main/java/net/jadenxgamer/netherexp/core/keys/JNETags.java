@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.material.Fluid;
 
 public class JNETags {
@@ -99,6 +100,15 @@ public class JNETags {
 
         private static TagKey<Fluid> createBiomeTag(String name) {
             return TagKey.create(Registries.FLUID, NetherExp.netherexpPath(name));
+        }
+    }
+
+    public static class Structures {
+
+        public static final TagKey<Structure> SANCTUM_COMPASS_LOCATED = createStructureTag("sanctum_compass_located");
+
+        private static TagKey<Structure> createStructureTag(String name) {
+            return TagKey.create(Registries.STRUCTURE, NetherExp.netherexpPath(name));
         }
     }
 }

@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry;
 import com.mojang.serialization.Codec;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
+import net.jadenxgamer.netherexp.core.item.components.LocatorCompass;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -24,6 +25,12 @@ public class JNEDataComponents {
             builder -> builder
                     .persistent(AntidoteContents.CODEC)
                     .networkSynchronized(ByteBufCodecs.fromCodec(AntidoteContents.CODEC)));
+
+
+    public static final Supplier<DataComponentType<LocatorCompass>> LOCATOR_COMPASS = COMPONENTS.registerComponentType("locator_compass",
+            builder -> builder
+                    .persistent(LocatorCompass.CODEC)
+                    .networkSynchronized(ByteBufCodecs.fromCodec(LocatorCompass.CODEC)));
 
     public static void init(IEventBus eventBus) {
         COMPONENTS.register(eventBus);

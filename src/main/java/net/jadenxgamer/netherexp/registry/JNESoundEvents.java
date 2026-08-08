@@ -46,6 +46,7 @@ public class JNESoundEvents {
     public static final Supplier<SoundEvent> PUMP_CHARGE_SHOTGUN_ALARM_PROFANITY = registerSoundEvents("item.pump_charge_shotgun.alarm_profanity");
 
     public static final Supplier<SoundEvent> GOLD_GILDING = registerSoundEvents("item.gold.gilding");
+    public static final Supplier<SoundEvent> COMPASS_TICK = registerSoundEvents("item.compass.tick");
 
     public static final Supplier<SoundEvent> WISP_AMBIENT = registerSoundEvents("entity.wisp.ambient");
     public static final Supplier<SoundEvent> WISP_HURT = registerSoundEvents("entity.wisp.hurt");
