@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.core.item;
 
+import net.jadenxgamer.elysium_api.api.util.ElysiumTimeTracker;
 import net.jadenxgamer.netherexp.core.item.components.LocatorCompass;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
@@ -7,6 +8,7 @@ import net.jadenxgamer.netherexp.registry.JNEDataComponents;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
@@ -44,7 +46,8 @@ import java.util.function.Predicate;
 
 public class SanctumCompassItem extends ProjectileWeaponItem {
 
-    private static final int ACTIVATION_DURATION = 4800;
+    private static final int ACTIVATION_DURATION_SECONDS = 240;
+    private static final ElysiumTimeTracker.IntervalTimer intervalTimer = ElysiumTimeTracker.createIntervalTimer(20, ElysiumTimeTracker.TimeSource.SERVER);
 
     public SanctumCompassItem(Properties properties) {
         super(properties.component(JNEDataComponents.LOCATOR_COMPASS, LocatorCompass.DEFAULT));
@@ -66,15 +69,18 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
 
         LocatorCompass compass = stack.get(JNEDataComponents.LOCATOR_COMPASS);
         if (compass == null || !compass.isActive()) return;
-        int newTime = compass.activeTime() - 1;
-        if (newTime <= 0) {
-            stack.set(JNEDataComponents.LOCATOR_COMPASS, new LocatorCompass(compass.structurePos(), compass.dimension(), compass.bound(), false, 0));
-            stack.remove(DataComponents.CUSTOM_MODEL_DATA);
-            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.LODESTONE_PLACE, SoundSource.PLAYERS, 0.7f, 1.0f);
-        } else {
-            stack.set(JNEDataComponents.LOCATOR_COMPASS, new LocatorCompass(compass.structurePos(), compass.dimension(), compass.bound(), true, newTime));
-            if (entity.tickCount % 40 == 0 && isSelected) level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), JNESoundEvents.COMPASS_TICK.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
+        if (intervalTimer.check()) {
+            int newTime = compass.activeTime() - 1;
+            if (newTime <= 0) {
+                stack.set(JNEDataComponents.LOCATOR_COMPASS, new LocatorCompass(compass.structurePos(), compass.dimension(), compass.bound(), false, 0));
+                stack.remove(DataComponents.CUSTOM_MODEL_DATA);
+                level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.LODESTONE_PLACE, SoundSource.PLAYERS, 0.7f, 1.0f);
+            } else {
+                stack.set(JNEDataComponents.LOCATOR_COMPASS, new LocatorCompass(compass.structurePos(), compass.dimension(), compass.bound(), true, newTime));
+            }
         }
+
+        if (entity.tickCount % 40 == 0 && isSelected) level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), JNESoundEvents.COMPASS_TICK.get(), SoundSource.PLAYERS, 0.7f, 1.0f);
     }
 
     @Override
@@ -161,7 +167,7 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
 
     private boolean activateCompass(ItemStack stack, Level level, Player player, BlockPos pos) {
         if (level.isClientSide()) return false;
-        stack.set(JNEDataComponents.LOCATOR_COMPASS, new LocatorCompass(Optional.of(pos), Optional.of(level.dimension().location()), true, true, ACTIVATION_DURATION));
+        stack.set(JNEDataComponents.LOCATOR_COMPASS, new LocatorCompass(Optional.of(pos), Optional.of(level.dimension().location()), true, true, ACTIVATION_DURATION_SECONDS));
         stack.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(1));
         if (player instanceof ServerPlayer sp) JNECriteriaTriggers.ACTIVATE_SANCTUM_COMPASS.get().trigger(sp);
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS, 0.7f, 1.0f);
@@ -172,18 +178,7 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
     public static void registerProperties() {
         ItemProperties.register(JNEItems.SANCTUM_COMPASS.get(),
                 ResourceLocation.withDefaultNamespace("angle"),
-                (stack, level, entity, seed) -> {
-                    if (!(entity instanceof LivingEntity living)) return 0.0f;
-                    LocatorCompass compass = stack.get(JNEDataComponents.LOCATOR_COMPASS);
-                    if (compass == null || !compass.isActive() || !compass.bound()) return 0.0f;
-                    GlobalPos globalPos = getStructurePosition(stack);
-                    if (globalPos == null) return 0.0f;
-                    BlockPos target = globalPos.pos();
-                    double dx = target.getX() + 0.5 - living.getX();
-                    double dz = target.getZ() + 0.5 - living.getZ();
-                    double angle = Math.atan2(dz, dx) - Math.toRadians(living.getYRot());
-                    return (float) Mth.positiveModulo(angle / (2.0 * Math.PI), 1.0);
-                }
+                new CompassItemPropertyFunction((level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack))
         );
     }
 }

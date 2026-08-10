@@ -10,6 +10,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.LootModifier;
 
+//TODO: move to elysium
 public class ReplaceItemModifier extends LootModifier {
     private final Item target;
     private final Item replacement;

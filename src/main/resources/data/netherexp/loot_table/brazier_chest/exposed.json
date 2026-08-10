@@ -221,19 +221,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:book",
-          "weight": 2,
-          "functions": [
-            {
-              "function": "minecraft:enchant_randomly",
-              "options": [
-                "netherexp:phantasm_hull"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:book",
           "weight": 6,
           "functions": [
             {

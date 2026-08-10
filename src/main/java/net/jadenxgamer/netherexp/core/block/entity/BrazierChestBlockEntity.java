@@ -60,25 +60,29 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
                 BrazierChestBlockEntity.this.updateBlockState(state, false);
             }
 
-            protected void openerCountChanged(Level level, BlockPos pos, BlockState state, int i, int j) {
-            }
+            protected void openerCountChanged(Level level, BlockPos pos, BlockState state, int i, int j) {}
 
             protected boolean isOwnContainer(Player player) {
                 if (player.containerMenu instanceof ChestMenu) {
                     Container container = ((ChestMenu)player.containerMenu).getContainer();
                     return container == BrazierChestBlockEntity.this;
-                } else {
-                    return false;
-                }
+                } else return false;
             }
         };
     }
 
     public void refillLoot() {
-        if (this.level == null || this.refillLootTable == null) return;
+        if (this.level == null) return;
+        if (this.refillLootTable == null && this.lootTable != null) {
+            this.refillLootTable = this.lootTable.location();
+            this.setLootTable(null);
+        }
+
+        if (this.refillLootTable == null) return;
         this.clearContent();
-        ResourceKey<LootTable> refillLootTable = ResourceKey.create(Registries.LOOT_TABLE, this.refillLootTable);
-        unpackRefillLootTable(refillLootTable);
+        ResourceKey<LootTable> refillKey = ResourceKey.create(Registries.LOOT_TABLE, this.refillLootTable);
+        this.unpackRefillLootTable(refillKey);
+        this.setChanged();
     }
 
     public void unpackRefillLootTable(ResourceKey<LootTable> refillLootTable) {
@@ -86,10 +90,9 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
         BlockPos pos = this.getBlockPos();
         if (refillLootTable != null && level != null && level.getServer() != null) {
             LootTable loottable = level.getServer().reloadableRegistries().getLootTable(refillLootTable);
-            this.setLootTable(null);
-            LootParams.Builder lootBuilder = new LootParams.Builder((ServerLevel)level).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos));
-
-            loottable.fill(this, lootBuilder.create(LootContextParamSets.CHEST), this.getLootTableSeed());
+            LootParams.Builder lootBuilder = new LootParams.Builder((ServerLevel)level)
+                    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos));
+            loottable.fill(this, lootBuilder.create(LootContextParamSets.CHEST), level.random.nextLong());
         }
     }
 
@@ -134,7 +137,6 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
     @Override
     protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
         super.saveAdditional(nbt, registries);
-
         nbt.putInt("LockTimer", this.lockTimer);
         if (this.refillLootTable != null) nbt.putString("RefillLootTable", this.refillLootTable.toString());
         if (!this.trySaveLootTable(nbt)) ContainerHelper.saveAllItems(nbt, this.items, registries);
@@ -143,7 +145,6 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
     @Override
     protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
         super.loadAdditional(nbt, registries);
-
         this.lockTimer = nbt.getInt("LockTimer");
         if (nbt.contains("RefillLootTable", 8))
             this.refillLootTable = ResourceLocation.parse(nbt.getString("RefillLootTable"));
@@ -153,20 +154,14 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
 
     public void tick(Level level, BlockPos pos, BlockState state) {
         boolean locked = state.getValue(BrazierChestBlock.LOCKED);
-        if (level != null) {
-            if (this.lootTable != null) {
-                this.refillLootTable = lootTable.location();
-                setLootTable(null);
+        if (level != null && !locked) {
+            --this.lockTimer;
+            if (this.lockTimer <= 0) {
                 this.clearContent();
-            }
-            if (!locked) {
-                --this.lockTimer;
-                if (this.lockTimer <= 0) {
-                    this.clearContent();
-                    level.setBlock(pos, state.setValue(BrazierChestBlock.LOCKED, true), 2);
-                    level.playSound(null, this.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
-                    this.lockTimer = JNEConfigs.BRAZIER_CHEST_REFILL_COOLDOWN.get() * 20;
-                }
+                level.setBlock(pos, state.setValue(BrazierChestBlock.LOCKED, true), 2);
+                level.playSound(null, this.getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
+                this.lockTimer = JNEConfigs.BRAZIER_CHEST_REFILL_COOLDOWN.get() * 20;
+                this.setChanged();
             }
         }
     }
@@ -186,6 +181,6 @@ public class BrazierChestBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    public void unpackLootTable(@org.jetbrains.annotations.Nullable Player player) {
+    public void unpackLootTable(@Nullable Player player) {
     }
 }
