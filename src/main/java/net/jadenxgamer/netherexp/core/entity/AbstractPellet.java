@@ -1,6 +1,7 @@
 package net.jadenxgamer.netherexp.core.entity;
 
 import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
+import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
@@ -9,6 +10,8 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -36,6 +39,7 @@ public abstract class AbstractPellet extends AbstractArrow {
     protected AbstractPellet(EntityType<? extends AbstractArrow> entityType, Level level) {
         super(entityType, level);
         this.pickup = AbstractArrow.Pickup.DISALLOWED;
+        this.setPickupItemStack(new ItemStack(JNEItems.BLANK_SHOTGUN_SHELL.get()));
     }
 
     @Override
