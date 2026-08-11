@@ -118,7 +118,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
             }
         }
 
-        var counterforce = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.COUNTERFORCE));
+        var counterforce = HolderHelper.getEnchantmentLevel(JNEEnchantments.COUNTERFORCE, shotgun);
         Vec3 pushBack = new Vec3(-shooter.getLookAngle().x, -shooter.getLookAngle().y, -shooter.getLookAngle().z).normalize();
         if (counterforce > 0 && !shooter.onGround() && (shooter.fallDistance <= 0.0 || shooter.isInFluidType())) {
             pushBack = new Vec3(shooter.getLookAngle().x, shooter.getLookAngle().y, shooter.getLookAngle().z).normalize();
@@ -135,7 +135,7 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
     private double calculateSelfRecoil(LivingEntity shooter, ItemStack shotgun) {
         double base = JNEConfigs.SHOTGUN_SELF_RECOIL.get();
-        var recoil = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.RECOIL));
+        var recoil = HolderHelper.getEnchantmentLevel(JNEEnchantments.RECOIL, shotgun);
         if (recoil > 0) base += ((double) recoil / 10);
 
         Vec3 raycastStart = shooter.getEyePosition(1.0F);
@@ -155,8 +155,8 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
     private int calculateCount(ItemStack shotgun) {
         int base = JNEConfigs.SHOTGUN_FIST_BULLETS.get();
-        var volley = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.VOLLEY));
-        var quickCharge = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.QUICK_CHARGE));
+        var volley = HolderHelper.getEnchantmentLevel(JNEEnchantments.VOLLEY, shotgun);
+        var quickCharge = HolderHelper.getEnchantmentLevel(Enchantments.QUICK_CHARGE, shotgun);
 
         if (volley > 0) base += (volley * 5);
         else if (quickCharge > 0) base -= (quickCharge * 5);
@@ -165,8 +165,8 @@ public class ShotgunFistItem extends ProjectileWeaponItem {
 
     private int calculateCooldown(ItemStack shotgun) {
         int base = JNEConfigs.SHOTGUN_FIST_COOLDOWN.get();
-        var volley = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(JNEEnchantments.VOLLEY));
-        var quickCharge = shotgun.getEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.QUICK_CHARGE));
+        var volley = HolderHelper.getEnchantmentLevel(JNEEnchantments.VOLLEY, shotgun);
+        var quickCharge = HolderHelper.getEnchantmentLevel(Enchantments.QUICK_CHARGE, shotgun);
 
         if (volley > 0) base += (volley * 15);
         else if (quickCharge > 0) base -= (quickCharge * 8);

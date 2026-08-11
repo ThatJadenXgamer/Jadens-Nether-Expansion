@@ -102,7 +102,7 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
     }
 
     private boolean canActivateSwirls(LivingEntity entity) {
-        return !entity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
+        return !entity.getType().is(JNETags.EntityTypes.CANT_ACTIVATE_SWIRLS) && HolderHelper.getEnchantmentLevel(Enchantments.SOUL_SPEED, entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
     }
 
     @Override

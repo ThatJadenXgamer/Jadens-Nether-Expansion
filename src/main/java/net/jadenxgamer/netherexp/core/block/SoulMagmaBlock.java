@@ -1,5 +1,6 @@
 package net.jadenxgamer.netherexp.core.block;
 
+import net.jadenxgamer.netherexp.registry.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.minecraft.core.BlockPos;
@@ -41,7 +42,7 @@ public class SoulMagmaBlock extends Block {
     }
 
     private boolean canHurtEntity(LivingEntity entity) {
-        return entity.isSprinting() && EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) <= 0;
+        return entity.isSprinting() && !entity.hasEffect(JNEMobEffects.SOUL_SPEED);
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -1,10 +1,11 @@
 package net.jadenxgamer.netherexp.core.block;
 
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.core.effect.JNEMobEffect;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.JNEMobEffects;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
-import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -71,7 +72,7 @@ public class ThinBlackIceBlock extends BlackIceBlock {
 
     @SuppressWarnings("deprecation")
     private boolean cantBreakThinIce(LivingEntity entity) {
-        return entity.getType().is(JNETags.EntityTypes.CANT_SHATTER_THIN_BLACK_ICE) || entity.isShiftKeyDown() || EnchantmentHelper.getItemEnchantmentLevel(HolderHelper.getEnchantmentHolder(Enchantments.SOUL_SPEED), entity.getItemBySlot(EquipmentSlot.FEET)) > 0;
+        return entity.getType().is(JNETags.EntityTypes.CANT_SHATTER_THIN_BLACK_ICE) || entity.isShiftKeyDown() || entity.hasEffect(JNEMobEffects.SOUL_SPEED);
     }
 
     @Override
