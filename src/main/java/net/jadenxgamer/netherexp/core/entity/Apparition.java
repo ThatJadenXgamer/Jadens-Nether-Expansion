@@ -85,7 +85,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal, Enemy {
         this.goalSelector.addGoal(2, new ApparitionWanderAroundGoal());
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 6.0f));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(1, new ApparitionHurtByTargetGoal(this));
     }
 
     @Override
@@ -101,6 +101,16 @@ public class Apparition extends ExorcismMob implements FlyingAnimal, Enemy {
 
         if (!this.isSalted() && this.getPossessionCooldown() > 0) --this.possessionCooldown;
         if (this.random.nextInt(30) == 0) playStepSound(this.getOnPos(), this.getBlockStateOn());
+
+        if (this.isLeashed()) {
+            if (this.leashComfort++ >= 200 && this.getTarget() instanceof Player) {
+                this.setTarget(null);
+                if (getAmbientSound() != null) this.playSound(getAmbientSound(), 1.0f, 1.5f);
+                for (int i = 0; i < 11; i++) ((ServerLevel) this.level()).sendParticles(ParticleTypes.HEART,
+                        this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5),
+                        1, 0.0, 0.0, 0.0, 0.0);
+            }
+        } else if (this.leashComfort != 0) this.leashComfort = 0;
     }
 
     @Override
@@ -119,7 +129,8 @@ public class Apparition extends ExorcismMob implements FlyingAnimal, Enemy {
 
         registerApparitionAggressionGoals(apparitionAggressions);
         registerGargoyleStatueGoals(apparitionGargoyleStatues);
-        if (this.getPersonality() != 2) this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        if (this.getPersonality() != 2) this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false,
+                    (livingEntity) -> livingEntity instanceof Player && Apparition.this.shouldAttackPlayers()));
     }
 
     private void registerApparitionAggressionGoals(List<ApparitionAggressions> registry) {
@@ -378,9 +389,26 @@ public class Apparition extends ExorcismMob implements FlyingAnimal, Enemy {
         return !this.salted && possessionCooldown == 0;
     }
 
+    private boolean shouldAttackPlayers() {
+        return !this.isLeashed() || this.leashComfort < 200;
+    }
+
     ////////
     // AI //
     ////////
+
+    class ApparitionHurtByTargetGoal extends HurtByTargetGoal {
+        public ApparitionHurtByTargetGoal(PathfinderMob mob) {
+            super(mob);
+        }
+
+        @Override
+        public boolean canUse() {
+            if (!super.canUse()) return false;
+            LivingEntity target = this.mob.getTarget();
+            return !(target instanceof Player) || Apparition.this.shouldAttackPlayers();
+        }
+    }
 
     class PossessGargoyleStatueGoal extends MoveToBlockGoal {
 
