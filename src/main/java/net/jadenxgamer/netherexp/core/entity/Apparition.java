@@ -35,6 +35,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
 import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.FlyingAnimal;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -52,7 +53,7 @@ import java.util.List;
 import java.util.Optional;
 
 @SuppressWarnings("unchecked")
-public class Apparition extends ExorcismMob implements FlyingAnimal {
+public class Apparition extends ExorcismMob implements FlyingAnimal, Enemy {
     public final AnimationState idleAnimation = new AnimationState();
     public final AnimationState attackAnimation = new AnimationState();
     private int idleAnimationTimeout = 0;

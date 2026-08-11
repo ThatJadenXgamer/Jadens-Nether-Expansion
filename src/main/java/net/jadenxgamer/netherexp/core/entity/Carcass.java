@@ -1,9 +1,6 @@
 package net.jadenxgamer.netherexp.core.entity;
 
-import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
-import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -61,17 +58,27 @@ public class Carcass extends PathfinderMob {
     }
 
     @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    protected void pushEntities() {
+        if (!isReanimated()) super.pushEntities();
+    }
+
+    @Override
     public void tick() {
         super.tick();
         if (this.getReanimationFlag()) {
             this.reanimateCarcass();
         }
-        if (this.getIsReanimated() && this.getHealth() <= 0) {
+        if (this.isReanimated() && this.getHealth() <= 0) {
             this.deactivateCarcass();
         }
 
         if (this.level().isClientSide()) {
-            if (this.getIsReanimated()) {
+            if (this.isReanimated()) {
                 if (this.isMoving()) {
                     idleAnimationState.stop();
                     moveAnimationState.startIfStopped(this.tickCount);
@@ -79,7 +86,7 @@ public class Carcass extends PathfinderMob {
                     moveAnimationState.stop();
                     idleAnimationState.startIfStopped(this.tickCount);
                 }
-            } else if (!this.getIsReanimated() && !this.getReanimationFlag() && deactivationAnimationTimer == 25) {
+            } else if (!this.isReanimated() && !this.getReanimationFlag() && deactivationAnimationTimer == 25) {
                 this.playSound(JNESoundEvents.ENTITY_CARCASS_DEATH.get(), 1.0f, 1.0f);
                 deactivateAnimationState.startIfStopped(this.tickCount);
                 idleAnimationState.stop();
@@ -108,7 +115,8 @@ public class Carcass extends PathfinderMob {
         this.goalSelector.addGoal(7, new CarcassLookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(7, new CarcassRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(8, new CarcassRandomLookAroundGoal(this));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Mob.class, 5, false, false, (livingEntity) -> livingEntity instanceof Enemy && !(livingEntity instanceof Creeper)));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Mob.class, 5, false, false,
+                (livingEntity) -> livingEntity instanceof Enemy && !(livingEntity instanceof Creeper) && !(livingEntity instanceof Stampede)));
     }
 
     @Override
@@ -128,12 +136,12 @@ public class Carcass extends PathfinderMob {
 
     @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
-        return this.getIsReanimated() ? super.getDefaultDimensions(pose) : DEACTIVE_DIMENSIONS;
+        return this.isReanimated() ? super.getDefaultDimensions(pose) : DEACTIVE_DIMENSIONS;
     }
 
     @Override
     public boolean hurt(DamageSource damageSource, float f) {
-        if (!this.getIsReanimated()) {
+        if (!this.isReanimated()) {
             if (damageSource.isCreativePlayer() || damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
                 this.discard();
                 return true;
@@ -163,6 +171,7 @@ public class Carcass extends PathfinderMob {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData) {
@@ -186,7 +195,7 @@ public class Carcass extends PathfinderMob {
         }
         if (this.reanimationAnimationTimer <= 0) {
             reanimateAnimationState.stop();
-            this.setIsReanimated(true);
+            this.setReanimated(true);
             this.setReanimationFlag(false);
             this.refreshDimensions();
             this.reanimationAnimationTimer = 22;
@@ -204,7 +213,7 @@ public class Carcass extends PathfinderMob {
             --this.deactivationAnimationTimer;
         }
         if (this.deactivationAnimationTimer <= 0) {
-            this.setIsReanimated(false);
+            this.setReanimated(false);
             this.setHealth(this.getMaxHealth());
             this.setReanimationCooldown(36000);
             this.deactivationAnimationTimer = 25;
@@ -217,14 +226,14 @@ public class Carcass extends PathfinderMob {
     @Override
     protected @NotNull InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(Items.FLINT_AND_STEEL) && !this.getIsReanimated()) {
+        if (stack.is(Items.FLINT_AND_STEEL) && !this.isReanimated()) {
             this.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0f, 1.0f);
             this.setReanimationFlag(true);
             if (player instanceof ServerPlayer serverPlayer) {
                 JNECriteriaTriggers.REVIVE_CARCASS.get().trigger(serverPlayer);
             }
             return InteractionResult.SUCCESS;
-        } else if (stack.is(Items.FIRE_CHARGE) && !this.getIsReanimated()) {
+        } else if (stack.is(Items.FIRE_CHARGE) && !this.isReanimated()) {
             this.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0f, 1.0f);
             this.setReanimationFlag(true);
             if (player instanceof ServerPlayer serverPlayer) {
@@ -250,7 +259,7 @@ public class Carcass extends PathfinderMob {
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("IsReanimated", this.getIsReanimated());
+        nbt.putBoolean("IsReanimated", this.isReanimated());
         nbt.putInt("ReanimationCooldown", this.getReanimationCooldown());
         nbt.putInt("ImmortalCooldown", this.getImmortalCooldown());
     }
@@ -258,16 +267,16 @@ public class Carcass extends PathfinderMob {
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setIsReanimated(nbt.getBoolean("IsReanimated"));
+        this.setReanimated(nbt.getBoolean("IsReanimated"));
         this.setReanimationCooldown(nbt.getInt("ReanimationCooldown"));
         this.setImmortalCooldown(nbt.getInt("ImmortalCooldown"));
     }
 
-    public boolean getIsReanimated() {
+    public boolean isReanimated() {
         return this.entityData.get(IS_REANIMATED);
     }
 
-    public void setIsReanimated(boolean reanimated) {
+    public void setReanimated(boolean reanimated) {
         this.entityData.set(IS_REANIMATED, reanimated);
     }
 
@@ -309,7 +318,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canUse();
@@ -317,7 +326,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canContinueToUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canContinueToUse();
@@ -334,7 +343,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canUse();
@@ -342,7 +351,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canContinueToUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canContinueToUse();
@@ -359,7 +368,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canUse();
@@ -367,7 +376,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canContinueToUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canContinueToUse();
@@ -384,7 +393,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canUse();
@@ -392,7 +401,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canContinueToUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canContinueToUse();
@@ -409,7 +418,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canUse();
@@ -417,7 +426,7 @@ public class Carcass extends PathfinderMob {
 
         @Override
         public boolean canContinueToUse() {
-            if (!this.carcass.getIsReanimated()) {
+            if (!this.carcass.isReanimated()) {
                 return false;
             }
             return super.canContinueToUse();
