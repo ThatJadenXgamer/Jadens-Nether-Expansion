@@ -27,7 +27,7 @@
               "type": "#minecraft:skeletons",
               "stepping_on": {
                 "block": {
-                  "tag": "netherexp:fossil_ore_convertible"
+                  "blocks": "#netherexp:fossil_ore_convertible"
                 }
               }
             }
