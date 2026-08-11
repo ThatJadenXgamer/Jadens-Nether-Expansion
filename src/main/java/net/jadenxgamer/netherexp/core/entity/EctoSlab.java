@@ -5,10 +5,8 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.block.PetrifiedSwirlsBlock;
 import net.jadenxgamer.netherexp.core.block.entity.PetrifiedSwirlsBlockEntity;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
-import net.jadenxgamer.netherexp.registry.JNEBlocks;
-import net.jadenxgamer.netherexp.registry.JNEEntityType;
-import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
-import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.*;
+import net.jadenxgamer.netherexp.util.AdvancementGranter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -355,6 +353,7 @@ public class EctoSlab extends PossessedMob {
         }
         this.level().broadcastEntityEvent(this, (byte) 88);
         this.playSound(JNESoundEvents.ECTO_SLAB_COLLAPSE.get(), 1.0f, 1.0f);
+        if (!explosion) AdvancementGranter.grantPlayersInRadius(level(), this.blockPosition(), JNECriteriaTriggers.DISMANTLE_PETRIFIED_ECTO_SLAB);
         this.discard();
     }
 

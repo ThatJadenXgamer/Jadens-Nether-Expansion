@@ -8,14 +8,12 @@ import net.jadenxgamer.netherexp.config.enums.ProfanityConfig;
 import net.jadenxgamer.netherexp.core.keys.JNEDamageSources;
 import net.jadenxgamer.netherexp.core.keys.JNEEnchantments;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
-import net.jadenxgamer.netherexp.registry.JNEDataComponents;
-import net.jadenxgamer.netherexp.registry.JNEItems;
-import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
-import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.jadenxgamer.netherexp.util.VFXHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -23,6 +21,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -183,6 +182,11 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem {
                     level.explode(shooter, shooter.getX(), shooter.getY(), shooter.getZ(), 4, Level.ExplosionInteraction.NONE);
                     ((ServerLevel)level).sendParticles(JNEParticleTypes.RED_EXPLOSION_EMITTER.get(), shooter.getX(), shooter.getY(), shooter.getZ(), 1, 0.0, 0.0, 0.0, 0);
                     damage = 10;
+                    List<Entity> victims = level.getEntities(shooter, new AABB(shooter.blockPosition()).inflate(5.0f), EntitySelector.NO_CREATIVE_OR_SPECTATOR)
+                            .stream()
+                            .filter(LivingEntity.class::isInstance)
+                            .toList();
+                    if (shooter instanceof ServerPlayer serverPlayer && victims.size() >= 10) JNECriteriaTriggers.KILLED_WITH_PUMP_CHARGE.get().trigger(serverPlayer);
                 }
             }
         }

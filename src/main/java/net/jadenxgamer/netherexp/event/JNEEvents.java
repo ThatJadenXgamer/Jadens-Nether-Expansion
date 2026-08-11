@@ -15,12 +15,15 @@ import net.jadenxgamer.netherexp.core.worldgen.JNESurfaceRules;
 import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.BlockCrackTracker;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -74,6 +77,14 @@ public class JNEEvents {
                     PortalGlow.spawnForPortal(level, pos);
                 }
             });
+        }
+    }
+
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        BlockState state = event.getState();
+        if (state.is(JNEBlocks.FOSSIL_FUEL_ORE.get()) && event.getPlayer() instanceof ServerPlayer serverPlayer) {
+            JNECriteriaTriggers.BROKEN_FOSSIL_FUEL_ORE.get().trigger(serverPlayer);
         }
     }
 

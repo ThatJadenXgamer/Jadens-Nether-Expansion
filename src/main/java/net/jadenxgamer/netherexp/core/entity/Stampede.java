@@ -488,7 +488,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
         builder.define(STAMPEDE_ANGRY, false);
         builder.define(EATING_TIME, 0);
         builder.define(IS_PATRICK, false);
-        builder.define(HUNGER, 0);
+        builder.define(HUNGER, 20);
         builder.define(SPEED_BOOST_TICKS, 0);
     }
 

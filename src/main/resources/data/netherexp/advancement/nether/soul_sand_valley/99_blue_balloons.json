@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:lead"
+    },
+    "title": {
+      "translate": "advancements.nether.99_blue_balloons.title"
+    },
+    "description": {
+      "translate": "advancements.nether.99_blue_balloons.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley/exorcism",
+  "criteria": {
+    "leash_apparition": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:lead"
+          ]
+        },
+        "entity": {
+          "type": "netherexp:apparition"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "leash_apparition"
+    ]
+  ]
+}

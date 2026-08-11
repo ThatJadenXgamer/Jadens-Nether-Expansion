@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "netherexp:petrified_swirls"
+    },
+    "title": {
+      "translate": "advancements.nether.a_ruperts_drop.title"
+    },
+    "description": {
+      "translate": "advancements.nether.a_ruperts_drop.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley/frightening_rush",
+  "criteria": {
+    "killed_petrified_ecto_slab": {
+      "trigger": "netherexp:dismantle_petrified_ecto_slab",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "killed_petrified_ecto_slab"
+    ]
+  ]
+}

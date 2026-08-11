@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 public class VesselRenderer extends MobRenderer<Vessel, VesselRenderer.VesselModel<Vessel>> {
 
     public VesselRenderer(EntityRendererProvider.Context context) {
-        super(context, new VesselModel<>(context.bakeLayer(VesselModel.LAYER)), 0.8f);
+        super(context, new VesselModel<>(context.bakeLayer(VesselModel.LAYER)), 0.5f);
         this.addLayer(new VesselGlowLayer(this));
     }
 

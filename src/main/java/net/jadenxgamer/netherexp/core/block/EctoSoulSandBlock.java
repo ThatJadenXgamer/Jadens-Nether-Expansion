@@ -5,6 +5,7 @@ import net.jadenxgamer.netherexp.core.block.entity.SuspiciousSoulSandBlockEntity
 import net.jadenxgamer.netherexp.core.datadriven.WispArchaeology;
 import net.jadenxgamer.netherexp.core.entity.Wisp;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
+import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNERegistries;
 import net.jadenxgamer.netherexp.util.ParticleHelper;
@@ -16,6 +17,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -64,6 +66,7 @@ public class EctoSoulSandBlock extends SoulSandBlock {
             if (level instanceof ServerLevel serverLevel && level.random.nextDouble() < JNEConfigs.WISP_EMERGING_CHANCE_BRUSH.get()) {
                 spawnWisp(serverLevel, findAirNeighbor(serverLevel, pos), level.random);
                 setSusSoulSand(serverLevel, pos);
+                if (player instanceof ServerPlayer serverPlayer) JNECriteriaTriggers.INVOLUNTARY_EVICTION.get().trigger(serverPlayer);
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }

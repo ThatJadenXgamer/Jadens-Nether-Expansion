@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:brush"
+    },
+    "title": {
+      "translate": "advancements.nether.involuntary_eviction.title"
+    },
+    "description": {
+      "translate": "advancements.nether.involuntary_eviction.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley/rattling_remnants",
+  "criteria": {
+    "killed_petrified_ecto_slab": {
+      "trigger": "netherexp:involuntary_eviction",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "killed_petrified_ecto_slab"
+    ]
+  ]
+}

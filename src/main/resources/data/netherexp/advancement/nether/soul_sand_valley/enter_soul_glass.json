@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "netherexp:nether/soul_sand_valley/frightening_rush",
+  "parent": "netherexp:nether/soul_sand_valley/a_ruperts_drop",
   "criteria": {
     "condition": {
       "trigger": "minecraft:enter_block",

@@ -2,8 +2,10 @@ package net.jadenxgamer.netherexp.core.entity;
 
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
+import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.JNEEntityType;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
+import net.jadenxgamer.netherexp.util.AdvancementGranter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -44,6 +46,7 @@ public abstract class PossessedMob extends ExorcismMob implements Enemy {
         EntityType<? extends Mob> possessionType = (EntityType<? extends Mob>) possessionOf;
         Mob convertTo = this.convertTo(possessionType, true);
         if (convertTo != null && this.level() instanceof ServerLevel serverLevel) {
+            AdvancementGranter.grantPlayersInRadius(serverLevel, blockPosition(), JNECriteriaTriggers.EXORCISM);
             convertTo.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(pos), MobSpawnType.CONVERSION, null);
             convertTo.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
             if (this.hasCustomName()) convertTo.setCustomName(convertTo.getCustomName());

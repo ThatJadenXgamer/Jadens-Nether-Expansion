@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "netherexp:will_o_wisp"
+    },
+    "title": {
+      "translate": "advancements.nether.haunt_your_own_house.title"
+    },
+    "description": {
+      "translate": "advancements.nether.haunt_your_own_house.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley/frightening_rush",
+  "criteria": {
+    "killed_petrified_ecto_slab": {
+      "trigger": "netherexp:banshee_redirect",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "killed_petrified_ecto_slab"
+    ]
+  ]
+}

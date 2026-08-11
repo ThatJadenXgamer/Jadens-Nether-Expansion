@@ -1,0 +1,110 @@
+{
+  "display": {
+    "icon": {
+      "id": "netherexp:banshee_powder"
+    },
+    "title": {
+      "translate": "advancements.nether.ghosts_busted.title"
+    },
+    "description": {
+      "translate": "advancements.nether.ghosts_busted.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "netherexp:nether/soul_sand_valley/99_blue_balloons",
+  "criteria": {
+    "minecraft:skeleton": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:skeleton"
+        }
+      }
+    },
+    "minecraft:ghast": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:ghast"
+        }
+      }
+    },
+    "netherexp:wisp": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "netherexp:wisp"
+        }
+      }
+    },
+    "netherexp:apparition": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "netherexp:apparition"
+        }
+      }
+    },
+    "netherexp:vessel": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "netherexp:vessel"
+        }
+      }
+    },
+    "netherexp:ecto_slab": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "netherexp:ecto_slab"
+        }
+      }
+    },
+    "netherexp:banshee": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "netherexp:banshee"
+        }
+      }
+    },
+    "netherexp:stampede": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "netherexp:stampede"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "minecraft:skeleton"
+    ],
+    [
+      "minecraft:ghast"
+    ],
+    [
+      "netherexp:wisp"
+    ],
+    [
+      "netherexp:apparition"
+    ],
+    [
+      "netherexp:vessel"
+    ],
+    [
+      "netherexp:ecto_slab"
+    ],
+    [
+      "netherexp:banshee"
+    ],
+    [
+      "netherexp:stampede"
+    ]
+  ]
+}

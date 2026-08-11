@@ -199,7 +199,7 @@ public class JNEConfigImpl {
                     .defineInRange("pointBlankSelfRecoilBonus", 0.45, 0.0, Double.MAX_VALUE);
             POINT_BLANK_SELF_RECOIL_DISTANCE = builder
                     .comment("How close you need to be to a target in blocks to get a point-blank self recoil bonus")
-                    .defineInRange("pointBlankSelfRecoilDistance", 18.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("pointBlankSelfRecoilDistance", 2.5, 0.0, Double.MAX_VALUE);
             SHOTGUN_FIST_BULLETS = builder
                     .comment("The base amount of shotgun pellets fired from a shotgun-fist\n" +
                             "Enchantments can influence the final total of bullets fired")

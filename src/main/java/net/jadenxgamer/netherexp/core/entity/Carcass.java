@@ -64,7 +64,7 @@ public class Carcass extends PathfinderMob {
 
     @Override
     protected void pushEntities() {
-        if (!isReanimated()) super.pushEntities();
+        if (isReanimated()) super.pushEntities();
     }
 
     @Override

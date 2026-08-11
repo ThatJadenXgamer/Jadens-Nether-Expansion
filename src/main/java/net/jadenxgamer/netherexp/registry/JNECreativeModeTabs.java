@@ -65,6 +65,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.SOUL_PATH.get());
 
                 output.accept(Items.BONE);
+                output.accept(JNEItems.ROASTED_BONE.get());
                 output.accept(JNEItems.SKULL_ON_A_STICK.get());
                 output.accept(JNEItems.FOSSIL_FUEL.get());
                 output.accept(JNEBlocks.FOSSIL_ORE.get());
@@ -124,6 +125,7 @@ public class JNECreativeModeTabs {
                 output.accept(JNEItems.BANSHEE_POWDER.get());
                 output.accept(JNEItems.WILL_O_WISP.get());
 
+                output.accept(JNEItems.SANCTUM_COMPASS.get());
                 output.accept(JNEItems.SHOTGUN_CORE.get());
                 output.accept(JNEItems.SHOTGUN_SHELL.get());
                 output.accept(JNEItems.SLUG_SHOTGUN_SHELL.get());
@@ -480,6 +482,9 @@ public class JNECreativeModeTabs {
                 output.accept(Items.FIRE_CHARGE);
                 output.accept(Items.MAGMA_CREAM);
                 output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
+
+                output.accept(JNEBlocks.NETHER_PIZZA.get());
+                output.accept(JNEItems.NETHER_PIZZA_SLICE.get());
 
                 output.accept(Items.PIGLIN_SPAWN_EGG);
                 output.accept(Items.PIGLIN_BRUTE_SPAWN_EGG);

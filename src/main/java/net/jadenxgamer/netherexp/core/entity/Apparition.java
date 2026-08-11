@@ -58,6 +58,7 @@ public class Apparition extends ExorcismMob implements FlyingAnimal, Enemy {
     public final AnimationState attackAnimation = new AnimationState();
     private int idleAnimationTimeout = 0;
     public int possessionCooldown = 0;
+    public int leashComfort = 0;
     public boolean dropWisps = true;
     public boolean salted = false;
     private static final EntityDataAccessor<Integer> PERSONALITY = SynchedEntityData.defineId(Apparition.class, EntityDataSerializers.INT);

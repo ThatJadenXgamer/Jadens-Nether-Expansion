@@ -9,11 +9,13 @@
 
 -JNE now requires Lodestone as dependency, used mainly for rendering
 
-### Changes
+-An ASTONISHING number of visual improvements and overhauls have been added to JNE and The Nether overall that it almost looks like shaders in vanilla minecraft
 
--Elysium API's Mosaic BiomeSource has been introduced The Nether genereation to prevent the ugly micro biomes that could appear when too many nether mods are active,
+-Elysium API's new "Mosaic" BiomeSource has been introduced to The Nether genereation to prevent the ugly micro biomes that could appear when too many nether mods are active,
 This biome source utilizes voronoi grids and is fully automatic, meaning it'll work with literally any nether mod out of the box with highly customizable data-driven capabilites for modpack developers.
 It is also fully compatible with Terrablender, Biolith and Blueprint provided biomes
+
+### Changes
 
 -Every nether biome including some modded ones now have unique lightmap colors and ambient light brightness to better immerse you into the environment
 
@@ -26,8 +28,6 @@ It is also fully compatible with Terrablender, Biolith and Blueprint provided bi
 -Removed emissive built-in resource pack. all emissives are now part of the mod resources and are always active
 
 -Entirely Overhauled the mod's configurations, JNE has never been this customizable before!
-
--An astonishing number of visual overhauls have been added to the mod
 
 -A fog particle now generates all around the nether air not too dissimilar to the ones from Complimentary shaders to make the dimension's atmosphere feel more humid and alive
 
@@ -136,7 +136,7 @@ in order to make soul speed far more accessible right from the get-go and reduce
 
 -New Advancement "Why are you hitting yourself?" juke a will o' wisp into hitting the banshee which shot it
 
--New Advancement "Guns for Hands" kill a vessel with a bed explosion
+-New Advancement "Guns for Hands" kill a vessel with your very own shotgun-fist
 
 -New Advancement "Ghosts Busted" kill one of each possessed and ghost mob
 
