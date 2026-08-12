@@ -37,6 +37,8 @@ import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.level.Level;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -175,6 +177,7 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
         return true;
     }
 
+    @OnlyIn(Dist.CLIENT)
     public static void registerProperties() {
         ItemProperties.register(JNEItems.SANCTUM_COMPASS.get(),
                 ResourceLocation.withDefaultNamespace("angle"),
