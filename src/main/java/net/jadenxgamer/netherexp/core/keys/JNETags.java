@@ -44,6 +44,7 @@ public class JNETags {
         public static final TagKey<Item> STAMPEDE_EDIBLE = createTag("stampede_edible"); // Stampedes can eat or be fed these items to replenish health and hunger
         public static final TagKey<Item> STAMPEDE_FAVORITES = createTag("stampede_favorites"); // Stampedes replenish more health, hunger and can be tamed with these items
         public static final TagKey<Item> SHOTGUN_SHELLS = createTag("shotgun_shells"); // Shotguns can load these items as shells
+        public static final TagKey<Item> SCULK_GRINDABLES = createTag("sculk_grindables");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, NetherExp.netherexpPath(name));

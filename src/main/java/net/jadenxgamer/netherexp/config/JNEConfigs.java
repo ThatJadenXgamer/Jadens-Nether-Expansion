@@ -46,6 +46,7 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue CIERGE_OF_TREACHERY_COMPLETION_COOLDOWN;
     public static ModConfigSpec.IntValue BRAZIER_CHEST_REFILL_COOLDOWN;
     public static ModConfigSpec.IntValue HAZE_BLOCK_COOLDOWN;
+    public static ModConfigSpec.IntValue SCULK_GRINDER_EXPERIENCE;
 
     // ITEM
     public static ModConfigSpec.IntValue IMMUNITY_CONSUMPTION;

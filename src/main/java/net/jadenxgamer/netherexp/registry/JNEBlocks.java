@@ -189,7 +189,7 @@ public class JNEBlocks {
             new HazeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).instabreak().noOcclusion().sound(JNESoundType.HAZE_BLOCK)));
 
     public static final Supplier<Block> SCULK_GRINDER = registerBlock("sculk_grinder", () ->
-            new Block(BlockBehaviour.Properties.of().strength(80.0f, 1200.0f).lightLevel(state -> 13).sound(SoundType.SCULK_CATALYST)));
+            new SculkGrinderBlock(BlockBehaviour.Properties.of().strength(80.0f, 1200.0f).lightLevel(state -> 13).sound(SoundType.SCULK_CATALYST)));
 
 
     /**

@@ -173,6 +173,9 @@ public class JNEConfigImpl {
             HAZE_BLOCK_COOLDOWN = builder
                     .comment("Defines how long a haze block will last after being placed in seconds")
                     .defineInRange("hazeBlockCooldown", 8, 0, Integer.MAX_VALUE);
+            SCULK_GRINDER_EXPERIENCE = builder
+                    .comment("Defines how experience points is ejected out when an item is grinded in sculk grinders")
+                    .defineInRange("sculkGrinderExperience", 450, 0, Integer.MAX_VALUE);
         }
     }
 
