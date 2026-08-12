@@ -8,7 +8,6 @@ import net.jadenxgamer.netherexp.registry.JNECriteriaTriggers;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.util.AdvancementGranter;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -682,11 +681,11 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
     private void playEatingAnimation() {
         if (this.getEatingTime() <= 0 || this.getEatingTime() % 5 != 0) return;
         var random = this.random;
-        Player player = Minecraft.getInstance().player;
-        if (player != null) this.level().playSound(null, this.blockPosition(), JNESoundEvents.STAMPEDE_EAT.get(), this.getSoundSource(),
+        if (!this.level().isClientSide()) return;
+
+        this.level().playSound(null, this.blockPosition(), JNESoundEvents.STAMPEDE_EAT.get(), this.getSoundSource(),
                 0.5f + 0.5f * random.nextInt(2), (random.nextFloat() - random.nextFloat()) * 0.2f + 1.0f);
 
-        if (!level().isClientSide) return;
         float degToRad = 0.017453292f;
         float pitchRad = -this.getXRot() * degToRad;
         float yawRad = -this.getYRot() * degToRad;
