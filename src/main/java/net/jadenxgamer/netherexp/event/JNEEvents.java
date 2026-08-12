@@ -16,6 +16,7 @@ import net.jadenxgamer.netherexp.core.worldgen.JNESurfaceRules;
 import net.jadenxgamer.netherexp.registry.*;
 import net.jadenxgamer.netherexp.util.BlockCrackTracker;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundSource;
@@ -61,7 +62,6 @@ public class JNEEvents {
     public static void onServerTick(ServerTickEvent.Post event) {
         BlockCrackTracker.tick();
     }
-
 
     @SubscribeEvent
     public static void onPortalSpawn(BlockEvent.PortalSpawnEvent event) {
@@ -147,8 +147,8 @@ public class JNEEvents {
 
     @SubscribeEvent
     public static void addBuiltinPacks(AddPackFindersEvent event) {
-        if (event.getPackType() == PackType.CLIENT_RESOURCES) JNEBuiltinPacks.rpJNERetextures(event); // Resource Packs
-        if (event.getPackType() == PackType.SERVER_DATA) { // Datapacks
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) JNEBuiltinPacks.rpJNERetextures(event);
+        if (event.getPackType() == PackType.SERVER_DATA) {
             JNEBuiltinPacks.dpNetherMosaicBiomeSource(event);
             JNEBuiltinPacks.dpNetherWorldgenOverhaul(event);
         }
@@ -164,9 +164,16 @@ public class JNEEvents {
     public static void onLivingTick(EntityTickEvent.Post event) {
         if (!(event.getEntity() instanceof LivingEntity entity)) return;
         if (entity.level().isClientSide()) return;
+
+        ResourceLocation current = entity.getData(JNEAttachmentTypes.LAST_FIRE);
+        ResourceLocation defaultLastFire = NetherExp.minecraftPath("fire");
+
         if (entity.displayFireAnimation()) {
-            var state = entity.getInBlockState();
-            if (state.is(JNETags.Blocks.LAST_FIRE_SUPPORTED_BLOCKS)) entity.setData(JNEAttachmentTypes.LAST_FIRE, state.getBlock().builtInRegistryHolder().key().location());
-        } else entity.setData(JNEAttachmentTypes.LAST_FIRE, NetherExp.minecraftPath("fire"));
+            BlockState state = entity.getInBlockState();
+            if (state.is(JNETags.Blocks.LAST_FIRE_SUPPORTED_BLOCKS)) {
+                ResourceLocation newLastFire = state.getBlock().builtInRegistryHolder().key().location();
+                if (!current.equals(newLastFire)) entity.setData(JNEAttachmentTypes.LAST_FIRE, newLastFire);
+            }
+        } else if (!current.equals(defaultLastFire)) entity.setData(JNEAttachmentTypes.LAST_FIRE, defaultLastFire);
     }
 }
