@@ -186,14 +186,6 @@ public class BurnPalettesManager extends SimpleJsonResourceReloadListener {
         return colors[index];
     }
 
-    public static void handleLastFire(Level level, LivingEntity entity) {
-        if (level.isClientSide()) return;
-        if (entity.displayFireAnimation()) {
-            var state = entity.getInBlockState();
-            if (state.is(JNETags.Blocks.LAST_FIRE_SUPPORTED_BLOCKS)) entity.setData(JNEAttachmentTypes.LAST_FIRE, state.getBlock().builtInRegistryHolder().key().location());
-        } else entity.setData(JNEAttachmentTypes.LAST_FIRE, NetherExp.minecraftPath("fire"));
-    }
-
     public static void burnParticle(Level level, RandomSource random, Entity entity) {
         AABB box = entity.getBoundingBox();
         double volume = box.getXsize() * box.getYsize() * box.getZsize();

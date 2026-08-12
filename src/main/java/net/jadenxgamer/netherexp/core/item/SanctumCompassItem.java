@@ -8,8 +8,6 @@ import net.jadenxgamer.netherexp.registry.JNEDataComponents;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.component.DataComponents;
@@ -22,7 +20,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -173,12 +170,5 @@ public class SanctumCompassItem extends ProjectileWeaponItem {
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS, 0.7f, 1.0f);
         player.awardStat(Stats.ITEM_USED.get(this));
         return true;
-    }
-
-    public static void registerProperties() {
-        ItemProperties.register(JNEItems.SANCTUM_COMPASS.get(),
-                ResourceLocation.withDefaultNamespace("angle"),
-                new CompassItemPropertyFunction((level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack))
-        );
     }
 }

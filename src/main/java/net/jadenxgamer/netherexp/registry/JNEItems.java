@@ -100,7 +100,7 @@ public class JNEItems {
     public static final Supplier<Item> NETHERITE_PLATING = ITEMS.register("netherite_plating", () ->
             new Item(new Item.Properties().fireResistant()));
 
-    public static final Supplier<Item> TREACHEROUS_FLAME = ITEMS.register("treacherous_flame", () ->
+    public static final Supplier<Item> SPARK_OF_TREACHERY = ITEMS.register("spark_of_treachery", () ->
             new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
 
     public static final Supplier<Item> SHOTGUN_FIST = ITEMS.register("shotgun_fist", () ->
@@ -237,6 +237,7 @@ public class JNEItems {
 
     private static void registerAliases() {
         ITEMS.addAlias(NetherExp.netherexpPath("ancient_wax"), NetherExp.netherexpPath("treacherous_wax")); // Renamed 2.4.0
+        ITEMS.addAlias(NetherExp.netherexpPath("treacherous_flame"), NetherExp.netherexpPath("spark_of_treachery")); // Renamed 2.4.0
     }
 
     public static void setup() {

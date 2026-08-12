@@ -141,7 +141,7 @@ public class JNECreativeModeTabs {
 
                 output.accept(JNEBlocks.CIERGE_OF_TREACHERY.get());
                 output.accept(JNEBlocks.BRAZIER_CHEST.get());
-                output.accept(JNEItems.TREACHEROUS_FLAME.get());
+                output.accept(JNEItems.SPARK_OF_TREACHERY.get());
                 output.accept(JNEItems.TREACHEROUS_WAX.get());
                 output.accept(JNEBlocks.TREACHEROUS_WAX_BLOCK.get());
                 output.accept(JNEItems.TREACHEROUS_TORCH.get());
@@ -386,6 +386,10 @@ public class JNECreativeModeTabs {
                 output.accept(Blocks.NETHER_GOLD_ORE);
                 output.accept(Blocks.ANCIENT_DEBRIS);
 
+                output.accept(Blocks.OBSIDIAN);
+                output.accept(Blocks.CRYING_OBSIDIAN);
+                output.accept(JNEItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE.get());
+
                 output.accept(Items.QUARTZ);
                 output.accept(JNEBlocks.QUARTZ_CRYSTAL.get());
                 output.accept(JNEBlocks.QUARTZ_CRYSTAL_BLOCK.get());
@@ -483,6 +487,7 @@ public class JNECreativeModeTabs {
                 output.accept(Items.MAGMA_CREAM);
                 output.accept(JNEBlocks.MAGMA_CREAM_BLOCK.get());
 
+                output.accept(JNEItems.GLOWCHEESE.get());
                 output.accept(JNEBlocks.NETHER_PIZZA.get());
                 output.accept(JNEItems.NETHER_PIZZA_SLICE.get());
 

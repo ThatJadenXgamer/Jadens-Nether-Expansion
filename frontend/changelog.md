@@ -12,7 +12,7 @@
 -An ASTONISHING number of visual improvements and overhauls have been added to JNE and The Nether overall that it almost looks like shaders in vanilla minecraft
 
 -Elysium API's new "Mosaic" BiomeSource has been introduced to The Nether genereation to prevent the ugly micro biomes that could appear when too many nether mods are active,
-This biome source utilizes voronoi grids and is fully automatic, meaning it'll work with literally any nether mod out of the box with highly customizable data-driven capabilites for modpack developers.
+This biome source utilizes voronoi grids and is fully automatic with integration, meaning it'll work with literally any nether mod out of the box with highly customizable data-driven capabilites for modpack developers.
 It is also fully compatible with Terrablender, Biolith and Blueprint provided biomes
 
 ### Changes
@@ -134,7 +134,7 @@ in order to make soul speed far more accessible right from the get-go and reduce
 
 -Tethered Bone Blocks are no longer a blockstate but rather a seperate block for better compatibility
 
--New Advancement "Why are you hitting yourself?" juke a will o' wisp into hitting the banshee which shot it
+-New Advancement "Haunt Your Own House" juke a will o' wisp into hitting the banshee which shot it
 
 -New Advancement "Guns for Hands" kill a vessel with your very own shotgun-fist
 

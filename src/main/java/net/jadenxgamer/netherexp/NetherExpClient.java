@@ -13,6 +13,7 @@ import net.jadenxgamer.netherexp.client.sound.InsideFluidAmbientSoundInstance;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.entity.Carcass;
 import net.jadenxgamer.netherexp.core.entity.Stampede;
+import net.jadenxgamer.netherexp.core.item.SanctumCompassItem;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.*;
 import net.minecraft.client.Minecraft;
@@ -27,7 +28,10 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -151,6 +155,13 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.BLACK_FLAKE_WORLD.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.COLD_FOG.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.BLOT_DROP.get(), LodestoneWorldParticleType.Factory::new);
+    }
+
+    public static void registerProperties() {
+        ItemProperties.register(JNEItems.SANCTUM_COMPASS.get(),
+                ResourceLocation.withDefaultNamespace("angle"),
+                new CompassItemPropertyFunction((level, stack, entity) -> SanctumCompassItem.getStructurePosition(stack))
+        );
     }
 
     public static class HandlePostShaders {

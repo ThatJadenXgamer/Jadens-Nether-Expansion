@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "netherexp:item/treacherous_flame"
+    "layer0": "netherexp:item/spark_of_treachery"
   }
 }

@@ -59,7 +59,7 @@ public class BrazierChestBlock extends BaseEntityBlock {
         if (!(level.getBlockEntity(pos) instanceof BrazierChestBlockEntity blockEntity)) return ItemInteractionResult.FAIL;
         boolean locked = state.getValue(LOCKED);
         if (locked) {
-            if (stack.is(JNEItems.TREACHEROUS_FLAME.get())) {
+            if (stack.is(JNEItems.SPARK_OF_TREACHERY.get())) {
                 fireParticles(level, pos.above());
                 blockEntity.refillLoot();
                 level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), JNESoundEvents.BRAZIER_CHEST_LIT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);

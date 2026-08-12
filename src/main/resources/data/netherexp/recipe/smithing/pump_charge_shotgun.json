@@ -7,7 +7,7 @@
     "item": "netherexp:shotgun_fist"
   },
   "addition": {
-    "item": "netherexp:treacherous_flame"
+    "item": "netherexp:spark_of_treachery"
   },
   "result": {
     "id": "netherexp:pump_charge_shotgun"

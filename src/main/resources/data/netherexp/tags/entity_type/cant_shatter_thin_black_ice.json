@@ -24,6 +24,7 @@
     "minecraft:ender_dragon",
     "netherexp:wisp",
     "netherexp:apparition",
-    "netherexp:banshee"
+    "netherexp:banshee",
+    "minecraft:item"
   ]
 }

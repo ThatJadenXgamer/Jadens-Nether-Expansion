@@ -215,7 +215,7 @@ public class CiergeOfTreacheryBlockEntity extends BlockEntity {
     }
 
     private static void dropFire(Level level, BlockPos pos, CiergeOfTreacheryBlockEntity blockEntity) {
-        ItemEntity item = new ItemEntity(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(JNEItems.TREACHEROUS_FLAME.get(), blockEntity.fireRewarded * blockEntity.playersNearby));
+        ItemEntity item = new ItemEntity(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, new ItemStack(JNEItems.SPARK_OF_TREACHERY.get(), blockEntity.fireRewarded * blockEntity.playersNearby));
         item.setDeltaMovement(0.0,0.2,0.0);
         item.setGlowingTag(true);
         level.addFreshEntity(item);

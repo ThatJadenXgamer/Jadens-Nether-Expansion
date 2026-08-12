@@ -34,7 +34,7 @@
             "condition": "minecraft:match_tool",
             "predicate": {
               "items": [
-                "netherexp:treacherous_flame"
+                "netherexp:spark_of_treachery"
               ]
             }
           }

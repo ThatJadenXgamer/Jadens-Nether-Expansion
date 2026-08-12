@@ -14,7 +14,6 @@ import net.jadenxgamer.netherexp.client.shader.NetherHeatDistortionPostprocessor
 import net.jadenxgamer.netherexp.client.shader.SoulGlassPostProcessor;
 import net.jadenxgamer.netherexp.config.JNEConfigImpl;
 import net.jadenxgamer.netherexp.core.block.MagmaCreamBlock;
-import net.jadenxgamer.netherexp.core.item.SanctumCompassItem;
 import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.registry.JNEBlocks;
 import net.jadenxgamer.netherexp.registry.JNEFluids;
@@ -104,7 +103,7 @@ public class JNEClientEvents {
         NetherExpClient.registerRenderers();
         PostProcessHandler.addInstance(SoulGlassPostProcessor.INSTANCE);
         PostProcessHandler.addInstance(NetherHeatDistortionPostprocessor.INSTANCE);
-        event.enqueueWork(SanctumCompassItem::registerProperties);
+        event.enqueueWork(NetherExpClient::registerProperties);
     }
 
     @SubscribeEvent
