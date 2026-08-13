@@ -75,11 +75,17 @@
     "netherexp:nether_brick_pillar",
     "netherexp:red_mixed_nether_bricks",
     "netherexp:blue_mixed_nether_bricks",
+    {"id": "netherexp:yellow_mixed_nether_bricks", "required": false},
 
     "netherexp:blue_nether_bricks",
     "netherexp:blue_nether_brick_slab",
     "netherexp:blue_nether_brick_stairs",
     "netherexp:blue_nether_brick_wall",
+
+    {"id": "netherexp:yellow_nether_bricks", "required": false},
+    {"id": "netherexp:yellow_nether_brick_slab", "required": false},
+    {"id": "netherexp:yellow_nether_brick_stairs", "required": false},
+    {"id": "netherexp:yellow_nether_brick_wall", "required": false},
 
     "netherexp:bone_pike",
     "netherexp:bone_fence",
