@@ -24,5 +24,8 @@
     [
       "has_item"
     ]
-  ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
 }

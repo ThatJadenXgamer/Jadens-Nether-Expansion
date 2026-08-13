@@ -4,12 +4,12 @@
     "translate": "enchantment.netherexp.recoil"
   },
   "min_cost": {
-    "base": 12,
-    "per_level_above_first": 8
+    "base": 5,
+    "per_level_above_first": 5
   },
   "max_cost": {
-    "base": 50,
-    "per_level_above_first": 8
+    "base": 20,
+    "per_level_above_first": 5
   },
   "max_level": 3,
   "slots": [

@@ -5,12 +5,12 @@
   },
   "exclusive_set": "#netherexp:exclusive_set/shotgun_bullet_count",
   "min_cost": {
-    "base": 12,
-    "per_level_above_first": 8
+    "base": 6,
+    "per_level_above_first": 6
   },
   "max_cost": {
-    "base": 50,
-    "per_level_above_first": 8
+    "base": 24,
+    "per_level_above_first": 6
   },
   "max_level": 4,
   "slots": [

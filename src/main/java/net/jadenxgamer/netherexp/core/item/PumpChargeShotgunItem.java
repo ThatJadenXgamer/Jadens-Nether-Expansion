@@ -70,6 +70,11 @@ public class PumpChargeShotgunItem extends ProjectileWeaponItem {
     }
 
     @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if (!level.isClientSide()) return;
         if (getPumps(stack) > 3) {
