@@ -70,6 +70,10 @@ public class JNEEntityType {
             EntityType.Builder.<PhasmoArrow>of(PhasmoArrow::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("phasmo_arrow"));
 
+    public static final Supplier<EntityType<BlackIcicle>> BLACK_ICICLE = ENTITY_TYPES.register("black_icicle", () ->
+            EntityType.Builder.<BlackIcicle>of(BlackIcicle::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("black_icicle"));
+
     public static final Supplier<EntityType<WillOWisp>> WILL_O_WISP = ENTITY_TYPES.register("will_o_wisp", () ->
             EntityType.Builder.<WillOWisp>of(WillOWisp::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("will_o_wisp"));

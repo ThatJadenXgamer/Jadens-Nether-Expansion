@@ -204,7 +204,7 @@ public class JNEBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY).sound(JNESoundType.BLACK_ICE)));
 
     public static final Supplier<Block> THIN_BLACK_ICE = registerBlock("thin_black_ice", () ->
-            new ThinBlackIceBlock(BlockBehaviour.Properties.ofLegacyCopy(BLACK_ICE.get()).strength(0.05f).randomTicks().noOcclusion()));
+            new ThinBlackIceBlock(BlockBehaviour.Properties.ofLegacyCopy(BLACK_ICE.get()).mapColor(MapColor.COLOR_BLACK).strength(0.05f).randomTicks().noOcclusion()));
 
     public static final Supplier<Block> SOUL_PERMAFROST = registerBlock("soul_permafrost", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.SOUL_SOIL).speedFactor(0.9F).friction(0.98F)));

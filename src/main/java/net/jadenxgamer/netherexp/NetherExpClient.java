@@ -65,6 +65,7 @@ public final class NetherExpClient {
         EntityRenderers.register(JNEEntityType.STAMPEDE.get(), StampedeRenderer::new);
         EntityRenderers.register(JNEEntityType.CARCASS.get(), CarcassRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_ARROW.get(), PhasmoArrowRenderer::new);
+        EntityRenderers.register(JNEEntityType.BLACK_ICICLE.get(), BlackIcicleRenderer::new);
         EntityRenderers.register(JNEEntityType.SHOTGUN_PELLET.get(), ShotgunPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.SLUG_PELLET.get(), SlugPelletRenderer::new);
         EntityRenderers.register(JNEEntityType.PHASMO_PELLET.get(), PhasmoPelletRenderer::new);

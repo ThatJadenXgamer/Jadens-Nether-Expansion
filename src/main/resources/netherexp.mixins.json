@@ -32,6 +32,7 @@
     "entity.StrayMixin",
     "entity.ai.NearestAttackableTargetGoalMixin",
     "item.BlockItemMixin",
+    "item.CrossbowItemMixin",
     "item.PotionItemMixin",
     "misc.PortalForcerMixin",
     "worldgen.NetherWorldCarverMixin"

@@ -243,7 +243,7 @@ public class JNEConfigImpl {
                     .defineInRange("wispBoredomChance", 0.02, 0.0, 1.0);
             BLACK_ICE_FREEZING_TICKS = builder
                     .comment("The amount of freezing in ticks that all black ices can inflict")
-                    .defineInRange("blackIceFreezingTicks", 100, 0, Integer.MAX_VALUE);
+                    .defineInRange("blackIceFreezingTicks", 400, 0, Integer.MAX_VALUE);
             SKELETON_FOSSILIZATION = builder
                     .comment("Upon death skeletons will fossilize soul soil blocks they are standing on into fossil ore")
                     .worldRestart()
