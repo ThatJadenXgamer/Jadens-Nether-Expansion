@@ -515,6 +515,9 @@ public class JNECreativeModeTabs {
                     output.accept(RubinatedNetherCompat.Blocks.SOUL_RUBY_ORE.get());
                 }
                 if (CompatUtil.GARDENS_OF_THE_DEAD) {
+                    output.accept(GardensOfTheDeadCompat.Blocks.SHROOMBLIGHT.get());
+                    output.accept(GardensOfTheDeadCompat.Items.BLIGHTSPORES.get());
+
                     output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_MIXED_NETHER_BRICKS.get());
                     output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICKS.get());
                     output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_STAIRS.get());

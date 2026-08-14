@@ -3,6 +3,7 @@
   "values": [
     "netherexp:sorroweed",
     "netherexp:shroomnight",
+    {"id": "netherexp:shroomblight", "required": false},
     "netherexp:crimson_sporeshroom",
     "netherexp:warped_sporeshroom",
     "netherexp:ochre_frogmist",
