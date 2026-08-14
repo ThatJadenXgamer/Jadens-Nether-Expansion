@@ -11,6 +11,8 @@ import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEFoods;
+import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.jadenxgamer.netherexp.util.RegistryHelper;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -223,6 +225,7 @@ public class JNEItems {
     
     public static void init(IEventBus eventBus) {
         registerAliases();
+        if (CompatUtil.GARDENS_OF_THE_DEAD) GardensOfTheDeadCompat.Items.init();
         ITEMS.register(eventBus);
     }
 

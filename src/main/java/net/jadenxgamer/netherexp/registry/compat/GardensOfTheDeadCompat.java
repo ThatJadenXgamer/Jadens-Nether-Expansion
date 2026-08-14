@@ -1,9 +1,10 @@
 package net.jadenxgamer.netherexp.registry.compat;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.jadenxgamer.netherexp.core.item.GlowsporesItem;
+import net.jadenxgamer.netherexp.registry.JNEItems;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
@@ -12,8 +13,11 @@ import java.util.function.Supplier;
 import static net.jadenxgamer.netherexp.util.RegistryHelper.registerBlock;
 
 public class GardensOfTheDeadCompat {
-    
+
     public static class Blocks {
+
+        public static final Supplier<Block> SHROOMBLIGHT = registerBlock("shroomblight", () ->
+                new Block(BlockBehaviour.Properties.ofLegacyCopy(net.minecraft.world.level.block.Blocks.SHROOMLIGHT).lightLevel((state) -> 10)));
 
         /**
          * Yellow Nether Bricks
@@ -34,6 +38,16 @@ public class GardensOfTheDeadCompat {
         public static final Supplier<Block> YELLOW_NETHER_BRICK_WALL = registerBlock("yellow_nether_brick_wall", () ->
                 new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(YELLOW_NETHER_BRICKS.get())));
 
-        public static void init() {}
+        public static void init() {
+        }
+    }
+
+    public static class Items {
+
+        public static final Supplier<Item> BLIGHTSPORES = JNEItems.ITEMS.register("blightspores", () ->
+                new Item(new Item.Properties()));
+
+        public static void init() {
+        }
     }
 }
