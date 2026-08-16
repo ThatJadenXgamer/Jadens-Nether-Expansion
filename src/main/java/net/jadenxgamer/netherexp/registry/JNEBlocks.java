@@ -127,7 +127,7 @@ public class JNEBlocks {
      */
 
     public static final Supplier<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
-            new SwirlsBlock(() -> JNEParticleTypes.SOUL_SWIRL_POP, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
+            new SwirlsBlock(null, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
                     .lightLevel(state -> state.getValue(SwirlsBlock.ACTIVE) ? 6 : 0).sound(JNESoundType.SOUL_SWIRLS)));
 
     public static final Supplier<Block> PETRIFIED_SWIRLS = registerBlock("petrified_swirls", () ->

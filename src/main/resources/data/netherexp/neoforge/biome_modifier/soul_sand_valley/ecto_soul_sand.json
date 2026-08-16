@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "#netherexp:soul_sand_valleys",
+  "biomes": "#netherexp:soul_has_feature/ecto_soul_sand",
   "features": "netherexp:soul_sand_valley/ecto_soul_sand",
   "step": "vegetal_decoration",
   "neoforge:conditions": [

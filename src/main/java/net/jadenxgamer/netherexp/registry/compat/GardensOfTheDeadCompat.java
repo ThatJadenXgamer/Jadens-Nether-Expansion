@@ -1,13 +1,19 @@
 package net.jadenxgamer.netherexp.registry.compat;
 
+import net.jadenxgamer.netherexp.core.block.SwirlsBlock;
+import net.jadenxgamer.netherexp.core.block.WallGrowingWartBlock;
+import net.jadenxgamer.netherexp.core.block.WarpedWartBlock;
 import net.jadenxgamer.netherexp.core.item.GlowsporesItem;
+import net.jadenxgamer.netherexp.core.misc.JNESoundType;
 import net.jadenxgamer.netherexp.registry.JNEItems;
 import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
+import java.awt.*;
 import java.util.function.Supplier;
 
 import static net.jadenxgamer.netherexp.util.RegistryHelper.registerBlock;
@@ -18,6 +24,13 @@ public class GardensOfTheDeadCompat {
 
         public static final Supplier<Block> SHROOMBLIGHT = registerBlock("shroomblight", () ->
                 new Block(BlockBehaviour.Properties.ofLegacyCopy(net.minecraft.world.level.block.Blocks.SHROOMLIGHT).lightLevel((state) -> 10)));
+
+        public static final Supplier<Block> BLIGHTWART = registerBlock("blightwart", () ->
+                new WallGrowingWartBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).instabreak().noCollission().noOcclusion().randomTicks().pushReaction(PushReaction.DESTROY).sound(SoundType.NETHER_WART)));
+
+        public static final Supplier<Block> BLIGHT_SWIRLS = registerBlock("blight_swirls", () ->
+                new SwirlsBlock(new Color(0xFFCD70), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
+                        .lightLevel(state -> state.getValue(SwirlsBlock.ACTIVE) ? 6 : 0).sound(JNESoundType.SOUL_SWIRLS)));
 
         /**
          * Yellow Nether Bricks
@@ -38,8 +51,7 @@ public class GardensOfTheDeadCompat {
         public static final Supplier<Block> YELLOW_NETHER_BRICK_WALL = registerBlock("yellow_nether_brick_wall", () ->
                 new WallBlock(BlockBehaviour.Properties.ofLegacyCopy(YELLOW_NETHER_BRICKS.get())));
 
-        public static void init() {
-        }
+        public static void init() {}
     }
 
     public static class Items {
@@ -47,7 +59,6 @@ public class GardensOfTheDeadCompat {
         public static final Supplier<Item> BLIGHTSPORES = JNEItems.ITEMS.register("blightspores", () ->
                 new Item(new Item.Properties()));
 
-        public static void init() {
-        }
+        public static void init() {}
     }
 }
