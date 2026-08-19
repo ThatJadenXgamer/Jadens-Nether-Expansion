@@ -745,6 +745,7 @@
   "netherexp.configuration.counterforce_iframes": "Counterforce I-Frames",
   "netherexp.configuration.willOWispStackSize": "Will O' Wisp Stack Size",
   "netherexp.configuration.stackablePotions": "Stackable Potions",
+  "netherexp.configuration.removeSoulSpeedEnchantment": "Remove Soul Speed Enchantment",
 
   "netherexp.configuration.wispBoredomChance": "Wisp Boredom Chance",
   "netherexp.configuration.blackIceFreezingTicks": "Black Ice Freezing Ticks",
