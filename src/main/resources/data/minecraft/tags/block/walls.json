@@ -5,6 +5,7 @@
     "netherexp:soul_slate_brick_wall",
     "netherexp:soul_slate_tile_wall",
     "netherexp:blue_nether_brick_wall",
+    {"id": "netherexp:yellow_nether_brick_wall", "required": false},
     "netherexp:smooth_netherrack_wall",
     "netherexp:netherrack_brick_wall",
     "netherexp:basalt_wall",

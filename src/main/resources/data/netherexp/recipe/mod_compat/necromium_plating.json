@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GS",
+    "SN"
+  ],
+  "key": {
+    "S": {
+      "item": "netherexp:stridite"
+    },
+    "G": {
+      "tag": "c:ingots/silver"
+    },
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    }
+  },
+  "result": {
+    "id": "netherexp:necromium_plating",
+    "count": 64
+  }
+}

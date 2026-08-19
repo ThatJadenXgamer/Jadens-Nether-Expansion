@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.registry;
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.Antidote;
+import net.jadenxgamer.netherexp.registry.compat.CavernsAndChasmsCompat;
 import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
@@ -525,6 +526,17 @@ public class JNECreativeModeTabs {
                     output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_STAIRS.get());
                     output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_SLAB.get());
                     output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_WALL.get());
+                }
+                if (CompatUtil.CAVERNS_AND_CHASMS) {
+                    output.accept(CavernsAndChasmsCompat.Items.NECROMIUM_PLATING.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.NECROMIUM_PLATED_BLOCK.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.NECROMIUM_GRATE.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_BLOCK.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_STAIRS.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_SLAB.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_PILLAR.get());
+
+                    output.accept(CavernsAndChasmsCompat.Blocks.TREACHEROUS_BRAZIER.get());
                 }
             })
             .build());

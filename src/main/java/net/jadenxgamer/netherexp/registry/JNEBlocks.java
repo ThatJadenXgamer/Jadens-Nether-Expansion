@@ -6,6 +6,7 @@ import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
+import net.jadenxgamer.netherexp.registry.compat.CavernsAndChasmsCompat;
 import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
@@ -791,6 +792,7 @@ public class JNEBlocks {
         if (CompatUtil.OREGANIZED) OreganizedCompat.Blocks.init();
         if (CompatUtil.RUBINATED_NETHER) RubinatedNetherCompat.Blocks.init();
         if (CompatUtil.GARDENS_OF_THE_DEAD) GardensOfTheDeadCompat.Blocks.init();
+        if (CompatUtil.CAVERNS_AND_CHASMS) CavernsAndChasmsCompat.Blocks.init();
         BLOCKS.register(eventBus);
     }
 

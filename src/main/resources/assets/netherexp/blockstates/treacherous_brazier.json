@@ -1,16 +1,16 @@
 {
     "variants": {
         "lit=false,hanging=false": {
-            "model": "netherexp:/block/mod_compat/treacherous_brazier_off"
+            "model": "caverns_and_chasms:block/brazier_off"
         },
         "lit=false,hanging=true": {
-            "model": "netherexp:/block/mod_compat/treacherous_brazier_off_hanging"
+            "model": "caverns_and_chasms:block/brazier_off_hanging"
         },
         "lit=true,hanging=false": {
-            "model": "netherexp:/block/mod_compat/treacherous_brazier"
+            "model": "netherexp:block/mod_compat/caverns_and_chasms/treacherous_brazier"
         },
         "lit=true,hanging=true": {
-            "model": "netherexp:/block/mod_compat/treacherous_brazier_hanging"
+            "model": "netherexp:block/mod_compat/caverns_and_chasms/treacherous_brazier_hanging"
         }
     }
 }
