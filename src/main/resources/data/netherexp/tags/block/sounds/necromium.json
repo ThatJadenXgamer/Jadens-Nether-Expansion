@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "netherexp:necromium_plated_block", "required": false},
+    {"id": "netherexp:necromium_grate", "required": false},
+    {"id": "netherexp:cut_necromium_block", "required": false},
+    {"id": "netherexp:cut_necromium_slab", "required": false},
+    {"id": "netherexp:cut_necromium_stairs", "required": false},
+    {"id": "netherexp:cut_necromium_pillar", "required": false}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+
+  "blocks": "#netherexp:sounds/necromium",
+
+  "break_sound": "caverns_and_chasms:block.necromium.break",
+  "step_sound": "caverns_and_chasms:block.necromium.step",
+  "place_sound": "caverns_and_chasms:block.necromium.place",
+  "hit_sound": "caverns_and_chasms:block.necromium.hit",
+  "fall_sound": "caverns_and_chasms:block.necromium.fall",
+  "volume": 1.0,
+  "pitch": 1.0
+}

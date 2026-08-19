@@ -1,0 +1,8 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "caverns_and_chasms:block/template_brazier_hanging",
+  "textures": {
+    "fire": "netherexp:block/mod_compat/caverns_and_chasms/treacherous_brazier_fire",
+    "lit": "netherexp:block/mod_compat/caverns_and_chasms/treacherous_brazier_top_lit"
+  }
+}

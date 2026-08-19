@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#N#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blackstone"
+    },
+    "N": {
+      "item": "netherexp:necromium_plating"
+    }
+  },
+  "result": {
+    "id": "netherexp:necromium_plated_block",
+    "count": 8
+  }
+}
