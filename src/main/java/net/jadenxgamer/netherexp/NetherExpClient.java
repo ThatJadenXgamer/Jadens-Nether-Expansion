@@ -101,6 +101,7 @@ public final class NetherExpClient {
 
     public static void registerParticles(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(JNEParticleTypes.SOUL_SWIRL_POP.get(), LodestoneWorldParticleType.Factory::new);
+        event.registerSpriteSet(JNEParticleTypes.TINT_SWIRL_POP.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.WISP.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.SMALL_SOUL_FIRE_FLAME.get(), FlameParticle.SmallFlameProvider::new);
         event.registerSpriteSet(JNEParticleTypes.IMMUNITY_EFFECT.get(), SpellParticle.MobEffectProvider::new);
@@ -155,7 +156,6 @@ public final class NetherExpClient {
         event.registerSpriteSet(JNEParticleTypes.GLACIER_EFFECT.get(), GlacierEffectParticle.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.BLACK_FLAKE_WORLD.get(), LodestoneWorldParticleType.Factory::new);
         event.registerSpriteSet(JNEParticleTypes.COLD_FOG.get(), LodestoneWorldParticleType.Factory::new);
-        event.registerSpriteSet(JNEParticleTypes.BLOT_DROP.get(), LodestoneWorldParticleType.Factory::new);
     }
 
     public static void registerProperties() {

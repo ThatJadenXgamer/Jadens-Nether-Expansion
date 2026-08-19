@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "#netherexp:soul_sand_valleys",
+  "biomes": "#netherexp:has_feature/bone_pike",
   "features": "netherexp:soul_sand_valley/bone_pike",
   "step": "underground_decoration",
   "neoforge:conditions": [

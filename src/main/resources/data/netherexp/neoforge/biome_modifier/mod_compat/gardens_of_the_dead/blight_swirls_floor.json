@@ -1,0 +1,21 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "gardens_of_the_dead:soulblight_forest",
+  "features": "netherexp:mod_compat/gardens_of_the_dead/blight_swirls_floor",
+  "step": "vegetal_decoration",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "neoforge:mod_loaded",
+          "modid": "gardens_of_the_dead"
+        },
+        {
+          "type": "netherexp:config",
+          "path": "worldSettings.biomeFeaturesSettings.soulSwirls"
+        }
+      ]
+    }
+  ]
+}

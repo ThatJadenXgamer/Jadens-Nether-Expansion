@@ -1743,21 +1743,5 @@
         "stream": true
       }
     ]
-  },
-  "music_disc.buckshot_wonderland": {
-    "sounds": [
-      {
-        "name": "netherexp:records/buckshot_wonderland",
-        "stream": true
-      }
-    ]
-  },
-  "music.nether.soul_sand_valley.black_ice_glaciers": {
-    "sounds": [
-      {
-        "name": "netherexp:music/game/nether/soul_sand_valley/black_ice_glaciers/sublimate",
-        "stream": true
-      }
-    ]
   }
 }

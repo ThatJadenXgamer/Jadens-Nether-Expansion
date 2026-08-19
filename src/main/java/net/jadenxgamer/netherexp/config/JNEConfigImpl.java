@@ -232,6 +232,10 @@ public class JNEConfigImpl {
             STACKABLE_POTIONS = builder
                     .comment("When enabled almost all types of potions can be stacked to 16 like in the combat snapshots")
                     .define("stackablePotions", true);
+            REMOVE_SOUL_SPEED_ENCHANTMENT = builder
+                    .gameRestart()
+                    .comment("Removes the soul speed enchantment from the game, everywhere.\nThis will not retroactively remove pre-existing items with the enchantment")
+                    .define("removeSoulSpeedEnchantment", true);
         }
     }
 

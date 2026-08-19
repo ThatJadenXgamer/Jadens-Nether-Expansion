@@ -676,6 +676,7 @@
   "block.netherexp.waxen_soul_glass": "Waxen Soul Glass",
   "block.netherexp.tethered_bone_block": "Tethered Bone Block",
   "subtitles.block.netherexp.mocking": "Treacherous Fire mocks victim",
+  "block.netherexp.treacherous_brazier": "Treacherous Brazier",
 
   "enchantment.netherexp.phantasm_hull.desc": "Sneaking causes projectiles to phase through you in-exchange for durability",
   "enchantment.netherexp.counterforce.desc": "Reverses the pushback direction and provides I-frames when used midair during without any downwards pull",
@@ -745,6 +746,7 @@
   "netherexp.configuration.counterforce_iframes": "Counterforce I-Frames",
   "netherexp.configuration.willOWispStackSize": "Will O' Wisp Stack Size",
   "netherexp.configuration.stackablePotions": "Stackable Potions",
+  "netherexp.configuration.removeSoulSpeedEnchantment": "Remove Soul Speed Enchantment",
 
   "netherexp.configuration.wispBoredomChance": "Wisp Boredom Chance",
   "netherexp.configuration.blackIceFreezingTicks": "Black Ice Freezing Ticks",

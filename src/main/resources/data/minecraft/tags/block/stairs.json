@@ -7,6 +7,7 @@
     "netherexp:smooth_netherrack_stairs",
     "netherexp:netherrack_brick_stairs",
     "netherexp:blue_nether_brick_stairs",
+    {"id": "netherexp:yellow_nether_brick_stairs", "required": false},
     "netherexp:stacked_bone_stairs",
     "netherexp:stacked_wither_bone_stairs",
     "netherexp:basalt_stairs",

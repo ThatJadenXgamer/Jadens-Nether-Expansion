@@ -63,6 +63,7 @@ public class JNEConfigs {
     public static ModConfigSpec.IntValue COUNTERFORCE_IFRAMES;
     public static ModConfigSpec.IntValue WILL_O_WISP_STACK_SIZE;
     public static ModConfigSpec.BooleanValue STACKABLE_POTIONS;
+    public static ModConfigSpec.BooleanValue REMOVE_SOUL_SPEED_ENCHANTMENT;
 
     // ENTITY
     public static ModConfigSpec.DoubleValue WISP_BOREDOM_CHANCE;

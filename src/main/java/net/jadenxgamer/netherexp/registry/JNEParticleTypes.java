@@ -17,6 +17,7 @@ public class JNEParticleTypes {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, NetherExp.MOD_ID);
 
     public static final Supplier<LodestoneWorldParticleType> SOUL_SWIRL_POP = PARTICLE_TYPES.register("soul_swirl_pop", LodestoneWorldParticleType::new);
+    public static final Supplier<LodestoneWorldParticleType> TINT_SWIRL_POP = PARTICLE_TYPES.register("tint_swirl_pop", LodestoneWorldParticleType::new);
     public static final Supplier<LodestoneWorldParticleType> WISP = PARTICLE_TYPES.register("wisp", LodestoneWorldParticleType::new);
     public static final Supplier<SimpleParticleType> SMALL_SOUL_FIRE_FLAME = PARTICLE_TYPES.register("small_soul_fire_flame", () -> new SimpleParticleType(false));
     public static final Supplier<ParticleType<ColorParticleOption>> IMMUNITY_EFFECT = RegistryHelper.registerColorParticle("immunity_effect", false);

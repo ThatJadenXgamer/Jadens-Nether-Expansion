@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+
+  "type": "minecraft:crafting_shaped",
+  "group": "necromium_grate",
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:necromium_plated_block"
+    }
+  },
+  "result": {
+    "id": "netherexp:necromium_grate",
+    "count": 4
+  }
+}

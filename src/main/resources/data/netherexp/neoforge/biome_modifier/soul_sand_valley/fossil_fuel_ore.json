@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "#netherexp:soul_sand_valleys",
+  "biomes": "#netherexp:has_feature/fossil_fuel_ore",
   "features": "netherexp:soul_sand_valley/fossil_fuel_ore",
   "step": "underground_decoration",
   "neoforge:conditions": [

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+
+  "type": "minecraft:crafting_shaped",
+  "group": "cut_necromium_block",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "netherexp:necromium_plated_block"
+    }
+  },
+  "result": {
+    "id": "netherexp:cut_necromium_block",
+    "count": 4
+  }
+}

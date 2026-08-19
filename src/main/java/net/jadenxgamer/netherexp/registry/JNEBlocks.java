@@ -6,6 +6,8 @@ import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
+import net.jadenxgamer.netherexp.registry.compat.CavernsAndChasmsCompat;
+import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
@@ -126,7 +128,7 @@ public class JNEBlocks {
      */
 
     public static final Supplier<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
-            new SwirlsBlock(() -> JNEParticleTypes.SOUL_SWIRL_POP, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
+            new SwirlsBlock(null, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
                     .lightLevel(state -> state.getValue(SwirlsBlock.ACTIVE) ? 6 : 0).sound(JNESoundType.SOUL_SWIRLS)));
 
     public static final Supplier<Block> PETRIFIED_SWIRLS = registerBlock("petrified_swirls", () ->
@@ -789,6 +791,8 @@ public class JNEBlocks {
         registerAliases();
         if (CompatUtil.OREGANIZED) OreganizedCompat.Blocks.init();
         if (CompatUtil.RUBINATED_NETHER) RubinatedNetherCompat.Blocks.init();
+        if (CompatUtil.GARDENS_OF_THE_DEAD) GardensOfTheDeadCompat.Blocks.init();
+        if (CompatUtil.CAVERNS_AND_CHASMS) CavernsAndChasmsCompat.Blocks.init();
         BLOCKS.register(eventBus);
     }
 

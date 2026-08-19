@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "itemSettings.removeSoulSpeedEnchantment"
+    }
+  ],
+
+  "replace": false,
+  "values": [
+    "minecraft:soul_speed"
+  ]
+}

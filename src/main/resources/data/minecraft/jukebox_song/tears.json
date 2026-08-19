@@ -6,12 +6,5 @@
   "length_in_seconds": 175,
   "sound_event": {
     "sound_id": "minecraft:music_disc.tears"
-  },
-
-  "neoforge:conditions": [
-    {
-      "type": "netherexp:config",
-      "path": "itemSettings.backportTearsMusicDisc"
-    }
-  ]
+  }
 }

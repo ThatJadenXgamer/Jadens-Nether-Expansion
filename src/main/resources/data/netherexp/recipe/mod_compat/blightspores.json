@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "gardens_of_the_dead"
+    }
+  ],
+
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherexp:shroomblight"
+    }
+  ],
+  "result": {
+    "id": "netherexp:blightspores",
+    "count": 9
+  }
+}

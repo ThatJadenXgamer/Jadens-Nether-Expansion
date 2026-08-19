@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#netherexp:soul_sand_valleys",
+    {"id": "gardens_of_the_dead:soulblight_forest", "required": false},
+    {"id": "netherexp:black_ice_glaciers", "required": false}
+  ]
+}

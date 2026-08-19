@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "minecraft:soul_sand_valley",
+  "biomes": "#netherexp:has_feature/mound",
   "features": "netherexp:soul_sand_valley/mound",
   "step": "raw_generation",
   "neoforge:conditions": [

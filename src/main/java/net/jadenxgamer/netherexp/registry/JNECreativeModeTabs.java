@@ -3,6 +3,8 @@ package net.jadenxgamer.netherexp.registry;
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.Antidote;
+import net.jadenxgamer.netherexp.registry.compat.CavernsAndChasmsCompat;
+import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
@@ -512,6 +514,29 @@ public class JNECreativeModeTabs {
                 }
                 if (CompatUtil.RUBINATED_NETHER) {
                     output.accept(RubinatedNetherCompat.Blocks.SOUL_RUBY_ORE.get());
+                }
+                if (CompatUtil.GARDENS_OF_THE_DEAD) {
+                    output.accept(GardensOfTheDeadCompat.Blocks.BLIGHT_SWIRLS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.BLIGHTWART.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.SHROOMBLIGHT.get());
+                    output.accept(GardensOfTheDeadCompat.Items.BLIGHTSPORES.get());
+
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_MIXED_NETHER_BRICKS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICKS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_STAIRS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_SLAB.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_WALL.get());
+                }
+                if (CompatUtil.CAVERNS_AND_CHASMS) {
+                    output.accept(CavernsAndChasmsCompat.Items.NECROMIUM_PLATING.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.NECROMIUM_PLATED_BLOCK.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.NECROMIUM_GRATE.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_BLOCK.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_STAIRS.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_SLAB.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_PILLAR.get());
+
+                    output.accept(CavernsAndChasmsCompat.Blocks.TREACHEROUS_BRAZIER.get());
                 }
             })
             .build());
