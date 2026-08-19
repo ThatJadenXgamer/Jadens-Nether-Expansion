@@ -23,7 +23,10 @@ It is also fully compatible with Terrablender, Biolith and Blueprint provided bi
 
 -New Speleothem worldgen features can now generate in the nether
 
--The Nether is now 192 blocks tall, with an additional -32 blocks for the future underlava expansion
+-The Nether is now 192 blocks tall, with an additional -32 blocks for a future underlava expansion
+
+-Due to a large portion of the nether's lower regions being flooded with lava now, Ancient Debris have been moved to generate closer to the ceiling between Y=168-184 with the optimal depth being Y=176;
+This change is temporary and will be changed for a better system when netherite and ancient debris properly get overhauled in the future.
 
 -Removed emissive built-in resource pack. all emissives are now part of the mod resources and are always active
 

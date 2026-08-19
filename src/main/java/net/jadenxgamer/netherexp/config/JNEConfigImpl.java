@@ -690,26 +690,26 @@ public class JNEConfigImpl {
                     .defineInRange("heatDistortionSpeed", 2.0, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_MIN_DISTANCE = builder
                     .comment("Minimum distance from the camera that heat distortion starts at")
-                    .defineInRange("heatDistortionMinDistance", 12.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionMinDistance", 12.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_MAX_DISTANCE = builder
                     .comment("Maximum distance from the camera that heat distortion reaches its max intensity at")
-                    .defineInRange("heatDistortionMaxDistance", 128.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionMaxDistance", 128.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_INTENSITY = builder
                     .comment("Intensity of heat distortion wobbling when close to lava sources")
-                    .defineInRange("heatDistortionLavaIntensity", 0.006f, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaIntensity", 0.004f, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_SPEED = builder
                     .comment("Speed of heat distortion wobbling when close to lava sources")
                     .defineInRange("heatDistortionLavaSpeed", 2.0, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_MIN_DISTANCE = builder
                     .comment("Minimum distance from the camera that heat distortion starts at when close to lava sources")
-                    .defineInRange("heatDistortionLavaMinDistance", 0.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaMinDistance", 0.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_MAX_DISTANCE = builder
                     .comment("Maximum distance from the camera that heat distortion reaches its max intensity at when close to lava sources")
-                    .defineInRange("heatDistortionLavaMaxDistance", 64.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaMaxDistance", 64.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_CHECK_PERIOD = builder
                     .comment("How often the game will check around the player for lava heat distortion in ticks \n" +
                             "§cWARNING: Lower numbers can increase lag especially when paired with high proximity distances to iterate through")
-                    .defineInRange("heatDistortionLavaCheckPeriod", 100, 0, Integer.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaCheckPeriod", 150, 0, Integer.MAX_VALUE);
             HEAT_DISTORTION_LAVA_PROXIMITY = builder
                     .comment("How far the game will check around the player for heat distortion lava sources \n" +
                             "§cWARNING: Increasing the distance can add some latency to performance! as it needs to iterate through all the specified blocks in-range")
