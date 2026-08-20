@@ -117,7 +117,7 @@ dependencies {
     //implementation "com.github.ThatJadenXgamer:Elysium:1.2.0-alpha.8"
     implementation name: 'ElysiumAPI-1.21.1-2.0.0' //jitpack is being a bitch and not allowing implementation
 
-    jarJar(implementation("team.lodestar.lodestone:lodestone:$lodestone_version"))
+    implementation("team.lodestar.lodestone:lodestone:$lodestone_version")
     jarJar(implementation("com.terraformersmc:biolith-neoforge:$biolith_version"))
 
     compileOnly "top.theillusivec4.curios:curios-neoforge:$curios_version:api"

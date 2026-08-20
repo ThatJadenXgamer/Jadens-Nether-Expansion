@@ -31,6 +31,7 @@ public class SiltMarramBlock extends RootsBlock {
     public SiltMarramBlock(TagKey<Biome> homeBiomes, Properties properties) {
         super(properties);
         this.homeBiomes = homeBiomes;
+        this.registerDefaultState(defaultBlockState().setValue(SHEARED, false));
     }
 
     @Override
