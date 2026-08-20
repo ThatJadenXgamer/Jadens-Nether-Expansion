@@ -398,9 +398,9 @@ public class JNEConfigImpl {
                     .defineInRange("emergeBurstDamageMultiplier", 2.0, 0.0, Double.MAX_VALUE);
             ABSOLUTE_MAXIMUM_STACK_SIZE = builder
                     .comment("""
-                            The absolute maximum stack size for all ecto slabs
-                            §cWARNING: Higher values can easily cause FPS lag when too many ecto slabs are present
-                             \
+                            The absolute maximum stack size for all ecto slabs\s
+                            §cWARNING: Higher values can easily cause FPS lag when too many ecto slabs are present\s
+                            \s
                             Due to the additional segments needing to be added for rendering""")
                     .gameRestart()
                     .defineInRange("absoluteMaximumStackSize", 16, 1, 99);
@@ -444,6 +444,12 @@ public class JNEConfigImpl {
             ECTO_SLAB_MAX_DIG_TIME = builder
                     .comment("How long the ecto slab can stay underground in ticks")
                     .defineInRange("ectoSlabMaxDigTime", 80, 0, Integer.MAX_VALUE);
+            STAMPEDE_BEFRIENDING_ODDS = builder
+                    .comment("The chance for a stampede to be befriended when fed favorite foods; higher numbers make befriending harder")
+                    .defineInRange("stampedeBefriendingOdds", 8, 0, Integer.MAX_VALUE);
+            STAMPEDE_STRIDITE_SHEDDING_CHANCE = builder
+                    .comment("Stampedes will shed stridite upon running over any entity")
+                    .defineInRange("stampedeStriditeSheddingChance", 0.1, 0.0, 1.0);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
@@ -456,9 +462,6 @@ public class JNEConfigImpl {
             STAMPEDE_UNLEASHING_ODDS = builder
                     .comment("The chance for stampedes to unleash apparitions upon death")
                     .defineInRange("stampedeUnleashingOdds", 0.5, 0.0, 1.0);
-            STAMPEDE_STRIDITE_SHEDDING_CHANCE = builder
-                    .comment("Stampedes will shed stridite upon running over any entity")
-                    .defineInRange("stampedeStriditeSheddingChance", 0.1, 0.0, 1.0);
             MIN_STAMPEDE_STRIDITE_DROPS = builder
                     .comment("The minimum number of stridite that can be shed by a stampede")
                     .defineInRange("minStampedeStriditeDrops", 1, 0, Integer.MAX_VALUE);
@@ -673,6 +676,9 @@ public class JNEConfigImpl {
             ECTO_SLAB_PETRIFICATION_SCREENSHAKE = builder
                     .comment("Toggle petrification screen shake")
                     .define("ectoSlabPetrificationScreenshake", true);
+            STAMPEDE_SCREENSHAKE = builder
+                    .comment("Toggle stampede screen shake")
+                    .define("stampedeScreenshake", true);
             ENABLE_HEAT_DISTORTION = builder
                     .comment("Toggles all heat distortion effects in JNE; To disable individual heat distortion effects check the below configs")
                     .define("enableHeatDistortion", true);
@@ -744,6 +750,15 @@ public class JNEConfigImpl {
             CIERGE_OF_TREACHERY_PARTICLES = builder
                     .comment("Cierge of Treachery will produce red haze and sparkle particles")
                     .define("ciergeOfTreacheryParticles", true);
+            DUNGEONS_FLAME_PARTICLES = builder
+                    .comment("Replaces all flame particles with animated ones from Minecraft: Dungeons")
+                    .define("dungeonsFlameParticles", true);
+            IMPROVED_BURN_PARTICLES = builder
+                    .comment("Replaces the ugly fire texture when mobs are burning with particles based on Minecraft: Dungeons")
+                    .define("improvedBurnParticles", true);
+            MOB_BURNING_GLOW = builder
+                    .comment("Mobs on fire will pulse a glow corresponding to the fire type they are on")
+                    .define("mobBurningGlow", true);
         }
     }
 

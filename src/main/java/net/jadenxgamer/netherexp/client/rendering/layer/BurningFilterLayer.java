@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.client.rendering.layer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.BurnPalettesManager;
 import net.jadenxgamer.netherexp.client.rendering.JNERenderType;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEAttachmentTypes;
 import net.minecraft.client.model.EntityModel;
@@ -22,7 +23,7 @@ public class BurningFilterLayer<T extends LivingEntity, M extends EntityModel<T>
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (entity.getType().is(JNETags.EntityTypes.NO_BURNING_FILTER) || !entity.displayFireAnimation() || entity.isSpectator()) return;
+        if (entity.getType().is(JNETags.EntityTypes.NO_BURNING_FILTER) || !JNEConfigs.MOB_BURNING_GLOW.get() || !entity.displayFireAnimation() || entity.isSpectator()) return;
 
         ResourceLocation fireBlock = entity.getData(JNEAttachmentTypes.LAST_FIRE);
         int row = BurnPalettesManager.getRowForBlock(fireBlock);

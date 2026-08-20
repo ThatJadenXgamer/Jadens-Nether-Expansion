@@ -124,11 +124,12 @@ public class JNEConfigs {
     public static ModConfigSpec.DoubleValue ECTO_SLAB_JUMP_STRENGTH_CAP;
     public static ModConfigSpec.IntValue ECTO_SLAB_MAX_STACK_SIZE;
     public static ModConfigSpec.IntValue ECTO_SLAB_MAX_DIG_TIME;
+    public static ModConfigSpec.IntValue STAMPEDE_BEFRIENDING_ODDS;
+    public static ModConfigSpec.DoubleValue STAMPEDE_STRIDITE_SHEDDING_CHANCE;
     public static ModConfigSpec.DoubleValue VESSEL_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue ECTO_SLAB_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue BANSHEE_UNLEASHING_ODDS;
     public static ModConfigSpec.DoubleValue STAMPEDE_UNLEASHING_ODDS;
-    public static ModConfigSpec.DoubleValue STAMPEDE_STRIDITE_SHEDDING_CHANCE;
     public static ModConfigSpec.IntValue MIN_STAMPEDE_STRIDITE_DROPS;
     public static ModConfigSpec.IntValue MAX_STAMPEDE_STRIDITE_DROPS;
 
@@ -185,6 +186,7 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue SHOTGUN_SCREENSHAKE;
     public static ModConfigSpec.BooleanValue ECTO_SLAB_EMERGE_BURST_SCREENSHAKE;
     public static ModConfigSpec.BooleanValue ECTO_SLAB_PETRIFICATION_SCREENSHAKE;
+    public static ModConfigSpec.BooleanValue STAMPEDE_SCREENSHAKE;
     public static ModConfigSpec.BooleanValue ENABLE_HEAT_DISTORTION;
     public static ModConfigSpec.BooleanValue BIOME_HEAT_DISTORTION;
     public static ModConfigSpec.BooleanValue LAVA_HEAT_DISTORTION;
@@ -208,6 +210,9 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue CIERGE_OF_TREACHERY_RED_LIGHTS;
     public static ModConfigSpec.BooleanValue CIERGE_OF_TREACHERY_FOG;
     public static ModConfigSpec.BooleanValue CIERGE_OF_TREACHERY_PARTICLES;
+    public static ModConfigSpec.BooleanValue DUNGEONS_FLAME_PARTICLES;
+    public static ModConfigSpec.BooleanValue IMPROVED_BURN_PARTICLES;
+    public static ModConfigSpec.BooleanValue MOB_BURNING_GLOW;
 
     // GAME MECHANICS
     public static ModConfigSpec.BooleanValue ECTOPLASM_FREEZES;

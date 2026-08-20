@@ -630,13 +630,13 @@ public class JNEBlocks {
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
 
     public static final Supplier<Block> BURNING_SKULL_BLOCK = registerBlock("burning_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 15)));
+            new BurningSkullBlock(() -> ParticleTypes.FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 15)));
 
     public static final Supplier<Block> SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 10)));
+            new BurningSkullBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 10)));
 
     public static final Supplier<Block> TREACHEROUS_BURNING_SKULL_BLOCK = registerBlock("treacherous_burning_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 9)));
+            new BurningSkullBlock(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 9)));
 
     public static final Supplier<Block> STACKED_BONES = registerBlock("stacked_bones", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
@@ -658,13 +658,13 @@ public class JNEBlocks {
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));
 
     public static final Supplier<Block> BURNING_WITHER_SKULL_BLOCK = registerBlock("burning_wither_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 15)));
+            new BurningSkullBlock(() -> ParticleTypes.FLAME, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 15)));
 
     public static final Supplier<Block> SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 10)));
+            new BurningSkullBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 10)));
 
     public static final Supplier<Block> TREACHEROUS_BURNING_WITHER_SKULL_BLOCK = registerBlock("treacherous_burning_wither_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 9)));
+            new BurningSkullBlock(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 9)));
 
     public static final Supplier<Block> STACKED_WITHER_BONES = registerBlock("stacked_wither_bones", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));

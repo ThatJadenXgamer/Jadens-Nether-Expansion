@@ -902,6 +902,13 @@
 
   "netherexp.configuration.soulCampfireSoulSoil": "Soul Campfire Soul Soil",
 
+  "netherexp.configuration.brazierChestRefillCooldown": "Brazier Chest Refill Cooldown",
+  "netherexp.configuration.stampedeBefriendingOdds": "Stampede Befriending Odds",
+  "netherexp.configuration.stampedeScreenshake": "Stampede Screenshake",
+  "netherexp.configuration.dungeonsFlameParticles": "Dungeons Flame Particles",
+  "netherexp.configuration.improvedBurnParticles": "Improved Burn Particles",
+  "netherexp.configuration.mobBurningGlow": "Mob Burning Glow",
+
   "itemGroup.netherexp.jne_grieving_grove": "JNE Grieving Grove",
   "itemGroup.netherexp.jne_plume_bowels": "JNE Plume Bowels",
   "itemGroup.netherexp.jne_quartz_chasm": "JNE Quartz Chasm",

@@ -33,7 +33,7 @@ public class SplashManagerMixin {
             at = @At("RETURN")
     )
     private void netherexp$applyJNESplashes(List<String> object, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
-        if (!JNEConfigImpl.STARTUP.isLoaded() || !JNEConfigs.ENABLE_JNE_SPLASH_TEXTS.get()) return;
+        if (!JNEConfigs.ENABLE_JNE_SPLASH_TEXTS.get()) return;
         ProfanityConfig profanity = JNEConfigs.PROFANITY.get();
 
         loadSplashesFile(resourceManager, JNE_SPLASHES_LOCATION, "JNE splashes");
