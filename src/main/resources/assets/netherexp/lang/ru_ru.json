@@ -1,5 +1,5 @@
 {
-  "biome.netherexp.exhaust_mire": "Выхлопная топь",
+  "biome.netherexp.exhaust_mire": "Задымлённая топь",
   "biome.netherexp.quartz_chasm": "Кварцевая расщелина",
   "biome.netherexp.plume_bowels": "Шлейфовые недра",
   "biome.netherexp.grieving_grove": "Скорбящая роща",
@@ -643,7 +643,7 @@
   "advancements.nether.warped_forest.description": "Причудливое поветрие уныния сковало эти леса, искажая их обитателей, пока реальность не слилась с грёзами",
   "advancements.nether.basalt_deltas.title": "Базальтовые дельты",
   "advancements.nether.basalt_deltas.description": "Задохнувшиеся в пепле остатки радиоактивных осадков знаменуют собой цену древней ереси",
-  "advancements.nether.exhaust_mire.title": "Выхлопная топь",
+  "advancements.nether.exhaust_mire.title": "Задымлённая топь",
   "advancements.nether.exhaust_mire.description": "Флора этих топей демонстрирует гнев индустриальной революции, которая грозит вновь обременить Нижний мир",
   "advancements.nether.quartz_chasm.title": "???",
   "advancements.nether.quartz_chasm.description": "Те, кто гордятся своим величием...",
