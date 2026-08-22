@@ -122,7 +122,7 @@ public class JNEItems {
             new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final Supplier<Item> MUSIC_DISC_BUCKSHOT_WONDERLAND = ITEMS.register("music_disc_buckshot_wonderland", () ->
-            new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+            new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(JNEJukeboxSongs.PATIENCE)));
 
     public static final Supplier<Item> SKULL_ON_A_STICK = ITEMS.register("skull_on_a_stick", () ->
             new SkullOnAStick(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).durability(100)));

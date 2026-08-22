@@ -3,5 +3,6 @@
   "dimension": "minecraft:the_nether",
   "climate_point": 3,
   "biome": "minecraft:warped_forest",
-  "weight": 20
+  "weight": 20,
+  "keep_weight": 80
 }

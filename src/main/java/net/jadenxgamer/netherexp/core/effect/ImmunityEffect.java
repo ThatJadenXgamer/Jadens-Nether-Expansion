@@ -24,10 +24,10 @@ import java.util.Optional;
 
 public class ImmunityEffect extends IncurableEffect {
 
-    private static final int DEFAULT_COLOR = 0x808080;
-    private final ResourceLocation immunityOf;
-    private Holder<MobEffect> cachedImmunityHolder;
-    private Holder<MobEffect> cachedSelfHolder;
+    protected static final int DEFAULT_COLOR = 0x808080;
+    protected final ResourceLocation immunityOf;
+    protected Holder<MobEffect> cachedImmunityHolder;
+    protected Holder<MobEffect> cachedSelfHolder;
 
     public ImmunityEffect(MobEffectCategory category, ResourceLocation immunityOf) {
         super(category, 0);
@@ -78,7 +78,7 @@ public class ImmunityEffect extends IncurableEffect {
     }
 
     @Nullable
-    private Holder<MobEffect> getImmunityHolder() {
+    protected Holder<MobEffect> getImmunityHolder() {
         if (cachedImmunityHolder == null) {
             MobEffect effect = LookupRegistryHelper.getMobEffect(immunityOf);
             if (effect != null) cachedImmunityHolder = getAsHolder(effect);
@@ -87,13 +87,13 @@ public class ImmunityEffect extends IncurableEffect {
     }
 
     @Nullable
-    private Holder<MobEffect> getSelfHolder() {
+    protected Holder<MobEffect> getSelfHolder() {
         if (cachedSelfHolder == null) cachedSelfHolder = getAsHolder(this);
         return cachedSelfHolder;
     }
 
     @Nullable
-    private Holder<MobEffect> getAsHolder(MobEffect effect) {
+    protected Holder<MobEffect> getAsHolder(MobEffect effect) {
         if (effect == null) return null;
         Optional<ResourceKey<MobEffect>> key = BuiltInRegistries.MOB_EFFECT.getResourceKey(effect);
         return key.map(BuiltInRegistries.MOB_EFFECT::getHolderOrThrow).orElse(null);

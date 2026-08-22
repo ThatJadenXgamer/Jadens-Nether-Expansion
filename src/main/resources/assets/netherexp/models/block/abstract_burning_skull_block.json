@@ -34,7 +34,7 @@
 				"east": {"uv": [16, 0, 0, 16], "texture": "#side_glow", "cullface": "east"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#side_glow", "cullface": "west"}
 			},
-			"neoforge_data": {"block_light": 10}
+			"neoforge_data": {"block_light": 15}
 		}
 	],
 	"display": {

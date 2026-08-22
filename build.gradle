@@ -115,7 +115,7 @@ configurations {
 
 dependencies {
     //implementation "com.github.ThatJadenXgamer:Elysium:1.2.0-alpha.8"
-    implementation name: 'ElysiumAPI-1.21.1-2.0.0' //jitpack is being a bitch and not allowing implementation
+    implementation name: "ElysiumAPI-1.21.1-$elysium_version" //jitpack is being a bitch and not allowing implementation
 
     implementation("team.lodestar.lodestone:lodestone:$lodestone_version")
     jarJar(implementation("com.terraformersmc:biolith-neoforge:$biolith_version"))
@@ -130,6 +130,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version_range: minecraft_version_range,
             neoforge_version       : neoforge_version,
             elysium_version        : elysium_version,
+            lodestone_version      : lodestone_version,
             loader_version_range   : loader_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,

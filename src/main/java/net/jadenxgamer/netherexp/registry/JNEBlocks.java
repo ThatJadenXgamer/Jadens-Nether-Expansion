@@ -787,6 +787,74 @@ public class JNEBlocks {
     public static final Supplier<Block> DRY_SILTMARRAM = registerBlock("dry_siltmarram", () ->
             new SiltMarramBlock(JNETags.Biomes.SPAWNS_DRY_VARIANT_STRIDERS_AND_SILTMARRAM, LodestoneBlockProperties.ofLegacyCopy(Blocks.NETHER_SPROUTS).randomTicks().mapColor(MapColor.TERRACOTTA_PINK)));
 
+    /**
+     * Stained Redstone Lamps
+     */
+
+    public static final Supplier<Block> WHITE_STAINED_REDSTONE_LAMP = registerBlock("white_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> ORANGE_STAINED_REDSTONE_LAMP = registerBlock("orange_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> MAGENTA_STAINED_REDSTONE_LAMP = registerBlock("magenta_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_MAGENTA).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> LIGHT_BLUE_STAINED_REDSTONE_LAMP = registerBlock("light_blue_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> YELLOW_STAINED_REDSTONE_LAMP = registerBlock("yellow_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> LIME_STAINED_REDSTONE_LAMP = registerBlock("lime_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> PINK_STAINED_REDSTONE_LAMP = registerBlock("pink_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> GRAY_STAINED_REDSTONE_LAMP = registerBlock("gray_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GRAY).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> LIGHT_GRAY_STAINED_REDSTONE_LAMP = registerBlock("light_gray_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> CYAN_STAINED_REDSTONE_LAMP = registerBlock("cyan_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_CYAN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> PURPLE_STAINED_REDSTONE_LAMP = registerBlock("purple_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> BLUE_STAINED_REDSTONE_LAMP = registerBlock("blue_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLUE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> BROWN_STAINED_REDSTONE_LAMP = registerBlock("brown_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> GREEN_STAINED_REDSTONE_LAMP = registerBlock("green_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> RED_STAINED_REDSTONE_LAMP = registerBlock("red_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> BLACK_STAINED_REDSTONE_LAMP = registerBlock("black_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
     public static void init(IEventBus eventBus) {
         registerAliases();
         if (CompatUtil.OREGANIZED) OreganizedCompat.Blocks.init();

@@ -87,7 +87,7 @@ public class JNEEntityType {
                     .sized(0.25f, 0.25f).clientTrackingRange(4).build("antidote"));
 
     public static final Supplier<EntityType<AntidoteEffectCloud>> ANTIDOTE_EFFECT_CLOUD = ENTITY_TYPES.register("antidote_effect_cloud", () ->
-            EntityType.Builder.<AntidoteEffectCloud>of(AntidoteEffectCloud::new, MobCategory.MISC)
+            EntityType.Builder.<AntidoteEffectCloud>of(AntidoteEffectCloud::new, MobCategory.MISC).fireImmune()
                     .sized(6.0F, 0.5F).clientTrackingRange(10).updateInterval(Integer.MAX_VALUE).build("antidote_effect_cloud"));
 
     public static void init(IEventBus eventBus) {

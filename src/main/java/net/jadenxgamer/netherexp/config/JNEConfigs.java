@@ -140,6 +140,9 @@ public class JNEConfigs {
     public static ModConfigSpec.BooleanValue RED_NETHER_WASTES_FOG;
     public static ModConfigSpec.BooleanValue BETTER_SOUL_SAND_VALLEY_PARTICLES;
 
+    // SUB-BIOMES
+    public static ModConfigSpec.BooleanValue BLACK_ICE_GLACIERS;
+
     // BIOME FEATURES
     public static ModConfigSpec.BooleanValue BONE_PIKE;
     public static ModConfigSpec.BooleanValue ECTO_SOUL_SAND;

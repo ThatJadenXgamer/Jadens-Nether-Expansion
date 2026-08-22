@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "netherexp:block/stained_redstone_lamp/orange"
+    },
+    "lit=true": {
+      "model": "netherexp:block/stained_redstone_lamp/orange_on"
+    }
+  }
+}

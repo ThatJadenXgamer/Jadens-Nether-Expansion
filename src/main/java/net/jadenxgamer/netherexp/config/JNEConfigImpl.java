@@ -477,6 +477,9 @@ public class JNEConfigImpl {
             builder.comment("Biome Feature Settings").push("biomeFeaturesSettings");
             JNEConfigImpl.BiomeFeatures.init(builder);
             builder.pop();
+            builder.comment("Sub-Biomes Settings").push("subBiomesSettings");
+            JNEConfigImpl.SubBiomes.init(builder);
+            builder.pop();
 
             NETHER_WORLDGEN_OVERHAUL = builder
                     .comment("""
@@ -513,6 +516,16 @@ public class JNEConfigImpl {
                     .comment("Dust like particles will blow in the soul sand valley instead of the occasional falling ash")
                     .worldRestart()
                     .define("betterSoulSandValleyParticles", true);
+        }
+    }
+
+    public static class SubBiomes {
+
+        public static void init(ModConfigSpec.Builder builder) {
+            BLACK_ICE_GLACIERS = builder
+                    .gameRestart()
+                    .comment("Enables the tertiary sub-biome for soul sand valleys")
+                    .define("blackIceGlaciers", true);
         }
     }
 

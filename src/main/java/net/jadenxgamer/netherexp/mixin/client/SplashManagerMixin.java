@@ -24,7 +24,7 @@ import java.util.List;
 @Mixin(SplashManager.class)
 public class SplashManagerMixin {
     @Shadow @Final private List<String> splashes;
-    @Unique private static final ResourceLocation JNE_SPLASHES_LOCATION = NetherExp.netherexpPath("texts/splashes.txt");
+    @Unique private static final ResourceLocation JNE_SPLASHES_LOCATION = NetherExp.netherexpPath("texts/jne_splashes.txt");
     @Unique private static final ResourceLocation JNE_SPLASHES_PROFANITY_LOCATION = NetherExp.netherexpPath("texts/profanity_splashes.txt");
     @Unique private static final ResourceLocation JNE_SPLASHES_CENSORED_LOCATION = NetherExp.netherexpPath("texts/censored_splashes.txt");
 
@@ -33,12 +33,12 @@ public class SplashManagerMixin {
             at = @At("RETURN")
     )
     private void netherexp$applyJNESplashes(List<String> object, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
-        if (!JNEConfigs.ENABLE_JNE_SPLASH_TEXTS.get()) return;
-        ProfanityConfig profanity = JNEConfigs.PROFANITY.get();
-
-        loadSplashesFile(resourceManager, JNE_SPLASHES_LOCATION, "JNE splashes");
-        if (profanity == ProfanityConfig.UNFILTERED) loadSplashesFile(resourceManager, JNE_SPLASHES_PROFANITY_LOCATION, "JNE profanity splashes");
-        else if (profanity == ProfanityConfig.CENSORED) loadSplashesFile(resourceManager, JNE_SPLASHES_CENSORED_LOCATION, "JNE censored splashes");
+        if (JNEConfigs.ENABLE_JNE_SPLASH_TEXTS.get()) {
+            ProfanityConfig profanity = JNEConfigs.PROFANITY.get();
+            loadSplashesFile(resourceManager, JNE_SPLASHES_LOCATION, "JNE splashes");
+            if (profanity == ProfanityConfig.UNFILTERED) loadSplashesFile(resourceManager, JNE_SPLASHES_PROFANITY_LOCATION, "JNE profanity splashes");
+            else if (profanity == ProfanityConfig.CENSORED) loadSplashesFile(resourceManager, JNE_SPLASHES_CENSORED_LOCATION, "JNE censored splashes");
+        }
     }
 
     @Unique

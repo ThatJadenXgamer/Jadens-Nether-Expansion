@@ -4,6 +4,7 @@ import net.jadenxgamer.netherexp.NetherExp;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
@@ -110,6 +111,15 @@ public class JNETags {
 
         private static TagKey<Structure> createStructureTag(String name) {
             return TagKey.create(Registries.STRUCTURE, NetherExp.netherexpPath(name));
+        }
+    }
+
+    public static class MobEffects {
+
+        public static final TagKey<MobEffect> DETERRENTS = createStructureTag("deterrents");
+
+        private static TagKey<MobEffect> createStructureTag(String name) {
+            return TagKey.create(Registries.MOB_EFFECT, NetherExp.netherexpPath(name));
         }
     }
 }

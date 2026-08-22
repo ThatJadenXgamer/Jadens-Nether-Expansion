@@ -7,7 +7,7 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
-credits = "AlwaysMuddy, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior, Derp_gamer22, lazar_the_artman"
+credits = "AlwaysMuddy, ceasingbonsai17, Sydokiddo, LudoCrypt, Faithful, Wawwior, Derp_gamer22, lazar_the_artman, IcyDwarf, Artyrian"
 description='''${mod_description}'''
 logoFile = "netherexp.png"
 
@@ -34,6 +34,13 @@ side="BOTH"
 [[dependencies.${mod_id}]]
 modId = "elysium_api"
 type = "required"
-versionRange = "[2.0.0,)"
+versionRange = "[${elysium_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "lodestone"
+type = "required"
+versionRange = "[1.8.2,)"
 ordering = "NONE"
 side = "BOTH"

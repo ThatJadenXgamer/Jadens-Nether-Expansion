@@ -1743,5 +1743,14 @@
         "stream": true
       }
     ]
+  },
+
+  "music_disc.patience": {
+    "sounds": [
+      {
+        "name": "netherexp:records/patience",
+        "stream": true
+      }
+    ]
   }
 }

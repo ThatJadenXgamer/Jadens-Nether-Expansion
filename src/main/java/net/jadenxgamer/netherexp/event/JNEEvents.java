@@ -2,11 +2,13 @@ package net.jadenxgamer.netherexp.event;
 
 import net.jadenxgamer.elysium_api.api.event.BlockOnPlaceEvent;
 import net.jadenxgamer.elysium_api.api.surface_rules.SurfaceRulesRegistry;
+import net.jadenxgamer.elysium_api.api.util.ElysiumTimeTracker;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.BurnPalettesManager;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.FireParticlesManager;
 import net.jadenxgamer.netherexp.core.block.SorrowsquashBlock;
 import net.jadenxgamer.netherexp.core.datadriven.OnDeathGroundConversion;
+import net.jadenxgamer.netherexp.core.effect.DeterrentEffect;
 import net.jadenxgamer.netherexp.core.entity.PortalGlow;
 import net.jadenxgamer.netherexp.core.entity.Stampede;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
@@ -161,7 +163,7 @@ public class JNEEvents {
     }
 
     @SubscribeEvent
-    public static void onLivingTick(EntityTickEvent.Post event) {
+    public static void onLivingTickPost(EntityTickEvent.Post event) {
         if (!(event.getEntity() instanceof LivingEntity entity)) return;
         if (entity.level().isClientSide()) return;
 
@@ -175,5 +177,10 @@ public class JNEEvents {
                 if (!current.equals(newLastFire)) entity.setData(JNEAttachmentTypes.LAST_FIRE, newLastFire);
             }
         } else if (!current.equals(defaultLastFire)) entity.setData(JNEAttachmentTypes.LAST_FIRE, defaultLastFire);
+    }
+    @SubscribeEvent
+    public static void onLivingTickPre(EntityTickEvent.Pre event) {
+        if (!(event.getEntity() instanceof LivingEntity entity)) return;
+        DeterrentEffect.handlePulseEffect(entity);
     }
 }

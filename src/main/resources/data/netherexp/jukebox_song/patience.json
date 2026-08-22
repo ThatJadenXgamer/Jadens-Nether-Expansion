@@ -1,0 +1,10 @@
+{
+  "comparator_output": 2,
+  "description": {
+    "translate": "jukebox_song.netherexp.patience"
+  },
+  "length_in_seconds": 181,
+  "sound_event": {
+    "sound_id": "netherexp:music_disc.patience"
+  }
+}
