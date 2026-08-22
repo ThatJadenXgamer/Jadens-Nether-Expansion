@@ -702,6 +702,8 @@
   "effect.netherexp.oozing_deterrent": "Deterrente per trasudazione",
   "effect.netherexp.wind_charged_deterrent": "Deterrente per carica ventosa",
   "effect.netherexp.weaving_deterrent": "Deterrente per tessitura",
+  "item.netherexp.antidote.effect.trial_traps": "Antidoto per trappole della prova",
+  "item.netherexp.grenade_antidote.effect.trial_traps": "Antidoto granata per trappole della prova",
   
   "item.netherexp.antidote.effect.trial_traps": "Antidote for Trial Traps",
   "item.netherexp.grenade_antidote.effect.trial_traps": "Grenade Antidote for Trial Traps",
