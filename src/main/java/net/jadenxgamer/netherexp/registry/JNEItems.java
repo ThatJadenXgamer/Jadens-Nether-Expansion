@@ -11,6 +11,9 @@ import net.jadenxgamer.netherexp.core.item.components.AntidoteContents;
 import net.jadenxgamer.netherexp.core.keys.JNEJukeboxSongs;
 import net.jadenxgamer.netherexp.core.keys.JNETrimPatterns;
 import net.jadenxgamer.netherexp.core.misc.JNEFoods;
+import net.jadenxgamer.netherexp.registry.compat.CavernsAndChasmsCompat;
+import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
+import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.jadenxgamer.netherexp.util.RegistryHelper;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -119,7 +122,7 @@ public class JNEItems {
             new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final Supplier<Item> MUSIC_DISC_BUCKSHOT_WONDERLAND = ITEMS.register("music_disc_buckshot_wonderland", () ->
-            new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+            new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(JNEJukeboxSongs.PATIENCE)));
 
     public static final Supplier<Item> SKULL_ON_A_STICK = ITEMS.register("skull_on_a_stick", () ->
             new SkullOnAStick(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).durability(100)));
@@ -223,6 +226,8 @@ public class JNEItems {
     
     public static void init(IEventBus eventBus) {
         registerAliases();
+        if (CompatUtil.GARDENS_OF_THE_DEAD) GardensOfTheDeadCompat.Items.init();
+        if (CompatUtil.CAVERNS_AND_CHASMS) CavernsAndChasmsCompat.Items.init();
         ITEMS.register(eventBus);
     }
 

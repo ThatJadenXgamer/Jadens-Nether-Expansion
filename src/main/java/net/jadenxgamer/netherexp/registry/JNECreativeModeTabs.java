@@ -3,6 +3,8 @@ package net.jadenxgamer.netherexp.registry;
 import net.jadenxgamer.elysium_api.api.util.LookupRegistryHelper;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.core.datadriven.Antidote;
+import net.jadenxgamer.netherexp.registry.compat.CavernsAndChasmsCompat;
+import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
@@ -11,11 +13,14 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import static net.jadenxgamer.netherexp.util.RegistryHelper.insertToTab;
@@ -162,6 +167,14 @@ public class JNECreativeModeTabs {
                 output.accept(JNEBlocks.OBFUSCATED_GARGOYLE_STATUE.get());
                 output.accept(JNEBlocks.INSCRIBED_PANEL.get());
                 output.accept(JNEBlocks.WARPED_WART.get());
+
+                output.accept(JNEItems.SEALED_POTTERY_SHERD.get());
+                output.accept(JNEItems.SPECTRE_POTTERY_SHERD.get());
+                output.accept(JNEItems.MARIONETTE_POTTERY_SHERD.get());
+                output.accept(JNEItems.ELDRITCH_POTTERY_SHERD.get());
+                output.accept(JNEItems.DECEPTION_POTTERY_SHERD.get());
+                output.accept(JNEItems.FIREARM_POTTERY_SHERD.get());
+                output.accept(JNEItems.BOTANICAL_POTTERY_SHERD.get());
 
                 output.accept(JNEItems.OCHRE_FROGMIST.get());
                 output.accept(JNEItems.VERDANT_FROGMIST.get());
@@ -513,6 +526,29 @@ public class JNECreativeModeTabs {
                 if (CompatUtil.RUBINATED_NETHER) {
                     output.accept(RubinatedNetherCompat.Blocks.SOUL_RUBY_ORE.get());
                 }
+                if (CompatUtil.GARDENS_OF_THE_DEAD) {
+                    output.accept(GardensOfTheDeadCompat.Blocks.BLIGHT_SWIRLS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.BLIGHTWART.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.SHROOMBLIGHT.get());
+                    output.accept(GardensOfTheDeadCompat.Items.BLIGHTSPORES.get());
+
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_MIXED_NETHER_BRICKS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICKS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_STAIRS.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_SLAB.get());
+                    output.accept(GardensOfTheDeadCompat.Blocks.YELLOW_NETHER_BRICK_WALL.get());
+                }
+                if (CompatUtil.CAVERNS_AND_CHASMS) {
+                    output.accept(CavernsAndChasmsCompat.Items.NECROMIUM_PLATING.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.NECROMIUM_PLATED_BLOCK.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.NECROMIUM_GRATE.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_BLOCK.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_STAIRS.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_SLAB.get());
+                    output.accept(CavernsAndChasmsCompat.Blocks.CUT_NECROMIUM_PILLAR.get());
+
+                    output.accept(CavernsAndChasmsCompat.Blocks.TREACHEROUS_BRAZIER.get());
+                }
             })
             .build());
 
@@ -589,6 +625,31 @@ public class JNECreativeModeTabs {
             insertToTab(event, Items.CANDLE, JNEBlocks.TREACHEROUS_CANDLE.get(), false);
             insertToTab(event, Items.CANDLE, JNEBlocks.SOUL_CANDLE.get(), false);
             insertToTab(event, Items.TINTED_GLASS, JNEBlocks.SOUL_GLASS.get(), false);
+
+            ItemLike anchor = Items.SHULKER_BOX;
+            List<Supplier<Block>> lamps = List.of(
+                    JNEBlocks.PINK_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.MAGENTA_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.PURPLE_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.BLUE_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.LIGHT_BLUE_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.CYAN_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.GREEN_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.LIME_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.YELLOW_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.ORANGE_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.RED_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.BROWN_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.BLACK_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.GRAY_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.LIGHT_GRAY_STAINED_REDSTONE_LAMP,
+                    JNEBlocks.WHITE_STAINED_REDSTONE_LAMP,
+                    () -> Blocks.REDSTONE_LAMP
+            );
+            for (Supplier<Block> lamp : lamps) {
+                insertToTab(event, anchor.asItem(), lamp.get(), true);
+                anchor = lamp.get().asItem();
+            }
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             insertToTab(event, Items.NETHER_WART, JNEBlocks.WARPED_WART.get(), false);

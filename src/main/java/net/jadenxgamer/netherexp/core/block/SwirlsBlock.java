@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.core.block;
 import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.registry.JNEMobEffects;
+import net.jadenxgamer.netherexp.registry.JNEParticleTypes;
 import net.jadenxgamer.netherexp.registry.JNESoundEvents;
 import net.jadenxgamer.netherexp.util.HolderHelper;
 import net.minecraft.core.BlockPos;
@@ -30,22 +31,24 @@ import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.SimpleParticleOptions;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType;
 import team.lodestar.lodestone.systems.particle.world.type.LodestoneWorldParticleType;
 
+import javax.annotation.Nullable;
+import java.awt.*;
 import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlock {
 
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+    @Nullable private final Color particleColor;
 
-    private final Supplier<Supplier<LodestoneWorldParticleType>> particle;
-
-    public SwirlsBlock(Supplier<Supplier<LodestoneWorldParticleType>> particle, Properties properties) {
+    public SwirlsBlock(Color particleColor, Properties properties) {
         super(7, 3, properties);
-        this.particle = particle;
+        this.particleColor = particleColor;
         this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false));
     }
 
@@ -74,7 +77,7 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
                         double y = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double) direction.getStepY() : (double) level.random.nextFloat();
                         double z = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double) direction.getStepZ() : (double) level.random.nextFloat();
 
-                        Client.swirlPopParticle(particle.get(), level, level.random, pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+                        Client.swirlPopParticle(particleColor, level, level.random, pos.getX() + x, pos.getY() + y, pos.getZ() + z);
                     }
                 }
             }
@@ -97,7 +100,7 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
             double y = pos.getY() + 0.8;
             double z = pos.getZ() + random.nextDouble();
 
-            Client.swirlPopParticle(particle.get(), level, random, x, y, z);
+            Client.swirlPopParticle(particleColor, level, random, x, y, z);
         }
     }
 
@@ -142,13 +145,14 @@ public class SwirlsBlock extends AmethystClusterBlock implements BonemealableBlo
 
     @OnlyIn(Dist.CLIENT)
     public static class Client {
-        private static void swirlPopParticle(Supplier<LodestoneWorldParticleType> particle, Level level, RandomSource random, double x, double y, double z) {
-            WorldParticleBuilder.create(particle)
+        private static void swirlPopParticle(@Nullable Color particleColor, Level level, RandomSource random, double x, double y, double z) {
+            WorldParticleBuilder.create(particleColor == null ? JNEParticleTypes.SOUL_SWIRL_POP : JNEParticleTypes.TINT_SWIRL_POP)
                     .setFullBrightLighting()
                     .setSpinData(SpinParticleData.createRandomDirection(random, 0.0f, 1.0f).setCoefficient(0.7f).setEasing(Easing.SINE_IN).build())
                     .setScaleData(GenericParticleData.create(0.05f, 0.13f, 0.0f).setEasing(Easing.BOUNCE_IN_OUT).build())
                     .setTransparencyData(GenericParticleData.create(1).build())
                     .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                    .setColorData(ColorParticleData.create(particleColor == null ? Color.WHITE : particleColor).build())
                     .setSpritePicker(SimpleParticleOptions.ParticleSpritePicker.WITH_AGE)
                     .setLifetime(random.nextInt(20, 30))
                     .disableNoClip()

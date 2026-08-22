@@ -69,6 +69,8 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Predicate;
 
+import static net.jadenxgamer.netherexp.config.JNEConfigs.STAMPEDE_SCREENSHAKE;
+
 public class Stampede extends PossessedMob implements NeutralMob, Saddleable, PlayerRideableJumping {
 
     private int idleAnimationTimeout = 0;
@@ -214,7 +216,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
                 hungerSatiation = 5;
                 if (!this.isTamed()) {
                     var particle = ParticleTypes.LARGE_SMOKE;
-                    if (this.random.nextInt(10) == 0) {
+                    if (this.random.nextInt(JNEConfigs.STAMPEDE_BEFRIENDING_ODDS.get()) == 0) {
                         this.setTamed();
                         AdvancementGranter.grantPlayersInRadius(level(), blockPosition(), 8.0, JNECriteriaTriggers.TAME_STAMPEDE);
                         particle = ParticleTypes.HEART;
@@ -250,7 +252,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
             float range = Math.min(16.0F + fallDist * 1.5F, 48.0F);
             int duration = 5 + (int) Math.min(fallDist, 10);
             this.playSound(JNESoundEvents.STAMPEDE_STEP.get(), 0.85f, 0.2f);
-            ScreenshakeHandler.addScreenshake(
+            if (JNEConfigs.STAMPEDE_SCREENSHAKE.get()) ScreenshakeHandler.addScreenshake(
                     new ScreenshakeInstance(duration, intensity, 0.0F, 0.0F,
                             Easing.LINEAR, Easing.LINEAR, 1.0F,
                             Optional.of(new ScreenshakePositionData(this.position(), range, Easing.LINEAR))
@@ -412,7 +414,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
         if (this.isSaddled()) {
             int p = Math.max(0, jumpPower);
             this.playerJumpPendingScale = (p >= 90) ? 1.0f : 0.4f + 0.4f * (float) p / 90.0f;
-            movementScreenshake(this, 2.0f, 1.5f, 0, false);
+            if (JNEConfigs.STAMPEDE_SCREENSHAKE.get()) movementScreenshake(this, 2.0f, 1.5f, 0, false);
             for (int i = 0; i < 32; i++) level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, getBlockStateOn()),
                     this.getRandomX(1.2), this.getY(), this.getRandomZ(1.2), 0,4.6, 0);
         }
@@ -739,6 +741,7 @@ public class Stampede extends PossessedMob implements NeutralMob, Saddleable, Pl
     }
 
     public static void movementScreenshake(Stampede stampede, float start, float mid, float end, boolean client) {
+        if (!JNEConfigs.STAMPEDE_SCREENSHAKE.get()) return;
         if (stampede.level().isClientSide && !client) return;
         if (!stampede.level().isClientSide && client) return;
         ScreenshakeHandler.addScreenshake(

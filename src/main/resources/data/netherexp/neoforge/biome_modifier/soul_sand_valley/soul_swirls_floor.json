@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "#netherexp:soul_sand_valleys",
+  "biomes": "#netherexp:has_feature/soul_swirls",
   "features": "netherexp:soul_sand_valley/soul_swirls_floor",
   "step": "vegetal_decoration",
   "neoforge:conditions": [

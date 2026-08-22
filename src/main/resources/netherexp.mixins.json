@@ -3,6 +3,7 @@
   "package": "net.jadenxgamer.netherexp.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
+  "plugin": "net.jadenxgamer.netherexp.mixin.JNEMixinPlugin",
   "client": [
     "client.ClientLevelMixin",
     "client.EntityRenderDispatcherMixin",
@@ -25,6 +26,7 @@
     "block.TwistingVinesBlockMixin",
     "block.WeepingVinesBlockMixin",
     "client.IClientFluidTypeExtensionsMixin",
+    "compat.HugeFlatFungusFeatureMixin",
     "entity.AbstractArrowMixin",
     "entity.BlockEntityTypeMixin",
     "entity.LivingEntityMixin",
@@ -33,6 +35,7 @@
     "entity.ai.NearestAttackableTargetGoalMixin",
     "item.BlockItemMixin",
     "item.CrossbowItemMixin",
+    "item.DecoratedPotPatternsMixin",
     "item.PotionItemMixin",
     "misc.PortalForcerMixin",
     "worldgen.NetherWorldCarverMixin"

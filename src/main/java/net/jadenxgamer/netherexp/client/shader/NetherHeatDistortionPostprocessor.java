@@ -59,7 +59,6 @@ public class NetherHeatDistortionPostprocessor extends PostProcessor {
     }
 
     public static void tick(Minecraft client, Level level, Entity player, Holder<Biome> biome) {
-        float delta = client.getTimer().getGameTimeDeltaTicks();
         float targetIntensity = 0.0f;
         float targetSpeed = JNEConfigs.HEAT_DISTORTION_SPEED.get().floatValue();
         float targetMinDistance = JNEConfigs.HEAT_DISTORTION_MIN_DISTANCE.get().floatValue();
@@ -74,8 +73,10 @@ public class NetherHeatDistortionPostprocessor extends PostProcessor {
             lastLavaCheckGameTime = gameTime;
         }
 
-        if (JNEConfigs.BIOME_HEAT_DISTORTION.get() && biome.is(JNETags.Biomes.HAS_HEAT_DISTORTION))
+        if (JNEConfigs.BIOME_HEAT_DISTORTION.get() && biome.is(JNETags.Biomes.HAS_HEAT_DISTORTION)) {
             targetIntensity = JNEConfigs.HEAT_DISTORTION_INTENSITY.get().floatValue();
+        }
+
         if (nearLava) {
             targetIntensity = JNEConfigs.HEAT_DISTORTION_LAVA_INTENSITY.get().floatValue();
             targetSpeed = JNEConfigs.HEAT_DISTORTION_LAVA_SPEED.get().floatValue();
@@ -83,10 +84,10 @@ public class NetherHeatDistortionPostprocessor extends PostProcessor {
             targetMaxDistance = JNEConfigs.HEAT_DISTORTION_LAVA_MAX_DISTANCE.get().floatValue();
         }
 
-        currentIntensity = Mth.lerp(delta * 0.05F, currentIntensity, targetIntensity);
-        currentSpeed = Mth.lerp(delta * 0.05F, currentSpeed, targetSpeed);
-        currentMinDistance = Mth.lerp(delta * 0.05F, currentMinDistance, targetMinDistance);
-        currentMaxDistance = Mth.lerp(delta * 0.05F, currentMaxDistance, targetMaxDistance);
+        currentIntensity = Mth.lerp(0.05F, currentIntensity, targetIntensity);
+        currentSpeed = Mth.lerp(0.05F, currentSpeed, targetSpeed);
+        currentMinDistance = Mth.lerp(0.05F, currentMinDistance, targetMinDistance);
+        currentMaxDistance = Mth.lerp(0.05F, currentMaxDistance, targetMaxDistance);
 
         final float epsilon = 1e-4f;
 

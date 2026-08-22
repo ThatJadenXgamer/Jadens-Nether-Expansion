@@ -6,6 +6,8 @@ import net.jadenxgamer.netherexp.core.block.*;
 import net.jadenxgamer.netherexp.core.keys.JNETags;
 import net.jadenxgamer.netherexp.core.misc.JNESoundType;
 import net.jadenxgamer.netherexp.core.worldgen.feature.JNEConfiguredFeatures;
+import net.jadenxgamer.netherexp.registry.compat.CavernsAndChasmsCompat;
+import net.jadenxgamer.netherexp.registry.compat.GardensOfTheDeadCompat;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.registry.compat.RubinatedNetherCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
@@ -126,7 +128,7 @@ public class JNEBlocks {
      */
 
     public static final Supplier<Block> SOUL_SWIRLS = registerBlock("soul_swirls", () ->
-            new SwirlsBlock(() -> JNEParticleTypes.SOUL_SWIRL_POP, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
+            new SwirlsBlock(null, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().instabreak()
                     .lightLevel(state -> state.getValue(SwirlsBlock.ACTIVE) ? 6 : 0).sound(JNESoundType.SOUL_SWIRLS)));
 
     public static final Supplier<Block> PETRIFIED_SWIRLS = registerBlock("petrified_swirls", () ->
@@ -628,13 +630,13 @@ public class JNEBlocks {
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
 
     public static final Supplier<Block> BURNING_SKULL_BLOCK = registerBlock("burning_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 15)));
+            new BurningSkullBlock(() -> ParticleTypes.FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 15)));
 
     public static final Supplier<Block> SOUL_BURNING_SKULL_BLOCK = registerBlock("soul_burning_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 10)));
+            new BurningSkullBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 10)));
 
     public static final Supplier<Block> TREACHEROUS_BURNING_SKULL_BLOCK = registerBlock("treacherous_burning_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 9)));
+            new BurningSkullBlock(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK).lightLevel((state) -> 9)));
 
     public static final Supplier<Block> STACKED_BONES = registerBlock("stacked_bones", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(Blocks.BONE_BLOCK)));
@@ -656,13 +658,13 @@ public class JNEBlocks {
             new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));
 
     public static final Supplier<Block> BURNING_WITHER_SKULL_BLOCK = registerBlock("burning_wither_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 15)));
+            new BurningSkullBlock(() -> ParticleTypes.FLAME, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 15)));
 
     public static final Supplier<Block> SOUL_BURNING_WITHER_SKULL_BLOCK = registerBlock("soul_burning_wither_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 10)));
+            new BurningSkullBlock(() -> ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 10)));
 
     public static final Supplier<Block> TREACHEROUS_BURNING_WITHER_SKULL_BLOCK = registerBlock("treacherous_burning_wither_skull_block", () ->
-            new JNEHorizontalDirectionalBlock(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 9)));
+            new BurningSkullBlock(JNEParticleTypes.TREACHEROUS_FLAME, BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get()).lightLevel((state) -> 9)));
 
     public static final Supplier<Block> STACKED_WITHER_BONES = registerBlock("stacked_wither_bones", () ->
             new Block(BlockBehaviour.Properties.ofLegacyCopy(JNEBlocks.WITHER_BONE_BLOCK.get())));
@@ -785,10 +787,80 @@ public class JNEBlocks {
     public static final Supplier<Block> DRY_SILTMARRAM = registerBlock("dry_siltmarram", () ->
             new SiltMarramBlock(JNETags.Biomes.SPAWNS_DRY_VARIANT_STRIDERS_AND_SILTMARRAM, LodestoneBlockProperties.ofLegacyCopy(Blocks.NETHER_SPROUTS).randomTicks().mapColor(MapColor.TERRACOTTA_PINK)));
 
+    /**
+     * Stained Redstone Lamps
+     */
+
+    public static final Supplier<Block> WHITE_STAINED_REDSTONE_LAMP = registerBlock("white_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> ORANGE_STAINED_REDSTONE_LAMP = registerBlock("orange_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> MAGENTA_STAINED_REDSTONE_LAMP = registerBlock("magenta_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_MAGENTA).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> LIGHT_BLUE_STAINED_REDSTONE_LAMP = registerBlock("light_blue_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> YELLOW_STAINED_REDSTONE_LAMP = registerBlock("yellow_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> LIME_STAINED_REDSTONE_LAMP = registerBlock("lime_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> PINK_STAINED_REDSTONE_LAMP = registerBlock("pink_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> GRAY_STAINED_REDSTONE_LAMP = registerBlock("gray_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GRAY).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> LIGHT_GRAY_STAINED_REDSTONE_LAMP = registerBlock("light_gray_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> CYAN_STAINED_REDSTONE_LAMP = registerBlock("cyan_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_CYAN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> PURPLE_STAINED_REDSTONE_LAMP = registerBlock("purple_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> BLUE_STAINED_REDSTONE_LAMP = registerBlock("blue_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLUE).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> BROWN_STAINED_REDSTONE_LAMP = registerBlock("brown_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> GREEN_STAINED_REDSTONE_LAMP = registerBlock("green_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> RED_STAINED_REDSTONE_LAMP = registerBlock("red_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
+    public static final Supplier<Block> BLACK_STAINED_REDSTONE_LAMP = registerBlock("black_stained_redstone_lamp", () ->
+            new RedstoneLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(0.3F).sound(SoundType.GLASS)
+                    .lightLevel(state -> state.getValue(RedstoneLampBlock.LIT) ? 15 : 0)));
+
     public static void init(IEventBus eventBus) {
         registerAliases();
         if (CompatUtil.OREGANIZED) OreganizedCompat.Blocks.init();
         if (CompatUtil.RUBINATED_NETHER) RubinatedNetherCompat.Blocks.init();
+        if (CompatUtil.GARDENS_OF_THE_DEAD) GardensOfTheDeadCompat.Blocks.init();
+        if (CompatUtil.CAVERNS_AND_CHASMS) CavernsAndChasmsCompat.Blocks.init();
         BLOCKS.register(eventBus);
     }
 

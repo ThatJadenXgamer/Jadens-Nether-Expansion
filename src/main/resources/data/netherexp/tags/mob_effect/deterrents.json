@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "netherexp:oozing_deterrent",
+    "netherexp:wind_charged_deterrent",
+    "netherexp:weaving_deterrent"
+  ]
+}

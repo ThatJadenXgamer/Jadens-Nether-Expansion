@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": "#netherexp:soul_sand_valleys",
+  "biomes": "#netherexp:has_mobs/apparition",
   "spawners": {
     "type": "netherexp:apparition",
     "weight": 30,

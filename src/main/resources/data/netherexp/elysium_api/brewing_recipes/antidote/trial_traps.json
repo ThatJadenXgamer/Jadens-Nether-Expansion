@@ -9,7 +9,8 @@
   "output_item": "netherexp:antidote",
   "output_components": {
     "netherexp:antidote_contents": {
-      "antidote": "netherexp:trial_traps"
+      "antidote": "netherexp:trial_traps",
+      "custom_color": 4294744450
     }
   },
   "copy_input_components": false

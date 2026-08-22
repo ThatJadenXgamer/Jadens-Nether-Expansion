@@ -1,10 +1,7 @@
 package net.jadenxgamer.netherexp.registry;
 
 import net.jadenxgamer.netherexp.NetherExp;
-import net.jadenxgamer.netherexp.core.effect.BetrayedEffect;
-import net.jadenxgamer.netherexp.core.effect.ImmunityEffect;
-import net.jadenxgamer.netherexp.core.effect.IncurableEffect;
-import net.jadenxgamer.netherexp.core.effect.SoulSpeedEffect;
+import net.jadenxgamer.netherexp.core.effect.*;
 import net.jadenxgamer.netherexp.registry.compat.OreganizedCompat;
 import net.jadenxgamer.netherexp.util.CompatUtil;
 import net.minecraft.core.Holder;
@@ -94,6 +91,15 @@ public class JNEMobEffects {
 
     public static final Holder<MobEffect> UNLUCK_IMMUNITY = MOB_EFFECTS.register("unluck_immunity", () ->
             new ImmunityEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("minecraft", "unluck")));
+
+    public static final Holder<MobEffect> OOZING_DETERRENT = MOB_EFFECTS.register("oozing_deterrent", () ->
+            new DeterrentEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("minecraft", "oozing")));
+
+    public static final Holder<MobEffect> WEAVING_DETERRENT = MOB_EFFECTS.register("weaving_deterrent", () ->
+            new DeterrentEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("minecraft", "weaving")));
+
+    public static final Holder<MobEffect> WIND_CHARGED_DETERRENT = MOB_EFFECTS.register("wind_charged_deterrent", () ->
+            new DeterrentEffect(MobEffectCategory.BENEFICIAL, NetherExp.idPath("minecraft", "wind_charged")));
 
 
     public static void init(IEventBus eventBus) {

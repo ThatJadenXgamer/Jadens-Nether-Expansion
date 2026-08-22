@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "netherexp:block/stained_redstone_lamp/white_on"
+  }
+}

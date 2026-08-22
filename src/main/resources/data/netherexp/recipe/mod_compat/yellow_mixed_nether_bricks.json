@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "gardens_of_the_dead"
+    }
+  ],
+
+  "type": "minecraft:crafting_shaped",
+  "group": "mixed_nether_bricks",
+  "pattern": [
+    "AB",
+    "BA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:nether_bricks"
+    },
+    "B": {
+      "item": "netherexp:yellow_nether_bricks"
+    }
+  },
+  "result": {
+    "id": "netherexp:yellow_mixed_nether_bricks",
+    "count": 4
+  }
+}

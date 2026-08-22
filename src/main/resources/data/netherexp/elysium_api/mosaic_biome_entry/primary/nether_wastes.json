@@ -3,5 +3,6 @@
   "dimension": "minecraft:the_nether",
   "climate_point": 0,
   "biome": "minecraft:nether_wastes",
-  "weight": 20
+  "weight": 20,
+  "keep_weight": 80
 }

@@ -232,6 +232,10 @@ public class JNEConfigImpl {
             STACKABLE_POTIONS = builder
                     .comment("When enabled almost all types of potions can be stacked to 16 like in the combat snapshots")
                     .define("stackablePotions", true);
+            REMOVE_SOUL_SPEED_ENCHANTMENT = builder
+                    .gameRestart()
+                    .comment("Removes the soul speed enchantment from the game, everywhere.\nThis will not retroactively remove pre-existing items with the enchantment")
+                    .define("removeSoulSpeedEnchantment", true);
         }
     }
 
@@ -394,9 +398,9 @@ public class JNEConfigImpl {
                     .defineInRange("emergeBurstDamageMultiplier", 2.0, 0.0, Double.MAX_VALUE);
             ABSOLUTE_MAXIMUM_STACK_SIZE = builder
                     .comment("""
-                            The absolute maximum stack size for all ecto slabs
-                            §cWARNING: Higher values can easily cause FPS lag when too many ecto slabs are present
-                             \
+                            The absolute maximum stack size for all ecto slabs\s
+                            §cWARNING: Higher values can easily cause FPS lag when too many ecto slabs are present\s
+                            \s
                             Due to the additional segments needing to be added for rendering""")
                     .gameRestart()
                     .defineInRange("absoluteMaximumStackSize", 16, 1, 99);
@@ -440,6 +444,12 @@ public class JNEConfigImpl {
             ECTO_SLAB_MAX_DIG_TIME = builder
                     .comment("How long the ecto slab can stay underground in ticks")
                     .defineInRange("ectoSlabMaxDigTime", 80, 0, Integer.MAX_VALUE);
+            STAMPEDE_BEFRIENDING_ODDS = builder
+                    .comment("The chance for a stampede to be befriended when fed favorite foods; higher numbers make befriending harder")
+                    .defineInRange("stampedeBefriendingOdds", 8, 0, Integer.MAX_VALUE);
+            STAMPEDE_STRIDITE_SHEDDING_CHANCE = builder
+                    .comment("Stampedes will shed stridite upon running over any entity")
+                    .defineInRange("stampedeStriditeSheddingChance", 0.1, 0.0, 1.0);
             VESSEL_UNLEASHING_ODDS = builder
                     .comment("The chance for vessels to unleash apparitions upon death")
                     .defineInRange("vesselUnleashingOdds", 0.25, 0.0, 1.0);
@@ -452,9 +462,6 @@ public class JNEConfigImpl {
             STAMPEDE_UNLEASHING_ODDS = builder
                     .comment("The chance for stampedes to unleash apparitions upon death")
                     .defineInRange("stampedeUnleashingOdds", 0.5, 0.0, 1.0);
-            STAMPEDE_STRIDITE_SHEDDING_CHANCE = builder
-                    .comment("Stampedes will shed stridite upon running over any entity")
-                    .defineInRange("stampedeStriditeSheddingChance", 0.1, 0.0, 1.0);
             MIN_STAMPEDE_STRIDITE_DROPS = builder
                     .comment("The minimum number of stridite that can be shed by a stampede")
                     .defineInRange("minStampedeStriditeDrops", 1, 0, Integer.MAX_VALUE);
@@ -469,6 +476,9 @@ public class JNEConfigImpl {
         public static void init(ModConfigSpec.Builder builder) {
             builder.comment("Biome Feature Settings").push("biomeFeaturesSettings");
             JNEConfigImpl.BiomeFeatures.init(builder);
+            builder.pop();
+            builder.comment("Sub-Biomes Settings").push("subBiomesSettings");
+            JNEConfigImpl.SubBiomes.init(builder);
             builder.pop();
 
             NETHER_WORLDGEN_OVERHAUL = builder
@@ -506,6 +516,16 @@ public class JNEConfigImpl {
                     .comment("Dust like particles will blow in the soul sand valley instead of the occasional falling ash")
                     .worldRestart()
                     .define("betterSoulSandValleyParticles", true);
+        }
+    }
+
+    public static class SubBiomes {
+
+        public static void init(ModConfigSpec.Builder builder) {
+            BLACK_ICE_GLACIERS = builder
+                    .gameRestart()
+                    .comment("Enables the tertiary sub-biome for soul sand valleys")
+                    .define("blackIceGlaciers", true);
         }
     }
 
@@ -669,6 +689,9 @@ public class JNEConfigImpl {
             ECTO_SLAB_PETRIFICATION_SCREENSHAKE = builder
                     .comment("Toggle petrification screen shake")
                     .define("ectoSlabPetrificationScreenshake", true);
+            STAMPEDE_SCREENSHAKE = builder
+                    .comment("Toggle stampede screen shake")
+                    .define("stampedeScreenshake", true);
             ENABLE_HEAT_DISTORTION = builder
                     .comment("Toggles all heat distortion effects in JNE; To disable individual heat distortion effects check the below configs")
                     .define("enableHeatDistortion", true);
@@ -686,26 +709,26 @@ public class JNEConfigImpl {
                     .defineInRange("heatDistortionSpeed", 2.0, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_MIN_DISTANCE = builder
                     .comment("Minimum distance from the camera that heat distortion starts at")
-                    .defineInRange("heatDistortionMinDistance", 12.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionMinDistance", 12.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_MAX_DISTANCE = builder
                     .comment("Maximum distance from the camera that heat distortion reaches its max intensity at")
-                    .defineInRange("heatDistortionMaxDistance", 128.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionMaxDistance", 128.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_INTENSITY = builder
                     .comment("Intensity of heat distortion wobbling when close to lava sources")
-                    .defineInRange("heatDistortionLavaIntensity", 0.006f, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaIntensity", 0.004f, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_SPEED = builder
                     .comment("Speed of heat distortion wobbling when close to lava sources")
                     .defineInRange("heatDistortionLavaSpeed", 2.0, 0.0, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_MIN_DISTANCE = builder
                     .comment("Minimum distance from the camera that heat distortion starts at when close to lava sources")
-                    .defineInRange("heatDistortionLavaMinDistance", 0.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaMinDistance", 0.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_MAX_DISTANCE = builder
                     .comment("Maximum distance from the camera that heat distortion reaches its max intensity at when close to lava sources")
-                    .defineInRange("heatDistortionLavaMaxDistance", 64.0, 0.0, Double.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaMaxDistance", 64.0, Double.MIN_VALUE, Double.MAX_VALUE);
             HEAT_DISTORTION_LAVA_CHECK_PERIOD = builder
                     .comment("How often the game will check around the player for lava heat distortion in ticks \n" +
                             "§cWARNING: Lower numbers can increase lag especially when paired with high proximity distances to iterate through")
-                    .defineInRange("heatDistortionLavaCheckPeriod", 100, 0, Integer.MAX_VALUE);
+                    .defineInRange("heatDistortionLavaCheckPeriod", 150, 0, Integer.MAX_VALUE);
             HEAT_DISTORTION_LAVA_PROXIMITY = builder
                     .comment("How far the game will check around the player for heat distortion lava sources \n" +
                             "§cWARNING: Increasing the distance can add some latency to performance! as it needs to iterate through all the specified blocks in-range")
@@ -740,6 +763,15 @@ public class JNEConfigImpl {
             CIERGE_OF_TREACHERY_PARTICLES = builder
                     .comment("Cierge of Treachery will produce red haze and sparkle particles")
                     .define("ciergeOfTreacheryParticles", true);
+            DUNGEONS_FLAME_PARTICLES = builder
+                    .comment("Replaces all flame particles with animated ones from Minecraft: Dungeons")
+                    .define("dungeonsFlameParticles", true);
+            IMPROVED_BURN_PARTICLES = builder
+                    .comment("Replaces the ugly fire texture when mobs are burning with particles based on Minecraft: Dungeons")
+                    .define("improvedBurnParticles", true);
+            MOB_BURNING_GLOW = builder
+                    .comment("Mobs on fire will pulse a glow corresponding to the fire type they are on")
+                    .define("mobBurningGlow", true);
         }
     }
 

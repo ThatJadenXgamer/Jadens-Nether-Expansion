@@ -7,5 +7,12 @@
     "replace_biome": "minecraft:soul_sand_valley",
     "behavior": "replace"
   },
-  "weight": 1
+  "weight": 10,
+
+  "neoforge:conditions": [
+    {
+      "type": "netherexp:config",
+      "path": "worldSettings.subBiomesSettings.blackIceGlaciers"
+    }
+  ]
 }

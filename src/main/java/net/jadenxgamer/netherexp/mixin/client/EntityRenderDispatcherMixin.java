@@ -3,6 +3,7 @@ package net.jadenxgamer.netherexp.mixin.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.jadenxgamer.netherexp.NetherExp;
 import net.jadenxgamer.netherexp.client.assetdriven.managers.BurnPalettesManager;
+import net.jadenxgamer.netherexp.config.JNEConfigs;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
@@ -26,10 +27,12 @@ public abstract class EntityRenderDispatcherMixin {
             cancellable = true
     )
     private void netherexp$improvedBurn(PoseStack poseStack, MultiBufferSource buffer, Entity entity, Quaternionf quaternion, CallbackInfo ci) {
-        BurnPalettesManager.burnParticle(entity.level(), entity.level().random, entity);
-        poseStack.pushPose();
-        poseStack.popPose();
-        ci.cancel();
+        if (JNEConfigs.IMPROVED_BURN_PARTICLES.get()) {
+            BurnPalettesManager.burnParticle(entity.level(), entity.level().random, entity);
+            poseStack.pushPose();
+            poseStack.popPose();
+            ci.cancel();
+        }
     }
 
 //    @WrapOperation(

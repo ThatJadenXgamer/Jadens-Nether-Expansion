@@ -23,26 +23,28 @@ It is also fully compatible with Terrablender, Biolith and Blueprint provided bi
 
 -New Speleothem worldgen features can now generate in the nether
 
--The Nether is now 192 blocks tall, with an additional -32 blocks for the future underlava expansion
+-The Nether is now 192 blocks tall, with an additional -32 blocks for a future underlava expansion
+
+-Due to a large portion of the nether's lower regions being flooded with lava now, Ancient Debris have been moved to generate closer to the ceiling between Y=168-184 with the optimal depth being Y=176;
+This change is temporary and will be replaced with a better obtaining method when netherite and ancient debris properly get overhauled in the future.
 
 -Removed emissive built-in resource pack. all emissives are now part of the mod resources and are always active
 
 -Entirely Overhauled the mod's configurations, JNE has never been this customizable before!
 
--A fog particle now generates all around the nether air not too dissimilar to the ones from Complimentary shaders to make the dimension's atmosphere feel more humid and alive
+-A mist particle now generates all around the nether air not too dissimilar to the ones from Complimentary shaders to make the dimension's atmosphere feel more humid and alive
 
 -Heat Distortion is also present on far away objects which gets more intense depending on if you're near lava; all heat distortion can be reduced or turned off within the configs
 
--Silt is a new gravity block that replaces the usual gravel shores and patches in the nether, along with this change nether beaches to add three distinct beach generation types;
-which are Coves, Beaches and No Beaches respectively. Coves are the vanilla generation, Beaches are excusive to certain biomes and can encumpass a larger section of the lower regions,
+-Silt is a new gravity block that replaces the usual gravel shores and patches in the nether, along with this change nether beaches get three distinct beach generation types;
+which are Coves, Beaches and No-Beaches respectively. Coves are the vanilla generation, Beaches are exclusive to certain biomes and can encumpass a larger section of the lower regions,
 and lastly some biomes will simply not have a beach at all.
 
--Silt Flint Ores have also been added to still ensure flint is still obtainable in the nether with the removal of gravel shores
+-Silt Flint Ores have also been added to still ensure flint is obtainable in the nether despite the removal of gravel shores
 
 -Siltmarrams are beach grass-like "plants" which change their appearance based on biome's humidity; it has Dry, Moist and Damp variants and their states can be locked by shearing them
 
--Soul Magma Block texture has received a glow-up, it now tiles much better with its surroundings; 
-furthermore Soul Magma now emits new particles if you sprint on it to better convey what is damaging you
+-Soul Magma Block texture has received a glow-up, it now tiles much better with its surroundings and furthermore Soul Magma now emits new particles if you sprint on it to better convey what is damaging you
 
 -Ancient Wax and Ancient Fire blocksets have been renamed to "Treacherous Wax" and "Treacherous Fire" respectively
 
@@ -53,9 +55,13 @@ The lower catacombs region of the sanctum has been left untouched and will still
 
 -Chapels have been fully redesigned from the ground up
 
+-Devils' Bluffs have been renamed to Devils' Misfortune and have been fully redesigned as well
+
 -Treacherous Gargoyle Statues now has two faces on the front and back, as does the large statue in the sanctum center to reflect Treachery?'s new design
 
--Treacherous Wax Block texture has received a glow-up, no longer looks like bricks
+-Treachery: Brand new Pronouns - she/her in theathers on March 3rd.
+
+-Treacherous Wax Block texture has received a rework, it no longer looks like bricks
 
 -Shotgun-Fist now no longer uses wraithing flesh as ammo but rather the new Shotgun Shells instead
 
@@ -85,9 +91,9 @@ The dash from a counterforce also provides 1 second of I-Frames indicated by a s
 -Ecto Slabs have been entirely overhauled and have a unique stacking mechanic where they can pair up with other slabs to increase their stats and endurance
 
 -Burrowed Ecto Slabs now produce obvious rays of light when they are underground to make them less annoying to keep track of, furthermore you can also force them out prematurely
-by simply smacking them with a shovel, doing so will cause them to deal friendly-fire damage to all nearby mobs excluding other slabs
+by simply smacking them with a shovel, doing so will cause them to deal friendly-fire damage to all nearby mobs excluding other ecto slabs
 
--Ecto Slabs are now a rare spawn within the soul sand valley as opposed to being random encounters when activating soul swirls, as such there is no longer any downsides to using swirls for mobility, Naturally spawning ecto slabs have a roughly 33% chance to spawn in petrified or as a small batch of regular dismantled slabs
+-Ecto Slabs are now a uncommon spawn within the soul sand valley as opposed to being random encounters when activating soul swirls, as such there is no longer any downsides to using swirls for mobility, Naturally spawning ecto slabs have a roughly 12% chance to spawn in petrified or otherwise as a small batch of regular dismantled slabs
 
 -Petrified Ecto Slabs can pair up into much bigger towers but are completely immobile; although when in this state, they will petrify nearby swirls and make them unusable unless dealt with
 
@@ -99,7 +105,7 @@ by simply smacking them with a shovel, doing so will cause them to deal friendly
 
 -Stampedes' hunger meter UI has also received a redesign to make it more obvious as to what it is with more dynamic animations for when it is low or replenishing
 
--Drastically improved how the stampede's movement works, it is now controlled using WSAD like horses with the added ability to jump
+-Drastically improved how the stampede's movement works, it is now controlled using WSAD like horses with the added ability to jump too
 
 -There's now a scerenshake every time the stampede moves or lands from a fall, the itensity of the latter being determined by fall distance
 
@@ -115,7 +121,7 @@ by simply smacking them with a shovel, doing so will cause them to deal friendly
 
 -Will O' Wisps can be propelled to reach their maximum speed immediately by hitting them with a wind charge
 
--Apparitions, Wisps, Banshees and Blazes no longer have shading turned on their models and look far omre similar to how bedrock edition emissive mobs render
+-Apparitions, Wisps, Banshees and Blazes no longer have shading turned on their models and look far nore similar to how bedrock edition emissive mobs render
 
 -Many nether biomes had their fog colors slightly tweaked to make them look brighter and appealing, this can be disabled within the configs to bring back their old colors
 
@@ -132,7 +138,7 @@ in order to make soul speed far more accessible right from the get-go and reduce
 
 -Bone Corticals have been removed. all instances of this block from older worlds will automatically convert to regular vanilla bone blocks
 
--Tethered Bone Blocks are no longer a blockstate but rather a seperate block for better compatibility
+-Tethered Bone Blocks are no longer a blockstate but rather a seperate block for better compatibility. it is still obtainable the same way, via using string on bone blocks 
 
 -New Advancement "Haunt Your Own House" juke a will o' wisp into hitting the banshee which shot it
 
@@ -144,9 +150,11 @@ in order to make soul speed far more accessible right from the get-go and reduce
 
 -New Advancement "99 Blue Balloons" leash an apparition and wait until it has calmed down
 
+-New Advancement "A Rupert's Drop" when you dismantle a petrified ecto slab tower
+
 -All music tracks composed by Shroomaniac have been removed due to being problematic medias
 
--The Buckshot Wonderland Music Disc can no longer be played and is now a "Cracked Music Disc" until a replacement OST is made
+-The Formerly known as Buckshot Wonderland Music Disc can no longer be played and is now a "Cracked Music Disc" until a replacement OST is made
 
 -Cracked Music Disc is now much rarer in brazier chests
 
@@ -162,7 +170,7 @@ in order to make soul speed far more accessible right from the get-go and reduce
 
 -Beacon glass texture has been updated to incorporate better shading
 
--Breeze Rod texture has been redesigned to be consistent with the new blaze rod and banshee rod
+-Breeze Rod texture has been redesigned to be consistent with the new blaze rod and banshee rod from JNE
 
 -Fire particles have been entirely overhauled to have more appealing smoke and embers; they are fully resource-pack json driven and more can be added as mod compat very easily
 
@@ -255,6 +263,8 @@ you can use axe to scrape a slick side to sticky or use flint and steel to burn 
 
 -Ectoplasm transforming blocks sorrounding it has been made data-driven and you can easily add more hauntings this way
 
+-Burning Skull Blocks now emit particles and have emissive textres
+
 -Updated Russian Translation
 
 -Updated Argentine Spanish Translation
@@ -275,7 +285,7 @@ you can use axe to scrape a slick side to sticky or use flint and steel to burn 
 
 -Quite a few modded Quartz, Glowstone, Obsidian and Blackstone blocks have received the new JNE sound types 
 
--If Caverns & Chasms is installed, Blunt Shotgun Shells can now be crafted with spinel and when hit does not deal any damage but instead a ludicrous amount of knockback
+-If Caverns & Chasms is installed, Treacherous Braziers can now be crafted with silver and ancient wax
 
 ### Fixes
 

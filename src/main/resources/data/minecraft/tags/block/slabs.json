@@ -10,6 +10,7 @@
     "netherexp:polished_basalt_slab",
     "netherexp:polished_basalt_brick_slab",
     "netherexp:blue_nether_brick_slab",
+    {"id": "netherexp:yellow_nether_brick_slab", "required": false},
     "netherexp:stacked_bone_slab",
     "netherexp:stacked_wither_bone_slab",
     "netherexp:cut_netherite_slab",
