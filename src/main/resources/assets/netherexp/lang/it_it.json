@@ -228,7 +228,7 @@
   "block.netherexp.rusty_cut_netherite_stairs": "Scalini di netherite incisa arruginiti",
   "block.netherexp.rusty_cut_netherite_pillar": "Pilastro di netherite incisa arruginito",
 
-  "item.netherexp.warped_wart": "Verruca distorta",
+  "block.netherexp.warped_wart": "Verruca distorta",
 
   "block.netherexp.stripped_claret_stem": "Gambo bordeaux scortecciato",
   "block.netherexp.stripped_claret_hyphae": "Ife bordeaux cortecciato",
@@ -482,7 +482,7 @@
   "block.netherexp.umbral_nylium_path": "Sentiero sterrato ombroso",
 
   "item.netherexp.blightspores": "Morispore",
-  "block.netherexp.shroomblight": "fungorianima",
+  "block.netherexp.shroomblight": "Morianilume",
   "block.netherexp.blight_swirls": "Riccioli di morianima",
   "block.netherexp.blightwart": "Verruca di morianima",
   "item.netherexp.blightwart": "Verruca di morianima",
@@ -502,7 +502,7 @@
   "item.netherexp.necromium_plating": "Placcatura in necromium",
   "block.netherexp.necromium_plated_block": "Blocco placcato in necromium",
   "block.netherexp.necromium_grate": "Grata di necromium",
-  "block.netherexp.cut_necromium_block": "necromium inciso",
+  "block.netherexp.cut_necromium_block": "Necromium inciso",
   "block.netherexp.cut_necromium_slab": "Lastra di necromium inciso",
   "block.netherexp.cut_necromium_stairs": "Scalini di necromium inciso",
   "block.netherexp.cut_necromium_pillar": "Pilastro di necromium inciso",
