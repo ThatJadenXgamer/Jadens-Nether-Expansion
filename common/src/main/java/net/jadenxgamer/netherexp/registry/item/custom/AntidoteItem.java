@@ -39,8 +39,8 @@ public class AntidoteItem extends Item {
             return null;
         }
 
-        ResourceLocation antidoteLocation = new ResourceLocation(stack.getOrCreateTag().getString("AntidoteEffect"));
-        return Objects.requireNonNull(BuiltInRegistries.MOB_EFFECT.get(antidoteLocation));
+        ResourceLocation antidoteLocation = ResourceLocation.tryParse(nbt.getString("AntidoteEffect"));
+        return antidoteLocation == null ? null : BuiltInRegistries.MOB_EFFECT.get(antidoteLocation);
     }
 
     @Override
