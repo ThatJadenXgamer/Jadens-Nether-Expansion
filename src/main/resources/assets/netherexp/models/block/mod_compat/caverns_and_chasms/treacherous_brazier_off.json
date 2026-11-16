@@ -1,0 +1,75 @@
+{
+	"credit": "hatsondogs (All I did was change the textures. Credit still goes to hatsondogs. -Derp)",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "caverns_and_chasms:block/brazier_base",
+		"2": "caverns_and_chasms:block/brazier_bottom",
+		"3": "caverns_and_chasms:block/brazier_side",
+		"particle": "caverns_and_chasms:block/treacherous_brazier_top"
+	},
+	"elements": [
+		{
+			"from": [1, 4, 1],
+			"to": [15, 14, 15],
+			"faces": {
+				"north": {"uv": [1, 2, 15, 12], "texture": "#3"},
+				"east": {"uv": [1, 2, 15, 12], "texture": "#3"},
+				"south": {"uv": [1, 2, 15, 12], "texture": "#3"},
+				"west": {"uv": [1, 2, 15, 12], "texture": "#3"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#2"}
+			}
+		},
+		{
+			"from": [2, 0.01, 2],
+			"to": [14, 4.01, 14],
+			"faces": {
+				"north": {"uv": [2, 12, 14, 16], "texture": "#3"},
+				"east": {"uv": [2, 12, 14, 16], "texture": "#3"},
+				"south": {"uv": [2, 12, 14, 16], "texture": "#3"},
+				"west": {"uv": [2, 12, 14, 16], "texture": "#3"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#1"}
+			}
+		},
+		{
+			"from": [14, 4.01, 14],
+			"to": [2, 0.01, 2],
+			"faces": {
+				"north": {"uv": [2, 12, 14, 16], "rotation": 180, "texture": "#3"},
+				"east": {"uv": [2, 12, 14, 16], "rotation": 180, "texture": "#3"},
+				"south": {"uv": [2, 12, 14, 16], "rotation": 180, "texture": "#3"},
+				"west": {"uv": [2, 12, 14, 16], "rotation": 180, "texture": "#3"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#1"}
+			}
+		},
+		{
+			"from": [1, 7, 1],
+			"to": [15, 7, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -1, 0]},
+			"faces": {
+				"up": {"uv": [1, 1, 15, 15], "texture": "#particle"}
+			}
+		},
+		{
+			"from": [0.75, 9.75, 0.75],
+			"to": [15.25, 12.25, 15.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 1, 0]},
+			"faces": {
+				"north": {"uv": [1, 4, 15, 6], "texture": "#3"},
+				"east": {"uv": [1, 4, 15, 6], "texture": "#3"},
+				"south": {"uv": [1, 4, 15, 6], "texture": "#3"},
+				"west": {"uv": [1, 4, 15, 6], "texture": "#3"}
+			}
+		},
+		{
+			"from": [15, 14, 15],
+			"to": [1, 4, 1],
+			"faces": {
+				"north": {"uv": [1, 2, 15, 12], "rotation": 180, "texture": "#3"},
+				"east": {"uv": [1, 2, 15, 12], "rotation": 180, "texture": "#3"},
+				"south": {"uv": [1, 2, 15, 12], "rotation": 180, "texture": "#3"},
+				"west": {"uv": [1, 2, 15, 12], "rotation": 180, "texture": "#3"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#2"}
+			}
+		}
+	]
+}
