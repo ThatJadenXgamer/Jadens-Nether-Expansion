@@ -2,7 +2,8 @@
   "blocks": "minecraft:soul_fire",
   "replace_particles": [
     "minecraft:soul_fire_flame",
-    "netherexp:small_soul_fire_flame"
+    "netherexp:small_soul_fire_flame",
+    "buzzier_bees:small_soul_fire_flame"
   ],
   "palette1": "#D4FEFF",
   "palette2": "#7CF2F5",
